@@ -21,7 +21,7 @@ namespace CEIHaryana.Contractor
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 if (Session["ContractorID"] != null )
                 {
@@ -89,7 +89,6 @@ namespace CEIHaryana.Contractor
                     string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                    // ddlVoltageLevel.SelectedValue = dp_Id3;
                     ddlVoltageLevel.SelectedIndex = ddlVoltageLevel.Items.IndexOf(ddlVoltageLevel.Items.FindByText(dp_Id3));
-                    txtSiteContact.Text = ds.Tables[0].Rows[0]["SiteContact"].ToString();
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                     txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
@@ -213,7 +212,6 @@ namespace CEIHaryana.Contractor
             OtherPremises.Visible = false;
             hiddenfield.Visible = false;
             hiddenfield1.Visible = false;
-            txtSiteContact.Text = "";
             txtEmail.Text = "";
         }
         protected void Submit_Click(object sender, EventArgs e)
@@ -238,7 +236,7 @@ namespace CEIHaryana.Contractor
                     string filePathInfo = "";
                     if (ddlAnyWork.SelectedValue == "Yes")
                     {
-                        if (customFile.PostedFile.FileName.Length > 0)
+                        if (customFile.PostedFile != null)
                         {
                             string FileName = string.Empty;
                             FileName = Path.GetFileName(customFile.PostedFile.FileName);
@@ -278,7 +276,6 @@ namespace CEIHaryana.Contractor
                     cmd.Parameters.AddWithValue("@OtherPremises", txtOtherPremises.Text);
                     cmd.Parameters.AddWithValue("@VoltageLevel", ddlVoltageLevel.SelectedItem.ToString());
                     cmd.Parameters.AddWithValue("@WorkDetails", WorkData);
-                    cmd.Parameters.AddWithValue("@SiteContact", txtSiteContact.Text);
                     cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                     cmd.Parameters.AddWithValue("@WorkStartDate", txtStartDate.Text);
                     cmd.Parameters.AddWithValue("@CompletionDate", txtCompletitionDate.Text);
