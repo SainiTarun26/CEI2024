@@ -1,0 +1,359 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using System.Drawing;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Web.Helpers;
+
+namespace CEI_PRoject.Admin
+{
+    public partial class AddWiremanDetails : System.Web.UI.Page
+    {
+        CEI CEI = new CEI();
+        public string UserId;
+        public string Qualification;
+        string REID = string.Empty;
+        string ipaddress;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+            try
+            {
+                if (!IsPostBack)
+                {
+                    if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
+                    {
+                        if (Request.Cookies["AdminID"] != null)
+                        {
+                            UserId = Request.Cookies["AdminID"].Value;
+                        }
+                        else
+                        {
+                            UserId = Session["AdminID"].ToString();
+                        }
+                        ddlLoadBindState();
+                        ddlQualificationBind();
+
+                        if (Convert.ToString(Session["ID"]) == null || Convert.ToString(Session["ID"]) == "")
+                        {
+                            rowContractorDetails.Visible = false;
+                        }
+                        else
+                        {
+                            string REID = Session["ID"].ToString();
+                            hdnId.Value = REID;
+                            btnSubmit.Text = "Update";
+                            BtnReset.Visible = false;
+                            GetDetails();
+                            Session["ID"] = "";
+
+                        }
+                            
+                    }
+                    else
+                    {
+                        Response.Redirect("/Login.aspx");
+                    }
+                }
+               
+            }
+            catch(Exception ex)
+            {
+                //
+            }
+        }
+        private void ddlQualificationBind()
+        {
+            try
+            {
+                DataSet dsQualification = new DataSet();
+                dsQualification = CEI.GetQualification();
+                ddlQualification.DataSource = dsQualification;
+                ddlQualification.DataTextField = "Qualificaton";
+                ddlQualification.DataValueField = "QualificationValue";
+                ddlQualification.DataBind();
+                ddlQualification.Items.Insert(0, new ListItem("Select", "0"));
+                dsQualification.Clear();
+            }
+            catch (Exception)
+            {
+                //msg.Text = ex.Message;
+            }
+        }
+        #region Dropdown Bind for State
+        private void ddlLoadBindState()
+        {
+            try
+            {
+                DataSet dsState = new DataSet();
+                dsState = CEI.GetddlDrawState();
+                ddlState.DataSource = dsState;
+                ddlState.DataTextField = "StateName";
+                ddlState.DataValueField = "StateID";
+                ddlState.DataBind();
+                ddlState.Items.Insert(0, new ListItem("Select", "0"));
+                dsState.Clear();
+            }
+            catch (Exception ex)
+            {
+                //msg.Text = ex.Message;
+            }
+        }
+        #endregion
+        public void GetDetails()
+        {
+            REID = hdnId.Value;
+            SqlCommand cmd = new SqlCommand("sp_GetSuperwiserDetails");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", REID);
+            cmd.Connection = con;
+            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+            {
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+                txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
+                txtFatherName.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
+                txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                string dp_Id4 = ds.Tables[0].Rows[0]["State"].ToString();
+                string dp_Id5 = ds.Tables[0].Rows[0]["District"].ToString();
+                txtPincode.Text = ds.Tables[0].Rows[0]["PinCode"].ToString();
+                txtContect.Text = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
+                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                string dp_Id9 = ds.Tables[0].Rows[0]["DateofIntialissue"].ToString();
+                string dp_Id10 = ds.Tables[0].Rows[0]["DateofExpiry"].ToString();
+                string dp_Id11 = ds.Tables[0].Rows[0]["DateofRenewal"].ToString();
+                string dp_Id13 = ds.Tables[0].Rows[0]["voltageWithEffect"].ToString();
+                txtCertifacateOld.Text = ds.Tables[0].Rows[0]["CertificateOld"].ToString();
+                txtCertificateNew.Text = ds.Tables[0].Rows[0]["CertificateNew"].ToString();
+                string dp_Id16 = ds.Tables[0].Rows[0]["Qualification"].ToString();
+
+                string dp_Id17 = ds.Tables[0].Rows[0]["AnyContractor"].ToString();
+                string dp_Id18 = ds.Tables[0].Rows[0]["ContractorID"].ToString();
+                string dp_Id19 = ds.Tables[0].Rows[0]["Age"].ToString();
+
+                ddlAttachedContractor.SelectedValue = dp_Id17;
+
+                ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
+                
+                ddlLoadBindDistrict(dp_Id4);
+                ddlDistrict.SelectedValue = dp_Id5;
+                txtAge.Text = DateTime.Parse(dp_Id19).ToString("yyyy-MM-dd");
+                txtDateInitialIssue.Text = DateTime.Parse(dp_Id9).ToString("yyyy-MM-dd");
+                txtDateExpiry.Text = DateTime.Parse(dp_Id10).ToString("yyyy-MM-dd");
+                txtDateRenewal.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
+
+                if (Regex.IsMatch(dp_Id16, @"^\d+$"))
+                {
+                    ddlQualification.SelectedIndex = ddlQualification.Items.IndexOf(ddlQualification.Items.FindByValue(dp_Id16));
+                }
+                else
+                {
+                    ddlQualification.SelectedValue = "8";
+                    txtQualification.Visible = true;
+                    txtQualifications.Text = dp_Id16;
+                }
+                if (dp_Id17 == "No")
+                {
+                    rowContractorDetails.Visible = false;
+                    ddlAttachedContractor.SelectedValue = "No";
+                }
+                else if(dp_Id17 == "Yes")
+                {
+                    ddlAttachedContractor.SelectedValue = "Yes";
+                    rowContractorDetails.Visible = true;
+                    GetContractorDetails();
+                    ddlContractorDetails.SelectedIndex = ddlContractorDetails.Items.IndexOf(ddlContractorDetails.Items.FindByValue(dp_Id18));
+                }
+            }
+
+        }
+        private void GetContractorDetails()
+        {
+
+            DataSet dsContractor = new DataSet();
+            dsContractor = CEI.GetContractorData();
+            ddlContractorDetails.DataSource = dsContractor;
+            ddlContractorDetails.DataTextField = "ContractorData";
+            ddlContractorDetails.DataValueField = "ContractorID";
+            ddlContractorDetails.DataBind();
+            ddlContractorDetails.Items.Insert(0, new ListItem("Select", "0"));
+            dsContractor.Clear();
+
+        }
+        protected void ddlAttachedContractor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlAttachedContractor.SelectedValue=="Yes")
+            {
+                rowContractorDetails.Visible = true;
+                GetContractorDetails();
+            }
+            else
+            {
+                rowContractorDetails.Visible = false;
+            }
+        }
+
+        protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
+        }
+
+
+        private void ddlLoadBindDistrict(string state)
+        {
+            try
+            {
+                DataSet dsDistrict = new DataSet();
+                dsDistrict = CEI.GetddlDrawDistrict(state);
+                ddlDistrict.DataSource = dsDistrict;
+                ddlDistrict.DataTextField = "District";
+                ddlDistrict.DataValueField = "District";
+                ddlDistrict.DataBind();
+                ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
+                dsDistrict.Clear();
+            }
+            catch (Exception ex)
+            {
+                //msg.Text = ex.Message;
+            }
+        }
+
+        protected string ConvertDate(string date)
+        {
+            string D1;
+            string[] str = date.Split('/');
+            D1 = str[2] + "-" + str[1] + "-" + str[0];
+            return D1;
+        }
+        #region GetIP
+        protected void GetIP()
+        {
+
+            ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (ipaddress == "" || ipaddress == null)
+                ipaddress = Request.ServerVariables["REMOTE_ADDR"];
+        }
+        #endregion
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (txtQualification.Visible == true)
+                {
+
+                    Qualification = txtQualifications.Text;
+                }
+                else
+                {
+                    Qualification = ddlQualification.SelectedValue;
+
+                }
+                GetIP();
+                REID = hdnId.Value; 
+                string Createdby = Convert.ToString(Session["AdminID"]);
+                    SqlCommand cmd = new SqlCommand("sp_SetWiremanandSuperwiserDetails");
+                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                    cmd.Connection = con;
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                        con.Open();
+                    }
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@REID", REID);
+                    cmd.Parameters.AddWithValue("@Name", txtName.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Age", txtAge.Text);
+                    cmd.Parameters.AddWithValue("@FatherName", txtFatherName.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
+                    cmd.Parameters.AddWithValue("@District", ddlDistrict.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@State", ddlState.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@PinCode", txtPincode.Text);
+                    cmd.Parameters.AddWithValue("@PhoneNo", txtContect.Text);
+                    cmd.Parameters.AddWithValue("@Qualification", Qualification);
+                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@CertificateOld", txtCertifacateOld.Text);
+                    cmd.Parameters.AddWithValue("@CertificateNew", txtCertificateNew.Text);
+                    cmd.Parameters.AddWithValue("@DateofIntialissue", txtDateInitialIssue.Text);
+                    cmd.Parameters.AddWithValue("@DateofExpiry", txtDateExpiry.Text);
+                    cmd.Parameters.AddWithValue("@DateofRenewal", txtDateRenewal.Text);
+                    cmd.Parameters.AddWithValue("@AnyContractor", ddlAttachedContractor.SelectedValue);
+                    cmd.Parameters.AddWithValue("@AttachedContractorld", ddlContractorDetails.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Category", "Wireman");
+                    cmd.Parameters.AddWithValue("@Createdby", Createdby);
+                    cmd.Parameters.AddWithValue("@UserId", txtCertifacateOld.Text);
+
+                cmd.Parameters.AddWithValue("@IPAddress", ipaddress);
+                cmd.ExecuteNonQuery();
+                    con.Close();
+                if (btnSubmit.Text == "Update")
+                {
+                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                    Session["ID"] = "";
+                    DataUpdated.Visible = true;
+                }
+                else
+                {
+                    DataSaved.Visible = true;
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+
+
+                }
+                Reset();
+            }
+            catch (Exception Ex)
+            {
+            }
+
+        }
+        protected void Reset()
+        {
+            txtName.Text = "";
+            txtFatherName.Text = "";
+            txtAge.Text = "";
+            txtAddress.Text = "";
+            ddlDistrict.SelectedIndex = -1;
+            ddlState.SelectedIndex = -1;
+            txtPincode.Text = "";
+            txtContect.Text = "";
+            ddlQualification.SelectedIndex = -1;
+            txtEmail.Text = "";
+            txtCertifacateOld.Text = "";
+            txtCertificateNew.Text = "";
+            txtDateInitialIssue.Text = "";
+            txtDateExpiry.Text = "";
+            txtDateRenewal.Text = "";
+            ddlAttachedContractor.SelectedIndex = -1;
+            ddlContractorDetails.SelectedIndex = -1;
+            rowContractorDetails.Visible = false;
+            txtQualification.Visible = false;
+
+        }
+        protected void BtnReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        protected void ddlQualification_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlQualification.SelectedItem.ToString() == "Other")
+            {
+                txtQualification.Visible = true;
+
+            }
+            else
+            {
+                txtQualification.Visible = false;
+            }
+        }
+    }
+}
