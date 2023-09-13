@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                         <div class="preview-item-content">
-                                            <h6 class="preview-subject font-weight-normal">Settings</h6>
+                                          <%--  <h6 class="preview-subject font-weight-normal">Settings</h6>--%>
                                             <p class="font-weight-light small-text mb-0 text-muted">
                                                 Private message
                                             </p>
@@ -368,6 +368,6 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-    </form>
+   
 </body>
 </html>

@@ -122,7 +122,7 @@ namespace CEI_PRoject.Admin
                 ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
                 dsDistrict.Clear();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //msg.Text = ex.Message;
             }
