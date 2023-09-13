@@ -14,19 +14,47 @@
             margin-top: 50px;
             height: 95%;
         }
-        .modal{
-            max-width:50% !important;
-            height:auto !important;
+
+        .modal {
+            max-width: 50% !important;
+            height: auto !important;
         }
+
         .row-modal {
-    margin-top: 15px;
-}
+            margin-top: 15px;
+        }
+
         a.close-modal {
-    position: absolute;
-    top: 0px !important;
-    right: 0px !important;
+            position: absolute;
+            top: 0px !important;
+            right: 0px !important;
+        }
+        th.GridViewRowHeader {
+           padding: 10px 17px 10px 10px;
+           width:1%;
+        }
+        th.AlignHeader {
+    text-align: left;
 }
-           
+       
+        td.NameRow {
+    text-align: initial;
+    padding: 5px;
+    width: 20%;
+}
+      th.WorkDetails {
+    text-align: initial;
+}
+      td.WorkDetailsRow {
+    text-align: initial;
+    padding: 0px 5px 0px 5px;
+}
+      th.WorkDetails {
+    padding: 0px 0px 0px 10px;
+}
+      td.IntimationIdRow {
+    padding:0px 5px 0px 5px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -41,163 +69,162 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: -30px;">
-                        <div class="col-4">
-                            <div class="form-group row">
-                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                                <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+    <div class="col-12">
+        <div class="form-group row" style="margin-bottom:0px !important;">
+            <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
+            <div class="col-sm-10" style="margin-left: -130px;margin-top: auto;margin-bottom: auto;">
+                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" style="font-size: 12px;height: 30px;"></asp:TextBox><br />
+            </div>
+        </div>
+    </div>
+</div>
+                    <table class="table table-responsive">
+                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
+    CssClass="table table-responsive table-striped table-hover">
+    <Columns>
+        <asp:TemplateField HeaderText="Id" Visible="False">
+            <ItemTemplate>
+                <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField>
+            <HeaderStyle CssClass="GridViewRowHeader" />
+            <ItemStyle  CssClass="IntimationIdRow" />
+            <HeaderTemplate>
+                IntimationId
+            </HeaderTemplate>
+            <ItemTemplate>
+                <%--  <a href="#ex1" rel="modal:open">Open Modal</a>--%>
+                <%--     <asp:LinkButton runat="server" ID="LinkButton4" OnClientClick="return openPopup();" Text="View Details"  CommandName="Select" CommandArgument='<%#Eval("Id") %>' />--%>
+                <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <%-- <asp:BoundField DataField="Id" HeaderText="IntimationId">
+            <HeaderStyle HorizontalAlign="center" Width="8%" />
+            <ItemStyle HorizontalAlign="center" Width="8%" />
+        </asp:BoundField>--%>
+        <asp:BoundField DataField="Name" HeaderText="Name">
+            <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader AlignHeader" />
+            <ItemStyle HorizontalAlign="Left"  CssClass="NameRow"/>
+        </asp:BoundField>
+        <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
+            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+            <ItemStyle HorizontalAlign="center"  CssClass="ContactRow"/>
+        </asp:BoundField>
+        <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
+            <HeaderStyle HorizontalAlign="center"  CssClass="GridViewRowHeader WorkDetails" />
+            <ItemStyle HorizontalAlign="center"  CssClass="WorkDetailsRow"/>
+        </asp:BoundField>
+        <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+            <ItemStyle HorizontalAlign="center"  CssClass="GridViewRowItems"/>
+        </asp:BoundField>
+        <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
+            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+            <ItemStyle HorizontalAlign="center"  CssClass="GridViewRowItems"/>
+        </asp:BoundField>
+        <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+            <HeaderStyle HorizontalAlign="center"  CssClass="GridViewRowHeader" />
+            <ItemStyle HorizontalAlign="center"   CssClass="GridViewRowItems"/>
+        </asp:BoundField>
+    </Columns>
+    <FooterStyle BackColor="White" ForeColor="#000066" />
+    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+    <RowStyle ForeColor="#000066" />
+    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+    <SortedDescendingHeaderStyle BackColor="#00547E" />
+</asp:GridView>
+                    </table>
+                    <div id="ex1" class="modal">
+                        <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
+                        <div class="col-md-12">
+                            <div class="row row-modal">
+                                <div class="col-6" runat="server">
+                                    <label for="Name">
+                                        Electrical Installation For
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="agency" runat="server" visible="false">
+                                    <label for="agency">Name of Firm/ Org./ Company/ Department</label>
+                                    <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual" runat="server">
+                                    <label for="Name">
+                                        Name of Owner/ Consumer
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual9" runat="server">
+                                    <label for="Name">
+                                        Contact No.(Contractor)
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual10" runat="server">
+                                    <label for="Name">
+                                        Address of Site
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual2" runat="server">
+                                    <label for="Name">
+                                        Type of Premises
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual3" runat="server">
+                                    <label for="Name">
+                                        Highest Voltage Level of Work
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual4" runat="server">
+                                    <label for="Name">
+                                        Work Details
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual5" runat="server">
+                                    <label for="Name">
+                                        Contact Details of Site Owner
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtSiteContact" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual6" runat="server">
+                                    <label for="Name">
+                                        Work Start Date
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual11" runat="server">
+                                    <label for="Name">
+                                        Tentative Work Completition Date
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <table class="table table-responsive">
-                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
-                            <Columns>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                  <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
-                                       <HeaderTemplate>
-               IntimationId
-         </HeaderTemplate>
-                                    <ItemTemplate>
-                                      <%--  <a href="#ex1" rel="modal:open">Open Modal</a>--%>
-                                    <%--     <asp:LinkButton runat="server" ID="LinkButton4" OnClientClick="return openPopup();" Text="View Details"  CommandName="Select" CommandArgument='<%#Eval("Id") %>' />--%>
- <asp:LinkButton ID="LinkButton4" runat ="server" CommandArgument=' <%#Eval("Id") %> ' CommandName ="Select" ><%#Eval("Id") %></asp:LinkButton> 
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                               <%-- <asp:BoundField DataField="Id" HeaderText="IntimationId">
-                                    <HeaderStyle HorizontalAlign="center" Width="8%" />
-                                    <ItemStyle HorizontalAlign="center" Width="8%" />
-                                </asp:BoundField>--%>
-                                <asp:BoundField DataField="Name" HeaderText="Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%"/>
-                                <ItemStyle HorizontalAlign="Left" Width="15%"/>
-                                 </asp:BoundField>
-                             <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
-                                <HeaderStyle HorizontalAlign="center" Width="12%"/>
-                                <ItemStyle HorizontalAlign="center" Width="12%"/>
-                            </asp:BoundField>
-                             <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
-                                <HeaderStyle HorizontalAlign="center" Width="20%"/>
-                                <ItemStyle HorizontalAlign="center" Width="20%"/>
-                            </asp:BoundField>
-                              <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
-                                <HeaderStyle HorizontalAlign="center" Width="12%"/>
-                                <ItemStyle HorizontalAlign="center" Width="12%"/>
-                            </asp:BoundField>
-                            <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
-                                <HeaderStyle HorizontalAlign="center" Width="12%"/>
-                                <ItemStyle HorizontalAlign="center" Width="12%"/>
-                            </asp:BoundField>
-                             <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-                                <HeaderStyle HorizontalAlign="center" Width="13%"/>
-                                <ItemStyle HorizontalAlign="center" Width="13%"/>
-                            </asp:BoundField>
 
-                              
-                            </Columns>
-                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                            <RowStyle ForeColor="#000066" />
-                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
-                    </table>
-                    <div id="ex1" class="modal">
-                        <div class="modal-header" style="font-size:22px;"><b>Work Intimation Details</b></div>
-                        <div class="col-md-12">
-                        <div class="row row-modal">
-                            <div class="col-6" runat="server">
-                                <label for="Name">
-                                    Electrical Installation For
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                            <div class="col-6" id="agency" runat="server" visible="false">
-                                <label for="agency">Name of Firm/ Org./ Company/ Department</label>
-                                <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                            <div class="col-6" id="individual" runat="server">
-                                <label for="Name">
-                                    Name of Owner/ Consumer
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                        </div>
-                            <div class="row row-modal">
-                            <div class="col-6" id="individual9" runat="server">
-                                <label for="Name">
-                                    Contact No.(Contractor)
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                            <div class="col-6" id="individual10" runat="server">
-                                <label for="Name">
-                                    Address of Site
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                        </div> 
-                            <div class="row row-modal">
-                            <div class="col-6" id="individual2" runat="server">
-                                <label for="Name">
-                                    Type of Premises
-                                </label>
-                                <asp:TextBox class="form-control" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                            <div class="col-6" id="individual3" runat="server">
-                                <label for="Name">
-                                    Highest Voltage Level of Work
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                        </div>
-                            <div class="row row-modal">
-                            <div class="col-6" id="individual4" runat="server">
-                                <label for="Name">
-                                    Work Details
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                            <div class="col-6" id="individual5" runat="server">
-                                <label for="Name">
-                                    Contact Details of Site Owner
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtSiteContact" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                        </div>
-                            <div class="row row-modal">
-                            <div class="col-6" id="individual6" runat="server">
-                                <label for="Name">
-                                    Work Start Date
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                            <div class="col-6" id="individual11" runat="server">
-                                <label for="Name">
-                                    Tentative Work Completition Date
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
-                        </div> 
-                           </div>
-
-                        <div class="modal-footer" style="margin-top:10px;">
+                        <div class="modal-footer" style="margin-top: 10px;">
                             <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-    Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
-                        <%--<a href="#" rel="modal:close">Close</a>--%>
-                            </div>
+                                Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
+                            <%--<a href="#" rel="modal:close">Close</a>--%>
+                        </div>
                     </div>
-                   
+
                     <!-- Link to open the modal -->
                     <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
                 </div>
@@ -255,7 +282,7 @@
             }
         }
     </script>
-  <%--  <script>
+    <%--  <script>
   function openPopup() {
     // Check if the popupDiv is already visible
     var popupDiv = document.getElementById("popupDiv");
