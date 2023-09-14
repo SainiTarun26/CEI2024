@@ -1719,6 +1719,7 @@
     </Compile>
     <Compile Include="Supervisor\TestReportForm1.aspx.cs">
       <DependentUpon>TestReportForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Supervisor\TestReportForm1.aspx.designer.cs">
       <DependentUpon>TestReportForm1.aspx</DependentUpon>
