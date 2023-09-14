@@ -246,45 +246,14 @@ namespace CEI_PRoject.Admin
                 }
 
                 REID = hdnId.Value;
+               string Createdby = Convert.ToString(Session["AdminID"]);
                 GetIP();
-                SqlCommand cmd = new SqlCommand("sp_setContractorRegistrationDetails");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@ContractorID", REID);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
-                cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                cmd.Parameters.AddWithValue("@FatherName", txtFatherName.Text);
-                cmd.Parameters.AddWithValue("@FirmName", txtFirmName.Text);
-                cmd.Parameters.AddWithValue("@GSTNumber", txtGST.Text);
-                cmd.Parameters.AddWithValue("@RegisteredOffice", txtRegisteredOffice.Text);
-                cmd.Parameters.AddWithValue("@State", ddlState.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Districtoffirm", ddlDistrict.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@PinCode", txtPinCode.Text);
-                cmd.Parameters.AddWithValue("@BranchOffice", txtBranchOffice.Text);
-                cmd.Parameters.AddWithValue("@BranchState", txtState1.Text);
-                cmd.Parameters.AddWithValue("@BranchDistrictoffirm", ddlDistrict1.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@BranchPinCode", txtPinCode1.Text);
-                cmd.Parameters.AddWithValue("@PhoneNo", txtContactNo.Text);
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@DateofIntialissue", txtDateofIntialissue.Text);
-                cmd.Parameters.AddWithValue("@DateofRenewal", txtDateofRenewal.Text);
-                cmd.Parameters.AddWithValue("@DateofExpiry", txtDateofExpiry.Text);
-                cmd.Parameters.AddWithValue("@votagelevel", ddlVoltageLevel.SelectedValue);
-                cmd.Parameters.AddWithValue("@voltageWithEffect", txtVoltageLevelWithEffect.Text);
-                cmd.Parameters.AddWithValue("@LicenceOld", txtLicenceOld.Text);
-                cmd.Parameters.AddWithValue("@LicenceNew", txtLicenceNew.Text);
-                cmd.Parameters.AddWithValue("@Createdby", Convert.ToString(Session["AdminID"]));
-                cmd.Parameters.AddWithValue("@IPAddress", ipaddress);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                CEI.InsertContractorData(REID, UserId,txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
+                ddlState.SelectedItem.ToString(),ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+               ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
+               txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+               txtLicenceOld.Text, txtLicenceNew.Text,Createdby, ipaddress);
+              
                 Reset();
                 if (btnSubmit.Text == "Update")
                 {

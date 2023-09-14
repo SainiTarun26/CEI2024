@@ -146,6 +146,96 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             con.Close();
         }
         #endregion
+        #region Insert Supervisor Data
+        public void InserWireManData(string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
+      string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
+      string DateofRenewal, string AnyContractor, string AttachedContractorld,
+    string CreatedBy, string UserId, string IPAddress)
+        {
+
+            SqlCommand cmd = new SqlCommand("sp_SetWiremanandSuperwiserDetails");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@REID", REID);
+            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@Age", Age);
+            cmd.Parameters.AddWithValue("@FatherName", FatherName);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@PinCode", PinCode);
+            cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+            cmd.Parameters.AddWithValue("@Qualification", Qualification);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@CertificateOld", CertificateOld);
+            cmd.Parameters.AddWithValue("@CertificateNew", CertificateNew);
+            cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
+            cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
+            cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
+            cmd.Parameters.AddWithValue("@AnyContractor", AnyContractor);
+            cmd.Parameters.AddWithValue("@AttachedContractorld", AttachedContractorld);
+            cmd.Parameters.AddWithValue("@Category", "Wireman");
+            cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+
+            cmd.Parameters.AddWithValue("@IPAddress", IPAddress);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
+        #region Insert Contractor Data
+        public void InsertContractorData(string ContractorID, string UserId, string Name, string FatherName, string FirmName, string GSTNumber, string RegisteredOffice,
+      string State, string Districtoffirm, string PinCode, string BranchOffice, string BranchState, string BranchDistrictoffirm,
+      string BranchPinCode, string PhoneNo, string Email, string DateofIntialissue, string DateofRenewal, string DateofExpiry,
+      string votagelevel, string voltageWithEffect, string LicenceOld, string LicenceNew, string IPAddress, string Createdby)
+        {
+
+            SqlCommand cmd = new SqlCommand("sp_setContractorRegistrationDetails");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ContractorID", ContractorID);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@FatherName", FatherName);
+            cmd.Parameters.AddWithValue("@FirmName", FirmName);
+            cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
+            cmd.Parameters.AddWithValue("@RegisteredOffice", RegisteredOffice);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@Districtoffirm", Districtoffirm);
+            cmd.Parameters.AddWithValue("@PinCode", PinCode);
+            cmd.Parameters.AddWithValue("@BranchOffice", BranchOffice);
+            cmd.Parameters.AddWithValue("@BranchState", BranchState);
+            cmd.Parameters.AddWithValue("@BranchDistrictoffirm", BranchDistrictoffirm);
+            cmd.Parameters.AddWithValue("@BranchPinCode", BranchPinCode);
+            cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
+            cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
+            cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
+            cmd.Parameters.AddWithValue("@votagelevel", votagelevel);
+            cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffect);
+            cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
+            cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
+            cmd.Parameters.AddWithValue("@IPAddress", IPAddress);
+            cmd.Parameters.AddWithValue("@Createdby", Createdby);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
+
         #region Bind DropDown Draw State
         public DataSet GetddlDrawState()
         {

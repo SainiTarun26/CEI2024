@@ -251,6 +251,14 @@ namespace CEI_PRoject.Admin
                     Qualification = ddlQualification.SelectedValue;
 
                 }
+                if (CertificateNew.Text != "")
+                {
+                    UserId = CertificateNew.Text;
+                }
+                else
+                {
+                    UserId = CertificateOld.Text;
+                }
                 GetIP();
                 REID = hdnId.Value; ;
                 string Createdby = Convert.ToString(Session["AdminID"]);

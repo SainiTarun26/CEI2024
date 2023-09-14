@@ -11,6 +11,9 @@ using System.Drawing;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Web.Helpers;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Ocsp;
+using Org.BouncyCastle.Utilities.Net;
 
 namespace CEI_PRoject.Admin
 {
@@ -258,43 +261,23 @@ namespace CEI_PRoject.Admin
                     Qualification = ddlQualification.SelectedValue;
 
                 }
+                if (txtCertificateNew.Text != "")
+                {
+                    UserId = txtCertificateNew.Text;
+                }
+                else
+                {
+                    UserId = txtCertifacateOld.Text;
+                }
                 GetIP();
                 REID = hdnId.Value; 
                 string Createdby = Convert.ToString(Session["AdminID"]);
-                    SqlCommand cmd = new SqlCommand("sp_SetWiremanandSuperwiserDetails");
-                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                    cmd.Connection = con;
-                    if (con.State == ConnectionState.Closed)
-                    {
-                        con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                        con.Open();
-                    }
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@REID", REID);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text.ToUpper());
-                    cmd.Parameters.AddWithValue("@Age", txtAge.Text);
-                    cmd.Parameters.AddWithValue("@FatherName", txtFatherName.Text.ToUpper());
-                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@District", ddlDistrict.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@State", ddlState.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@PinCode", txtPincode.Text);
-                    cmd.Parameters.AddWithValue("@PhoneNo", txtContect.Text);
-                    cmd.Parameters.AddWithValue("@Qualification", Qualification);
-                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@CertificateOld", txtCertifacateOld.Text);
-                    cmd.Parameters.AddWithValue("@CertificateNew", txtCertificateNew.Text);
-                    cmd.Parameters.AddWithValue("@DateofIntialissue", txtDateInitialIssue.Text);
-                    cmd.Parameters.AddWithValue("@DateofExpiry", txtDateExpiry.Text);
-                    cmd.Parameters.AddWithValue("@DateofRenewal", txtDateRenewal.Text);
-                    cmd.Parameters.AddWithValue("@AnyContractor", ddlAttachedContractor.SelectedValue);
-                    cmd.Parameters.AddWithValue("@AttachedContractorld", ddlContractorDetails.SelectedValue);
-                    cmd.Parameters.AddWithValue("@Category", "Wireman");
-                    cmd.Parameters.AddWithValue("@Createdby", Createdby);
-                    cmd.Parameters.AddWithValue("@UserId", txtCertifacateOld.Text);
+                CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text, txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                ddlState.SelectedItem.ToString(), txtPincode.Text, txtContect.Text, Qualification, txtEmail.Text, txtCertifacateOld.Text, txtCertificateNew.Text,
+                txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text,ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, 
+                Createdby, UserId, ipaddress);
 
-                cmd.Parameters.AddWithValue("@IPAddress", ipaddress);
-                cmd.ExecuteNonQuery();
-                    con.Close();
+              
                 if (btnSubmit.Text == "Update")
                 {
                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
