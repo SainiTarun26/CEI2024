@@ -152,7 +152,8 @@ namespace CEIHaryana.Admin
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+
+            category = Request.Params["category"].ToString();
             if (category == "Contractor")
             {
                 
@@ -162,8 +163,8 @@ namespace CEIHaryana.Admin
             {
                 getWiremanorSuperwiserData(category, loginType, ID);
             }
-           
-          
+            GridView1.PageIndex = e.NewPageIndex;
+
         }
         //else if (e.CommandName == "Drop")
         //{

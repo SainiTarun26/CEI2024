@@ -256,43 +256,11 @@ namespace CEIHaryana.Contractor
                         }
                     }
                     hdnId.Value = ContractorID;
-                    SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration");
-                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                    cmd.Connection = con;
-                    if (con.State == ConnectionState.Closed)
-                    {
-                        con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                        con.Open();
-                    }
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ContractorId", ContractorID);
-                    cmd.Parameters.AddWithValue("@ContractorType", ddlworktype.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@NameOfOwner", txtName.Text);
-                    cmd.Parameters.AddWithValue("@NameOfAgency", txtagency.Text);
-                    cmd.Parameters.AddWithValue("@ContactNo", txtPhone.Text);
-                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@Pincode", txtPin.Text);
-                    cmd.Parameters.AddWithValue("@PremisesType", ddlPremises.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@OtherPremises", txtOtherPremises.Text);
-                    cmd.Parameters.AddWithValue("@VoltageLevel", ddlVoltageLevel.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@WorkDetails", WorkData);
-                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@WorkStartDate", txtStartDate.Text);
-                    cmd.Parameters.AddWithValue("@CompletionDate", txtCompletitionDate.Text);
-                    cmd.Parameters.AddWithValue("@AnyWorkIssued", ddlAnyWork.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@CopyOfWorkOrder", filePathInfo);
-                    cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", txtCompletionDateAPWO.Text);
-                    cmd.Parameters.AddWithValue("@CreatedBy", ContractorID);
-                    SqlParameter outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
-                    outputParam.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(outputParam);
-                    //cmd.Parameters.Add(new SqlParameter("@ret", SqlDbType.NVarChar, 50));
-                    ////cmd.Parameters.AddWithValue("@ret", nvarchar);
-                    //cmd.Parameters["@ret"].Direction = ParameterDirection.ReturnValue;
-                    cmd.ExecuteNonQuery();
-                    //cmd.Dispose();
-                    //con.Close();
-                    string projectId = outputParam.Value.ToString();
+                    CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text
+                      , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), WorkData, txtEmail.Text
+                     , txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text, ContractorID);
+                   
+                    string projectId = CEI.projectId();
                     if (projectId != "" && projectId != null)
                     {
                         ContractorID = Session["ContractorID"].ToString();

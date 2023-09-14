@@ -108,7 +108,7 @@ namespace CEI_PRoject.Admin
             }
         }
         #endregion
-
+        #region Dropdown Bind for District
         private void ddlLoadBindDistrict(string state)
         {
             try
@@ -127,6 +127,7 @@ namespace CEI_PRoject.Admin
                 //msg.Text = ex.Message;
             }
         }
+        #endregion
         private void ddlLoadBindVoltage()
         {
 
@@ -253,43 +254,11 @@ namespace CEI_PRoject.Admin
                 GetIP();
                 REID = hdnId.Value; ;
                 string Createdby = Convert.ToString(Session["AdminID"]);
-                SqlCommand cmd = new SqlCommand("sp_SetWiremanandSuperwiserDetails");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@REID", REID);
-                cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                cmd.Parameters.AddWithValue("@Age", txtAge.Text);
-                cmd.Parameters.AddWithValue("@FatherName", FatherName.Text);
-                cmd.Parameters.AddWithValue("@Address", Address.Text);
-                cmd.Parameters.AddWithValue("@District", ddlDistrict.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@State", ddlState.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@PinCode", txtPincode.Text);
-                cmd.Parameters.AddWithValue("@PhoneNo", ContactNo.Text);
-                cmd.Parameters.AddWithValue("@Qualification", Qualification);
-                cmd.Parameters.AddWithValue("@Email", Email.Text);
-                cmd.Parameters.AddWithValue("@CertificateOld", CertificateOld.Text);
-                cmd.Parameters.AddWithValue("@CertificateNew", CertificateNew.Text);
-                cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue.Text);
-                cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry.Text);
-                cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal.Text);
-                cmd.Parameters.AddWithValue("@votagelevel", ddlVoltageLevel.Text);
-                cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffect.Text);
-                cmd.Parameters.AddWithValue("@AnyContractor", ddlAttachedContractor.SelectedValue);
-                cmd.Parameters.AddWithValue("@AttachedContractorld", ddlContractorDetails.SelectedValue);
-                cmd.Parameters.AddWithValue("@Category", "Supervisor");
-                cmd.Parameters.AddWithValue("@Createdby", Createdby);
-                cmd.Parameters.AddWithValue("@UserId", CertificateOld.Text);
-
-                cmd.Parameters.AddWithValue("@IPAddress", ipaddress);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text,FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(), 
+                 ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,
+                 DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text, 
+                 ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, Createdby, CertificateOld.Text, ipaddress);
+               
                 if (btnSubmit.Text == "Update")
                 {
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);

@@ -61,16 +61,6 @@
         td.IntimationIdRow {
             padding: 0px 5px 0px 5px;
         }
-        table#ContentPlaceHolder1_GridView1 {
-    border-radius: 8px;
-}
-        .form-control-modal{
-            border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 2px solid black;
-    border-radius: 0px;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -94,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-responsive" style="margin-top:25px;">
+                    <table class="table table-responsive">
                         <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
                             CssClass="table table-responsive table-striped table-hover" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
@@ -163,17 +153,17 @@
                                     <label for="Name">
                                         Electrical Installation For
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="agency" runat="server" visible="false">
                                     <label for="agency">Name of Firm/ Org./ Company/ Department</label>
-                                    <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual" runat="server">
                                     <label for="Name">
                                         Name of Owner/ Consumer
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row row-modal">
@@ -181,13 +171,13 @@
                                     <label for="Name">
                                         Contact No.(Contractor)
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual10" runat="server">
                                     <label for="Name">
                                         Address of Site
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row row-modal">
@@ -195,13 +185,13 @@
                                     <label for="Name">
                                         Type of Premises
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual3" runat="server">
                                     <label for="Name">
                                         Highest Voltage Level of Work
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row row-modal">
@@ -209,13 +199,13 @@
                                     <label for="Name">
                                         Work Details
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual5" runat="server">
                                     <label for="Name">
                                         Contact Details of Site Owner
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtSiteContact" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtSiteContact" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row row-modal">
@@ -223,13 +213,13 @@
                                     <label for="Name">
                                         Work Start Date
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual11" runat="server">
                                     <label for="Name">
                                         Tentative Work Completition Date
                                     </label>
-                                    <asp:TextBox class="form-control form-control-modal" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                         </div>

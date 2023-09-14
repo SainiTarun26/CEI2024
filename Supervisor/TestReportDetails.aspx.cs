@@ -58,8 +58,8 @@ namespace CEIHaryana.Supervisor
                     if (int.TryParse(userInput.TrimEnd('k', 'K', 'v', 'V'), out int value))
                     {
 
-                        Insulation220vAbove.Visible = true;
-                        Insulation440vAbove.Visible = false;
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
 
                     }
                 }
@@ -95,8 +95,8 @@ namespace CEIHaryana.Supervisor
                     if (int.TryParse(userInput.TrimEnd('k', 'K', 'v', 'V'), out int value))
                     {
 
-                        UndergroundInsulation220vAbove.Visible = true;
-                        UndergroundInsulation440vAbove.Visible = false;
+                        UndergroundInsulation220vAbove.Visible = false;
+                        UndergroundInsulation440vAbove.Visible = true;
 
                     }
                 }
