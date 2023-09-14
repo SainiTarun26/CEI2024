@@ -82,7 +82,7 @@ namespace CEIHaryana.Admin
                     txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                     string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                     ddVoltageLevel.Text = dp_Id3;
-                    //txtOtherWorkDetail.Text = ds.Tables[0].Rows[0]["OtherWorkDetail"].ToString();
+                    txtOtherWorkDetail.Text = ds.Tables[0].Rows[0]["OtherWorkDetail"].ToString();
                     string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                     txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                     string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();

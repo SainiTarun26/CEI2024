@@ -142,7 +142,7 @@
                                     </a>
                                     <a class="dropdown-item">
                                         <i class="ti-power-off text-primary"></i>
-                                        <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" />
+                                        <asp:Button ID="btnLogout" Text="Logout" runat="server" />
                                     </a>
                                 </div>
                             </li>

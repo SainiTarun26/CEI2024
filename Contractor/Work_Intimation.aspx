@@ -134,7 +134,7 @@
                         <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Data Updated Successfully !!!.
                         </label>
-                        <label id="DataSaved" runat="server" visible="false" style="color: green; font-size: 1.125rem">
+                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Data Saved Successfully !!!.
                         </label>
                     </div>
@@ -170,7 +170,7 @@
 
                         </div>
                         <div class="col-4">
-                            <label for="Phone">Site Contact
+                            <label for="Phone">Contact No.(Contractor)
                                 <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" TabIndex="4"
@@ -243,17 +243,18 @@
                     </div>
                     <div class="row">
                         
-                       <%-- <div class="col-4" runat="server">
+                        <div class="col-4" runat="server">
                             <label for="SiteContact">Contact Details of Site Owner</label>
                             <asp:TextBox class="form-control" ID="txtSiteContact" MaxLength="10" onkeydown="return preventEnterSubmit(event)" onkeyup="return isvalidphoneno2();" onKeyPress="return isNumberKey(event);" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect2" style="color: red"></span>
 
-                        </div>--%>
+                        </div>
                         <div class="col-4" runat="server">
                             <label for="Email">Email</label>
                             <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblError" style="color: red"></span>
-                           
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Work Detail</asp:RequiredFieldValidator>
+
                         </div>
                     </div>
 
@@ -300,9 +301,7 @@
                                         Attached Copy of Work Order<samp style="color: red"> * </samp>
                                        
                                     <%--                            <asp:TextBox class="form-control" ID="txtcustomFile" Type="file" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                   <%-- <input type="file" id="customFile" runat="server" name="imageInput" CssClass="form-control" AutoPostBack="true" TabIndex="14" accept="image/*">--%>
-
-                                        <asp:FileUpload ID="customFile" EnableViewState="true" runat="server" CssClass="form-control" TabIndex="14" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
+                                        <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" onkeydown="return preventEnterSubmit(event)" TabIndex="14" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
                                         <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select File</asp:RequiredFieldValidator>
                                 </div>
@@ -383,8 +382,7 @@
                 </div>
                         </div>
                     </div>
-                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
+                    
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
@@ -396,13 +394,7 @@
                         </div>
                         <div class="col-4"></div>
                     </div>
-             </ContentTemplate>
-        <Triggers>
-            <asp:PostBackTrigger ControlID="btnSubmit" /> 
-            <asp:PostBackTrigger ControlID="btnReset" /> 
-            <asp:PostBackTrigger ControlID="btnBack" />
-        </Triggers>
-    </asp:UpdatePanel>
+           
                     <asp:HiddenField ID="hdnId" runat="server" />
                     <asp:HiddenField ID="hdnId2" runat="server" />
                     <div>
@@ -572,7 +564,28 @@
             }
         }
     </script>
-    
+    <script type="text/javascript">
+        function isvalidphoneno2() {
+
+            var Phone1 = document.getElementById("<%=txtSiteContact.ClientID %>");
+            phoneNo = Phone1.value;
+            var lblErrorContect = document.getElementById("lblErrorContect2");
+            lblErrorContect.innerHTML = "";
+            var expr = /^[6-9]\d{9}$/;
+            if (phoneNo == "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+                return false;
+            }
+            else if (expr.test(phoneNo)) {
+                lblErrorContect.innerHTML = "";
+                return true;
+            }
+            else {
+                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                return false;
+            }
+        }
+    </script>
     <script type="text/javascript">
         function showHide() {
             debugger

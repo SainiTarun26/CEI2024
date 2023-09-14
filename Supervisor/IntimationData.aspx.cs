@@ -18,17 +18,10 @@ namespace CEIHaryana.Supervisor
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!Page.IsPostBack)
             {
-                if (!Page.IsPostBack)
-                {
-                    if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
-                    {
-                        getWorkIntimationData();
-                    }
-                }
+                getWorkIntimationData();
             }
-            catch { }
         }
         private void getWorkIntimationData()
         {
@@ -73,11 +66,6 @@ namespace CEIHaryana.Supervisor
                 // Response.Redirect("/Supervisor/SupervisorDashboard.aspx");
 
             }
-        }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            getWorkIntimationData();
         }
         protected void GetDetails()
         {

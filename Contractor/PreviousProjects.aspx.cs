@@ -42,26 +42,18 @@ namespace CEIHaryana.Contractor
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            Label lblID = (Label)row.FindControl("lblID");
+            string id = lblID.Text;
+            Session["id"] = id;
             if (e.CommandName == "Select")
+                
             {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                string id = lblID.Text;
-                Session["id"] = id;
-                if (e.CommandName == "Select")
+                //Session["id"] = ID;
+                Response.Redirect("/Contractor/Work_Intimation.aspx");
 
-                {
-                    //Session["id"] = ID;
-                    Response.Redirect("/Contractor/Work_Intimation.aspx");
-
-                }
             }
-        }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            getWorkIntimationData();
         }
     }
 }

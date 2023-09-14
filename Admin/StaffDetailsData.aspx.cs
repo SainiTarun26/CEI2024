@@ -150,77 +150,62 @@ namespace CEIHaryana.Admin
 
             }
         }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            if (category == "Contractor")
-            {
-                
-                getContractorData(loginType, ID);
-            }
-            else if (category == "Supervisor" || category == "Wireman")
-            {
-                getWiremanorSuperwiserData(category, loginType, ID);
-            }
-           
-          
-        }
-        //else if (e.CommandName == "Drop")
-        //{
-        //    Control ctrl = e.CommandSource as Control;
-        //    if (ctrl != null)
-        //    {
-        //        GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-        //        Label RowID = (Label)row.FindControl("lblRowID");
-        //        string ID = RowID.Text;
-        //        string category = Request.Params["category"].ToString();
-        //        if (category == "Contractor")
-        //        {
-        //            SqlCommand cmd = new SqlCommand("DropContractorData");
-        //            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-        //            cmd.Connection = con;
-        //            if (con.State == ConnectionState.Closed)
-        //            {
-        //                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-        //                con.Open();
-        //            }
+            //else if (e.CommandName == "Drop")
+            //{
+            //    Control ctrl = e.CommandSource as Control;
+            //    if (ctrl != null)
+            //    {
+            //        GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            //        Label RowID = (Label)row.FindControl("lblRowID");
+            //        string ID = RowID.Text;
+            //        string category = Request.Params["category"].ToString();
+            //        if (category == "Contractor")
+            //        {
+            //            SqlCommand cmd = new SqlCommand("DropContractorData");
+            //            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            //            cmd.Connection = con;
+            //            if (con.State == ConnectionState.Closed)
+            //            {
+            //                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //                con.Open();
+            //            }
 
-        //            cmd.CommandType = CommandType.StoredProcedure;
+            //            cmd.CommandType = CommandType.StoredProcedure;
 
-        //            cmd.Parameters.AddWithValue("@ContractorID", ID);
-        //            cmd.ExecuteNonQuery();
-        //            con.Close();
+            //            cmd.Parameters.AddWithValue("@ContractorID", ID);
+            //            cmd.ExecuteNonQuery();
+            //            con.Close();
 
-        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Deleted Successfully !!!')", true);
-        //            string loginType = Convert.ToString(Session["logintype"]);
+            //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Deleted Successfully !!!')", true);
+            //            string loginType = Convert.ToString(Session["logintype"]);
 
-        //            getContractorData(loginType, ID);
-        //        }
-        //        else
-        //        {
-        //            SqlCommand cmd = new SqlCommand("DeleteData");
-        //            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-        //            cmd.Connection = con;
-        //            if (con.State == ConnectionState.Closed)
-        //            {
-        //                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-        //                con.Open();
-        //            }
+            //            getContractorData(loginType, ID);
+            //        }
+            //        else
+            //        {
+            //            SqlCommand cmd = new SqlCommand("DeleteData");
+            //            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            //            cmd.Connection = con;
+            //            if (con.State == ConnectionState.Closed)
+            //            {
+            //                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //                con.Open();
+            //            }
 
-        //            cmd.CommandType = CommandType.StoredProcedure;
+            //            cmd.CommandType = CommandType.StoredProcedure;
 
-        //            cmd.Parameters.AddWithValue("@REID", ID);
-        //            cmd.ExecuteNonQuery();
-        //            con.Close();
+            //            cmd.Parameters.AddWithValue("@REID", ID);
+            //            cmd.ExecuteNonQuery();
+            //            con.Close();
 
-        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Deleted Successfully !!!')", true);
-        //            string loginType = Convert.ToString(Session["logintype"]);
-        //            getWiremanorSuperwiserData(category, loginType, ID);
+            //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Deleted Successfully !!!')", true);
+            //            string loginType = Convert.ToString(Session["logintype"]);
+            //            getWiremanorSuperwiserData(category, loginType, ID);
 
-        //        }
-        //    }
-        //}
-
+            //        }
+            //    }
+            //}
+        
         protected void btnAddnew_Click(object sender, EventArgs e)
         {
             if (lblData.Text == "Contractor Data")

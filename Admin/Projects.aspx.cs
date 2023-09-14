@@ -19,7 +19,6 @@ namespace CEIHaryana.Admin
               getWorkIntimationData();
             }
         }
-
         private void getWorkIntimationData()
         {
             DataTable ds = new DataTable();
@@ -41,30 +40,18 @@ namespace CEIHaryana.Admin
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            try
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            Label lblID = (Label)row.FindControl("lblID");
+            string id = lblID.Text;
+            Session["id"] = id;
+            if (e.CommandName == "Select")
+
             {
-                if (e.CommandName == "Select")
-                {
-                    Control ctrl = e.CommandSource as Control;
-                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    string id = lblID.Text;
-                    Session["id"] = id;
-                    if (e.CommandName == "Select")
+                //Session["id"] = ID;
+                Response.Redirect("/Admin/WorkIntimationDetail.aspx");
 
-                    {
-                        //Session["id"] = ID;
-                        Response.Redirect("/Admin/WorkIntimationDetail.aspx");
-
-                    }
-                }
             }
-            catch { }
-        }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            getWorkIntimationData();
         }
     }
 }

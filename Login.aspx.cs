@@ -39,10 +39,6 @@ namespace CEIHaryana
                     {
                         Session["AdminID"] = txtUserID.Text;
                         Session["logintype"] = "Admin";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Admin";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
                    
@@ -63,10 +59,6 @@ namespace CEIHaryana
                     {
                         Session["ContractorID"] = txtUserID.Text;
                         Session["logintype"] = "Contractor";
-                        Response.Cookies["ContractorID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Contractor";
-                        Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Contractor/Work_Intimation.aspx", false);
                     }
                     
@@ -88,10 +80,6 @@ namespace CEIHaryana
                     {
                         Session["AdminID"] = txtUserID.Text;
                         Session["logintype"] = "Assistant";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Assistant";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
                    
@@ -113,10 +101,6 @@ namespace CEIHaryana
                     {
                         Session["AdminID"] = txtUserID.Text;
                         Session["logintype"] = "Clerk";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Clerk";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
                    
@@ -137,10 +121,6 @@ namespace CEIHaryana
                     {
                         Session["AdminID"] = txtUserID.Text;
                         Session["logintype"] = "SeniorScale";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "SeniorScale";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
                 } 
@@ -160,10 +140,6 @@ namespace CEIHaryana
                     {
                         Session["AdminID"] = txtUserID.Text;
                         Session["logintype"] = "Supervisor/Wireman";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Supervisor/Wireman";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Supervisor/IntimationData.aspx", false);
                     }
                 }
