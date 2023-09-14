@@ -13,26 +13,5 @@ namespace CEIHaryana.Supervisor
         {
 
         }
-
-        protected void btnLondon_Click(object sender, EventArgs e)
-        {
-            London.Visible = true;
-            Paris.Visible = false;
-            Tokyo.Visible = false;
-        }
-
-        protected void btnParis_Click(object sender, EventArgs e)
-        {
-            London.Visible = false;
-            Paris.Visible = true;
-            Tokyo.Visible = false;
-        }
-
-        protected void btnTokyo_Click(object sender, EventArgs e)
-        {
-            London.Visible = false;
-            Paris.Visible = false;
-            Tokyo.Visible = true;
-        }
     }
 }

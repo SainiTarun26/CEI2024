@@ -118,9 +118,6 @@
         input#ContentPlaceHolder1_txtName {
             font-size: 11px !important;
         }
-        input#ContentPlaceHolder1_txtagency {
-    font-size: 12px;
-}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -137,7 +134,7 @@
                         <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Data Updated Successfully !!!.
                         </label>
-                        <label id="DataSaved" runat="server" visible="false" style="color: green; font-size: 1.125rem">
+                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Data Saved Successfully !!!.
                         </label>
                     </div>
@@ -166,14 +163,14 @@
                             <label for="agency">Name of Firm/ Org./ Company/ Department
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)"  placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtagency"
                                 ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtagency" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
                         </div>
                         <div class="col-4">
-                            <label for="Phone">Site Contact
+                            <label for="Phone">Contact Number (Site Owner)
                                 <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" TabIndex="4"

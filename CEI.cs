@@ -146,7 +146,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             con.Close();
         }
         #endregion
-        #region Insert Supervisor Data
+        #region Insert Wireman Data
         public void InserWireManData(string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
       string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
       string DateofRenewal, string AnyContractor, string AttachedContractorld,

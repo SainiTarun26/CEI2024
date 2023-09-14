@@ -126,12 +126,18 @@
                                     <asp:Label ID="lblRowID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
-                            <asp:BoundField DataField="SNo" HeaderText="SNo">
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%-- <asp:BoundField DataField="SNo" HeaderText="SNo">
                                 <HeaderStyle HorizontalAlign="center" Width="5%" />
                                 <ItemStyle HorizontalAlign="center" Width="5%" />
-                            </asp:BoundField>
-                           <%-- <asp:BoundField DataField="REID" HeaderText="User ID">
+                            </asp:BoundField>--%>
+                            <%-- <asp:BoundField DataField="REID" HeaderText="User ID">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>--%>
@@ -183,7 +189,7 @@
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
                                         Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                   <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                                    <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
                                         Text="<i class='fa fa-duotone fa-trash'></i>" CommandName="Drop" CommandArgument="<%# Container.DataItemIndex %>" CssClass='redButton btn-danger' />--%>
                                 </ItemTemplate>
                             </asp:TemplateField>
