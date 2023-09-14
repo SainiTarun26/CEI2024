@@ -341,7 +341,7 @@
                                     <samp style="color: red">* </samp>
                                     </label>
                                     <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlNoOfEarthing" selectionmode="Multiple" Style="width: 100% !important">
-                                    <asp:ListItem Value="1" Text="1"></asp:ListItem>
+                                    
                                     </asp:DropDownList>
                                 </div>
                                 <div id="Earthingtype1" runat="server">

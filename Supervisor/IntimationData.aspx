@@ -86,7 +86,7 @@
                     </div>
                     <table class="table table-responsive">
                         <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
-                            CssClass="table table-responsive table-striped table-hover">
+                            CssClass="table table-responsive table-striped table-hover" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
