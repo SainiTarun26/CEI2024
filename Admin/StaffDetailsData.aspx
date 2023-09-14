@@ -89,11 +89,17 @@
         td {
             text-align: center;
         }
-    </style>
 
+        th.text-align {
+            text-align: initial;
+        }
+
+        td.text-align {
+            text-align: initial;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
@@ -118,7 +124,7 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
+                    <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
                         OnRowCommand="GridView1_RowCommand" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -126,18 +132,17 @@
                                     <asp:Label ID="lblRowID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                             <asp:BoundField DataField="SNo" HeaderText="SNo">
                                 <HeaderStyle HorizontalAlign="center" Width="5%" />
                                 <ItemStyle HorizontalAlign="center" Width="5%" />
                             </asp:BoundField>
-                           <%-- <asp:BoundField DataField="REID" HeaderText="User ID">
+                            <%-- <asp:BoundField DataField="REID" HeaderText="User ID">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>--%>
                             <asp:BoundField DataField="Name" HeaderText="Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="19%" />
-                                <ItemStyle HorizontalAlign="Left" Width="19%" />
+                                <HeaderStyle Width="19%" CssClass="text-align" />
+                                <ItemStyle Width="19%" CssClass="text-align" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Firm Name" Visible="False">
                                 <HeaderStyle Width="14%" />
@@ -176,14 +181,13 @@
                                 <HeaderStyle HorizontalAlign="Center" Width="15%" />
                                 <ItemStyle HorizontalAlign="Center" Width="15%" />
                             </asp:BoundField>
-
                             <asp:TemplateField>
                                 <HeaderStyle Width="10%" />
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
                                         Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                   <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                                    <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
                                         Text="<i class='fa fa-duotone fa-trash'></i>" CommandName="Drop" CommandArgument="<%# Container.DataItemIndex %>" CssClass='redButton btn-danger' />--%>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -198,11 +202,9 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-
                 </div>
             </div>
         </div>
-
     </div>
     <footer class="footer">
     </footer>
@@ -227,7 +229,6 @@
                 }
                 tblData.rows[i].style.display = styleDisplay;
             }
-
         }
         function SearchOnEnter(event) {
             if (event.keyCode === 13) {

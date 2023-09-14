@@ -113,10 +113,8 @@
             padding: 0px 0px 0px 0px;
         }
 
-       
-
         input#ContentPlaceHolder1_txtName {
-            font-size: 11px !important;
+            font-size: 1px !important;
         }
     </style>
 </asp:Content>

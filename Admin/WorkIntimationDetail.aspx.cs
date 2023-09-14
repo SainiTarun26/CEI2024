@@ -59,7 +59,7 @@ namespace CEIHaryana.Admin
         protected void GetDetails()
         {
             try
-            {
+             {
                 REID = Session["id"].ToString();
                 SqlCommand cmd = new SqlCommand("sp_WorkIntimationData");
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
