@@ -116,10 +116,13 @@
         input#ContentPlaceHolder1_txtName {
             font-size: 11px !important;
         }
+<<<<<<< HEAD
 
         input#ContentPlaceHolder1_txtagency {
             font-size: 12px;
         }
+=======
+>>>>>>> f90ba1348131d10b95ac418fb8d75d3343734f03
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -168,20 +171,23 @@
                                 Name of Firm/ Org./ Company/ Department
                                 <samp style="color: red">* </samp>
                             </label>
-
+<<<<<<< HEAD
                             <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-
-                          <%--  <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-
+=======
+                            <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+>>>>>>> f90ba1348131d10b95ac418fb8d75d3343734f03
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtagency"
                                 ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtagency" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
                         </div>
                         <div class="col-4">
-
-                            
+<<<<<<< HEAD
+                            <label for="Phone">
+                                Site Contact
+=======
                             <label for="Phone">Contact Number (Site Owner)
+>>>>>>> f90ba1348131d10b95ac418fb8d75d3343734f03
                                 <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" TabIndex="4"
