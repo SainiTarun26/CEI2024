@@ -116,13 +116,12 @@
         input#ContentPlaceHolder1_txtName {
             font-size: 11px !important;
         }
-<<<<<<< HEAD
+
 
         input#ContentPlaceHolder1_txtagency {
             font-size: 12px;
         }
-=======
->>>>>>> f90ba1348131d10b95ac418fb8d75d3343734f03
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
