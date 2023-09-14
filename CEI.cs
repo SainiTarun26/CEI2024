@@ -50,6 +50,13 @@ namespace CEI_PRoject
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getStateForDropdown");
         }
         #endregion
+        
+        #region Bind DropDown Draw Earthing
+        public DataSet GetddlEarthing()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Earthing");
+        }
+        #endregion
 
         #region Bind DropDown Draw State
         public DataSet GetddlDrawDistrict(string State)

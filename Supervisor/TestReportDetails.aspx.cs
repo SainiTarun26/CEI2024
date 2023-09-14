@@ -21,10 +21,28 @@ namespace CEIHaryana.Supervisor
             {
                 Earthing.Visible = false;
                 ddlLoadBindVoltage();
+                ddlLoadBindState();
             }
         }
 
-
+        private void ddlLoadBindState()
+        {
+            try
+            {
+                DataSet dsEarthing = new DataSet();
+                dsEarthing = CEI.GetddlEarthing();
+                ddlNoOfEarthing.DataSource = dsEarthing;
+                ddlNoOfEarthing.DataTextField = "Numbers";
+                ddlNoOfEarthing.DataValueField = "Id";
+                ddlNoOfEarthing.DataBind();
+                ddlNoOfEarthing.Items.Insert(0, new ListItem("Select", "0"));
+                dsEarthing.Clear();
+            }
+            catch (Exception)
+            {
+                //msg.Text = ex.Message;
+            }
+        }
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
 

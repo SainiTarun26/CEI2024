@@ -190,7 +190,8 @@ namespace CEI_PRoject.Admin
                 ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
                 ddlLoadBindDistrict(dp_Id4);
                 ddlDistrict.SelectedValue = dp_Id5;
-                ddlDistrict1.SelectedValue = dp_Id16;
+                ddlDistrict1.SelectedIndex = ddlDistrict1.Items.IndexOf(ddlDistrict1.Items.FindByValue(dp_Id16));
+                
                 txtPinCode.Text = dp_Id6;
                 txtPinCode1.Text = dp_Id17;
                 txtContactNo.Text = dp_Id7;

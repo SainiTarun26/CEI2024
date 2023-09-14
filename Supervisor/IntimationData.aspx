@@ -29,37 +29,41 @@
             top: 0px !important;
             right: 0px !important;
         }
+
         th.GridViewRowHeader {
-           padding: 10px 17px 10px 10px;
-           width:1%;
+            padding: 10px 17px 10px 10px;
+            width: 1%;
         }
+
         th.AlignHeader {
-    text-align: left;
-}
-       
+            text-align: left;
+        }
+
         td.NameRow {
-    text-align: initial;
-    padding: 5px;
-    width: 20%;
+            text-align: initial;
+            padding: 5px;
+            width: 20%;
+        }
+
+        th.WorkDetails {
+            text-align: initial;
+        }
+
+        td.WorkDetailsRow {
+            text-align: initial;
+            padding: 0px 5px 0px 5px;
+        }
+
+        th.WorkDetails {
+            padding: 0px 0px 0px 10px;
+        }
+
+        td.IntimationIdRow {
+            padding: 0px 5px 0px 5px;
+        }
+        table#ContentPlaceHolder1_GridView1 {
+    border-radius: 8px;
 }
-      th.WorkDetails {
-    text-align: initial;
-}
-      td.WorkDetailsRow {
-    text-align: initial;
-    padding: 0px 5px 0px 5px;
-}
-      th.WorkDetails {
-    padding: 0px 0px 0px 10px;
-    width:10px;
-}
-      td.IntimationIdRow {
-    padding:0px 5px 0px 5px;
-}
-      .table{
-          border-radius:10px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -74,75 +78,75 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: -30px;">
-    <div class="col-12">
-        <div class="form-group row" style="margin-bottom:0px !important;">
-            <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
-            <div class="col-sm-10" style="margin-left: -120px;margin-top: auto;margin-bottom: auto;padding:0px;">
-                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" style="font-size: 12px;height: 30px;"></asp:TextBox><br />
-            </div>
-        </div>
-    </div>
-</div>
-                    <table class="table table-responsive">
+                        <div class="col-12">
+                            <div class="form-group row" style="margin-bottom: 0px !important;">
+                                <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
+                                <div class="col-sm-10" style="margin-left: -130px; margin-top: auto; margin-bottom: auto;">
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="font-size: 12px; height: 30px;"></asp:TextBox><br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-responsive" style="margin-top:25px;">
                         <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
-    CssClass="table table-responsive table-striped table-hover">
-    <Columns>
-        <asp:TemplateField HeaderText="Id" Visible="False">
-            <ItemTemplate>
-                <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField>
-            <HeaderStyle CssClass="GridViewRowHeader" />
-            <ItemStyle  CssClass="IntimationIdRow" />
-            <HeaderTemplate>
-                IntimationId
-            </HeaderTemplate>
-            <ItemTemplate>
-                <%--  <a href="#ex1" rel="modal:open">Open Modal</a>--%>
-                <%--     <asp:LinkButton runat="server" ID="LinkButton4" OnClientClick="return openPopup();" Text="View Details"  CommandName="Select" CommandArgument='<%#Eval("Id") %>' />--%>
-                <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <%-- <asp:BoundField DataField="Id" HeaderText="IntimationId">
+                            CssClass="table table-responsive table-striped table-hover" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <HeaderStyle CssClass="GridViewRowHeader" />
+                                    <ItemStyle CssClass="IntimationIdRow" />
+                                    <HeaderTemplate>
+                                        IntimationId
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <%--  <a href="#ex1" rel="modal:open">Open Modal</a>--%>
+                                        <%--     <asp:LinkButton runat="server" ID="LinkButton4" OnClientClick="return openPopup();" Text="View Details"  CommandName="Select" CommandArgument='<%#Eval("Id") %>' />--%>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%-- <asp:BoundField DataField="Id" HeaderText="IntimationId">
             <HeaderStyle HorizontalAlign="center" Width="8%" />
             <ItemStyle HorizontalAlign="center" Width="8%" />
         </asp:BoundField>--%>
-        <asp:BoundField DataField="Name" HeaderText="Name">
-            <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader AlignHeader" />
-            <ItemStyle HorizontalAlign="Left"  CssClass="NameRow"/>
-        </asp:BoundField>
-        <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
-            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
-            <ItemStyle HorizontalAlign="center"  CssClass="ContactRow"/>
-        </asp:BoundField>
-        <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
-            <HeaderStyle HorizontalAlign="center"  CssClass="GridViewRowHeader WorkDetails" />
-            <ItemStyle HorizontalAlign="center"  CssClass="WorkDetailsRow"/>
-        </asp:BoundField>
-        <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
-            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
-            <ItemStyle HorizontalAlign="center"  CssClass="GridViewRowItems"/>
-        </asp:BoundField>
-        <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
-            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
-            <ItemStyle HorizontalAlign="center"  CssClass="GridViewRowItems"/>
-        </asp:BoundField>
-        <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-            <HeaderStyle HorizontalAlign="center"  CssClass="GridViewRowHeader" />
-            <ItemStyle HorizontalAlign="center"   CssClass="GridViewRowItems"/>
-        </asp:BoundField>
-    </Columns>
-    <FooterStyle BackColor="White" ForeColor="#000066" />
-    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-    <RowStyle ForeColor="#000066" />
-    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-    <SortedDescendingHeaderStyle BackColor="#00547E" />
-</asp:GridView>
+                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader AlignHeader" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="NameRow" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="ContactRow" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader WorkDetails" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="WorkDetailsRow" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                </asp:BoundField>
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
                     </table>
                     <div id="ex1" class="modal">
                         <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
