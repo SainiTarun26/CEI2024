@@ -91,6 +91,7 @@
         }
     </style>
 
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -119,7 +120,7 @@
                         </div>
                     </div>
                     <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
-                        OnRowCommand="GridView1_RowCommand" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+                        PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging"  OnRowCommand="GridView1_RowCommand">
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
@@ -215,7 +216,8 @@
     <script>
         new DataTable('#example');
     </script>
-    <script type="text/javascript">
+
+  <%--  <script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
             var tblData = document.getElementById("<%=GridView1.ClientID %>");
@@ -241,5 +243,5 @@
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-    </script>
+    </script>--%>
 </asp:Content>

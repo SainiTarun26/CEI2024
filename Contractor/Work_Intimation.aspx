@@ -114,12 +114,12 @@
         }
 
         input#ContentPlaceHolder1_txtName {
-            font-size: 12.5px !important;
+            font-size: 11px !important;
         }
 
 
         input#ContentPlaceHolder1_txtagency {
-            font-size: 12.5px;
+            font-size: 12px;
         }
 
     </style>
