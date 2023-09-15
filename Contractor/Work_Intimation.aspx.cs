@@ -236,10 +236,10 @@ namespace CEIHaryana.Contractor
                     string filePathInfo = "";
                     if (ddlAnyWork.SelectedValue == "Yes")
                     {
-                        if (customFile.PostedFile != null)
+                        if (customFile.PostedFile.FileName.Length > 0)
                         {
                             string FileName = string.Empty;
-                            FileName = Path.GetFileName(customFile.PostedFile.FileName);
+                           // FileName = Path.GetFileName(customFile.PostedFile.FileName);
                             if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
                             {
                                 Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
@@ -301,7 +301,7 @@ namespace CEIHaryana.Contractor
             hdnId.Value = LoginID;
 
             DataSet ds = new DataSet();
-
+                
             ds = CEI.WorkIntimationGridData(LoginID);
             if (ds.Tables[0].Rows.Count > 0)
             {
