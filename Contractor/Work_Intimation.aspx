@@ -469,8 +469,7 @@
                         <h7 class="card-title fw-semibold mb-4">Work Schedule</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                            <asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                                <ContentTemplate>
+                          
                                     <div class="row">
                                         <div class="col-4">
                                             <label for="StartDate">
@@ -529,8 +528,7 @@
 
                                         </div>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+                              
                         </div>
                         <div>
                             <h7 class="card-title fw-semibold mb-4">Assign Supervisor/Wireman Details For Above Work</h7>

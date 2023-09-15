@@ -291,7 +291,7 @@ namespace CEIHaryana.Contractor
                 }
                 Reset();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
