@@ -153,17 +153,28 @@ namespace CEIHaryana.Admin
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
+
+            GridView1.PageIndex = e.NewPageIndex;
             category = Request.Params["category"].ToString();
+            if (Request.Cookies["AdminID"] != null && Request.Cookies["logintype"] != null)
+            {
+                loginType = Request.Cookies["logintype"].Value;
+                ID = Request.Cookies["AdminID"].Value;
+            }
+            else
+            {
+                loginType = Convert.ToString(Session["logintype"]);
+                ID = Convert.ToString(Session["AdminID"]);
+            }
             if (category == "Contractor")
             {
-                
                 getContractorData(loginType, ID);
+
             }
             else if (category == "Supervisor" || category == "Wireman")
             {
                 getWiremanorSuperwiserData(category, loginType, ID);
             }
-            GridView1.PageIndex = e.NewPageIndex;
 
         }
         //else if (e.CommandName == "Drop")
