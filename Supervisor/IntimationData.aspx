@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Remember to include jQuery :) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -18,6 +18,7 @@
         .modal {
             max-width: 50% !important;
             height: auto !important;
+             display: none;
         }
 
         .row-modal {
@@ -100,10 +101,9 @@
                                         IntimationId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <%--  <a href="#ex1" rel="modal:open">Open Modal</a>--%>
-                                        <%--     <asp:LinkButton runat="server" ID="LinkButton4" OnClientClick="return openPopup();" Text="View Details"  CommandName="Select" CommandArgument='<%#Eval("Id") %>' />--%>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
-                                    </ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" OnClientClick="showModal(); return false;" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+                               
+                                        </ItemTemplate>
                                 </asp:TemplateField>
                                 <%-- <asp:BoundField DataField="Id" HeaderText="IntimationId">
             <HeaderStyle HorizontalAlign="center" Width="8%" />
@@ -237,7 +237,16 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
+ 
+  
+  
+  <script>
+      function showModal() {
+          $('#ex1').show(); // Show the modal
+      }
+  </script>
+
+   <%-- <script type="text/javascript">
         function openPopup() {
             debugger;
             var url = 'SupervisorDashboard.aspx';
@@ -259,7 +268,7 @@
             // Prevent the LinkButton from performing a postback
             return false;
         }
-    </script>
+    </script>--%>
 
     <script type="text/javascript">
         function Search_Gridview(strKey) {

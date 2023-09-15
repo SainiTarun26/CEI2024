@@ -56,18 +56,19 @@ namespace CEIHaryana.Supervisor
             if (e.CommandName == "Select")
 
             {
-                string url = "SupervisorDashboard.aspx";
+                GetDetails();
+                //string url = "SupervisorDashboard.aspx";
 
-                // Define the JavaScript code to open the popup
-                string script = $@"<script type='text/javascript'>
-                        var popup = window.open('{url}', 'PopupWindow', 'width=800,height=600,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=no');
-                        if (popup) {{
-                            popup.focus();
-                        }}
-                        </script>";
+                //// Define the JavaScript code to open the popup
+                //string script = $@"<script type='text/javascript'>
+                //        var popup = window.open('{url}', 'PopupWindow', 'width=800,height=600,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=no');
+                //        if (popup) {{
+                //            popup.focus();
+                //        }}
+                //        </script>";
 
-                // Register the JavaScript code to be executed on the client side
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenPopup", script);
+                //// Register the JavaScript code to be executed on the client side
+                //ClientScript.RegisterStartupScript(this.GetType(), "OpenPopup", script);
 
                 //Session["id"] = ID;
                 // Response.Redirect("/Supervisor/SupervisorDashboard.aspx");
