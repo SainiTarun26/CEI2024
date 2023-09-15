@@ -45,7 +45,8 @@ namespace CEIHaryana.Contractor
 
                         GetDetails();
                         GetassigneddatatoContractor();
-                       
+                        ddlWorkDetail.Visible = false;
+                        WorkDetail.Visible = true;
                         Session["id"] = "";
                         btnReset.Visible = false;
                         btnSubmit.Visible = false;
@@ -106,7 +107,7 @@ namespace CEIHaryana.Contractor
                         customFileLocation.Visible = true;
                         txtCompletionDateAPWO.Text = DateTime.Parse(dp_Id6).ToString("yyyy-MM-dd");
                     }
-                   
+                    WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                     customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
 
                     
@@ -168,10 +169,10 @@ namespace CEIHaryana.Contractor
         {
             DataSet dsWorkDetail = new DataSet();
             dsWorkDetail = CEI.GetddlInstallationType();
-           //ddlWorkDetail.DataSource = dsWorkDetail;
-            //ddlWorkDetail.DataTextField = "InstallationType";
-            //ddlWorkDetail.DataValueField = "Id";
-            //ddlWorkDetail.DataBind();
+            ddlWorkDetail.DataSource = dsWorkDetail;
+            ddlWorkDetail.DataTextField = "InstallationType";
+            ddlWorkDetail.DataValueField = "Id";
+            ddlWorkDetail.DataBind();
             //ddlWorkDetail.Items.Insert(0, new ListItem("Select", "0"));
             dsWorkDetail.Clear();
         }
@@ -203,7 +204,10 @@ namespace CEIHaryana.Contractor
             txtCompletitionDate.Text = "";
             ddlAnyWork.SelectedValue = "0";
             txtCompletionDateAPWO.Text = "";
-           
+            foreach (ListItem item in ddlWorkDetail.Items)
+            {
+                item.Selected = false;
+            }
             //OtherWorkDetail.Visible = false;
             OtherPremises.Visible = false;
             hiddenfield.Visible = false;
@@ -219,7 +223,14 @@ namespace CEIHaryana.Contractor
 
                     ContractorID = Session["ContractorID"].ToString();
                     string WorkDetails = "";
-                    
+                    foreach (ListItem item in ddlWorkDetail.Items)
+                    {
+                        if (item.Selected)
+                        {
+                            WorkDetails += item.Text + ",";
+                        }
+
+                    }
                     string WorkData = WorkDetails.TrimEnd(',');
 
                     string filePathInfo = "";

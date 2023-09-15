@@ -38,11 +38,6 @@
         }
     </script>
     <style>
-        .table-dark {
-            text-align: center !important;
-            background-color: #9292cc !important;
-        }
-
         .col-4 {
             margin-bottom: 15px;
         }
@@ -126,6 +121,7 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -177,7 +173,7 @@
 
                             <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px;"></asp:TextBox>
 
-                            <%-- <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
+                           <%-- <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtagency"
                                 ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
@@ -186,10 +182,9 @@
                         </div>
                         <div class="col-4">
 
+                           
 
-
-                            <label for="Phone">
-                                Contact Number (Site Owner)
+                            <label for="Phone">Contact Number (Site Owner)
 
                                 <samp style="color: red">* </samp>
                             </label>
@@ -221,12 +216,6 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-4" runat="server">
-                            <label for="Email">Email</label>
-                            <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <span id="lblError" style="color: red"></span>
-
-                        </div>
                         <div class="col-4">
                             <label>
                                 Type of Premises
@@ -256,8 +245,7 @@
 
                         </div>
 
-
-                        <%--<div class="col-4">
+                        <div class="col-4">
 
                             <label>
                                 Work Details
@@ -268,165 +256,25 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="ddlWorkDetail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Details</asp:RequiredFieldValidator>
 
                             <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>--%>
+                        </div>
+
+
+
                     </div>
                     <div class="row">
+
                         <%-- <div class="col-4" runat="server">
                             <label for="SiteContact">Contact Details of Site Owner</label>
                             <asp:TextBox class="form-control" ID="txtSiteContact" MaxLength="10" onkeydown="return preventEnterSubmit(event)" onkeyup="return isvalidphoneno2();" onKeyPress="return isNumberKey(event);" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect2" style="color: red"></span>
 
                         </div>--%>
-                        <div class="col-4">
-                            <label>
-                                Select Installation Type
-        <samp style="color: red">* </samp>
-                            </label>
-                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" TabIndex="8" runat="server">
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        <div class="col-4" runat="server">
+                            <label for="Email">Email</label>
+                            <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <span id="lblError" style="color: red"></span>
+
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="table-responsive pt-3">
-                                <table class="table table-bordered table-striped">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th>S.No.
-                                            </th>
-                                            <th  style="width: 47%;">Installation Type
-                                            </th>
-                                            <th style="width: 47%;">No of Installations
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div99" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox13" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div9" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div10" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div11" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox20" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div12" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox21" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div13" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox22" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div14" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div15" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div16" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div17" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>6
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div18" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div19" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>7
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div20" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div21" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>8
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div22" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12" id="Div23" runat="server">
-                                                    <asp:TextBox class="form-control" ID="TextBox12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
                     </div>
 
                 </div>
@@ -667,6 +515,7 @@
             var Address = document.getElementById('<%= txtAddress.ClientID %>').value;
             var Premises = document.getElementById('<%= ddlPremises.ClientID %>');
             var VoltageLevel = document.getElementById('<%= ddlVoltageLevel.ClientID %>');
+            var WorkDetail = document.getElementById('<%= ddlWorkDetail.ClientID %>').value;
             var StartDate = document.getElementById('<%= txtStartDate.ClientID %>').value
             var CompletitionDate = document.getElementById('<%= txtCompletitionDate.ClientID %>').value;
             var AnyWork = document.getElementById('<%= ddlAnyWork.ClientID %>').value;
