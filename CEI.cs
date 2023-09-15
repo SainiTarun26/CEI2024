@@ -49,7 +49,10 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string Pincode,
-string PremisesType, string OtherPremises, string VoltageLevel, string WorkDetails, string Email, string WorkStartDate, string CompletionDate,
+string PremisesType, string OtherPremises, string VoltageLevel, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2,string NumberOfInstallation2,
+string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5, 
+string TypeOfInstallation6, string NumberOfInstallation6,string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+string Email, string WorkStartDate, string CompletionDate,
 string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
@@ -74,7 +77,22 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             cmd.Parameters.Add("@PremisesType", SqlDbType.VarChar, 50).Value = PremisesType;
             cmd.Parameters.Add("@OtherPremises", SqlDbType.VarChar, 50).Value = OtherPremises;
             cmd.Parameters.Add("@VoltageLevel", SqlDbType.VarChar, 50).Value = VoltageLevel;
-            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 200).Value = WorkDetails;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation1;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation1;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation2;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation2;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation3;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation3;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation4;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation4;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation5;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation5;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation6;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation6;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation7;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation7;
+            cmd.Parameters.Add("@WorkDetails", SqlDbType.VarChar, 50).Value = TypeOfInstallation8;
+            cmd.Parameters.Add("@VoltageLevel", SqlDbType.Int).Value = NumberOfInstallation8;
             cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = Email;
             cmd.Parameters.Add("@WorkStartDate", SqlDbType.Date).Value = DateTime.ParseExact(WorkStartDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             cmd.Parameters.Add("@CompletionDate", SqlDbType.Date).Value = DateTime.ParseExact(CompletionDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);

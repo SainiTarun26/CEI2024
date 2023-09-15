@@ -48,8 +48,20 @@ namespace CEIHaryana.Supervisor
             }
             ds.Dispose();
         }
-
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void ShowPopup_Click(object sender, EventArgs e)
+        {
+          
+            //hfUniqueId.Value = gvLead.DataKeys[gvrow.RowIndex].Value.ToString();  
+            //Label sUserId = (Label)gvrow.FindControl("lblLeadId");  
+            try
+            {
+                
+                        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "showModal();", true);
+            }
+            catch { }
+               
+            }
+            protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string id = e.CommandArgument.ToString();
             Session["id"] = id;
