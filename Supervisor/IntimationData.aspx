@@ -232,7 +232,7 @@
                     </div>
 
                     <!-- Link to open the modal -->
-                    <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+                    <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>
                 </div>
             </div>
         </div>
