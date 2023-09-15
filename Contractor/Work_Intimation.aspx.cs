@@ -46,6 +46,7 @@ namespace CEIHaryana.Contractor
                         GetDetails();
                         GetassigneddatatoContractor();
                         ddlWorkDetail.Visible = false;
+                        
                         WorkDetail.Visible = true;
                         Session["id"] = "";
                         btnReset.Visible = false;
@@ -173,7 +174,7 @@ namespace CEIHaryana.Contractor
             ddlWorkDetail.DataTextField = "InstallationType";
             ddlWorkDetail.DataValueField = "Id";
             ddlWorkDetail.DataBind();
-            //ddlWorkDetail.Items.Insert(0, new ListItem("Select", "0"));
+            ddlWorkDetail.Items.Insert(0, new ListItem("Select", "0"));
             dsWorkDetail.Clear();
         }
         private void ddlLoadBindVoltage()
@@ -384,6 +385,61 @@ namespace CEIHaryana.Contractor
         {
             Session["id"] = "";
             Response.Redirect("PreviousProjects.aspx");
+        }
+
+        protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          string Value = ddlWorkDetail.SelectedItem.ToString();
+            if (ddlWorkDetail.SelectedValue != "0")
+            {
+                Installation.Visible= true;
+                installationType1.Visible= true;
+                if (string.IsNullOrEmpty(txtinstallationType1.Text))
+                {
+                    txtinstallationType1.Text = Value;
+                }
+
+              else  if (txtinstallationType1.Text!=string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
+                {
+                    installationType2.Visible = true;
+                    txtinstallationType2.Text = Value;
+                } 
+                else  if (string.IsNullOrEmpty(txtinstallationType3.Text))
+                {
+                    installationType3.Visible = true;
+                    txtinstallationType3.Text = Value;
+                } 
+                else  if (string.IsNullOrEmpty(txtinstallationType4.Text))
+                {
+                    installationType4.Visible = true;
+                    txtinstallationType4.Text = Value;
+                } 
+                else  if (string.IsNullOrEmpty(txtinstallationType5.Text))
+                {
+                    installationType5.Visible = true;
+                    txtinstallationType5.Text = Value;
+                }
+                else  if (string.IsNullOrEmpty(txtinstallationType6.Text))
+                {
+                 
+                   installationType6.Visible = true;
+                    txtinstallationType6.Text = Value;
+                } 
+                else  if (string.IsNullOrEmpty(txtinstallationType7.Text))
+                {
+                    installationType7.Visible = true;
+                    txtinstallationType7.Text = Value;
+                }
+                else  if (string.IsNullOrEmpty(txtinstallationType8.Text))
+                {
+                    installationType8.Visible = true;
+                    txtinstallationType8.Text = Value;
+                }
+                if (ddlWorkDetail.SelectedValue != "0")
+                {
+                    ddlWorkDetail.SelectedValue = "0";
+                }
+            }
         }
     }
 }
