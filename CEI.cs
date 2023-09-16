@@ -334,6 +334,10 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
         public DataTable WorkIntimationDataforAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjectsforAdmin");
+        } 
+        public DataTable WorkIntimationDataforSupervisor(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSupervisor", Id);
         }
         public int SetDataInStaffAssined(string REID, string projectId, string AssignBy)
         {

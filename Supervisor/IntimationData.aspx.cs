@@ -33,7 +33,8 @@ namespace CEIHaryana.Supervisor
         private void getWorkIntimationData()
         {
             DataTable ds = new DataTable();
-            ds = cei.WorkIntimationDataforAdmin();
+            string Id = Session["AdminID"].ToString();
+            ds = cei.WorkIntimationDataforSupervisor(Id);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -50,40 +51,27 @@ namespace CEIHaryana.Supervisor
         }
         protected void ShowPopup_Click(object sender, EventArgs e)
         {
-          
-            //hfUniqueId.Value = gvLead.DataKeys[gvrow.RowIndex].Value.ToString();  
-            //Label sUserId = (Label)gvrow.FindControl("lblLeadId");  
             try
             {
-                
-                        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "showModal();", true);
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Pop", "showModal();", true);
             }
             catch { }
-               
+
+        }  
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("TestReportForm1.aspx");
             }
-            protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string id = e.CommandArgument.ToString();
             Session["id"] = id;
             if (e.CommandName == "Select")
 
             {
+                ClientScript.RegisterStartupScript(this.GetType(), "Pop", "showModal();", true);
                 GetDetails();
-                //string url = "SupervisorDashboard.aspx";
-
-                //// Define the JavaScript code to open the popup
-                //string script = $@"<script type='text/javascript'>
-                //        var popup = window.open('{url}', 'PopupWindow', 'width=800,height=600,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=no');
-                //        if (popup) {{
-                //            popup.focus();
-                //        }}
-                //        </script>";
-
-                //// Register the JavaScript code to be executed on the client side
-                //ClientScript.RegisterStartupScript(this.GetType(), "OpenPopup", script);
-
-                //Session["id"] = ID;
-                // Response.Redirect("/Supervisor/SupervisorDashboard.aspx");
 
             }
         }
@@ -138,21 +126,8 @@ namespace CEIHaryana.Supervisor
                     // txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                     // txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     txtSiteContact.Text = ds.Tables[0].Rows[0]["SiteContact"].ToString();
-                    //ddlAnyWork.SelectedIndex = ddlAnyWork.Items.IndexOf(ddlAnyWork.Items.FindByText(dp_Id7));
-                    //if (dp_Id7.Trim() == "Yes")
-                    //{
-
-                    //    hiddenfield.Visible = true;
-                    //    hiddenfield1.Visible = true;
-                    //    txtCompletionDateAPWO.Text = DateTime.Parse(dp_Id6).ToString("yyyy-MM-dd");
-                    //}
-                    //else
-                    //{
-                    //    hiddenfield.Visible = false;
-                    //    hiddenfield1.Visible = false;
-                    // }
-                    string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
-                    txtWorkDetail.Text = dp_Id8;
+                    //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
+                    //txtWorkDetail.Text = dp_Id8;
                 }
             }
             catch { }

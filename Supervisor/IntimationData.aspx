@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Remember to include jQuery :) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.css" />
 
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -18,18 +18,19 @@
             height: 95%;
         }
 
-        .modal { max-width: 60%; /* Adjust the maximum width as needed */
-    margin: 0 auto; /* Center the modal horizontally */
-    background-color: white; /* Background color for the modal */
-    padding: 20px; /* Add padding for content */
-    border-radius: 10px; /* Rounded corners for the modal */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
-    position: fixed; /* Fixed positioning to make it a popup */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -40%); /* Center using transform */
-    z-index: 9999; /* Ensure it's on top of other content */
-    display: none;
+        .modal {
+            max-width: 60%; /* Adjust the maximum width as needed */
+            margin: 0 auto; /* Center the modal horizontally */
+            background-color: white; /* Background color for the modal */
+            padding: 20px; /* Add padding for content */
+            border-radius: 10px; /* Rounded corners for the modal */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+            position: fixed; /* Fixed positioning to make it a popup */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -40%); /* Center using transform */
+            z-index: 9999; /* Ensure it's on top of other content */
+            
         }
 
         .row-modal {
@@ -96,24 +97,20 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-responsive">
-                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
-                            CssClass="table table-responsive table-striped table-hover" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+                    
+                        <asp:GridView class="table-responsive" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
+                            AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <HeaderStyle CssClass="GridViewRowHeader" />
-                                    <ItemStyle CssClass="IntimationIdRow" />
-                                    <HeaderTemplate>
-                                        IntimationId
-                                    </HeaderTemplate>
+                                <asp:TemplateField HeaderText="IntimationId">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server"  OnClick="ShowPopup_Click" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
-                               </ItemTemplate>
+                                      <%--  <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Select"><%#Eval("Id") %></asp:LinkButton> --%>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="ShowPopup_Click"  CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <%-- <asp:BoundField DataField="Id" HeaderText="IntimationId">
             <HeaderStyle HorizontalAlign="center" Width="8%" />
@@ -127,10 +124,10 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
                                     <ItemStyle HorizontalAlign="center" CssClass="ContactRow" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
+                              <%--  <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader WorkDetails" />
                                     <ItemStyle HorizontalAlign="center" CssClass="WorkDetailsRow" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
@@ -154,7 +151,7 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
-                    </table>
+                 
                     <div id="ex1" class="modal">
                         <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
                         <div class="col-md-12">
@@ -235,28 +232,28 @@
                         </div>
 
                         <div class="modal-footer" style="margin-top: 10px;">
-                            <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                            <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" OnClick="btnSubmit_Click" class="btn btn-primary mr-2"
                                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
                             <%--<a href="#ex1" rel="modal:close">Close</a>--%>
                         </div>
                     </div>
 
                     <!-- Link to open the modal -->
-                 <%--   <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>--%>
+                    <%--   <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>--%>
                 </div>
             </div>
         </div>
     </div>
- 
-  
-  
-  <script>
-      function showModal() {
-          $('#ex1').modal('show');
-      }
-  </script>
 
-   <%-- <script type="text/javascript">
+
+
+    <script>
+        function showModal() {
+            $('#ex1').modal('show');
+        }
+    </script>
+
+    <%-- <script type="text/javascript">
         function openPopup() {
             debugger;
             var url = 'SupervisorDashboard.aspx';
