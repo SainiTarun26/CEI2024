@@ -3,6 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,7 +15,9 @@
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -38,6 +43,21 @@
         }
     </script>
     <style>
+        .submit {
+            border: 1px solid #563d7c;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px 5px 10px;
+            background: left 3px top 5px no-repeat #563d7c;
+        }
+        .submit:hover {
+    border: 1px solid #563d7c;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    background: left 3px top 5px no-repeat #26005f;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
         .table-dark {
             text-align: center !important;
             background-color: #9292cc !important;
@@ -314,8 +334,6 @@
                                             <tbody>
                                                 <div id="installationType1" runat="server" visible="False">
                                                     <tr>
-                                                        <td>1
-                                                        </td>
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -328,13 +346,13 @@
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
 
                                                             </div>
+                                                        </td>  <td>
+                                                            <asp:Button runat="server" ID="Button1" Text="DELETE" CssClass="submit" />
                                                         </td>
                                                     </tr>
                                                 </div>
                                                 <div id="installationType2" runat="server" visible="False">
                                                     <tr>
-                                                        <td>2
-                                                        </td>
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -347,12 +365,14 @@
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
+                                                          <td>
+                                                            <asp:Button runat="server" ID="Button2" Text="DELETE" CssClass="submit" />
+                                                        </td>
                                                     </tr>
                                                 </div>
                                                 <tr>
                                                     <div id="installationType3" runat="server" visible="False">
-                                                        <td>3
-                                                        </td>
+                                                       
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -366,12 +386,13 @@
 
                                                             </div>
                                                         </td>
+                                                          <td>
+                                                            <asp:Button runat="server" ID="Button3" Text="DELETE" CssClass="submit" />
+                                                        </td>
                                                     </div>
                                                 </tr>
                                                 <div id="installationType4" runat="server" visible="False">
                                                     <tr>
-                                                        <td>4
-                                                        </td>
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -383,13 +404,13 @@
                                                                 <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
+                                                        </td>  <td>
+                                                            <asp:Button runat="server" ID="Button4" Text="DELETE" CssClass="submit" />
                                                         </td>
                                                     </tr>
                                                 </div>
                                                 <div id="installationType5" runat="server" visible="False">
                                                     <tr>
-                                                        <td>5
-                                                        </td>
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType5" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -401,13 +422,13 @@
                                                                 <asp:TextBox class="form-control" ID="txtinstallationNo5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtinstallationNo5" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
+                                                        </td>  <td>
+                                                            <asp:Button runat="server" ID="Button5" Text="DELETE" CssClass="submit" />
                                                         </td>
                                                     </tr>
                                                 </div>
                                                 <div id="installationType6" runat="server" visible="False">
                                                     <tr>
-                                                        <td>6
-                                                        </td>
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType6" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -419,13 +440,13 @@
                                                                 <asp:TextBox class="form-control" ID="txtinstallationNo6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtinstallationNo6" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
+                                                        </td>  <td>
+                                                            <asp:Button runat="server" ID="Button6" Text="DELETE" CssClass="submit" />
                                                         </td>
                                                     </tr>
                                                 </div>
                                                 <div id="installationType7" runat="server" visible="False">
                                                     <tr>
-                                                        <td>7
-                                                        </td>
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType7" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -437,13 +458,13 @@
                                                                 <asp:TextBox class="form-control" ID="txtinstallationNo7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtinstallationNo7" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
+                                                        </td>  <td>
+                                                            <asp:Button runat="server" ID="Button7" Text="DELETE" CssClass="submit" />
                                                         </td>
                                                     </tr>
                                                 </div>
                                                 <div id="installationType8" runat="server" visible="False">
                                                     <tr>
-                                                        <td>8
-                                                        </td>
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationType8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -455,6 +476,8 @@
                                                                 <asp:TextBox class="form-control" ID="txtinstallationNo8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtinstallationNo8" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
+                                                        </td>  <td>
+                                                            <asp:Button runat="server" ID="Button8" Text="DELETE" CssClass="submit" />
                                                         </td>
                                                     </tr>
                                                 </div>

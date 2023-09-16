@@ -321,6 +321,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
         /// installationType2 control.
         /// </summary>
         /// <remarks>
@@ -355,6 +364,15 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator17;
+
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
         /// installationType3 control.
@@ -393,6 +411,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
 
         /// <summary>
+        /// Button3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
+
+        /// <summary>
         /// installationType4 control.
         /// </summary>
         /// <remarks>
@@ -427,6 +454,15 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
+
+        /// <summary>
+        /// Button4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
 
         /// <summary>
         /// installationType5 control.
@@ -465,6 +501,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
 
         /// <summary>
+        /// Button5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button5;
+
+        /// <summary>
         /// installationType6 control.
         /// </summary>
         /// <remarks>
@@ -499,6 +544,15 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
+
+        /// <summary>
+        /// Button6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button6;
 
         /// <summary>
         /// installationType7 control.
@@ -537,6 +591,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator22;
 
         /// <summary>
+        /// Button7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button7;
+
+        /// <summary>
         /// installationType8 control.
         /// </summary>
         /// <remarks>
@@ -571,6 +634,15 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator23;
+
+        /// <summary>
+        /// Button8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button8;
 
         /// <summary>
         /// txtStartDate control.
