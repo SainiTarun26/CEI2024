@@ -324,11 +324,11 @@
                                             <thead class="table-dark">
                                                 <tr>
                                                    
-                                                    <th style="width: 47%;">Installation Type
+                                                    <th style="width: 70%;">Installation Type
                                                     </th>
-                                                    <th style="width: 47%;">No of Installations
+                                                    <th style="width: 20%;">No of Installations
                                                     </th>
-                                                    <th></th>
+                                                    <th style="width: 10%;"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -370,17 +370,17 @@
                                                         </td>
                                                     </tr>
                                                 </div>
-                                                <div id="installationType3" runat="server" visible="False">
-                                                <tr>        
+                                                <tr>
+                                                    <div id="installationType3" runat="server" visible="False">
+                                                       
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div style="margin-left: 15px !important;
-    margin-right: 15px !important;">
+                                                            <div>
                                                                 <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
 
@@ -389,8 +389,8 @@
                                                           <td>
                                                             <asp:Button runat="server" ID="btnDelete3" Text="DELETE" CssClass="submit" OnClick="btnDelete3_Click" />
                                                         </td>
-                                                    </tr>
-                                                    </div>                                               
+                                                    </div>
+                                                </tr>
                                                 <div id="installationType4" runat="server" visible="False">
                                                     <tr>
                                                         <td>
