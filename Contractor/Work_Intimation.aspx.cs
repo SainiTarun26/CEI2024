@@ -222,25 +222,25 @@ namespace CEIHaryana.Contractor
                 if (Session["ContractorID"] != null)
                 {
 
-                    ContractorID = Session["ContractorID"].ToString();
-                    string WorkDetails = "";
-                    foreach (ListItem item in ddlWorkDetail.Items)
-                    {
-                        if (item.Selected)
-                        {
-                            WorkDetails += item.Text + ",";
-                        }
+                    //ContractorID = Session["ContractorID"].ToString();
+                    //string WorkDetails = "";
+                    //foreach (ListItem item in ddlWorkDetail.Items)
+                    //{
+                    //    if (item.Selected)
+                    //    {
+                    //        WorkDetails += item.Text + ",";
+                    //    }
 
-                    }
-                    string WorkData = WorkDetails.TrimEnd(',');
+                    //}
+                    //string WorkData = WorkDetails.TrimEnd(',');
 
                     string filePathInfo = "";
                     if (ddlAnyWork.SelectedValue == "Yes")
                     {
+                        string FileName = string.Empty;
                         if (customFile.PostedFile.FileName.Length > 0)
                         {
-                            string FileName = string.Empty;
-                           // FileName = Path.GetFileName(customFile.PostedFile.FileName);
+                           FileName = Path.GetFileName(customFile.PostedFile.FileName);
                             if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
                             {
                                 Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
@@ -254,7 +254,7 @@ namespace CEIHaryana.Contractor
                             filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
                             customFile.PostedFile.SaveAs(filePathInfo2);
                             filePathInfo = path + fileName;
-                        }
+                       }
                     }
                     hdnId.Value = ContractorID;
                     CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text
@@ -291,7 +291,7 @@ namespace CEIHaryana.Contractor
                 }
                 Reset();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
