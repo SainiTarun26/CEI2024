@@ -323,12 +323,12 @@
                                         <table class="table table-bordered table-striped">
                                             <thead class="table-dark">
                                                 <tr>
-                                                    <th>S.No.
-                                                    </th>
+                                                   
                                                     <th style="width: 47%;">Installation Type
                                                     </th>
                                                     <th style="width: 47%;">No of Installations
                                                     </th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
