@@ -324,11 +324,11 @@
                                             <thead class="table-dark">
                                                 <tr>
                                                    
-                                                    <th style="width: 47%;">Installation Type
+                                                    <th style="width: 70%;">Installation Type
                                                     </th>
-                                                    <th style="width: 47%;">No of Installations
+                                                    <th style="width: 20%;">No of Installations
                                                     </th>
-                                                    <th></th>
+                                                    <th style="width: 10%;"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
