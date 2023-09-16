@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="StaffDetailsData.aspx.cs" Inherits="CEIHaryana.Admin.StaffDetailsData" %>
+﻿        <%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="StaffDetailsData.aspx.cs" Inherits="CEIHaryana.Admin.StaffDetailsData" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -182,6 +182,7 @@
                                 <HeaderStyle HorizontalAlign="Center" Width="15%" />
                                 <ItemStyle HorizontalAlign="Center" Width="15%" />
                             </asp:BoundField>
+
                             <asp:TemplateField>
                                 <HeaderStyle Width="10%" />
                                 <ItemStyle Width="10%" />
