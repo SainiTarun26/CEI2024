@@ -370,17 +370,17 @@
                                                         </td>
                                                     </tr>
                                                 </div>
-                                                <tr>
-                                                    <div id="installationType3" runat="server" visible="False">
-                                                       
+                                                <div id="installationType3" runat="server" visible="False">
+                                                <tr>        
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>
 
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div>
+                                                            <div style="margin-left: 15px !important;
+    margin-right: 15px !important;">
                                                                 <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
 
@@ -389,8 +389,8 @@
                                                           <td>
                                                             <asp:Button runat="server" ID="Button3" Text="DELETE" CssClass="submit" />
                                                         </td>
-                                                    </div>
-                                                </tr>
+                                                    </tr>
+                                                    </div>                                               
                                                 <div id="installationType4" runat="server" visible="False">
                                                     <tr>
                                                         <td>
