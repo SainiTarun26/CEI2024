@@ -473,5 +473,61 @@ namespace CEIHaryana.Contractor
                 }
             }
         }
+
+        protected void btnDelete1_Click(object sender, EventArgs e)
+        {
+            installationType1.Visible = false;
+            txtinstallationType1.Text = string.Empty;
+            txtinstallationNo1.Text = string.Empty;
+        }
+
+        protected void btnDelete2_Click(object sender, EventArgs e)
+        {
+            installationType2.Visible = false;
+            txtinstallationType2.Text = string.Empty;
+            txtinstallationNo2.Text = string.Empty;
+        }
+
+        protected void btnDelete3_Click(object sender, EventArgs e)
+        {
+            installationType3.Visible = false;
+            txtinstallationType3.Text = string.Empty;
+            txtinstallationNo3.Text = string.Empty;
+        }
+
+        protected void btnDelete4_Click(object sender, EventArgs e)
+        {
+            installationType4.Visible = false;
+            txtinstallationType4.Text = string.Empty;
+            txtinstallationNo4.Text = string.Empty;
+        }
+
+        protected void btnDelete5_Click(object sender, EventArgs e)
+        {
+            installationType5.Visible = false;
+            txtinstallationType5.Text = string.Empty;
+            txtinstallationNo5.Text = string.Empty;
+        }
+
+        protected void btnDelete6_Click(object sender, EventArgs e)
+        {
+            installationType4.Visible = false;
+            txtinstallationType4.Text = string.Empty;
+            txtinstallationNo4.Text = string.Empty;
+        }
+
+        protected void btnDelete7_Click(object sender, EventArgs e)
+        {
+            installationType7.Visible = false;
+            txtinstallationType7.Text = string.Empty;
+            txtinstallationNo7.Text = string.Empty;
+        }
+
+        protected void btnDelete8_Click(object sender, EventArgs e)
+        {
+            installationType8.Visible = false;
+            txtinstallationType8.Text = string.Empty;
+            txtinstallationNo8.Text = string.Empty;
+        }
     }
 }
