@@ -25,11 +25,6 @@ namespace CEIHaryana.Contractor
             {
                 if (Session["ContractorID"] != null )
                 {
-                    ScriptManager scriptManager = ScriptManager.GetCurrent(this);
-
-                    
-                    
-                    
                     ddlLoadBindPremises();
                     worktypevisiblity();
                     ddlLoadBindVoltage();
@@ -206,20 +201,7 @@ namespace CEIHaryana.Contractor
             ddlPremises.SelectedValue = "0";
             ddlVoltageLevel.SelectedValue = "0";
             //txtOtherWorkDetail.Text = "";
-            txtStartDate.Text = ""; 
-            txtinstallationType1.Text = "";
-            txtinstallationNo1.Text= "";
-            txtinstallationType2.Text= "";
-            txtinstallationNo2.Text= "";
-            txtinstallationType3.Text= ""; 
-            txtinstallationNo3.Text= ""; 
-            txtinstallationType4.Text= "";
-            txtinstallationNo4.Text= ""; 
-            txtinstallationType5.Text= ""; 
-            txtinstallationNo5.Text= "";
-            txtinstallationType6.Text= "";
-            txtinstallationNo6.Text= "";
-            txtinstallationType7.Text= ""; txtinstallationNo7.Text= ""; txtinstallationType8.Text= ""; txtinstallationNo8.Text="";
+            txtStartDate.Text = "";
             txtCompletitionDate.Text = "";
             ddlAnyWork.SelectedValue = "0";
             txtCompletionDateAPWO.Text = "";
@@ -240,37 +222,39 @@ namespace CEIHaryana.Contractor
                 if (Session["ContractorID"] != null)
                 {
 
-                    ContractorID = Session["ContractorID"].ToString();
+                    //ContractorID = Session["ContractorID"].ToString();
+                    //string WorkDetails = "";
+                    //foreach (ListItem item in ddlWorkDetail.Items)
+                    //{
+                    //    if (item.Selected)
+                    //    {
+                    //        WorkDetails += item.Text + ",";
+                    //    }
+
+                    //}
+                    //string WorkData = WorkDetails.TrimEnd(',');
 
                     string filePathInfo = "";
                     if (ddlAnyWork.SelectedValue == "Yes")
                     {
-                        try
+                        string FileName = string.Empty;
+                        if (customFile.PostedFile.FileName.Length > 0)
                         {
-                            string FilName = string.Empty;
-                            //if (customFile.PostedFile.FileName.Length > 0)
-                            //{
-                                FilName = Path.GetFileName(customFile.PostedFile.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
-                                {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
-                                }
+                           FileName = Path.GetFileName(customFile.PostedFile.FileName);
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                            }
 
-                                string ext = customFile.PostedFile.FileName.Split('.')[1];
-                                string path = "";
-                                path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                                string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                                string filePathInfo2 = "";
-                                filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                                customFile.PostedFile.SaveAs(filePathInfo2);
-                                filePathInfo = path + fileName;
-                           // }
-                        }
-                        catch (Exception ex)
-                        {
-                            string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                        }
+                            string ext = customFile.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
+                            string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                            string filePathInfo2 = "";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
+                            customFile.PostedFile.SaveAs(filePathInfo2);
+                            filePathInfo = path + fileName;
+                       }
                     }
                     hdnId.Value = ContractorID;
                     CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text
@@ -456,20 +440,7 @@ namespace CEIHaryana.Contractor
                 }
                 if (ddlWorkDetail.SelectedValue != "0")
                 {
-                    
-                    try
-                    {
-                        string selectedValue = ddlWorkDetail.SelectedValue;
-                        ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
-                        if (itemToRemove != null)
-                        {
-                            ddlWorkDetail.Items.Remove(itemToRemove);
-                        }
-                    }
-                    catch (Exception)
-                    { }
                     ddlWorkDetail.SelectedValue = "0";
-
                 }
             }
         }
