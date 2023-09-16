@@ -182,7 +182,6 @@
                                 <HeaderStyle HorizontalAlign="Center" Width="15%" />
                                 <ItemStyle HorizontalAlign="Center" Width="15%" />
                             </asp:BoundField>
-
                             <asp:TemplateField>
                                 <HeaderStyle Width="10%" />
                                 <ItemStyle Width="10%" />

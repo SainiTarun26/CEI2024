@@ -1547,7 +1547,6 @@
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
     <Content Include="Supervisor\TestReportDetails.aspx" />
-    <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="UserPages\Documents.aspx" />
     <Content Include="UserPages\FormPrintContractor.aspx" />
@@ -1709,13 +1708,6 @@
     </Compile>
     <Compile Include="Supervisor\TestReportDetails.aspx.designer.cs">
       <DependentUpon>TestReportDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Supervisor\TestReportForm.aspx.cs">
-      <DependentUpon>TestReportForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Supervisor\TestReportForm.aspx.designer.cs">
-      <DependentUpon>TestReportForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\TestReportForm1.aspx.cs">
       <DependentUpon>TestReportForm1.aspx</DependentUpon>
