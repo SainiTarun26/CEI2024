@@ -13,7 +13,7 @@
         }
 
         div#ContentPlaceHolder1_individual {
-            top: 15px;
+            top: 15px; 
         }
 
         .col-4 {
