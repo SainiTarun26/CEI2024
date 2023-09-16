@@ -288,8 +288,10 @@
                                         Select Installation Type
         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="8" ID="ddlWorkDetail" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
-                                    </asp:DropDownList>
+                                 
+                                   <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="8" ID="ddlWorkDetail" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                       
+                                       </asp:DropDownList>
                                     <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
@@ -316,7 +318,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -335,7 +337,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -353,7 +355,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -372,7 +374,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -390,7 +392,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType5" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -408,7 +410,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType6" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -426,7 +428,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType7" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -444,7 +446,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                                             </div>
                                                         </td>
@@ -469,8 +471,7 @@
                         <h7 class="card-title fw-semibold mb-4">Work Schedule</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                            <asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                                <ContentTemplate>
+                        
                                     <div class="row">
                                         <div class="col-4">
                                             <label for="StartDate">
@@ -508,13 +509,13 @@
 
                                         <div class="col-4" id="hiddenfield" runat="server">
                                             <label class="form-label" for="customFile">
-                                                Attached Copy of Work Order<samp style="color: red"> * </samp>
+                                                Attached Copy of Work Order<samp style="color: red"> * </samp>     </label>
 
                                                 <%--                            <asp:TextBox class="form-control" ID="txtcustomFile" Type="file" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                                 <%-- <input type="file" id="customFile" runat="server" name="imageInput" CssClass="form-control" AutoPostBack="true" TabIndex="14" accept="image/*">--%>
 
                                                 <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" TabIndex="14" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
-
+                                              <%--<input type="file" id="customFile" name="img[]" runat="server" class="file-upload-default" onchange="FileName()"/>--%>
 
                                                 <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select File</asp:RequiredFieldValidator>
@@ -529,8 +530,8 @@
 
                                         </div>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+                 
+
                         </div>
                         <div>
                             <h7 class="card-title fw-semibold mb-4">Assign Supervisor/Wireman Details For Above Work</h7>
@@ -622,18 +623,18 @@
     </div>
     <footer class="footer">
     </footer>
-    <script type="text/javascript">
-        function setFileName() {
-            var fileUpload = document.getElementById('<%= customFile.ClientID %>');
-            var textBox = document.getElementById('<%= customFileLocation.ClientID %>');
+   <script type="text/javascript">
+      
+       function FileName() {
+           var fileInput = document.getElementById('customFile');
+           var selectedFileName = document.getElementById('customFileLocation');
 
-            if (fileUpload.files.length > 0) {
-                textBox.value = fileUpload.files[0].name;
-            } else {
-                textBox.value = "";
-            }
-        }
-    </script>
+           if (fileInput.files.length > 0) {
+               // Update the TextBox value with the selected file name
+               selectedFileName.value = fileInput.files[0].name;
+           }
+       }
+   </script>
 
     <script type="text/javascript">
         function ValidatePincode() {
@@ -655,7 +656,7 @@
                 return false;
             }
         }
-    </script>
+   </script>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
