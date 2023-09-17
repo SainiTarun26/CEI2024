@@ -173,7 +173,7 @@
             
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+                    <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">CONTRACTOR DETAILS</h6>
                     </div>
                     <br />
@@ -185,10 +185,10 @@
                     <div class="col-md-4"></div>
                      <div class="col-sm-4" style="text-align: center;">
                         
-                  <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size:1.125rem">
+                  <label id="DataUpdated" runat="server" visible="false" style="color: green; font-size:1.125rem">
                                                 Data Updated Successfully !!!.
                                             </label>
-                         <label id="DataSaved" runat="server" visible="false" style="color: red; font-size:1.125rem">
+                         <label id="DataSaved" runat="server" visible="false" style="color: green; font-size:1.125rem">
                                                 Data Saved Successfully !!!.
                                             </label>
                          </div>
@@ -267,7 +267,7 @@
                                     <label for="RegisteredOffice">
                                         Address<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtRegisteredOffice" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtRegisteredOffice" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7" ></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtRegisteredOffice" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
 
                                 </div>
@@ -295,7 +295,7 @@
                                 </div>
                                 <div class="col-4">
                                     <label for="PinCode">PinCode </label>
-                                    <asp:TextBox class="form-control" ID="txtPinCode" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtPinCode" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
                                     <span id="lblPinError" style="color: red"></span>
                                     <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
                                     --%>
@@ -315,7 +315,7 @@
                             <label for="BranchOffice">
                                 Address<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtBranchOffice" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="11" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtBranchOffice" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="11" runat="server" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtBranchOffice" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Branch Office Address</asp:RequiredFieldValidator>
 
                         </div>
@@ -341,7 +341,7 @@
                         </div>
                         <div class="col-4">
                             <label for="PinCode">PinCode</label>
-                            <asp:TextBox class="form-control" ID="txtPinCode1" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" MaxLength="6" onkeyup="ValidatePincode1();" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="13"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtPinCode1" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" MaxLength="6" onkeyup="ValidatePincode1();" onkeypress="return isNumberKey(event);" TabIndex="13"></asp:TextBox>
                             <span id="lblPin2Error" style="color: red"></span>
                             <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPinCode1"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>--%>
                             <%--<asp:TextBox class="form-control" ID="txtPinCode1" runat="server" MaxLength="6" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="6"></asp:TextBox>
@@ -618,7 +618,7 @@
             lblPinError.innerHTML = "";
             var expr = /\d{6}/;;
             if (Pincode == "") {
-                lblPinError.innerHTML = "Please Enter Pincode" + "\n";
+                lblPinError.innerHTML = "" + "\n";
                 return false;
             }
             else if (expr.test(Pincode)) {
@@ -639,7 +639,7 @@
             lblPin2Error.innerHTML = "";
             var expr = /\d{6}/;;
             if (Pincode1 == "") {
-                lblPin2Error.innerHTML = "Please Enter Pincode" + "\n";
+                lblPin2Error.innerHTML = "" + "\n";
                 return false;
             }
             else if (expr.test(Pincode1)) {

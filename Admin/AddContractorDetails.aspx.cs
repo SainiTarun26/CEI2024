@@ -204,14 +204,48 @@ namespace CEI_PRoject.Admin
                 txtVoltageLevelWithEffect.Text = DateTime.Parse(dp_Id13).ToString("yyyy-MM-dd");
                 txtLicenceOld.Text = dp_Id14;
                 txtLicenceNew.Text = dp_Id15;
-                if (txtPinCode.Text== txtPinCode1.Text && 
-                    ddlDistrict.SelectedValue == ddlDistrict1.SelectedValue &&
+                if (ddlDistrict.SelectedValue == ddlDistrict1.SelectedValue &&
                     txtRegisteredOffice.Text== txtBranchOffice.Text)
                 {
                     CheckBox1.Checked = true;
-                    txtBranchOffice.Attributes.Add("readonly", "false");
-                    ddlDistrict1.Attributes.Add("disabled", "disabled");
-                    txtPinCode1.Attributes.Add("readonly", "false");
+                    txtBranchOffice.Text = txtRegisteredOffice.Text;
+                    ddlDistrict1.SelectedValue = ddlDistrict.SelectedValue;
+                    txtPinCode1.Text = txtPinCode.Text;
+                    txtBranchOffice.Enabled = false;
+                    txtBranchOffice.Style.Add("width", "inherit");
+                    txtBranchOffice.Style.Add("height", "30px");
+                    txtBranchOffice.Style.Add("border-radius", ".25rem");
+
+
+                    ddlDistrict1.Enabled = false;
+                    ddlDistrict1.Style.Add("width", "inherit");
+                    ddlDistrict1.Style.Add("height", "30px");
+                    ddlDistrict1.Style.Add("border-radius", ".25rem");
+
+                    txtPinCode1.Enabled = false;
+                    txtPinCode1.Style.Add("width", "inherit");
+                    txtPinCode1.Style.Add("height", "30px");
+                    txtPinCode1.Style.Add("border-radius", ".25rem");
+
+                    txtRegisteredOffice.Enabled = false;
+                    txtRegisteredOffice.Style.Add("width", "inherit");
+                    txtRegisteredOffice.Style.Add("height", "30px");
+                    txtRegisteredOffice.Style.Add("border-radius", ".25rem");
+
+                    ddlState.Enabled = false;
+                    ddlState.Style.Add("width", "inherit");
+                    ddlState.Style.Add("height", "30px");
+                    ddlState.Style.Add("border-radius", ".25rem");
+
+                    ddlDistrict.Enabled = false;
+                    ddlDistrict.Style.Add("width", "inherit");
+                    ddlDistrict.Style.Add("height", "30px");
+                    ddlDistrict.Style.Add("border-radius", ".25rem");
+
+                    txtPinCode.Enabled = false;
+                    txtPinCode.Style.Add("width", "inherit");
+                    txtPinCode.Style.Add("height", "30px");
+                    txtPinCode.Style.Add("border-radius", ".25rem");
 
                 }
                 else
@@ -235,49 +269,79 @@ namespace CEI_PRoject.Admin
         {
             try
             {
-
-                if (txtLicenceNew.Text != "")
-                {
-                    UserId = txtLicenceNew.Text;
-                }
-                else
-                {
-                    UserId = txtLicenceOld.Text;
-                }
-
-                REID = hdnId.Value;
-               string Createdby = Convert.ToString(Session["AdminID"]);
-                GetIP();
-                CEI.InsertContractorData(REID, UserId,txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
-                ddlState.SelectedItem.ToString(),ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-               ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
-               txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-               txtLicenceOld.Text, txtLicenceNew.Text,Createdby, ipaddress);
-              
-                Reset();
                 if (btnSubmit.Text == "Update")
                 {
-                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                    if (txtLicenceNew.Text != "")
+                    {
+                        UserId = txtLicenceNew.Text;
+                    }
+                    else
+                    {
+                        UserId = txtLicenceOld.Text;
+                    }
+                    REID = hdnId.Value;
+                    string Createdby = Convert.ToString(Session["AdminID"]);
+                    GetIP();
+                    CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
+                    ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                    ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
+                    txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                    txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
                     Session["ID"] = "";
                     Reset();
                     regexValidatorGST.Attributes.Add("style", "display: none;");
                     DataUpdated.Visible = true;
 
+
+                    //  Response.Redirect("AddContractorDetails.aspx");
                 }
                 else
                 {
+                    DataSet ds = new DataSet();
+                    ds = CEI.checkGSTexist(txtGST.Text);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        string alertScript = "alert('The  GST number is already in use. Please provide a different GST number.');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
 
-                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-                    Reset();
-                    DataSaved.Visible = true;
+                    }
+                    else
+                    {
+                        if (txtLicenceNew.Text != "")
+                        {
+                            UserId = txtLicenceNew.Text;
+                        }
+                        else
+                        {
+                            UserId = txtLicenceOld.Text;
+                        }
+                        DataSet ds1 = new DataSet();
+                        ds1 = CEI.checkLicenceexist(txtLicenceNew.Text, txtLicenceOld.Text);
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
+                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+
+                        }
+                        else
+                        {
+                            REID = hdnId.Value;
+                            string Createdby = Convert.ToString(Session["AdminID"]);
+                            GetIP();
+                            CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
+                            ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
+                           txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                           txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
+                            Reset();
+                            DataSaved.Visible = true;
+                        }
+                    }
                 }
-                //  Response.Redirect("AddContractorDetails.aspx");
-                Reset();
-
             }
             catch (Exception Ex)
             {
-                
+
                 if (Ex.Message.StartsWith("Violation of UNIQUE KEY constraint"))
                 {
                     string alertScript = "alert('Error: License Number Incorrect\\n\\nThe provided license number is already in use. Please provide a different license number.');";
@@ -331,8 +395,7 @@ namespace CEI_PRoject.Admin
 
             if (CheckBox1.Checked == true)
             {
-                if (txtRegisteredOffice.Text != "" && txtPinCode.Text != "" &&
-                    ddlDistrict.SelectedValue != "" && ddlDistrict.SelectedValue != "0")
+                if (txtRegisteredOffice.Text != "" && ddlDistrict.SelectedValue != "" && ddlDistrict.SelectedValue != "0")
                 {
                     if (ddlState.SelectedValue == "11")
                     {
@@ -340,10 +403,41 @@ namespace CEI_PRoject.Admin
                         txtBranchOffice.Text = txtRegisteredOffice.Text;
                         ddlDistrict1.SelectedValue = ddlDistrict.SelectedValue;
                         txtPinCode1.Text = txtPinCode.Text;
-                        txtBranchOffice.Attributes.Add("readonly", "false");
-                        ddlDistrict1.Attributes.Add("disabled", "disabled");
-                        txtPinCode1.Attributes.Add("readonly", "false");
-                       
+                        txtBranchOffice.Enabled = false;
+                        txtBranchOffice.Style.Add("width", "inherit");
+                        txtBranchOffice.Style.Add("height", "30px");
+                        txtBranchOffice.Style.Add("border-radius", ".25rem");
+
+
+                        ddlDistrict1.Enabled = false;
+                        ddlDistrict1.Style.Add("width", "inherit");
+                        ddlDistrict1.Style.Add("height", "30px");
+                        ddlDistrict1.Style.Add("border-radius", ".25rem");
+
+                        txtPinCode1.Enabled = false;
+                        txtPinCode1.Style.Add("width", "inherit");
+                        txtPinCode1.Style.Add("height", "30px");
+                        txtPinCode1.Style.Add("border-radius", ".25rem");
+
+                        txtRegisteredOffice.Enabled = false;
+                        txtRegisteredOffice.Style.Add("width", "inherit");
+                        txtRegisteredOffice.Style.Add("height", "30px");
+                        txtRegisteredOffice.Style.Add("border-radius", ".25rem");
+
+                        ddlState.Enabled = false;
+                        ddlState.Style.Add("width", "inherit");
+                        ddlState.Style.Add("height", "30px");
+                        ddlState.Style.Add("border-radius", ".25rem");
+
+                        ddlDistrict.Enabled = false;
+                        ddlDistrict.Style.Add("width", "inherit");
+                        ddlDistrict.Style.Add("height", "30px");
+                        ddlDistrict.Style.Add("border-radius", ".25rem");
+
+                        txtPinCode.Enabled = false;
+                        txtPinCode.Style.Add("width", "inherit");
+                        txtPinCode.Style.Add("height", "30px");
+                        txtPinCode.Style.Add("border-radius", ".25rem"); 
                     }
                     else
                     {
@@ -363,12 +457,20 @@ namespace CEI_PRoject.Admin
             else
             {
 
-                txtBranchOffice.Attributes.Remove("readonly");
-                ddlDistrict1.Attributes.Remove("disabled");
-                txtPinCode1.Attributes.Remove("readonly");
+                txtBranchOffice.Enabled = true;
+                ddlDistrict1.Enabled = true;
+                txtPinCode1.Enabled = true;
+                txtRegisteredOffice.Enabled = true;
+                ddlState.Enabled = true;
+                ddlDistrict.Enabled = true;
+                txtPinCode.Enabled = true;
                 txtBranchOffice.Text = "";
                 ddlDistrict1.SelectedValue = "0";
                 txtPinCode1.Text = "";
+                txtRegisteredOffice.Text = "";
+                ddlState.SelectedValue = "0";
+                ddlDistrict.SelectedValue = "0";
+                txtPinCode.Text = "";
             }
          }
 
