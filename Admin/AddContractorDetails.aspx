@@ -185,10 +185,10 @@
                     <div class="col-md-4"></div>
                      <div class="col-sm-4" style="text-align: center;">
                         
-                  <label id="DataUpdated" runat="server" visible="false" style="color: green; font-size:1.125rem">
+                  <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size:1.125rem">
                                                 Data Updated Successfully !!!.
                                             </label>
-                         <label id="DataSaved" runat="server" visible="false" style="color: green; font-size:1.125rem">
+                         <label id="DataSaved" runat="server" visible="false" style="color: red; font-size:1.125rem">
                                                 Data Saved Successfully !!!.
                                             </label>
                          </div>

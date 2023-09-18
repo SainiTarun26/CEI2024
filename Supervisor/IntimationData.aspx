@@ -29,7 +29,7 @@
             top: 50%; /* Center vertically */
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -40%); /* Center using transform */
-            z-index: 9999; /* Ensure it's on top of other content */
+           z-index: 9999; /* Ensure it's on top of other content */
             
         }
 
@@ -232,9 +232,10 @@
                         </div>
 
                         <div class="modal-footer" style="margin-top: 10px;">
-                            <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" OnClick="btnSubmit_Click" class="btn btn-primary mr-2"
+                            <asp:Button ID="btnSubmit" Text="Generate Test Report" OnClientClick="return CloseModalAndRedirect()" AutoPostBack="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
-                            <%--<a href="#ex1" rel="modal:close">Close</a>--%>
+                         
+                            <%--<a href="#" onclick="closeModal();">Close</a>--%>
                         </div>
                     </div>
 
@@ -250,6 +251,13 @@
     <script>
         function showModal() {
             $('#ex1').modal('show');
+        }
+        function CloseModalAndRedirect() {
+            $('#ex1').modal('hide');
+            window.location.href = "TestReportForm1.aspx";
+        }
+        function CloseModal() {
+            $('#ex1').modal('hide');
         }
     </script>
 

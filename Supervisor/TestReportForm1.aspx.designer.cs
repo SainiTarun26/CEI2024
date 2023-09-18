@@ -15,13 +15,13 @@ namespace CEIHaryana.Supervisor
     {
 
         /// <summary>
-        /// ddlLineVoltage control.
+        /// txtInstallationType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLineVoltage;
+        protected global::System.Web.UI.WebControls.TextBox txtInstallationType;
 
         /// <summary>
         /// IfInstallationIsLine control.
@@ -33,13 +33,31 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl IfInstallationIsLine;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// DataUpdated control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataUpdated;
+
+        /// <summary>
+        /// DataSaved control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
+
+        /// <summary>
+        /// ddlLineVoltage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLineVoltage;
 
         /// <summary>
         /// OtherVoltage control.
@@ -366,130 +384,112 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.DropDownList ddlNoOfEarthing;
 
         /// <summary>
-        /// Div99 control.
+        /// LineEarthingdiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div99;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LineEarthingdiv;
 
         /// <summary>
-        /// DropDownList2 control.
+        /// Earthingtype1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype1;
 
         /// <summary>
-        /// Div9 control.
+        /// ddlEarthingtype1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype1;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtearthingValue1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtearthingValue1;
 
         /// <summary>
-        /// Div8 control.
+        /// Earthingtype2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype2;
 
         /// <summary>
-        /// DropDownList3 control.
+        /// ddlEarthingtype2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype2;
 
         /// <summary>
-        /// Div10 control.
+        /// txtEarthingValue2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div10;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue2;
 
         /// <summary>
-        /// TextBox2 control.
+        /// Earthingtype3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype3;
 
         /// <summary>
-        /// Div12 control.
+        /// ddlEarthingtype3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div12;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype3;
 
         /// <summary>
-        /// DropDownList4 control.
+        /// txtEarthingValue3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue3;
 
         /// <summary>
-        /// Div13 control.
+        /// Earthingtype4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div13;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype4;
 
         /// <summary>
-        /// TextBox3 control.
+        /// ddlEarthingtype4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
-
-        /// <summary>
-        /// Div14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div14;
-
-        /// <summary>
-        /// DropDownList5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype4;
 
         /// <summary>
         /// Div15 control.
@@ -501,409 +501,310 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div15;
 
         /// <summary>
-        /// TextBox4 control.
+        /// txtEarthingValue4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue4;
 
         /// <summary>
-        /// Div16 control.
+        /// Earthingtype5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div16;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype5;
 
         /// <summary>
-        /// DropDownList6 control.
+        /// ddlEarthingtype5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype5;
 
         /// <summary>
-        /// Div17 control.
+        /// txtEarthingValue5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div17;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue5;
 
         /// <summary>
-        /// TextBox5 control.
+        /// Earthingtype6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype6;
 
         /// <summary>
-        /// Div18 control.
+        /// ddlEarthingtype6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div18;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype6;
 
         /// <summary>
-        /// DropDownList7 control.
+        /// txtEarthingValue6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue6;
 
         /// <summary>
-        /// Div23 control.
+        /// Earthingtype7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div23;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype7;
 
         /// <summary>
-        /// TextBox6 control.
+        /// ddlEarthingtype7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype7;
 
         /// <summary>
-        /// Div24 control.
+        /// txtEarthingValue7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div24;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue7;
 
         /// <summary>
-        /// DropDownList8 control.
+        /// Earthingtype8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype8;
 
         /// <summary>
-        /// Div25 control.
+        /// ddlEarthingtype8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div25;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype8;
 
         /// <summary>
-        /// TextBox7 control.
+        /// txtEarthingValue8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue8;
 
         /// <summary>
-        /// Div26 control.
+        /// Earthingtype9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div26;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype9;
 
         /// <summary>
-        /// DropDownList9 control.
+        /// ddlEarthingtype9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList9;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype9;
 
         /// <summary>
-        /// Div27 control.
+        /// txtEarthingValue9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div27;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue9;
 
         /// <summary>
-        /// TextBox8 control.
+        /// Earthingtype10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype10;
 
         /// <summary>
-        /// Div28 control.
+        /// ddlEarthingtype10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div28;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype10;
 
         /// <summary>
-        /// DropDownList10 control.
+        /// txtEarthingValue10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList10;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue10;
 
         /// <summary>
-        /// Div29 control.
+        /// Earthingtype11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div29;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype11;
 
         /// <summary>
-        /// TextBox9 control.
+        /// ddlEarthingtype11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype11;
 
         /// <summary>
-        /// Div30 control.
+        /// txtEarthingValue11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div30;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue11;
 
         /// <summary>
-        /// DropDownList11 control.
+        /// Earthingtype12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList11;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype12;
 
         /// <summary>
-        /// Div31 control.
+        /// ddlEarthingtype12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div31;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype12;
 
         /// <summary>
-        /// TextBox10 control.
+        /// txtEarthingValue12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue12;
 
         /// <summary>
-        /// Div55 control.
+        /// Earthingtype13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div55;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype13;
 
         /// <summary>
-        /// DropDownList12 control.
+        /// ddlEarthingtype13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList12;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype13;
 
         /// <summary>
-        /// Div56 control.
+        /// txtEarthingValue13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div56;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue13;
 
         /// <summary>
-        /// TextBox11 control.
+        /// Earthingtype14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype14;
 
         /// <summary>
-        /// Div57 control.
+        /// ddlEarthingtype14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div57;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype14;
 
         /// <summary>
-        /// DropDownList13 control.
+        /// txtEarthingValue14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList13;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue14;
 
         /// <summary>
-        /// Div58 control.
+        /// Earthingtype15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div58;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype15;
 
         /// <summary>
-        /// TextBox12 control.
+        /// ddlEarthingtype15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype15;
 
         /// <summary>
-        /// Div59 control.
+        /// txtEarthingValue15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div59;
-
-        /// <summary>
-        /// DropDownList14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList14;
-
-        /// <summary>
-        /// Div60 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div60;
-
-        /// <summary>
-        /// TextBox13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
-
-        /// <summary>
-        /// Div61 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div61;
-
-        /// <summary>
-        /// DropDownList15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList15;
-
-        /// <summary>
-        /// Div62 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div62;
-
-        /// <summary>
-        /// TextBox14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
-
-        /// <summary>
-        /// Div63 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div63;
-
-        /// <summary>
-        /// DropDownList20 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList20;
-
-        /// <summary>
-        /// Div64 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div64;
-
-        /// <summary>
-        /// TextBox15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox15;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue15;
 
         /// <summary>
         /// Insulation440vAbove control.

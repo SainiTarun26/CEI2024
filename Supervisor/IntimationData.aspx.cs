@@ -59,10 +59,7 @@ namespace CEIHaryana.Supervisor
             catch { }
 
         }  
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("TestReportForm1.aspx");
-            }
+        
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string id = e.CommandArgument.ToString();
