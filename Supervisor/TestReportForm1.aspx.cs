@@ -20,7 +20,6 @@ namespace CEIHaryana.Supervisor
             {
                 //if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
                 //{
-                    Earthing.Visible = false;
                     ddlLoadBindVoltage();
                     ddlLoadBindState();
                 //}
