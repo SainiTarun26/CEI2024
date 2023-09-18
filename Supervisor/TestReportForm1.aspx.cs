@@ -414,5 +414,19 @@ namespace CEIHaryana.Supervisor
  txtEarthWire.Text=""; txtNeutralWireEarth.Text=""; ddlCableType.SelectedValue = "0"; txtCableSize.Text=""; ddlCableLaid.SelectedValue = "0"; txtRedWire.Text=""; txtYellowWire.Text=""; txtBlueWire.Text=""; txtRedYellowWire.Text="";
   txtRedBlueWire.Text=""; txtBlueYellowWire.Text=""; txtNeutralPhaseWire.Text=""; txtPhaseWireEarth.Text=""; txtNeutralWireEarthUnderground.Text = "";
         }
+        protected void ddltransformerType_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            if (ddltransformerType.SelectedValue == "1")
+            {
+                InCaseOfOil.Visible = true;
+                Capacity.Visible = true;
+            }
+            else
+            {
+                InCaseOfOil.Visible = true;
+                Capacity.Visible = false;
+            }
+        }
+
     }
 }

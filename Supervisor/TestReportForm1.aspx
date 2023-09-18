@@ -2634,14 +2634,14 @@
                                                             Serial number of transformer  
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox41" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
                                                             Capacity of transformer (IN KVA) 
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList48" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>
                                                     </div>
                                                     <div class="col-4">
@@ -2649,41 +2649,47 @@
                                                             Type of transformer
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList49" selectionmode="Multiple" Style="width: 100% !important">
-                                                        </asp:DropDownList>
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddltransformerType_SelectedIndexChanged" AutoPostBack="true" ID="ddltransformerType" selectionmode="Multiple" Style="width: 100% !important">
+                                                         <asp:ListItem value="" Text="Select"></asp:ListItem>
+                                                    <asp:ListItem value="1" Text="Oil"></asp:ListItem>
+                                                    <asp:ListItem value="2" Text="Dry"></asp:ListItem>
+                                                            </asp:DropDownList>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="InCaseOfOil">
+                                            <div id="InCaseOfOil" runat="server" visible="false">
                                                 <div class="row">
-                                                    <div class="col-4" id="Div122" runat="server">
+                                                    <div class="col-4">
                                                         <label for="Voltage">
                                                             Primary voltage(in kva)  
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox42" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
                                                     </div>
                                                     <div class="col-4" id="Div123" runat="server">
                                                         <label for="Voltage">
                                                             Secondary Voltage(in volte)  
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox43" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-4" id="Div125" runat="server">
+                                                    <div id="Capacity" runat="server" visible="false">
+                                                    <div class="col-4">
                                                         <label for="Voltage">
                                                             Capacity of oil(in liters)  
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox44" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-4" id="Div126" runat="server">
+                                                    <div class="col-4">
                                                         <label for="Voltage">
                                                             BDV level of oil (in kv) Break down voltage  
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox45" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
+                                                        </div>
                                                 </div>
                                                 <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
                                                 <div class="HTInsulationResistance">
@@ -2693,76 +2699,76 @@
                                                                 Red Phase – Earth Wire (in Mohm)  
                                                         <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox46" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtRedWireSubstation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                         <div class="col-4" id="Div127" runat="server">
                                                             <label for="Voltage" style="margin-top: 10px;">
                                                                 Yellow Phase – Earth Wire (in Mohm)   
                                                         <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox47" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtYellowWireSubstation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                         <div class="col-4" id="Div128" runat="server">
                                                             <label for="Voltage" style="margin-top: 10px;">
                                                                 Blue Phase – Earth Wire (in Mohm)  
                                                         <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox48" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBlueWireSubstation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
                                                 <div class="LTInsulationResistance">
                                                     <div class="row" style="margin-top: -15px;">
-                                                        <div class="col-4" id="Div129" runat="server">
+                                                        <div class="col-4">
                                                             <label for="Voltage" style="margin-top: 10px;">
                                                                 Red Phase – Earth Wire (in Mohm)  
                                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox53" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtRedWireSubstationLT" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
-                                                        <div class="col-4" id="Div130" runat="server">
+                                                        <div class="col-4">
                                                             <label for="Voltage" style="margin-top: 10px;">
                                                                 Yellow Phase – Earth Wire (in Mohm)   
                                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox54" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtYellowWireSubstationLT" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
-                                                        <div class="col-4" id="Div131" runat="server">
+                                                        <div class="col-4">
                                                             <label for="Voltage" style="margin-top: 10px;">
                                                                 Blue Phase – Earth Wire (in Mohm)  
                                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox55" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBlueWireSubstationLT" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
                                                 <div class="LTInsulationResistance">
                                                     <div class="row" style="margin-top: -15px;">
-                                                        <div class="col-4" id="Div132" runat="server">
+                                                        <div class="col-4">
                                                             <label for="Voltage" style="margin-top: 10px;">
-                                                                Red Phase – Earth Wire (in Mohm)  
+                                                                Lowest value between HT LT Side 
             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox56" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLowestValue" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-4" id="Div133" runat="server">
+                                                    <div class="col-4">
                                                         <label for="Voltage">
                                                             Lightning Arrestor (LA) Location  
  <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox57" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLightningArrestor" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-4" id="Div134" runat="server">
+                                                    <div class="col-4">
                                                         <label for="Name">
                                                             Number of Earthing:
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList50" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>
                                                     </div>
 
@@ -3013,11 +3019,15 @@
                                                         <label>
                                                             Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList66" selectionmode="Multiple" Style="width: 100% !important">
-                                                        </asp:DropDownList>
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlHTType" selectionmode="Multiple" Style="width: 100% !important">
+                                                       <asp:ListItem value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem value="1" Text="GO Switch"></asp:ListItem>
+                                                            <asp:ListItem value="2" Text="3Pole Linked Switch(GODO)"></asp:ListItem>
+                                                            <asp:ListItem value="3" Text="Breaker"></asp:ListItem>
+                                                            </asp:DropDownList>
                                                     </div>
                                                 </div>
-                                            </div>
+                                           
                                             <div class="TypeOfHTBreaker">
                                                 <div class="row">
                                                     <div class="col-4" id="Div165" runat="server">
@@ -3025,22 +3035,25 @@
                                                             Load breaking capacity of breaker (IN KA)  
                                                     <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox73" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
                                                             Type of LT protection
                                                     <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList67" selectionmode="Multiple" Style="width: 100% !important">
-                                                        </asp:DropDownList>
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLTProtection" selectionmode="Multiple" Style="width: 100% !important">
+                                                         <asp:ListItem value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem value="1" Text="Fuse Unit"></asp:ListItem>
+                                                            <asp:ListItem value="2" Text="Breaker"></asp:ListItem>
+                                                            </asp:DropDownList>
                                                     </div>
                                                     <div class="col-4" id="Div166" runat="server">
                                                         <label for="Voltage">
                                                             Capacity of individual fuse(IN AMPS)  
                                                     <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox74" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtIndividualCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3051,120 +3064,122 @@
                                                             Capacity of LT Breaker(IN AMPS)  
                                                     <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox75" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTBreakerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div168" runat="server">
                                                         <label for="Voltage">
                                                             Load Breaking Capacity of Breaker (IN AMPS)  
                                                     <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox76" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div169" runat="server">
                                                         <label for="Voltage">
                                                             Mean Sea Level of transformer plinth (IN METRES)  
                                                     <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox77" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
+                                              
                                             <div class="InCaseOfDry">
                                                 <div class="row">
-                                                    <div class="col-4" id="Div200" runat="server">
+                                                    <div class="col-4">
                                                         <label for="Voltage">
                                                             Primary voltage(in kva)  
                                                             <samp style="color: red">* </samp>
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox1" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-4" id="Div201" runat="server">
+                                                    <div class="col-4">
                                                         <label for="Voltage">
                                                             Secondary Voltage(in volte)  
                                                             <samp style="color: red">* </samp>
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox2" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    </div>
-                                               
-                                                    <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
-                                                    <div class="HTInsulationResistance">
-                                                        <div class="row" style="margin-top: -15px;">
-                                                            <div class="col-4" id="Div8" runat="server">
-                                                                <label for="Voltage" style="margin-top: 10px;">
-                                                                    Red Phase – Earth Wire (in Mohm)  
+                                                </div>
+
+                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
+                                                <div class="HTInsulationResistance">
+                                                    <div class="row" style="margin-top: -15px;">
+                                                        <div class="col-4">
+                                                            <label for="Voltage" style="margin-top: 10px;">
+                                                                Red Phase – Earth Wire (in Mohm)  
                                             <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox3" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            </div>
-                                                            <div class="col-4" id="Div9" runat="server">
-                                                                <label for="Voltage" style="margin-top: 10px;">
-                                                                    Yellow Phase – Earth Wire (in Mohm)   
+                                                            </label>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox3" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-4" id="Div9" runat="server">
+                                                            <label for="Voltage" style="margin-top: 10px;">
+                                                                Yellow Phase – Earth Wire (in Mohm)   
                                             <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox4" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            </div>
-                                                            <div class="col-4" id="Div10" runat="server">
-                                                                <label for="Voltage" style="margin-top: 10px;">
-                                                                    Blue Phase – Earth Wire (in Mohm)  
+                                                            </label>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox4" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-4" id="Div10" runat="server">
+                                                            <label for="Voltage" style="margin-top: 10px;">
+                                                                Blue Phase – Earth Wire (in Mohm)  
                                             <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox5" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            </div>
+                                                            </label>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox5" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                     </div>
-                                                    <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
-                                                    <div class="LTInsulationResistance">
-                                                        <div class="row" style="margin-top: -15px;">
-                                                            <div class="col-4" id="Div12" runat="server">
-                                                                <label for="Voltage" style="margin-top: 10px;">
-                                                                    Red Phase – Earth Wire (in Mohm)  
+                                                </div>
+                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
+                                                <div class="LTInsulationResistance">
+                                                    <div class="row" style="margin-top: -15px;">
+                                                        <div class="col-4" id="Div12" runat="server">
+                                                            <label for="Voltage" style="margin-top: 10px;">
+                                                                Red Phase – Earth Wire (in Mohm)  
                                 <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox6" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            </div>
-                                                            <div class="col-4" id="Div13" runat="server">
-                                                                <label for="Voltage" style="margin-top: 10px;">
-                                                                    Yellow Phase – Earth Wire (in Mohm)   
+                                                            </label>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox6" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-4" id="Div13" runat="server">
+                                                            <label for="Voltage" style="margin-top: 10px;">
+                                                                Yellow Phase – Earth Wire (in Mohm)   
                                 <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox7" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            </div>
-                                                            <div class="col-4" id="Div14" runat="server">
-                                                                <label for="Voltage" style="margin-top: 10px;">
-                                                                    Blue Phase – Earth Wire (in Mohm)  
+                                                            </label>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox7" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-4" id="Div14" runat="server">
+                                                            <label for="Voltage" style="margin-top: 10px;">
+                                                                Blue Phase – Earth Wire (in Mohm)  
                                 <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox8" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            </div>
+                                                            </label>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox8" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                     </div>
-                                                    <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
-                                                    <div class="LTInsulationResistance">
-                                                        <div class="row" style="margin-top: -15px;">
-                                                            <div class="col-4" id="Div16" runat="server">
-                                                                <label for="Voltage" style="margin-top: 10px;">
-                                                                    Red Phase – Earth Wire (in Mohm)  
+                                                </div>
+                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
+                                                <div class="LTInsulationResistance">
+                                                    <div class="row" style="margin-top: -15px;">
+                                                        <div class="col-4" id="Div16" runat="server">
+                                                            <label for="Voltage" style="margin-top: 10px;">
+                                                                Red Phase – Earth Wire (in Mohm)  
                                                                     <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox9" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            </div>
+                                                            </label>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox9" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
                                                     </div>
-                                                                                                  <div class="col-4" id="Div17" runat="server">
-                                                       <label for="Voltage">
-                                                           Lightning Arrestor (LA) Location  
-<samp style="color: red">* </samp>
-                                                       </label>
-                                                       <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox10" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                   </div>
+                                                </div>
+                                                <div class="col-4" id="Div17" runat="server">
+                                                    <label for="Voltage">
+                                                        Lightning Arrestor (LA) Location  
+                                                        <samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox10" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                </div>
                                                 <div class="col-4">
-    <label>
-        Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
-    </label>
-    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList1" selectionmode="Multiple" Style="width: 100% !important">
-    </asp:DropDownList>
-</div>
+                                                    <label>
+                                                        Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
+                                                    </label>
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList1" selectionmode="Multiple" Style="width: 100% !important">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
                                             </div>
                                         </div>
                                     </li>
