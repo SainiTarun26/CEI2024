@@ -186,108 +186,28 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("sp_InserLineData");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-
-                cmd.CommandType = CommandType.StoredProcedure;
-
-             //cmd.Parameters.AddWithValue("@SanctionLoadContractDemad", txtSanctionLoad.Text);
-                cmd.Parameters.AddWithValue("@LineVoltage", ddlLineVoltage.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@LineLength", txtLineLength.Text);
-                cmd.Parameters.AddWithValue("@LineType", ddlLineType.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@NoOfCircuit", ddlNmbrOfCircuit.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Conductortype", ddlConductorType.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@NumberofPoleTower", txtPoleTower.Text);
-                cmd.Parameters.AddWithValue("@ConductorSize", txtConductorSize.Text);
-                cmd.Parameters.AddWithValue("@GroundWireSize", txtGroundWireSize.Text);
-                cmd.Parameters.AddWithValue("@NmbrofRailwayCrossing", txtRailwayCrossingNo.Text);
-                cmd.Parameters.AddWithValue("@NmbrofRoadCrossing", txtRoadCrossingNo.Text);
-                cmd.Parameters.AddWithValue("@NmbrofRiverCanalCrossing", txtRiverCanalCrossing.Text);
-                cmd.Parameters.AddWithValue("@NmbrofPowerLineCrossing", txtPowerLineCrossing.Text);
-                cmd.Parameters.AddWithValue("@NmbrofEarthing", ddlNoOfEarthing.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@EarthingType1", ddlEarthingtype1.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms1", txtearthingValue1.Text);
-                cmd.Parameters.AddWithValue("@EarthingType2", ddlEarthingtype2.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms2", txtEarthingValue2.Text);
-                cmd.Parameters.AddWithValue("@EarthingType3", ddlEarthingtype3.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms3", txtEarthingValue3.Text);
-                cmd.Parameters.AddWithValue("@EarthingType4", ddlEarthingtype4.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms4", txtEarthingValue4.Text);
-                cmd.Parameters.AddWithValue("@EarthingType5", ddlEarthingtype5.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms5", txtEarthingValue5.Text);
-                cmd.Parameters.AddWithValue("@EarthingType6", ddlEarthingtype6.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms6", txtEarthingValue6.Text);
-                cmd.Parameters.AddWithValue("@EarthingType7", ddlEarthingtype7.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms7", txtEarthingValue7.Text);
-                cmd.Parameters.AddWithValue("@EarthingType8", ddlEarthingtype8.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms8", txtEarthingValue8.Text);
-                cmd.Parameters.AddWithValue("@EarthingType9", ddlEarthingtype9.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms9", txtEarthingValue9.Text);
-                cmd.Parameters.AddWithValue("@EarthingType10", ddlEarthingtype10.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms10", txtEarthingValue10.Text);
-                cmd.Parameters.AddWithValue("@EarthingType11", ddlEarthingtype11.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms11", txtEarthingValue11.Text);
-                cmd.Parameters.AddWithValue("@EarthingType12", ddlEarthingtype12.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms12", txtEarthingValue12.Text);
-                cmd.Parameters.AddWithValue("@EarthingType13", ddlEarthingtype13.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms13", txtEarthingValue13.Text);
-                cmd.Parameters.AddWithValue("@EarthingType14", ddlEarthingtype14.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms14", txtEarthingValue14.Text);
-                cmd.Parameters.AddWithValue("@EarthingType15", ddlEarthingtype15.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Valueinohms15", txtEarthingValue15.Text);
-                cmd.Parameters.AddWithValue("@NoofPoleTowerForOverheadCable", txtPoleTowerNo.Text);
-                cmd.Parameters.AddWithValue("@CableSize", txtCableSize1.Text);
-                cmd.Parameters.AddWithValue("@RailwayCrossingNoForOC", txtRailwayCrossingNmbr.Text);
-                cmd.Parameters.AddWithValue("@RoadCrossingNoForOC", txtRoadCrossingNmbr.Text);
-                cmd.Parameters.AddWithValue("@RiverCanalCrossingNoForOC", txtRiverCanalCrossingNmber.Text);
-                cmd.Parameters.AddWithValue("@PowerLineCrossingNoForOc", txtPowerLineCrossingNmbr.Text);
-                cmd.Parameters.AddWithValue("@RedPhaseEarthWire", txtRedEarthWire.Text);
-                cmd.Parameters.AddWithValue("@YellowPhaseEarth", txtYellowEarthWire.Text);
-                cmd.Parameters.AddWithValue("@BluePhaseEarthWire", txtBlueEarthWire.Text);
-                cmd.Parameters.AddWithValue("@RedPhaseYellowPhase", txtRedYellowPhase.Text);
-                cmd.Parameters.AddWithValue("@RedPhaseBluePhase", txtRedBluePhase.Text);
-                cmd.Parameters.AddWithValue("@BluePhaseYellowPhase", txtBlueYellowPhase.Text);
-                cmd.Parameters.AddWithValue("@PhasewireNeutralwire", txtNeutralWire.Text);
-                cmd.Parameters.AddWithValue("@PhasewireEarth", txtEarthWire.Text);
-                cmd.Parameters.AddWithValue("@NeutralwireEarth", txtNeutralWireEarth.Text);
-                cmd.Parameters.AddWithValue("@TypeofCable", ddlCableType.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@SizeofCable", txtCableSize.Text);
-                cmd.Parameters.AddWithValue("@Cablelaidin", ddlCableLaid.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@RedPhaseEarthWirefor440orAbove", txtRedWire.Text);
-                cmd.Parameters.AddWithValue("@YellowPhaseEarthWire440orAbove", txtYellowWire.Text);
-                cmd.Parameters.AddWithValue("@BluePhaseEarthWire440orAbove", txtBlueWire.Text);
-                cmd.Parameters.AddWithValue("@RedPhaseYellowPhase440orAbove", txtRedYellowWire.Text);
-                cmd.Parameters.AddWithValue("@RedPhaseBluePhase440orAbove", txtRedBlueWire.Text);
-                cmd.Parameters.AddWithValue("@BluePhaseYellowPhase440orAbove", txtBlueYellowWire.Text);
-                cmd.Parameters.AddWithValue("@PhasewireNeutralwire220OrAbove", txtNeutralPhaseWire.Text);
-                cmd.Parameters.AddWithValue("@PhasewireEarth220OrAbove", txtPhaseWireEarth.Text);
-                cmd.Parameters.AddWithValue("@NeutralwireEarth220OrAbove", txtNeutralWireEarthUnderground.Text);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                CEI.InsertLineData(txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+     ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
+    txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
+     ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
+     txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
+    txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
+   txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text,
+    ddlEarthingtype8.SelectedItem.ToString(), txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(),
+    txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(), txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(),
+    txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(), txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(),
+    txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(), txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(),
+   txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text, txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text,
+     txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text, txtYellowEarthWire.Text,
+ txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
+ txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(), txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text,
+  txtRedBlueWire.Text, txtBlueYellowWire.Text, txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
 
                 DataSaved.Visible = true;
 
             }
             catch (Exception Ex)
             {
-
-                if (Ex.Message.StartsWith("Violation of UNIQUE KEY constraint"))
-                {
-                    string alertScript = "alert('Error: License Number Incorrect\\n\\nThe provided license number is already in use. Please provide a different license number.');";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                }
-                else if (Ex.Message.StartsWith("The INSERT statement conflicted"))
-                {
-                    string sanitizedErrorMessage = Ex.Message.Replace("'", "\\'");
-                    string alertScript = "alert('Error: License Number Incorrect\\n\\nLicense number old and new are the same. Please provide a different license number.');";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                }
 
                 DataSaved.Visible = false;
             }
@@ -298,24 +218,24 @@ namespace CEIHaryana.Supervisor
             LineEarthingdiv.Visible = true;
             if (ddlNoOfEarthing.SelectedItem.ToString() == "1")
             {
-                Earthingtype1.Visible= true;
-            } 
+                Earthingtype1.Visible = true;
+            }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "2")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "3")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "4")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -323,24 +243,26 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "5")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
                 Earthingtype5.Style.Add("display", "table-row");
 
-            }else if (ddlNoOfEarthing.SelectedItem.ToString() == "6")
+            }
+            else if (ddlNoOfEarthing.SelectedItem.ToString() == "6")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
                 Earthingtype5.Style.Add("display", "table-row");
                 Earthingtype6.Style.Add("display", "table-row");
 
-            }else if (ddlNoOfEarthing.SelectedItem.ToString() == "7")
+            }
+            else if (ddlNoOfEarthing.SelectedItem.ToString() == "7")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -363,7 +285,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "9")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -376,7 +298,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "10")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -390,7 +312,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "11")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -405,7 +327,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "12")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -421,7 +343,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "13")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -438,7 +360,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "14")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -455,7 +377,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "15")
             {
-                Earthingtype1.Visible= true;
+                Earthingtype1.Visible = true;
                 Earthingtype2.Style.Add("display", "table-row");
                 Earthingtype3.Style.Add("display", "table-row");
                 Earthingtype4.Style.Add("display", "table-row");
@@ -470,6 +392,27 @@ namespace CEIHaryana.Supervisor
                 Earthingtype15.Style.Add("display", "table-row");
 
             }
+        }
+
+        public void Reset()
+        {
+            txtLineLength.Text=""; 
+            ddlLineVoltage.SelectedValue = "0";
+            txtLineLength.Text="";ddlLineType.SelectedValue = "0"; ddlNmbrOfCircuit.SelectedValue = "0"; ddlConductorType.SelectedValue = "0"; txtPoleTower.Text=""; txtConductorSize.Text="";
+    txtGroundWireSize.Text=""; txtRailwayCrossingNo.Text=""; txtRoadCrossingNo.Text=""; txtRiverCanalCrossing.Text=""; txtPowerLineCrossing.Text="";
+     ddlNoOfEarthing.SelectedValue = "0"; ddlEarthingtype1.SelectedValue = "0"; txtearthingValue1.Text=""; ddlEarthingtype2.SelectedValue = "0";
+     txtEarthingValue2.Text=""; ddlEarthingtype3.SelectedValue = "0"; txtEarthingValue3.Text=""; ddlEarthingtype4.SelectedValue = "0";
+    txtEarthingValue4.Text=""; ddlEarthingtype5.SelectedValue = "0"; txtEarthingValue5.Text=""; ddlEarthingtype6.SelectedValue = "0";
+   txtEarthingValue6.Text=""; ddlEarthingtype7.SelectedValue = "0"; txtEarthingValue7.Text="";
+    ddlEarthingtype8.SelectedValue = "0"; txtEarthingValue8.Text=""; ddlEarthingtype9.SelectedValue = "0";
+    txtEarthingValue9.Text=""; ddlEarthingtype10.SelectedValue = "0"; txtEarthingValue10.Text=""; ddlEarthingtype11.SelectedValue = "0";
+    txtEarthingValue11.Text=""; ddlEarthingtype12.SelectedValue = "0"; txtEarthingValue12.Text=""; ddlEarthingtype13.SelectedValue = "0";
+    txtEarthingValue13.Text=""; ddlEarthingtype14.SelectedValue = "0"; txtEarthingValue14.Text=""; ddlEarthingtype15.SelectedValue = "0";
+   txtEarthingValue15.Text=""; txtPoleTowerNo.Text=""; txtCableSize1.Text=""; txtRailwayCrossingNmbr.Text=""; txtRoadCrossingNmbr.Text="";
+     txtRiverCanalCrossingNmber.Text=""; txtPowerLineCrossingNmbr.Text=""; txtRedEarthWire.Text=""; txtYellowEarthWire.Text="";
+ txtBlueEarthWire.Text=""; txtRedYellowPhase.Text=""; txtRedBluePhase.Text=""; txtBlueYellowPhase.Text=""; txtNeutralWire.Text="";
+ txtEarthWire.Text=""; txtNeutralWireEarth.Text=""; ddlCableType.SelectedValue = "0"; txtCableSize.Text=""; ddlCableLaid.SelectedValue = "0"; txtRedWire.Text=""; txtYellowWire.Text=""; txtBlueWire.Text=""; txtRedYellowWire.Text="";
+  txtRedBlueWire.Text=""; txtBlueYellowWire.Text=""; txtNeutralPhaseWire.Text=""; txtPhaseWireEarth.Text=""; txtNeutralWireEarthUnderground.Text = "";
         }
     }
 }

@@ -1893,6 +1893,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+              <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
@@ -1951,7 +1954,7 @@
                                                     <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                                                         Data Updated Successfully !!!.
                                                     </label>
-                                                    <label id="DataSaved" runat="server" visible="false" style="color: greenyellow; font-size: 1.125rem">
+                                                    <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                                                         Data Saved Successfully !!!.
                                                     </label>
                                                 </div>
@@ -2136,15 +2139,14 @@
                                                             <tr>
                                                                 <th>S.No.
                                                                 </th>
-                                                                <th style="width:60% !important;">Earthing Type
+                                                                 <th style="width:60% !important;">Earthing Type
                                                                 </th>
                                                                 <th>Value in(ohms)
                                                                 </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr id="Earthingtype1" visible="false" runat="server" style="display: table-row;">
-
+                                                              <tr id="Earthingtype1" visible="false" runat="server" style="display: table-row;">
                                                                 <td>1
                                                                 </td>
                                                                 <td>
@@ -2614,7 +2616,7 @@
                                             <div class="col-4"></div>
                                             <div class="col-4" style="text-align: center;">
                                                 <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                                    Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
+                                                    Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnSubmit_Click" />
                                             </div>
                                             <div class="col-4">
                                                 <asp:HiddenField ID="HiddenField1" runat="server" />
@@ -3777,4 +3779,6 @@
             </div>
         </div>
     </div>
+                                    </ContentTemplate>
+                                    </asp:UpdatePanel>
 </asp:Content>

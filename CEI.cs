@@ -253,6 +253,108 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             con.Close();
         }
         #endregion
+          #region Insert Line Data
+        public void InsertLineData(string SanctionLoadContractDemad, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
+            string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing, 
+            string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1, 
+            string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
+EarthingType6, string Valueinohms6, string EarthingType7, string Valueinohms7, string EarthingType8, string Valueinohms8, string EarthingType9, string Valueinohms9, string EarthingType10, string
+Valueinohms10, string EarthingType11, string Valueinohms11, string EarthingType12, string Valueinohms12, string EarthingType13, string Valueinohms13, string EarthingType14, string Valueinohms14, string
+EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, string CableSize, string RailwayCrossingNoForOC, string RoadCrossingNoForOC,
+            string RiverCanalCrossingNoForOC, string PowerLineCrossingNoForOc, string RedPhaseEarthWire, string YellowPhaseEarth, 
+            string BluePhaseEarthWire, string RedPhaseYellowPhase, string RedPhaseBluePhase, string BluePhaseYellowPhase, string PhasewireNeutralwire,
+            string PhasewireEarth, string NeutralwireEarth, string TypeofCable, string SizeofCable, string Cablelaidin, 
+            string RedPhaseEarthWirefor440orAbove, string YellowPhaseEarthWire440orAbove, string BluePhaseEarthWire440orAbove, 
+            string RedPhaseYellowPhase440orAbove, string RedPhaseBluePhase440orAbove, string BluePhaseYellowPhase440orAbove, 
+            string PhasewireNeutralwire220OrAbove, string PhasewireEarth220OrAbove, string NeutralwireEarth220OrAbove
+)
+        {            SqlCommand cmd = new SqlCommand("sp_InserLineData");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@SanctionLoadContractDemad", SanctionLoadContractDemad);
+            cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
+            cmd.Parameters.AddWithValue("@LineLength", LineLength);
+            cmd.Parameters.AddWithValue("@LineType", LineType);
+            cmd.Parameters.AddWithValue("@NoOfCircuit", NoOfCircuit);
+            cmd.Parameters.AddWithValue("@Conductortype", Conductortype);
+            cmd.Parameters.AddWithValue("@NumberofPoleTower", NumberofPoleTower);
+            cmd.Parameters.AddWithValue("@ConductorSize", ConductorSize);
+            cmd.Parameters.AddWithValue("@GroundWireSize", GroundWireSize);
+            cmd.Parameters.AddWithValue("@NmbrofRailwayCrossing", NmbrofRailwayCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofRoadCrossing", NmbrofRoadCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofRiverCanalCrossing", NmbrofRiverCanalCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofPowerLineCrossing", NmbrofPowerLineCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofEarthing", NmbrofEarthing);
+            cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1);
+            cmd.Parameters.AddWithValue("@Valueinohms1", Valueinohms1);
+            cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2);
+            cmd.Parameters.AddWithValue("@Valueinohms2", Valueinohms2);
+            cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3);
+            cmd.Parameters.AddWithValue("@Valueinohms3", Valueinohms3);
+            cmd.Parameters.AddWithValue("@EarthingType4", EarthingType4);
+            cmd.Parameters.AddWithValue("@Valueinohms4", Valueinohms4);
+            cmd.Parameters.AddWithValue("@EarthingType5", EarthingType5);
+            cmd.Parameters.AddWithValue("@Valueinohms5", Valueinohms5);
+            cmd.Parameters.AddWithValue("@EarthingType6", EarthingType6);
+            cmd.Parameters.AddWithValue("@Valueinohms6", Valueinohms6);
+            cmd.Parameters.AddWithValue("@EarthingType7", EarthingType7);
+            cmd.Parameters.AddWithValue("@Valueinohms7", Valueinohms7);
+            cmd.Parameters.AddWithValue("@EarthingType8", EarthingType8);
+            cmd.Parameters.AddWithValue("@Valueinohms8", Valueinohms8);
+            cmd.Parameters.AddWithValue("@EarthingType9", EarthingType9);
+            cmd.Parameters.AddWithValue("@Valueinohms9", Valueinohms9);
+            cmd.Parameters.AddWithValue("@EarthingType10", EarthingType10);
+            cmd.Parameters.AddWithValue("@Valueinohms10", Valueinohms10);
+            cmd.Parameters.AddWithValue("@EarthingType11", EarthingType11);
+            cmd.Parameters.AddWithValue("@Valueinohms11", Valueinohms11);
+            cmd.Parameters.AddWithValue("@EarthingType12", EarthingType12);
+            cmd.Parameters.AddWithValue("@Valueinohms12", Valueinohms12);
+            cmd.Parameters.AddWithValue("@EarthingType13", EarthingType13);
+            cmd.Parameters.AddWithValue("@Valueinohms13", Valueinohms13);
+            cmd.Parameters.AddWithValue("@EarthingType14", EarthingType14);
+            cmd.Parameters.AddWithValue("@Valueinohms14", Valueinohms15);
+            cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15);
+            cmd.Parameters.AddWithValue("@Valueinohms15", Valueinohms15);
+            cmd.Parameters.AddWithValue("@NoofPoleTowerForOverheadCable", NoofPoleTowerForOverheadCable);
+            cmd.Parameters.AddWithValue("@CableSize", CableSize);
+            cmd.Parameters.AddWithValue("@RailwayCrossingNoForOC", RailwayCrossingNoForOC);
+            cmd.Parameters.AddWithValue("@RoadCrossingNoForOC", RoadCrossingNoForOC);
+            cmd.Parameters.AddWithValue("@RiverCanalCrossingNoForOC", RiverCanalCrossingNoForOC);
+            cmd.Parameters.AddWithValue("@PowerLineCrossingNoForOc", PowerLineCrossingNoForOc);
+            cmd.Parameters.AddWithValue("@RedPhaseEarthWire", RedPhaseEarthWire);
+            cmd.Parameters.AddWithValue("@YellowPhaseEarth", YellowPhaseEarth);
+            cmd.Parameters.AddWithValue("@BluePhaseEarthWire", BluePhaseEarthWire);
+            cmd.Parameters.AddWithValue("@RedPhaseYellowPhase", RedPhaseYellowPhase);
+            cmd.Parameters.AddWithValue("@RedPhaseBluePhase", RedPhaseBluePhase);
+            cmd.Parameters.AddWithValue("@BluePhaseYellowPhase", BluePhaseYellowPhase);
+            cmd.Parameters.AddWithValue("@PhasewireNeutralwire", PhasewireNeutralwire);
+            cmd.Parameters.AddWithValue("@PhasewireEarth", PhasewireEarth);
+            cmd.Parameters.AddWithValue("@NeutralwireEarth", NeutralwireEarth);
+            cmd.Parameters.AddWithValue("@TypeofCable", TypeofCable);
+            cmd.Parameters.AddWithValue("@SizeofCable", SizeofCable);
+            cmd.Parameters.AddWithValue("@Cablelaidin", Cablelaidin);
+            cmd.Parameters.AddWithValue("@RedPhaseEarthWirefor440orAbove", RedPhaseEarthWirefor440orAbove);
+            cmd.Parameters.AddWithValue("@YellowPhaseEarthWire440orAbove", YellowPhaseEarthWire440orAbove);
+            cmd.Parameters.AddWithValue("@BluePhaseEarthWire440orAbove", BluePhaseEarthWire440orAbove);
+            cmd.Parameters.AddWithValue("@RedPhaseYellowPhase440orAbove", RedPhaseYellowPhase440orAbove);
+            cmd.Parameters.AddWithValue("@RedPhaseBluePhase440orAbove", RedPhaseBluePhase440orAbove);
+            cmd.Parameters.AddWithValue("@BluePhaseYellowPhase440orAbove", BluePhaseYellowPhase440orAbove);
+            cmd.Parameters.AddWithValue("@PhasewireNeutralwire220OrAbove", PhasewireNeutralwire220OrAbove);
+            cmd.Parameters.AddWithValue("@PhasewireEarth220OrAbove", PhasewireEarth220OrAbove);
+            cmd.Parameters.AddWithValue("@NeutralwireEarth220OrAbove", NeutralwireEarth220OrAbove);
+            
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
 
         #region Bind DropDown Draw State
         public DataSet GetddlDrawState()
