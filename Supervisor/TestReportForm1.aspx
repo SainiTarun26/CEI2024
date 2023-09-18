@@ -1888,7 +1888,7 @@
         /**/
         .pcss3t > ul,
         .pcss3t > ul > li {
-            height: 370px;
+            height: 500px;
         }
     </style>
 </asp:Content>
@@ -2634,14 +2634,14 @@
                                                     Serial number of transformer  
                                         <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNumber" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox41" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                             <div class="col-4">
                                                 <label>
                                                     Capacity of transformer (IN KVA) 
                                         <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
+                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList48" selectionmode="Multiple" Style="width: 100% !important">
                                                 </asp:DropDownList>
                                             </div>
                                             <div class="col-4">
@@ -2649,43 +2649,40 @@
                                                     Type of transformer
                                         <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerType" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlTransformerType_SelectedIndexChanged">
-                                               <asp:ListItem value="" Text="Select"></asp:ListItem>
-                                                    <asp:ListItem value="1" Text="Oil"></asp:ListItem>
-                                                    <asp:ListItem value="2" Text="Dry"></asp:ListItem>
-                                                    </asp:DropDownList>
+                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList49" selectionmode="Multiple" Style="width: 100% !important">
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="InCaseOfOil" runat="server" visible="false">
+                                    <div class="InCaseOfOil">
                                         <div class="row">
-                                            <div class="col-4">
+                                            <div class="col-4" id="Div122" runat="server">
                                                 <label for="Voltage">
                                                     Primary voltage(in kva)  
                                         <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox42" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-4" id="Div123" runat="server">
                                                 <label for="Voltage">
                                                     Secondary Voltage(in volte)  
                                         <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox43" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                             <div class="col-4" id="Div125" runat="server">
                                                 <label for="Voltage">
                                                     Capacity of oil(in liters)  
                                         <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox44" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                             <div class="col-4" id="Div126" runat="server">
                                                 <label for="Voltage">
                                                     BDV level of oil (in kv) Break down voltage  
                                         <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox45" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
@@ -3028,14 +3025,14 @@
                                                     Load breaking capacity of breaker (IN KA)  
                                                     <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox73" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                             <div class="col-4">
                                                 <label>
                                                     Type of LT protection
                                                     <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLTProtection" selectionmode="Multiple" Style="width: 100% !important">
+                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList67" selectionmode="Multiple" Style="width: 100% !important">
                                                 </asp:DropDownList>
                                             </div>
                                             <div class="col-4" id="Div166" runat="server">

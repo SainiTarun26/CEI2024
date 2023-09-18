@@ -1212,58 +1212,67 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div121;
 
         /// <summary>
-        /// txtSerialNumber control.
+        /// TextBox41 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSerialNumber;
+        protected global::System.Web.UI.WebControls.TextBox TextBox41;
 
         /// <summary>
-        /// ddlTransformerCapacity control.
+        /// DropDownList48 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTransformerCapacity;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList48;
 
         /// <summary>
-        /// ddlTransformerType control.
+        /// DropDownList49 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTransformerType;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList49;
 
         /// <summary>
-        /// InCaseOfOil control.
+        /// Div122 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InCaseOfOil;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div122;
 
         /// <summary>
-        /// txtPrimaryVoltage control.
+        /// TextBox42 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrimaryVoltage;
+        protected global::System.Web.UI.WebControls.TextBox TextBox42;
 
         /// <summary>
-        /// txtSecondryVoltage control.
+        /// Div123 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSecondryVoltage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div123;
+
+        /// <summary>
+        /// TextBox43 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox43;
 
         /// <summary>
         /// Div125 control.
@@ -1275,13 +1284,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div125;
 
         /// <summary>
-        /// txtOilCapacity control.
+        /// TextBox44 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOilCapacity;
+        protected global::System.Web.UI.WebControls.TextBox TextBox44;
 
         /// <summary>
         /// Div126 control.
@@ -1293,13 +1302,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div126;
 
         /// <summary>
-        /// txtOilBDV control.
+        /// TextBox45 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOilBDV;
+        protected global::System.Web.UI.WebControls.TextBox TextBox45;
 
         /// <summary>
         /// Div124 control.
@@ -2022,22 +2031,22 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div165;
 
         /// <summary>
-        /// txtLoadBreakingCapacity control.
+        /// TextBox73 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLoadBreakingCapacity;
+        protected global::System.Web.UI.WebControls.TextBox TextBox73;
 
         /// <summary>
-        /// ddlLTProtection control.
+        /// DropDownList67 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLTProtection;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList67;
 
         /// <summary>
         /// Div166 control.

@@ -372,7 +372,7 @@ namespace CEIHaryana.Contractor
                 {
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record of attached Supervisor/Wireman Found\");";
+                    string script = "alert(\"No Record Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
