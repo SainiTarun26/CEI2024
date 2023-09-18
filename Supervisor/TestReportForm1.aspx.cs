@@ -303,171 +303,171 @@ namespace CEIHaryana.Supervisor
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "2")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "3")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "4")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "5")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
 
             }else if (ddlNoOfEarthing.SelectedItem.ToString() == "6")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
 
             }else if (ddlNoOfEarthing.SelectedItem.ToString() == "7")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "8")
             {
                 Earthingtype1.Visible = true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "9")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
-                Earthingtype9.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
+                Earthingtype9.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "10")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
-                Earthingtype9.Style.Add("display", "Block");
-                Earthingtype10.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
+                Earthingtype9.Style.Add("display", "table-row");
+                Earthingtype10.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "11")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
-                Earthingtype9.Style.Add("display", "Block");
-                Earthingtype10.Style.Add("display", "Block");
-                Earthingtype11.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
+                Earthingtype9.Style.Add("display", "table-row");
+                Earthingtype10.Style.Add("display", "table-row");
+                Earthingtype11.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "12")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
-                Earthingtype9.Style.Add("display", "Block");
-                Earthingtype10.Style.Add("display", "Block");
-                Earthingtype11.Style.Add("display", "Block");
-                Earthingtype12.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
+                Earthingtype9.Style.Add("display", "table-row");
+                Earthingtype10.Style.Add("display", "table-row");
+                Earthingtype11.Style.Add("display", "table-row");
+                Earthingtype12.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "13")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
-                Earthingtype9.Style.Add("display", "Block");
-                Earthingtype10.Style.Add("display", "Block");
-                Earthingtype11.Style.Add("display", "Block");
-                Earthingtype12.Style.Add("display", "Block");
-                Earthingtype13.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
+                Earthingtype9.Style.Add("display", "table-row");
+                Earthingtype10.Style.Add("display", "table-row");
+                Earthingtype11.Style.Add("display", "table-row");
+                Earthingtype12.Style.Add("display", "table-row");
+                Earthingtype13.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "14")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
-                Earthingtype9.Style.Add("display", "Block");
-                Earthingtype10.Style.Add("display", "Block");
-                Earthingtype11.Style.Add("display", "Block");
-                Earthingtype12.Style.Add("display", "Block");
-                Earthingtype14.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
+                Earthingtype9.Style.Add("display", "table-row");
+                Earthingtype10.Style.Add("display", "table-row");
+                Earthingtype11.Style.Add("display", "table-row");
+                Earthingtype12.Style.Add("display", "table-row");
+                Earthingtype14.Style.Add("display", "table-row");
 
             }
             else if (ddlNoOfEarthing.SelectedItem.ToString() == "15")
             {
                 Earthingtype1.Visible= true;
-                Earthingtype2.Style.Add("display", "Block");
-                Earthingtype3.Style.Add("display", "Block");
-                Earthingtype4.Style.Add("display", "Block");
-                Earthingtype5.Style.Add("display", "Block");
-                Earthingtype6.Style.Add("display", "Block");
-                Earthingtype7.Style.Add("display", "Block");
-                Earthingtype8.Style.Add("display", "Block");
-                Earthingtype9.Style.Add("display", "Block");
-                Earthingtype10.Style.Add("display", "Block");
-                Earthingtype11.Style.Add("display", "Block");
-                Earthingtype12.Style.Add("display", "Block");
-                Earthingtype15.Style.Add("display", "Block");
+                Earthingtype2.Style.Add("display", "table-row");
+                Earthingtype3.Style.Add("display", "table-row");
+                Earthingtype4.Style.Add("display", "table-row");
+                Earthingtype5.Style.Add("display", "table-row");
+                Earthingtype6.Style.Add("display", "table-row");
+                Earthingtype7.Style.Add("display", "table-row");
+                Earthingtype8.Style.Add("display", "table-row");
+                Earthingtype9.Style.Add("display", "table-row");
+                Earthingtype10.Style.Add("display", "table-row");
+                Earthingtype11.Style.Add("display", "table-row");
+                Earthingtype12.Style.Add("display", "table-row");
+                Earthingtype15.Style.Add("display", "table-row");
 
             }
         }

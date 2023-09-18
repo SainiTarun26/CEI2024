@@ -2136,14 +2136,14 @@
                                                             <tr>
                                                                 <th>S.No.
                                                                 </th>
-                                                                <th>Earthing Type
+                                                                <th style="width:60% !important;">Earthing Type
                                                                 </th>
                                                                 <th>Value in(ohms)
                                                                 </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr id="Earthingtype1" visible="false" runat="server">
+                                                            <tr id="Earthingtype1" visible="false" runat="server" style="display: table-row;">
 
                                                                 <td>1
                                                                 </td>
