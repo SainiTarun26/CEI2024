@@ -415,7 +415,27 @@ namespace CEIHaryana.Supervisor
   txtRedBlueWire.Text=""; txtBlueYellowWire.Text=""; txtNeutralPhaseWire.Text=""; txtPhaseWireEarth.Text=""; txtNeutralWireEarthUnderground.Text = "";
         }
         protected void ddltransformerType_SelectedIndexChanged(object sender, EventArgs e)
-        { 
+        {
+            if (int.TryParse(txtTransformerCapacity.Text, out int value))
+            {
+             
+                if (value > 1000)
+                {
+                    
+                    ddlBreaker.Visible = true;
+                    ddlHTType.Visible = false;
+                    Breaker.Visible = true;
+                }
+                else
+                {
+                    ddlBreaker.Visible = false;
+                    TypeOfHTBreaker.Visible = false;
+                }
+            }
+            else
+            {
+                
+            }
             if (ddltransformerType.SelectedValue == "1")
             {
                 InCaseOfOil.Visible = true;
@@ -425,6 +445,37 @@ namespace CEIHaryana.Supervisor
             {
                 InCaseOfOil.Visible = true;
                 Capacity.Visible = false;
+            }
+        } 
+        protected void ddlLTProtection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlLTProtection.SelectedValue == "1")
+            {
+                FuseUnit.Visible = true;
+                Breaker.Visible = false;
+            }
+            else if (ddlLTProtection.SelectedValue == "2")
+            {
+                FuseUnit.Visible = false;
+                Breaker.Visible = true;
+            }
+            else
+            {
+                FuseUnit.Visible = false;
+                Breaker.Visible = false;
+            }
+        }
+        protected void ddlHTType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlHTType.SelectedValue == "3")
+            {
+                Breaker.Visible = true;
+                FuseUnit.Visible= false;
+            }
+            else
+            {
+                FuseUnit.Visible = false;
+                Breaker.Visible = false;
             }
         }
 

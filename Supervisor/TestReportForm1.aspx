@@ -2641,8 +2641,10 @@
                                                             Capacity of transformer (IN KVA) 
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
-                                                        </asp:DropDownList>
+                                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                  
+                                                       <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
+                                                        </asp:DropDownList>--%>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
@@ -2690,8 +2692,8 @@
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                         </div>
-                                                </div>
-                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
+                                                
+                                                <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
                                                 <div class="HTInsulationResistance">
                                                     <div class="row" style="margin-top: -15px;">
                                                         <div class="col-4" id="Div124" runat="server">
@@ -2717,7 +2719,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
+                                                <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
                                                 <div class="LTInsulationResistance">
                                                     <div class="row" style="margin-top: -15px;">
                                                         <div class="col-4">
@@ -2743,7 +2745,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
+                                                <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
                                                 <div class="LTInsulationResistance">
                                                     <div class="row" style="margin-top: -15px;">
                                                         <div class="col-4">
@@ -3019,18 +3021,21 @@
                                                         <label>
                                                             Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlHTType" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlHTType" OnSelectedIndexChanged="ddlHTType_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
                                                        <asp:ListItem value="0" Text="Select"></asp:ListItem>
                                                             <asp:ListItem value="1" Text="GO Switch"></asp:ListItem>
                                                             <asp:ListItem value="2" Text="3Pole Linked Switch(GODO)"></asp:ListItem>
                                                             <asp:ListItem value="3" Text="Breaker"></asp:ListItem>
                                                             </asp:DropDownList>
+                                                           <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlBreaker" selectionmode="Multiple" Visible="false" Style="width: 100% !important">
+                                                        <asp:ListItem value="1" Text="Breaker" Selected="True"></asp:ListItem>
+                                                            </asp:DropDownList>
                                                     </div>
                                                 </div>
                                            
-                                            <div class="TypeOfHTBreaker">
+                                            <div id="TypeOfHTBreaker" runat="server" visible="false">
                                                 <div class="row">
-                                                    <div class="col-4" id="Div165" runat="server">
+                                                    <div class="col-4">
                                                         <label for="Voltage">
                                                             Load breaking capacity of breaker (IN KA)  
                                                     <samp style="color: red">* </samp>
@@ -3042,13 +3047,13 @@
                                                             Type of LT protection
                                                     <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLTProtection" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLTProtection" OnSelectedIndexChanged="ddlLTProtection_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
                                                          <asp:ListItem value="0" Text="Select"></asp:ListItem>
                                                             <asp:ListItem value="1" Text="Fuse Unit"></asp:ListItem>
                                                             <asp:ListItem value="2" Text="Breaker"></asp:ListItem>
                                                             </asp:DropDownList>
                                                     </div>
-                                                    <div class="col-4" id="Div166" runat="server">
+                                                    <div class="col-4" id="FuseUnit" runat="server" visible="false">
                                                         <label for="Voltage">
                                                             Capacity of individual fuse(IN AMPS)  
                                                     <samp style="color: red">* </samp>
@@ -3057,7 +3062,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="TypeOfLTProtectionBREAKER">
+                                            <div Id="Breaker" runat="server" visible="false">
                                                 <div class="row">
                                                     <div class="col-4" id="Div167" runat="server">
                                                         <label for="Voltage">
@@ -3082,8 +3087,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                              
-                                            <div class="InCaseOfDry">
+                                              </div>
+                                            <%--<div class="InCaseOfDry">
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <label for="Voltage">
@@ -3179,9 +3184,9 @@
                                                     <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList1" selectionmode="Multiple" Style="width: 100% !important">
                                                     </asp:DropDownList>
                                                 </div>
-                                            </div>
-                                            </div>
-                                        </div>
+                                            </div>--%>
+                                           <%-- </div>
+                                        </div>--%>
                                     </li>
                                     <li class="tab-content tab-content-3 typography">
                                         <div class="card-body" style="margin-top: -45px;">
