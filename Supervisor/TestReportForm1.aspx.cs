@@ -169,7 +169,17 @@ namespace CEIHaryana.Supervisor
             dsVoltage.Clear();
 
         }
-
+        protected void ddlTransformerType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTransformerType.SelectedValue == "1")
+            {
+                InCaseOfOil.Visible = true;
+            }
+            else
+            {
+                InCaseOfOil.Visible = false;
+            }
+        }
         protected void ddlLineVoltage_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlLineVoltage.SelectedItem.ToString() == "Other")
