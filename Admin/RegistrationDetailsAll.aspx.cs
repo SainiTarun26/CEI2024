@@ -1,12 +1,6 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.UserPages;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,7 +8,7 @@ namespace CEIHaryana.Admin
 {
     public partial class RegistrationDetailsAll1 : System.Web.UI.Page
     {
-       // string registrationId = "";
+        // string registrationId = "";
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -75,22 +69,22 @@ namespace CEIHaryana.Admin
                     if (int.TryParse(registrationId, out int parsedRegistrationId))
                     {
                         int ivalue = CEI.DropRegistrationData(parsedRegistrationId);
-                        
+
                     }
                     else
                     {
-                        
+
                     }
                 }
                 catch (Exception ex)
                 {
-                    
+
                 }
 
             }
         }
-            
-        
+
+
 
     }
 }

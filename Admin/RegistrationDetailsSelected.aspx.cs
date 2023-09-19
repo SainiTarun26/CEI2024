@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 namespace CEIHaryana.Admin
 {
@@ -15,7 +10,7 @@ namespace CEIHaryana.Admin
         string REID = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (Convert.ToString(Session["RegistrationID"]) == null || Convert.ToString(Session["RegistrationID"]) == "")
             {
 
@@ -27,9 +22,9 @@ namespace CEIHaryana.Admin
                 GetUserRegistartionData();
             }
         }
-       
-            protected void GetUserRegistartionData()
-            {
+
+        protected void GetUserRegistartionData()
+        {
             REID = Session["RegistrationID"].ToString();
             hdnId.Value = REID;
 
@@ -54,7 +49,7 @@ namespace CEIHaryana.Admin
                 txtEmail.Text = ds.Tables[0].Rows[0]["EmailId"].ToString();
                 txtyears.Text = ds.Tables[0].Rows[0]["Age"].ToString();
                 txtphone.Text = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
-                txtDOB.Text = DateTime.Parse(dp_Id2).ToString("yyyy-MM-dd"); 
+                txtDOB.Text = DateTime.Parse(dp_Id2).ToString("yyyy-MM-dd");
                 txtUniversity.Text = ds.Tables[0].Rows[0]["UniversityName10th"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["PassingYear10th"].ToString();
                 txtPassingyear.Text = DateTime.Parse(dp_Id3).ToString("yyyy-MM-dd");

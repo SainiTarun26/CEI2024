@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
+using System.Data.SqlClient;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
 namespace CEIHaryana.UserPages
 {
@@ -18,10 +13,10 @@ namespace CEIHaryana.UserPages
         bool showAlert = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
-                if (Session["InsertedCategory"] !=null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
+                if (Session["InsertedCategory"] != null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
                 {
                     string InsertedCategory = "";
                     InsertedCategory = Session["InsertedCategory"].ToString();
@@ -34,17 +29,18 @@ namespace CEIHaryana.UserPages
                         ddlQualification2.Attributes.Remove("disabled");
                     }
 
-                    }
+                }
                 if (Session["Back"] != null && !string.IsNullOrEmpty(Session["Back"].ToString()))
                 {
                     GetUserQualification();
                 }
-                else if (Session["Back"] == null) {
+                else if (Session["Back"] == null)
+                {
 
-                  
+
                 }
-                               
-                
+
+
             }
 
         }
@@ -83,7 +79,7 @@ namespace CEIHaryana.UserPages
                 txtmarksObtained2.Text = ds.Tables[0].Rows[0]["MarksObtainedDiplomaorDegree"].ToString();
                 txtmarksmax2.Text = ds.Tables[0].Rows[0]["MarksMaxDiplomaorDegree"].ToString();
                 txtprcntg2.Text = ds.Tables[0].Rows[0]["PercentageDiplomaorDegree"].ToString();
-                 string dp_Id2 = ds.Tables[0].Rows[0]["NameofDegree"].ToString();
+                string dp_Id2 = ds.Tables[0].Rows[0]["NameofDegree"].ToString();
                 txtUniversity3.Text = ds.Tables[0].Rows[0]["UniversityNamePG"].ToString();
                 string dp_Id6 = ds.Tables[0].Rows[0]["PassingYearPG"].ToString();
                 txtPassingyear3.Text = DateTime.Parse(dp_Id6).ToString("yyyy-MM-dd");
@@ -134,13 +130,13 @@ namespace CEIHaryana.UserPages
         protected void QualificationValidations()
         {
 
-            
-           InsertedCategory = Session["InsertedCategory"].ToString();
 
-         
+            InsertedCategory = Session["InsertedCategory"].ToString();
+
+
             if (InsertedCategory == "Supervisor")
             {
-                if ( ddlQualification.SelectedValue == "1"|| ddlQualification.SelectedValue == "2" )
+                if (ddlQualification.SelectedValue == "1" || ddlQualification.SelectedValue == "2")
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertScript", "alert('You are not eligible for filling this form because your qualification does not match our criteria!!!');", true);
                     showAlert = true;
@@ -158,7 +154,7 @@ namespace CEIHaryana.UserPages
                 CheckExperience();
             }
         }
-       
+
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
@@ -170,50 +166,50 @@ namespace CEIHaryana.UserPages
             try
             {
 
-         
-            DateTime fromDate = DateTime.Parse(txtFrom1.Text);
-            DateTime toDate = DateTime.Parse(txtTo1.Text);
 
-            TimeSpan oneYear = TimeSpan.FromDays(365);
-            string InsertedCategory = "";
-            InsertedCategory = Session["InsertedCategory"].ToString();
-            if (InsertedCategory == "Wireman")
-            {
-                if (ddlQualification.SelectedValue == "3" || ddlQualification.SelectedValue == "4") 
+                DateTime fromDate = DateTime.Parse(txtFrom1.Text);
+                DateTime toDate = DateTime.Parse(txtTo1.Text);
+
+                TimeSpan oneYear = TimeSpan.FromDays(365);
+                string InsertedCategory = "";
+                InsertedCategory = Session["InsertedCategory"].ToString();
+                if (InsertedCategory == "Wireman")
                 {
-                    if ((toDate - fromDate) < oneYear) 
+                    if (ddlQualification.SelectedValue == "3" || ddlQualification.SelectedValue == "4")
                     {
+                        if ((toDate - fromDate) < oneYear)
+                        {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for filling this form because You need at least 1 years of experience ');", true);
                             showAlert = true;
                         }
-                }
-                else if (ddlQualification.SelectedValue == "1" || ddlQualification.SelectedValue == "2") 
-                {
-                    if ((toDate - fromDate) < (TimeSpan.FromDays(3 * 365)))
+                    }
+                    else if (ddlQualification.SelectedValue == "1" || ddlQualification.SelectedValue == "2")
                     {
+                        if ((toDate - fromDate) < (TimeSpan.FromDays(3 * 365)))
+                        {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for filling this form because You need at least 3 year of experience');", true);
                             showAlert = true;
                         }
+                    }
                 }
-            }
-            else if (InsertedCategory == "Supervisor")
-            {
-                if (ddlQualification2.SelectedValue != "0")
+                else if (InsertedCategory == "Supervisor")
                 {
-                    if ((toDate - fromDate) < oneYear)
+                    if (ddlQualification2.SelectedValue != "0")
                     {
+                        if ((toDate - fromDate) < oneYear)
+                        {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for filling this form because You need at least 1 years of experience');", true);
                             showAlert = true;
                         }
-                }
-                else if (ddlQualification.SelectedValue == "3" || ddlQualification.SelectedValue == "4")
-                {
-                    if ((toDate - fromDate) < (TimeSpan.FromDays(5 * 365)))
+                    }
+                    else if (ddlQualification.SelectedValue == "3" || ddlQualification.SelectedValue == "4")
                     {
+                        if ((toDate - fromDate) < (TimeSpan.FromDays(5 * 365)))
+                        {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for filling this form because You need at least 5 year of experience ');", true);
                             showAlert = true;
+                        }
                     }
-                }
                 }
             }
             catch (Exception ex) { }
@@ -241,7 +237,7 @@ namespace CEIHaryana.UserPages
                         showAlert = true;
                     }
                 }
-                else if (ddlQualification2.SelectedValue != "0") 
+                else if (ddlQualification2.SelectedValue != "0")
                 {
                     if (txtUniversity3.Text == "")
                     {
@@ -351,7 +347,7 @@ namespace CEIHaryana.UserPages
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-              QualificationValidations();
+            QualificationValidations();
             if (RadioButtonList2.SelectedValue == "0")
             {
                 competency.Visible = true;
@@ -364,7 +360,7 @@ namespace CEIHaryana.UserPages
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             if (RadioButtonList1.SelectedValue == "0")
             {
                 RetiredEmployee.Visible = true;
@@ -375,7 +371,7 @@ namespace CEIHaryana.UserPages
             }
         }
 
-       
+
         protected void RadioButtonList3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RadioButtonList3.SelectedValue == "1")
@@ -383,7 +379,7 @@ namespace CEIHaryana.UserPages
                 PermanentEmployee.Visible = false;
 
             }
-            else 
+            else
             {
                 PermanentEmployee.Visible = true;
             }

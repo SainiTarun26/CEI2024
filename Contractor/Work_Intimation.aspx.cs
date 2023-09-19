@@ -1,35 +1,30 @@
 ﻿using CEI_PRoject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Configuration;
-using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Text;
 using System.IO;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Contractor
 {
     public partial class Work_Intimation : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string ContractorID = string.Empty; 
+        string ContractorID = string.Empty;
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                if (Session["ContractorID"] != null )
+                if (Session["ContractorID"] != null)
                 {
                     ScriptManager scriptManager = ScriptManager.GetCurrent(this);
 
-                    
-                    
-                    
+
+
+
                     ddlLoadBindPremises();
                     worktypevisiblity();
                     ddlLoadBindVoltage();
@@ -51,14 +46,14 @@ namespace CEIHaryana.Contractor
                         GetDetails();
                         GetassigneddatatoContractor();
                         ddlWorkDetail.Visible = false;
-                        
+
                         WorkDetail.Visible = true;
                         Session["id"] = "";
                         btnReset.Visible = false;
                         btnSubmit.Visible = false;
                         btnBack.Visible = true;
                     }
-                    
+
                 }
                 else
                 {
@@ -88,12 +83,12 @@ namespace CEIHaryana.Contractor
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                     txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                     string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
-                   // ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByValue(dp_Id1));
-                    ddlPremises.SelectedValue =  dp_Id1;
+                    // ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByValue(dp_Id1));
+                    ddlPremises.SelectedValue = dp_Id1;
                     string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                     txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                     string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                   // ddlVoltageLevel.SelectedValue = dp_Id3;
+                    // ddlVoltageLevel.SelectedValue = dp_Id3;
                     ddlVoltageLevel.SelectedIndex = ddlVoltageLevel.Items.IndexOf(ddlVoltageLevel.Items.FindByText(dp_Id3));
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
@@ -102,7 +97,7 @@ namespace CEIHaryana.Contractor
                     txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                     string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
                     string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
-                   
+
                     ddlAnyWork.SelectedIndex = ddlAnyWork.Items.IndexOf(ddlAnyWork.Items.FindByText(dp_Id7));
                     if (dp_Id7 == "Yes")
                     {
@@ -116,9 +111,9 @@ namespace CEIHaryana.Contractor
                     WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                     customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
 
-                    
 
-                    
+
+
 
 
                 }
@@ -156,7 +151,7 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                
+
                 DataSet dsPremises = new DataSet();
                 dsPremises = CEI.GetddlPremises();
                 ddlPremises.DataSource = dsPremises;
@@ -206,20 +201,20 @@ namespace CEIHaryana.Contractor
             ddlPremises.SelectedValue = "0";
             ddlVoltageLevel.SelectedValue = "0";
             //txtOtherWorkDetail.Text = "";
-            txtStartDate.Text = ""; 
+            txtStartDate.Text = "";
             txtinstallationType1.Text = "";
-            txtinstallationNo1.Text= "";
-            txtinstallationType2.Text= "";
-            txtinstallationNo2.Text= "";
-            txtinstallationType3.Text= ""; 
-            txtinstallationNo3.Text= ""; 
-            txtinstallationType4.Text= "";
-            txtinstallationNo4.Text= ""; 
-            txtinstallationType5.Text= ""; 
-            txtinstallationNo5.Text= "";
-            txtinstallationType6.Text= "";
-            txtinstallationNo6.Text= "";
-            txtinstallationType7.Text= ""; txtinstallationNo7.Text= ""; txtinstallationType8.Text= ""; txtinstallationNo8.Text="";
+            txtinstallationNo1.Text = "";
+            txtinstallationType2.Text = "";
+            txtinstallationNo2.Text = "";
+            txtinstallationType3.Text = "";
+            txtinstallationNo3.Text = "";
+            txtinstallationType4.Text = "";
+            txtinstallationNo4.Text = "";
+            txtinstallationType5.Text = "";
+            txtinstallationNo5.Text = "";
+            txtinstallationType6.Text = "";
+            txtinstallationNo6.Text = "";
+            txtinstallationType7.Text = ""; txtinstallationNo7.Text = ""; txtinstallationType8.Text = ""; txtinstallationNo8.Text = "";
             txtCompletitionDate.Text = "";
             ddlAnyWork.SelectedValue = "0";
             txtCompletionDateAPWO.Text = "";
@@ -250,21 +245,21 @@ namespace CEIHaryana.Contractor
                             string FilName = string.Empty;
                             //if (customFile.PostedFile.FileName.Length > 0)
                             //{
-                                FilName = Path.GetFileName(customFile.PostedFile.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
-                                {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
-                                }
+                            FilName = Path.GetFileName(customFile.PostedFile.FileName);
+                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                            {
+                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                            }
 
-                                string ext = customFile.PostedFile.FileName.Split('.')[1];
-                                string path = "";
-                                path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                                string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                                string filePathInfo2 = "";
-                                filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                                customFile.PostedFile.SaveAs(filePathInfo2);
-                                filePathInfo = path + fileName;
-                           // }
+                            string ext = customFile.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
+                            string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                            string filePathInfo2 = "";
+                            filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
+                            customFile.PostedFile.SaveAs(filePathInfo2);
+                            filePathInfo = path + fileName;
+                            // }
                         }
                         catch (Exception ex)
                         {
@@ -274,12 +269,12 @@ namespace CEIHaryana.Contractor
                     }
                     hdnId.Value = ContractorID;
                     CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text
-                      , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(),txtinstallationType1.Text, 
-                      txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text, 
+                      , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtinstallationType1.Text,
+                      txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
                       txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
                       txtinstallationNo6.Text, txtinstallationType7.Text, txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
                       txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text, ContractorID);
-                   
+
                     string projectId = CEI.projectId();
                     if (projectId != "" && projectId != null)
                     {
@@ -312,7 +307,7 @@ namespace CEIHaryana.Contractor
                 string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
             }
-            
+
         }
         public void GetGridData()
         {
@@ -321,7 +316,7 @@ namespace CEIHaryana.Contractor
             hdnId.Value = LoginID;
 
             DataSet ds = new DataSet();
-                
+
             ds = CEI.WorkIntimationGridData(LoginID);
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -333,7 +328,7 @@ namespace CEIHaryana.Contractor
         {
             if (e.Row.RowType == DataControlRowType.Header)
             {
-              
+
                 CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                 chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
             }
@@ -354,7 +349,7 @@ namespace CEIHaryana.Contractor
             }
         }
 
-   
+
         protected void GetassigneddatatoContractor()
         {
             try
@@ -408,55 +403,55 @@ namespace CEIHaryana.Contractor
 
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-          string Value = ddlWorkDetail.SelectedItem.ToString();
+            string Value = ddlWorkDetail.SelectedItem.ToString();
             if (ddlWorkDetail.SelectedValue != "0")
             {
-                Installation.Visible= true;
-                installationType1.Visible= true;
+                Installation.Visible = true;
+                installationType1.Visible = true;
                 if (string.IsNullOrEmpty(txtinstallationType1.Text))
                 {
                     txtinstallationType1.Text = Value;
                 }
 
-              else  if (txtinstallationType1.Text!=string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
+                else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
                 {
                     installationType2.Visible = true;
                     txtinstallationType2.Text = Value;
-                } 
-                else  if (string.IsNullOrEmpty(txtinstallationType3.Text))
+                }
+                else if (string.IsNullOrEmpty(txtinstallationType3.Text))
                 {
                     installationType3.Visible = true;
                     txtinstallationType3.Text = Value;
-                } 
-                else  if (string.IsNullOrEmpty(txtinstallationType4.Text))
+                }
+                else if (string.IsNullOrEmpty(txtinstallationType4.Text))
                 {
                     installationType4.Visible = true;
                     txtinstallationType4.Text = Value;
-                } 
-                else  if (string.IsNullOrEmpty(txtinstallationType5.Text))
+                }
+                else if (string.IsNullOrEmpty(txtinstallationType5.Text))
                 {
                     installationType5.Visible = true;
                     txtinstallationType5.Text = Value;
                 }
-                else  if (string.IsNullOrEmpty(txtinstallationType6.Text))
+                else if (string.IsNullOrEmpty(txtinstallationType6.Text))
                 {
-                 
-                   installationType6.Visible = true;
+
+                    installationType6.Visible = true;
                     txtinstallationType6.Text = Value;
-                } 
-                else  if (string.IsNullOrEmpty(txtinstallationType7.Text))
+                }
+                else if (string.IsNullOrEmpty(txtinstallationType7.Text))
                 {
                     installationType7.Visible = true;
                     txtinstallationType7.Text = Value;
                 }
-                else  if (string.IsNullOrEmpty(txtinstallationType8.Text))
+                else if (string.IsNullOrEmpty(txtinstallationType8.Text))
                 {
                     installationType8.Visible = true;
                     txtinstallationType8.Text = Value;
                 }
                 if (ddlWorkDetail.SelectedValue != "0")
                 {
-                    
+
                     try
                     {
                         string selectedValue = ddlWorkDetail.SelectedValue;

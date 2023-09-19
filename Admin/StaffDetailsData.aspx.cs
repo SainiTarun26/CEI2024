@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Configuration;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+﻿using CEI_PRoject;
+using System;
 using System.Data;
-using Newtonsoft.Json.Serialization;
-using CEI_PRoject;
-using System.Drawing;
-using System.Diagnostics.Eventing.Reader;
-using CEI_PRoject.Admin;
-using AjaxControlToolkit;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Admin
 {
@@ -23,18 +13,18 @@ namespace CEIHaryana.Admin
         string loginType = string.Empty;
         string ID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
-        { 
+        {
             try
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Convert.ToString(Session["AdminID"])!= null || Convert.ToString(Session["AdminID"]) != string.Empty || Request.Cookies["AdminID"] != null)
+                    if (Convert.ToString(Session["AdminID"]) != null || Convert.ToString(Session["AdminID"]) != string.Empty || Request.Cookies["AdminID"] != null)
                     {
                         if (Convert.ToString(Session["logintype"]) != null || Convert.ToString(Session["logintype"]) != string.Empty || Request.Cookies["logintype"] != null)
                         {
                             if (Request.Cookies["AdminID"] != null && Request.Cookies["logintype"] != null)
                             {
-                                 loginType = Request.Cookies["logintype"].Value;
+                                loginType = Request.Cookies["logintype"].Value;
                                 ID = Request.Cookies["AdminID"].Value;
                             }
                             else
@@ -42,14 +32,14 @@ namespace CEIHaryana.Admin
                                 loginType = Convert.ToString(Session["logintype"]);
                                 ID = Convert.ToString(Session["AdminID"]);
                             }
-                           
+
                             string str = Request.Params.ToString();
                             category = Request.Params["category"].ToString();
                             lblData.Text = category + " Data";
 
                             if (category == "Contractor")
                             {
-                                GridView1.Columns[5].Visible = true;  
+                                GridView1.Columns[5].Visible = true;
                                 GridView1.Columns[4].Visible = true;
                                 GridView1.Columns[6].Visible = true;
                                 getContractorData(loginType, ID);
@@ -68,7 +58,7 @@ namespace CEIHaryana.Admin
                     }
                 }
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             {
                 Session["AdminID"] = "";
                 Response.Redirect("/Login.aspx");
@@ -239,7 +229,7 @@ namespace CEIHaryana.Admin
             {
                 Response.Redirect("AddContractorDetails.aspx", false);
             }
-            else if(lblData.Text == "Supervisor Data")
+            else if (lblData.Text == "Supervisor Data")
             {
                 Response.Redirect("AddSupervisorDetails.aspx");
             }

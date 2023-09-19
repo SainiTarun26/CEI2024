@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Drawing;
-using System.Text.RegularExpressions;
-using System.Runtime.Remoting.Messaging;
-using System.Globalization;
 
 namespace CEI_PRoject.Admin
 {
@@ -44,11 +38,11 @@ namespace CEI_PRoject.Admin
                             REID = Session["ID"].ToString();
                             hdnId.Value = REID;
                             btnSubmit.Text = "Update";
-                            BtnReset.Visible= false;
+                            BtnReset.Visible = false;
                             update();
                             Session["ID"] = "";
                         }
-                      
+
                     }
                     else
                     {
@@ -191,7 +185,7 @@ namespace CEI_PRoject.Admin
                 ddlLoadBindDistrict(dp_Id4);
                 ddlDistrict.SelectedValue = dp_Id5;
                 ddlDistrict1.SelectedIndex = ddlDistrict1.Items.IndexOf(ddlDistrict1.Items.FindByValue(dp_Id16));
-                
+
                 txtPinCode.Text = dp_Id6;
                 txtPinCode1.Text = dp_Id17;
                 txtContactNo.Text = dp_Id7;
@@ -205,7 +199,7 @@ namespace CEI_PRoject.Admin
                 txtLicenceOld.Text = dp_Id14;
                 txtLicenceNew.Text = dp_Id15;
                 if (ddlDistrict.SelectedValue == ddlDistrict1.SelectedValue &&
-                    txtRegisteredOffice.Text== txtBranchOffice.Text)
+                    txtRegisteredOffice.Text == txtBranchOffice.Text)
                 {
                     CheckBox1.Checked = true;
                     txtBranchOffice.Text = txtRegisteredOffice.Text;
@@ -253,7 +247,7 @@ namespace CEI_PRoject.Admin
                     CheckBox1.Checked = false;
                 }
 
-            } 
+            }
 
         }
         #region GetIP
@@ -437,7 +431,7 @@ namespace CEI_PRoject.Admin
                         txtPinCode.Enabled = false;
                         txtPinCode.Style.Add("width", "inherit");
                         txtPinCode.Style.Add("height", "30px");
-                        txtPinCode.Style.Add("border-radius", ".25rem"); 
+                        txtPinCode.Style.Add("border-radius", ".25rem");
                     }
                     else
                     {
@@ -472,8 +466,8 @@ namespace CEI_PRoject.Admin
                 ddlDistrict.SelectedValue = "0";
                 txtPinCode.Text = "";
             }
-         }
+        }
 
-       
+
     }
 }

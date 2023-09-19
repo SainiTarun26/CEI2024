@@ -1,11 +1,5 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Contractor;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace CEIHaryana
 {
@@ -22,7 +16,7 @@ namespace CEIHaryana
             try
             {
                 int check = Convert.ToInt32(cei.checkLogin(txtUserID.Text, txtPassword.Text));
-                
+
                 if (check == 1)
                 {
                     if (chkSignedin.Checked == true)
@@ -45,7 +39,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
-                   
+
                 }
                 else if (check == 2)
                 {
@@ -69,8 +63,8 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Contractor/Work_Intimation.aspx", false);
                     }
-                    
-                    
+
+
                 }
                 else if (check == 3)
                 {
@@ -94,8 +88,8 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
-                   
-                    
+
+
                 }
                 else if (check == 4)
                 {
@@ -119,7 +113,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
-                   
+
                 }
                 else if (check == 5)
                 {
@@ -143,7 +137,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
-                } 
+                }
                 else if (check == 6)
                 {
                     if (chkSignedin.Checked == true)
@@ -172,9 +166,9 @@ namespace CEIHaryana
 
                     txtUserID.Text = "";
                     txtPassword.Text = "";
-                    WrongCredentials.Visible= true;
-                   // string script = "alert(\"Your UserName or Password is Invalid.\");";
-                   // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    WrongCredentials.Visible = true;
+                    // string script = "alert(\"Your UserName or Password is Invalid.\");";
+                    // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
 
 

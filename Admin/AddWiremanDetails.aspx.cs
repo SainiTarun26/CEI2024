@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
 using System.Configuration;
-using System.Drawing;
-using System.Net;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-using System.Web.Helpers;
-using Org.BouncyCastle.Asn1.X509;
-using Org.BouncyCastle.Ocsp;
-using Org.BouncyCastle.Utilities.Net;
+using System.Web;
+using System.Web.UI.WebControls;
 
 namespace CEI_PRoject.Admin
 {
@@ -59,16 +50,16 @@ namespace CEI_PRoject.Admin
                             Session["ID"] = "";
 
                         }
-                            
+
                     }
                     else
                     {
                         Response.Redirect("/Login.aspx");
                     }
                 }
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //
             }
@@ -146,7 +137,7 @@ namespace CEI_PRoject.Admin
                 ddlAttachedContractor.SelectedValue = dp_Id17;
 
                 ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
-                
+
                 ddlLoadBindDistrict(dp_Id4);
                 ddlDistrict.SelectedValue = dp_Id5;
                 txtAge.Text = DateTime.Parse(dp_Id19).ToString("yyyy-MM-dd");
@@ -169,7 +160,7 @@ namespace CEI_PRoject.Admin
                     rowContractorDetails.Visible = false;
                     ddlAttachedContractor.SelectedValue = "No";
                 }
-                else if(dp_Id17 == "Yes")
+                else if (dp_Id17 == "Yes")
                 {
                     ddlAttachedContractor.SelectedValue = "Yes";
                     rowContractorDetails.Visible = true;
@@ -194,7 +185,7 @@ namespace CEI_PRoject.Admin
         }
         protected void ddlAttachedContractor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlAttachedContractor.SelectedValue=="Yes")
+            if (ddlAttachedContractor.SelectedValue == "Yes")
             {
                 rowContractorDetails.Visible = true;
                 GetContractorDetails();
@@ -270,17 +261,17 @@ namespace CEI_PRoject.Admin
                     UserId = txtCertifacateOld.Text;
                 }
                 GetIP();
-                REID = hdnId.Value; 
+                REID = hdnId.Value;
                 string Createdby = Convert.ToString(Session["AdminID"]);
                 CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text, txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
                 ddlState.SelectedItem.ToString(), txtPincode.Text, txtContect.Text, Qualification, txtEmail.Text, txtCertifacateOld.Text, txtCertificateNew.Text,
-                txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text,ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, 
+                txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
                 Createdby, UserId, ipaddress);
 
-              
+
                 if (btnSubmit.Text == "Update")
                 {
-                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
                     Session["ID"] = "";
                     DataUpdated.Visible = true;
                 }

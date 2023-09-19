@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
-using System.Configuration;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
-using CEIHaryana.Contractor;
-using System.Text.RegularExpressions;
 
 namespace CEI_PRoject.Admin
 {
@@ -41,7 +38,7 @@ namespace CEI_PRoject.Admin
                         ddlLoadBindState();
                         ddlLoadBindVoltage();
                         ddlQualificationBind();
-                 
+
                         if (Convert.ToString(Session["ID"]) == null || Convert.ToString(Session["ID"]) == "")
                         {
                             rowContractorDetails.Visible = false;
@@ -64,7 +61,7 @@ namespace CEI_PRoject.Admin
                     }
                 }
             }
-            
+
             catch (Exception)
             {
                 //
@@ -157,7 +154,7 @@ namespace CEI_PRoject.Admin
         protected string ConvertDate(string date)
         {
             string D1;
-            string[] str = date.Split('/');     
+            string[] str = date.Split('/');
             D1 = str[2] + "-" + str[1] + "-" + str[0];
             return D1;
         }
@@ -192,7 +189,7 @@ namespace CEI_PRoject.Admin
                 string dp_Id17 = ds.Tables[0].Rows[0]["AnyContractor"].ToString();
                 string dp_Id18 = ds.Tables[0].Rows[0]["ContractorID"].ToString();
                 string dp_Id19 = ds.Tables[0].Rows[0]["Age"].ToString();
-                ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4)); 
+                ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
                 ddlLoadBindDistrict(dp_Id4);
                 ddlDistrict.SelectedValue = dp_Id5;
                 DateofIntialissue.Text = DateTime.Parse(dp_Id9).ToString("yyyy-MM-dd");
@@ -217,11 +214,11 @@ namespace CEI_PRoject.Admin
                     GetContractorDetails();
                     ddlContractorDetails.SelectedIndex = ddlContractorDetails.Items.IndexOf(ddlContractorDetails.Items.FindByValue(dp_Id18));
                 }
-                else 
+                else
                 {
                     ddlAttachedContractor.SelectedValue = "No";
                     rowContractorDetails.Visible = false;
-                    
+
                 }
             }
 
@@ -262,11 +259,11 @@ namespace CEI_PRoject.Admin
                 GetIP();
                 REID = hdnId.Value; ;
                 string Createdby = Convert.ToString(Session["AdminID"]);
-                CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text,FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(), 
+                CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text, FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(),
                  ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,
-                 DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text, 
+                 DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text,
                  ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, Createdby, CertificateOld.Text, ipaddress);
-               
+
                 if (btnSubmit.Text == "Update")
                 {
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
@@ -340,7 +337,7 @@ namespace CEI_PRoject.Admin
 
         }
 
-        
+
         protected void ddlQualification_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlQualification.SelectedItem.ToString() == "Other")

@@ -1,14 +1,8 @@
 ﻿using CEI_PRoject;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace CEIHaryana.UserPages
 {
@@ -95,8 +89,8 @@ namespace CEIHaryana.UserPages
                 Signatur.PostedFile.SaveAs(filePathInfo2);
                 flpPhotourl9 = path + fileName;
 
-                }
-                if (fileInput.PostedFile.FileName.Length > 0)
+            }
+            if (fileInput.PostedFile.FileName.Length > 0)
             {
                 FileName = Path.GetFileName(fileInput.PostedFile.FileName);
                 if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/MatriculationCertifiacte/")))
@@ -240,9 +234,9 @@ namespace CEIHaryana.UserPages
                     fileRetired.PostedFile.SaveAs(filePathInfo2);
                     flpPhotourl7 = path + fileName;
                 }
-              
+
             }
-            int ivalue = CEI.UserDocuments(REID, flpPhotourl8,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl9,flpPhotourl6, flpPhotourl7);
+            int ivalue = CEI.UserDocuments(REID, flpPhotourl8, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl9, flpPhotourl6, flpPhotourl7);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
         }
 

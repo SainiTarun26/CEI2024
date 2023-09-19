@@ -1,16 +1,10 @@
 ﻿using CEI_PRoject;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Web;
+using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Runtime.ConstrainedExecution;
-using com.itextpdf.text.pdf;
 
 namespace CEIHaryana.Admin
 {
@@ -44,9 +38,9 @@ namespace CEIHaryana.Admin
                     }
                     ddlLoadBindPremises();
                     worktypevisiblity();
-                   // ddlLoadBindVoltage();
+                    // ddlLoadBindVoltage();
 
-                   
+
 
 
                 }
@@ -131,7 +125,8 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch { 
+            catch
+            {
             }
         }
         protected void worktypevisiblity()
@@ -219,9 +214,9 @@ namespace CEIHaryana.Admin
         //}
 
 
-      
-       
-      
+
+
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.Header)

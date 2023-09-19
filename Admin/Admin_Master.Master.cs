@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace CEI_PRoject.ADMIN
 {
@@ -17,7 +13,7 @@ namespace CEI_PRoject.ADMIN
                 {
                     if (Request.Cookies["AdminID"] != null)
                     {
-                      
+
                         lblName.Text = Request.Cookies["AdminID"].Value;
                     }
                     else

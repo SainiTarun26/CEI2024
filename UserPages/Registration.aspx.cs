@@ -1,20 +1,10 @@
-﻿using CEI_PRoject.Admin;
+﻿using CEI_PRoject;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Helpers;
+using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.IO;
-using CEIHaryana.Contractor;
-using System.Xml.Linq;
-using System.Net.Mail;
-using CEI_PRoject;
 
 namespace CEIHaryana.UserPages
 {
@@ -154,9 +144,9 @@ namespace CEIHaryana.UserPages
                     string insertedCategory = categoryOutputParam.Value.ToString();
                     Session["REID"] = registrationId;
                     Session["InsertedCategory"] = insertedCategory;
-                   
-                        int ivalue = CEI.updateUserRegistration(registrationId);
-                    
+
+                    int ivalue = CEI.updateUserRegistration(registrationId);
+
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
 
@@ -205,9 +195,9 @@ namespace CEIHaryana.UserPages
                     string insertedCategory = categoryOutputParam.Value.ToString();
                     Session["RegistrationID"] = registrationId;
                     Session["InsertedCategory"] = insertedCategory;
-                  
-                       int ivalue = CEI.updateUserRegistration(registrationId);
-                    
+
+                    int ivalue = CEI.updateUserRegistration(registrationId);
+
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
 
@@ -217,7 +207,7 @@ namespace CEIHaryana.UserPages
             }
             catch (Exception)
             {
-               
+
             }
         }
 
@@ -312,7 +302,7 @@ namespace CEIHaryana.UserPages
 
                         txtDOB.Text = "";
 
-                        
+
 
 
                         CalculatedDatey.Visible = false;
@@ -366,8 +356,8 @@ namespace CEIHaryana.UserPages
                                     ageYear = 0;
                                 }
 
-         
-                                txtyears.Text = ageYear.ToString() + "Years-"+ ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days"; 
+
+                                txtyears.Text = ageYear.ToString() + "Years-" + ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days";
 
                                 txtyears.Text = ageYear.ToString() + "Years-" + ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days";
 
@@ -394,7 +384,7 @@ namespace CEIHaryana.UserPages
             if (CheckBox1.Checked == true)
             {
                 ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
-                    }
+            }
 
             ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
         }

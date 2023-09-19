@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Globalization;
-using CEI_PRoject.Admin;
-using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace CEI_PRoject
 {
@@ -49,9 +43,9 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string Pincode,
-string PremisesType, string OtherPremises, string VoltageLevel, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2,string NumberOfInstallation2,
-string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5, 
-string TypeOfInstallation6, string NumberOfInstallation6,string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+string PremisesType, string OtherPremises, string VoltageLevel, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
 string Email, string WorkStartDate, string CompletionDate,
 string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string CreatedBy)
         {
@@ -104,7 +98,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
-       
+
         }
         public string projectId()
         {
@@ -114,7 +108,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             }
             else
             {
-                return null; 
+                return null;
             }
         }
         #endregion
@@ -253,22 +247,23 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             con.Close();
         }
         #endregion
-          #region Insert Line Data
+        #region Insert Line Data
         public void InsertLineData(string SanctionLoadContractDemad, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
-            string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing, 
-            string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1, 
+            string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
+            string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
 EarthingType6, string Valueinohms6, string EarthingType7, string Valueinohms7, string EarthingType8, string Valueinohms8, string EarthingType9, string Valueinohms9, string EarthingType10, string
 Valueinohms10, string EarthingType11, string Valueinohms11, string EarthingType12, string Valueinohms12, string EarthingType13, string Valueinohms13, string EarthingType14, string Valueinohms14, string
 EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, string CableSize, string RailwayCrossingNoForOC, string RoadCrossingNoForOC,
-            string RiverCanalCrossingNoForOC, string PowerLineCrossingNoForOc, string RedPhaseEarthWire, string YellowPhaseEarth, 
+            string RiverCanalCrossingNoForOC, string PowerLineCrossingNoForOc, string RedPhaseEarthWire, string YellowPhaseEarth,
             string BluePhaseEarthWire, string RedPhaseYellowPhase, string RedPhaseBluePhase, string BluePhaseYellowPhase, string PhasewireNeutralwire,
-            string PhasewireEarth, string NeutralwireEarth, string TypeofCable, string SizeofCable, string Cablelaidin, 
-            string RedPhaseEarthWirefor440orAbove, string YellowPhaseEarthWire440orAbove, string BluePhaseEarthWire440orAbove, 
-            string RedPhaseYellowPhase440orAbove, string RedPhaseBluePhase440orAbove, string BluePhaseYellowPhase440orAbove, 
+            string PhasewireEarth, string NeutralwireEarth, string TypeofCable, string SizeofCable, string Cablelaidin,
+            string RedPhaseEarthWirefor440orAbove, string YellowPhaseEarthWire440orAbove, string BluePhaseEarthWire440orAbove,
+            string RedPhaseYellowPhase440orAbove, string RedPhaseBluePhase440orAbove, string BluePhaseYellowPhase440orAbove,
             string PhasewireNeutralwire220OrAbove, string PhasewireEarth220OrAbove, string NeutralwireEarth220OrAbove
 )
-        {            SqlCommand cmd = new SqlCommand("sp_InserLineData");
+        {
+            SqlCommand cmd = new SqlCommand("sp_InserLineData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
             cmd.Connection = con;
             if (con.State == ConnectionState.Closed)
@@ -319,7 +314,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@EarthingType13", EarthingType13);
             cmd.Parameters.AddWithValue("@Valueinohms13", Valueinohms13);
             cmd.Parameters.AddWithValue("@EarthingType14", EarthingType14);
-            cmd.Parameters.AddWithValue("@Valueinohms14", Valueinohms14);
+            cmd.Parameters.AddWithValue("@Valueinohms14", Valueinohms15);
             cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15);
             cmd.Parameters.AddWithValue("@Valueinohms15", Valueinohms15);
             cmd.Parameters.AddWithValue("@NoofPoleTowerForOverheadCable", NoofPoleTowerForOverheadCable);
@@ -349,122 +344,8 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@PhasewireNeutralwire220OrAbove", PhasewireNeutralwire220OrAbove);
             cmd.Parameters.AddWithValue("@PhasewireEarth220OrAbove", PhasewireEarth220OrAbove);
             cmd.Parameters.AddWithValue("@NeutralwireEarth220OrAbove", NeutralwireEarth220OrAbove);
-            
 
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
-        #endregion
-        #region Insert Substation Data
-        public void InsertSubstationData(string TransformerSerialNumber, string TransformerCapacity, string TranformerType, 
-            string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationRedPhaseEarthWire, 
-            string HtInsulationYellowPhaseEarthWire, string HtInsulationBluePhaseEarthWire, string LtInsulationRedPhaseEarthWire, 
-            string LtInsulationYellowPhaseEarthWire, string LtInsulationBluePhaseEarthWire, string LowestvaluebetweenHTLTSide, 
-            string LightningArrestorLocation, string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
-            string UsedFor1, string EarthingType2, string Valueinohms2, string UsedFor2, string EarthingType3, string Valueinohms3, string UsedFor3, 
-            string EarthingType4, string Valueinohms4, string UsedFor4, string EarthingType5, string Valueinohms5, string UsedFor5, 
-            string EarthingType6, string Valueinohms6, string UsedFor6, string EarthingType7, string Valueinohms7, string UsedFor7,
-            string EarthingType8, string Valueinohms8, string UsedFor8, string EarthingType9, string Valueinohms9, string UsedFor9, 
-            string EarthingType10, string Valueinohms10, string UsedFor10, string EarthingType11, string Valueinohms11, string UsedFor11, 
-            string EarthingType12, string Valueinohms12, string UsedFor12, string EarthingType13, string Valueinohms13, string UsedFor13, 
-            string EarthingType14, string Valueinohms14, string UsedFor14, string EarthingType15, string Valueinohms15, string UsedFor15,
-            string EarthingType16, string Valueinohms16, string UsedFor16, string EarthingType17, string Valueinohms17, string UsedFor17, 
-            string EarthingType18, string Valueinohms18, string UsedFor18, string EarthingType19, string Valueinohms19, string UsedFor19, 
-            string EarthingType20, string Valueinohms20, string UsedFor20, string LoadBreakingCapacityOfBreakerInKA, string TypeOfLTProtection,
-            string CapacityOfIndividualFuseInAMPS, string CapacityOfLTBreakerInAMPS, string LoadBreakingCapacityOfBreakerInAMPS, string SeaLevelOfTransformerInMeters)
-        {            SqlCommand cmd = new SqlCommand("sp_InsertSubstationTransformerData");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
 
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@TransformerSerialNumber", TransformerSerialNumber);
-            cmd.Parameters.AddWithValue("@TransformerCapacity", TransformerCapacity);
-            cmd.Parameters.AddWithValue("@TranformerType", TranformerType);
-            cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage);
-            cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage);
-            cmd.Parameters.AddWithValue("@OilCapacity", OilCapacity);
-            cmd.Parameters.AddWithValue("@BreakDownVoltageofOil", BreakDownVoltageofOil);
-            cmd.Parameters.AddWithValue("@HtInsulationRedPhaseEarthWire", HtInsulationRedPhaseEarthWire);
-            cmd.Parameters.AddWithValue("@HtInsulationYellowPhaseEarthWire", HtInsulationYellowPhaseEarthWire);
-            cmd.Parameters.AddWithValue("@HtInsulationBluePhaseEarthWire", HtInsulationBluePhaseEarthWire);
-            cmd.Parameters.AddWithValue("@LtInsulationRedPhaseEarthWire", LtInsulationRedPhaseEarthWire);
-            cmd.Parameters.AddWithValue("@LtInsulationYellowPhaseEarthWire", LtInsulationYellowPhaseEarthWire);
-            cmd.Parameters.AddWithValue("@LtInsulationBluePhaseEarthWire", LtInsulationBluePhaseEarthWire);
-            cmd.Parameters.AddWithValue("@LowestvaluebetweenHTLTSide", LowestvaluebetweenHTLTSide);
-            cmd.Parameters.AddWithValue("@LightningArrestorLocation", LightningArrestorLocation);
-            cmd.Parameters.AddWithValue("@TypeofHTPrimarySideSwitch", TypeofHTPrimarySideSwitch);
-            cmd.Parameters.AddWithValue("@NumberOfEarthing", NumberOfEarthing);
-            cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1);
-            cmd.Parameters.AddWithValue("@Valueinohms1", Valueinohms1);
-            cmd.Parameters.AddWithValue("@UsedFor1", UsedFor1);
-            cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2);
-            cmd.Parameters.AddWithValue("@Valueinohms2", Valueinohms2);
-            cmd.Parameters.AddWithValue("@UsedFor2", UsedFor2);
-            cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3);
-            cmd.Parameters.AddWithValue("@Valueinohms3", Valueinohms3);
-            cmd.Parameters.AddWithValue("@UsedFor3", UsedFor3);
-            cmd.Parameters.AddWithValue("@EarthingType4", EarthingType4);
-            cmd.Parameters.AddWithValue("@Valueinohms4", Valueinohms4);
-            cmd.Parameters.AddWithValue("@UsedFor4", UsedFor4);
-            cmd.Parameters.AddWithValue("@EarthingType5", EarthingType5);
-            cmd.Parameters.AddWithValue("@Valueinohms5", Valueinohms5);
-            cmd.Parameters.AddWithValue("@UsedFor5", UsedFor5);
-            cmd.Parameters.AddWithValue("@EarthingType6", EarthingType6);
-            cmd.Parameters.AddWithValue("@Valueinohms6", Valueinohms6);
-            cmd.Parameters.AddWithValue("@UsedFor6", UsedFor6);
-            cmd.Parameters.AddWithValue("@EarthingType7", EarthingType7);
-            cmd.Parameters.AddWithValue("@Valueinohms7", Valueinohms7);
-            cmd.Parameters.AddWithValue("@UsedFor7", UsedFor7);
-            cmd.Parameters.AddWithValue("@EarthingType8", EarthingType8);
-            cmd.Parameters.AddWithValue("@Valueinohms8", Valueinohms8);
-            cmd.Parameters.AddWithValue("@UsedFor8", UsedFor8);
-            cmd.Parameters.AddWithValue("@EarthingType9", EarthingType9);
-            cmd.Parameters.AddWithValue("@Valueinohms9", Valueinohms9);
-            cmd.Parameters.AddWithValue("@UsedFor9", UsedFor9);
-            cmd.Parameters.AddWithValue("@EarthingType10", EarthingType10);
-            cmd.Parameters.AddWithValue("@Valueinohms10", Valueinohms10);
-            cmd.Parameters.AddWithValue("@UsedFor10", UsedFor10);
-            cmd.Parameters.AddWithValue("@EarthingType11", EarthingType11);
-            cmd.Parameters.AddWithValue("@Valueinohms11", Valueinohms11);
-            cmd.Parameters.AddWithValue("@UsedFor11", UsedFor11);
-            cmd.Parameters.AddWithValue("@EarthingType12", EarthingType12);
-            cmd.Parameters.AddWithValue("@Valueinohms12", Valueinohms12);
-            cmd.Parameters.AddWithValue("@UsedFor12", UsedFor12);
-            cmd.Parameters.AddWithValue("@EarthingType13", EarthingType13);
-            cmd.Parameters.AddWithValue("@Valueinohms13", Valueinohms13);
-            cmd.Parameters.AddWithValue("@UsedFor13", UsedFor13);
-            cmd.Parameters.AddWithValue("@EarthingType14", EarthingType14);
-            cmd.Parameters.AddWithValue("@Valueinohms14", Valueinohms14);
-            cmd.Parameters.AddWithValue("@UsedFor14", UsedFor14);
-            cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15);
-            cmd.Parameters.AddWithValue("@Valueinohms15", Valueinohms15);
-            cmd.Parameters.AddWithValue("@UsedFor15", UsedFor15);
-            cmd.Parameters.AddWithValue("@EarthingType16", EarthingType16);
-            cmd.Parameters.AddWithValue("@Valueinohms16", Valueinohms16);
-            cmd.Parameters.AddWithValue("@UsedFor16", UsedFor16);
-            cmd.Parameters.AddWithValue("@EarthingType17", EarthingType17);
-            cmd.Parameters.AddWithValue("@Valueinohms17", Valueinohms17);
-            cmd.Parameters.AddWithValue("@UsedFor17", UsedFor17);
-            cmd.Parameters.AddWithValue("@EarthingType18", EarthingType18);
-            cmd.Parameters.AddWithValue("@Valueinohms18", Valueinohms18);
-            cmd.Parameters.AddWithValue("@UsedFor18", UsedFor18);
-            cmd.Parameters.AddWithValue("@EarthingType19", EarthingType19);
-            cmd.Parameters.AddWithValue("@Valueinohms19", Valueinohms19);
-            cmd.Parameters.AddWithValue("@UsedFor19", UsedFor19);
-            cmd.Parameters.AddWithValue("@EarthingType20", EarthingType20);
-            cmd.Parameters.AddWithValue("@Valueinohms20", Valueinohms20);
-            cmd.Parameters.AddWithValue("@UsedFor20", UsedFor20);
-            cmd.Parameters.AddWithValue("@LoadBreakingCapacityOfBreakerInKA", LoadBreakingCapacityOfBreakerInKA);
-            cmd.Parameters.AddWithValue("@TypeOfLTProtection", TypeOfLTProtection);
-            cmd.Parameters.AddWithValue("@CapacityOfIndividualFuseInAMPS", CapacityOfIndividualFuseInAMPS);
-            cmd.Parameters.AddWithValue("@CapacityOfLTBreakerInAMPS", CapacityOfLTBreakerInAMPS);
-            cmd.Parameters.AddWithValue("@LoadBreakingCapacityOfBreakerInAMPS", LoadBreakingCapacityOfBreakerInAMPS);
-            cmd.Parameters.AddWithValue("@SeaLevelOfTransformerInMeters", SeaLevelOfTransformerInMeters);           
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -476,7 +357,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getStateForDropdown");
         }
         #endregion
-        
+
         #region Bind DropDown Draw Earthing
         public DataSet GetddlEarthing()
         {
@@ -487,13 +368,13 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         #region Bind DropDown Draw State
         public DataSet GetddlDrawDistrict(string State)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDistrictForDropdownState",  State);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDistrictForDropdownState", State);
         }
         #endregion
         public DataSet GetddlPremises()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Premises");
-        } 
+        }
         public DataSet GetddlAssignedWorkForSupervisor()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_WorkDetail");
@@ -533,8 +414,8 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
 
         public DataTable GetWiremanorSuperwiserData(string category, string loginType, string ID)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWiremanorSuperwiserData", category,loginType, ID);
-        } 
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWiremanorSuperwiserData", category, loginType, ID);
+        }
         public DataTable WorkIntimationData(string LoginID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID);
@@ -547,14 +428,10 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LineVoltage");
         }
-        public DataSet GetddlEarthingSubstation()
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_EarthingSubstation");
-        }
         public DataTable WorkIntimationDataforAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjectsforAdmin");
-        } 
+        }
         public DataTable WorkIntimationDataforSupervisor(string Id)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSupervisor", Id);
@@ -568,9 +445,9 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_updateUserRegistration", registrationId);
         }
 
-        public int UserDocuments(string REID, string flpPhotourl8,string flpPhotourl, string flpPhotourl1, string flpPhotourl2, string flpPhotourl3, string flpPhotourl4, string flpPhotourl5,string flpPhotourl9, string flpPhotourl6, string flpPhotourl7)
+        public int UserDocuments(string REID, string flpPhotourl8, string flpPhotourl, string flpPhotourl1, string flpPhotourl2, string flpPhotourl3, string flpPhotourl4, string flpPhotourl5, string flpPhotourl9, string flpPhotourl6, string flpPhotourl7)
         {
-            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UserDocuments", REID, flpPhotourl8,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl9, flpPhotourl6, flpPhotourl7);
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UserDocuments", REID, flpPhotourl8, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl9, flpPhotourl6, flpPhotourl7);
         }
         public DataTable RegistrationDetails()
         {
@@ -582,7 +459,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         public static int DropRegistrationData(int registrationId)
         {
-            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DropUserRegistration" , registrationId);
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DropUserRegistration", registrationId);
         }
 
         public DataSet checkGSTexist(string GSTnumber)
