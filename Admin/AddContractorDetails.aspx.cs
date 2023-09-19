@@ -185,7 +185,6 @@ namespace CEI_PRoject.Admin
                 ddlLoadBindDistrict(dp_Id4);
                 ddlDistrict.SelectedValue = dp_Id5;
                 ddlDistrict1.SelectedIndex = ddlDistrict1.Items.IndexOf(ddlDistrict1.Items.FindByValue(dp_Id16));
-
                 txtPinCode.Text = dp_Id6;
                 txtPinCode1.Text = dp_Id17;
                 txtContactNo.Text = dp_Id7;
@@ -285,8 +284,6 @@ namespace CEI_PRoject.Admin
                     Reset();
                     regexValidatorGST.Attributes.Add("style", "display: none;");
                     DataUpdated.Visible = true;
-
-
                     //  Response.Redirect("AddContractorDetails.aspx");
                 }
                 else
@@ -324,8 +321,8 @@ namespace CEI_PRoject.Admin
                             GetIP();
                             CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
                             ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
-                           txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,txtDateofIntialissue.Text, 
+                           txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
                            txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
                             Reset();
                             DataSaved.Visible = true;
