@@ -433,6 +433,10 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LineVoltage");
         }
+        public DataSet GetddlEarthingSubstation()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_EarthingSubstation");
+        }
         public DataTable WorkIntimationDataforAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjectsforAdmin");
