@@ -26,8 +26,18 @@ namespace CEIHaryana.Supervisor
                 //}
             }
         }
-       
-        private void ddlLoadBindState()
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox1.Checked == false)
+            {
+                labelVerification.Visible = true;
+            }
+            else
+            {
+                labelVerification.Visible = false;
+            }
+        }
+            private void ddlLoadBindState()
         {
             try
             {
@@ -187,25 +197,33 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
-                CEI.InsertLineData(txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
-     ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
-    txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
-     ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
-     txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
-    txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
-   txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text,
-    ddlEarthingtype8.SelectedItem.ToString(), txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(),
-    txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(), txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(),
-    txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(), txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(),
-    txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(), txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(),
-   txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text, txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text,
-     txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text, txtYellowEarthWire.Text,
- txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
- txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(), txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text,
-  txtRedBlueWire.Text, txtBlueYellowWire.Text, txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
+                if (CheckBox1.Checked == false) 
+                {
+                    labelVerification.Visible = true;
+                }
 
-                DataSaved.Visible = true;
+                else
+                {
+                    CEI.InsertLineData(txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+         ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
+        txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
+         ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
+         txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
+        txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
+       txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text,
+        ddlEarthingtype8.SelectedItem.ToString(), txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(),
+        txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(), txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(),
+        txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(), txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(),
+        txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(), txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(),
+       txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text, txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text,
+         txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text, txtYellowEarthWire.Text,
+     txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
+     txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(), txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text,
+      txtRedBlueWire.Text, txtBlueYellowWire.Text, txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
 
+                    DataSaved.Visible = true;
+                    labelVerification.Visible = false;
+                }
             }
             catch (Exception Ex)
             {

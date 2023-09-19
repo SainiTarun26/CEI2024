@@ -2612,7 +2612,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row" style="margin-top: 50px;">
+                                                    <div class="row" style="margin-top: 50px;">
+                                                      <%--  <div class="col-2"></div>--%>
+                                                    <div class="col-12" style="text-align: center;">
+                                                        <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
+                                                   <br />  <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                                               Please Verify this.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                <div class="row">
+
                                                     <div class="col-4"></div>
                                                     <div class="col-4" style="text-align: center;">
                                                         <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
