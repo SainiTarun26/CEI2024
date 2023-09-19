@@ -493,5 +493,234 @@ namespace CEIHaryana.Supervisor
             dsEarthing.Clear();
 
         }
+        protected void ddlEarthingsubstation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SubstationEarthingDiv.Visible = true;
+            if (ddlEarthingsubstation.SelectedItem.ToString() == "4")
+            {
+                EarthingSubstation4.Visible = true;
+            }
+            else if (ddlEarthingsubstation.SelectedItem.ToString() == "5")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "6")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "7")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "8")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "9")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "10")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "11")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "12")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "13")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "14")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible = true;
+                EathingSubstation14.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "15")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible = true;
+                EathingSubstation14.Visible = true;
+                EathingSubstation15.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "16")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible = true;
+                EathingSubstation14.Visible = true;
+                EathingSubstation15.Visible = true;
+                EathingSubstation16.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "17")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible = true;
+                EathingSubstation14.Visible = true;
+                EathingSubstation15.Visible = true;
+                EathingSubstation16.Visible = true;
+                EathingSubstation17.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "18")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible = true;
+                EathingSubstation14.Visible = true;
+                EathingSubstation15.Visible = true;
+                EathingSubstation16.Visible = true;
+                EathingSubstation17.Visible = true;
+                EathingSubstation18.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "19")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible = true;
+                EathingSubstation14.Visible = true;
+                EathingSubstation15.Visible = true;
+                EathingSubstation16.Visible = true;
+                EathingSubstation17.Visible = true;
+                EathingSubstation18.Visible = true;
+                EathingSubstation19.Visible= true;
+            }
+           else if (ddlEarthingsubstation.SelectedItem.ToString() == "20")
+            {
+                EarthingSubstation4.Visible = true;
+                EathingSubstation5.Visible = true;
+                EathingSubstation6.Visible = true;
+                EathingSubstation7.Visible = true;
+                EathingSubstation8.Visible = true;
+                EathingSubstation9.Visible = true;
+                EathingSubstation10.Visible = true;
+                EathingSubstation11.Visible = true;
+                EathingSubstation12.Visible = true;
+                EathingSubstation13.Visible = true;
+                EathingSubstation14.Visible = true;
+                EathingSubstation15.Visible = true;
+                EathingSubstation16.Visible = true;
+                EathingSubstation17.Visible = true;
+                EathingSubstation18.Visible = true;
+                EathingSubstation19.Visible = true;
+                EathingSubstation20.Visible= true;
+            }
+            else
+            {
+                EarthingSubstation4.Visible = false;
+                EathingSubstation5.Visible = false;
+                EathingSubstation6.Visible = false;
+                EathingSubstation7.Visible = false;
+                EathingSubstation8.Visible = false;
+                EathingSubstation9.Visible = false;
+                EathingSubstation10.Visible = false;
+                EathingSubstation11.Visible = false;
+                EathingSubstation12.Visible = false;
+                EathingSubstation13.Visible = false;
+                EathingSubstation14.Visible = false;
+                EathingSubstation15.Visible = false;
+                EathingSubstation16.Visible = false;
+                EathingSubstation17.Visible = false;
+                EathingSubstation18.Visible = false;
+                EathingSubstation19.Visible = false;
+                EathingSubstation20.Visible = false;
+            }
+           
+        }
     }
 }

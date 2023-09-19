@@ -2770,7 +2770,7 @@
                                                             Number of Earthing:
                                         <samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlEarthingsubstation_SelectedIndexChanged" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>
                                                     </div>
 
@@ -2783,6 +2783,8 @@
                                                                     <th>Earthing Type
                                                                     </th>
                                                                     <th>Value in(ohms)
+                                                                    </th> 
+                                                                    <th>Used For
                                                                     </th>
                                                                 </tr>
                                                             </thead>
