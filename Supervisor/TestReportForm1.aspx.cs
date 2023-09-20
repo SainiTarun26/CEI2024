@@ -15,8 +15,9 @@ namespace CEIHaryana.Supervisor
                 //if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
                 //{
                 ddlLoadBindVoltage();
-                ddlLoadBindState();
+                ddlEarthing();
                 ddlEarthingSubstation();
+              //  ddlEarthingGeneratingSet();
                 //}
             }
         }
@@ -33,7 +34,8 @@ namespace CEIHaryana.Supervisor
             dsEarthing.Clear();
 
         }
-        private void ddlLoadBindState()
+        #region Bind Line and Generating Set Earthing
+        private void ddlEarthing()
         {
             try
             {
@@ -43,7 +45,13 @@ namespace CEIHaryana.Supervisor
                 ddlNoOfEarthing.DataTextField = "Numbers";
                 ddlNoOfEarthing.DataValueField = "Id";
                 ddlNoOfEarthing.DataBind();
-                ddlNoOfEarthing.Items.Insert(0, new ListItem("Select", "0"));
+                ddlGeneratingEarthing.Items.Insert(0, new ListItem("Select", "0"));
+
+                ddlGeneratingEarthing.DataSource = dsEarthing;
+                ddlGeneratingEarthing.DataTextField = "Numbers";
+                ddlGeneratingEarthing.DataValueField = "Id";
+                ddlGeneratingEarthing.DataBind();
+                ddlGeneratingEarthing.Items.Insert(0, new ListItem("Select", "0"));
                 dsEarthing.Clear();
             }
             catch (Exception)
@@ -51,6 +59,7 @@ namespace CEIHaryana.Supervisor
                 //msg.Text = ex.Message;
             }
         }
+        #endregion
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -139,6 +148,18 @@ namespace CEIHaryana.Supervisor
                 Insulation220vAbove.Visible = false;
                 Earthing.Visible = false;
             }
+        } 
+        protected void ddlGeneratingSetType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlGeneratingSetType.SelectedItem.ToString() == "Solar Panel")
+            {
+                SolarPanelGeneratingSet.Visible= true;
+            }
+            else
+            {
+                SolarPanelGeneratingSet.Visible = false;
+            }
+           
         }
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -160,6 +181,17 @@ namespace CEIHaryana.Supervisor
             else
             {
                 label1.Visible = false;
+            }
+        } 
+        protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox3.Checked == false)
+            {
+                label2.Visible = true;
+            }
+            else
+            {
+                label2.Visible = false;
             }
         }
         protected void ddlConductorType_SelectedIndexChanged(object sender, EventArgs e)
@@ -765,5 +797,175 @@ namespace CEIHaryana.Supervisor
                 Breaker.Visible = false;
             }
         }
+
+        protected void ddlGeneratingEarthing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GeneratingEarthing.Visible = true;
+            if (ddlGeneratingEarthing.SelectedItem.ToString() == "4")
+            {
+                GeneratingEarthing4.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "5")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "6")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "7")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "8")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "9")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+                GeneratingEarthing9.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "10")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+                GeneratingEarthing9.Visible = true;
+                GeneratingEarthing10.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "11")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+                GeneratingEarthing9.Visible = true;
+                GeneratingEarthing10.Visible = true;
+                GeneratingEarthing11.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "12")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+                GeneratingEarthing9.Visible = true;
+                GeneratingEarthing10.Visible = true;
+                GeneratingEarthing11.Visible = true;
+                GeneratingEarthing12.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "13")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+                GeneratingEarthing9.Visible = true;
+                GeneratingEarthing10.Visible = true;
+                GeneratingEarthing11.Visible = true;
+                GeneratingEarthing12.Visible = true;
+                GeneratingEarthing13.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "14")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+                GeneratingEarthing9.Visible = true;
+                GeneratingEarthing10.Visible = true;
+                GeneratingEarthing11.Visible = true;
+                GeneratingEarthing12.Visible = true;
+                GeneratingEarthing13.Visible = true;
+                GeneratingEarthing14.Visible = true;
+            }
+            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "15")
+            {
+                GeneratingEarthing4.Visible = true;
+                GeneratingEarthing5.Visible = true;
+                GeneratingEarthing6.Visible = true;
+                GeneratingEarthing7.Visible = true;
+                GeneratingEarthing8.Visible = true;
+                GeneratingEarthing9.Visible = true;
+                GeneratingEarthing10.Visible = true;
+                GeneratingEarthing11.Visible = true;
+                GeneratingEarthing12.Visible = true;
+                GeneratingEarthing13.Visible = true;
+                GeneratingEarthing14.Visible = true;
+                GeneratingEarthing15.Visible = true;
+            }
+            
+            else
+            {
+                GeneratingEarthing4.Visible = false;
+                GeneratingEarthing5.Visible = false;
+                GeneratingEarthing6.Visible = false;
+                GeneratingEarthing7.Visible = false;
+                GeneratingEarthing8.Visible = false;
+                GeneratingEarthing9.Visible = false;
+                GeneratingEarthing10.Visible = false;
+                GeneratingEarthing11.Visible = false;
+                GeneratingEarthing12.Visible = false;
+                GeneratingEarthing13.Visible = false;
+                GeneratingEarthing14.Visible = false;
+                GeneratingEarthing15.Visible = false;
+            }
+
+        }
+        protected void BtnSubmitGeneratingSet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CheckBox3.Checked == false)
+                {
+                    label2.Visible = true;
+                    CEI.InsertGeneratingSetData(ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
+               txtGeneratorVoltage.Text, txtCurrentCapacity.Text, txtBreakingCapacity.Text, ddlPlantType.SelectedItem.ToString(), ddlPlantCapacity.SelectedItem.ToString(),
+              txtPlantCapacity.Text, txtDCString.Text, txtLowestInsulation.Text, txtPCVOrSolar.Text, txtLTACCapacity.Text, txtLowestInsulationAC.Text,
+              ddlGeneratingEarthing.SelectedItem.ToString(), ddlGeneratingEarthing1.SelectedItem.ToString(), txtGeneratingEarthing1.Text, ddlGeneratingEarthingUsed1.SelectedItem.ToString(),
+              ddlGeneratingEarthing2.SelectedItem.ToString(), txtGeneratingEarthing2.Text, ddlGeneratingEarthingUsed2.SelectedItem.ToString(), ddlGeneratingEarthing3.SelectedItem.ToString(), txtGeneratingEarthing3.Text, ddlGeneratingEarthingUsed3.SelectedItem.ToString(),
+             ddlGeneratingEarthing4.SelectedItem.ToString(), txtGeneratingEarthing4.Text, ddlGeneratingEarthingUsed4.SelectedItem.ToString(), ddlGeneratingEarthing5.SelectedItem.ToString(), txtGeneratingEarthing5.Text, ddlGeneratingEarthingUsed5.SelectedItem.ToString(),
+          ddlGeneratingEarthing6.SelectedItem.ToString(), txtGeneratingEarthing6.Text, ddlGeneratingEarthingUsed6.SelectedItem.ToString(), ddlGeneratingEarthing7.SelectedItem.ToString(), txtGeneratingEarthing7.Text, ddlGeneratingEarthingUsed7.SelectedItem.ToString(),
+          ddlGeneratingEarthing8.SelectedItem.ToString(), txtGeneratingEarthing8.Text, ddlGeneratingEarthingUsed8.SelectedItem.ToString(), ddlGeneratingEarthing9.SelectedItem.ToString(), txtGeneratingEarthing9.Text, ddlGeneratingEarthingUsed9.SelectedItem.ToString(),
+           ddlGeneratingEarthing10.SelectedItem.ToString(), txtGeneratingEarthing10.Text, ddlGeneratingEarthingUsed10.SelectedItem.ToString(), ddlGeneratingEarthing11.SelectedItem.ToString(), txtGeneratingEarthing11.Text, ddlGeneratingEarthingUsed11.SelectedItem.ToString(),
+            ddlGeneratingEarthing12.SelectedItem.ToString(), txtGeneratingEarthing12.Text, ddlGeneratingEarthingUsed12.SelectedItem.ToString(), ddlGeneratingEarthing13.SelectedItem.ToString(), txtGeneratingEarthing13.Text, ddlGeneratingEarthingUsed13.SelectedItem.ToString(),
+           ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString());
+                }
+
+                else
+                {
+                  
+                    DataSaved.Visible = true;
+                    label2.Visible = false;
+                }
+            }
+            catch (Exception )
+            {
+
+                DataSaved.Visible = false;
+            }
+        }
+
     }
 }
