@@ -254,7 +254,7 @@
         }
         function CloseModalAndRedirect() {
             $('#ex1').modal('hide');
-            window.location.href = "TestReportForm1.aspx";
+            window.location.href = "TestReportForm.aspx";
         }
         function CloseModal() {
             $('#ex1').modal('hide');

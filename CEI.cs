@@ -480,6 +480,10 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDistrictForDropdownState", State);
         }
         #endregion
+        public DataSet GetddlEarthingSubstation()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_EarthingSubstation");
+        }
         public DataSet GetddlPremises()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Premises");
