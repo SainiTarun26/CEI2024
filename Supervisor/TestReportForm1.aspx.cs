@@ -17,14 +17,14 @@ namespace CEIHaryana.Supervisor
                 ddlLoadBindVoltage();
                 ddlEarthing();
                 ddlEarthingSubstation();
-                VisibleDiv()
+                VisibleDiv();
               //  ddlEarthingGeneratingSet();
                 //}
             }
         }
         private void VisibleDiv()
         {
-            if(Session["installationType1"].ToString()!= null )
+            if(Session["installationType1"].ToString()== "" )
             {
 
             }
