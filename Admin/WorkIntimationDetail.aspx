@@ -178,13 +178,13 @@
                             </asp:DropDownList>--%>
                         </div>
 
-                        <div class="col-4">
+                       <%-- <div class="col-4">
 
                             <label>Work Details</label>
-                           <%-- <asp:ListBox ID="ddlWorkDetail" Style="width: 100% !important;" class="chosen-select form-control  select-form" value="select multiple" AutoPostBack="true" placeholder="your hint" runat="server" SelectionMode="Multiple"></asp:ListBox>--%>
+                      <asp:ListBox ID="ddlWorkDetail" Style="width: 100% !important;" class="chosen-select form-control  select-form" value="select multiple" AutoPostBack="true" placeholder="your hint" runat="server" SelectionMode="Multiple"></asp:ListBox>
                      <asp:TextBox class="form-control" ID="ddWorkDetail" disabled autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                            
-                        </div>
+                        </div>--%>
 
                         <div class="col-4" id="OtherWorkDetail" runat="server">
                             <label for="OtherWorkDetail">Other Work Detail</label>

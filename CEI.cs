@@ -516,7 +516,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             cmd.Parameters.AddWithValue("@EarthingValue6", EarthingValue6);
             cmd.Parameters.AddWithValue("@UsedFor6", UsedFor6);
             cmd.Parameters.AddWithValue("@EarthingType7", EarthingType7);
-            cmd.Parameters.AddWithValue("@Valueinohms7", EarthingValue7);
+            cmd.Parameters.AddWithValue("@EarthingValue7", EarthingValue7);
             cmd.Parameters.AddWithValue("@UsedFor7", UsedFor7);
             cmd.Parameters.AddWithValue("@EarthingType8", EarthingType8);
             cmd.Parameters.AddWithValue("@EarthingValue8", EarthingValue8);
@@ -546,6 +546,86 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             con.Close();
         }
         #endregion
+        #region Insert Phase Data
+        public void InsertPhaseData(string InstallationType, string VoltageLevel,string CapacityMainSwitchAndBreaker, string NumberOfEarthing,
+            string EarthingType1, string EarthingValue1, string UsedFor1,string EarthingType2, string EarthingValue2, string UsedFor2, 
+            string EarthingType3, string EarthingValue3, string UsedFor3, string EarthingType4, string EarthingValue4,string UsedFor4, 
+            string EarthingType5, string EarthingValue5, string UsedFor5, string EarthingType6, string EarthingValue6, string UsedFor6,string EarthingType7, 
+            string EarthingValue7, string UsedFor7, string EarthingType8, string EarthingValue8, string UsedFor8, string EarthingType9, string EarthingValue9,
+            string UsedFor9, string EarthingType10, string EarthingValue10, string UsedFor10, string EarthingType11, string EarthingValue11, string UsedFor11,
+            string EarthingType12, string EarthingValue12, string UsedFor12, string EarthingType13, string EarthingValue13, string UsedFor13, string EarthingType14,
+            string EarthingValue14, string UsedFor14, string EarthingType15, string EarthingValue15, string UsedFor15, string MinimumIRValueBWwires,
+            string NoOfRCCB, string RatingOfRCCB, string CurrentCarryingCpacity, string NoOfCircuit, string NoOfMotors)
+        {
+            SqlCommand cmd = new SqlCommand("sp_SingleOrThreePhase");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+            cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+            cmd.Parameters.AddWithValue("@CapacityMainSwitchAndBreaker", CapacityMainSwitchAndBreaker);
+            cmd.Parameters.AddWithValue("@NumberOfEarthing", NumberOfEarthing);
+            cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1);
+            cmd.Parameters.AddWithValue("@EarthingValue1", EarthingValue1);
+            cmd.Parameters.AddWithValue("@UsedFor1", UsedFor1);
+            cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2);
+            cmd.Parameters.AddWithValue("@EarthingValue2", EarthingValue2);
+            cmd.Parameters.AddWithValue("@UsedFor2", UsedFor2);
+            cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3);
+            cmd.Parameters.AddWithValue("@EarthingValue3", EarthingValue3);
+            cmd.Parameters.AddWithValue("@UsedFor3", UsedFor3);
+            cmd.Parameters.AddWithValue("@EarthingType4", EarthingType4);
+            cmd.Parameters.AddWithValue("@EarthingValue4", EarthingValue4);
+            cmd.Parameters.AddWithValue("@UsedFor4", UsedFor4);
+            cmd.Parameters.AddWithValue("@EarthingType5", EarthingType5);
+            cmd.Parameters.AddWithValue("@EarthingValue5", EarthingValue5);
+            cmd.Parameters.AddWithValue("@UsedFor5", UsedFor5);
+            cmd.Parameters.AddWithValue("@EarthingType6", EarthingType6);
+            cmd.Parameters.AddWithValue("@EarthingValue6", EarthingValue6);
+            cmd.Parameters.AddWithValue("@UsedFor6", UsedFor6);
+            cmd.Parameters.AddWithValue("@EarthingType7", EarthingType7);
+            cmd.Parameters.AddWithValue("@EarthingValue7", EarthingValue7);
+            cmd.Parameters.AddWithValue("@UsedFor7", UsedFor7);
+            cmd.Parameters.AddWithValue("@EarthingType8", EarthingType8);
+            cmd.Parameters.AddWithValue("@EarthingValue8", EarthingValue8);
+            cmd.Parameters.AddWithValue("@UsedFor8", UsedFor8);
+            cmd.Parameters.AddWithValue("@EarthingType9", EarthingType9);
+            cmd.Parameters.AddWithValue("@EarthingValue9", EarthingValue9);
+            cmd.Parameters.AddWithValue("@UsedFor9", UsedFor9);
+            cmd.Parameters.AddWithValue("@EarthingType10", EarthingType10);
+            cmd.Parameters.AddWithValue("@EarthingValue10", EarthingValue10);
+            cmd.Parameters.AddWithValue("@UsedFor10", UsedFor10);
+            cmd.Parameters.AddWithValue("@EarthingType11", EarthingType11);
+            cmd.Parameters.AddWithValue("@EarthingValue11", EarthingValue11);
+            cmd.Parameters.AddWithValue("@UsedFor11", UsedFor11);
+            cmd.Parameters.AddWithValue("@EarthingType12", EarthingType12);
+            cmd.Parameters.AddWithValue("@EarthingValue12", EarthingValue12);
+            cmd.Parameters.AddWithValue("@UsedFor12", UsedFor12);
+            cmd.Parameters.AddWithValue("@EarthingType13", EarthingType13);
+            cmd.Parameters.AddWithValue("@EarthingValue13", EarthingValue13);
+            cmd.Parameters.AddWithValue("@UsedFor13", UsedFor13);
+            cmd.Parameters.AddWithValue("@EarthingType14", EarthingType14);
+            cmd.Parameters.AddWithValue("@EarthingValue14", EarthingValue14);
+            cmd.Parameters.AddWithValue("@UsedFor14", UsedFor14);
+            cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15);
+            cmd.Parameters.AddWithValue("@EarthingValue15", EarthingValue15);
+            cmd.Parameters.AddWithValue("@UsedFor15", UsedFor15);
+            cmd.Parameters.AddWithValue("@MinimumIRValueBWwires", MinimumIRValueBWwires);
+            cmd.Parameters.AddWithValue("@NoOfRCCB", NoOfRCCB);
+            cmd.Parameters.AddWithValue("@RatingOfRCCB", RatingOfRCCB);
+            cmd.Parameters.AddWithValue("@CurrentCarryingCpacity", CurrentCarryingCpacity);
+            cmd.Parameters.AddWithValue("@NoOfCircuit", NoOfCircuit);
+            cmd.Parameters.AddWithValue("@NoOfMotors", NoOfMotors);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
 
         #region Bind DropDown Draw State
         public DataSet GetddlDrawState()
@@ -565,6 +645,24 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
         public DataSet GetddlDrawDistrict(string State)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDistrictForDropdownState", State);
+        }
+        #endregion 
+        #region Get Contractor Data
+        public DataSet GetContractorData(string REID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_updateContractorData", REID);
+        }
+        #endregion
+        #region Get Supervisor Data
+        public DataSet GetSupervisorData(string REID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperwiserDetails", REID);
+        }
+        #endregion 
+        #region Get WorkIntimationDataForAdmin Data
+        public DataSet GetWorkIntimationDataForAdmin(string REID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationData", REID);
         }
         #endregion
         public DataSet GetddlEarthingSubstation()

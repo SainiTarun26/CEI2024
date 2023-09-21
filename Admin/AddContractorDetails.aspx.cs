@@ -143,15 +143,8 @@ namespace CEI_PRoject.Admin
         public void update()
         {
             REID = hdnId.Value;
-            SqlCommand cmd = new SqlCommand("sp_updateContractorData");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", REID);
-            cmd.Connection = con;
-            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
-            {
-                DataSet ds = new DataSet();
-                adp.Fill(ds);
+            DataSet ds = new DataSet();
+            ds = CEI.GetContractorData(REID);
                 string dp_Id = ds.Tables[0].Rows[0]["Name"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["FatherName"].ToString();
                 string dp_Id2 = ds.Tables[0].Rows[0]["FirmName"].ToString();
@@ -245,8 +238,8 @@ namespace CEI_PRoject.Admin
                 {
                     CheckBox1.Checked = false;
                 }
+                ds.Clear();
 
-            }
 
         }
         #region GetIP
