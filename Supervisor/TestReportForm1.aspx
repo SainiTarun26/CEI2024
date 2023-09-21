@@ -1926,12 +1926,12 @@
                             <div class="row" style="margin-bottom: 20px;">
                                 <div class="col-4">
                                     <label>
-                                        Installation Type
+                                       Sanction load/ Contract demand(in KVA) 
             <samp style="color: red">* </samp>
                                     </label>
                                     <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLineVoltage" selectionmode="Multiple" Style="width: 100% !important; height: 30px;">
                             </asp:DropDownList>--%>
-                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtInstallationType" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSanctionLoad" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                 </div>
                             </div>

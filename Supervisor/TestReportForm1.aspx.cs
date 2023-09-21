@@ -24,7 +24,8 @@ namespace CEIHaryana.Supervisor
         }
         private void VisibleDiv()
         {
-            if(Session["installationType1"].ToString()== "" )
+            
+            if(Session["installationType1"].ToString()== "Line ")
             {
 
             }
@@ -278,7 +279,7 @@ namespace CEIHaryana.Supervisor
 
                 else
                 {
-                    CEI.InsertLineData(txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                    CEI.InsertLineData(txtSanctionLoad.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
                    ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
                   txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
                    ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
@@ -826,7 +827,7 @@ namespace CEIHaryana.Supervisor
         protected void ddlGeneratingEarthing_SelectedIndexChanged(object sender, EventArgs e)
         {
             GeneratingEarthing.Visible = true;
-            if(ddlGeneratingEarthing.SelectedValue == "1" ||ddlGeneratingEarthing.SelectedValue == "2" ||ddlGeneratingEarthing.SelectedValue == "3" ||ddlGeneratingEarthing.SelectedValue == "4")
+            if(ddlGeneratingEarthing.SelectedValue == "1" ||ddlGeneratingEarthing.SelectedValue == "2" ||ddlGeneratingEarthing.SelectedValue == "3")
             {
                 Limit.Visible = true;
                 GeneratingEarthing.Visible = false;

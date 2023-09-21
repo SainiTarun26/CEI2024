@@ -51,13 +51,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
 
         /// <summary>
-        /// txtInstallationType control.
+        /// txtSanctionLoad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInstallationType;
+        protected global::System.Web.UI.WebControls.TextBox txtSanctionLoad;
 
         /// <summary>
         /// IfInstallationIsLine control.
