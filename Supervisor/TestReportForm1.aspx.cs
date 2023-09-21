@@ -25,7 +25,7 @@ namespace CEIHaryana.Supervisor
         private void VisibleDiv()
         {
             
-            if(Session["installationType1"].ToString()== "Line ")
+            if(Session["installationType1"].ToString()== "Line")
             {
 
             }
