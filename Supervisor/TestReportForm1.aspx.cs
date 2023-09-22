@@ -17,7 +17,7 @@ namespace CEIHaryana.Supervisor
                 ddlLoadBindVoltage();
                 ddlEarthing();
                 ddlEarthingSubstation();
-                VisibleDiv()
+                //VisibleDiv()
               //  ddlEarthingGeneratingSet();
                 //}
             }
