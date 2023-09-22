@@ -143,8 +143,15 @@ namespace CEI_PRoject.Admin
         public void update()
         {
             REID = hdnId.Value;
-            DataSet ds = new DataSet();
-            ds = CEI.GetContractorData(REID);
+            SqlCommand cmd = new SqlCommand("sp_updateContractorData");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", REID);
+            cmd.Connection = con;
+            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+            {
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
                 string dp_Id = ds.Tables[0].Rows[0]["Name"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["FatherName"].ToString();
                 string dp_Id2 = ds.Tables[0].Rows[0]["FirmName"].ToString();
@@ -178,6 +185,7 @@ namespace CEI_PRoject.Admin
                 ddlLoadBindDistrict(dp_Id4);
                 ddlDistrict.SelectedValue = dp_Id5;
                 ddlDistrict1.SelectedIndex = ddlDistrict1.Items.IndexOf(ddlDistrict1.Items.FindByValue(dp_Id16));
+
                 txtPinCode.Text = dp_Id6;
                 txtPinCode1.Text = dp_Id17;
                 txtContactNo.Text = dp_Id7;
@@ -238,8 +246,8 @@ namespace CEI_PRoject.Admin
                 {
                     CheckBox1.Checked = false;
                 }
-                ds.Clear();
 
+            }
 
         }
         #region GetIP
@@ -277,6 +285,8 @@ namespace CEI_PRoject.Admin
                     Reset();
                     regexValidatorGST.Attributes.Add("style", "display: none;");
                     DataUpdated.Visible = true;
+
+
                     //  Response.Redirect("AddContractorDetails.aspx");
                 }
                 else
@@ -314,8 +324,8 @@ namespace CEI_PRoject.Admin
                             GetIP();
                             CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
                             ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,txtDateofIntialissue.Text, 
-                           txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
+                           txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
                            txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
                             Reset();
                             DataSaved.Visible = true;

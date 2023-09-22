@@ -75,10 +75,10 @@
                                 <HeaderStyle HorizontalAlign="center" Width="12%"/>
                                 <ItemStyle HorizontalAlign="center" Width="12%"/>
                             </asp:BoundField>
-                             <%--<asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
+                             <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
                                 <HeaderStyle HorizontalAlign="center" Width="20%"/>
                                 <ItemStyle HorizontalAlign="center" Width="20%"/>
-                            </asp:BoundField>--%>
+                            </asp:BoundField>
                               <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                 <HeaderStyle HorizontalAlign="center" Width="12%"/>
                                 <ItemStyle HorizontalAlign="center" Width="12%"/>

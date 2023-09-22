@@ -105,10 +105,16 @@ namespace CEI_PRoject.Admin
         public void GetDetails()
         {
             REID = hdnId.Value;
-            DataSet ds = new DataSet();
-            ds = CEI.GetSupervisorData(REID);
-
-            txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
+            SqlCommand cmd = new SqlCommand("sp_GetSuperwiserDetails");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", REID);
+            cmd.Connection = con;
+            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+            {
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+                txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
                 txtFatherName.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 string dp_Id4 = ds.Tables[0].Rows[0]["State"].ToString();
@@ -161,7 +167,7 @@ namespace CEI_PRoject.Admin
                     GetContractorDetails();
                     ddlContractorDetails.SelectedIndex = ddlContractorDetails.Items.IndexOf(ddlContractorDetails.Items.FindByValue(dp_Id18));
                 }
-            
+            }
 
         }
         private void GetContractorDetails()

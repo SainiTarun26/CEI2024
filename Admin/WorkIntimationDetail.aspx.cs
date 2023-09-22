@@ -55,8 +55,15 @@ namespace CEIHaryana.Admin
             try
             {
                 REID = Session["id"].ToString();
-               DataSet ds = new DataSet();
-                ds = CEI.GetWorkIntimationDataForAdmin(REID);
+                SqlCommand cmd = new SqlCommand("sp_WorkIntimationData");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", REID);
+                cmd.Connection = con;
+                using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+                {
+                    DataSet ds = new DataSet();
+                    adp.Fill(ds);
                     string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
                     txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
@@ -90,9 +97,9 @@ namespace CEIHaryana.Admin
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
                     }
-                    //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
-                    //ddWorkDetail.Text = dp_Id8;
-                
+                    string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
+                    ddWorkDetail.Text = dp_Id8;
+                }
             }
             catch { }
         }
