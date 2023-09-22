@@ -143,111 +143,103 @@ namespace CEI_PRoject.Admin
         public void update()
         {
             REID = hdnId.Value;
-            SqlCommand cmd = new SqlCommand("sp_updateContractorData");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", REID);
-            cmd.Connection = con;
-            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+            DataSet ds = new DataSet();
+            ds = CEI.GetContractorData(REID);
+            string dp_Id = ds.Tables[0].Rows[0]["Name"].ToString();
+            string dp_Id1 = ds.Tables[0].Rows[0]["FatherName"].ToString();
+            string dp_Id2 = ds.Tables[0].Rows[0]["FirmName"].ToString();
+            string dp_Id3 = ds.Tables[0].Rows[0]["GSTNumber"].ToString();
+            string dp_Id18 = ds.Tables[0].Rows[0]["RegisteredOffice"].ToString();
+            string dp_Id19 = ds.Tables[0].Rows[0]["BranchOffice"].ToString();
+            string dp_Id4 = ds.Tables[0].Rows[0]["State"].ToString();
+            string dp_Id5 = ds.Tables[0].Rows[0]["Districtoffirm"].ToString();
+            string dp_Id6 = ds.Tables[0].Rows[0]["PinCode"].ToString();
+            string dp_Id7 = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+            string dp_Id8 = ds.Tables[0].Rows[0]["Email"].ToString();
+            string dp_Id9 = ds.Tables[0].Rows[0]["IntialIssueDate"].ToString();
+            string dp_Id10 = ds.Tables[0].Rows[0]["RenewalDate"].ToString();
+            string dp_Id11 = ds.Tables[0].Rows[0]["ExpiryDate"].ToString();
+            string dp_Id12 = ds.Tables[0].Rows[0]["votagelevel"].ToString();
+            string dp_Id13 = ds.Tables[0].Rows[0]["voltageWithEffect"].ToString();
+            string dp_Id14 = ds.Tables[0].Rows[0]["LicenceOld"].ToString();
+            string dp_Id15 = ds.Tables[0].Rows[0]["LicenceNew"].ToString();
+            string dp_Id16 = ds.Tables[0].Rows[0]["BranchDistrictoffirm"].ToString();
+            string dp_Id17 = ds.Tables[0].Rows[0]["BranchPinCode"].ToString();
+
+            txtName.Text = dp_Id;
+            txtFatherName.Text = dp_Id1;
+            txtRegisteredOffice.Text = dp_Id18;
+            txtBranchOffice.Text = dp_Id19;
+            txtFirmName.Text = dp_Id2;
+            txtGST.Text = dp_Id3;
+            ddlLoadBindState();
+            ddlLoadBindDistrictddl();
+            ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
+            ddlLoadBindDistrict(dp_Id4);
+            ddlDistrict.SelectedValue = dp_Id5;
+            ddlDistrict1.SelectedIndex = ddlDistrict1.Items.IndexOf(ddlDistrict1.Items.FindByValue(dp_Id16));
+            txtPinCode.Text = dp_Id6;
+            txtPinCode1.Text = dp_Id17;
+            txtContactNo.Text = dp_Id7;
+            txtEmail.Text = dp_Id8;
+            txtDateofIntialissue.Text = DateTime.Parse(dp_Id9).ToString("yyyy-MM-dd");
+            txtDateofRenewal.Text = DateTime.Parse(dp_Id10).ToString("yyyy-MM-dd");
+            //txtDateofRenewal.Text = Convert.ToDateTime(dp_Id10).ToString("yyyy-MM-dd");
+            txtDateofExpiry.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
+            ddlVoltageLevel.SelectedValue = dp_Id12;
+            txtVoltageLevelWithEffect.Text = DateTime.Parse(dp_Id13).ToString("yyyy-MM-dd");
+            txtLicenceOld.Text = dp_Id14;
+            txtLicenceNew.Text = dp_Id15;
+            if (ddlDistrict.SelectedValue == ddlDistrict1.SelectedValue &&
+                txtRegisteredOffice.Text == txtBranchOffice.Text)
             {
-                DataSet ds = new DataSet();
-                adp.Fill(ds);
-                string dp_Id = ds.Tables[0].Rows[0]["Name"].ToString();
-                string dp_Id1 = ds.Tables[0].Rows[0]["FatherName"].ToString();
-                string dp_Id2 = ds.Tables[0].Rows[0]["FirmName"].ToString();
-                string dp_Id3 = ds.Tables[0].Rows[0]["GSTNumber"].ToString();
-                string dp_Id18 = ds.Tables[0].Rows[0]["RegisteredOffice"].ToString();
-                string dp_Id19 = ds.Tables[0].Rows[0]["BranchOffice"].ToString();
-                string dp_Id4 = ds.Tables[0].Rows[0]["State"].ToString();
-                string dp_Id5 = ds.Tables[0].Rows[0]["Districtoffirm"].ToString();
-                string dp_Id6 = ds.Tables[0].Rows[0]["PinCode"].ToString();
-                string dp_Id7 = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-                string dp_Id8 = ds.Tables[0].Rows[0]["Email"].ToString();
-                string dp_Id9 = ds.Tables[0].Rows[0]["IntialIssueDate"].ToString();
-                string dp_Id10 = ds.Tables[0].Rows[0]["RenewalDate"].ToString();
-                string dp_Id11 = ds.Tables[0].Rows[0]["ExpiryDate"].ToString();
-                string dp_Id12 = ds.Tables[0].Rows[0]["votagelevel"].ToString();
-                string dp_Id13 = ds.Tables[0].Rows[0]["voltageWithEffect"].ToString();
-                string dp_Id14 = ds.Tables[0].Rows[0]["LicenceOld"].ToString();
-                string dp_Id15 = ds.Tables[0].Rows[0]["LicenceNew"].ToString();
-                string dp_Id16 = ds.Tables[0].Rows[0]["BranchDistrictoffirm"].ToString();
-                string dp_Id17 = ds.Tables[0].Rows[0]["BranchPinCode"].ToString();
-
-                txtName.Text = dp_Id;
-                txtFatherName.Text = dp_Id1;
-                txtRegisteredOffice.Text = dp_Id18;
-                txtBranchOffice.Text = dp_Id19;
-                txtFirmName.Text = dp_Id2;
-                txtGST.Text = dp_Id3;
-                ddlLoadBindState();
-                ddlLoadBindDistrictddl();
-                ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
-                ddlLoadBindDistrict(dp_Id4);
-                ddlDistrict.SelectedValue = dp_Id5;
-                ddlDistrict1.SelectedIndex = ddlDistrict1.Items.IndexOf(ddlDistrict1.Items.FindByValue(dp_Id16));
-
-                txtPinCode.Text = dp_Id6;
-                txtPinCode1.Text = dp_Id17;
-                txtContactNo.Text = dp_Id7;
-                txtEmail.Text = dp_Id8;
-                txtDateofIntialissue.Text = DateTime.Parse(dp_Id9).ToString("yyyy-MM-dd");
-                txtDateofRenewal.Text = DateTime.Parse(dp_Id10).ToString("yyyy-MM-dd");
-                //txtDateofRenewal.Text = Convert.ToDateTime(dp_Id10).ToString("yyyy-MM-dd");
-                txtDateofExpiry.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
-                ddlVoltageLevel.SelectedValue = dp_Id12;
-                txtVoltageLevelWithEffect.Text = DateTime.Parse(dp_Id13).ToString("yyyy-MM-dd");
-                txtLicenceOld.Text = dp_Id14;
-                txtLicenceNew.Text = dp_Id15;
-                if (ddlDistrict.SelectedValue == ddlDistrict1.SelectedValue &&
-                    txtRegisteredOffice.Text == txtBranchOffice.Text)
-                {
-                    CheckBox1.Checked = true;
-                    txtBranchOffice.Text = txtRegisteredOffice.Text;
-                    ddlDistrict1.SelectedValue = ddlDistrict.SelectedValue;
-                    txtPinCode1.Text = txtPinCode.Text;
-                    txtBranchOffice.Enabled = false;
-                    txtBranchOffice.Style.Add("width", "inherit");
-                    txtBranchOffice.Style.Add("height", "30px");
-                    txtBranchOffice.Style.Add("border-radius", ".25rem");
+                CheckBox1.Checked = true;
+                txtBranchOffice.Text = txtRegisteredOffice.Text;
+                ddlDistrict1.SelectedValue = ddlDistrict.SelectedValue;
+                txtPinCode1.Text = txtPinCode.Text;
+                txtBranchOffice.Enabled = false;
+                txtBranchOffice.Style.Add("width", "inherit");
+                txtBranchOffice.Style.Add("height", "30px");
+                txtBranchOffice.Style.Add("border-radius", ".25rem");
 
 
-                    ddlDistrict1.Enabled = false;
-                    ddlDistrict1.Style.Add("width", "inherit");
-                    ddlDistrict1.Style.Add("height", "30px");
-                    ddlDistrict1.Style.Add("border-radius", ".25rem");
+                ddlDistrict1.Enabled = false;
+                ddlDistrict1.Style.Add("width", "inherit");
+                ddlDistrict1.Style.Add("height", "30px");
+                ddlDistrict1.Style.Add("border-radius", ".25rem");
 
-                    txtPinCode1.Enabled = false;
-                    txtPinCode1.Style.Add("width", "inherit");
-                    txtPinCode1.Style.Add("height", "30px");
-                    txtPinCode1.Style.Add("border-radius", ".25rem");
+                txtPinCode1.Enabled = false;
+                txtPinCode1.Style.Add("width", "inherit");
+                txtPinCode1.Style.Add("height", "30px");
+                txtPinCode1.Style.Add("border-radius", ".25rem");
 
-                    txtRegisteredOffice.Enabled = false;
-                    txtRegisteredOffice.Style.Add("width", "inherit");
-                    txtRegisteredOffice.Style.Add("height", "30px");
-                    txtRegisteredOffice.Style.Add("border-radius", ".25rem");
+                txtRegisteredOffice.Enabled = false;
+                txtRegisteredOffice.Style.Add("width", "inherit");
+                txtRegisteredOffice.Style.Add("height", "30px");
+                txtRegisteredOffice.Style.Add("border-radius", ".25rem");
 
-                    ddlState.Enabled = false;
-                    ddlState.Style.Add("width", "inherit");
-                    ddlState.Style.Add("height", "30px");
-                    ddlState.Style.Add("border-radius", ".25rem");
+                ddlState.Enabled = false;
+                ddlState.Style.Add("width", "inherit");
+                ddlState.Style.Add("height", "30px");
+                ddlState.Style.Add("border-radius", ".25rem");
 
-                    ddlDistrict.Enabled = false;
-                    ddlDistrict.Style.Add("width", "inherit");
-                    ddlDistrict.Style.Add("height", "30px");
-                    ddlDistrict.Style.Add("border-radius", ".25rem");
+                ddlDistrict.Enabled = false;
+                ddlDistrict.Style.Add("width", "inherit");
+                ddlDistrict.Style.Add("height", "30px");
+                ddlDistrict.Style.Add("border-radius", ".25rem");
 
-                    txtPinCode.Enabled = false;
-                    txtPinCode.Style.Add("width", "inherit");
-                    txtPinCode.Style.Add("height", "30px");
-                    txtPinCode.Style.Add("border-radius", ".25rem");
-
-                }
-                else
-                {
-                    CheckBox1.Checked = false;
-                }
+                txtPinCode.Enabled = false;
+                txtPinCode.Style.Add("width", "inherit");
+                txtPinCode.Style.Add("height", "30px");
+                txtPinCode.Style.Add("border-radius", ".25rem");
 
             }
+            else
+            {
+                CheckBox1.Checked = false;
+            }
+            ds.Clear();
+
 
         }
         #region GetIP
@@ -285,8 +277,6 @@ namespace CEI_PRoject.Admin
                     Reset();
                     regexValidatorGST.Attributes.Add("style", "display: none;");
                     DataUpdated.Visible = true;
-
-
                     //  Response.Redirect("AddContractorDetails.aspx");
                 }
                 else
@@ -324,8 +314,8 @@ namespace CEI_PRoject.Admin
                             GetIP();
                             CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
                             ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
-                           txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text, txtDateofIntialissue.Text,
+                           txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
                            txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
                             Reset();
                             DataSaved.Visible = true;

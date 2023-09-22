@@ -161,66 +161,59 @@ namespace CEI_PRoject.Admin
         public void GetDetails()
         {
             REID = hdnId.Value;
-            SqlCommand cmd = new SqlCommand("sp_GetSuperwiserDetails");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", REID);
-            cmd.Connection = con;
-            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+            DataSet ds = new DataSet();
+            ds = CEI.GetSupervisorData(REID);
+            txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
+            FatherName.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
+            Address.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+            string dp_Id4 = ds.Tables[0].Rows[0]["State"].ToString();
+            string dp_Id5 = ds.Tables[0].Rows[0]["District"].ToString();
+            txtPincode.Text = ds.Tables[0].Rows[0]["PinCode"].ToString();
+            ContactNo.Text = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
+            Email.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+            string dp_Id9 = ds.Tables[0].Rows[0]["DateofIntialissue"].ToString();
+            string dp_Id10 = ds.Tables[0].Rows[0]["DateofExpiry"].ToString();
+            string dp_Id11 = ds.Tables[0].Rows[0]["DateofRenewal"].ToString();
+            ddlVoltageLevel.SelectedValue = ds.Tables[0].Rows[0]["votagelevel"].ToString();
+            string dp_Id13 = ds.Tables[0].Rows[0]["voltageWithEffect"].ToString();
+            CertificateOld.Text = ds.Tables[0].Rows[0]["CertificateOld"].ToString();
+            CertificateNew.Text = ds.Tables[0].Rows[0]["CertificateNew"].ToString();
+            string dp_Id16 = ds.Tables[0].Rows[0]["Qualification"].ToString();
+            string dp_Id17 = ds.Tables[0].Rows[0]["AnyContractor"].ToString();
+            string dp_Id18 = ds.Tables[0].Rows[0]["ContractorID"].ToString();
+            string dp_Id19 = ds.Tables[0].Rows[0]["Age"].ToString();
+            ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
+            ddlLoadBindDistrict(dp_Id4);
+            ddlDistrict.SelectedValue = dp_Id5;
+            DateofIntialissue.Text = DateTime.Parse(dp_Id9).ToString("yyyy-MM-dd");
+            DateofRenewal.Text = DateTime.Parse(dp_Id10).ToString("yyyy-MM-dd");
+            DateofExpiry.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
+            voltageWithEffect.Text = DateTime.Parse(dp_Id13).ToString("yyyy-MM-dd");
+            txtAge.Text = DateTime.Parse(dp_Id19).ToString("yyyy-MM-dd");
+            if (Regex.IsMatch(dp_Id16, @"^\d+$"))
             {
-                DataSet ds = new DataSet();
-                adp.Fill(ds);
-                txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
-                FatherName.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
-                Address.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                string dp_Id4 = ds.Tables[0].Rows[0]["State"].ToString();
-                string dp_Id5 = ds.Tables[0].Rows[0]["District"].ToString();
-                txtPincode.Text = ds.Tables[0].Rows[0]["PinCode"].ToString();
-                ContactNo.Text = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
-                Email.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                string dp_Id9 = ds.Tables[0].Rows[0]["DateofIntialissue"].ToString();
-                string dp_Id10 = ds.Tables[0].Rows[0]["DateofExpiry"].ToString();
-                string dp_Id11 = ds.Tables[0].Rows[0]["DateofRenewal"].ToString();
-                ddlVoltageLevel.SelectedValue = ds.Tables[0].Rows[0]["votagelevel"].ToString();
-                string dp_Id13 = ds.Tables[0].Rows[0]["voltageWithEffect"].ToString();
-                CertificateOld.Text = ds.Tables[0].Rows[0]["CertificateOld"].ToString();
-                CertificateNew.Text = ds.Tables[0].Rows[0]["CertificateNew"].ToString();
-                string dp_Id16 = ds.Tables[0].Rows[0]["Qualification"].ToString();
-                string dp_Id17 = ds.Tables[0].Rows[0]["AnyContractor"].ToString();
-                string dp_Id18 = ds.Tables[0].Rows[0]["ContractorID"].ToString();
-                string dp_Id19 = ds.Tables[0].Rows[0]["Age"].ToString();
-                ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
-                ddlLoadBindDistrict(dp_Id4);
-                ddlDistrict.SelectedValue = dp_Id5;
-                DateofIntialissue.Text = DateTime.Parse(dp_Id9).ToString("yyyy-MM-dd");
-                DateofRenewal.Text = DateTime.Parse(dp_Id10).ToString("yyyy-MM-dd");
-                DateofExpiry.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
-                voltageWithEffect.Text = DateTime.Parse(dp_Id13).ToString("yyyy-MM-dd");
-                txtAge.Text = DateTime.Parse(dp_Id19).ToString("yyyy-MM-dd");
-                if (Regex.IsMatch(dp_Id16, @"^\d+$"))
-                {
-                    ddlQualification.SelectedValue = dp_Id16;
-                }
-                else
-                {
-                    ddlQualification.SelectedValue = "8";
-                    txtQualification.Visible = true;
-                    txtQualifications.Text = dp_Id16;
-                }
-                if (dp_Id17 == "Yes")
-                {
-                    ddlAttachedContractor.SelectedValue = "Yes";
-                    rowContractorDetails.Visible = true;
-                    GetContractorDetails();
-                    ddlContractorDetails.SelectedIndex = ddlContractorDetails.Items.IndexOf(ddlContractorDetails.Items.FindByValue(dp_Id18));
-                }
-                else
-                {
-                    ddlAttachedContractor.SelectedValue = "No";
-                    rowContractorDetails.Visible = false;
-
-                }
+                ddlQualification.SelectedValue = dp_Id16;
             }
+            else
+            {
+                ddlQualification.SelectedValue = "8";
+                txtQualification.Visible = true;
+                txtQualifications.Text = dp_Id16;
+            }
+            if (dp_Id17 == "Yes")
+            {
+                ddlAttachedContractor.SelectedValue = "Yes";
+                rowContractorDetails.Visible = true;
+                GetContractorDetails();
+                ddlContractorDetails.SelectedIndex = ddlContractorDetails.Items.IndexOf(ddlContractorDetails.Items.FindByValue(dp_Id18));
+            }
+            else
+            {
+                ddlAttachedContractor.SelectedValue = "No";
+                rowContractorDetails.Visible = false;
+
+            }
+
 
         }
 
