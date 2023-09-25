@@ -1,9 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LineTestReport.aspx.cs" Inherits="CEIHaryana.TestReport.LineTestReport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/TestReport/TestReport.Master" CodeBehind="LineTestReport.aspx.cs" Inherits="CEIHaryana.TestReport.LineTestReport" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>CEI</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -1936,10 +1935,12 @@
             zoom: 90%; /* Webkit browsers */
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+  
+  <%--      <div>
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="#">
@@ -1961,8 +1962,8 @@
                         <asp:Button ID="btnLogout" Text="Logout" runat="server"/>
                     </a>
                 </div>
-            </li>
-        </ul>
+            </li>--%>
+      <%--  </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="icon-menu"></span>
         </button>
@@ -1986,7 +1987,7 @@
                                 <label for="tab5">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
                                         <path d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8c12.3-2.5 24.1-6.4 35.1-11.5c-2.1-10.8-3.1-21.9-3.1-33.3c0-80.3 53.8-148 127.3-169.2c.5-2.2 .7-4.5 .7-6.8c0-17.7-14.3-32-32-32H32zM432 512a144 144 0 1 0 0-288 144 144 0 1 0 0 288zm47.9-225c4.3 3.7 5.4 9.9 2.6 14.9L452.4 356H488c5.2 0 9.8 3.3 11.4 8.2s-.1 10.3-4.2 13.4l-96 72c-4.5 3.4-10.8 3.2-15.1-.6s-5.4-9.9-2.6-14.9L411.6 380H376c-5.2 0-9.8-3.3-11.4-8.2s.1-10.3 4.2-13.4l96-72c4.5-3.4 10.8-3.2 15.1 .6z" />
-                                    </svg>SINGLE/THREE-PHASE</label>
+                                    </svg>SINGLE/THREE-PHASE</label>--%>
                                 <ul>
                                     <li class="tab-content tab-content-first typography">
                                         <div id="IfInstallationIsLine" runat="server">
@@ -4911,7 +4912,7 @@
                         </div>
         </div>
     </form>
-</body>
+
      <script src="/Assets/js/js/vendor.bundle.base.js"></script>
  <script src="/Assets/js/chart.js/Chart.min.js"></script>
  <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
@@ -4924,4 +4925,4 @@
  <script src="/Assets/js/todolist.js"></script>
  <script src="/Assets/js/dashboard.js"></script>
  <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-</html>
+</asp:Content>
