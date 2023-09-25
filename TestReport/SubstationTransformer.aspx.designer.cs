@@ -42,1056 +42,1056 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// Div8 control.
+        /// Div121 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div121;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtTransformerSerialNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerSerialNumber;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtTransformerCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerCapacity;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// ddltransformerType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddltransformerType;
 
         /// <summary>
-        /// Div9 control.
+        /// InCaseOfOil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InCaseOfOil;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtPrimaryVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtPrimaryVoltage;
 
         /// <summary>
-        /// Div10 control.
+        /// Div123 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div10;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div123;
 
         /// <summary>
-        /// TextBox4 control.
+        /// txtSecondryVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtSecondryVoltage;
 
         /// <summary>
-        /// Div12 control.
+        /// Capacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div12;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Capacity;
 
         /// <summary>
-        /// TextBox5 control.
+        /// txtOilCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtOilCapacity;
 
         /// <summary>
-        /// TextBox6 control.
+        /// txtOilBDV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txtOilBDV;
 
         /// <summary>
-        /// Div13 control.
+        /// Div124 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div13;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div124;
 
         /// <summary>
-        /// TextBox7 control.
+        /// txtHTsideInsulation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtHTsideInsulation;
 
         /// <summary>
-        /// TextBox8 control.
+        /// txtLTSideInsulation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.TextBox txtLTSideInsulation;
 
         /// <summary>
-        /// TextBox9 control.
+        /// txtLowestValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.TextBox txtLowestValue;
 
         /// <summary>
-        /// TextBox10 control.
+        /// txtLightningArrestor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox txtLightningArrestor;
 
         /// <summary>
-        /// DropDownList2 control.
+        /// ddlEarthingsubstation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingsubstation;
 
         /// <summary>
-        /// Div14 control.
+        /// SubstationEarthingDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div14;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubstationEarthingDiv;
 
         /// <summary>
-        /// Div16 control.
+        /// EarthingSubstation4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div16;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EarthingSubstation4;
 
         /// <summary>
-        /// DropDownList3 control.
+        /// ddlSubstationEarthing1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing1;
 
         /// <summary>
-        /// TextBox11 control.
+        /// txtSubstationEarthing1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing1;
 
         /// <summary>
-        /// DropDownList4 control.
+        /// ddlUsedFor1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor1;
 
         /// <summary>
-        /// DropDownList5 control.
+        /// ddlSubstationEarthing2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing2;
 
         /// <summary>
-        /// TextBox12 control.
+        /// txtSubstationEarthing2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing2;
 
         /// <summary>
-        /// DropDownList6 control.
+        /// ddlUsedFor2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor2;
 
         /// <summary>
-        /// DropDownList7 control.
+        /// ddlSubstationEarthing3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing3;
 
         /// <summary>
-        /// TextBox13 control.
+        /// txtSubstationEarthing3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing3;
 
         /// <summary>
-        /// DropDownList8 control.
+        /// ddlUsedFor3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor3;
 
         /// <summary>
-        /// Div17 control.
+        /// Div52 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div17;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div52;
 
         /// <summary>
-        /// DropDownList9 control.
+        /// ddlSubstationEarthing4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList9;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing4;
 
         /// <summary>
-        /// Div18 control.
+        /// Div53 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div18;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div53;
 
         /// <summary>
-        /// TextBox14 control.
+        /// txtSubstationEarthing4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing4;
 
         /// <summary>
-        /// DropDownList10 control.
+        /// ddlUsedFor4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList10;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor4;
 
         /// <summary>
-        /// Tr1 control.
+        /// EathingSubstation5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr1;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation5;
 
         /// <summary>
-        /// Div23 control.
+        /// Div54 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div23;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div54;
 
         /// <summary>
-        /// DropDownList11 control.
+        /// ddlSubstationEarthing5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList11;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing5;
 
         /// <summary>
-        /// TextBox15 control.
+        /// txtSubstationEarthing5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox15;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing5;
 
         /// <summary>
-        /// DropDownList12 control.
+        /// ddlUsedFor5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList12;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor5;
 
         /// <summary>
-        /// Tr2 control.
+        /// EathingSubstation6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr2;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation6;
 
         /// <summary>
-        /// DropDownList13 control.
+        /// ddlSubstationEarthing6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList13;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing6;
 
         /// <summary>
-        /// TextBox16 control.
+        /// txtSubstationEarthing6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox16;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing6;
 
         /// <summary>
-        /// DropDownList14 control.
+        /// ddlUsedFor6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList14;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor6;
 
         /// <summary>
-        /// Tr3 control.
+        /// EathingSubstation7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr3;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation7;
 
         /// <summary>
-        /// Div24 control.
+        /// Div68 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div24;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div68;
 
         /// <summary>
-        /// DropDownList15 control.
+        /// ddlSubstationEarthing7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList15;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing7;
 
         /// <summary>
-        /// TextBox17 control.
+        /// txtSubstationEarthing7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox17;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing7;
 
         /// <summary>
-        /// DropDownList16 control.
+        /// ddlUsedFor7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList16;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor7;
 
         /// <summary>
-        /// Tr4 control.
+        /// EathingSubstation8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr4;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation8;
 
         /// <summary>
-        /// DropDownList17 control.
+        /// ddlSubstationEarthing8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList17;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing8;
 
         /// <summary>
-        /// TextBox18 control.
+        /// txtSubstationEarthing8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox18;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing8;
 
         /// <summary>
-        /// DropDownList18 control.
+        /// ddlUsedFor8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList18;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor8;
 
         /// <summary>
-        /// Tr5 control.
+        /// EathingSubstation9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr5;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation9;
 
         /// <summary>
-        /// DropDownList19 control.
+        /// ddlSubstationEarthing9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList19;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing9;
 
         /// <summary>
-        /// TextBox19 control.
+        /// txtSubstationEarthing9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing9;
 
         /// <summary>
-        /// DropDownList20 control.
+        /// ddlUsedFor9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList20;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor9;
 
         /// <summary>
-        /// Tr6 control.
+        /// EathingSubstation10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr6;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation10;
 
         /// <summary>
-        /// DropDownList21 control.
+        /// ddlSubstationEarthing10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList21;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing10;
 
         /// <summary>
-        /// TextBox20 control.
+        /// txtSubstationEarthing10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox20;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing10;
 
         /// <summary>
-        /// DropDownList22 control.
+        /// ddlUsedFor10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList22;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor10;
 
         /// <summary>
-        /// Tr7 control.
+        /// EathingSubstation11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr7;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation11;
 
         /// <summary>
-        /// DropDownList23 control.
+        /// ddlSubstationEarthing11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList23;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing11;
 
         /// <summary>
-        /// TextBox21 control.
+        /// txtSubstationEarthing11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox21;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing11;
 
         /// <summary>
-        /// DropDownList24 control.
+        /// ddlUsedFor11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList24;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor11;
 
         /// <summary>
-        /// Tr8 control.
+        /// EathingSubstation12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr8;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation12;
 
         /// <summary>
-        /// DropDownList25 control.
+        /// ddlSubstationEarthing12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList25;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing12;
 
         /// <summary>
-        /// TextBox22 control.
+        /// txtSubstationEarthing12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox22;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing12;
 
         /// <summary>
-        /// DropDownList26 control.
+        /// ddlUsedFor12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList26;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor12;
 
         /// <summary>
-        /// Tr9 control.
+        /// EathingSubstation13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr9;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation13;
 
         /// <summary>
-        /// DropDownList27 control.
+        /// ddlSubstationEarthing13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList27;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing13;
 
         /// <summary>
-        /// TextBox23 control.
+        /// txtSubstationEarthing13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox23;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing13;
 
         /// <summary>
-        /// DropDownList28 control.
+        /// ddlUsedFor13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList28;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor13;
 
         /// <summary>
-        /// Tr10 control.
+        /// EathingSubstation14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr10;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation14;
 
         /// <summary>
-        /// DropDownList29 control.
+        /// ddlSubstationEarthing14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList29;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing14;
 
         /// <summary>
-        /// TextBox24 control.
+        /// txtSubstationEarthing14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox24;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing14;
 
         /// <summary>
-        /// DropDownList30 control.
+        /// ddlUsedFor14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList30;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor14;
 
         /// <summary>
-        /// Tr11 control.
+        /// EathingSubstation15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr11;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation15;
 
         /// <summary>
-        /// DropDownList31 control.
+        /// ddlSubstationEarthing15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList31;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing15;
 
         /// <summary>
-        /// TextBox25 control.
+        /// txtSubstationEarthing15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox25;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing15;
 
         /// <summary>
-        /// DropDownList32 control.
+        /// ddlUsedFor15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList32;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor15;
 
         /// <summary>
-        /// Tr12 control.
+        /// EathingSubstation16 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr12;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation16;
 
         /// <summary>
-        /// DropDownList33 control.
+        /// ddlSubstationEarthing16 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList33;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing16;
 
         /// <summary>
-        /// TextBox26 control.
+        /// txtSubstationEarthing16 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox26;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing16;
 
         /// <summary>
-        /// DropDownList34 control.
+        /// ddlUsedFor16 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList34;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor16;
 
         /// <summary>
-        /// Tr13 control.
+        /// EathingSubstation17 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr13;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation17;
 
         /// <summary>
-        /// DropDownList35 control.
+        /// ddlSubstationEarthing17 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList35;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing17;
 
         /// <summary>
-        /// TextBox27 control.
+        /// txtSubstationEarthing17 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox27;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing17;
 
         /// <summary>
-        /// DropDownList36 control.
+        /// ddlUsedFor17 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList36;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor17;
 
         /// <summary>
-        /// Tr14 control.
+        /// EathingSubstation18 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr14;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation18;
 
         /// <summary>
-        /// DropDownList37 control.
+        /// ddlSubstationEarthing18 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList37;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing18;
 
         /// <summary>
-        /// TextBox28 control.
+        /// txtSubstationEarthing18 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox28;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing18;
 
         /// <summary>
-        /// DropDownList38 control.
+        /// ddlUsedFor18 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList38;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor18;
 
         /// <summary>
-        /// Tr15 control.
+        /// EathingSubstation19 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr15;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation19;
 
         /// <summary>
-        /// DropDownList39 control.
+        /// ddlSubstationEarthing19 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList39;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing19;
 
         /// <summary>
-        /// TextBox29 control.
+        /// txtSubstationEarthing19 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox29;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing19;
 
         /// <summary>
-        /// DropDownList40 control.
+        /// ddlUsedFor19 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList40;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor19;
 
         /// <summary>
-        /// Tr16 control.
+        /// EathingSubstation20 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr16;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation20;
 
         /// <summary>
-        /// DropDownList41 control.
+        /// ddlSubstationEarthing20 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList41;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing20;
 
         /// <summary>
-        /// TextBox30 control.
+        /// txtSubstationEarthing20 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox30;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing20;
 
         /// <summary>
-        /// DropDownList42 control.
+        /// ddlUsedFor20 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList42;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor20;
 
         /// <summary>
-        /// DropDownList43 control.
+        /// ddlHTType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList43;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHTType;
 
         /// <summary>
-        /// DropDownList44 control.
+        /// ddlBreaker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList44;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBreaker;
 
         /// <summary>
-        /// Div25 control.
+        /// TypeOfHTBreaker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div25;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TypeOfHTBreaker;
 
         /// <summary>
-        /// TextBox31 control.
+        /// txtBreakerCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox31;
+        protected global::System.Web.UI.WebControls.TextBox txtBreakerCapacity;
 
         /// <summary>
-        /// DropDownList45 control.
+        /// ddlLTProtection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList45;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLTProtection;
 
         /// <summary>
-        /// Div26 control.
+        /// FuseUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div26;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FuseUnit;
 
         /// <summary>
-        /// TextBox32 control.
+        /// txtIndividualCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox32;
+        protected global::System.Web.UI.WebControls.TextBox txtIndividualCapacity;
 
         /// <summary>
-        /// Div27 control.
+        /// Breaker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div27;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Breaker;
 
         /// <summary>
-        /// Div28 control.
+        /// Div167 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div28;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div167;
 
         /// <summary>
-        /// TextBox33 control.
+        /// txtLTBreakerCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox33;
+        protected global::System.Web.UI.WebControls.TextBox txtLTBreakerCapacity;
 
         /// <summary>
-        /// Div29 control.
+        /// Div168 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div29;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div168;
 
         /// <summary>
-        /// TextBox34 control.
+        /// txtLoadBreakingCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox34;
+        protected global::System.Web.UI.WebControls.TextBox txtLoadBreakingCapacity;
 
         /// <summary>
-        /// Div30 control.
+        /// Div169 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div30;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div169;
 
         /// <summary>
-        /// TextBox35 control.
+        /// txtSealLevelPlinth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox35;
+        protected global::System.Web.UI.WebControls.TextBox txtSealLevelPlinth;
 
         /// <summary>
-        /// CheckBox3 control.
+        /// CheckBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox3;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
 
         /// <summary>
-        /// label2 control.
+        /// label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl label2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl label1;
 
         /// <summary>
-        /// Button1 control.
+        /// BtnSubmitSubstation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button BtnSubmitSubstation;
 
         /// <summary>
-        /// HiddenField3 control.
+        /// HiddenField2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField3;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
     }
 }

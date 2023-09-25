@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div style="margin-top:3%">
                         <asp:GridView class="table-responsive" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
                             AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
@@ -151,7 +151,7 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
-                 
+                 </div>
                     <div id="ex1" class="modal">
                         <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
                         <div class="col-md-12">

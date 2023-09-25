@@ -25,9 +25,9 @@ namespace CEIHaryana.Supervisor
         }
         private void VisibleDiv()
         {
-            if (Session["installationType1"].ToString() != null)
+            if (Session["installationType1"].ToString() == "Line")
             {
-
+                Response.Redirect("LineTestReport");
             }
         }
         private void ddlEarthingSubstation()
