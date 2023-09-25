@@ -1549,6 +1549,8 @@
     <Content Include="Supervisor\TestReportDetails.aspx" />
     <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
+    <Content Include="TestReport\LineTestReport.aspx" />
+    <Content Include="TestReport\SubstationTransformer.aspx" />
     <Content Include="TestReport\TestReport.aspx" />
     <Content Include="UserPages\Documents.aspx" />
     <Content Include="UserPages\FormPrintContractor.aspx" />
@@ -1724,6 +1726,20 @@
     </Compile>
     <Compile Include="Supervisor\TestReportForm1.aspx.designer.cs">
       <DependentUpon>TestReportForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport\LineTestReport.aspx.cs">
+      <DependentUpon>LineTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReport\LineTestReport.aspx.designer.cs">
+      <DependentUpon>LineTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport\SubstationTransformer.aspx.cs">
+      <DependentUpon>SubstationTransformer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReport\SubstationTransformer.aspx.designer.cs">
+      <DependentUpon>SubstationTransformer.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReport\TestReport.aspx.cs">
       <DependentUpon>TestReport.aspx</DependentUpon>
