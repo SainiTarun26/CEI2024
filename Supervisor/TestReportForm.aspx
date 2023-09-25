@@ -2023,6 +2023,82 @@
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
+                         <div class="col-md-12">
+                            <div class="row row-modal">
+                                <div class="col-6" runat="server">
+                                    <label for="Name">
+                                        Electrical Installation For
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="agency" runat="server" visible="false">
+                                    <label for="agency">Name of Firm/ Org./ Company/ Department</label>
+                                    <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual" runat="server">
+                                    <label for="Name">
+                                        Name of Owner/ Consumer
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual9" runat="server">
+                                    <label for="Name">
+                                        Contact No.(Contractor)
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual10" runat="server">
+                                    <label for="Name">
+                                        Address of Site
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual2" runat="server">
+                                    <label for="Name">
+                                        Type of Premises
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual3" runat="server">
+                                    <label for="Name">
+                                        Highest Voltage Level of Work
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                            <%--    <div class="col-6" id="individual4" runat="server">
+                                    <label for="Name">
+                                        Work Details
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>--%>
+                                <div class="col-6" id="individual5" runat="server">
+                                    <label for="Name">
+                                        Contact Details of Site Owner
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtSiteContact" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual6" runat="server">
+                                    <label for="Name">
+                                        Work Start Date
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual11" runat="server">
+                                    <label for="Name">
+                                        Tentative Work Completition Date
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
                 <div class="row">
                     <%-- <div class="col-4" runat="server">
                             <label for="SiteContact">Contact Details of Site Owner</label>
