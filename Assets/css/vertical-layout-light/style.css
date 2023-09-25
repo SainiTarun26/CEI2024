@@ -24833,10 +24833,12 @@ dl li {
 }
 
 .tab-content {
-  border: 1px solid #CED4DA;
+  border: 8px solid #CED4DA !important;
   border-top: 0;
   padding: 2rem 1rem;
   text-align: justify;
+  border-bottom-left-radius:8px !important;
+  border-bottom-right-radius:8px !important;
 }
 
 .tab-content.tab-content-vertical {
