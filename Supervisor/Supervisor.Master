@@ -351,14 +351,14 @@
                                     <span class="menu-title">New Test Report</span>
                                     <i class="menu-arrow"></i>
                                 </a>
-                                <div class="collapse" id="ui-basic">
+                             <%--   <div class="collapse" id="ui-basic">
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Contractor">Transformer</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Supervisor">Line</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Generating Set</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Single/Three-Phase</a></li>
                                     </ul>
-                                </div>
+                                </div>--%>
                             </li>
                             <%--<li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">

@@ -238,7 +238,7 @@ namespace CEIHaryana.Supervisor
 
                 Session["installationType8"] = txtinstallationType8.Text;
                 Session["installationNo8"] = txtinstallationNo8.Text;
-                Response.Redirect("TestReportForm1.aspx");
+                Response.Redirect("LineTestReport.aspx");
             }
             catch
             {

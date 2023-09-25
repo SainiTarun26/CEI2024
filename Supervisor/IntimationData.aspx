@@ -13,6 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <style type="text/css">
+        a.close-modal {
+    width: 0px !important;
+}
         .jquery-modal.blocker.current {
             margin-top: 50px;
             height: 95%;
@@ -37,11 +40,7 @@
             margin-top: 15px;
         }
 
-        a.close-modal {
-            position: absolute;
-            top: 0px !important;
-            right: 0px !important;
-        }
+       
 
         th.GridViewRowHeader {
             padding: 10px 17px 10px 10px;
@@ -186,6 +185,12 @@
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
+                                <div class="col-6" id="individual5" runat="server">
+                                    <label for="Name">
+                                        Contact Details 
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
                             </div>
                             <div class="row row-modal">
                                 <div class="col-6" id="individual2" runat="server">
@@ -208,12 +213,7 @@
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>--%>
-                                <div class="col-6" id="individual5" runat="server">
-                                    <label for="Name">
-                                        Contact Details 
-                                    </label>
-                                    <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
+                                
                             </div>
                             <div class="row row-modal">
                                 <div class="col-6" id="individual6" runat="server">
@@ -256,9 +256,7 @@
             $('#ex1').modal('hide');
             window.location.href = "TestReportForm.aspx";
         }
-        function CloseModal() {
-            $('#ex1').modal('hide');
-        }
+       
     </script>
 
     <%-- <script type="text/javascript">
