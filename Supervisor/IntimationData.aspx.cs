@@ -102,7 +102,7 @@ namespace CEIHaryana.Supervisor
 
                     txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                     txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    //txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                     string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
                     TxtPremises.Text = dp_Id1;
