@@ -275,7 +275,7 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlLTProtection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlLTProtection.SelectedValue == "1")
+            if (ddlLTProtection.SelectedValue == "1")    
             {
                 FuseUnit.Visible = true;
                 Breaker.Visible = false;
