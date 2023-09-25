@@ -174,15 +174,15 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                                <div class="col-6" id="individual9" runat="server">
+                              <%--  <div class="col-6" id="individual9" runat="server">
                                     <label for="Name">
                                         Contact No.(Contractor)
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
+                                </div>--%>
                                 <div class="col-6" id="individual10" runat="server">
                                     <label for="Name">
-                                        Address of Site
+                                        Address 
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
@@ -202,15 +202,15 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                                <div class="col-6" id="individual4" runat="server">
+                              <%--  <div class="col-6" id="individual4" runat="server">
                                     <label for="Name">
                                         Work Details
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
+                                </div>--%>
                                 <div class="col-6" id="individual5" runat="server">
                                     <label for="Name">
-                                        Contact Details of Site Owner
+                                        Contact Details 
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtSiteContact" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
