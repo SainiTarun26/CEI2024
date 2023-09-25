@@ -248,7 +248,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string SanctionLoadContractDemad, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string Id, string SanctionLoadContractDemad, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -273,6 +273,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@SanctionLoadContractDemad", SanctionLoadContractDemad);
             cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
             cmd.Parameters.AddWithValue("@LineLength", LineLength);
@@ -351,7 +352,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert Substation Data
-        public void InsertSubstationData(string TransformerSerialNumber, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string Id, string TransformerSerialNumber, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
             string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
@@ -377,6 +378,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@TransformerSerialNumber", TransformerSerialNumber);
             cmd.Parameters.AddWithValue("@TransformerCapacity", TransformerCapacity);
             cmd.Parameters.AddWithValue("@TranformerType", TranformerType);
@@ -462,7 +464,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         #endregion
 
         #region Insert GeneratingSet Data
-        public void InsertGeneratingSetData(string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
+        public void InsertGeneratingSetData(string Id, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
 string BreakingCapacityofBreaker, string TypeOfPlant, string CapacityOfPlantType, string CapacityOfPlant, string HighestVoltageLevelOfDCString, string LowestInsulationBetweenDCWireToEarth,
 string NoOfPowerPCV, string LTACBreakerCapacity, string ACCablesLowestInsulation, string NumberOfEarthing, string EarthingType1, string EarthingValue1, string UsedFor1, string EarthingType2,
 string EarthingValue2, string UsedFor2, string EarthingType3, string EarthingValue3, string UsedFor3, string EarthingType4, string EarthingValue4, string UsedFor4, string EarthingType5, string EarthingValue5,
@@ -481,6 +483,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacityType", GeneratingSetCapacityType);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacity", GeneratingSetCapacity);
             cmd.Parameters.AddWithValue("@SerialNumbrOfAcGenerator", SerialNumbrOfAcGenerator);
@@ -547,7 +550,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
         }
         #endregion
         #region Insert Phase Data
-        public void InsertPhaseData(string InstallationType, string VoltageLevel, string CapacityMainSwitchAndBreaker, string NumberOfEarthing,
+        public void InsertPhaseData(string Id, string InstallationType, string VoltageLevel, string CapacityMainSwitchAndBreaker, string NumberOfEarthing,
             string EarthingType1, string EarthingValue1, string UsedFor1, string EarthingType2, string EarthingValue2, string UsedFor2,
             string EarthingType3, string EarthingValue3, string UsedFor3, string EarthingType4, string EarthingValue4, string UsedFor4,
             string EarthingType5, string EarthingValue5, string UsedFor5, string EarthingType6, string EarthingValue6, string UsedFor6, string EarthingType7,
@@ -567,6 +570,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
             cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
             cmd.Parameters.AddWithValue("@CapacityMainSwitchAndBreaker", CapacityMainSwitchAndBreaker);
@@ -624,6 +628,67 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             cmd.Parameters.AddWithValue("@NoOfMotors", NoOfMotors);
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+        #endregion 
+        #region Insert Test Report Data
+        public void InsertTestReportData(string InstallationFor, string NameOfOwner, string NameOfAgency, string ContactNo,
+            string AddressOfSite, string TypeOfPremises, string VoltageLevel, string WorkStartDate, string WorkCompletionDate,
+            string InstallationType1, string TypeOfInstallation1, string InstallationType2, string TypeOfInstallation2, string
+InstallationType3, string TypeOfInstallation3, string InstallationType4, string TypeOfInstallation4, string InstallationType5,
+            string TypeOfInstallation5, string InstallationType6, string TypeOfInstallation6, string InstallationType7,
+            string TypeOfInstallation7, string InstallationType8, string TypeOfInstallation8)
+        {
+            SqlCommand cmd = new SqlCommand("sp_TestReport");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InstallationFor", InstallationFor);
+            cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
+            cmd.Parameters.AddWithValue("@NameOfAgency", NameOfAgency);
+            cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+            cmd.Parameters.AddWithValue("@AddressOfSite", AddressOfSite);
+            cmd.Parameters.AddWithValue("@TypeOfPremises", TypeOfPremises);
+            cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+            cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
+            cmd.Parameters.AddWithValue("@WorkCompletionDate", WorkCompletionDate);
+            cmd.Parameters.AddWithValue("@InstallationType1", InstallationType1);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation1", TypeOfInstallation1);
+            cmd.Parameters.AddWithValue("@InstallationType2", InstallationType2);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation2", TypeOfInstallation2);
+            cmd.Parameters.AddWithValue("@InstallationType3", InstallationType3);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation3", TypeOfInstallation3);
+            cmd.Parameters.AddWithValue("@InstallationType4", InstallationType4);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation4", TypeOfInstallation4);
+            cmd.Parameters.AddWithValue("@InstallationType5", InstallationType5);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation5", TypeOfInstallation5);
+            cmd.Parameters.AddWithValue("@InstallationType6", InstallationType6);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation6", TypeOfInstallation6);
+            cmd.Parameters.AddWithValue("@InstallationType7", InstallationType7);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation7", TypeOfInstallation7);
+            cmd.Parameters.AddWithValue("@InstallationType8", InstallationType8);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation8", TypeOfInstallation8);
+            outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+
+        }
+        public string TestReportId()
+        {
+            if (outputParam != null)
+            {
+                return outputParam.Value.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
         #endregion
 

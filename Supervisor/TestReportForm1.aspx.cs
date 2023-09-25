@@ -8,6 +8,7 @@ namespace CEIHaryana.Supervisor
     public partial class TestReportForm1 : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -18,7 +19,7 @@ namespace CEIHaryana.Supervisor
                 ddlEarthing();
                 ddlEarthingSubstation();
                 //VisibleDiv()
-              //  ddlEarthingGeneratingSet();
+                //  ddlEarthingGeneratingSet();
                 //}
             }
         }
@@ -278,7 +279,9 @@ namespace CEIHaryana.Supervisor
 
                 else
                 {
-                    CEI.InsertLineData(txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                    string TestReportId = string.Empty;
+                    TestReportId = Session["TestReportId"].ToString();
+                    CEI.InsertLineData(TestReportId, txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
                    ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
                   txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
                    ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
@@ -316,7 +319,9 @@ namespace CEIHaryana.Supervisor
 
                 else
                 {
-                    CEI.InsertSubstationData(txtTransformerSerialNumber.Text, txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
+                    string TestReportId = string.Empty;
+                    TestReportId = Session["TestReportId"].ToString();
+                    CEI.InsertSubstationData(TestReportId, txtTransformerSerialNumber.Text, txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
                         txtPrimaryVoltage.Text, txtSecondryVoltage.Text, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                         txtLowestValue.Text, txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
                         ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), ddlSubstationEarthing2.SelectedItem.ToString(),
@@ -986,7 +991,9 @@ namespace CEIHaryana.Supervisor
                 }
                 else
                 {
-                    CEI.InsertGeneratingSetData(ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
+                    string TestReportId = string.Empty;
+                    TestReportId = Session["TestReportId"].ToString();
+                    CEI.InsertGeneratingSetData(TestReportId, ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
                txtGeneratorVoltage.Text, txtCurrentCapacity.Text, txtBreakingCapacity.Text, ddlPlantType.SelectedItem.ToString(), ddlPlantCapacity.SelectedItem.ToString(),
               txtPlantCapacity.Text, txtDCString.Text, txtLowestInsulation.Text, txtPCVOrSolar.Text, txtLTACCapacity.Text, txtLowestInsulationAC.Text,
               ddlGeneratingEarthing.SelectedItem.ToString(), ddlGeneratingEarthing1.SelectedItem.ToString(), txtGeneratingEarthing1.Text, ddlGeneratingEarthingUsed1.SelectedItem.ToString(),
@@ -1020,7 +1027,10 @@ namespace CEIHaryana.Supervisor
                 }
                 else
                 {
-                    CEI.InsertPhaseData(ddlTypeOfInstallation.SelectedItem.ToString(), ddlVoltageLevel.SelectedItem.ToString(), txtMainSwitch.Text, ddlPhaseEarthing.SelectedItem.ToString(),
+
+                    string TestReportId = string.Empty;
+                    TestReportId = Session["TestReportId"].ToString();
+                    CEI.InsertPhaseData(TestReportId, ddlTypeOfInstallation.SelectedItem.ToString(), ddlVoltageLevel.SelectedItem.ToString(), txtMainSwitch.Text, ddlPhaseEarthing.SelectedItem.ToString(),
                         ddlPhaseEarthing1.SelectedItem.ToString(), txtPhaseEarthing1.Text, ddlPhaseEarthingUsed1.SelectedItem.ToString(),
                         ddlPhaseEarthing2.SelectedItem.ToString(), txtPhaseEarthing2.Text, ddlPhaseEarthingUsed2.SelectedItem.ToString(), ddlPhaseEarthing3.SelectedItem.ToString(),
                         txtPhaseEarthing3.Text, ddlPhaseEarthingUsed3.SelectedItem.ToString(), ddlPhaseEarthing4.SelectedItem.ToString(), txtPhaseEarthing4.Text,

@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.TestReport;
 using System;
 using System.Configuration;
 using System.Data;
@@ -28,42 +29,42 @@ namespace CEIHaryana.Supervisor
                 REID = Session["id"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetWorkIntimationDataForAdmin(REID);
-              
-                    string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    txtInstallation.Text = dp_Id;
-                    if (dp_Id == "Firm/Organization/Company/Department")
-                    {
-                        agency.Visible = true;
-                        individual.Visible = false;
-                    }
-                    else
-                    {
-                        individual.Visible = true;
-                        agency.Visible = false;
-                    }
 
-                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                    txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                    //txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-                    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                    string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
-                    TxtPremises.Text = dp_Id1;
-                    string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
-                    //txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
-                    string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
-                    txtVoltagelevel.Text = dp_Id3;
-                    string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                    txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
-                    string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                    txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
-                    string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
-                    string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
-                    // txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
-                    // txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                    txtSiteContact.Text = ds.Tables[0].Rows[0]["SiteContact"].ToString();
-                    //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
-                    //txtWorkDetail.Text = dp_Id8;
-                
+                string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                txtInstallation.Text = dp_Id;
+                if (dp_Id == "Firm/Organization/Company/Department")
+                {
+                    agency.Visible = true;
+                    individual.Visible = false;
+                }
+                else
+                {
+                    individual.Visible = true;
+                    agency.Visible = false;
+                }
+
+                txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                TxtPremises.Text = dp_Id1;
+                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                //txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
+                txtVoltagelevel.Text = dp_Id3;
+                string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
+                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
+                string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
+                // txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                // txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                //txtSiteContact.Text = ds.Tables[0].Rows[0]["SiteContact"].ToString();
+                //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
+                //txtWorkDetail.Text = dp_Id8;
+
             }
             catch { }
         }
@@ -205,7 +206,15 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
+                CEI.InsertTestReportData(txtInstallation.Text, txtName.Text, txtagency.Text, txtAddress.Text, TxtPremises.Text,
+                    txtVoltagelevel.Text, txtPhone.Text, txtStartDate.Text, txtCompletitionDate.Text, txtinstallationType1.Text,
+                    txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text,
+                    txtinstallationNo3.Text, txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text,
+                    txtinstallationNo5.Text, txtinstallationType6.Text, txtinstallationNo6.Text, txtinstallationType7.Text,
+                    txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text);
 
+                string TestReportId = CEI.TestReportId();
+                Session["TestReportId"] = CEI.TestReportId();
                 Session["installationType1"] = txtinstallationType1.Text;
                 Session["installationNo1"] = txtinstallationNo1.Text;
 
