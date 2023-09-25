@@ -1,6 +1,7 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,8 +16,21 @@ namespace CEIHaryana.TestReport
         {
             if (!IsPostBack)
             {
-
+                ddlEarthingSubstation();
             }
+        }
+        private void ddlEarthingSubstation()
+        {
+
+            DataSet dsEarthing = new DataSet();
+            dsEarthing = CEI.GetddlEarthingSubstation();
+            ddlEarthingsubstation.DataSource = dsEarthing;
+            ddlEarthingsubstation.DataTextField = "NumberOfEarthing";
+            ddlEarthingsubstation.DataValueField = "NumberOfEarthing";
+            ddlEarthingsubstation.DataBind();
+            ddlEarthingsubstation.Items.Insert(0, new ListItem("Select", "0"));
+            dsEarthing.Clear();
+
         }
         protected void ddltransformerType_SelectedIndexChanged(object sender, EventArgs e)
         {
