@@ -1955,6 +1955,17 @@
         <li class="tab-content tab-content-2 typography">
             <div class="card-body" style="margin-top: -30px;">
                 <div class="InstallationSubstation">
+                      <div class="row">
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-sm-4" style="text-align: center;">
+                                                            <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                                                Data Updated Successfully !!!.
+                                                            </label>
+                                                            <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                                                Data Saved Successfully !!!.
+                                                            </label>
+                                                        </div>
+                                                    </div>
                     <div class="row">
                         <div class="col-4" id="Div121" runat="server">
                             <label for="Voltage">
@@ -2963,7 +2974,7 @@
                     <div class="col-12" style="text-align: center;">
                         <asp:CheckBox ID="CheckBox2" runat="server" OnCheckedChanged="CheckBox2_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
                         <br />
-                        <label id="label1" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                        <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Please Verify this.
                         </label>
                     </div>

@@ -24,6 +24,24 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl IfInstallationIsLine;
 
         /// <summary>
+        /// DataUpdated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataUpdated;
+
+        /// <summary>
+        /// DataSaved control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
+
+        /// <summary>
         /// ddlLineVoltage control.
         /// </summary>
         /// <remarks>

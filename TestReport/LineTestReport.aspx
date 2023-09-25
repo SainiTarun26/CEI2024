@@ -2001,6 +2001,17 @@ width: 99%;
                                     <li class="tab-content tab-content-first typography">
                                         <div id="IfInstallationIsLine" runat="server">
                                             <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
+                                                  <div class="row">
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-sm-4" style="text-align: center;">
+                                                            <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                                                Data Updated Successfully !!!.
+                                                            </label>
+                                                            <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                                                Data Saved Successfully !!!.
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 <div>
                                                  
                                                     <div class="row">

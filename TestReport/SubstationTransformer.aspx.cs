@@ -311,7 +311,7 @@ namespace CEIHaryana.TestReport
             {
                 if (CheckBox2.Checked == false)
                 {
-                    label1.Visible = true;
+                    labelVerification.Visible = true;
                 }
 
                 else
@@ -337,27 +337,53 @@ namespace CEIHaryana.TestReport
                         txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), ddlSubstationEarthing20.SelectedItem.ToString(),
                         txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
                         txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text);
-
-                    //DataSaved.Visible = true;
-                    //labelVerification.Visible = false;
+                    Reset();
+                    DataSaved.Visible = true;
+                    labelVerification.Visible = false;
                 }
             }
             catch (Exception Ex)
             {
 
-               // DataSaved.Visible = false;
+               DataSaved.Visible = false;
             }
         }
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckBox2.Checked == false)
             {
-                label1.Visible = true;
+                labelVerification.Visible = true;
             }
             else
             {
-                label1.Visible = false;
+                labelVerification.Visible = false;
             }
+        }
+        
+        public void Reset()
+        {
+            txtTransformerSerialNumber.Text = ""; 
+            txtTransformerCapacity.Text = ""; 
+            ddltransformerType.SelectedValue = "0";
+            txtPrimaryVoltage.Text = ""; 
+            txtSecondryVoltage.Text = ""; txtOilCapacity.Text = ""; txtOilBDV.Text = ""; txtHTsideInsulation.Text = ""; txtLTSideInsulation.Text = "";
+            txtLowestValue.Text = ""; txtLightningArrestor.Text = ""; ddlHTType.SelectedValue = "0"; ddlEarthingsubstation.SelectedValue = "0";
+            ddlSubstationEarthing1.SelectedValue = "0"; txtSubstationEarthing1.Text = ""; ddlUsedFor1.SelectedValue = "0"; ddlSubstationEarthing2.SelectedValue = "0";
+            txtSubstationEarthing2.Text = ""; ddlUsedFor2.SelectedValue = "0"; ddlSubstationEarthing3.SelectedValue = "0"; txtSubstationEarthing3.Text = ""; ddlUsedFor3.SelectedValue = "0";
+            ddlSubstationEarthing4.SelectedValue = "0"; txtSubstationEarthing4.Text = ""; ddlUsedFor4.SelectedValue = "0"; ddlSubstationEarthing5.SelectedValue = "0"; txtSubstationEarthing5.Text = "";
+            ddlUsedFor5.SelectedValue = "0"; ddlSubstationEarthing6.SelectedValue = "0"; txtSubstationEarthing6.Text = ""; ddlUsedFor6.SelectedValue = "0";
+            ddlSubstationEarthing7.SelectedValue = "0"; txtSubstationEarthing7.Text = ""; ddlUsedFor7.SelectedValue = "0"; ddlSubstationEarthing8.SelectedValue = "0";
+            txtSubstationEarthing8.Text = ""; ddlUsedFor8.SelectedValue = "0"; ddlSubstationEarthing9.SelectedValue = "0"; txtSubstationEarthing9.Text = ""; ddlUsedFor9.SelectedValue = "0";
+            ddlSubstationEarthing10.SelectedValue = "0"; txtSubstationEarthing10.Text = ""; ddlUsedFor10.SelectedValue = "0"; ddlSubstationEarthing11.SelectedValue = "0";
+            txtSubstationEarthing11.Text = ""; ddlUsedFor11.SelectedValue = "0"; ddlSubstationEarthing12.SelectedValue = "0"; txtSubstationEarthing12.Text = "";
+            ddlUsedFor12.SelectedValue = "0"; ddlSubstationEarthing13.SelectedValue = "0"; txtSubstationEarthing13.Text = ""; ddlUsedFor13.SelectedValue = "0";
+            ddlSubstationEarthing14.SelectedValue = "0"; txtSubstationEarthing14.Text = ""; ddlUsedFor14.SelectedValue = "0"; ddlSubstationEarthing15.SelectedValue = "0";
+            txtSubstationEarthing15.Text = ""; ddlUsedFor15.SelectedValue = "0"; ddlSubstationEarthing16.SelectedValue = "0"; txtSubstationEarthing16.Text = ""; ddlUsedFor16.SelectedValue = "0";
+            ddlSubstationEarthing17.SelectedValue = "0"; txtSubstationEarthing17.Text = ""; ddlUsedFor17.SelectedValue = "0"; ddlSubstationEarthing18.SelectedValue = "0"; txtSubstationEarthing18.Text = "";
+            ddlUsedFor18.SelectedValue = "0"; ddlSubstationEarthing19.SelectedValue = "0";
+            txtSubstationEarthing19.Text = ""; ddlUsedFor19.SelectedValue = "0"; ddlSubstationEarthing20.SelectedValue = "0";
+            txtSubstationEarthing20.Text = ""; ddlUsedFor20.SelectedValue = "0"; txtBreakerCapacity.Text = ""; ddlLTProtection.SelectedValue = "0"; txtIndividualCapacity.Text = "";
+            txtLTBreakerCapacity.Text = ""; txtLoadBreakingCapacity.Text = ""; txtSealLevelPlinth.Text="";
         }
     }
 }
