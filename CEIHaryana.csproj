@@ -1549,8 +1549,9 @@
     <Content Include="Supervisor\TestReportDetails.aspx" />
     <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
-    <Content Include="TestReport\GeneratingSet.aspx" />
+    <Content Include="TestReport\GeneratingSetTestReport.aspx" />
     <Content Include="TestReport\LineTestReport.aspx" />
+    <Content Include="TestReport\Single-Three-Phase.aspx" />
     <Content Include="TestReport\SubstationTransformer.aspx" />
     <Content Include="TestReport\TestReport.aspx" />
     <Content Include="UserPages\Documents.aspx" />
@@ -1728,12 +1729,12 @@
     <Compile Include="Supervisor\TestReportForm1.aspx.designer.cs">
       <DependentUpon>TestReportForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestReport\GeneratingSet.aspx.cs">
-      <DependentUpon>GeneratingSet.aspx</DependentUpon>
+    <Compile Include="TestReport\GeneratingSetTestReport.aspx.cs">
+      <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TestReport\GeneratingSet.aspx.designer.cs">
-      <DependentUpon>GeneratingSet.aspx</DependentUpon>
+    <Compile Include="TestReport\GeneratingSetTestReport.aspx.designer.cs">
+      <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReport\LineTestReport.aspx.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
@@ -1741,6 +1742,13 @@
     </Compile>
     <Compile Include="TestReport\LineTestReport.aspx.designer.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport\Single-Three-Phase.aspx.cs">
+      <DependentUpon>Single-Three-Phase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReport\Single-Three-Phase.aspx.designer.cs">
+      <DependentUpon>Single-Three-Phase.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReport\SubstationTransformer.aspx.cs">
       <DependentUpon>SubstationTransformer.aspx</DependentUpon>

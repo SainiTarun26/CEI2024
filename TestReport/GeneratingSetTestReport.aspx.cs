@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.TestReport
 {
-    public partial class GeneratingSet : System.Web.UI.Page
+    public partial class GeneratingSetTestReport : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
