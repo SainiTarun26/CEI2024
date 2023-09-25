@@ -1549,6 +1549,7 @@
     <Content Include="Supervisor\TestReportDetails.aspx" />
     <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
+    <Content Include="TestReport\TestReport.aspx" />
     <Content Include="UserPages\Documents.aspx" />
     <Content Include="UserPages\FormPrintContractor.aspx" />
     <Content Include="UserPages\FormPrintSupervisor.aspx" />
@@ -1723,6 +1724,13 @@
     </Compile>
     <Compile Include="Supervisor\TestReportForm1.aspx.designer.cs">
       <DependentUpon>TestReportForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport\TestReport.aspx.cs">
+      <DependentUpon>TestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReport\TestReport.aspx.designer.cs">
+      <DependentUpon>TestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReport\TestReport.Master.cs">
       <DependentUpon>TestReport.Master</DependentUpon>
@@ -1907,6 +1915,7 @@
     <Folder Include="css\" />
     <Folder Include="Models\" />
     <Folder Include="NewFolder1\" />
+    <Folder Include="NewFolder2\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\css\tinymce\tinymce.d.ts" />
