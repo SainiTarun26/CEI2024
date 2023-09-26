@@ -18,10 +18,7 @@ namespace CEIHaryana.TestReport
             {
                 ddlLoadBindVoltage();
                 ddlEarthing();
-                if (hdn.Value == Session["installationNo1"].ToString())
-                {
-                    btnSubmit.Visible = false;
-                }
+               
             }
         }
 
@@ -58,6 +55,7 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlLineVoltage_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DataSaved.Visible = false;
             if (ddlLineVoltage.SelectedItem.ToString() == "Other")
             {
                 OtherVoltage.Visible = true;
@@ -401,20 +399,57 @@ namespace CEIHaryana.TestReport
                     Reset();
                      DataSaved.Visible = true;
                     labelVerification.Visible = false;
-                    string sessionValue = Session["installationNo1"] as string;
-                    int currentValue = Convert.ToInt32(hdn.Value);
-                    currentValue += 1;
-                    hdn.Value = currentValue.ToString();
-                    if(hdn.Value == sessionValue)
-                    {
-                        btnSubmit.Visible = false;
-                    }
+                    PageWorking();
                 }
             }
             catch (Exception Ex)
             {
 
                 DataSaved.Visible = false;
+            }
+        }
+        public void PageWorking()
+        {
+            string sessionValue = string.Empty;
+            if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo1"] as string;
+            }
+            else if(Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo2"] as string;
+            }
+             else if(Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo3"] as string;
+            }
+             else if(Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo4"] as string;
+            }
+             else if(Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo5"] as string;
+            }
+             else if(Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo6"] as string;
+            }
+             else if(Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo7"] as string;
+            }
+             else if(Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
+            {
+                sessionValue = Session["installationNo8"] as string;
+            }
+
+            int currentValue = Convert.ToInt32(hdn.Value);
+            currentValue += 1;
+            hdn.Value = currentValue.ToString();
+            if (hdn.Value == sessionValue)
+            {
+                btnSubmit.Visible = false;
             }
         }
         public void Reset()

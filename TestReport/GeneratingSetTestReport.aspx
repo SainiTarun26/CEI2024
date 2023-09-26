@@ -1943,9 +1943,12 @@ width: 99%;
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+       <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    
                                    <ul>
                                                    <li class="tab-content tab-content-3 typography">
                                         <div class="card-body" style="margin-top: -30px;">
+                                   
                                              <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-sm-4" style="text-align: center;">
@@ -1957,6 +1960,8 @@ width: 99%;
                             </label>
                         </div>
                     </div>
+                                                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
                                             <div class="row">
                                                 <div class="col-2" id="Div170" runat="server" style="margin-top: -15px;">
                                                     <label for="Name">
@@ -2583,7 +2588,10 @@ width: 99%;
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                      <div class="row" style="margin-top: 100px;">
+                                                    
+                                                </div>
+                                            </div>
+                                              <div class="row" style="margin-top: 100px;">
                                                       <%--  <div class="col-2"></div>--%>
                                                     <div class="col-12" style="text-align: center;">
                                                         <asp:CheckBox ID="CheckBox3" runat="server" OnCheckedChanged="CheckBox3_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
@@ -2593,6 +2601,9 @@ width: 99%;
                                                             </label>
                                                         </div>
                                                     </div>
+                           
+   </ContentTemplate>
+         </asp:UpdatePanel>
                                                      <div class="row">
                                                     <DIV class="col-12">
                                                         </div>
@@ -2601,17 +2612,14 @@ width: 99%;
                                                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitGeneratingSet_Click" />
                                                     </div>
                                                     <div class="col-4">
-                                                        <asp:HiddenField ID="HiddenField3" runat="server" />
+                                                      <asp:HiddenField ID="hdn" Value="0" runat="server" />
                                                     </div>
                                                 </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </li>
                                    
                                </ul>
-                           
-   
+                    
 
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
 <script src="/Assets/js/chart.js/Chart.min.js"></script>

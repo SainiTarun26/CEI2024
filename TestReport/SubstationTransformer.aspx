@@ -1973,12 +1973,13 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    
     <ul>
 
         <li class="tab-content tab-content-2 typography">
             <div class="card-body" style="margin-top: -30px;">
-                <div class="InstallationSubstation">
+               
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-sm-4" style="text-align: center;">
@@ -1989,7 +1990,9 @@
                                 Data Saved Successfully !!!.
                             </label>
                         </div>
-                    </div>
+                      </div>
+                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
                     <div class="row">
                         <div class="col-4" id="Div121" runat="server">
                             <label for="Voltage">
@@ -2003,7 +2006,7 @@
                                 Capacity of transformer (IN KVA) 
                                         <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>--%>
@@ -2020,7 +2023,7 @@
                             </asp:DropDownList>
                         </div>
                     </div>
-                </div>
+                
                 <div id="InCaseOfOil" runat="server" visible="false">
                     <div class="row">
 
@@ -3003,6 +3006,8 @@
                     </label>
                 </div>
             </div>
+                     </ContentTemplate>
+         </asp:UpdatePanel>
             <div class="row">
 
                 <div class="col-4"></div>
@@ -3011,13 +3016,13 @@
                         Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitSubstation_Click" />
                 </div>
                 <div class="col-4">
-                    <asp:HiddenField ID="HiddenField2" runat="server" />
+                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
                 </div>
             </div>
-
+</div>
         </li>
     </ul>
-
+                   
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
     <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>

@@ -15,6 +15,15 @@ namespace CEIHaryana.TestReport
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// DataUpdated control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
+
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
         /// Div170 control.
@@ -861,12 +879,12 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.Button BtnSubmitGeneratingSet;
 
         /// <summary>
-        /// HiddenField3 control.
+        /// hdn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField3;
+        protected global::System.Web.UI.WebControls.HiddenField hdn;
     }
 }

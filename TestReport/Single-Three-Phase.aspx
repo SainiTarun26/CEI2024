@@ -1945,9 +1945,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+       <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+   
                                        <ul>
                                                                           <li class="tab-content tab-content-last typography">
                                         <div class="card-body" style="margin-top: -45px;">
+                                              
                                                 <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-sm-4" style="text-align: center;">
@@ -1959,6 +1962,8 @@
                             </label>
                         </div>
                     </div>
+                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
                                             <div class="row">
                                                   <div class="col-4">
                                                     <label for="Name">
@@ -2546,6 +2551,9 @@
                                                             </label>
                                                         </div>
                                                     </div>
+                    
+</ContentTemplate>
+         </asp:UpdatePanel>
                                                      <div class="row">
 
                                                     <div class="col-4"></div>
@@ -2554,7 +2562,7 @@
                                                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnPhaseSubmit_Click" />
                                                     </div>
                                                     <div class="col-4">
-                                                        <asp:HiddenField ID="HiddenField4" runat="server" />
+                                                        <asp:HiddenField ID="hdn" Value="0" runat="server" />
                                                     </div>
                                                 </div>
                                         </div>
@@ -2562,7 +2570,6 @@
                                    
                                </ul>
     
-
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
 <script src="/Assets/js/chart.js/Chart.min.js"></script>
 <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
