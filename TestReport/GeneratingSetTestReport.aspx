@@ -2585,28 +2585,31 @@ width: 99%;
                                                     </div>
                                                       <div class="row" style="margin-top: 100px;">
                                                       <%--  <div class="col-2"></div>--%>
-                                                    <div class="col-12" style="text-align: center;">
-                                                        <asp:CheckBox ID="CheckBox3" runat="server" OnCheckedChanged="CheckBox3_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
-                                                   <br /> 
-                                                        <label id="label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                                               Please Verify this.
-                                                            </label>
-                                                        </div>
+                                                    
                                                     </div>
-                                                     <div class="row">
-                                                    <DIV class="col-12">
-                                                        </div>
-                                                    <div class="col-12" style="text-align: center;">
-                                                        <asp:Button ID="BtnSubmitGeneratingSet" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitGeneratingSet_Click" />
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <asp:HiddenField ID="HiddenField3" runat="server" />
-                                                    </div>
-                                                </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
+                                                        <div class="col-12" style="text-align: center;">
+     <asp:CheckBox ID="CheckBox3" runat="server" OnCheckedChanged="CheckBox3_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
+<br /> 
+     <label id="label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+            Please Verify this.
+         </label>
+     </div>
+                                                       <div class="row">
+    <div class="col-12">
+    </div>
+    <div class="col-12" style="text-align: center;">
+        <asp:Button ID="BtnSubmitGeneratingSet" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitGeneratingSet_Click" />
+    </div>
+    <div class="col-4">
+        <asp:HiddenField ID="HiddenField3" runat="server" />
+    </div>
+</div>
+
                                     </li>
                                    
                                </ul>
