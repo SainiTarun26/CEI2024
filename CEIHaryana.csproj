@@ -1550,10 +1550,7 @@
     <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="TestReport\GeneratingSetTestReport.aspx" />
-    <Content Include="TestReport\LiftTestReport.aspx" />
     <Content Include="TestReport\LineTestReport.aspx" />
-    <Content Include="TestReport\LPISinglePhase.aspx" />
-    <Content Include="TestReport\MPIThreePhase.aspx" />
     <Content Include="TestReport\Single-Three-Phase.aspx" />
     <Content Include="TestReport\SubstationTransformer.aspx" />
     <Content Include="TestReport\TestReport.aspx" />
@@ -1739,33 +1736,12 @@
     <Compile Include="TestReport\GeneratingSetTestReport.aspx.designer.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestReport\LiftTestReport.aspx.cs">
-      <DependentUpon>LiftTestReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestReport\LiftTestReport.aspx.designer.cs">
-      <DependentUpon>LiftTestReport.aspx</DependentUpon>
-    </Compile>
     <Compile Include="TestReport\LineTestReport.aspx.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TestReport\LineTestReport.aspx.designer.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestReport\LPISinglePhase.aspx.cs">
-      <DependentUpon>LPISinglePhase.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestReport\LPISinglePhase.aspx.designer.cs">
-      <DependentUpon>LPISinglePhase.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestReport\MPIThreePhase.aspx.cs">
-      <DependentUpon>MPIThreePhase.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestReport\MPIThreePhase.aspx.designer.cs">
-      <DependentUpon>MPIThreePhase.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReport\Single-Three-Phase.aspx.cs">
       <DependentUpon>Single-Three-Phase.aspx</DependentUpon>

@@ -18,6 +18,10 @@ namespace CEIHaryana.TestReport
             {
                 ddlLoadBindVoltage();
                 ddlEarthing();
+                if (hdn.Value == Session["installationNo1"].ToString())
+                {
+                    btnSubmit.Visible = false;
+                }
             }
         }
 
@@ -397,6 +401,14 @@ namespace CEIHaryana.TestReport
                     Reset();
                      DataSaved.Visible = true;
                     labelVerification.Visible = false;
+                    string sessionValue = Session["installationNo1"] as string;
+                    int currentValue = Convert.ToInt32(hdn.Value);
+                    currentValue += 1;
+                    hdn.Value = currentValue.ToString();
+                    if(hdn.Value == sessionValue)
+                    {
+                        btnSubmit.Visible = false;
+                    }
                 }
             }
             catch (Exception Ex)
