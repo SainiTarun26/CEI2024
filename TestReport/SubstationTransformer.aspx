@@ -1946,7 +1946,30 @@
             zoom: 90%; /* Webkit browsers */
         }
     </style>
+      <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
 
+        //Allow Only Aplhabet, Delete and Backspace
+
+        function isAlpha(keyCode) {
+
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+
+        }
+
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+      </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -1979,7 +2002,7 @@
                                 Capacity of transformer (IN KVA) 
                                         <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" onKeyPress="return isNumberKey();" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>--%>
@@ -1990,7 +2013,7 @@
                                         <samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddltransformerType_SelectedIndexChanged" AutoPostBack="true" ID="ddltransformerType" selectionmode="Multiple" Style="width: 100% !important">
-                                <asp:ListItem Value="" Text="Select"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="Oil"></asp:ListItem>
                                 <asp:ListItem Value="2" Text="Dry"></asp:ListItem>
                             </asp:DropDownList>
@@ -2006,7 +2029,7 @@
                             Primary voltage(in kva)  
                             <samp style="color: red">* </samp>
                         </label>
-                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" MaxLength="10" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                       
                             </div>
                         <div class="col-4">
@@ -2014,7 +2037,7 @@
                             Secondary Voltage(in volte)  
                                         <samp style="color: red">* </samp>
                         </label>
-                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" onKeyPress="return isNumberKey();" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                         
                     <div id="Capacity" class="col-4" runat="server" visible="false">
@@ -2023,7 +2046,7 @@
                                 Capacity of oil(in liters)  
                                         <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" MaxLength="10" onKeyPress="return isNumberKey();"  onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                        
                         
                     </div>
@@ -2032,7 +2055,7 @@
         BDV level of oil (in kv) Break down voltage  
                 <samp style="color: red">* </samp>
     </label>
-    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="10" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 </div>
                         </div>
                 </div>
@@ -2044,9 +2067,9 @@
                                     HT side Insulation Resistance— HV/Earth
                                                         <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtHTsideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey();" ID="txtHTsideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
-                            <div class="col-4" id="Div127" runat="server">
+                         <%--   <div class="col-4" id="Div127" runat="server">
                                 <label for="Voltage" style="margin-top: 10px;">
                                     Yellow Phase – Earth Wire (in Mohm)   
                                                         <samp style="color: red">* </samp>
@@ -2059,7 +2082,7 @@
                                                         <samp style="color: red">* </samp>
                                 </label>
                                 <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBlueWireSubstation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                     <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
@@ -2070,9 +2093,9 @@
                                     LT side Insulation Resistance—LV/Earth
                                             <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTSideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey();" ID="txtLTSideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
-                            <div class="col-4">
+                         <%--   <div class="col-4">
                                 <label for="Voltage" style="margin-top: 10px;">
                                     Yellow Phase – Earth Wire (in Mohm)   
                                             <samp style="color: red">* </samp>
@@ -2085,7 +2108,7 @@
                                             <samp style="color: red">* </samp>
                                 </label>
                                 <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBlueWireSubstationLT" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                     <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
@@ -2096,7 +2119,7 @@
                                     Insulation Resistance between HT LT Side 
             <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLowestValue" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey();" ID="txtLowestValue" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -2148,7 +2171,7 @@
                                             </td>
                                             <td>
                                                 <div class="col-12">
-                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing1" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
@@ -2181,7 +2204,7 @@
                                             </td>
                                             <td>
                                                 <div class="col-12">
-                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing2" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
@@ -2214,7 +2237,7 @@
                                             </td>
                                             <td>
                                                 <div class="col-12">
-                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing3" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
@@ -2248,7 +2271,7 @@
                                             </td>
                                             <td>
                                                 <div class="col-12" id="Div53" runat="server">
-                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:TextBox class="form-control" ID="txtSubstationEarthing4" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
@@ -2282,7 +2305,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing5" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2315,7 +2338,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing6" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2348,7 +2371,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing7"  onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2381,7 +2404,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing8" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2414,7 +2437,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing9" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2447,7 +2470,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing10" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2480,7 +2503,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing11" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2513,7 +2536,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing12" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2546,7 +2569,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing13" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing13" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2579,7 +2602,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing14" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing14" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2612,7 +2635,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing15" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing15" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2645,7 +2668,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing16" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing16" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2678,7 +2701,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing17" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing17" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2711,7 +2734,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing18" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing18" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2744,7 +2767,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing19" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing19" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2777,7 +2800,7 @@
                                         </td>
                                         <td>
                                             <div class="col-12">
-                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing20" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtSubstationEarthing20" onKeyPress="return isNumberKey();" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </td>
                                         <td>
@@ -2822,7 +2845,7 @@
                                     Load breaking capacity of breaker (IN KA)  
                                                     <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerCapacity" onKeyPress="return isNumberKey();" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4">
                                 <label>
@@ -2840,7 +2863,7 @@
                                     Capacity of individual fuse(IN AMPS)  
                                                     <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtIndividualCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtIndividualCapacity" onKeyPress="return isNumberKey();" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -2851,21 +2874,21 @@
                                     Capacity of LT Breaker(IN AMPS)  
                                                     <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTBreakerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTBreakerCapacity" onKeyPress="return isNumberKey();" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4" id="Div168" runat="server">
                                 <label for="Voltage">
                                     Load Breaking Capacity of Breaker (IN AMPS)  
                                                     <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" onKeyPress="return isNumberKey();" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4" id="Div169" runat="server">
                                 <label for="Voltage">
                                     Mean Sea Level of transformer plinth (IN METRES)  
                                                     <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" onKeyPress="return isNumberKey();" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                         </div>
                     </div>
