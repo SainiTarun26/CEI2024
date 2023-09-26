@@ -38,10 +38,10 @@ namespace CEIHaryana.TestReport
                 //{
                 //   lblGeneratingSet.Visible = true; 
                 //}
-                //if (Session["installationType1"].ToString().Trim() == "Single/ThreePhase" || Session["installationType2"].ToString().Trim() == "Single/ThreePhase"
-                //   || Session["installationType3"].ToString().Trim() == "Single/ThreePhase" || Session["installationType4"].ToString().Trim() == "Single/ThreePhase"
-                //   || Session["installationType5"].ToString().Trim() == "Single/ThreePhase" || Session["installationType6"].ToString().Trim() == "Single/ThreePhase"
-                //   || Session["installationType7"].ToString().Trim() == "Single/ThreePhase" || Session["installationType8"].ToString().Trim() == "Single/ThreePhase")
+                //if (Session["installationType1"].ToString().Trim() == "Single/ Three Phase" || Session["installationType2"].ToString().Trim() == "Single/ Three Phase"
+                //   || Session["installationType3"].ToString().Trim() == "Single/ Three Phase" || Session["installationType4"].ToString().Trim() == "Single/ Three Phase"
+                //   || Session["installationType5"].ToString().Trim() == "Single/ Three Phase" || Session["installationType6"].ToString().Trim() == "Single/ Three Phase"
+                //   || Session["installationType7"].ToString().Trim() == "Single/ Three Phase" || Session["installationType8"].ToString().Trim() == "Single/ Three Phase")
                 //{
                 //   lblPhses.Visible = true;
                 //}

@@ -1947,611 +1947,621 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
                                        <ul>
                                                                           <li class="tab-content tab-content-last typography">
-                           <div class="card-body" style="margin-top: -45px;">
-                               <div class="row">
-                                     <div class="col-4">
-                                       <label for="Name">
-                                          Type of installation
-                                   <samp style="color: red">* </samp>
-                                       </label>
-                                       <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTypeOfInstallation" selectionmode="Multiple" Style="width: 100% !important">
-                                      <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                 <asp:ListItem Value="1" Text="Single phase"></asp:ListItem>
-                                                 <asp:ListItem Value="2" Text="Three phase"></asp:ListItem>
-                                           </asp:DropDownList>
-                                   </div>
-                                   <div class="col-4" id="Div118" runat="server">
-                                       <label for="Name">
-                                           Voltage Level
-                                   <samp style="color: red">* </samp>
-                                       </label>
-                                       <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlVoltageLevel" selectionmode="Multiple" Style="width: 100% !important">
-                                     <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                 <asp:ListItem Value="1" Text="220 volts"></asp:ListItem>
-                                                 <asp:ListItem Value="2" Text="440 volts"></asp:ListItem>
-                                           </asp:DropDownList>
-                                   </div>
-                                   <div class="col-4" id="Div119" runat="server">
-                                       <label for="Name">
-                                           Main switch capacity/ Breaker
-                                   <samp style="color: red">* </samp>
-                                       </label>
-                                       <asp:TextBox class="form-control" ID="txtMainSwitch" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   </div>
-                                   <div class="col-4" id="Div120" runat="server">
-                                       <label for="Name">
-                                           Number of Earthing:
-                                   <samp style="color: red">* </samp>
-                                       </label>
-                                       <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing" selectionmode="Multiple" Style="width: 100% !important">
-                                       </asp:DropDownList>
-                                   </div>
-                                   <div class="table-responsive pt-3" id="PhaseEarthing" runat="server" visible="false">
-                                       <table class="table table-bordered table-striped">
-                                               <thead class="table-dark">
-                                                   <tr>
-                                                       <th>S.No.
-                                                       </th>
-                                                       <th>Earthing Type
-                                                       </th>
-                                                       <th>Value in(ohms)
-                                                       </th> 
-                                                       <th>Used For
-                                                       </th>
-                                                   </tr>
-                                               </thead>
-                                               <tbody>
-                                                   <tr id="PhaseEarthing1" runat="server" visible="false">
-                                                       <td>1
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing1" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed1" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                  <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing2" runat="server" visible="false">
-                                                       <td>2
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing2" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td>  <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed2" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                       <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing3" runat="server" visible="false">
-                                                       <td>3
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing3" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                               </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed3" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                       <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing4" runat="server" visible="false">
-                                                       <td>4
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12" id="Div14" runat="server">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing4" selectionmode="Multiple" Style="width: 100% !important">
-                                                               
-                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12" id="Div16" runat="server">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed4" selectionmode="Multiple" Style="width: 100% !important">
-                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                       <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing5" runat="server" visible="false">
-                                                       <td>5
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12" id="Div17" runat="server">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing5" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed5" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing6" runat="server" visible="false">
-                                                       <td>6
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing6" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12"">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed6" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing7" runat="server" visible="false">
-                                                       <td>7
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12" id="Div18" runat="server">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing7" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed7" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing8" runat="server" visible="false">
-                                                       <td>8
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing8" selectionmode="Multiple" Style="width: 100% !important">
-                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed8" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing9" runat="server" visible="false">
-                                                       <td>9
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing9" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed9" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing10" runat="server" visible="false">
-                                                       <td>10
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing10" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem>  </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed10" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing11" runat="server" visible="false">
-                                                       <td>11
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing11" selectionmode="Multiple" Style="width: 100% !important">
-                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed11" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing12" runat="server" visible="false">
-                                                       <td>12
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing12" selectionmode="Multiple" Style="width: 100% !important">
-                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed12" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing13" runat="server" visible="false">
-                                                       <td>13
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing13" selectionmode="Multiple" Style="width: 100% !important">
-                                                                  <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing13" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed13" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing14" runat="server" visible="false">
-                                                       <td>14
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing14" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem>  </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing14" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed14" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                                   <tr id="PhaseEarthing15" runat="server" visible="false">
-                                                       <td>15
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing15" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Plate"></asp:ListItem>  </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                       <td>
-                                                           <div class="col-12">
-                                                               <asp:TextBox class="form-control" ID="txtPhaseEarthing15" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                           </div>
-                                                       </td><td>
-                                                           <div class="col-12">
-                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed15" selectionmode="Multiple" Style="width: 100% !important">
-                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                       <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
-                                                                   <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                       <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                       <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                                                   </asp:DropDownList>
-                                                           </div>
-                                                       </td>
-                                                   </tr> 
-                                               </tbody>
-                                           </table>
-                                   </div>
-                               </div>
-                               <div class="row">
-                                   <div class="col-4" id="Div164" runat="server">
-                                       <label for="Name">
-                                           Minimum IR value
-<samp style="color: red">* </samp>
-                                       </label>
-                                       <asp:TextBox class="form-control" ID="txtMinIRValue" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="between wires(in Mohm)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   </div>
-                               </div>
-                               <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">No of RCCB</label>
-                               <div>
-                                   <div class="row" style="margin-top: -15px;">
-                                       <div class="col-4">
-                                           <label for="Voltage" style="margin-top: 10px;">
-                                              No of RCCB (mA)  
-   <samp style="color: red">* </samp>
-                                           </label>
-                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtNoOfRCCB" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                       </div> 
-                                       <div class="col-4" id="Div190" runat="server">
-                                           <label for="Voltage" style="margin-top: 10px;">
-                                               Rating of RCCB (mA)  
-   <samp style="color: red">* </samp>
-                                           </label>
-                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtRCCBRating" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                       </div>
-                                       <div class="col-4" id="Div191" runat="server">
-                                           <label for="Voltage" style="margin-top: 10px;">
-                                               Current carrying capacity   
-   <samp style="color: red">* </samp>
-                                           </label>
-                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtCurrentCarryingCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                       </div>
-                                       <div class="col-4" id="Div192" runat="server">
-                                           <label for="Voltage" style="margin-top: 10px;">
-                                               No of circuits  
-   <samp style="color: red">* </samp>
-                                           </label>
-                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtNoOfCircuits" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                       </div>
-                                       <div class="col-4" >
-                                           <label for="Voltage" style="margin-top: 10px;">
-                                               No of Motors  
-   <samp style="color: red">* </samp>
-                                           </label>
-                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtNoOfMotors" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                       </div>
-                                   </div>
-                               </div>
-                                   <div class="row" style="margin-top: 50px;">
-                                         <%--  <div class="col-2"></div>--%>
-                                       <div class="col-12" style="text-align: center;">
-                                           <asp:CheckBox ID="CheckBox4" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
-                                      <br /> 
-                                           <label id="label3" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                                  Please Verify this.
-                                               </label>
-                                           </div>
-                                       </div>
-                                        <div class="row">
+                                        <div class="card-body" style="margin-top: -45px;">
+                                                <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-sm-4" style="text-align: center;">
+                            <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                Data Updated Successfully !!!.
+                            </label>
+                            <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                Data Saved Successfully !!!.
+                            </label>
+                        </div>
+                    </div>
+                                            <div class="row">
+                                                  <div class="col-4">
+                                                    <label for="Name">
+                                                       Type of installation
+                                                <samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTypeOfInstallation" selectionmode="Multiple" Style="width: 100% !important">
+                                                   <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                              <asp:ListItem Value="1" Text="Single phase"></asp:ListItem>
+                                                              <asp:ListItem Value="2" Text="Three phase"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                </div>
+                                                <div class="col-4" id="Div118" runat="server">
+                                                    <label for="Name">
+                                                        Voltage Level
+                                                <samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlVoltageLevel" selectionmode="Multiple" Style="width: 100% !important">
+                                                  <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                              <asp:ListItem Value="1" Text="220 volts"></asp:ListItem>
+                                                              <asp:ListItem Value="2" Text="440 volts"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                </div>
+                                                <div class="col-4" id="Div119" runat="server">
+                                                    <label for="Name">
+                                                        Main switch capacity/ Breaker
+                                                <samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:TextBox class="form-control" ID="txtMainSwitch" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                </div>
+                                                <div class="col-4" id="Div120" runat="server">
+                                                    <label for="Name">
+                                                        Number of Earthing:
+                                                <samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlPhaseEarthing_SelectedIndexChanged" ID="ddlPhaseEarthing" selectionmode="Multiple" Style="width: 100% !important">
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="table-responsive pt-3" id="PhaseEarthing" runat="server" visible="false">
+                                                    <table class="table table-bordered table-striped">
+                                                            <thead class="table-dark">
+                                                                <tr>
+                                                                    <th>S.No.
+                                                                    </th>
+                                                                    <th>Earthing Type
+                                                                    </th>
+                                                                    <th>Value in(ohms)
+                                                                    </th> 
+                                                                    <th>Used For
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr id="PhaseEarthing1" runat="server" visible="false">
+                                                                    <td>1
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing1" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed1" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                               <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing2" runat="server" visible="false">
+                                                                    <td>2
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing2" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td>  <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed2" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                    <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing3" runat="server" visible="false">
+                                                                    <td>3
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing3" selectionmode="Multiple" Style="width: 100% !important">
+                                                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                                            </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed3" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                    <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing4" runat="server" visible="false">
+                                                                    <td>4
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12" id="Div14" runat="server">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing4" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            
+                                                                              <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12" id="Div16" runat="server">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed4" selectionmode="Multiple" Style="width: 100% !important">
+                                                                              <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                    <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing5" runat="server" visible="false">
+                                                                    <td>5
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12" id="Div17" runat="server">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing5" selectionmode="Multiple" Style="width: 100% !important">
+                                                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed5" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing6" runat="server" visible="false">
+                                                                    <td>6
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing6" selectionmode="Multiple" Style="width: 100% !important">
+                                                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12"">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed6" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing7" runat="server" visible="false">
+                                                                    <td>7
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12" id="Div18" runat="server">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing7" selectionmode="Multiple" Style="width: 100% !important">
+                                                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed7" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing8" runat="server" visible="false">
+                                                                    <td>8
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing8" selectionmode="Multiple" Style="width: 100% !important">
+                                                                              <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed8" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing9" runat="server" visible="false">
+                                                                    <td>9
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing9" selectionmode="Multiple" Style="width: 100% !important">
+                                                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed9" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing10" runat="server" visible="false">
+                                                                    <td>10
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing10" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>  </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed10" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing11" runat="server" visible="false">
+                                                                    <td>11
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing11" selectionmode="Multiple" Style="width: 100% !important">
+                                                                              <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed11" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing12" runat="server" visible="false">
+                                                                    <td>12
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing12" selectionmode="Multiple" Style="width: 100% !important">
+                                                                              <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem></asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed12" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing13" runat="server" visible="false">
+                                                                    <td>13
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing13" selectionmode="Multiple" Style="width: 100% !important">
+                                                                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem> </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing13" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed13" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing14" runat="server" visible="false">
+                                                                    <td>14
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing14" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>  </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing14" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed14" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr id="PhaseEarthing15" runat="server" visible="false">
+                                                                    <td>15
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthing15" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>  </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-12">
+                                                                            <asp:TextBox class="form-control" ID="txtPhaseEarthing15" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        </div>
+                                                                    </td><td>
+                                                                        <div class="col-12">
+                                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPhaseEarthingUsed15" selectionmode="Multiple" Style="width: 100% !important">
+                                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem> 
+                                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                                                    <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr> 
+                                                            </tbody>
+                                                        </table>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4" id="Div164" runat="server">
+                                                    <label for="Name">
+                                                        Minimum IR value
+             <samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:TextBox class="form-control" ID="txtMinIRValue" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="between wires(in Mohm)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">No of RCCB</label>
+                                            <div>
+                                                <div class="row" style="margin-top: -15px;">
+                                                    <div class="col-4">
+                                                        <label for="Voltage" style="margin-top: 10px;">
+                                                           No of RCCB (mA)  
+                <samp style="color: red">* </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtNoOfRCCB" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div> 
+                                                    <div class="col-4" id="Div190" runat="server">
+                                                        <label for="Voltage" style="margin-top: 10px;">
+                                                            Rating of RCCB (mA)  
+                <samp style="color: red">* </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtRCCBRating" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div191" runat="server">
+                                                        <label for="Voltage" style="margin-top: 10px;">
+                                                            Current carrying capacity   
+                <samp style="color: red">* </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtCurrentCarryingCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div192" runat="server">
+                                                        <label for="Voltage" style="margin-top: 10px;">
+                                                            No of circuits  
+                <samp style="color: red">* </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtNoOfCircuits" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" >
+                                                        <label for="Voltage" style="margin-top: 10px;">
+                                                            No of Motors  
+                <samp style="color: red">* </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtNoOfMotors" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="row" style="margin-top: 50px;">
+                                                      <%--  <div class="col-2"></div>--%>
+                                                    <div class="col-12" style="text-align: center;">
+                                                        <asp:CheckBox ID="CheckBox4" runat="server" OnCheckedChanged="CheckBox4_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
+                                                   <br /> 
+                                                        <label id="label3" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                                               Please Verify this.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                     <div class="row">
 
-                                       <div class="col-4"></div>
-                                       <div class="col-4" style="text-align: center;">
-                                           <asp:Button ID="btnPhaseSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                               Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;"/>
-                                       </div>
-                                       <div class="col-4">
-                                           <asp:HiddenField ID="HiddenField4" runat="server" />
-                                       </div>
-                                   </div>
-                           </div>
-                       </li>
+                                                    <div class="col-4"></div>
+                                                    <div class="col-4" style="text-align: center;">
+                                                        <asp:Button ID="btnPhaseSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnPhaseSubmit_Click" />
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <asp:HiddenField ID="HiddenField4" runat="server" />
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </li>
                                    
                                </ul>
-                           
-   </form>
+    
 
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
 <script src="/Assets/js/chart.js/Chart.min.js"></script>
