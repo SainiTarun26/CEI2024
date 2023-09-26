@@ -1945,7 +1945,7 @@ width: 99%;
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
                                    <ul>
                                                    <li class="tab-content tab-content-3 typography">
-                                        <div class="card-body" style="margin-top: -45px;">
+                                        <div class="card-body" style="margin-top: -30px;">
                                              <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-sm-4" style="text-align: center;">
@@ -1976,15 +1976,15 @@ width: 99%;
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
-                                                <div class="col-2" runat="server">
+                                                <div class="col-2" runat="server" style="margin-top:-15px;">
                                                     <label for="Name">
-                                                       Serial no of Ac generator/ Alternator
+                                                       Serial no. 
                                                 <samp style="color: red">* </samp>
                                                     </label>
-                                                   <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                   <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                               
                                                 </div> 
-                                                <div class="col-2" id="Div172" runat="server">
+                                                <div class="col-2" id="Div172" runat="server"  style="margin-top:-15px;">
                                                     <label for="Name">
                                                         Type of Generating Set
                                                 <samp style="color: red">* </samp>
@@ -2043,7 +2043,7 @@ width: 99%;
                                                         <asp:ListItem Text="MW" Value="2"></asp:ListItem>
                                                             </asp:DropDownList>
                                                     </div>
-                                                     <div class="col-2">
+                                                     <div class="col-2"  style="margin-top:-15px;">
                                                         <label for="Name">
                                                            capacity of plant      
                                                         </label>
@@ -2056,8 +2056,8 @@ width: 99%;
                                                         <asp:TextBox class="form-control" ID="txtDCString" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder=" Highest Voltage" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                    
-                                                    <div class="col-2" id="Div185" runat="server">
-                                                        <label for="Name">
+                                                    <div class="col-2" id="Div185" runat="server"  style="margin-top:-15px;">
+                                                        <label for="Name" style="text-align:initial;font-size:12px;">
                                                             Lowest Insulation Resistance        
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtLowestInsulation" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder=" between DC phase wire to earth wire" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -2583,7 +2583,7 @@ width: 99%;
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                      <div class="row" style="margin-top: 50px;">
+                                                      <div class="row" style="margin-top: 100px;">
                                                       <%--  <div class="col-2"></div>--%>
                                                     <div class="col-12" style="text-align: center;">
                                                         <asp:CheckBox ID="CheckBox3" runat="server" OnCheckedChanged="CheckBox3_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
@@ -2594,9 +2594,9 @@ width: 99%;
                                                         </div>
                                                     </div>
                                                      <div class="row">
-
-                                                    <div class="col-4"></div>
-                                                    <div class="col-4" style="text-align: center;">
+                                                    <DIV class="col-12">
+                                                        </div>
+                                                    <div class="col-12" style="text-align: center;">
                                                         <asp:Button ID="BtnSubmitGeneratingSet" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitGeneratingSet_Click" />
                                                     </div>

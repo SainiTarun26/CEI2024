@@ -17,34 +17,34 @@ namespace CEIHaryana.TestReport
         {
             try
             {
-                if (Session["installationType1"].ToString().Trim() == "Line" || Session["installationType2"].ToString().Trim() == "Line"
-                    || Session["installationType3"].ToString().Trim() == "Line" || Session["installationType4"].ToString().Trim() == "Line"
-                    || Session["installationType5"].ToString().Trim() == "Line" || Session["installationType6"].ToString().Trim() == "Line"
-                    || Session["installationType7"].ToString().Trim() == "Line" || Session["installationType8"].ToString().Trim() == "Line")
-                {
-                   lblLinePage.Visible = true;
-                }
-                if (Session["installationType1"].ToString().Trim() == "Substation Transformer" || Session["installationType2"].ToString().Trim() == "Substation Transformer"
-                   || Session["installationType3"].ToString().Trim() == "Substation Transformer" || Session["installationType4"].ToString().Trim() == "Substation Transformer"
-                   || Session["installationType5"].ToString().Trim() == "Substation Transformer" || Session["installationType6"].ToString().Trim() == "Substation Transformer"
-                   || Session["installationType7"].ToString().Trim() == "Substation Transformer" || Session["installationType8"].ToString().Trim() == "Substation Transformer")
-                {
-                    lblSubStationPage.Visible = true;
-                }
-                if (Session["installationType1"].ToString().Trim() == "Generating Station" || Session["installationType2"].ToString().Trim() == "Generating Station"
-                   || Session["installationType3"].ToString().Trim() == "Generating Station" || Session["installationType4"].ToString().Trim() == "Generating Station"
-                   || Session["installationType5"].ToString().Trim() == "Generating Station" || Session["installationType6"].ToString().Trim() == "Generating Station"
-                   || Session["installationType7"].ToString().Trim() == "Generating Station" || Session["installationType8"].ToString().Trim() == "Generating Station")
-                {
-                   lblGeneratingSet.Visible = true; 
-                }
-                if (Session["installationType1"].ToString().Trim() == "Single/ThreePhase" || Session["installationType2"].ToString().Trim() == "Single/ThreePhase"
-                   || Session["installationType3"].ToString().Trim() == "Single/ThreePhase" || Session["installationType4"].ToString().Trim() == "Single/ThreePhase"
-                   || Session["installationType5"].ToString().Trim() == "Single/ThreePhase" || Session["installationType6"].ToString().Trim() == "Single/ThreePhase"
-                   || Session["installationType7"].ToString().Trim() == "Single/ThreePhase" || Session["installationType8"].ToString().Trim() == "Single/ThreePhase")
-                {
-                   lblPhses.Visible = true;
-                }
+                //if (Session["installationType1"].ToString().Trim() == "Line" || Session["installationType2"].ToString().Trim() == "Line"
+                //    || Session["installationType3"].ToString().Trim() == "Line" || Session["installationType4"].ToString().Trim() == "Line"
+                //    || Session["installationType5"].ToString().Trim() == "Line" || Session["installationType6"].ToString().Trim() == "Line"
+                //    || Session["installationType7"].ToString().Trim() == "Line" || Session["installationType8"].ToString().Trim() == "Line")
+                //{
+                //   lblLinePage.Visible = true;
+                //}
+                //if (Session["installationType1"].ToString().Trim() == "Substation Transformer" || Session["installationType2"].ToString().Trim() == "Substation Transformer"
+                //   || Session["installationType3"].ToString().Trim() == "Substation Transformer" || Session["installationType4"].ToString().Trim() == "Substation Transformer"
+                //   || Session["installationType5"].ToString().Trim() == "Substation Transformer" || Session["installationType6"].ToString().Trim() == "Substation Transformer"
+                //   || Session["installationType7"].ToString().Trim() == "Substation Transformer" || Session["installationType8"].ToString().Trim() == "Substation Transformer")
+                //{
+                //    lblSubStationPage.Visible = true;
+                //}
+                //if (Session["installationType1"].ToString().Trim() == "Generating Station" || Session["installationType2"].ToString().Trim() == "Generating Station"
+                //   || Session["installationType3"].ToString().Trim() == "Generating Station" || Session["installationType4"].ToString().Trim() == "Generating Station"
+                //   || Session["installationType5"].ToString().Trim() == "Generating Station" || Session["installationType6"].ToString().Trim() == "Generating Station"
+                //   || Session["installationType7"].ToString().Trim() == "Generating Station" || Session["installationType8"].ToString().Trim() == "Generating Station")
+                //{
+                //   lblGeneratingSet.Visible = true; 
+                //}
+                //if (Session["installationType1"].ToString().Trim() == "Single/ThreePhase" || Session["installationType2"].ToString().Trim() == "Single/ThreePhase"
+                //   || Session["installationType3"].ToString().Trim() == "Single/ThreePhase" || Session["installationType4"].ToString().Trim() == "Single/ThreePhase"
+                //   || Session["installationType5"].ToString().Trim() == "Single/ThreePhase" || Session["installationType6"].ToString().Trim() == "Single/ThreePhase"
+                //   || Session["installationType7"].ToString().Trim() == "Single/ThreePhase" || Session["installationType8"].ToString().Trim() == "Single/ThreePhase")
+                //{
+                //   lblPhses.Visible = true;
+                //}
                 //if (Session["installationType1"].ToString().Trim() == "Lift " || Session["installationType2"].ToString().Trim() == "Lift"
                 //   || Session["installationType3"].ToString().Trim() == "Lift" || Session["installationType4"].ToString().Trim() == "Lift"
                 //   || Session["installationType5"].ToString().Trim() == "Lift" || Session["installationType6"].ToString().Trim() == "Lift"
