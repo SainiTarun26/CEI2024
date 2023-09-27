@@ -2001,12 +2001,26 @@
                             </label>
                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
                             <label>
-                                Capacity of transformer (IN KVA) 
+                                Capacity of transformer
                                         <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddltransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
+                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                <asp:ListItem Value="1" Text="KVA"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="MVA"></asp:ListItem>
+                            </asp:DropDownList>
+                           
+                            <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
+                                                        </asp:DropDownList>--%>
+                        </div>
+                        <div class="col-2">
+                            <label>
+                                Capacity of transformer 
+                                        <samp style="color: red">* </samp>
+                            </label>
+                          <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>--%>
@@ -2996,8 +3010,10 @@
                                             </div>--%>
             <%-- </div>
                                         </div>--%>
-            <div class="row" style="margin-top: 50px;">
-                <%--  <div class="col-2"></div>--%>
+          
+                     </ContentTemplate>
+         </asp:UpdatePanel>
+                  <div class="row" style="margin-top: 50px;">
                 <div class="col-12" style="text-align: center;">
                     <asp:CheckBox ID="CheckBox2" runat="server" OnCheckedChanged="CheckBox2_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
                     <br />
@@ -3005,11 +3021,8 @@
                         Please Verify this.
                     </label>
                 </div>
-            </div>
-                     </ContentTemplate>
-         </asp:UpdatePanel>
+                      </div>
             <div class="row">
-
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
                     <asp:Button ID="BtnSubmitSubstation" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
