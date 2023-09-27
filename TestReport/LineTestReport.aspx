@@ -2207,7 +2207,7 @@ width: 99%;
                                                         <div class="col-4" id="Div21" runat="server">
                                                             <label for="Name">
                                                                 Number of River/Canal Crossing
-                            <samp style="color: red">* </samp>
+                            <samp style="color: red">* </samp> 
                                                             </label>
                                                             <asp:TextBox class="form-control" ID="txtRiverCanalCrossingNmber" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
