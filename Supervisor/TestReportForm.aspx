@@ -2087,14 +2087,14 @@
                                 </div>
                             </div>
                         </div>
-                <div class="row">
+                <div class="row" style="margin-left:0px;margin-right:0px;">
                     <%-- <div class="col-4" runat="server">
                             <label for="SiteContact">Contact Details of Site Owner</label>
                             <asp:TextBox class="form-control" ID="txtSiteContact" MaxLength="10" onkeydown="return preventEnterSubmit(event)" onkeyup="return isvalidphoneno2();" onKeyPress="return isNumberKey(event);" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect2" style="color: red"></span>
 
                         </div>--%>
-                    <div class="col-4">
+                    <div class="col-6">
                         <label>
                            Sanction load/ Contract demand(in KVA)
         <samp style="color: red">* </samp>
@@ -2103,7 +2103,7 @@
                        <asp:TextBox class="form-control" ID="txtSanctionLoad" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="As per demand notice of utility OR electricity bill" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                               
                          </div>  
-                    <div class="col-4">
+                    <div class="col-6">
                         <label>
                             Select Installation Type
         <samp style="color: red">* </samp>
