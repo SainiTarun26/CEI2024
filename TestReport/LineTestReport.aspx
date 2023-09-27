@@ -2052,7 +2052,7 @@ width: 99%;
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLineVoltage" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlLineVoltage_SelectedIndexChanged">
                                                             </asp:DropDownList>
                                                         </div>
-                                                        <div class="col-2" id="OtherVoltages" runat="server" visible="false">
+                                                        <div class="col-2" id="divOtherVoltages" runat="server" visible="false">
                                                             <label for="Voltage">
                                                                 Other Voltage 
                                                      <samp style="color: red">* </samp>
