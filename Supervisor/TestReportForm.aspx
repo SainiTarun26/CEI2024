@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="/Assets/css/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="/Assets/css/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css"> 
     <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css">
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="images/favicon.png" />
