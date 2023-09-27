@@ -2069,7 +2069,7 @@ width: 99%;
                                                                 Other Voltage 
                                                      <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TxtOthervoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TxtOthervoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px" OnTextChanged="TxtOthervoltage_TextChanged"></asp:TextBox>
 
                                                         </div>
                                                         <div class="col-4" id="Div1" runat="server">
@@ -2207,7 +2207,7 @@ width: 99%;
                                                         <div class="col-4" id="Div21" runat="server">
                                                             <label for="Name">
                                                                 Number of River/Canal Crossing
-                            <samp style="color: red">* </samp> 
+                            <samp style="color: red">* </samp>
                                                             </label>
                                                             <asp:TextBox class="form-control" ID="txtRiverCanalCrossingNmber" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         </div>
@@ -2721,8 +2721,10 @@ width: 99%;
                                                             </label>
                                                         </div>
                                                     </div>
+                  
                                              
 </ContentTemplate>
+                                   
          </asp:UpdatePanel>
                                                 <div class="row">
 

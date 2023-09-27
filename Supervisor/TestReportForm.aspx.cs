@@ -148,6 +148,15 @@ namespace CEIHaryana.Supervisor
         }
         protected void btnDelete1_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType1.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
+
             installationType1.Visible = false;
             txtinstallationType1.Text = string.Empty;
             txtinstallationNo1.Text = string.Empty;
@@ -155,6 +164,14 @@ namespace CEIHaryana.Supervisor
 
         protected void btnDelete2_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType2.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType2.Visible = false;
             txtinstallationType2.Text = string.Empty;
             txtinstallationNo2.Text = string.Empty;
@@ -162,6 +179,14 @@ namespace CEIHaryana.Supervisor
 
         protected void btnDelete3_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType3.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType3.Visible = false;
             txtinstallationType3.Text = string.Empty;
             txtinstallationNo3.Text = string.Empty;
@@ -169,6 +194,14 @@ namespace CEIHaryana.Supervisor
 
         protected void btnDelete4_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType4.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType4.Visible = false;
             txtinstallationType4.Text = string.Empty;
             txtinstallationNo4.Text = string.Empty;
@@ -176,6 +209,14 @@ namespace CEIHaryana.Supervisor
 
         protected void btnDelete5_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType5.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType5.Visible = false;
             txtinstallationType5.Text = string.Empty;
             txtinstallationNo5.Text = string.Empty;
@@ -183,6 +224,14 @@ namespace CEIHaryana.Supervisor
 
         protected void btnDelete6_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType4.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType4.Visible = false;
             txtinstallationType4.Text = string.Empty;
             txtinstallationNo4.Text = string.Empty;
@@ -190,6 +239,14 @@ namespace CEIHaryana.Supervisor
 
         protected void btnDelete7_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType7.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType7.Visible = false;
             txtinstallationType7.Text = string.Empty;
             txtinstallationNo7.Text = string.Empty;
@@ -197,6 +254,14 @@ namespace CEIHaryana.Supervisor
 
         protected void btnDelete8_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType8.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType8.Visible = false;
             txtinstallationType8.Text = string.Empty;
             txtinstallationNo8.Text = string.Empty;

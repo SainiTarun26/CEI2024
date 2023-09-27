@@ -17,6 +17,8 @@ namespace CEIHaryana.TestReport
         {
             if (!IsPostBack)
             {
+                Insulation440vAbove.Visible = false;
+                Insulation220vAbove.Visible = false;
                 ddlLoadBindVoltage();
                 ddlEarthing();
 
@@ -84,84 +86,14 @@ namespace CEIHaryana.TestReport
             {
                 LineTypeOverhead.Visible = true;
                 LineTypeUnderground.Visible = false;
-                if (ddlOtherVoltage.SelectedValue == "2")
-                {
-
-                    if (int.TryParse(TxtOthervoltage.Text, out int value))
-                    {
-
-                        Insulation220vAbove.Visible = false;
-                        Insulation440vAbove.Visible = true;
-
-                    }
-                }
-
-                else if (ddlOtherVoltage.SelectedValue == "1")
-                {
-                    // Input ends with "v", perform the "v" check
-                    if (int.TryParse(TxtOthervoltage.Text, out int value))
-                    {
-                        if (value > 440)
-                        {
-                            Insulation220vAbove.Visible = false;
-                            Insulation440vAbove.Visible = true;
-                        }
-                        else if (value > 220)
-                        {
-                            Insulation440vAbove.Visible = false;
-                            Insulation220vAbove.Visible = true;
-                        }
-                        else
-                        {
-                            Insulation440vAbove.Visible = false;
-                            Insulation220vAbove.Visible = false;
-                        }
-
-                    }
-
-                }
+               
             }
             else if (ddlLineType.SelectedValue == "2")
             {
 
                 LineTypeUnderground.Visible = true;
                 LineTypeOverhead.Visible = false;
-                if (ddlOtherVoltage.SelectedValue == "2")
-                {
-
-                    if (int.TryParse(TxtOthervoltage.Text, out int value))
-                    {
-
-                        UndergroundInsulation220vAbove.Visible = false;
-                        UndergroundInsulation440vAbove.Visible = true;
-
-                    }
-                }
-
-                else if (ddlOtherVoltage.SelectedValue == "1")
-                {
-                    // Input ends with "v", perform the "v" check
-                    if (int.TryParse(TxtOthervoltage.Text, out int value))
-                    {
-                        if (value > 440)
-                        {
-                            Insulation220vAbove.Visible = false;
-                            Insulation440vAbove.Visible = true;
-                        }
-                        else if (value > 220)
-                        {
-                            Insulation440vAbove.Visible = false;
-                            Insulation220vAbove.Visible = true;
-                        }
-                        else
-                        {
-                            Insulation440vAbove.Visible = false;
-                            Insulation220vAbove.Visible = false;
-                        }
-
-                    }
-
-                }
+               
             }
             else
             {
@@ -492,5 +424,52 @@ namespace CEIHaryana.TestReport
             txtEarthWire.Text = ""; txtNeutralWireEarth.Text = ""; ddlCableType.SelectedValue = "0"; txtCableSize.Text = ""; ddlCableLaid.SelectedValue = "0"; txtRedWire.Text = ""; txtYellowWire.Text = ""; txtBlueWire.Text = ""; txtRedYellowWire.Text = "";
             txtRedBlueWire.Text = ""; txtBlueYellowWire.Text = ""; txtNeutralPhaseWire.Text = ""; txtPhaseWireEarth.Text = ""; txtNeutralWireEarthUnderground.Text = "";
         }
+
+        protected void TxtOthervoltage_TextChanged(object sender, EventArgs e)
+        {
+            if (ddlOtherVoltage.SelectedValue == "2")
+            {
+
+                if (int.TryParse(TxtOthervoltage.Text, out int value))
+                {
+
+                    UndergroundInsulation220vAbove.Visible = false;
+                    UndergroundInsulation440vAbove.Visible = true;
+
+                }
+            }
+
+            else if (ddlOtherVoltage.SelectedValue == "1")
+            {
+                if (int.TryParse(TxtOthervoltage.Text, out int value))
+                {
+                    if (value > 440)
+                    {
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
+                    }
+                    else if (value > 220)
+                    {
+                        Insulation440vAbove.Visible = false;
+                        Insulation220vAbove.Visible = true;
+                    }
+                    else
+                    {
+                        Insulation440vAbove.Visible = false;
+                        Insulation220vAbove.Visible = false;
+                    }
+
+                }
+            }
+            else
+            {
+                Insulation440vAbove.Visible = false;
+                Insulation220vAbove.Visible = false;
+            }
+
+            
+        }
+
+       
     }
 }
