@@ -60,7 +60,7 @@ namespace CEIHaryana.TestReport
             if (ddlLineVoltage.SelectedItem.ToString() == "Other")
             {
                 OtherVoltage.Visible = true;
-                OtherVoltages.Visible= true;
+                divOtherVoltages.Visible= true;
             }
             else if (ddlLineVoltage.SelectedItem.ToString() == "220V" || ddlLineVoltage.SelectedItem.ToString() == "440V")
             {
@@ -72,7 +72,7 @@ namespace CEIHaryana.TestReport
                 Insulation220vAbove.Visible = false;
                 Insulation440vAbove.Visible = true;
                 OtherVoltage.Visible = false;
-                OtherVoltages.Visible = false;
+                divOtherVoltages.Visible = false;
             }
         }
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,10 +84,10 @@ namespace CEIHaryana.TestReport
             {
                 LineTypeOverhead.Visible = true;
                 LineTypeUnderground.Visible = false;
-                if (userInput.EndsWith("kV", StringComparison.OrdinalIgnoreCase))
+                if (ddlOtherVoltage.SelectedValue == "2")
                 {
 
-                    if (int.TryParse(userInput.TrimEnd('k', 'K', 'v', 'V'), out int value))
+                    if (int.TryParse(TxtOthervoltage.Text, out int value))
                     {
 
                         Insulation220vAbove.Visible = false;
@@ -96,10 +96,10 @@ namespace CEIHaryana.TestReport
                     }
                 }
 
-                else if (userInput.EndsWith("v", StringComparison.OrdinalIgnoreCase))
+                else if (ddlOtherVoltage.SelectedValue == "1")
                 {
                     // Input ends with "v", perform the "v" check
-                    if (int.TryParse(userInput.TrimEnd('v', 'V'), out int value))
+                    if (int.TryParse(TxtOthervoltage.Text, out int value))
                     {
                         if (value > 440)
                         {
@@ -126,10 +126,10 @@ namespace CEIHaryana.TestReport
 
                 LineTypeUnderground.Visible = true;
                 LineTypeOverhead.Visible = false;
-                if (userInput.EndsWith("kV", StringComparison.OrdinalIgnoreCase))
+                if (ddlOtherVoltage.SelectedValue == "2")
                 {
 
-                    if (int.TryParse(userInput.TrimEnd('k', 'K', 'v', 'V'), out int value))
+                    if (int.TryParse(TxtOthervoltage.Text, out int value))
                     {
 
                         UndergroundInsulation220vAbove.Visible = false;
@@ -138,10 +138,10 @@ namespace CEIHaryana.TestReport
                     }
                 }
 
-                else if (userInput.EndsWith("v", StringComparison.OrdinalIgnoreCase))
+                else if (ddlOtherVoltage.SelectedValue == "1")
                 {
                     // Input ends with "v", perform the "v" check
-                    if (int.TryParse(userInput.TrimEnd('v', 'V'), out int value))
+                    if (int.TryParse(TxtOthervoltage.Text, out int value))
                     {
                         if (value > 440)
                         {
