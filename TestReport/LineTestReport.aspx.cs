@@ -12,13 +12,14 @@ namespace CEIHaryana.TestReport
     public partial class LineTestReport : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string sessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 ddlLoadBindVoltage();
                 ddlEarthing();
-               
+
             }
         }
 
@@ -93,12 +94,17 @@ namespace CEIHaryana.TestReport
                     {
                         if (value > 440)
                         {
-                            Insulation220vAbove.Visible = true;
-                            Insulation440vAbove.Visible = false;
+                            Insulation220vAbove.Visible = false;
+                            Insulation440vAbove.Visible = true;
                         }
                         else if (value > 220)
                         {
-                            Insulation440vAbove.Visible = true;
+                            Insulation440vAbove.Visible = false;
+                            Insulation220vAbove.Visible = true;
+                        }
+                        else
+                        {
+                            Insulation440vAbove.Visible = false;
                             Insulation220vAbove.Visible = false;
                         }
 
@@ -130,13 +136,18 @@ namespace CEIHaryana.TestReport
                     {
                         if (value > 440)
                         {
-                            UndergroundInsulation220vAbove.Visible = true;
-                            UndergroundInsulation440vAbove.Visible = false;
+                            Insulation220vAbove.Visible = false;
+                            Insulation440vAbove.Visible = true;
                         }
                         else if (value > 220)
                         {
-                            UndergroundInsulation440vAbove.Visible = true;
-                            UndergroundInsulation220vAbove.Visible = false;
+                            Insulation440vAbove.Visible = false;
+                            Insulation220vAbove.Visible = true;
+                        }
+                        else
+                        {
+                            Insulation440vAbove.Visible = false;
+                            Insulation220vAbove.Visible = false;
                         }
 
                     }
@@ -145,6 +156,7 @@ namespace CEIHaryana.TestReport
             }
             else
             {
+
                 LineTypeOverhead.Visible = false;
                 LineTypeUnderground.Visible = false;
                 UndergroundInsulation220vAbove.Visible = false;
@@ -397,7 +409,7 @@ namespace CEIHaryana.TestReport
                txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
                txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
                     Reset();
-                     DataSaved.Visible = true;
+                    DataSaved.Visible = true;
                     labelVerification.Visible = false;
                     PageWorking();
                 }
@@ -410,36 +422,35 @@ namespace CEIHaryana.TestReport
         }
         public void PageWorking()
         {
-            string sessionValue = string.Empty;
             if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo1"] as string;
             }
-            else if(Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
+            else if (Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo2"] as string;
             }
-             else if(Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
+            else if (Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo3"] as string;
             }
-             else if(Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
+            else if (Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo4"] as string;
             }
-             else if(Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
+            else if (Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo5"] as string;
             }
-             else if(Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
+            else if (Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo6"] as string;
             }
-             else if(Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
+            else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo7"] as string;
             }
-             else if(Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
+            else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo8"] as string;
             }

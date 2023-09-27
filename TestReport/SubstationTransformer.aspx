@@ -3029,7 +3029,9 @@
                         Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitSubstation_Click" />
                 </div>
                 <div class="col-4">
-                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
+                 <asp:HiddenField ID="hdn" Value="0" runat="server" />  
+                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtValue" Visible="false" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                              
                 </div>
             </div>
 </div>

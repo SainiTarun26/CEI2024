@@ -1550,6 +1550,7 @@
     <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="TestReport\GeneratingSetTestReport.aspx" />
+    <Content Include="TestReport\LiftTestReport.aspx" />
     <Content Include="TestReport\LineTestReport.aspx" />
     <Content Include="TestReport\LPISinglePhase.aspx" />
     <Content Include="TestReport\MPIThreePhase.aspx" />
@@ -1737,6 +1738,13 @@
     </Compile>
     <Compile Include="TestReport\GeneratingSetTestReport.aspx.designer.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport\LiftTestReport.aspx.cs">
+      <DependentUpon>LiftTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReport\LiftTestReport.aspx.designer.cs">
+      <DependentUpon>LiftTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReport\LineTestReport.aspx.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>

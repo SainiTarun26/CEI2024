@@ -13,11 +13,14 @@ namespace CEIHaryana.TestReport
     public partial class SubstationTransformer : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+
+        string sessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 ddlEarthingSubstation();
+                // SessionCheck();
             }
         }
         private void ddlEarthingSubstation()
@@ -290,7 +293,7 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlLTProtection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlLTProtection.SelectedValue == "1")    
+            if (ddlLTProtection.SelectedValue == "1")
             {
                 FuseUnit.Visible = true;
                 Breaker.Visible = false;
@@ -347,12 +350,62 @@ namespace CEIHaryana.TestReport
             catch (Exception)
             {
 
-               DataSaved.Visible = false;
+                DataSaved.Visible = false;
             }
+        }
+        public void SessionCheck()
+        {
+            try
+            {
+                if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo1"] as string;
+                }
+                else if (Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo2"] as string;
+                }
+                else if (Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo3"] as string;
+                }
+                else if (Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo4"] as string;
+                }
+                else if (Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo5"] as string;
+                }
+                else if (Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo6"] as string;
+                }
+                else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo7"] as string;
+
+                }
+                else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
+                {
+                    sessionValue = Session["installationNo8"] as string;
+                }
+                if (Session["SubmittedValue"].ToString() == sessionValue)
+                {
+                    BtnSubmitSubstation.Visible = false;
+                }
+                else
+                {
+                    BtnSubmitSubstation.Visible = true;
+                }
+            }
+            catch
+            {
+            }
+
         }
         public void PageWorking()
         {
-            string sessionValue = string.Empty;
             if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo1"] as string;
@@ -380,6 +433,7 @@ namespace CEIHaryana.TestReport
             else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo7"] as string;
+
             }
             else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
             {
@@ -392,8 +446,10 @@ namespace CEIHaryana.TestReport
             if (hdn.Value == sessionValue)
             {
                 BtnSubmitSubstation.Visible = false;
+                Session["SubmittedValue"] = sessionValue;
             }
         }
+
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckBox2.Checked == false)
@@ -405,13 +461,13 @@ namespace CEIHaryana.TestReport
                 labelVerification.Visible = false;
             }
         }
-        
+
         public void Reset()
         {
-            txtTransformerSerialNumber.Text = ""; 
-            txtTransformerCapacity.Text = ""; 
+            txtTransformerSerialNumber.Text = "";
+            txtTransformerCapacity.Text = "";
             ddltransformerType.SelectedValue = "0";
-            txtPrimaryVoltage.Text = ""; 
+            txtPrimaryVoltage.Text = "";
             txtSecondryVoltage.Text = ""; txtOilCapacity.Text = ""; txtOilBDV.Text = ""; txtHTsideInsulation.Text = ""; txtLTSideInsulation.Text = "";
             txtLowestValue.Text = ""; txtLightningArrestor.Text = ""; ddlHTType.SelectedValue = "0"; ddlEarthingsubstation.SelectedValue = "0";
             ddlSubstationEarthing1.SelectedValue = "0"; txtSubstationEarthing1.Text = ""; ddlUsedFor1.SelectedValue = "0"; ddlSubstationEarthing2.SelectedValue = "0";
@@ -429,7 +485,7 @@ namespace CEIHaryana.TestReport
             ddlUsedFor18.SelectedValue = "0"; ddlSubstationEarthing19.SelectedValue = "0";
             txtSubstationEarthing19.Text = ""; ddlUsedFor19.SelectedValue = "0"; ddlSubstationEarthing20.SelectedValue = "0";
             txtSubstationEarthing20.Text = ""; ddlUsedFor20.SelectedValue = "0"; txtBreakerCapacity.Text = ""; ddlLTProtection.SelectedValue = "0"; txtIndividualCapacity.Text = "";
-            txtLTBreakerCapacity.Text = ""; txtLoadBreakingCapacity.Text = ""; txtSealLevelPlinth.Text="";
+            txtLTBreakerCapacity.Text = ""; txtLoadBreakingCapacity.Text = ""; txtSealLevelPlinth.Text = "";
         }
     }
 }
