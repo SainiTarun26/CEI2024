@@ -60,10 +60,19 @@ namespace CEIHaryana.TestReport
             if (ddlLineVoltage.SelectedItem.ToString() == "Other")
             {
                 OtherVoltage.Visible = true;
+                OtherVoltages.Visible= true;
+            }
+            else if (ddlLineVoltage.SelectedItem.ToString() == "220V" || ddlLineVoltage.SelectedItem.ToString() == "440V")
+            {
+                Insulation220vAbove.Visible = false;
+                Insulation440vAbove.Visible = false;    
             }
             else
             {
+                Insulation220vAbove.Visible = false;
+                Insulation440vAbove.Visible = true;
                 OtherVoltage.Visible = false;
+                OtherVoltages.Visible = false;
             }
         }
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)

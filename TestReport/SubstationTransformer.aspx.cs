@@ -353,57 +353,57 @@ namespace CEIHaryana.TestReport
                 DataSaved.Visible = false;
             }
         }
-        public void SessionCheck()
-        {
-            try
-            {
-                if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo1"] as string;
-                }
-                else if (Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo2"] as string;
-                }
-                else if (Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo3"] as string;
-                }
-                else if (Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo4"] as string;
-                }
-                else if (Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo5"] as string;
-                }
-                else if (Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo6"] as string;
-                }
-                else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo7"] as string;
+        //public void SessionCheck()
+        //{
+        //    try
+        //    {
+        //        if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo1"] as string;
+        //        }
+        //        else if (Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo2"] as string;
+        //        }
+        //        else if (Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo3"] as string;
+        //        }
+        //        else if (Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo4"] as string;
+        //        }
+        //        else if (Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo5"] as string;
+        //        }
+        //        else if (Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo6"] as string;
+        //        }
+        //        else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo7"] as string;
 
-                }
-                else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
-                {
-                    sessionValue = Session["installationNo8"] as string;
-                }
-                if (Session["SubmittedValue"].ToString() == sessionValue)
-                {
-                    BtnSubmitSubstation.Visible = false;
-                }
-                else
-                {
-                    BtnSubmitSubstation.Visible = true;
-                }
-            }
-            catch
-            {
-            }
+        //        }
+        //        else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
+        //        {
+        //            sessionValue = Session["installationNo8"] as string;
+        //        }
+        //        if (Session["SubmittedValue"].ToString() == sessionValue)
+        //        {
+        //            BtnSubmitSubstation.Visible = false;
+        //        }
+        //        else
+        //        {
+        //            BtnSubmitSubstation.Visible = true;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //    }
 
-        }
+        //}
         public void PageWorking()
         {
             if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)

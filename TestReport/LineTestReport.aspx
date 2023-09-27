@@ -2052,7 +2052,19 @@ width: 99%;
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLineVoltage" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlLineVoltage_SelectedIndexChanged">
                                                             </asp:DropDownList>
                                                         </div>
-                                                        <div class="col-4" id="OtherVoltage" runat="server" visible="false">
+                                                        <div class="col-2" id="OtherVoltages" runat="server" visible="false">
+                                                            <label for="Voltage">
+                                                                Other Voltage 
+                                                     <samp style="color: red">* </samp>
+                                                            </label>
+                                                               <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlOtherVoltage" selectionmode="Multiple" Style="width: 100% !important;">
+                                                                   <asp:ListItem Text="Select" Value="0"></asp:ListItem> 
+                                                                   <asp:ListItem Text="V" Value="1"></asp:ListItem> 
+                                                                   <asp:ListItem Text="KV" Value="2"></asp:ListItem>
+  
+                                                                   </asp:DropDownList>
+                                                        </div>
+                                                        <div class="col-2" id="OtherVoltage" runat="server" visible="false">
                                                             <label for="Voltage">
                                                                 Other Voltage 
                                                      <samp style="color: red">* </samp>
