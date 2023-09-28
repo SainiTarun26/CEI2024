@@ -42,24 +42,48 @@ namespace CEIHaryana.TestReport
             {
                 InCaseOfOil.Visible = true;
                 Capacity.Visible = true;
+                BDV.Visible = true;
             }
             else
             {
                 InCaseOfOil.Visible = true;
                 Capacity.Visible = false;
+                BDV.Visible = false;
+            }
+            if (ddltransformerCapacity.SelectedValue == "1")
+            {
+                if (int.TryParse(txtTransformerCapacity.Text, out int value))
+                {
+                    if (value >= 1000)
+                    {
+                        TypeOfHTBreaker.Visible = true;
+                        ddlBreaker.Visible= true;
+                        ddlHTType.Visible = false;
+                    }
+                    else
+                    {
+                        ddlBreaker.Visible = false;
+                        ddlHTType.Visible = true;
+                        TypeOfHTBreaker.Visible = false;
+                    }
+
+                }
+            }
+            else
+            {
+                ddlBreaker.Visible = false;
+                ddlHTType.Visible = true;
             }
         }
         protected void ddlHTType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlHTType.SelectedValue == "3")
             {
-                Breaker.Visible = true;
-                FuseUnit.Visible = false;
+                TypeOfHTBreaker.Visible = true;
             }
             else
             {
-                FuseUnit.Visible = false;
-                Breaker.Visible = false;
+                TypeOfHTBreaker.Visible = false;
             }
         }
         protected void ddlEarthingsubstation_SelectedIndexChanged(object sender, EventArgs e)

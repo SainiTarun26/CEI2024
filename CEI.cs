@@ -632,7 +632,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
         #endregion 
         #region Insert Test Report Data
         public void InsertTestReportData(string InstallationFor, string NameOfOwner, string NameOfAgency, string ContactNo,
-            string AddressOfSite, string TypeOfPremises, string VoltageLevel, string WorkStartDate, string WorkCompletionDate,
+            string AddressOfSite, string TypeOfPremises, string VoltageLevel, string WorkStartDate, string WorkCompletionDate,string SanctionLoad,
             string InstallationType1, string TypeOfInstallation1, string InstallationType2, string TypeOfInstallation2, string
 InstallationType3, string TypeOfInstallation3, string InstallationType4, string TypeOfInstallation4, string InstallationType5,
             string TypeOfInstallation5, string InstallationType6, string TypeOfInstallation6, string InstallationType7,
@@ -657,6 +657,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
             cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
             cmd.Parameters.AddWithValue("@WorkCompletionDate", WorkCompletionDate);
+            cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
             cmd.Parameters.AddWithValue("@InstallationType1", InstallationType1);
             cmd.Parameters.AddWithValue("@TypeOfInstallation1", TypeOfInstallation1);
             cmd.Parameters.AddWithValue("@InstallationType2", InstallationType2);

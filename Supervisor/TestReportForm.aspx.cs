@@ -272,7 +272,7 @@ namespace CEIHaryana.Supervisor
             try
             {
                 CEI.InsertTestReportData(txtInstallation.Text, txtName.Text, txtagency.Text, txtAddress.Text, TxtPremises.Text,
-                    txtVoltagelevel.Text, txtPhone.Text, txtStartDate.Text, txtCompletitionDate.Text, txtinstallationType1.Text,
+                    txtVoltagelevel.Text, txtPhone.Text, txtStartDate.Text, txtCompletitionDate.Text, txtSanctionLoad.Text, txtinstallationType1.Text,
                     txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text,
                     txtinstallationNo3.Text, txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text,
                     txtinstallationNo5.Text, txtinstallationType6.Text, txtinstallationNo6.Text, txtinstallationType7.Text,
