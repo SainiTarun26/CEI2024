@@ -5,8 +5,11 @@ using System.Data.SqlClient;
 
 namespace CEI_PRoject
 {
+
     public class CEI
     {
+        private int tCounter = 1;
+        private int lCounter = 1;
         private SqlParameter outputParam;
         #region Bind DropDown Draw State
         public DataSet WorkIntimationGridData(string LicenceNo)
@@ -782,7 +785,17 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
+        public string GenerateUniqueID()
+        {
+            string tID = "t" + tCounter.ToString("D3");
+            string lID = "L" + lCounter.ToString();
 
+            // Increment counters for the next ID generation
+            tCounter++;
+            lCounter++;
+
+            return tID + "/" + lID;
+        }
         #region Bind DropDown Draw State
         public DataSet GetddlDrawState()
         {

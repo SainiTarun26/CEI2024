@@ -13,7 +13,7 @@ namespace CEIHaryana.TestReport
     public partial class SubstationTransformer : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-
+        int x = 0;
         string sessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -365,6 +365,7 @@ namespace CEIHaryana.TestReport
                         txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), ddlSubstationEarthing20.SelectedItem.ToString(),
                         txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
                         txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text);
+                    x = x + 1;
                     Reset();
                     DataSaved.Visible = true;
                     labelVerification.Visible = false;
@@ -464,13 +465,13 @@ namespace CEIHaryana.TestReport
                 sessionValue = Session["installationNo8"] as string;
             }
 
-            int currentValue = Convert.ToInt32(hdn.Value);
-            currentValue += 1;
-            hdn.Value = currentValue.ToString();
-            if (hdn.Value == sessionValue)
+            string currentValue = Convert.ToString(x);
+            if (currentValue == sessionValue)
             {
                 BtnSubmitSubstation.Visible = false;
                 Session["SubmittedValue"] = sessionValue;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                divtrasformer.Visible = false;
             }
         }
 

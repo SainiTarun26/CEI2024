@@ -1947,6 +1947,8 @@ width: 99%;
     
                                    <ul>
                                                    <li class="tab-content tab-content-3 typography">
+                                                        <div class="card-body" id ="divGeneratingSet" runat="server" style="margin-top: -30px;">
+               
                                         <div class="card-body" style="margin-top: -30px;">
                                    
                                              <div class="row">
@@ -2616,6 +2618,7 @@ width: 99%;
                                                     </div>
                                                 </div>
                                         </div>
+                                                            </div>
                                     </li>
                                    
                                </ul>

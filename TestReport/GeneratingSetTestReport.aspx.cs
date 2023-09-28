@@ -13,6 +13,7 @@ namespace CEIHaryana.TestReport
     public partial class GeneratingSetTestReport : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        int x = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -238,7 +239,7 @@ namespace CEIHaryana.TestReport
            ddlGeneratingEarthing10.SelectedItem.ToString(), txtGeneratingEarthing10.Text, ddlGeneratingEarthingUsed10.SelectedItem.ToString(), ddlGeneratingEarthing11.SelectedItem.ToString(), txtGeneratingEarthing11.Text, ddlGeneratingEarthingUsed11.SelectedItem.ToString(),
             ddlGeneratingEarthing12.SelectedItem.ToString(), txtGeneratingEarthing12.Text, ddlGeneratingEarthingUsed12.SelectedItem.ToString(), ddlGeneratingEarthing13.SelectedItem.ToString(), txtGeneratingEarthing13.Text, ddlGeneratingEarthingUsed13.SelectedItem.ToString(),
            ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString());
-
+                    x = x + 1;
                     DataSaved.Visible = true;
                     label2.Visible = false;
                     PageWorking();
@@ -286,13 +287,13 @@ namespace CEIHaryana.TestReport
             {
                 sessionValue = Session["installationNo8"] as string;
             }
-
-            int currentValue = Convert.ToInt32(hdn.Value);
-            currentValue += 1;
-            hdn.Value = currentValue.ToString();
-            if (hdn.Value == sessionValue)
+            string currentValue = Convert.ToString(x);
+            if (currentValue == sessionValue)
             {
                 BtnSubmitGeneratingSet.Visible = false;
+                Session["SubmittedValue3"] = sessionValue;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                divGeneratingSet.Visible = false;
             }
         }
     }

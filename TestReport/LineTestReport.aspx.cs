@@ -12,6 +12,7 @@ namespace CEIHaryana.TestReport
     public partial class LineTestReport : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        int x = 0;
         string sessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +22,15 @@ namespace CEIHaryana.TestReport
                 Insulation220vAbove.Visible = false;
                 ddlLoadBindVoltage();
                 ddlEarthing();
+                SessionValue();
+                if(x+1 == int.Parse(sessionValue))
+                {
+                    btnSubmit.Text = "Submit And SendOTP";
+                }
+                else
+                {
+                    btnSubmit.Text = "Generate Test Report";
+                }
 
             }
         }
@@ -103,7 +113,12 @@ namespace CEIHaryana.TestReport
                         }
                     }
                 }
-                else if(ddlLineVoltage.SelectedItem.ToString().Trim() != "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() != "440V")
+                else if(ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+                {
+                    Insulation220vAbove.Visible = false;
+                    Insulation440vAbove.Visible = false;
+                }
+                else
                 {
                     Insulation220vAbove.Visible = false;
                     Insulation440vAbove.Visible = true;
@@ -152,7 +167,13 @@ namespace CEIHaryana.TestReport
                         }
                     }
                 }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() != "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() != "440V")
+                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+                {
+                    Insulation220vAbove.Visible = false;
+                    Insulation440vAbove.Visible = false;
+                }
+
+                else
                 {
                     Insulation220vAbove.Visible = false;
                     Insulation440vAbove.Visible = true;
@@ -393,7 +414,7 @@ namespace CEIHaryana.TestReport
 
                 else
                 {
-                    string TestReportId = string.Empty;
+                    string TestReportId = CEI.GenerateUniqueID();
                     TestReportId = Session["TestReportId"].ToString();
                     CEI.InsertLineData(TestReportId, txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
                    ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
@@ -411,10 +432,19 @@ namespace CEIHaryana.TestReport
                txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
                txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
                txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
+                    x = x + 1;
                     Reset();
                     DataSaved.Visible = true;
                     labelVerification.Visible = false;
                     PageWorking();
+                    string currentValue = Convert.ToString(x);
+                    if (currentValue == sessionValue)
+                    {
+                        btnSubmit.Visible = false;
+                        Session["SubmittedValue2"] = sessionValue;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                        divLine.Visible = false;
+                    }
                 }
             }
             catch (Exception Ex)
@@ -423,7 +453,7 @@ namespace CEIHaryana.TestReport
                 DataSaved.Visible = false;
             }
         }
-        public void PageWorking()
+        public void SessionValue()
         {
             if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
             {
@@ -458,13 +488,20 @@ namespace CEIHaryana.TestReport
                 sessionValue = Session["installationNo8"] as string;
             }
 
-            int currentValue = Convert.ToInt32(hdn.Value);
-            currentValue += 1;
-            hdn.Value = currentValue.ToString();
-            if (hdn.Value == sessionValue)
+        }
+        public void PageWorking()
+        {
+            SessionValue();
+
+            if (x + 1 == int.Parse(sessionValue))
             {
-                btnSubmit.Visible = false;
+                btnSubmit.Text = "Submit And SendOTP";
             }
+            else
+            {
+                btnSubmit.Text = "Generate Test Report";
+            }
+            
         }
         public void Reset()
         {

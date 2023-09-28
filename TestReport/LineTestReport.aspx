@@ -2025,6 +2025,8 @@ width: 99%;
      
     <ul>
                                     <li class="tab-content tab-content-first typography">
+                                        <div class="card-body" id ="divLine" runat="server" style="margin-top: -30px;">
+             
                                         <div id="IfInstallationIsLine" runat="server">
                                             <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
                                            
@@ -2739,6 +2741,7 @@ width: 99%;
                                                 </div>
                                             </div>
                                         </div>
+                                            </div>
                                     </li>
                                     
                                 </ul>
