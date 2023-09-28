@@ -69,7 +69,7 @@
 
         label {
             font-size: 13px;
-            margin-top: 15px;
+           
         }
 
         .form-control:focus {
@@ -2001,7 +2001,7 @@
                             </label>
                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2" style="margin-top:-15px;">
                             <label>
                                 Capacity of transformer
                                         <samp style="color: red">* </samp>
@@ -2015,7 +2015,7 @@
                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>--%>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2"  style="margin-top:-15px;">
                             <label>
                                 Capacity of transformer 
                                         <samp style="color: red">* </samp>
@@ -2087,34 +2087,28 @@
                             </label>
                             <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtHTsideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                       
-                    </div>
-                </div>
-                <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
-                <div class="LTInsulationResistance">
-                    <div class="row" style="margin-top: -15px;">
-                        <div class="col-4">
-                            <label for="Voltage" style="margin-top: 10px;">
+                <div class="col-4"  style="margin-top:-35px;">
+                    <label style=" margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
+                
+                        
+                            <label for="Voltage" style="margin-top:-15px;">
                                 LT side Insulation Resistance—LV/Earth
                                             <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLTSideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                        
-                    </div>
-                </div>
-                <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
-                <div class="LTInsulationResistance">
-                    <div class="row" style="margin-top: -15px;">
-                        <div class="col-4">
-                            <label for="Voltage" style="margin-top: 10px;">
+                     <div class="col-4" style="margin-top:-35px;">
+                <label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
+                
+                       
+                            <label for="Voltage" style="margin-top:-15px;">
                                 Insulation Resistance between HT LT Side 
             <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLowestValue" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                     </div>
-                </div>
                 <div class="row">
                     <div class="col-4">
                         <label for="Voltage">
