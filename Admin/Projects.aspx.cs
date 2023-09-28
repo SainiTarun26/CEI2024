@@ -51,12 +51,14 @@ namespace CEIHaryana.Admin
 
                     {
                         //Session["id"] = ID;
-                        Response.Redirect("/Admin/WorkIntimationDetail.aspx");
+                        Server.Transfer("/Admin/WorkIntimationDetail.aspx");
 
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+            }
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

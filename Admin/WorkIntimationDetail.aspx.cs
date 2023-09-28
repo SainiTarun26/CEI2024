@@ -97,8 +97,8 @@ namespace CEIHaryana.Admin
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
                     }
-                    string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
-                    ddWorkDetail.Text = dp_Id8;
+                    //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
+                    //ddWorkDetail.Text = dp_Id8;
                 }
             }
             catch { }
