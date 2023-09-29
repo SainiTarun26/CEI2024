@@ -20,7 +20,15 @@ namespace CEIHaryana.TestReport
             if (!IsPostBack)
             {
                 ddlEarthingSubstation();
-                // SessionCheck();
+                SessionValue();
+                if (x + 1 == int.Parse(sessionValue))
+                {
+                    BtnSubmitSubstation.Text = "Submit And SendOTP";
+                }
+                else
+                {
+                    BtnSubmitSubstation.Text = "Generate Test Report";
+                }
             }
         }
         private void ddlEarthingSubstation()
