@@ -345,7 +345,17 @@ namespace CEIHaryana.TestReport
                 else
                 {
                     string TestReportId = string.Empty;
-                    TestReportId = Session["TestReportId"].ToString();
+                    if (Convert.ToString(Session["SubstationId"]) == null || Convert.ToString(Session["SubstationId"]) == "")
+                    {
+                        TestReportId = CEI.GenerateUniqueSubstation();
+                        Session["SubstationId"] = TestReportId;
+
+                    }
+                    else
+                    {
+
+                        TestReportId = Session["SubstationId"].ToString();
+                    }
                     CEI.InsertSubstationData(TestReportId, txtTransformerSerialNumber.Text, txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
                         txtPrimaryVoltage.Text, txtSecondryVoltage.Text, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                         txtLowestValue.Text, txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
@@ -370,6 +380,15 @@ namespace CEIHaryana.TestReport
                     DataSaved.Visible = true;
                     labelVerification.Visible = false;
                     PageWorking();
+                    string currentValue = Convert.ToString(x);
+                    if (currentValue == sessionValue)
+                    {
+                        BtnSubmitSubstation.Visible = false;
+                        Session["SubmittedValue"] = sessionValue;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                        divtrasformer.Visible = false;
+                        Session["SubstationId"] = "";
+                    }
                 }
             }
             catch (Exception)
@@ -378,58 +397,7 @@ namespace CEIHaryana.TestReport
                 DataSaved.Visible = false;
             }
         }
-        //public void SessionCheck()
-        //{
-        //    try
-        //    {
-        //        if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo1"] as string;
-        //        }
-        //        else if (Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo2"] as string;
-        //        }
-        //        else if (Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo3"] as string;
-        //        }
-        //        else if (Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo4"] as string;
-        //        }
-        //        else if (Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo5"] as string;
-        //        }
-        //        else if (Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo6"] as string;
-        //        }
-        //        else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo7"] as string;
-
-        //        }
-        //        else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
-        //        {
-        //            sessionValue = Session["installationNo8"] as string;
-        //        }
-        //        if (Session["SubmittedValue"].ToString() == sessionValue)
-        //        {
-        //            BtnSubmitSubstation.Visible = false;
-        //        }
-        //        else
-        //        {
-        //            BtnSubmitSubstation.Visible = true;
-        //        }
-        //    }
-        //    catch
-        //    {
-        //    }
-
-        //}
-        public void PageWorking()
+       public void SessionValue()
         {
             if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
             {
@@ -464,15 +432,19 @@ namespace CEIHaryana.TestReport
             {
                 sessionValue = Session["installationNo8"] as string;
             }
-
-            string currentValue = Convert.ToString(x);
-            if (currentValue == sessionValue)
+        }
+        public void PageWorking()
+        {
+            SessionValue();
+            if (x + 1 == int.Parse(sessionValue))
             {
-                BtnSubmitSubstation.Visible = false;
-                Session["SubmittedValue"] = sessionValue;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
-                divtrasformer.Visible = false;
+                BtnSubmitSubstation.Text = "Submit And SendOTP";
             }
+            else
+            {
+                BtnSubmitSubstation.Text = "Generate Test Report";
+            }
+
         }
 
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)

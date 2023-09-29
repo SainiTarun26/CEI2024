@@ -464,6 +464,32 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public string GenerateUniqueSubstation()
+        {
+            SqlCommand cmd = new SqlCommand("sp_GenerateSubstationId");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+
+            if (outputParam != null)
+            {
+                return outputParam.Value.ToString();
+            }
+            else
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Insert GeneratingSet Data
@@ -550,6 +576,32 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             cmd.Parameters.AddWithValue("@UsedFor15", UsedFor15);
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+        public string GenerateUniqueGeneratingSetId()
+        {
+            SqlCommand cmd = new SqlCommand("sp_GeneratingSetId");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+
+            if (outputParam != null)
+            {
+                return outputParam.Value.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
         #endregion
         #region Insert Phase Data
@@ -810,7 +862,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             {
                 return null;
             }
-        }
+        } 
+        
         #region Bind DropDown Draw State
         public DataSet GetddlDrawState()
         {

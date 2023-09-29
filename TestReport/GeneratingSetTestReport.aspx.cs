@@ -14,12 +14,23 @@ namespace CEIHaryana.TestReport
     {
         CEI CEI = new CEI();
         int x = 0;
+
+        string sessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
 
             if (!IsPostBack)
             {
                 ddlEarthing();
+                SessionValue();
+                if (x + 1 == int.Parse(sessionValue))
+                {
+                    BtnSubmitGeneratingSet.Text = "Submit And SendOTP";
+                }
+                else
+                {
+                    BtnSubmitGeneratingSet.Text = "Generate Test Report";
+                }
             }
         }
         private void ddlEarthing()
@@ -227,7 +238,17 @@ namespace CEIHaryana.TestReport
                 else
                 {
                     string TestReportId = string.Empty;
-                    TestReportId = Session["TestReportId"].ToString();
+                    if (Convert.ToString(Session["GeneratingSetId"]) == null || Convert.ToString(Session["GeneratingSetId"]) == "")
+                    {
+                        TestReportId = CEI.GenerateUniqueGeneratingSetId();
+                        Session["GeneratingSetId"] = TestReportId;
+
+                    }
+                    else
+                    {
+
+                        TestReportId = Session["GeneratingSetId"].ToString();
+                    }
                     CEI.InsertGeneratingSetData(TestReportId, ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
                txtGeneratorVoltage.Text, txtCurrentCapacity.Text, txtBreakingCapacity.Text, ddlPlantType.SelectedItem.ToString(), ddlPlantCapacity.SelectedItem.ToString(),
               txtPlantCapacity.Text, txtDCString.Text, txtLowestInsulation.Text, txtPCVOrSolar.Text, txtLTACCapacity.Text, txtLowestInsulationAC.Text,
@@ -243,6 +264,15 @@ namespace CEIHaryana.TestReport
                     DataSaved.Visible = true;
                     label2.Visible = false;
                     PageWorking();
+                    string currentValue = Convert.ToString(x);
+                    if (currentValue == sessionValue)
+                    {
+                        BtnSubmitGeneratingSet.Visible = false;
+                        Session["SubmittedValue3"] = sessionValue;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                        divGeneratingSet.Visible = false;
+                        Session["GeneratingSetId"] = "";
+                    }
                 }
 
             }
@@ -252,9 +282,8 @@ namespace CEIHaryana.TestReport
                 DataSaved.Visible = false;
             }
         }
-        public void PageWorking()
+        public void SessionValue()
         {
-            string sessionValue = string.Empty;
             if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
             {
                 sessionValue = Session["installationNo1"] as string;
@@ -287,13 +316,17 @@ namespace CEIHaryana.TestReport
             {
                 sessionValue = Session["installationNo8"] as string;
             }
-            string currentValue = Convert.ToString(x);
-            if (currentValue == sessionValue)
+        }
+        public void PageWorking()
+        {
+            SessionValue();
+            if (x + 1 == int.Parse(sessionValue))
             {
-                BtnSubmitGeneratingSet.Visible = false;
-                Session["SubmittedValue3"] = sessionValue;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
-                divGeneratingSet.Visible = false;
+                BtnSubmitGeneratingSet.Text = "Submit And SendOTP";
+            }
+            else
+            {
+                BtnSubmitGeneratingSet.Text = "Generate Test Report";
             }
         }
     }
