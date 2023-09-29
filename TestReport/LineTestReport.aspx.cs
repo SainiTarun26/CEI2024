@@ -23,7 +23,7 @@ namespace CEIHaryana.TestReport
                 ddlLoadBindVoltage();
                 ddlEarthing();
                 SessionValue();
-                if(x+1 == int.Parse(sessionValue))
+                if (x + 1 == int.Parse(sessionValue))
                 {
                     btnSubmit.Text = "Submit And SendOTP";
                 }
@@ -66,7 +66,7 @@ namespace CEIHaryana.TestReport
                 //msg.Text = ex.Message;
             }
         }
-   
+
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -113,7 +113,7 @@ namespace CEIHaryana.TestReport
                         }
                     }
                 }
-                else if(ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
                 {
                     Insulation220vAbove.Visible = false;
                     Insulation440vAbove.Visible = false;
@@ -419,44 +419,44 @@ namespace CEIHaryana.TestReport
                     {
                         TestReportId = CEI.GenerateUniqueID();
                         Session["LineId"] = TestReportId;
-                       
+
                     }
                     else
                     {
 
                         TestReportId = Session["LineId"].ToString();
                     }
-                        CEI.InsertLineData(TestReportId, txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
-                       ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
-                      txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
-                       ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
-                       txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
-                      txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
-                     txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
-                     txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
-                     txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
-                     txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
-                     txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
-                     txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
-                     txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
-                   txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
-                   txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
-                   txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
-                        x = x + 1;
-                        Reset();
-                        DataSaved.Visible = true;
-                        labelVerification.Visible = false;
-                        PageWorking();
-                        string currentValue = Convert.ToString(x);
-                        if (currentValue == sessionValue)
-                        {
-                            btnSubmit.Visible = false;
-                            Session["SubmittedValue2"] = sessionValue;
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
-                            divLine.Visible = false;
-                            Session["LineId"] = "";
-                        }
-                    
+                    CEI.InsertLineData(TestReportId, txtLineLength.Text, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                   ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
+                  txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
+                   ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
+                   txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
+                  txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
+                 txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
+                 txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
+                 txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
+                 txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
+                 txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
+                 txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
+                 txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
+               txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
+               txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
+               txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
+                    x = x + 1;
+                    Reset();
+                    DataSaved.Visible = true;
+                    labelVerification.Visible = false;
+                    PageWorking();
+                    string currentValue = Convert.ToString(x);
+                    if (currentValue == sessionValue)
+                    {
+                        btnSubmit.Visible = false;
+                        Session["SubmittedValue2"] = sessionValue;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                        divLine.Visible = false;
+                        Session["LineId"] = "";
+                    }
+
                 }
             }
             catch (Exception Ex)
@@ -513,7 +513,7 @@ namespace CEIHaryana.TestReport
             {
                 btnSubmit.Text = "Generate Test Report";
             }
-            
+
         }
         public void Reset()
         {
@@ -538,7 +538,7 @@ namespace CEIHaryana.TestReport
 
         protected void ddlLineVoltage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlLineVoltage.SelectedItem.ToString().Trim() == "Other")
+            if (ddlLineVoltage.SelectedItem.ToString().Trim() == "Other")
             {
                 divOtherVoltages.Visible = true;
                 OtherVoltage.Visible = true;
