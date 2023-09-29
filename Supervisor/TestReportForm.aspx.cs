@@ -279,7 +279,7 @@ namespace CEIHaryana.Supervisor
                     txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text);
 
                 string TestReportId = CEI.TestReportId();
-                Session["TestReportId"] = CEI.TestReportId();
+                //Session["TestReportId"] = CEI.TestReportId();
                 Session["installationType1"] = txtinstallationType1.Text;
                 Session["installationNo1"] = txtinstallationNo1.Text;
 

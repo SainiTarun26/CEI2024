@@ -787,14 +787,29 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #endregion
         public string GenerateUniqueID()
         {
-            string tID = "t" + tCounter.ToString("D3");
-            string lID = "L" + lCounter.ToString();
+            SqlCommand cmd = new SqlCommand("sp_generateLineId");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
 
-            // Increment counters for the next ID generation
-            tCounter++;
-            lCounter++;
+            cmd.CommandType = CommandType.StoredProcedure;
+            outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
 
-            return tID + "/" + lID;
+            if (outputParam != null)
+            {
+                return outputParam.Value.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
         #region Bind DropDown Draw State
         public DataSet GetddlDrawState()
