@@ -125,10 +125,15 @@ namespace CEIHaryana.TestReport
                     Insulation220vAbove.Visible = false;
                     Insulation440vAbove.Visible =true;
                 }
+                else if (ddlLineVoltage.SelectedValue == "0")
+                {
+                    Insulation220vAbove.Visible = false;
+                    Insulation440vAbove.Visible =false;
+                }
                 else
                 {
                     Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = false;
+                    Insulation440vAbove.Visible = true;
                 }
 
             }
@@ -184,11 +189,15 @@ namespace CEIHaryana.TestReport
                     Insulation220vAbove.Visible = false;
                     Insulation440vAbove.Visible = true;
                 }
-
-                else
+                else if (ddlLineVoltage.SelectedValue == "0")
                 {
                     Insulation220vAbove.Visible = false;
                     Insulation440vAbove.Visible = false;
+                }
+                else
+                {
+                    Insulation220vAbove.Visible = false;
+                    Insulation440vAbove.Visible = true;
                 }
 
             }
