@@ -3,6 +3,8 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Net;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -73,6 +75,7 @@ namespace CEIHaryana.Supervisor
             GridView1.PageIndex = e.NewPageIndex;
             getWorkIntimationData();
         }
+        
         protected void GetDetails()
         {
             try

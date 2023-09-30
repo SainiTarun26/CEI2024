@@ -251,7 +251,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string Id, string TestReportId, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string LineId, string TestReportId, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -276,7 +276,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Id", Id);
+            cmd.Parameters.AddWithValue("@Id", LineId);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
             cmd.Parameters.AddWithValue("@LineLength", LineLength);
@@ -688,7 +688,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
         }
         #endregion 
         #region Insert Test Report Data
-        public void InsertTestReportData(string InstallationFor, string NameOfOwner, string NameOfAgency, string ContactNo,
+        public void InsertTestReportData(string IntimationId, string InstallationFor, string NameOfOwner, string NameOfAgency, string ContactNo,
             string AddressOfSite, string TypeOfPremises, string VoltageLevel, string WorkStartDate, string WorkCompletionDate,string SanctionLoad,
             string InstallationType1, string TypeOfInstallation1, string InstallationType2, string TypeOfInstallation2, string
 InstallationType3, string TypeOfInstallation3, string InstallationType4, string TypeOfInstallation4, string InstallationType5,
@@ -705,6 +705,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@InstallationFor", InstallationFor);
             cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", NameOfAgency);

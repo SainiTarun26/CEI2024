@@ -232,7 +232,7 @@
                         </div>
 
                         <div class="modal-footer" style="margin-top: 10px;">
-                            <asp:Button ID="btnSubmit" Text="Generate Test Report" OnClientClick="return CloseModalAndRedirect()" AutoPostBack="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                            <asp:Button ID="btnSubmit" Text="Next" OnClientClick="return CloseModalAndRedirect()" AutoPostBack="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
                          
                             <%--<a href="#" onclick="closeModal();">Close</a>--%>

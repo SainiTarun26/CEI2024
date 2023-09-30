@@ -4,6 +4,8 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Net;
 using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Supervisor
@@ -267,11 +269,14 @@ namespace CEIHaryana.Supervisor
             txtinstallationNo8.Text = string.Empty;
         }
 
+
+
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
-                CEI.InsertTestReportData(txtInstallation.Text, txtName.Text, txtagency.Text, txtAddress.Text, TxtPremises.Text,
+               string Id= Session["id"].ToString();
+                CEI.InsertTestReportData(Id,txtInstallation.Text, txtName.Text, txtagency.Text, txtAddress.Text, TxtPremises.Text,
                     txtVoltagelevel.Text, txtPhone.Text, txtStartDate.Text, txtCompletitionDate.Text, txtSanctionLoad.Text, txtinstallationType1.Text,
                     txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text,
                     txtinstallationNo3.Text, txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text,
