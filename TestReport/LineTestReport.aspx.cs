@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -113,15 +115,20 @@ namespace CEIHaryana.TestReport
                         }
                     }
                 }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" )
+                {
+                    Insulation220vAbove.Visible = true;
+                    Insulation440vAbove.Visible = false;
+                }  
+                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
                 {
                     Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = false;
+                    Insulation440vAbove.Visible =true;
                 }
                 else
                 {
                     Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = true;
+                    Insulation440vAbove.Visible = false;
                 }
 
             }
@@ -160,23 +167,28 @@ namespace CEIHaryana.TestReport
                             }
                             else
                             {
-                                Insulation440vAbove.Visible = false;
+                                Insulation440vAbove.Visible = true;
                                 Insulation220vAbove.Visible = false;
                             }
 
                         }
                     }
                 }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" || ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
+                {
+                    Insulation220vAbove.Visible = true;
+                    Insulation440vAbove.Visible = false;
+                }
+                else if ( ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
                 {
                     Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = false;
+                    Insulation440vAbove.Visible = true;
                 }
 
                 else
                 {
                     Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = true;
+                    Insulation440vAbove.Visible = false;
                 }
 
             }
@@ -185,7 +197,7 @@ namespace CEIHaryana.TestReport
 
                 LineTypeOverhead.Visible = false;
                 LineTypeUnderground.Visible = false;
-                Insulation440vAbove.Visible = false;
+                Insulation440vAbove.Visible = true;
                 Insulation220vAbove.Visible = false;
                 Earthing.Visible = false;
             }
