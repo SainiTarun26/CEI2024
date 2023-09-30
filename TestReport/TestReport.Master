@@ -1975,7 +1975,7 @@
                     <div class="main-panel" style="margin-left:8%;">
                         <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #b7b7ff;margin-top:2%;">
                             <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1">
-                                <input type="radio" name="pcss3t" checked id="tab1" class="tab-content-first" runat="server">
+                                <input type="radio" name="pcss3t" id="tab1" class="tab-content-first" runat="server">
                                 <label Id="lblLinePage" runat="server" onclick="handleLabelClick()" visible="false"><i class="icon-bolt"></i>LINE</label>
                                 <input type="radio" name="pcss3t" id="tab2" class="tab-content-2" runat="server">
                                 <label for="tab2" Id="lblSubStationPage" runat="server" visible="false" onclick="handleLabelClick2()">

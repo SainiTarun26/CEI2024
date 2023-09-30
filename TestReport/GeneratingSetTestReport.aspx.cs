@@ -37,11 +37,12 @@ namespace CEIHaryana.TestReport
         {
             try
             {
+
                 DataSet dsEarthing = new DataSet();
-                dsEarthing = CEI.GetddlEarthing();
+                dsEarthing = CEI.GetddlEarthingSubstation();
                 ddlGeneratingEarthing.DataSource = dsEarthing;
-                ddlGeneratingEarthing.DataTextField = "Numbers";
-                ddlGeneratingEarthing.DataValueField = "Id";
+                ddlGeneratingEarthing.DataTextField = "NumberOfEarthing";
+                ddlGeneratingEarthing.DataValueField = "NumberOfEarthing";
                 ddlGeneratingEarthing.DataBind();
                 ddlGeneratingEarthing.Items.Insert(0, new ListItem("Select", "0"));
                 dsEarthing.Clear();
@@ -237,20 +238,22 @@ namespace CEIHaryana.TestReport
                 }
                 else
                 {
-                    string TestReportId = string.Empty;
+                    string GeneratingSetId = string.Empty;
                     if (Convert.ToString(Session["GeneratingSetId"]) == null || Convert.ToString(Session["GeneratingSetId"]) == "")
                     {
-                        TestReportId = CEI.GenerateUniqueGeneratingSetId();
-                        Session["GeneratingSetId"] = TestReportId;
+                        GeneratingSetId = CEI.GenerateUniqueGeneratingSetId();
+                        Session["GeneratingSetId"] = GeneratingSetId;
 
                     }
                     else
                     {
 
-                        TestReportId = Session["GeneratingSetId"].ToString();
+                        GeneratingSetId = Session["GeneratingSetId"].ToString();
                     }
-                    string Id = Session["TestReportId"].ToString();
-                    CEI.InsertGeneratingSetData(TestReportId, Id,
+                    string TestReportId = Session["TestReportId"].ToString();
+                    string IntimationId = Session["id"].ToString();
+                    string CreatedBy = Session["AdminID"].ToString();
+                    CEI.InsertGeneratingSetData(GeneratingSetId,TestReportId, IntimationId,
                         ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
                txtGeneratorVoltage.Text, txtCurrentCapacity.Text, txtBreakingCapacity.Text, ddlPlantType.SelectedItem.ToString(), ddlPlantCapacity.SelectedItem.ToString(),
               txtPlantCapacity.Text, txtDCString.Text, txtLowestInsulation.Text, txtPCVOrSolar.Text, txtLTACCapacity.Text, txtLowestInsulationAC.Text,
@@ -261,7 +264,7 @@ namespace CEIHaryana.TestReport
           ddlGeneratingEarthing8.SelectedItem.ToString(), txtGeneratingEarthing8.Text, ddlGeneratingEarthingUsed8.SelectedItem.ToString(), ddlGeneratingEarthing9.SelectedItem.ToString(), txtGeneratingEarthing9.Text, ddlGeneratingEarthingUsed9.SelectedItem.ToString(),
            ddlGeneratingEarthing10.SelectedItem.ToString(), txtGeneratingEarthing10.Text, ddlGeneratingEarthingUsed10.SelectedItem.ToString(), ddlGeneratingEarthing11.SelectedItem.ToString(), txtGeneratingEarthing11.Text, ddlGeneratingEarthingUsed11.SelectedItem.ToString(),
             ddlGeneratingEarthing12.SelectedItem.ToString(), txtGeneratingEarthing12.Text, ddlGeneratingEarthingUsed12.SelectedItem.ToString(), ddlGeneratingEarthing13.SelectedItem.ToString(), txtGeneratingEarthing13.Text, ddlGeneratingEarthingUsed13.SelectedItem.ToString(),
-           ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString());
+           ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString(), CreatedBy);
                     x = x + 1;
                     DataSaved.Visible = true;
                     label2.Visible = false;
