@@ -2055,7 +2055,7 @@ width: 99%;
                                                             </asp:DropDownList>
                                                             <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Voltage of Line" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLineVoltage" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                         </div>
-                                                            <div class="col-4" id="Div8" runat="server">
+                                                            <div class="col-4" id="Div8" runat="server" visible="false">
         <label for="Name">
             Voltage of Line(Other)
 <samp style="color: red">* </samp>
