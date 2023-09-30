@@ -2055,6 +2055,14 @@ width: 99%;
                                                             </asp:DropDownList>
                                                             <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Voltage of Line" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLineVoltage" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                         </div>
+                                                            <div class="col-4" id="Div8" runat="server">
+        <label for="Name">
+            Voltage of Line(Other)
+<samp style="color: red">* </samp>
+        </label>
+        <asp:TextBox class="form-control" ID="TextBox2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="txtLineLength" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+    </div>
                                                         <div class="col-2" id="divOtherVoltages" runat="server" visible="false">
                                                             <label for="Voltage">
                                                                 Other Voltage 
@@ -2657,6 +2665,12 @@ width: 99%;
                                                         </div>
                                                         <div class="col-4">
     <label>
+       Type of Cable(Other)<samp style="color: red"> * </samp>
+    </label>
+    <asp:TextBox class="form-control" ID="TextBox3"  onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
+                                                        <div class="col-4">
+    <label>
         Type of Cable(Other)<samp style="color: red"> * </samp>
     </label>
     <asp:TextBox class="form-control" ID="TextBox1" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -2771,7 +2785,7 @@ width: 99%;
                                                     <div class="col-4"></div>
                                                     <div class="col-4" style="text-align: center;">
                                                         <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnSubmit_Click" />
+                                                             OnClick="btnSubmit_Click" />
                                                           
                                                     </div>
                                                     <div class="col-4">

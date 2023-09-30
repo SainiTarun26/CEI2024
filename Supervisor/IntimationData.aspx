@@ -23,7 +23,7 @@
 
         .modal {
             max-width: 60%; /* Adjust the maximum width as needed */
-            margin: 0 auto; /* Center the modal horizontally */
+            margin: -40px; /* Center the modal horizontally */
             background-color: white; /* Background color for the modal */
             padding: 20px; /* Add padding for content */
             border-radius: 10px; /* Rounded corners for the modal */
@@ -151,7 +151,7 @@
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
                  </div>
-                    <div id="ex1" class="modal">
+                    <div id="ex1" class="modal" style="height:auto;">
                         <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
                         <div class="col-md-12">
                             <div class="row row-modal">
@@ -233,7 +233,7 @@
 
                         <div class="modal-footer" style="margin-top: 10px;">
                             <asp:Button ID="btnSubmit" Text="Next" OnClientClick="return CloseModalAndRedirect()" AutoPostBack="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
+                                />
                          
                             <%--<a href="#" onclick="closeModal();">Close</a>--%>
                         </div>

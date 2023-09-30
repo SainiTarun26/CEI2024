@@ -2656,8 +2656,8 @@ width: 99%;
                                                         </div>
                                                     <div class="col-12" style="text-align: center;">
                                                         <asp:Button ID="BtnSubmitGeneratingSet" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitGeneratingSet_Click" />
-                                                             OnClick="BtnSubmitGeneratingSet_Click" />
+                                                            OnClick="BtnSubmitGeneratingSet_Click" />
+                                                           
                                                     </div>
                                                     <div class="col-4">
                                                       <asp:HiddenField ID="hdn" Value="0" runat="server" />

@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
-
     <style type="text/css">
         li.tab-content.tab-content-2.typography {
             border: 8px solid #CED4DA;

@@ -2514,7 +2514,7 @@
                                        <div class="col-4"></div>
                                        <div class="col-4" style="text-align: center;">
                                            <asp:Button ID="btnPhaseSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                               Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;"/>
+                                              />
                                        </div>
                                        <div class="col-4">
                                            <asp:HiddenField ID="HiddenField4" runat="server" />
