@@ -139,10 +139,6 @@
             background-color: #9292cc !important;
         }
 
-        div#ContentPlaceHolder1_individual {
-            top: 15px;
-        }
-
         .col-4 {
             left: 0px;
         }

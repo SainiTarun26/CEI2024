@@ -152,6 +152,7 @@
                         </asp:GridView>
                  </div>
                     <div id="ex1" class="modal">
+                    <div id="ex1" class="modal" style="height:auto;margin-top:-40px !important;">
                         <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
                         <div class="col-md-12">
                             <div class="row row-modal">
@@ -160,16 +161,19 @@
                                         Electrical Installation For
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox1" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" ></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="agency" runat="server" visible="false">
                                     <label for="agency">Name of Firm/ Org./ Company/ Department</label>
                                     <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox2" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual" runat="server">
                                     <label for="Name">
                                         Name of Owner/ Consumer
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox3" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row row-modal">
@@ -184,12 +188,14 @@
                                         Address 
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox4" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" ></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual5" runat="server">
                                     <label for="Name">
                                         Contact Details 
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox5" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row row-modal">
@@ -198,12 +204,14 @@
                                         Type of Premises
                                     </label>
                                     <asp:TextBox class="form-control" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox6" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual3" runat="server">
                                     <label for="Name">
                                         Highest Voltage Level of Work
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox7" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row row-modal">
@@ -221,12 +229,14 @@
                                         Work Start Date
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox8" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="col-6" id="individual11" runat="server">
                                     <label for="Name">
                                         Tentative Work Completition Date
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox9" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" ></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -234,6 +244,7 @@
                         <div class="modal-footer" style="margin-top: 10px;">
                             <asp:Button ID="btnSubmit" Text="Next" OnClientClick="return CloseModalAndRedirect()" AutoPostBack="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" />
+                                />
                          
                             <%--<a href="#" onclick="closeModal();">Close</a>--%>
                         </div>

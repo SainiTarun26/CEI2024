@@ -2145,6 +2145,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -2177,6 +2180,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="7" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -2209,6 +2215,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="7" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -2242,6 +2251,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="7" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 </div>
@@ -2275,6 +2287,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing6" runat="server" visible="false">
@@ -2306,6 +2321,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing7" runat="server" visible="false">
@@ -2337,6 +2355,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing8" runat="server" visible="false">
@@ -2368,6 +2389,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing9" runat="server" visible="false">
@@ -2399,6 +2423,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing10" runat="server" visible="false">
@@ -2430,6 +2457,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing11" runat="server" visible="false">
@@ -2461,6 +2491,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing12" runat="server" visible="false">
@@ -2492,6 +2525,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing13" runat="server" visible="false">
@@ -2523,6 +2559,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing14" runat="server" visible="false">
@@ -2554,6 +2593,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="GeneratingEarthing15" runat="server" visible="false">
@@ -2585,6 +2627,9 @@ width: 99%;
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr> 
                                                             </tbody>
@@ -2612,6 +2657,7 @@ width: 99%;
                                                     <div class="col-12" style="text-align: center;">
                                                         <asp:Button ID="BtnSubmitGeneratingSet" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitGeneratingSet_Click" />
+                                                             OnClick="BtnSubmitGeneratingSet_Click" />
                                                     </div>
                                                     <div class="col-4">
                                                       <asp:HiddenField ID="hdn" Value="0" runat="server" />

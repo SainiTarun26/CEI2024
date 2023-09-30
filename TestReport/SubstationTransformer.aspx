@@ -2118,6 +2118,20 @@
                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLightningArrestor" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
+    <label>
+        Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
+    </label>
+    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlHTType" OnSelectedIndexChanged="ddlHTType_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
+        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+        <asp:ListItem Value="1" Text="GO Switch"></asp:ListItem>
+        <asp:ListItem Value="2" Text="3Pole Linked Switch(GODO)"></asp:ListItem>
+        <asp:ListItem Value="3" Text="Breaker"></asp:ListItem>
+    </asp:DropDownList>
+    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlBreaker" selectionmode="Multiple" Visible="false" Style="width: 100% !important">
+        <asp:ListItem Value="1" Text="Breaker" Selected="True"></asp:ListItem>
+    </asp:DropDownList>
+</div>
+                    <div class="col-4">
                         <label for="Name">
                             Number of Earthing:
                                         <samp style="color: red">* </samp>
@@ -2125,7 +2139,6 @@
                         <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlEarthingsubstation_SelectedIndexChanged" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important">
                         </asp:DropDownList>
                     </div>
-
                     <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
                         <table class="table table-bordered table-striped">
                             <thead class="table-dark">
@@ -2173,6 +2186,9 @@
                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                            <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2206,6 +2222,9 @@
                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                                                                        <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2239,6 +2258,9 @@
                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                                                                        <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -2273,6 +2295,9 @@
                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                                                                        <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                         </td>
                                     </tr>
                                 </div>
@@ -2307,6 +2332,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation6" runat="server" visible="false">
@@ -2340,6 +2368,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation7" runat="server" visible="false">
@@ -2373,6 +2404,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation8" runat="server" visible="false">
@@ -2406,6 +2440,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation9" runat="server" visible="false">
@@ -2439,6 +2476,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation10" runat="server" visible="false">
@@ -2472,6 +2512,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation11" runat="server" visible="false">
@@ -2505,6 +2548,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation12" runat="server" visible="false">
@@ -2538,6 +2584,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation13" runat="server" visible="false">
@@ -2571,6 +2620,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation14" runat="server" visible="false">
@@ -2604,6 +2656,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation15" runat="server" visible="false">
@@ -2637,6 +2692,9 @@
                                                 <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
+                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                     </td>
                                 </tr>
                                 <tr id="EathingSubstation16" runat="server" visible="false">
@@ -2806,22 +2864,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-
-                    <div class="col-4">
-                        <label>
-                            Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlHTType" OnSelectedIndexChanged="ddlHTType_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
-                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                            <asp:ListItem Value="1" Text="GO Switch"></asp:ListItem>
-                            <asp:ListItem Value="2" Text="3Pole Linked Switch(GODO)"></asp:ListItem>
-                            <asp:ListItem Value="3" Text="Breaker"></asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlBreaker" selectionmode="Multiple" Visible="false" Style="width: 100% !important">
-                            <asp:ListItem Value="1" Text="Breaker" Selected="True"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
+                    </div>                    
                 </div>
                     </div>
                 <div id="TypeOfHTBreaker" runat="server" visible="false">
@@ -2976,8 +3019,7 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>--%>
-            <%-- </div>
-                                        </div>--%>
+          
           
                      </ContentTemplate>
          </asp:UpdatePanel>
@@ -2994,7 +3036,7 @@
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
                     <asp:Button ID="BtnSubmitSubstation" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="BtnSubmitSubstation_Click" />
+                        OnClick="BtnSubmitSubstation_Click" />
                 </div>
                 <div class="col-4">
                  <asp:HiddenField ID="hdn" Value="0" runat="server" />  

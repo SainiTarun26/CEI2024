@@ -96,6 +96,24 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.TextBox txtMainSwitch;
 
         /// <summary>
+        /// Div164 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div164;
+
+        /// <summary>
+        /// txtMinIRValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMinIRValue;
+
+        /// <summary>
         /// Div120 control.
         /// </summary>
         /// <remarks>
@@ -159,6 +177,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed1;
 
         /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+
+        /// <summary>
         /// PhaseEarthing2 control.
         /// </summary>
         /// <remarks>
@@ -195,6 +222,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed2;
 
         /// <summary>
+        /// TextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+
+        /// <summary>
         /// PhaseEarthing3 control.
         /// </summary>
         /// <remarks>
@@ -229,6 +265,15 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed3;
+
+        /// <summary>
+        /// TextBox3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
 
         /// <summary>
         /// PhaseEarthing4 control.
@@ -285,6 +330,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed4;
 
         /// <summary>
+        /// TextBox4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+
+        /// <summary>
         /// PhaseEarthing5 control.
         /// </summary>
         /// <remarks>
@@ -330,6 +384,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed5;
 
         /// <summary>
+        /// TextBox5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+
+        /// <summary>
         /// PhaseEarthing6 control.
         /// </summary>
         /// <remarks>
@@ -364,6 +427,15 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed6;
+
+        /// <summary>
+        /// TextBox6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox6;
 
         /// <summary>
         /// PhaseEarthing7 control.
@@ -411,6 +483,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed7;
 
         /// <summary>
+        /// TextBox7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+
+        /// <summary>
         /// PhaseEarthing8 control.
         /// </summary>
         /// <remarks>
@@ -445,6 +526,15 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed8;
+
+        /// <summary>
+        /// TextBox8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox8;
 
         /// <summary>
         /// PhaseEarthing9 control.
@@ -483,6 +573,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed9;
 
         /// <summary>
+        /// TextBox9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+
+        /// <summary>
         /// PhaseEarthing10 control.
         /// </summary>
         /// <remarks>
@@ -517,6 +616,15 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed10;
+
+        /// <summary>
+        /// TextBox10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox10;
 
         /// <summary>
         /// PhaseEarthing11 control.
@@ -555,6 +663,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed11;
 
         /// <summary>
+        /// TextBox11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+
+        /// <summary>
         /// PhaseEarthing12 control.
         /// </summary>
         /// <remarks>
@@ -589,6 +706,15 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed12;
+
+        /// <summary>
+        /// TextBox12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox12;
 
         /// <summary>
         /// PhaseEarthing13 control.
@@ -627,6 +753,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed13;
 
         /// <summary>
+        /// TextBox13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+
+        /// <summary>
         /// PhaseEarthing14 control.
         /// </summary>
         /// <remarks>
@@ -661,6 +796,15 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed14;
+
+        /// <summary>
+        /// TextBox14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox14;
 
         /// <summary>
         /// PhaseEarthing15 control.
@@ -699,22 +843,13 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.DropDownList ddlPhaseEarthingUsed15;
 
         /// <summary>
-        /// Div164 control.
+        /// TextBox15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div164;
-
-        /// <summary>
-        /// txtMinIRValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMinIRValue;
+        protected global::System.Web.UI.WebControls.TextBox TextBox15;
 
         /// <summary>
         /// txtNoOfRCCB control.

@@ -1994,6 +1994,13 @@
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtMainSwitch" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
+                                                                                   <div class="col-4" id="Div164" runat="server">
+                                       <label for="Name">
+                                           Minimum IR value
+<samp style="color: red">* </samp>
+                                       </label>
+                                       <asp:TextBox class="form-control" ID="txtMinIRValue" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="between wires(in Mohm)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                   </div>
                                                 <div class="col-4" id="Div120" runat="server">
                                                     <label for="Name">
                                                         Number of Earthing:
@@ -2048,6 +2055,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing2" runat="server" visible="false">
@@ -2080,6 +2090,9 @@
                                                                                     <asp:ListItem Value="7" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing3" runat="server" visible="false">
@@ -2112,6 +2125,9 @@
                                                                                     <asp:ListItem Value="7" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing4" runat="server" visible="false">
@@ -2144,6 +2160,9 @@
                                                                                     <asp:ListItem Value="7" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing5" runat="server" visible="false">
@@ -2176,6 +2195,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing6" runat="server" visible="false">
@@ -2207,6 +2229,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing7" runat="server" visible="false">
@@ -2238,6 +2263,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing8" runat="server" visible="false">
@@ -2269,6 +2297,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing9" runat="server" visible="false">
@@ -2300,6 +2331,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing10" runat="server" visible="false">
@@ -2331,6 +2365,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing11" runat="server" visible="false">
@@ -2362,6 +2399,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing12" runat="server" visible="false">
@@ -2393,6 +2433,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing13" runat="server" visible="false">
@@ -2424,6 +2467,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing14" runat="server" visible="false">
@@ -2455,6 +2501,9 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="PhaseEarthing15" runat="server" visible="false">
@@ -2486,21 +2535,18 @@
                                                                                     <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                         </div>
+                                                                                                                    <div class="col-12">
+    <asp:TextBox class="form-control" ID="TextBox15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+</div>
                                                                     </td>
                                                                 </tr> 
                                                             </tbody>
                                                         </table>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-4" id="Div164" runat="server">
-                                                    <label for="Name">
-                                                        Minimum IR value
-             <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtMinIRValue" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="between wires(in Mohm)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                            </div>
+                                            
+                                               
+                                            
                                             <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">No of RCCB</label>
                                             <div>
                                                 <div class="row" style="margin-top: -15px;">
@@ -2559,7 +2605,7 @@
                                                     <div class="col-4"></div>
                                                     <div class="col-4" style="text-align: center;">
                                                         <asp:Button ID="btnPhaseSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnPhaseSubmit_Click" />
+                                                            OnClick="btnPhaseSubmit_Click" />
                                                     </div>
                                                     <div class="col-4">
                                                         <asp:HiddenField ID="hdn" Value="0" runat="server" />
