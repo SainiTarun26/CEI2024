@@ -60,28 +60,6 @@
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
-                        <%--  <button class="navbar-toggler navbar-toggler align-self-center" type="button" visible="false" data-toggle="minimize">
-                            <span class="icon-menu header-icon" style="color: black !important;"></span>
-                        </button>--%>
-
-                        <%--<ul class="navbar-nav mr-lg-2">
-=======
-                       <%-- <ul class="navbar-nav mr-lg-2">
->>>>>>> 23c172b14d875ac8fc436f36a4804f5a45973f43
-=======
-                       <%-- <ul class="navbar-nav mr-lg-2">
->>>>>>> 23c172b14d875ac8fc436f36a4804f5a45973f43
-                            <li class="nav-item nav-search d-none d-lg-block">
-                               <div class="input-group">
-                                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                                        <span class="input-group-text" id="search" style="margin-right: 5px;">
-                                            <i class="icon-search"></i>
-                                        </span>
-                                    </div>
-                                 <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search" style="border-radius: 5px; padding: 0px 0px 3px 17px; width: 400px;">
-                                </div>
-                            </li>
-                        </ul>--%>
                         <ul class="navbar-nav navbar-nav-right">
                             <%--<li class="nav-item dropdown">
                                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -387,6 +365,20 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">All Test Reports</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="ui-basic4">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Line</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Substation<br/> Transformer</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Genrating Set</a></li>
+        </ul>
+    </div>
+</li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/Projects.aspx">
                                     <i class="icon-layout menu-icon"></i>

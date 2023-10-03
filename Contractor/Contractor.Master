@@ -345,6 +345,12 @@
                                     <span class="menu-title">Work Intimations History</span>
                                 </a>
                             </li>
+                           <li class="nav-item">
+                                 <a class="nav-link" href="/Contractor/TestReportHistory.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Test Reports History</span>
+                                </a>
+                            </li>
                            
                         </ul>
                     </nav>

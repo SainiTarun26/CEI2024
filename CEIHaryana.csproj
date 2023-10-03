@@ -149,6 +149,7 @@
     <Content Include="Admin\AddSupervisorDetails.aspx" />
     <Content Include="Admin\AddWiremanDetails.aspx" />
     <Content Include="Admin\AdminDashboard.aspx" />
+    <Content Include="Admin\AllTestReports.aspx" />
     <Content Include="Admin\Contractor_Table.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
@@ -1606,6 +1607,13 @@
     </Compile>
     <Compile Include="Admin\Admin_Master.Master.designer.cs">
       <DependentUpon>Admin_Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AllTestReports.aspx.cs">
+      <DependentUpon>AllTestReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AllTestReports.aspx.designer.cs">
+      <DependentUpon>AllTestReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Contractor_Table.aspx.cs">
       <DependentUpon>Contractor_Table.aspx</DependentUpon>
