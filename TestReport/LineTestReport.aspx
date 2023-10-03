@@ -1951,7 +1951,7 @@ width: 99%;
                 return false;
             }
             return true;
-        }
+        }``
 
         //Allow Only Aplhabet, Delete and Backspace
 
