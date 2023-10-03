@@ -2100,7 +2100,7 @@
                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSanctionLoad" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter SanctionLoad</asp:RequiredFieldValidator>
                                                  
                          </div>  
-                    <div class="col-6">
+                    <%--<div class="col-6">
                         <label>
                             Select Installation Type
         <samp style="color: red">* </samp>
@@ -2108,7 +2108,7 @@
 
                         <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="8" ID="ddlWorkDetail" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                         </asp:DropDownList>
-                         </div>
+                         </div>--%>
                 </div>
                 <div class="row">
                     <div class="col-12">

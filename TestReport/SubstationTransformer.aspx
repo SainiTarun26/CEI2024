@@ -3018,7 +3018,7 @@
                                             </div>--%>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="row" style="margin-top: 50px;">
+                <div class="row" style="margin-top: 50px;" id="Declaration" runat="server" visible="false">
                     <div class="col-12" style="text-align: center;">
                         <asp:CheckBox ID="CheckBox2" runat="server" OnCheckedChanged="CheckBox2_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
                         <br />

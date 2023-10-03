@@ -2720,7 +2720,7 @@ width: 99%;
                                                     </div>
                                                 </div>
   
-                                                    <div class="row" style="margin-top: 50px;">
+                                                    <div class="row" style="margin-top: 50px;" id="Declaration" Visible="false" runat="server">
                                                       <%--  <div class="col-2"></div>--%>
                                                     <div class="col-12" style="text-align: center;">
                                                         <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
@@ -2738,7 +2738,7 @@ width: 99%;
 
                                                     <div class="col-4"></div>
                                                     <div class="col-4" style="text-align: center;">
-                                                        <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                                        <asp:Button ID="btnSubmit" Text="Next" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnSubmit_Click" />
                                                     </div>
                                                     <div class="col-4">

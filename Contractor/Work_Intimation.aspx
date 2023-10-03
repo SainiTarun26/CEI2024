@@ -297,12 +297,12 @@
                             </div>
 
                             <div class="row">
-                                <%-- <div class="col-4" runat="server">
-                            <label for="SiteContact">Contact Details of Site Owner</label>
-                            <asp:TextBox class="form-control" ID="txtSiteContact" MaxLength="10" onkeydown="return preventEnterSubmit(event)" onkeyup="return isvalidphoneno2();" onKeyPress="return isNumberKey(event);" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <span id="lblErrorContect2" style="color: red"></span>
-
-                        </div>--%>
+                                 <div class="col-4" runat="server">
+                            <label for="PanNumber">PAN Number of Site Owner <samp style="color: red">* </samp></label>
+                            <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter PAN Number</asp:RequiredFieldValidator>
+                              
+                        </div>
                                 <div class="col-4">
                                     <label>
                                         Select Installation Type

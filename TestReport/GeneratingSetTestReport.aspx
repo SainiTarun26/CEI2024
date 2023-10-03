@@ -2640,7 +2640,7 @@
                                                     
                                                 </div>
                                             </div>
-                                              <div class="row" style="margin-top: 100px;">
+                                              <div class="row" style="margin-top: 100px;" id="Declaration" runat="server" visible="false">
                                                       <%--  <div class="col-2"></div>--%>
                                                     <div class="col-12" style="text-align: center;">
                                                         <asp:CheckBox ID="CheckBox3" runat="server" OnCheckedChanged="CheckBox3_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />

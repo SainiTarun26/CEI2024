@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using iTextSharp.text.pdf;
 using System;
 using System.Configuration;
 using System.Data;
@@ -259,6 +260,8 @@ namespace CEIHaryana.Contractor
             ddlVoltageLevel.SelectedValue = "0";
             //txtOtherWorkDetail.Text = "";
             txtStartDate.Text = "";
+            txtPAN.Text = "";
+            Installation.Visible= false;
             txtinstallationType1.Text = "";
             txtinstallationNo1.Text = "";
             txtinstallationType2.Text = "";
@@ -326,7 +329,7 @@ namespace CEIHaryana.Contractor
                     }
                     hdnId.Value = ContractorID;
                     CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text
-                      , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtinstallationType1.Text,
+                      , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
                       txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
                       txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
                       txtinstallationNo6.Text, txtinstallationType7.Text, txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,

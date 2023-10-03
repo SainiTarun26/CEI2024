@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace CEIHaryana.TestReport
 {
@@ -14,8 +15,10 @@ namespace CEIHaryana.TestReport
     {
         CEI CEI = new CEI();
         int x = 0;
-
         string sessionValue = string.Empty;
+        string sessionName = string.Empty;
+        string nextSessionName = string.Empty;
+        string nextSessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -31,6 +34,7 @@ namespace CEIHaryana.TestReport
                 {
                     BtnSubmitGeneratingSet.Text = "Generate Test Report";
                 }
+
             }
         }
         private void ddlEarthing()
@@ -65,14 +69,10 @@ namespace CEIHaryana.TestReport
 
         }
         protected void ddlGeneratingEarthing_SelectedIndexChanged(object sender, EventArgs e)
+
         {
             GeneratingEarthing.Visible = true;
-            if (ddlGeneratingEarthing.SelectedValue == "1" || ddlGeneratingEarthing.SelectedValue == "2" || ddlGeneratingEarthing.SelectedValue == "3" || ddlGeneratingEarthing.SelectedValue == "4")
-            {
-                Limit.Visible = true;
-                GeneratingEarthing.Visible = false;
-            }
-            else if (ddlGeneratingEarthing.SelectedItem.ToString() == "4")
+           if (ddlGeneratingEarthing.SelectedItem.ToString() == "4")
             {
                 Limit.Visible = false;
                 GeneratingEarthing4.Visible = true;
@@ -232,9 +232,11 @@ namespace CEIHaryana.TestReport
         {
             try
             {
-                if (CheckBox3.Checked == false)
+                if (Declaration.Visible == true && CheckBox3.Checked == false)
                 {
-                    label2.Visible = true;
+                    
+                        label2.Visible = true;
+                    
                 }
                 else
                 {
@@ -253,7 +255,7 @@ namespace CEIHaryana.TestReport
                     string TestReportId = Session["TestReportId"].ToString();
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["AdminID"].ToString();
-                    CEI.InsertGeneratingSetData(GeneratingSetId,TestReportId, IntimationId,
+                    CEI.InsertGeneratingSetData(GeneratingSetId, TestReportId, IntimationId,
                         ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
                txtGeneratorVoltage.Text, txtCurrentCapacity.Text, txtBreakingCapacity.Text, ddlPlantType.SelectedItem.ToString(), ddlPlantCapacity.SelectedItem.ToString(),
               txtPlantCapacity.Text, txtDCString.Text, txtLowestInsulation.Text, txtPCVOrSolar.Text, txtLTACCapacity.Text, txtLowestInsulationAC.Text,
@@ -274,9 +276,9 @@ namespace CEIHaryana.TestReport
                     {
                         BtnSubmitGeneratingSet.Visible = false;
                         Session["SubmittedValue3"] = sessionValue;
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
                         divGeneratingSet.Visible = false;
                         Session["GeneratingSetId"] = "";
+                        NextSessionValueAndName();
                     }
                 }
 
@@ -287,51 +289,54 @@ namespace CEIHaryana.TestReport
                 DataSaved.Visible = false;
             }
         }
+        public void NextSessionValueAndName()
+        {
+
+            if (nextSessionName == "Line")
+            {
+                Response.Redirect("LineTestReport.aspx");
+            }
+            else if (nextSessionName == "Substation Transformer")
+            {
+                Response.Redirect("SubstationTransformer.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+
+            }
+        }
         public void SessionValue()
         {
-            if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
+            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
+
+            for (int i = 0; i < installationNumbers.Length; i++)
             {
-                sessionValue = Session["installationNo1"] as string;
-            }
-            else if (Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo2"] as string;
-            }
-            else if (Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo3"] as string;
-            }
-            else if (Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo4"] as string;
-            }
-            else if (Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo5"] as string;
-            }
-            else if (Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo6"] as string;
-            }
-            else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo7"] as string;
-            }
-            else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo8"] as string;
+                sessionName = Session["installationType" + (i + 1)] as string;
+                 sessionValue = Session[installationNumbers[i]] as string;
+
+                if (!string.IsNullOrEmpty(sessionName))
+                {
+                    nextSessionName = Session["installationType" + (i + 2)] as string;
+                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
+
+                    break;
+                }
             }
         }
         public void PageWorking()
         {
             SessionValue();
-            if (x + 1 == int.Parse(sessionValue))
+
+            if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
             {
-                BtnSubmitGeneratingSet.Text = "Submit And SendOTP";
+                Declaration.Visible = true;
+                BtnSubmitGeneratingSet.Text = "Submit";
             }
             else
             {
-                BtnSubmitGeneratingSet.Text = "Generate Test Report";
+                Declaration.Visible = false;
+                BtnSubmitGeneratingSet.Text = "Next";
             }
         }
     }

@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace CEIHaryana.TestReport
 {
@@ -16,6 +17,9 @@ namespace CEIHaryana.TestReport
         CEI CEI = new CEI();
         int x = 0;
         string sessionValue = string.Empty;
+        string sessionName = string.Empty;
+        string nextSessionName = string.Empty;
+        string nextSessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -25,14 +29,7 @@ namespace CEIHaryana.TestReport
                 ddlLoadBindVoltage();
                 ddlEarthing();
                 SessionValue();
-                if (x + 1 == int.Parse(sessionValue))
-                {
-                    btnSubmit.Text = "Submit And SendOTP";
-                }
-                else
-                {
-                    btnSubmit.Text = "Generate Test Report";
-                }
+                PageWorking();
 
             }
         }
@@ -440,60 +437,61 @@ namespace CEIHaryana.TestReport
         {
             try
             {
-                if (CheckBox1.Checked == false)
+                if (Declaration.Visible == true && CheckBox1.Checked == false)
                 {
-                    labelVerification.Visible = true;
-                }
 
+                    labelVerification.Visible = true;
+
+                }
+                else { 
+                string LineId = string.Empty;
+                if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
+                {
+                    LineId = CEI.GenerateUniqueID();
+                    Session["LineId"] = LineId;
+
+                }
                 else
                 {
-                    string LineId = string.Empty;
-                    if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
-                    {
-                        LineId = CEI.GenerateUniqueID();
-                        Session["LineId"] = LineId;
 
-                    }
-                    else
-                    {
-
-                        LineId = Session["LineId"].ToString();
-                    }
-                    string TestReportId = Session["TestReportId"].ToString();
-                    string IntimationId = Session["id"].ToString();
-                    string CreatedBy = Session["AdminID"].ToString();
-                    CEI.InsertLineData(LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
-                   ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
-                  txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
-                   ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
-                   txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
-                  txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
-                 txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
-                 txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
-                 txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
-                 txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
-                 txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
-                 txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
-                 txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
-               txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text,txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
-               txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
-               txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-                    x = x + 1;
-                    Reset();
-                    DataSaved.Visible = true;
-                    labelVerification.Visible = false;
-                    PageWorking();
-                    string currentValue = Convert.ToString(x);
-                    if (currentValue == sessionValue)
-                    {
-                        btnSubmit.Visible = false;
-                        Session["SubmittedValue2"] = sessionValue;
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
-                        divLine.Visible = false;
-                        Session["LineId"] = "";
-                    }
-
+                    LineId = Session["LineId"].ToString();
                 }
+                string TestReportId = Session["TestReportId"].ToString();
+                string IntimationId = Session["id"].ToString();
+                string CreatedBy = Session["AdminID"].ToString();
+                CEI.InsertLineData(LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+               ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
+              txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
+               ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
+               txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
+              txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
+             txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
+             txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
+             txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
+             txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
+             txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
+             txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
+             txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
+           txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
+           txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
+           txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
+                x = x + 1;
+                Reset();
+                DataSaved.Visible = true;
+                labelVerification.Visible = false;
+                PageWorking();
+                string currentValue = Convert.ToString(x);
+                if (currentValue == sessionValue)
+                {
+                    btnSubmit.Visible = false;
+                    Session["SubmittedValue2"] = sessionValue;
+                    divLine.Visible = false;
+                    Session["LineId"] = "";
+                    NextSessionValueAndName();
+                }
+            }
+
+                
             }
             catch (Exception Ex)
             {
@@ -503,51 +501,53 @@ namespace CEIHaryana.TestReport
         }
         public void SessionValue()
         {
-            if (Session["installationNo1"].ToString() != null && Session["installationNo1"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo1"] as string;
-            }
-            else if (Session["installationNo2"].ToString() != null && Session["installationNo2"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo2"] as string;
-            }
-            else if (Session["installationNo3"].ToString() != null && Session["installationNo3"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo3"] as string;
-            }
-            else if (Session["installationNo4"].ToString() != null && Session["installationNo4"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo4"] as string;
-            }
-            else if (Session["installationNo5"].ToString() != null && Session["installationNo5"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo5"] as string;
-            }
-            else if (Session["installationNo6"].ToString() != null && Session["installationNo6"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo6"] as string;
-            }
-            else if (Session["installationNo7"].ToString() != null && Session["installationNo7"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo7"] as string;
-            }
-            else if (Session["installationNo8"].ToString() != null && Session["installationNo8"].ToString() != string.Empty)
-            {
-                sessionValue = Session["installationNo8"] as string;
-            }
+            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
 
+            for (int i = 0; i < installationNumbers.Length; i++)
+            {
+                sessionName = Session["installationType" + (i + 1)] as string;
+                sessionValue = Session[installationNumbers[i]] as string;
+                if (!string.IsNullOrEmpty(sessionName))
+                {
+                    nextSessionName = Session["installationType" + (i + 2)] as string;
+                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
+
+                    break;
+                }
+            }
         }
+        public void NextSessionValueAndName()
+            {
+           
+            if (nextSessionName == "Substation Transformer")
+            {
+                Response.Redirect("SubstationTransformer.aspx");
+            }
+            else if(nextSessionName == "Generating Station")
+            {
+                Response.Redirect("GeneratingSetTestReport.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+
+            }
+        }
+
+        
         public void PageWorking()
         {
             SessionValue();
 
-            if (x + 1 == int.Parse(sessionValue))
+            if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
             {
-                btnSubmit.Text = "Submit And SendOTP";
+                Declaration.Visible= true;
+                btnSubmit.Text = "Submit";
             }
             else
             {
-                btnSubmit.Text = "Generate Test Report";
+                Declaration.Visible = false;
+                btnSubmit.Text = "Next";
             }
 
         }
