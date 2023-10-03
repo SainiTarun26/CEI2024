@@ -68,8 +68,19 @@ namespace CEIHaryana.TestReport
                 //msg.Text = ex.Message;
             }
         }
-       
-  
+        protected void ddlCableType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlCableType.SelectedItem.ToString()== "Other")
+            {
+                OtherCable.Visible = true;
+            }
+            else
+            {
+                OtherCable.Visible = false;
+            }
+        }
+
+
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -436,20 +447,22 @@ namespace CEIHaryana.TestReport
 
                 else
                 {
-                    string TestReportId = string.Empty;
+                    string LineId = string.Empty;
                     if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
                     {
-                        TestReportId = CEI.GenerateUniqueID();
-                        Session["LineId"] = TestReportId;
+                        LineId = CEI.GenerateUniqueID();
+                        Session["LineId"] = LineId;
 
                     }
                     else
                     {
 
-                        TestReportId = Session["LineId"].ToString();
+                        LineId = Session["LineId"].ToString();
                     }
-                    string Id = Session["TestReportId"].ToString();
-                    CEI.InsertLineData(TestReportId, Id, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                    string TestReportId = Session["TestReportId"].ToString();
+                    string IntimationId = Session["id"].ToString();
+                    string CreatedBy = Session["AdminID"].ToString();
+                    CEI.InsertLineData(LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
                    ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
                   txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
                    ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
@@ -462,9 +475,9 @@ namespace CEIHaryana.TestReport
                  txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
                  txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
                  txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
-               txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
+               txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text,txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
                txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
-               txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text);
+               txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
                     x = x + 1;
                     Reset();
                     DataSaved.Visible = true;

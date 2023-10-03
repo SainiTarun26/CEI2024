@@ -352,20 +352,22 @@ namespace CEIHaryana.TestReport
 
                 else
                 {
-                    string TestReportId = string.Empty;
+                    string SubstationId = string.Empty;
                     if (Convert.ToString(Session["SubstationId"]) == null || Convert.ToString(Session["SubstationId"]) == "")
                     {
-                        TestReportId = CEI.GenerateUniqueSubstation();
-                        Session["SubstationId"] = TestReportId;
+                        SubstationId = CEI.GenerateUniqueSubstation();
+                        Session["SubstationId"] = SubstationId;
 
                     }
                     else
                     {
 
-                        TestReportId = Session["SubstationId"].ToString();
+                        SubstationId = Session["SubstationId"].ToString();
                     }
-                    string Id = Session["TestReportId"].ToString();
-                    CEI.InsertSubstationData(TestReportId, Id, txtTransformerSerialNumber.Text, txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
+                    string TestReportId = Session["TestReportId"].ToString();
+                    string IntimationId = Session["id"].ToString();
+                    string CreatedBy = Session["AdminID"].ToString();
+                    CEI.InsertSubstationData(SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
                         txtPrimaryVoltage.Text, txtSecondryVoltage.Text, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                         txtLowestValue.Text, txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
                         ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), ddlSubstationEarthing2.SelectedItem.ToString(),
@@ -383,7 +385,7 @@ namespace CEIHaryana.TestReport
                         ddlUsedFor18.SelectedItem.ToString(), ddlSubstationEarthing19.SelectedItem.ToString(),
                         txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), ddlSubstationEarthing20.SelectedItem.ToString(),
                         txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
-                        txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text);
+                        txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
                     x = x + 1;
                     Reset();
                     DataSaved.Visible = true;

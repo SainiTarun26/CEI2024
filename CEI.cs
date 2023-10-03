@@ -251,7 +251,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string LineId, string TestReportId, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string LineId, string TestReportId,string IntimationId, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -260,10 +260,10 @@ Valueinohms10, string EarthingType11, string Valueinohms11, string EarthingType1
 EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, string CableSize, string RailwayCrossingNoForOC, string RoadCrossingNoForOC,
             string RiverCanalCrossingNoForOC, string PowerLineCrossingNoForOc, string RedPhaseEarthWire, string YellowPhaseEarth,
             string BluePhaseEarthWire, string RedPhaseYellowPhase, string RedPhaseBluePhase, string BluePhaseYellowPhase, string PhasewireNeutralwire,
-            string PhasewireEarth, string NeutralwireEarth, string TypeofCable, string SizeofCable, string Cablelaidin,
+            string PhasewireEarth, string NeutralwireEarth, string TypeofCable,string OtherCable, string SizeofCable, string Cablelaidin,
             string RedPhaseEarthWirefor440orAbove, string YellowPhaseEarthWire440orAbove, string BluePhaseEarthWire440orAbove,
             string RedPhaseYellowPhase440orAbove, string RedPhaseBluePhase440orAbove, string BluePhaseYellowPhase440orAbove,
-            string PhasewireNeutralwire220OrAbove, string PhasewireEarth220OrAbove, string NeutralwireEarth220OrAbove
+            string PhasewireNeutralwire220OrAbove, string PhasewireEarth220OrAbove, string NeutralwireEarth220OrAbove, string CreatedBy
 )
         {
             SqlCommand cmd = new SqlCommand("sp_InserLineData");
@@ -278,6 +278,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", LineId);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
             cmd.Parameters.AddWithValue("@LineLength", LineLength);
             cmd.Parameters.AddWithValue("@LineType", LineType);
@@ -337,6 +338,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@PhasewireEarth", PhasewireEarth);
             cmd.Parameters.AddWithValue("@NeutralwireEarth", NeutralwireEarth);
             cmd.Parameters.AddWithValue("@TypeofCable", TypeofCable);
+            cmd.Parameters.AddWithValue("@OtherCable", OtherCable);
             cmd.Parameters.AddWithValue("@SizeofCable", SizeofCable);
             cmd.Parameters.AddWithValue("@Cablelaidin", Cablelaidin);
             cmd.Parameters.AddWithValue("@RedPhaseEarthWirefor440orAbove", RedPhaseEarthWirefor440orAbove);
@@ -348,6 +350,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@PhasewireNeutralwire220OrAbove", PhasewireNeutralwire220OrAbove);
             cmd.Parameters.AddWithValue("@PhasewireEarth220OrAbove", PhasewireEarth220OrAbove);
             cmd.Parameters.AddWithValue("@NeutralwireEarth220OrAbove", NeutralwireEarth220OrAbove);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
 
 
             cmd.ExecuteNonQuery();
@@ -355,7 +358,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert Substation Data
-        public void InsertSubstationData(string Id, string TestReportId, string TransformerSerialNumber, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string Id, string TestReportId,string IntimationId, string TransformerSerialNumber, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
             string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
@@ -369,7 +372,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             string EarthingType16, string Valueinohms16, string UsedFor16, string EarthingType17, string Valueinohms17, string UsedFor17,
             string EarthingType18, string Valueinohms18, string UsedFor18, string EarthingType19, string Valueinohms19, string UsedFor19,
             string EarthingType20, string Valueinohms20, string UsedFor20, string LoadBreakingCapacityOfBreakerInKA, string TypeOfLTProtection,
-            string CapacityOfIndividualFuseInAMPS, string CapacityOfLTBreakerInAMPS, string LoadBreakingCapacityOfBreakerInAMPS, string SeaLevelOfTransformerInMeters)
+            string CapacityOfIndividualFuseInAMPS, string CapacityOfLTBreakerInAMPS, string LoadBreakingCapacityOfBreakerInAMPS, string SeaLevelOfTransformerInMeters, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertSubstationTransformerData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -383,6 +386,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@TransformerSerialNumber", TransformerSerialNumber);
             cmd.Parameters.AddWithValue("@TransformerCapacity", TransformerCapacity);
             cmd.Parameters.AddWithValue("@TranformerType", TranformerType);
@@ -462,6 +466,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@CapacityOfLTBreakerInAMPS", CapacityOfLTBreakerInAMPS);
             cmd.Parameters.AddWithValue("@LoadBreakingCapacityOfBreakerInAMPS", LoadBreakingCapacityOfBreakerInAMPS);
             cmd.Parameters.AddWithValue("@SeaLevelOfTransformerInMeters", SeaLevelOfTransformerInMeters);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -494,14 +499,14 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         #endregion
 
         #region Insert GeneratingSet Data
-        public void InsertGeneratingSetData(string Id, string TestReportId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
+        public void InsertGeneratingSetData(string Id, string TestReportId,string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
 string BreakingCapacityofBreaker, string TypeOfPlant, string CapacityOfPlantType, string CapacityOfPlant, string HighestVoltageLevelOfDCString, string LowestInsulationBetweenDCWireToEarth,
 string NoOfPowerPCV, string LTACBreakerCapacity, string ACCablesLowestInsulation, string NumberOfEarthing, string EarthingType1, string EarthingValue1, string UsedFor1, string EarthingType2,
 string EarthingValue2, string UsedFor2, string EarthingType3, string EarthingValue3, string UsedFor3, string EarthingType4, string EarthingValue4, string UsedFor4, string EarthingType5, string EarthingValue5,
 string UsedFor5, string EarthingType6, string EarthingValue6, string UsedFor6, string EarthingType7, string EarthingValue7, string UsedFor7, string EarthingType8, string EarthingValue8,
 string UsedFor8, string EarthingType9, string EarthingValue9, string UsedFor9, string EarthingType10, string EarthingValue10, string UsedFor10, string EarthingType11, string EarthingValue11,
 string UsedFor11, string EarthingType12, string EarthingValue12, string UsedFor12, string EarthingType13, string EarthingValue13, string UsedFor13, string EarthingType14,
-string EarthingValue14, string UsedFor14, string EarthingType15, string EarthingValue15, string UsedFor15)
+string EarthingValue14, string UsedFor14, string EarthingType15, string EarthingValue15, string UsedFor15, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertGeneratingSetData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -515,6 +520,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacityType", GeneratingSetCapacityType);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacity", GeneratingSetCapacity);
             cmd.Parameters.AddWithValue("@SerialNumbrOfAcGenerator", SerialNumbrOfAcGenerator);
@@ -576,6 +582,7 @@ string EarthingValue14, string UsedFor14, string EarthingType15, string Earthing
             cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15);
             cmd.Parameters.AddWithValue("@EarthingValue15", EarthingValue15);
             cmd.Parameters.AddWithValue("@UsedFor15", UsedFor15);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
         }
