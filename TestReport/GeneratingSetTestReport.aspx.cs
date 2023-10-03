@@ -26,14 +26,7 @@ namespace CEIHaryana.TestReport
             {
                 ddlEarthing();
                 SessionValue();
-                if (x + 1 == int.Parse(sessionValue))
-                {
-                    BtnSubmitGeneratingSet.Text = "Submit And SendOTP";
-                }
-                else
-                {
-                    BtnSubmitGeneratingSet.Text = "Generate Test Report";
-                }
+                PageWorking();
 
             }
         }
