@@ -113,8 +113,64 @@
                           </div>
                       </div>
                   </div>
-                  <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
+                            AutoGenerateColumns="false">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("LineId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
+                                <asp:TemplateField>
+                                    <HeaderStyle Width="10%" />
+                                    <ItemStyle Width="10%" />
+                                    <HeaderTemplate>
+                                        IntimationId
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("LineId") %> ' CommandName="Select"><%#Eval("LineId") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="LineVoltage" HeaderText="LineVoltage">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="LineLength" HeaderText="LineLength">
+                                    <HeaderStyle HorizontalAlign="center" Width="12%" />
+                                    <ItemStyle HorizontalAlign="center" Width="12%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="LineType" HeaderText="LineType">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                             <%--   <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+
+                                <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" />
+                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                </asp:BoundField>--%>
+
+                                <asp:TemplateField>
+                                    <HeaderStyle Width="10%" />
+                                    <ItemStyle Width="10%" />
+                                    <ItemTemplate>
+                                      </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
               </div>
           </div>
       </div>
