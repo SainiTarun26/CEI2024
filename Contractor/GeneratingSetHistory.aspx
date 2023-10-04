@@ -1,10 +1,8 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="SubstationTransformer.aspx.cs" Inherits="CEIHaryana.Contractor.SubstationTransformer" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="GeneratingSetHistory.aspx.cs" Inherits="CEIHaryana.Contractor.GeneratingSetHistory" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" 
+      <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" 
                             AutoGenerateColumns="false">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -20,19 +18,19 @@
                                         TestReportId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("SubStationId") %> ' CommandName="Select"><%#Eval("SubStationId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("GeneratingSetId") %> ' CommandName="Select"><%#Eval("GeneratingSetId") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="TransformerSerialNumber" HeaderText="TransformerSerialNumber">
+                                <asp:BoundField DataField="GeneratingSetCapacityType" HeaderText="GeneratingSetCapacityType">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="TransformerCapacity" HeaderText="TransformerCapacity">
+                                <asp:BoundField DataField="GeneratingSetCapacity" HeaderText="GeneratingSetCapacity">
                                     <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>
                             
-                                <asp:BoundField DataField="TranformerType" HeaderText="TranformerType">
+                                <asp:BoundField DataField="GeneratingSetType" HeaderText="GeneratingSetType">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
@@ -61,4 +59,4 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
-    </asp:Content>
+</asp:Content>

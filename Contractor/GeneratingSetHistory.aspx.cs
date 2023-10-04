@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Contractor
 {
-    public partial class SubstationTransformer : System.Web.UI.Page
+    public partial class GeneratingSetHistory : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +25,7 @@ namespace CEIHaryana.Contractor
             string LoginID = string.Empty;
             LoginID = Session["ContractorID"].ToString();
             DataTable ds = new DataTable();
-            ds = CEI.TransformerTestReportData(LoginID);
+            ds = CEI.GeneratingTestReportData(LoginID);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -41,5 +41,7 @@ namespace CEIHaryana.Contractor
             ds.Dispose();
 
         }
+
+
     }
 }

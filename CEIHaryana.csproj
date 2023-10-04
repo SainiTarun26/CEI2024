@@ -1456,6 +1456,7 @@
     <Content Include="Assets\legend-background1.jpg" />
     <Content Include="Assets\legend-background2.jpg" />
     <Content Include="Assets\style.css" />
+    <Content Include="Contractor\GeneratingSetHistory.aspx" />
     <Content Include="Contractor\PreviousProjects.aspx" />
     <Content Include="Contractor\SubstationTransformer.aspx" />
     <Content Include="Contractor\TestReportHistory.aspx" />
@@ -1679,6 +1680,13 @@
     </Compile>
     <Compile Include="Contractor\Contractor.Master.designer.cs">
       <DependentUpon>Contractor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\GeneratingSetHistory.aspx.cs">
+      <DependentUpon>GeneratingSetHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\GeneratingSetHistory.aspx.designer.cs">
+      <DependentUpon>GeneratingSetHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\PreviousProjects.aspx.cs">
       <DependentUpon>PreviousProjects.aspx</DependentUpon>
