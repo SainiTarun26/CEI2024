@@ -1543,11 +1543,10 @@
     <Content Include="js2\wizard.js" />
     <Content Include="js2\x-editable.js" />
     <Content Include="Login.aspx" />
-<<<<<<< HEAD
+
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="OTPVerification.aspx" />
-=======
->>>>>>> 5fb5544c0aa9a30e32ec9a8ea2e209eceba0f2cf
+
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
@@ -1711,7 +1710,6 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Officers\InstallationIntimationDetails.aspx.cs">
       <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1733,8 +1731,6 @@
     <Compile Include="OTPVerification.aspx.designer.cs">
       <DependentUpon>OTPVerification.aspx</DependentUpon>
     </Compile>
-=======
->>>>>>> 5fb5544c0aa9a30e32ec9a8ea2e209eceba0f2cf
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.cs">
       <DependentUpon>CreateInspectionReport.aspx</DependentUpon>
