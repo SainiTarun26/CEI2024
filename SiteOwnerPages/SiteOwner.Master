@@ -1,10 +1,10 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Contractor.master.cs" Inherits="CEIHaryana.Contractor.Contractor" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteOwner.master.cs" Inherits="CEIHaryana.SiteOwnerPages.SiteOwner" %>
 
 <!DOCTYPE html>
 
 <html>
 <head runat="server">
-     <title>CEI</title>
+    <title>CEI</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/Assets/css/feather/feather.css">
@@ -15,7 +15,9 @@
     <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css">
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="images/favicon.png" />
-      <style type="text/css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
         span.menu-title {
             COLOR: #F9F9F9 !IMPORTANT;
         }
@@ -26,22 +28,29 @@
 
         img {
             height: 60px !important;
-            width:186px;
-            margin-left:40px !important;
+            width: 222px;
+            margin-left: 8px !important;
+            max-width: 126% !important;
         }
 
         .avatar {
             width: 60px !important;
         }
+
         nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
-    box-shadow: 0px 5px 21px -5px #CDD1E1;
-}
+            box-shadow: 0px 5px 21px -5px #CDD1E1;
+        }
+
+        body {
+            -moz-transform: scale(0.5, 0.5); /* Moz-browsers */
+            zoom: 0.5; /* Other non-webkit browsers */
+            zoom: 90%; /* Webkit browsers */
+            zoom: 90%; /* Webkit browsers */
+        }
     </style>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">       
+    <form id="form1" runat="server">
         <div>
             <div class="container-scroller">
                 <!-- partial:partials/_navbar.html -->
@@ -51,27 +60,13 @@
                             <img src="/Assets/ceilogo.png" alt="logo" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                            <span class="icon-menu header-icon" style="color: black !important;"></span>
-                        </button>
-                      <%--  <ul class="navbar-nav mr-lg-2">
-                            <li class="nav-item nav-search d-none d-lg-block">
-                                <div class="input-group">
-                                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                                        <span class="input-group-text" id="search" style="margin-right: 5px;">
-                                            <i class="icon-search"></i>
-                                        </span>
-                                    </div>
-                                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search" style="border-radius: 5px; padding: 0px 0px 3px 17px; width: 400px;">
-                                </div>
-                            </li>
-                        </ul>--%>
+
                         <ul class="navbar-nav navbar-nav-right">
-                            <li class="nav-item dropdown">
-                                <%--<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                            <%--<li class="nav-item dropdown">
+                                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                                     <i class="icon-bell mx-0"></i>
                                     <span class="count"></span>
-                                </a>--%>
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
                                     <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                                     <a class="dropdown-item preview-item">
@@ -94,7 +89,7 @@
                                             </div>
                                         </div>
                                         <div class="preview-item-content">
-                                          <%--  <h6 class="preview-subject font-weight-normal">Settings</h6>--%>
+                                            <h6 class="preview-subject font-weight-normal">Settings</h6>
                                             <p class="font-weight-light small-text mb-0 text-muted">
                                                 Private message
                                             </p>
@@ -114,7 +109,7 @@
                                         </div>
                                     </a>
                                 </div>
-                            </li>
+                            </li>--%>
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img class="avatar" src="/Assets/images.png" alt="profile" />
@@ -130,11 +125,7 @@
                                     </a>
                                 </div>
                             </li>
-                            <%--<li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="icon-ellipsis"></i>
-            </a>
-          </li>--%>
+
                         </ul>
                         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                             <span class="icon-menu"></span>
@@ -333,25 +324,161 @@
                                     <span class="menu-title">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/Work_Intimation.aspx">
+                            <%--<li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Work Intimation</span>
+                                    <span class="menu-title">Staff Details</span>
+                                    <i class="menu-arrow"></i>
                                 </a>
+                                <div class="collapse" id="ui-basic">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Contractor">Contractor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Supervisor">Supervisor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Wireman</a></li>
+                                    </ul>
+                                </div>
                             </li>
                             <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/PreviousProjects.aspx">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Work Intimations History</span>
+                                    <span class="menu-title">Add Staff Details</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic1">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Print Forms</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic3">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintContractor.aspx">Contractor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintSupervisor.aspx">Supervisor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintWiremen.aspx">Wireman</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+    <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">All Test Reports</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="collapse" id="ui-basic4">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Line</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Substation<br/> Transformer</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Genrating Set</a></li>
+        </ul>
+    </div>
+</li>--%>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Projects.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Create Inspection <br/> Report</span>
                                 </a>
                             </li>
-                           <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/TestReportHistory.aspx">
+                             <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Projects.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Test Reports History</span>
+                                    <span class="menu-title">Test Reports</span>
                                 </a>
                             </li>
-                           
+                             <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Projects.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Work Intimations</span>
+                                </a>
+                            </li>
+
+                            <%-- <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                                    <i class="icon-columns menu-icon"></i>
+                                    <span class="menu-title">Form elements</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="form-elements">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+                                    <i class="icon-bar-graph menu-icon"></i>
+                                    <span class="menu-title">Charts</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="charts">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                                    <i class="icon-grid-2 menu-icon"></i>
+                                    <span class="menu-title">Tables</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="tables">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+                                    <i class="icon-contract menu-icon"></i>
+                                    <span class="menu-title">Icons</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="icons">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                                    <i class="icon-head menu-icon"></i>
+                                    <span class="menu-title">User Pages</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="auth">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="pages/samples/login.html">Login </a></li>
+                                        <li class="nav-item"><a class="nav-link" href="pages/samples/register.html">Register </a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+                                    <i class="icon-ban menu-icon"></i>
+                                    <span class="menu-title">Error pages</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="error">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="pages/samples/error-404.html">404 </a></li>
+                                        <li class="nav-item"><a class="nav-link" href="pages/samples/error-500.html">500 </a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages/documentation/documentation.html">
+                                    <i class="icon-paper menu-icon"></i>
+                                    <span class="menu-title">Documentation</span>
+                                </a>
+                            </li>--%>
                         </ul>
                     </nav>
                     <div class="main-panel">
@@ -374,6 +501,5 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-   
 </body>
 </html>

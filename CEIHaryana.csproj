@@ -1543,9 +1543,15 @@
     <Content Include="js2\wizard.js" />
     <Content Include="js2\x-editable.js" />
     <Content Include="Login.aspx" />
+<<<<<<< HEAD
+    <Content Include="Officers\InstallationIntimationDetails.aspx" />
+    <Content Include="OTPVerification.aspx" />
+=======
+>>>>>>> 5fb5544c0aa9a30e32ec9a8ea2e209eceba0f2cf
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
+    <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
     <Content Include="Supervisor\TestReportDetails.aspx" />
@@ -1705,7 +1711,45 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="Officers\InstallationIntimationDetails.aspx.cs">
+      <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\InstallationIntimationDetails.aspx.designer.cs">
+      <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Officers.Master.cs">
+      <DependentUpon>Officers.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Officers.Master.designer.cs">
+      <DependentUpon>Officers.Master</DependentUpon>
+    </Compile>
+    <Compile Include="OTPVerification.aspx.cs">
+      <DependentUpon>OTPVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OTPVerification.aspx.designer.cs">
+      <DependentUpon>OTPVerification.aspx</DependentUpon>
+    </Compile>
+=======
+>>>>>>> 5fb5544c0aa9a30e32ec9a8ea2e209eceba0f2cf
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.cs">
+      <DependentUpon>CreateInspectionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.designer.cs">
+      <DependentUpon>CreateInspectionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SiteOwner.Master.cs">
+      <DependentUpon>SiteOwner.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SiteOwner.Master.designer.cs">
+      <DependentUpon>SiteOwner.Master</DependentUpon>
+    </Compile>
     <Compile Include="Supervisor\IntimationData.aspx.cs">
       <DependentUpon>IntimationData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1970,9 +2014,11 @@
     <Content Include="assetsnew\vendor\boxicons\fonts\boxicons.woff2" />
     <Content Include="assetsnew\vendor\purecounter\purecounter_vanilla.js.map" />
     <Content Include="assetsnew\vendor\swiper\swiper-bundle.min.js.map" />
+    <Content Include="Officers\Officers.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
+    <Content Include="SiteOwnerPages\SiteOwner.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1986,8 +2032,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="css\" />
     <Folder Include="Models\" />
-    <Folder Include="NewFolder1\" />
-    <Folder Include="NewFolder2\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\css\tinymce\tinymce.d.ts" />

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Contractor.master.cs" Inherits="CEIHaryana.Contractor.Contractor" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Officers.master.cs" Inherits="CEIHaryana.Officers.Officers" %>
 
 <!DOCTYPE html>
 
@@ -334,24 +334,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/Work_Intimation.aspx">
+                                 <a class="nav-link" href="/Officers/InstallationIntimationDetails.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Work Intimation</span>
+                                    <span class="menu-title">Installation Intimation<br/>Details</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/PreviousProjects.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Work Intimations History</span>
-                                </a>
-                            </li>
-                           <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/TestReportHistory.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Test Reports History</span>
-                                </a>
-                            </li>
-                           
                         </ul>
                     </nav>
                     <div class="main-panel">
