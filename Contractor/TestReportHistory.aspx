@@ -114,11 +114,11 @@
                       </div>
                   </div>
                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false">
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("LineId") %>'></asp:Label>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -126,10 +126,10 @@
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />
                                     <HeaderTemplate>
-                                        IntimationId
+                                        TestReportId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("LineId") %> ' CommandName="Select"><%#Eval("LineId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("LineID") %> ' CommandName="Select"><%#Eval("LineId") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="LineVoltage" HeaderText="LineVoltage">

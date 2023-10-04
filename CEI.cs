@@ -37,11 +37,23 @@ namespace CEI_PRoject
             cmd.Parameters.Add("@pwd", SqlDbType.VarChar, 20).Value = Password;
             cmd.Parameters.Add(new SqlParameter("@ret", SqlDbType.NVarChar, 50));
             cmd.Parameters["@ret"].Direction = ParameterDirection.ReturnValue;
+            outputParam = new SqlParameter("@Status", SqlDbType.Int);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
             int k = Convert.ToInt32(cmd.Parameters["@ret"].Value);
-            cmd.Dispose();
-            con.Close();
             return k;
+        }
+        public string Status()
+        {
+            if (outputParam != null)
+            {
+                return outputParam.Value.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
         #endregion
         #region Insert Intimtion Data
@@ -965,6 +977,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable WorkIntimationData(string LoginID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID);
+        }
+        public DataSet LineDataWithId(string ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineDataWithId", ID);
         }
         public DataTable LineTestReportData(string LineID)
         {

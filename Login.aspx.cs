@@ -16,7 +16,7 @@ namespace CEIHaryana
             try
             {
                 int check = Convert.ToInt32(cei.checkLogin(txtUserID.Text, txtPassword.Text));
-
+                string Status = cei.Status();
                 if (check == 1)
                 {
                     if (chkSignedin.Checked == true)
@@ -43,26 +43,34 @@ namespace CEIHaryana
                 }
                 else if (check == 2)
                 {
-                    if (chkSignedin.Checked == true)
-                    {
-                        Session["ContractorID"] = txtUserID.Text;
-                        Session["logintype"] = "Contractor";
-                        Response.Cookies["ContractorID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Contractor";
-                        Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                        Response.Redirect("Contractor/Work_Intimation.aspx", false);
-                    }
-                    else
-                    {
-                        Session["ContractorID"] = txtUserID.Text;
-                        Session["logintype"] = "Contractor";
-                        Response.Cookies["ContractorID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Contractor";
-                        Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                        Response.Redirect("Contractor/Work_Intimation.aspx", false);
-                    }
+                    //if (Status.Trim() == "1")
+
+                    //{
+                    //    Response.Redirect("/OTPVerification.aspx");
+                    //}
+                    //else
+                    //{
+                        if (chkSignedin.Checked == true)
+                        {
+                            Session["ContractorID"] = txtUserID.Text;
+                            Session["logintype"] = "Contractor";
+                            Response.Cookies["ContractorID"].Value = txtUserID.Text;
+                            Response.Cookies["logintype"].Value = "Contractor";
+                            Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
+                            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
+                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                        }
+                        else
+                        {
+                            Session["ContractorID"] = txtUserID.Text;
+                            Session["logintype"] = "Contractor";
+                            Response.Cookies["ContractorID"].Value = txtUserID.Text;
+                            Response.Cookies["logintype"].Value = "Contractor";
+                            Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(1);
+                            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
+                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                        }
+                  //  }
 
 
                 }
@@ -171,7 +179,8 @@ namespace CEIHaryana
                     // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
 
-
+               
+                
 
             }
             catch (Exception ex)

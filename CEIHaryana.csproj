@@ -1457,6 +1457,7 @@
     <Content Include="Assets\legend-background2.jpg" />
     <Content Include="Assets\style.css" />
     <Content Include="Contractor\PreviousProjects.aspx" />
+    <Content Include="Contractor\SubstationTransformer.aspx" />
     <Content Include="Contractor\TestReportHistory.aspx" />
     <Content Include="Contractor\Work_Intimation.aspx" />
     <Content Include="css2\icons\tabler-icons\fonts\tabler-icons.svg" />
@@ -1685,6 +1686,13 @@
     </Compile>
     <Compile Include="Contractor\PreviousProjects.aspx.designer.cs">
       <DependentUpon>PreviousProjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\SubstationTransformer.aspx.cs">
+      <DependentUpon>SubstationTransformer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\SubstationTransformer.aspx.designer.cs">
+      <DependentUpon>SubstationTransformer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\TestReportHistory.aspx.cs">
       <DependentUpon>TestReportHistory.aspx</DependentUpon>

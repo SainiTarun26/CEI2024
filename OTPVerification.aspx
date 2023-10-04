@@ -196,17 +196,17 @@
             <div class="container">
                 <h3 class="title">OTP Verification</h3>
                 <div class="wrapper1">
-                    <asp:TextBox class="fields 1" ID="TextBox7" runat="server"  MaxLength="10" onkeypress="if(event.keyCode<48 || event.keyCode>57)event.returnValue=false;"></asp:TextBox>
+                    <asp:TextBox class="fields 1" ID="txtMobile" runat="server"  MaxLength="10" onkeypress="if(event.keyCode<48 || event.keyCode>57)event.returnValue=false;"></asp:TextBox>
                 </div>
                 <div class="row">
                     <div class="col-12" style="text-align: center; margin-top: -10px; margin-bottom: 10px;">
-                        <asp:Button class="button-79" ID="Verify" runat="server" Text="Send OTP" OnClick="VerifyOTP" />
+                        <asp:Button class="button-79" ID="Verify" runat="server" Text="Send OTP" OnClick="GenerateOTP" />
                     </div>
                 </div>
                 <div id="VerifyOPTdiv" class="otp" runat="server" visible="false">
                     <p class="sub-title">
                         Enter the OTP you received to
-    <span class="phone-number">102 2233 444</span>
+                        <input id="PhoneNumber" style="border:none" runat="server" />
                     </p>
                     <div class="wrapper">
                         <asp:TextBox class="field 1" ID="TextBox1" runat="server"  MaxLength="1" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
@@ -219,7 +219,7 @@
                     <button class="resend">Resend OTP<i class="fa fa-caret-right"></i></button>
                     <div class="row">
                         <div class="col-12" style="text-align: center; margin-top: 10px; margin-bottom: -20px;">
-                            <button class="button-79" role="button">Verify</button>
+                          <asp:Button class="button-79" ID="Button1" runat="server" Text="Send OTP" OnClick="VerifyOTP" />
 
                         </div>
                     </div>
