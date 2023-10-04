@@ -264,7 +264,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string LineId, string TestReportId,string IntimationId, string LineVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string LineId, string TestReportId,string IntimationId, string LineVoltage,string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -294,6 +294,8 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
             cmd.Parameters.AddWithValue("@LineLength", LineLength);
+            cmd.Parameters.AddWithValue("@OtherVoltageType", OtherVoltageType);
+            cmd.Parameters.AddWithValue("@OtherVoltage", OtherVoltage);
             cmd.Parameters.AddWithValue("@LineType", LineType);
             cmd.Parameters.AddWithValue("@NoOfCircuit", NoOfCircuit);
             cmd.Parameters.AddWithValue("@Conductortype", Conductortype);

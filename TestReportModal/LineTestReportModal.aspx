@@ -2009,11 +2009,9 @@
                                                                 Line Type
                                                   <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlLineType_SelectedIndexChanged" AutoPostBack="true" ID="ddlLineType" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                <asp:ListItem Text="Overhead" Value="1"></asp:ListItem>
-                                                                <asp:ListItem Text="Underground" Value="2"></asp:ListItem>
-                                                            </asp:DropDownList>
+  <asp:TextBox class="form-control" ID="txtLineType" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2024,23 +2022,17 @@
                                                                 No of Circuit
      <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlNmbrOfCircuit" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                <asp:ListItem Text="Single" Value="1"></asp:ListItem>
-                                                                <asp:ListItem Text="Double" Value="2"></asp:ListItem>
-                                                            </asp:DropDownList>
+                                                            <asp:TextBox class="form-control" ID="txtCircuit" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                                           
                                                         </div>
                                                         <div class="col-4">
                                                             <label>
                                                                 Conductor Type
      <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlConductorType" Style="width: 100% !important" OnSelectedIndexChanged="ddlConductorType_SelectedIndexChanged">
+                                                            <asp:TextBox class="form-control" ID="txtConductorType" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                <asp:ListItem Text="Bare" Value="1"></asp:ListItem>
-                                                                <asp:ListItem Text="Cable" Value="2"></asp:ListItem>
-                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2152,8 +2144,9 @@
                                                                 Number of Earthing:
                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlNoOfEarthing" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlNoOfEarthing_SelectedIndexChanged">
-                                                            </asp:DropDownList>
+                                                            <asp:TextBox class="form-control" ID="txtEarthing" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                                           
                                                         </div>
                                                         <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="false">
                                                             <table class="table table-bordered table-striped">
@@ -2173,12 +2166,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype1" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                                <asp:TextBox class="form-control" ID="txtEarthingType1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2192,12 +2181,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype2" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                              <asp:TextBox class="form-control" ID="txtEarthingType2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2211,12 +2196,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype3" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2230,13 +2211,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype4" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                                                <asp:TextBox class="form-control" ID="txtEarthingType4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                                </asp:DropDownList>
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2251,12 +2227,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype5" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2270,12 +2242,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2"  onKeyPress="return isNumberKey(event);" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype6" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2289,12 +2257,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype7" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                            <asp:TextBox class="form-control" ID="txtEarthingType7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2308,12 +2272,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype8" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                                <asp:TextBox class="form-control" ID="txtEarthingType8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2327,12 +2287,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype9" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2346,12 +2302,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype10" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                                <asp:TextBox class="form-control" ID="txtEarthingType10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2365,12 +2317,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype11" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2384,12 +2332,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype12" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2403,12 +2347,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype13" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                                <asp:TextBox class="form-control" ID="txtEarthingType13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2422,13 +2362,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype14" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2442,12 +2377,8 @@
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-12">
-                                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype15" selectionmode="Multiple" Style="width: 100% !important">
-                                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                                </asp:DropDownList>
+                                                                               <asp:TextBox class="form-control" ID="txtEarthingType15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                                             </div>
                                                                         </td>
                                                                         <td>
@@ -2539,11 +2470,8 @@
                                                                 Type of Cable
                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableType" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="XPLE"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
+                                                           <asp:TextBox class="form-control" ID="txtCableType" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                         </div>
                                                         <div class="col-4" id="OtherCable" runat="server" visible="false">
                                                             <label>
@@ -2562,12 +2490,8 @@
                                                                 Cable Laid in
                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableLaid" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Trench"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="circuit"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="cable tray"></asp:ListItem>
-                                                            </asp:DropDownList>
+                                                            <asp:TextBox class="form-control" ID="txtCableLaid" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                          
                                                         </div>
                                                     </div>
                                                 </div>
