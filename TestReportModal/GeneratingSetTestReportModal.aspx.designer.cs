@@ -69,13 +69,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div170;
 
         /// <summary>
-        /// ddlCapacity control.
+        /// txtCapacityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCapacity;
+        protected global::System.Web.UI.WebControls.TextBox txtCapacityType;
 
         /// <summary>
         /// Div171 control.
@@ -114,13 +114,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div172;
 
         /// <summary>
-        /// ddlGeneratingSetType control.
+        /// txtGeneratingSetType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingSetType;
+        protected global::System.Web.UI.WebControls.TextBox txtGeneratingSetType;
 
         /// <summary>
         /// txtGeneratorVoltage control.
@@ -159,22 +159,22 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SolarPanelGeneratingSet;
 
         /// <summary>
-        /// ddlPlantType control.
+        /// txtPlantType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPlantType;
+        protected global::System.Web.UI.WebControls.TextBox txtPlantType;
 
         /// <summary>
-        /// ddlPlantCapacity control.
+        /// txtPlantCapacityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPlantCapacity;
+        protected global::System.Web.UI.WebControls.TextBox txtPlantCapacityType;
 
         /// <summary>
         /// txtPlantCapacity control.
@@ -285,13 +285,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div189;
 
         /// <summary>
-        /// ddlGeneratingEarthing control.
+        /// txtEarthing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthing;
 
         /// <summary>
         /// Limit control.
@@ -321,13 +321,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl GeneratingEarthing4;
 
         /// <summary>
-        /// ddlGeneratingEarthing1 control.
+        /// txtEarthingType1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing1;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType1;
 
         /// <summary>
         /// txtGeneratingEarthing1 control.
@@ -339,13 +339,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing1;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed1 control.
+        /// txtEarthingUsed1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed1;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed1;
 
         /// <summary>
         /// TextBox1 control.
@@ -357,13 +357,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
-        /// ddlGeneratingEarthing2 control.
+        /// txtEarthingType2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing2;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType2;
 
         /// <summary>
         /// txtGeneratingEarthing2 control.
@@ -375,13 +375,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing2;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed2 control.
+        /// txtEarthingUsed2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed2;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed2;
 
         /// <summary>
         /// TextBox2 control.
@@ -393,13 +393,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
-        /// ddlGeneratingEarthing3 control.
+        /// txtEarthingType3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing3;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType3;
 
         /// <summary>
         /// txtGeneratingEarthing3 control.
@@ -411,13 +411,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing3;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed3 control.
+        /// txtEarthingUsed3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed3;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed3;
 
         /// <summary>
         /// TextBox3 control.
@@ -438,13 +438,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
 
         /// <summary>
-        /// ddlGeneratingEarthing4 control.
+        /// txtEarthingType4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing4;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType4;
 
         /// <summary>
         /// Div10 control.
@@ -465,13 +465,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing4;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed4 control.
+        /// txtEarthingUsed4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed4;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed4;
 
         /// <summary>
         /// TextBox4 control.
@@ -501,13 +501,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div12;
 
         /// <summary>
-        /// ddlGeneratingEarthing5 control.
+        /// txtEarthingType5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing5;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType5;
 
         /// <summary>
         /// txtGeneratingEarthing5 control.
@@ -519,13 +519,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing5;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed5 control.
+        /// txtEarthingUsed5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed5;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed5;
 
         /// <summary>
         /// TextBox5 control.
@@ -546,13 +546,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing6;
 
         /// <summary>
-        /// ddlGeneratingEarthing6 control.
+        /// txtEarthingType6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing6;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType6;
 
         /// <summary>
         /// txtGeneratingEarthing6 control.
@@ -564,13 +564,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing6;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed6 control.
+        /// txtEarthingUsed6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed6;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed6;
 
         /// <summary>
         /// TextBox6 control.
@@ -600,13 +600,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div13;
 
         /// <summary>
-        /// ddlGeneratingEarthing7 control.
+        /// txtEarthingType7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing7;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType7;
 
         /// <summary>
         /// txtGeneratingEarthing7 control.
@@ -618,13 +618,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing7;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed7 control.
+        /// txtEarthingUsed7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed7;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed7;
 
         /// <summary>
         /// TextBox7 control.
@@ -645,13 +645,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing8;
 
         /// <summary>
-        /// ddlGeneratingEarthing8 control.
+        /// txtEarthingType8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing8;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType8;
 
         /// <summary>
         /// txtGeneratingEarthing8 control.
@@ -663,13 +663,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing8;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed8 control.
+        /// txtEarthingUsed8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed8;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed8;
 
         /// <summary>
         /// TextBox8 control.
@@ -690,13 +690,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing9;
 
         /// <summary>
-        /// ddlGeneratingEarthing9 control.
+        /// txtEarthingType9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing9;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType9;
 
         /// <summary>
         /// txtGeneratingEarthing9 control.
@@ -708,13 +708,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing9;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed9 control.
+        /// txtEarthingUsed9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed9;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed9;
 
         /// <summary>
         /// TextBox9 control.
@@ -735,13 +735,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing10;
 
         /// <summary>
-        /// ddlGeneratingEarthing10 control.
+        /// txtEarthingType10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing10;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType10;
 
         /// <summary>
         /// txtGeneratingEarthing10 control.
@@ -753,13 +753,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing10;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed10 control.
+        /// txtEarthingUsed10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed10;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed10;
 
         /// <summary>
         /// TextBox10 control.
@@ -780,13 +780,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing11;
 
         /// <summary>
-        /// ddlGeneratingEarthing11 control.
+        /// txtEarthingType11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing11;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType11;
 
         /// <summary>
         /// txtGeneratingEarthing11 control.
@@ -798,13 +798,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing11;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed11 control.
+        /// txtEarthingUsed11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed11;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed11;
 
         /// <summary>
         /// TextBox11 control.
@@ -825,13 +825,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing12;
 
         /// <summary>
-        /// ddlGeneratingEarthing12 control.
+        /// txtEarthingType12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing12;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType12;
 
         /// <summary>
         /// txtGeneratingEarthing12 control.
@@ -843,13 +843,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing12;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed12 control.
+        /// txtEarthingUsed12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed12;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed12;
 
         /// <summary>
         /// TextBox12 control.
@@ -870,13 +870,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing13;
 
         /// <summary>
-        /// ddlGeneratingEarthing13 control.
+        /// txtEarthingType13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing13;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType13;
 
         /// <summary>
         /// txtGeneratingEarthing13 control.
@@ -888,13 +888,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing13;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed13 control.
+        /// txtEarthingUsed13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed13;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed13;
 
         /// <summary>
         /// TextBox13 control.
@@ -915,13 +915,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing14;
 
         /// <summary>
-        /// ddlGeneratingEarthing14 control.
+        /// txtEarthingType14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing14;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType14;
 
         /// <summary>
         /// txtGeneratingEarthing14 control.
@@ -933,13 +933,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing14;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed14 control.
+        /// txtEarthingUsed14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed14;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed14;
 
         /// <summary>
         /// TextBox14 control.
@@ -960,13 +960,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow GeneratingEarthing15;
 
         /// <summary>
-        /// ddlGeneratingEarthing15 control.
+        /// txtEarthingType15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthing15;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType15;
 
         /// <summary>
         /// txtGeneratingEarthing15 control.
@@ -978,13 +978,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtGeneratingEarthing15;
 
         /// <summary>
-        /// ddlGeneratingEarthingUsed15 control.
+        /// txtEarthingUsed15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGeneratingEarthingUsed15;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingUsed15;
 
         /// <summary>
         /// TextBox15 control.
@@ -994,6 +994,33 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox15;
+
+        /// <summary>
+        /// ddlType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+
+        /// <summary>
+        /// Rejection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Rejection;
+
+        /// <summary>
+        /// txtRejection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRejection;
 
         /// <summary>
         /// Declaration control.

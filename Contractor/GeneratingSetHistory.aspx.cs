@@ -41,6 +41,23 @@ namespace CEIHaryana.Contractor
             ds.Dispose();
 
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                string id = lblID.Text;
+                Session["GeneratingSetId"] = id;
+                if (e.CommandName == "Select")
+
+                {
+                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+
+                }
+            }
+        }
 
 
     }

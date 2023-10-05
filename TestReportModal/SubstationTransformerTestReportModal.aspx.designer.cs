@@ -51,6 +51,15 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtTransformerSerialNumber;
 
         /// <summary>
-        /// ddltransformerCapacity control.
+        /// txtTransformerCapacityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddltransformerCapacity;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerCapacityType;
 
         /// <summary>
         /// txtTransformerCapacity control.
@@ -96,13 +105,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtTransformerCapacity;
 
         /// <summary>
-        /// ddltransformerType control.
+        /// txtTransformerType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddltransformerType;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerType;
 
         /// <summary>
         /// InCaseOfOil control.
@@ -213,13 +222,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtLightningArrestor;
 
         /// <summary>
-        /// ddlHTType control.
+        /// txtHTType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHTType;
+        protected global::System.Web.UI.WebControls.TextBox txtHTType;
 
         /// <summary>
         /// ddlBreaker control.
@@ -231,13 +240,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.DropDownList ddlBreaker;
 
         /// <summary>
-        /// ddlEarthingsubstation control.
+        /// txtEarthing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingsubstation;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthing;
 
         /// <summary>
         /// SubstationEarthingDiv control.
@@ -258,13 +267,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl EarthingSubstation4;
 
         /// <summary>
-        /// ddlSubstationEarthing1 control.
+        /// txtEarthingType1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing1;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType1;
 
         /// <summary>
         /// txtSubstationEarthing1 control.
@@ -276,31 +285,31 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing1;
 
         /// <summary>
-        /// ddlUsedFor1 control.
+        /// txtUsedFor1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor1;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor1;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtOtherUsage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage;
 
         /// <summary>
-        /// ddlSubstationEarthing2 control.
+        /// txtEarthingType2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing2;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType2;
 
         /// <summary>
         /// txtSubstationEarthing2 control.
@@ -312,13 +321,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing2;
 
         /// <summary>
-        /// ddlUsedFor2 control.
+        /// txtUsedFor2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor2;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor2;
 
         /// <summary>
         /// TextBox2 control.
@@ -330,13 +339,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
-        /// ddlSubstationEarthing3 control.
+        /// txtEarthingType3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing3;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType3;
 
         /// <summary>
         /// txtSubstationEarthing3 control.
@@ -348,13 +357,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing3;
 
         /// <summary>
-        /// ddlUsedFor3 control.
+        /// txtUsedFor3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor3;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor3;
 
         /// <summary>
         /// TextBox3 control.
@@ -375,13 +384,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div52;
 
         /// <summary>
-        /// ddlSubstationEarthing4 control.
+        /// txtEarthingType4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing4;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType4;
 
         /// <summary>
         /// Div53 control.
@@ -402,13 +411,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing4;
 
         /// <summary>
-        /// ddlUsedFor4 control.
+        /// txtUsedFor4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor4;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor4;
 
         /// <summary>
         /// TextBox4 control.
@@ -438,13 +447,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div54;
 
         /// <summary>
-        /// ddlSubstationEarthing5 control.
+        /// txtEarthingType5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing5;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType5;
 
         /// <summary>
         /// txtSubstationEarthing5 control.
@@ -456,13 +465,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing5;
 
         /// <summary>
-        /// ddlUsedFor5 control.
+        /// txtUsedFor5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor5;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor5;
 
         /// <summary>
         /// TextBox5 control.
@@ -483,13 +492,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation6;
 
         /// <summary>
-        /// ddlSubstationEarthing6 control.
+        /// txtEarthingType6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing6;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType6;
 
         /// <summary>
         /// txtSubstationEarthing6 control.
@@ -501,13 +510,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing6;
 
         /// <summary>
-        /// ddlUsedFor6 control.
+        /// txtUsedFor6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor6;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor6;
 
         /// <summary>
         /// TextBox6 control.
@@ -537,13 +546,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div68;
 
         /// <summary>
-        /// ddlSubstationEarthing7 control.
+        /// txtEarthingType7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing7;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType7;
 
         /// <summary>
         /// txtSubstationEarthing7 control.
@@ -555,13 +564,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing7;
 
         /// <summary>
-        /// ddlUsedFor7 control.
+        /// txtUsedFor7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor7;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor7;
 
         /// <summary>
         /// TextBox7 control.
@@ -582,13 +591,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation8;
 
         /// <summary>
-        /// ddlSubstationEarthing8 control.
+        /// txtEarthingType8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing8;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType8;
 
         /// <summary>
         /// txtSubstationEarthing8 control.
@@ -600,13 +609,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing8;
 
         /// <summary>
-        /// ddlUsedFor8 control.
+        /// txtUsedFor8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor8;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor8;
 
         /// <summary>
         /// TextBox8 control.
@@ -627,13 +636,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation9;
 
         /// <summary>
-        /// ddlSubstationEarthing9 control.
+        /// txtEarthingType9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing9;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType9;
 
         /// <summary>
         /// txtSubstationEarthing9 control.
@@ -645,13 +654,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing9;
 
         /// <summary>
-        /// ddlUsedFor9 control.
+        /// txtUsedFor9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor9;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor9;
 
         /// <summary>
         /// TextBox9 control.
@@ -672,13 +681,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation10;
 
         /// <summary>
-        /// ddlSubstationEarthing10 control.
+        /// txtEarthingType10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing10;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType10;
 
         /// <summary>
         /// txtSubstationEarthing10 control.
@@ -690,13 +699,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing10;
 
         /// <summary>
-        /// ddlUsedFor10 control.
+        /// txtUsedFor10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor10;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor10;
 
         /// <summary>
         /// TextBox10 control.
@@ -717,13 +726,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation11;
 
         /// <summary>
-        /// ddlSubstationEarthing11 control.
+        /// txtEarthingType11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing11;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType11;
 
         /// <summary>
         /// txtSubstationEarthing11 control.
@@ -735,13 +744,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing11;
 
         /// <summary>
-        /// ddlUsedFor11 control.
+        /// txtUsedFor11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor11;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor11;
 
         /// <summary>
         /// TextBox11 control.
@@ -762,13 +771,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation12;
 
         /// <summary>
-        /// ddlSubstationEarthing12 control.
+        /// txtEarthingType12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing12;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType12;
 
         /// <summary>
         /// txtSubstationEarthing12 control.
@@ -780,13 +789,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing12;
 
         /// <summary>
-        /// ddlUsedFor12 control.
+        /// txtUsedFor12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor12;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor12;
 
         /// <summary>
         /// TextBox12 control.
@@ -807,13 +816,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation13;
 
         /// <summary>
-        /// ddlSubstationEarthing13 control.
+        /// txtEarthingType13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing13;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType13;
 
         /// <summary>
         /// txtSubstationEarthing13 control.
@@ -825,13 +834,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing13;
 
         /// <summary>
-        /// ddlUsedFor13 control.
+        /// txtUsedFor13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor13;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor13;
 
         /// <summary>
         /// TextBox13 control.
@@ -852,13 +861,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation14;
 
         /// <summary>
-        /// ddlSubstationEarthing14 control.
+        /// txtEarthingType14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing14;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType14;
 
         /// <summary>
         /// txtSubstationEarthing14 control.
@@ -870,13 +879,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing14;
 
         /// <summary>
-        /// ddlUsedFor14 control.
+        /// txtUsedFor14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor14;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor14;
 
         /// <summary>
         /// TextBox14 control.
@@ -897,13 +906,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation15;
 
         /// <summary>
-        /// ddlSubstationEarthing15 control.
+        /// txtEarthingType15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubstationEarthing15;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType15;
 
         /// <summary>
         /// txtSubstationEarthing15 control.
@@ -915,13 +924,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing15;
 
         /// <summary>
-        /// ddlUsedFor15 control.
+        /// txtUsedFor15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor15;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor15;
 
         /// <summary>
         /// TextBox15 control.
@@ -1131,13 +1140,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtBreakerCapacity;
 
         /// <summary>
-        /// ddlLTProtection control.
+        /// txtLTProtection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLTProtection;
+        protected global::System.Web.UI.WebControls.TextBox txtLTProtection;
 
         /// <summary>
         /// FuseUnit control.
@@ -1221,6 +1230,33 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSealLevelPlinth;
 
         /// <summary>
+        /// ddlType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+
+        /// <summary>
+        /// Rejection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Rejection;
+
+        /// <summary>
+        /// txtRejection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRejection;
+
+        /// <summary>
         /// Declaration control.
         /// </summary>
         /// <remarks>
@@ -1248,13 +1284,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelVerification;
 
         /// <summary>
-        /// BtnSubmitSubstation control.
+        /// BtnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSubmitSubstation;
+        protected global::System.Web.UI.WebControls.Button BtnSubmit;
 
         /// <summary>
         /// hdn control.

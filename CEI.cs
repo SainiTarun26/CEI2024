@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTextSharp.text.pdf.parser;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -263,6 +264,26 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             con.Close();
         }
         #endregion
+        #region Update Line Data
+        public void UpdateLineData(string ID, string RejectOrApprovedFronContractor,string ReasonForRejection)
+        {
+            SqlCommand cmd = new SqlCommand("sp_ContractorTestReortApproval");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
+            cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
         #region Insert Line Data
         public void InsertLineData(string LineId, string TestReportId,string IntimationId, string LineVoltage,string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
@@ -373,7 +394,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert Substation Data
-        public void InsertSubstationData(string Id, string TestReportId,string IntimationId, string TransformerSerialNumber, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string Id, string TestReportId,string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
             string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
@@ -403,6 +424,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@TransformerSerialNumber", TransformerSerialNumber);
+            cmd.Parameters.AddWithValue("@TransformerCapacityType", TransformerCapacityType);
             cmd.Parameters.AddWithValue("@TransformerCapacity", TransformerCapacity);
             cmd.Parameters.AddWithValue("@TranformerType", TranformerType);
             cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage);
@@ -513,6 +535,47 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
 
+
+        #region Update Substation Data
+        public void UpdateSubstationData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
+        {
+            SqlCommand cmd = new SqlCommand("sp_SubstationTestReportApproval");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
+            cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
+        #region Update GeneratingSet Data
+        public void UpdateGeneratingSetData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
+        {
+            SqlCommand cmd = new SqlCommand("sp_GeneratingTestReportApproval");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
+            cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
         #region Insert GeneratingSet Data
         public void InsertGeneratingSetData(string Id, string TestReportId,string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
 string BreakingCapacityofBreaker, string TypeOfPlant, string CapacityOfPlantType, string CapacityOfPlant, string HighestVoltageLevelOfDCString, string LowestInsulationBetweenDCWireToEarth,
@@ -987,6 +1050,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable LineTestReportData(string LineID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineData", LineID);
+        } 
+        public DataSet SubstationTestReportData(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SubstationDataWithId", Id);
         }
         public DataTable TransformerTestReportData(string SubStationId)
         {

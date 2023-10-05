@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" 
-                            AutoGenerateColumns="false">
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>

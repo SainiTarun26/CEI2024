@@ -443,7 +443,8 @@ namespace CEIHaryana.TestReport
                     labelVerification.Visible = true;
 
                 }
-                else { 
+                else 
+                { 
                 string LineId = string.Empty;
                 if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
                 {
