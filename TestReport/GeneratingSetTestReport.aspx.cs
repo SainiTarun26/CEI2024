@@ -284,7 +284,7 @@ namespace CEIHaryana.TestReport
         }
         public void NextSessionValueAndName()
         {
-
+            SessionValue();
             if (nextSessionName == "Line")
             {
                 Response.Redirect("LineTestReport.aspx");

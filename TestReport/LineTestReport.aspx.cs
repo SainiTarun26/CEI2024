@@ -519,9 +519,12 @@ namespace CEIHaryana.TestReport
         }
         public void NextSessionValueAndName()
             {
-           
+            SessionValue();
+
+
             if (nextSessionName == "Substation Transformer")
             {
+
                 Response.Redirect("SubstationTransformer.aspx");
             }
             else if(nextSessionName == "Generating Station")

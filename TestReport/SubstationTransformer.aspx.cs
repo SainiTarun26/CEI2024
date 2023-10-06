@@ -408,6 +408,7 @@ namespace CEIHaryana.TestReport
             }
         }
        public void SessionValue()
+        
         {
             
             string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
@@ -427,6 +428,7 @@ namespace CEIHaryana.TestReport
         }
         public void NextSessionValueAndName()
         {
+            SessionValue();
 
             if (nextSessionName == "Line")
             {
