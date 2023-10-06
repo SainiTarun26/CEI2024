@@ -46,6 +46,12 @@ namespace CEIHaryana
                     if (Status.Trim() == "1")
 
                     {
+                        Session["ContractorID"] = txtUserID.Text;
+                        Session["logintype"] = "Contractor";
+                        Response.Cookies["ContractorID"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "Contractor";
+                        Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
                         Response.Redirect("/OTPVerification.aspx");
                     }
                     else

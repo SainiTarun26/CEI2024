@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CEI_PRoject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,13 +12,16 @@ namespace CEIHaryana
 {
     public partial class OTPVerification : System.Web.UI.Page
     {
+        CEI CEI = new CEI();
         string otp = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
-            }
+                if (Session["ContractorID"] != null)
+                {
+                }
+                }
         }
         protected void GenerateOTP(object sender, EventArgs e)
         {
@@ -37,6 +41,7 @@ namespace CEIHaryana
         {
             try
             {
+                otp = Session["OTP"].ToString() ;
                 if (otp.Length == 6)
             {
                
@@ -61,10 +66,16 @@ namespace CEIHaryana
 
                     if (isOTPValid)
                     {
-
+                        if (Session["ContractorID"] != null)
+                        {
+                            string Id = Session["ContractorID"].ToString();
+                            CEI.updateWorkIntimation(Id,txtMobile.Text);
+                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                        }
                     }
                     else
                     {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid OTP')", true);
 
                     }
                 }
@@ -81,10 +92,10 @@ namespace CEIHaryana
             Random random = new Random();
             int otpInt = random.Next(100000, 999999);
 
-             otp = otpInt.ToString("D6");
+            string otp = otpInt.ToString("D6");
+            Session["OTP"] = otp;
 
-            HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEIRC&channel=Trans&DCS=0&flashsms=0&number=" +
-               mobilenumber + "&text=Dear Customer " + otp + " is the OTP for your request send to CEI Department, HRY. OTPs are SECRET. DO NOT share OTP with anyone --SAFEDOT&route=2&peid=1101407410000040566");
+            HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer " + otp + " is the OTP for your request send to CEI Department, HRY. OTPs are SECRET. DO NOT share OTP with anyone --SAFEDOT&route=2&peid=1101407410000040566");
             HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
             System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
             string responseString = respStreamReader.ReadToEnd();

@@ -925,6 +925,25 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
+
+        #region Update Work Intimation Contractor Data
+        public void updateWorkIntimation(string Id, string ContractorContactNo)
+        {
+            SqlCommand cmd = new SqlCommand("sp_ContractorDataUpdate");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id ", Id);
+            cmd.Parameters.AddWithValue("@ContractorContactNo ", ContractorContactNo);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
         public string GenerateUniqueID()
         {
             SqlCommand cmd = new SqlCommand("sp_generateLineId");

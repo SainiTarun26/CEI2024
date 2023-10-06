@@ -356,6 +356,11 @@ namespace CEIHaryana.Supervisor
 
                 string TestReportId = CEI.TestReportId();
                 Session["TestReportId"] = CEI.TestReportId();
+                string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType6", "installationType7", "installationType8" };
+                string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
+                Session["installationType"] = txtinstallationType1.Text + "|" + txtinstallationType2.Text + "|" +
+                    txtinstallationType3.Text + "|" + txtinstallationType4.Text + "|" + txtinstallationType4.Text + "|" +
+                    txtinstallationType6.Text + "|" + txtinstallationType7.Text + "|" + txtinstallationType8.Text;
                 Session["installationType1"] = txtinstallationType1.Text;
                 Session["installationNo1"] = txtinstallationNo1.Text;
 

@@ -30,9 +30,6 @@ namespace CEIHaryana.TestReport
                     {
                         lblLinePage.Visible = true;
                     }
-
-
-
                 }
                 if (Session["installationType1"].ToString().Trim() == "Substation Transformer" || Session["installationType2"].ToString().Trim() == "Substation Transformer"
                    || Session["installationType3"].ToString().Trim() == "Substation Transformer" || Session["installationType4"].ToString().Trim() == "Substation Transformer"
@@ -104,12 +101,26 @@ namespace CEIHaryana.TestReport
                 //{
                 //    Response.Redirect("/TestReport/SubstationTransformer.aspx");
                 //}
+               
+                string Val = Session["installationType"].ToString();
+                string[] Val1 = Val.Split('|');
+                string installationType1 = Val1[0];
+                string installationType2 = Val1[1];
+                string installationType3 = Val1[2];
+                string installationType4 = Val1[3];
+                string installationType5 = Val1[4];
+                string installationType6 = Val1[5];
+                string installationType7 = Val1[6];
+                string installationType8 = Val1[7];
+
+
             }
             catch
             {
 
             }
         }
+        
 
     }
 }
