@@ -43,13 +43,13 @@ namespace CEIHaryana
                 }
                 else if (check == 2)
                 {
-                    //if (Status.Trim() == "1")
+                    if (Status.Trim() == "1")
 
-                    //{
-                    //    Response.Redirect("/OTPVerification.aspx");
-                    //}
-                    //else
-                    //{
+                    {
+                        Response.Redirect("/OTPVerification.aspx");
+                    }
+                    else
+                    {
                         if (chkSignedin.Checked == true)
                         {
                             Session["ContractorID"] = txtUserID.Text;
@@ -70,7 +70,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                             Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
-                  //  }
+                    }
 
 
                 }

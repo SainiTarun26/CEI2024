@@ -524,7 +524,6 @@ namespace CEIHaryana.TestReport
 
             if (nextSessionName == "Substation Transformer")
             {
-
                 Response.Redirect("SubstationTransformer.aspx");
             }
             else if(nextSessionName == "Generating Station")
