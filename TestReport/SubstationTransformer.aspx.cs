@@ -343,6 +343,8 @@ namespace CEIHaryana.TestReport
         {
             try
             {
+
+                Session["x"] = 0;
                 if (Declaration.Visible == true && CheckBox2.Checked == false)
                 {
                     
@@ -394,11 +396,25 @@ namespace CEIHaryana.TestReport
                     string currentValue = Convert.ToString(x);
                     if (currentValue == sessionValue)
                     {
+                        Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
                         BtnSubmitSubstation.Visible = false;
                         Session["SubmittedValue"] = sessionValue;
                         divtrasformer.Visible = false;
                         Session["SubstationId"] = "";
-                        NextSessionValueAndName();
+                        //NextSessionValueAndName();
+                        if (nextSessionName == "Line")
+                        {
+                            Response.Redirect("LineTestReport.aspx");
+                        }
+                        else if (nextSessionName == "Generating Station")
+                        {
+                            Response.Redirect("GeneratingSetTestReport.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+
+                        }
                     }
                 }
             }
@@ -413,18 +429,44 @@ namespace CEIHaryana.TestReport
             string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
             string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
 
-            for (int i = 0; i < installationNumbers.Length; i++)
+            int count = Convert.ToInt32(Session["Count"]);
+            for (int i = count; i < installationNumbers.Length; i++)
             {
                 sessionName = Session[installationTypes[i]] as string;
                 sessionValue = Session[installationNumbers[i]] as string;
                 if (!string.IsNullOrEmpty(sessionName))
                 {
-                    nextSessionName = Session["installationType" + (i + 2)] as string;
-                    nextSessionValue = Session[installationNumbers[i + 2]] as string;
-
+                    nextSessionName = Session[installationTypes[i + 1]] as string;
+                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
                     break;
                 }
             }
+            //bool foundSubstation = false;
+
+            //for (int i = 0; i < installationNumbers.Length; i++)
+            //{
+            //    sessionName = Session[installationTypes[i]] as string;
+            //    sessionValue = Session[installationNumbers[i]] as string;
+
+            //    // Check if sessionName starts with "installationType" and contains "substation"
+            //    if (!string.IsNullOrEmpty(sessionName) && sessionName.StartsWith("installationType") && sessionName.Contains("substation"))
+            //    {
+            //        foundSubstation = true;
+            //        // Check if there is a next session available on the "substation" page
+            //        if (i + 1 < installationNumbers.Length)
+            //        {
+            //            nextSessionName = Session[installationTypes[i + 1]] as string;
+            //            nextSessionValue = Session[installationNumbers[i + 1]] as string;
+            //        }
+            //        else
+            //        {
+            //            nextSessionName = "";
+            //            nextSessionValue = "";
+            //        }
+            //        break;
+            //    }
+            //}
+
         }
         public void NextSessionValueAndName()
         {

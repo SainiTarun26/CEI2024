@@ -485,14 +485,28 @@ namespace CEIHaryana.TestReport
                 labelVerification.Visible = false;
                 PageWorking();
                 string currentValue = Convert.ToString(x);
-                if (currentValue == sessionValue)
-                {
-                    btnSubmit.Visible = false;
-                    Session["SubmittedValue2"] = sessionValue;
-                    divLine.Visible = false;
-                    Session["LineId"] = "";
-                    NextSessionValueAndName();
-                }
+                    if (currentValue == sessionValue)
+                    {
+                        Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
+                        btnSubmit.Visible = false;
+                        Session["SubmittedValue2"] = sessionValue;
+                        divLine.Visible = false;
+                        Session["LineId"] = "";
+                        if (nextSessionName == "Substation Transformer")
+                        {
+                            Response.Redirect("SubstationTransformer.aspx");
+                        }
+                        else if (nextSessionName == "Generating Station")
+                        {
+                            Response.Redirect("GeneratingSetTestReport.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+
+                        }
+                        //NextSessionValueAndName();
+                    }
             }
 
                 
@@ -509,23 +523,38 @@ namespace CEIHaryana.TestReport
 
             string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
 
-            for (int i = 0; i < installationNumbers.Length; i++)
+            int count = Convert.ToInt32(Session["Count"]);
+            for (int i = count; i < installationNumbers.Length; i++)
             {
-                sessionName = Session["installationType" + (i + 1)] as string;
-                 sessionValue = Session[installationNumbers[i]] as string;
-
+                sessionName = Session[installationTypes[i]] as string;
+                sessionValue = Session[installationNumbers[i]] as string;
                 if (!string.IsNullOrEmpty(sessionName))
-                { 
-                    if (i < installationNumbers.Length - 1) 
-                    {
-                        nextSessionName = Session["installationType" + (i + 2)] as string;
-                        nextSessionValue = Session[installationNumbers[i + 1]] as string;
-                        break; 
-                    }
+                {
+                    nextSessionName = Session[installationTypes[i + 1]] as string;
+                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                    break;
                 }
             }
+            //for (int i = 0; i < installationNumbers.Length; i++)
+            //{
+            //    sessionName = Session[installationTypes[i]] as string;
+            //    sessionValue = Session[installationNumbers[i]] as string;
 
-           }
+            //    if (!string.IsNullOrEmpty(sessionName))
+            //    {
+            //        // Check if there is a next session available
+            //        if (i + 1 < installationNumbers.Length)
+            //        {
+            //            nextSessionName = Session[installationTypes[i + 1]] as string;
+            //            nextSessionValue = Session[installationNumbers[i + 1]] as string;
+            //        }
+
+            //        break;
+            //    }
+            //}
+
+
+        }
         public void NextSessionValueAndName()
         {
             SessionValue();
@@ -539,7 +568,7 @@ namespace CEIHaryana.TestReport
                 {
                     if (i < installationNumbers.Length - 1) 
                     {
-                        nextSessionName = Session["installationType" + (i + 2)] as string;
+                        nextSessionName = Session["installationType" + (i + 1)] as string;
                         nextSessionValue = Session[installationNumbers[i + 1]] as string;
                         if (nextSessionName == "Substation Transformer")
                         {

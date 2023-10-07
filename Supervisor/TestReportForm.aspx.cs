@@ -357,17 +357,42 @@ namespace CEIHaryana.Supervisor
                 string TestReportId = CEI.TestReportId();
                 Page.Session["TestReportId"] = CEI.TestReportId();
 
-                Session["intallationType"] = txtinstallationType1.Text + ","+ txtinstallationNo1.Text + "|"+txtinstallationType2.Text + "," + txtinstallationNo2.Text + "|"+
-                    txtinstallationType3.Text + "," + txtinstallationNo3.Text + "|"+txtinstallationType4.Text + "," + txtinstallationNo4.Text + "|"+
-                    txtinstallationType5.Text + "," + txtinstallationNo5.Text + "|"+ txtinstallationType6.Text + "," + txtinstallationNo6.Text + "|"+ txtinstallationType7.Text + "," + txtinstallationNo7.Text + "|"+ 
-                    txtinstallationType8.Text + "," + txtinstallationNo8.Text ;
 
-                string Val = Session["intallationType"].ToString();
-                string[] Val1 = Val.Split('|');
-                Session["Line"] = Val1[0];
-                string Count = Val1[1];
-                string Amt = Val1[2];
-                string TrackID = Val1[3];
+                //Session["intallationType"] = txtinstallationType1.Text + ","+ txtinstallationNo1.Text + "|"+txtinstallationType2.Text + "," + txtinstallationNo2.Text + "|"+
+                //    txtinstallationType3.Text + "," + txtinstallationNo3.Text + "|"+txtinstallationType4.Text + "," + txtinstallationNo4.Text + "|"+
+                //    txtinstallationType5.Text + "," + txtinstallationNo5.Text + "|"+ txtinstallationType6.Text + "," + txtinstallationNo6.Text + "|"+ txtinstallationType7.Text + "," + txtinstallationNo7.Text + "|"+ 
+                //    txtinstallationType8.Text + "," + txtinstallationNo8.Text ;
+
+                //string installationTypeValue = Session["intallationType"] as string;
+
+                //if (!string.IsNullOrEmpty(installationTypeValue))
+                //{
+                //    string[] installationTypeParts = installationTypeValue.Split('|');
+                //    foreach (string part in installationTypeParts)
+                //    {
+                //        if (part.Contains("Line"))
+                //        {
+                //            Session["Line"] = part;
+                //            break; 
+                //        }
+                //    }
+                //}
+                //string lineValue = Session["Line"] as string;
+
+                //string sessionValue1 = null;
+                //string sessionValue2 = null;
+
+                //if (!string.IsNullOrEmpty(lineValue))
+                //{
+                //    string[] lineParts = lineValue.Split(',');
+                //    if (lineParts.Length >= 2)
+                //    {
+                //        sessionValue1 = lineParts[0];
+                //        sessionValue2 = lineParts[1];
+                //    }
+                //}
+
+
 
                 Page.Session["installationType1"] = txtinstallationType1.Text;
                 Page.Session["installationNo1"] = txtinstallationNo1.Text;
@@ -400,20 +425,36 @@ namespace CEIHaryana.Supervisor
 
             }
         }
+
+        //public void SetSessionName(string TextBoxName, string TextboxValue)
+        //{
+        //    if (TextBoxName != null && TextBoxName != "" && TextBoxName == "Line")
+        //    {
+        //        Page.Session["Line"] = TextboxValue;
+        //    }
+        //    if (TextBoxName != null && TextBoxName != "" && TextBoxName == "Substation Transformer")
+        //    {
+        //        Page.Session["Substation"] = TextboxValue;
+        //    }
+        //    if (TextBoxName != null && TextBoxName != "" && TextBoxName == "Generating Set")
+        //    {
+        //        Page.Session["Generating"] = TextboxValue;
+        //    }
+        //}
         public void RedirectPages()
         {
             string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
             string[] installationNumbers = {"installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
-
-            for (int i = 0; i < installationNumbers.Length; i++)
+            Page.Session["Count"] = 0;
+            int count = Convert.ToInt32(Session["Count"]);
+            for (int i = count; i < installationNumbers.Length; i++)
             {
                 sessionName = Session[installationTypes[i]] as string;
                 sessionValue = Session[installationNumbers[i]] as string;
                 if (!string.IsNullOrEmpty(sessionName))
                 {
-                    nextSessionName = Session["installationType" + (i + 2)] as string;
-                    nextSessionValue = Session[installationNumbers[i + 2]] as string;
-
+                    nextSessionName = Session[installationTypes[i + 1]] as string;
+                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
                     break;
                 }
             }
