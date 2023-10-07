@@ -355,35 +355,43 @@ namespace CEIHaryana.Supervisor
                     txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text);
 
                 string TestReportId = CEI.TestReportId();
-                Session["TestReportId"] = CEI.TestReportId();
-                string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType6", "installationType7", "installationType8" };
-                string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
-                Session["installationType"] = txtinstallationType1.Text + "|" + txtinstallationType2.Text + "|" +
-                    txtinstallationType3.Text + "|" + txtinstallationType4.Text + "|" + txtinstallationType4.Text + "|" +
-                    txtinstallationType6.Text + "|" + txtinstallationType7.Text + "|" + txtinstallationType8.Text;
-                Session["installationType1"] = txtinstallationType1.Text;
-                Session["installationNo1"] = txtinstallationNo1.Text;
+                Page.Session["TestReportId"] = CEI.TestReportId();
 
-                Session["installationType2"] = txtinstallationType2.Text;
-                Session["installationNo2"] = txtinstallationNo2.Text;
+                Session["intallationType"] = txtinstallationType1.Text + ","+ txtinstallationNo1.Text + "|"+txtinstallationType2.Text + "," + txtinstallationNo2.Text + "|"+
+                    txtinstallationType3.Text + "," + txtinstallationNo3.Text + "|"+txtinstallationType4.Text + "," + txtinstallationNo4.Text + "|"+
+                    txtinstallationType5.Text + "," + txtinstallationNo5.Text + "|"+ txtinstallationType6.Text + "," + txtinstallationNo6.Text + "|"+ txtinstallationType7.Text + "," + txtinstallationNo7.Text + "|"+ 
+                    txtinstallationType8.Text + "," + txtinstallationNo8.Text ;
 
-                Session["installationType3"] = txtinstallationType3.Text;
-                Session["installationNo3"] = txtinstallationNo3.Text;
+                string Val = Session["intallationType"].ToString();
+                string[] Val1 = Val.Split('|');
+                Session["Line"] = Val1[0];
+                string Count = Val1[1];
+                string Amt = Val1[2];
+                string TrackID = Val1[3];
 
-                Session["installationType4"] = txtinstallationType4.Text;
-                Session["installationNo4"] = txtinstallationNo4.Text;
+                Page.Session["installationType1"] = txtinstallationType1.Text;
+                Page.Session["installationNo1"] = txtinstallationNo1.Text;
 
-                Session["installationType5"] = txtinstallationType5.Text;
-                Session["installationNo5"] = txtinstallationNo5.Text;
+                Page.Session["installationType2"] = txtinstallationType2.Text;
+                Page.Session["installationNo2"] = txtinstallationNo2.Text;
 
-                Session["installationType6"] = txtinstallationType6.Text;
-                Session["installationNo6"] = txtinstallationNo6.Text;
+                Page.Session["installationType3"] = txtinstallationType3.Text;
+                Page.Session["installationNo3"] = txtinstallationNo3.Text;
 
-                Session["installationType7"] = txtinstallationType7.Text;
-                Session["installationNo7"] = txtinstallationNo7.Text;
+                Page.Session["installationType4"] = txtinstallationType4.Text;
+                Page.Session["installationNo4"] = txtinstallationNo4.Text;
 
-                Session["installationType8"] = txtinstallationType8.Text;
-                Session["installationNo8"] = txtinstallationNo8.Text;
+                Page.Session["installationType5"] = txtinstallationType5.Text;
+                Page.Session["installationNo5"] = txtinstallationNo5.Text;
+
+                Page.Session["installationType6"] = txtinstallationType6.Text;
+                Page.Session["installationNo6"] = txtinstallationNo6.Text;
+
+                Page.Session["installationType7"] = txtinstallationType7.Text;
+                Page.Session["installationNo7"] = txtinstallationNo7.Text;
+
+                Page.Session["installationType8"] = txtinstallationType8.Text;
+                Page.Session["installationNo8"] = txtinstallationNo8.Text;
                 RedirectPages();
 
             }
@@ -394,16 +402,17 @@ namespace CEIHaryana.Supervisor
         }
         public void RedirectPages()
         {
-            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
+            string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
+            string[] installationNumbers = {"installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
 
             for (int i = 0; i < installationNumbers.Length; i++)
             {
-                sessionName = Session["installationType" + (i + 1)] as string;
+                sessionName = Session[installationTypes[i]] as string;
                 sessionValue = Session[installationNumbers[i]] as string;
                 if (!string.IsNullOrEmpty(sessionName))
                 {
                     nextSessionName = Session["installationType" + (i + 2)] as string;
-                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                    nextSessionValue = Session[installationNumbers[i + 2]] as string;
 
                     break;
                 }

@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CEIHaryana.TestReport
 {
@@ -20,6 +22,7 @@ namespace CEIHaryana.TestReport
         string sessionName = string.Empty;
         string nextSessionName = string.Empty;
         string nextSessionValue = string.Empty;
+        string currentSessionName = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -502,59 +505,79 @@ namespace CEIHaryana.TestReport
         }
         public void SessionValue()
         {
+            string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
+
             string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
 
             for (int i = 0; i < installationNumbers.Length; i++)
             {
                 sessionName = Session["installationType" + (i + 1)] as string;
-                sessionValue = Session[installationNumbers[i]] as string;
-                if (!string.IsNullOrEmpty(sessionName))
-                {
-                    nextSessionName = Session["installationType" + (i + 2)] as string;
-                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                 sessionValue = Session[installationNumbers[i]] as string;
 
-                    break;
+                if (!string.IsNullOrEmpty(sessionName))
+                { 
+                    if (i < installationNumbers.Length - 1) 
+                    {
+                        nextSessionName = Session["installationType" + (i + 2)] as string;
+                        nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                        break; 
+                    }
                 }
             }
-           
 
-
-            }
+           }
         public void NextSessionValueAndName()
-            {
+        {
             SessionValue();
-
-
-            if (nextSessionName == "Substation Transformer")
+            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
+            for (int i = 0; i < installationNumbers.Length; i++)
             {
-                Response.Redirect("SubstationTransformer.aspx");
-            }
-            else if(nextSessionName == "Generating Station")
-            {
-                Response.Redirect("GeneratingSetTestReport.aspx");
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                sessionName = Session["installationType" + (i + 1)] as string;
+                sessionValue = Session[installationNumbers[i]] as string;
 
+                if (!string.IsNullOrEmpty(sessionName))
+                {
+                    if (i < installationNumbers.Length - 1) 
+                    {
+                        nextSessionName = Session["installationType" + (i + 2)] as string;
+                        nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                        if (nextSessionName == "Substation Transformer")
+                        {
+                            Response.Redirect("SubstationTransformer.aspx");
+                        }
+                        else if (nextSessionName == "Generating Station")
+                        {
+                            Response.Redirect("GeneratingSetTestReport.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+
+                        }
+                    }
+                }
             }
         }
 
         
         public void PageWorking()
         {
-            SessionValue();
+            try
+            {
+                SessionValue();
 
-            if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
-            {
-                Declaration.Visible= true;
-                btnSubmit.Text = "Submit";
+                if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
+                {
+                    Declaration.Visible = true;
+                    btnSubmit.Text = "Submit";
+                }
+                else
+                {
+                    Declaration.Visible = false;
+                    btnSubmit.Text = "Next";
+                }
             }
-            else
-            {
-                Declaration.Visible = false;
-                btnSubmit.Text = "Next";
-            }
+            catch (Exception ex) { }
 
         }
         public void Reset()

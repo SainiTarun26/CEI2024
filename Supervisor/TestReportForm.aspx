@@ -2048,7 +2048,7 @@
                                 </div>
                                 <div class="col-6" id="individual5" runat="server">
                                     <label for="Name">
-                                        Contact Details 
+                                        Contact Details (Site Owner)
                                     </label>
                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>

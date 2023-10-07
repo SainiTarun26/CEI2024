@@ -19,6 +19,7 @@ namespace CEIHaryana.TestReport
         string sessionName = string.Empty;
         string nextSessionName = string.Empty;
         string nextSessionValue = string.Empty;
+        string currentSessionName = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -367,24 +368,24 @@ namespace CEIHaryana.TestReport
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["AdminID"].ToString();
                     CEI.InsertSubstationData(SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
-                        txtPrimaryVoltage.Text, txtSecondryVoltage.Text, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
-                        txtLowestValue.Text, txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
-                        ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), ddlSubstationEarthing2.SelectedItem.ToString(),
-                        txtSubstationEarthing2.Text, ddlUsedFor2.SelectedItem.ToString(), ddlSubstationEarthing3.SelectedItem.ToString(), txtSubstationEarthing3.Text, ddlUsedFor3.SelectedItem.ToString(),
-                        ddlSubstationEarthing4.SelectedItem.ToString(), txtSubstationEarthing4.Text, ddlUsedFor4.SelectedItem.ToString(), ddlSubstationEarthing5.SelectedItem.ToString(), txtSubstationEarthing5.Text,
-                        ddlUsedFor5.SelectedItem.ToString(), ddlSubstationEarthing6.SelectedItem.ToString(), txtSubstationEarthing6.Text, ddlUsedFor6.SelectedItem.ToString(),
-                        ddlSubstationEarthing7.SelectedItem.ToString(), txtSubstationEarthing7.Text, ddlUsedFor7.SelectedItem.ToString(), ddlSubstationEarthing8.SelectedItem.ToString(),
-                        txtSubstationEarthing8.Text, ddlUsedFor8.SelectedItem.ToString(), ddlSubstationEarthing9.SelectedItem.ToString(), txtSubstationEarthing9.Text, ddlUsedFor9.SelectedItem.ToString(),
-                        ddlSubstationEarthing10.SelectedItem.ToString(), txtSubstationEarthing10.Text, ddlUsedFor10.SelectedItem.ToString(), ddlSubstationEarthing11.SelectedItem.ToString(),
-                        txtSubstationEarthing11.Text, ddlUsedFor11.SelectedItem.ToString(), ddlSubstationEarthing12.SelectedItem.ToString(), txtSubstationEarthing12.Text,
-                        ddlUsedFor12.SelectedItem.ToString(), ddlSubstationEarthing13.SelectedItem.ToString(), txtSubstationEarthing13.Text, ddlUsedFor13.SelectedItem.ToString(),
-                        ddlSubstationEarthing14.SelectedItem.ToString(), txtSubstationEarthing14.Text, ddlUsedFor14.SelectedItem.ToString(), ddlSubstationEarthing15.SelectedItem.ToString(),
-                        txtSubstationEarthing15.Text, ddlUsedFor15.SelectedItem.ToString(), ddlSubstationEarthing16.SelectedItem.ToString(), txtSubstationEarthing16.Text, ddlUsedFor16.SelectedItem.ToString(),
-                        ddlSubstationEarthing17.SelectedItem.ToString(), txtSubstationEarthing17.Text, ddlUsedFor17.SelectedItem.ToString(), ddlSubstationEarthing18.SelectedItem.ToString(), txtSubstationEarthing18.Text,
-                        ddlUsedFor18.SelectedItem.ToString(), ddlSubstationEarthing19.SelectedItem.ToString(),
-                        txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), ddlSubstationEarthing20.SelectedItem.ToString(),
-                        txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
-                        txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
+                       txtPrimaryVoltage.Text, txtSecondryVoltage.Text, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
+                       txtLowestValue.Text, txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
+                       ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),
+                       txtSubstationEarthing2.Text, ddlUsedFor2.SelectedItem.ToString(), txtOtherEarthing2.Text, ddlSubstationEarthing3.SelectedItem.ToString(), txtSubstationEarthing3.Text, ddlUsedFor3.SelectedItem.ToString(), txtOtherEarthing3.Text,
+                       ddlSubstationEarthing4.SelectedItem.ToString(), txtSubstationEarthing4.Text, ddlUsedFor4.SelectedItem.ToString(), txtOtherEarthing4.Text, ddlSubstationEarthing5.SelectedItem.ToString(), txtSubstationEarthing5.Text,
+                       ddlUsedFor5.SelectedItem.ToString(), txtOtherEarthing5.Text, ddlSubstationEarthing6.SelectedItem.ToString(), txtSubstationEarthing6.Text, ddlUsedFor6.SelectedItem.ToString(), txtOtherEarthing6.Text,
+                       ddlSubstationEarthing7.SelectedItem.ToString(), txtSubstationEarthing7.Text, ddlUsedFor7.SelectedItem.ToString(), txtOtherEarthing7.Text, ddlSubstationEarthing8.SelectedItem.ToString(),
+                       txtSubstationEarthing8.Text, ddlUsedFor8.SelectedItem.ToString(), txtOtherEarthing8.Text, ddlSubstationEarthing9.SelectedItem.ToString(), txtSubstationEarthing9.Text, ddlUsedFor9.SelectedItem.ToString(), txtOtherEarthing9.Text,
+                       ddlSubstationEarthing10.SelectedItem.ToString(), txtSubstationEarthing10.Text, ddlUsedFor10.SelectedItem.ToString(), txtOtherEarthing10.Text, ddlSubstationEarthing11.SelectedItem.ToString(),
+                       txtSubstationEarthing11.Text, ddlUsedFor11.SelectedItem.ToString(), txtOtherEarthing11.Text, ddlSubstationEarthing12.SelectedItem.ToString(), txtSubstationEarthing12.Text,
+                       ddlUsedFor12.SelectedItem.ToString(), txtOtherEarthing12.Text, ddlSubstationEarthing13.SelectedItem.ToString(), txtSubstationEarthing13.Text, ddlUsedFor13.SelectedItem.ToString(), txtOtherEarthing13.Text,
+                       ddlSubstationEarthing14.SelectedItem.ToString(), txtSubstationEarthing14.Text, ddlUsedFor14.SelectedItem.ToString(), txtOtherEarthing14.Text, ddlSubstationEarthing15.SelectedItem.ToString(),
+                       txtSubstationEarthing15.Text, ddlUsedFor15.SelectedItem.ToString(), txtOtherEarthing15.Text, ddlSubstationEarthing16.SelectedItem.ToString(), txtSubstationEarthing16.Text, ddlUsedFor16.SelectedItem.ToString(), txtOtherEarthing16.Text,
+                       ddlSubstationEarthing17.SelectedItem.ToString(), txtSubstationEarthing17.Text, ddlUsedFor17.SelectedItem.ToString(), txtOtherEarthing17.Text, ddlSubstationEarthing18.SelectedItem.ToString(), txtSubstationEarthing18.Text,
+                       ddlUsedFor18.SelectedItem.ToString(), txtOtherEarthing18.Text, ddlSubstationEarthing19.SelectedItem.ToString(),
+                       txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), txtOtherEarthing19.Text, ddlSubstationEarthing20.SelectedItem.ToString(),
+                       txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtOtherEarthing20.Text, txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
+                       txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
                     x = x + 1;
                     Reset();
                     DataSaved.Visible = true;
@@ -409,53 +410,79 @@ namespace CEIHaryana.TestReport
         }
        public void SessionValue()
         {
-            
+            string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
+            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
+
+            for (int i = 0; i < installationNumbers.Length; i++)
+            {
+                sessionName = Session[installationTypes[i]] as string;
+                sessionValue = Session[installationNumbers[i]] as string;
+                if (!string.IsNullOrEmpty(sessionName))
+                {
+                    nextSessionName = Session["installationType" + (i + 2)] as string;
+                    nextSessionValue = Session[installationNumbers[i + 2]] as string;
+
+                    break;
+                }
+            }
+        }
+        public void NextSessionValueAndName()
+        {
             string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
 
             for (int i = 0; i < installationNumbers.Length; i++)
             {
                 sessionName = Session["installationType" + (i + 1)] as string;
                 sessionValue = Session[installationNumbers[i]] as string;
+
                 if (!string.IsNullOrEmpty(sessionName))
                 {
-                    nextSessionName = Session["installationType" + (i + 2)] as string;
-                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                    if (i < installationNumbers.Length - 1) // Check if there are more sessions left
+                    {
+                        nextSessionName = Session["installationType" + (i + 2)] as string;
+                        nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                        if (nextSessionName == "Line")
+                        {
+                            Response.Redirect("LineTestReport.aspx");
+                        }
+                        else if (nextSessionName == "Generating Station")
+                        {
+                            Response.Redirect("GeneratingSetTestReport.aspx");
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
 
-                    break;
+                        }
+                    }
+                    else
+                    {
+                        nextSessionName = "";
+                        nextSessionValue = "";
+                    }
+
                 }
             }
-       }
-        public void NextSessionValueAndName()
-        {
-
-            if (nextSessionName == "Line")
-            {
-                Response.Redirect("LineTestReport.aspx");
-            }
-            else if (nextSessionName == "Generating Station")
-            {
-                Response.Redirect("GeneratingSetTestReport.aspx");
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
-
-            }
+           
         }
         public void PageWorking()
         {
-            SessionValue();
+            try
+            {
+                SessionValue();
 
-            if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
-            {
-                Declaration.Visible = true;
-                BtnSubmitSubstation.Text = "Submit";
+                if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
+                {
+                    Declaration.Visible = true;
+                    BtnSubmitSubstation.Text = "Submit";
+                }
+                else
+                {
+                    Declaration.Visible = false;
+                    BtnSubmitSubstation.Text = "Next";
+                }
             }
-            else
-            {
-                Declaration.Visible = false;
-                BtnSubmitSubstation.Text = "Next";
-            }
+            catch { }
 
         }
 
@@ -495,6 +522,246 @@ namespace CEIHaryana.TestReport
             txtSubstationEarthing19.Text = ""; ddlUsedFor19.SelectedValue = "0"; ddlSubstationEarthing20.SelectedValue = "0";
             txtSubstationEarthing20.Text = ""; ddlUsedFor20.SelectedValue = "0"; txtBreakerCapacity.Text = ""; ddlLTProtection.SelectedValue = "0"; txtIndividualCapacity.Text = "";
             txtLTBreakerCapacity.Text = ""; txtLoadBreakingCapacity.Text = ""; txtSealLevelPlinth.Text = "";
+        }
+
+        protected void ddlUsedFor1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor1.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing1.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing1.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor2.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing2.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing2.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor3.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing3.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing3.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor4.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing4.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing4.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor5.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing5.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing5.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor6.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing6.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing6.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor7.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing7.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing7.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor8.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing8.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing8.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor9.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing9.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing9.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor10.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing10.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing10.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor11_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor11.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing11.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing11.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor12.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing12.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing12.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor13_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor13.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing13.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing13.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor14.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing14.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing14.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor15_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor15.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing15.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing15.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor16_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor16.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing16.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing16.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor17_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor17.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing17.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing17.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor18_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor18.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing18.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing18.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor19_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor19.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing19.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing19.Visible = false;
+            }
+        }
+
+        protected void ddlUsedFor20_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlUsedFor20.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing20.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing20.Visible = true;
+            }
         }
     }
 }
