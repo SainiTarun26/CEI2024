@@ -346,5 +346,184 @@ namespace CEIHaryana.TestReport
                 BtnSubmitGeneratingSet.Text = "Next";
             }
         }
+        protected void ddlGeneratingEarthingUsed1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed1.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing1.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing1.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed2.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing2.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing2.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed3.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing3.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing3.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed4.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing4.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing4.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed5.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing5.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing5.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed6.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing6.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing6.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed7.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing7.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing7.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed8.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing8.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing8.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed10.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing10.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing10.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed11_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed11.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing11.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing11.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed12.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing12.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing12.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed13_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed13.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing13.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing13.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed14.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing14.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing14.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed15_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed15.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing15.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing15.Visible = false;
+            }
+        }
+
+        protected void ddlGeneratingEarthingUsed9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlGeneratingEarthingUsed9.SelectedItem.ToString() == "Other")
+            {
+                txtOtherEarthing9.Visible = true;
+            }
+            else
+            {
+                txtOtherEarthing9.Visible = false;
+            }
+        }
     }
 }

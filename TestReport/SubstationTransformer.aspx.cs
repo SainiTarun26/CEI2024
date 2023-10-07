@@ -344,7 +344,7 @@ namespace CEIHaryana.TestReport
             try
             {
 
-                Session["x"] = 0;
+               
                 if (Declaration.Visible == true && CheckBox2.Checked == false)
                 {
                     
@@ -388,13 +388,14 @@ namespace CEIHaryana.TestReport
                        txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), txtOtherEarthing19.Text, ddlSubstationEarthing20.SelectedItem.ToString(),
                        txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtOtherEarthing20.Text, txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
                        txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
-                    x = x + 1;
+
+                    Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
                     Reset();
                     DataSaved.Visible = true;
                     labelVerification.Visible = false;
                     PageWorking();
-                    string currentValue = Convert.ToString(x);
-                    if (currentValue == sessionValue)
+                    int currentValue = Convert.ToInt32(Session["Page"]);
+                    if (currentValue == Convert.ToInt32(sessionValue))
                     {
                         Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
                         BtnSubmitSubstation.Visible = false;

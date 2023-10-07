@@ -885,7 +885,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
         }
         #endregion
-
         #region Insert Lift Data
         public void InsertLiftData(string Id, string VoltageAndSystemOfSupply, string MVInstallation, string SerailNumber1, string Equipment1,
             string Voltage1, string FedFromDistribution1, string SerailNumber2, string Equipment2, string Voltage2, string FedFromDistribution2,

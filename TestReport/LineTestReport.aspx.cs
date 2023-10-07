@@ -479,13 +479,13 @@ namespace CEIHaryana.TestReport
            txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
            txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
            txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-                x = x + 1;
-                Reset();
+                    Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
+                    Reset();
                 DataSaved.Visible = true;
                 labelVerification.Visible = false;
                 PageWorking();
-                string currentValue = Convert.ToString(x);
-                    if (currentValue == sessionValue)
+                    int currentValue = Convert.ToInt32(Session["Page"]);
+                    if (currentValue == Convert.ToInt32(sessionValue))
                     {
                         Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
                         btnSubmit.Visible = false;
@@ -595,7 +595,7 @@ namespace CEIHaryana.TestReport
             {
                 SessionValue();
 
-                if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
+             if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
                 {
                     Declaration.Visible = true;
                     btnSubmit.Text = "Submit";
