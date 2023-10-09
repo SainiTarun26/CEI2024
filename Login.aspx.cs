@@ -175,6 +175,29 @@ namespace CEIHaryana
                         Response.Redirect("Supervisor/IntimationData.aspx", false);
                     }
                 }
+                else if (check == 7)
+                {
+                    if (chkSignedin.Checked == true)
+                    {
+                        Session["AdminID"] = txtUserID.Text;
+                        Session["logintype"] = "SiteOwner";
+                        Response.Cookies["AdminID"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "SiteOwner";
+                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
+                        Response.Redirect("SiteOwnerPages/TestReportData.aspx", false);
+                    }
+                    else
+                    {
+                        Session["AdminID"] = txtUserID.Text;
+                        Session["logintype"] = "SiteOwner";
+                        Response.Cookies["AdminID"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "SiteOwner";
+                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
+                        Response.Redirect("SiteOwnerPages/TestReportData.aspx", false);
+                    }
+                }
                 else
                 {
 

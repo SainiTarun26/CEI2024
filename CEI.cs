@@ -58,7 +58,7 @@ namespace CEI_PRoject
         }
         #endregion
         #region Insert Intimtion Data
-        public void IntimationDataInsertion(string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string Pincode,
+        public void IntimationDataInsertion(string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address,string District, string Pincode,
 string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
 string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
 string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
@@ -83,6 +83,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             cmd.Parameters.AddWithValue("@NameOfAgency", NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
             cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@District", District);
             cmd.Parameters.AddWithValue("@Pincode", Pincode);
             cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
             cmd.Parameters.AddWithValue("@OtherPremises", OtherPremises);
@@ -1065,6 +1066,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlPremises()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Premises");
+        } 
+        public DataSet GetddlTestReportVoltage()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReprortVoltage");
         }
         public DataSet GetddlAssignedWorkForSupervisor()
         {
@@ -1073,6 +1078,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlInstallationType()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InstallatioType");
+        } 
+        public DataSet GetddlDistrict()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AreaCovered");
         }
         public DataSet GetddlDrawDistrictddl()
         {
@@ -1123,9 +1132,17 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SubstationDataWithId", Id);
         }
+        public DataTable SiteOwnerLineData(string PanId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerLineReportData", PanId);
+        }
         public DataTable TransformerTestReportData(string SubStationId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubstationHistory", SubStationId);
+        } 
+        public DataTable TestReportSubstationData(string SubStationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerTransformerReportData", SubStationId);
         } 
         public DataTable GeneratingTestReportData(string GeneratingSetId)
         {

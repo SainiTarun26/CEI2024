@@ -20,6 +20,12 @@ namespace CEIHaryana.TestReportModal
                 if (Session["ContractorID"] != null)
                 {
                     GetDetailswithId();
+                    Contractor.Visible = true;
+                }
+                else if (Session["AdminID"]!= null)
+                {
+                    GetDetailswithId();
+                    SiteOwner.Visible = true;
                 }
             }
 
@@ -78,7 +84,7 @@ namespace CEIHaryana.TestReportModal
 
                     }
                 }
-                else if (txtVotalgeType.Text == "KV")
+                else if (txtVotalgeType.Text.Trim() == "KV")
                 {
                     Insulation440vAbove.Visible = true;
                     Insulation220vAbove.Visible = false;
@@ -87,6 +93,123 @@ namespace CEIHaryana.TestReportModal
                 {
                     Insulation440vAbove.Visible = false;
                     Insulation220vAbove.Visible = false;
+                }
+                if (txtLineType.Text.Trim() == "Overhead")
+                {
+                    LineTypeOverhead.Visible = true;
+                    LineTypeUnderground.Visible = false;
+                    if (txtVotalgeType.Text.Trim() == "Other")
+                    {
+                        if (TxtOthervoltage.Text == "KV")
+                        {
+
+                            if (int.TryParse(TxtOthervoltage.Text, out int value))
+                            {
+
+                                Insulation220vAbove.Visible = false;
+                                Insulation440vAbove.Visible = true;
+
+                            }
+                        }
+
+                        else if (TxtOthervoltage.Text.Trim() == "V")
+                        {
+                            if (int.TryParse(TxtOthervoltage.Text, out int value))
+                            {
+                                if (value > 440)
+                                {
+                                    Insulation220vAbove.Visible = false;
+                                    Insulation440vAbove.Visible = true;
+                                }
+                                else if (value > 220)
+                                {
+                                    Insulation440vAbove.Visible = false;
+                                    Insulation220vAbove.Visible = true;
+                                }
+                                else
+                                {
+                                    Insulation440vAbove.Visible = false;
+                                    Insulation220vAbove.Visible = false;
+                                }
+
+                            }
+                        }
+                    }
+                    else if (txtLineVoltage.Text.Trim() == "220V")
+                    {
+                        Insulation220vAbove.Visible = true;
+                        Insulation440vAbove.Visible = false;
+                    }
+                    else if (txtLineVoltage.Text.Trim() == "440V")
+                    {
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
+                    }
+                    
+
+                }
+                else if (txtLineType.Text.Trim() == "Underground")
+                {
+
+                    LineTypeUnderground.Visible = true;
+                    LineTypeOverhead.Visible = false;
+                    if (txtVotalgeType.Text == "Other")
+                    {
+                        if (TxtOthervoltage.Text.Trim() == "KV")
+                        {
+
+                            if (int.TryParse(TxtOthervoltage.Text, out int value))
+                            {
+
+                                Insulation440vAbove.Visible = true;
+                                Insulation220vAbove.Visible = false;
+
+                            }
+                        }
+
+                        else if (TxtOthervoltage.Text.Trim() == "V")
+                        {
+                            if (int.TryParse(TxtOthervoltage.Text, out int value))
+                            {
+                                if (value > 440)
+                                {
+                                    Insulation440vAbove.Visible = true;
+                                    Insulation220vAbove.Visible = false;
+                                }
+                                else if (value > 220)
+                                {
+                                    Insulation440vAbove.Visible = false;
+                                    Insulation220vAbove.Visible = true;
+                                }
+                                else
+                                {
+                                    Insulation440vAbove.Visible = true;
+                                    Insulation220vAbove.Visible = false;
+                                }
+
+                            }
+                        }
+                    }
+                    else if (txtLineVoltage.Text.Trim() == "220V")
+                    {
+                        Insulation220vAbove.Visible = true;
+                        Insulation440vAbove.Visible = false;
+                    }
+                    else if (txtLineVoltage.Text.Trim() == "440V")
+                    {
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
+                    }
+
+                }
+                else
+                {
+
+                    LineTypeOverhead.Visible = false;
+                    LineTypeUnderground.Visible = false;
+                    Insulation440vAbove.Visible = true;
+                    Insulation220vAbove.Visible = false;
+                    Earthing.Visible = false;
                 }
                 txtCircuit.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
@@ -369,6 +492,11 @@ namespace CEIHaryana.TestReportModal
             {
                 Rejection.Visible = false;
             }
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
         }
     }
 }

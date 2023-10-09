@@ -19,6 +19,12 @@ namespace CEIHaryana.TestReportModal
                 if (Session["ContractorID"] != null)
                 {
                     GetDetailswithId();
+                    Contractor.Visible = true;
+                }
+                else if (Session["AdminID"] != null)
+                {
+                    GetDetailswithId();
+                    SiteOwner.Visible= true;
                 }
             }
         }
@@ -381,6 +387,11 @@ namespace CEIHaryana.TestReportModal
         {
             string id = Session["SubStationID"].ToString();
             CEI.UpdateSubstationData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
         }
     }
 }

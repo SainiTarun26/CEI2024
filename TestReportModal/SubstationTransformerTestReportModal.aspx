@@ -1992,8 +1992,7 @@
                 </div>
                 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
+               
                         <div class="row">
                             <div class="col-4" id="Div121" runat="server">
                                 <label for="Voltage">
@@ -2826,6 +2825,7 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>--%>
+                <div class="row" id="Contractor" runat="server" visible="false"> 
                          <div class="col-4">
                                                           <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged" >
 
@@ -2842,18 +2842,7 @@
                                                              <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                        
                                                                </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-                <div class="row" style="margin-top: 50px;" id="Declaration" runat="server" visible="false">
-                    <div class="col-12" style="text-align: center;">
-                        <asp:CheckBox ID="CheckBox2" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
-                        <br />
-                        <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                            Please Verify this.
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
+                  
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
                         <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnSubmit_Click"/>
@@ -2864,6 +2853,15 @@
 
                     </div>
                 </div>
+              
+                <div class="row" id="SiteOwner" runat="server" visible="false">
+                    <div class="col-4"></div>
+                    <div class="col-4" style="text-align: center;">
+                        <asp:Button ID="btnNext" Text="Next" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
+                    </div>
+
+                </div>
+             
             </div>
         </li>
     </ul>

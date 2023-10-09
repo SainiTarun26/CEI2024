@@ -317,169 +317,22 @@
                         </div>
                     </div>
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Dashboard</span>
-                                </a>
-                            </li>
-                            <%--<li class="nav-item">
+                      <ul class="nav">
+                           <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Staff Details</span>
+                                    <span class="menu-title">Test Reports</span>
                                     <i class="menu-arrow"></i>
                                 </a>
                                 <div class="collapse" id="ui-basic">
                                     <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Contractor">Contractor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Supervisor">Supervisor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Wireman</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/TestReportData.aspx">Line</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/SubstationHistory.aspx">Substation Transformer</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/GeneratingSet.aspx">Generating Station</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Add Staff Details</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic1">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Print Forms</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic3">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintContractor.aspx">Contractor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintSupervisor.aspx">Supervisor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintWiremen.aspx">Wireman</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
-        <i class="icon-layout menu-icon"></i>
-        <span class="menu-title">All Test Reports</span>
-        <i class="menu-arrow"></i>
-    </a>
-    <div class="collapse" id="ui-basic4">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Line</a></li>
-            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Substation<br/> Transformer</a></li>
-            <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Genrating Set</a></li>
-        </ul>
-    </div>
-</li>--%>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Projects.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Create Inspection <br/> Report</span>
-                                </a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Projects.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Test Reports</span>
-                                </a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Projects.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Work Intimations</span>
-                                </a>
-                            </li>
-
-                            <%-- <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                                    <i class="icon-columns menu-icon"></i>
-                                    <span class="menu-title">Form elements</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="form-elements">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                                    <i class="icon-bar-graph menu-icon"></i>
-                                    <span class="menu-title">Charts</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="charts">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                                    <i class="icon-grid-2 menu-icon"></i>
-                                    <span class="menu-title">Tables</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="tables">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-                                    <i class="icon-contract menu-icon"></i>
-                                    <span class="menu-title">Icons</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="icons">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                                    <i class="icon-head menu-icon"></i>
-                                    <span class="menu-title">User Pages</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="auth">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="pages/samples/login.html">Login </a></li>
-                                        <li class="nav-item"><a class="nav-link" href="pages/samples/register.html">Register </a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
-                                    <i class="icon-ban menu-icon"></i>
-                                    <span class="menu-title">Error pages</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="error">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="pages/samples/error-404.html">404 </a></li>
-                                        <li class="nav-item"><a class="nav-link" href="pages/samples/error-500.html">500 </a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages/documentation/documentation.html">
-                                    <i class="icon-paper menu-icon"></i>
-                                    <span class="menu-title">Documentation</span>
-                                </a>
-                            </li>--%>
-                        </ul>
+                          </ul>
                     </nav>
                     <div class="main-panel">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

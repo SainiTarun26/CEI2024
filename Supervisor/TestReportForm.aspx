@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="images/favicon.png" />
     <style type="text/css">
-        input#ContentPlaceHolder1_btnDelete1 {
+        input#ContentPlaceHolder1_btnDelete1 
+        {
             border-radius: 10px;
             padding: 5px;
             background: #e93a3a;

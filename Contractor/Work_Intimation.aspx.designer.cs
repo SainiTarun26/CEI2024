@@ -168,6 +168,33 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
+        /// txtState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtState;
+
+        /// <summary>
+        /// ddlDistrict control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
+
+        /// <summary>
+        /// RequiredFieldValidator25 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
+
+        /// <summary>
         /// txtPin control.
         /// </summary>
         /// <remarks>
@@ -258,13 +285,13 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtPAN;
 
         /// <summary>
-        /// RequiredFieldValidator24 control.
+        /// RequiredFieldValidator26 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator26;
 
         /// <summary>
         /// ddlWorkDetail control.

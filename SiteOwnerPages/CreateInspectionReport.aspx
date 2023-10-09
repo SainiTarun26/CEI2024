@@ -185,42 +185,30 @@
                                     <label>
                                         Type of Installation<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;">
+                                    <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged">
                                         <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                        <asp:ListItem Value="1" Text="Substation Transformer"></asp:ListItem>
-                                        <asp:ListItem Value="2" Text="Line"></asp:ListItem>
+                                        <asp:ListItem Value="1" Text="Supplier"></asp:ListItem>
+                                        <asp:ListItem Value="2" Text="Personal Installation"></asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                </div>
+                                    </div>
                                 <div class="col-4">
                                     <label>
                                         Type of Installation<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:DropDownList ID="ddlworktype2" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;">
-                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                        <asp:ListItem Value="1" Text="Substation Transformer"></asp:ListItem>
-                                        <asp:ListItem Value="1" Text="Line"></asp:ListItem>
-                                        <asp:ListItem Value="2" Text="Generating Station"></asp:ListItem>
-                                    </asp:DropDownList>
+                                        <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator30" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                </div>
-                            </div>
-                            <div class="IfSubstationINspection">
-                                <div class="row">
-                                    <div class="col-4" runat="server">
-                                        <label for="Pin">Test Report ID</label>
-                                        <asp:TextBox class="form-control" ID="txtPin1" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <span id="lblPinError1" style="color: red"></span>
+                                </div>                              
+                                      <div class="col-4" runat="server">
+                                        <label for="Pin"> Voltage Level</label>
+                                      <asp:DropDownList ID="ddlVoltage" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;">
+                                     
+                                    </asp:DropDownList>
                                     </div>
-                                    <div class="col-4" runat="server">
-                                        <label for="Pin">Substation Transformer Voltage Level</label>
-                                        <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <span id="lblPinError" style="color: red"></span>
-                                    </div>
-                                </div>
-                            </div>
+                              </div>
+                            
                             <div class="row">
-                                <div class="table-responsive pt-3" id="Div1" runat="server" visible="true">
+                                <div class="table-responsive pt-3" id="Uploads" runat="server" visible="false">
                                     <table class="table table-bordered table-striped">
                                         <thead class="table-dark">
                                             <tr>
@@ -231,6 +219,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <div id="LineSubstationSupplier" runat="server" visible="false">
                                             <tr id="Tr1" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-12">
@@ -255,6 +244,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            </div>
+                                            <div id="SupplierSub" runat="server" visible="false">
                                             <tr id="Tr3" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-12">
@@ -267,6 +258,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            </div>
+                                            <div id="PersonalSub" runat="server" visible="false">
                                             <tr id="Tr4" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-12">
@@ -328,6 +321,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            </div>
+                                            <div id="PersonalGenerating" runat="server" visible="false">
                                             <tr id="Tr9" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-12">
@@ -353,7 +348,19 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr id="Tr11" runat="server" visible="true">
+                                            <tr id="Tr13" runat="server" visible="true">
+                                                <td>
+                                                    <div class="col-12">
+                                                        Invoice Of fire Extinguisher/apparatus installed at the site<samp style="color: red"> * </samp>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                                <tr id="Tr11" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-12">
                                                         Structure stability report issued by authorized engineer<samp style="color: red"> * </samp>
@@ -365,7 +372,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr id="Tr12" runat="server" visible="true">
+                                            </div>
+                                            
+                                            <tr id="LinePersonal" runat="server" visible="false">
                                                 <td>
                                                     <div class="col-12">
                                                         Demand Notice<samp style="color: red"> * </samp>

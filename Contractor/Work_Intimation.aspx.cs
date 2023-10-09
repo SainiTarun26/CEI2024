@@ -29,7 +29,7 @@ namespace CEIHaryana.Contractor
                     ddlLoadBindPremises();
                     worktypevisiblity();
                     ddlLoadBindVoltage();
-
+                    BindDistrict();
                     BindListBoxInstallationType();
                     hiddenfield.Visible = false;
                     hiddenfield1.Visible = false;
@@ -235,6 +235,17 @@ namespace CEIHaryana.Contractor
             ddlWorkDetail.Items.Insert(0, new ListItem("Select", "0"));
             dsWorkDetail.Clear();
         }
+        private void BindDistrict()
+        {
+            DataSet dsDistrict = new DataSet();
+            dsDistrict = CEI.GetddlDistrict();
+            ddlDistrict.DataSource = dsDistrict;
+            ddlDistrict.DataTextField = "AreaCovered";
+            ddlDistrict.DataValueField = "Id";
+            ddlDistrict.DataBind();
+            ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
+            dsDistrict.Clear();
+        }
         private void ddlLoadBindVoltage()
         {
 
@@ -328,7 +339,7 @@ namespace CEIHaryana.Contractor
                         }
                     }
                     hdnId.Value = ContractorID;
-                    CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text
+                    CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, ddlDistrict.SelectedItem.ToString()
                       , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
                       txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
                       txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,

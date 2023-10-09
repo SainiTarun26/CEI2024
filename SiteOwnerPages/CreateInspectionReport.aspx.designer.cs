@@ -78,22 +78,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.DropDownList ddlworktype;
 
         /// <summary>
-        /// RequiredFieldValidator13 control.
+        /// txtWorkType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
-
-        /// <summary>
-        /// ddlworktype2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlworktype2;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkType;
 
         /// <summary>
         /// RequiredFieldValidator30 control.
@@ -105,31 +96,31 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator30;
 
         /// <summary>
-        /// txtPin1 control.
+        /// ddlVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPin1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlVoltage;
 
         /// <summary>
-        /// txtPin control.
+        /// Uploads control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPin;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Uploads;
 
         /// <summary>
-        /// Div1 control.
+        /// LineSubstationSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LineSubstationSupplier;
 
         /// <summary>
         /// Tr1 control.
@@ -168,6 +159,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
 
         /// <summary>
+        /// SupplierSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SupplierSub;
+
+        /// <summary>
         /// Tr3 control.
         /// </summary>
         /// <remarks>
@@ -184,6 +184,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload3;
+
+        /// <summary>
+        /// PersonalSub control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PersonalSub;
 
         /// <summary>
         /// Tr4 control.
@@ -276,6 +285,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.FileUpload FileUpload8;
 
         /// <summary>
+        /// PersonalGenerating control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PersonalGenerating;
+
+        /// <summary>
         /// Tr9 control.
         /// </summary>
         /// <remarks>
@@ -312,6 +330,24 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.FileUpload FileUpload10;
 
         /// <summary>
+        /// Tr13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr13;
+
+        /// <summary>
+        /// FileUpload13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload13;
+
+        /// <summary>
         /// Tr11 control.
         /// </summary>
         /// <remarks>
@@ -330,13 +366,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.FileUpload FileUpload11;
 
         /// <summary>
-        /// Tr12 control.
+        /// LinePersonal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr12;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow LinePersonal;
 
         /// <summary>
         /// FileUpload12 control.

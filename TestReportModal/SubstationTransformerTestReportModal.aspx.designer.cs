@@ -60,15 +60,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
-        /// <summary>
         /// Div121 control.
         /// </summary>
         /// <remarks>
@@ -1230,6 +1221,15 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtSealLevelPlinth;
 
         /// <summary>
+        /// Contractor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contractor;
+
+        /// <summary>
         /// ddlType control.
         /// </summary>
         /// <remarks>
@@ -1257,33 +1257,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtRejection;
 
         /// <summary>
-        /// Declaration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Declaration;
-
-        /// <summary>
-        /// CheckBox2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
-
-        /// <summary>
-        /// labelVerification control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelVerification;
-
-        /// <summary>
         /// BtnSubmit control.
         /// </summary>
         /// <remarks>
@@ -1309,5 +1282,23 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtValue;
+
+        /// <summary>
+        /// SiteOwner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteOwner;
+
+        /// <summary>
+        /// btnNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNext;
     }
 }

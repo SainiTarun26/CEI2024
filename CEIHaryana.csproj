@@ -1551,6 +1551,9 @@
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
+    <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
+    <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
+    <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
     <Content Include="Supervisor\TestReportDetails.aspx" />
@@ -1756,12 +1759,33 @@
     <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.designer.cs">
       <DependentUpon>CreateInspectionReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\GeneratingSet.aspx.cs">
+      <DependentUpon>GeneratingSet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GeneratingSet.aspx.designer.cs">
+      <DependentUpon>GeneratingSet.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\SiteOwner.Master.cs">
       <DependentUpon>SiteOwner.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SiteOwnerPages\SiteOwner.Master.designer.cs">
       <DependentUpon>SiteOwner.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SubstationHistory.aspx.cs">
+      <DependentUpon>SubstationHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SubstationHistory.aspx.designer.cs">
+      <DependentUpon>SubstationHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\TestReportData.aspx.cs">
+      <DependentUpon>TestReportData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\TestReportData.aspx.designer.cs">
+      <DependentUpon>TestReportData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\IntimationData.aspx.cs">
       <DependentUpon>IntimationData.aspx</DependentUpon>

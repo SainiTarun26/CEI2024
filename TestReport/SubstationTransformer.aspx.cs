@@ -95,6 +95,25 @@ namespace CEIHaryana.TestReport
         protected void ddlEarthingsubstation_SelectedIndexChanged(object sender, EventArgs e)
         {
             SubstationEarthingDiv.Visible = true;
+
+            EarthingSubstation4.Visible = false;
+            EathingSubstation5.Visible = false;
+            EathingSubstation6.Visible = false;
+            EathingSubstation7.Visible = false;
+            EathingSubstation8.Visible = false;
+            EathingSubstation9.Visible = false;
+            EathingSubstation10.Visible = false;
+            EathingSubstation11.Visible = false;
+            EathingSubstation12.Visible = false;
+            EathingSubstation13.Visible = false;
+            EathingSubstation14.Visible = false;
+            EathingSubstation15.Visible = false;
+            EathingSubstation16.Visible = false;
+            EathingSubstation17.Visible = false;
+            EathingSubstation18.Visible = false;
+            EathingSubstation19.Visible = false;
+            EathingSubstation20.Visible = false;
+
             if (ddlEarthingsubstation.SelectedItem.ToString() == "4")
             {
                 EarthingSubstation4.Visible = true;
@@ -522,7 +541,11 @@ namespace CEIHaryana.TestReport
             ddltransformerType.SelectedValue = "0";
             txtPrimaryVoltage.Text = "";
             txtSecondryVoltage.Text = ""; txtOilCapacity.Text = ""; txtOilBDV.Text = ""; txtHTsideInsulation.Text = ""; txtLTSideInsulation.Text = "";
-            txtLowestValue.Text = ""; txtLightningArrestor.Text = ""; ddlHTType.SelectedValue = "0"; ddlEarthingsubstation.SelectedValue = "0";
+            txtLowestValue.Text = ""; txtLightningArrestor.Text = ""; ddlHTType.SelectedValue = "0"; ddlEarthingsubstation.SelectedValue = "0"; txtOtherEarthing1.Text = "";
+            txtOtherEarthing2.Text = ""; txtOtherEarthing3.Text = ""; txtOtherEarthing4.Text = ""; txtOtherEarthing5.Text = ""; txtOtherEarthing6.Text = ""; txtOtherEarthing7.Text = "";
+            txtOtherEarthing8.Text = ""; txtOtherEarthing9.Text = ""; txtOtherEarthing10.Text = ""; txtOtherEarthing11.Text = ""; txtOtherEarthing12.Text = ""; txtOtherEarthing13.Text = "";
+            txtOtherEarthing14.Text = ""; txtOtherEarthing15.Text = ""; txtOtherEarthing16.Text = ""; txtOtherEarthing17.Text = ""; txtOtherEarthing18.Text = "";
+            txtOtherEarthing19.Text = ""; txtOtherEarthing20.Text = "";
             ddlSubstationEarthing1.SelectedValue = "0"; txtSubstationEarthing1.Text = ""; ddlUsedFor1.SelectedValue = "0"; ddlSubstationEarthing2.SelectedValue = "0";
             txtSubstationEarthing2.Text = ""; ddlUsedFor2.SelectedValue = "0"; ddlSubstationEarthing3.SelectedValue = "0"; txtSubstationEarthing3.Text = ""; ddlUsedFor3.SelectedValue = "0";
             ddlSubstationEarthing4.SelectedValue = "0"; txtSubstationEarthing4.Text = ""; ddlUsedFor4.SelectedValue = "0"; ddlSubstationEarthing5.SelectedValue = "0"; txtSubstationEarthing5.Text = "";
@@ -539,6 +562,10 @@ namespace CEIHaryana.TestReport
             txtSubstationEarthing19.Text = ""; ddlUsedFor19.SelectedValue = "0"; ddlSubstationEarthing20.SelectedValue = "0";
             txtSubstationEarthing20.Text = ""; ddlUsedFor20.SelectedValue = "0"; txtBreakerCapacity.Text = ""; ddlLTProtection.SelectedValue = "0"; txtIndividualCapacity.Text = "";
             txtLTBreakerCapacity.Text = ""; txtLoadBreakingCapacity.Text = ""; txtSealLevelPlinth.Text = "";
+            InCaseOfOil.Visible = false;
+            SubstationEarthingDiv.Visible = false;
+            Breaker.Visible = false;
+            TypeOfHTBreaker.Visible = false;
         }
 
         protected void ddlUsedFor1_SelectedIndexChanged(object sender, EventArgs e)

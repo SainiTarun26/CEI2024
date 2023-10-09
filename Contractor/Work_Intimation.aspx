@@ -236,16 +236,34 @@
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
                                 </div>
+
+                                <div class="col-4" runat="server">
+                                    <label for="Pin">State</label>
+                                    <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 
+
+                                </div>
+                                 
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>
+                                       District
+                                <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                                </div>
                                 <div class="col-4" runat="server">
                                     <label for="Pin">PinCode</label>
                                     <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <span id="lblPinError" style="color: red"></span>
 
                                 </div>
-
-
-                            </div>
-                            <div class="row">
                                 <div class="col-4" runat="server">
                                     <label for="Email">Email</label>
                                     <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -280,7 +298,12 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                 </div>
-
+                                <div class="col-4" runat="server">
+                            <label for="PanNumber">PAN Number of Site Owner <samp style="color: red">* </samp></label>
+                            <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter PAN Number</asp:RequiredFieldValidator>
+                              
+                        </div>
 
                                 <%--<div class="col-4">
 
@@ -297,12 +320,7 @@
                             </div>
 
                             <div class="row">
-                                 <div class="col-4" runat="server">
-                            <label for="PanNumber">PAN Number of Site Owner <samp style="color: red">* </samp></label>
-                            <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter PAN Number</asp:RequiredFieldValidator>
                               
-                        </div>
                                 <div class="col-4">
                                     <label>
                                         Select Installation Type
