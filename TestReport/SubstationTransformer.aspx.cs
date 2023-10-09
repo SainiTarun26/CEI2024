@@ -405,11 +405,11 @@ namespace CEIHaryana.TestReport
                         //NextSessionValueAndName();
                         if (nextSessionName == "Line")
                         {
-                            Response.Redirect("LineTestReport.aspx");
+                            Response.Redirect("LineTestReport.aspx", false);
                         }
                         else if (nextSessionName == "Generating Station")
                         {
-                            Response.Redirect("GeneratingSetTestReport.aspx");
+                            Response.Redirect("GeneratingSetTestReport.aspx", false);
                         }
                         else
                         {

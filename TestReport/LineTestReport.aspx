@@ -2702,7 +2702,7 @@ width: 99%;
                             <samp style="color: red">* </samp>
                                                             </label>
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableLaid" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="" Text="Select"></asp:ListItem>
+                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Trench"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="circuit"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="cable tray"></asp:ListItem>

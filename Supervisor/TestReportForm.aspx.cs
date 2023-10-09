@@ -461,15 +461,15 @@ namespace CEIHaryana.Supervisor
             }
             if (sessionName.Trim() == "Line")
             {
-                Response.Redirect("/TestReport/LineTestReport.aspx");
+                Response.Redirect("/TestReport/LineTestReport.aspx", false);
             }
             else if (sessionName.Trim() == "Substation Transformer")
             {
-                Response.Redirect("/TestReport/SubstationTransformer.aspx");
+                Response.Redirect("/TestReport/SubstationTransformer.aspx", false);
             }
             else if (sessionName.Trim() == "Generating Station")
             {
-                Response.Redirect("/TestReport/GeneratingSetTestReport.aspx");
+                Response.Redirect("/TestReport/GeneratingSetTestReport.aspx", false);
             }
         }
        

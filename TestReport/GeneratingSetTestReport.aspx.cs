@@ -301,11 +301,11 @@ namespace CEIHaryana.TestReport
 
             if (nextSessionName == "Line")
             {
-                Response.Redirect("LineTestReport.aspx");
+                Response.Redirect("LineTestReport.aspx", false);
             }
             else if (nextSessionName == "Substation Transformer")
             {
-                Response.Redirect("SubstationTransformer.aspx");
+                Response.Redirect("SubstationTransformer.aspx", false);
             }
             else
             {

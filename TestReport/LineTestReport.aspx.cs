@@ -494,11 +494,11 @@ namespace CEIHaryana.TestReport
                         Session["LineId"] = "";
                         if (nextSessionName == "Substation Transformer")
                         {
-                            Response.Redirect("SubstationTransformer.aspx");
+                            Response.Redirect("SubstationTransformer.aspx", false);
                         }
                         else if (nextSessionName == "Generating Station")
                         {
-                            Response.Redirect("GeneratingSetTestReport.aspx");
+                            Response.Redirect("GeneratingSetTestReport.aspx", false);
                         }
                         else
                         {
@@ -535,25 +535,6 @@ namespace CEIHaryana.TestReport
                     break;
                 }
             }
-            //for (int i = 0; i < installationNumbers.Length; i++)
-            //{
-            //    sessionName = Session[installationTypes[i]] as string;
-            //    sessionValue = Session[installationNumbers[i]] as string;
-
-            //    if (!string.IsNullOrEmpty(sessionName))
-            //    {
-            //        // Check if there is a next session available
-            //        if (i + 1 < installationNumbers.Length)
-            //        {
-            //            nextSessionName = Session[installationTypes[i + 1]] as string;
-            //            nextSessionValue = Session[installationNumbers[i + 1]] as string;
-            //        }
-
-            //        break;
-            //    }
-            //}
-
-
         }
         public void NextSessionValueAndName()
         {
