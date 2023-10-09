@@ -172,16 +172,15 @@
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div class="row">
                                 <div class="col-4">
-                                    <label>
-                                        Inspection Type<samp style="color: red"> * </samp>
-                                    </label>
-                                    <asp:DropDownList ID="ddlworktype1" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;">
-                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                        <asp:ListItem Value="1" Text="Supplier Installation"></asp:ListItem>
-                                        <asp:ListItem Value="2" Text="Private/Personal Installation"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator44" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                </div>
+    <label>
+        Type of Inspection
+<samp style="color: red">* </samp>
+    </label>
+    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPremises" selectionmode="Multiple" Style="width: 100% !important">
+    </asp:DropDownList>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+</div>
                                 <div class="col-4">
                                     <label>
                                         Type of Installation<samp style="color: red"> * </samp>
