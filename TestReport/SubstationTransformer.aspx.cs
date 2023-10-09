@@ -442,32 +442,6 @@ namespace CEIHaryana.TestReport
                     break;
                 }
             }
-            //bool foundSubstation = false;
-
-            //for (int i = 0; i < installationNumbers.Length; i++)
-            //{
-            //    sessionName = Session[installationTypes[i]] as string;
-            //    sessionValue = Session[installationNumbers[i]] as string;
-
-            //    // Check if sessionName starts with "installationType" and contains "substation"
-            //    if (!string.IsNullOrEmpty(sessionName) && sessionName.StartsWith("installationType") && sessionName.Contains("substation"))
-            //    {
-            //        foundSubstation = true;
-            //        // Check if there is a next session available on the "substation" page
-            //        if (i + 1 < installationNumbers.Length)
-            //        {
-            //            nextSessionName = Session[installationTypes[i + 1]] as string;
-            //            nextSessionValue = Session[installationNumbers[i + 1]] as string;
-            //        }
-            //        else
-            //        {
-            //            nextSessionName = "";
-            //            nextSessionValue = "";
-            //        }
-            //        break;
-            //    }
-            //}
-
         }
         public void NextSessionValueAndName()
         {
@@ -513,7 +487,7 @@ namespace CEIHaryana.TestReport
             try
             {
                 SessionValue();
-
+                x = Convert.ToInt32(Session["Page"]);
                 if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
                 {
                     Declaration.Visible = true;

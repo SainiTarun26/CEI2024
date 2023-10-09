@@ -594,8 +594,8 @@ namespace CEIHaryana.TestReport
             try
             {
                 SessionValue();
-
-             if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
+                x = Convert.ToInt32(Session["Page"]);
+                if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
                 {
                     Declaration.Visible = true;
                     btnSubmit.Text = "Submit";
@@ -641,6 +641,18 @@ namespace CEIHaryana.TestReport
             {
                 divOtherVoltages.Visible = false;
                 OtherVoltage.Visible = false;
+            }
+        }
+
+        protected void ddlCableType_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            if(ddlCableType.SelectedItem.ToString().Trim() == "Other")
+            {
+                OtherCable.Visible = true;
+            }
+            else
+            {
+                OtherCable.Visible = false;
             }
         }
     }

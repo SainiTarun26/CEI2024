@@ -2675,7 +2675,7 @@ width: 99%;
                                                                 Type of Cable
                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableType" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableType" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlCableType_SelectedIndexChanged1">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="XPLE"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Other"></asp:ListItem>

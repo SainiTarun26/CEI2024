@@ -260,12 +260,12 @@ namespace CEIHaryana.TestReport
            ddlGeneratingEarthing10.SelectedItem.ToString(), txtGeneratingEarthing10.Text, ddlGeneratingEarthingUsed10.SelectedItem.ToString(), txtOtherEarthing10.Text, ddlGeneratingEarthing11.SelectedItem.ToString(), txtGeneratingEarthing11.Text, ddlGeneratingEarthingUsed11.SelectedItem.ToString(), txtOtherEarthing11.Text,
             ddlGeneratingEarthing12.SelectedItem.ToString(), txtGeneratingEarthing12.Text, ddlGeneratingEarthingUsed12.SelectedItem.ToString(), txtOtherEarthing12.Text, ddlGeneratingEarthing13.SelectedItem.ToString(), txtGeneratingEarthing13.Text, ddlGeneratingEarthingUsed13.SelectedItem.ToString(), txtOtherEarthing13.Text,
            ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), txtOtherEarthing14.Text, ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString(), txtOtherEarthing15.Text, CreatedBy);
-                    x = x + 1;
+                    Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
                     DataSaved.Visible = true;
                     label2.Visible = false;
                     PageWorking();
-                    string currentValue = Convert.ToString(x);
-                    if (currentValue == sessionValue)
+                    int currentValue = Convert.ToInt32(Session["Page"]);
+                    if (currentValue == Convert.ToInt32(sessionValue))
                     {
                         Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
                         BtnSubmitGeneratingSet.Visible = false;
@@ -334,7 +334,7 @@ namespace CEIHaryana.TestReport
         public void PageWorking()
         {
             SessionValue();
-
+            x = Convert.ToInt32(Session["Page"]);
             if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
             {
                 Declaration.Visible = true;
