@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.SiteOwnerPages;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,6 +20,13 @@ namespace CEIHaryana.TestReportModal
                 if (Session["ContractorID"] != null)
                 {
                     GetDetailswithId();
+                    Contractor.Visible = true;
+                }
+                else if (Session["AdminID"] != null)
+                {
+                    GetDetailswithId();
+                    SiteOwner.Visible = true;
+                    IntimationData.Visible = true;
                 }
             }
         }
@@ -29,7 +37,34 @@ namespace CEIHaryana.TestReportModal
             {
                 ID = Session["GeneratingSetId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.SubstationTestReportData(ID);
+                ds = CEI.GeneratingTestReportDataWithId(ID);
+
+                string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                txtInstallation.Text = dp_Id;
+                if (dp_Id == "Firm/Organization/Company/Department")
+                {
+                    agency.Visible = true;
+                    individual.Visible = false;
+                }
+                else
+                {
+                    individual.Visible = true;
+                    agency.Visible = false;
+                }
+
+                txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                TxtPremises.Text = dp_Id1;
+                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
+                txtVoltagelevel.Text = dp_Id3;
+                string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
+                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                 txtCapacityType.Text = ds.Tables[0].Rows[0]["GeneratingSetCapacityType"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["GeneratingSetCapacity"].ToString();
                 txtSerialNoOfGenerator.Text = ds.Tables[0].Rows[0]["SerialNumbrOfAcGenerator"].ToString();
@@ -197,6 +232,7 @@ namespace CEIHaryana.TestReportModal
                     GeneratingEarthing14.Visible = false;
                     GeneratingEarthing15.Visible = false;
                     Limit.Visible = false;
+                }
                     txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                     txtGeneratingEarthing1.Text = ds.Tables[0].Rows[0]["EarthingValue1"].ToString();
                     txtEarthingUsed1.Text = ds.Tables[0].Rows[0]["UsedFor1"].ToString();
@@ -242,7 +278,7 @@ namespace CEIHaryana.TestReportModal
                     txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
                     txtGeneratingEarthing15.Text = ds.Tables[0].Rows[0]["EarthingValue15"].ToString();
                     txtEarthingUsed15.Text = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
-                }
+                
             }
             catch
             {
@@ -264,6 +300,10 @@ namespace CEIHaryana.TestReportModal
             {
                 Rejection.Visible = false;
             }
+        }
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
         }
 
     }

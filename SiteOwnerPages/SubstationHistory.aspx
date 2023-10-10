@@ -31,7 +31,26 @@
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
+                                 <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblInspectionType" runat="server" Text='<%#Eval("Premises") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblApplicantType" runat="server" Text='<%#Eval("ApplicantType") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField> 
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />

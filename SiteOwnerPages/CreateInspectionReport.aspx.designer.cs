@@ -51,31 +51,22 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// ddlPremises control.
+        /// txtPremises control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPremises;
+        protected global::System.Web.UI.WebControls.TextBox txtPremises;
 
         /// <summary>
-        /// RequiredFieldValidator14 control.
+        /// txtApplicantType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
-
-        /// <summary>
-        /// ddlworktype control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlworktype;
+        protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
 
         /// <summary>
         /// txtWorkType control.
@@ -87,22 +78,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtWorkType;
 
         /// <summary>
-        /// RequiredFieldValidator30 control.
+        /// txtVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator30;
-
-        /// <summary>
-        /// ddlVoltage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlVoltage;
+        protected global::System.Web.UI.WebControls.TextBox txtVoltage;
 
         /// <summary>
         /// Uploads control.

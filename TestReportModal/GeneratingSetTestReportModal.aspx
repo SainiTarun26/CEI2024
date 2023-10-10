@@ -1968,8 +1968,76 @@
                             </label>
                         </div>
                     </div>
-                                                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+                                                    
+                    <div id="IntimationData" runat="server" visible="false">
+                     <div class="row row-modal">
+                                <div class="col-6" runat="server">
+                                    <label for="Name">
+                                        Electrical Installation For
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="agency" runat="server" visible="false">
+                                    <label for="agency">Name of Firm/ Org./ Company/ Department</label>
+                                    <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual" runat="server">
+                                    <label for="Name">
+                                        Name of Owner/ Consumer
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                              <%--  <div class="col-6" id="individual9" runat="server">
+                                    <label for="Name">
+                                        Contact No.(Contractor)
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>--%>
+                                <div class="col-6" id="individual10" runat="server">
+                                    <label for="Name">
+                                        Address 
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual5" runat="server">
+                                    <label for="Name">
+                                        Contact Details 
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual2" runat="server">
+                                    <label for="Name">
+                                        Type of Premises
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual3" runat="server">
+                                    <label for="Name">
+                                        Highest Voltage Level of Work
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                         
+                            <div class="row row-modal">
+                                <div class="col-6" id="individual6" runat="server">
+                                    <label for="Name">
+                                        Work Start Date
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-6" id="individual11" runat="server">
+                                    <label for="Name">
+                                        Tentative Work Completition Date
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
                                             <div class="row">
                                                 <div class="col-2" id="Div170" runat="server" style="margin-top: -15px;">
                                                     <label for="Name">
@@ -2460,6 +2528,7 @@
                                                     
                                                 </div>
                                             </div>
+                                            <div id="Contractor" runat="server" visible="false">
                     <div class="col-4">
                                                           <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged" >
 
@@ -2476,20 +2545,7 @@
                                                              <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                        
                                                                </div>
-                                              <div class="row" style="margin-top: 100px;" id="Declaration" runat="server" visible="false">
-                                                      <%--  <div class="col-2"></div>--%>
-
-                                                    <div class="col-12" style="text-align: center;">
-                                                        <asp:CheckBox ID="CheckBox3" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
-                                                   <br /> 
-                                                        <label id="label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                                               Please Verify this.
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                           
-   </ContentTemplate>
-         </asp:UpdatePanel>
+                                                
                                                      <div class="row">
                                                     <div class="col-12">
                                                         </div>
@@ -2502,6 +2558,16 @@
                                                       <asp:HiddenField ID="hdn" Value="0" runat="server" />
                                                     </div>
                                                 </div>
+                                                </div>
+                                              <div id="SiteOwner" runat="server" visible="false">
+                                                    <div class="row">
+
+                                                    <div class="col-4">
+                                                     <asp:Button ID="btnNext" Text="Next" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnNext_Click" /> 
+                                                      </div>
+                                                </div>
+                                            </div>
                                         </div>
                                                             </div>
                                     </li>

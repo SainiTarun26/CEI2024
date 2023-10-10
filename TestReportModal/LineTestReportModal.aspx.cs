@@ -26,6 +26,7 @@ namespace CEIHaryana.TestReportModal
                 {
                     GetDetailswithId();
                     SiteOwner.Visible = true;
+                    IntimationData.Visible = true;
                 }
             }
 
@@ -39,6 +40,32 @@ namespace CEIHaryana.TestReportModal
                 ID = Session["LineID"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.LineDataWithId(ID);
+                string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                txtInstallation.Text = dp_Id;
+                if (dp_Id == "Firm/Organization/Company/Department")
+                {
+                    agency.Visible = true;
+                    individual.Visible = false;
+                }
+                else
+                {
+                    individual.Visible = true;
+                    agency.Visible = false;
+                }
+
+                txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                TxtPremises.Text = dp_Id1;
+                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
+                txtVoltagelevel.Text = dp_Id3;
+                string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
+                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                 txtLineVoltage.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
                 if (txtLineVoltage.Text == "Other")
                 {

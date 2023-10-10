@@ -51,10 +51,19 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblID = (Label)row.FindControl("lblID");
                 string id = lblID.Text;
                 Session["LineID"] = id;
+                Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                string IntimationId = lblIntimationId.Text;
+                Session["IntimationId"] = IntimationId;
+                Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
+                Session["InspectionType"] = lblInspectionType.Text;
+                Label lblApplicantType = (Label)row.FindControl("lblApplicantType");
+                Session["ApplicantType"] = lblApplicantType.Text; 
+                Label lblVoltage = (Label)row.FindControl("lblVoltage");
+                Session["Voltage"] = lblVoltage.Text;
                 if (e.CommandName == "Select")
 
                 {
-                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
 
                 }
             }

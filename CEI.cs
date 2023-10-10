@@ -63,7 +63,7 @@ string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber
 string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
 string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
 string Email, string WorkStartDate, string CompletionDate,
-string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string CreatedBy)
+string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder,string ApplicantType, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -111,6 +111,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             cmd.Parameters.AddWithValue("@AnyWorkIssued", AnyWorkIssued);
             cmd.Parameters.AddWithValue("@CopyOfWorkOrder", CopyOfWorkOrder);
             cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateasPerOrder);
+            cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
@@ -975,7 +976,49 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
+        #region Insert Inspection Data
+        public void InsertInspectionData(string TestRportId, string IntimationId, string Inspectiontype, string InstallationType,
+            string VoltageLevel, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment, 
+            string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
+            string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
+            string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet, 
+            string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite, 
+            string StructureStabilityResolvedByAuthorizedEngineer, string SendTo, string CreatedBy)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertInspectionData");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TestRportId ", TestRportId);
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@Inspectiontype ", Inspectiontype);
+            cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
+            cmd.Parameters.AddWithValue("@VoltageLevel ", VoltageLevel);
+            cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", RequestLetterFromConcernedOfficer);
+            cmd.Parameters.AddWithValue("@ManufacturingTestReportOfEqipment ", ManufacturingTestReportOfEqipment);
+            cmd.Parameters.AddWithValue("@SingleLineDiagramOfLine ", SingleLineDiagramOfLine);
+            cmd.Parameters.AddWithValue("@DemandNoticeOfLine ", DemandNoticeOfLine);
+            cmd.Parameters.AddWithValue("@CopyOfNoticeIssuedByUHBVNorDHBVN ", CopyOfNoticeIssuedByUHBVNorDHBVN);
+            cmd.Parameters.AddWithValue("@InvoiceOfTransferOfPersonalSubstation ", InvoiceOfTransferOfPersonalSubstation);
+            cmd.Parameters.AddWithValue("@ManufacturingTestCertificateOfTransformer ", ManufacturingTestCertificateOfTransformer);
+            cmd.Parameters.AddWithValue("@SingleLineDiagramofTransformer ", SingleLineDiagramofTransformer);
+            cmd.Parameters.AddWithValue("@InvoiceoffireExtinguisheratSite ", InvoiceoffireExtinguisheratSite);
+            cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", InvoiceOfDGSetOfGeneratingSet);
+            cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", ManufacturingCerificateOfDGSet);
 
+            cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
+            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
+            cmd.Parameters.AddWithValue("@SendTo ", SendTo);
+            cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
         #region Update Work Intimation Contractor Data
         public void updateWorkIntimation(string Id, string ContractorContactNo)
         {
@@ -1143,10 +1186,18 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable TestReportSubstationData(string SubStationId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerTransformerReportData", SubStationId);
+        }
+        public DataTable TestReportGeneratingData(string PanId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerGeneratingReportData", PanId);
         } 
         public DataTable GeneratingTestReportData(string GeneratingSetId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetGenratingSetHistory", GeneratingSetId);
+        }
+        public DataSet GeneratingTestReportDataWithId(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GeneratingDataWithId", Id);
         }
         public DataTable GetStaffAssignedToContractor(string ID)
         {

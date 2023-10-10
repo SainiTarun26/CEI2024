@@ -176,20 +176,16 @@
         Type of Inspection
 <samp style="color: red">* </samp>
     </label>
-    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPremises" selectionmode="Multiple" Style="width: 100% !important">
-    </asp:DropDownList>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-
+   <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 
+    
 </div>
                                 <div class="col-4">
                                     <label>
                                         Type of Installation<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged">
-                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                        <asp:ListItem Value="1" Text="Supplier"></asp:ListItem>
-                                        <asp:ListItem Value="2" Text="Personal Installation"></asp:ListItem>
-                                    </asp:DropDownList>
+                                  <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 
                                     </div>
                                 <div class="col-4">
                                     <label>
@@ -197,13 +193,11 @@
                                     </label>
                                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                  
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                </div>                              
+                                              </div>                              
                                       <div class="col-4" runat="server">
                                         <label for="Pin"> Voltage Level</label>
-                                      <asp:DropDownList ID="ddlVoltage" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;">
-                                     
-                                    </asp:DropDownList>
+                                    <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 
                                     </div>
                               </div>
                             
@@ -397,7 +391,7 @@
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
-                            <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" />
+                            <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                         </div>

@@ -50,8 +50,15 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblID = (Label)row.FindControl("lblID");
                 string id = lblID.Text;
                 Session["SubStationID"] = id;
+                Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                Session["IntimationId"] = lblIntimationId.Text;
+                Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
+                Session["InspectionType"] = lblInspectionType.Text;
+                Label lblApplicantType = (Label)row.FindControl("lblApplicantType");
+                Session["ApplicantType"] = lblApplicantType.Text;
+                Label lblVoltage = (Label)row.FindControl("lblVoltage");
+                Session["Voltage"] = lblVoltage.Text;
                 if (e.CommandName == "Select")
-
                 {
                     Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
 

@@ -333,6 +333,20 @@
                                     <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                </div> 
+                                <div class="col-4">
+                                    <label>
+                                        Select Installation Type
+        <samp style="color: red">* </samp>
+                                    </label>
+                                 
+                                   <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="8" ID="ddlApplicantType" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem> 
+                                       <asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>
+                                       <asp:ListItem Text="Private/Personal Installation" Value="2"></asp:ListItem>
+                                       </asp:DropDownList>
+                                   
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
                             </div>
                             <div class="row">
