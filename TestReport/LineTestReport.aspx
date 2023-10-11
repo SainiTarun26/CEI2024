@@ -2808,7 +2808,7 @@ width: 99%;
 
                                                     <div class="col-4"></div>
                                                     <div class="col-4" style="text-align: center;">
-                                                        <asp:Button ID="btnSubmit" Text="Next" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit"
+                                                        <asp:Button ID="btnSubmit" Text="Next" runat="server" class="btn btn-primary mr-2"
                                                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnSubmit_Click" />
                                                     </div>
                                                     <div class="col-4">

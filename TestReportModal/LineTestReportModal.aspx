@@ -2629,7 +2629,7 @@
                                 </ContentTemplate>
 
                             </asp:UpdatePanel>
-                            <div id="Contractor" runat="server" visible="true">
+                            <div id="Contractor" runat="server" visible="false">
                                 <div class="row" style="margin-top: 30px !important;">
                                     <div class="col-4">
                                         <label for="Name">
@@ -2659,7 +2659,7 @@
                                         <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     </div>
-
+                                 </div>
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
 
                                 <div class="col-6" id="SiteOwner" runat="server" visible="false">
@@ -2667,7 +2667,7 @@
                                         Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnNext_Click" />
                                 </div>
 
-                            </div>
+                           
                         </div>
                     </div>
                 </li>

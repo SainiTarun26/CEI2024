@@ -1545,6 +1545,7 @@
     <Content Include="js2\wizard.js" />
     <Content Include="js2\x-editable.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
@@ -1729,6 +1730,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Inspection.aspx.cs">
+      <DependentUpon>Inspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Inspection.aspx.designer.cs">
+      <DependentUpon>Inspection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\InstallationIntimationDetails.aspx.cs">
       <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
