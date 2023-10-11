@@ -1446,15 +1446,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.HiddenField hdn;
 
         /// <summary>
-        /// SiteOwner control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteOwner;
-
-        /// <summary>
         /// btnNext control.
         /// </summary>
         /// <remarks>

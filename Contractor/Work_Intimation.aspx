@@ -303,7 +303,7 @@
                             <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter PAN Number</asp:RequiredFieldValidator>
                               
-                        </div>
+                       
 
                                 <%--<div class="col-4">
 
@@ -319,7 +319,7 @@
                         </div>--%>
                             </div>
 
-                            <div class="row">
+                            
                               
                                 <div class="col-4">
                                     <label>
@@ -334,6 +334,8 @@
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div> 
+                                
+                           
                                 <div class="col-4">
                                     <label>
                                         Select Installation Type
