@@ -2663,7 +2663,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 30px !important;">
+                            <div class="row" style="margin-top: 30px !important;" id="Contractor2" runat="server" visible="false">
                                 <div class="col-6" style="text-align: end;">
                                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                         Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
@@ -2672,7 +2672,7 @@
 
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
 
-                                <div class="col-6" style="">
+                                <div class="col-6" id="SiteOwner" runat="server" visible="false">
                                     <asp:Button ID="btnNext" Text="Next" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                         Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnNext_Click" />
                                 </div>

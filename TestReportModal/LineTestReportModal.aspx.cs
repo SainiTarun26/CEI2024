@@ -21,6 +21,7 @@ namespace CEIHaryana.TestReportModal
                 {
                     GetDetailswithId();
                     Contractor.Visible = true;
+                    Contractor2.Visible = true;
                 }
                 else if (Session["AdminID"]!= null)
                 {
