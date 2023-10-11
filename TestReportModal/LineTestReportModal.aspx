@@ -2625,17 +2625,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="row" style="margin-top: 50px;" id="Declaration" visible="true" runat="server">
-                                        <%--  <div class="col-2"></div>--%>
-                                        <div class="col-12" style="text-align: center;">
-                                            <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
-                                            <br />
-                                            <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                                Please Verify this.
-                                            </label>
-                                        </div>
-                                    </div>
-
 
                                 </ContentTemplate>
 
@@ -2653,7 +2642,16 @@
                                             <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
-                                    <div class="col-4" id="Rejection" runat="server" visible="true">
+                                    <div class="col-6" style="text-align: end;">
+                                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
+
+                                </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 30px !important;" id="Contractor2" runat="server" visible="false">
+                                 <div class="col-4" id="Rejection" runat="server" visible="False">
                                         <label for="Name">
                                             Reason For Rejection
                             <samp style="color: red">* </samp>
@@ -2661,14 +2659,6 @@
                                         <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 30px !important;" id="Contractor2" runat="server" visible="false">
-                                <div class="col-6" style="text-align: end;">
-                                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
-
-                                </div>
 
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
 
