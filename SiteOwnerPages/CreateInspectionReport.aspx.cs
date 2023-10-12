@@ -129,7 +129,7 @@ namespace CEIHaryana.SiteOwnerPages
                         else if (voltageLevel >= 33)
 
                         {
-                            Assign = "CEI";
+                            Assign = "Admin@123";
                         }
                         else if (voltageLevel <= 11)
 
@@ -157,22 +157,22 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Assign = "XEN";
                         }
+                        else if (voltageLevel >= 500)
+
+                        {
+                            Assign = "Admin@123";
+                        }
                         else if (voltageLevel <= 250)
 
                         {
                             Assign = "SDO";
-                        }
-                        else if (voltageLevel >= 500)
-
-                        {
-                            Assign = "CEI";
                         }
                     }
 
                 }
                 else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
                 {
-                    Assign = "CEI";
+                    Assign = "Admin@123";
 
                 }
 

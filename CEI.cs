@@ -1,4 +1,5 @@
-﻿using iTextSharp.text.pdf.parser;
+﻿using CEIHaryana.Contractor;
+using iTextSharp.text.pdf.parser;
 using System;
 using System.Configuration;
 using System.Data;
@@ -130,6 +131,11 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder,st
                 return null;
             }
         }
+        public DataSet InsertSiteOwnerData(string SiteOwnerUserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSiteOwnerLogin", SiteOwnerUserId);
+        }
+     
         #endregion
         #region Insert Supervisor Data
         public void InserSupervisorData(string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,

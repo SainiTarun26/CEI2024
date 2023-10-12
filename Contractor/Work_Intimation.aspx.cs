@@ -338,7 +338,15 @@ namespace CEIHaryana.Contractor
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                         }
                     }
-                    hdnId.Value = ContractorID;
+
+                    DataSet ds1 = new DataSet();
+                    ds1 = CEI.InsertSiteOwnerData(txtPAN.Text);
+                    if (ds1.Tables[0].Rows.Count > 0)
+                    {
+                        string alert = "alert('This User Is Already Exist User Can login with Provided Usename And Password');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
+                    }
+                        hdnId.Value = ContractorID;
                     CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, ddlDistrict.SelectedItem.ToString()
                       , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
                       txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
@@ -364,7 +372,9 @@ namespace CEIHaryana.Contractor
                             }
                         }
                     }
-                    DataSaved.Visible = true;
+                   // DataSaved.Visible = true;
+                    string alertScript = "alert('User Created Successfully User Id And password will be sent Via Text Mesaage.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                     // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
                 }
                 else
@@ -542,6 +552,14 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete1_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType1.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType1.Visible = false;
             txtinstallationType1.Text = string.Empty;
             txtinstallationNo1.Text = string.Empty;
@@ -549,6 +567,14 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete2_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType2.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType2.Visible = false;
             txtinstallationType2.Text = string.Empty;
             txtinstallationNo2.Text = string.Empty;
@@ -556,6 +582,14 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete3_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType3.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType3.Visible = false;
             txtinstallationType3.Text = string.Empty;
             txtinstallationNo3.Text = string.Empty;
@@ -563,6 +597,14 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete4_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType4.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType4.Visible = false;
             txtinstallationType4.Text = string.Empty;
             txtinstallationNo4.Text = string.Empty;
@@ -570,6 +612,14 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete5_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType5.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType5.Visible = false;
             txtinstallationType5.Text = string.Empty;
             txtinstallationNo5.Text = string.Empty;
@@ -577,13 +627,29 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete6_Click(object sender, EventArgs e)
         {
-            installationType4.Visible = false;
-            txtinstallationType4.Text = string.Empty;
-            txtinstallationNo4.Text = string.Empty;
+            string valueToAddBack = txtinstallationType6.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
+            installationType6.Visible = false;
+            txtinstallationType6.Text = string.Empty;
+            txtinstallationNo6.Text = string.Empty;
         }
 
         protected void btnDelete7_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType7.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType7.Visible = false;
             txtinstallationType7.Text = string.Empty;
             txtinstallationNo7.Text = string.Empty;
@@ -591,6 +657,14 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete8_Click(object sender, EventArgs e)
         {
+            string valueToAddBack = txtinstallationType8.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
             installationType8.Visible = false;
             txtinstallationType8.Text = string.Empty;
             txtinstallationNo8.Text = string.Empty;

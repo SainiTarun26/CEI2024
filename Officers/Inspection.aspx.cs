@@ -80,7 +80,7 @@ namespace CEIHaryana.Officers
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-
+                txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                 Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
                 Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
 
@@ -110,6 +110,23 @@ namespace CEIHaryana.Officers
             }
             
         }
+        protected void lnkRedirect_Click(object sender, EventArgs e)
+        {
+            Session["InspectionTestReportId"] = txtTestReportId.Text;
+            if (txtWorkType.Text.Trim()== "Line")
+            {
+                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");    
+            }
+            else if (txtWorkType.Text.Trim() == "Substation Transformer")
+            {
+                Response.Redirect("TestReportModal/SubstationTransformerTestReportModal.aspx");
+            } 
+            else if (txtWorkType.Text.Trim() == "Generating Station")
+            {
+                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+            }
+
+        }   
         protected void lnkDocument_Click(object sender, EventArgs e)
         {
 

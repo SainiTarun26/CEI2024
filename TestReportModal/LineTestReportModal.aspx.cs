@@ -12,7 +12,7 @@ namespace CEIHaryana.TestReportModal
     public partial class LineTestReportModal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string ID = string.Empty;
+        int ID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -22,12 +22,22 @@ namespace CEIHaryana.TestReportModal
                     GetDetailswithId();
                     Contractor.Visible = true;
                     Contractor2.Visible = true;
+                    ID = Convert.ToInt32(Session["LineID"]);
                 }
                 else if (Session["AdminID"]!= null)
                 {
                     GetDetailswithId();
                     SiteOwner.Visible = true;
                     IntimationData.Visible = true;
+                    ID = Convert.ToInt32(Session["LineID"]);
+                }
+                else if (Session["InspectionTestReportId"] != null)
+                {
+                    GetDetailswithId();
+                    SiteOwner.Visible = true;
+                    IntimationData.Visible = true;
+                    btnNext.Text = "Back";
+                    ID = Convert.ToInt32(Session["InspectionTestReportId"]);
                 }
             }
 
@@ -38,7 +48,6 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                ID = Session["LineID"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.LineDataWithId(ID);
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -524,7 +533,14 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            if (btnNext.Text.Trim() == "Back")
+            {
+                Response.Redirect("/Officers/Inspection.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            }
         }
     }
 }

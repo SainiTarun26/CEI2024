@@ -2528,6 +2528,7 @@
                                                     
                                                 </div>
                                             </div>
+
                                             <div id="Contractor" runat="server" visible="false">
                     <div class="col-4">
                                                           <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged" >

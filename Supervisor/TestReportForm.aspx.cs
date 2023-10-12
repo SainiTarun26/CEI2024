@@ -305,9 +305,9 @@ namespace CEIHaryana.Supervisor
             //    ddlWorkDetail.Items.Add(newItem);
 
             //}
-            installationType4.Visible = false;
-            txtinstallationType4.Text = string.Empty;
-            txtinstallationNo4.Text = string.Empty;
+            installationType6.Visible = false;
+            txtinstallationType6.Text = string.Empty;
+            txtinstallationNo6.Text = string.Empty;
         }
 
         protected void btnDelete7_Click(object sender, EventArgs e)

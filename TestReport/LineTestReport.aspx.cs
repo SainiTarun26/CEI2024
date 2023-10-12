@@ -127,7 +127,7 @@ namespace CEIHaryana.TestReport
                         }
                     }
                 }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V" )
+                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
                 {
                     Insulation220vAbove.Visible = true;
                     Insulation440vAbove.Visible = false;

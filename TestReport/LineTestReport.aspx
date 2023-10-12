@@ -2081,7 +2081,7 @@ width: 99%;
                                                                 Length of Line (in KM)
                                                     <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="4" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)"  MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtLineLength" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Line Length"></asp:RequiredFieldValidator>
                                                         </div>
                                                         <div class="col-4">
@@ -2133,7 +2133,7 @@ width: 99%;
                                                             <label>
                                                                 Number of Pole/Tower<samp style="color: red"> * </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" ID="txtPoleTower" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="4" placeholder=""  autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" ID="txtPoleTower" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder=""  autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtPoleTower" runat="server" ForeColor="Red" ValidationGroup="Submit"  ErrorMessage="Please Enter Pole Tower"></asp:RequiredFieldValidator>
                                                         </div>
                                                         <div class="col-4" id="Div2" runat="server">
@@ -2141,7 +2141,7 @@ width: 99%;
                                                                 Size of Conductor( IN SQ.MM)
                                                         <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" ID="txtConductorSize" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="4" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" ID="txtConductorSize" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ControlToValidate="txtConductorSize" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Conductor Size"></asp:RequiredFieldValidator>
                                                         </div>
                                                         <div class="col-4" id="Div3" runat="server">
@@ -2150,7 +2150,7 @@ width: 99%;
 
                             <samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:TextBox class="form-control" ID="txtGroundWireSize" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="4"  placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                            <asp:TextBox class="form-control" ID="txtGroundWireSize" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3"  placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtGroundWireSize" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Ground Wire Size"></asp:RequiredFieldValidator>
                                                         </div>
                                                         <div class="col-4" id="Div4" runat="server">
@@ -2808,9 +2808,13 @@ width: 99%;
 
                                                     <div class="col-4"></div>
                                                     <div class="col-4" style="text-align: center;">
-                                                        <asp:Button ID="btnSubmit" Text="Next" OnClientClick="return validateForm();" runat="server" class="btn btn-primary mr-2"
-                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnSubmit_Click" />
-                                                    </div>
+                                                        <asp:ValidationSummary ID="vsSummary" runat="server" ValidationGroup="submit" />
+
+                                                   <%--     <asp:Button ID="btnSubmit" Text="Next" CausesValidation="true" OnclientClick="return validateForm();" runat="server" class="btn btn-primary mr-2"
+                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnSubmit_Click" />--%>
+                                                  <asp:Button ID="btnSubmit" Text="Next" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                            OnClick="btnSubmit_Click" />
+                                                        </div>
                                                     <div class="col-4">
                                                         <asp:HiddenField ID="hdn" Value="0" runat="server" />
                                                     </div>
@@ -2834,26 +2838,5 @@ width: 99%;
  <script src="/Assets/js/todolist.js"></script>
  <script src="/Assets/js/dashboard.js"></script>
  <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-    <script>
-       // Function to check if all fields (textboxes and dropdowns) have values
-       function validateForm() {
-           var inputs = document.querySelectorAll('.form-control, .select-form');
-           var isValid = true;
-
-           inputs.forEach(function (input) {
-               if (input.value.trim() === '' || (input.tagName === 'SELECT' && input.value === '0')) {
-                   isValid = false;
-                   input.style.border = '1px solid red';
-               } else {
-                   input.style.border = '1px solid #ced4da'; // Reset border to default
-               }
-           });
-
-           if (!isValid) {
-               alert('Please fill in all the required fields.');
-           }
-
-           return isValid;
-       }
-   </script>
+    
 </asp:Content>

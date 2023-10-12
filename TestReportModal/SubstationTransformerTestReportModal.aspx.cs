@@ -20,12 +20,22 @@ namespace CEIHaryana.TestReportModal
                 {
                     GetDetailswithId();
                     Contractor.Visible = true;
+                    ID = Session["SubStationID"].ToString();
                 }
                 else if (Session["AdminID"] != null)
                 {
                     GetDetailswithId();
                     SiteOwner.Visible= true;
                     IntimationData.Visible = true;
+                    ID = Session["SubStationID"].ToString();
+                } 
+                else if (Session["InspectionTestReportId"] != null)
+                {
+                    GetDetailswithId();
+                    SiteOwner.Visible= true;
+                    IntimationData.Visible = true;
+                    btnNext.Text = "Back";
+                    ID = Session["InspectionTestReportId"].ToString();
                 }
             }
         }
@@ -33,7 +43,6 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                ID = Session["SubStationID"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.SubstationTestReportData(ID);
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -418,7 +427,14 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            if (btnNext.Text.Trim() == "Back")
+            {
+                Response.Redirect("/Officers/Inspection.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            }
         }
     }
 }

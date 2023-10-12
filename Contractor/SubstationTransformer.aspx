@@ -95,7 +95,7 @@
     <div class="content-wrapper">
     <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
         <div class="card-body">
-            <div class="row ">
+       <%--     <div class="row ">
                 <div class="col-sm-4 col-md-4">
                     <h6 class="card-title fw-semibold mb-4">
                         <asp:Label ID="lblData" runat="server"></asp:Label></h6>
@@ -104,7 +104,7 @@
                 <div class="col-sm-2 col-md-2">
                     <asp:Button ID="btnAddnew" runat="server" class="btn btn-primary" Style="margin-left: 10px;" Text="Add New"/>
                 </div>
-            </div>
+            </div>--%>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row" style="margin-bottom: -30px;">
                     <div class="col-4">

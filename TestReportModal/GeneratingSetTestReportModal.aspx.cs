@@ -13,6 +13,7 @@ namespace CEIHaryana.TestReportModal
     public partial class GeneratingSetTestReportModal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string ID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -21,12 +22,22 @@ namespace CEIHaryana.TestReportModal
                 {
                     GetDetailswithId();
                     Contractor.Visible = true;
+                    ID = Session["GeneratingSetId"].ToString();
                 }
                 else if (Session["AdminID"] != null)
                 {
                     GetDetailswithId();
                     SiteOwner.Visible = true;
                     IntimationData.Visible = true;
+                    ID = Session["GeneratingSetId"].ToString();
+                }
+                else if (Session["InspectionTestReportId"] != null)
+                {
+                    GetDetailswithId();
+                    SiteOwner.Visible = true;
+                    IntimationData.Visible = true;
+                    btnNext.Text = "Back";
+                    ID = Session["InspectionTestReportId"].ToString();
                 }
             }
         }
@@ -35,7 +46,6 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                ID = Session["GeneratingSetId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GeneratingTestReportDataWithId(ID);
 
@@ -303,7 +313,14 @@ namespace CEIHaryana.TestReportModal
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            if (btnNext.Text.Trim() == "Back")
+            {
+                Response.Redirect("/Officers/Inspection.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            }
         }
 
     }

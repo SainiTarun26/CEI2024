@@ -31,7 +31,12 @@
                                       <div class="col-4" runat="server">
                                         <label for="Pin"> Voltage Level</label>
                                     <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                  
+                  <div class="row">
+                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true"  autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                
+                         <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+                                                     
+                           </div>
   <%--<asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" >
 
@@ -233,5 +238,6 @@
                                     </table>
                                 </div>
                             </div>
+                 
                         </div>
 </asp:Content>
