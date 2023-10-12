@@ -12,32 +12,35 @@ namespace CEIHaryana.TestReportModal
     public partial class LineTestReportModal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        int ID = 0;
+        string ID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 if (Session["ContractorID"] != null)
                 {
+                    ID = Session["LineID"].ToString();
                     GetDetailswithId();
                     Contractor.Visible = true;
                     Contractor2.Visible = true;
-                    ID = Convert.ToInt32(Session["LineID"]);
+                   
                 }
                 else if (Session["AdminID"]!= null)
                 {
+                    ID = Session["LineID"].ToString();
                     GetDetailswithId();
                     SiteOwner.Visible = true;
                     IntimationData.Visible = true;
-                    ID = Convert.ToInt32(Session["LineID"]);
+                    
                 }
                 else if (Session["InspectionTestReportId"] != null)
                 {
+                    ID = Session["InspectionTestReportId"].ToString();
                     GetDetailswithId();
                     SiteOwner.Visible = true;
                     IntimationData.Visible = true;
                     btnNext.Text = "Back";
-                    ID = Convert.ToInt32(Session["InspectionTestReportId"]);
+                    
                 }
             }
 
@@ -49,7 +52,7 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.LineDataWithId(ID);
+                ds = CEI.LineDataWithId(int.Parse(ID));
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")

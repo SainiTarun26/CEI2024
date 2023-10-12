@@ -18,24 +18,27 @@ namespace CEIHaryana.TestReportModal
             {
                 if (Session["ContractorID"] != null)
                 {
+                    ID = Session["SubStationID"].ToString();
                     GetDetailswithId();
                     Contractor.Visible = true;
-                    ID = Session["SubStationID"].ToString();
+                  
                 }
                 else if (Session["AdminID"] != null)
                 {
+                    ID = Session["SubStationID"].ToString();
                     GetDetailswithId();
                     SiteOwner.Visible= true;
                     IntimationData.Visible = true;
-                    ID = Session["SubStationID"].ToString();
+                   
                 } 
                 else if (Session["InspectionTestReportId"] != null)
                 {
+                    ID = Session["InspectionTestReportId"].ToString();
                     GetDetailswithId();
                     SiteOwner.Visible= true;
                     IntimationData.Visible = true;
                     btnNext.Text = "Back";
-                    ID = Session["InspectionTestReportId"].ToString();
+                    
                 }
             }
         }
