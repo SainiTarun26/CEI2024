@@ -85,6 +85,9 @@ namespace CEIHaryana.TestReport
         {
 
             string userInput = TxtOthervoltage.Text;
+            Earthing.Visible = true;                                                
+            ddlNoOfEarthing.SelectedValue = "0";                                    
+            LineEarthingdiv.Visible = false;
             Earthing.Visible = true;
             if (ddlLineType.SelectedValue == "1")
             {
@@ -231,6 +234,9 @@ namespace CEIHaryana.TestReport
 
                 OverheadBare.Visible = true;
                 OverheadCable.Visible = false;
+                Earthing.Visible = true;                                                    
+                ddlNoOfEarthing.SelectedValue = "0";                                      
+                LineEarthingdiv.Visible = false;                                           
 
             }
             else if (ddlConductorType.SelectedValue == "2")
@@ -238,11 +244,18 @@ namespace CEIHaryana.TestReport
 
                 OverheadCable.Visible = true;
                 OverheadBare.Visible = false;
+                Earthing.Visible = true;                                                     
+                ddlNoOfEarthing.SelectedValue = "0";                                        
+                LineEarthingdiv.Visible = false;                                           
             }
             else
             {
                 OverheadBare.Visible = false;
                 OverheadCable.Visible = false;
+
+                Earthing.Visible = true;                                                   
+                ddlNoOfEarthing.SelectedValue = "0";                                  
+                LineEarthingdiv.Visible = false;                                      
             }
         }
         protected void ddlNoOfEarthing_SelectedIndexChanged(object sender, EventArgs e)
@@ -612,6 +625,17 @@ namespace CEIHaryana.TestReport
             txtRedBlueWire.Text = ""; txtBlueYellowWire.Text = ""; txtNeutralPhaseWire.Text = ""; txtPhaseWireEarth.Text = ""; txtNeutralWireEarthUnderground.Text = "";
             OtherCable.Visible = false;
             Earthing.Visible = false;
+            Insulation440vAbove.Visible = false;
+            Insulation220vAbove.Visible = false;
+            LineTypeUnderground.Visible = false;
+            UndergroundInsulation440vAbove.Visible = false;
+            UndergroundInsulation220vAbove.Visible = false;
+            OtherCable.Visible = false;
+            LineTypeOverhead.Visible = false;
+            OverheadBare.Visible = false;
+            OverheadCable.Visible = false;
+            Earthing.Visible = false;
+            LineEarthingdiv.Visible = false;
             Insulation440vAbove.Visible = false;
             Insulation220vAbove.Visible = false;
             LineTypeUnderground.Visible = false;

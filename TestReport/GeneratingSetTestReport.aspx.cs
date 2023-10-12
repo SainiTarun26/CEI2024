@@ -54,6 +54,8 @@ namespace CEIHaryana.TestReport
             if (ddlGeneratingSetType.SelectedItem.ToString() == "Solar Panel")
             {
                 SolarPanelGeneratingSet.Visible = true;
+                ddlGeneratingEarthing.SelectedValue = "0";             
+                GeneratingEarthing.Visible = false;
             }
             else
             {
@@ -261,6 +263,7 @@ namespace CEIHaryana.TestReport
             ddlGeneratingEarthing12.SelectedItem.ToString(), txtGeneratingEarthing12.Text, ddlGeneratingEarthingUsed12.SelectedItem.ToString(), txtOtherEarthing12.Text, ddlGeneratingEarthing13.SelectedItem.ToString(), txtGeneratingEarthing13.Text, ddlGeneratingEarthingUsed13.SelectedItem.ToString(), txtOtherEarthing13.Text,
            ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), txtOtherEarthing14.Text, ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString(), txtOtherEarthing15.Text, CreatedBy);
                     Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
+                    Reset();
                     DataSaved.Visible = true;
                     label2.Visible = false;
                     PageWorking();
@@ -295,6 +298,29 @@ namespace CEIHaryana.TestReport
 
                 DataSaved.Visible = false;
             }
+        }
+        public void Reset()
+        {
+            ddlCapacity.SelectedValue = "0"; txtCapacity.Text = ""; txtSerialNoOfGenerator.Text = ""; ddlGeneratingSetType.SelectedValue = "0";
+            txtGeneratorVoltage.Text = ""; txtCurrentCapacity.Text = ""; txtBreakingCapacity.Text = ""; ddlPlantType.SelectedValue = "0"; ddlPlantCapacity.SelectedValue = "0";
+            txtPlantCapacity.Text = ""; txtDCString.Text = ""; txtLowestInsulation.Text = ""; txtPCVOrSolar.Text = ""; txtLTACCapacity.Text = ""; txtLowestInsulationAC.Text = "";
+            ddlGeneratingEarthing.SelectedValue = "0"; ddlGeneratingEarthing1.SelectedValue = "0"; txtGeneratingEarthing1.Text = ""; ddlGeneratingEarthingUsed1.SelectedValue = "0"; txtOtherEarthing1.Text = "";
+            ddlGeneratingEarthing2.SelectedValue = "0"; txtGeneratingEarthing2.Text = ""; ddlGeneratingEarthingUsed2.SelectedValue = "0"; txtOtherEarthing2.Text = ""; ddlGeneratingEarthing3.SelectedValue = "0"; txtGeneratingEarthing3.Text = ""; ddlGeneratingEarthingUsed3.SelectedValue = "0"; txtOtherEarthing3.Text = "";
+            ddlGeneratingEarthing4.SelectedValue = "0"; txtGeneratingEarthing4.Text = ""; ddlGeneratingEarthingUsed4.SelectedValue = "0"; txtOtherEarthing4.Text = ""; ddlGeneratingEarthing5.SelectedValue = "0"; txtGeneratingEarthing5.Text = ""; ddlGeneratingEarthingUsed5.SelectedValue = "0"; txtOtherEarthing5.Text = "";
+            ddlGeneratingEarthing6.SelectedValue = "0"; txtGeneratingEarthing6.Text = ""; ddlGeneratingEarthingUsed6.SelectedValue = "0"; txtOtherEarthing6.Text = ""; ddlGeneratingEarthing7.SelectedValue = "0"; txtGeneratingEarthing7.Text = ""; ddlGeneratingEarthingUsed7.SelectedValue = "0"; txtOtherEarthing7.Text = "";
+            ddlGeneratingEarthing8.SelectedValue = "0"; txtGeneratingEarthing8.Text = ""; ddlGeneratingEarthingUsed8.SelectedValue = "0"; txtOtherEarthing8.Text = ""; ddlGeneratingEarthing9.SelectedValue = "0"; txtGeneratingEarthing9.Text = ""; ddlGeneratingEarthingUsed9.SelectedValue = "0"; txtOtherEarthing9.Text = "";
+            ddlGeneratingEarthing10.SelectedValue = "0"; txtGeneratingEarthing10.Text = ""; ddlGeneratingEarthingUsed10.SelectedValue = "0"; txtOtherEarthing10.Text = ""; ddlGeneratingEarthing11.SelectedValue = "0"; txtGeneratingEarthing11.Text = ""; ddlGeneratingEarthingUsed11.SelectedValue = "0"; txtOtherEarthing11.Text = "";
+            ddlGeneratingEarthing12.SelectedValue = "0"; txtGeneratingEarthing12.Text = ""; ddlGeneratingEarthingUsed12.SelectedValue = "0"; txtOtherEarthing12.Text = ""; ddlGeneratingEarthing13.SelectedValue = "0"; txtGeneratingEarthing13.Text = ""; ddlGeneratingEarthingUsed13.SelectedValue = "0"; txtOtherEarthing13.Text = "";
+            ddlGeneratingEarthing14.SelectedValue = "0"; txtGeneratingEarthing14.Text = ""; ddlGeneratingEarthingUsed14.SelectedValue = "0"; txtOtherEarthing14.Text = ""; ddlGeneratingEarthing15.SelectedValue = "0"; txtGeneratingEarthing15.Text = ""; ddlGeneratingEarthingUsed15.SelectedValue = "0"; txtOtherEarthing15.Text = "";
+
+            txtOtherEarthing3.Visible = false; txtOtherEarthing11.Visible = false; txtOtherEarthing2.Visible = false; txtOtherEarthing10.Visible = false;
+            txtOtherEarthing5.Visible = false; txtOtherEarthing13.Visible = false; txtOtherEarthing4.Visible = false; txtOtherEarthing12.Visible = false;
+            txtOtherEarthing7.Visible = false; txtOtherEarthing15.Visible = false; txtOtherEarthing6.Visible = false; txtOtherEarthing14.Visible = false;
+            txtOtherEarthing9.Visible = false; txtOtherEarthing8.Visible = false; txtOtherEarthing1.Visible = false;
+
+            SolarPanelGeneratingSet.Visible = false;
+            GeneratingEarthing.Visible = false;
+
         }
         public void NextSessionValueAndName()
         {

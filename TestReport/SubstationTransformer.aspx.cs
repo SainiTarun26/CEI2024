@@ -86,10 +86,12 @@ namespace CEIHaryana.TestReport
             if (ddlHTType.SelectedValue == "3")
             {
                 TypeOfHTBreaker.Visible = true;
+
             }
             else
             {
                 TypeOfHTBreaker.Visible = false;
+                Breaker.Visible = false;
             }
         }
         protected void ddlEarthingsubstation_SelectedIndexChanged(object sender, EventArgs e)
@@ -568,6 +570,22 @@ namespace CEIHaryana.TestReport
             SubstationEarthingDiv.Visible = false;
             Breaker.Visible = false;
             TypeOfHTBreaker.Visible = false;
+            txtOtherEarthing1.Visible = false; txtOtherEarthing6.Visible = false; txtOtherEarthing11.Visible = false; txtOtherEarthing16.Visible = false;
+            txtOtherEarthing2.Visible = false; txtOtherEarthing7.Visible = false; txtOtherEarthing12.Visible = false; txtOtherEarthing17.Visible = false;
+            txtOtherEarthing3.Visible = false; txtOtherEarthing8.Visible = false; txtOtherEarthing13.Visible = false; txtOtherEarthing18.Visible = false;
+            txtOtherEarthing4.Visible = false; txtOtherEarthing9.Visible = false; txtOtherEarthing14.Visible = false; txtOtherEarthing19.Visible = false;
+            txtOtherEarthing5.Visible = false; txtOtherEarthing10.Visible = false; txtOtherEarthing15.Visible = false; txtOtherEarthing20.Visible = false;
+
+
+            InCaseOfOil.Visible = false;
+            Capacity.Visible = false;
+            BDV.Visible = false;
+
+            SubstationEarthingDiv.Visible = false;
+            TypeOfHTBreaker.Visible = false;
+
+            FuseUnit.Visible = true;
+            Breaker.Visible = false;
         }
 
         protected void ddlUsedFor1_SelectedIndexChanged(object sender, EventArgs e)
