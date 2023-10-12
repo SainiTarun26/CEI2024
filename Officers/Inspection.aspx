@@ -16,7 +16,7 @@
 
                                 <div class="col-4">
                                     <label>
-                                        Type of Installation<samp style="color: red"> * </samp>
+                                        Type of Applicant<samp style="color: red"> * </samp>
                                     </label>
                                   <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                  
@@ -68,7 +68,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <asp:LinkButton ID="lnkLetter" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                    <asp:LinkButton ID="lnkLetter" runat="server" AutoPostBack="true" OnClick="lnkLetter_Click" Text="Open Document" />
                                                      
                                                 </td>
                                             </tr>
@@ -80,7 +80,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                   <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                   <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnktest_Click" Text="Open Document" />
                                                           </div>
                                                 </td>
                                             </tr>
@@ -94,7 +94,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                         <asp:LinkButton ID="lnkDiag" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                         <asp:LinkButton ID="lnkDiag" runat="server" AutoPostBack="true" OnClick="lnkDiag_Click" Text="Open Document" />
                                                         </div>
                                                 </td>
                                             </tr>
@@ -108,7 +108,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                         <asp:LinkButton ID="lnkCopy" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                         <asp:LinkButton ID="lnkCopy" runat="server" AutoPostBack="true" OnClick="lnkCopy_Click" Text="Open Document" />
                                                          </div>
                                                 </td>
                                             </tr>
@@ -120,7 +120,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceTransformer_Click" Text="Open Document" />
                                                        </div>
                                                 </td>
                                             </tr>
@@ -132,7 +132,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                         <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                         <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkManufacturing_Click" Text="Open Document" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -145,7 +145,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:LinkButton ID="lnkSingleDiag" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                        <asp:LinkButton ID="lnkSingleDiag" runat="server" AutoPostBack="true" OnClick="lnkSingleDiag_Click" Text="Open Document" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -157,7 +157,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                         <asp:LinkButton ID="lnkInvoiceFire" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                         <asp:LinkButton ID="lnkInvoiceFire" runat="server" AutoPostBack="true" OnClick="lnkInvoiceFire_Click" Text="Open Document" />
                                                       </div>
                                                 </td>
                                             </tr>

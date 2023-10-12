@@ -2808,7 +2808,7 @@ width: 99%;
 
                                                     <div class="col-4"></div>
                                                     <div class="col-4" style="text-align: center;">
-                                                        <asp:Button ID="btnSubmit" Text="Next" runat="server" class="btn btn-primary mr-2"
+                                                        <asp:Button ID="btnSubmit" Text="Next" OnClientClick="return validateForm();" runat="server" class="btn btn-primary mr-2"
                                                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnSubmit_Click" />
                                                     </div>
                                                     <div class="col-4">
@@ -2834,4 +2834,26 @@ width: 99%;
  <script src="/Assets/js/todolist.js"></script>
  <script src="/Assets/js/dashboard.js"></script>
  <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script>
+       // Function to check if all fields (textboxes and dropdowns) have values
+       function validateForm() {
+           var inputs = document.querySelectorAll('.form-control, .select-form');
+           var isValid = true;
+
+           inputs.forEach(function (input) {
+               if (input.value.trim() === '' || (input.tagName === 'SELECT' && input.value === '0')) {
+                   isValid = false;
+                   input.style.border = '1px solid red';
+               } else {
+                   input.style.border = '1px solid #ced4da'; // Reset border to default
+               }
+           });
+
+           if (!isValid) {
+               alert('Please fill in all the required fields.');
+           }
+
+           return isValid;
+       }
+   </script>
 </asp:Content>

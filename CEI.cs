@@ -977,7 +977,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Insert Inspection Data
-        public void InsertInspectionData(string TestRportId, string IntimationId, string Inspectiontype, string InstallationType,
+        public void InsertInspectionData(string TestRportId, string IntimationId, string Inspectiontype,string ApplicantType, string InstallationType,
             string VoltageLevel, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment, 
             string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
             string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
@@ -997,6 +997,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@TestRportId ", TestRportId);
             cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
             cmd.Parameters.AddWithValue("@Inspectiontype ", Inspectiontype);
+            cmd.Parameters.AddWithValue("@ApplicantType ", ApplicantType);
             cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
             cmd.Parameters.AddWithValue("@VoltageLevel ", VoltageLevel);
             cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", RequestLetterFromConcernedOfficer);
