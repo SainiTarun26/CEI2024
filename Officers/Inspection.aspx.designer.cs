@@ -78,6 +78,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr1;
 
         /// <summary>
+        /// lnkLetter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkLetter;
+
+        /// <summary>
         /// Tr2 control.
         /// </summary>
         /// <remarks>
@@ -87,13 +96,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr2;
 
         /// <summary>
-        /// FileUpload2 control.
+        /// lnktest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
+        protected global::System.Web.UI.WebControls.LinkButton lnktest;
 
         /// <summary>
         /// SupplierSub control.
@@ -114,13 +123,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr3;
 
         /// <summary>
-        /// FileUpload3 control.
+        /// lnkDiag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload3;
+        protected global::System.Web.UI.WebControls.LinkButton lnkDiag;
 
         /// <summary>
         /// PersonalSub control.
@@ -141,13 +150,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr4;
 
         /// <summary>
-        /// FileUpload4 control.
+        /// lnkCopy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload4;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCopy;
 
         /// <summary>
         /// Tr5 control.
@@ -159,13 +168,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr5;
 
         /// <summary>
-        /// FileUpload5 control.
+        /// lnkInvoiceTransformer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload5;
+        protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceTransformer;
 
         /// <summary>
         /// Tr6 control.
@@ -177,13 +186,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr6;
 
         /// <summary>
-        /// FileUpload6 control.
+        /// lnkManufacturing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload6;
+        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturing;
 
         /// <summary>
         /// Tr7 control.
@@ -195,13 +204,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr7;
 
         /// <summary>
-        /// FileUpload7 control.
+        /// lnkSingleDiag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload7;
+        protected global::System.Web.UI.WebControls.LinkButton lnkSingleDiag;
 
         /// <summary>
         /// Tr8 control.
@@ -213,13 +222,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr8;
 
         /// <summary>
-        /// FileUpload8 control.
+        /// lnkInvoiceFire control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload8;
+        protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceFire;
 
         /// <summary>
         /// PersonalGenerating control.

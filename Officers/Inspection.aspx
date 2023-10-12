@@ -68,7 +68,8 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                   
+                                                    <asp:LinkButton ID="lnkLetter" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                     
                                                 </td>
                                             </tr>
                                             <tr id="Tr2" runat="server" visible="true">
@@ -79,8 +80,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    </div>
+                                                   <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                          </div>
                                                 </td>
                                             </tr>
                                             </div>
@@ -93,8 +94,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    </div>
+                                                         <asp:LinkButton ID="lnkDiag" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                        </div>
                                                 </td>
                                             </tr>
                                             </div>
@@ -107,8 +108,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    </div>
+                                                         <asp:LinkButton ID="lnkCopy" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                         </div>
                                                 </td>
                                             </tr>
                                             <tr id="Tr5" runat="server" visible="true">
@@ -119,8 +120,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    </div>
+                                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                       </div>
                                                 </td>
                                             </tr>
                                             <tr id="Tr6" runat="server" visible="true">
@@ -131,7 +132,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="padding: 0px;" />
+                                                         <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -144,7 +145,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:FileUpload ID="FileUpload7" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                        <asp:LinkButton ID="lnkSingleDiag" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -156,8 +157,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-12">
-                                                        <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="padding: 0px;;" />
-                                                    </div>
+                                                         <asp:LinkButton ID="lnkInvoiceFire" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                                      </div>
                                                 </td>
                                             </tr>
                                             </div>

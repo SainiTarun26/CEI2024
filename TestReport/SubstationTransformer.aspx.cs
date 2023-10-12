@@ -360,8 +360,230 @@ namespace CEIHaryana.TestReport
         }
         protected void BtnSubmitSubstation_Click(object sender, EventArgs e)
         {
-            try
+            if (ddlLineType.SelectedValue == "0")
             {
+                ddlLineTypeError.Visible = true;
+            }
+            else if (ddlOtherVoltage.SelectedValue == "0")
+            {
+                ddlOtherVoltageError.Visible = true;
+            }
+            else if (TxtOthervoltage.Text == "")
+            {
+                TxtOthervoltageError.Visible = true;
+            }
+            else if (txtLineLength.Text == "")
+            {
+                txtLineLengthError.Visible = true;
+            }
+            else if (ddlLineType.SelectedValue == "")
+            {
+                ddlLineTypeError.Visible = true;
+            }
+            // else if (LineTypeOverhead.Visible == true)
+
+
+            if (ddlNmbrOfCircuit.SelectedValue == "0")
+            {
+                ddlNmbrOfCircuitError.Visible = true;
+            }
+            if (ddlConductorType.SelectedValue == "0")
+            {
+                ddlConductorTypeError.Visible = true;
+            }
+            if (txtPoleTower.Text == "")
+            {
+                txtPoleTowerError.Visible = true;
+            }
+            if (txtConductorSize.Text == "")
+            {
+                txtConductorSizeError.Visible = true;
+            }
+            if (txtGroundWireSize.Text == "")
+            {
+                txtGroundWireSizeError.Visible = true;
+            }
+
+            if (txtRailwayCrossingNo.Text == "")
+            {
+                txtRailwayCrossingNoError.Visible = true;
+            }
+            if (txtRoadCrossingNo.Text == "")
+            {
+                txtRoadCrossingNoError.Visible = true;
+            }
+            if (txtRiverCanalCrossing.Text == "")
+            {
+                txtRiverCanalCrossingError.Visible = true;
+            }
+            if (txtPowerLineCrossing.Text == "")
+            {
+                txtPowerLineCrossingError.Visible = true;
+            }
+
+
+            // else if (OverheadCable.Visible == true)
+            //{
+            if (txtPoleTowerNo.Text == "")
+            {
+                txtPoleTowerNoError.Visible = true;
+            }
+            if (txtCableSize1.Text == "")
+            {
+                txtCableSize1Error.Visible = true;
+            }
+            if (txtRailwayCrossingNmbr.Text == "")
+            {
+                txtRailwayCrossingNmbrError.Visible = true;
+            }
+            if (txtRoadCrossingNmbr.Text == "")
+            {
+                txtRoadCrossingNmbrError.Visible = true;
+            }
+            if (txtRiverCanalCrossingNmber.Text == "")
+            {
+                txtRiverCanalCrossingNmberError.Visible = true;
+            }
+            if (txtPowerLineCrossingNmbr.Text == "")
+            {
+                txtPowerLineCrossingNmbrError.Visible = true;
+            }
+
+
+            //  else if (Earthing.Visible == true)
+            // {             
+            if (ddlNoOfEarthing.SelectedValue == "0")
+            {
+                ddlNoOfEarthingError.Visible = true;
+            }
+            if (ddlEarthingtype1.SelectedValue == "0" && Earthingtype1.Visible == true)
+            {
+                ddlEarthingtype1Error.Visible = true;
+            }
+            if (txtearthingValue1.Text == "")
+            {
+                txtearthingValue1Error.Visible = true;
+            }
+            if (ddlEarthingtype2.SelectedValue == "0" && Earthingtype2.Visible == true)
+            {
+                ddlEarthingtype2Error.Visible = true;
+            }
+            if (txtEarthingValue2.Text == "")
+            {
+                txtEarthingValue2Error.Visible = true;
+            }
+            if (ddlEarthingtype3.SelectedValue == "0" && Earthingtype3.Visible == true)
+            {
+                ddlEarthingtype3Error.Visible = true;
+                if (txtEarthingValue3.Text == "")
+                {
+                    txtEarthingValue3Error.Visible = true;
+                }
+                if (ddlEarthingtype4.SelectedValue == "0" && Earthingtype4.Visible == true)
+                {
+                    ddlEarthingtype4Error.Visible = true;
+                }
+                if (txtEarthingValue4.Text == "")
+                {
+                    txtEarthingValue4Error.Visible = true;
+                }
+                if (ddlEarthingtype5.SelectedValue == "0" && Earthingtype5.Visible == true)
+                {
+                    ddlEarthingtype5Error.Visible = true;
+                }
+                if (txtEarthingValue5.Text == "")
+                {
+                    txtEarthingValue5Error.Visible = true;
+                }
+                if (ddlEarthingtype6.SelectedValue == "0" && Earthingtype6.Visible == true)
+                {
+                    ddlEarthingtype6Error.Visible = true;
+                }
+                if (txtEarthingValue6.Text == "")
+                {
+                    txtEarthingValue6Error.Visible = true;
+                }
+                if (ddlEarthingtype7.SelectedValue == "0" && Earthingtype7.Visible == true)
+                {
+                    ddlEarthingtype7Error.Visible = true;
+                }
+                if (txtEarthingValue7.Text == "")
+                {
+                    txtEarthingValue7Error.Visible = true;
+                }
+                if (ddlEarthingtype8.SelectedValue == "0" && Earthingtype8.Visible == true)
+                {
+                    ddlEarthingtype8Error.Visible = true;
+                }
+                if (txtEarthingValue8.Text == "")
+                {
+                    txtEarthingValue8Error.Visible = true;
+                }
+                if (ddlEarthingtype9.SelectedValue == "0" && Earthingtype9.Visible == true)
+                {
+                    ddlEarthingtype9Error.Visible = true;
+                }
+                if (txtEarthingValue9.Text == "")
+                {
+                    txtEarthingValue9Error.Visible = true;
+                }
+                if (ddlEarthingtype10.SelectedValue == "0" && Earthingtype10.Visible == true)
+                {
+                    ddlEarthingtype10Error.Visible = true;
+                }
+                if (txtEarthingValue10.Text == "")
+                {
+                    txtEarthingValue10Error.Visible = true;
+                }
+                if (ddlEarthingtype11.SelectedValue == "0" && Earthingtype11.Visible == true)
+                {
+                    ddlEarthingtype11Error.Visible = true;
+                }
+                if (txtEarthingValue11.Text == "")
+                {
+                    txtEarthingValue11Error.Visible = true;
+                }
+                if (ddlEarthingtype12.SelectedValue == "0" && Earthingtype12.Visible == true)
+                {
+                    ddlEarthingtype12Error.Visible = true;
+                }
+                if (txtEarthingValue12.Text == "")
+                {
+                    txtEarthingValue12Error.Visible = true;
+                }
+                if (ddlEarthingtype13.SelectedValue == "0" && Earthingtype13.Visible == true)
+                {
+                    ddlEarthingtype13Error.Visible = true;
+
+                }
+
+                //if (txtEarthingValue13.Text == "")
+                //{
+                //    txtEarthingValue13Error.Visible = true;
+                //}
+                if (ddlEarthingtype14.SelectedValue == "0" && Earthingtype14.Visible == true)
+                {
+                    ddlEarthingtype14Error.Visible = true;
+                }
+                if (txtEarthingValue14.Text == "")
+                {
+                    txtEarthingValue14Error.Visible = true;
+                }
+                if (ddlEarthingtype15.SelectedValue == "0" && Earthingtype15.Visible == true)
+                {
+                    ddlEarthingtype15Error.Visible = true;
+                }
+                if (txtEarthingValue15.Text == "")
+                {
+                    txtEarthingValue15Error.Visible = true;
+                }
+
+            }
+            else
+            {
+
+                try
+                {
 
                
                 if (Declaration.Visible == true && CheckBox2.Checked == false)
@@ -443,6 +665,7 @@ namespace CEIHaryana.TestReport
 
                 DataSaved.Visible = false;
             }
+                }
         }
        public void SessionValue()
         {

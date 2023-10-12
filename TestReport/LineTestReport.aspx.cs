@@ -438,6 +438,7 @@ namespace CEIHaryana.TestReport
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (Declaration.Visible == true && CheckBox1.Checked == false)
@@ -609,6 +610,13 @@ namespace CEIHaryana.TestReport
             txtBlueEarthWire.Text = ""; txtRedYellowPhase.Text = ""; txtRedBluePhase.Text = ""; txtBlueYellowPhase.Text = ""; txtNeutralWire.Text = "";
             txtEarthWire.Text = ""; txtNeutralWireEarth.Text = ""; ddlCableType.SelectedValue = "0"; txtCableSize.Text = ""; ddlCableLaid.SelectedValue = "0"; txtRedWire.Text = ""; txtYellowWire.Text = ""; txtBlueWire.Text = ""; txtRedYellowWire.Text = "";
             txtRedBlueWire.Text = ""; txtBlueYellowWire.Text = ""; txtNeutralPhaseWire.Text = ""; txtPhaseWireEarth.Text = ""; txtNeutralWireEarthUnderground.Text = "";
+            OtherCable.Visible = false;
+            Earthing.Visible = false;
+            Insulation440vAbove.Visible = false;
+            Insulation220vAbove.Visible = false;
+            LineTypeUnderground.Visible = false;
+            UndergroundInsulation440vAbove.Visible = false;
+            UndergroundInsulation220vAbove.Visible = false;
         }
 
         protected void ddlLineVoltage_SelectedIndexChanged(object sender, EventArgs e)
