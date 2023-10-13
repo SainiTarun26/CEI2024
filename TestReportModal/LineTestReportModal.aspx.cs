@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,11 +20,13 @@ namespace CEIHaryana.TestReportModal
             {
                 if (Session["ContractorID"] != null)
                 {
+                  
                     ID = Session["LineID"].ToString();
                     GetDetailswithId();
                     Contractor.Visible = true;
                     Contractor2.Visible = true;
-                   
+
+
                 }
                 else if (Session["AdminID"]!= null)
                 {
@@ -34,6 +37,7 @@ namespace CEIHaryana.TestReportModal
                     
                 }
                 else if (Session["InspectionTestReportId"] != null)
+
                 {
                     ID = Session["InspectionTestReportId"].ToString();
                     GetDetailswithId();
@@ -51,6 +55,22 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
+                string value1 = Convert.ToString(Session["Approval"]);
+                if (value1.Trim() == "Accept")
+                {
+                    ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    btnSubmit.Text = "Back";
+
+                }
+                else if (value1.Trim() == "Reject")
+                {
+                    ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    Rejection.Visible = true;
+                    txtRejection.Attributes.Add("Readonly", "true");
+                    btnSubmit.Text = "Back";
+                }
                 DataSet ds = new DataSet();
                 ds = CEI.LineDataWithId(int.Parse(ID));
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -504,6 +524,7 @@ namespace CEIHaryana.TestReportModal
                 txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
                 txtCableSize.Text = ds.Tables[0].Rows[0]["SizeofCable"].ToString();
                 txtCableLaid.Text = ds.Tables[0].Rows[0]["Cablelaidin"].ToString();
+                txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
             }
             catch
             {
@@ -518,8 +539,16 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnAccept_Click(object sender, EventArgs e)
         {
-            string id = Session["LineID"].ToString();
-            CEI.UpdateLineData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
+            if (btnSubmit.Text == "Back")
+            {
+                Response.Redirect("/Contractor/TestReportHistory.aspx");
+            }
+            else
+            {
+                string id = Session["LineID"].ToString();
+                CEI.UpdateLineData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                Response.Redirect("/Contractor/TestReportHistory.aspx");
+            }
         }
 
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)

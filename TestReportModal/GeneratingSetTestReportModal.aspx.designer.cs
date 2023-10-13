@@ -1167,6 +1167,15 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.DropDownList ddlType;
 
         /// <summary>
+        /// Req_state control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Req_state;
+
+        /// <summary>
         /// Rejection control.
         /// </summary>
         /// <remarks>
@@ -1185,13 +1194,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtRejection;
 
         /// <summary>
-        /// BtnSubmitGeneratingSet control.
+        /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSubmitGeneratingSet;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// hdn control.
@@ -1201,6 +1210,24 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdn;
+
+        /// <summary>
+        /// Contractor2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contractor2;
+
+        /// <summary>
+        /// BtnSubmitGeneratingSet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSubmitGeneratingSet;
 
         /// <summary>
         /// SiteOwner control.

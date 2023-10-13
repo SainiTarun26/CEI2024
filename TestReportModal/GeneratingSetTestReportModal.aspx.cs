@@ -23,7 +23,9 @@ namespace CEIHaryana.TestReportModal
                     ID = Session["GeneratingSetId"].ToString();
                     GetDetailswithId();
                     Contractor.Visible = true;
-                  
+                    Contractor2.Visible = true;
+
+
                 }
                 else if (Session["AdminID"] != null)
                 {
@@ -51,7 +53,21 @@ namespace CEIHaryana.TestReportModal
             {
                 DataSet ds = new DataSet();
                 ds = CEI.GeneratingTestReportDataWithId(ID);
+                string value1 = Convert.ToString(Session["Approval"]);
+                if (value1.Trim() == "Accept")
+                {
+                    ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
 
+                }
+                else if (value1.Trim() == "Reject")
+                {
+                    ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    Rejection.Visible = true;
+                    txtRejection.Attributes.Add("Readonly", "true");
+
+                }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")
@@ -291,6 +307,8 @@ namespace CEIHaryana.TestReportModal
                     txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
                     txtGeneratingEarthing15.Text = ds.Tables[0].Rows[0]["EarthingValue15"].ToString();
                     txtEarthingUsed15.Text = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
+                txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+
                 
             }
             catch
@@ -302,6 +320,7 @@ namespace CEIHaryana.TestReportModal
         {
             string id = Session["GeneratingSetId"].ToString();
             CEI.UpdateGeneratingSetData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
+            Response.Redirect("/Contractor/GeneratingSetHistory.aspx");
         }
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   
+
     <title>CEI</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -18,6 +18,14 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+            margin-bottom: 10px;
+        }
+
         li.tab-content.tab-content-2.typography {
             border: 8px solid #CED4DA;
             border-top: 0;
@@ -1974,24 +1982,24 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <ul style="margin-top:10px;">
+            <ul style="margin-top: 10px;">
 
-        <li class="tab-content tab-content-2 typography">
-            <div class="card-body" id="divtrasformer" runat="server" style="margin-top: -30px;">
+                <li class="tab-content tab-content-2 typography">
+                    <div class="card-body" id="divtrasformer" runat="server" style="margin-top: -30px;">
 
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-sm-4" style="text-align: center;">
-                        <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                            Data Updated Successfully !!!.
-                        </label>
-                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                            Data Saved Successfully !!!.
-                        </label>
-                    </div>
-                </div>
-                <div id="IntimationData" runat="server" visible="false">
-                     <div class="row row-modal">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4" style="text-align: center;">
+                                <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                    Data Updated Successfully !!!.
+                                </label>
+                                <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                    Data Saved Successfully !!!.
+                                </label>
+                            </div>
+                        </div>
+                        <div id="IntimationData" runat="server" visible="false">
+                            <div class="row row-modal">
                                 <div class="col-6" runat="server">
                                     <label for="Name">
                                         Electrical Installation For
@@ -2010,7 +2018,7 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                              <%--  <div class="col-6" id="individual9" runat="server">
+                                <%--  <div class="col-6" id="individual9" runat="server">
                                     <label for="Name">
                                         Contact No.(Contractor)
                                     </label>
@@ -2043,7 +2051,7 @@
                                     <asp:TextBox class="form-control" ID="txtVoltagelevel" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
-                         
+
                             <div class="row row-modal">
                                 <div class="col-6" id="individual6" runat="server">
                                     <label for="Name">
@@ -2059,8 +2067,8 @@
                                 </div>
                             </div>
                         </div>
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-               
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
                         <div class="row">
                             <div class="col-4" id="Div121" runat="server">
                                 <label for="Voltage">
@@ -2075,7 +2083,7 @@
                                         <samp style="color: red">* </samp>
                                 </label>
                                 <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacityType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        
+
 
                                 <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>--%>
@@ -2102,8 +2110,6 @@
 
                         <div id="InCaseOfOil" runat="server" visible="false">
                             <div class="row">
-
-
                                 <div class="col-4">
                                     <label for="Voltage">
                                         Primary voltage(in kva)  
@@ -2119,7 +2125,6 @@
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-
                                 <div id="Capacity" class="col-4" runat="server" visible="false">
 
                                     <label for="Voltage">
@@ -2149,7 +2154,7 @@
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtHTsideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-4" style="margin-top: -35px;">
+                                    <div class="col-4" style="margin-top: -20px;">
                                         <label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
 
 
@@ -2160,7 +2165,7 @@
                                         <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLTSideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
 
-                                    <div class="col-4" style="margin-top: -35px;">
+                                    <div class="col-4" style="margin-top: -20px;">
                                         <label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
 
 
@@ -2184,7 +2189,7 @@
                                             Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtHTType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+
                                         <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlBreaker" selectionmode="Multiple" Visible="false" Style="width: 100% !important">
                                             <asp:ListItem Value="1" Text="Breaker" Selected="True"></asp:ListItem>
                                         </asp:DropDownList>
@@ -2195,7 +2200,7 @@
                                         <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthing" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+
                                     </div>
                                     <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
                                         <table class="table table-bordered table-striped">
@@ -2218,8 +2223,8 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                               <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType1" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType1" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                             </div>
                                                         </td>
                                                         <td>
@@ -2229,8 +2234,8 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                              <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor1" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor1" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtOtherUsage" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2242,8 +2247,8 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                 <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType2" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType2" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                             </div>
                                                         </td>
                                                         <td>
@@ -2254,7 +2259,7 @@
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor2" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="TextBox2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2266,8 +2271,8 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType3" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType3" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                             </div>
                                                         </td>
                                                         <td>
@@ -2277,8 +2282,8 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor3" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor3" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="TextBox3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2290,8 +2295,8 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12" id="Div52" runat="server">
-                                                                   <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType4" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType4" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                             </div>
                                                         </td>
                                                         <td>
@@ -2302,7 +2307,7 @@
                                                         <td>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor4" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="TextBox4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2315,8 +2320,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12" id="Div54" runat="server">
-                                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType5" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType5" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2326,8 +2331,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor5" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor5" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2340,7 +2345,7 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType6" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2351,7 +2356,7 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor6" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2363,8 +2368,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12" id="Div68" runat="server">
-                                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType7" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType7" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2374,8 +2379,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor7" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor7" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2387,8 +2392,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                           <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType8" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthingType8" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2398,8 +2403,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor8" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor8" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2411,8 +2416,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                          <asp:TextBox class="form-control" ID="txtEarthingType9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                       
+                                                            <asp:TextBox class="form-control" ID="txtEarthingType9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2422,8 +2427,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                          <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor9" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor9" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2435,8 +2440,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                             <asp:TextBox class="form-control" ID="txtEarthingType10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        
+                                                            <asp:TextBox class="form-control" ID="txtEarthingType10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2447,7 +2452,7 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtUsedFor10" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2459,8 +2464,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                           <asp:TextBox class="form-control" ID="txtEarthingType11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+                                                            <asp:TextBox class="form-control" ID="txtEarthingType11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2470,8 +2475,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                           <asp:TextBox class="form-control" ID="txtUsedFor11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+                                                            <asp:TextBox class="form-control" ID="txtUsedFor11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2483,8 +2488,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                             <asp:TextBox class="form-control" ID="txtEarthingType12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+                                                            <asp:TextBox class="form-control" ID="txtEarthingType12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2494,8 +2499,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                           <asp:TextBox class="form-control" ID="txtUsedFor12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+                                                            <asp:TextBox class="form-control" ID="txtUsedFor12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2508,7 +2513,7 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingType13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2518,8 +2523,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                             <asp:TextBox class="form-control" ID="txtUsedFor13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+                                                            <asp:TextBox class="form-control" ID="txtUsedFor13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2531,8 +2536,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                           <asp:TextBox class="form-control" ID="txtEarthingType14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+                                                            <asp:TextBox class="form-control" ID="txtEarthingType14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2543,7 +2548,7 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtUsedFor14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2556,7 +2561,7 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingType15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+
                                                         </div>
                                                     </td>
                                                     <td>
@@ -2566,8 +2571,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="col-12">
-                                                           <asp:TextBox class="form-control" ID="txtUsedFor15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                     
+                                                            <asp:TextBox class="form-control" ID="txtUsedFor15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="TextBox15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
@@ -2758,8 +2763,8 @@
                                             Type of LT protection
                                                     <samp style="color: red">* </samp>
                                         </label>
-                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTProtection" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                  
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTProtection" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                     </div>
                                     <div class="col-4" id="FuseUnit" runat="server" visible="false">
                                         <label for="Voltage">
@@ -2893,59 +2898,57 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>--%>
-                <div class="row" id="Contractor" runat="server" visible="false"> 
-                         <div class="col-4">
-                                                          <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged" >
+                        <div class="row" id="Contractor" runat="server" visible="true">
+                            <div class="col-4">
+                                <label for="Name">
+                                    Form Status<samp style="color: red">* </samp>
+                                </label>
+                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
 
-                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
-                                                                <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                    </div>
-                                                       <div class="col-4" id="Rejection" runat="server" visible="false"> 
-                                                            <label for="Name">
-                                                              Reason For Rejection
+                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                                 <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            
+                            </div>
+                            <div class="col-4"></div>
+                            <div class="col-4" id="Rejection" runat="server" visible="false">
+                                <label for="Name">
+                                    Reason For Rejection
                             <samp style="color: red">* </samp>
-                                                            </label>
-                                                             <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                       
-                                                               </div>
-                  
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnSubmit_Click"/>
-                    </div>
-                    <div class="col-4">
-                        <asp:HiddenField ID="hdn" Value="0" runat="server" />
-                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtValue" Visible="false" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+ <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                   
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
 
+                        <div class="row" id="Contractor2" runat="server" visible="false" style="margin-top:40px;">
+                        <div class="col-6" style="text-align: end;">
+                            <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnSubmit_Click" />
+                        </div>
+                        <div class="col-6" id="SiteOwner" runat="server" style="text-align: initial;" visible="false">
+                            <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
+                        </div>
                     </div>
-                </div>
-              
-                <div class="row" id="SiteOwner" runat="server" visible="false">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="btnNext" Text="Next" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
-                    </div>
+                        </div>
+                </li>
+            </ul>
 
-                </div>
-             
-            </div>
-        </li>
-    </ul>
-
-    <script src="/Assets/js/js/vendor.bundle.base.js"></script>
-    <script src="/Assets/js/chart.js/Chart.min.js"></script>
-    <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
-    <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script src="/Assets/js/dataTables.select.min.js"></script>
-    <script src="/Assets/js/off-canvas.js"></script>
-    <script src="/Assets/js/hoverable-collapse.js"></script>
-    <script src="/Assets/js/template.js"></script>
-    <script src="/Assets/js/settings.js"></script>
-    <script src="/Assets/js/todolist.js"></script>
-    <script src="/Assets/js/dashboard.js"></script>
-    <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+            <script src="/Assets/js/js/vendor.bundle.base.js"></script>
+            <script src="/Assets/js/chart.js/Chart.min.js"></script>
+            <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
+            <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+            <script src="/Assets/js/dataTables.select.min.js"></script>
+            <script src="/Assets/js/off-canvas.js"></script>
+            <script src="/Assets/js/hoverable-collapse.js"></script>
+            <script src="/Assets/js/template.js"></script>
+            <script src="/Assets/js/settings.js"></script>
+            <script src="/Assets/js/todolist.js"></script>
+            <script src="/Assets/js/dashboard.js"></script>
+            <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
         </div>
     </form>
 </body>

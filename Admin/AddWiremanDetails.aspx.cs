@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Org.BouncyCastle.Ocsp;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace CEI_PRoject.Admin
@@ -254,30 +256,44 @@ namespace CEI_PRoject.Admin
                 {
                     UserId = txtCertifacateOld.Text;
                 }
-                GetIP();
-                REID = hdnId.Value;
-                string Createdby = Convert.ToString(Session["AdminID"]);
-                CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text, txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
-                ddlState.SelectedItem.ToString(), txtPincode.Text, txtContect.Text, Qualification, txtEmail.Text, txtCertifacateOld.Text, txtCertificateNew.Text,
-                txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
-                Createdby, UserId, ipaddress);
-
-
-                if (btnSubmit.Text == "Update")
+                DataSet ds1 = new DataSet();
+                ds1 = CEI.checkCertificateexist(txtCertifacateOld.Text, txtCertificateNew.Text);
+                if (ds1 != null && ds1.Tables.Count > 0)
                 {
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
-                    Session["ID"] = "";
-                    DataUpdated.Visible = true;
+                    if (ds1.Tables[0].Rows.Count > 0)
+                    {
+                        string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                    }
+
                 }
                 else
                 {
-                    DataSaved.Visible = true;
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+                    GetIP();
+                    REID = hdnId.Value;
+                    string Createdby = Convert.ToString(Session["AdminID"]);
+                    CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text, txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                    ddlState.SelectedItem.ToString(), txtPincode.Text, txtContect.Text, Qualification, txtEmail.Text, txtCertifacateOld.Text, txtCertificateNew.Text,
+                    txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
+                    Createdby, UserId, ipaddress);
 
 
+                    if (btnSubmit.Text == "Update")
+                    {
+                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                        Session["ID"] = "";
+                        DataUpdated.Visible = true;
+                    }
+                    else
+                    {
+                        DataSaved.Visible = true;
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+
+
+                    }
+                    Reset();
                 }
-                Reset();
-            }
+                }
             catch (Exception Ex)
             {
             }

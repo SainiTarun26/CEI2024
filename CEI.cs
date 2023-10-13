@@ -1174,9 +1174,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineDataWithId", ID);
         }
-        public DataTable LineTestReportData(string LineID)
+        public DataSet LineTestReportData(string LineID)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineData", LineID);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineData", LineID);
         } 
         public DataSet SubstationTestReportData(string Id)
         {
@@ -1194,9 +1194,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerLineReportData", PanId);
         }
-        public DataTable TransformerTestReportData(string SubStationId)
+        public DataSet TransformerTestReportData(string SubStationId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubstationHistory", SubStationId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubstationHistory", SubStationId);
         } 
         public DataTable TestReportSubstationData(string SubStationId)
         {
@@ -1206,9 +1206,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerGeneratingReportData", PanId);
         } 
-        public DataTable GeneratingTestReportData(string GeneratingSetId)
+        public DataSet GeneratingTestReportData(string GeneratingSetId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetGenratingSetHistory", GeneratingSetId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetGenratingSetHistory", GeneratingSetId);
         }
         public DataSet GeneratingTestReportDataWithId(string Id)
         {
@@ -1264,6 +1264,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet checkLicenceexist(string LicenceNew, string LicenceOld)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkLicence", LicenceNew, LicenceOld);
+        }
+        public DataSet checkCertificateexist(string CertificateOld, string CertificateNew)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificate", CertificateOld, CertificateNew);
         }
     }
 }

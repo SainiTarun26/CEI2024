@@ -341,12 +341,19 @@ namespace CEIHaryana.Contractor
 
                     DataSet ds1 = new DataSet();
                     ds1 = CEI.InsertSiteOwnerData(txtPAN.Text);
-                    if (ds1.Tables[0].Rows.Count > 0)
+                    if (ds1 != null && ds1.Tables.Count > 0)
                     {
-                        string alert = "alert('This User Is Already Exist User Can login with Provided Usename And Password');";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
+                            string alert = "alert('This User Is Already Exist User Can login with Provided Usename And Password');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
+                        }
                     }
-                        hdnId.Value = ContractorID;
+                    else
+                    {
+                      
+                    }
+                    hdnId.Value = ContractorID;
                     CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, ddlDistrict.SelectedItem.ToString()
                       , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
                       txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
@@ -372,7 +379,7 @@ namespace CEIHaryana.Contractor
                             }
                         }
                     }
-                   // DataSaved.Visible = true;
+                    // DataSaved.Visible = true;
                     string alertScript = "alert('User Created Successfully User Id And password will be sent Via Text Mesaage.');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                     // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);

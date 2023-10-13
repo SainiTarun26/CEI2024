@@ -162,12 +162,6 @@
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField> --%>
 
-                               <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
-                                    <ItemTemplate>
-                                      </ItemTemplate>
-                                </asp:TemplateField>
                             </Columns> 
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

@@ -20,8 +20,9 @@ namespace CEIHaryana
             {
                 if (Session["ContractorID"] != null)
                 {
+
                 }
-                }
+            }
         }
         protected void GenerateOTP(object sender, EventArgs e)
         {
@@ -41,10 +42,10 @@ namespace CEIHaryana
         {
             try
             {
-                otp = Session["OTP"].ToString() ;
+                otp = Session["OTP"].ToString();
                 if (otp.Length == 6)
-            {
-               
+                {
+
                     TextBox[] textboxes = new TextBox[] { TextBox1, TextBox2, TextBox3, TextBox4, TextBox5, TextBox6 };
                     bool isOTPValid = true;
 
@@ -69,7 +70,7 @@ namespace CEIHaryana
                         if (Session["ContractorID"] != null)
                         {
                             string Id = Session["ContractorID"].ToString();
-                            CEI.updateWorkIntimation(Id,txtMobile.Text);
+                            CEI.updateWorkIntimation(Id, txtMobile.Text);
                             Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                     }
@@ -79,9 +80,9 @@ namespace CEIHaryana
 
                     }
                 }
-                }
+            }
             catch
-                {
+            {
 
             }
 

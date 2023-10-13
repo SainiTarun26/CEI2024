@@ -109,13 +109,20 @@
                               <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                               <div class="col-sm-9" style="margin-left: -35px;">
                                   <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
-                              </div>
+                             <asp:TextBox ID="txtapproval" runat="server" Visible="false"  class="form-control" Font-Size="12px" ></asp:TextBox><br />
+                         
+                                  </div>
                           </div>
                       </div>
                   </div>
                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                             <Columns>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("RejectOrApprovedFronContractor") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField> 
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
@@ -144,22 +151,17 @@
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                             <%--   <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
+                                <asp:BoundField DataField="RejectOrApprovedFronContractor" HeaderText="Approval">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
 
-                                <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+                                <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
                                     <HeaderStyle HorizontalAlign="center" Width="13%" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>--%>
+                                </asp:BoundField>
 
-                                <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
-                                    <ItemTemplate>
-                                      </ItemTemplate>
-                                </asp:TemplateField>
+                                
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

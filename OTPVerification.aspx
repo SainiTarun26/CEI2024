@@ -219,7 +219,7 @@
                     <button class="resend">Resend OTP<i class="fa fa-caret-right"></i></button>
                     <div class="row">
                         <div class="col-12" style="text-align: center; margin-top: 10px; margin-bottom: -20px;">
-                          <asp:Button class="button-79" ID="Button1" runat="server" Text="Send OTP" OnClick="VerifyOTP" />
+                          <asp:Button class="button-79" ID="Button1" runat="server" Text="Verify" OnClick="VerifyOTP" />
 
                         </div>
                     </div>

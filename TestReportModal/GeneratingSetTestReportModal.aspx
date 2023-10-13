@@ -2529,43 +2529,52 @@
                                                 </div>
                                             </div>
 
-                                            <div id="Contractor" runat="server" visible="false">
-                    <div class="col-4">
+                                            <div id="Contractor" runat="server" visible="true">
+                                                <div class="row">
+                                                             <div class="col-4">
+                                                                                                 <label for="Name">
+                                  Form status
+<samp style="color: red">* </samp>
+                                </label>
                                                           <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged" >
 
                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                 <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
                                                                 <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
                                                             </asp:DropDownList>
+                                                                  <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            
                                                     </div>
+                                                    <div class="col-4"></div>
                                                        <div class="col-4" id="Rejection" runat="server" visible="false"> 
                                                             <label for="Name">
                                                               Reason For Rejection
                             <samp style="color: red">* </samp>
                                                             </label>
                                                              <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                       
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                   
                                                                </div>
-                                                
+                                                </div>
                                                      <div class="row">
                                                     <div class="col-12">
                                                         </div>
-                                                    <div class="col-12" style="text-align: center;">
-                                                        <asp:Button ID="BtnSubmitGeneratingSet" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                                            OnClick="BtnSubmit_Click" />
-                                                           
-                                                    </div>
+                                                    
                                                     <div class="col-4">
                                                       <asp:HiddenField ID="hdn" Value="0" runat="server" />
                                                     </div>
                                                 </div>
                                                 </div>
-                                              <div id="SiteOwner" runat="server" visible="false">
+                                              <div id="Contractor2" runat="server" visible="false" style="margin-top:40px;">
                                                     <div class="row">
-
-                                                    <div class="col-4">
-                                                     <asp:Button ID="btnNext" Text="Next" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                                            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnNext_Click" /> 
+                                                        <div class="col-6" style="text-align: end;">
+    <asp:Button ID="BtnSubmitGeneratingSet" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+        OnClick="BtnSubmit_Click" />
+       
+</div>
+                                                    <div class="col-6" id="SiteOwner" runat="server" visible="false">
+                                                     <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2"
+                                                            Style="background:#4b49ac; border-color: #d42766;" OnClick="btnNext_Click" /> 
                                                       </div>
                                                 </div>
                                             </div>

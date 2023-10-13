@@ -112,7 +112,9 @@
                             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                             <div class="col-sm-9" style="margin-left: -35px;">
                                 <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
-                            </div>
+                           <asp:TextBox ID="txtapproval" runat="server" class="form-control" Font-Size="12px" Visible="false"></asp:TextBox><br />
+                          
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -122,6 +124,11 @@
                            <asp:TemplateField HeaderText="Id" Visible="False">
                                <ItemTemplate>
                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                               </ItemTemplate>
+                           </asp:TemplateField>
+                           <asp:TemplateField HeaderText="Id" Visible="False">
+                               <ItemTemplate>
+                                   <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApprovedOrRejectFromContractor") %>'></asp:Label>
                                </ItemTemplate>
                            </asp:TemplateField>
 
@@ -148,18 +155,14 @@
                                <HeaderStyle HorizontalAlign="center" Width="15%" />
                                <ItemStyle HorizontalAlign="center" Width="15%" />
                            </asp:BoundField>
-                           <asp:BoundField DataField="CreatedDate" HeaderText="Request Date">
+                           <asp:BoundField DataField="ApprovedOrRejectFromContractor" HeaderText="Approval">
                                <HeaderStyle HorizontalAlign="center" Width="15%" />
                                <ItemStyle HorizontalAlign="center" Width="15%" />
                            </asp:BoundField>
-                           <asp:TemplateField>
-                               <HeaderStyle Width="10%" />
-                               <ItemStyle Width="10%" />
-                               <ItemTemplate>
-                                   <%-- <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                   Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />--%>
-                               </ItemTemplate>
-                           </asp:TemplateField>
+                           <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
+                               <HeaderStyle HorizontalAlign="center" Width="15%" />
+                               <ItemStyle HorizontalAlign="center" Width="15%" />
+                           </asp:BoundField>
                        </Columns>
                        <FooterStyle BackColor="White" ForeColor="#000066" />
                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

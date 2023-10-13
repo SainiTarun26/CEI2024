@@ -25,9 +25,10 @@ namespace CEIHaryana.Contractor
         protected void GridData() {
             string LoginID = string.Empty;
             LoginID = Session["ContractorID"].ToString();
-            DataTable ds = new DataTable();
-        ds = CEI.LineTestReportData(LoginID);
-            if (ds.Rows.Count > 0)
+            DataSet ds = new DataSet();
+            ds = CEI.LineTestReportData(LoginID);
+           
+            if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
@@ -37,7 +38,7 @@ namespace CEIHaryana.Contractor
                 GridView1.DataSource = null;
                 GridView1.DataBind();
                 string script = "alert(\"No Record Found\");";
-    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
     }
     ds.Dispose();
 
@@ -51,6 +52,8 @@ namespace CEIHaryana.Contractor
                 Label lblID = (Label)row.FindControl("lblID");
                 string id = lblID.Text;
                 Session["LineID"] = id;
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval"] = lblApproval.Text;
                 if (e.CommandName == "Select")
 
                 {

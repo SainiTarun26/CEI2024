@@ -21,7 +21,9 @@ namespace CEIHaryana.TestReportModal
                     ID = Session["SubStationID"].ToString();
                     GetDetailswithId();
                     Contractor.Visible = true;
-                  
+                    Contractor2.Visible = true;
+
+
                 }
                 else if (Session["AdminID"] != null)
                 {
@@ -48,6 +50,23 @@ namespace CEIHaryana.TestReportModal
             {
                 DataSet ds = new DataSet();
                 ds = CEI.SubstationTestReportData(ID);
+                
+                    string value1 = Convert.ToString(Session["Approval"]);
+                    if (value1.Trim() == "Accept")
+                    {
+                        ddlType.Attributes.Add("Readonly", "true");
+                        ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+
+                    }
+                    else if(value1.Trim() == "Reject")
+                    {
+                        ddlType.Attributes.Add("Readonly", "true");
+                        ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                        Rejection.Visible = true;
+                        txtRejection.Attributes.Add("Readonly", "true");
+
+                    }
+                
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")
@@ -403,6 +422,7 @@ namespace CEIHaryana.TestReportModal
                 txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
                 txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["RiverCanalCrossingNoForOC"].ToString();
                 txtSealLevelPlinth.Text = ds.Tables[0].Rows[0]["SeaLevelOfTransformerInMeters"].ToString();
+                txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
             }
             catch
             {
@@ -426,6 +446,7 @@ namespace CEIHaryana.TestReportModal
         {
             string id = Session["SubStationID"].ToString();
             CEI.UpdateSubstationData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
+            Response.Redirect("/Contractor/SubstationTransformer.aspx");
         }
 
         protected void btnNext_Click(object sender, EventArgs e)

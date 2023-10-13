@@ -24,9 +24,11 @@ namespace CEIHaryana.Contractor
         {
             string LoginID = string.Empty;
             LoginID = Session["ContractorID"].ToString();
-            DataTable ds = new DataTable();
+            DataSet ds = new DataSet();
             ds = CEI.GeneratingTestReportData(LoginID);
-            if (ds.Rows.Count > 0)
+            txtapproval.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
+            Session["Approval"] = txtapproval.Text;
+            if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
@@ -50,8 +52,9 @@ namespace CEIHaryana.Contractor
                 Label lblID = (Label)row.FindControl("lblID");
                 string id = lblID.Text;
                 Session["GeneratingSetId"] = id;
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval"] = lblApproval.Text;
                 if (e.CommandName == "Select")
-
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
 

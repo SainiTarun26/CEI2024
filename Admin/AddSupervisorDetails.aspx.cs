@@ -249,28 +249,42 @@ namespace CEI_PRoject.Admin
                 {
                     UserId = CertificateOld.Text;
                 }
-                GetIP();
-                REID = hdnId.Value; ;
-                string Createdby = Convert.ToString(Session["AdminID"]);
-                CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text, FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(),
-                 ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,
-                 DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text,
-                 ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, Createdby, CertificateOld.Text, ipaddress);
-
-                if (btnSubmit.Text == "Update")
+                DataSet ds1 = new DataSet();
+                ds1 = CEI.checkCertificateexist(CertificateOld.Text, CertificateNew.Text);
+                if (ds1 != null && ds1.Tables.Count > 0)
                 {
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
-                    Session["ID"] = "";
-                    DataUpdated.Visible = true;
+                    if (ds1.Tables[0].Rows.Count > 0)
+                    {
+                        string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                    }
+
                 }
                 else
                 {
+                    GetIP();
+                    REID = hdnId.Value; ;
+                    string Createdby = Convert.ToString(Session["AdminID"]);
+                    CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text, FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(),
+                     ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,
+                     DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text,
+                     ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, Createdby, CertificateOld.Text, ipaddress);
 
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-                    DataSaved.Visible = true;
+                    if (btnSubmit.Text == "Update")
+                    {
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                        Session["ID"] = "";
+                        DataUpdated.Visible = true;
+                    }
+                    else
+                    {
 
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+                        DataSaved.Visible = true;
+
+                    }
+                    Reset();
                 }
-                Reset();
             }
             catch (Exception Ex)
             {
