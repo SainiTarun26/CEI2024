@@ -22,25 +22,32 @@ namespace CEIHaryana.Contractor
 
         protected void GridData()
         {
-            string LoginID = string.Empty;
-            LoginID = Session["ContractorID"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.GeneratingTestReportData(LoginID);
-            txtapproval.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
-            Session["Approval"] = txtapproval.Text;
-            if (ds.Tables.Count > 0)
+            try
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                string LoginID = string.Empty;
+                LoginID = Session["ContractorID"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GeneratingTestReportData(LoginID);
+                //txtapproval.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
+                //Session["Approval"] = txtapproval.Text;
+                if (ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
             }
-            else
+            catch
             {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+
             }
-            ds.Dispose();
 
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

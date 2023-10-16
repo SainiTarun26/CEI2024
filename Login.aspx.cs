@@ -44,7 +44,6 @@ namespace CEIHaryana
                 else if (check == 2)
                 {
                     if (Status.Trim() == "1")
-
                     {
                         Session["ContractorID"] = txtUserID.Text;
                         Session["logintype"] = "Contractor";
