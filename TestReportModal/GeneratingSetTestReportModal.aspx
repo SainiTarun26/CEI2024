@@ -2529,7 +2529,7 @@
                                                 </div>
                                             </div>
 
-                                            <div id="Contractor" runat="server" visible="true">
+                                            <div id="Contractor" runat="server" visible="false">
                                                 <div class="row">
                                                              <div class="col-4">
                                                                                                  <label for="Name">
@@ -2555,6 +2555,14 @@
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                    
                                                                </div>
+                                                       <div class="col-4" id="OTP" runat="server" visible="false">
+                                        <label for="Name">
+                                            Enter OTP
+                            <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtOtp" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                    </div>
                                                 </div>
                                                      <div class="row">
                                                     <div class="col-12">
@@ -2565,6 +2573,14 @@
                                                     </div>
                                                 </div>
                                                 </div>
+                                             <div class="row" runat="server" id="Contractor3" visible="false">
+                                                 <div class="col-4"></div>
+                                                                            <div class="col-4" style="margin-top: 40px;text-align: Center;">
+                                    <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
+                                    <br /><label>Submit Will be Enable When You Verify Your Details</label>
+                                </div>
+                                                 </div>
                                               <div id="Contractor2" runat="server" visible="false" style="margin-top:40px;">
                                                     <div class="row">
                                                         <div class="col-6" style="text-align: end;">

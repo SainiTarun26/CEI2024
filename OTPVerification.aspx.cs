@@ -90,19 +90,7 @@ namespace CEIHaryana
         public void sendsms()
         {
             string mobilenumber = txtMobile.Text.Trim();
-            Random random = new Random();
-            int otpInt = random.Next(100000, 999999);
-
-            string otp = otpInt.ToString("D6");
-            Session["OTP"] = otp;
-
-            HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer " + otp + " is the OTP for your request send to CEI Department, HRY. OTPs are SECRET. DO NOT share OTP with anyone --SAFEDOT&route=2&peid=1101407410000040566");
-            HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
-            System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
-            string responseString = respStreamReader.ReadToEnd();
-
-            respStreamReader.Close();
-            myResp.Close();
+            Session["OTP"] = CEI.ValidateOTP(mobilenumber);
         }
 
     }

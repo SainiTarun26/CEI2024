@@ -4,6 +4,8 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using static System.Net.WebRequestMethods;
 
 namespace CEI_PRoject
 {
@@ -1102,7 +1104,25 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperwiserDetails", REID);
         }
-        #endregion 
+        #endregion
+        public string ValidateOTP( string mobilenumber)
+        {
+            //string mobilenumber = Session["Contact"].ToString();
+            Random random = new Random();
+            int otpInt = random.Next(100000, 999999);
+
+            string otp = otpInt.ToString("D6");
+            //Session["OTP"] = otp;
+
+            HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer " + otp + " is the OTP for your request send to CEI Department, HRY. OTPs are SECRET. DO NOT share OTP with anyone --SAFEDOT&route=2&peid=1101407410000040566");
+            HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
+            System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
+            string responseString = respStreamReader.ReadToEnd();
+
+            respStreamReader.Close();
+            myResp.Close();
+            return otp;
+        }
         #region Get WorkIntimationDataForAdmin Data
         public DataSet GetWorkIntimationDataForAdmin(string REID)
         {

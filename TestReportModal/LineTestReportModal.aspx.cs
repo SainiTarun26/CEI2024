@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,8 +24,16 @@ namespace CEIHaryana.TestReportModal
                   
                     ID = Session["LineID"].ToString();
                     GetDetailswithId();
-                    Contractor.Visible = true;
-                    Contractor2.Visible = true;
+                    if (Convert.ToString(Session["Approval"]) == "Pending")
+                    {
+                        Contractor.Visible = true;
+                        Contractor3.Visible = true;
+                    }
+                    else
+                    {
+                        Contractor.Visible = true;
+                        Contractor2.Visible = true;
+                    }
 
 
                 }
@@ -525,6 +534,7 @@ namespace CEIHaryana.TestReportModal
                 txtCableSize.Text = ds.Tables[0].Rows[0]["SizeofCable"].ToString();
                 txtCableLaid.Text = ds.Tables[0].Rows[0]["Cablelaidin"].ToString();
                 txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
             }
             catch
             {
@@ -572,6 +582,25 @@ namespace CEIHaryana.TestReportModal
             else
             {
                 Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            }
+        }
+
+        protected void btnVerify_Click(object sender, EventArgs e)
+        {
+            if (btnVerify.Text == "SendOTP")
+            {
+                OTP.Visible = true;
+                string mobilenumber = Session["Contact"].ToString();
+                Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+                btnVerify.Text = "Verify";
+            }
+            else
+            {
+                if(Session["OTP"].ToString() == txtOtp.Text)
+                {
+                    Contractor2.Visible = true;
+                    Contractor3.Visible = false;
+                }
             }
         }
     }

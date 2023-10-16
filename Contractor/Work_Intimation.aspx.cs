@@ -5,8 +5,10 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Net;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.WebRequestMethods;
 
 namespace CEIHaryana.Contractor
 {
@@ -303,6 +305,7 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                string mobilenumber = txtPhone.Text.Trim();
                 if (Session["ContractorID"] != null)
                 {
 
@@ -380,9 +383,17 @@ namespace CEIHaryana.Contractor
                         }
                     }
                     // DataSaved.Visible = true;
+
                     string alertScript = "alert('User Created Successfully User Id And password will be sent Via Text Mesaage.');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
+                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer, " + " Your Account is created. Your user id is PAN Number and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT&route=2&peid=1101407410000040566");
+                    HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
+                    System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
+                    string responseString = respStreamReader.ReadToEnd();
+
+                    respStreamReader.Close();
+                    myResp.Close();
+
                 }
                 else
                 {
@@ -390,7 +401,7 @@ namespace CEIHaryana.Contractor
                 }
                 Reset();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);

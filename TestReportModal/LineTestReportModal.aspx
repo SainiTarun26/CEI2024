@@ -2641,37 +2641,49 @@
                                             <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
                                             <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
                                         </asp:DropDownList>
-                                         <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                            
+                                        <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                                     </div>
-                                    <div class="col-4"></div>
-                                 <div class="col-4" id="Rejection" runat="server" visible="False">
+                                   
+                                    <div class="col-4" id="Rejection" runat="server" visible="False">
                                         <label for="Name">
                                             Reason For Rejection
                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
-                   
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+
                                     </div>
-                                   
+                                     <div class="col-4" id="OTP" runat="server" visible="false">
+                                        <label for="Name">
+                                            Enter OTP
+                            <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtOtp" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                    </div>
                                 </div>
                             </div>
-                                <asp:HiddenField ID="hdn" Value="0" runat="server" />
+                            <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             <div class="row">
                                 <div class="col-4"></div>
-                                    <div class="col-4" style="margin-top:40px;" runat="server" id="Contractor2" Visible="false">
-    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
+                                <div class="col-4" style="margin-top: 40px;text-align: Center;" runat="server" id="Contractor3" visible="false">
+                                    <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
+                                    <br /><label>Submit Will be Enable When You Verify Your Details</label>
+                                </div>
+                                <div class="col-4" style="margin-top: 40px;" runat="server" id="Contractor2" visible="false">
+                                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
 
-</div>
+                                </div>
                                 <div class="col-4" id="SiteOwner" runat="server" visible="false">
-                                    <asp:Button ID="btnNext" Text="Next" runat="server"  class="btn btn-primary mr-2"
+                                    <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2"
                                         Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnNext_Click" />
                                 </div>
-                                </div>
+                            </div>
 
-                           
+
                         </div>
                     </div>
                 </li>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="Work_Intimation.aspx.cs" Inherits="CEIHaryana.Contractor.Work_Intimation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" EnableEventValidation="true" AutoEventWireup="true" CodeBehind="Work_Intimation.aspx.cs" Inherits="CEIHaryana.Contractor.Work_Intimation" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -700,7 +700,7 @@
             lblPinError.innerHTML = "";
             var expr = /\d{6}/;;
             if (Pincode == "") {
-                lblPinError.innerHTML = "Please Enter Pincode" + "\n";
+                //lblPinError.innerHTML = "Please Enter Pincode" + "\n";
                 return false;
             }
             else if (expr.test(Pincode)) {
@@ -730,7 +730,7 @@
             lblError.innerHTML = "";
             var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
             if (email == "") {
-                lblError.innerHTML = "Please Enter Email" + "\n";
+               // lblError.innerHTML = "Please Enter Email" + "\n";
                 return false;
             }
             else if (expr.test(email)) {

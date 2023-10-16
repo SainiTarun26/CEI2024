@@ -21,9 +21,16 @@ namespace CEIHaryana.TestReportModal
                 if (Session["ContractorID"] != null)
                 {
                     ID = Session["GeneratingSetId"].ToString();
-                    GetDetailswithId();
-                    Contractor.Visible = true;
-                    Contractor2.Visible = true;
+                    GetDetailswithId(); if (Convert.ToString(Session["Approval"]) == "Pending")
+                    {
+                        Contractor.Visible = true;
+                        Contractor3.Visible = true;
+                    }
+                    else
+                    {
+                        Contractor.Visible = true;
+                        Contractor2.Visible = true;
+                    }
 
 
                 }
@@ -342,6 +349,24 @@ namespace CEIHaryana.TestReportModal
             else
             {
                 Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+            }
+        }
+        protected void btnVerify_Click(object sender, EventArgs e)
+        {
+            if (btnVerify.Text == "SendOTP")
+            {
+                OTP.Visible = true;
+                string mobilenumber = Session["Contact"].ToString();
+                Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+                btnVerify.Text = "Verify";
+            }
+            else
+            {
+                if (Session["OTP"].ToString() == txtOtp.Text)
+                {
+                    Contractor2.Visible = true;
+                    Contractor3.Visible = false;
+                }
             }
         }
 
