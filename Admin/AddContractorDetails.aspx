@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" EnableEventValidation="true" AutoEventWireup="true" CodeBehind="AddContractorDetails.aspx.cs" Inherits="CEI_PRoject.Admin.AddContractorDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="AddContractorDetails.aspx.cs" Inherits="CEI_PRoject.Admin.AddContractorDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />

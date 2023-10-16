@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="SubstationTransformer.aspx.cs" Inherits="CEIHaryana.Contractor.SubstationTransformer" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="SubstationTransformer.aspx.cs" Inherits="CEIHaryana.Contractor.SubstationTransformer" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />

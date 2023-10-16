@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" EnableEventValidation="true" AutoEventWireup="true" CodeBehind="AddWiremanDetails.aspx.cs" Inherits="CEI_PRoject.Admin.AddWiremanDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="AddWiremanDetails.aspx.cs" Inherits="CEI_PRoject.Admin.AddWiremanDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
