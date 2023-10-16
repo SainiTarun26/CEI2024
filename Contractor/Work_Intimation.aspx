@@ -723,7 +723,7 @@
     </script>
     <script type="text/javascript">
         function ValidateEmail() {
-            debugger
+            
             var email1 = document.getElementById("<%=txtEmail.ClientID %>");
             email = email1.value;
             var lblError = document.getElementById("lblError");
@@ -852,7 +852,7 @@
 
     <script type="text/javascript">
         function showHide() {
-            debugger
+            
             let experience = document.getElementById('experience');
             if (experience.value == 1) {
                 document.getElementById('hidden-field').style.display = 'block';
@@ -868,7 +868,7 @@
     </script>
     <script type="text/javascript">
         function showHide1() {
-            debugger
+            
             let experience = document.getElementById('ddlworktype');
             if (experience.value == 1) {
                 document.getElementById('individual').style.display = 'block';
