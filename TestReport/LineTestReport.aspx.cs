@@ -454,75 +454,78 @@ namespace CEIHaryana.TestReport
 
             try
             {
-                if (Declaration.Visible == true && CheckBox1.Checked == false)
-                {
-
-                    labelVerification.Visible = true;
-
-                }
-                else 
-                { 
-                string LineId = string.Empty;
-                if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
-                {
-                    LineId = CEI.GenerateUniqueID();
-                    Session["LineId"] = LineId;
-
-                }
-                else
-                {
-
-                    LineId = Session["LineId"].ToString();
-                }
-                string TestReportId = Session["TestReportId"].ToString();
-                string IntimationId = Session["id"].ToString();
-                string CreatedBy = Session["AdminID"].ToString();
-                CEI.InsertLineData(LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(),TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
-               ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
-              txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
-               ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
-               txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
-              txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
-             txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
-             txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
-             txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
-             txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
-             txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
-             txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
-             txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
-           txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
-           txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
-           txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-                    Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
-                    Reset();
-                DataSaved.Visible = true;
-                labelVerification.Visible = false;
-                PageWorking();
-                    int currentValue = Convert.ToInt32(Session["Page"]);
-                    if (currentValue == Convert.ToInt32(sessionValue))
+               
+                
+                    if (Declaration.Visible == true && CheckBox1.Checked == false)
                     {
-                        Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
-                        btnSubmit.Visible = false;
-                        Session["SubmittedValue2"] = sessionValue;
-                        divLine.Visible = false;
-                        Session["LineId"] = "";
-                        if (nextSessionName == "Substation Transformer")
+
+                        labelVerification.Visible = true;
+
+                    }
+                    else
+                    {
+                        string LineId = string.Empty;
+                        if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
                         {
-                            Response.Redirect("SubstationTransformer.aspx", false);
-                        }
-                        else if (nextSessionName == "Generating Station")
-                        {
-                            Response.Redirect("GeneratingSetTestReport.aspx", false);
+                            LineId = CEI.GenerateUniqueID();
+                            Session["LineId"] = LineId;
+
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
 
+                            LineId = Session["LineId"].ToString();
                         }
-                        //NextSessionValueAndName();
-                    }
-            }
+                        string TestReportId = Session["TestReportId"].ToString();
+                        string IntimationId = Session["id"].ToString();
+                        string CreatedBy = Session["AdminID"].ToString();
+                        CEI.InsertLineData(LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                       ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
+                      txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
+                       ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
+                       txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
+                      txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
+                     txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
+                     txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
+                     txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
+                     txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
+                     txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
+                     txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
+                     txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
+                   txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
+                   txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
+                   txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
+                        Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
+                        Reset();
+                        DataSaved.Visible = true;
+                        labelVerification.Visible = false;
+                        PageWorking();
+                        int currentValue = Convert.ToInt32(Session["Page"]);
+                        if (currentValue == Convert.ToInt32(sessionValue))
+                        {
+                            Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
+                            btnSubmit.Visible = false;
+                            Session["SubmittedValue2"] = sessionValue;
+                            divLine.Visible = false;
+                            Session["LineId"] = "";
+                            if (nextSessionName == "Substation Transformer")
+                            {
+                                Response.Redirect("SubstationTransformer.aspx", false);
+                            }
+                            else if (nextSessionName == "Generating Station")
+                            {
+                                Response.Redirect("GeneratingSetTestReport.aspx", false);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
 
+                            }
+                            //NextSessionValueAndName();
+                        }
+                    }
+
+                
                 
             }
             catch (Exception Ex)

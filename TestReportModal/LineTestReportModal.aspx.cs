@@ -94,6 +94,11 @@ namespace CEIHaryana.TestReportModal
                     individual.Visible = true;
                     agency.Visible = false;
                 }
+                if (txtCableType.Text == "Other")                                          
+                {                                                                        
+                    OtherCable.Visible = true;                                           
+                    txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();   
+                }                                                                          
 
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();

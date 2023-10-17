@@ -45,7 +45,6 @@ namespace CEIHaryana.Officers
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
-
                 {
                     Response.Redirect("/Officers/Inspection.aspx", false);
 
