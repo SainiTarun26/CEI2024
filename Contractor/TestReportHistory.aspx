@@ -133,10 +133,10 @@
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />
                                     <HeaderTemplate>
-                                        TestReportId
+                                        Intimation Id
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("LineID") %> ' CommandName="Select"><%#Eval("LineId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("IntimationId") %> ' CommandName="Select"><%#Eval("IntimationId") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="LineVoltage" HeaderText="LineVoltage">

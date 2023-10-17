@@ -52,10 +52,6 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-                                <%--   <asp:BoundField DataField="SNo" HeaderText="SNo">
-                                <HeaderStyle HorizontalAlign="center" Width="5%" />
-                                <ItemStyle HorizontalAlign="center" Width="5%" />
-                            </asp:BoundField>--%>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />
@@ -63,15 +59,9 @@
                                         IntimationId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <%--  <a href="#ex1" rel="modal:open">Open Modal</a>--%>
-                                        <%--     <asp:LinkButton runat="server" ID="LinkButton4" OnClientClick="return openPopup();" Text="View Details"  CommandName="Select" CommandArgument='<%#Eval("Id") %>' />--%>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+                                          <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <%--   <asp:BoundField DataField="Id" HeaderText="User ID">
-                                <HeaderStyle HorizontalAlign="center" Width="8%" />
-                                <ItemStyle HorizontalAlign="center" Width="8%" />
-                            </asp:BoundField>--%>
                                 <asp:BoundField DataField="Name" HeaderText="Name">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -80,10 +70,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>
-                               <%-- <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
-                                    <HeaderStyle HorizontalAlign="center" Width="35%" />
-                                    <ItemStyle HorizontalAlign="center" Width="35%" />
-                                </asp:BoundField>--%>
+                              
                                 <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -97,10 +84,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="13%" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>
-                                <%--<asp:BoundField DataField="LiciencePeriod" HeaderText="Validity Upto">
-                                <HeaderStyle HorizontalAlign="Center" Width="11%" />
-                                <ItemStyle HorizontalAlign="Center" Width="11%" />
-                            </asp:BoundField>--%>
+                               
 
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
