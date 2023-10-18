@@ -80,10 +80,10 @@
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
 
-                                <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+                               <%-- <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
                                     <HeaderStyle HorizotalAlign="center" Width="13%" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                
 
                             </Columns>
