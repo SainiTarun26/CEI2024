@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10" 
+                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" 
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">

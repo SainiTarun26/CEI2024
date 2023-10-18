@@ -365,7 +365,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
+         <%--                   <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
         <i class="icon-layout menu-icon"></i>
         <span class="menu-title">All Test Reports</span>
@@ -378,7 +378,7 @@
             <li class="nav-item"><a class="nav-link" href="/Admin/AllTestReports.aspx">Genrating Set</a></li>
         </ul>
     </div>
-</li>
+</li>--%>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/Projects.aspx">
                                     <i class="icon-layout menu-icon"></i>
