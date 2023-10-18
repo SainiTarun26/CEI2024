@@ -81,7 +81,7 @@
                                 </asp:BoundField>
 
                                 <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" />
+                                    <HeaderStyle HorizotalAlign="center" Width="13%" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>
                                
