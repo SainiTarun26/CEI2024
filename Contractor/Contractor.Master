@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-     <title>CEI</title>
+    <title>CEI</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/Assets/css/feather/feather.css">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css">
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="images/favicon.png" />
-      <style type="text/css">
+    <style type="text/css">
         span.menu-title {
             COLOR: #F9F9F9 !IMPORTANT;
         }
@@ -36,12 +36,19 @@
         nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
     box-shadow: 0px 5px 21px -5px #CDD1E1;
 }
+        .notification-box{
+            border: 0px !important;
+    box-shadow: none !important;
+        }
+       .dropdown-menu.dropdown-menu-right.navbar-dropdown.preview-list.show {
+    width: max-content;
+}
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">       
+    <form id="form1" runat="server">
         <div>
             <div class="container-scroller">
                 <!-- partial:partials/_navbar.html -->
@@ -54,7 +61,7 @@
                         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                             <span class="icon-menu header-icon" style="color: black !important;"></span>
                         </button>
-                      <%--  <ul class="navbar-nav mr-lg-2">
+                        <%--  <ul class="navbar-nav mr-lg-2">
                             <li class="nav-item nav-search d-none d-lg-block">
                                 <div class="input-group">
                                     <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
@@ -76,43 +83,55 @@
                                     <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                                     <a class="dropdown-item preview-item">
                                         <div class="preview-thumbnail">
-                                            <div class="preview-icon bg-success">
-                                                <i class="ti-info-alt mx-0"></i>
-                                            </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                            <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                                            <p class="font-weight-light small-text mb-0 text-muted">
-                                                Just now
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <div class="preview-icon bg-warning">
-                                                <i class="ti-settings mx-0"></i>
-                                            </div>
-                                        </div>
-                                        <div class="preview-item-content">
-                                          <%--  <h6 class="preview-subject font-weight-normal">Settings</h6>--%>
-                                            <p class="font-weight-light small-text mb-0 text-muted">
-                                                Private message
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
                                             <div class="preview-icon bg-info">
-                                                <i class="ti-user mx-0"></i>
+                                                <i class="ti-bell mx-0"></i>
                                             </div>
                                         </div>
                                         <div class="preview-item-content">
-                                            <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                                            <p class="font-weight-light small-text mb-0 text-muted">
-                                                2 days ago
-                                            </p>
+                                            <asp:TextBox ID="TextBox1" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
                                         </div>
                                     </a>
+                                    <a class="dropdown-item preview-item">
+    <div class="preview-thumbnail">
+        <div class="preview-icon bg-info">
+            <i class="ti-bell mx-0"></i>
+        </div>
+    </div>
+    <div class="preview-item-content">
+        <asp:TextBox ID="TextBox2" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
+    </div>
+</a>
+                                    <a class="dropdown-item preview-item">
+    <div class="preview-thumbnail">
+        <div class="preview-icon bg-info">
+            <i class="ti-bell mx-0"></i>
+        </div>
+    </div>
+    <div class="preview-item-content">
+        <asp:TextBox ID="TextBox3" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
+    </div>
+</a>
+                                    <a class="dropdown-item preview-item">
+    <div class="preview-thumbnail">
+        <div class="preview-icon bg-info">
+            <i class="ti-bell mx-0"></i>
+        </div>
+    </div>
+    <div class="preview-item-content">
+        <asp:TextBox ID="TextBox4" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
+    </div>
+</a>
+                                    <a class="dropdown-item preview-item">
+    <div class="preview-thumbnail">
+        <div class="preview-icon bg-info">
+            <i class="ti-bell mx-0"></i>
+        </div>
+    </div>
+    <div class="preview-item-content">
+        <asp:TextBox ID="TextBox5" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
+    </div>
+</a>
+                                    
                                 </div>
                             </li>
                             <li class="nav-item nav-profile dropdown">
@@ -126,7 +145,7 @@
                                     </a>
                                     <a class="dropdown-item">
                                         <i class="ti-power-off text-primary"></i>
-                                        <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server"/>
+                                        <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" />
                                     </a>
                                 </div>
                             </li>
@@ -334,13 +353,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/Work_Intimation.aspx">
+                                <a class="nav-link" href="/Contractor/Work_Intimation.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Work Intimation</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/PreviousProjects.aspx">
+                                <a class="nav-link" href="/Contractor/PreviousProjects.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Work Intimations History</span>
                                 </a>
@@ -359,13 +378,12 @@
                                     </ul>
                                 </div>
                             </li>
-                         <%--  <li class="nav-item">
+                            <%--  <li class="nav-item">
                                  <a class="nav-link" href="/Contractor/TestReportHistory.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Test Reports History</span>
                                 </a>
                             </li>--%>
-                           
                         </ul>
                     </nav>
                     <div class="main-panel">
@@ -388,6 +406,6 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-   
+
 </body>
 </html>
