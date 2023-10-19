@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" 
+                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10" 
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -107,21 +107,27 @@
             var strData = strKey.value.toLowerCase().split(" ");
             var tblData = document.getElementById("<%=GridView1.ClientID %>");
             var rowData;
+
             for (var i = 1; i < tblData.rows.length; i++) {
                 rowData = tblData.rows[i].innerHTML;
                 var styleDisplay = 'none';
+
+                // Initialize a variable to keep track of whether any strData keyword is found in the row
+                var found = false;
+
                 for (var j = 0; j < strData.length; j++) {
-                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
-                        styleDisplay = '';
-                    else {
-                        styleDisplay = 'none';
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0) {
+                        found = true;
                         break;
                     }
                 }
+
+                // If any strData keyword is found in the row, display it; otherwise, hide it
+                styleDisplay = found ? '' : 'none';
                 tblData.rows[i].style.display = styleDisplay;
             }
-
         }
+
         function SearchOnEnter(event) {
             if (event.keyCode === 13) {
                 event.preventDefault(); // Prevent default form submission

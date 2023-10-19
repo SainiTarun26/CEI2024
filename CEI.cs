@@ -1148,7 +1148,19 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlInstallationType()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InstallatioType");
-        } 
+        }
+        public DataSet GetSuppervisorLineTestReportData(string LineID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineDataBySupervisor", LineID);
+        }
+        public DataSet GetSubstationDataBySupervisor(string SubstationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubstationDataBySupervisor", SubstationId);
+        }
+        public DataSet GetGeneraterSetData(string GeneratingId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetGeneraterSetDataBySupervisor", GeneratingId);
+        }
         public DataSet GetddlDistrict()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AreaCovered");

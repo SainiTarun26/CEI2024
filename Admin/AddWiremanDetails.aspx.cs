@@ -267,8 +267,7 @@ namespace CEI_PRoject.Admin
                     }
 
                 }
-                else
-                {
+                
                     GetIP();
                     REID = hdnId.Value;
                     string Createdby = Convert.ToString(Session["AdminID"]);
@@ -292,7 +291,7 @@ namespace CEI_PRoject.Admin
 
                     }
                     Reset();
-                }
+                
                 }
             catch (Exception Ex)
             {

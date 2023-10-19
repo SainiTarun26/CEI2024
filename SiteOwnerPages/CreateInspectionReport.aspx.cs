@@ -93,27 +93,27 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            bool allFilesArePDF = true;
+            //bool allFilesArePDF = true;
 
-            for (int i = 1; i <= 15; i++)
-            {
-                FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
+            //for (int i = 1; i <= 15; i++)
+            //{
+            //    FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
 
-                if (fileUploadControl.HasFile)
-                {
-                    string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
+            //    if (fileUploadControl.HasFile)
+            //    {
+            //        string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
 
-                    if (fileExtension.ToLower() != ".pdf")
-                    {
-                        allFilesArePDF = false;
-                        break; 
+            //        if (fileExtension.ToLower() != ".pdf")
+            //        {
+            //            allFilesArePDF = false;
+            //            break; 
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
 
-            if (allFilesArePDF)
-            {
+            //if (allFilesArePDF)
+            //{
                 string AssignTo = string.Empty;
                 string Assign = string.Empty;
                 string To = string.Empty;
@@ -180,11 +180,10 @@ namespace CEIHaryana.SiteOwnerPages
                             }
                             else if (voltageLevel >= 500)
 
-                            {
+ {
                                 Assign = "Admin@123";
                             }
                             else if (voltageLevel <= 250)
-
                             {
                                 Assign = "SDO";
                             }
@@ -439,11 +438,11 @@ namespace CEIHaryana.SiteOwnerPages
                     flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
                     flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, AssignTo, CreatedBy);
                 DataSaved.Visible = true;
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
-            }
+            //}
+            //else
+            //{
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
+            //}
         }
     }
 }
