@@ -613,6 +613,19 @@
     </div>
     <footer class="footer">
     </footer>
+       <script src="/Assets/js/js/vendor.bundle.base.js"></script>
+    <script src="/Assets/js/chart.js/Chart.min.js"></script>
+    <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
+    <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="/Assets/js/dataTables.select.min.js"></script>
+    <script src="/Assets/js/off-canvas.js"></script>
+    <script src="/Assets/js/hoverable-collapse.js"></script>
+    <script src="/Assets/js/template.js"></script>
+    <script src="/Assets/js/settings.js"></script>
+    <script src="/Assets/js/todolist.js"></script>
+    <script src="/Assets/js/dashboard.js"></script>
+    <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+   
    <script type="text/javascript">
       
        function FileName() {
