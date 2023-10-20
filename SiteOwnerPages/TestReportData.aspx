@@ -24,7 +24,8 @@
                       </div>
                   </div>
                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true"
+                           PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
