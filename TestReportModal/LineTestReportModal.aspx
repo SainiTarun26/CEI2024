@@ -2228,7 +2228,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="Earthing" runat="server" visible="false">
+                                    <div id="Earthing" runat="server" visible="true">
                                         <div class="row">
                                             <div class="col-4">
                                                 <label>
@@ -2239,7 +2239,7 @@
 
 
                                             </div>
-                                            <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="false">
+                                            <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true">
                                                 <table class="table table-bordered table-striped">
                                                     <thead class="table-dark">
                                                         <tr>

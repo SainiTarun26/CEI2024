@@ -2098,8 +2098,7 @@
                         </label>
 
                        <asp:TextBox class="form-control" ID="txtSanctionLoad" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="As per demand notice of utility OR electricity bill" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                               <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSanctionLoad" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter SanctionLoad</asp:RequiredFieldValidator>
-                                                 
+                                                
                          </div>  
                     <%--<div class="col-6">
                         <label>
@@ -2121,7 +2120,7 @@
                                         </th>
                                         <th style="width: 20%;">No of Installations
                                         </th>
-                                        <th style="width: 10%;"></th>
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -2138,9 +2137,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete1" Text="DELETE" CssClass="submit btn-danger" OnClick="btnDelete1_Click" />
-                                            </td>
+                                          
                                         </tr>
                                     </div>
                                     <div id="installationType2" runat="server" visible="False">
@@ -2156,9 +2153,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete2" Text="DELETE" CssClass="submit" OnClick="btnDelete2_Click" />
-                                            </td>
+                                           
                                         </tr>
                                     </div>
                                     <div id="installationType3" runat="server" visible="False">
@@ -2174,9 +2169,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete3" Text="DELETE" CssClass="submit" OnClick="btnDelete3_Click" />
-                                            </td>
+                                           
                                         </tr>
                                     </div>
                                     <div id="installationType4" runat="server" visible="False">
@@ -2192,9 +2185,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete4" Text="DELETE" CssClass="submit" OnClick="btnDelete4_Click" />
-                                            </td>
+                                            
                                         </tr>
                                     </div>
                                     <div id="installationType5" runat="server" visible="False">
@@ -2210,9 +2201,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtinstallationNo5" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete5" Text="DELETE" CssClass="submit" OnClick="btnDelete5_Click" />
-                                            </td>
+                                           
                                         </tr>
                                     </div>
                                     <div id="installationType6" runat="server" visible="False">
@@ -2228,9 +2217,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtinstallationNo6" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete6" Text="DELETE" CssClass="submit" OnClick="btnDelete6_Click" />
-                                            </td>
+                                            
                                         </tr>
                                     </div>
                                     <div id="installationType7" runat="server" visible="False">
@@ -2246,9 +2233,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtinstallationNo7" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete7" Text="DELETE" CssClass="submit" OnClick="btnDelete7_Click" />
-                                            </td>
+                                           
                                         </tr>
                                     </div>
                                     <div id="installationType8" runat="server" visible="False">
@@ -2264,9 +2249,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtinstallationNo8" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="btnDelete8" Text="DELETE" CssClass="submit" OnClick="btnDelete8_Click" />
-                                            </td>
+                                         
                                         </tr>
                                     </div>
                                 </tbody>
