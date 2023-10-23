@@ -2024,16 +2024,12 @@
                                         <path d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8c12.3-2.5 24.1-6.4 35.1-11.5c-2.1-10.8-3.1-21.9-3.1-33.3c0-80.3 53.8-148 127.3-169.2c.5-2.2 .7-4.5 .7-6.8c0-17.7-14.3-32-32-32H32zM432 512a144 144 0 1 0 0-288 144 144 0 1 0 0 288zm47.9-225c4.3 3.7 5.4 9.9 2.6 14.9L452.4 356H488c5.2 0 9.8 3.3 11.4 8.2s-.1 10.3-4.2 13.4l-96 72c-4.5 3.4-10.8 3.2-15.1-.6s-5.4-9.9-2.6-14.9L411.6 380H376c-5.2 0-9.8-3.3-11.4-8.2s.1-10.3 4.2-13.4l96-72c4.5-3.4 10.8-3.2 15.1 .6z" />
                                     </svg>SINGLE/THREE-PHASE</label>--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
     <ul>
         <li class="tab-content tab-content-first typography">
             <div class="card-body" id="divLine" runat="server" style="margin-top: -30px;">
-
                 <div id="IfInstallationIsLine" runat="server">
                     <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
-
                         <div class="row">
-
                             <div class="col-md-4"></div>
                             <div class="col-sm-4" style="text-align: center;">
                                 <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
@@ -2056,7 +2052,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlLineVoltage" runat="server" InitialValue="0" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="Please Select Line Voltage"></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-2" id="divOtherVoltages" runat="server" visible="false">
+                                        <div class="col-2" id="divOtherVoltages" runat="server" visible="false" style="top: 0px !important;">
                                             <label for="Voltage">
                                                 Other Voltage 
                                                      <samp style="color: red">* </samp>
@@ -2068,7 +2064,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="ddlOtherVoltage" InitialValue="0" ValidationGroup="Submit" runat="server" ForeColor="Red" ErrorMessage="Please Select Other Voltage"></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-2" id="OtherVoltage" runat="server" visible="false">
+                                        <div class="col-2" id="OtherVoltage" runat="server" visible="false" style="top: 0px !important;">
                                             <label for="Voltage">
                                                 Other Voltage 
                                                      <samp style="color: red">* </samp>
@@ -2566,7 +2562,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="Insulation440vAbove" runat="server" visible="false">
+                                <div id="Insulation440vAbove" runat="server" visible="true">
                                     <div class="row">
                                         <div class="col-4">
                                             <label>
@@ -2777,15 +2773,11 @@
                                 </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>
-
                         <div class="row">
-
                             <div class="col-4"></div>
                             <div class="col-4" style="text-align: center;">
                                 <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" class="btn btn-primary mr-2"
                                     OnClick="btnSubmit_Click" />
-
-
                             </div>
                             <div class="col-4">
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
@@ -2795,9 +2787,7 @@
                 </div>
             </div>
         </li>
-
     </ul>
-
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
     <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
