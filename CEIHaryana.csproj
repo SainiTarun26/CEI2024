@@ -1557,6 +1557,9 @@
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
+    <Content Include="Supervisor\SupervisorGeneraterSetTestReport.aspx" />
+    <Content Include="Supervisor\SupervisorLineTestReport.aspx" />
+    <Content Include="Supervisor\SupervisorSubstationTestReport.aspx" />
     <Content Include="Supervisor\TestReportDetails.aspx" />
     <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
@@ -1815,6 +1818,27 @@
     </Compile>
     <Compile Include="Supervisor\SupervisorDashboard.aspx.designer.cs">
       <DependentUpon>SupervisorDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\SupervisorGeneraterSetTestReport.aspx.cs">
+      <DependentUpon>SupervisorGeneraterSetTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\SupervisorGeneraterSetTestReport.aspx.designer.cs">
+      <DependentUpon>SupervisorGeneraterSetTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\SupervisorLineTestReport.aspx.cs">
+      <DependentUpon>SupervisorLineTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\SupervisorLineTestReport.aspx.designer.cs">
+      <DependentUpon>SupervisorLineTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\SupervisorSubstationTestReport.aspx.cs">
+      <DependentUpon>SupervisorSubstationTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\SupervisorSubstationTestReport.aspx.designer.cs">
+      <DependentUpon>SupervisorSubstationTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\TestReportDetails.aspx.cs">
       <DependentUpon>TestReportDetails.aspx</DependentUpon>

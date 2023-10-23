@@ -26,23 +26,31 @@
 
         img {
             height: 60px !important;
-            width:186px;
-            margin-left:40px !important;
+            width: 186px;
+            margin-left: 40px !important;
         }
 
         .avatar {
             width: 60px !important;
         }
+
         nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
-    box-shadow: 0px 5px 21px -5px #CDD1E1;
-}
-        .notification-box{
-            border: 0px !important;
-    box-shadow: none !important;
+            box-shadow: 0px 5px 21px -5px #CDD1E1;
         }
-       .dropdown-menu.dropdown-menu-right.navbar-dropdown.preview-list.show {
-    width: max-content;
-}
+
+        .notification-box {
+            border: 0px !important;
+            box-shadow: none !important;
+        }
+
+        .dropdown-menu.dropdown-menu-right.navbar-dropdown.preview-list.show {
+            width: max-content;
+        }
+
+        .scrollable-content {
+            max-height: 200px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -88,10 +96,12 @@
                                             </div>
                                         </div>
                                         <div class="preview-item-content">
-                                            <asp:TextBox ID="TextBox1" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
+                                            <div class="scrollable-content">
+                                                <asp:PlaceHolder runat="server" ID="TextBoxPlaceholder"></asp:PlaceHolder>
+                                            </div>
                                         </div>
                                     </a>
-                                    <a class="dropdown-item preview-item">
+                                    <%--  <a class="dropdown-item preview-item">
     <div class="preview-thumbnail">
         <div class="preview-icon bg-info">
             <i class="ti-bell mx-0"></i>
@@ -131,7 +141,7 @@
         <asp:TextBox ID="TextBox5" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
     </div>
 </a>
-                                    
+                                    --%>
                                 </div>
                             </li>
                             <li class="nav-item nav-profile dropdown">

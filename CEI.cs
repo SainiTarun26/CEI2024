@@ -1144,6 +1144,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlAssignedWorkForSupervisor()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_WorkDetail");
+        } 
+        public DataSet GetContractorNotifications(string ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ContractorNotificationData", ID);
         }
         public DataSet GetddlInstallationType()
         {
@@ -1300,6 +1304,25 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet checkCertificateexist(string CertificateOld, string CertificateNew)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificate", CertificateOld, CertificateNew);
+        }
+
+        public DataSet SearchingOnGeneraterSet(string searchterm, string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SearchingGeneraterSet", searchterm, LoginId);
+        }
+
+        public DataSet SearchingOnSubstation(string searchterm, string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SearchingSubstation", searchterm, LoginId);
+        }
+        public DataSet SearchingOnLine(string searchterm, string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SearchingLineData", searchterm, LoginId);
+        }
+
+        public DataSet SearchingOnIntimation(string searchterm, string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SearchingIntimationData", searchterm, LoginId);
         }
     }
 }

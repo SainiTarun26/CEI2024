@@ -75,7 +75,7 @@ namespace CEIHaryana.Supervisor
             GridView1.PageIndex = e.NewPageIndex;
             getWorkIntimationData();
         }
-        
+
         protected void GetDetails()
         {
             try
@@ -120,6 +120,26 @@ namespace CEIHaryana.Supervisor
 
             }
             catch { }
+        }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searhterm = txtSearch.Text.Trim();
+            string LoginId = string.Empty;
+            LoginId = Session["AdminID"].ToString();
+
+            DataSet ds = new DataSet();
+            ds = cei.SearchingOnIntimation(searhterm, LoginId);
+            if (ds.Tables.Count > 0)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            else
+            {
+                string script = "alert(\"No Record Match\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
+            }
         }
     }
 }

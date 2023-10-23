@@ -9,12 +9,12 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Supervisor
 {
-    public partial class SupervisorSubstationTestReport : System.Web.UI.Page
+	public partial class SupervisorSubstationTestReport : System.Web.UI.Page
     {
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 GridViewBind();
             }
@@ -25,7 +25,7 @@ namespace CEIHaryana.Supervisor
             LoginId = Session["AdminID"].ToString();
             DataSet ds = new DataSet();
             ds = cei.GetSubstationDataBySupervisor(LoginId);
-            if(ds.Tables.Count>0)
+            if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
@@ -55,6 +55,26 @@ namespace CEIHaryana.Supervisor
                     Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
 
                 }
+            }
+        }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchterm = txtSearch.Text.Trim();
+            string LoginId = string.Empty;
+            LoginId = Session["ContractorID"].ToString();
+
+            DataSet ds = new DataSet();
+            ds = cei.SearchingOnSubstation(searchterm, LoginId);
+            if (ds.Tables.Count > 0)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            else
+            {
+                string script = "alert(\"No Record Match\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
             }
         }
     }

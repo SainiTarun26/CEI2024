@@ -91,14 +91,14 @@
                             <div class="form-group row" style="margin-bottom: 0px !important;">
                                 <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-10" style="margin-left: -130px; margin-top: auto; margin-bottom: auto;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="font-size: 12px; height: 30px;"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged"  Font-Size="12px"  Style="font-size: 12px; height: 30px;"></asp:TextBox><br />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div style="margin-top:3%">
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
-                            AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+                            AllowPaging="true" PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
