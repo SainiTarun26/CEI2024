@@ -123,20 +123,7 @@ namespace CEIHaryana.TestReportModal
                 TxtOthervoltage.Text = ds.Tables[0].Rows[0]["OtherVoltage"].ToString();
                 txtLineLength.Text = ds.Tables[0].Rows[0]["LineLength"].ToString();
                 txtLineType.Text = ds.Tables[0].Rows[0]["LineType"].ToString();
-                if (txtLineType.Text.Trim() == "Overhead")
-                {
-                    Earthing.Visible = true;
-                    LineEarthingdiv.Visible = true;
-                    LineTypeOverhead.Visible = true;
-                    LineTypeUnderground.Visible = false;
-                }
-                else if (txtLineType.Text.Trim() == "Underground")
-                {
-                    Earthing.Visible = true;
-                    LineEarthingdiv.Visible = true;
-                    LineTypeUnderground.Visible = true;
-                    LineTypeOverhead.Visible = false;
-                }
+               
                 if (txtVotalgeType.Text =="V") {
                     if (int.TryParse(TxtOthervoltage.Text, out int value))
                     {
@@ -225,8 +212,7 @@ namespace CEIHaryana.TestReportModal
                 else if (txtLineType.Text.Trim() == "Underground")
                 {
 
-                    LineTypeUnderground.Visible = true;
-                    LineTypeOverhead.Visible = false;
+                  
                     if (txtVotalgeType.Text == "Other")
                     {
                         if (TxtOthervoltage.Text.Trim() == "KV")
@@ -274,6 +260,8 @@ namespace CEIHaryana.TestReportModal
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
+                    LineTypeUnderground.Visible = true;
+                    LineTypeOverhead.Visible = false;
 
                 }
                 else

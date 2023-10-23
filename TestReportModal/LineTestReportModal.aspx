@@ -2196,6 +2196,38 @@
 
                                         </div>
                                     </div>
+                                    <div id="LineTypeUnderground" runat="server"  visible="true">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>
+                                                    Type of Cable
+                            <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtCableType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                            </div>
+                                            <div class="col-4" id="OtherCable" runat="server" visible="false">
+                                                <label>
+                                                    Type of Cable(Other)<samp style="color: red"> * </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtOtherCable" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    Size of Cable: In(MM Sq.)<samp style="color: red"> * </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtCableSize" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    Cable Laid in
+                            <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtCableLaid" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div id="Earthing" runat="server" visible="false">
                                         <div class="row">
                                             <div class="col-4">
@@ -2522,38 +2554,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="LineTypeUnderground" runat="server" visible="false">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <label>
-                                                    Type of Cable
-                            <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtCableType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                            </div>
-                                            <div class="col-4" id="OtherCable" runat="server" visible="false">
-                                                <label>
-                                                    Type of Cable(Other)<samp style="color: red"> * </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtOtherCable" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4">
-                                                <label>
-                                                    Size of Cable: In(MM Sq.)<samp style="color: red"> * </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtCableSize" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4">
-                                                <label>
-                                                    Cable Laid in
-                            <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtCableLaid" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
                                         <div class="row">
                                             <div class="col-4">
