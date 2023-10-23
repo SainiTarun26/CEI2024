@@ -51,7 +51,7 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlGeneratingSetType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlGeneratingSetType.SelectedItem.ToString() == "Solar Panel")
+            if (ddlGeneratingSetType.SelectedItem.ToString() != "0")
             {
                 SolarPanelGeneratingSet.Visible = true;
                 ddlGeneratingEarthing.SelectedValue = "0";             
