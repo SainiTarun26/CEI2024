@@ -2233,6 +2233,206 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <div id="Insulation440vAbove" runat="server" visible="true">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label>
+                                                Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtRedEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ControlToValidate="txtRedEarthWire" runat="server" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="Please Enter Red Earth Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div32" runat="server">
+                                            <label for="Name">
+                                                Yellow Phase – Earth Wire (in Mohm)	
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtYellowEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ControlToValidate="txtYellowEarthWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter  Yellow Earth Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div33" runat="server">
+                                            <label for="Name">
+                                                Blue Phase – Earth Wire (in Mohm)	
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtBlueEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" ControlToValidate="txtBlueEarthWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Blue Earth Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div34" runat="server">
+                                            <label for="Name">
+                                                Red Phase – Yellow Phase(in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtRedYellowPhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="17" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ControlToValidate="txtRedYellowPhase" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Yellow Phase"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div35" runat="server">
+                                            <label for="Name">
+                                                Blue Phase – Yellow Phase(in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtBlueYellowPhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="18" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" ControlToValidate="txtBlueYellowPhase" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Blue Yellow Phase"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div36" runat="server">
+                                            <label for="Name">
+                                                Red Phase – Blue Phase(in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtRedBluePhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" ControlToValidate="txtRedBluePhase" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Blue Phase"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="Insulation220vAbove" runat="server" visible="false">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label>
+                                                Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtNeutralWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" ControlToValidate="txtNeutralWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Neutral Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div37" runat="server">
+                                            <label for="Name">
+                                                Phase wire - Earth (in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" ControlToValidate="txtEarthWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Earth Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div39" runat="server">
+                                            <label for="Name">
+                                                Neutral wire - Earth (in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtNeutralWireEarth" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator30" ForeColor="Red" ControlToValidate="txtNeutralWireEarth" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Neutral Wire Earth"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="LineTypeUnderground" runat="server" visible="false">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label>
+                                                Type of Cable
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableType" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlCableType_SelectedIndexChanged1">
+                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                <asp:ListItem Value="1" Text="XPLE"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text="Other"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" ControlToValidate="ddlCableType" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Cabel Type"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="OtherCable" runat="server" visible="false">
+                                            <label>
+                                                Type of Cable(Other)<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtOtherCable" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" ControlToValidate="txtOtherCable" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Other Cabel"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4">
+                                            <label>
+                                                Size of Cable: In(MM Sq.)<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtCableSize" MaxLength="3" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator33" ControlToValidate="txtCableSize" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Cabel Size"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4">
+                                            <label>
+                                                Cable Laid in
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableLaid" selectionmode="Multiple" Style="width: 100% !important">
+                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                <asp:ListItem Value="1" Text="Trench"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text="circuit"></asp:ListItem>
+                                                <asp:ListItem Value="3" Text="cable tray"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator34" ControlToValidate="ddlCableLaid" ForeColor="Red" runat="server" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Enter Cabel Laid"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label>
+                                                Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtRedWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator35" ControlToValidate="txtRedWire" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Red Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div38" runat="server">
+                                            <label for="Name">
+                                                Yellow Phase – Earth Wire (in Mohm)	
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtYellowWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator36" ControlToValidate="txtYellowWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Yellow Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div40" runat="server">
+                                            <label for="Name">
+                                                Blue Phase – Earth Wire (in Mohm)	
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtBlueWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator37" ControlToValidate="txtBlueWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Ente Blue Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div41" runat="server">
+                                            <label for="Name">
+                                                Red Phase – Yellow Phase(in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtRedYellowWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator38" ControlToValidate="txtRedYellowWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Yellow Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div42" runat="server">
+                                            <label for="Name">
+                                                Blue Phase – Yellow Phase(in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtBlueYellowWire" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator39" ControlToValidate="txtBlueYellowWire" ForeColor="Red" runat="server" ErrorMessage="Please Enter Blue Yellow Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div43" runat="server">
+                                            <label for="Name">
+                                                Red Phase – Blue Phase(in Mohm)
+                                                        <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtRedBlueWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator40" ControlToValidate="txtRedBlueWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Blue Wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="UndergroundInsulation220vAbove" runat="server" visible="false">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label>
+                                                Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator41" ControlToValidate="txtNeutralPhaseWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Neutral Phase wire"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div44" runat="server">
+                                            <label for="Name">
+                                                Phase wire - Earth (in Mohm)
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtPhaseWireEarth" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator42" ControlToValidate="txtPhaseWireEarth" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Phase Wire Earth"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" id="Div45" runat="server">
+                                            <label for="Name">
+                                                Neutral wire - Earth (in Mohm)
+                                                        <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" MaxLength="4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator43" ControlToValidate="txtNeutralWireEarthUnderground" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter NeutralWireEarthUnderground"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="Earthing" runat="server" visible="false">
                                     <div class="row">
                                         <div class="col-4">
@@ -2559,205 +2759,6 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="Insulation440vAbove" runat="server" visible="true">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <label>
-                                                Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtRedEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ControlToValidate="txtRedEarthWire" runat="server" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="Please Enter Red Earth Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div32" runat="server">
-                                            <label for="Name">
-                                                Yellow Phase – Earth Wire (in Mohm)	
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtYellowEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ControlToValidate="txtYellowEarthWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter  Yellow Earth Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div33" runat="server">
-                                            <label for="Name">
-                                                Blue Phase – Earth Wire (in Mohm)	
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtBlueEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" ControlToValidate="txtBlueEarthWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Blue Earth Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div34" runat="server">
-                                            <label for="Name">
-                                                Red Phase – Yellow Phase(in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtRedYellowPhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="17" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ControlToValidate="txtRedYellowPhase" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Yellow Phase"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div35" runat="server">
-                                            <label for="Name">
-                                                Blue Phase – Yellow Phase(in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtBlueYellowPhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="18" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" ControlToValidate="txtBlueYellowPhase" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Blue Yellow Phase"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div36" runat="server">
-                                            <label for="Name">
-                                                Red Phase – Blue Phase(in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtRedBluePhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" ControlToValidate="txtRedBluePhase" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Blue Phase"></asp:RequiredFieldValidator>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="Insulation220vAbove" runat="server" visible="false">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <label>
-                                                Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtNeutralWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" ControlToValidate="txtNeutralWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Neutral Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div37" runat="server">
-                                            <label for="Name">
-                                                Phase wire - Earth (in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" ControlToValidate="txtEarthWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Earth Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div39" runat="server">
-                                            <label for="Name">
-                                                Neutral wire - Earth (in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtNeutralWireEarth" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator30" ForeColor="Red" ControlToValidate="txtNeutralWireEarth" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Neutral Wire Earth"></asp:RequiredFieldValidator>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="LineTypeUnderground" runat="server" visible="false">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <label>
-                                                Type of Cable
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableType" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlCableType_SelectedIndexChanged1">
-                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                <asp:ListItem Value="1" Text="XPLE"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="Other"></asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" ControlToValidate="ddlCableType" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Cabel Type"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="OtherCable" runat="server" visible="false">
-                                            <label>
-                                                Type of Cable(Other)<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtOtherCable" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" ControlToValidate="txtOtherCable" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Other Cabel"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4">
-                                            <label>
-                                                Size of Cable: In(MM Sq.)<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtCableSize" MaxLength="3" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator33" ControlToValidate="txtCableSize" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Cabel Size"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4">
-                                            <label>
-                                                Cable Laid in
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCableLaid" selectionmode="Multiple" Style="width: 100% !important">
-                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                <asp:ListItem Value="1" Text="Trench"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="circuit"></asp:ListItem>
-                                                <asp:ListItem Value="3" Text="cable tray"></asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator34" ControlToValidate="ddlCableLaid" ForeColor="Red" runat="server" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Enter Cabel Laid"></asp:RequiredFieldValidator>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <label>
-                                                Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtRedWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator35" ControlToValidate="txtRedWire" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Red Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div38" runat="server">
-                                            <label for="Name">
-                                                Yellow Phase – Earth Wire (in Mohm)	
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtYellowWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator36" ControlToValidate="txtYellowWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Yellow Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div40" runat="server">
-                                            <label for="Name">
-                                                Blue Phase – Earth Wire (in Mohm)	
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtBlueWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator37" ControlToValidate="txtBlueWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Ente Blue Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div41" runat="server">
-                                            <label for="Name">
-                                                Red Phase – Yellow Phase(in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtRedYellowWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator38" ControlToValidate="txtRedYellowWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Yellow Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div42" runat="server">
-                                            <label for="Name">
-                                                Blue Phase – Yellow Phase(in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtBlueYellowWire" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator39" ControlToValidate="txtBlueYellowWire" ForeColor="Red" runat="server" ErrorMessage="Please Enter Blue Yellow Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div43" runat="server">
-                                            <label for="Name">
-                                                Red Phase – Blue Phase(in Mohm)
-                                                        <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtRedBlueWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator40" ControlToValidate="txtRedBlueWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Blue Wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="UndergroundInsulation220vAbove" runat="server" visible="false">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <label>
-                                                Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator41" ControlToValidate="txtNeutralPhaseWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Neutral Phase wire"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div44" runat="server">
-                                            <label for="Name">
-                                                Phase wire - Earth (in Mohm)
-                                            <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtPhaseWireEarth" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator42" ControlToValidate="txtPhaseWireEarth" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Phase Wire Earth"></asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-4" id="Div45" runat="server">
-                                            <label for="Name">
-                                                Neutral wire - Earth (in Mohm)
-                                                        <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" MaxLength="4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator43" ControlToValidate="txtNeutralWireEarthUnderground" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter NeutralWireEarthUnderground"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
                                 </div>

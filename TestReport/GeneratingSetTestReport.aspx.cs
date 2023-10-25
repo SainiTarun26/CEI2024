@@ -51,7 +51,7 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlGeneratingSetType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlGeneratingSetType.SelectedItem.ToString() != "0")
+            if (ddlGeneratingSetType.SelectedItem.ToString() == "0")
             {
                 SolarPanelGeneratingSet.Visible = true;
                 ddlGeneratingEarthing.SelectedValue = "0";             
@@ -67,7 +67,20 @@ namespace CEIHaryana.TestReport
 
         {
             GeneratingEarthing.Visible = true;
-           if (ddlGeneratingEarthing.SelectedItem.ToString() == "4")
+            GeneratingEarthing4.Visible = false;
+            GeneratingEarthing5.Visible = false;
+            GeneratingEarthing6.Visible = false;
+            GeneratingEarthing7.Visible = false;
+            GeneratingEarthing8.Visible = false;
+            GeneratingEarthing9.Visible = false;
+            GeneratingEarthing10.Visible = false;
+            GeneratingEarthing11.Visible = false;
+            GeneratingEarthing12.Visible = false;
+            GeneratingEarthing13.Visible = false;
+            GeneratingEarthing14.Visible = false;
+            GeneratingEarthing15.Visible = false;
+            Limit.Visible = false;
+            if (ddlGeneratingEarthing.SelectedItem.ToString() == "4")
             {
                 Limit.Visible = false;
                 GeneratingEarthing4.Visible = true;
@@ -194,22 +207,9 @@ namespace CEIHaryana.TestReport
                 GeneratingEarthing15.Visible = true;
             }
 
-            else
-            {
-                GeneratingEarthing4.Visible = false;
-                GeneratingEarthing5.Visible = false;
-                GeneratingEarthing6.Visible = false;
-                GeneratingEarthing7.Visible = false;
-                GeneratingEarthing8.Visible = false;
-                GeneratingEarthing9.Visible = false;
-                GeneratingEarthing10.Visible = false;
-                GeneratingEarthing11.Visible = false;
-                GeneratingEarthing12.Visible = false;
-                GeneratingEarthing13.Visible = false;
-                GeneratingEarthing14.Visible = false;
-                GeneratingEarthing15.Visible = false;
-                Limit.Visible = false;
-            }
+            
+               
+            
 
         }
         protected void CheckBox3_CheckedChanged(object sender, EventArgs e)

@@ -2059,76 +2059,7 @@
                                     <asp:TextBox class="form-control" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ForeColor="Red" ControlToValidate="txtBreakingCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Breaking Capacity"></asp:RequiredFieldValidator>
                                 </div>
-                            </div>
-                            <div id="SolarPanelGeneratingSet" runat="server" visible="false">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <label for="Name">
-                                            Type of plant<samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPlantType" selectionmode="Multiple" Style="width: 100% !important">
-                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="Ground Mounted" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="Roof top" Value="2"></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" ControlToValidate="ddlPlantType" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Plant Type"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-2" style="margin-top: -15px;">
-                                        <label for="Name">
-                                            capacity of plant
-                                                    <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPlantCapacity" Style="width: 100% !important">
-                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="KW" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="MW" Value="2"></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator60" runat="server" ForeColor="Red" ControlToValidate="ddlPlantCapacity" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Plant Type"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-2" style="margin-top: -15px;">
-                                        <label for="Name">
-                                            capacity of plant      
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtPlantCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder=" between DC phase wire to earth wire" autocomplete="off" TabIndex="2" MaxLength="999" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Red" ControlToValidate="txtPlantCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Plant capacity"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-2" id="Div184" runat="server" style="margin-top: -15px;">
-                                        <label for="Name">
-                                            DC string       
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtDCString" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="2" placeholder=" Highest Voltage" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtDCString" ValidationGroup="Submit" ErrorMessage="Please Enter Dc String"></asp:RequiredFieldValidator>
-                                    </div>
-
-                                    <div class="col-2" id="Div185" runat="server" style="margin-top: -15px;">
-                                        <label for="Name" style="text-align: initial; font-size: 12px;">
-                                            Lowest Insulation Resistance        
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtLowestInsulation" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="4" placeholder=" between DC phase wire to earth wire" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txtLowestInsulation" ValidationGroup="Submit" ErrorMessage="Please Enter Lowest Insulation"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-4" id="Div186" runat="server">
-                                        <label for="Name">
-                                            No of PCV or Solar Inverter        
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtPCVOrSolar" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ForeColor="Red" ControlToValidate="txtPCVOrSolar" ValidationGroup="Submit" ErrorMessage="Please Enter Pvc"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-4" id="Div187" runat="server">
-                                        <label for="Name">
-                                            capacity of main LTAC Breaker        
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtLTACCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ForeColor="Red" ControlToValidate="txtLTACCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter LTAC Capacity"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-4" id="Div188" runat="server">
-                                        <label for="Name">
-                                            Lowest Insulation resistance of AC cables       
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtLowestInsulationAC" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="4" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ForeColor="Red" ControlToValidate="txtLowestInsulationAC" ValidationGroup="Submit" ErrorMessage="Please Enter Lowest Insulation Resistance of Ac"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-4" id="Div189" runat="server">
+                                  <div class="col-4">
                                         <label for="Name">
                                             Number of Earthing:
                                         <samp style="color: red">* </samp>
@@ -2140,7 +2071,8 @@
                                             Minimum Limit is 4     
                                         </label>
                                     </div>
-                                    <div class="table-responsive pt-3" id="GeneratingEarthing" runat="server" visible="false">
+                            </div>
+                            <div class="table-responsive pt-3" id="GeneratingEarthing" runat="server" visible="false">
                                         <table class="table table-bordered table-striped">
                                             <thead class="table-dark">
                                                 <tr>
@@ -2746,6 +2678,76 @@
                                             </tbody>
                                         </table>
                                     </div>
+                            <div id="SolarPanelGeneratingSet" runat="server" visible="false">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="Name">
+                                            Type of plant<samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPlantType" selectionmode="Multiple" Style="width: 100% !important">
+                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="Ground Mounted" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="Roof top" Value="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" ControlToValidate="ddlPlantType" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Plant Type"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-2" style="margin-top: -15px;">
+                                        <label for="Name">
+                                            capacity of plant
+                                                    <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPlantCapacity" Style="width: 100% !important">
+                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="KW" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="MW" Value="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator60" runat="server" ForeColor="Red" ControlToValidate="ddlPlantCapacity" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Plant Type"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-2" style="margin-top: -15px;">
+                                        <label for="Name">
+                                            capacity of plant      
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtPlantCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder=" between DC phase wire to earth wire" autocomplete="off" TabIndex="2" MaxLength="999" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Red" ControlToValidate="txtPlantCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Plant capacity"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-2" id="Div184" runat="server" style="margin-top: -15px;">
+                                        <label for="Name">
+                                            DC string       
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtDCString" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="2" placeholder=" Highest Voltage" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtDCString" ValidationGroup="Submit" ErrorMessage="Please Enter Dc String"></asp:RequiredFieldValidator>
+                                    </div>
+
+                                    <div class="col-2" id="Div185" runat="server" style="margin-top: -15px;">
+                                        <label for="Name" style="text-align: initial; font-size: 12px;">
+                                            Lowest Insulation Resistance        
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtLowestInsulation" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="4" placeholder=" between DC phase wire to earth wire" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txtLowestInsulation" ValidationGroup="Submit" ErrorMessage="Please Enter Lowest Insulation"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-4" id="Div186" runat="server">
+                                        <label for="Name">
+                                            No of PCV or Solar Inverter        
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtPCVOrSolar" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ForeColor="Red" ControlToValidate="txtPCVOrSolar" ValidationGroup="Submit" ErrorMessage="Please Enter Pvc"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-4" id="Div187" runat="server">
+                                        <label for="Name">
+                                            capacity of main LTAC Breaker        
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtLTACCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ForeColor="Red" ControlToValidate="txtLTACCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter LTAC Capacity"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-4" id="Div188" runat="server">
+                                        <label for="Name">
+                                            Lowest Insulation resistance of AC cables       
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtLowestInsulationAC" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="4" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ForeColor="Red" ControlToValidate="txtLowestInsulationAC" ValidationGroup="Submit" ErrorMessage="Please Enter Lowest Insulation Resistance of Ac"></asp:RequiredFieldValidator>
+                                    </div>
+                                  
+                                    
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 100px;" id="Declaration" runat="server" visible="false">

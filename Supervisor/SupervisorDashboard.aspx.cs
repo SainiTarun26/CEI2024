@@ -13,10 +13,15 @@ namespace CEIHaryana.Supervisor
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            try { 
             if (!IsPostBack)
             {
 
                 GetDetails();
+            }
+         }
+            catch {
+                Response.Redirect("/Login.aspx");
             }
         }
 

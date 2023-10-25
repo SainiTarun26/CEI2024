@@ -13,11 +13,18 @@ namespace CEIHaryana.Supervisor
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                Earthing.Visible = false;
-                ddlLoadBindVoltage();
-                ddlLoadBindState();
+                if (!IsPostBack)
+                {
+                    Earthing.Visible = false;
+                    ddlLoadBindVoltage();
+                    ddlLoadBindState();
+                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
 

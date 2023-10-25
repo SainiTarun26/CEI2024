@@ -360,20 +360,20 @@
                                     </ul>
                                 </div>--%>
                             </li>
-                            <%--<li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Add Staff Details</span>
+                                    <span class="menu-title">Test Report History</span>
                                     <i class="menu-arrow"></i>
                                 </a>
                                 <div class="collapse" id="ui-basic1">
                                     <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Supervisor/SupervisorLineTestReport.aspx">Line</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Supervisor/SupervisorSubstationTestReport.aspx">Substation Transformer</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Supervisor/SupervisorGeneraterSetTestReport.aspx">Generating Station</a></li>
                                     </ul>
                                 </div>
-                            </li>--%>
+                            </li>
                             <%--<li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
                                     <i class="icon-layout menu-icon"></i>

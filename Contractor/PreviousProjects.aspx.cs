@@ -11,9 +11,19 @@ namespace CEIHaryana.Contractor
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
             {
-                getWorkIntimationData();
+                if (!IsPostBack)
+                {
+                    if (Session["ContractorID"] != null || Request.Cookies["ContractorID"] != null)
+                    {
+                        getWorkIntimationData();
+                    }
+                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
         private void getWorkIntimationData()

@@ -20,10 +20,17 @@ namespace CEIHaryana.Supervisor
         string nextSessionValue = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
             {
-                // BindListBoxInstallationType();
-                GetDetails();
+                if (!Page.IsPostBack)
+                {
+                    // BindListBoxInstallationType();
+                    GetDetails();
+                }
+            }
+            catch 
+            {
+                Response.Redirect("/Login.aspx");
             }
 
         }

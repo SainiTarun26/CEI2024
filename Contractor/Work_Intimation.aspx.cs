@@ -19,46 +19,53 @@ namespace CEIHaryana.Contractor
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
             {
-                if (Session["ContractorID"] != null)
+                if (!Page.IsPostBack)
                 {
-                    ScriptManager scriptManager = ScriptManager.GetCurrent(this);
-
-
-
-
-                    ddlLoadBindPremises();
-                    worktypevisiblity();
-                    ddlLoadBindVoltage();
-                    BindDistrict();
-                    BindListBoxInstallationType();
-                    hiddenfield.Visible = false;
-                    hiddenfield1.Visible = false;
-                    OtherPremises.Visible = false;
-
-                    if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
+                    if (Session["ContractorID"] != null || Request.Cookies["ContractorID"] != null)
                     {
+                        ScriptManager scriptManager = ScriptManager.GetCurrent(this);
 
-                        GetGridData();
-                        GridView1.Columns[0].Visible = true;
+
+
+
+                        ddlLoadBindPremises();
+                        worktypevisiblity();
+                        ddlLoadBindVoltage();
+                        BindDistrict();
+                        BindListBoxInstallationType();
+                        hiddenfield.Visible = false;
+                        hiddenfield1.Visible = false;
+                        OtherPremises.Visible = false;
+
+                        if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
+                        {
+
+                            GetGridData();
+                            GridView1.Columns[0].Visible = true;
+                        }
+                        else
+                        {
+
+                            GetDetails();
+                            GetassigneddatatoContractor();
+                            Session["id"] = "";
+                            btnReset.Visible = false;
+                            btnSubmit.Visible = false;
+                            btnBack.Visible = true;
+                        }
+
                     }
                     else
                     {
-
-                        GetDetails();
-                        GetassigneddatatoContractor();
-                        Session["id"] = "";
-                        btnReset.Visible = false;
-                        btnSubmit.Visible = false;
-                        btnBack.Visible = true;
+                        Response.Redirect("/Login.aspx");
                     }
-
                 }
-                else
-                {
-                    Response.Redirect("/Login.aspx");
-                }
+            }
+            catch 
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
         protected void GetDetails()

@@ -36,6 +36,11 @@ namespace CEIHaryana.Contractor
                     Response.Redirect("/Login.aspx");
                 }
                 GetContractorNotifications();
+                //if(TextBoxPlaceholder.Controls.Count > 0)
+                //{
+                //    string alert = "alert('');";
+                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
+                //}
             }
             catch
             {
@@ -67,7 +72,7 @@ namespace CEIHaryana.Contractor
                 {
                     ID = "TextBox_" + rowIndex, // Unique ID for each TextBox
                     CssClass = "form-control notification-box font-weight-light small-text mb-0 text-muted",
-                    Text = "Dynamic Data: " + dynamicData,
+                    Text = "Supervisor Created Test Report for Intimation: " + dynamicData,
                     TextMode = TextBoxMode.MultiLine,
                     Rows = 2,
                    // WStyle = "font-size: 12px;"
@@ -83,8 +88,8 @@ namespace CEIHaryana.Contractor
             }
 
             // Add some hardcoded text
-            string hardcodedText = "Hardcoded Text: This is some additional text.";
-            TextBoxPlaceholder.Controls.Add(new LiteralControl(hardcodedText));
+            //string hardcodedText = "Hardcoded Text: This is some additional text.";
+            //TextBoxPlaceholder.Controls.Add(new LiteralControl(hardcodedText));
         }
     }
 }

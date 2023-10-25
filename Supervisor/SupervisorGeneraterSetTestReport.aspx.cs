@@ -14,9 +14,16 @@ namespace CEIHaryana.Supervisor
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                GridviewBind();
+                if (!IsPostBack)
+                {
+                    GridviewBind();
+                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
 

@@ -11,16 +11,23 @@ namespace CEIHaryana.Supervisor
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                //if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
-                //{
-                ddlLoadBindVoltage();
-                ddlEarthing();
-                ddlEarthingSubstation();
-                //VisibleDiv()
-                //  ddlEarthingGeneratingSet();
-                //}
+                if (!IsPostBack)
+                {
+                    //if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
+                    //{
+                    ddlLoadBindVoltage();
+                    ddlEarthing();
+                    ddlEarthingSubstation();
+                    //VisibleDiv()
+                    //  ddlEarthingGeneratingSet();
+                    //}
+                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
         private void VisibleDiv()

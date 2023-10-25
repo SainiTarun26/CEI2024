@@ -16,9 +16,19 @@ namespace CEIHaryana.Contractor
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            try
             {
-                GridData();
+                if (!IsPostBack)
+                {
+                    if (Session["ContractorID"] != null || Request.Cookies["ContractorID"] != null)
+                    {
+                        GridData();
+                    }
+                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
 
