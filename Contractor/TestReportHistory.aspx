@@ -96,7 +96,7 @@
 }
  
 .pagination-ys table > tbody > tr > td {
-    display: inline;
+    display: contents;
 }
  
 .pagination-ys table > tbody > tr > td > a,
@@ -174,7 +174,7 @@
                           </div>
                       </div>
                   </div>
-                       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
+                       <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true"
                         PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <PagerStyle CssClass="pagination-ys" />

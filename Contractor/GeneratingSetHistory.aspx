@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" 
+                <asp:GridView class="table table-hover table-striped table-responsive" ID="GridView1" runat="server" Width="100%" 
                       AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20"
                        OnPageIndexChanging="GridView1_PageIndexChanging">
                       <Columns>
