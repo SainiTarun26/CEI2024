@@ -2233,7 +2233,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div id="Insulation440vAbove" runat="server" visible="true">
                                     <div class="row">
                                         <div class="col-4">
@@ -2772,18 +2772,18 @@
                                         </label>
                                     </div>
                                 </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                            
                         <div class="row">
                             <div class="col-4"></div>
                             <div class="col-4" style="text-align: center;">
-                                <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" class="btn btn-primary mr-2"
-                                    OnClick="btnSubmit_Click" />
+                                <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Generate Test Report" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit"/>
                             </div>
                             <div class="col-4">
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             </div>
                         </div>
+                                </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
             </div>

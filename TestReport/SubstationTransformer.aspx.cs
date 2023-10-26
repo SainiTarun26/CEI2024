@@ -429,7 +429,7 @@ namespace CEIHaryana.TestReport
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
 
                         }
                     }
@@ -485,7 +485,7 @@ namespace CEIHaryana.TestReport
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Form Submitted Successfully')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
 
                         }
                     }
