@@ -249,16 +249,19 @@ namespace CEI_PRoject.Admin
                 {
                     UserId = CertificateOld.Text;
                 }
-                DataSet ds1 = new DataSet();
-                ds1 = CEI.checkCertificateexist(CertificateOld.Text, CertificateNew.Text);
-                if (ds1 != null && ds1.Tables.Count > 0)
+                if (btnSubmit.Text.Trim() == "Submit")
                 {
-                    if (ds1.Tables[0].Rows.Count > 0)
+                    DataSet ds1 = new DataSet();
+                    ds1 = CEI.checkCertificateexist(CertificateOld.Text, CertificateNew.Text);
+                    if (ds1 != null && ds1.Tables.Count > 0)
                     {
-                        string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                    }
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
+                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                        }
 
+                    }
                 }
                
                     GetIP();

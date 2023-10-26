@@ -249,7 +249,7 @@ namespace CEIHaryana.TestReport
                     }
                     string TestReportId = Session["TestReportId"].ToString();
                     string IntimationId = Session["id"].ToString();
-                    string CreatedBy = Session["AdminID"].ToString();
+                    string CreatedBy = Session["SupervisorID"].ToString();
                     CEI.InsertGeneratingSetData(GeneratingSetId, TestReportId, IntimationId,
                         ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
                txtGeneratorVoltage.Text, txtCurrentCapacity.Text, txtBreakingCapacity.Text, ddlPlantType.SelectedItem.ToString(), ddlPlantCapacity.SelectedItem.ToString(),
