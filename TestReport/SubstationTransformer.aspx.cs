@@ -56,30 +56,24 @@ namespace CEIHaryana.TestReport
                 Capacity.Visible = false;
                 BDV.Visible = false;
             }
-            if (ddltransformerCapacity.SelectedValue == "1")
+          
+        }
+        protected void txtTransformerCapacity_TextChanged(object sender, EventArgs e)
+        {
+            int capacity = Convert.ToInt32(txtTransformerCapacity.Text.ToString());
+            if (capacity >= 1000)
             {
-                if (int.TryParse(txtTransformerCapacity.Text, out int value))
-                {
-                    if (value >= 1000)
-                    {
-                        TypeOfHTBreaker.Visible = true;
-                        ddlBreaker.Visible= true;
-                        ddlHTType.Visible = false;
-                    }
-                    else
-                    {
-                        ddlBreaker.Visible = false;
-                        ddlHTType.Visible = true;
-                        TypeOfHTBreaker.Visible = false;
-                    }
-
-                }
+                ddlHTType.Items.Clear();
+                ddlHTType.Items.Add(new ListItem("Select", "0"));
+                ddlHTType.Items.Add(new ListItem("Breaker", "3"));
             }
             else
             {
-                ddlBreaker.Visible = false;
+                ddlHTType.Items.Add(new ListItem("GO Switch", "1"));
+                ddlHTType.Items.Add(new ListItem("3Pole Linked Switch(GODO)", "2"));
                 ddlHTType.Visible = true;
             }
+
         }
         protected void ddlHTType_SelectedIndexChanged(object sender, EventArgs e)
         {

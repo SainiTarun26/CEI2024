@@ -72,7 +72,7 @@ namespace CEIHaryana.Contractor
                 {
                     ID = "TextBox_" + rowIndex, // Unique ID for each TextBox
                     CssClass = "form-control notification-box font-weight-light small-text mb-0 text-muted",
-                    Text = "Supervisor Created Test Report for Intimation: " + dynamicData,
+                    Text = "Test Report Created for Intimation: " + dynamicData,
                     TextMode = TextBoxMode.MultiLine,
                     Rows = 2,
                    // WStyle = "font-size: 12px;"

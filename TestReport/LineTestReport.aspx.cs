@@ -261,6 +261,19 @@ namespace CEIHaryana.TestReport
         protected void ddlNoOfEarthing_SelectedIndexChanged(object sender, EventArgs e)
         {
             LineEarthingdiv.Visible = true;
+            Earthingtype1.Visible = false;
+            Earthingtype2.Style.Add("display", "none");
+            Earthingtype3.Style.Add("display", "none");
+            Earthingtype4.Style.Add("display", "none");
+            Earthingtype5.Style.Add("display", "none");
+            Earthingtype6.Style.Add("display", "none");
+            Earthingtype7.Style.Add("display", "none");
+            Earthingtype8.Style.Add("display", "none");
+            Earthingtype9.Style.Add("display", "none");
+            Earthingtype10.Style.Add("display", "none");
+            Earthingtype11.Style.Add("display", "none");
+            Earthingtype12.Style.Add("display", "none");
+            Earthingtype15.Style.Add("display", "none");
             if (ddlNoOfEarthing.SelectedItem.ToString() == "1")
             {
                 Earthingtype1.Visible = true;
