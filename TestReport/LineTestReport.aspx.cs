@@ -86,7 +86,6 @@ namespace CEIHaryana.TestReport
 
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             string userInput = TxtOthervoltage.Text;
             Earthing.Visible = true;
             ddlNoOfEarthing.SelectedValue = "0";
@@ -133,26 +132,26 @@ namespace CEIHaryana.TestReport
                         }
                     }
                 }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
-                {
-                    Insulation220vAbove.Visible = true;
-                    Insulation440vAbove.Visible = false;
-                }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
-                {
-                    Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = true;
-                }
-                else if (ddlLineVoltage.SelectedValue == "0")
-                {
-                    Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = false;
-                }
-                else
-                {
-                    Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = true;
-                }
+                //else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
+                //{
+                //    Insulation220vAbove.Visible = true;
+                //    Insulation440vAbove.Visible = false;
+                //}  
+                //else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+                //{
+                //    Insulation220vAbove.Visible = false;
+                //    Insulation440vAbove.Visible =true;
+                //}
+                //else if (ddlLineVoltage.SelectedValue == "0")
+                //{
+                //    Insulation220vAbove.Visible = false;
+                //    Insulation440vAbove.Visible =false;
+                //}
+                //else
+                //{
+                //    Insulation220vAbove.Visible = false;
+                //    Insulation440vAbove.Visible = true;
+                //}
 
             }
             else if (ddlLineType.SelectedValue == "2")
@@ -197,27 +196,26 @@ namespace CEIHaryana.TestReport
                         }
                     }
                 }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
-                {
-                    Insulation220vAbove.Visible = true;
-                    Insulation440vAbove.Visible = false;
-                }
-                else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
-                {
-                    Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = true;
-                }
-                else if (ddlLineVoltage.SelectedValue == "0")
-                {
-                    Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = false;
-                }
-                else
-                {
-                    Insulation220vAbove.Visible = false;
-                    Insulation440vAbove.Visible = true;
-                }
-
+                //else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
+                //{
+                //    Insulation220vAbove.Visible = true;
+                //    Insulation440vAbove.Visible = false;
+                //}
+                //else if ( ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+                //{
+                //    Insulation220vAbove.Visible = false;
+                //    Insulation440vAbove.Visible = true;
+                //}
+                //else if (ddlLineVoltage.SelectedValue == "0")
+                //{
+                //    Insulation220vAbove.Visible = false;
+                //    Insulation440vAbove.Visible = false;
+                //}
+                //else
+                //{
+                //    Insulation220vAbove.Visible = false;
+                //    Insulation440vAbove.Visible = true;
+                //}
             }
             else
             {
@@ -664,16 +662,40 @@ namespace CEIHaryana.TestReport
 
         protected void ddlLineVoltage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlLineVoltage.SelectedItem.ToString().Trim() == "Other")
+            if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
+            {
+                Insulation220vAbove.Visible = true;
+                Insulation440vAbove.Visible = false;
+            }
+            else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "440V")
+            {
+                Insulation220vAbove.Visible = false;
+                Insulation440vAbove.Visible = true;
+            }
+            else if (ddlLineVoltage.SelectedItem.ToString().Trim() == "Other")
             {
                 divOtherVoltages.Visible = true;
                 OtherVoltage.Visible = true;
+
+                Insulation440vAbove.Visible = false;
+                Insulation220vAbove.Visible = false;
+
             }
-            else
+            else if (ddlLineVoltage.SelectedValue == "0")
             {
+                Insulation220vAbove.Visible = false;
+                Insulation440vAbove.Visible = false;
                 divOtherVoltages.Visible = false;
                 OtherVoltage.Visible = false;
             }
+            else
+            {
+                Insulation220vAbove.Visible = false;
+                Insulation440vAbove.Visible = true;
+                divOtherVoltages.Visible = false;
+                OtherVoltage.Visible = false;
+            }
+
         }
 
         protected void ddlCableType_SelectedIndexChanged1(object sender, EventArgs e)
