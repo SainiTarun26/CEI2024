@@ -51,10 +51,10 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlGeneratingSetType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlGeneratingSetType.SelectedItem.ToString() == "0")
+            if (ddlGeneratingSetType.SelectedValue == "3")
             {
                 SolarPanelGeneratingSet.Visible = true;
-                ddlGeneratingEarthing.SelectedValue = "0";             
+               // ddlGeneratingEarthing.SelectedValue = "0";             
                 GeneratingEarthing.Visible = false;
             }
             else

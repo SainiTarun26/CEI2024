@@ -2947,6 +2947,10 @@
                         <div class="col-4" id="SiteOwner" runat="server" style="text-align: initial;" visible="false">
                             <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
                         </div>
+                            <div class="col-4" id="Supervisor" runat="server" visible="false">
+                                    <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
+                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnBack_Click" />
+                                </div>
                     </div>
                         </div>
                 </li>

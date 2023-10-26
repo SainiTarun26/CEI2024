@@ -51,6 +51,15 @@ namespace CEIHaryana.TestReportModal
                     btnNext.Text = "Back";
                     
                 }
+                else if (Session["SupervisorID"] != null)
+
+                {
+                    ID = Session["SubStationID"].ToString();
+                    GetDetailswithId();
+                    Supervisor.Visible = true;
+                    IntimationData.Visible = true;
+
+                }
             }
         }
         public void GetDetailswithId()
@@ -458,7 +467,10 @@ namespace CEIHaryana.TestReportModal
             CEI.UpdateSubstationData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
             Response.Redirect("/Contractor/SubstationTransformer.aspx");
         }
-
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+        }
         protected void btnNext_Click(object sender, EventArgs e)
         {
             if (btnNext.Text.Trim() == "Back")

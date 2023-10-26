@@ -30,7 +30,7 @@ namespace CEIHaryana.Supervisor
         protected void GridviewBind()
         {
             string LoginId = string.Empty;
-            LoginId = Session["AdminID"].ToString();
+            LoginId = Session["SupervisorID"].ToString();
             DataSet ds = new DataSet();
             ds = cei.GetGeneraterSetData(LoginId);
             if (ds.Tables.Count > 0)
@@ -69,7 +69,7 @@ namespace CEIHaryana.Supervisor
         {
             string searhterm = txtSearch.Text.Trim();
             string LoginId = string.Empty;
-            LoginId = Session["AdminID"].ToString();
+            LoginId = Session["SupervisorID"].ToString();
 
             DataSet ds = new DataSet();
             ds = cei.SearchingOnGeneraterSet(searhterm, LoginId);

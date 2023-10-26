@@ -20,7 +20,7 @@ namespace CEIHaryana.Supervisor
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
+                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
                     {
                         getWorkIntimationData();
                     }
@@ -31,7 +31,7 @@ namespace CEIHaryana.Supervisor
         private void getWorkIntimationData()
         {
             DataTable ds = new DataTable();
-            string Id = Session["AdminID"].ToString();
+            string Id = Session["SupervisorID"].ToString();
             ds = cei.WorkIntimationDataforSupervisor(Id);
             if (ds.Rows.Count > 0)
             {
@@ -126,7 +126,7 @@ namespace CEIHaryana.Supervisor
         {
             string searhterm = txtSearch.Text.Trim();
             string LoginId = string.Empty;
-            LoginId = Session["AdminID"].ToString();
+            LoginId = Session["SupervisorID"].ToString();
 
             DataSet ds = new DataSet();
             ds = cei.SearchingOnIntimation(searhterm, LoginId);

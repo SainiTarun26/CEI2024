@@ -155,21 +155,21 @@ namespace CEIHaryana
                 {
                     if (chkSignedin.Checked == true)
                     {
-                        Session["AdminID"] = txtUserID.Text;
+                        Session["SupervisorID"] = txtUserID.Text;
                         Session["logintype"] = "Supervisor/Wireman";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
+                        Response.Cookies["SupervisorID"].Value = txtUserID.Text;
                         Response.Cookies["logintype"].Value = "Supervisor/Wireman";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
                         Response.Redirect("Supervisor/IntimationData.aspx", false);
                     }
                     else
                     {
-                        Session["AdminID"] = txtUserID.Text;
+                        Session["SupervisorID"] = txtUserID.Text;
                         Session["logintype"] = "Supervisor/Wireman";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
+                        Response.Cookies["SupervisorID"].Value = txtUserID.Text;
                         Response.Cookies["logintype"].Value = "Supervisor/Wireman";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Supervisor/IntimationData.aspx", false);
                     }

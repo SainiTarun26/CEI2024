@@ -29,7 +29,7 @@ namespace CEIHaryana.Supervisor
         protected void GridViewBind()
         {
             string LoginId = string.Empty;
-            LoginId = Session["AdminID"].ToString();
+            LoginId = Session["SupervisorID"].ToString();
             DataSet ds = new DataSet();
             ds = cei.GetSubstationDataBySupervisor(LoginId);
             if (ds.Tables.Count > 0)

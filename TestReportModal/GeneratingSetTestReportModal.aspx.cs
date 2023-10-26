@@ -51,6 +51,15 @@ namespace CEIHaryana.TestReportModal
                     btnNext.Text = "Back";
                    
                 }
+                else if (Session["SupervisorID"] != null)
+
+                {
+                    ID = Session["GeneratingSetId"].ToString();
+                    GetDetailswithId();
+                    Supervisor.Visible = true;
+                    IntimationData.Visible = true;
+
+                }
             }
         }
 
@@ -350,6 +359,10 @@ namespace CEIHaryana.TestReportModal
             {
                 Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
             }
+        } 
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
