@@ -2117,8 +2117,6 @@
                                         </label>
                                         <asp:DropDownList class="form-control  select-form select2" TabIndex="13" runat="server" AutoPostBack="true" ID="ddlHTType" OnSelectedIndexChanged="ddlHTType_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                            <asp:ListItem Value="1" Text="GO Switch"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="3Pole Linked Switch(GODO)"></asp:ListItem>
                                             <asp:ListItem Value="3" Text="Breaker"></asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ForeColor="Red" ControlToValidate="ddlHTType" runat="server" ErrorMessage="Please Select HT Type" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
