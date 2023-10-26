@@ -1971,13 +1971,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
     <ul>
         <li class="tab-content tab-content-3 typography">
             <div class="card-body" id="divGeneratingSet" runat="server" style="margin-top: -30px;">
-
                 <div class="card-body" style="margin-top: -30px;">
-
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-sm-4" style="text-align: center;">
@@ -2009,7 +2006,7 @@
                                         Value
                                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtCapacity"  AutoPostBack="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" autocomplete="off" 
+                                    <asp:TextBox class="form-control" ID="txtCapacity" AutoPostBack="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" autocomplete="off"
                                         placeholder="" TabIndex="2" MaxLength="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rvfCapacity" runat="server" ForeColor="Red" ControlToValidate="txtCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Capacity"></asp:RequiredFieldValidator>
                                 </div>
@@ -2018,7 +2015,7 @@
                                         Serial no. 
                                     <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator"  placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator" placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ControlToValidate="txtSerialNoOfGenerator" ValidationGroup="Submit" ErrorMessage="Please Enter Serial No Of Generator"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-2" id="Div172" runat="server" style="margin-top: -15px;">
@@ -2048,7 +2045,7 @@
                                         Current capacity of breaker( IN AMPS)
                                                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtCurrentCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtCurrentCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" MaxLength="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ControlToValidate="txtCurrentCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Current Capacity Of Breaker"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4">
@@ -2056,628 +2053,628 @@
                                         Breaking capacity of breaker (IN KA)
                                                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" MaxLength="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ForeColor="Red" ControlToValidate="txtBreakingCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Breaking Capacity"></asp:RequiredFieldValidator>
                                 </div>
-                                  <div class="col-4">
-                                        <label for="Name">
-                                            Number of Earthing:
+                                <div class="col-4">
+                                    <label for="Name">
+                                        Number of Earthing:
                                         <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlGeneratingEarthing_SelectedIndexChanged" ID="ddlGeneratingEarthing" selectionmode="Multiple" Style="width: 100% !important">
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select No Of Earthing"></asp:RequiredFieldValidator>
-                                        <label id="Limit" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                            Minimum Limit is 4     
-                                        </label>
-                                    </div>
+                                    </label>
+                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlGeneratingEarthing_SelectedIndexChanged" ID="ddlGeneratingEarthing" selectionmode="Multiple" Style="width: 100% !important">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select No Of Earthing"></asp:RequiredFieldValidator>
+                                    <label id="Limit" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                        Minimum Limit is 4     
+                                    </label>
+                                </div>
                             </div>
                             <div class="table-responsive pt-3" id="GeneratingEarthing" runat="server" visible="false">
-                                        <table class="table table-bordered table-striped">
-                                            <thead class="table-dark">
-                                                <tr>
-                                                    <th>S.No.
-                                                    </th>
-                                                    <th>Earthing Type
-                                                    </th>
-                                                    <th>Value in(ohms)
-                                                    </th>
-                                                    <th>Used For
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <div id="GeneratingEarthing4" runat="server" visible="false">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing1" selectionmode="Multiple" Style="width: 100% !important">
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing1" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing1" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed1_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed1" selectionmode="Multiple" Style="width: 100% !important">
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                    <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                    <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed1" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtOtherEarthing1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator61" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing1" ValidationGroup="Submit" ErrorMessage="Please Enter Other earthing"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing2" selectionmode="Multiple" Style="width: 100% !important">
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing2" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing2" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed2_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed2" selectionmode="Multiple" Style="width: 100% !important">
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                    <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                    <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator43" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed2" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtOtherEarthing2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing2" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing3" selectionmode="Multiple" Style="width: 100% !important">
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing3" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing3" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed3_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed3" selectionmode="Multiple" Style="width: 100% !important">
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                    <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                    <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator42" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed3" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtOtherEarthing3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator63" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing3" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>
-                                                            <div class="col-12" id="Div9" runat="server">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing4" selectionmode="Multiple" Style="width: 100% !important">
+                                <table class="table table-bordered table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>S.No.
+                                            </th>
+                                            <th>Earthing Type
+                                            </th>
+                                            <th>Value in(ohms)
+                                            </th>
+                                            <th>Used For
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <div id="GeneratingEarthing4" runat="server" visible="false">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing1" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing1" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:TextBox class="form-control" ID="txtGeneratingEarthing1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing1" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed1_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed1" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                            <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed1" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <asp:TextBox class="form-control" ID="txtOtherEarthing1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator61" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing1" ValidationGroup="Submit" ErrorMessage="Please Enter Other earthing"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing2" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing2" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:TextBox class="form-control" ID="txtGeneratingEarthing2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing2" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed2_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed2" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                            <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator43" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed2" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <asp:TextBox class="form-control" ID="txtOtherEarthing2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing2" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing3" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing3" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:TextBox class="form-control" ID="txtGeneratingEarthing3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing3" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed3_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed3" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                            <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator42" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed3" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <asp:TextBox class="form-control" ID="txtOtherEarthing3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator63" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing3" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>
+                                                    <div class="col-12" id="Div9" runat="server">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing4" selectionmode="Multiple" Style="width: 100% !important">
 
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing4" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12" id="Div10" runat="server">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator48" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing4" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="col-12">
-                                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed4_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed4" selectionmode="Multiple" Style="width: 100% !important">
-                                                                    <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                    <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                    <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                    <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                    <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator41" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed4" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtOtherEarthing4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator64" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing4" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing4" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12" id="Div10" runat="server">
+                                                        <asp:TextBox class="form-control" ID="txtGeneratingEarthing4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator48" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing4" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-12">
+                                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed4_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed4" selectionmode="Multiple" Style="width: 100% !important">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                            <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                            <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator41" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed4" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <asp:TextBox class="form-control" ID="txtOtherEarthing4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator64" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing4" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </div>
+                                        <tr id="GeneratingEarthing5" runat="server" visible="false">
+                                            <td>5 </td>
+                                            <td>
+                                                <div class="col-12" id="Div12" runat="server">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing5" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing5" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
                                                 </div>
-                                                <tr id="GeneratingEarthing5" runat="server" visible="false">
-                                                    <td>5 </td>
-                                                    <td>
-                                                        <div class="col-12" id="Div12" runat="server">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing5" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing5" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator49" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing5" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed5_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed5" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator40" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed5" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator65" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing5" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing6" runat="server" visible="false">
-                                                    <td>6</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing6" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing6" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator50" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing6" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed6_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed6" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator39" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed6" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator66" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing6" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing7" runat="server" visible="false">
-                                                    <td>7</td>
-                                                    <td>
-                                                        <div class="col-12" id="Div13" runat="server">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing7" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing7" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing7" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed7_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed7" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed7" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator67" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing7" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing8" runat="server" visible="false">
-                                                    <td>8</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing8" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing8" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator52" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing8" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed8_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed8" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed8" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator68" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing8" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing9" runat="server" visible="false">
-                                                    <td>9</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing9" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing9" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing9" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed9_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed9" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed9" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator69" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing9" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing10" runat="server" visible="false">
-                                                    <td>10</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing10" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing10" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator54" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing10" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed10_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed10" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed10" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator70" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing10" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing11" runat="server" visible="false">
-                                                    <td>11</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing11" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing11" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator55" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing11" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed11_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed11" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed11" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator71" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing11" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing12" runat="server" visible="false">
-                                                    <td>12</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing12" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing12" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator56" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing12" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed12_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed12" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed12" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator72" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing12" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing13" runat="server" visible="false">
-                                                    <td>13</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing13" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing13" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator57" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing13" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed13_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed13" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed13" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing13" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator73" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing13" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing14" runat="server" visible="false">
-                                                    <td>14</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing14" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing14" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator58" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing14" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed14_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed14" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed14" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing14" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator74" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing14" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr id="GeneratingEarthing15" runat="server" visible="false">
-                                                    <td>15</td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing15" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing15" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtGeneratingEarthing15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator59" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing15" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="col-12">
-                                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed15_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed15" selectionmode="Multiple" Style="width: 100% !important">
-                                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
-                                                                <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
-                                                                <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
-                                                                <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                                <asp:ListItem Value="7" Text="Other"></asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed15" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <asp:TextBox class="form-control" ID="txtOtherEarthing15" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing15" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator49" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing5" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed5_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed5" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator40" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed5" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator65" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing5" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing6" runat="server" visible="false">
+                                            <td>6</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing6" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing6" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator50" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing6" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed6_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed6" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator39" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed6" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator66" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing6" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing7" runat="server" visible="false">
+                                            <td>7</td>
+                                            <td>
+                                                <div class="col-12" id="Div13" runat="server">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing7" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing7" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing7" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed7_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed7" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed7" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator67" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing7" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing8" runat="server" visible="false">
+                                            <td>8</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing8" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing8" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator52" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing8" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed8_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed8" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed8" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator68" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing8" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing9" runat="server" visible="false">
+                                            <td>9</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing9" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing9" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing9" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed9_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed9" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed9" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator69" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing9" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing10" runat="server" visible="false">
+                                            <td>10</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing10" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing10" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator54" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing10" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed10_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed10" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed10" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator70" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing10" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing11" runat="server" visible="false">
+                                            <td>11</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing11" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing11" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator55" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing11" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed11_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed11" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed11" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator71" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing11" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing12" runat="server" visible="false">
+                                            <td>12</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing12" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing12" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing12" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator56" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing12" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed12_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed12" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed12" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator72" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing12" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing13" runat="server" visible="false">
+                                            <td>13</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing13" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing13" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing13" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing13" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed13_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed13" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed13" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing13" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator73" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing13" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing14" runat="server" visible="false">
+                                            <td>14</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing14" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing14" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing14" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator58" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing14" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingEarthingUsed14_SelectedIndexChanged" AutoPostBack="true" ID="ddlGeneratingEarthingUsed14" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed14" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing14" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator74" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing14" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="GeneratingEarthing15" runat="server" visible="false">
+                                            <td>15</td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthing15" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing15" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Select Earth Type"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator59" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing15" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-12">
+                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed15_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed15" selectionmode="Multiple" Style="width: 100% !important">
+                                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                        <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
+                                                        <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
+                                                        <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
+                                                        <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed15" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
+                                                </div>
+                                                <div class="col-12">
+                                                    <asp:TextBox class="form-control" ID="txtOtherEarthing15" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing15" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             <div id="SolarPanelGeneratingSet" runat="server" visible="false">
                                 <div class="row">
                                     <div class="col-4">
@@ -2707,7 +2704,7 @@
                                         <label for="Name">
                                             capacity of plant      
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtPlantCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder=" between DC phase wire to earth wire" autocomplete="off" TabIndex="2" MaxLength="999" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtPlantCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder=" between DC phase wire to earth wire" autocomplete="off" TabIndex="2" MaxLength="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Red" ControlToValidate="txtPlantCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Plant capacity"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-2" id="Div184" runat="server" style="margin-top: -15px;">
@@ -2717,7 +2714,6 @@
                                         <asp:TextBox class="form-control" ID="txtDCString" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="2" placeholder=" Highest Voltage" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtDCString" ValidationGroup="Submit" ErrorMessage="Please Enter Dc String"></asp:RequiredFieldValidator>
                                     </div>
-
                                     <div class="col-2" id="Div185" runat="server" style="margin-top: -15px;">
                                         <label for="Name" style="text-align: initial; font-size: 12px;">
                                             Lowest Insulation Resistance        
@@ -2736,7 +2732,7 @@
                                         <label for="Name">
                                             capacity of main LTAC Breaker        
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtLTACCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtLTACCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" MaxLength="4" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ForeColor="Red" ControlToValidate="txtLTACCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter LTAC Capacity"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-4" id="Div188" runat="server">
@@ -2746,8 +2742,6 @@
                                         <asp:TextBox class="form-control" ID="txtLowestInsulationAC" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="4" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ForeColor="Red" ControlToValidate="txtLowestInsulationAC" ValidationGroup="Submit" ErrorMessage="Please Enter Lowest Insulation Resistance of Ac"></asp:RequiredFieldValidator>
                                     </div>
-                                  
-                                    
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 100px;" id="Declaration" runat="server" visible="false">
@@ -2777,7 +2771,6 @@
             </div>
         </li>
     </ul>
-
 
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
