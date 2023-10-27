@@ -20,7 +20,7 @@ namespace CEIHaryana.TestReportModal
                 if (Session["ContractorID"] != null)
                 {
                     ID = Session["SubStationID"].ToString();
-                    GetDetailswithId(); 
+                    GetDetailswithId();
                     if (Convert.ToString(Session["Approval"]) == "Pending")
                     {
                         Contractor.Visible = true;
@@ -31,25 +31,21 @@ namespace CEIHaryana.TestReportModal
                         Contractor.Visible = true;
                         Contractor2.Visible = true;
                     }
-
-
                 }
                 else if (Session["AdminID"] != null)
                 {
                     ID = Session["SubStationID"].ToString();
                     GetDetailswithId();
-                    SiteOwner.Visible= true;
+                    SiteOwner.Visible = true;
                     IntimationData.Visible = true;
-                   
-                } 
+                }
                 else if (Session["InspectionTestReportId"] != null)
                 {
                     ID = Session["InspectionTestReportId"].ToString();
                     GetDetailswithId();
-                    SiteOwner.Visible= true;
+                    SiteOwner.Visible = true;
                     IntimationData.Visible = true;
                     btnNext.Text = "Back";
-                    
                 }
                 else if (Session["SupervisorID"] != null)
 
@@ -58,7 +54,6 @@ namespace CEIHaryana.TestReportModal
                     GetDetailswithId();
                     Supervisor.Visible = true;
                     IntimationData.Visible = true;
-
                 }
             }
         }
@@ -68,23 +63,21 @@ namespace CEIHaryana.TestReportModal
             {
                 DataSet ds = new DataSet();
                 ds = CEI.SubstationTestReportData(ID);
-                
-                    string value1 = Convert.ToString(Session["Approval"]);
-                    if (value1.Trim() == "Accept")
-                    {
-                        ddlType.Attributes.Add("Readonly", "true");
-                        ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
 
-                    }
-                    else if(value1.Trim() == "Reject")
-                    {
-                        ddlType.Attributes.Add("Readonly", "true");
-                        ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                        Rejection.Visible = true;
-                        txtRejection.Attributes.Add("Readonly", "true");
+                string value1 = Convert.ToString(Session["Approval"]);
+                if (value1.Trim() == "Accept")
+                {
+                    ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                }
+                else if (value1.Trim() == "Reject")
+                {
+                    ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    Rejection.Visible = true;
+                    txtRejection.Attributes.Add("Readonly", "true");
+                }
 
-                    }
-                
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")
@@ -113,7 +106,8 @@ namespace CEIHaryana.TestReportModal
                 txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                 txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
                 txtTransformerCapacityType.Text = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
-                if (txtTransformerType.Text == "Oil")
+                txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
+                if (txtTransformerType.Text.Trim() == "Oil")
                 {
                     InCaseOfOil.Visible = true;
                     Capacity.Visible = true;
@@ -141,16 +135,12 @@ namespace CEIHaryana.TestReportModal
                             txtHTType.Visible = true;
                             TypeOfHTBreaker.Visible = false;
                         }
-
                     }
                 }
                 if (txtHTType.Text == "Breaker")
                 {
                     TypeOfHTBreaker.Visible = true;
                 }
-                
-
-            
                 txtTransformerCapacity.Text = ds.Tables[0].Rows[0]["TransformerCapacity"].ToString();
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
                 txtPrimaryVoltage.Text = ds.Tables[0].Rows[0]["PrimaryVoltage"].ToString();
@@ -448,7 +438,6 @@ namespace CEIHaryana.TestReportModal
 
             }
         }
-
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlType.SelectedValue == "2")
@@ -482,7 +471,6 @@ namespace CEIHaryana.TestReportModal
                 Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
             }
         }
-
         protected void BtnVerify_Click(object sender, EventArgs e)
         {
             if (btnVerify.Text == "SendOTP")

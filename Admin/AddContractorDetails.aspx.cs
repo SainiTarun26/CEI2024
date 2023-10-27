@@ -418,7 +418,8 @@ namespace CEI_PRoject.Admin
 
                         ddlDistrict.Enabled = false;
                         ddlDistrict.Style.Add("width", "inherit");
-                        ddlDistrict.Style.Add("height", "30px");
+                        ddlDistrict.Style.Add("height", "30px")
+                            ;
                         ddlDistrict.Style.Add("border-radius", ".25rem");
 
                         txtPinCode.Enabled = false;

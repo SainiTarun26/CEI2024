@@ -1046,6 +1046,25 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
+        #region Update Inspection Data
+        public void updateInspection(string ID, string AcceptedOrRejected,string ReasonForRejection)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InspectionReview");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID ", ID);
+            cmd.Parameters.AddWithValue("@AcceptedOrRejected ", AcceptedOrRejected);
+            cmd.Parameters.AddWithValue("@ReasonForRejection ", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
         public string GenerateUniqueID()
         {
             SqlCommand cmd = new SqlCommand("sp_generateLineId");

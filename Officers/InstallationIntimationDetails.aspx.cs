@@ -42,6 +42,8 @@ namespace CEIHaryana.Officers
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval"] = lblApproval.Text.Trim();
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")

@@ -28,7 +28,7 @@ namespace CEIHaryana.Officers
             Uploads.Visible = true;
             if (txtWorkType.Text == "Line")
             {
-                if (txtApplicantType.Text.Trim() == "Supplier")
+                if (txtApplicantType.Text.Trim() == "Supplier Installation")
                 {
                     LineSubstationSupplier.Visible = true;
                     SupplierSub.Visible = true;
@@ -41,7 +41,7 @@ namespace CEIHaryana.Officers
             }
             else if (txtWorkType.Text == "Substation Transformer")
             {
-                if (txtApplicantType.Text.Trim() == "Supplier")
+                if (txtApplicantType.Text.Trim() == "Supplier Installation")
                 {
                     LineSubstationSupplier.Visible = true;
                 }
@@ -74,6 +74,7 @@ namespace CEIHaryana.Officers
             try
             {
                 ID = Session["InspectionId"].ToString();
+      
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
@@ -103,6 +104,35 @@ namespace CEIHaryana.Officers
 
                 Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
                 Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+                string Approval = Session["Approval"].ToString();
+                if (Approval.Trim() == "Pending")
+                {
+                    ApprovalRequired.Visible = true;
+                    btnSubmit.Visible = true;
+                }
+                else if (Approval.Trim() == "Accepted")
+                {
+                    ApprovalRequired.Visible = true;
+                    string dp_1 = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
+                    ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(dp_1));
+                    ddlReview.Attributes.Add("disabled", "true");
+                    btnBack.Visible = true;
+                    btnSubmit.Visible = false;
+
+
+                }
+                else if (Approval.Trim() == "Rejected")
+                {
+                    ApprovalRequired.Visible = true;
+                    Rejection.Visible   = true;
+                    string dp_1 = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
+                    txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                    ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(dp_1));
+                    ddlReview.Attributes.Add("disabled", "true"); 
+                    txtRejected.Attributes.Add("disabled", "true");
+                    btnBack.Visible = true;
+                    btnSubmit.Visible = false;
+                }
             }
             catch
             {
@@ -303,6 +333,28 @@ namespace CEIHaryana.Officers
             }
         }
 
+        protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlReview.SelectedValue == "2")
+            {
+                Rejection.Visible = true;
+            }
+            else
+            {
+                Rejection.Visible = false;
+            }
+        }
 
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            ID = Session["InspectionId"].ToString();
+            CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text);
+
+        }
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Officers/InstallationIntimationDetails.aspx");
+
+        }
     }
 }

@@ -128,6 +128,11 @@
                                     <ItemTemplate>
                                         <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                     </ItemTemplate>
+                                </asp:TemplateField> 
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
@@ -148,6 +153,11 @@
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="InspectionType" HeaderText="InspectionType">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Approval">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
 
                                     <ItemStyle HorizontalAlign="center" Width="15%" />

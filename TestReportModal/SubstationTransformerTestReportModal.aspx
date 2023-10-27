@@ -2126,14 +2126,11 @@
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div id="Capacity" class="col-4" runat="server" visible="false">
-
                                     <label for="Voltage">
                                         Capacity of oil(in liters)  
                                         <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-
                                 </div>
                                 <div id="BDV" class="col-4" runat="server" visible="false">
                                     <label for="Voltage">
@@ -2166,7 +2163,7 @@
                                     </div>
 
                                     <div class="col-4" style="margin-top: -20px;">
-                                        <label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
+                                        <%--<label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>--%>
 
 
                                         <label for="Voltage" style="margin-top: -15px;">
