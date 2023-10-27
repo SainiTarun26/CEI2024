@@ -195,18 +195,18 @@
         <div>
             <div class="container">
                 <h3 class="title">OTP Verification</h3>
-                <div class="wrapper1">
+             <%--   <div class="wrapper1">
                     <asp:TextBox class="fields 1" ID="txtMobile" runat="server"  MaxLength="10" onkeypress="if(event.keyCode<48 || event.keyCode>57)event.returnValue=false;"></asp:TextBox>
                 </div>
                 <div class="row">
                     <div class="col-12" style="text-align: center; margin-top: -10px; margin-bottom: 10px;">
                         <asp:Button class="button-79" ID="Verify" runat="server" Text="Send OTP" OnClick="GenerateOTP" />
                     </div>
-                </div>
-                <div id="VerifyOPTdiv" class="otp" runat="server" visible="false">
+                </div>--%>
+                <div id="VerifyOPTdiv" class="otp" runat="server">
                     <p class="sub-title">
-                        Enter the OTP you received to
-                        <input id="PhoneNumber" style="border:none" runat="server" />
+                        Enter the OTP you received to Your Phone Number
+                   <%--     <input id="PhoneNumber" style="border:none" runat="server" />--%>
                     </p>
                     <div class="wrapper">
                         <asp:TextBox class="field 1" ID="TextBox1" runat="server"  MaxLength="1" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>

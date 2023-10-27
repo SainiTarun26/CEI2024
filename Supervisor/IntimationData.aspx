@@ -157,7 +157,7 @@
                     </div>
                     <div style="margin-top:3%">
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
-                            AllowPaging="true" PageSize="5" OnPageIndexChanging="GridView1_PageIndexChanging">
+                            AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
                            <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">

@@ -1029,7 +1029,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Work Intimation Contractor Data
-        public void updateWorkIntimation(string Id, string ContractorContactNo)
+        public void updateWorkIntimation(string Id)
         {
             SqlCommand cmd = new SqlCommand("sp_ContractorDataUpdate");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1041,7 +1041,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id ", Id);
-            cmd.Parameters.AddWithValue("@ContractorContactNo ", ContractorContactNo);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -1155,6 +1154,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlPremises()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Premises");
+        }
+        public DataSet GetContractorContact(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorContactNo", UserId);
         } 
         public DataSet GetddlTestReportVoltage()
         {
@@ -1342,6 +1345,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet SearchingOnIntimation(string searchterm, string LoginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SearchingIntimationData", searchterm, LoginId);
+        }
+        public DataSet GetSuperVisorContact(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSupervisorData", UserId);
         }
     }
 }

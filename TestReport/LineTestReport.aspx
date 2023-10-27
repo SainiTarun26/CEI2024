@@ -2217,7 +2217,7 @@
                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtRoadCrossingNmbr" MaxLength="2" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtName" ErrorMessage="txtRoadCrossingNmbr" ValidationGroup="Submit" ForeColor="Red">Please Enter NO. of Road Crossing</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtRoadCrossingNmbr" ErrorMessage="txtRoadCrossingNmbr" ValidationGroup="Submit" ForeColor="Red">Please Enter NO. of Road Crossing</asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-4" id="Div21" runat="server">
                                             <label for="Name">
@@ -2776,11 +2776,24 @@
                                         </label>
                                     </div>
                                 </div>
-
+                                 <div class="row"  id="OTP" runat="server" visible="false">
+                                     <div class="col-4"></div>
+                                      <div class="col-4">
+                                          <label>
+                                              Enter the OTP you received to Your Phone Number
+                                                        <samp style="color: red">* </samp>
+                                            </label>
+                                        <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
+                                                           
+                                    </div>
+                                 </div>
                                 <div class="row">
-                                    <div class="col-4"></div>
+                                    <div class="col-4" >
+                                    </div>
                                     <div class="col-4" style="text-align: center;">
-                                        <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Generate Test Report" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
+                                        <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
+                                  <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
                                     </div>
                                     <div class="col-4">
                                         <asp:HiddenField ID="hdn" Value="0" runat="server" />

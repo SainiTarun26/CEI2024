@@ -1,6 +1,7 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,24 +21,24 @@ namespace CEIHaryana
             {
                 if (Session["ContractorID"] != null)
                 {
-
+                    sendsms();
                 }
             }
         }
-        protected void GenerateOTP(object sender, EventArgs e)
-        {
-            try
-            {
-                PhoneNumber.Value = txtMobile.Text.Trim();
-                Verify.Visible = false;
-                VerifyOPTdiv.Visible = true;
-                sendsms();
-            }
-            catch
-            {
+        //protected void GenerateOTP(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        PhoneNumber.Value = txtMobile.Text.Trim();
+        //        Verify.Visible = false;
+        //        VerifyOPTdiv.Visible = true;
+        //        sendsms();
+        //    }
+        //    catch
+        //    {
 
-            }
-        }
+        //    }
+        //}
         protected void VerifyOTP(object sender, EventArgs e)
         {
             try
@@ -70,7 +71,7 @@ namespace CEIHaryana
                         if (Session["ContractorID"] != null)
                         {
                             string Id = Session["ContractorID"].ToString();
-                            CEI.updateWorkIntimation(Id, txtMobile.Text);
+                            CEI.updateWorkIntimation(Id);
                             Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                     }
@@ -89,7 +90,11 @@ namespace CEIHaryana
         }
         public void sendsms()
         {
-            string mobilenumber = txtMobile.Text.Trim();
+            string id = Session["ContractorID"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetContractorContact(id);
+            string Contact = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+            string mobilenumber = Contact.Trim();
             Session["OTP"] = CEI.ValidateOTP(mobilenumber);
         }
 

@@ -275,12 +275,14 @@ namespace CEIHaryana.TestReport
                         Session["SubmittedValue3"] = sessionValue;
                         divGeneratingSet.Visible = false;
                         Session["GeneratingSetId"] = "";
-                        //NextSessionValueAndName();
-                        if (nextSessionName == "Line")
+                        Session["TestReportId"] = TestReportId;
+                        Page.Session["Page"] = 0;
+                        NextSessionValueAndName();
+                        if (nextSessionName.Trim() == "Line")
                         {
                             Response.Redirect("LineTestReport.aspx");
                         }
-                        else if (nextSessionName == "Substation Transformer")
+                        else if (nextSessionName.Trim() == "Substation Transformer")
                         {
                             Response.Redirect("SubstationTransformer.aspx");
                         }
@@ -324,19 +326,28 @@ namespace CEIHaryana.TestReport
         }
         public void NextSessionValueAndName()
         {
+            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
 
-            if (nextSessionName == "Line")
+            for (int i = 0; i < installationNumbers.Length; i++)
             {
-                Response.Redirect("LineTestReport.aspx", false);
-            }
-            else if (nextSessionName == "Substation Transformer")
-            {
-                Response.Redirect("SubstationTransformer.aspx", false);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
+                sessionName = Session["installationType" + (i + 1)] as string;
+                sessionValue = Session[installationNumbers[i]] as string;
 
+                if (!string.IsNullOrEmpty(sessionName))
+                {
+                    if (i < installationNumbers.Length - 1) // Check if there are more sessions left
+                    {
+                        nextSessionName = Session["installationType" + (i + 2)] as string;
+                        nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                     
+                    }
+                    else
+                    {
+                        nextSessionName = "";
+                        nextSessionValue = "";
+                    }
+
+                }
             }
         }
         public void SessionValue()
@@ -365,6 +376,8 @@ namespace CEIHaryana.TestReport
             {
                 Declaration.Visible = true;
                 BtnSubmitGeneratingSet.Text = "Submit";
+                BtnSubmitGeneratingSet.Attributes.Add("disabled", "true");
+                btnVerify.Visible = true;
             }
             else
             {
@@ -550,6 +563,43 @@ namespace CEIHaryana.TestReport
             {
                 txtOtherEarthing9.Visible = false;
             }
+        }
+
+        protected void btnVerify_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToString(Session["OTP"]) == null || Convert.ToString(Session["OTP"]) == "")
+                {
+                    OTP.Visible = true;
+                    string id = Session["SupervisorID"].ToString();
+                    DataSet ds = new DataSet();
+                    ds = CEI.GetSuperVisorContact(id);
+                    string Contact = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
+                    string mobilenumber = Contact.Trim();
+                    Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+                }
+                else
+                {
+                    if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+                    {
+                        BtnSubmitGeneratingSet.Attributes.Remove("disabled");
+                        btnVerify.Attributes.Add("disabled", "true");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('InvalidOTP Please Try Again')", true);
+
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+
+
         }
     }
 }

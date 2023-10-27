@@ -196,11 +196,7 @@ namespace CEIHaryana.TestReportModal
                                     Insulation440vAbove.Visible = false;
                                     Insulation220vAbove.Visible = true;
                                 }
-                                else
-                                {
-                                    Insulation440vAbove.Visible = false;
-                                    Insulation220vAbove.Visible = false;
-                                }
+                                
 
                             }
                         }
@@ -215,7 +211,12 @@ namespace CEIHaryana.TestReportModal
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    
+                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||   
+                        txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")        
+                    {                                                                                         
+                        Insulation220vAbove.Visible = true;                                             
+                        Insulation440vAbove.Visible = false;                                             
+                    }
 
                 }
                 else if (txtLineType.Text.Trim() == "Underground")
@@ -250,6 +251,7 @@ namespace CEIHaryana.TestReportModal
                                     Insulation440vAbove.Visible = false;
                                     Insulation220vAbove.Visible = true;
                                 }
+                              
                                 else
                                 {
                                     Insulation440vAbove.Visible = true;
@@ -265,6 +267,12 @@ namespace CEIHaryana.TestReportModal
                         Insulation440vAbove.Visible = false;
                     }
                     else if (txtLineVoltage.Text.Trim() == "440V")
+                    {
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
+                    }
+                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||
+                     txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")
                     {
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
@@ -531,6 +539,13 @@ namespace CEIHaryana.TestReportModal
                 txtNeutralWire.Text = ds.Tables[0].Rows[0]["PhasewireNeutralwire"].ToString();
                 txtEarthWire.Text = ds.Tables[0].Rows[0]["PhasewireEarth"].ToString();
                 txtNeutralWireEarth.Text = ds.Tables[0].Rows[0]["NeutralwireEarth"].ToString();
+                txtCableType.Text = ds.Tables[0].Rows[0]["TypeofCable"].ToString();
+
+                if (txtCableType.Text == "Other")                                        
+                {                                                                          
+                    OtherCable.Visible = true;                                           
+                    txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();   
+                }
                 txtCableType.Text = ds.Tables[0].Rows[0]["TypeofCable"].ToString();
                 txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
                 txtCableSize.Text = ds.Tables[0].Rows[0]["SizeofCable"].ToString();

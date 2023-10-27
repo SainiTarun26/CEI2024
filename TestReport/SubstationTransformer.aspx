@@ -3105,9 +3105,22 @@
                         </label>
                     </div>
                 </div>
+                 <div class="row"  id="OTP" runat="server" visible="false">
+                                     <div class="col-4"></div>
+                                      <div class="col-4">
+                                          <label>
+                                              Enter the OTP you received to Your Phone Number
+                                                        <samp style="color: red">* </samp>
+                                            </label>
+                                        <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator100" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
+                                                           
+                                    </div>
+                                 </div>
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
+                         <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
                         <asp:Button ID="BtnSubmitSubstation" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                             OnClick="BtnSubmitSubstation_Click" />
                     </div>

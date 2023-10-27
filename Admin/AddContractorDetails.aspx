@@ -245,6 +245,8 @@
                                 onkeyup="return isvalidphoneno();" MaxLength="10" Style="margin-left: 18px">
                             </asp:TextBox>
                             <span id="lblErrorContect" style="color: red"></span>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtContactNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No</asp:RequiredFieldValidator>
+
                         </div>
                         <div class="col-4">
                             <label for="Email">Email</label>

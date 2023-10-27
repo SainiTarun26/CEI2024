@@ -27,15 +27,14 @@ namespace CEIHaryana.TestReport
         {
             if (!IsPostBack)
             {
-                var trigger = new AsyncPostBackTrigger();
-                trigger.ControlID = "btnSubmit";
-                UpdatePanel1.Triggers.Add(trigger);
-                Insulation440vAbove.Visible = false;
-                Insulation220vAbove.Visible = false;
+                
                 ddlLoadBindVoltage();
                 ddlEarthing();
                 SessionValue();
                 PageWorking();
+                Insulation440vAbove.Visible = false;
+                Insulation220vAbove.Visible = false;
+
 
             }
         }
@@ -86,6 +85,8 @@ namespace CEIHaryana.TestReport
 
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LineTypeOverhead.Visible = false;                
+            LineTypeUnderground.Visible = false;
             string userInput = TxtOthervoltage.Text;
             Earthing.Visible = true;
             ddlNoOfEarthing.SelectedValue = "0";
@@ -229,6 +230,8 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlConductorType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            OverheadCable.Visible = false;     
+            OverheadBare.Visible = false;
 
             if (ddlConductorType.SelectedValue == "1")
             {
@@ -275,24 +278,24 @@ namespace CEIHaryana.TestReport
             Earthingtype11.Visible = false;
             Earthingtype12.Visible = false;
             Earthingtype15.Visible = false;
-            if (ddlNoOfEarthing.SelectedItem.ToString() == "1")
+            if (ddlNoOfEarthing.SelectedValue.Trim() == "1")
             {
                 Earthingtype1.Visible = true;
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "2")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "2")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "3")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "3")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
                 Earthingtype3.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "4")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "4")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -300,7 +303,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype4.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "5")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "5")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -309,7 +312,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype5.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "6")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "6")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -319,7 +322,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype6.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "7")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "7")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -330,7 +333,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype7.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "8")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "8")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -342,7 +345,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype8.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "9")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "9")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -355,7 +358,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype9.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "10")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "10")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -369,7 +372,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype10.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "11")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "11")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -384,7 +387,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype11.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "12")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "12")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -400,7 +403,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype12.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "13")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "13")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -417,7 +420,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype13.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "14")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "14")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -434,7 +437,7 @@ namespace CEIHaryana.TestReport
                 Earthingtype14.Visible = true;
 
             }
-            else if (ddlNoOfEarthing.SelectedItem.ToString() == "15")
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "15")
             {
                 Earthingtype1.Visible = true;
                 Earthingtype2.Visible = true;
@@ -468,7 +471,7 @@ namespace CEIHaryana.TestReport
 
             try
             {
-
+                
 
                 if (Declaration.Visible == true && CheckBox1.Checked == false)
                 {
@@ -515,6 +518,7 @@ namespace CEIHaryana.TestReport
                     labelVerification.Visible = false;
                     PageWorking();
                     int currentValue = Convert.ToInt32(Session["Page"]);
+                    
                     if (currentValue == Convert.ToInt32(sessionValue))
                     {
                         Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
@@ -522,11 +526,14 @@ namespace CEIHaryana.TestReport
                         Session["SubmittedValue2"] = sessionValue;
                         divLine.Visible = false;
                         Session["LineId"] = "";
-                        if (nextSessionName == "Substation Transformer")
+                        Session["TestReportId"] = TestReportId;
+                        Page.Session["Page"] = 0;
+                       // NextSessionValueAndName();
+                        if (nextSessionName.Trim() == "Substation Transformer")
                         {
                             Response.Redirect("SubstationTransformer.aspx", false);
                         }
-                        else if (nextSessionName == "Generating Station")
+                        else if (nextSessionName.Trim() == "Generating Station")
                         {
                             Response.Redirect("GeneratingSetTestReport.aspx", false);
                         }
@@ -582,19 +589,19 @@ namespace CEIHaryana.TestReport
                     {
                         nextSessionName = Session["installationType" + (i + 1)] as string;
                         nextSessionValue = Session[installationNumbers[i + 1]] as string;
-                        if (nextSessionName == "Substation Transformer")
-                        {
-                            Response.Redirect("SubstationTransformer.aspx");
-                        }
-                        else if (nextSessionName == "Generating Station")
-                        {
-                            Response.Redirect("GeneratingSetTestReport.aspx");
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
+                        //if (nextSessionName == "Substation Transformer")
+                        //{
+                        //    Response.Redirect("SubstationTransformer.aspx");
+                        //}
+                        //else if (nextSessionName == "Generating Station")
+                        //{
+                        //    Response.Redirect("GeneratingSetTestReport.aspx");
+                        //}
+                        //else
+                        //{
+                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
 
-                        }
+                        //}
                     }
                 }
             }
@@ -611,6 +618,8 @@ namespace CEIHaryana.TestReport
                 {
                     Declaration.Visible = true;
                     btnSubmit.Text = "Submit";
+                    btnSubmit.Attributes.Add("disabled", "true");
+                    btnVerify.Visible= true;
                 }
                 else
                 {
@@ -708,6 +717,43 @@ namespace CEIHaryana.TestReport
             {
                 OtherCable.Visible = false;
             }
+        }
+
+        protected void btnVerify_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToString(Session["OTP"]) == null || Convert.ToString(Session["OTP"]) == "")
+                {
+                    OTP.Visible = true;
+                    string id = Session["SupervisorID"].ToString();
+                    DataSet ds = new DataSet();
+                    ds = CEI.GetSuperVisorContact(id);
+                    string Contact = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
+                    string mobilenumber = Contact.Trim();
+                    Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+                }
+                else
+                {
+                    if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+                    {
+                        btnSubmit.Attributes.Remove("disabled");
+                        btnVerify.Attributes.Add("disabled", "true");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('InvalidOTP Please Try Again')", true);
+
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+            
+
         }
     }
 }
