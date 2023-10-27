@@ -49,7 +49,7 @@ namespace CEIHaryana.SiteOwnerPages
             Uploads.Visible = true;
             if (txtWorkType.Text == "Line")
             {
-                if (txtApplicantType.Text.Trim() == "Supplier")
+                if (txtApplicantType.Text.Trim() == "Supplier Installation")
                 {
                     LineSubstationSupplier.Visible = true;
                     SupplierSub.Visible = true;
@@ -62,7 +62,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else if (txtWorkType.Text == "Substation Transformer")
             {
-                if (txtApplicantType.Text.Trim() == "Supplier")
+                if (txtApplicantType.Text.Trim() == "Supplier Installation")
                 {
                     LineSubstationSupplier.Visible = true;
                 }

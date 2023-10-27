@@ -55,12 +55,12 @@ namespace CEIHaryana.Supervisor
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
                 string id = lblID.Text;
-                Session["LineID"] = id;
+                Session["GeneratingSetId"] = id;
                 Label lblApproval = (Label)row.FindControl("lblApproval");
                 Session["Approval"] = lblApproval.Text;
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
                 }
             }
         }

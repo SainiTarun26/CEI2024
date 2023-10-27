@@ -2569,9 +2569,9 @@
                                     <br /><label>Submit Will be Enable When You Verify Your Details</label>
                                 </div>
                                                  </div>
-                                              <div id="Contractor2" runat="server" visible="false" style="margin-top:40px;">
+                                              <div  style="margin-top:40px;">
                                                     <div class="row">
-                                                        <div class="col-6" style="text-align: end;">
+                                                        <div class="col-6" id="Contractor2" runat="server" visible="false" style="text-align: center;">
     <asp:Button ID="BtnSubmitGeneratingSet" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
         OnClick="BtnSubmit_Click" />
        

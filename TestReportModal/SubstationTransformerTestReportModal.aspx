@@ -2936,9 +2936,9 @@
                             <label>Submit Will be Enable When You Verify Your Details</label>
                         </div>
                             </div>
-                        <div class="row" id="Contractor2" runat="server" visible="false" style="margin-top:40px;">
+                        <div class="row" style="margin-top:40px;">
                       
-                            <div class="col-4" style="text-align: end;">
+                            <div class="col-4" id="Contractor2" runat="server" visible="false" style="text-align: end;">
                             <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnSubmit_Click" />
                         </div>
                         <div class="col-4" id="SiteOwner" runat="server" style="text-align: initial;" visible="false">
