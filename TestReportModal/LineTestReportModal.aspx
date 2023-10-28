@@ -2666,6 +2666,7 @@
                                 </div>
                             </div>
                             <asp:HiddenField ID="hdn" Value="0" runat="server" />
+                            <br />
                             <div class="row">
                                 <div class="col-4" style="margin-top: 40px;text-align: Center;" runat="server" id="Contractor3" visible="false">
                                     <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
