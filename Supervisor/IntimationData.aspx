@@ -171,10 +171,6 @@
                                         <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="ShowPopup_Click"  CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <%-- <asp:BoundField DataField="Id" HeaderText="IntimationId">
-            <HeaderStyle HorizontalAlign="center" Width="8%" />
-            <ItemStyle HorizontalAlign="center" Width="8%" />
-        </asp:BoundField>--%>
                                 <asp:BoundField DataField="Name" HeaderText="Name">
                                     <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader AlignHeader" />
                                     <ItemStyle HorizontalAlign="Left" CssClass="NameRow" />
@@ -183,10 +179,6 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
                                     <ItemStyle HorizontalAlign="center" CssClass="ContactRow" />
                                 </asp:BoundField>
-                              <%--  <asp:BoundField DataField="WorkDetails" HeaderText="WorkDetails">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader WorkDetails" />
-                                    <ItemStyle HorizontalAlign="center" CssClass="WorkDetailsRow" />
-                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />

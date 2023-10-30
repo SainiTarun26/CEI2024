@@ -27,7 +27,14 @@ namespace CEIHaryana.TestReport
                 ddlEarthing();
                 SessionValue();
                 PageWorking();
+                if(Convert.ToString(Session["GeneratingSetId"])  == null || Convert.ToString(Session["GeneratingSetId"]) == "" )
+                {
 
+                }
+                else
+                {
+
+                }
             }
         }
         private void ddlEarthing()

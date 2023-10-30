@@ -34,8 +34,7 @@ namespace CEIHaryana.TestReport
                 PageWorking();
                 Insulation440vAbove.Visible = false;
                 Insulation220vAbove.Visible = false;
-
-
+               
             }
         }
 
@@ -528,7 +527,6 @@ namespace CEIHaryana.TestReport
                         Session["LineId"] = "";
                         Session["TestReportId"] = TestReportId;
                         Page.Session["Page"] = 0;
-                       // NextSessionValueAndName();
                         if (nextSessionName.Trim() == "Substation Transformer")
                         {
                             Response.Redirect("SubstationTransformer.aspx", false);
@@ -542,7 +540,6 @@ namespace CEIHaryana.TestReport
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
 
                         }
-                        //NextSessionValueAndName();
                     }
                 }
 

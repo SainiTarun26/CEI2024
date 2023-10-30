@@ -134,6 +134,13 @@
                                         <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                 <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />
@@ -144,20 +151,25 @@
                                         <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                <asp:BoundField DataField="Application" HeaderText="Application">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+                               <%-- <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="InspectionType" HeaderText="InspectionType">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
 
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Approval">
+                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField> 
+                                <asp:BoundField DataField="Createddate1" HeaderText="RequestDate">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
 
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
