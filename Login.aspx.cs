@@ -178,21 +178,21 @@ namespace CEIHaryana
                 {
                     if (chkSignedin.Checked == true)
                     {
-                        Session["AdminID"] = txtUserID.Text;
+                        Session["SiteOwnerId"] = txtUserID.Text;
                         Session["logintype"] = "SiteOwner";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
+                        Response.Cookies["SiteOwnerId"].Value = txtUserID.Text;
                         Response.Cookies["logintype"].Value = "SiteOwner";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies["SiteOwnerId"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
                         Response.Redirect("SiteOwnerPages/TestReportData.aspx", false);
                     }
                     else
                     {
-                        Session["AdminID"] = txtUserID.Text;
+                        Session["SiteOwnerId"] = txtUserID.Text;
                         Session["logintype"] = "SiteOwner";
-                        Response.Cookies["AdminID"].Value = txtUserID.Text;
+                        Response.Cookies["SiteOwnerId"].Value = txtUserID.Text;
                         Response.Cookies["logintype"].Value = "SiteOwner";
-                        Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies["SiteOwnerId"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("SiteOwnerPages/TestReportData.aspx", false);
                     }

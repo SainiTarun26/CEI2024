@@ -13,19 +13,19 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                if (Convert.ToString(Session["AdminID"]) != null || Convert.ToString(Session["AdminID"]) != string.Empty || Request.Cookies["AdminID"] != null)
+                if (Convert.ToString(Session["SiteOwnerId"]) != null || Convert.ToString(Session["SiteOwnerId"]) != string.Empty || Request.Cookies["SiteOwnerId"] != null)
                 {
-                    if (Request.Cookies["AdminID"] != null)
+                    if (Request.Cookies["SiteOwnerId"] != null)
                     {
 
-                        lblName.Text = Request.Cookies["AdminID"].Value;
+                        lblName.Text = Request.Cookies["SiteOwnerId"].Value;
                     }
                     else
                     {
-                        lblName.Text = Convert.ToString(Session["AdminID"]);
+                        lblName.Text = Convert.ToString(Session["SiteOwnerId"]);
                     }
                 }
-                else if (Session["AdminID"] == null)
+                else if (Session["SiteOwnerId"] == null)
                 {
                     HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     HttpContext.Current.Response.Cache.SetNoStore();
@@ -34,13 +34,13 @@ namespace CEIHaryana.SiteOwnerPages
                 else
                 {
 
-                    Session["AdminID"] = "";
+                    Session["SiteOwnerId"] = "";
                     Response.Redirect("/Login.aspx");
                 }
             }
             catch (Exception Ex)
             {
-                Session["AdminID"] = "";
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/Login.aspx");
             }
         }
@@ -48,7 +48,7 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["SiteOwnerId"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
         }

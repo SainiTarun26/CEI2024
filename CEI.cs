@@ -1263,6 +1263,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable TestReportGeneratingData(string PanId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerGeneratingReportData", PanId);
+        }  
+        public DataTable SiteOwnerInspectionData(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistory", SiteOwnerId);
         } 
         public DataSet GeneratingTestReportData(string GeneratingSetId)
         {

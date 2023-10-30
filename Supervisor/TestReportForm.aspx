@@ -2093,11 +2093,12 @@
                         </div>--%>
                     <div class="col-6">
                         <label>
-                           Sanction load/ Contract demand(in KVA)
+                           Sanction load/ Contract demand(in KVA)  <samp style="color: red">* </samp>
                         </label>
 
                        <asp:TextBox class="form-control" ID="txtSanctionLoad" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="As per demand notice of utility OR electricity bill" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtSanctionLoad" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                      
                          </div>  
                     <%--<div class="col-6">
                         <label>

@@ -84,5 +84,11 @@ namespace CEIHaryana.Supervisor
                 ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
             }
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            GridviewBind();
+        }
     }
 }

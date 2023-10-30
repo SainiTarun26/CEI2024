@@ -32,7 +32,7 @@ namespace CEIHaryana.TestReportModal
                         Contractor2.Visible = true;
                     }
                 }
-                else if (Session["AdminID"] != null)
+                else if (Session["SiteOwnerId"] != null)
                 {
                     ID = Session["SubStationID"].ToString();
                     GetDetailswithId();

@@ -297,7 +297,7 @@
                                 </div>
                                 <div class="col-4">
                                     <label>
-                                        Select Installation Type
+                                        Select Applicant Type
         <samp style="color: red">* </samp>
                                     </label>
                                     <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="13" ID="ddlApplicantType" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">

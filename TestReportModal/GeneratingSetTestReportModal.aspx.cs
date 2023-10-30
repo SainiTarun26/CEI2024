@@ -34,7 +34,7 @@ namespace CEIHaryana.TestReportModal
 
 
                 }
-                else if (Session["AdminID"] != null)
+                else if (Session["SiteOwnerId"] != null)
                 {
                     ID = Session["GeneratingSetId"].ToString();
                     GetDetailswithId();

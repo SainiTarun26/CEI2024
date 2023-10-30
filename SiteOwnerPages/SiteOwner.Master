@@ -332,6 +332,12 @@
                                     </ul>
                                 </div>
                             </li>
+                           <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Inspection History</span>
+                                </a>
+                            </li>
                           </ul>
                     </nav>
                     <div class="main-panel">

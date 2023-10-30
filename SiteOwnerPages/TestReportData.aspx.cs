@@ -24,7 +24,7 @@ namespace CEIHaryana.SiteOwnerPages
         protected void GridData()
         {
             string LoginID = string.Empty;
-            LoginID = Session["AdminID"].ToString();
+            LoginID = Session["SiteOwnerId"].ToString();
             DataTable ds = new DataTable();
             ds = CEI.SiteOwnerLineData(LoginID);
             if (ds.Rows.Count > 0)
