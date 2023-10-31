@@ -142,48 +142,39 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
+                                    <HeaderStyle Width="35%" />
+                                    <ItemStyle Width="35%" />
                                     <HeaderTemplate>
                                         TestReportId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Application") %> ' CommandName="Select"><%#Eval("Application") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Application" HeaderText="Application">
+                  <%--              <asp:BoundField DataField="Application" HeaderText="Application">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                <%-- <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>--%>
                                 <asp:BoundField DataField="InspectionType" HeaderText="InspectionType">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="center" Width="28%" />
 
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    <ItemStyle HorizontalAlign="center" Width="28%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="center" Width="32%" />
 
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    <ItemStyle HorizontalAlign="center" Width="32%" />
                                 </asp:BoundField> 
                                 <asp:BoundField DataField="Createddate1" HeaderText="RequestDate">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
 
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                               <%-- <asp:BoundField DataField="NmbrofEarthing" HeaderText="Number Of Earthing">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
-                                </asp:BoundField>--%>
-
-                         <%--       <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField> --%>
-
+                           
                             </Columns> 
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
