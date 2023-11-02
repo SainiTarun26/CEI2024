@@ -157,7 +157,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="CreatedDate" HeaderText="Created Date">
+                                <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
                                     <HeaderStyle HorizontalAlign="center" Width="13%" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>                                

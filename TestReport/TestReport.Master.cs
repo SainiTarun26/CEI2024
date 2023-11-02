@@ -40,12 +40,12 @@ namespace CEIHaryana.TestReport
         {
             try
             {
-                if (Session["installationType1"].ToString().Trim() == "Line" || Session["installationType2"].ToString().Trim() == "Line"
-                    || Session["installationType3"].ToString().Trim() == "Line" || Session["installationType4"].ToString().Trim() == "Line"
-                    || Session["installationType5"].ToString().Trim() == "Line" || Session["installationType6"].ToString().Trim() == "Line"
-                    || Session["installationType7"].ToString().Trim() == "Line" || Session["installationType8"].ToString().Trim() == "Line")
+                if (Convert.ToString(Session["installationType1"]).Trim() == "Line" || Convert.ToString(Session["installationType2"]).Trim() == "Line"
+                    || Convert.ToString(Session["installationType3"]).Trim() == "Line" || Convert.ToString(Session["installationType4"]).Trim() == "Line"
+                    || Convert.ToString(Session["installationType5"]).Trim() == "Line" || Convert.ToString(Session["installationType6"]).Trim() == "Line"
+                    || Convert.ToString(Session["installationType7"]).Trim() == "Line" || Convert.ToString(Session["installationType8"]).Trim() == "Line")
                 {
-                    //if (Convert.ToString(Session["SubmittedValue2"]) != null && Convert.ToString(Session["SubmittedValue2"]) != "")
+                    //if (Convert.ToString(SessionConvert.ToString(Session["SubmittedValue2"]) != null && Convert.ToString(SessionConvert.ToString(Session["SubmittedValue2"]) != "")
                     //{
                     //    lblLinePage.Visible = false;
                     //}
@@ -54,12 +54,18 @@ namespace CEIHaryana.TestReport
                     lblLinePage.Visible = true;
                     // }
                 }
-                if (Session["installationType1"].ToString().Trim() == "Substation Transformer" || Session["installationType2"].ToString().Trim() == "Substation Transformer"
-                   || Session["installationType3"].ToString().Trim() == "Substation Transformer" || Session["installationType4"].ToString().Trim() == "Substation Transformer"
-                   || Session["installationType5"].ToString().Trim() == "Substation Transformer" || Session["installationType6"].ToString().Trim() == "Substation Transformer"
-                   || Session["installationType7"].ToString().Trim() == "Substation Transformer" || Session["installationType8"].ToString().Trim() == "Substation Transformer")
+                if(Convert.ToString(Session["Approval"]).Trim() == "Reject")
                 {
-                    //if (Convert.ToString(Session["SubmittedValue"]) != null && Convert.ToString(Session["SubmittedValue"]) != "")
+                    lblLinePage.Visible = true;
+                }
+                else { 
+                }
+                if (Convert.ToString(Session["installationType1"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType2"]).Trim() == "Substation Transformer"
+                   || Convert.ToString(Session["installationType3"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType4"]).Trim() == "Substation Transformer"
+                   || Convert.ToString(Session["installationType5"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType6"]).Trim() == "Substation Transformer"
+                   || Convert.ToString(Session["installationType7"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType8"]).Trim() == "Substation Transformer")
+                {
+                    //if (Convert.ToString(SessionConvert.ToString(Session["SubmittedValue"]) != null && Convert.ToString(SessionConvert.ToString(Session["SubmittedValue"]) != "")
                     //{
                     //    lblSubStationPage.Visible = false;
                     //}
@@ -68,12 +74,12 @@ namespace CEIHaryana.TestReport
                     lblSubStationPage.Visible = true;
                     // }
                 }
-                if (Session["installationType1"].ToString().Trim() == "Generating Station" || Session["installationType2"].ToString().Trim() == "Generating Station"
-                   || Session["installationType3"].ToString().Trim() == "Generating Station" || Session["installationType4"].ToString().Trim() == "Generating Station"
-                   || Session["installationType5"].ToString().Trim() == "Generating Station" || Session["installationType6"].ToString().Trim() == "Generating Station"
-                   || Session["installationType7"].ToString().Trim() == "Generating Station" || Session["installationType8"].ToString().Trim() == "Generating Station")
+                if (Convert.ToString(Session["installationType1"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType2"]).Trim() == "Generating Station"
+                   || Convert.ToString(Session["installationType3"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType4"]).Trim() == "Generating Station"
+                   || Convert.ToString(Session["installationType5"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType6"]).Trim() == "Generating Station"
+                   || Convert.ToString(Session["installationType7"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType8"]).Trim() == "Generating Station")
                 {
-                    //if (Convert.ToString(Session["SubmittedValue3"]) != null && Convert.ToString(Session["SubmittedValue3"]) != "")
+                    //if (Convert.ToString(SessionConvert.ToString(Session["SubmittedValue3"]) != null && Convert.ToString(SessionConvert.ToString(Session["SubmittedValue3"]) != "")
                     //{
                     //    lblGeneratingSet.Visible = false;
                     //}
@@ -83,12 +89,11 @@ namespace CEIHaryana.TestReport
                     //}
 
 
-
                 }
-                if (Session["installationType1"].ToString().Trim() == "Single/ Three Phase" || Session["installationType2"].ToString().Trim() == "Single/ Three Phase"
-                   || Session["installationType3"].ToString().Trim() == "Single/ Three Phase" || Session["installationType4"].ToString().Trim() == "Single/ Three Phase"
-                   || Session["installationType5"].ToString().Trim() == "Single/ Three Phase" || Session["installationType6"].ToString().Trim() == "Single/ Three Phase"
-                   || Session["installationType7"].ToString().Trim() == "Single/ Three Phase" || Session["installationType8"].ToString().Trim() == "Single/ Three Phase")
+                if (Convert.ToString(Session["installationType1"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType2"]).Trim() == "Single/ Three Phase"
+                   || Convert.ToString(Session["installationType3"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType4"]).Trim() == "Single/ Three Phase"
+                   || Convert.ToString(Session["installationType5"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType6"]).Trim() == "Single/ Three Phase"
+                   || Convert.ToString(Session["installationType7"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType8"]).Trim() == "Single/ Three Phase")
                 {
                     lblPhses.Visible = true;
 
@@ -107,7 +112,6 @@ namespace CEIHaryana.TestReport
             string TestReportId = Session["TestReportId"].ToString();
             CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
             ddlSearchingNo.Visible = true;
-
             Session["Value"] = ddlSearchingName.SelectedItem.ToString();
             if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
             {
@@ -130,7 +134,7 @@ namespace CEIHaryana.TestReport
             }
             catch (Exception ex)
             {
-                
+                //abc
             }
 
         }
@@ -138,10 +142,19 @@ namespace CEIHaryana.TestReport
         protected void ddlSearchingNo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = ddlSearchingNo.SelectedValue;
-            Session["Id"] = id;
-            ddlSearchingNo.Visible = true;
+            Session["ValueId"] = id;
             Type = Session["Value"].ToString();
-      
+            //try
+            //{
+            //    string TestReportId = Session["TestReportId"].ToString();
+            //    DataSet dsSearchingNo = new DataSet();
+            //    dsSearchingNo = CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    //abc
+            //}
 
             if (Type.Trim() == "Line")
             {

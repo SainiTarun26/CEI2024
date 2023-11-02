@@ -60,16 +60,21 @@ namespace CEIHaryana.Supervisor
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //string id = e.CommandArgument.ToString();
-            //Session["id"] = id;
-            Control ctrl = e.CommandSource as Control;
-            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-            Label lblID = (Label)row.FindControl("lblID");
-            Session["id"] = lblID.Text;
             if (e.CommandName == "Select")
             {
+               
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                Session["id"] = lblID.Text;
                 ClientScript.RegisterStartupScript(this.GetType(), "Pop", "showModal();", true);
-                GetDetails();
+                    GetDetails();
+
+                
+            }
+            else
+            {
+                getWorkIntimationData();
 
             }
         }

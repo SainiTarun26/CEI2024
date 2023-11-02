@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using iTextSharp.text.pdf.parser;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace CEIHaryana.TestReport
         string nextSessionValue = string.Empty;
         string currentSessionName = string.Empty;
         string IdUpdate = string.Empty;
+        string LineId = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -37,13 +39,20 @@ namespace CEIHaryana.TestReport
                 Insulation440vAbove.Visible = false;
                 Insulation220vAbove.Visible = false;
 
-                if (Convert.ToString(Session["Id"]) == null || Convert.ToString(Session["Id"]) == "")
+                if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
                 {
                     // GetHistoryDataById();
                 }
                 else
                 {
+                    LineId = Session["ValueId"].ToString().Trim();
                     GetHistoryDataById();
+                }
+                if(Convert.ToString(Session["Approval"]) == "Reject")
+                {
+                    LineId = Session["LineID"].ToString().Trim();
+                    GetHistoryDataById();
+
                 }
 
             }
@@ -54,7 +63,6 @@ namespace CEIHaryana.TestReport
         {
             try
             {
-                string Id = Session["Id"].ToString();
                 if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
                 {
                     //
@@ -63,14 +71,21 @@ namespace CEIHaryana.TestReport
                 {
                     type = Session["Value"].ToString();
                 }
+                if(Convert.ToString(Session["Approval"]) == "Reject")
+                {
+                    type = "line";
+                }
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataForUpdate(type, Id);
+                ds = CEI.GetTestReportDataForUpdate(type, LineId);
+
                 if (ds.Tables.Count > 0)
                 {
-                    ddlLineVoltage.SelectedItem.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
+                   Session["TestReportId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString().Trim();
+                    string lineVoltage = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
 
-
-                    if (ddlLineVoltage.SelectedItem.Text == "Other")
+                    ddlLoadBindVoltage();
+                    ddlLineVoltage.SelectedIndex = ddlLineVoltage.Items.IndexOf(ddlLineVoltage.Items.FindByText(lineVoltage));
+                    if (lineVoltage == "Other")
                     {
                         divOtherVoltages.Visible = true;
                         OtherVoltage.Visible = true;
@@ -105,18 +120,18 @@ namespace CEIHaryana.TestReport
                             }
                         }
                     }
-                    else if (ddlLineVoltage.SelectedItem.Text.Trim() == "11kV" || ddlLineVoltage.SelectedItem.Text.Trim() == "66kV" ||
-                       ddlLineVoltage.SelectedItem.Text.Trim() == "132kV" || ddlLineVoltage.SelectedItem.Text.Trim() == "220kV")
+                    else if (lineVoltage == "11kV" || lineVoltage == "66kV" ||
+                       lineVoltage == "132kV" || lineVoltage == "220kV")
                     {
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    else if (ddlLineVoltage.SelectedItem.Text.Trim() == "440V")
+                    else if (lineVoltage == "440V")
                     {
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    else if (ddlLineVoltage.SelectedItem.Text.Trim() == "220V")
+                    else if (lineVoltage == "220V")
                     {
                         Insulation220vAbove.Visible = true;
                         Insulation440vAbove.Visible = false;
@@ -124,28 +139,30 @@ namespace CEIHaryana.TestReport
 
 
                     txtLineLength.Text = ds.Tables[0].Rows[0]["LineLength"].ToString();
-                    ddlLineType.SelectedItem.Text = ds.Tables[0].Rows[0]["LineType"].ToString();
-
+                    string LineType = ds.Tables[0].Rows[0]["LineType"].ToString();
+                    ddlLineType.SelectedIndex = ddlLineType.Items.IndexOf(ddlLineType.Items.FindByText(LineType));
                     //440v
-                    txtRedEarthWire.Text = ds.Tables[0].Rows[0]["RedPhaseEarthWirefor440orAbove"].ToString();
-                    txtYellowEarthWire.Text = ds.Tables[0].Rows[0]["YellowPhaseEarthWire440orAbove"].ToString();
-                    txtBlueEarthWire.Text = ds.Tables[0].Rows[0]["BluePhaseEarthWire440orAbove"].ToString();
-                    txtRedYellowPhase.Text = ds.Tables[0].Rows[0]["RedPhaseYellowPhase440orAbove"].ToString();
-                    txtBlueYellowPhase.Text = ds.Tables[0].Rows[0]["BluePhaseYellowPhase440orAbove"].ToString();
-                    txtRedBluePhase.Text = ds.Tables[0].Rows[0]["RedPhaseBluePhase440orAbove"].ToString();
+                    txtRedEarthWire.Text = ds.Tables[0].Rows[0]["RedPhaseEarthWire"].ToString();
+                    txtYellowEarthWire.Text = ds.Tables[0].Rows[0]["YellowPhaseEarth"].ToString();
+                    txtBlueEarthWire.Text = ds.Tables[0].Rows[0]["BluePhaseEarthWire"].ToString();
+                    txtRedYellowPhase.Text = ds.Tables[0].Rows[0]["RedPhaseYellowPhase"].ToString();
+                    txtBlueYellowPhase.Text = ds.Tables[0].Rows[0]["BluePhaseYellowPhase"].ToString();
+                    txtRedBluePhase.Text = ds.Tables[0].Rows[0]["RedPhaseBluePhase"].ToString();
 
                     //220v
-                    txtNeutralWire.Text = ds.Tables[0].Rows[0]["PhasewireNeutralwire220OrAbove"].ToString();
-                    txtEarthWire.Text = ds.Tables[0].Rows[0]["PhasewireEarth220OrAbove"].ToString();
-                    txtNeutralWireEarth.Text = ds.Tables[0].Rows[0]["NeutralwireEarth220OrAbove"].ToString();
+                    txtNeutralWire.Text = ds.Tables[0].Rows[0]["PhasewireNeutralwire"].ToString();
+                    txtEarthWire.Text = ds.Tables[0].Rows[0]["PhasewireEarth"].ToString();
+                    txtNeutralWireEarth.Text = ds.Tables[0].Rows[0]["NeutralwireEarth"].ToString();
 
 
-                    if (ddlLineType.SelectedItem.Text == "Overhead")
+                    if (LineType == "Overhead")
                     {
                         LineTypeOverhead.Visible = true;
 
                         ddlNmbrOfCircuit.SelectedItem.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
-                        ddlConductorType.SelectedItem.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
+                        string ConductorType = ds.Tables[0].Rows[0]["Conductortype"].ToString();
+
+                        ddlConductorType.SelectedIndex = ddlConductorType.Items.IndexOf(ddlConductorType.Items.FindByText(ConductorType));
                         if (ddlConductorType.SelectedItem.Text == "Bare")
                         {
                             OverheadBare.Visible = true;
@@ -171,225 +188,264 @@ namespace CEIHaryana.TestReport
                         }
 
                     }
-                    else if (ddlLineType.SelectedItem.Text == "Underground")
+                    else if (LineType == "Underground")
                     {
                         LineTypeUnderground.Visible = true;
 
-                        ddlCableType.SelectedItem.Text = ds.Tables[0].Rows[0]["TypeofCable"].ToString();
-                        if (ddlCableType.SelectedItem.Text == "Other")
+                        string cableType = ds.Tables[0].Rows[0]["TypeofCable"].ToString();
+                        ddlCableType.SelectedIndex = ddlCableType.Items.IndexOf(ddlCableType.Items.FindByText(cableType));
+                        if (cableType == "Other")
                         {
                             OtherCable.Visible = true;
                             txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
                         }
                         txtCableSize.Text = ds.Tables[0].Rows[0]["SizeofCable"].ToString();
-                        ddlCableLaid.SelectedItem.Text = ds.Tables[0].Rows[0]["Cablelaidin"].ToString();
+
+                        string cablelaidIn = ds.Tables[0].Rows[0]["Cablelaidin"].ToString();
+                        ddlCableLaid.SelectedIndex = ddlCableLaid.Items.IndexOf(ddlCableLaid.Items.FindByText(cablelaidIn));
                     }
 
-                    ddlNoOfEarthing.SelectedItem.Text = ds.Tables[0].Rows[0]["NmbrofEarthing"].ToString();
-                    if (ddlNoOfEarthing.SelectedItem.Text != "" && ddlNoOfEarthing.SelectedItem.Text != null)
+                    string NoOfEarthing = ds.Tables[0].Rows[0]["NmbrofEarthing"].ToString();
+                    ddlEarthing();
+                    ddlNoOfEarthing.SelectedIndex = ddlNoOfEarthing.Items.IndexOf(ddlNoOfEarthing.Items.FindByText(NoOfEarthing));
+                    if (NoOfEarthing != "" && NoOfEarthing != null)
                     {
                         Earthing.Visible = true;
                         LineEarthingdiv.Visible = true;
-                    }
-                    if (ddlNoOfEarthing.SelectedItem.Text == "1")
-                    {
-                        Earthingtype1.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "2")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "3")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "4")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "5")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "6")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "7")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "8")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "9")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                        Earthingtype9.Visible = true;
+
+                        if (NoOfEarthing == "1")
+                        {
+                            Earthingtype1.Visible = true;
+                        }
+                        else if (NoOfEarthing == "2")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                        }
+                        else if (NoOfEarthing == "3")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                        }
+                        else if (NoOfEarthing == "4")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                        }
+                        else if (NoOfEarthing == "5")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                        }
+                        else if (NoOfEarthing == "6")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                        }
+                        else if (NoOfEarthing == "7")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                        }
+                        else if (NoOfEarthing == "8")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                        }
+                        else if (NoOfEarthing == "9")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                            Earthingtype9.Visible = true;
+
+                        }
+                        else if (NoOfEarthing == "10")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                            Earthingtype9.Visible = true;
+                            Earthingtype10.Visible = true;
+
+                        }
+                        else if (NoOfEarthing == "11")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                            Earthingtype9.Visible = true;
+                            Earthingtype10.Visible = true;
+                            Earthingtype11.Visible = true;
+                        }
+                        else if (NoOfEarthing == "12")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                            Earthingtype9.Visible = true;
+                            Earthingtype10.Visible = true;
+                            Earthingtype11.Visible = true;
+                            Earthingtype12.Visible = true;
+                        }
+                        else if (NoOfEarthing == "13")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                            Earthingtype9.Visible = true;
+                            Earthingtype10.Visible = true;
+                            Earthingtype11.Visible = true;
+                            Earthingtype12.Visible = true;
+                            Earthingtype13.Visible = true;
+
+                        }
+                        else if (NoOfEarthing == "14")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                            Earthingtype9.Visible = true;
+                            Earthingtype10.Visible = true;
+                            Earthingtype11.Visible = true;
+                            Earthingtype12.Visible = true;
+                            Earthingtype13.Visible = true;
+                            Earthingtype14.Visible = true;
+
+                        }
+                        else if (NoOfEarthing == "15")
+                        {
+                            Earthingtype1.Visible = true;
+                            Earthingtype2.Visible = true;
+                            Earthingtype3.Visible = true;
+                            Earthingtype4.Visible = true;
+                            Earthingtype5.Visible = true;
+                            Earthingtype6.Visible = true;
+                            Earthingtype7.Visible = true;
+                            Earthingtype8.Visible = true;
+                            Earthingtype9.Visible = true;
+                            Earthingtype10.Visible = true;
+                            Earthingtype11.Visible = true;
+                            Earthingtype12.Visible = true;
+                            Earthingtype13.Visible = true;
+                            Earthingtype14.Visible = true;
+                            Earthingtype15.Visible = true;
+                        }
+
+                        string EarthingType1 = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                        ddlEarthingtype1.SelectedIndex = ddlEarthingtype1.Items.IndexOf(ddlEarthingtype1.Items.FindByText(EarthingType1));
+                        txtearthingValue1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
+
+                        string EarthingType2 = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
+                        ddlEarthingtype2.SelectedIndex = ddlEarthingtype2.Items.IndexOf(ddlEarthingtype2.Items.FindByText(EarthingType2));
+                        txtEarthingValue2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
+
+                        string EarthingType3 = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
+                        ddlEarthingtype3.SelectedIndex = ddlEarthingtype3.Items.IndexOf(ddlEarthingtype3.Items.FindByText(EarthingType3));
+                        txtEarthingValue3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
+
+                        string EarthingType4 = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
+                        ddlEarthingtype4.SelectedIndex = ddlEarthingtype4.Items.IndexOf(ddlEarthingtype4.Items.FindByText(EarthingType4));
+                        txtEarthingValue4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
+
+                        string EarthingType5 = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
+                        ddlEarthingtype5.SelectedIndex = ddlEarthingtype5.Items.IndexOf(ddlEarthingtype5.Items.FindByText(EarthingType5));
+                        txtEarthingValue5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
+
+                        string EarthingType6 = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
+                        ddlEarthingtype6.SelectedIndex = ddlEarthingtype6.Items.IndexOf(ddlEarthingtype6.Items.FindByText(EarthingType6));
+                        txtEarthingValue6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
+
+                        string EarthingType7 = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
+                        ddlEarthingtype7.SelectedIndex = ddlEarthingtype7.Items.IndexOf(ddlEarthingtype7.Items.FindByText(EarthingType7));
+                        txtEarthingValue7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
+
+                        string EarthingType8 = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
+                        ddlEarthingtype8.SelectedIndex = ddlEarthingtype8.Items.IndexOf(ddlEarthingtype8.Items.FindByText(EarthingType8));
+                        txtEarthingValue8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
+
+                        string EarthingType9 = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
+                        ddlEarthingtype9.SelectedIndex = ddlEarthingtype9.Items.IndexOf(ddlEarthingtype9.Items.FindByText(EarthingType9));
+                        txtEarthingValue9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
+
+                        string EarthingType10 = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
+                        ddlEarthingtype10.SelectedIndex = ddlEarthingtype10.Items.IndexOf(ddlEarthingtype10.Items.FindByText(EarthingType10));
+                        txtEarthingValue10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
+
+                        string EarthingType11 = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
+                        ddlEarthingtype11.SelectedIndex = ddlEarthingtype11.Items.IndexOf(ddlEarthingtype11.Items.FindByText(EarthingType11));
+                        txtEarthingValue11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
+
+                        string EarthingType12 = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
+                        ddlEarthingtype12.SelectedIndex = ddlEarthingtype12.Items.IndexOf(ddlEarthingtype12.Items.FindByText(EarthingType12));
+                        txtEarthingValue12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
+
+                        string EarthingType13 = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
+                        ddlEarthingtype13.SelectedIndex = ddlEarthingtype13.Items.IndexOf(ddlEarthingtype13.Items.FindByText(EarthingType13));
+                        txtEarthingValue13.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
+
+                        string EarthingType14 = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
+                        ddlEarthingtype14.SelectedIndex = ddlEarthingtype14.Items.IndexOf(ddlEarthingtype14.Items.FindByText(EarthingType14));
+                        txtEarthingValue14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
+
+                        string EarthingType15 = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
+                        ddlEarthingtype15.SelectedIndex = ddlEarthingtype15.Items.IndexOf(ddlEarthingtype15.Items.FindByText(EarthingType15));
+                        txtEarthingValue15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
 
                     }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "10")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                        Earthingtype9.Visible = true;
-                        Earthingtype10.Visible = true;
 
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "11")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                        Earthingtype9.Visible = true;
-                        Earthingtype10.Visible = true;
-                        Earthingtype11.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "12")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                        Earthingtype9.Visible = true;
-                        Earthingtype10.Visible = true;
-                        Earthingtype11.Visible = true;
-                        Earthingtype12.Visible = true;
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "13")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                        Earthingtype9.Visible = true;
-                        Earthingtype10.Visible = true;
-                        Earthingtype11.Visible = true;
-                        Earthingtype12.Visible = true;
-                        Earthingtype13.Visible = true;
 
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "14")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                        Earthingtype9.Visible = true;
-                        Earthingtype10.Visible = true;
-                        Earthingtype11.Visible = true;
-                        Earthingtype12.Visible = true;
-                        Earthingtype13.Visible = true;
-                        Earthingtype14.Visible = true;
-
-                    }
-                    else if (ddlNoOfEarthing.SelectedItem.Text == "15")
-                    {
-                        Earthingtype1.Visible = true;
-                        Earthingtype2.Visible = true;
-                        Earthingtype3.Visible = true;
-                        Earthingtype4.Visible = true;
-                        Earthingtype5.Visible = true;
-                        Earthingtype6.Visible = true;
-                        Earthingtype7.Visible = true;
-                        Earthingtype8.Visible = true;
-                        Earthingtype9.Visible = true;
-                        Earthingtype10.Visible = true;
-                        Earthingtype11.Visible = true;
-                        Earthingtype12.Visible = true;
-                        Earthingtype13.Visible = true;
-                        Earthingtype14.Visible = true;
-                        Earthingtype15.Visible = true;
-                    }
-                    ddlEarthingtype1.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
-                    txtearthingValue1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
-                    ddlEarthingtype2.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
-                    txtEarthingValue2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
-                    ddlEarthingtype3.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
-                    txtEarthingValue3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
-                    ddlEarthingtype4.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
-                    txtEarthingValue4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
-                    ddlEarthingtype5.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
-                    txtEarthingValue5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
-                    ddlEarthingtype6.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
-                    txtEarthingValue6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
-                    ddlEarthingtype7.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
-                    txtEarthingValue7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
-                    ddlEarthingtype8.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
-                    txtEarthingValue8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
-                    ddlEarthingtype9.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
-                    txtEarthingValue9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
-                    ddlEarthingtype10.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
-                    txtEarthingValue10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
-                    ddlEarthingtype11.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
-                    txtEarthingValue11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
-                    ddlEarthingtype12.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
-                    txtEarthingValue12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
-                    ddlEarthingtype13.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
-                    txtEarthingValue13.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
-                    ddlEarthingtype14.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
-                    txtEarthingValue14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
-                    ddlEarthingtype15.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
-                    txtEarthingValue15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
 
 
                     btnSubmit.Text = "Update";
