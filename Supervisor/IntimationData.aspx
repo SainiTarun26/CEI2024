@@ -132,6 +132,9 @@
     background-color: #eeeeee;
     border-color: #dddddd;
 }
+.headercolor{
+    background-color: #9292cc;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -156,12 +159,12 @@
                         </div>
                     </div>
                     <div style="margin-top:3%">
-                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
-                            AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
+                        <asp:GridView class="table-responsive table table-striped table-hover"  ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
+                            AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                            <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                       <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" />
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
@@ -173,7 +176,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Application">
-                                    <HeaderStyle Width="25%" />
+                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
                                     <ItemStyle Width="25%" />
                                     <ItemTemplate>
                                       <%--  <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Select"><%#Eval("Id") %></asp:LinkButton> --%>
@@ -185,19 +188,19 @@
                                     <ItemStyle HorizontalAlign="Left" CssClass="NameRow" />
                                 </asp:BoundField>--%>
                                 <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor"/>
                                     <ItemStyle HorizontalAlign="center" CssClass="ContactRow" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
                             </Columns>

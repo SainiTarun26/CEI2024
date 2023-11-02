@@ -18,12 +18,12 @@
                           <div class="form-group row">
                               <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                               <div class="col-sm-9" style="margin-left: -35px;">
-                                  <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                                  <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" style="margin-top:4px;height:1px;"></asp:TextBox><br />
                               </div>
                           </div>
                       </div>
                   </div>
-                       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="92%"
+                       <asp:GridView class="table table-striped table-hover table-responsive" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true"
                            PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
@@ -33,6 +33,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField> 
                                 <asp:TemplateField HeaderText="Id" Visible="False">
+
                                     <ItemTemplate>
                                         <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                     </ItemTemplate>

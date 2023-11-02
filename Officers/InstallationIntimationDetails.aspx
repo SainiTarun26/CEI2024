@@ -136,7 +136,7 @@
                                 </asp:TemplateField>
                                  <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" />
-                                <ItemStyle Width="5%" />
+                                <ItemStyle Width="5%" /> 
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
