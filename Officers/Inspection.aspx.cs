@@ -105,11 +105,19 @@ namespace CEIHaryana.Officers
                 Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
                 Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
                 string Approval = Session["Approval"].ToString();
-                if (Approval.Trim() == "Pending")
+                if (Approval.Trim() == "Initiated")
                 {
+                    CEI.UpdateInspectionData(ID);
                     ApprovalRequired.Visible = true;
                     btnSubmit.Visible = true;
                 }
+                else if (Approval.Trim() == "InProgress")
+                {
+                    ApprovalRequired.Visible = true;
+                    btnSubmit.Visible = true;
+
+
+                }  
                 else if (Approval.Trim() == "Accepted")
                 {
                     ApprovalRequired.Visible = true;

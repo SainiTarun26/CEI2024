@@ -23,7 +23,7 @@
                           </div>
                       </div>
                   </div>
-                       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
+                       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="92%"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true"
                            PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
@@ -84,17 +84,6 @@
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
 
-                         <%--       <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>--%>
-
-                                <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
-                                    <ItemTemplate>
-                                      </ItemTemplate>
-                                </asp:TemplateField>
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

@@ -24,14 +24,23 @@
                       </div>
                   </div>
                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false">
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                           
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblLineID" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />
@@ -58,7 +67,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>  
-                                <asp:BoundField DataField="CreatedDate" HeaderText="Created Date">
+                                <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>

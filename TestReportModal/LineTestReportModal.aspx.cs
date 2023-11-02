@@ -1,4 +1,5 @@
-﻿using CEI_PRoject;
+﻿
+using CEI_PRoject;
 using CEIHaryana.Contractor;
 using System;
 using System.Collections.Generic;
@@ -41,8 +42,20 @@ namespace CEIHaryana.TestReportModal
                 {
                     ID = Session["LineID"].ToString();
                     GetDetailswithId();
-                    SiteOwner.Visible = true;
-                    IntimationData.Visible = true;
+                    if (Convert.ToString(Session["Approval"]) == null || Convert.ToString(Session["Approval"]) == "")
+                    {
+                        SiteOwner.Visible = true;
+                        SiteOwner2.Visible = false;
+                        IntimationData.Visible = true;
+                    }
+                    else
+                    {
+                        SiteOwner.Visible = false;
+                        SiteOwner2.Visible = true;
+                        IntimationData.Visible = true;
+
+                    }
+                   
                     
                 }
                 else if (Session["InspectionTestReportId"] != null)
@@ -624,6 +637,11 @@ namespace CEIHaryana.TestReportModal
                     Contractor3.Visible = false;
                 }
             }
+        }
+
+        protected void btnBack2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
         }
     }
 }

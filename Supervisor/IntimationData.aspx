@@ -160,21 +160,30 @@
                             AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
                            <PagerStyle CssClass="pagination-ys" />
                             <Columns>
+                                      <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="IntimationId">
+                                <asp:TemplateField HeaderText="Application">
+                                    <HeaderStyle Width="25%" />
+                                    <ItemStyle Width="25%" />
                                     <ItemTemplate>
                                       <%--  <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Select"><%#Eval("Id") %></asp:LinkButton> --%>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="ShowPopup_Click"  CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="ShowPopup_Click"  CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="Name">
+                               <%-- <asp:BoundField DataField="Name" HeaderText="Name">
                                     <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader AlignHeader" />
                                     <ItemStyle HorizontalAlign="Left" CssClass="NameRow" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader" />
                                     <ItemStyle HorizontalAlign="center" CssClass="ContactRow" />

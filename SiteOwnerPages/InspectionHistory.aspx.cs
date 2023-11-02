@@ -45,5 +45,22 @@ namespace CEIHaryana.SiteOwnerPages
             }
             ds.Dispose();
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            Label lblID = (Label)row.FindControl("lblID");
+            Session["InspectionId"] = lblID.Text;
+            Label lblApproval = (Label)row.FindControl("lblApproval");
+            Session["Approval"] = lblApproval.Text.Trim();
+            Label lblLineID = (Label)row.FindControl("lblLineID");
+            Session["LineID"] = lblLineID.Text.Trim();
+            if (e.CommandName == "Select")
+
+            {
+                Response.Redirect("/SiteOwnerPages/Inspection.aspx");
+
+            }
+        }
     }
 }

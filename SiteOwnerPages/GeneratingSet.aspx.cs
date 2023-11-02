@@ -59,6 +59,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["ApplicantType"] = lblApplicantType.Text;
                 Label lblVoltage = (Label)row.FindControl("lblVoltage");
                 Session["Voltage"] = lblVoltage.Text;
+                Session["Approval"] = null;
                 if (e.CommandName == "Select")
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");

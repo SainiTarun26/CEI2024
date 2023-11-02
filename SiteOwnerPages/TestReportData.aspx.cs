@@ -14,6 +14,7 @@ namespace CEIHaryana.SiteOwnerPages
 
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
+
         {
             if (!IsPostBack)
             {
@@ -62,6 +63,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["Voltage"] = lblVoltage.Text;
                 Label lblDistrict = (Label)row.FindControl("lblDistrict");
                 Session["District"] = lblDistrict.Text;
+                Session["Approval"] = null;
                 if (e.CommandName == "Select")
 
                 {

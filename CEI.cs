@@ -295,7 +295,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder,st
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string LineId, string TestReportId,string IntimationId, string LineVoltage,string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string IdUpdate, string LineId, string TestReportId,string IntimationId, string LineVoltage,string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -320,6 +320,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
             cmd.Parameters.AddWithValue("@Id", LineId);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
@@ -602,6 +603,25 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@Id", ID);
             cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
             cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
+
+        #region Update Inspection Data
+        public void UpdateInspectionData(string ID)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdateStatus");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -991,7 +1011,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
             string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet, 
             string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite, 
-            string StructureStabilityResolvedByAuthorizedEngineer, string SendTo, string CreatedBy)
+            string StructureStabilityResolvedByAuthorizedEngineer, string Staff, string Division, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1022,7 +1042,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
             cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
-            cmd.Parameters.AddWithValue("@SendTo ", SendTo);
+            cmd.Parameters.AddWithValue("@Staff ", Staff); 
+            cmd.Parameters.AddWithValue("@Division ", Division);
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -1357,6 +1378,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetTestReportHistoryForUpdate(string Type,string TestReportId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SearchingTestReportHistory", Type, TestReportId);
+        }
+        public DataSet GetTestReportDataForUpdate(string Type, string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SearchingOnTestHistoryData", Type, Id);
         }
     }
 }

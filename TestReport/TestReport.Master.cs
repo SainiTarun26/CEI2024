@@ -11,13 +11,22 @@ namespace CEIHaryana.TestReport
 {
     public partial class TestReport : System.Web.UI.MasterPage
     {
-        CEI CEI = new CEI(); 
+        CEI CEI = new CEI();
+        string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Convert.ToString(Session["Value"]) == null)
+                {
+                    ddlSearchingName.Visible = false;
+                }
+            }
+
             RedirectPages();
             if (Session["Page"] != null && (int)Session["Page"] == 0)
             {
-               
+
             }
             else
             {
@@ -42,8 +51,8 @@ namespace CEIHaryana.TestReport
                     //}
                     //else
                     //{
-                        lblLinePage.Visible = true;
-                   // }
+                    lblLinePage.Visible = true;
+                    // }
                 }
                 if (Session["installationType1"].ToString().Trim() == "Substation Transformer" || Session["installationType2"].ToString().Trim() == "Substation Transformer"
                    || Session["installationType3"].ToString().Trim() == "Substation Transformer" || Session["installationType4"].ToString().Trim() == "Substation Transformer"
@@ -70,9 +79,10 @@ namespace CEIHaryana.TestReport
                     //}
                     //else
                     //{
-                        lblGeneratingSet.Visible = true;
+                    lblGeneratingSet.Visible = true;
                     //}
-                   
+
+
 
                 }
                 if (Session["installationType1"].ToString().Trim() == "Single/ Three Phase" || Session["installationType2"].ToString().Trim() == "Single/ Three Phase"
@@ -83,8 +93,8 @@ namespace CEIHaryana.TestReport
                     lblPhses.Visible = true;
 
                 }
-              
-   
+
+
             }
             catch
             {
@@ -94,10 +104,19 @@ namespace CEIHaryana.TestReport
 
         protected void ddlSearchingName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string Type = ddlSearchingName.SelectedItem.ToString();
             string TestReportId = Session["TestReportId"].ToString();
             CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
             ddlSearchingNo.Visible = true;
+
+            Session["Value"] = ddlSearchingName.SelectedItem.ToString();
+            if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
+            {
+                Type = ddlSearchingName.SelectedItem.ToString();
+            }
+            else
+            {
+                Type = Session["Value"].ToString();
+            }
             try
             {
                 DataSet dsSearchingNo = new DataSet();
@@ -109,9 +128,35 @@ namespace CEIHaryana.TestReport
                 ddlSearchingNo.Items.Insert(0, new ListItem("Select", "0"));
                 dsSearchingNo.Clear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                
             }
+
+        }
+
+        protected void ddlSearchingNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = ddlSearchingNo.SelectedValue;
+            Session["Id"] = id;
+            ddlSearchingNo.Visible = true;
+            Type = Session["Value"].ToString();
+      
+
+            if (Type.Trim() == "Line")
+            {
+                Response.Redirect("/TestReport/LineTestReport.aspx");
+            }
+            else if (Type.Trim() == "Substation Transformer")
+            {
+                Response.Redirect("/TestReport/SubstationTransformer.aspx");
+            }
+            else if (Type.Trim() == "Generating Station")
+            {
+                Response.Redirect("/TestReport/GeneratingSetTestReport.aspx");
+            }
+
+
         }
     }
 }

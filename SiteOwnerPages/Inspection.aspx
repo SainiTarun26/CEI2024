@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="Inspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Inspection" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+
+ <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -163,8 +164,7 @@
                 </label>
                 <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-
-            </div>
+  </div>
 
             <div class="col-4">
                 <label>
@@ -183,7 +183,7 @@
             <div class="col-4" runat="server">
                 <label for="Pin">Voltage Level</label>
                 <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
+  
             </div>
         </div>
 
@@ -196,14 +196,14 @@
                             </th>
                             <th>Upload Documents
                             </th>
-                            <th>
+                            <th id="RejectedColumn" runat="server" visible="false">
                                 Change Document
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <div id="LineSubstationSupplier" runat="server" >
-                            <tr id="Tr1" runat="server" visible="true">
+                        <div id="LineSubstationSupplier" runat="server" visible="false" >
+                            <tr id="Tr1" runat="server">
                                 <td>
                                     <div class="col-12">
                                         Request letter from concerned Officer<samp style="color: red"> * </samp>
@@ -213,7 +213,7 @@
                                     <asp:LinkButton ID="lnkLetter" runat="server" AutoPostBack="true" OnClick="lnkLetter_Click" Text="Open Document" />
 
                                 </td>
-                                <td> 
+                                <td id="RejectedColumnData1" runat="server" visible="false"> 
                                     <asp:FileUpload runat="server" ID="fileUpload" />
                                 </td>
                             </tr>
@@ -228,13 +228,13 @@
                                         <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnktest_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                <td>
+                                <td id="RejectedColumnData2" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload1" />
                                 </td>
                             </tr>
                         </div>
-                        <div id="SupplierSub" runat="server" >
-                            <tr id="Tr3" runat="server" visible="true">
+                        <div id="SupplierSub" runat="server" visible="false">
+                            <tr id="Tr3" runat="server">
                                 <td>
                                     <div class="col-12">
                                         Single line diagram of Line<samp style="color: red"> * </samp>
@@ -245,13 +245,13 @@
                                         <asp:LinkButton ID="lnkDiag" runat="server" AutoPostBack="true" OnClick="lnkDiag_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData3" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload2" />
                                 </td>
                             </tr>
                         </div>
                         <div id="PersonalSub" runat="server" visible="false">
-                            <tr id="Tr4" runat="server" visible="true">
+                            <tr id="Tr4" runat="server">
                                 <td>
                                     <div class="col-12">
                                         Copy of demand notice issued by UHDVN/ DHBVN<samp style="color: red"> * </samp>
@@ -262,7 +262,7 @@
                                         <asp:LinkButton ID="lnkCopy" runat="server" AutoPostBack="true" OnClick="lnkCopy_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData4" runat="server" visible="false"> 
                                      <asp:FileUpload runat="server" ID="fileUpload3" />
                                 </td>
                             </tr>
@@ -277,7 +277,7 @@
                                         <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceTransformer_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData5" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload4" />
                                 </td>
                             </tr>
@@ -292,7 +292,7 @@
                                         <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkManufacturing_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData6" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload5" />
                                 </td>
                             </tr>
@@ -308,7 +308,7 @@
                                         <asp:LinkButton ID="lnkSingleDiag" runat="server" AutoPostBack="true" OnClick="lnkSingleDiag_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData7" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload6" />
                                 </td>
                             </tr>
@@ -323,7 +323,7 @@
                                         <asp:LinkButton ID="lnkInvoiceFire" runat="server" AutoPostBack="true" OnClick="lnkInvoiceFire_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData8" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload7" />
                                 </td>
                             </tr>
@@ -341,7 +341,7 @@
 
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData9" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload8" />
                                 </td>
                             </tr>
@@ -358,7 +358,7 @@
 
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData10" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload9" />
                                 </td>
                             </tr>
@@ -373,7 +373,7 @@
                                         <asp:LinkButton ID="lnkInvoice" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData11" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload10" />
                                 </td>
                             </tr>
@@ -388,7 +388,7 @@
                                         <asp:LinkButton ID="lnkStructure" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
                                     </div>
                                 </td>
-                                 <td>
+                                 <td id="RejectedColumnData12" runat="server" visible="false">
                                      <asp:FileUpload runat="server" ID="fileUpload11" />
                                 </td>
                             </tr>
@@ -406,6 +406,9 @@
 
                                 </div>
                             </td>
+                                <td id="RejectedColumnData13" runat="server" visible="false">
+                                     <asp:FileUpload runat="server" ID="fileUpload12" />
+                                </td>
                         </tr>
                     </tbody>
                 </table>
@@ -427,7 +430,7 @@
             <div class="col-4" id="ApprovalRequired" runat="server" visible="false">
                  <br />
                  <br />
-                 <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
+                 <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                 <asp:ListItem Text="Accepted" Value="1"></asp:ListItem>
                                                 <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
@@ -448,8 +451,7 @@
         <div class="row">
              <div class="col-4"></div>  
             <div class="col-4" style="text-align:center;">
-                <asp:Button ID="btnSubmit" Text="Update" visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
-            <asp:Button ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                <asp:Button ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
           
                 </div>
             </div>
@@ -458,3 +460,5 @@
     </div>
          </div>
 
+
+</asp:Content>

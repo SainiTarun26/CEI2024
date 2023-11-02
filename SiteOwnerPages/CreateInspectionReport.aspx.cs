@@ -114,13 +114,12 @@ namespace CEIHaryana.SiteOwnerPages
 
             //if (allFilesArePDF)
             //{
-                string AssignTo = string.Empty;
                 string Assign = string.Empty;
                 string To = string.Empty;
                 string input = txtVoltage.Text;
                 string id = Session["LineID"].ToString();
                 string IntimationId = Session["IntimationId"].ToString();
-                string CreatedBy = Session["AdminID"].ToString();
+                string CreatedBy = Session["SiteOwnerId"].ToString();
                 string FileName = string.Empty;
                 string flpPhotourl = string.Empty;
                 string flpPhotourl1 = string.Empty;
@@ -433,10 +432,10 @@ namespace CEIHaryana.SiteOwnerPages
                         flpPhotourl12 = path + fileName;
                     }
                 }
-                AssignTo = Assign + "_" + To;
+               
                 CEI.InsertInspectionData(id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
                     flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, AssignTo, CreatedBy);
+                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, CreatedBy);
                 DataSaved.Visible = true;
             //}
             //else

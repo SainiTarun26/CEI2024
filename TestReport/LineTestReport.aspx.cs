@@ -18,25 +18,391 @@ namespace CEIHaryana.TestReport
     {
         CEI CEI = new CEI();
         int x = 0;
+        string type = string.Empty;
         string sessionValue = string.Empty;
         string sessionName = string.Empty;
         string nextSessionName = string.Empty;
         string nextSessionValue = string.Empty;
         string currentSessionName = string.Empty;
+        string IdUpdate = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                
+                // GetHistoryDataById();
                 ddlLoadBindVoltage();
                 ddlEarthing();
                 SessionValue();
                 PageWorking();
                 Insulation440vAbove.Visible = false;
                 Insulation220vAbove.Visible = false;
-               
+
+                if (Convert.ToString(Session["Id"]) == null || Convert.ToString(Session["Id"]) == "")
+                {
+                    // GetHistoryDataById();
+                }
+                else
+                {
+                    GetHistoryDataById();
+                }
+
             }
         }
+
+
+        private void GetHistoryDataById()
+        {
+            try
+            {
+                string Id = Session["Id"].ToString();
+                if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
+                {
+                    //
+                }
+                else
+                {
+                    type = Session["Value"].ToString();
+                }
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReportDataForUpdate(type, Id);
+                if (ds.Tables.Count > 0)
+                {
+                    ddlLineVoltage.SelectedItem.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
+
+
+                    if (ddlLineVoltage.SelectedItem.Text == "Other")
+                    {
+                        divOtherVoltages.Visible = true;
+                        OtherVoltage.Visible = true;
+
+                        ddlOtherVoltage.SelectedItem.Text = ds.Tables[0].Rows[0]["OtherVoltageType"].ToString();
+                        TxtOthervoltage.Text = ds.Tables[0].Rows[0]["OtherVoltage"].ToString();
+
+                        if (ddlOtherVoltage.SelectedItem.Text.Trim() == "KV")
+                        {
+                            Insulation440vAbove.Visible = true;
+                            Insulation220vAbove.Visible = false;
+                        }
+                        else if (ddlOtherVoltage.SelectedItem.Text.Trim() == "V")
+                        {
+                            if (int.TryParse(TxtOthervoltage.Text, out int value))
+                            {
+                                if (value > 440)
+                                {
+                                    Insulation440vAbove.Visible = true;
+                                    Insulation220vAbove.Visible = false;
+                                }
+                                else if (value > 220)
+                                {
+                                    Insulation440vAbove.Visible = false;
+                                    Insulation220vAbove.Visible = true;
+                                }
+                                else
+                                {
+                                    Insulation440vAbove.Visible = true;
+                                    Insulation220vAbove.Visible = false;
+                                }
+                            }
+                        }
+                    }
+                    else if (ddlLineVoltage.SelectedItem.Text.Trim() == "11kV" || ddlLineVoltage.SelectedItem.Text.Trim() == "66kV" ||
+                       ddlLineVoltage.SelectedItem.Text.Trim() == "132kV" || ddlLineVoltage.SelectedItem.Text.Trim() == "220kV")
+                    {
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
+                    }
+                    else if (ddlLineVoltage.SelectedItem.Text.Trim() == "440V")
+                    {
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
+                    }
+                    else if (ddlLineVoltage.SelectedItem.Text.Trim() == "220V")
+                    {
+                        Insulation220vAbove.Visible = true;
+                        Insulation440vAbove.Visible = false;
+                    }
+
+
+                    txtLineLength.Text = ds.Tables[0].Rows[0]["LineLength"].ToString();
+                    ddlLineType.SelectedItem.Text = ds.Tables[0].Rows[0]["LineType"].ToString();
+
+                    //440v
+                    txtRedEarthWire.Text = ds.Tables[0].Rows[0]["RedPhaseEarthWirefor440orAbove"].ToString();
+                    txtYellowEarthWire.Text = ds.Tables[0].Rows[0]["YellowPhaseEarthWire440orAbove"].ToString();
+                    txtBlueEarthWire.Text = ds.Tables[0].Rows[0]["BluePhaseEarthWire440orAbove"].ToString();
+                    txtRedYellowPhase.Text = ds.Tables[0].Rows[0]["RedPhaseYellowPhase440orAbove"].ToString();
+                    txtBlueYellowPhase.Text = ds.Tables[0].Rows[0]["BluePhaseYellowPhase440orAbove"].ToString();
+                    txtRedBluePhase.Text = ds.Tables[0].Rows[0]["RedPhaseBluePhase440orAbove"].ToString();
+
+                    //220v
+                    txtNeutralWire.Text = ds.Tables[0].Rows[0]["PhasewireNeutralwire220OrAbove"].ToString();
+                    txtEarthWire.Text = ds.Tables[0].Rows[0]["PhasewireEarth220OrAbove"].ToString();
+                    txtNeutralWireEarth.Text = ds.Tables[0].Rows[0]["NeutralwireEarth220OrAbove"].ToString();
+
+
+                    if (ddlLineType.SelectedItem.Text == "Overhead")
+                    {
+                        LineTypeOverhead.Visible = true;
+
+                        ddlNmbrOfCircuit.SelectedItem.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
+                        ddlConductorType.SelectedItem.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
+                        if (ddlConductorType.SelectedItem.Text == "Bare")
+                        {
+                            OverheadBare.Visible = true;
+                            OverheadCable.Visible = false;
+                            txtPoleTowerNo.Text = ds.Tables[0].Rows[0]["NumberofPoleTower"].ToString();
+                            txtConductorSize.Text = ds.Tables[0].Rows[0]["ConductorSize"].ToString();
+                            txtGroundWireSize.Text = ds.Tables[0].Rows[0]["GroundWireSize"].ToString();
+                            txtRailwayCrossingNo.Text = ds.Tables[0].Rows[0]["NmbrofRailwayCrossing"].ToString();
+                            txtRoadCrossingNo.Text = ds.Tables[0].Rows[0]["NmbrofRoadCrossing"].ToString();
+                            txtRiverCanalCrossing.Text = ds.Tables[0].Rows[0]["NmbrofRiverCanalCrossing"].ToString();
+                            txtPowerLineCrossing.Text = ds.Tables[0].Rows[0]["NmbrofPowerLineCrossing"].ToString();
+                        }
+                        else
+                        {
+                            OverheadBare.Visible = false;
+                            OverheadCable.Visible = true;
+                            txtPoleTowerNo.Text = ds.Tables[0].Rows[0]["NoofPoleTowerForOverheadCable"].ToString();
+                            txtCableSize1.Text = ds.Tables[0].Rows[0]["CableSize"].ToString();
+                            txtRailwayCrossingNo.Text = ds.Tables[0].Rows[0]["RailwayCrossingNoForOC"].ToString();
+                            txtRoadCrossingNo.Text = ds.Tables[0].Rows[0]["RoadCrossingNoForOC"].ToString();
+                            txtRiverCanalCrossing.Text = ds.Tables[0].Rows[0]["RiverCanalCrossingNoForOC"].ToString();
+                            txtPowerLineCrossing.Text = ds.Tables[0].Rows[0]["PowerLineCrossingNoForOc"].ToString();
+                        }
+
+                    }
+                    else if (ddlLineType.SelectedItem.Text == "Underground")
+                    {
+                        LineTypeUnderground.Visible = true;
+
+                        ddlCableType.SelectedItem.Text = ds.Tables[0].Rows[0]["TypeofCable"].ToString();
+                        if (ddlCableType.SelectedItem.Text == "Other")
+                        {
+                            OtherCable.Visible = true;
+                            txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
+                        }
+                        txtCableSize.Text = ds.Tables[0].Rows[0]["SizeofCable"].ToString();
+                        ddlCableLaid.SelectedItem.Text = ds.Tables[0].Rows[0]["Cablelaidin"].ToString();
+                    }
+
+                    ddlNoOfEarthing.SelectedItem.Text = ds.Tables[0].Rows[0]["NmbrofEarthing"].ToString();
+                    if (ddlNoOfEarthing.SelectedItem.Text != "" && ddlNoOfEarthing.SelectedItem.Text != null)
+                    {
+                        Earthing.Visible = true;
+                        LineEarthingdiv.Visible = true;
+                    }
+                    if (ddlNoOfEarthing.SelectedItem.Text == "1")
+                    {
+                        Earthingtype1.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "2")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "3")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "4")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "5")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "6")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "7")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "8")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "9")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                        Earthingtype9.Visible = true;
+
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "10")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                        Earthingtype9.Visible = true;
+                        Earthingtype10.Visible = true;
+
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "11")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                        Earthingtype9.Visible = true;
+                        Earthingtype10.Visible = true;
+                        Earthingtype11.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "12")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                        Earthingtype9.Visible = true;
+                        Earthingtype10.Visible = true;
+                        Earthingtype11.Visible = true;
+                        Earthingtype12.Visible = true;
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "13")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                        Earthingtype9.Visible = true;
+                        Earthingtype10.Visible = true;
+                        Earthingtype11.Visible = true;
+                        Earthingtype12.Visible = true;
+                        Earthingtype13.Visible = true;
+
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "14")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                        Earthingtype9.Visible = true;
+                        Earthingtype10.Visible = true;
+                        Earthingtype11.Visible = true;
+                        Earthingtype12.Visible = true;
+                        Earthingtype13.Visible = true;
+                        Earthingtype14.Visible = true;
+
+                    }
+                    else if (ddlNoOfEarthing.SelectedItem.Text == "15")
+                    {
+                        Earthingtype1.Visible = true;
+                        Earthingtype2.Visible = true;
+                        Earthingtype3.Visible = true;
+                        Earthingtype4.Visible = true;
+                        Earthingtype5.Visible = true;
+                        Earthingtype6.Visible = true;
+                        Earthingtype7.Visible = true;
+                        Earthingtype8.Visible = true;
+                        Earthingtype9.Visible = true;
+                        Earthingtype10.Visible = true;
+                        Earthingtype11.Visible = true;
+                        Earthingtype12.Visible = true;
+                        Earthingtype13.Visible = true;
+                        Earthingtype14.Visible = true;
+                        Earthingtype15.Visible = true;
+                    }
+                    ddlEarthingtype1.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                    txtearthingValue1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
+                    ddlEarthingtype2.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
+                    txtEarthingValue2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
+                    ddlEarthingtype3.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
+                    txtEarthingValue3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
+                    ddlEarthingtype4.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
+                    txtEarthingValue4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
+                    ddlEarthingtype5.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
+                    txtEarthingValue5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
+                    ddlEarthingtype6.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
+                    txtEarthingValue6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
+                    ddlEarthingtype7.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
+                    txtEarthingValue7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
+                    ddlEarthingtype8.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
+                    txtEarthingValue8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
+                    ddlEarthingtype9.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
+                    txtEarthingValue9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
+                    ddlEarthingtype10.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
+                    txtEarthingValue10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
+                    ddlEarthingtype11.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
+                    txtEarthingValue11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
+                    ddlEarthingtype12.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
+                    txtEarthingValue12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
+                    ddlEarthingtype13.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
+                    txtEarthingValue13.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
+                    ddlEarthingtype14.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
+                    txtEarthingValue14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
+                    ddlEarthingtype15.SelectedItem.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
+                    txtEarthingValue15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
+
+
+                    btnSubmit.Text = "Update";
+                }
+            }
+            catch (Exception ex)
+            {
+                //abc
+            }
+        }
+
+
+
 
         private void ddlLoadBindVoltage()
         {
@@ -84,7 +450,7 @@ namespace CEIHaryana.TestReport
 
         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LineTypeOverhead.Visible = false;                
+            LineTypeOverhead.Visible = false;
             LineTypeUnderground.Visible = false;
             string userInput = TxtOthervoltage.Text;
             Earthing.Visible = true;
@@ -229,7 +595,7 @@ namespace CEIHaryana.TestReport
         }
         protected void ddlConductorType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OverheadCable.Visible = false;     
+            OverheadCable.Visible = false;
             OverheadBare.Visible = false;
 
             if (ddlConductorType.SelectedValue == "1")
@@ -470,13 +836,15 @@ namespace CEIHaryana.TestReport
 
             try
             {
-                
+
+                if (btnSubmit.Text.Trim() == "Update")
+                {
+                    IdUpdate = Session["Id"].ToString();
+                }
 
                 if (Declaration.Visible == true && CheckBox1.Checked == false)
                 {
-
                     labelVerification.Visible = true;
-
                 }
                 else
                 {
@@ -485,17 +853,15 @@ namespace CEIHaryana.TestReport
                     {
                         LineId = CEI.GenerateUniqueID();
                         Session["LineId"] = LineId;
-
                     }
                     else
                     {
-
                         LineId = Session["LineId"].ToString();
                     }
                     string TestReportId = Session["TestReportId"].ToString();
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SupervisorID"].ToString();
-                    CEI.InsertLineData(LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                    CEI.InsertLineData(IdUpdate, LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
                    ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
                   txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
                    ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
@@ -517,7 +883,7 @@ namespace CEIHaryana.TestReport
                     labelVerification.Visible = false;
                     PageWorking();
                     int currentValue = Convert.ToInt32(Session["Page"]);
-                    
+
                     if (currentValue == Convert.ToInt32(sessionValue))
                     {
                         Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
@@ -616,7 +982,7 @@ namespace CEIHaryana.TestReport
                     Declaration.Visible = true;
                     btnSubmit.Text = "Submit";
                     btnSubmit.Attributes.Add("disabled", "true");
-                    btnVerify.Visible= true;
+                    btnVerify.Visible = true;
                 }
                 else
                 {
@@ -749,7 +1115,7 @@ namespace CEIHaryana.TestReport
             {
 
             }
-            
+
 
         }
     }

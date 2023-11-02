@@ -60,6 +60,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Uploads;
 
         /// <summary>
+        /// RejectedColumn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumn;
+
+        /// <summary>
         /// LineSubstationSupplier control.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkLetter;
 
         /// <summary>
+        /// RejectedColumnData1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData1;
+
+        /// <summary>
         /// fileUpload control.
         /// </summary>
         /// <remarks>
@@ -112,6 +130,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnktest;
+
+        /// <summary>
+        /// RejectedColumnData2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData2;
 
         /// <summary>
         /// fileUpload1 control.
@@ -150,6 +177,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkDiag;
 
         /// <summary>
+        /// RejectedColumnData3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData3;
+
+        /// <summary>
         /// fileUpload2 control.
         /// </summary>
         /// <remarks>
@@ -186,6 +222,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkCopy;
 
         /// <summary>
+        /// RejectedColumnData4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData4;
+
+        /// <summary>
         /// fileUpload3 control.
         /// </summary>
         /// <remarks>
@@ -211,6 +256,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceTransformer;
+
+        /// <summary>
+        /// RejectedColumnData5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData5;
 
         /// <summary>
         /// fileUpload4 control.
@@ -240,6 +294,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkManufacturing;
 
         /// <summary>
+        /// RejectedColumnData6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData6;
+
+        /// <summary>
         /// fileUpload5 control.
         /// </summary>
         /// <remarks>
@@ -267,6 +330,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkSingleDiag;
 
         /// <summary>
+        /// RejectedColumnData7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData7;
+
+        /// <summary>
         /// fileUpload6 control.
         /// </summary>
         /// <remarks>
@@ -292,6 +364,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceFire;
+
+        /// <summary>
+        /// RejectedColumnData8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData8;
 
         /// <summary>
         /// fileUpload7 control.
@@ -330,6 +411,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkDGSetInvoice;
 
         /// <summary>
+        /// RejectedColumnData9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData9;
+
+        /// <summary>
         /// fileUpload8 control.
         /// </summary>
         /// <remarks>
@@ -355,6 +445,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkManufacturingCertificate;
+
+        /// <summary>
+        /// RejectedColumnData10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData10;
 
         /// <summary>
         /// fileUpload9 control.
@@ -384,6 +483,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkInvoice;
 
         /// <summary>
+        /// RejectedColumnData11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData11;
+
+        /// <summary>
         /// fileUpload10 control.
         /// </summary>
         /// <remarks>
@@ -411,6 +519,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.LinkButton lnkStructure;
 
         /// <summary>
+        /// RejectedColumnData12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData12;
+
+        /// <summary>
         /// fileUpload11 control.
         /// </summary>
         /// <remarks>
@@ -436,6 +553,24 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkDocument;
+
+        /// <summary>
+        /// RejectedColumnData13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell RejectedColumnData13;
+
+        /// <summary>
+        /// fileUpload12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload12;
 
         /// <summary>
         /// txtTestReportId control.
@@ -508,15 +643,6 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator60;
-
-        /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
 
         /// <summary>
         /// btnBack control.
