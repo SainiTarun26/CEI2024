@@ -68,7 +68,7 @@ namespace CEIHaryana.TestReportModal
                     btnNext.Text = "Back";
                     
                 } 
-                else if (Session["SupervisorID"] != null)
+                else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
                     ID = Session["LineID"].ToString();
@@ -76,7 +76,8 @@ namespace CEIHaryana.TestReportModal
                     Supervisor.Visible = true;
                     IntimationData.Visible = true;
                     
-                }
+                } 
+              
             }
 
 
@@ -617,10 +618,17 @@ namespace CEIHaryana.TestReportModal
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx");
-        }
-
-        protected void btnVerify_Click(object sender, EventArgs e)
+            if (Session["AdminID"] != null)
+            {
+                Response.Redirect("/Admin/LineTestReportHistory.aspx");
+            }
+            else
+            {
+                Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx");
+            }
+        }  
+       
+     protected void btnVerify_Click(object sender, EventArgs e)
         {
             if (btnVerify.Text == "SendOTP")
             {

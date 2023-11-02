@@ -62,7 +62,7 @@ namespace CEIHaryana.TestReportModal
                     btnNext.Text = "Back";
                    
                 }
-                else if (Session["SupervisorID"] != null)
+                else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
                     ID = Session["GeneratingSetId"].ToString();
@@ -373,7 +373,14 @@ namespace CEIHaryana.TestReportModal
         } 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+            if (Session["AdminID"] != null)
+            {
+                Response.Redirect("/Admin/GeneratingStation.aspx");
+            }
+            else
+            {
+                Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+            }
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {

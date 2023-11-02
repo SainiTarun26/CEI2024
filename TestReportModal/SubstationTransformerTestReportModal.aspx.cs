@@ -58,7 +58,7 @@ namespace CEIHaryana.TestReportModal
                     IntimationData.Visible = true;
                     btnNext.Text = "Back";
                 }
-                else if (Session["SupervisorID"] != null)
+                else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
                     ID = Session["SubStationID"].ToString();
@@ -469,7 +469,14 @@ namespace CEIHaryana.TestReportModal
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+            if (Session["AdminID"] != null)
+            {
+                Response.Redirect("/Admin/SubstationDataHistory.aspx");
+            }
+            else
+            {
+                Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+            }
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {

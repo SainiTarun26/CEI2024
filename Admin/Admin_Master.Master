@@ -385,7 +385,20 @@
                                     <span class="menu-title">Work Intimations</span>
                                 </a>
                             </li>
-
+                                   <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Test Report History</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic4">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/LineTestReportHistory.aspx">Line</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SubstationDataHistory.aspx">Substation Transformer</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/GeneratingStation.aspx">Generating Station</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <%-- <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                                     <i class="icon-columns menu-icon"></i>

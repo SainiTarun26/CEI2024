@@ -151,10 +151,13 @@
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
     <Content Include="Admin\Contractor_Table.aspx" />
+    <Content Include="Admin\GeneratingStation.aspx" />
+    <Content Include="Admin\LineTestReportHistory.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
+    <Content Include="Admin\SubstationDataHistory.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="assetsnew\css\style.css" />
@@ -1548,6 +1551,7 @@
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="OTPVerification.aspx" />
+    <Content Include="PaymentPage.aspx" />
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
@@ -1639,6 +1643,20 @@
     <Compile Include="Admin\Contractor_Table.aspx.designer.cs">
       <DependentUpon>Contractor_Table.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\GeneratingStation.aspx.cs">
+      <DependentUpon>GeneratingStation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GeneratingStation.aspx.designer.cs">
+      <DependentUpon>GeneratingStation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\LineTestReportHistory.aspx.cs">
+      <DependentUpon>LineTestReportHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LineTestReportHistory.aspx.designer.cs">
+      <DependentUpon>LineTestReportHistory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Projects.aspx.cs">
       <DependentUpon>Projects.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1666,6 +1684,13 @@
     </Compile>
     <Compile Include="Admin\StaffDetailsData.aspx.designer.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SubstationDataHistory.aspx.cs">
+      <DependentUpon>SubstationDataHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SubstationDataHistory.aspx.designer.cs">
+      <DependentUpon>SubstationDataHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -1763,6 +1788,13 @@
     </Compile>
     <Compile Include="OTPVerification.aspx.designer.cs">
       <DependentUpon>OTPVerification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentPage.aspx.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentPage.aspx.designer.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.cs">
