@@ -171,5 +171,12 @@ namespace CEIHaryana.TestReport
 
 
         }
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("/Login.aspx");
+        }
     }
 }

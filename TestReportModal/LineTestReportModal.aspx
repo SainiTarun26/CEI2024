@@ -2667,31 +2667,28 @@
                             </div>
                             <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             <br />
-                            <div class="row">
-                                <div class="col-4" style="margin-top: 40px;text-align: Center;" runat="server" id="Contractor3" visible="false">
-                                    <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
-                                    <br /><label>Submit Will be Enable When You Verify Your Details</label>
-                                </div>
-                                <div class="col-4" style="margin-top: 40px;" runat="server" id="Contractor2" visible="false">
-                                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
+                       <div class="row">
+    <div class="col-4" style="margin-top: 40px;text-align: Center;" runat="server" id="Contractor3" visible="false">
+        <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
+        <br /><label>Submit Will be Enable When You Verify Your Details</label>
+    </div>
+    <div class="col-4" style="margin-top: 40px;" runat="server" id="Contractor2" visible="false">
+        <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
 
-                                </div>
-                                <div class="col-4" id="SiteOwner" runat="server" visible="false">
-                                    <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnNext_Click" />
-                                </div>
-                                <div class="col-4" id="SiteOwner2" runat="server" visible="false">
-                                    <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnBack2_Click"/>
-                                </div>
-                                <div class="col-4" id="Supervisor" runat="server" visible="false">
-                                    <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnBack_Click" />
-                                </div>  
+    </div>
+    <div class="col-6" id="SiteOwner" runat="server" visible="false" style="text-align: end;">
+        <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
+    </div>
+    <div class="col-6" id="SiteOwner2" runat="server" visible="false">
+        <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack2_Click"/>
+    </div>
+    <div class="col-6" id="Supervisor" runat="server" visible="false">
+        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+    </div>  
                           
-                            </div>
+</div>
 
 
                         </div>

@@ -362,7 +362,7 @@ namespace CEIHaryana.Supervisor
                     txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text);
 
                 string TestReportId = CEI.TestReportId();
-                Page.Session["TestReportId"] = "T305";
+                Page.Session["TestReportId"] = "T173";
 
 
                 //Session["intallationType"] = txtinstallationType1.Text + ","+ txtinstallationNo1.Text + "|"+txtinstallationType2.Text + "," + txtinstallationNo2.Text + "|"+
