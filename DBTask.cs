@@ -222,7 +222,7 @@ namespace CEI_PRoject
             using (SqlCommand cmd = new SqlCommand(spName, cn))
             {
                 cn.Open();
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;      
 
                 SqlCommandBuilder.DeriveParameters(cmd);
 

@@ -17,13 +17,32 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        .card .card-title {
+    font-size: 22px !important;
+    font-weight: 700;
+    margin-bottom:-10px;
+}
         li.tab-content.tab-content-last.typography {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 8px solid #ced4da !important;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+        ul {
+    font-size: 0px;
+}
+        li.tab-content.tab-content-last.typography {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border: 8px solid #CED4DA;
             border-top: 0;
             padding: 2rem 1rem;
             text-align: justify;
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
+             border-top-left-radius: 15px;
+ border-top-right-radius: 15px;
             width: 99%;
         }
 
@@ -102,9 +121,7 @@
                 border: 2px solid #80bdff;
             }
 
-        .card .card-title {
-            font-size: 1rem !important;
-        }
+     
 
         .btn-primary:hover {
             box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -1945,6 +1962,13 @@
             zoom: 90%; /* Webkit browsers */
             zoom: 90%; /* Webkit browsers */
         }
+        div#intimation-card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      margin-left: -25px;
+    margin-right: -25px;
+    margin-top: 5px;
+    padding: 15px;
+}
     </style>
 </head>
 <body>
@@ -1952,13 +1976,15 @@
         <div>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-            <ul style="margin-top: 10px;">
+            <ul style="margin: 20px 20px 20px 15px;">
                 <li class="tab-content tab-content-last typography">
                     <div id="IfInstallationIsLine" runat="server">
                         <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
 
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
+                                    <div class="card" id="intimation-card" style="background:#fcfcfc;">
+                                        <div class="card-title">Work Intimation Details</div>
                                     <div id="IntimationData" runat="server" visible="false">
                                         <div class="row row-modal">
                                             <div class="col-6" runat="server">
@@ -2013,7 +2039,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row row-modal">
+                                        <div class="row row-modal" style="margin-bottom:10px;">
                                             <div class="col-6" id="individual6" runat="server">
                                                 <label for="Name">
                                                     Work Start Date
@@ -2028,6 +2054,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                        </div>
                                     <div>
 
                                         <div class="row">
@@ -2093,16 +2120,17 @@
                                                 <asp:TextBox class="form-control" ID="txtConductorType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div id="OverheadBare" visible="false" runat="server">
-                                        <div class="row">
                                             <div class="col-4">
                                                 <label>
                                                     Number of Pole/Tower<samp style="color: red"> * </samp>
                                                 </label>
                                                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtPoleTower" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div id="OverheadBare" visible="false" runat="server">
+                                        <div class="row">
+
                                             <div class="col-4" id="Div2" runat="server">
                                                 <label for="Name">
                                                     Size of Conductor( IN SQ.MM)
@@ -2196,7 +2224,7 @@
 
                                         </div>
                                     </div>
-                                    <div id="LineTypeUnderground" runat="server"  visible="true">
+                                    <div id="LineTypeUnderground" runat="server" visible="true">
                                         <div class="row">
                                             <div class="col-4">
                                                 <label>
@@ -2228,12 +2256,153 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="Earthing" runat="server" visible="true">
+                                    <div id="Insulation440vAbove" runat="server" visible="false">
                                         <div class="row">
                                             <div class="col-4">
                                                 <label>
-                                                    Number of Earthing:
+                                                    Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtRedEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div32" runat="server">
+                                                <label for="Name">
+                                                    Yellow Phase – Earth Wire (in Mohm)	
+
                             <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtYellowEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div33" runat="server">
+                                                <label for="Name">
+                                                    Blue Phase – Earth Wire (in Mohm)	
+
+                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtBlueEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div34" runat="server">
+                                                <label for="Name">
+                                                    Red Phase – Yellow Phase(in Mohm)
+                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtRedYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div35" runat="server">
+                                                <label for="Name">
+                                                    Blue Phase – Yellow Phase(in Mohm)
+                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtBlueYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div36" runat="server">
+                                                <label for="Name">
+                                                    Red Phase – Blue Phase(in Mohm)
+                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtRedBluePhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="Insulation220vAbove" runat="server" visible="false">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>
+                                                    Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtNeutralWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div37" runat="server">
+                                                <label for="Name">
+                                                    Phase wire - Earth (in Mohm)
+                            <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div39" runat="server">
+                                                <label for="Name">
+                                                    Neutral wire - Earth (in Mohm)
+                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtNeutralWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>
+                                                    Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtRedWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div38" runat="server">
+                                                <label for="Name">
+                                                    Yellow Phase – Earth Wire (in Mohm)	
+        <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div40" runat="server">
+                                                <label for="Name">
+                                                    Blue Phase – Earth Wire (in Mohm)	
+                                                        <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div41" runat="server">
+                                                <label for="Name">
+                                                    Red Phase – Yellow Phase(in Mohm)
+                                                        <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtRedYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div42" runat="server">
+                                                <label for="Name">
+                                                    Blue Phase – Yellow Phase(in Mohm)
+                                                        <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtBlueYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div43" runat="server">
+                                                <label for="Name">
+                                                    Red Phase – Blue Phase(in Mohm)
+                                                        <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtRedBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="UndergroundInsulation220vAbove" runat="server" visible="false">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>
+                                                    Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="Div44" runat="server">
+                                                <label for="Name">
+                                                    Phase wire - Earth (in Mohm)
+                            <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtPhaseWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                            </div>
+                                            <div class="col-4" id="Div45" runat="server">
+                                                <label for="Name">
+                                                    Neutral wire - Earth (in Mohm)
+                                                        <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>                                   
+                                    <div id="Earthing" runat="server" visible="true">
+                                        <div class="row card">
+                                            <div class="col-4">
+                                                <label>
+                                                    Number of Earthing:
+                                                    <samp style="color: red">* </samp>
                                                 </label>
                                                 <asp:TextBox class="form-control" ID="txtEarthing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2482,152 +2651,8 @@
                                                 </table>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div id="Insulation440vAbove" runat="server" visible="false">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <label>
-                                                    Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtRedEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div32" runat="server">
-                                                <label for="Name">
-                                                    Yellow Phase – Earth Wire (in Mohm)	
-
-                            <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtYellowEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div33" runat="server">
-                                                <label for="Name">
-                                                    Blue Phase – Earth Wire (in Mohm)	
-
-                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtBlueEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div34" runat="server">
-                                                <label for="Name">
-                                                    Red Phase – Yellow Phase(in Mohm)
-                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtRedYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div35" runat="server">
-                                                <label for="Name">
-                                                    Blue Phase – Yellow Phase(in Mohm)
-                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtBlueYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div36" runat="server">
-                                                <label for="Name">
-                                                    Red Phase – Blue Phase(in Mohm)
-                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtRedBluePhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="Insulation220vAbove" runat="server" visible="false">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <label>
-                                                    Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtNeutralWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div37" runat="server">
-                                                <label for="Name">
-                                                    Phase wire - Earth (in Mohm)
-                            <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div39" runat="server">
-                                                <label for="Name">
-                                                    Neutral wire - Earth (in Mohm)
-                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtNeutralWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <label>
-                                                    Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtRedWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div38" runat="server">
-                                                <label for="Name">
-                                                    Yellow Phase – Earth Wire (in Mohm)	
-        <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div40" runat="server">
-                                                <label for="Name">
-                                                    Blue Phase – Earth Wire (in Mohm)	
-                                                        <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div41" runat="server">
-                                                <label for="Name">
-                                                    Red Phase – Yellow Phase(in Mohm)
-                                                        <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtRedYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div42" runat="server">
-                                                <label for="Name">
-                                                    Blue Phase – Yellow Phase(in Mohm)
-                                                        <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtBlueYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div43" runat="server">
-                                                <label for="Name">
-                                                    Red Phase – Blue Phase(in Mohm)
-                                                        <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtRedBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="UndergroundInsulation220vAbove" runat="server" visible="false">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <label>
-                                                    Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-4" id="Div44" runat="server">
-                                                <label for="Name">
-                                                    Phase wire - Earth (in Mohm)
-                            <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtPhaseWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                            </div>
-                                            <div class="col-4" id="Div45" runat="server">
-                                                <label for="Name">
-                                                    Neutral wire - Earth (in Mohm)
-                                                        <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </ContentTemplate>
+                                    </div>                            
+                                        </ContentTemplate>
 
                             </asp:UpdatePanel>
                             <div id="Contractor" runat="server" visible="false">
@@ -2645,7 +2670,7 @@
                                         <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                     </div>
-                                   
+
                                     <div class="col-4" id="Rejection" runat="server" visible="False">
                                         <label for="Name">
                                             Reason For Rejection
@@ -2655,7 +2680,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
                                     </div>
-                                     <div class="col-4" id="OTP" runat="server" visible="false">
+                                    <div class="col-4" id="OTP" runat="server" visible="false">
                                         <label for="Name">
                                             Enter OTP
                             <samp style="color: red">* </samp>
@@ -2667,28 +2692,29 @@
                             </div>
                             <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             <br />
-                       <div class="row">
-    <div class="col-4" style="margin-top: 40px;text-align: Center;" runat="server" id="Contractor3" visible="false">
-        <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
-        <br /><label>Submit Will be Enable When You Verify Your Details</label>
-    </div>
-    <div class="col-4" style="margin-top: 40px;" runat="server" id="Contractor2" visible="false">
-        <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-            Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
+                            <div class="row">
+                                <div class="col-4" style="margin-top: 40px; text-align: Center;" runat="server" id="Contractor3" visible="false">
+                                    <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
+                                    <br />
+                                    <label>Submit Will be Enable When You Verify Your Details</label>
+                                </div>
+                                <div class="col-4" style="margin-top: 40px;" runat="server" id="Contractor2" visible="false">
+                                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
 
-    </div>
-    <div class="col-6" id="SiteOwner" runat="server" visible="false" style="text-align: end;">
-        <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
-    </div>
-    <div class="col-6" id="SiteOwner2" runat="server" visible="false">
-        <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack2_Click"/>
-    </div>
-    <div class="col-6" id="Supervisor" runat="server" visible="false">
-        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-    </div>  
-                          
-</div>
+                                </div>
+                                <div class="col-6" id="SiteOwner" runat="server" visible="false" style="text-align: end;">
+                                    <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
+                                </div>
+                                <div class="col-6" id="SiteOwner2" runat="server" visible="false">
+                                    <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack2_Click" />
+                                </div>
+                                <div class="col-6" id="Supervisor" runat="server" visible="false">
+                                    <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                                </div>
+
+                            </div>
 
 
                         </div>
