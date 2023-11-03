@@ -9,8 +9,8 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Supervisor
 {
-	public partial class SupervisorLineTestReport : System.Web.UI.Page
-	{
+    public partial class SupervisorLineTestReport : System.Web.UI.Page
+    {
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,7 +59,7 @@ namespace CEIHaryana.Supervisor
                 Session["LineID"] = id;
                 Label lblApproval = (Label)row.FindControl("lblApproval");
                 Session["Approval"] = lblApproval.Text;
-              if (e.CommandName == "Select")
+                if (e.CommandName == "Select")
                 {
                     if (lblApproval.Text.Trim() == "Reject")
                     {
@@ -103,6 +103,7 @@ namespace CEIHaryana.Supervisor
             }
             catch
             {
+
             }
         }
     }

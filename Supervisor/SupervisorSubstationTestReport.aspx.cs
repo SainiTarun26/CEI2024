@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Supervisor
 {
-	public partial class SupervisorSubstationTestReport : System.Web.UI.Page
+    public partial class SupervisorSubstationTestReport : System.Web.UI.Page
     {
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -56,10 +56,17 @@ namespace CEIHaryana.Supervisor
                 string id = lblID.Text;
                 Session["SubStationID"] = id;
                 Label lblApproval = (Label)row.FindControl("lblApproval");
-                Session["Approval"] = lblApproval.Text;
+                Session["Approval2"] = lblApproval.Text;
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
+                    if (lblApproval.Text.Trim() == "Reject")
+                    {
+                        Response.Redirect("/TestReport/SubstationTransformer.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
+                    }
 
                 }
             }

@@ -132,13 +132,13 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
+                                    <HeaderStyle Width="25%" />
+                                    <ItemStyle Width="25%" />
                                     <HeaderTemplate>
-                                        Intimation Id
+                                       Test Report Application
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("IntimationId") %> ' CommandName="Select"><%#Eval("IntimationId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="GeneratingSetCapacityType" HeaderText="GeneratingSetCapacityType">

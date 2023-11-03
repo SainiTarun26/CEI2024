@@ -54,11 +54,20 @@ namespace CEIHaryana.TestReport
                     lblLinePage.Visible = true;
                     // }
                 }
-                if(Convert.ToString(Session["Approval"]).Trim() == "Reject")
+                if (Convert.ToString(Session["Approval"]).Trim() == "Reject")
                 {
                     lblLinePage.Visible = true;
                 }
-                else { 
+                else
+                {
+                    lblLinePage.Visible = false;
+                }
+                if (Convert.ToString(Session["Approval2"]).Trim() == "Reject")
+                {
+                    lblSubStationPage.Visible = true;
+                }
+                else
+                {
                 }
                 if (Convert.ToString(Session["installationType1"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType2"]).Trim() == "Substation Transformer"
                    || Convert.ToString(Session["installationType3"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType4"]).Trim() == "Substation Transformer"
@@ -144,17 +153,7 @@ namespace CEIHaryana.TestReport
             string id = ddlSearchingNo.SelectedValue;
             Session["ValueId"] = id;
             Type = Session["Value"].ToString();
-            //try
-            //{
-            //    string TestReportId = Session["TestReportId"].ToString();
-            //    DataSet dsSearchingNo = new DataSet();
-            //    dsSearchingNo = CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    //abc
-            //}
 
             if (Type.Trim() == "Line")
             {

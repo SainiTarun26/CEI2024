@@ -89,9 +89,6 @@
     td {
         text-align: center;
     }
-    .headercolor{
-    background-color: #9292cc;
-}
 </style>
 
 
@@ -109,18 +106,21 @@
                   <div class="col-sm-6 col-md-6"></div>                 
               </div>
               <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                   <div class="row">
-     <div class="col-12">
-         <div class="form-group row" style="margin-bottom: 0px !important;">
-             <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
-             <div class="col-sm-10" style="margin-left: -130px; margin-top: auto; margin-bottom: auto;">
-                 <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged"  Font-Size="12px"  Style="font-size: 12px; height: 30px;"></asp:TextBox><br />
-             </div>
-         </div>
-     </div>
- </div>
+                  <div class="row" style="margin-bottom: -30px;">
+                      <div class="col-4">
+                          <div class="form-group row">
+                              <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+                              <div class="col-sm-9" style="margin-left: -35px;">
+                                  <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" AutoPostBack="true" OnTextChanged= "txtSearch_TextChanged" Font-Size="12px"></asp:TextBox><br />
+                                 
+                             <asp:TextBox ID="txtapproval" runat="server" Visible="false"  class="form-control" Font-Size="12px" ></asp:TextBox><br />
+                         
+                                  </div>
+                          </div>
+                      </div>
+                  </div>
                         <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
@@ -133,33 +133,33 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%"  CssClass="headercolor" />
-                                    <ItemStyle Width="10%" />
+                                    <HeaderStyle Width="38%" />
+                                    <ItemStyle Width="38%" />
                                     <HeaderTemplate>
-                                        Intimation Id
+                                        Test Report Application
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("IntimationId") %> ' CommandName="Select"><%#Eval("IntimationId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="TransformerSerialNumber" HeaderText="TransformerSerialNumber">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%"  CssClass="headercolor"  />
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="TransformerCapacity" HeaderText="TransformerCapacity">
-                                    <HeaderStyle HorizontalAlign="center" Width="12%"  CssClass="headercolor"  />
+                         <%--       <asp:BoundField DataField="TransformerCapacity" HeaderText="TransformerCapacity">
+                                    <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="TranformerType" HeaderText="TransformerType">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%"  CssClass="headercolor"  />
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ApprovedOrRejectFromContractor" HeaderText="Approval">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%"  CssClass="headercolor"  />
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%"  CssClass="headercolor"  />
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>                                
                             </Columns>

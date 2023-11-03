@@ -58,14 +58,13 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                 Session["InspectionType"] = lblInspectionType.Text;
                 Label lblApplicantType = (Label)row.FindControl("lblApplicantType");
-                Session["ApplicantType"] = lblApplicantType.Text; 
+                Session["ApplicantType"] = lblApplicantType.Text;
                 Label lblVoltage = (Label)row.FindControl("lblVoltage");
                 Session["Voltage"] = lblVoltage.Text;
                 Label lblDistrict = (Label)row.FindControl("lblDistrict");
                 Session["District"] = lblDistrict.Text;
                 Session["Approval"] = null;
                 if (e.CommandName == "Select")
-
                 {
                     Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
 
