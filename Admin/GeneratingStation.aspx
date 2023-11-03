@@ -53,28 +53,28 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>--%>
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
+                                    <HeaderStyle Width="41%" />
+                                    <ItemStyle Width="41%" />
                                     <HeaderTemplate>
                                         TestReportId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("GeneratingSetId") %> ' CommandName="Select"><%#Eval("GeneratingSetId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="SerialNumbrOfAcGenerator" HeaderText="SerialNumbrOfAcGenerator">
+                                <asp:BoundField DataField="SerialNumbrOfAcGenerator" HeaderText="Serial Number">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                               <%-- <asp:BoundField DataField="TransformerCapacityType" HeaderText="Transformer Capacity">
+                                <asp:BoundField DataField="TransformerCapacityType" HeaderText="Transformer Capacity">
                                     <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
-                                </asp:BoundField>--%>
-                                <asp:BoundField DataField="GeneratorVoltageLevel" HeaderText="GeneratorVoltageLevel">
+                                </asp:BoundField>
+                                <asp:BoundField DataField="GeneratorVoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="GeneratingSetType" HeaderText="GeneratingSetType">
+                                <asp:BoundField DataField="GeneratingSetType" HeaderText="Set Type">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
@@ -84,12 +84,6 @@
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>--%>
 
-                                <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
-                                    <ItemTemplate>
-                                      </ItemTemplate>
-                                </asp:TemplateField>
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

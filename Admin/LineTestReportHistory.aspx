@@ -23,7 +23,7 @@
                           </div>
                       </div>
                   </div>
-                       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="92%"
+                       <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true"
                            PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging">
                             <Columns>
@@ -58,13 +58,13 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>--%>
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
+                                    <HeaderStyle Width="45%" />
+                                    <ItemStyle Width="45%" />
                                     <HeaderTemplate>
-                                        TestReportId
+                                      Test Report Application
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("LineID") %> ' CommandName="Select"><%#Eval("LineId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="LineVoltage" HeaderText="LineVoltage">

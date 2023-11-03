@@ -405,7 +405,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert Substation Data
-        public void InsertSubstationData(string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string IdUpdate,string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
             string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
@@ -431,6 +431,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);

@@ -53,16 +53,16 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>--%>
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
+                                    <HeaderStyle Width="41%" />
+                                    <ItemStyle Width="41%" />
                                     <HeaderTemplate>
-                                        TestReportId
+                                    Test Report Application
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("SubStationId") %> ' CommandName="Select"><%#Eval("SubStationId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="TransformerSerialNumber" HeaderText="Transformer SerialNumber">
+                                <asp:BoundField DataField="TransformerSerialNumber" HeaderText="Serial Number">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
@@ -84,12 +84,7 @@
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>
 
-                                <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
-                                    <ItemStyle Width="10%" />
-                                    <ItemTemplate>
-                                      </ItemTemplate>
-                                </asp:TemplateField>
+                              
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
