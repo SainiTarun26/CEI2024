@@ -2168,7 +2168,8 @@
                                             </svg>SINGLE/THREE-PHASE</label>
                                     </div>
                                 </div>
-                                <div class="col-8" style="text-align: -webkit-right; margin-top: auto; margin-bottom: auto;">
+                            </div>
+                                 <div class="col-8" style="text-align: -webkit-right; margin-top: auto; margin-bottom: auto;">
                                     <div runat="server" id="Searching" visible="false">
                                         <div class="row" style="margin-right: 15px;">
                                             <div class="col-8" style="text-align: -webkit-match-parent;">
@@ -2186,7 +2187,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>

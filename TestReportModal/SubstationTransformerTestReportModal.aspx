@@ -2877,17 +2877,17 @@ margin-top: 20px;
                             <samp style="color: red">* </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
-                   
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+
                             </div>
                             <div class="col-4" id="OTP" runat="server" visible="false">
-                                        <label for="Name">
-                                            Enter OTP
+                                <label for="Name">
+                                    Enter OTP
                             <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtOtp" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtOtp" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                    </div>
+                            </div>
                         </div>
                         <div class="row" id="Contractor3" runat="server" visible="false">
                             <div class="col-4"></div>
