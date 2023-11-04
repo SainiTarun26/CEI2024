@@ -47,6 +47,7 @@ namespace CEIHaryana.TestReport
                 {
                     SubStationID = Session["SubStationID"].ToString().Trim();
                     GetHistoryDataById();
+                    BtnBack.Visible = true;
 
                 }
                 else
@@ -56,7 +57,10 @@ namespace CEIHaryana.TestReport
 
             }
         }
-
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+        }
         public void GetHistoryDataById()
         {
             try

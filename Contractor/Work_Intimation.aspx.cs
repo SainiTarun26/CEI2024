@@ -80,6 +80,8 @@ namespace CEIHaryana.Contractor
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                string District = ds.Tables[0].Rows[0]["District"].ToString();
+                ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
@@ -273,6 +275,8 @@ namespace CEIHaryana.Contractor
             ddlworktype.SelectedValue = "0";
             txtName.Text = "";
             txtagency.Text = "";
+            ddlDistrict.SelectedValue = "0";
+            ddlApplicantType.SelectedValue = "0";
             txtPhone.Text = "";
             txtAddress.Text = "";
             txtPin.Text = "";
@@ -357,6 +361,7 @@ namespace CEIHaryana.Contractor
                         {
                             string alert = "alert('This User Is Already Exist User Can login with Provided Usename And Password');";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
+                            Response.Redirect("/Contractor/Work_Intimation.aspx");
                         }
                     }
                     else

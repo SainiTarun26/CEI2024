@@ -51,6 +51,7 @@ namespace CEIHaryana.TestReport
                 if(Convert.ToString(Session["Approval"]) == "Reject")
                 {
                     LineId = Session["LineID"].ToString().Trim();
+                    BtnBack.Visible = true;
                     GetHistoryDataById();
 
                 }
@@ -58,7 +59,10 @@ namespace CEIHaryana.TestReport
             }
         }
 
-
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx");
+        }
         private void GetHistoryDataById()
         {
             try

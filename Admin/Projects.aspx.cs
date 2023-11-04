@@ -51,7 +51,7 @@ namespace CEIHaryana.Admin
 
                     {
                         //Session["id"] = ID;
-                        Server.Transfer("/Admin/WorkIntimationDetail.aspx");
+                       Response.Redirect("/Admin/WorkIntimationDetail.aspx");
 
                     }
                 }
