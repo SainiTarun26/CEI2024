@@ -2043,17 +2043,19 @@
                                         Primary voltage(in kva)  
                             <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" MaxLength="4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="txtPrimaryVoltage" runat="server" ErrorMessage="Please Enter Primary Voltage" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </div>
+                                       <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="PrimaryVoltage" selectionmode="Multiple" Style="width: 100% !important">
+                                </asp:DropDownList>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="PrimaryVoltage" runat="server" ErrorMessage="Please Select Primary Voltage" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                              </div>
                                 <div class="col-4">
                                     <label for="Voltage">
                                         Secondary Voltage(in volte)  
                                         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="6" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="txtSecondryVoltage" runat="server" ErrorMessage="Please Enter Secondry Voltage" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                </div>
+                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddlSecondaryVoltage" selectionmode="Multiple" Style="width: 100% !important">
+                                </asp:DropDownList>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="PrimaryVoltage" runat="server" ErrorMessage="Please Select Secondary Voltage" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                               </div>
                                 <div id="Capacity" class="col-4" runat="server" visible="false">
                                     <label for="Voltage">
                                         Capacity of oil(in liters)  
@@ -2108,8 +2110,23 @@
                                             Lightning Arrestor (LA) Location  
  <samp style="color: red">* </samp>
                                         </label>
+                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="13" runat="server" AutoPostBack="true" ID="ddlLghtningArrestor" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlLghtningArrestor_SelectedIndexChanged">
+                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                            <asp:ListItem Value="1" Text="On HT side"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="On LT side"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator101" ForeColor="Red" ControlToValidate="ddlLghtningArrestor" runat="server" ErrorMessage="Please Select (LA) Location" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+
+                                    </div>
+                                    <div class="col-4" runat="server" id="OtherLaDiv" visible="false">
+                                        <label for="Voltage">
+                                            Other (LA) Location  
+ <samp style="color: red">* </samp>
+                                        </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLightningArrestor" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="12" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ForeColor="Red" ControlToValidate="txtLightningArrestor" runat="server" ErrorMessage="Please Enter Lightning Arrestor" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+
                                     </div>
                                     <div class="col-4">
                                         <label>
@@ -2986,16 +3003,17 @@
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ForeColor="Red" ControlToValidate="txtLoadBreakingCapacity" runat="server" ErrorMessage="Please Enter Load Breaking Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-4" id="Div169" runat="server">
-                                        <label for="Voltage">
-                                            Mean Sea Level of transformer plinth (IN METRES)  
-                                                    <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" onKeyPress="return isNumberKey(event);" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ForeColor="Red" ControlToValidate="txtSealLevelPlinth" runat="server" ErrorMessage="Please Enter Sea Level of transformer Plinth" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                    </div>
+                               
                                 </div>
                             </div>
+                               <div class="row" id="MeanSeaPlinth" runat="server" visible="false">
+                                 <div class="col-4" id="Div169" runat="server">
+                                        <label for="Voltage">
+                                            Mean Sea Level of transformer plinth (IN METRES)  
+                                        </label>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" onKeyPress="return isNumberKey(event);" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                   </div>
                         </div>
                         <%--<div class="InCaseOfDry">
                                                 <div class="row">

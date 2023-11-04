@@ -125,22 +125,22 @@
                               <HeaderStyle Width="10%" />
                               <ItemStyle Width="10%" />
                               <HeaderTemplate>
-                                  Intimation Id
+                                 Application For Test Report
                               </HeaderTemplate>
                               <ItemTemplate>
-                                  <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("IntimationId") %> ' CommandName="Select"><%#Eval("IntimationId") %></asp:LinkButton>
+                                  <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                               </ItemTemplate>
                           </asp:TemplateField>
-                          <asp:BoundField DataField="GeneratingSetCapacityType" HeaderText="GeneratingSetCapacityType">
+                          <asp:BoundField DataField="GeneratingSetCapacityType" HeaderText="Capacity Type">
                               <HeaderStyle HorizontalAlign="Left" Width="15%" />
                               <ItemStyle HorizontalAlign="Left" Width="15%" />
                           </asp:BoundField>
-                          <asp:BoundField DataField="GeneratingSetCapacity" HeaderText="GeneratingSetCapacity">
+                          <asp:BoundField DataField="GeneratingSetCapacity" HeaderText="Capacity">
                               <HeaderStyle HorizontalAlign="center" Width="12%" />
                               <ItemStyle HorizontalAlign="center" Width="12%" />
                           </asp:BoundField>
                       
-                          <asp:BoundField DataField="GeneratingSetType" HeaderText="GeneratingSetType">
+                          <asp:BoundField DataField="GeneratingSetType" HeaderText="Type">
                               <HeaderStyle HorizontalAlign="center" Width="15%" />
                               <ItemStyle HorizontalAlign="center" Width="15%" />
                           </asp:BoundField>

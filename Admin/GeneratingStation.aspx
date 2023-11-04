@@ -66,10 +66,10 @@
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="TransformerCapacityType" HeaderText="Transformer Capacity">
+                              <%--  <asp:BoundField DataField="TransformerCapacityType" HeaderText="Transformer Capacity">
                                     <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="GeneratorVoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />

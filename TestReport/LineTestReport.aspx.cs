@@ -80,7 +80,9 @@ namespace CEIHaryana.TestReport
 
                 if (ds.Tables.Count > 0)
                 {
-                   Session["TestReportId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString().Trim();
+                    Session["GeneratedLineId"] = ds.Tables[0].Rows[0]["LineId"].ToString().Trim();
+                    Session["TestReportId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString().Trim();
+                    Session["id"] = ds.Tables[0].Rows[0]["IntimationId"].ToString().Trim();
                     string lineVoltage = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
 
                     ddlLoadBindVoltage();
@@ -456,10 +458,6 @@ namespace CEIHaryana.TestReport
                 //abc
             }
         }
-
-
-
-
         private void ddlLoadBindVoltage()
         {
 
@@ -893,10 +891,10 @@ namespace CEIHaryana.TestReport
             try
             {
 
-                if (btnSubmit.Text.Trim() == "Update")
-                {
-                    IdUpdate = Session["Id"].ToString();
-                }
+                //if (btnSubmit.Text.Trim() == "Update")
+                //{
+                //    IdUpdate = Session["Id"].ToString();
+                //}
 
                 if (Declaration.Visible == true && CheckBox1.Checked == false)
                 {
@@ -904,20 +902,20 @@ namespace CEIHaryana.TestReport
                 }
                 else
                 {
-                    string LineId = string.Empty;
+                    string GeneratedLineId = string.Empty;
                     if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
                     {
-                        LineId = CEI.GenerateUniqueID();
-                        Session["LineId"] = LineId;
+                        GeneratedLineId = CEI.GenerateUniqueID();
+                        Session["GeneratedLineId"] = LineId;
                     }
                     else
                     {
-                        LineId = Session["LineId"].ToString();
+                        GeneratedLineId = Session["GeneratedLineId"].ToString();
                     }
                     string TestReportId = Session["TestReportId"].ToString();
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SupervisorID"].ToString();
-                    CEI.InsertLineData(IdUpdate, LineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                    CEI.InsertLineData(LineId, GeneratedLineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
                    ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
                   txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
                    ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
@@ -933,35 +931,43 @@ namespace CEIHaryana.TestReport
                txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
                txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
                txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-                    Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
-                    Reset();
-                    DataSaved.Visible = true;
-                    labelVerification.Visible = false;
-                    PageWorking();
-                    int currentValue = Convert.ToInt32(Session["Page"]);
-
-                    if (currentValue == Convert.ToInt32(sessionValue))
+                    if (btnSubmit.Text.Trim() == "Submit")
                     {
-                        Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
-                        btnSubmit.Visible = false;
-                        Session["SubmittedValue2"] = sessionValue;
-                        divLine.Visible = false;
-                        Session["LineId"] = "";
-                        Session["TestReportId"] = TestReportId;
-                        Page.Session["Page"] = 0;
-                        if (nextSessionName.Trim() == "Substation Transformer")
-                        {
-                            Response.Redirect("SubstationTransformer.aspx", false);
-                        }
-                        else if (nextSessionName.Trim() == "Generating Station")
-                        {
-                            Response.Redirect("GeneratingSetTestReport.aspx", false);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
+                        Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
+                        Reset();
+                        DataSaved.Visible = true;
+                        labelVerification.Visible = false;
+                        PageWorking();
+                        int currentValue = Convert.ToInt32(Session["Page"]);
 
+                        if (currentValue == Convert.ToInt32(sessionValue))
+                        {
+                            Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
+                            btnSubmit.Visible = false;
+                            Session["SubmittedValue2"] = sessionValue;
+                            divLine.Visible = false;
+                            Session["LineId"] = "";
+                            Session["TestReportId"] = TestReportId;
+                            Page.Session["Page"] = 0;
+                            if (nextSessionName.Trim() == "Substation Transformer")
+                            {
+                                Response.Redirect("SubstationTransformer.aspx", false);
+                            }
+                            else if (nextSessionName.Trim() == "Generating Station")
+                            {
+                                Response.Redirect("GeneratingSetTestReport.aspx", false);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
+
+                            }
                         }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+
                     }
                 }
 

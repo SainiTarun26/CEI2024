@@ -59,7 +59,7 @@
                                         TestReportId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("GeneratingSetId") %> ' CommandName="Select"><%#Eval("GeneratingSetId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="SerialNumbrOfAcGenerator" HeaderText="SerialNumbrOfAcGenerator">

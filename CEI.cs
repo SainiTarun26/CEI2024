@@ -407,7 +407,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         #region Insert Substation Data
         public void InsertSubstationData(string IdUpdate,string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
-            string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation,
+            string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation,string OtherLALocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
             string UsedFor1, string OtherEarthing1, string EarthingType2, string Valueinohms2, string UsedFor2, string OtherEarthing2, string EarthingType3, string Valueinohms3, string UsedFor3, string OtherEarthing3,
             string EarthingType4, string Valueinohms4, string UsedFor4, string OtherEarthing4, string EarthingType5, string Valueinohms5, string UsedFor5, string OtherEarthing5,
@@ -447,6 +447,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@LtInsulationLVEarth", LtInsulationLVEarth);
             cmd.Parameters.AddWithValue("@LowestvaluebetweenHTLTSide", LowestvaluebetweenHTLTSide);
             cmd.Parameters.AddWithValue("@LightningArrestorLocation", LightningArrestorLocation);
+            cmd.Parameters.AddWithValue("@OtherLALocation", OtherLALocation);
             cmd.Parameters.AddWithValue("@TypeofHTPrimarySideSwitch", TypeofHTPrimarySideSwitch);
             cmd.Parameters.AddWithValue("@NumberOfEarthing", NumberOfEarthing);
             cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1);
@@ -1172,6 +1173,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlEarthingSubstation()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_EarthingSubstation");
+        } 
+        public DataSet GetddlPrimaryVotlage()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PrimaryVoltage");
         }
         public DataSet GetddlPremises()
         {
@@ -1395,6 +1400,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable GeneratingDataForAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Generatingdataforadmin");
+        }
+        public DataSet GetddlSecondaryVotlage()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SecondryVoltage");
         }
     }
 }

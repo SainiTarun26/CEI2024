@@ -32,7 +32,8 @@ namespace CEIHaryana.TestReport
                 ddlEarthingSubstation();
                 SessionValue();
                 PageWorking();
-
+                ddlPrimaryVoltage();
+                ddlSecondarVoltage();
                 if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
                 {
 
@@ -84,9 +85,11 @@ namespace CEIHaryana.TestReport
                 if (TypeOfTransformer != null)
                 {
                     InCaseOfOil.Visible = true;
-                    txtPrimaryVoltage.Text = ds.Tables[0].Rows[0]["PrimaryVoltage"].ToString();
-                    txtSecondryVoltage.Text = ds.Tables[0].Rows[0]["SecondoryVoltage"].ToString();
-                    if (TypeOfTransformer == "Oil")
+                    string Voltage = ds.Tables[0].Rows[0]["PrimaryVoltage"].ToString();
+                    PrimaryVoltage.SelectedIndex = PrimaryVoltage.Items.IndexOf(PrimaryVoltage.Items.FindByText(Voltage));
+                        string Voltage2 = ds.Tables[0].Rows[0]["SecondoryVoltage"].ToString();
+                        ddlSecondaryVoltage.SelectedIndex = ddlSecondaryVoltage.Items.IndexOf(ddlSecondaryVoltage.Items.FindByText(Voltage2));
+                        if (TypeOfTransformer == "Oil")
                     {
                         Capacity.Visible = true;
                         BDV.Visible = true;
@@ -97,37 +100,44 @@ namespace CEIHaryana.TestReport
                     txtHTsideInsulation.Text = ds.Tables[0].Rows[0]["HtInsulationHVEarth"].ToString();
                     txtLTSideInsulation.Text = ds.Tables[0].Rows[0]["LtInsulationLVEarth"].ToString();
                     txtLowestValue.Text = ds.Tables[0].Rows[0]["LowestvaluebetweenHTLTSide"].ToString();
-
-                    txtLightningArrestor.Text = ds.Tables[0].Rows[0]["LightningArrestorLocation"].ToString();
+                        string LALocation = ds.Tables[0].Rows[0]["LightningArrestorLocation"].ToString();
+                        ddlLghtningArrestor.SelectedIndex = ddlLghtningArrestor.Items.IndexOf(ddlLghtningArrestor.Items.FindByText(LALocation));
+                        if(LALocation.Trim() == "Other")
+                        {
+                            OtherLaDiv.Visible= true;
+                        }
+                        txtLightningArrestor.Text = ds.Tables[0].Rows[0]["OtherLALocation"].ToString();
                     string TypeOfHT = ds.Tables[0].Rows[0]["TypeofHTPrimarySideSwitch"].ToString();
 
-                    if (TypeOfHT == "Breaker")
-                    {
-                        ddlHTType.SelectedIndex = ddlHTType.Items.IndexOf(ddlHTType.Items.FindByText(TypeOfHT));
-                        TypeOfHTBreaker.Visible = true;
-                        txtBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInKA"].ToString();
-
-                        string TypeOfLtProtection = ds.Tables[0].Rows[0]["TypeOfLTProtection"].ToString();
-                        ddlLTProtection.SelectedIndex = ddlLTProtection.Items.IndexOf(ddlLTProtection.Items.FindByText(TypeOfLtProtection));
-                        if (TypeOfLtProtection == "Fuse Unit")
+                        if (TypeOfHT == "Breaker")
                         {
-                            FuseUnit.Visible = true;
-                            txtIndividualCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfIndividualFuseInAMPS"].ToString();
+                            ddlHTType.SelectedIndex = ddlHTType.Items.IndexOf(ddlHTType.Items.FindByText(TypeOfHT));
+                            TypeOfHTBreaker.Visible = true;
+                            txtBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInKA"].ToString();
+
+                            string TypeOfLtProtection = ds.Tables[0].Rows[0]["TypeOfLTProtection"].ToString();
+                            ddlLTProtection.SelectedIndex = ddlLTProtection.Items.IndexOf(ddlLTProtection.Items.FindByText(TypeOfLtProtection));
+                            if (TypeOfLtProtection == "Fuse Unit")
+                            {
+                                FuseUnit.Visible = true;
+                                txtIndividualCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfIndividualFuseInAMPS"].ToString();
+
+                            }
+                            else
+                            {
+                                Breaker.Visible = true;
+                                txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfLTBreakerInAMPS"].ToString();
+                                txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
+                            }
+                            MeanSeaPlinth.Visible = true;
+                            txtSealLevelPlinth.Text = ds.Tables[0].Rows[0]["SeaLevelOfTransformerInMeters"].ToString();
                         }
                         else
                         {
-                            Breaker.Visible = true;
-                            txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfLTBreakerInAMPS"].ToString();
-                            txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
-                            txtSealLevelPlinth.Text = ds.Tables[0].Rows[0]["SeaLevelOfTransformerInMeters"].ToString();
+                            ddlHTType.Items.Add(new ListItem("GO Switch", "1"));
+                            ddlHTType.Items.Add(new ListItem("3Pole Linked Switch(GODO)", "2"));
+                            ddlHTType.SelectedIndex = ddlHTType.Items.IndexOf(ddlHTType.Items.FindByText(TypeOfHT));
                         }
-                    }
-                    else
-                    {
-                        ddlHTType.Items.Add(new ListItem("GO Switch", "1"));
-                        ddlHTType.Items.Add(new ListItem("3Pole Linked Switch(GODO)", "2"));
-                        ddlHTType.SelectedIndex = ddlHTType.Items.IndexOf(ddlHTType.Items.FindByText(TypeOfHT));
-                    }
                     string NoOfErathing = ds.Tables[0].Rows[0]["NumberOfEarthing"].ToString();
                     ddlEarthingsubstation.SelectedIndex = ddlEarthingsubstation.Items.IndexOf(ddlEarthingsubstation.Items.FindByText(NoOfErathing));
                     if (NoOfErathing != null || NoOfErathing != "")
@@ -593,6 +603,45 @@ namespace CEIHaryana.TestReport
             dsEarthing.Clear();
 
         }
+        private void ddlPrimaryVoltage()
+        {
+
+            DataSet dsPrimaryVoltage = new DataSet();
+            dsPrimaryVoltage = CEI.GetddlPrimaryVotlage();
+            PrimaryVoltage.DataSource = dsPrimaryVoltage;
+            PrimaryVoltage.DataTextField = "Volts";
+            PrimaryVoltage.DataValueField = "Volts";
+            PrimaryVoltage.DataBind();
+            PrimaryVoltage.Items.Insert(0, new ListItem("Select", "0"));
+            dsPrimaryVoltage.Clear();
+
+        }
+        protected void ddlLghtningArrestor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlLghtningArrestor.SelectedValue == "3")
+            {
+                OtherLaDiv.Visible = true;
+            }
+            else
+            {
+                OtherLaDiv.Visible = false;
+
+            }
+
+        }
+            private void ddlSecondarVoltage()
+        {
+
+            DataSet dsSecondaryVoltage = new DataSet();
+            dsSecondaryVoltage = CEI.GetddlSecondaryVotlage();
+            ddlSecondaryVoltage.DataSource = dsSecondaryVoltage;
+            ddlSecondaryVoltage.DataTextField = "Volts";
+            ddlSecondaryVoltage.DataValueField = "Volts";
+            ddlSecondaryVoltage.DataBind();
+            ddlSecondaryVoltage.Items.Insert(0, new ListItem("Select", "0"));
+            dsSecondaryVoltage.Clear();
+
+        }
         protected void ddltransformerType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddltransformerType.SelectedValue == "1")
@@ -903,6 +952,14 @@ namespace CEIHaryana.TestReport
                 FuseUnit.Visible = false;
                 Breaker.Visible = false;
             }
+            if (ddlLTProtection.SelectedValue !="0")
+            {
+                MeanSeaPlinth.Visible = true;
+            }
+            else
+            {
+                MeanSeaPlinth.Visible = false;
+            }
         }
         protected void BtnSubmitSubstation_Click(object sender, EventArgs e)
         {
@@ -940,8 +997,8 @@ namespace CEIHaryana.TestReport
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SupervisorID"].ToString();
                     CEI.InsertSubstationData(IdUpdate,SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
-                       txtPrimaryVoltage.Text, txtSecondryVoltage.Text, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
-                       txtLowestValue.Text, txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
+                      PrimaryVoltage.SelectedItem.ToString(), ddlSecondaryVoltage.SelectedValue, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
+                       txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(),txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
                        ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),
                        txtSubstationEarthing2.Text, ddlUsedFor2.SelectedItem.ToString(), txtOtherEarthing2.Text, ddlSubstationEarthing3.SelectedItem.ToString(), txtSubstationEarthing3.Text, ddlUsedFor3.SelectedItem.ToString(), txtOtherEarthing3.Text,
                        ddlSubstationEarthing4.SelectedItem.ToString(), txtSubstationEarthing4.Text, ddlUsedFor4.SelectedItem.ToString(), txtOtherEarthing4.Text, ddlSubstationEarthing5.SelectedItem.ToString(), txtSubstationEarthing5.Text,
@@ -1095,8 +1152,8 @@ namespace CEIHaryana.TestReport
             txtTransformerSerialNumber.Text = "";
             txtTransformerCapacity.Text = "";
             ddltransformerType.SelectedValue = "0";
-            txtPrimaryVoltage.Text = "";
-            txtSecondryVoltage.Text = ""; txtOilCapacity.Text = ""; txtOilBDV.Text = ""; txtHTsideInsulation.Text = ""; txtLTSideInsulation.Text = "";
+            PrimaryVoltage.SelectedValue = "0";
+            ddlSecondaryVoltage.SelectedValue = "0"; txtOilCapacity.Text = ""; txtOilBDV.Text = ""; txtHTsideInsulation.Text = ""; txtLTSideInsulation.Text = "";
             txtLowestValue.Text = ""; txtLightningArrestor.Text = ""; ddlHTType.SelectedValue = "0"; ddlEarthingsubstation.SelectedValue = "0"; txtOtherEarthing1.Text = "";
             txtOtherEarthing2.Text = ""; txtOtherEarthing3.Text = ""; txtOtherEarthing4.Text = ""; txtOtherEarthing5.Text = ""; txtOtherEarthing6.Text = ""; txtOtherEarthing7.Text = "";
             txtOtherEarthing8.Text = ""; txtOtherEarthing9.Text = ""; txtOtherEarthing10.Text = ""; txtOtherEarthing11.Text = ""; txtOtherEarthing12.Text = ""; txtOtherEarthing13.Text = "";

@@ -150,13 +150,13 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl InCaseOfOil;
 
         /// <summary>
-        /// txtPrimaryVoltage control.
+        /// PrimaryVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrimaryVoltage;
+        protected global::System.Web.UI.WebControls.DropDownList PrimaryVoltage;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -168,13 +168,13 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// txtSecondryVoltage control.
+        /// ddlSecondaryVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSecondryVoltage;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSecondaryVoltage;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -301,6 +301,33 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
+
+        /// <summary>
+        /// ddlLghtningArrestor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLghtningArrestor;
+
+        /// <summary>
+        /// RequiredFieldValidator101 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator101;
+
+        /// <summary>
+        /// OtherLaDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OtherLaDiv;
 
         /// <summary>
         /// txtLightningArrestor control.
@@ -2139,6 +2166,15 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
 
         /// <summary>
+        /// MeanSeaPlinth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MeanSeaPlinth;
+
+        /// <summary>
         /// Div169 control.
         /// </summary>
         /// <remarks>
@@ -2155,15 +2191,6 @@ namespace CEIHaryana.TestReport
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSealLevelPlinth;
-
-        /// <summary>
-        /// RequiredFieldValidator19 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
 
         /// <summary>
         /// Declaration control.

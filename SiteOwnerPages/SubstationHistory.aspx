@@ -55,11 +55,10 @@
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />
-                                    <HeaderTemplate>
-                                        TestReportId
+                                    <HeaderTemplate>Application For Inspection
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("SubStationId") %> ' CommandName="Select"><%#Eval("SubStationId") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="TransformerSerialNumber" HeaderText="Transformer SerialNumber">
