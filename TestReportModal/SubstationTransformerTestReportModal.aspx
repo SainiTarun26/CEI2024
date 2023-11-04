@@ -2897,23 +2897,23 @@ margin-top: 20px;
                             <label>Submit Will be Enable When You Verify Your Details</label>
                         </div>
                             </div>
-                   <div class="row" style="margin-top:40px;">
-  
-        <div class="col-6" id="Contractor2" runat="server" visible="false" style="text-align: end;">
-        <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnSubmit_Click" />
-    </div>
-    <div class="col-6" id="SiteOwner" runat="server" style="text-align: initial;" visible="false">
-        <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
-    </div>  
-        <div class="col-6" id="SiteOwner2" runat="server" style="text-align: initial;" visible="false">
-        <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack2_Click" />
-    </div>
-        <div class="col-6" id="Supervisor" runat="server" visible="false">
-                <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-                     OnClick="btnBack_Click" />
-            </div>
-</div>
+                        <div class="row" style="margin-top: 40px;">
+
+                            <div class="col-6" id="Contractor2" runat="server" visible="false" style="text-align: end;">
+                                <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnSubmit_Click" />
+                            </div>
+                            <div class="col-6" id="SiteOwner" runat="server" style="text-align: initial;" visible="false">
+                                <asp:Button ID="btnNext" Text="Next" runat="server" class="btn btn-primary mr-2" OnClick="btnNext_Click" />
+                            </div>
+                            <div class="col-6" id="SiteOwner2" runat="server" style="text-align: initial;" visible="false">
+                                <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack2_Click" />
+                            </div>
+                            <div class="col-6" id="Supervisor" runat="server" visible="false">
+                                <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
+                                    OnClick="btnBack_Click" />
+                            </div>
                         </div>
+                    </div>
                 </li>
             </ul>
 
