@@ -44,6 +44,7 @@ namespace CEIHaryana.Contractor
 
                             GetGridData();
                             GridView1.Columns[0].Visible = true;
+                            customFile.Visible = true;
                         }
                         else
                         {
@@ -54,6 +55,7 @@ namespace CEIHaryana.Contractor
                             btnReset.Visible = false;
                             btnSubmit.Visible = false;
                             btnBack.Visible = true;
+                            lnkFile.Visible = true;
                         }
 
                     }
@@ -96,6 +98,7 @@ namespace CEIHaryana.Contractor
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
+                Session["File"] = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                 string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
                 string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
@@ -256,6 +259,26 @@ namespace CEIHaryana.Contractor
             ddlDistrict.DataBind();
             ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
             dsDistrict.Clear();
+        }
+        protected void lnkFile_Click(object sender, EventArgs e)
+        {
+
+            string fileName = Session["File"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
+            else
+            {
+                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+
+            }
         }
         private void ddlLoadBindVoltage()
         {

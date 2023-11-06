@@ -203,6 +203,8 @@ namespace CEIHaryana.Admin
             }
             else
             {
+                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
 
             }
         }

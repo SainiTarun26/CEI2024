@@ -517,9 +517,10 @@
                             <%--                            <asp:TextBox class="form-control" ID="txtcustomFile" Type="file" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                             <%-- <input type="file" id="customFile" runat="server" name="imageInput" CssClass="form-control" AutoPostBack="true" TabIndex="14" accept="image/*">--%>
 
-                            <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" TabIndex="14" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
+                            <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Visible="false" TabIndex="14" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
                             <%--<input type="file" id="customFile" name="img[]" runat="server" class="file-upload-default" onchange="FileName()"/>--%>
-
+                              <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
+                                
                             <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select File</asp:RequiredFieldValidator>
                         </div>

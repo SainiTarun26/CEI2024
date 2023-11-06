@@ -393,9 +393,7 @@
                                  <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Open Document" />
                                   <%--  <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />--%>
 
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtcustomFile"
-                                        ErrorMessage="Please Add File" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
-
+                                   
                                 </div>
 
                                 <div class="col-4" id="hiddenfield1" runat="server">
