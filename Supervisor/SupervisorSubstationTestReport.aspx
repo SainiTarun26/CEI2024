@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="SupervisorSubstationTestReport.aspx.cs" Inherits="CEIHaryana.Supervisor.SupervisorSubstationTestReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="SupervisorSubstationTestReport.aspx.cs" Inherits="CEIHaryana.Supervisor.SupervisorSubstationTestReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
