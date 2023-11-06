@@ -2192,9 +2192,9 @@
                                                     <asp:ListItem Value="3" Text="Generating Station"> </asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
-                                            <div class="col-2">
+                                            <div class="col-2" id="SearchingNo" runat="server" visible="false">
                                                 <label>Instalation ID</label>
-                                                <asp:DropDownList class="form-control  select-form select2" Visible="false" TabIndex="1" runat="server" OnSelectedIndexChanged="ddlSearchingNo_SelectedIndexChanged" AutoPostBack="true" ID="ddlSearchingNo" selectionmode="Multiple" Style="width: 100% !important;box-shadow: 0 2px rgba(0,0,0,0.2);">
+                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="1" runat="server" OnSelectedIndexChanged="ddlSearchingNo_SelectedIndexChanged" AutoPostBack="true" ID="ddlSearchingNo" selectionmode="Multiple" Style="width: 100% !important;box-shadow: 0 2px rgba(0,0,0,0.2);">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>

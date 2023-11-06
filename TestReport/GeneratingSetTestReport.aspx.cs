@@ -40,9 +40,10 @@ namespace CEIHaryana.TestReport
                 }
                 if (Convert.ToString(Session["Approval"]) == "Reject")
                 {
-                    Generaterset_Id = Session["LineID"].ToString().Trim();
+                    Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
                     GetHistoryDataById();
                     BtnBack.Visible = true;
+                    BtnSubmitGeneratingSet.Text = "Update";
 
 
                 }
@@ -62,9 +63,9 @@ namespace CEIHaryana.TestReport
                 {
                     type = Session["value"].ToString();
                 }
-                if (Convert.ToString(Session["approval"]) == "reject")
+                if (Convert.ToString(Session["Approval3"]) == "Reject")
                 {
-                    type = "generating set";
+                    type = "Generating Station";
                 }
 
                 DataSet ds = new DataSet();
@@ -714,38 +715,46 @@ namespace CEIHaryana.TestReport
         }
         public void SessionValue()
         {
-            string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
-            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
-
-            int count = Convert.ToInt32(Session["Count"]);
-            for (int i = count; i < installationNumbers.Length; i++)
+            try
             {
-                sessionName = Session[installationTypes[i]] as string;
-                sessionValue = Session[installationNumbers[i]] as string;
-                if (!string.IsNullOrEmpty(sessionName))
+                string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
+                string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
+
+                int count = Convert.ToInt32(Session["Count"]);
+                for (int i = count; i < installationNumbers.Length; i++)
                 {
-                    nextSessionName = Session[installationTypes[i + 1]] as string;
-                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
-                    break;
+                    sessionName = Session[installationTypes[i]] as string;
+                    sessionValue = Session[installationNumbers[i]] as string;
+                    if (!string.IsNullOrEmpty(sessionName))
+                    {
+                        nextSessionName = Session[installationTypes[i + 1]] as string;
+                        nextSessionValue = Session[installationNumbers[i + 1]] as string;
+                        break;
+                    }
                 }
             }
+            catch { }
         }
         public void PageWorking()
         {
-            SessionValue();
-            x = Convert.ToInt32(Session["Page"]);
-            if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
+            try
             {
-                Declaration.Visible = true;
-                BtnSubmitGeneratingSet.Text = "Submit";
-                BtnSubmitGeneratingSet.Attributes.Add("disabled", "true");
-                btnVerify.Visible = true;
+                SessionValue();
+                x = Convert.ToInt32(Session["Page"]);
+                if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
+                {
+                    Declaration.Visible = true;
+                    BtnSubmitGeneratingSet.Text = "Submit";
+                    BtnSubmitGeneratingSet.Attributes.Add("disabled", "true");
+                    btnVerify.Visible = true;
+                }
+                else
+                {
+                    Declaration.Visible = false;
+                    BtnSubmitGeneratingSet.Text = "Next";
+                }
             }
-            else
-            {
-                Declaration.Visible = false;
-                BtnSubmitGeneratingSet.Text = "Next";
-            }
+            catch (Exception) { }
         }
         protected void ddlGeneratingEarthingUsed1_SelectedIndexChanged(object sender, EventArgs e)
         {

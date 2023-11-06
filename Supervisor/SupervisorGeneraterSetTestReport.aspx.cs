@@ -58,9 +58,21 @@ namespace CEIHaryana.Supervisor
                 Session["GeneratingSetId"] = id;
                 Label lblApproval = (Label)row.FindControl("lblApproval");
                 Session["Approval"] = lblApproval.Text;
+                Session["Approval3"] = lblApproval.Text;
+                Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                Session["TestReportId"] = lblTestReportId.Text;
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+
+                    if (lblApproval.Text.Trim() == "Reject")
+                    {
+                        Response.Redirect("/TestReport/GeneratingSetTestReport.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+                    }
+                    //Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
                 }
             }
         }

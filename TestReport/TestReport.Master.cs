@@ -21,17 +21,26 @@ namespace CEIHaryana.TestReport
                 {
                     ddlSearchingName.Visible = false;
                 }
-            }
 
-            RedirectPages();
-            if (Session["Page"] != null && (int)Session["Page"] == 0)
-            {
 
-            }
-            else
-            {
-                Searching.Visible = true;
+                RedirectPages();
+                if (Session["Page"] != null && (int)Session["Page"] == 0)
+                {
 
+                }
+                else
+                {
+                    Searching.Visible = true;
+
+                }
+                if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                {
+
+                }
+                else
+                {
+                    SearchingNo.Visible = true;
+                }
             }
 
 
@@ -54,7 +63,7 @@ namespace CEIHaryana.TestReport
                     lblLinePage.Visible = true;
                     // }
                 }
-                if (Convert.ToString(Session["Approval"]).Trim() == "Reject")
+                if (Convert.ToString(Session["Approval1"]).Trim() == "Reject")
                 {
                     lblLinePage.Visible = true;
                 }
@@ -99,6 +108,10 @@ namespace CEIHaryana.TestReport
 
 
                 }
+                if (Convert.ToString(Session["Approval3"]).Trim() == "Reject")
+                {
+                    lblGeneratingSet.Visible = true;
+                }
                 if (Convert.ToString(Session["installationType1"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType2"]).Trim() == "Single/ Three Phase"
                    || Convert.ToString(Session["installationType3"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType4"]).Trim() == "Single/ Three Phase"
                    || Convert.ToString(Session["installationType5"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType6"]).Trim() == "Single/ Three Phase"
@@ -118,33 +131,38 @@ namespace CEIHaryana.TestReport
 
         protected void ddlSearchingName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string TestReportId = Session["TestReportId"].ToString();
-            CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
-            ddlSearchingNo.Visible = true;
-            Session["Value"] = ddlSearchingName.SelectedItem.ToString();
-            if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
-            {
-                Type = ddlSearchingName.SelectedItem.ToString();
-            }
-            else
-            {
-                Type = Session["Value"].ToString();
-            }
             try
             {
-                DataSet dsSearchingNo = new DataSet();
-                dsSearchingNo = CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
-                ddlSearchingNo.DataSource = dsSearchingNo;
-                ddlSearchingNo.DataTextField = "HistoryID";
-                ddlSearchingNo.DataValueField = "ID";
-                ddlSearchingNo.DataBind();
-                ddlSearchingNo.Items.Insert(0, new ListItem("Select", "0"));
-                dsSearchingNo.Clear();
+                string TestReportId = Session["TestReportId"].ToString();
+                CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
+                SearchingNo.Visible = true;
+                ddlSearchingNo.Visible = true;
+                Session["Value"] = ddlSearchingName.SelectedItem.ToString();
+                if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
+                {
+                    Type = ddlSearchingName.SelectedItem.ToString();
+                }
+                else
+                {
+                    Type = Session["Value"].ToString();
+                }
+                try
+                {
+                    DataSet dsSearchingNo = new DataSet();
+                    dsSearchingNo = CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
+                    ddlSearchingNo.DataSource = dsSearchingNo;
+                    ddlSearchingNo.DataTextField = "HistoryID";
+                    ddlSearchingNo.DataValueField = "ID";
+                    ddlSearchingNo.DataBind();
+                    ddlSearchingNo.Items.Insert(0, new ListItem("Select", "0"));
+                    dsSearchingNo.Clear();
+                }
+                catch (Exception ex)
+                {
+                    //abc
+                }
             }
-            catch (Exception ex)
-            {
-                //abc
-            }
+            catch { }
 
         }
 
