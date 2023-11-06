@@ -6,18 +6,22 @@
     <title>CEI</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link rel="stylesheet" href="/Assets/css/feather/feather.css">
- <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
- <link rel="stylesheet" href="/Assets/css/css/vendor.bundle.base.css">
- <link rel="stylesheet" href="/Assets/css/datatables.net-bs4/dataTables.bootstrap4.css">
- <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
- <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css">
- <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
- <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="/Assets/css/feather/feather.css">
+    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/css/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/Assets/css/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css">
+    <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
+    <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
+        .col-2 {
+            top: 0px !important;
+        }
+
         svg {
             margin-right: 8px !important;
         }
@@ -59,7 +63,7 @@
 
         label {
             font-size: 13px;
-            margin-top: 15px;
+            margin-top: 0px !important;
         }
 
         .form-control:focus {
@@ -1943,7 +1947,7 @@
         <div>
             <div class="container-scroller">
                 <!-- partial:partials/_navbar.html -->
-                                <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+                <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                         <a class="navbar-brand brand-logo mr-5" href="#">
                             <img src="/Assets/ceilogo.png" alt="logo" /></a>
@@ -2042,8 +2046,8 @@
                             <span class="icon-menu"></span>
                         </button>
                     </div>
-                </nav>   
-                                <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+                </nav>
+                <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                         <a class="navbar-brand brand-logo mr-5" href="#">
                             <img src="/Assets/ceilogo.png" alt="logo" /></a>
@@ -2169,24 +2173,31 @@
                                     </div>
                                 </div>
                             </div>
-                                 <div class="col-8" style="text-align: -webkit-right; margin-top: auto; margin-bottom: auto;">
+                            <div class="row">
+                                <div class="col-12" style="margin-top: auto; margin-bottom: 15px;">
                                     <div runat="server" id="Searching" visible="false">
-                                        <div class="row" style="margin-right: 15px;">
-                                            <div class="col-8" style="text-align: -webkit-match-parent;">
-                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="1" runat="server" AutoPostBack="true" ID="ddlSearchingName" selectionmode="Multiple" Style="width: 40% !important;" OnSelectedIndexChanged="ddlSearchingName_SelectedIndexChanged">
+                                        <label style="font-size:15px;font-weight:700;">Select For Updation</label>
+                                        
+                                        <div class="row" style="margin-left: 0px;">
+                                            <div class="col-2" style="text-align: -webkit-match-parent;">
+                                                <label>Type of Installation</label>
+                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="1" runat="server" AutoPostBack="true" ID="ddlSearchingName" selectionmode="Multiple" Style="width: 100% !important;box-shadow: 0 2px rgba(0,0,0,0.2);" OnSelectedIndexChanged="ddlSearchingName_SelectedIndexChanged">
                                                     <asp:ListItem Value="0" Text="Select"> </asp:ListItem>
                                                     <asp:ListItem Value="1" Text="Line"> </asp:ListItem>
                                                     <asp:ListItem Value="2" Text="Substation Transformer"> </asp:ListItem>
                                                     <asp:ListItem Value="3" Text="Generating Station"> </asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
-                                            <div class="col-4">
-                                                <asp:DropDownList class="form-control  select-form select2" Visible="false" TabIndex="1" runat="server" OnSelectedIndexChanged="ddlSearchingNo_SelectedIndexChanged" AutoPostBack="true" ID="ddlSearchingNo" selectionmode="Multiple" Style="width: 90% !important;">
+                                            <div class="col-2">
+                                                <label>Instalation ID</label>
+                                                <asp:DropDownList class="form-control  select-form select2" Visible="false" TabIndex="1" runat="server" OnSelectedIndexChanged="ddlSearchingNo_SelectedIndexChanged" AutoPostBack="true" ID="ddlSearchingNo" selectionmode="Multiple" Style="width: 100% !important;box-shadow: 0 2px rgba(0,0,0,0.2);">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
+                                            
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
@@ -2215,17 +2226,17 @@
             window.location.href = 'Single-Three-Phase.aspx'; // Replace with your target URL
         }
     </script>
-     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
- <script src="/Assets/js/chart.js/Chart.min.js"></script>
- <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
- <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
- <script src="/Assets/js/dataTables.select.min.js"></script>
- <script src="/Assets/js/off-canvas.js"></script>
- <script src="/Assets/js/hoverable-collapse.js"></script>
- <script src="/Assets/js/template.js"></script>
- <script src="/Assets/js/settings.js"></script>
- <script src="/Assets/js/todolist.js"></script>
- <script src="/Assets/js/dashboard.js"></script>
- <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script src="/Assets/js/js/vendor.bundle.base.js"></script>
+    <script src="/Assets/js/chart.js/Chart.min.js"></script>
+    <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
+    <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="/Assets/js/dataTables.select.min.js"></script>
+    <script src="/Assets/js/off-canvas.js"></script>
+    <script src="/Assets/js/hoverable-collapse.js"></script>
+    <script src="/Assets/js/template.js"></script>
+    <script src="/Assets/js/settings.js"></script>
+    <script src="/Assets/js/todolist.js"></script>
+    <script src="/Assets/js/dashboard.js"></script>
+    <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
 </body>
 </html>
