@@ -60,7 +60,7 @@ namespace CEIHaryana.TestReport
                 }
                 else
                 {
-                    lblLinePage.Visible = false;
+                   // lblLinePage.Visible = false;
                 }
                 if (Convert.ToString(Session["Approval2"]).Trim() == "Reject")
                 {
