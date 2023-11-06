@@ -2175,7 +2175,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-12" style="margin-top: auto; margin-bottom: 15px;">
-                                    <div runat="server" id="Searching" visible="false">
+                                    <div runat="server" id="Searching" visible="false" class="card" style="
+    margin: 0px 10px 0px 10px;
+    padding: 5px 0px 10px 15px;
+    background: #f9f9f9;
+">
                                         <label style="font-size:15px;font-weight:700;">Select For Updation</label>
                                         
                                         <div class="row" style="margin-left: 0px;">
