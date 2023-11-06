@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="IntimationData.aspx.cs" Inherits="CEIHaryana.Supervisor.IntimationData" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="IntimationData.aspx.cs" Inherits="CEIHaryana.Supervisor.IntimationData" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>

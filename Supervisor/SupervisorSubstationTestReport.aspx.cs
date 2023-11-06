@@ -76,7 +76,7 @@ namespace CEIHaryana.Supervisor
         {
             string searchterm = txtSearch.Text.Trim();
             string LoginId = string.Empty;
-            LoginId = Session["ContractorID"].ToString();
+            LoginId = Session["SupervisorID"].ToString();
 
             DataSet ds = new DataSet();
             ds = cei.SearchingOnSubstation(searchterm, LoginId);

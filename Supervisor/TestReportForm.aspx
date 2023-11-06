@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="TestReportForm.aspx.cs" Inherits="CEIHaryana.Supervisor.TestReportForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="TestReportForm.aspx.cs" Inherits="CEIHaryana.Supervisor.TestReportForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Assets/css/feather/feather.css">

@@ -362,7 +362,7 @@ namespace CEIHaryana.Supervisor
                     txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text);
 
                 string TestReportId = CEI.TestReportId();
-                Page.Session["TestReportId"] = TestReportId;
+                Page.Session["TestReportId"] = "T173";
 
 
                 //Session["intallationType"] = txtinstallationType1.Text + ","+ txtinstallationNo1.Text + "|"+txtinstallationType2.Text + "," + txtinstallationNo2.Text + "|"+
@@ -453,7 +453,7 @@ namespace CEIHaryana.Supervisor
             string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
             string[] installationNumbers = {"installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
             Page.Session["Count"] = 0;
-            Page.Session["Page"] = 0;
+            Page.Session["Page"] = 1;
             int count = Convert.ToInt32(Session["Count"]);
             for (int i = count; i < installationNumbers.Length; i++)
             {

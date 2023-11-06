@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/TestReport/TestReport.Master" CodeBehind="LineTestReport.aspx.cs" Inherits="CEIHaryana.TestReport.LineTestReport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/TestReport/TestReport.Master" EnableEventValidation="false" CodeBehind="LineTestReport.aspx.cs" Inherits="CEIHaryana.TestReport.LineTestReport" %>
 
 
 
