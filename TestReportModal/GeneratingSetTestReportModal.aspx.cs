@@ -379,7 +379,7 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
-                Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+                Response.Redirect("/Supervisor/SupervisorGeneraterSetTestReport.aspx");
             }
         }
         protected void btnVerify_Click(object sender, EventArgs e)
