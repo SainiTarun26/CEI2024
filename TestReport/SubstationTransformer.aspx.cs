@@ -1019,36 +1019,45 @@ namespace CEIHaryana.TestReport
                        txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), txtOtherEarthing19.Text, ddlSubstationEarthing20.SelectedItem.ToString(),
                        txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtOtherEarthing20.Text, txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
                        txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
-
-                    Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
-                    Reset();
-                    DataSaved.Visible = true;
-                    labelVerification.Visible = false;
-                    PageWorking();
-                    int currentValue = Convert.ToInt32(Session["Page"]);
-                    if (currentValue == Convert.ToInt32(sessionValue))
+                    Page.Session["Visible"] = 1;
+                    if (BtnSubmitSubstation.Text.Trim() == "Submit" || BtnSubmitSubstation.Text.Trim() == "Next")
                     {
-                        Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
-                        BtnSubmitSubstation.Visible = false;
-                        Session["SubmittedValue"] = sessionValue;
-                        divtrasformer.Visible = false;
-                        Session["SubstationId"] = "";
-                        //NextSessionValueAndName();
-                        Session["TestReportId"] = TestReportId;
-                        Page.Session["Page"] = 0;
-                        if (nextSessionName.Trim() == "Line")
+                        Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
+                        Reset();
+                        DataSaved.Visible = true;
+                        labelVerification.Visible = false;
+                        PageWorking();
+                        int currentValue = Convert.ToInt32(Session["Page"]);
+                        if (currentValue == Convert.ToInt32(sessionValue))
                         {
-                            Response.Redirect("LineTestReport.aspx", false);
-                        }
-                        else if (nextSessionName.Trim() == "Generating Station")
-                        {
-                            Response.Redirect("GeneratingSetTestReport.aspx", false);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
+                            Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
+                            BtnSubmitSubstation.Visible = false;
+                            Session["SubmittedValue"] = sessionValue;
+                            divtrasformer.Visible = false;
+                            Session["SubstationId"] = "";
+                            //NextSessionValueAndName();
+                            Session["TestReportId"] = TestReportId;
+                            Page.Session["Page"] = 0;
+                            if (nextSessionName.Trim() == "Line")
+                            {
+                                Response.Redirect("LineTestReport.aspx", false);
+                            }
+                            else if (nextSessionName.Trim() == "Generating Station")
+                            {
+                                Response.Redirect("GeneratingSetTestReport.aspx", false);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
 
+                            }
                         }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+
+                        Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx", false);
                     }
                 }
             }

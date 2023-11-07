@@ -48,6 +48,7 @@ namespace CEIHaryana.Officers
                 else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                 {
                     PersonalSub.Visible = true;
+
                 }
             }
             else if (txtWorkType.Text == "Generating Set")
@@ -74,7 +75,7 @@ namespace CEIHaryana.Officers
             try
             {
                 ID = Session["InspectionId"].ToString();
-      
+
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
@@ -82,6 +83,8 @@ namespace CEIHaryana.Officers
                 txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                txtAdditionalNotes.Text = ds.Tables[0].Rows[0]["AdditionalNotes"].ToString();
+                txtDate.Text = ds.Tables[0].Rows[0]["Date"].ToString();
                 Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
                 Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
 
@@ -115,9 +118,7 @@ namespace CEIHaryana.Officers
                 {
                     ApprovalRequired.Visible = true;
                     btnSubmit.Visible = true;
-
-
-                }  
+                }
                 else if (Approval.Trim() == "Accepted")
                 {
                     ApprovalRequired.Visible = true;
@@ -126,45 +127,43 @@ namespace CEIHaryana.Officers
                     ddlReview.Attributes.Add("disabled", "true");
                     btnBack.Visible = true;
                     btnSubmit.Visible = false;
-
-
                 }
                 else if (Approval.Trim() == "Rejected")
                 {
                     ApprovalRequired.Visible = true;
-                    Rejection.Visible   = true;
+                    Rejection.Visible = true;
                     string dp_1 = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
                     txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                     ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(dp_1));
-                    ddlReview.Attributes.Add("disabled", "true"); 
+                    ddlReview.Attributes.Add("disabled", "true");
                     txtRejected.Attributes.Add("disabled", "true");
                     btnBack.Visible = true;
                     btnSubmit.Visible = false;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                //abc
             }
-            
+
         }
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             Session["InspectionTestReportId"] = txtTestReportId.Text;
-            if (txtWorkType.Text.Trim()== "Line")
+            if (txtWorkType.Text.Trim() == "Line")
             {
-                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");    
+                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
                 Response.Redirect("TestReportModal/SubstationTransformerTestReportModal.aspx");
-            } 
+            }
             else if (txtWorkType.Text.Trim() == "Generating Station")
             {
                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
             }
 
-        }   
+        }
         protected void lnkDocument_Click(object sender, EventArgs e)
         {
 
@@ -182,7 +181,7 @@ namespace CEIHaryana.Officers
             {
 
             }
-        } 
+        }
         protected void lnkInvoiceFire_Click(object sender, EventArgs e)
         {
 
@@ -216,7 +215,7 @@ namespace CEIHaryana.Officers
             else
             {
             }
-        } 
+        }
         protected void lnkManufacturing_Click(object sender, EventArgs e)
         {
 
@@ -250,7 +249,7 @@ namespace CEIHaryana.Officers
             else
             {
             }
-        } 
+        }
         protected void lnkCopy_Click(object sender, EventArgs e)
         {
 
@@ -321,7 +320,6 @@ namespace CEIHaryana.Officers
 
             }
         }
-
         protected void lnkDiag_Click(object sender, EventArgs e)
         {
 
@@ -340,7 +338,6 @@ namespace CEIHaryana.Officers
 
             }
         }
-
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlReview.SelectedValue == "2")
@@ -352,12 +349,10 @@ namespace CEIHaryana.Officers
                 Rejection.Visible = false;
             }
         }
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             ID = Session["InspectionId"].ToString();
-            CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text);
-
+            CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, txtAdditionalNotes.Text, txtDate.Text);
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {

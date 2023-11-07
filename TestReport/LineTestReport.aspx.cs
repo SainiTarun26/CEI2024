@@ -38,7 +38,7 @@ namespace CEIHaryana.TestReport
                 PageWorking();
                 Insulation440vAbove.Visible = false;
                 Insulation220vAbove.Visible = false;
-
+                BtnBack.Visible = false;
                 if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
                 {
                     // GetHistoryDataById();
@@ -907,7 +907,7 @@ namespace CEIHaryana.TestReport
                 else
                 {
                     string GeneratedLineId = string.Empty;
-                    if (Convert.ToString(Session["LineId"]) == null || Convert.ToString(Session["LineId"]) == "")
+                    if (Convert.ToString(Session["GeneratedLineId"]) == null || Convert.ToString(Session["GeneratedLineId"]) == "")
                     {
                         GeneratedLineId = CEI.GenerateUniqueID();
                         Session["GeneratedLineId"] = LineId;
@@ -935,7 +935,8 @@ namespace CEIHaryana.TestReport
                txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
                txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
                txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-                    if (btnSubmit.Text.Trim() == "Submit")
+                    Page.Session["Visible"] = 1;
+                    if (btnSubmit.Text.Trim() == "Submit" || btnSubmit.Text.Trim() == "Next")
                     {
                         Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
                         Reset();
@@ -973,7 +974,7 @@ namespace CEIHaryana.TestReport
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
-                        Response.Redirect("/Supervisor");
+                        Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx", false);
                     }
                 }
 
@@ -1058,7 +1059,7 @@ namespace CEIHaryana.TestReport
                     btnSubmit.Text = "Next";
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
 
         }
         public void Reset()

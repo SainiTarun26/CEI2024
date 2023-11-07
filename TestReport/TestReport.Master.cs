@@ -24,7 +24,7 @@ namespace CEIHaryana.TestReport
 
 
                 RedirectPages();
-                if (Session["Page"] != null && (int)Session["Page"] == 0)
+                if (Session["Visible"] != null && (int)Session["Visible"] == 0)
                 {
 
                 }

@@ -1070,7 +1070,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Inspection Data
-        public void updateInspection(string ID, string AcceptedOrRejected,string ReasonForRejection)
+        public void updateInspection(string ID, string AcceptedOrRejected, string ReasonForRejection, string AdditonalNotes, string Date)
         {
             SqlCommand cmd = new SqlCommand("sp_InspectionReview");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1084,6 +1084,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@ID ", ID);
             cmd.Parameters.AddWithValue("@AcceptedOrRejected ", AcceptedOrRejected);
             cmd.Parameters.AddWithValue("@ReasonForRejection ", ReasonForRejection);
+            cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
+            cmd.Parameters.AddWithValue("@Date", Date);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -1405,6 +1407,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlSecondaryVotlage()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SecondryVoltage");
+        }
+        public DataSet GetSiteOwnerNotifications(string ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerNotifiction", ID);
         }
     }
 }

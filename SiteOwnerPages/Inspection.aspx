@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="Inspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Inspection" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
  <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -154,47 +155,47 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-       <div class="content-wrapper">
-    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-        <div class="row">
-            <div class="col-4">
-                <label>
-                    Type of Inspection
+    <div class="content-wrapper">
+        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+            <div class="row">
+                <div class="col-4">
+                    <label>
+                        Type of Inspection
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </label>
+                    <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-  </div>
+                </div>
 
-            <div class="col-4">
-                <label>
-                    Type of Applicant<samp style="color: red"> * </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                <div class="col-4">
+                    <label>
+                        Type of Applicant<samp style="color: red"> * </samp>
+                    </label>
+                    <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
+                </div>
+                <div class="col-4">
+                    <label>
+                        Type of Installation<samp style="color: red"> * </samp>
+                    </label>
+                    <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                </div>
+                <div class="col-4" runat="server">
+                    <label for="Pin">Voltage Level</label>
+                    <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                </div>
             </div>
-            <div class="col-4">
-                <label>
-                    Type of Installation<samp style="color: red"> * </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-            </div>
-            <div class="col-4" runat="server">
-                <label for="Pin">Voltage Level</label>
-                <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-  
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="table-responsive pt-3" id="Uploads" runat="server" >
-                <table class="table table-bordered table-striped">
-                    <thead class="table-dark">
+            <div class="row">
+                <div class="table-responsive pt-3" id="Uploads" runat="server">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-dark">
                         <tr>
                             <th>Name of Documents
                             </th>
-                            <th>Upload Documents
+                            <th>Uploaded Documents
                             </th>
                             <th id="RejectedColumn" runat="server" visible="false">
                                 Change Document
@@ -214,7 +215,8 @@
 
                                 </td>
                                 <td id="RejectedColumnData1" runat="server" visible="false"> 
-                                    <asp:FileUpload runat="server" ID="fileUpload" />
+                                   <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="padding: 0px; " />
+                                                   
                                 </td>
                             </tr>
                             <tr id="Tr2" runat="server" visible="true">
@@ -229,7 +231,8 @@
                                     </div>
                                 </td>
                                 <td id="RejectedColumnData2" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload1" />
+                                    <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="padding: 0px;" />
+                                                  
                                 </td>
                             </tr>
                         </div>
@@ -246,7 +249,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData3" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload2" />
+                                      <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                              
                                 </td>
                             </tr>
                         </div>
@@ -263,7 +267,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData4" runat="server" visible="false"> 
-                                     <asp:FileUpload runat="server" ID="fileUpload3" />
+                                     <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="padding: 0px;" />
+                                                   
                                 </td>
                             </tr>
                             <tr id="Tr5" runat="server" visible="true">
@@ -278,7 +283,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData5" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload4" />
+                                      <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                   
                                 </td>
                             </tr>
                             <tr id="Tr6" runat="server" visible="true">
@@ -289,11 +295,13 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkManufacturing_Click" Text="Open Document" />
-                                    </div>
+                                           <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkManufacturing_Click" Text="Open Document" />
+                                   
+                                                      </div>
                                 </td>
                                  <td id="RejectedColumnData6" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload5" />
+                                       <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="padding: 0px;" />
+                                                  
                                 </td>
                             </tr>
                             <tr id="Tr7" runat="server" visible="true">
@@ -309,7 +317,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData7" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload6" />
+                                     <asp:FileUpload ID="FileUpload7" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                   
                                 </td>
                             </tr>
                             <tr id="Tr8" runat="server" visible="true">
@@ -324,7 +333,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData8" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload7" />
+                                      <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="padding: 0px;;" />
+                                                
                                 </td>
                             </tr>
                         </div>
@@ -342,7 +352,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData9" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload8" />
+                                     <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                 
                                 </td>
                             </tr>
                             <tr id="Tr10" runat="server" visible="true">
@@ -359,7 +370,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData10" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload9" />
+                                     <asp:FileUpload ID="FileUpload10" runat="server" CssClass="form-control" Style="padding: 0px;" />
+                                                   
                                 </td>
                             </tr>
                             <tr id="Tr13" runat="server" visible="true">
@@ -374,7 +386,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData11" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload10" />
+                                   <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                  
                                 </td>
                             </tr>
                             <tr id="Tr11" runat="server" visible="true">
@@ -389,7 +402,8 @@
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData12" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload11" />
+                                      <asp:FileUpload ID="FileUpload11" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                   
                                 </td>
                             </tr>
                         </div>
@@ -407,58 +421,60 @@
                                 </div>
                             </td>
                                 <td id="RejectedColumnData13" runat="server" visible="false">
-                                     <asp:FileUpload runat="server" ID="fileUpload12" />
+                                    <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px;" />
                                 </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4">
-                  <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            <div class="row">
+                <div class="col-4">
+                    <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-            </div>
-            <div class="col-4" style="text-align: center">
-              
-                <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" onclick="lnkRedirect_Click" Text="View Test Report" />
-            </div>
-        </div>   
-   
-        <div class="row">
-           
-            <div class="col-4" id="ApprovalRequired" runat="server" visible="false">
-                 <br />
-                 <br />
-                 <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;">
-                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                <asp:ListItem Text="Accepted" Value="1"></asp:ListItem>
-                                                <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
-                                            </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                                                     
-            </div>
-            <div class="col-4"></div>
-            <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
-                 <label>
-                                                Reason For Rejection<samp style="color: red"> * </samp>
-                                            </label>
-                 <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200"  autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                   <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                                                          
-                   </div>
-        </div>
-        <div class="row">
-             <div class="col-4"></div>  
-            <div class="col-4" style="text-align:center;">
-                <asp:Button ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-          
+                </div>
+                <div class="col-4" style="text-align: center">
+
+                    <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                 </div>
             </div>
-           
-         
+
+            <div class="row">
+
+                <div class="col-4" id="ApprovalRequired" runat="server" visible="false">
+                    <br />
+                    <br />
+                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;">
+                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Accepted" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                </div>
+                <div class="col-4"></div>
+                <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                    <label>
+                        Reason For Rejection<samp style="color: red"> * </samp>
+                    </label>
+                    <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4" style="text-align: center;">
+                    <asp:Button ID="btnSubmit" Text="Submit" Visible="false" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                        OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+
+                </div>
+            </div>
+
+
+        </div>
     </div>
-         </div>
 
 
 </asp:Content>

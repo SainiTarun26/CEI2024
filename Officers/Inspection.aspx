@@ -161,7 +161,6 @@
                 </label>
                 <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-
             </div>
 
             <div class="col-4">
@@ -183,6 +182,15 @@
                 <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
             </div>
+            <div class="col-4" runat="server">
+                <label for="Date">Current Date</label>
+                <asp:TextBox class="form-control" runat="server" ID="txtDate" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
+
+            </div>
+             <div class="col-md-4" runat="server">
+           <label for="AdditionalDate" >Additonal Notes </label> 
+            <asp:TextBox ID="txtAdditionalNotes" MaxLength="200" TextMode="MultiLine" runat="server" Class="form-control" Style="margin-left: 18px" ></asp:TextBox>
+        </div>
         </div>
 
         <div class="row">
@@ -379,7 +387,12 @@
               
                 <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
             </div>
-        </div>   
+        </div>  
+      <%--  <div class="row">
+            <div class="col-md-7">
+               
+            </div>       
+            </div>--%>
    
         <div class="row">
            

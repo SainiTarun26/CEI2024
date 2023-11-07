@@ -101,47 +101,6 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <%--  <a class="dropdown-item preview-item">
-    <div class="preview-thumbnail">
-        <div class="preview-icon bg-info">
-            <i class="ti-bell mx-0"></i>
-        </div>
-    </div>
-    <div class="preview-item-content">
-        <asp:TextBox ID="TextBox2" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
-    </div>
-</a>
-                                    <a class="dropdown-item preview-item">
-    <div class="preview-thumbnail">
-        <div class="preview-icon bg-info">
-            <i class="ti-bell mx-0"></i>
-        </div>
-    </div>
-    <div class="preview-item-content">
-        <asp:TextBox ID="TextBox3" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
-    </div>
-</a>
-                                    <a class="dropdown-item preview-item">
-    <div class="preview-thumbnail">
-        <div class="preview-icon bg-info">
-            <i class="ti-bell mx-0"></i>
-        </div>
-    </div>
-    <div class="preview-item-content">
-        <asp:TextBox ID="TextBox4" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
-    </div>
-</a>
-                                    <a class="dropdown-item preview-item">
-    <div class="preview-thumbnail">
-        <div class="preview-icon bg-info">
-            <i class="ti-bell mx-0"></i>
-        </div>
-    </div>
-    <div class="preview-item-content">
-        <asp:TextBox ID="TextBox5" CssClass="form-control notification-box font-weight-light small-text mb-0 text-muted" TextMode="MultiLine" Rows="2" runat="server" Style="font-size: 12px;"></asp:TextBox>
-    </div>
-</a>
-                                    --%>
                                 </div>
                             </li>
                             <li class="nav-item nav-profile dropdown">

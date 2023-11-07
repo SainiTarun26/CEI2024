@@ -12,7 +12,7 @@ namespace CEIHaryana.Contractor
     public partial class Contractor : System.Web.UI.MasterPage
     {
         CEI CEI = new CEI();
-      string REID = string.Empty;
+        string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -62,34 +62,58 @@ namespace CEIHaryana.Contractor
             TextBoxPlaceholder.Controls.Clear();
 
             int rowIndex = 0;
-
-            foreach (DataRow row in ds.Tables[0].Rows)
+            if (ds.Tables[0].Rows.Count > 0)
             {
-                string dynamicData = row["IntimationId"].ToString();
+                foreach (DataRow row in ds.Tables[0].Rows)
+            {
 
-                // Create a new TextBox control for each data item
+               
+                    string dynamicData = row["IntimationId"].ToString();
+
+                    // Create a new TextBox control for each data item
+                    TextBox textBox = new TextBox
+                    {
+                        ID = "TextBox_" + rowIndex, // Unique ID for each TextBox
+                        CssClass = "form-control notification-box font-weight-light small-text mb-0 text-muted",
+                        Text = "Test Report Created for Intimation: " + dynamicData,
+                        TextMode = TextBoxMode.MultiLine,
+                        Rows = 2,
+                        ReadOnly = true
+                        // WStyle = "font-size: 12px;"
+                    };
+
+                    // Add the TextBox to the placeholder
+                    TextBoxPlaceholder.Controls.Add(textBox);
+
+                    textBox.Attributes["style"] = "width: 250px;";
+                    // Add a line break between TextBoxes
+                    TextBoxPlaceholder.Controls.Add(new LiteralControl("<br />"));
+
+                    rowIndex++;
+
+            }
+            }
+
+            else
+            {
                 TextBox textBox = new TextBox
                 {
-                    ID = "TextBox_" + rowIndex, // Unique ID for each TextBox
+                    ID = "TextBox_" + rowIndex,
                     CssClass = "form-control notification-box font-weight-light small-text mb-0 text-muted",
-                    Text = "Test Report Created for Intimation: " + dynamicData,
+                    Text = "No New Notifications",
                     TextMode = TextBoxMode.MultiLine,
                     Rows = 2,
-                   // WStyle = "font-size: 12px;"
+                    ReadOnly = true
                 };
-
-                // Add the TextBox to the placeholder
                 TextBoxPlaceholder.Controls.Add(textBox);
 
-                // Add a line break between TextBoxes
+                textBox.Attributes["style"] = "width: 250px;";
                 TextBoxPlaceholder.Controls.Add(new LiteralControl("<br />"));
 
                 rowIndex++;
+
             }
 
-            // Add some hardcoded text
-            //string hardcodedText = "Hardcoded Text: This is some additional text.";
-            //TextBoxPlaceholder.Controls.Add(new LiteralControl(hardcodedText));
         }
     }
 }

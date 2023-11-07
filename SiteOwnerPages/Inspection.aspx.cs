@@ -91,11 +91,12 @@ namespace CEIHaryana.SiteOwnerPages
                 SupplierSub.Visible = false;
                 PersonalGenerating.Visible = false;
             }
-            if (Session["Approval"].ToString() == "Initiated" || Session["Approval"].ToString() == "Accept"|| Session["Approval"].ToString() == "InProgress")
-            {
-                btnBack.Visible = true;
-            }
-            else if(Session["Approval"].ToString().Trim() == "Rejected")
+            //if (Session["Approval"].ToString().Trim() != "Initiated" || Session["Approval"].ToString() == "Accept"|| Session["Approval"].ToString() == "InProgress")
+            //{
+            //    btnBack.Visible = true;
+            //}
+            //else 
+            if(Session["Approval"].ToString().Trim() == "Rejected")
             {
                 RejectedColumn.Visible = true;
                 RejectedColumnData1.Visible = true;
@@ -111,6 +112,8 @@ namespace CEIHaryana.SiteOwnerPages
                 RejectedColumnData11.Visible = true;
                 RejectedColumnData12.Visible = true;
                 RejectedColumnData13.Visible = true;
+                btnSubmit.Visible = true;
+                btnBack.Visible = true;
             }
             else
             {
@@ -374,5 +377,358 @@ namespace CEIHaryana.SiteOwnerPages
         {
             Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx");
         }
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            bool allFilesArePDF = true;
+
+            for (int i = 1; i <= 15; i++)
+            {
+                FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
+
+                if (fileUploadControl.HasFile)
+                {
+                    string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
+
+                    if (fileExtension.ToLower() != ".pdf")
+                    {
+                        allFilesArePDF = false;
+                        break;
+
+                    }
+                }
+            }
+
+            if (allFilesArePDF)
+            {
+                string Assign = string.Empty;
+                string To = string.Empty;
+                string input = txtVoltage.Text;
+                string id = Session["LineID"].ToString();
+                string IntimationId = Session["IntimationId"].ToString();
+                string CreatedBy = Session["SiteOwnerId"].ToString();
+                string FileName = string.Empty;
+                string flpPhotourl = string.Empty;
+                string flpPhotourl1 = string.Empty;
+                string flpPhotourl2 = string.Empty;
+                string flpPhotourl3 = string.Empty;
+                string flpPhotourl4 = string.Empty;
+                string flpPhotourl5 = string.Empty;
+                string flpPhotourl6 = string.Empty;
+                string flpPhotourl7 = string.Empty;
+                string flpPhotourl8 = string.Empty;
+                string flpPhotourl9 = string.Empty;
+                string flpPhotourl10 = string.Empty;
+                string flpPhotourl11 = string.Empty;
+                string flpPhotourl12 = string.Empty;
+                To = Session["District"].ToString();
+                if (txtWorkType.Text == "Line")
+                {
+                    if (input.EndsWith("kv", StringComparison.OrdinalIgnoreCase))
+                    {
+                        string voltagePart = input.Substring(0, input.Length - 2);
+                        if (int.TryParse(voltagePart, out int voltageLevel))
+                        {
+                            if (voltageLevel >= 11 && voltageLevel <= 33)
+                            {
+                                Assign = "SDO";
+                            }
+                            else if (voltageLevel >= 33)
+
+                            {
+                                Assign = "Admin@123";
+                            }
+                            else if (voltageLevel <= 11)
+
+                            {
+                                Assign = "JE";
+                            }
+
+                        }
+                    }
+
+                    else if (input.EndsWith("v", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Assign = "JE";
+
+                    }
+                }
+                else
+                {
+                    if (input.EndsWith("KVA", StringComparison.OrdinalIgnoreCase))
+                    {
+                        string voltagePart = input.Substring(0, input.Length - 3);
+                        if (int.TryParse(voltagePart, out int voltageLevel))
+                        {
+                            if (voltageLevel >= 250 && voltageLevel <= 500)
+                            {
+                                Assign = "XEN";
+                            }
+                            else if (voltageLevel >= 500)
+
+                            {
+                                Assign = "Admin@123";
+                            }
+                            else if (voltageLevel <= 250)
+                            {
+                                Assign = "SDO";
+                            }
+                        }
+
+                    }
+                    else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Assign = "Admin@123";
+
+                    }
+
+                }
+                if (LineSubstationSupplier.Visible == true)
+                {
+                    if (FileUpload1.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/"));
+                        }
+
+                        string ext = FileUpload1.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/RequestLetterFromConcernedOfficer/";
+                        string fileName = "RequestLetterFromConcernedOfficer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/" + fileName);
+                        FileUpload1.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl = path + fileName;
+                    }
+                    if (FileUpload2.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload2.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/"));
+                        }
+
+                        string ext = FileUpload2.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/ManufacturingTestReportOfEqipment/";
+                        string fileName = "ManufacturingTestReportOfEqipment" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/" + fileName);
+                        FileUpload2.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl1 = path + fileName;
+                    }
+                }
+                if (SupplierSub.Visible == true)
+                {
+                    if (FileUpload3.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload3.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/"));
+                        }
+
+                        string ext = FileUpload3.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/SingleLineDiagramOfLine/";
+                        string fileName = "SingleLineDiagramOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/" + fileName);
+                        FileUpload3.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl2 = path + fileName;
+                    }
+                }
+                if (LinePersonal.Visible == true)
+                {
+                    if (FileUpload12.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/"));
+                        }
+
+                        string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/DemandNoticeOfLine/";
+                        string fileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/" + fileName);
+                        FileUpload12.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl3 = path + fileName;
+                    }
+                }
+                if (PersonalSub.Visible == true)
+                {
+                    if (FileUpload4.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload4.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/"));
+                        }
+
+                        string ext = FileUpload4.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/";
+                        string fileName = "CopyOfNoticeIssuedByUHBVNorDHBVN" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/" + fileName);
+                        FileUpload4.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl4 = path + fileName;
+                    }
+                    if (FileUpload5.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload5.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/"));
+                        }
+
+                        string ext = FileUpload5.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/";
+                        string fileName = "InvoiceOfTransferOfPersonalSubstation" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/" + fileName);
+                        FileUpload5.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl5 = path + fileName;
+                    }
+                    if (FileUpload6.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload6.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/"));
+                        }
+
+                        string ext = FileUpload6.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/";
+                        string fileName = "ManufacturingTestCertificateOfTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/" + fileName);
+                        FileUpload6.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl6 = path + fileName;
+                    }
+                    if (FileUpload7.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload7.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/"));
+                        }
+
+                        string ext = FileUpload7.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/SingleLineDiagramofTransformer/";
+                        string fileName = "SingleLineDiagramofTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/" + fileName);
+                        FileUpload7.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl7 = path + fileName;
+                    }
+                    if (FileUpload8.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload8.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/"));
+                        }
+
+                        string ext = FileUpload8.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/";
+                        string fileName = "InvoiceoffireExtinguisheratSite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/" + fileName);
+                        FileUpload8.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl8 = path + fileName;
+                    }
+                }
+                if (PersonalGenerating.Visible == true)
+                {
+                    if (FileUpload9.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload9.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/"));
+                        }
+
+                        string ext = FileUpload9.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/";
+                        string fileName = "InvoiceOfDGSetOfGeneratingSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/" + fileName);
+                        FileUpload9.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl9 = path + fileName;
+                    }
+                    if (FileUpload10.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload10.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/"));
+                        }
+
+                        string ext = FileUpload10.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/ManufacturingCerificateOfDGSet/";
+                        string fileName = "ManufacturingCerificateOfDGSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/" + fileName);
+                        FileUpload10.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl10 = path + fileName;
+                    }
+                    if (FileUpload13.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload13.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/"));
+                        }
+
+                        string ext = FileUpload13.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/";
+                        string fileName = "InvoiceOfExptinguisherOrApparatusAtsite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/" + fileName);
+                        FileUpload13.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl11 = path + fileName;
+                    }
+                    if (FileUpload11.PostedFile.FileName.Length > 0)
+                    {
+                        FileName = Path.GetFileName(FileUpload11.PostedFile.FileName);
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/"));
+                        }
+
+                        string ext = FileUpload11.PostedFile.FileName.Split('.')[1];
+                        string path = "";
+                        path = "/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/";
+                        string fileName = "StructureStabilityResolvedByAuthorizedEngineer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        string filePathInfo2 = "";
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/" + fileName);
+                        FileUpload11.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl12 = path + fileName;
+                    }
+                }
+
+                CEI.InsertInspectionData(id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
+                    flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, CreatedBy);
+             
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
+            }
+        }
+
     }
 }
