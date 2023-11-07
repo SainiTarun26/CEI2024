@@ -76,6 +76,9 @@
     background-color: #eeeeee;
     border-color: #dddddd;
 }
+.headercolor{
+    background-color: #9292cc;
+}
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -104,8 +107,8 @@
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10" 
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
+                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10" 
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"  BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -115,7 +118,7 @@
                                 </asp:TemplateField>
 
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%" />
+                                    <HeaderStyle Width="10%"  CssClass="headercolor"/>
                                     <ItemStyle Width="10%" />
                                     <HeaderTemplate>
                                         IntimationId
@@ -125,20 +128,20 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Name" HeaderText="Name">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
-                                    <HeaderStyle HorizontalAlign="center" Width="12%" />
+                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>
                               
                                 <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
 

@@ -15,6 +15,9 @@
  <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
+             .headercolor{
+    background-color: #9292cc;
+}
      .col-4 {
          margin-bottom: 8px;
      }
@@ -116,8 +119,8 @@
                          </div>
                      </div>
                  </div>
-                <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" >
+                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff" >
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
@@ -135,14 +138,14 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                  <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" />
+                                <HeaderStyle Width="5%" CssClass="headercolor"/>
                                 <ItemStyle Width="5%" /> 
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="35%" />
+                                    <HeaderStyle Width="35%" CssClass="headercolor"/>
                                     <ItemStyle Width="35%" />
                                     <HeaderTemplate>
                                         TestReportId
@@ -160,18 +163,18 @@
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>--%>
                                 <asp:BoundField DataField="InspectionType" HeaderText="InspectionType">
-                                    <HeaderStyle HorizontalAlign="center" Width="28%" />
+                                    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
 
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status">
-                                    <HeaderStyle HorizontalAlign="center" Width="32%" />
+                                    <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor"/>
 
                                     <ItemStyle HorizontalAlign="center" Width="32%" />
                                 </asp:BoundField> 
                                 <asp:BoundField DataField="Createddate1" HeaderText="RequestDate">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
-
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                     
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
                            

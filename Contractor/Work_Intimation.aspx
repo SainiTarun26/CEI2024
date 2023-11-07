@@ -146,6 +146,12 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+        .headercolor{
+    background-color: #9292cc;
+}
+        th {
+    background: #9292cc;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -540,10 +546,10 @@
                             <div class="col-12">
                                 <asp:UpdatePanel ID="UpdatePanel" runat="server">
                                     <ContentTemplate>
-                                        <asp:GridView ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound">
+                                        <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
                                             <Columns>
                                                 <asp:TemplateField Visible="False">
-                                                    <HeaderTemplate>
+                                                    <HeaderTemplate >
                                                         <asp:CheckBox ID="chkSelectAll" runat="server" />
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
@@ -556,27 +562,27 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="REID" HeaderText="ID">
-                                                    <HeaderStyle HorizontalAlign="center" Width="10%" />
+                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor"/>
                                                     <ItemStyle HorizontalAlign="center" Width="10%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Category" HeaderText="Category">
-                                                    <HeaderStyle HorizontalAlign="center" Width="10%" />
+                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor"/>
                                                     <ItemStyle HorizontalAlign="center" Width="10%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="16%" />
+                                                    <HeaderStyle HorizontalAlign="Left" Width="16%" CssClass="headercolor"/>
                                                     <ItemStyle HorizontalAlign="Left" Width="16%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                                    <HeaderStyle HorizontalAlign="right" Width="24%" />
+                                                    <HeaderStyle HorizontalAlign="right" Width="24%" CssClass="headercolor"/>
                                                     <ItemStyle HorizontalAlign="right" Width="24%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
-                                                    <HeaderStyle HorizontalAlign="right" Width="22%" />
+                                                    <HeaderStyle HorizontalAlign="right" Width="22%" CssClass="headercolor"/>
                                                     <ItemStyle HorizontalAlign="right" Width="22%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                                    <HeaderStyle HorizontalAlign="right" Width="20%" />
+                                                    <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
                                                     <ItemStyle HorizontalAlign="right" Width="20%" />
                                                 </asp:BoundField>
                                             </Columns>
