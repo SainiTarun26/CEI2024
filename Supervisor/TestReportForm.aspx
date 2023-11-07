@@ -202,7 +202,10 @@
             }
 
         .card .card-title {
-            font-size: 1rem !important;
+            font-size: 25px !important;
+            margin-bottom: -35px;
+            margin-top: 15px;
+            text-align:center;
         }
 
         .btn-primary:hover {
@@ -2018,8 +2021,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
-        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
-            <div class="card-body">
+        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important;margin:-20px;">
+        <div class="card-title">Test Report</div>
+            <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 10px !important; margin: 55px 15px 15px 15px;">
+            <div class="card-title" style="text-align:initial;font-size:18px;margin-bottom:-20px;margin-left:20px;">Work Intimation</div>
+                <div class="card-body">
                          <div class="col-md-12">
                             <div class="row row-modal">
                                 <div class="col-6" runat="server">
@@ -2091,6 +2097,10 @@
                             <span id="lblErrorContect2" style="color: red"></span>
 
                         </div>--%>
+                    </div>
+                     </div>
+                </div>
+            <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 10px !important; margin: 10px 15px 15px 15px;">
                     <div class="col-6">
                         <label>
                            Sanction load/ Contract demand(in KVA)  <samp style="color: red">* </samp>
@@ -2109,9 +2119,9 @@
                         <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="8" ID="ddlWorkDetail" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                         </asp:DropDownList>
                          </div>--%>
-                </div>
+               
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12" style="margin-bottom:20px;">
                         <div class="table-responsive pt-3" id="Installation" runat="server" visible="false">
                             <table class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                                 <thead class="table-dark">
@@ -2249,13 +2259,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top:20px;">
+                </div>
+                <div class="row" style="margin-top:20px; margin-bottom:20px;">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
                         <asp:Button type="submit" ID="btnNext" ValidationGroup="Submit" Text="Next" runat="server" class="btn btn-primary" OnClick="btnNext_Click" />
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </asp:Content>
