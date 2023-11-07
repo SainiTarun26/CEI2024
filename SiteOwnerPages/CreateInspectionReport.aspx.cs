@@ -13,7 +13,7 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class CreateInspectionReport : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -22,11 +22,11 @@ namespace CEIHaryana.SiteOwnerPages
                 if (Session["LineID"] != null)
                 {
                     txtWorkType.Text = "Line";
-                   
+
                 }
                 else if (Session["SubStationID"] != null)
                 {
-                    
+
                     txtWorkType.Text = "Substation Transformer";
 
                 }
@@ -38,11 +38,13 @@ namespace CEIHaryana.SiteOwnerPages
                 txtVoltage.Text = Session["Voltage"].ToString();
                 txtPremises.Text = Session["InspectionType"].ToString();
                 txtApplicantType.Text = Session["ApplicantType"].ToString();
+                txtContact.Text = Session["ContactNo"].ToString();
+                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 Visibility();
             }
         }
 
-       
+
 
         protected void Visibility()
         {
@@ -70,10 +72,10 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     PersonalSub.Visible = true;
                 }
-            } 
+            }
             else if (txtWorkType.Text == "Generating Set")
             {
-                 if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                 {
                     PersonalGenerating.Visible = true;
                 }
@@ -93,28 +95,30 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            bool allFilesArePDF = true;
-
-            for (int i = 1; i <= 15; i++)
+            try
             {
-                FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
+                bool allFilesArePDF = true;
 
-                if (fileUploadControl.HasFile)
+                for (int i = 1; i <= 15; i++)
                 {
-                    string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
+                    FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
 
-                    if (fileExtension.ToLower() != ".pdf")
+                    if (fileUploadControl.HasFile)
                     {
-                        allFilesArePDF = false;
-                        break;
+                        string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
 
+                        if (fileExtension.ToLower() != ".pdf")
+                        {
+                            allFilesArePDF = false;
+                            break;
+
+                        }
                     }
                 }
-            }
 
-            if (allFilesArePDF)
-            {
-                string Assign = string.Empty;
+                if (allFilesArePDF)
+                {
+                    string Assign = string.Empty;
                 string To = string.Empty;
                 string input = txtVoltage.Text;
                 string id = Session["LineID"].ToString();
@@ -421,7 +425,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/"));
                         }
-
                         string ext = FileUpload11.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/";
@@ -432,16 +435,24 @@ namespace CEIHaryana.SiteOwnerPages
                         flpPhotourl12 = path + fileName;
                     }
                 }
-
-                CEI.InsertInspectionData(id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
+                // DateTime myDate = Convert.ToDateTime(txtDate.Text);
+                CEI.InsertInspectionData(ddlRequestType.Text, txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
                     flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, CreatedBy);
+                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
                 DataSaved.Visible = true;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
+                }
             }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
-            }
+            catch
+            { }
+        }
+
+        protected void ddlRequestType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = ddlRequestType.SelectedValue;
         }
     }
 }

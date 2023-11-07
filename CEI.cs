@@ -1008,13 +1008,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Insert Inspection Data
-        public void InsertInspectionData(string TestRportId, string IntimationId, string Inspectiontype,string ApplicantType, string InstallationType,
-            string VoltageLevel, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment, 
-            string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
-            string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
-            string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet, 
-            string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite, 
-            string StructureStabilityResolvedByAuthorizedEngineer, string Staff, string Division, string CreatedBy)
+        public void InsertInspectionData(string RequestType, string ContactNo, string TestRportId, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
+      string VoltageLevel, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
+      string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
+      string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
+      string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
+      string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite,
+      string StructureStabilityResolvedByAuthorizedEngineer, string Staff, string Division, string RequestDetails, string DateOfSubmission, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1025,6 +1025,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 con.Open();
             }
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@RequestType ", RequestType);
+            cmd.Parameters.AddWithValue("@ContactNo ", ContactNo);
             cmd.Parameters.AddWithValue("@TestRportId ", TestRportId);
             cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
             cmd.Parameters.AddWithValue("@Inspectiontype ", Inspectiontype);
@@ -1045,8 +1047,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
             cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
-            cmd.Parameters.AddWithValue("@Staff ", Staff); 
+            cmd.Parameters.AddWithValue("@Staff ", Staff);
             cmd.Parameters.AddWithValue("@Division ", Division);
+            cmd.Parameters.AddWithValue("@RequestDetails ", RequestDetails);
+            cmd.Parameters.AddWithValue("@DateOfSubmission ", DateOfSubmission);
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
