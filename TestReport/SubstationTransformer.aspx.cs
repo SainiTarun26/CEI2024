@@ -1206,10 +1206,13 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor1.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing1.Visible = true;
+                RequiredFieldValidator99.Visible = true;
             }
             else
             {
                 txtOtherEarthing1.Visible = false;
+                RequiredFieldValidator99.Visible = false;
+
             }
         }
 
@@ -1218,10 +1221,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor2.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing2.Visible = true;
+                RequiredFieldValidator98.Visible = true;
             }
             else
             {
                 txtOtherEarthing2.Visible = false;
+                RequiredFieldValidator98.Visible = false;
             }
         }
 
@@ -1230,22 +1235,25 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor3.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing3.Visible = true;
+                RequiredFieldValidator97.Visible = true;
             }
             else
             {
                 txtOtherEarthing3.Visible = false;
+                RequiredFieldValidator97.Visible = false;
             }
         }
 
         protected void ddlUsedFor4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlUsedFor4.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing4.Visible = true;
+                RequiredFieldValidator96.Visible = false;
             }
             else
             {
                 txtOtherEarthing4.Visible = false;
+                RequiredFieldValidator96.Visible = false;
             }
         }
 
@@ -1254,10 +1262,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor5.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing5.Visible = true;
+                RequiredFieldValidator95.Visible = true;
             }
             else
             {
                 txtOtherEarthing5.Visible = false;
+                RequiredFieldValidator95.Visible = false;
             }
         }
 
@@ -1266,10 +1276,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor6.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing6.Visible = true;
+                RequiredFieldValidator79.Visible = true;
             }
             else
             {
                 txtOtherEarthing6.Visible = false;
+                RequiredFieldValidator79.Visible = false;
             }
         }
 
@@ -1278,10 +1290,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor7.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing7.Visible = true;
+                RequiredFieldValidator75.Visible = true;
             }
             else
             {
                 txtOtherEarthing7.Visible = false;
+                RequiredFieldValidator75.Visible = false;
             }
         }
 
@@ -1290,10 +1304,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor8.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing8.Visible = true;
+                RequiredFieldValidator71.Visible = true;
             }
             else
             {
                 txtOtherEarthing8.Visible = false;
+                RequiredFieldValidator71.Visible = false;
             }
         }
 
@@ -1302,10 +1318,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor9.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing9.Visible = true;
+                RequiredFieldValidator67.Visible = true;
             }
             else
             {
                 txtOtherEarthing9.Visible = false;
+                RequiredFieldValidator67.Visible = false;
             }
         }
 
@@ -1314,11 +1332,14 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor10.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing10.Visible = true;
+                RequiredFieldValidator63.Visible = true;
             }
             else
             {
                 txtOtherEarthing10.Visible = false;
+                RequiredFieldValidator63.Visible = false;
             }
+
         }
 
         protected void ddlUsedFor11_SelectedIndexChanged(object sender, EventArgs e)
@@ -1326,10 +1347,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor11.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing11.Visible = true;
+                RequiredFieldValidator59.Visible = true;
             }
             else
             {
                 txtOtherEarthing11.Visible = false;
+                RequiredFieldValidator59.Visible = false;
             }
         }
 
@@ -1338,10 +1361,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor12.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing12.Visible = true;
+                RequiredFieldValidator55.Visible = true;
             }
             else
             {
                 txtOtherEarthing12.Visible = false;
+                RequiredFieldValidator55.Visible = false;
             }
         }
 
@@ -1350,10 +1375,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor13.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing13.Visible = true;
+                RequiredFieldValidator51.Visible = true;
             }
             else
             {
                 txtOtherEarthing13.Visible = false;
+                RequiredFieldValidator51.Visible = false;
             }
         }
 
@@ -1363,10 +1390,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor14.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing14.Visible = true;
+                RequiredFieldValidator47.Visible = true;
             }
             else
             {
                 txtOtherEarthing14.Visible = false;
+                RequiredFieldValidator47.Visible = false;
             }
         }
 
@@ -1375,11 +1404,14 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor15.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing15.Visible = true;
+                RequiredFieldValidator23.Visible = true;
             }
             else
             {
                 txtOtherEarthing15.Visible = false;
+                RequiredFieldValidator23.Visible = false;
             }
+
         }
 
         protected void ddlUsedFor16_SelectedIndexChanged(object sender, EventArgs e)
@@ -1387,10 +1419,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor16.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing16.Visible = true;
+                RequiredFieldValidator25.Visible = true;
             }
             else
             {
                 txtOtherEarthing16.Visible = false;
+                RequiredFieldValidator25.Visible = false;
             }
         }
 
@@ -1399,10 +1433,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor17.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing17.Visible = true;
+                RequiredFieldValidator28.Visible = true;
             }
             else
             {
                 txtOtherEarthing17.Visible = false;
+                RequiredFieldValidator28.Visible = false;
             }
         }
 
@@ -1411,11 +1447,14 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor18.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing18.Visible = true;
+                RequiredFieldValidator35.Visible = true;
             }
             else
             {
                 txtOtherEarthing18.Visible = false;
+                RequiredFieldValidator35.Visible = false;
             }
+
         }
 
         protected void ddlUsedFor19_SelectedIndexChanged(object sender, EventArgs e)
@@ -1423,10 +1462,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor19.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing19.Visible = true;
+                RequiredFieldValidator39.Visible = true;
             }
             else
             {
                 txtOtherEarthing19.Visible = false;
+                RequiredFieldValidator39.Visible = false;
             }
         }
 
@@ -1435,10 +1476,12 @@ namespace CEIHaryana.TestReport
             if (ddlUsedFor20.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing20.Visible = true;
+                RequiredFieldValidator43.Visible = true;
             }
             else
             {
-                txtOtherEarthing20.Visible = true;
+                txtOtherEarthing20.Visible = false;
+                RequiredFieldValidator43.Visible = false;
             }
         }
         protected void btnVerify_Click(object sender, EventArgs e)

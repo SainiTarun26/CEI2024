@@ -2201,7 +2201,7 @@
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtOtherEarthing1" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator99" ForeColor="Red" ControlToValidate="txtOtherEarthing1" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator99" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing1" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -2240,7 +2240,7 @@
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtOtherEarthing2" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator98" ForeColor="Red" ControlToValidate="txtOtherEarthing2" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator98" Visible="false" ForeColor="Red" ControlToValidate="txtOtherEarthing2" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -2279,7 +2279,7 @@
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtOtherEarthing3" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator97" ForeColor="Red" ControlToValidate="txtOtherEarthing3" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator97" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing3" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -2318,7 +2318,7 @@
                                                             </div>
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ID="txtOtherEarthing4" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator96" ForeColor="Red" ControlToValidate="txtOtherEarthing4" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator96" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing4" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -2358,7 +2358,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing5" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator95" ForeColor="Red" ControlToValidate="txtOtherEarthing5" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator95" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing5" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2397,7 +2397,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing6" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator79" ForeColor="Red" ControlToValidate="txtOtherEarthing6" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator79" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing6" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2436,7 +2436,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing7" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator75" ForeColor="Red" ControlToValidate="txtOtherEarthing7" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator75" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing7" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2475,7 +2475,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing8" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator71" ForeColor="Red" ControlToValidate="txtOtherEarthing8" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator71" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing8" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2514,7 +2514,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing9" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator67" ForeColor="Red" ControlToValidate="txtOtherEarthing9" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator67" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing9" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2553,7 +2553,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing10" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator63" ForeColor="Red" ControlToValidate="txtOtherEarthing10" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator63" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing10" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2592,7 +2592,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing11" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator59" ForeColor="Red" ControlToValidate="txtOtherEarthing11" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator59" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing11" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2631,7 +2631,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing12" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator55" ForeColor="Red" ControlToValidate="txtOtherEarthing12" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator55" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing12" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2670,7 +2670,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing13" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator51" ForeColor="Red" ControlToValidate="txtOtherEarthing13" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator51" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing13" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2709,7 +2709,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing14" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator47" ForeColor="Red" ControlToValidate="txtOtherEarthing14" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator47" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing14" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2748,7 +2748,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing15" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ForeColor="Red" ControlToValidate="txtOtherEarthing15" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ForeColor="Red" Visible="false" ControlToValidate="txtOtherEarthing15" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2787,7 +2787,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing16" onkeydown="return preventEnterSubmit(event)" MaxLength="50" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ForeColor="Red" ControlToValidate="txtOtherEarthing16" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Visible="false" ForeColor="Red" ControlToValidate="txtOtherEarthing16" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2827,7 +2827,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing17" onkeydown="return preventEnterSubmit(event)" MaxLength="50" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" ForeColor="Red" ControlToValidate="txtOtherEarthing17" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" Visible="false" ForeColor="Red" ControlToValidate="txtOtherEarthing17" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2866,7 +2866,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing18" onkeydown="return preventEnterSubmit(event)" MaxLength="50" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator35" ForeColor="Red" ControlToValidate="txtOtherEarthing18" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator35" Visible="false" ForeColor="Red" ControlToValidate="txtOtherEarthing18" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2905,7 +2905,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing19" onkeydown="return preventEnterSubmit(event)" MaxLength="50" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator39" ForeColor="Red" ControlToValidate="txtOtherEarthing19" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator39" Visible="false" ForeColor="Red" ControlToValidate="txtOtherEarthing19" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -2944,13 +2944,14 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <asp:TextBox class="form-control" ID="txtOtherEarthing20" onkeydown="return preventEnterSubmit(event)" MaxLength="50" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator43" ForeColor="Red" ControlToValidate="txtOtherEarthing20" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator43" Visible="false" ForeColor="Red" ControlToValidate="txtOtherEarthing20" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
+
                                 </div>
                             </div>
                             <div id="TypeOfHTBreaker" runat="server" visible="false">
