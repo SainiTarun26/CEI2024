@@ -1246,6 +1246,7 @@ namespace CEIHaryana.TestReport
 
         protected void ddlUsedFor4_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ddlUsedFor4.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing4.Visible = true;
                 RequiredFieldValidator96.Visible = false;
