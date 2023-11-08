@@ -52,6 +52,11 @@
                                         <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblContactNo" runat="server" Text='<%#Eval("ContactNo") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />

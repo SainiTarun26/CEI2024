@@ -59,6 +59,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["ApplicantType"] = lblApplicantType.Text;
                 Label lblVoltage = (Label)row.FindControl("lblVoltage");
                 Session["Voltage"] = lblVoltage.Text;
+                Label lblContactNo = (Label)row.FindControl("lblContactNo");
+                Session["ContactNo"] = lblContactNo.Text;
                 Session["Approval"] = null;
                 if (e.CommandName == "Select")
                 {
