@@ -89,6 +89,9 @@
         td {
             text-align: center;
         }
+        .headercolor{
+    background-color: #9292cc;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -117,8 +120,8 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView class="table-responsive" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
-                        OnRowCommand="GridView1_RowCommand" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
+                        OnRowCommand="GridView1_RowCommand" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
@@ -126,7 +129,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" />
+                                <HeaderStyle Width="5%" CssClass="headercolor"/>
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
@@ -141,49 +144,49 @@
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>--%>
                             <asp:BoundField DataField="Name" HeaderText="Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="19%" />
+                                <HeaderStyle HorizontalAlign="Left" Width="19%" CssClass="headercolor"/>
                                 <ItemStyle HorizontalAlign="Left" Width="19%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Firm Name" Visible="False">
-                                <HeaderStyle Width="14%" />
+                                <HeaderStyle Width="14%" CssClass="headercolor"/>
                                 <ItemStyle Width="14%" />
                                 <ItemTemplate>
                                     <%#Eval("addresss")%>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="State" Visible="False">
-                                <HeaderStyle Width="17%" />
+                                <HeaderStyle Width="17%" CssClass="headercolor"/>
                                 <ItemStyle Width="17%" />
                                 <ItemTemplate>
                                     <%#Eval("State")%>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="District" Visible="False">
-                                <HeaderStyle Width="12%" />
+                                <HeaderStyle Width="12%" CssClass="headercolor"/>
                                 <ItemStyle Width="12%" />
                                 <ItemTemplate>
                                     <%#Eval("District")%>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="LicenceNew" HeaderText="Licence No.(NEW)">
-                                <HeaderStyle HorizontalAlign="right" Width="20%" />
+                                <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
                                 <ItemStyle HorizontalAlign="right" Width="20%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="LicenceOld" HeaderText="Licence No.(OLD)">
-                                <HeaderStyle HorizontalAlign="right" Width="20%" />
+                                <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
                                 <ItemStyle HorizontalAlign="right" Width="20%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="RenewalDate" HeaderText="Renewal Date">
-                                <HeaderStyle HorizontalAlign="Center" Width="19%" />
+                                <HeaderStyle HorizontalAlign="Center" Width="19%" CssClass="headercolor"/>
                                 <ItemStyle HorizontalAlign="Center" Width="19%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="LiciencePeriod" HeaderText="Validity Upto">
-                                <HeaderStyle HorizontalAlign="Center" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor"/>
                                 <ItemStyle HorizontalAlign="Center" Width="15%" />
                             </asp:BoundField>
 
                             <asp:TemplateField>
-                                <HeaderStyle Width="10%" />
+                                <HeaderStyle Width="10%" CssClass="headercolor"/>
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
