@@ -63,6 +63,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["Voltage"] = lblVoltage.Text;
                 Label lblDistrict = (Label)row.FindControl("lblDistrict");
                 Session["District"] = lblDistrict.Text;
+                Label lblContactNo = (Label)row.FindControl("lblContactNo");
+                Session["ContactNo"] = lblContactNo.Text;
                 Session["Approval"] = null;
                 if (e.CommandName == "Select")
                 {
