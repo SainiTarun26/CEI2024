@@ -171,14 +171,14 @@
                     <ContentTemplate>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div class="row">
-                                <div class="col-4">
+                              <%--  <div class="col-4">
                                     <label>Request Type </label>
                                     <asp:DropDownList class="form-control  select-form select2" ID="ddlRequestType" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlRequestType_SelectedIndexChanged">
                                         <asp:ListItem>Select</asp:ListItem>
                                         <asp:ListItem>New</asp:ListItem>
                                         <asp:ListItem>Re-inspection</asp:ListItem>
                                     </asp:DropDownList>
-                                </div>
+                                </div>--%>
                                 <div class="col-4">
                                     <label>
                                         Type of Inspection
@@ -209,11 +209,13 @@
                                     <label for="Pin">Date</label>
                                     <asp:TextBox class="form-control" ID="txtDate" ReadOnly="true" runat="server" autocomplete="off" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4" runat="server">
+                                   <div class="col-4" runat="server">
                                     <label for="Pin">Contact Number</label>
                                     <asp:TextBox class="form-control" ID="txtContact" ReadOnly="true" runat="server" autocomplete="off" Style="margin-left: 18px"></asp:TextBox>
+                                </div> 
+                                <div class="col-4" runat="server" visible="false">
+                                    <label for="Pin">Line Length</label>
+                                    <asp:TextBox class="form-control" ID="txtLineLength" ReadOnly="true" runat="server" autocomplete="off" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row">

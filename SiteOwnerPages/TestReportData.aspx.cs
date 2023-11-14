@@ -16,10 +16,14 @@ namespace CEIHaryana.SiteOwnerPages
         protected void Page_Load(object sender, EventArgs e)
 
         {
-            if (!IsPostBack)
+            try
             {
-                GridData();
+                if (!IsPostBack)
+                {
+                    GridData();
+                }
             }
+            catch { }
         }
 
         protected void GridData()
@@ -65,6 +69,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["District"] = lblDistrict.Text;
                 Label lblContactNo = (Label)row.FindControl("lblContactNo");
                 Session["ContactNo"] = lblContactNo.Text;
+                Label lblLineLength = (Label)row.FindControl("lblLineLength");
+                Session["LineLength"] = lblLineLength.Text;
                 Session["Approval"] = null;
                 if (e.CommandName == "Select")
                 {

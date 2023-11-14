@@ -8,47 +8,39 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CEIHaryana.SiteOwnerPages
+namespace CEIHaryana.Admin
 {
-    public partial class CreateInspectionReport : System.Web.UI.Page
+    public partial class IntimationForHistory : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string id = string.Empty;
+        string Id = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
-
                 if (Session["LineID"] != null)
                 {
                     txtWorkType.Text = "Line";
-                    txtLineLength.Text = Session["LineLength"].ToString();
-                    id = Session["LineID"].ToString();
+                    Id = Session["LineID"].ToString();
                 }
                 else if (Session["SubStationID"] != null)
                 {
-
                     txtWorkType.Text = "Substation Transformer";
-                    id = Session["SubStationID"].ToString();
+                    Id = Session["SubStationID"].ToString();
                 }
                 else if (Session["GeneratingSetId"] != null)
                 {
                     txtWorkType.Text = "Generating Station";
-                    id = Session["GeneratingSetId"].ToString();
+                    Id = Session["GeneratingSetId"].ToString();
                 }
-                txtVoltage.Text = Session["Voltage"].ToString();
-                txtPremises.Text = Session["InspectionType"].ToString();
-                txtApplicantType.Text = Session["ApplicantType"].ToString();
-                txtContact.Text = Session["ContactNo"].ToString();
-                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                Visibility();
+                GetDetailsWithId();
+                Visibilty();
             }
         }
 
-
-
-        protected void Visibility()
+        private void Visibilty()
         {
+            Uploads.Visible = true;
             Uploads.Visible = true;
             if (txtWorkType.Text == "Line")
             {
@@ -91,37 +83,287 @@ namespace CEIHaryana.SiteOwnerPages
                 SupplierSub.Visible = false;
                 PersonalGenerating.Visible = false;
             }
+            if (Session["Approval"].ToString().Trim() == "Rejected")
+            {
+                RejectedColumn.Visible = true;
+                RejectedColumnData1.Visible = true;
+                RejectedColumnData2.Visible = true;
+                RejectedColumnData3.Visible = true;
+                RejectedColumnData4.Visible = true;
+                RejectedColumnData5.Visible = true;
+                RejectedColumnData6.Visible = true;
+                RejectedColumnData7.Visible = true;
+                RejectedColumnData8.Visible = true;
+                RejectedColumnData9.Visible = true;
+                RejectedColumnData10.Visible = true;
+                RejectedColumnData11.Visible = true;
+                RejectedColumnData12.Visible = true;
+                RejectedColumnData13.Visible = true;
+                btnSubmit.Visible = true;
+                btnBack.Visible = true;
+            }
+            else
+            {
+                RejectedColumn.Visible = false;
+                RejectedColumnData1.Visible = false;
+                RejectedColumnData2.Visible = false;
+                RejectedColumnData3.Visible = false;
+                RejectedColumnData4.Visible = false;
+                RejectedColumnData5.Visible = false;
+                RejectedColumnData6.Visible = false;
+                RejectedColumnData7.Visible = false;
+                RejectedColumnData8.Visible = false;
+                RejectedColumnData9.Visible = false;
+                RejectedColumnData10.Visible = false;
+                RejectedColumnData11.Visible = false;
+                RejectedColumnData12.Visible = false;
+                RejectedColumnData13.Visible = false;
+            }
+        }
 
+        private void GetDetailsWithId()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.InspectionData(ID);
+                txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
+                Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
+                Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
+                string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
+                Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
+                Session["CopyOfNoticeIssuedByUHBVNorDHBVN"] = ds.Tables[0].Rows[0]["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
+                Session["InvoiceOfTransferOfPersonalSubstation"] = ds.Tables[0].Rows[0]["InvoiceOfTransferOfPersonalSubstation"].ToString();
+                Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
+                Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
+                Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
+                Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
+                Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
+                Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
+                Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+            }
+            catch
+            {
+            }
+        }
+
+        protected void lnkLetter_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["RequestLetterFromConcernedOfficer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnktest_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkDiag_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["SingleLineDiagramOfLine"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkCopy_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
+        }
+
+        protected void lnkInvoiceTransformer_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["InvoiceOfTransferOfPersonalSubstation"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkSingleDiag_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["SingleLineDiagramofTransformer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
+        }
+
+        protected void lnkInvoiceFire_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
+        }
+
+        protected void lnkDGSetInvoice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkManufacturingCertificate_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
+        }
+
+        protected void lnkInvoice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkStructure_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
+        }
+
+        protected void lnkDocument_Click(object sender, EventArgs e)
+        {
+            {
+                string fileName = Session["DemandNoticeOfLine"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                }
+                else
+                {
+
+                }
+            }
+        }
+        protected void lnkRedirect_Click(object sender, EventArgs e)
+        {
+            Session["IntimationForHistoryId"] = txtTestReportId.Text;
+            if (txtWorkType.Text.Trim() == "Line")
+            {
+                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+            }
+            else if (txtWorkType.Text.Trim() == "Substation Transformer")
+            {
+                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
+            }
+            else if (txtWorkType.Text.Trim() == "Generating Station")
+            {
+                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
+            bool allFilesArePDF = true;
+            for (int i = 1; i <= 15; i++)
             {
-                //bool allFilesArePDF = true;
+                FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
+                if (fileUploadControl.HasFile)
+                {
+                    string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
+                    if (fileExtension.ToLower() != ".pdf")
+                    {
+                        allFilesArePDF = false;
+                        break;
+                    }
+                }
+            }
 
-                //for (int i = 1; i <= 15; i++)
-                //{
-                //    FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
-
-                //    if (fileUploadControl.HasFile)
-                //    {
-                //        string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
-
-                //        if (fileExtension.ToLower() != ".pdf")
-                //        {
-                //            allFilesArePDF = false;
-                //            break;
-
-                //        }
-                //    }
-                //}
-
-                //if (allFilesArePDF)
-                //{
-                    string Assign = string.Empty;
+            if (allFilesArePDF)
+            {
+                string Assign = string.Empty;
                 string To = string.Empty;
                 string input = txtVoltage.Text;
+                string id = Session["LineID"].ToString();
                 string IntimationId = Session["IntimationId"].ToString();
                 string CreatedBy = Session["SiteOwnerId"].ToString();
                 string FileName = string.Empty;
@@ -138,7 +380,6 @@ namespace CEIHaryana.SiteOwnerPages
                 string flpPhotourl10 = string.Empty;
                 string flpPhotourl11 = string.Empty;
                 string flpPhotourl12 = string.Empty;
-                string FeesLeft = string.Empty;
                 To = Session["District"].ToString();
                 if (txtWorkType.Text == "Line")
                 {
@@ -152,23 +393,19 @@ namespace CEIHaryana.SiteOwnerPages
                                 Assign = "SDO";
                             }
                             else if (voltageLevel >= 33)
-
                             {
                                 Assign = "Admin@123";
                             }
                             else if (voltageLevel <= 11)
-
                             {
                                 Assign = "JE";
                             }
-
                         }
                     }
 
                     else if (input.EndsWith("v", StringComparison.OrdinalIgnoreCase))
                     {
                         Assign = "JE";
-
                     }
                 }
                 else
@@ -183,7 +420,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 Assign = "XEN";
                             }
                             else if (voltageLevel >= 500)
-
                             {
                                 Assign = "Admin@123";
                             }
@@ -192,14 +428,11 @@ namespace CEIHaryana.SiteOwnerPages
                                 Assign = "SDO";
                             }
                         }
-
                     }
                     else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
                     {
                         Assign = "Admin@123";
-
                     }
-
                 }
                 if (LineSubstationSupplier.Visible == true)
                 {
@@ -210,7 +443,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/"));
                         }
-
                         string ext = FileUpload1.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/RequestLetterFromConcernedOfficer/";
@@ -227,7 +459,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/"));
                         }
-
                         string ext = FileUpload2.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/ManufacturingTestReportOfEqipment/";
@@ -247,7 +478,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/"));
                         }
-
                         string ext = FileUpload3.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/SingleLineDiagramOfLine/";
@@ -267,7 +497,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/"));
                         }
-
                         string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/DemandNoticeOfLine/";
@@ -287,7 +516,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/"));
                         }
-
                         string ext = FileUpload4.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/";
@@ -304,7 +532,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/"));
                         }
-
                         string ext = FileUpload5.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/";
@@ -321,7 +548,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/"));
                         }
-
                         string ext = FileUpload6.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/";
@@ -338,7 +564,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/"));
                         }
-
                         string ext = FileUpload7.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/SingleLineDiagramofTransformer/";
@@ -355,7 +580,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/"));
                         }
-
                         string ext = FileUpload8.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/";
@@ -375,7 +599,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/"));
                         }
-
                         string ext = FileUpload9.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/";
@@ -392,7 +615,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/"));
                         }
-
                         string ext = FileUpload10.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/ManufacturingCerificateOfDGSet/";
@@ -409,7 +631,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/"));
                         }
-
                         string ext = FileUpload13.PostedFile.FileName.Split('.')[1];
                         string path = "";
                         path = "/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/";
@@ -436,21 +657,16 @@ namespace CEIHaryana.SiteOwnerPages
                         flpPhotourl12 = path + fileName;
                     }
                 }
-                // DateTime myDate = Convert.ToDateTime(txtDate.Text);
-                CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
-                    txtLineLength.Text,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
-                DataSaved.Visible = true;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully')", true);
-                //}
-                //else
-                //{
-                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
-                //}
             }
-            catch
-            { }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
+            }
         }
 
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx");
+        }
     }
 }

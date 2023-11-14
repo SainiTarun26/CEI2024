@@ -58,6 +58,12 @@ namespace CEIHaryana.TestReportModal
                     IntimationData.Visible = true;
                     btnNext.Text = "Back";
                 }
+                else if (Session["IntimationForHistoryId"] != null)
+                {
+                    ID = Session["IntimationForHistoryId"].ToString();
+                    GetDetailswithId();
+                    IntimationForHistory.Visible = true;
+                }
                 else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
@@ -461,6 +467,11 @@ namespace CEIHaryana.TestReportModal
             }
         }
 
+        protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+        }
+
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             string id = Session["SubStationID"].ToString();
@@ -494,7 +505,7 @@ namespace CEIHaryana.TestReportModal
             if (btnVerify.Text == "SendOTP")
             {
                 OTP.Visible = true;
-                string mobilenumber = Session["Contact"].ToString();
+                string mobilenumber = "7087191855";
                 Session["OTP"] = CEI.ValidateOTP(mobilenumber);
                 btnVerify.Text = "Verify";
             }

@@ -67,7 +67,13 @@ namespace CEIHaryana.TestReportModal
                     IntimationData.Visible = true;
                     btnNext.Text = "Back";
                     
-                } 
+                }
+                else if (Session["IntimationForHistoryId"] != null)
+                {
+                    ID = Session["IntimationForHistoryId"].ToString();
+                    GetDetailswithId();
+                    IntimationForHistory.Visible = true;
+                }
                 else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
@@ -82,7 +88,10 @@ namespace CEIHaryana.TestReportModal
 
 
         }
-
+        protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+        }
         public void GetDetailswithId()
         {
             try

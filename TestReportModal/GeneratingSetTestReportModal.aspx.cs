@@ -62,6 +62,12 @@ namespace CEIHaryana.TestReportModal
                     btnNext.Text = "Back";
                    
                 }
+                else if (Session["IntimationForHistoryId"] != null)
+                {
+                    ID = Session["IntimationForHistoryId"].ToString();
+                    GetDetailswithId();
+                    IntimationForHistory.Visible = true;
+                }
                 else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
@@ -360,6 +366,11 @@ namespace CEIHaryana.TestReportModal
                 Rejection.Visible = false;
             }
         }
+        protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+        }
+
         protected void btnNext_Click(object sender, EventArgs e)
         {
             if (btnNext.Text.Trim() == "Back")

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Inspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Inspection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="Inspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Inspection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

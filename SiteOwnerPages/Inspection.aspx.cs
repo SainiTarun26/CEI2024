@@ -719,10 +719,11 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
 
-                //CEI.InsertInspectionData(id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
-                //    flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                //    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, CreatedBy);
-             
+                ID = Session["InspectionId"].ToString(); 
+                CEI.UpdateInspectionData(ID, id, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text, flpPhotourl, flpPhotourl,
+                  flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                  flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, CreatedBy);
+
             }
             else
             {

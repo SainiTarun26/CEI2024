@@ -29,9 +29,9 @@ namespace CEIHaryana
         protected void GridViewBind()
         {
             string LoginId = string.Empty;
-            LoginId = Session["SupervisorID"].ToString();
+            LoginId = Session["SiteOwnerId"].ToString(); 
             DataSet ds = new DataSet();
-            ds = cei.GetSubstationDataBySupervisor(LoginId);
+            ds = cei.GetPaymentInformation(LoginId);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -44,6 +44,8 @@ namespace CEIHaryana
                 ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
             }
             ds.Dispose();
+          string TotalPayment = cei.GetTotalPaymentInformation(LoginId);
+            txtPayment.Text = TotalPayment;
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -61,6 +63,7 @@ namespace CEIHaryana
             }
             catch
             {
+
             }
         }
     }

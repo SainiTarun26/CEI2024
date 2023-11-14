@@ -57,6 +57,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblApplicantType = (Label)row.FindControl("lblApplicantType");
                 Session["ApplicantType"] = lblApplicantType.Text;
                 Label lblVoltage = (Label)row.FindControl("lblVoltage");
+                Label lblDistrict = (Label)row.FindControl("lblDistrict");
+                Session["District"] = lblDistrict.Text;
                 Session["Voltage"] = lblVoltage.Text;
                 Label lblContactNo = (Label)row.FindControl("lblContactNo");
                 Session["ContactNo"] = lblContactNo.Text;

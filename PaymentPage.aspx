@@ -14,23 +14,27 @@
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
+                                        <asp:Label ID="lblId" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField> 
                                
-                                <asp:BoundField DataField="TransformerSerialNumber" HeaderText="Serial Number">
+                                <asp:BoundField DataField="ApplicantName" HeaderText="Name">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField> 
+                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="TransformerCapacity" HeaderText="Capacity">
+                                <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
                                     <HeaderStyle HorizontalAlign="center" Width="12%" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="TranformerType" HeaderText="Type">
+                                <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="ApprovedOrRejectFromContractor" HeaderText="Approval">
+                                <asp:BoundField DataField="Payment" HeaderText="Payment">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
@@ -49,6 +53,17 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
+
+                 <div class="row" style="margin-bottom: -30px;margin-Left: 30px;">
+                      <div class="col-4">
+                          <div class="form-group row">
+                              <label for="search" class="col-sm-3 col-form-label">Total payment:</label>
+                              <div class="col-sm-9">
+                                  <asp:TextBox ID="txtPayment" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" style="margin-top:4px"></asp:TextBox><br />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
         </div>
     </form>
 </body>

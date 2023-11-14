@@ -2735,6 +2735,9 @@ margin-top: 20px;
                                 <div class="col-6" id="Supervisor" runat="server" visible="false">
                                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                                 </div>
+                                <div class="col-6" id="IntimationForHistory" runat="server" visible="false">
+                                    <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
+                                </div>
                             </div>
                         </div>
                     </div>
