@@ -2027,9 +2027,9 @@ margin-top: 20px;
                         <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
-                                    <div class="card" id="intimation-card" style="background: #fcfcfc;">
+                                    <div class="card" id="IntimationData" runat="server" visible="false" style="background: #fcfcfc;">
                                         <div class="card-title"  style="margin-bottom:1px;">Work Intimation Details</div>
-                                        <div id="IntimationData" runat="server" visible="false">
+                                        <div>
                                             <div class="row row-modal">
                                                 <div class="col-6" runat="server">
                                                     <label for="Name">

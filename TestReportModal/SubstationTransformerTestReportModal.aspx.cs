@@ -57,12 +57,14 @@ namespace CEIHaryana.TestReportModal
                     SiteOwner.Visible = true;
                     IntimationData.Visible = true;
                     btnNext.Text = "Back";
+
                 }
                 else if (Session["IntimationForHistoryId"] != null)
                 {
                     ID = Session["IntimationForHistoryId"].ToString();
                     GetDetailswithId();
                     IntimationForHistory.Visible = true;
+                    IntimationData.Visible = true;
                 }
                 else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 

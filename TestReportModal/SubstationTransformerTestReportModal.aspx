@@ -2045,9 +2045,9 @@ margin-top: 20px;
                                 </label>
                             </div>
                         </div>
-                        <div class="card" id="intimation-card" style="background: #fcfcfc;font-size:22px !important;">
+                        <div class="card" id="IntimationData" runat="server" visible="false" style="background: #fcfcfc;font-size:22px !important;">
     <div class="card-title"  style="margin-bottom:1px;font-size:22px !important;">Work Intimation Details</div>
-                                 <div id="IntimationData" runat="server" visible="false">
+                                 <div >
                             <div class="row row-modal">
                                 <div class="col-6" runat="server">
                                     <label for="Name">

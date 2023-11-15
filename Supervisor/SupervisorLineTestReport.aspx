@@ -176,7 +176,7 @@
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" OnTextChanged="txtSearch_TextChanged" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"  PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
                                     <asp:TextBox ID="txtapproval" runat="server" Visible="false" class="form-control" Font-Size="12px"></asp:TextBox><br />
 
                                 </div>
@@ -282,6 +282,13 @@
     </script>
 
 
-
+        <script>
+            function preventEnterSubmit(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault(); // Prevent form submission
+                    return false;
+                }
+            }
+        </script>
 
 </asp:Content>

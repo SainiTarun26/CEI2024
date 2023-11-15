@@ -75,25 +75,25 @@ namespace CEIHaryana.Supervisor
             }
         }
 
-        protected void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string searchterm = txtSearch.Text.Trim();
-            string LoginId = string.Empty;
-            LoginId = Session["SupervisorID"].ToString();
+        //protected void txtSearch_TextChanged(object sender, EventArgs e)
+        //{
+        //    string searchterm = txtSearch.Text.Trim();
+        //    string LoginId = string.Empty;
+        //    LoginId = Session["SupervisorID"].ToString();
 
-            DataSet ds = new DataSet();
-            ds = cei.SearchingOnSubstation(searchterm, LoginId);
-            if (ds.Tables.Count > 0)
-            {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-            }
-            else
-            {
-                string script = "alert(\"No Record Match\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
-            }
-        }
+        //    DataSet ds = new DataSet();
+        //    ds = cei.SearchingOnSubstation(searchterm, LoginId);
+        //    if (ds.Tables.Count > 0)
+        //    {
+        //        GridView1.DataSource = ds;
+        //        GridView1.DataBind();
+        //    }
+        //    else
+        //    {
+        //        string script = "alert(\"No Record Match\");";
+        //        ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
+        //    }
+        //}
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

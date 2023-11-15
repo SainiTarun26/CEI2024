@@ -1991,9 +1991,9 @@
                     <div class="card-body" id="divGeneratingSet" runat="server" style="margin-top: -30px;">
 
                         <div class="card-body" style="margin-top: -30px;">
-                            <div class="card" id="intimation-card" style="background: #fcfcfc;">
+                            <div class="card" id="IntimationData" runat="server" visible="false" style="background: #fcfcfc;">
     <div class="card-title"  style="margin-bottom:1px;">Work Intimation Details</div>
-                            <div id="IntimationData" runat="server" visible="false">
+                            <div >
                                 <div class="row row-modal">
                                     <div class="col-6" runat="server">
                                         <label for="Name">

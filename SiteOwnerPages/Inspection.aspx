@@ -279,7 +279,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceTransformer_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoice_Click" Text="Open Document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData5" runat="server" visible="false">

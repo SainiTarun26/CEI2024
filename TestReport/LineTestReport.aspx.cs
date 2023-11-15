@@ -61,6 +61,7 @@ namespace CEIHaryana.TestReport
 
         protected void BtnBack_Click(object sender, EventArgs e)
         {
+            Session["LineID"] = "";
             Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx");
         }
         private void GetHistoryDataById()

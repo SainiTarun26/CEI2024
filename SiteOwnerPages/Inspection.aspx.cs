@@ -179,7 +179,21 @@ namespace CEIHaryana.SiteOwnerPages
 
 
         }
+        protected void lnkInvoice_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
 
+        }
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             Session["InspectionTestReportId"] = txtTestReportId.Text;
@@ -379,27 +393,27 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            bool allFilesArePDF = true;
+            //bool allFilesArePDF = true;
 
-            for (int i = 1; i <= 15; i++)
-            {
-                FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
+            //for (int i = 1; i <= 15; i++)
+            //{
+            //    FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
 
-                if (fileUploadControl.HasFile)
-                {
-                    string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
+            //    if (fileUploadControl.HasFile)
+            //    {
+            //        string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
 
-                    if (fileExtension.ToLower() != ".pdf")
-                    {
-                        allFilesArePDF = false;
-                        break;
+            //        if (fileExtension.ToLower() != ".pdf")
+            //        {
+            //            allFilesArePDF = false;
+            //            break;
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
 
-            if (allFilesArePDF)
-            {
+            //if (allFilesArePDF)
+            //{
                 string Assign = string.Empty;
                 string To = string.Empty;
                 string input = txtVoltage.Text;
@@ -724,11 +738,11 @@ namespace CEIHaryana.SiteOwnerPages
                   flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
                   flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, CreatedBy);
 
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
-            }
+            //}
+            //else
+            //{
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
+            //}
         }
 
     }
