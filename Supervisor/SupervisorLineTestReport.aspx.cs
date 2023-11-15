@@ -50,31 +50,35 @@ namespace CEIHaryana.Supervisor
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Select")
+            try
             {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                string id = lblID.Text;
-                Session["LineID"] = id;
-                Label lblApproval = (Label)row.FindControl("lblApproval");
-                Session["Approval1"] = lblApproval.Text;
-                Session["Approval"] = lblApproval.Text;
-                Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                Session["TestReportId"] = lblTestReportId.Text;
                 if (e.CommandName == "Select")
                 {
-                    if (lblApproval.Text.Trim() == "Reject")
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    string id = lblID.Text;
+                    Session["LineID"] = id;
+                    Label lblApproval = (Label)row.FindControl("lblApproval");
+                    Session["Approval1"] = lblApproval.Text;
+                    Session["Approval"] = lblApproval.Text;
+                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                    Session["TestReportId"] = lblTestReportId.Text;
+                    if (e.CommandName == "Select")
                     {
-                        Response.Redirect("/TestReport/LineTestReport.aspx");
-                    }
-                    else
-                    {
-                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
-                    }
+                        if (lblApproval.Text.Trim() == "Reject")
+                        {
+                            Response.Redirect("/TestReport/LineTestReport.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+                        }
 
+                    }
                 }
             }
+            catch { }
         }
 
         protected void txtSearch_TextChanged(object sender, EventArgs e)

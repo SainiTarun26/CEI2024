@@ -1024,7 +1024,8 @@ namespace CEIHaryana.TestReport
                     {
                         Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
                         Reset();
-                        DataSaved.Visible = true;
+                      //  DataSaved.Visible = true;
+                        
                         labelVerification.Visible = false;
                         PageWorking();
                         int currentValue = Convert.ToInt32(Session["Page"]);
@@ -1052,6 +1053,7 @@ namespace CEIHaryana.TestReport
 
                             }
                         }
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted')", true);
                     }
                     else
                     {

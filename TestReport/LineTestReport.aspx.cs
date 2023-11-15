@@ -970,6 +970,7 @@ namespace CEIHaryana.TestReport
                             
                             }
                         }
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted')", true);
                     }
                     else
                     {

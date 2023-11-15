@@ -2151,7 +2151,7 @@
                     <div class="main-panel" style="margin-left: 8%;">
                         <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #b7b7ff; margin-top: 2%;">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-12">
                                     <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1">
                                         <input type="radio" name="pcss3t" id="tab1" class="tab-content-first" runat="server">
                                         <label id="lblLinePage" runat="server" onclick="handleLabelClick()" visible="false"><i class="icon-bolt"></i>LINE</label>

@@ -150,11 +150,22 @@ namespace CEIHaryana.TestReport
                 {
                     DataSet dsSearchingNo = new DataSet();
                     dsSearchingNo = CEI.GetTestReportHistoryForUpdate(Type, TestReportId);
-                    ddlSearchingNo.DataSource = dsSearchingNo;
-                    ddlSearchingNo.DataTextField = "HistoryID";
-                    ddlSearchingNo.DataValueField = "ID";
-                    ddlSearchingNo.DataBind();
-                    ddlSearchingNo.Items.Insert(0, new ListItem("Select", "0"));
+                    if (dsSearchingNo.Tables.Count > 0 && dsSearchingNo.Tables[0].Rows.Count > 0)
+                    {
+                        // Data is available, bind it to the DropDownList
+                        ddlSearchingNo.DataSource = dsSearchingNo;
+                        ddlSearchingNo.DataTextField = "HistoryID";
+                        ddlSearchingNo.DataValueField = "ID";
+                        ddlSearchingNo.DataBind();
+                        ddlSearchingNo.Items.Insert(0, new ListItem("Select", "0"));
+                    }
+                    else
+                    {
+                        // No data found, display a message
+                        ddlSearchingNo.Items.Clear();
+                        ddlSearchingNo.Items.Insert(0, new ListItem("No record found", "0"));
+                    }
+
                     dsSearchingNo.Clear();
                 }
                 catch (Exception ex)
