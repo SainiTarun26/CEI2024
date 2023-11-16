@@ -1479,7 +1479,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ID", Id);
-            outputParam = new SqlParameter("@Payment", SqlDbType.NVarChar, 50);
+            outputParam = new SqlParameter("@TotalPayment", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
