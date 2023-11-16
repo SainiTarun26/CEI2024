@@ -1492,5 +1492,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 return null;
             }
         }
+
+        public DataTable SiteOwnerPeroidicInspectionData(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSiteOwnerPeriodicInspection", SiteOwnerId);
+        }
     }
 }
