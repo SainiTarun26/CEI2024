@@ -40,7 +40,7 @@ namespace CEIHaryana
             else
             {
                 GridView1.DataSource = null;
-                string script = "alert(\"No Record Found\");";
+                string script = "alert(\"Please Fill the Form first for knowing Payment History\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
             }
             ds.Dispose();
