@@ -17,6 +17,8 @@ namespace CEIHaryana.SiteOwnerPages
         CEI CEI = new CEI();
         string Id = string.Empty;
         DateTime inspectionCreatedDate;
+        string voltage = string.Empty;
+        string voltagePart = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -40,10 +42,51 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
                 {
-                    if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Station")
+                    if (Convert.ToString(Session["Type"]) == "Line")
                     {
-                        string voltage = txtVoltage.Text;
-                        string voltagePart = voltage.Substring(0, voltage.Length - 2);
+                         voltage = txtVoltage.Text;
+                         voltagePart = voltage.Substring(0, voltage.Length - 2);
+                        int.TryParse(voltagePart, out int voltageLevel);
+
+
+                        if (voltageLevel <= 415)
+                        {
+                            if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 1095)
+                            {
+                                string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                btnSubmit.Visible = true;
+                                //RejectedColumn.Visible = true;
+                            }
+                            else
+                            {
+                                string script = "alert(\"You Can't edit this inspection before 3 years\");";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                btnSubmit.Visible = false;
+
+                            }
+                        }
+                        else
+                        {
+                            if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 365)
+                            {
+                                string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                btnSubmit.Visible = true;
+                                //RejectedColumn.Visible = true;
+                            }
+                            else
+                            {
+                                string script = "alert(\"You Can't edit this inspection before 1 year\");";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                btnSubmit.Visible = false;
+                            }
+                        }
+                    }
+                    else if (Convert.ToString(Session["Type"]) == "Generating Station")
+                    {
+                        voltage = txtVoltage.Text;
+                        voltagePart = voltage.Substring(0, voltage.Length - 2);
                         int.TryParse(voltagePart, out int voltageLevel);
 
 

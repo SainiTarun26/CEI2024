@@ -32,7 +32,7 @@ namespace CEIHaryana
             LoginId = Session["SiteOwnerId"].ToString(); 
             DataSet ds = new DataSet();
             ds = cei.GetPaymentInformation(LoginId);
-            if (ds.Tables.Count > 0)
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
