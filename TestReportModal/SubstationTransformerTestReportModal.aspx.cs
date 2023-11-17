@@ -15,7 +15,9 @@ namespace CEIHaryana.TestReportModal
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
+            {
+                if (!Page.IsPostBack)
             {
                 if (Session["ContractorID"] != null)
                 {
@@ -74,6 +76,12 @@ namespace CEIHaryana.TestReportModal
                     Supervisor.Visible = true;
                     IntimationData.Visible = true;
                 }
+            }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx", false);
+
             }
         }
         public void GetDetailswithId()
@@ -504,10 +512,12 @@ namespace CEIHaryana.TestReportModal
         }
         protected void BtnVerify_Click(object sender, EventArgs e)
         {
-            if (btnVerify.Text == "SendOTP")
+            try
+            {
+                if (btnVerify.Text == "SendOTP")
             {
                 OTP.Visible = true;
-                string mobilenumber = "7087191855";
+                string mobilenumber = Session["Contact"].ToString();
                 Session["OTP"] = CEI.ValidateOTP(mobilenumber);
                 btnVerify.Text = "Verify";
             }
@@ -518,6 +528,12 @@ namespace CEIHaryana.TestReportModal
                     Contractor2.Visible = true;
                     Contractor3.Visible = false;
                 }
+                }
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
+
             }
         }
 

@@ -4,6 +4,7 @@ using CEIHaryana.Contractor;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -18,72 +19,80 @@ namespace CEIHaryana.TestReportModal
         string ID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
             {
-                if (Session["ContractorID"] != null)
+                if (!Page.IsPostBack)
                 {
-                  
-                    ID = Session["LineID"].ToString();
-                    GetDetailswithId();
-                    if (Convert.ToString(Session["Approval"]) == "Pending")
+                    if (Session["ContractorID"] != null)
                     {
-                        Contractor.Visible = true;
-                        Contractor3.Visible = true;
-                    }
-                    else
-                    {
-                        Contractor.Visible = true;
-                        Contractor2.Visible = true;
-                    }
+
+                        ID = Session["LineID"].ToString();
+                        GetDetailswithId();
+                        if (Convert.ToString(Session["Approval"]) == "Pending")
+                        {
+                            Contractor.Visible = true;
+                            Contractor3.Visible = true;
+                        }
+                        else
+                        {
+                            Contractor.Visible = true;
+                            Contractor2.Visible = true;
+                        }
 
 
-                }
-                else if (Session["SiteOwnerId"] != null)
-                {
-                    ID = Session["LineID"].ToString();
-                    GetDetailswithId();
-                    if (Convert.ToString(Session["Approval"]) == null || Convert.ToString(Session["Approval"]) == "")
+                    }
+                    else if (Session["SiteOwnerId"] != null)
                     {
+                        ID = Session["LineID"].ToString();
+                        GetDetailswithId();
+                        if (Convert.ToString(Session["Approval"]) == null || Convert.ToString(Session["Approval"]) == "")
+                        {
+                            SiteOwner.Visible = true;
+                            SiteOwner2.Visible = false;
+                            IntimationData.Visible = true;
+                        }
+                        else
+                        {
+                            SiteOwner.Visible = false;
+                            SiteOwner2.Visible = true;
+                            IntimationData.Visible = true;
+
+                        }
+
+
+                    }
+                    else if (Session["InspectionTestReportId"] != null)
+
+                    {
+                        ID = Session["InspectionTestReportId"].ToString();
+                        GetDetailswithId();
                         SiteOwner.Visible = true;
-                        SiteOwner2.Visible = false;
                         IntimationData.Visible = true;
+                        btnNext.Text = "Back";
+
                     }
-                    else
+                    else if (Session["IntimationForHistoryId"] != null)
                     {
-                        SiteOwner.Visible = false;
-                        SiteOwner2.Visible = true;
+                        ID = Session["IntimationForHistoryId"].ToString();
+                        GetDetailswithId();
+                        IntimationForHistory.Visible = true;
+                    }
+                    else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
+
+                    {
+                        ID = Session["LineID"].ToString();
+                        GetDetailswithId();
+                        Supervisor.Visible = true;
                         IntimationData.Visible = true;
 
                     }
-                   
-                    
-                }
-                else if (Session["InspectionTestReportId"] != null)
 
-                {
-                    ID = Session["InspectionTestReportId"].ToString();
-                    GetDetailswithId();
-                    SiteOwner.Visible = true;
-                    IntimationData.Visible = true;
-                    btnNext.Text = "Back";
-                    
                 }
-                else if (Session["IntimationForHistoryId"] != null)
-                {
-                    ID = Session["IntimationForHistoryId"].ToString();
-                    GetDetailswithId();
-                    IntimationForHistory.Visible = true;
-                }
-                else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx", false);
 
-                {
-                    ID = Session["LineID"].ToString();
-                    GetDetailswithId();
-                    Supervisor.Visible = true;
-                    IntimationData.Visible = true;
-                    
-                } 
-              
             }
 
 
@@ -635,24 +644,32 @@ namespace CEIHaryana.TestReportModal
             {
                 Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx");
             }
-        }  
-       
-     protected void btnVerify_Click(object sender, EventArgs e)
+        }
+
+        protected void btnVerify_Click(object sender, EventArgs e)
         {
-            if (btnVerify.Text == "SendOTP")
+            try
             {
-                OTP.Visible = true;
-                string mobilenumber = Session["Contact"].ToString();
-                Session["OTP"] = CEI.ValidateOTP(mobilenumber);
-                btnVerify.Text = "Verify";
-            }
-            else
-            {
-                if(Session["OTP"].ToString() == txtOtp.Text)
+                if (btnVerify.Text == "SendOTP")
                 {
-                    Contractor2.Visible = true;
-                    Contractor3.Visible = false;
+                    OTP.Visible = true;
+                    string mobilenumber = Session["Contact"].ToString();
+                    Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+                    btnVerify.Text = "Verify";
                 }
+                else
+                {
+                    if (Session["OTP"].ToString() == txtOtp.Text)
+                    {
+                        Contractor2.Visible = true;
+                        Contractor3.Visible = false;
+                    }
+                }
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
+
             }
         }
 

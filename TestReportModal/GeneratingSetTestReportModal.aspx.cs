@@ -16,7 +16,9 @@ namespace CEIHaryana.TestReportModal
         string ID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
+            {
+                if (!Page.IsPostBack)
             {
                 if (Session["ContractorID"] != null)
                 {
@@ -77,6 +79,12 @@ namespace CEIHaryana.TestReportModal
                     IntimationData.Visible = true;
 
                 }
+            }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx", false);
+
             }
         }
 
@@ -395,20 +403,28 @@ namespace CEIHaryana.TestReportModal
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            if (btnVerify.Text == "SendOTP")
+            try
             {
-                OTP.Visible = true;
-                string mobilenumber = Session["Contact"].ToString();
-                Session["OTP"] = CEI.ValidateOTP(mobilenumber);
-                btnVerify.Text = "Verify";
-            }
-            else
-            {
-                if (Session["OTP"].ToString() == txtOtp.Text)
+                if (btnVerify.Text == "SendOTP")
                 {
-                    Contractor2.Visible = true;
-                    Contractor3.Visible = false;
+                    OTP.Visible = true;
+                    string mobilenumber = Session["Contact"].ToString();
+                    Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+                    btnVerify.Text = "Verify";
                 }
+                else
+                {
+                    if (Session["OTP"].ToString() == txtOtp.Text)
+                    {
+                        Contractor2.Visible = true;
+                        Contractor3.Visible = false;
+                    }
+                }
+            }
+            catch 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
+
             }
         }
 
