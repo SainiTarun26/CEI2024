@@ -1,10 +1,15 @@
-﻿using System;
+﻿using CEI_PRoject;
+using System;
+using System.Data;
 using System.Web;
+using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace CEIHaryana.Supervisor
 {
     public partial class Supervisor : System.Web.UI.MasterPage
     {
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -48,5 +53,7 @@ namespace CEIHaryana.Supervisor
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
         }
+
+  
     }
 }

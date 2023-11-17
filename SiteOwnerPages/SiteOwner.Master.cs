@@ -73,15 +73,16 @@ namespace CEIHaryana.SiteOwnerPages
 
                     string dynamicData = row["InspectionGeneratedId"].ToString();
                     string dynamicData2 = row["ReasonForRejection"].ToString();
+                    string dynamicData3 = row["AcceptedOrRejected"].ToString();
 
                     // Create a new TextBox control for each data item
                     TextBox textBox = new TextBox
                     {
                         ID = "TextBox_" + rowIndex,
                         CssClass = "form-control notification-box font-weight-light small-text mb-0 text-muted",
-                        Text = dynamicData + "Rejected Due To:" + dynamicData2,
+                        Text = dynamicData + "Inspection is :" + dynamicData3,
                         TextMode = TextBoxMode.MultiLine,
-                        Rows = 3,
+                        Rows = 2,
                         ReadOnly = true
                         // WStyle = "font-size: 12px;"
                     };
