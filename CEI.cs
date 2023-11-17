@@ -1116,7 +1116,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Inspection Data
-        public void updateInspection(string ID, string AcceptedOrRejected, string ReasonForRejection, string AdditonalNotes, string Date)
+        public void updateInspection(string ID, string AcceptedOrRejected, string ReasonForRejection, string AdditonalNotes)
         {
             SqlCommand cmd = new SqlCommand("sp_InspectionReview");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1131,7 +1131,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@AcceptedOrRejected ", AcceptedOrRejected);
             cmd.Parameters.AddWithValue("@ReasonForRejection ", ReasonForRejection);
             cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
-            cmd.Parameters.AddWithValue("@Date", Date);
             cmd.ExecuteNonQuery();
             con.Close();
         }

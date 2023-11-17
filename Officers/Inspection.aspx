@@ -182,11 +182,11 @@
                 <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
             </div>
-            <div class="col-4" runat="server">
+          <%--  <div class="col-4" runat="server">
                 <label for="Date">Current Date</label>
                 <asp:TextBox class="form-control" runat="server" ID="txtDate" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
 
-            </div>
+            </div>--%>
              <div class="col-md-4" runat="server">
            <label for="AdditionalDate" >Additonal Notes </label> 
             <asp:TextBox ID="txtAdditionalNotes" MaxLength="200" TextMode="MultiLine" runat="server" Class="form-control" Style="margin-left: 18px" ></asp:TextBox>
@@ -396,7 +396,7 @@
    
         <div class="row">
            
-            <div class="col-4" id="ApprovalRequired" runat="server" visible="false">
+            <div class="col-4" id="ApprovalRequired" runat="server" >
                  <br />
                  <br />
                  <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
@@ -420,8 +420,8 @@
         <div class="row">
              <div class="col-4"></div>  
             <div class="col-4" style="text-align:center;">
-                <asp:Button ID="btnSubmit" Text="Submit" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
-            <asp:Button ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+            <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
           
                 </div>
             </div>

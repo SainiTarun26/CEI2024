@@ -84,7 +84,6 @@ namespace CEIHaryana.Officers
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                 txtAdditionalNotes.Text = ds.Tables[0].Rows[0]["AdditionalNotes"].ToString();
-                txtDate.Text = ds.Tables[0].Rows[0]["Date"].ToString();
                 Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
                 Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
 
@@ -111,13 +110,6 @@ namespace CEIHaryana.Officers
                 if (Approval.Trim() == "Initiated")
                 {
                     CEI.UpdateInspectionData(ID);
-                    ApprovalRequired.Visible = true;
-                    btnSubmit.Visible = true;
-                }
-                else if (Approval.Trim() == "InProgress")
-                {
-                    ApprovalRequired.Visible = true;
-                    btnSubmit.Visible = true;
                 }
                 else if (Approval.Trim() == "Accepted")
                 {
@@ -156,7 +148,7 @@ namespace CEIHaryana.Officers
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
-                Response.Redirect("TestReportModal/SubstationTransformerTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
             }
             else if (txtWorkType.Text.Trim() == "Generating Station")
             {
@@ -352,7 +344,7 @@ namespace CEIHaryana.Officers
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             ID = Session["InspectionId"].ToString();
-            CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, txtAdditionalNotes.Text, txtDate.Text);
+            CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, txtAdditionalNotes.Text);
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
