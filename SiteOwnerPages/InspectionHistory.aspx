@@ -134,7 +134,10 @@
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>--%>
-                                <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
+                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>   <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>

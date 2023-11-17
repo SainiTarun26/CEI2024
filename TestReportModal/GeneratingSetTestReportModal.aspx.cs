@@ -14,6 +14,7 @@ namespace CEIHaryana.TestReportModal
     {
         CEI CEI = new CEI();
         string ID = string.Empty;
+        string id = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -359,7 +360,7 @@ namespace CEIHaryana.TestReportModal
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string id = Session["GeneratingSetId"].ToString();
+             id = Session["GeneratingSetId"].ToString();
             CEI.UpdateGeneratingSetData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
             Response.Redirect("/Contractor/GeneratingSetHistory.aspx");
         }
@@ -387,6 +388,7 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
+                id = Session["GeneratingSetId"].ToString();
                 Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
             }
         } 

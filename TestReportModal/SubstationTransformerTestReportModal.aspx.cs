@@ -13,6 +13,7 @@ namespace CEIHaryana.TestReportModal
     public partial class SubstationTransformerTestReportModal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string id = String.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -484,7 +485,7 @@ namespace CEIHaryana.TestReportModal
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string id = Session["SubStationID"].ToString();
+             id = Session["SubStationID"].ToString();
             CEI.UpdateSubstationData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
             Response.Redirect("/Contractor/SubstationTransformer.aspx");
         }
@@ -496,6 +497,7 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
+                id = Session["SubStationID"].ToString(); 
                 Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
             }
         }
@@ -507,6 +509,7 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
+                id = Session["SubStationID"].ToString();
                 Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
             }
         }
