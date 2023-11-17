@@ -140,6 +140,23 @@ namespace CEIHaryana.SiteOwnerPages
                 string flpPhotourl12 = string.Empty;
                 string FeesLeft = string.Empty;
                 To = Session["District"].ToString();
+                if (Session["LineID"] != null)
+                {
+                    txtWorkType.Text = "Line";
+                    txtLineLength.Text = Session["LineLength"].ToString();
+                    id = Session["LineID"].ToString();
+                }
+                else if (Session["SubStationID"] != null)
+                {
+
+                    txtWorkType.Text = "Substation Transformer";
+                    id = Session["SubStationID"].ToString();
+                }
+                else if (Session["GeneratingSetId"] != null)
+                {
+                    txtWorkType.Text = "Generating Station";
+                    id = Session["GeneratingSetId"].ToString();
+                }
                 if (txtWorkType.Text == "Line")
                 {
                     if (input.EndsWith("kv", StringComparison.OrdinalIgnoreCase))
@@ -206,34 +223,34 @@ namespace CEIHaryana.SiteOwnerPages
                     if (FileUpload1.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/"));
                         }
 
                         string ext = FileUpload1.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/RequestLetterFromConcernedOfficer/";
+                        path = "/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/";
                         string fileName = "RequestLetterFromConcernedOfficer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/" + fileName);
                         FileUpload1.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl = path + fileName;
                     }
                     if (FileUpload2.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload2.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/"));
                         }
 
                         string ext = FileUpload2.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/ManufacturingTestReportOfEqipment/";
+                        path = "/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/";
                         string fileName = "ManufacturingTestReportOfEqipment" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/" + fileName);
                         FileUpload2.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl1 = path + fileName;
                     }
@@ -243,9 +260,9 @@ namespace CEIHaryana.SiteOwnerPages
                     if (FileUpload3.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload3.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/"));
                         }
 
                         string ext = FileUpload3.PostedFile.FileName.Split('.')[1];
@@ -253,7 +270,7 @@ namespace CEIHaryana.SiteOwnerPages
                         path = "/Attachment/" + id + "/SingleLineDiagramOfLine/";
                         string fileName = "SingleLineDiagramOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/" + fileName);
                         FileUpload3.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl2 = path + fileName;
                     }
@@ -263,14 +280,14 @@ namespace CEIHaryana.SiteOwnerPages
                     if (FileUpload12.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/"));
                         }
 
                         string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/DemandNoticeOfLine/";
+                        path = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/";
                         string fileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
                         filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/" + fileName);
@@ -283,17 +300,17 @@ namespace CEIHaryana.SiteOwnerPages
                     if (FileUpload4.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload4.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/"));
                         }
 
                         string ext = FileUpload4.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/";
+                        path = "/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/";
                         string fileName = "CopyOfNoticeIssuedByUHBVNorDHBVN" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/" + fileName);
                         FileUpload4.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl4 = path + fileName;
                     }
@@ -371,67 +388,67 @@ namespace CEIHaryana.SiteOwnerPages
                     if (FileUpload9.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload9.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/"));
                         }
 
                         string ext = FileUpload9.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/";
+                        path = "/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/";
                         string fileName = "InvoiceOfDGSetOfGeneratingSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/" + fileName);
                         FileUpload9.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl9 = path + fileName;
                     }
                     if (FileUpload10.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload10.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/"));
                         }
 
                         string ext = FileUpload10.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/ManufacturingCerificateOfDGSet/";
+                        path = "/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/";
                         string fileName = "ManufacturingCerificateOfDGSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/" + fileName);
                         FileUpload10.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl10 = path + fileName;
                     }
                     if (FileUpload13.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload13.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/"));
                         }
 
                         string ext = FileUpload13.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/";
+                        path = "/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/";
                         string fileName = "InvoiceOfExptinguisherOrApparatusAtsite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/" + fileName);
                         FileUpload13.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl11 = path + fileName;
                     }
                     if (FileUpload11.PostedFile.FileName.Length > 0)
                     {
                         FileName = Path.GetFileName(FileUpload11.PostedFile.FileName);
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/")))
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/"));
                         }
                         string ext = FileUpload11.PostedFile.FileName.Split('.')[1];
                         string path = "";
-                        path = "/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/";
+                        path = "/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/";
                         string fileName = "StructureStabilityResolvedByAuthorizedEngineer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                         string filePathInfo2 = "";
-                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/" + fileName);
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/" + fileName);
                         FileUpload11.PostedFile.SaveAs(filePathInfo2);
                         flpPhotourl12 = path + fileName;
                     }
