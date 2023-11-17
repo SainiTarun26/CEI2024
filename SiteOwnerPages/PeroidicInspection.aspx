@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="PeroidicInspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Peroidic_inspection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="PeroidicInspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Peroidic_inspection" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -42,6 +42,11 @@
                                         <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>                                
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" />
                                     <ItemStyle Width="10%" />

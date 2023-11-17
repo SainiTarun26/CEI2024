@@ -12,10 +12,12 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class Peroidic_inspection : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string Type = string.Empty;
+        //string Type = string.Empty;
+        //string Voltage = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(! IsPostBack)
+            if (!IsPostBack)
             {
                 BindGrid();
             }
@@ -26,14 +28,11 @@ namespace CEIHaryana.SiteOwnerPages
             string LoginID = string.Empty;
             LoginID = Session["SiteOwnerId"].ToString();
             DataTable ds = new DataTable();
-            ds = CEI.SiteOwnerPeroidicInspectionData(LoginID);           
+            ds = CEI.SiteOwnerPeroidicInspectionData(LoginID);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
-                
-                Type = ds.Rows[0]["InstallationType"].ToString();
-                Session["Type"] = Type;
             }
             else
             {
@@ -56,6 +55,9 @@ namespace CEIHaryana.SiteOwnerPages
             Session["Approval"] = lblApproval.Text.Trim();
             Label lblLineID = (Label)row.FindControl("lblLineID");
             Session["LineID"] = lblLineID.Text.Trim();
+
+            Label lblType = (Label)row.FindControl("lblType");
+            Session["Type"] = lblType.Text.Trim();
 
             if (e.CommandName == "Select")
             {
