@@ -18,38 +18,70 @@ namespace CEIHaryana.SiteOwnerPages
         string Id = string.Empty;
         DateTime inspectionCreatedDate;
         string voltage = string.Empty;
+        string id = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                string id = Session["LineID"].ToString();
-
-                GetDetailsWithId();
-
-
-                if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
+                if (!IsPostBack)
                 {
-                    if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Station")
+                    if (Session["LineID"] != null)
                     {
-                        string voltage = txtVoltage.Text;
-                        string voltagePart = voltage.Substring(0, voltage.Length - 2);
-                        int.TryParse(voltagePart, out int voltageLevel);
+                        id = Session["LineID"].ToString();
 
-                        if (voltageLevel <= 415)
+                    }
+                    else if (Session["SubStationID"] != null)
+                    {
+                        id = Session["SubStationID"].ToString();
+                    }
+                    else if (Session["GeneratingSetId"] != null)
+                    {
+                        id = Session["GeneratingSetId"].ToString();
+                    }
+
+                    GetDetailsWithId();
+
+
+                    if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
+                    {
+                        if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Station")
                         {
-                            if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 1095)
+                            string voltage = txtVoltage.Text;
+                            string voltagePart = voltage.Substring(0, voltage.Length - 2);
+                            int.TryParse(voltagePart, out int voltageLevel);
+
+                            if (voltageLevel <= 415)
                             {
-                                string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Visible = true;
-                                //RejectedColumn.Visible = true;
+                                if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 1095)
+                                {
+                                    string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                    btnSubmit.Visible = true;
+                                    //RejectedColumn.Visible = true;
+                                }
+                                else
+                                {
+                                    string script = "alert(\"You Can't edit this inspection before 3 years\");";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                    btnSubmit.Visible = false;
+
+                                }
                             }
                             else
                             {
-                                string script = "alert(\"You Can't edit this inspection before 3 years\");";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Visible = false;
-
+                                if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 365)
+                                {
+                                    string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                    btnSubmit.Visible = true;
+                                    //RejectedColumn.Visible = true;
+                                }
+                                else
+                                {
+                                    string script = "alert(\"You Can't edit this inspection before 1 year\");";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                    btnSubmit.Visible = false;
+                                }
                             }
                         }
                         else
@@ -59,69 +91,54 @@ namespace CEIHaryana.SiteOwnerPages
                                 string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
                                 ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                 btnSubmit.Visible = true;
-                                //RejectedColumn.Visible = true;
+
                             }
                             else
                             {
-                                string script = "alert(\"You Can't edit this inspection before 1 year\");";
+                                string script = "alert(\"You Can't edit inspection before 1 year\");";
                                 ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Visible = false;
+                                btnSubmit.Enabled = true;
                             }
                         }
+                        //if (Convert.ToString(Session["Type"]) == "Substation")
+                        //{
+                        //    string voltage = txtVoltage.Text;
+                        //    string voltagePart = voltage.Substring(0, voltage.Length - 2);
+                        //    string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
+                        //    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                        //    btnSubmit.Visible = true;
+                        //}
+                        //else
+                        //{
+                        //    string script = "alert(\"You Can't edit inspection \");";
+                        //    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                        //    btnSubmit.Enabled = true;
+                        //}
                     }
                     else
                     {
-                        if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 365)
+                        if (Session["LineID"] != null)
                         {
-                            string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                            btnSubmit.Visible = true;
+                            txtWorkType.Text = "Line";
 
                         }
-                        else
+                        else if (Session["SubStationID"] != null)
                         {
-                            string script = "alert(\"You Can't edit inspection before 1 year\");";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                            btnSubmit.Enabled = true;
+
+                            txtWorkType.Text = "Substation Transformer";
+
+                        }
+                        else if (Session["GeneratingSetId"] != null)
+                        {
+                            txtWorkType.Text = "Generating Station";
+
                         }
                     }
-                    //if (Convert.ToString(Session["Type"]) == "Substation")
-                    //{
-                    //    string voltage = txtVoltage.Text;
-                    //    string voltagePart = voltage.Substring(0, voltage.Length - 2);
-                    //    string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
-                    //    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                    //    btnSubmit.Visible = true;
-                    //}
-                    //else
-                    //{
-                    //    string script = "alert(\"You Can't edit inspection \");";
-                    //    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                    //    btnSubmit.Enabled = true;
-                    //}
+
+                    Visibilty();
                 }
-                else
-                {
-                    if (Session["LineID"] != null)
-                    {
-                        txtWorkType.Text = "Line";
-
-                    }
-                    else if (Session["SubStationID"] != null)
-                    {
-
-                        txtWorkType.Text = "Substation Transformer";
-
-                    }
-                    else if (Session["GeneratingSetId"] != null)
-                    {
-                        txtWorkType.Text = "Generating Station";
-
-                    }
-                }
-
-                Visibilty();
             }
+            catch { }
 
 
         }
@@ -289,7 +306,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
-                Response.Redirect("TestReportModal/SubstationTransformerTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
             }
             else if (txtWorkType.Text.Trim() == "Generating Station")
             {

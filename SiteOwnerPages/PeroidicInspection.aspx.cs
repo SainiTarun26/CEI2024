@@ -17,10 +17,14 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                BindGrid();
+                if (!IsPostBack)
+                {
+                    BindGrid();
+                }
             }
+            catch { }
         }
 
         public void BindGrid()
@@ -53,11 +57,21 @@ namespace CEIHaryana.SiteOwnerPages
             Session["InspectionId"] = lblId.Text;
             Label lblApproval = (Label)row.FindControl("lblApproval");
             Session["Approval"] = lblApproval.Text.Trim();
-            Label lblLineID = (Label)row.FindControl("lblLineID");
-            Session["LineID"] = lblLineID.Text.Trim();
-
+            Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
             Label lblType = (Label)row.FindControl("lblType");
-            Session["Type"] = lblType.Text.Trim();
+            if (lblType.Text.Trim() == "Line")
+            {
+                Session["LineID"] = lblTestRportId.Text.Trim();
+            }
+            else if (lblType.Text.Trim() == "Substation Transformer")
+            {
+                Session["SubStationID"] = lblTestRportId.Text.Trim();
+            }
+            else if (lblType.Text.Trim() == "Generating Station")
+            {
+                Session["GeneratingSetId"] = lblTestRportId.Text.Trim();
+            }
+
 
             if (e.CommandName == "Select")
             {

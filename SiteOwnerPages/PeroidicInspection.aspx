@@ -34,7 +34,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblLineID" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                                        <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                               <asp:TemplateField HeaderText="Id" Visible="False">
