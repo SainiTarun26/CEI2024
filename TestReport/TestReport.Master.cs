@@ -21,7 +21,17 @@ namespace CEIHaryana.TestReport
                 {
                     ddlSearchingName.Visible = false;
                 }
+                if (Request.Cookies["SupervisorID"] != null)
+                {
 
+                    lblName.Text = Request.Cookies["SupervisorID"].Value;
+                    lblName2.Text = Request.Cookies["SupervisorID"].Value;
+                }
+                else
+                {
+                    lblName.Text = Convert.ToString(Session["SupervisorID"]);
+                    lblName2.Text = Convert.ToString(Session["SupervisorID"]);
+                }
 
                 RedirectPages();
                 if (Session["Visible"] != null && (int)Session["Visible"] == 0)

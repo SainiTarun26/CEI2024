@@ -2132,7 +2132,7 @@
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                     <a class="dropdown-item">
                                         <i class="ti-user text-primary"></i>
-                                        <asp:Label ID="Label1" runat="server" />
+                                        <asp:Label ID="lblName2" runat="server" />
                                     </a>
                                     <a class="dropdown-item">
                                         <i class="ti-power-off text-primary"></i>
@@ -2237,6 +2237,15 @@
     <script src="/Assets/js/settings.js"></script>
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
+    
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
 </body>
 </html>
