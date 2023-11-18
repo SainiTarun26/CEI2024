@@ -59,6 +59,7 @@ namespace CEIHaryana.SiteOwnerPages
             Session["Approval"] = lblApproval.Text.Trim();
             Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
             Label lblType = (Label)row.FindControl("lblType");
+            Session["PeriodicInspection"] = "true";
             if (lblType.Text.Trim() == "Line")
             {
                 Session["LineID"] = lblTestRportId.Text.Trim();
@@ -75,7 +76,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             if (e.CommandName == "Select")
             {
-                Response.Redirect("/SiteOwnerPages/Inspection.aspx");
+                Response.Redirect("/SiteOwnerPages/Inspection.aspx", false);
 
             }
         }

@@ -86,12 +86,12 @@
           <div class="card-body">
               <div class="row ">
                   <div class="col-sm-4 col-md-4">
-                      <h6 class="card-title fw-semibold mb-4">
-                          <asp:Label ID="lblData" runat="server"></asp:Label></h6>
+                         <h6 class="card-title fw-semibold mb-4">
+                          <asp:Label ID="lblData" runat="server"></asp:Label>TEST REPORT (GENERATING SET)</h6>
                   </div>
                   <div class="col-sm-6 col-md-6"></div>                 
               </div>
-              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                   <div class="row" style="margin-bottom: -30px;">
                       <div class="col-4">
                           <div class="form-group row">

@@ -66,7 +66,7 @@ namespace CEIHaryana.Admin
                     PersonalSub.Visible = true;
                 }
             }
-            else if (txtWorkType.Text == "Generating Set")
+            else if (txtWorkType.Text == "Generating Station")
             {
                 if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                 {

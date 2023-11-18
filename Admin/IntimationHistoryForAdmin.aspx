@@ -80,6 +80,9 @@
     .headercolor {
         background-color: #9292cc;
     }
+    .form-group {
+    margin-bottom: 3rem;
+}
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -89,17 +92,17 @@
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label></h6>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>INSPECTION HISTORY</h6>
                     </div>
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                     <div class="row" style="margin-bottom: -30px;">
                         <div class="col-4">
                             <div class="form-group row">
-                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+                                <label for="search" class="col-sm-3 col-form-label">Search:</label>
                                 <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Style="margin-top: 4px; height: 1px;" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox>
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Style="margin-top: 4px; height: 30px;" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox>
                                 </div>
                             </div>
                         </div>

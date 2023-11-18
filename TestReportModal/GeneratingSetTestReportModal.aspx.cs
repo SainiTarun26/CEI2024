@@ -432,7 +432,14 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnBack2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+            if (Session["PeriodicInspection"] != null)
+            {
+                Response.Redirect("/SiteOwnerPages/PeroidicInspection.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/SiteOwnerPages/Inspection.aspx", false);
+            }
         }
     }
 }

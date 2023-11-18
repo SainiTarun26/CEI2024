@@ -148,7 +148,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             Uploads.Visible = true;
             Uploads.Visible = true;
-            if (txtWorkType.Text == "Line")
+            if (txtWorkType.Text.Trim() == "Line")
             {
                 if (txtApplicantType.Text.Trim() == "Supplier Installation")
                 {
@@ -161,7 +161,7 @@ namespace CEIHaryana.SiteOwnerPages
                     SupplierSub.Visible = true;
                 }
             }
-            else if (txtWorkType.Text == "Substation Transformer")
+            else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
                 if (txtApplicantType.Text.Trim() == "Supplier Installation")
                 {
@@ -172,7 +172,7 @@ namespace CEIHaryana.SiteOwnerPages
                     PersonalSub.Visible = true;
                 }
             }
-            else if (txtWorkType.Text == "Generating Set")
+            else if (txtWorkType.Text.Trim() == "Generating Station")
             {
                 if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                 {
@@ -302,15 +302,15 @@ namespace CEIHaryana.SiteOwnerPages
             Session["InspectionTestReportId"] = txtTestReportId.Text;
             if (txtWorkType.Text.Trim() == "Line")
             {
-                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
-                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
             }
             else if (txtWorkType.Text.Trim() == "Generating Station")
             {
-                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
             }
 
         }
@@ -492,7 +492,14 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx");
+            if (Session["PeriodicInspection"] != null)
+            {
+                Response.Redirect("/SiteOwnerPages/PeroidicInspection.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+            }
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
