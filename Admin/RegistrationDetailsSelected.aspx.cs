@@ -10,16 +10,22 @@ namespace CEIHaryana.Admin
         string REID = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (Convert.ToString(Session["RegistrationID"]) == null || Convert.ToString(Session["RegistrationID"]) == "")
+            try
             {
+                if (Convert.ToString(Session["RegistrationID"]) == null || Convert.ToString(Session["RegistrationID"]) == "")
+                {
 
+                }
+                else
+                {
+                    REID = Session["RegistrationID"].ToString();
+                    hdnId.Value = REID;
+                    GetUserRegistartionData();
+                }
             }
-            else
+            catch
             {
-                REID = Session["RegistrationID"].ToString();
-                hdnId.Value = REID;
-                GetUserRegistartionData();
+                Response.Redirect("/Login.aspx");
             }
         }
 

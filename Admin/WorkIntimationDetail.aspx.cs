@@ -20,39 +20,46 @@ namespace CEIHaryana.Admin
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
+                if (!IsPostBack)
                 {
-                    //BindListBoxInstallationType();
-                    hiddenfield.Visible = false;
-                    hiddenfield1.Visible = false;
-                    //OtherWorkDetail.Visible = false;
-                    OtherPremises.Visible = false;
-                    if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
+                    if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
                     {
+                        //BindListBoxInstallationType();
+                        hiddenfield.Visible = false;
+                        hiddenfield1.Visible = false;
+                        //OtherWorkDetail.Visible = false;
+                        OtherPremises.Visible = false;
+                        if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
+                        {
+
+
+
+                        }
+                        else
+                        {
+                            GetDetails();
+                            GetassigneddatatoContractor();
+
+                        }
+                        //ddlLoadBindPremises();
+                        worktypevisiblity();
+                        // ddlLoadBindVoltage();
+
 
 
 
                     }
                     else
                     {
-                        GetDetails();
-                        GetassigneddatatoContractor();
-
+                        Response.Redirect("/Login.aspx");
                     }
-                    //ddlLoadBindPremises();
-                    worktypevisiblity();
-                    // ddlLoadBindVoltage();
-
-
-
-
                 }
-                else
-                {
-                    Response.Redirect("/Login.aspx");
-                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
         protected void GetDetails()

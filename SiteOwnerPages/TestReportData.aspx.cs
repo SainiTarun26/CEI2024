@@ -23,7 +23,10 @@ namespace CEIHaryana.SiteOwnerPages
                     GridData();
                 }
             }
-            catch { }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
+            }
         }
 
         protected void GridData()

@@ -16,25 +16,32 @@ namespace CEIHaryana.Admin
         string Id = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["LineID"] != null)
+                if (!IsPostBack)
                 {
-                    txtWorkType.Text = "Line";
-                    Id = Session["LineID"].ToString();
+                    if (Session["LineID"] != null)
+                    {
+                        txtWorkType.Text = "Line";
+                        Id = Session["LineID"].ToString();
+                    }
+                    else if (Session["SubStationID"] != null)
+                    {
+                        txtWorkType.Text = "Substation Transformer";
+                        Id = Session["SubStationID"].ToString();
+                    }
+                    else if (Session["GeneratingSetId"] != null)
+                    {
+                        txtWorkType.Text = "Generating Station";
+                        Id = Session["GeneratingSetId"].ToString();
+                    }
+                    GetDetailsWithId();
+                    Visibilty();
                 }
-                else if (Session["SubStationID"] != null)
-                {
-                    txtWorkType.Text = "Substation Transformer";
-                    Id = Session["SubStationID"].ToString();
-                }
-                else if (Session["GeneratingSetId"] != null)
-                {
-                    txtWorkType.Text = "Generating Station";
-                    Id = Session["GeneratingSetId"].ToString();
-                }
-                GetDetailsWithId();
-                Visibilty();
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
 
@@ -119,6 +126,7 @@ namespace CEIHaryana.Admin
             }
             catch
             {
+
             }
         }
 

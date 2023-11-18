@@ -24,29 +24,36 @@ namespace CEIHaryana.TestReport
         string Id_Update = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
+            try
             {
-                ddlEarthing();
-                SessionValue();
-                PageWorking();
-                if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
-                {
 
-                }
-                else
+                if (!IsPostBack)
                 {
-                    GetHistoryDataById();
-                }
-                if (Convert.ToString(Session["Approval"]) == "Reject")
-                {
-                    Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
-                    GetHistoryDataById();
-                    BtnBack.Visible = true;
-                    BtnSubmitGeneratingSet.Text = "Update";
+                    ddlEarthing();
+                    SessionValue();
+                    PageWorking();
+                    if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                    {
+
+                    }
+                    else
+                    {
+                        GetHistoryDataById();
+                    }
+                    if (Convert.ToString(Session["Approval"]) == "Reject")
+                    {
+                        Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
+                        GetHistoryDataById();
+                        BtnBack.Visible = true;
+                        BtnSubmitGeneratingSet.Text = "Update";
 
 
+                    }
                 }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
 

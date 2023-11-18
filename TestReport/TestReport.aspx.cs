@@ -11,7 +11,14 @@ namespace CEIHaryana.TestReport
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RedirectPages();
+            try
+            {
+                RedirectPages();
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
+            }
         }
         public void RedirectPages()
         {

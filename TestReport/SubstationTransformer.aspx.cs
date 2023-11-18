@@ -27,34 +27,41 @@ namespace CEIHaryana.TestReport
         string IdUpdate = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                ddlEarthingSubstation();
-                SessionValue();
-                PageWorking();
-                ddlPrimaryVoltage();
-                ddlSecondarVoltage();
-                if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                if (!IsPostBack)
                 {
+                    ddlEarthingSubstation();
+                    SessionValue();
+                    PageWorking();
+                    ddlPrimaryVoltage();
+                    ddlSecondarVoltage();
+                    if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                    {
+
+                    }
+                    else
+                    {
+                        SubStationID = Session["ValueId"].ToString().Trim();
+                        GetHistoryDataById();
+                    }
+                    if (Convert.ToString(Session["Approval2"]) == "Reject")
+                    {
+                        SubStationID = Session["SubStationID"].ToString().Trim();
+                        GetHistoryDataById();
+                        BtnBack.Visible = true;
+
+                    }
+                    else
+                    {
+
+                    }
 
                 }
-                else
-                {
-                    SubStationID = Session["ValueId"].ToString().Trim();
-                    GetHistoryDataById();
-                }
-                if (Convert.ToString(Session["Approval2"]) == "Reject")
-                {
-                    SubStationID = Session["SubStationID"].ToString().Trim();
-                    GetHistoryDataById();
-                    BtnBack.Visible = true;
-
-                }
-                else
-                {
-
-                }
-
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
         protected void BtnBack_Click(object sender, EventArgs e)

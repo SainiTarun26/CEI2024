@@ -29,33 +29,40 @@ namespace CEIHaryana.TestReport
         string LineId = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                // GetHistoryDataById();
-                ddlLoadBindVoltage();
-                ddlEarthing();
-                SessionValue();
-                PageWorking();
-                Insulation440vAbove.Visible = false;
-                Insulation220vAbove.Visible = false;
-                BtnBack.Visible = false;
-                if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                if (!IsPostBack)
                 {
                     // GetHistoryDataById();
-                }
-                else
-                {
-                    LineId = Session["ValueId"].ToString().Trim();
-                    GetHistoryDataById();
-                }
-                if(Convert.ToString(Session["Approval"]) == "Reject")
-                {
-                    LineId = Session["LineID"].ToString().Trim();
-                    BtnBack.Visible = true;
-                    GetHistoryDataById();
+                    ddlLoadBindVoltage();
+                    ddlEarthing();
+                    SessionValue();
+                    PageWorking();
+                    Insulation440vAbove.Visible = false;
+                    Insulation220vAbove.Visible = false;
+                    BtnBack.Visible = false;
+                    if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                    {
+                        // GetHistoryDataById();
+                    }
+                    else
+                    {
+                        LineId = Session["ValueId"].ToString().Trim();
+                        GetHistoryDataById();
+                    }
+                    if (Convert.ToString(Session["Approval"]) == "Reject")
+                    {
+                        LineId = Session["LineID"].ToString().Trim();
+                        BtnBack.Visible = true;
+                        GetHistoryDataById();
+
+                    }
 
                 }
-
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
 

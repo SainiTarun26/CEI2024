@@ -17,12 +17,19 @@ namespace CEIHaryana
         string otp = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["ContractorID"] != null)
+                if (!IsPostBack)
                 {
-                    sendsms();
+                    if (Session["ContractorID"] != null)
+                    {
+                        sendsms();
+                    }
                 }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
         //protected void GenerateOTP(object sender, EventArgs e)
@@ -37,8 +44,8 @@ namespace CEIHaryana
         //    catch
         //    {
 
-        //    }
-        //}
+            //    }
+            //}
         protected void VerifyOTP(object sender, EventArgs e)
         {
             try

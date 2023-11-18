@@ -15,42 +15,49 @@ namespace CEIHaryana.TestReport
         string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Convert.ToString(Session["Value"]) == null)
+                if (!IsPostBack)
                 {
-                    ddlSearchingName.Visible = false;
-                }
-                if (Request.Cookies["SupervisorID"] != null)
-                {
+                    if (Convert.ToString(Session["Value"]) == null)
+                    {
+                        ddlSearchingName.Visible = false;
+                    }
+                    if (Request.Cookies["SupervisorID"] != null)
+                    {
 
-                    lblName.Text = Request.Cookies["SupervisorID"].Value;
-                    lblName2.Text = Request.Cookies["SupervisorID"].Value;
-                }
-                else
-                {
-                    lblName.Text = Convert.ToString(Session["SupervisorID"]);
-                    lblName2.Text = Convert.ToString(Session["SupervisorID"]);
-                }
+                        lblName.Text = Request.Cookies["SupervisorID"].Value;
+                        lblName2.Text = Request.Cookies["SupervisorID"].Value;
+                    }
+                    else
+                    {
+                        lblName.Text = Convert.ToString(Session["SupervisorID"]);
+                        lblName2.Text = Convert.ToString(Session["SupervisorID"]);
+                    }
 
-                RedirectPages();
-                if (Session["Visible"] != null && (int)Session["Visible"] == 0)
-                {
+                    RedirectPages();
+                    if (Session["Visible"] != null && (int)Session["Visible"] == 0)
+                    {
 
-                }
-                else
-                {
-                    Searching.Visible = true;
+                    }
+                    else
+                    {
+                        Searching.Visible = true;
 
-                }
-                if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
-                {
+                    }
+                    if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                    {
 
+                    }
+                    else
+                    {
+                        SearchingNo.Visible = true;
+                    }
                 }
-                else
-                {
-                    SearchingNo.Visible = true;
-                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
 
 

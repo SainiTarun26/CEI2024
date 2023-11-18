@@ -12,8 +12,15 @@ namespace CEIHaryana.Admin
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            getRegistrationDetails();
-            getRegistrationDetailsWirmen();
+            try
+            {
+                getRegistrationDetails();
+                getRegistrationDetailsWirmen();
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
+            }
         }
         private void getRegistrationDetails()
         {

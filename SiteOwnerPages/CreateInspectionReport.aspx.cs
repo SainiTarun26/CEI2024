@@ -16,32 +16,39 @@ namespace CEIHaryana.SiteOwnerPages
         string id = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
             {
-
-                if (Session["LineID"] != null)
-                {
-                    txtWorkType.Text = "Line";
-                    txtLineLength.Text = Session["LineLength"].ToString();
-                    id = Session["LineID"].ToString();
-                }
-                else if (Session["SubStationID"] != null)
+                if (!Page.IsPostBack)
                 {
 
-                    txtWorkType.Text = "Substation Transformer";
-                    id = Session["SubStationID"].ToString();
+                    if (Session["LineID"] != null)
+                    {
+                        txtWorkType.Text = "Line";
+                        txtLineLength.Text = Session["LineLength"].ToString();
+                        id = Session["LineID"].ToString();
+                    }
+                    else if (Session["SubStationID"] != null)
+                    {
+
+                        txtWorkType.Text = "Substation Transformer";
+                        id = Session["SubStationID"].ToString();
+                    }
+                    else if (Session["GeneratingSetId"] != null)
+                    {
+                        txtWorkType.Text = "Generating Station";
+                        id = Session["GeneratingSetId"].ToString();
+                    }
+                    txtVoltage.Text = Session["Voltage"].ToString();
+                    txtPremises.Text = Session["InspectionType"].ToString();
+                    txtApplicantType.Text = Session["ApplicantType"].ToString();
+                    txtContact.Text = Session["ContactNo"].ToString();
+                    txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                    Visibility();
                 }
-                else if (Session["GeneratingSetId"] != null)
-                {
-                    txtWorkType.Text = "Generating Station";
-                    id = Session["GeneratingSetId"].ToString();
-                }
-                txtVoltage.Text = Session["Voltage"].ToString();
-                txtPremises.Text = Session["InspectionType"].ToString();
-                txtApplicantType.Text = Session["ApplicantType"].ToString();
-                txtContact.Text = Session["ContactNo"].ToString();
-                txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                Visibility();
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
             }
         }
 

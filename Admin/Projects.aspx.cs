@@ -11,9 +11,17 @@ namespace CEIHaryana.Admin
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
             {
-                getWorkIntimationData();
+                if (!Page.IsPostBack)
+                {
+                    getWorkIntimationData();
+                }
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
+
             }
         }
 
