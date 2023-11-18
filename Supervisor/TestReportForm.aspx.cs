@@ -354,8 +354,8 @@ namespace CEIHaryana.Supervisor
             try
             {
                 string Id = Session["id"].ToString();
-                CEI.InsertTestReportData(Id, txtInstallation.Text, txtName.Text, txtagency.Text, txtAddress.Text, TxtPremises.Text,
-                    txtVoltagelevel.Text, txtPhone.Text, txtStartDate.Text, txtCompletitionDate.Text, txtSanctionLoad.Text, txtinstallationType1.Text,
+                CEI.InsertTestReportData(Id, txtInstallation.Text, txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, TxtPremises.Text,
+                    txtVoltagelevel.Text, txtStartDate.Text, txtCompletitionDate.Text, txtSanctionLoad.Text, txtinstallationType1.Text,
                     txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text,
                     txtinstallationNo3.Text, txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text,
                     txtinstallationNo5.Text, txtinstallationType6.Text, txtinstallationNo6.Text, txtinstallationType7.Text,
@@ -363,42 +363,6 @@ namespace CEIHaryana.Supervisor
 
                 string TestReportId = CEI.TestReportId();
                 Page.Session["TestReportId"] = TestReportId;
-
-
-                //Session["intallationType"] = txtinstallationType1.Text + ","+ txtinstallationNo1.Text + "|"+txtinstallationType2.Text + "," + txtinstallationNo2.Text + "|"+
-                //    txtinstallationType3.Text + "," + txtinstallationNo3.Text + "|"+txtinstallationType4.Text + "," + txtinstallationNo4.Text + "|"+
-                //    txtinstallationType5.Text + "," + txtinstallationNo5.Text + "|"+ txtinstallationType6.Text + "," + txtinstallationNo6.Text + "|"+ txtinstallationType7.Text + "," + txtinstallationNo7.Text + "|"+ 
-                //    txtinstallationType8.Text + "," + txtinstallationNo8.Text ;
-
-                //string installationTypeValue = Session["intallationType"] as string;
-
-                //if (!string.IsNullOrEmpty(installationTypeValue))
-                //{
-                //    string[] installationTypeParts = installationTypeValue.Split('|');
-                //    foreach (string part in installationTypeParts)
-                //    {
-                //        if (part.Contains("Line"))
-                //        {
-                //            Session["Line"] = part;
-                //            break; 
-                //        }
-                //    }
-                //}
-                //string lineValue = Session["Line"] as string;
-
-                //string sessionValue1 = null;
-                //string sessionValue2 = null;
-
-                //if (!string.IsNullOrEmpty(lineValue))
-                //{
-                //    string[] lineParts = lineValue.Split(',');
-                //    if (lineParts.Length >= 2)
-                //    {
-                //        sessionValue1 = lineParts[0];
-                //        sessionValue2 = lineParts[1];
-                //    }
-                //}
-
 
 
                 Page.Session["installationType1"] = txtinstallationType1.Text;
@@ -433,21 +397,6 @@ namespace CEIHaryana.Supervisor
             }
         }
 
-        //public void SetSessionName(string TextBoxName, string TextboxValue)
-        //{
-        //    if (TextBoxName != null && TextBoxName != "" && TextBoxName == "Line")
-        //    {
-        //        Page.Session["Line"] = TextboxValue;
-        //    }
-        //    if (TextBoxName != null && TextBoxName != "" && TextBoxName == "Substation Transformer")
-        //    {
-        //        Page.Session["Substation"] = TextboxValue;
-        //    }
-        //    if (TextBoxName != null && TextBoxName != "" && TextBoxName == "Generating Set")
-        //    {
-        //        Page.Session["Generating"] = TextboxValue;
-        //    }
-        //}
         public void RedirectPages()
         {
             string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
