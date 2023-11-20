@@ -66,29 +66,33 @@ namespace CEIHaryana.TestReport
         {
             try
             {
+                if (Session["Value"]!=null )
+                {
+                    Type = Session["Value"].ToString();
+                }
                 if (Convert.ToString(Session["installationType1"]).Trim() == "Line" || Convert.ToString(Session["installationType2"]).Trim() == "Line"
                     || Convert.ToString(Session["installationType3"]).Trim() == "Line" || Convert.ToString(Session["installationType4"]).Trim() == "Line"
                     || Convert.ToString(Session["installationType5"]).Trim() == "Line" || Convert.ToString(Session["installationType6"]).Trim() == "Line"
                     || Convert.ToString(Session["installationType7"]).Trim() == "Line" || Convert.ToString(Session["installationType8"]).Trim() == "Line")
                 {
-                    //if (Convert.ToString(SessionConvert.ToString(Session["SubmittedValue2"]) != null && Convert.ToString(SessionConvert.ToString(Session["SubmittedValue2"]) != "")
-                    //{
-                    //    lblLinePage.Visible = false;
-                    //}
-                    //else
-                    //{
-                    lblLinePage.Visible = true;
-                    // }
+                    if (Convert.ToString(Session["SubmittedValue2"]) != null && Convert.ToString(Session["SubmittedValue2"]) != "")
+                    {
+                        lblLinePage.Visible = false;
+                    }
+                    else
+                    {
+                        lblLinePage.Visible = true;
+                     }
                 }
-                if (Convert.ToString(Session["Approval1"]).Trim() == "Reject")
+                if (Type.Trim() == "Line")
                 {
                     lblLinePage.Visible = true;
                 }
                 else
                 {
-                   // lblLinePage.Visible = false;
+                   lblLinePage.Visible = false;
                 }
-                if (Convert.ToString(Session["Approval2"]).Trim() == "Reject")
+                if (Type.Trim() == "Substation Transformer")
                 {
                     lblSubStationPage.Visible = true;
                 }
@@ -100,34 +104,38 @@ namespace CEIHaryana.TestReport
                    || Convert.ToString(Session["installationType5"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType6"]).Trim() == "Substation Transformer"
                    || Convert.ToString(Session["installationType7"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType8"]).Trim() == "Substation Transformer")
                 {
-                    //if (Convert.ToString(SessionConvert.ToString(Session["SubmittedValue"]) != null && Convert.ToString(SessionConvert.ToString(Session["SubmittedValue"]) != "")
-                    //{
-                    //    lblSubStationPage.Visible = false;
-                    //}
-                    //else
-                    //{
-                    lblSubStationPage.Visible = true;
-                    // }
+                    if (Convert.ToString(Session["SubmittedValue"]) != null && Convert.ToString(Session["SubmittedValue"]) != "")
+                    {
+                        lblSubStationPage.Visible = false;
+                    }
+                    else
+                    {
+                        lblSubStationPage.Visible = true;
+                    }
                 }
                 if (Convert.ToString(Session["installationType1"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType2"]).Trim() == "Generating Station"
                    || Convert.ToString(Session["installationType3"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType4"]).Trim() == "Generating Station"
                    || Convert.ToString(Session["installationType5"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType6"]).Trim() == "Generating Station"
                    || Convert.ToString(Session["installationType7"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType8"]).Trim() == "Generating Station")
                 {
-                    //if (Convert.ToString(SessionConvert.ToString(Session["SubmittedValue3"]) != null && Convert.ToString(SessionConvert.ToString(Session["SubmittedValue3"]) != "")
-                    //{
-                    //    lblGeneratingSet.Visible = false;
-                    //}
-                    //else
-                    //{
-                    lblGeneratingSet.Visible = true;
-                    //}
+                    if (Convert.ToString(Session["SubmittedValue3"]) != null && Convert.ToString(Session["SubmittedValue3"]) != "")
+                    {
+                        lblGeneratingSet.Visible = false;
+                    }
+                    else
+                    {
+                        lblGeneratingSet.Visible = true;
+                    }
 
 
                 }
-                if (Convert.ToString(Session["Approval3"]).Trim() == "Reject")
+                if (Type.Trim() == "Generating Station")
                 {
                     lblGeneratingSet.Visible = true;
+                }
+                else
+                {
+                    lblGeneratingSet.Visible = false;
                 }
                 if (Convert.ToString(Session["installationType1"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType2"]).Trim() == "Single/ Three Phase"
                    || Convert.ToString(Session["installationType3"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType4"]).Trim() == "Single/ Three Phase"
