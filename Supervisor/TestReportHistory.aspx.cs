@@ -64,6 +64,7 @@ namespace CEIHaryana.Supervisor
                     Session["Approval"] = lblApproval.Text;
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                     Session["TestReportId"] = lblTestReportId.Text;
+                    Session["TestReportHistory"] = "True";
                     if (e.CommandName == "Select")
                     {
                         //if (lblApproval.Text.Trim() == "Reject")

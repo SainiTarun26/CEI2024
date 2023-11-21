@@ -381,7 +381,18 @@ namespace CEIHaryana.TestReport
                         }
                     }
 
-                    BtnSubmitGeneratingSet.Text = "Update";
+                    if (Session["Approval"].ToString().Trim() == "Reject")
+                    {
+
+                        BtnSubmitGeneratingSet.Text = "Update";
+                    }
+                    else
+                    {
+                        BtnSubmitGeneratingSet.Visible = false;
+                        BtnBack.Visible = true;
+
+                    }
+
                 }
             }
             catch
@@ -389,10 +400,6 @@ namespace CEIHaryana.TestReport
 
             }
         }
-
-
-
-
         private void ddlEarthing()
         {
             try
@@ -414,7 +421,15 @@ namespace CEIHaryana.TestReport
         }
         protected void BtnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Supervisor/SupervisorGeneraterSetTestReport.aspx");
+            if (Session["TestReportHistory"] != null)
+            {
+                Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/Admin/TestHistoryReport.aspx", false);
+
+            }
         }
         protected void ddlGeneratingSetType_SelectedIndexChanged(object sender, EventArgs e)
         {

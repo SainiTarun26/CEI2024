@@ -69,7 +69,14 @@ namespace CEIHaryana.TestReport
         protected void BtnBack_Click(object sender, EventArgs e)
         {
             Session["LineID"] = "";
-            Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx");
+            if (Session["TestReportHistory"] != null)
+            {
+                Response.Redirect("/Supervisor/TestReportHistory.aspx");
+            }
+            else
+            {
+                Response.Redirect("/Admin/TestHistoryReport.aspx", false);
+            }
         }
         private void GetHistoryDataById()
         {
@@ -460,9 +467,17 @@ namespace CEIHaryana.TestReport
                     }
 
 
+                    if (Session["Approval"].ToString().Trim() == "Reject")
+                    {
 
+                        btnSubmit.Text = "Update";
+                    }
+                    else
+                    {
+                        btnSubmit.Visible= false;
+                        BtnBack.Visible = true;
 
-                    btnSubmit.Text = "Update";
+                    }
                 }
             }
             catch (Exception ex)

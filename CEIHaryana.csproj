@@ -160,6 +160,7 @@
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\SubstationDataHistory.aspx" />
+    <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="assetsnew\css\style.css" />
@@ -1709,6 +1710,13 @@
     </Compile>
     <Compile Include="Admin\SubstationDataHistory.aspx.designer.cs">
       <DependentUpon>SubstationDataHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TestHistoryReport.aspx.cs">
+      <DependentUpon>TestHistoryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TestHistoryReport.aspx.designer.cs">
+      <DependentUpon>TestHistoryReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

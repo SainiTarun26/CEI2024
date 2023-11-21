@@ -2172,9 +2172,9 @@
                                             </svg>SINGLE/THREE-PHASE</label>
                                     </div>
                                 </div>
-                                <div class="col-2" style="text-align:center;">
+                          <%--      <div class="col-2" style="text-align:center;">
                                     <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" ValidationGroup="Submit"/>
-                                    </div>
+                                    </div>--%>
                             </div>
                             <div class="row">
                                 <div class="col-12" style="margin-top: auto; margin-bottom: 15px;margin-top: auto; margin-bottom: auto;font-size:20px;">

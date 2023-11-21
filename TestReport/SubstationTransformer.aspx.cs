@@ -66,7 +66,15 @@ namespace CEIHaryana.TestReport
         }
         protected void BtnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+            if (Session["TestReportHistory"] != null)
+            {
+                Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/Admin/TestHistoryReport.aspx" , false);
+
+            }
         }
         public void GetHistoryDataById()
         {
@@ -86,39 +94,40 @@ namespace CEIHaryana.TestReport
                 }
                 DataSet ds = new DataSet();
                 ds = CEI.GetTestReportDataForUpdate(Type, SubStationID);
-                if (ds.Tables.Count > 0) {
-                    txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
-                string TransformerCapacity = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
-                ddltransformerCapacity.SelectedIndex = ddltransformerCapacity.Items.IndexOf(ddltransformerCapacity.Items.FindByText(TransformerCapacity));
-                txtTransformerCapacity.Text = ds.Tables[0].Rows[0]["TransformerCapacity"].ToString();
-                string TypeOfTransformer = ds.Tables[0].Rows[0]["TranformerType"].ToString();
-                ddltransformerType.SelectedIndex = ddltransformerType.Items.IndexOf(ddltransformerType.Items.FindByText(TypeOfTransformer));
-                if (TypeOfTransformer != null)
+                if (ds.Tables.Count > 0)
                 {
-                    InCaseOfOil.Visible = true;
-                    string Voltage = ds.Tables[0].Rows[0]["PrimaryVoltage"].ToString();
-                    PrimaryVoltage.SelectedIndex = PrimaryVoltage.Items.IndexOf(PrimaryVoltage.Items.FindByText(Voltage));
+                    txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
+                    string TransformerCapacity = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
+                    ddltransformerCapacity.SelectedIndex = ddltransformerCapacity.Items.IndexOf(ddltransformerCapacity.Items.FindByText(TransformerCapacity));
+                    txtTransformerCapacity.Text = ds.Tables[0].Rows[0]["TransformerCapacity"].ToString();
+                    string TypeOfTransformer = ds.Tables[0].Rows[0]["TranformerType"].ToString();
+                    ddltransformerType.SelectedIndex = ddltransformerType.Items.IndexOf(ddltransformerType.Items.FindByText(TypeOfTransformer));
+                    if (TypeOfTransformer != null)
+                    {
+                        InCaseOfOil.Visible = true;
+                        string Voltage = ds.Tables[0].Rows[0]["PrimaryVoltage"].ToString();
+                        PrimaryVoltage.SelectedIndex = PrimaryVoltage.Items.IndexOf(PrimaryVoltage.Items.FindByText(Voltage));
                         string Voltage2 = ds.Tables[0].Rows[0]["SecondoryVoltage"].ToString();
                         ddlSecondaryVoltage.SelectedIndex = ddlSecondaryVoltage.Items.IndexOf(ddlSecondaryVoltage.Items.FindByText(Voltage2));
                         if (TypeOfTransformer == "Oil")
-                    {
-                        Capacity.Visible = true;
-                        BDV.Visible = true;
-                        txtOilCapacity.Text = ds.Tables[0].Rows[0]["OilCapacity"].ToString();
-                        txtOilBDV.Text = ds.Tables[0].Rows[0]["BreakDownVoltageofOil"].ToString();
-                    }
+                        {
+                            Capacity.Visible = true;
+                            BDV.Visible = true;
+                            txtOilCapacity.Text = ds.Tables[0].Rows[0]["OilCapacity"].ToString();
+                            txtOilBDV.Text = ds.Tables[0].Rows[0]["BreakDownVoltageofOil"].ToString();
+                        }
 
-                    txtHTsideInsulation.Text = ds.Tables[0].Rows[0]["HtInsulationHVEarth"].ToString();
-                    txtLTSideInsulation.Text = ds.Tables[0].Rows[0]["LtInsulationLVEarth"].ToString();
-                    txtLowestValue.Text = ds.Tables[0].Rows[0]["LowestvaluebetweenHTLTSide"].ToString();
+                        txtHTsideInsulation.Text = ds.Tables[0].Rows[0]["HtInsulationHVEarth"].ToString();
+                        txtLTSideInsulation.Text = ds.Tables[0].Rows[0]["LtInsulationLVEarth"].ToString();
+                        txtLowestValue.Text = ds.Tables[0].Rows[0]["LowestvaluebetweenHTLTSide"].ToString();
                         string LALocation = ds.Tables[0].Rows[0]["LightningArrestorLocation"].ToString();
                         ddlLghtningArrestor.SelectedIndex = ddlLghtningArrestor.Items.IndexOf(ddlLghtningArrestor.Items.FindByText(LALocation));
-                        if(LALocation.Trim() == "Other")
+                        if (LALocation.Trim() == "Other")
                         {
-                            OtherLaDiv.Visible= true;
+                            OtherLaDiv.Visible = true;
                         }
                         txtLightningArrestor.Text = ds.Tables[0].Rows[0]["OtherLALocation"].ToString();
-                    string TypeOfHT = ds.Tables[0].Rows[0]["TypeofHTPrimarySideSwitch"].ToString();
+                        string TypeOfHT = ds.Tables[0].Rows[0]["TypeofHTPrimarySideSwitch"].ToString();
 
                         if (TypeOfHT == "Breaker")
                         {
@@ -149,448 +158,459 @@ namespace CEIHaryana.TestReport
                             ddlHTType.Items.Add(new ListItem("3Pole Linked Switch(GODO)", "2"));
                             ddlHTType.SelectedIndex = ddlHTType.Items.IndexOf(ddlHTType.Items.FindByText(TypeOfHT));
                         }
-                    string NoOfErathing = ds.Tables[0].Rows[0]["NumberOfEarthing"].ToString();
-                    ddlEarthingsubstation.SelectedIndex = ddlEarthingsubstation.Items.IndexOf(ddlEarthingsubstation.Items.FindByText(NoOfErathing));
-                    if (NoOfErathing != null || NoOfErathing != "")
+                        string NoOfErathing = ds.Tables[0].Rows[0]["NumberOfEarthing"].ToString();
+                        ddlEarthingsubstation.SelectedIndex = ddlEarthingsubstation.Items.IndexOf(ddlEarthingsubstation.Items.FindByText(NoOfErathing));
+                        if (NoOfErathing != null || NoOfErathing != "")
+                        {
+                            SubstationEarthingDiv.Visible = true;
+
+                            if (NoOfErathing == "4")
+                            {
+                                EarthingSubstation4.Visible = true;
+                            }
+                            else if (NoOfErathing == "5")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                            }
+                            else if (NoOfErathing == "6")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                            }
+                            else if (NoOfErathing == "7")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                            }
+                            else if (NoOfErathing == "8")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                            }
+                            else if (NoOfErathing == "9")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                            }
+                            else if (NoOfErathing == "10")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                            }
+                            else if (NoOfErathing == "11")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+
+                            }
+                            else if (NoOfErathing == "12")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                            }
+                            else if (NoOfErathing == "13")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                            }
+                            else if (NoOfErathing == "14")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                                EathingSubstation14.Visible = true;
+                            }
+                            else if (NoOfErathing == "15")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                                EathingSubstation14.Visible = true;
+                                EathingSubstation15.Visible = true;
+
+                            }
+                            else if (NoOfErathing == "16")
+                            {
+
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                                EathingSubstation14.Visible = true;
+                                EathingSubstation15.Visible = true;
+                                EathingSubstation16.Visible = true;
+                            }
+                            else if (NoOfErathing == "17")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                                EathingSubstation14.Visible = true;
+                                EathingSubstation15.Visible = true;
+                                EathingSubstation16.Visible = true;
+                                EathingSubstation17.Visible = true;
+                            }
+                            else if (NoOfErathing == "18")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                                EathingSubstation14.Visible = true;
+                                EathingSubstation15.Visible = true;
+                                EathingSubstation16.Visible = true;
+                                EathingSubstation17.Visible = true;
+                                EathingSubstation18.Visible = true;
+                            }
+                            else if (NoOfErathing == "19")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                                EathingSubstation14.Visible = true;
+                                EathingSubstation15.Visible = true;
+                                EathingSubstation16.Visible = true;
+                                EathingSubstation17.Visible = true;
+                                EathingSubstation18.Visible = true;
+                                EathingSubstation19.Visible = true;
+                            }
+                            else if (NoOfErathing == "20")
+                            {
+                                EarthingSubstation4.Visible = true;
+                                EathingSubstation5.Visible = true;
+                                EathingSubstation6.Visible = true;
+                                EathingSubstation7.Visible = true;
+                                EathingSubstation8.Visible = true;
+                                EathingSubstation9.Visible = true;
+                                EathingSubstation10.Visible = true;
+                                EathingSubstation11.Visible = true;
+                                EathingSubstation12.Visible = true;
+                                EathingSubstation13.Visible = true;
+                                EathingSubstation14.Visible = true;
+                                EathingSubstation15.Visible = true;
+                                EathingSubstation16.Visible = true;
+                                EathingSubstation17.Visible = true;
+                                EathingSubstation18.Visible = true;
+                                EathingSubstation19.Visible = true;
+                                EathingSubstation20.Visible = true;
+                            }
+
+
+                            string EarthingType1 = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                            ddlSubstationEarthing1.SelectedIndex = ddlSubstationEarthing1.Items.IndexOf(ddlSubstationEarthing1.Items.FindByText(EarthingType1));
+                            txtSubstationEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
+                            string UsedFor1 = ds.Tables[0].Rows[0]["UsedFor1"].ToString();
+                            ddlUsedFor1.SelectedIndex = ddlUsedFor1.Items.IndexOf(ddlUsedFor1.Items.FindByText(UsedFor1));
+                            if (UsedFor1 == "Other")
+                            {
+                                txtOtherEarthing1.Visible = true;
+                                txtOtherEarthing1.Text = ds.Tables[0].Rows[0]["OtherEarthing1"].ToString();
+                            }
+                            string EarthingType2 = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
+                            ddlSubstationEarthing2.SelectedIndex = ddlSubstationEarthing2.Items.IndexOf(ddlSubstationEarthing2.Items.FindByText(EarthingType2));
+                            txtSubstationEarthing2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
+                            string UsedFor2 = ds.Tables[0].Rows[0]["UsedFor2"].ToString();
+                            ddlUsedFor2.SelectedIndex = ddlUsedFor2.Items.IndexOf(ddlUsedFor2.Items.FindByText(UsedFor2));
+                            if (UsedFor2 == "Other")
+                            {
+                                txtOtherEarthing2.Visible = true;
+                                txtOtherEarthing2.Text = ds.Tables[0].Rows[0]["OtherEarthing2"].ToString();
+                            }
+
+                            string EarthingType3 = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
+                            ddlSubstationEarthing3.SelectedIndex = ddlSubstationEarthing3.Items.IndexOf(ddlSubstationEarthing3.Items.FindByText(EarthingType3));
+                            txtSubstationEarthing3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
+                            string UsedFor3 = ds.Tables[0].Rows[0]["UsedFor3"].ToString();
+                            ddlUsedFor3.SelectedIndex = ddlUsedFor3.Items.IndexOf(ddlUsedFor3.Items.FindByText(UsedFor3));
+                            if (UsedFor3 == "Other")
+                            {
+                                txtOtherEarthing3.Visible = true;
+                                txtOtherEarthing3.Text = ds.Tables[0].Rows[0]["OtherEarthing3"].ToString();
+                            }
+
+                            string EarthingType4 = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
+                            ddlSubstationEarthing4.SelectedIndex = ddlSubstationEarthing4.Items.IndexOf(ddlSubstationEarthing4.Items.FindByText(EarthingType4));
+                            txtSubstationEarthing4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
+                            string UsedFor4 = ds.Tables[0].Rows[0]["UsedFor4"].ToString();
+                            ddlUsedFor4.SelectedIndex = ddlUsedFor4.Items.IndexOf(ddlUsedFor4.Items.FindByText(UsedFor4));
+                            if (UsedFor4 == "Other")
+                            {
+                                txtOtherEarthing4.Visible = true;
+                                txtOtherEarthing4.Text = ds.Tables[0].Rows[0]["OtherEarthing4"].ToString();
+                            }
+
+                            string EarthingType5 = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
+                            ddlSubstationEarthing5.SelectedIndex = ddlSubstationEarthing5.Items.IndexOf(ddlSubstationEarthing5.Items.FindByText(EarthingType5));
+                            txtSubstationEarthing5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
+                            string UsedFor5 = ds.Tables[0].Rows[0]["UsedFor5"].ToString();
+                            ddlUsedFor5.SelectedIndex = ddlUsedFor5.Items.IndexOf(ddlUsedFor5.Items.FindByText(UsedFor5));
+                            if (UsedFor5 == "Other")
+                            {
+                                txtOtherEarthing5.Visible = true;
+                                txtOtherEarthing5.Text = ds.Tables[0].Rows[0]["OtherEarthing5"].ToString();
+                            }
+
+                            string EarthingType6 = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
+                            ddlSubstationEarthing6.SelectedIndex = ddlSubstationEarthing6.Items.IndexOf(ddlSubstationEarthing6.Items.FindByText(EarthingType6));
+                            txtSubstationEarthing6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
+                            string UsedFor6 = ds.Tables[0].Rows[0]["UsedFor6"].ToString();
+                            ddlUsedFor6.SelectedIndex = ddlUsedFor6.Items.IndexOf(ddlUsedFor6.Items.FindByText(UsedFor6));
+                            if (UsedFor6 == "Other")
+                            {
+                                txtOtherEarthing6.Visible = true;
+                                txtOtherEarthing6.Text = ds.Tables[0].Rows[0]["OtherEarthing6"].ToString();
+                            }
+
+                            string EarthingType7 = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
+                            ddlSubstationEarthing7.SelectedIndex = ddlSubstationEarthing7.Items.IndexOf(ddlSubstationEarthing7.Items.FindByText(EarthingType7));
+                            txtSubstationEarthing7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
+                            string UsedFor7 = ds.Tables[0].Rows[0]["UsedFor7"].ToString();
+                            ddlUsedFor7.SelectedIndex = ddlUsedFor7.Items.IndexOf(ddlUsedFor7.Items.FindByText(UsedFor7));
+                            if (UsedFor7 == "Other")
+                            {
+                                txtOtherEarthing7.Visible = true;
+                                txtOtherEarthing7.Text = ds.Tables[0].Rows[0]["OtherEarthing7"].ToString();
+                            }
+
+                            string EarthingType8 = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
+                            ddlSubstationEarthing8.SelectedIndex = ddlSubstationEarthing8.Items.IndexOf(ddlSubstationEarthing8.Items.FindByText(EarthingType8));
+                            txtSubstationEarthing8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
+                            string UsedFor8 = ds.Tables[0].Rows[0]["UsedFor8"].ToString();
+                            ddlUsedFor8.SelectedIndex = ddlUsedFor8.Items.IndexOf(ddlUsedFor8.Items.FindByText(UsedFor8));
+                            if (UsedFor8 == "Other")
+                            {
+                                txtOtherEarthing8.Visible = true;
+                                txtOtherEarthing8.Text = ds.Tables[0].Rows[0]["OtherEarthing8"].ToString();
+                            }
+
+                            string EarthingType9 = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
+                            ddlSubstationEarthing9.SelectedIndex = ddlSubstationEarthing9.Items.IndexOf(ddlSubstationEarthing9.Items.FindByText(EarthingType6));
+                            txtSubstationEarthing9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
+                            string UsedFor9 = ds.Tables[0].Rows[0]["UsedFor9"].ToString();
+                            ddlUsedFor9.SelectedIndex = ddlUsedFor9.Items.IndexOf(ddlUsedFor9.Items.FindByText(UsedFor9));
+                            if (UsedFor9 == "Other")
+                            {
+                                txtOtherEarthing9.Visible = true;
+                                txtOtherEarthing9.Text = ds.Tables[0].Rows[0]["OtherEarthing9"].ToString();
+                            }
+
+                            string EarthingType10 = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
+                            ddlSubstationEarthing10.SelectedIndex = ddlSubstationEarthing10.Items.IndexOf(ddlSubstationEarthing10.Items.FindByText(EarthingType10));
+                            txtSubstationEarthing10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
+                            string UsedFor10 = ds.Tables[0].Rows[0]["UsedFor10"].ToString();
+                            ddlUsedFor10.SelectedIndex = ddlUsedFor10.Items.IndexOf(ddlUsedFor10.Items.FindByText(UsedFor10));
+                            if (UsedFor10 == "Other")
+                            {
+                                txtOtherEarthing10.Visible = true;
+                                txtOtherEarthing10.Text = ds.Tables[0].Rows[0]["OtherEarthing10"].ToString();
+                            }
+
+
+                            string EarthingType11 = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
+                            ddlSubstationEarthing11.SelectedIndex = ddlSubstationEarthing11.Items.IndexOf(ddlSubstationEarthing11.Items.FindByText(EarthingType11));
+                            txtSubstationEarthing11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
+                            string UsedFor11 = ds.Tables[0].Rows[0]["UsedFor11"].ToString();
+                            ddlUsedFor11.SelectedIndex = ddlUsedFor11.Items.IndexOf(ddlUsedFor11.Items.FindByText(UsedFor11));
+                            if (UsedFor11 == "Other")
+                            {
+                                txtOtherEarthing11.Visible = true;
+                                txtOtherEarthing11.Text = ds.Tables[0].Rows[0]["OtherEarthing11"].ToString();
+                            }
+
+                            string EarthingType12 = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
+                            ddlSubstationEarthing12.SelectedIndex = ddlSubstationEarthing12.Items.IndexOf(ddlSubstationEarthing12.Items.FindByText(EarthingType12));
+                            txtSubstationEarthing12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
+                            string UsedFor12 = ds.Tables[0].Rows[0]["UsedFor12"].ToString();
+                            ddlUsedFor12.SelectedIndex = ddlUsedFor12.Items.IndexOf(ddlUsedFor12.Items.FindByText(UsedFor12));
+                            if (UsedFor12 == "Other")
+                            {
+                                txtOtherEarthing12.Visible = true;
+                                txtOtherEarthing12.Text = ds.Tables[0].Rows[0]["OtherEarthing12"].ToString();
+                            }
+
+                            string EarthingType13 = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
+                            ddlSubstationEarthing12.SelectedIndex = ddlSubstationEarthing12.Items.IndexOf(ddlSubstationEarthing12.Items.FindByText(EarthingType13));
+                            txtSubstationEarthing12.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
+                            string UsedFor13 = ds.Tables[0].Rows[0]["UsedFor13"].ToString();
+                            ddlUsedFor12.SelectedIndex = ddlUsedFor12.Items.IndexOf(ddlUsedFor12.Items.FindByText(UsedFor13));
+                            if (UsedFor13 == "Other")
+                            {
+                                txtOtherEarthing13.Visible = true;
+                                txtOtherEarthing13.Text = ds.Tables[0].Rows[0]["OtherEarthing13"].ToString();
+                            }
+
+                            string EarthingType14 = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
+                            ddlSubstationEarthing14.SelectedIndex = ddlSubstationEarthing14.Items.IndexOf(ddlSubstationEarthing14.Items.FindByText(EarthingType14));
+                            txtSubstationEarthing14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
+                            string UsedFor14 = ds.Tables[0].Rows[0]["UsedFor14"].ToString();
+                            ddlUsedFor14.SelectedIndex = ddlUsedFor14.Items.IndexOf(ddlUsedFor14.Items.FindByText(UsedFor14));
+                            if (UsedFor14 == "Other")
+                            {
+                                txtOtherEarthing14.Visible = true;
+                                txtOtherEarthing14.Text = ds.Tables[0].Rows[0]["OtherEarthing14"].ToString();
+                            }
+
+                            string EarthingType15 = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
+                            ddlSubstationEarthing15.SelectedIndex = ddlSubstationEarthing15.Items.IndexOf(ddlSubstationEarthing15.Items.FindByText(EarthingType15));
+                            txtSubstationEarthing15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
+                            string UsedFor15 = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
+                            ddlUsedFor15.SelectedIndex = ddlUsedFor15.Items.IndexOf(ddlUsedFor15.Items.FindByText(UsedFor15));
+                            if (UsedFor15 == "Other")
+                            {
+                                txtOtherEarthing15.Visible = true;
+                                txtOtherEarthing15.Text = ds.Tables[0].Rows[0]["OtherEarthing15"].ToString();
+                            }
+
+                            string EarthingType16 = ds.Tables[0].Rows[0]["EarthingType16"].ToString();
+                            ddlSubstationEarthing16.SelectedIndex = ddlSubstationEarthing16.Items.IndexOf(ddlSubstationEarthing16.Items.FindByText(EarthingType16));
+                            txtSubstationEarthing16.Text = ds.Tables[0].Rows[0]["Valueinohms16"].ToString();
+                            string UsedFor16 = ds.Tables[0].Rows[0]["UsedFor16"].ToString();
+                            ddlUsedFor16.SelectedIndex = ddlUsedFor16.Items.IndexOf(ddlUsedFor16.Items.FindByText(UsedFor16));
+                            if (UsedFor16 == "Other")
+                            {
+                                txtOtherEarthing16.Visible = true;
+                                txtOtherEarthing16.Text = ds.Tables[0].Rows[0]["OtherEarthing16"].ToString();
+                            }
+
+                            string EarthingType17 = ds.Tables[0].Rows[0]["EarthingType17"].ToString();
+                            ddlSubstationEarthing17.SelectedIndex = ddlSubstationEarthing17.Items.IndexOf(ddlSubstationEarthing17.Items.FindByText(EarthingType17));
+                            txtSubstationEarthing17.Text = ds.Tables[0].Rows[0]["Valueinohms17"].ToString();
+                            string UsedFor17 = ds.Tables[0].Rows[0]["UsedFor17"].ToString();
+                            ddlUsedFor17.SelectedIndex = ddlUsedFor17.Items.IndexOf(ddlUsedFor17.Items.FindByText(UsedFor17));
+                            if (UsedFor17 == "Other")
+                            {
+                                txtOtherEarthing17.Visible = true;
+                                txtOtherEarthing17.Text = ds.Tables[0].Rows[0]["OtherEarthing17"].ToString();
+                            }
+
+                            string EarthingType18 = ds.Tables[0].Rows[0]["EarthingType18"].ToString();
+                            ddlSubstationEarthing18.SelectedIndex = ddlSubstationEarthing12.Items.IndexOf(ddlSubstationEarthing12.Items.FindByText(EarthingType18));
+                            txtSubstationEarthing18.Text = ds.Tables[0].Rows[0]["Valueinohms18"].ToString();
+                            string UsedFor18 = ds.Tables[0].Rows[0]["UsedFor18"].ToString();
+                            ddlUsedFor12.SelectedIndex = ddlUsedFor12.Items.IndexOf(ddlUsedFor12.Items.FindByText(UsedFor18));
+                            if (UsedFor18 == "Other")
+                            {
+                                txtOtherEarthing18.Visible = true;
+                                txtOtherEarthing18.Text = ds.Tables[0].Rows[0]["OtherEarthing18"].ToString();
+                            }
+
+                            string EarthingType19 = ds.Tables[0].Rows[0]["EarthingType19"].ToString();
+                            ddlSubstationEarthing19.SelectedIndex = ddlSubstationEarthing19.Items.IndexOf(ddlSubstationEarthing19.Items.FindByText(EarthingType19));
+                            txtSubstationEarthing19.Text = ds.Tables[0].Rows[0]["Valueinohms19"].ToString();
+                            string UsedFor19 = ds.Tables[0].Rows[0]["UsedFor19"].ToString();
+                            ddlUsedFor19.SelectedIndex = ddlUsedFor19.Items.IndexOf(ddlUsedFor19.Items.FindByText(UsedFor19));
+                            if (UsedFor19 == "Other")
+                            {
+                                txtOtherEarthing19.Visible = true;
+                                txtOtherEarthing19.Text = ds.Tables[0].Rows[0]["OtherEarthing19"].ToString();
+                            }
+
+                            string EarthingType20 = ds.Tables[0].Rows[0]["EarthingType20"].ToString();
+                            ddlSubstationEarthing20.SelectedIndex = ddlSubstationEarthing20.Items.IndexOf(ddlSubstationEarthing20.Items.FindByText(EarthingType20));
+                            txtSubstationEarthing20.Text = ds.Tables[0].Rows[0]["Valueinohms20"].ToString();
+                            string UsedFor20 = ds.Tables[0].Rows[0]["UsedFor20"].ToString();
+                            ddlUsedFor20.SelectedIndex = ddlUsedFor20.Items.IndexOf(ddlUsedFor20.Items.FindByText(UsedFor20));
+                            if (UsedFor20 == "Other")
+                            {
+                                txtOtherEarthing20.Visible = true;
+                                txtOtherEarthing20.Text = ds.Tables[0].Rows[0]["OtherEarthing20"].ToString();
+                            }
+
+                        }
+                    }
+
+
+                    if (Session["Approval"].ToString().Trim() == "Reject")
                     {
-                        SubstationEarthingDiv.Visible = true;
 
-                        if (NoOfErathing == "4")
-                        {
-                            EarthingSubstation4.Visible = true;
-                        }
-                        else if (NoOfErathing == "5")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                        }
-                        else if (NoOfErathing == "6")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                        }
-                        else if (NoOfErathing == "7")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                        }
-                        else if (NoOfErathing == "8")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                        }
-                        else if (NoOfErathing == "9")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                        }
-                        else if (NoOfErathing == "10")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                        }
-                        else if (NoOfErathing == "11")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-
-                        }
-                        else if (NoOfErathing == "12")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                        }
-                        else if (NoOfErathing == "13")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                        }
-                        else if (NoOfErathing == "14")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                            EathingSubstation14.Visible = true;
-                        }
-                        else if (NoOfErathing == "15")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                            EathingSubstation14.Visible = true;
-                            EathingSubstation15.Visible = true;
-
-                        }
-                        else if (NoOfErathing == "16")
-                        {
-
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                            EathingSubstation14.Visible = true;
-                            EathingSubstation15.Visible = true;
-                            EathingSubstation16.Visible = true;
-                        }
-                        else if (NoOfErathing == "17")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                            EathingSubstation14.Visible = true;
-                            EathingSubstation15.Visible = true;
-                            EathingSubstation16.Visible = true;
-                            EathingSubstation17.Visible = true;
-                        }
-                        else if (NoOfErathing == "18")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                            EathingSubstation14.Visible = true;
-                            EathingSubstation15.Visible = true;
-                            EathingSubstation16.Visible = true;
-                            EathingSubstation17.Visible = true;
-                            EathingSubstation18.Visible = true;
-                        }
-                        else if (NoOfErathing == "19")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                            EathingSubstation14.Visible = true;
-                            EathingSubstation15.Visible = true;
-                            EathingSubstation16.Visible = true;
-                            EathingSubstation17.Visible = true;
-                            EathingSubstation18.Visible = true;
-                            EathingSubstation19.Visible = true;
-                        }
-                        else if (NoOfErathing == "20")
-                        {
-                            EarthingSubstation4.Visible = true;
-                            EathingSubstation5.Visible = true;
-                            EathingSubstation6.Visible = true;
-                            EathingSubstation7.Visible = true;
-                            EathingSubstation8.Visible = true;
-                            EathingSubstation9.Visible = true;
-                            EathingSubstation10.Visible = true;
-                            EathingSubstation11.Visible = true;
-                            EathingSubstation12.Visible = true;
-                            EathingSubstation13.Visible = true;
-                            EathingSubstation14.Visible = true;
-                            EathingSubstation15.Visible = true;
-                            EathingSubstation16.Visible = true;
-                            EathingSubstation17.Visible = true;
-                            EathingSubstation18.Visible = true;
-                            EathingSubstation19.Visible = true;
-                            EathingSubstation20.Visible = true;
-                        }
-
-
-                        string EarthingType1 = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
-                        ddlSubstationEarthing1.SelectedIndex = ddlSubstationEarthing1.Items.IndexOf(ddlSubstationEarthing1.Items.FindByText(EarthingType1));
-                        txtSubstationEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
-                        string UsedFor1 = ds.Tables[0].Rows[0]["UsedFor1"].ToString();
-                        ddlUsedFor1.SelectedIndex = ddlUsedFor1.Items.IndexOf(ddlUsedFor1.Items.FindByText(UsedFor1));
-                        if (UsedFor1 == "Other")
-                        {
-                            txtOtherEarthing1.Visible = true;
-                            txtOtherEarthing1.Text = ds.Tables[0].Rows[0]["OtherEarthing1"].ToString();
-                        }
-                        string EarthingType2 = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
-                        ddlSubstationEarthing2.SelectedIndex = ddlSubstationEarthing2.Items.IndexOf(ddlSubstationEarthing2.Items.FindByText(EarthingType2));
-                        txtSubstationEarthing2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
-                        string UsedFor2 = ds.Tables[0].Rows[0]["UsedFor2"].ToString();
-                        ddlUsedFor2.SelectedIndex = ddlUsedFor2.Items.IndexOf(ddlUsedFor2.Items.FindByText(UsedFor2));
-                        if (UsedFor2 == "Other")
-                        {
-                            txtOtherEarthing2.Visible = true;
-                            txtOtherEarthing2.Text = ds.Tables[0].Rows[0]["OtherEarthing2"].ToString();
-                        }
-
-                        string EarthingType3 = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
-                        ddlSubstationEarthing3.SelectedIndex = ddlSubstationEarthing3.Items.IndexOf(ddlSubstationEarthing3.Items.FindByText(EarthingType3));
-                        txtSubstationEarthing3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
-                        string UsedFor3 = ds.Tables[0].Rows[0]["UsedFor3"].ToString();
-                        ddlUsedFor3.SelectedIndex = ddlUsedFor3.Items.IndexOf(ddlUsedFor3.Items.FindByText(UsedFor3));
-                        if (UsedFor3 == "Other")
-                        {
-                            txtOtherEarthing3.Visible = true;
-                            txtOtherEarthing3.Text = ds.Tables[0].Rows[0]["OtherEarthing3"].ToString();
-                        }
-
-                        string EarthingType4 = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
-                        ddlSubstationEarthing4.SelectedIndex = ddlSubstationEarthing4.Items.IndexOf(ddlSubstationEarthing4.Items.FindByText(EarthingType4));
-                        txtSubstationEarthing4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
-                        string UsedFor4 = ds.Tables[0].Rows[0]["UsedFor4"].ToString();
-                        ddlUsedFor4.SelectedIndex = ddlUsedFor4.Items.IndexOf(ddlUsedFor4.Items.FindByText(UsedFor4));
-                        if (UsedFor4 == "Other")
-                        {
-                            txtOtherEarthing4.Visible = true;
-                            txtOtherEarthing4.Text = ds.Tables[0].Rows[0]["OtherEarthing4"].ToString();
-                        }
-
-                        string EarthingType5 = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
-                        ddlSubstationEarthing5.SelectedIndex = ddlSubstationEarthing5.Items.IndexOf(ddlSubstationEarthing5.Items.FindByText(EarthingType5));
-                        txtSubstationEarthing5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
-                        string UsedFor5 = ds.Tables[0].Rows[0]["UsedFor5"].ToString();
-                        ddlUsedFor5.SelectedIndex = ddlUsedFor5.Items.IndexOf(ddlUsedFor5.Items.FindByText(UsedFor5));
-                        if (UsedFor5 == "Other")
-                        {
-                            txtOtherEarthing5.Visible = true;
-                            txtOtherEarthing5.Text = ds.Tables[0].Rows[0]["OtherEarthing5"].ToString();
-                        }
-
-                        string EarthingType6 = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
-                        ddlSubstationEarthing6.SelectedIndex = ddlSubstationEarthing6.Items.IndexOf(ddlSubstationEarthing6.Items.FindByText(EarthingType6));
-                        txtSubstationEarthing6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
-                        string UsedFor6 = ds.Tables[0].Rows[0]["UsedFor6"].ToString();
-                        ddlUsedFor6.SelectedIndex = ddlUsedFor6.Items.IndexOf(ddlUsedFor6.Items.FindByText(UsedFor6));
-                        if (UsedFor6 == "Other")
-                        {
-                            txtOtherEarthing6.Visible = true;
-                            txtOtherEarthing6.Text = ds.Tables[0].Rows[0]["OtherEarthing6"].ToString();
-                        }
-
-                        string EarthingType7 = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
-                        ddlSubstationEarthing7.SelectedIndex = ddlSubstationEarthing7.Items.IndexOf(ddlSubstationEarthing7.Items.FindByText(EarthingType7));
-                        txtSubstationEarthing7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
-                        string UsedFor7 = ds.Tables[0].Rows[0]["UsedFor7"].ToString();
-                        ddlUsedFor7.SelectedIndex = ddlUsedFor7.Items.IndexOf(ddlUsedFor7.Items.FindByText(UsedFor7));
-                        if (UsedFor7 == "Other")
-                        {
-                            txtOtherEarthing7.Visible = true;
-                            txtOtherEarthing7.Text = ds.Tables[0].Rows[0]["OtherEarthing7"].ToString();
-                        }
-
-                        string EarthingType8 = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
-                        ddlSubstationEarthing8.SelectedIndex = ddlSubstationEarthing8.Items.IndexOf(ddlSubstationEarthing8.Items.FindByText(EarthingType8));
-                        txtSubstationEarthing8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
-                        string UsedFor8 = ds.Tables[0].Rows[0]["UsedFor8"].ToString();
-                        ddlUsedFor8.SelectedIndex = ddlUsedFor8.Items.IndexOf(ddlUsedFor8.Items.FindByText(UsedFor8));
-                        if (UsedFor8 == "Other")
-                        {
-                            txtOtherEarthing8.Visible = true;
-                            txtOtherEarthing8.Text = ds.Tables[0].Rows[0]["OtherEarthing8"].ToString();
-                        }
-
-                        string EarthingType9 = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
-                        ddlSubstationEarthing9.SelectedIndex = ddlSubstationEarthing9.Items.IndexOf(ddlSubstationEarthing9.Items.FindByText(EarthingType6));
-                        txtSubstationEarthing9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
-                        string UsedFor9 = ds.Tables[0].Rows[0]["UsedFor9"].ToString();
-                        ddlUsedFor9.SelectedIndex = ddlUsedFor9.Items.IndexOf(ddlUsedFor9.Items.FindByText(UsedFor9));
-                        if (UsedFor9 == "Other")
-                        {
-                            txtOtherEarthing9.Visible = true;
-                            txtOtherEarthing9.Text = ds.Tables[0].Rows[0]["OtherEarthing9"].ToString();
-                        }
-
-                        string EarthingType10 = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
-                        ddlSubstationEarthing10.SelectedIndex = ddlSubstationEarthing10.Items.IndexOf(ddlSubstationEarthing10.Items.FindByText(EarthingType10));
-                        txtSubstationEarthing10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
-                        string UsedFor10 = ds.Tables[0].Rows[0]["UsedFor10"].ToString();
-                        ddlUsedFor10.SelectedIndex = ddlUsedFor10.Items.IndexOf(ddlUsedFor10.Items.FindByText(UsedFor10));
-                        if (UsedFor10 == "Other")
-                        {
-                            txtOtherEarthing10.Visible = true;
-                            txtOtherEarthing10.Text = ds.Tables[0].Rows[0]["OtherEarthing10"].ToString();
-                        }
-
-
-                        string EarthingType11 = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
-                        ddlSubstationEarthing11.SelectedIndex = ddlSubstationEarthing11.Items.IndexOf(ddlSubstationEarthing11.Items.FindByText(EarthingType11));
-                        txtSubstationEarthing11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
-                        string UsedFor11 = ds.Tables[0].Rows[0]["UsedFor11"].ToString();
-                        ddlUsedFor11.SelectedIndex = ddlUsedFor11.Items.IndexOf(ddlUsedFor11.Items.FindByText(UsedFor11));
-                        if (UsedFor11 == "Other")
-                        {
-                            txtOtherEarthing11.Visible = true;
-                            txtOtherEarthing11.Text = ds.Tables[0].Rows[0]["OtherEarthing11"].ToString();
-                        }
-
-                        string EarthingType12 = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
-                        ddlSubstationEarthing12.SelectedIndex = ddlSubstationEarthing12.Items.IndexOf(ddlSubstationEarthing12.Items.FindByText(EarthingType12));
-                        txtSubstationEarthing12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
-                        string UsedFor12 = ds.Tables[0].Rows[0]["UsedFor12"].ToString();
-                        ddlUsedFor12.SelectedIndex = ddlUsedFor12.Items.IndexOf(ddlUsedFor12.Items.FindByText(UsedFor12));
-                        if (UsedFor12 == "Other")
-                        {
-                            txtOtherEarthing12.Visible = true;
-                            txtOtherEarthing12.Text = ds.Tables[0].Rows[0]["OtherEarthing12"].ToString();
-                        }
-
-                        string EarthingType13 = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
-                        ddlSubstationEarthing12.SelectedIndex = ddlSubstationEarthing12.Items.IndexOf(ddlSubstationEarthing12.Items.FindByText(EarthingType13));
-                        txtSubstationEarthing12.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
-                        string UsedFor13 = ds.Tables[0].Rows[0]["UsedFor13"].ToString();
-                        ddlUsedFor12.SelectedIndex = ddlUsedFor12.Items.IndexOf(ddlUsedFor12.Items.FindByText(UsedFor13));
-                        if (UsedFor13 == "Other")
-                        {
-                            txtOtherEarthing13.Visible = true;
-                            txtOtherEarthing13.Text = ds.Tables[0].Rows[0]["OtherEarthing13"].ToString();
-                        }
-
-                        string EarthingType14 = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
-                        ddlSubstationEarthing14.SelectedIndex = ddlSubstationEarthing14.Items.IndexOf(ddlSubstationEarthing14.Items.FindByText(EarthingType14));
-                        txtSubstationEarthing14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
-                        string UsedFor14 = ds.Tables[0].Rows[0]["UsedFor14"].ToString();
-                        ddlUsedFor14.SelectedIndex = ddlUsedFor14.Items.IndexOf(ddlUsedFor14.Items.FindByText(UsedFor14));
-                        if (UsedFor14 == "Other")
-                        {
-                            txtOtherEarthing14.Visible = true;
-                            txtOtherEarthing14.Text = ds.Tables[0].Rows[0]["OtherEarthing14"].ToString();
-                        }
-
-                        string EarthingType15 = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
-                        ddlSubstationEarthing15.SelectedIndex = ddlSubstationEarthing15.Items.IndexOf(ddlSubstationEarthing15.Items.FindByText(EarthingType15));
-                        txtSubstationEarthing15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
-                        string UsedFor15 = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
-                        ddlUsedFor15.SelectedIndex = ddlUsedFor15.Items.IndexOf(ddlUsedFor15.Items.FindByText(UsedFor15));
-                        if (UsedFor15 == "Other")
-                        {
-                            txtOtherEarthing15.Visible = true;
-                            txtOtherEarthing15.Text = ds.Tables[0].Rows[0]["OtherEarthing15"].ToString();
-                        }
-
-                        string EarthingType16 = ds.Tables[0].Rows[0]["EarthingType16"].ToString();
-                        ddlSubstationEarthing16.SelectedIndex = ddlSubstationEarthing16.Items.IndexOf(ddlSubstationEarthing16.Items.FindByText(EarthingType16));
-                        txtSubstationEarthing16.Text = ds.Tables[0].Rows[0]["Valueinohms16"].ToString();
-                        string UsedFor16 = ds.Tables[0].Rows[0]["UsedFor16"].ToString();
-                        ddlUsedFor16.SelectedIndex = ddlUsedFor16.Items.IndexOf(ddlUsedFor16.Items.FindByText(UsedFor16));
-                        if (UsedFor16 == "Other")
-                        {
-                            txtOtherEarthing16.Visible = true;
-                            txtOtherEarthing16.Text = ds.Tables[0].Rows[0]["OtherEarthing16"].ToString();
-                        }
-
-                        string EarthingType17 = ds.Tables[0].Rows[0]["EarthingType17"].ToString();
-                        ddlSubstationEarthing17.SelectedIndex = ddlSubstationEarthing17.Items.IndexOf(ddlSubstationEarthing17.Items.FindByText(EarthingType17));
-                        txtSubstationEarthing17.Text = ds.Tables[0].Rows[0]["Valueinohms17"].ToString();
-                        string UsedFor17 = ds.Tables[0].Rows[0]["UsedFor17"].ToString();
-                        ddlUsedFor17.SelectedIndex = ddlUsedFor17.Items.IndexOf(ddlUsedFor17.Items.FindByText(UsedFor17));
-                        if (UsedFor17 == "Other")
-                        {
-                            txtOtherEarthing17.Visible = true;
-                            txtOtherEarthing17.Text = ds.Tables[0].Rows[0]["OtherEarthing17"].ToString();
-                        }
-
-                        string EarthingType18 = ds.Tables[0].Rows[0]["EarthingType18"].ToString();
-                        ddlSubstationEarthing18.SelectedIndex = ddlSubstationEarthing12.Items.IndexOf(ddlSubstationEarthing12.Items.FindByText(EarthingType18));
-                        txtSubstationEarthing18.Text = ds.Tables[0].Rows[0]["Valueinohms18"].ToString();
-                        string UsedFor18 = ds.Tables[0].Rows[0]["UsedFor18"].ToString();
-                        ddlUsedFor12.SelectedIndex = ddlUsedFor12.Items.IndexOf(ddlUsedFor12.Items.FindByText(UsedFor18));
-                        if (UsedFor18 == "Other")
-                        {
-                            txtOtherEarthing18.Visible = true;
-                            txtOtherEarthing18.Text = ds.Tables[0].Rows[0]["OtherEarthing18"].ToString();
-                        }
-
-                        string EarthingType19 = ds.Tables[0].Rows[0]["EarthingType19"].ToString();
-                        ddlSubstationEarthing19.SelectedIndex = ddlSubstationEarthing19.Items.IndexOf(ddlSubstationEarthing19.Items.FindByText(EarthingType19));
-                        txtSubstationEarthing19.Text = ds.Tables[0].Rows[0]["Valueinohms19"].ToString();
-                        string UsedFor19 = ds.Tables[0].Rows[0]["UsedFor19"].ToString();
-                        ddlUsedFor19.SelectedIndex = ddlUsedFor19.Items.IndexOf(ddlUsedFor19.Items.FindByText(UsedFor19));
-                        if (UsedFor19 == "Other")
-                        {
-                            txtOtherEarthing19.Visible = true;
-                            txtOtherEarthing19.Text = ds.Tables[0].Rows[0]["OtherEarthing19"].ToString();
-                        }
-
-                        string EarthingType20 = ds.Tables[0].Rows[0]["EarthingType20"].ToString();
-                        ddlSubstationEarthing20.SelectedIndex = ddlSubstationEarthing20.Items.IndexOf(ddlSubstationEarthing20.Items.FindByText(EarthingType20));
-                        txtSubstationEarthing20.Text = ds.Tables[0].Rows[0]["Valueinohms20"].ToString();
-                        string UsedFor20 = ds.Tables[0].Rows[0]["UsedFor20"].ToString();
-                        ddlUsedFor20.SelectedIndex = ddlUsedFor20.Items.IndexOf(ddlUsedFor20.Items.FindByText(UsedFor20));
-                        if (UsedFor20 == "Other")
-                        {
-                            txtOtherEarthing20.Visible = true;
-                            txtOtherEarthing20.Text = ds.Tables[0].Rows[0]["OtherEarthing20"].ToString();
-                        }
+                        BtnSubmitSubstation.Text = "Update";
+                    }
+                    else
+                    {
+                        BtnSubmitSubstation.Visible = false;
+                        BtnBack.Visible = true;
 
                     }
+
+
                 }
-
-                BtnSubmitSubstation.Text = "Update";
-
-
-            }
             }
             catch (Exception ex)
             {
