@@ -2764,7 +2764,7 @@
                                                         <samp style="color: red">* </samp>
                                             </label>
                                         <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator76" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator76" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
                                                            
                                     </div>
                                  </div>
