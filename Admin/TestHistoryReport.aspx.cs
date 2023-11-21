@@ -60,9 +60,11 @@ namespace CEIHaryana.Admin
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblId = (Label)row.FindControl("lblId");
                 string id = lblId.Text;
-                // Session[""]
                 Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                Session["TestReportId"] = lblTestReportId.Text;
+                Session["TestReportId"] = lblTestReportId.Text; 
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval1"] = lblApproval.Text;
+                Session["Approval"] = lblApproval.Text;
                 if (e.CommandName == "Select")
                 {
                     Response.Redirect("/TestReport/TestReport.aspx", false);
