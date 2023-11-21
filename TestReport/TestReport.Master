@@ -2151,7 +2151,7 @@
                     <div class="main-panel" style="margin-left: 8%;">
                         <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #b7b7ff; margin-top: 2%;">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-10">
                                     <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1">
                                         <input type="radio" name="pcss3t" id="tab1" class="tab-content-first" runat="server">
                                         <label id="lblLinePage" runat="server" onclick="handleLabelClick()" visible="false"><i class="icon-bolt"></i>LINE</label>
@@ -2172,9 +2172,12 @@
                                             </svg>SINGLE/THREE-PHASE</label>
                                     </div>
                                 </div>
+                                <div class="col-2" style="text-align:center;">
+                                    <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" ValidationGroup="Submit"/>
+                                    </div>
                             </div>
                             <div class="row">
-                                <div class="col-12" style="margin-top: auto; margin-bottom: 15px;">
+                                <div class="col-12" style="margin-top: auto; margin-bottom: 15px;margin-top: auto; margin-bottom: auto;font-size:20px;">
                                     <div runat="server" id="Searching" visible="false" class="card" style="margin: 0px 10px 0px 10px; padding: 5px 0px 10px 15px; background: #f9f9f9;">
                                         <label style="font-size: 15px; font-weight: 700;">Select For View Test Report</label>
 
@@ -2190,17 +2193,18 @@
                                             </div>
                                             <div class="col-2" id="SearchingNo" runat="server" visible="false">
                                                 <label>Instalation ID</label>
-                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="1" runat="server" OnSelectedIndexChanged="ddlSearchingNo_SelectedIndexChanged" AutoPostBack="true" ID="ddlSearchingNo" selectionmode="Multiple" Style="width: 100% !important;box-shadow: 0 2px rgba(0,0,0,0.2);">
+                                                <asp:DropDownList class="form-control  select-form select2" TabIndex="1" runat="server" OnSelectedIndexChanged="ddlSearchingNo_SelectedIndexChanged" AutoPostBack="true" ID="ddlSearchingNo" selectionmode="Multiple" Style="width: 100% !important; box-shadow: 0 2px rgba(0,0,0,0.2);">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                            
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
+                        <div >
                     </div>
                 </div>
             </div>
@@ -2237,11 +2241,11 @@
     <script src="/Assets/js/settings.js"></script>
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
-    
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
