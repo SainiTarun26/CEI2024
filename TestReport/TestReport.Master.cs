@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Supervisor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,15 +20,20 @@ namespace CEIHaryana.TestReport
             {
                 if (!IsPostBack)
                 {
+                    //Contractor.Visible = false;
                     if (Convert.ToString(Session["Value"]) == null)
                     {
                         ddlSearchingName.Visible = false;
+                        Contractor.Visible = false;
                     }
                     if (Request.Cookies["SupervisorID"] != null)
                     {
 
                         lblName.Text = Request.Cookies["SupervisorID"].Value;
                         lblName2.Text = Request.Cookies["SupervisorID"].Value;
+                        DivStatus.Visible = false;
+                        btnSubmit.Visible = false;
+                        Contractor.Visible = false;
                     }
                     else
                     {
@@ -52,6 +58,16 @@ namespace CEIHaryana.TestReport
                     else
                     {
                         SearchingNo.Visible = true;
+                    }
+                    if (Convert.ToString(Session["ContractorID"]) == null || Convert.ToString(Session["ContractorID"]) == "")
+                    {
+                        Contractor.Visible = false;
+                    }
+                    else
+                    {
+                        Contractor.Visible = true;
+                        DivStatus.Visible = true;
+                        btnSubmit.Visible = true;
                     }
                 }
             }
@@ -230,6 +246,28 @@ namespace CEIHaryana.TestReport
             Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
+        }
+
+        protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlforResponse.SelectedValue == "2")
+            {
+                Rejection.Visible = true;
+            }
+            else
+            {
+
+                Rejection.Visible = false;
+            }
+
+                    
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string id = Session["TestReportId"].ToString();
+            CEI.UpdateTestReportData(id, ddlforResponse.SelectedItem.ToString(), txtRejection.Text);
+            Response.Redirect("/Contractor/TestReportForContractor.aspx");
         }
     }
 }

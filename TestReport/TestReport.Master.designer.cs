@@ -195,13 +195,22 @@ namespace CEIHaryana.TestReport
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contractor;
 
         /// <summary>
-        /// ddlType control.
+        /// DivStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlType;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivStatus;
+
+        /// <summary>
+        /// ddlforResponse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlforResponse;
 
         /// <summary>
         /// Req_state control.

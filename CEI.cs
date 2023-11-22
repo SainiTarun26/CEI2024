@@ -1514,5 +1514,25 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportContractorHistory", LoginId);
         }
+        #region Update TestReport Data
+        public void UpdateTestReportData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdateTestReports");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
+            cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
     }
 }

@@ -56,6 +56,16 @@ namespace CEIHaryana.TestReport
                     {
 
                     }
+                    if (Convert.ToString(Session["ContractorID"]) == null || Convert.ToString(Session["ContractorID"]) == "")
+                    {
+                       
+                    }
+                    else
+                    {
+                        BtnBack.Visible = false;
+                        btnVerify.Visible = false;
+                        BtnSubmitSubstation.Visible = false;
+                    }
 
                 }
             }
