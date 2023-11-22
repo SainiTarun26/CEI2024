@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="TestReportHistory.aspx.cs" Inherits="CEIHaryana.Supervisor.TestReportHistory" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="TestReportForContractor.aspx.cs" Inherits="CEIHaryana.Contractor.TestReportForContractor" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         .col-4 {
             margin-bottom: 8px;
@@ -154,11 +154,8 @@
             background-color: #9292cc;
         }
     </style>
-
-
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
@@ -175,9 +172,8 @@
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"  PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
                                     <asp:TextBox ID="txtapproval" runat="server" Visible="false" class="form-control" Font-Size="12px"></asp:TextBox><br />
-
                                 </div>
                             </div>
                         </div>
@@ -186,8 +182,8 @@
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
-                               <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor"/>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
@@ -244,7 +240,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <footer class="footer">
     </footer>
@@ -269,7 +264,6 @@
                 }
                 tblData.rows[i].style.display = styleDisplay;
             }
-
         }
         function SearchOnEnter(event) {
             if (event.keyCode === 13) {
@@ -278,15 +272,12 @@
             }
         }
     </script>
-
-
-        <script>
-            function preventEnterSubmit(event) {
-                if (event.keyCode === 13) {
-                    event.preventDefault(); // Prevent form submission
-                    return false;
-                }
+    <script>
+        function preventEnterSubmit(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent form submission
+                return false;
             }
-        </script>
-
+        }
+    </script>
 </asp:Content>

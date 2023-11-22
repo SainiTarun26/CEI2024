@@ -333,7 +333,7 @@
                                     <span class="menu-title">Work Intimations History</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                          <%--  <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Test Reports</span>
@@ -346,13 +346,13 @@
                                         <li class="nav-item"><a class="nav-link" href="/Contractor/GeneratingSetHistory.aspx">Generating Set</a></li>
                                     </ul>
                                 </div>
-                            </li>
-                            <%--  <li class="nav-item">
-                                 <a class="nav-link" href="/Contractor/TestReportHistory.aspx">
+                            </li>--%>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="/Contractor/TestReportForContractor.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Test Reports History</span>
                                 </a>
-                            </li>--%>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

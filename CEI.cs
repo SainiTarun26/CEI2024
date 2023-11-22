@@ -1509,6 +1509,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable TestReportDataForAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryAdmin");
+        } 
+        public DataSet TestReportContractorHistory(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportContractorHistory", LoginId);
         }
     }
 }
