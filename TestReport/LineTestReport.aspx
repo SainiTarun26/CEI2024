@@ -2033,7 +2033,7 @@
                                     </svg>SINGLE/THREE-PHASE</label>--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <ul>
-        <li class="tab-content tab-content-first typography">
+        <li class="tab-content tab-content-first typography" style="margin-left: 5px; margin-right: 20px;">
             <div class="card-body" id="divLine" asp-validation-summary="ModelOnly" runat="server" style="margin-top: -30px;">
                 <div id="IfInstallationIsLine" runat="server">
                     <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
