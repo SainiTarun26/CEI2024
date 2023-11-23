@@ -3166,4 +3166,13 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+
+      <script type="text/javascript">
+          function alertWithRedirect() {
+              if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
+                  window.location.href = "/Supervisor/IntimationData.aspx";
+              } else {
+              }
+          }
+      </script>
 </asp:Content>

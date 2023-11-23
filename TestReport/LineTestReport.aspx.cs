@@ -997,9 +997,9 @@ namespace CEIHaryana.TestReport
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
-                            
+
                             }
                         }
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted')", true);
@@ -1008,7 +1008,7 @@ namespace CEIHaryana.TestReport
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
-                        Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx", false);
+                        Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
                     }
                 }
 

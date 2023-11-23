@@ -301,13 +301,11 @@ namespace CEI_PRoject.Admin
                         }
                         DataSet ds1 = new DataSet();
                         ds1 = CEI.checkLicenceexist(txtLicenceNew.Text, txtLicenceOld.Text);
-                        if (ds1 != null && ds1.Tables.Count > 0)
+                        if (ds1.Tables[0].Rows.Count > 0)
                         {
-                            if (ds1.Tables[0].Rows.Count > 0)
-                            {
-                                string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            }
+                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                           ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            
 
                         }
                         else

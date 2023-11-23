@@ -469,7 +469,7 @@
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
-                            <asp:Button type="submit" ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" Style="background: linear-gradient(341deg, rgba(0,255,103,1) 0%, rgba(70,85,252,1) 100%); border-color: #ffffff" OnClick="btnBack_Click" />
+                            <asp:Button type="submit" ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
 
 
                         </div>

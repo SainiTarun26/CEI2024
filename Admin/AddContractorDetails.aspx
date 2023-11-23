@@ -202,7 +202,7 @@
                                 Name of Owner (Authorised Person)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                MaxLength="30" Style="margin-left: 18px;">
+                                MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
@@ -218,7 +218,7 @@
                             <label for="FirmName">
                                 Firm's Name<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtFirmName" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="60"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtFirmName" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirmName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Firm Name</asp:RequiredFieldValidator>
                         </div>
                     </div>

@@ -91,23 +91,16 @@ namespace CEIHaryana.TestReport
                     || Convert.ToString(Session["installationType5"]).Trim() == "Line" || Convert.ToString(Session["installationType6"]).Trim() == "Line"
                     || Convert.ToString(Session["installationType7"]).Trim() == "Line" || Convert.ToString(Session["installationType8"]).Trim() == "Line")
                 {
-                    if (Convert.ToString(Session["SubmittedValue2"]) != null && Convert.ToString(Session["SubmittedValue2"]) != "")
+                    if (Session["SubmittedValue2"] == null || Type.Trim() == "Line")
                     {
-                        lblLinePage.Visible = false;
+                        lblLinePage.Visible = true;
                     }
                     else
                     {
-                        lblLinePage.Visible = true;
+                        lblLinePage.Visible = false;
                      }
                 }
-                if (Type.Trim() == "Line")
-                {
-                    lblLinePage.Visible = true;
-                }
-                else
-                {
-                   lblLinePage.Visible = false;
-                }
+              
                 if (Type.Trim() == "Substation Transformer")
                 {
                     lblSubStationPage.Visible = true;
@@ -120,13 +113,13 @@ namespace CEIHaryana.TestReport
                    || Convert.ToString(Session["installationType5"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType6"]).Trim() == "Substation Transformer"
                    || Convert.ToString(Session["installationType7"]).Trim() == "Substation Transformer" || Convert.ToString(Session["installationType8"]).Trim() == "Substation Transformer")
                 {
-                    if (Convert.ToString(Session["SubmittedValue"]) != null && Convert.ToString(Session["SubmittedValue"]) != "")
+                    if (Session["SubmittedValue"] == null || Type.Trim() == "Substation Transformer")
                     {
-                        lblSubStationPage.Visible = false;
+                        lblSubStationPage.Visible = true;
                     }
                     else
                     {
-                        lblSubStationPage.Visible = true;
+                        lblSubStationPage.Visible = false;
                     }
                 }
                 if (Convert.ToString(Session["installationType1"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType2"]).Trim() == "Generating Station"
@@ -134,24 +127,16 @@ namespace CEIHaryana.TestReport
                    || Convert.ToString(Session["installationType5"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType6"]).Trim() == "Generating Station"
                    || Convert.ToString(Session["installationType7"]).Trim() == "Generating Station" || Convert.ToString(Session["installationType8"]).Trim() == "Generating Station")
                 {
-                    if (Convert.ToString(Session["SubmittedValue3"]) != null && Convert.ToString(Session["SubmittedValue3"]) != "")
-                    {
-                        lblGeneratingSet.Visible = false;
-                    }
-                    else
+                    if (Session["SubmittedValue3"] == null || Type.Trim() == "Generating Station")
                     {
                         lblGeneratingSet.Visible = true;
                     }
+                    else
+                    {
+                        lblGeneratingSet.Visible = false;
+                    }
 
 
-                }
-                if (Type.Trim() == "Generating Station")
-                {
-                    lblGeneratingSet.Visible = true;
-                }
-                else
-                {
-                    lblGeneratingSet.Visible = false;
                 }
                 if (Convert.ToString(Session["installationType1"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType2"]).Trim() == "Single/ Three Phase"
                    || Convert.ToString(Session["installationType3"]).Trim() == "Single/ Three Phase" || Convert.ToString(Session["installationType4"]).Trim() == "Single/ Three Phase"

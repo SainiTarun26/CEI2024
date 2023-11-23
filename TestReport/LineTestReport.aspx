@@ -23,8 +23,8 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <script type="text/javascript">
-    <style type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
         li.tab-content.tab-content-first.typography {
             border: 8px solid #CED4DA;
             border-top: 0;
@@ -39,7 +39,7 @@
             margin-right: 8px !important;
         }
 
-        z
+        
         .table-dark {
             text-align: center !important;
             background-color: #9292cc !important;
@@ -1954,30 +1954,26 @@
             zoom: 90%; /* Webkit browsers */
         }
     </style>
-    <script type="text/javascript">
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            }
-            return true;
-        } ``
-
-        //Allow Only Aplhabet, Delete and Backspace
-
-        function isAlpha(keyCode) {
-
-            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-
+<script type="text/javascript">
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
         }
+        return true;
+    }
 
-        function alphabetKey(e) {
-            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-            var k;
-            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-            return (allow.indexOf(String.fromCharCode(k)) != -1);
-        }
+    function isAlpha(keyCode) {
+        return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190);
+    }
+
+    function alphabetKey(e) {
+        var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b';
+        var k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+        return (allow.indexOf(String.fromCharCode(k)) != -1);
+    }
     </script>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -2173,7 +2169,7 @@
                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtRoadCrossingNo" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="9" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtGroundWireSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Size of Ground Wire</asp:RequiredFieldValidator>
+                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtRoadCrossingNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Size of Ground Wire</asp:RequiredFieldValidator>
                                             </div>
                                         <div class="col-4" id="Div6" runat="server">
                                             <label for="Name">
@@ -2830,5 +2826,13 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script type="text/javascript">
+        function alertWithRedirect() {
+            if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
+                window.location.href = "/Supervisor/IntimationData.aspx";
+            } else {
+            }
+        }
+    </script>
 
 </asp:Content>
