@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using iTextSharp.text.pdf.parser;
 using Org.BouncyCastle.Asn1.X500;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace CEIHaryana.TestReport
                     }
                     else
                     {
+                        Generaterset_Id = Session["ValueId"].ToString().Trim();
                         GetHistoryDataById();
                     }
                     if (Convert.ToString(Session["Approval"]) == "Reject")

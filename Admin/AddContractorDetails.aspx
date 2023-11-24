@@ -239,8 +239,7 @@
                         </div>
                         <div class="col-4">
                             <label for="ContactNo">Contact No.<samp style="color: red"> * </samp></label>
-                            <asp:TextBox class="form-control" ID="txtContactNo" runat="server" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(
-                                );"
+                            <asp:TextBox class="form-control" ID="txtContactNo" runat="server" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey();"
                                 TabIndex="5"
                                 onkeyup="return isvalidphoneno();" MaxLength="10" Style="margin-left: 18px">
                             </asp:TextBox>
