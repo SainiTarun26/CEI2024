@@ -254,5 +254,33 @@ namespace CEIHaryana.TestReport
             CEI.UpdateTestReportData(id, ddlforResponse.SelectedItem.ToString(), txtRejection.Text);
             Response.Redirect("/Contractor/TestReportForContractor.aspx");
         }
+
+        protected void btnVerify_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (btnVerify.Text == "SendOTP")
+                {
+                    OTP.Visible = true;
+                    string mobilenumber = Session["Contact"].ToString();
+                    Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+                    btnVerify.Text = "Verify";
+                }
+                else
+                {
+                    if (Session["OTP"].ToString() == txtOtp.Text)
+                    {
+                        btnSubmit.Visible = true;
+                        Verify.Visible = false; // Assuming Verify is the correct ID
+                    }
+                }
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
+
+            }
+        }
     }
 }

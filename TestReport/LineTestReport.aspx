@@ -24,7 +24,7 @@
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <style>
+    <style type="text/css">
         li.tab-content.tab-content-first.typography {
             border: 8px solid #CED4DA;
             border-top: 0;
@@ -1978,55 +1978,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-    <%--      <div>
-            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="#">
-            <img src="/Assets/ceilogo.png" alt="logo" /></a>
-    </div>
-    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <ul class="navbar-nav navbar-nav-right">                           
-            <li class="nav-item nav-profile dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                    <img class="avatar" src="/Assets/images.png" alt="profile" />
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
-                        <i class="ti-user text-primary"></i>
-                        <asp:Label ID="lblName" runat="server" />
-                    </a>
-                    <a class="dropdown-item">
-                        <i class="ti-power-off text-primary"></i>
-                        <asp:Button ID="btnLogout" Text="Logout" runat="server"/>
-                    </a>
-                </div>
-            </li>--%>
-    <%--  </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <span class="icon-menu"></span>
-        </button>
-    </div>
-</nav>
-            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #b7b7ff;margin-top:6%;margin-left:8%;margin-right:8%;">
-                            <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1">
-                                <input type="radio" name="pcss3t" checked id="tab1" class="tab-content-first">
-                                <label for="tab1"><i class="icon-bolt"></i>LINE</label>
-                                <input type="radio" name="pcss3t" id="tab2" class="tab-content-2">
-                                <label for="tab2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                                        <path d="M64 32C46.3 32 32 46.3 32 64V304v48 80c0 26.5 21.5 48 48 48H496c26.5 0 48-21.5 48-48V304 152.2c0-18.2-19.4-29.7-35.4-21.1L352 215.4V152.2c0-18.2-19.4-29.7-35.4-21.1L160 215.4V64c0-17.7-14.3-32-32-32H64z" />
-                                    </svg>SUBSTATION TRANSFORMER</label>
-                                <input type="radio" name="pcss3t" id="tab3" class="tab-content-3">
-                                <label for="tab3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                                        <path d="M96 0C60.7 0 32 28.7 32 64V448c-17.7 0-32 14.3-32 32s14.3 32 32 32H320c17.7 0 32-14.3 32-32s-14.3-32-32-32V304h16c22.1 0 40 17.9 40 40v32c0 39.8 32.2 72 72 72s72-32.2 72-72V252.3c32.5-10.2 56-40.5 56-76.3V144c0-8.8-7.2-16-16-16H544V80c0-8.8-7.2-16-16-16s-16 7.2-16 16v48H480V80c0-8.8-7.2-16-16-16s-16 7.2-16 16v48H432c-8.8 0-16 7.2-16 16v32c0 35.8 23.5 66.1 56 76.3V376c0 13.3-10.7 24-24 24s-24-10.7-24-24V344c0-48.6-39.4-88-88-88H320V64c0-35.3-28.7-64-64-64H96zM216.9 82.7c6 4 8.5 11.5 6.3 18.3l-25 74.9H256c6.7 0 12.7 4.2 15 10.4s.5 13.3-4.6 17.7l-112 96c-5.5 4.7-13.4 5.1-19.3 1.1s-8.5-11.5-6.3-18.3l25-74.9H96c-6.7 0-12.7-4.2-15-10.4s-.5-13.3 4.6-17.7l112-96c5.5-4.7 13.4-5.1 19.3-1.1z" />
-                                    </svg>GENERATING SET</label>
-                                <input type="radio" name="pcss3t" id="tab5" class="tab-content-last">
-                                <label for="tab5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                                        <path d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8c12.3-2.5 24.1-6.4 35.1-11.5c-2.1-10.8-3.1-21.9-3.1-33.3c0-80.3 53.8-148 127.3-169.2c.5-2.2 .7-4.5 .7-6.8c0-17.7-14.3-32-32-32H32zM432 512a144 144 0 1 0 0-288 144 144 0 1 0 0 288zm47.9-225c4.3 3.7 5.4 9.9 2.6 14.9L452.4 356H488c5.2 0 9.8 3.3 11.4 8.2s-.1 10.3-4.2 13.4l-96 72c-4.5 3.4-10.8 3.2-15.1-.6s-5.4-9.9-2.6-14.9L411.6 380H376c-5.2 0-9.8-3.3-11.4-8.2s.1-10.3 4.2-13.4l96-72c4.5-3.4 10.8-3.2 15.1 .6z" />
-                                    </svg>SINGLE/THREE-PHASE</label>--%>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <ul>
         <li class="tab-content tab-content-first typography" style="margin-left: 5px; margin-right: 20px;">

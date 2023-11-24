@@ -109,6 +109,7 @@ namespace CEIHaryana.TestReport
 
                 if (ds.Tables.Count > 0)
                 {
+                    Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                     Session["GeneratedLineId"] = ds.Tables[0].Rows[0]["LineId"].ToString().Trim();
                     Session["TestReportId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString().Trim();
                     Session["id"] = ds.Tables[0].Rows[0]["IntimationId"].ToString().Trim();

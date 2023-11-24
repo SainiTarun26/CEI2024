@@ -2201,19 +2201,19 @@
                             </div>
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
-                            <div id="Contractor" runat="server" visible="false">
+                           <div id="Contractor" runat="server" visible="false">
                                 <div class="row">
                                     <div class="col-4" id="DivStatus" runat="server" visible="false">
                                         <label for="Name">
                                             Form Status<samp style="color: red">*</samp>
                                         </label>
-                                        <asp:DropDownList ID="ddlforResponse" class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged" >
-                                              <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                              <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
-                                              <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
+                                        <asp:DropDownList ID="ddlforResponse" class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
+                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlforResponse" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                    </div>
                                     <div class="col-4" id="Rejection" runat="server" visible="false">
                                         <label for="Name">
                                             Reason For Rejection
@@ -2222,12 +2222,27 @@
                                         <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                     </div>
+                                    <div class="col-4" id="OTP" runat="server" visible="false">
+                                        <label for="Name">
+                                            Enter OTP
+                                            <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtOtp" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                    </div>
                                 </div>
                                 <div class="row" style="margin-bottom: 20px;">
+                                     <div class="col-4" style="margin-top: 40px; text-align: Center;" runat="server" id="Verify">
+                                <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                               OnClick="btnVerify_Click" />
+                               <br />
+                               <label>Submit Will be Enable When You Verify Your Details</label>
+                                 </div>
                                     <div class="col-4">
                                     </div>
-                                    <div class="col-4" style="text-align: center;">
-                                        <asp:Button ID="btnSubmit" Text="Submit" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" onclick="btnSubmit_Click"/>
+
+                                    <div class="col-4" style="text-align: center;" >
+                                        <asp:Button ID="btnSubmit" Text="Submit" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                                     </div>
                                     <div class="col-4">
                                     </div>

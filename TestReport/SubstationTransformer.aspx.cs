@@ -106,6 +106,7 @@ namespace CEIHaryana.TestReport
                 ds = CEI.GetTestReportDataForUpdate(Type, SubStationID);
                 if (ds.Tables.Count > 0)
                 {
+                    Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                     txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
                     string TransformerCapacity = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
                     ddltransformerCapacity.SelectedIndex = ddltransformerCapacity.Items.IndexOf(ddltransformerCapacity.Items.FindByText(TransformerCapacity));
