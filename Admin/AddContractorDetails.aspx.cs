@@ -275,7 +275,8 @@ namespace CEI_PRoject.Admin
                     txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
                     Session["ID"] = "";
                     Reset();
-                    regexValidatorGST.Attributes.Add("style", "display: none;");
+                    regexValidatorGST.Visible = false;
+                    RequiredFieldValidator3.Visible = false;
                     DataUpdated.Visible = true;
                     //  Response.Redirect("AddContractorDetails.aspx");
                 }
