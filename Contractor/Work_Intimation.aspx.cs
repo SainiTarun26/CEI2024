@@ -194,24 +194,27 @@ namespace CEIHaryana.Contractor
         }
         protected void worktypevisiblity()
         {
-
-            if (ddlworktype.SelectedValue == "1")
+            try
             {
-                individual.Visible = true;
-                agency.Visible = false;
+                if (ddlworktype.SelectedValue == "1")
+                {
+                    individual.Visible = true;
+                    agency.Visible = false;
 
-            }
-            else if (ddlworktype.SelectedValue == "2")
-            {
-                individual.Visible = false;
-                agency.Visible = true;
+                }
+                else if (ddlworktype.SelectedValue == "2")
+                {
+                    individual.Visible = false;
+                    agency.Visible = true;
 
+                }
+                else
+                {
+                    individual.Visible = true;
+                    agency.Visible = false;
+                }
             }
-            else
-            {
-                individual.Visible = true;
-                agency.Visible = false;
-            }
+            catch { }
 
         }
 
