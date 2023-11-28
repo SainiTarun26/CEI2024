@@ -176,93 +176,129 @@ namespace CEIHaryana.Officers
         }
         protected void lnkInvoiceFire_Click(object sender, EventArgs e)
         {
-
-            string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-
-            if (File.Exists(filePath))
+            try
             {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
+                string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+                }
+                else
+                {
+                }
             }
-            else
+            catch (Exception ex)
             {
+
             }
         }
         protected void lnkSingleDiag_Click(object sender, EventArgs e)
         {
-
-            string fileName = Session["SingleLineDiagramofTransformer"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-
-            if (File.Exists(filePath))
+            try
             {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
+                string fileName = Session["SingleLineDiagramofTransformer"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+                }
+                else
+                {
+                }
             }
-            else
+            catch (Exception ex)
             {
+
             }
         }
         protected void lnkManufacturing_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
+                string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
+                }
+                else
+                {
+
+                }
             }
-            else
+            catch (Exception ex)
             {
+
             }
         }
         protected void lnkInvoiceTransformer_Click(object sender, EventArgs e)
         {
 
-            string fileName = Session["InvoiceOfTransferOfPersonalSubstation"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-
-            if (File.Exists(filePath))
+            try
             {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                string fileName = Session["InvoiceOfTransferOfPersonalSubstation"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
 
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+                }
+                else
+                {
+                }
             }
-            else
+            catch (Exception ex)
             {
+
             }
         }
         protected void lnkCopy_Click(object sender, EventArgs e)
         {
-
-            string fileName = Session["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-
-            if (File.Exists(filePath))
+            try
             {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                string fileName = Session["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
 
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+                }
+                else
+                {
+                }
             }
-            else
+            catch (Exception ex)
             {
+
             }
         }
         protected void lnkStructure_Click(object sender, EventArgs e)
         {
-
-            string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+            try
+            {
+                string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
 
@@ -274,12 +310,19 @@ namespace CEIHaryana.Officers
             }
             else
             {
+            }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         protected void lnkLetter_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            string fileName = Session["RequestLetterFromConcernedOfficer"].ToString();
+                string fileName = Session["RequestLetterFromConcernedOfficer"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
 
@@ -290,14 +333,20 @@ namespace CEIHaryana.Officers
 
             }
             else
+            {
+
+            }
+            }
+            catch (Exception ex)
             {
 
             }
         }
         protected void lnktest_Click(object sender, EventArgs e)
         {
-
-            string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
+            try
+            {
+                string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
 
@@ -308,14 +357,20 @@ namespace CEIHaryana.Officers
 
             }
             else
+            {
+
+            }
+            }
+            catch (Exception ex)
             {
 
             }
         }
         protected void lnkDiag_Click(object sender, EventArgs e)
         {
-
-            string fileName = Session["SingleLineDiagramOfLine"].ToString();
+            try
+            {
+                string fileName = Session["SingleLineDiagramOfLine"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
 
@@ -326,6 +381,11 @@ namespace CEIHaryana.Officers
 
             }
             else
+            {
+
+            }
+            }
+            catch (Exception ex)
             {
 
             }

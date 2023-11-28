@@ -79,7 +79,7 @@ namespace CEIHaryana
                         {
                             string Id = Session["ContractorID"].ToString();
                             CEI.updateWorkIntimation(Id);
-                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                            Response.Redirect("/Contractor/Work_Intimation.aspx", false);
                         }
                     }
                     else

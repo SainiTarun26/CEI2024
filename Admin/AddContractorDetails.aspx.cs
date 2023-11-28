@@ -320,7 +320,9 @@ namespace CEI_PRoject.Admin
                            txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
                            txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
                             Reset();
-                            DataSaved.Visible = true;
+                            //DataSaved.Visible = true;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+
                         }
                     }
                 }

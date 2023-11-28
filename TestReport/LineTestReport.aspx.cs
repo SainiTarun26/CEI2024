@@ -538,9 +538,7 @@ namespace CEIHaryana.TestReport
                 OtherCable.Visible = false;
             }
         }
-
-
-        protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
+         protected void ddlLineType_SelectedIndexChanged(object sender, EventArgs e)
         {
             LineTypeOverhead.Visible = false;
             LineTypeUnderground.Visible = false;

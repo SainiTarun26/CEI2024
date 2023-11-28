@@ -73,7 +73,14 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
-
+     <script type="text/javascript">
+         function alertWithRedirect() {
+             if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
+                 window.location.href = "/Admin/AddContractorDetails.aspx";
+             } else {
+             }
+         }
+     </script>
     <%--     <script>
         
          function printDiv(printableDiv) {

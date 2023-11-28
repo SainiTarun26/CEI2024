@@ -251,14 +251,21 @@ namespace CEIHaryana.Contractor
         }
         private void BindDistrict()
         {
-            DataSet dsDistrict = new DataSet();
-            dsDistrict = CEI.GetddlDistrict();
-            ddlDistrict.DataSource = dsDistrict;
-            ddlDistrict.DataTextField = "AreaCovered";
-            ddlDistrict.DataValueField = "Id";
-            ddlDistrict.DataBind();
-            ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
-            dsDistrict.Clear();
+            try
+            {
+                DataSet dsDistrict = new DataSet();
+                dsDistrict = CEI.GetddlDistrict();
+                ddlDistrict.DataSource = dsDistrict;
+                ddlDistrict.DataTextField = "AreaCovered";
+                ddlDistrict.DataValueField = "Id";
+                ddlDistrict.DataBind();
+                ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
+                dsDistrict.Clear();
+            }
+            catch 
+            {
+
+            }
         }
         protected void lnkFile_Click(object sender, EventArgs e)
         {
@@ -282,58 +289,68 @@ namespace CEIHaryana.Contractor
         }
         private void ddlLoadBindVoltage()
         {
+            try
+            {
 
-            DataSet dsVoltage = new DataSet();
-            dsVoltage = CEI.GetddlVoltageLevel();
-            ddlVoltageLevel.DataSource = dsVoltage;
-            ddlVoltageLevel.DataTextField = "Voltagelevel";
-            ddlVoltageLevel.DataValueField = "VoltageID";
-            ddlVoltageLevel.DataBind();
-            ddlVoltageLevel.Items.Insert(0, new ListItem("Select", "0"));
-            dsVoltage.Clear();
+                DataSet dsVoltage = new DataSet();
+                dsVoltage = CEI.GetddlVoltageLevel();
+                ddlVoltageLevel.DataSource = dsVoltage;
+                ddlVoltageLevel.DataTextField = "Voltagelevel";
+                ddlVoltageLevel.DataValueField = "VoltageID";
+                ddlVoltageLevel.DataBind();
+                ddlVoltageLevel.Items.Insert(0, new ListItem("Select", "0"));
+                dsVoltage.Clear();
+            }
+            catch 
+            {
+            }
 
         }
         protected void Reset()
         {
-            ddlworktype.SelectedValue = "0";
-            txtName.Text = "";
-            txtagency.Text = "";
-            ddlDistrict.SelectedValue = "0";
-            ddlApplicantType.SelectedValue = "0";
-            txtPhone.Text = "";
-            txtAddress.Text = "";
-            txtPin.Text = "";
-            ddlPremises.SelectedValue = "0";
-            ddlVoltageLevel.SelectedValue = "0";
-            //txtOtherWorkDetail.Text = "";
-            txtStartDate.Text = "";
-            txtPAN.Text = "";
-            Installation.Visible= false;
-            txtinstallationType1.Text = "";
-            txtinstallationNo1.Text = "";
-            txtinstallationType2.Text = "";
-            txtinstallationNo2.Text = "";
-            txtinstallationType3.Text = "";
-            txtinstallationNo3.Text = "";
-            txtinstallationType4.Text = "";
-            txtinstallationNo4.Text = "";
-            txtinstallationType5.Text = "";
-            txtinstallationNo5.Text = "";
-            txtinstallationType6.Text = "";
-            txtinstallationNo6.Text = "";
-            txtinstallationType7.Text = ""; txtinstallationNo7.Text = ""; txtinstallationType8.Text = ""; txtinstallationNo8.Text = "";
-            txtCompletitionDate.Text = "";
-            ddlAnyWork.SelectedValue = "0";
-            txtCompletionDateAPWO.Text = "";
-            foreach (ListItem item in ddlWorkDetail.Items)
+            try
             {
-                item.Selected = false;
+                ddlworktype.SelectedValue = "0";
+                txtName.Text = "";
+                txtagency.Text = "";
+                ddlDistrict.SelectedValue = "0";
+                ddlApplicantType.SelectedValue = "0";
+                txtPhone.Text = "";
+                txtAddress.Text = "";
+                txtPin.Text = "";
+                ddlPremises.SelectedValue = "0";
+                ddlVoltageLevel.SelectedValue = "0";
+                //txtOtherWorkDetail.Text = "";
+                txtStartDate.Text = "";
+                txtPAN.Text = "";
+                Installation.Visible = false;
+                txtinstallationType1.Text = "";
+                txtinstallationNo1.Text = "";
+                txtinstallationType2.Text = "";
+                txtinstallationNo2.Text = "";
+                txtinstallationType3.Text = "";
+                txtinstallationNo3.Text = "";
+                txtinstallationType4.Text = "";
+                txtinstallationNo4.Text = "";
+                txtinstallationType5.Text = "";
+                txtinstallationNo5.Text = "";
+                txtinstallationType6.Text = "";
+                txtinstallationNo6.Text = "";
+                txtinstallationType7.Text = ""; txtinstallationNo7.Text = ""; txtinstallationType8.Text = ""; txtinstallationNo8.Text = "";
+                txtCompletitionDate.Text = "";
+                ddlAnyWork.SelectedValue = "0";
+                txtCompletionDateAPWO.Text = "";
+                foreach (ListItem item in ddlWorkDetail.Items)
+                {
+                    item.Selected = false;
+                }
+                //OtherWorkDetail.Visible = false;
+                OtherPremises.Visible = false;
+                hiddenfield.Visible = false;
+                hiddenfield1.Visible = false;
+                txtEmail.Text = "";
             }
-            //OtherWorkDetail.Visible = false;
-            OtherPremises.Visible = false;
-            hiddenfield.Visible = false;
-            hiddenfield1.Visible = false;
-            txtEmail.Text = "";
+            catch (Exception) { }
         }
         protected void Submit_Click(object sender, EventArgs e)
         {
@@ -445,42 +462,54 @@ namespace CEIHaryana.Contractor
         }
         public void GetGridData()
         {
-            string LoginID = string.Empty;
-            LoginID = Session["ContractorID"].ToString();
-            hdnId.Value = LoginID;
-
-            DataSet ds = new DataSet();
-
-            ds = CEI.WorkIntimationGridData(LoginID);
-            if (ds.Tables[0].Rows.Count > 0)
+            try
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                string LoginID = string.Empty;
+                LoginID = Session["ContractorID"].ToString();
+                hdnId.Value = LoginID;
+
+                DataSet ds = new DataSet();
+
+                ds = CEI.WorkIntimationGridData(LoginID);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
             }
+            catch { }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.Header)
+            try
             {
+                if (e.Row.RowType == DataControlRowType.Header)
+                {
 
-                CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
-                chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
+                    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                }
             }
+            catch { }
         }
 
         protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlAnyWork.SelectedValue == "Yes")
+            try
             {
+                if (ddlAnyWork.SelectedValue == "Yes")
+                {
 
-                hiddenfield.Visible = true;
-                hiddenfield1.Visible = true;
+                    hiddenfield.Visible = true;
+                    hiddenfield1.Visible = true;
+                }
+                else
+                {
+                    hiddenfield.Visible = false;
+                    hiddenfield1.Visible = false;
+                }
             }
-            else
-            {
-                hiddenfield.Visible = false;
-                hiddenfield1.Visible = false;
-            }
+            catch { }
         }
 
 
@@ -512,16 +541,20 @@ namespace CEIHaryana.Contractor
         }
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlPremises.SelectedValue == "10")
+            try
             {
-                OtherPremises.Visible = true;
+                if (ddlPremises.SelectedValue == "10")
+                {
+                    OtherPremises.Visible = true;
 
-            }
-            else
-            {
+                }
+                else
+                {
 
-                OtherPremises.Visible = false;
+                    OtherPremises.Visible = false;
+                }
             }
+            catch { }
         }
 
         protected void Unnamed2_Click(object sender, EventArgs e)
@@ -531,8 +564,12 @@ namespace CEIHaryana.Contractor
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Session["id"] = "";
-            Response.Redirect("PreviousProjects.aspx");
+            try
+            {
+                Session["id"] = "";
+                Response.Redirect("PreviousProjects.aspx");
+            }
+            catch { }
         }
 
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
@@ -605,7 +642,9 @@ namespace CEIHaryana.Contractor
 
         protected void btnDelete1_Click(object sender, EventArgs e)
         {
-            string valueToAddBack = txtinstallationType1.Text;
+            try
+            {
+                string valueToAddBack = txtinstallationType1.Text;
 
             if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
             {
@@ -616,6 +655,8 @@ namespace CEIHaryana.Contractor
             installationType1.Visible = false;
             txtinstallationType1.Text = string.Empty;
             txtinstallationNo1.Text = string.Empty;
+            }
+            catch { }
         }
 
         protected void btnDelete2_Click(object sender, EventArgs e)
