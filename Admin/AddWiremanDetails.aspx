@@ -264,16 +264,12 @@
                             <label for="CertificateOld">Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertifacateOld" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtCertifacateOld" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Old Certificate No.</asp:RequiredFieldValidator>
-
-                        </div>
+                               </div>
                         <div class="col-4">
                             <label for="CertificateNew">Ceritifcate No.(New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtCertificateNew" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter New Certificate No.</asp:RequiredFieldValidator>
-
-                        </div>
+                           </div>
                         <div class="col-4">
                             <label for="DateofIntialissue">Date of Initial Issue<samp style="color: red"> * </samp>
                             </label>
@@ -334,7 +330,7 @@
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" TabIndex="16"
-                               ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+                               ValidationGroup="Submit" OnClientClick="validateForm()" OnClick="btnSubmit_Click" />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" TabIndex="17"
                             Style="padding-left: 17px; padding-right: 17px;"
                             OnClick="BtnReset_Click" />
@@ -364,95 +360,15 @@
 
     <script type="text/javascript">
         function validateForm() {
-            var emptyFields = [];
-            var name = document.getElementById('<%= txtName.ClientID %>').value;
-            var Age = document.getElementById('<%= txtAge.ClientID %>').value;
-            var fathername = document.getElementById('<%= txtFatherName.ClientID %>').value;
-            var Contect = document.getElementById('<%= txtContect.ClientID %>').value;
-           // var Pincode = document.getElementById('<%= txtPincode.ClientID %>').value;
-            var Address = document.getElementById('<%= txtAddress.ClientID %>').value;
-            var State = document.getElementById('<%= ddlState.ClientID %>');
-            var District = document.getElementById('<%= ddlDistrict.ClientID %>');
-            //var Pincode = document.getElementById('<%= txtPincode.ClientID %>').value;
-            var Qualification = document.getElementById('<%= ddlQualification.ClientID %>');
-            var Email = document.getElementById('<%= txtEmail.ClientID %>').value;
+           
             var CertifacateOld = document.getElementById('<%= txtCertifacateOld.ClientID %>').value
             var CertificateNew = document.getElementById('<%= txtCertificateNew.ClientID %>').value;
-            var DateInitialIssue = document.getElementById('<%= txtDateInitialIssue.ClientID %>').value;
-            var DateExpiry = document.getElementById('<%= txtDateExpiry.ClientID %>').value;
-            var DateRenewal = document.getElementById('<%= txtDateRenewal.ClientID %>').value;
-            var AttachedContractor = document.getElementById('<%= ddlAttachedContractor.ClientID %>');
-            var ContractorDetails = document.getElementById('<%= ddlContractorDetails.ClientID %>');
-
-            if (name.trim() === '') {
-                emptyFields.push('Name');
-
-            }
-            if (fathername.trim() === '') {
-                emptyFields.push('Father Name');
-
-            }
-            if (Age.trim() === '') {
-                emptyFields.push('Date Of Birth');
-
-            }
-            if (Address.trim() === '') {
-                emptyFields.push('Address');
-
-            }
-            if (State && State.selectedIndex === 0) {
-                emptyFields.push('State');
-
-            }
-            if (District && District.selectedIndex === 0) {
-                emptyFields.push('District.');
-
-            }
-            if (Pincode.trim() === '') {
-                emptyFields.push('Pincode');
-
-            }
-            if (Qualification && Qualification.selectedIndex === 0) {
-                emptyFields.push('Qualification.');
-
-            }
-
+           
             if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
                 emptyFields.push('Certificate No.(Old or New)');
 
             }
-            if (DateInitialIssue.trim() === '') {
-                emptyFields.push('Date of Initial Issue');
-
-            }
-            if (DateExpiry.trim() === '') {
-                emptyFields.push('Date Expiry');
-
-            }
-            if (DateRenewal.trim() === '') {
-                emptyFields.push('Date of Renewal');
-
-            }
-            if (AttachedContractor && AttachedContractor.selectedIndex === 0) {
-                emptyFields.push('Attached Contractor.');
-
-            }
-            if (ContractorDetails && ContractorDetails.selectedIndex === 0) {
-                emptyFields.push('Attached Contractor Details.');
-
-            }
-            if (DateRenewal < DateInitialIssue) {
-                emptyFields.push('Date of Renewal is greater then Date of Initial issue');
-
-            }
-            if (DateExpiry < DateInitialIssue) {
-                emptyFields.push('Date of Expiry is greater then Date of Initial issue');
-
-            }
-            if (DateExpiry < DateRenewal) {
-                emptyFields.push('Date of Expiry is greater then Date of Renewal');
-
-            }
+            
             if (emptyFields.length > 0) {
                 var message = 'Please enter values for the following fields Correctly:\n\n';
                 message += emptyFields.join('\n');

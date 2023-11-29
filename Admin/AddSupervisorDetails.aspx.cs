@@ -16,7 +16,6 @@ namespace CEI_PRoject.Admin
         public string Qualification;
         string REID = string.Empty;
         string ipaddress;
-        string Createdby = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -242,7 +241,7 @@ namespace CEI_PRoject.Admin
                     Qualification = ddlQualification.SelectedValue;
 
                 }
-                if (CertificateNew.Text != "")
+                if (CertificateNew.Text != "" || CertificateNew.Text != "NA")
                 {
                     UserId = CertificateNew.Text;
                 }
@@ -267,7 +266,7 @@ namespace CEI_PRoject.Admin
                
                     GetIP();
                     REID = hdnId.Value; ;
-                    Createdby = Session["AdminID"].ToString();
+                    string Createdby = Convert.ToString(Session["AdminID"]);
                     CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text, FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(),
                      ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,
                      DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text,

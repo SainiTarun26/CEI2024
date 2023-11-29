@@ -281,17 +281,13 @@
                                 Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateOld" runat="server" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="CertificateOld" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Old Certificate No.</asp:RequiredFieldValidator>
-
                         </div>
                         <div class="col-4">
                             <label for="CertificateNew">
                                 Certificate No. (New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateNew" runat="server" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="CertificateNew" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter New Certificate No.</asp:RequiredFieldValidator>
-
-                        </div>
+                             </div>
                         <div class="col-4">
                             <label for="DateofIntialissue">
                                 Date of Initial issue<samp style="color: red"> * </samp>
@@ -381,7 +377,7 @@
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" TabIndex="18"
+                        <asp:Button ID="btnSubmit" Text="Submit"  OnClientClick="validateForm()" runat="server" class="btn btn-primary mr-2" TabIndex="18"
                             ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" TabIndex="19"
                             Style="padding-left: 17px; padding-right: 17px;"
@@ -412,104 +408,15 @@
         function validateForm() {
             debugger;
             var emptyFields = [];
-            var name = document.getElementById('<%= txtName.ClientID %>').value;
-                var fathername = document.getElementById('<%= FatherName.ClientID %>').value;
-                var Age = document.getElementById('<%= txtAge.ClientID %>').value;
-                var Contect = document.getElementById('<%= ContactNo.ClientID %>').value;
-                var Address = document.getElementById('<%= Address.ClientID %>').value;
-                var State = document.getElementById('<%= ddlState.ClientID %>').value;
-                var District = document.getElementById('<%= ddlDistrict.ClientID %>').value;
-                var Qualification = document.getElementById('<%= ddlQualification.ClientID %>').value;
-                var Email = document.getElementById('<%= Email.ClientID %>').value;
-                var CertifacateOld = document.getElementById('<%= CertificateOld.ClientID %>').value
-                var CertificateNew = document.getElementById('<%= CertificateNew.ClientID %>').value;
-                var DateInitialIssue = document.getElementById('<%= DateofIntialissue.ClientID %>').value;
-                var DateExpiry = document.getElementById('<%= DateofExpiry.ClientID %>').value;
-                var DateRenewal = document.getElementById('<%= DateofRenewal.ClientID %>').value;
-                var VoltageLevel = document.getElementById('<%= ddlVoltageLevel.ClientID %>').value;
-                var voltageWithEffect = document.getElementById('<%= voltageWithEffect.ClientID %>').value;
-                var AttachedContractor = document.getElementById('<%= ddlAttachedContractor.ClientID %>').value;
-                var ContractorDetails = document.getElementById('<%= ddlContractorDetails.ClientID %>').value;
+           
+             var CertifacateOld = document.getElementById('<%= CertificateOld.ClientID %>').value
+            var CertificateNew = document.getElementById('<%= CertificateNew.ClientID %>').value;
 
-
-            if (name.trim() === '') {
-                emptyFields.push('Name');
-            }
-            if (fathername.trim() === '') {
-                emptyFields.push('Father Name.');
-
-            }
-            if (Age.trim() === '') {
-                emptyFields.push('Date of Birth.');
-
-            }
-            if (Address.trim() === '') {
-                emptyFields.push('Address');
-
-            }
-            if (State && State.selectedIndex === 0) {
-                emptyFields.push('State.');
-
-            }
-            if (District && District.selectedIndex === 0) {
-                emptyFields.push('District.');
-
-            }
-            if (Qualification && Qualification.selectedIndex === 0) {
-                emptyFields.push('Qualification.');
-
-            }
-
-            if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
+             if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
                 emptyFields.push('Certificate No.(Old or New)');
 
             }
-            if (DateInitialIssue.trim() === '') {
-                emptyFields.push('Date of Initial Issue');
-
-            }
-            if (DateExpiry.trim() === '') {
-                emptyFields.push('Date Expiry');
-
-            }
-            if (DateRenewal.trim() === '') {
-                emptyFields.push('Renewal Date');
-
-            }
-
-            if (VoltageLevel && VoltageLevel.selectedIndex === 0) {
-                emptyFields.push('Attached Contractor.');
-
-            }
-            if (voltageWithEffect && voltageWithEffect.selectedIndex === 0) {
-                emptyFields.push('Attached Contractor Details.');
-
-
-            }
-
-            if (AttachedContractor && AttachedContractor.selectedIndex === 0) {
-                emptyFields.push('Attached Contractor.');
-
-
-            }
-            if (ContractorDetails && ContractorDetails.selectedIndex === 0) {
-                emptyFields.push('Attached Contractor Details.');
-
-
-            }
-            if (DateRenewal < DateInitialIssue) {
-                emptyFields.push('Date of Renewal is greater then Date of Initial issue');
-
-            }
-            if (DateExpiry < DateInitialIssue) {
-                emptyFields.push('Date of Expiry is greater then Date of Initial issue');
-
-            }
-            if (DateExpiry < DateRenewal) {
-                emptyFields.push('Date of Expiry is greater then Date of Renewal');
-
-            }
-
+            
             if (emptyFields.length > 0) {
                 var message = 'Please enter values for the following fields:\n\n';
                 message += emptyFields.join('\n');

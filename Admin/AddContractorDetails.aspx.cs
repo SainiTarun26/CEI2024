@@ -258,7 +258,7 @@ namespace CEI_PRoject.Admin
             {
                 if (btnSubmit.Text == "Update")
                 {
-                    if (txtLicenceNew.Text != "")
+                    if (txtLicenceNew.Text != "" || txtLicenceNew.Text != "NA")
                     {
                         UserId = txtLicenceNew.Text;
                     }
@@ -300,7 +300,7 @@ namespace CEI_PRoject.Admin
                     }
                     else
                     {
-                        if (txtLicenceNew.Text != "")
+                        if (txtLicenceNew.Text != "" || txtLicenceNew.Text != "NA")
                         {
                             UserId = txtLicenceNew.Text;
                         }
@@ -308,9 +308,10 @@ namespace CEI_PRoject.Admin
                         {
                             UserId = txtLicenceOld.Text;
                         }
+
                         DataSet ds1 = new DataSet();
                         ds1 = CEI.checkLicenceexist(txtLicenceNew.Text, txtLicenceOld.Text);
-                        if (ds1.Tables[0].Rows.Count > 0)
+                        if (ds1.Tables[0].Rows.Count > 0 )
                         {
                             string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
