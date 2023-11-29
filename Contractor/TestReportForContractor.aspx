@@ -196,6 +196,11 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
+                                    <asp:Label ID="LblReasionforRejection" runat="server" Text='<%#Eval("ReasonForRejection") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>

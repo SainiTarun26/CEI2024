@@ -150,16 +150,13 @@
     <Content Include="Admin\AddWiremanDetails.aspx" />
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
-    <Content Include="Admin\Contractor_Table.aspx" />
-    <Content Include="Admin\GeneratingStation.aspx" />
+    <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
-    <Content Include="Admin\LineTestReportHistory.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
-    <Content Include="Admin\SubstationDataHistory.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
@@ -1642,19 +1639,12 @@
     <Compile Include="Admin\AllTestReports.aspx.designer.cs">
       <DependentUpon>AllTestReports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Contractor_Table.aspx.cs">
-      <DependentUpon>Contractor_Table.aspx</DependentUpon>
+    <Compile Include="Admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Contractor_Table.aspx.designer.cs">
-      <DependentUpon>Contractor_Table.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\GeneratingStation.aspx.cs">
-      <DependentUpon>GeneratingStation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\GeneratingStation.aspx.designer.cs">
-      <DependentUpon>GeneratingStation.aspx</DependentUpon>
+    <Compile Include="Admin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\IntimationForHistory.aspx.cs">
       <DependentUpon>IntimationForHistory.aspx</DependentUpon>
@@ -1669,13 +1659,6 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\LineTestReportHistory.aspx.cs">
-      <DependentUpon>LineTestReportHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\LineTestReportHistory.aspx.designer.cs">
-      <DependentUpon>LineTestReportHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Projects.aspx.cs">
       <DependentUpon>Projects.aspx</DependentUpon>
@@ -1704,13 +1687,6 @@
     </Compile>
     <Compile Include="Admin\StaffDetailsData.aspx.designer.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\SubstationDataHistory.aspx.cs">
-      <DependentUpon>SubstationDataHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\SubstationDataHistory.aspx.designer.cs">
-      <DependentUpon>SubstationDataHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\TestHistoryReport.aspx.cs">
       <DependentUpon>TestHistoryReport.aspx</DependentUpon>

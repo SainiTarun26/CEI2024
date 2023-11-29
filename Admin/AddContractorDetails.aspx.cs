@@ -15,6 +15,7 @@ namespace CEI_PRoject.Admin
         public string Qualification;
         string REID = string.Empty;
         string ipaddress;
+        string Createdby = string.Empty;
         public void Page_Load(object sender, EventArgs e)
         {
             try
@@ -266,19 +267,26 @@ namespace CEI_PRoject.Admin
                         UserId = txtLicenceOld.Text;
                     }
                     REID = hdnId.Value;
-                    string Createdby = Convert.ToString(Session["AdminID"]);
-                    GetIP();
-                    CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
-                    ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-                    ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
-                    txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-                    txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
-                    Session["ID"] = "";
-                    Reset();
-                    regexValidatorGST.Visible = false;
-                    RequiredFieldValidator3.Visible = false;
-                    DataUpdated.Visible = true;
-                    //  Response.Redirect("AddContractorDetails.aspx");
+                    Createdby = Session["AdminID"].ToString();
+                    if (Createdby == null || Createdby == "")
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                    }
+                    else
+                    {
+                        GetIP();
+                        CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
+                        ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                        ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
+                        txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                        txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
+                        Session["ID"] = "";
+                        Reset();
+                        regexValidatorGST.Visible = false;
+                        RequiredFieldValidator3.Visible = false;
+                        DataUpdated.Visible = true;
+                        //  Response.Redirect("AddContractorDetails.aspx");
+                    }
                 }
                 else
                 {
@@ -305,24 +313,31 @@ namespace CEI_PRoject.Admin
                         if (ds1.Tables[0].Rows.Count > 0)
                         {
                             string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                           ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+
 
                         }
                         else
                         {
                             REID = hdnId.Value;
-                            string Createdby = Convert.ToString(Session["AdminID"]);
-                            GetIP();
-                            CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
-                            ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-                           ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text, txtDateofIntialissue.Text,
-                           txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-                           txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
-                            Reset();
-                            //DataSaved.Visible = true;
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                            Createdby = Session["AdminID"].ToString();
+                            if (Createdby == null || Createdby == "")
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                            }
+                            else
+                            {
+                                GetIP();
+                                CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
+                                ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                               ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text, txtDateofIntialissue.Text,
+                               txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                               txtLicenceOld.Text, txtLicenceNew.Text, ipaddress, Createdby);
+                                Reset();
+                                //DataSaved.Visible = true;
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
+                            }
                         }
                     }
                 }

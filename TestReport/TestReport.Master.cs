@@ -84,7 +84,8 @@ namespace CEIHaryana.TestReport
                                 }
                             }
 
-                            ddlforResponse.Enabled = false;
+
+                            ddlforResponse.Attributes.Add("disabled", "disabled");
                             lbltext.Visible = false;
                         }
                         else

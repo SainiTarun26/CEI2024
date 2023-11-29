@@ -80,7 +80,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         ID = "TextBox_" + rowIndex,
                         CssClass = "form-control notification-box font-weight-light small-text mb-0 text-muted",
-                        Text = dynamicData + "Inspection is :" + dynamicData3,
+                        Text = dynamicData + " Inspection is : " + dynamicData3,
                         TextMode = TextBoxMode.MultiLine,
                         Rows = 2,
                         ReadOnly = true

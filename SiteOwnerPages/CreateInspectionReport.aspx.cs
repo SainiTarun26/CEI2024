@@ -466,6 +466,7 @@ namespace CEIHaryana.SiteOwnerPages
                     flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
                 DataSaved.Visible = true;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully')", true);
+                Response.Redirect("/PaymentPage.aspx");
                 //}
                 //else
                 //{

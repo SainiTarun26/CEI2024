@@ -7,11 +7,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CEIHaryana.Contractor
+namespace CEIHaryana.Admin
 {
-    public partial class TestReportForContractor : System.Web.UI.Page
+    public partial class Dashboard : System.Web.UI.Page
     {
-
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,10 +29,8 @@ namespace CEIHaryana.Contractor
 
         private void GridViewBind()
         {
-            string LoginId = string.Empty;
-            LoginId = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.TestReportContractorHistory(LoginId);
+            ds = cei.AllInspectionHistory();
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -58,26 +55,9 @@ namespace CEIHaryana.Contractor
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     string id = lblID.Text;
-                    Session["LineID"] = id;
-                    Label lblApproval = (Label)row.FindControl("lblApproval");
-                    Session["Approval1"] = lblApproval.Text;
-                    Session["Approval"] = lblApproval.Text;
-                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                    Session["TestReportId"] = lblTestReportId.Text;
-                    Session["TestReportHistory"] = "True";
-                    Label lblReasionRejection = (Label)row.FindControl("LblReasionforRejection");
-                    Session["ReasionForRejection"] = lblReasionRejection.Text;
                     if (e.CommandName == "Select")
                     {
-                        //if (lblApproval.Text.Trim() == "Reject")
-                        //{
                         Response.Redirect("/TestReport/TestReport.aspx", false);
-                        //}
-                        //else
-                        //{
-                        //    Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
-                        //}
-
                     }
                 }
             }

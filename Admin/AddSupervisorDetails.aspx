@@ -223,7 +223,7 @@
 
                         </div>
                         <div class="col-4">
-                            <label for="ContactNo">Contact No.</label>
+                            <label for="ContactNo">Contact No.<samp style="color: red"> * </samp></label>
                             <asp:TextBox class="form-control" ID="ContactNo" autocomplete="off" runat="server" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" TabIndex="6"
                                 onkeyup="return isvalidphoneno();" MaxLength="10" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect" style="color: red"></span>

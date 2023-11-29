@@ -1514,6 +1514,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportContractorHistory", LoginId);
         }
+        public DataSet AllInspectionHistory()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AllRequestsForAdmin");
+        }
         #region Update TestReport Data
         public void UpdateTestReportData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
         {

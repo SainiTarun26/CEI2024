@@ -74,8 +74,8 @@
         }
     </script>
      <script type="text/javascript">
-         function alertWithRedirect() {
-             if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
+         function alertWithRedirectdata() {
+             if (confirm('Data Added Successfully')) {
                  window.location.href = "/Admin/AddContractorDetails.aspx";
              } else {
              }
@@ -368,16 +368,14 @@
                             </label>
                             <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceOld" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtLicenceOld" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Old License No.</asp:RequiredFieldValidator>
-
+                            
                         </div>
                         <div class="col-4">
                             <label for="LicenceNew">
                                 Licence No. (New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtLicenceNew" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter New License No.</asp:RequiredFieldValidator>
-
+                         
                         </div>
 
                         <div class="col-4">
@@ -445,7 +443,7 @@
                         
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                            
-                            OnClick="btnSubmit_Click" />
+                            OnClick="btnSubmit_Click" OnClientClick="validateForm()" />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;"
                             OnClick="BtnReset_Click" />
@@ -482,104 +480,17 @@
 
     <script type="text/javascript">
         function validateForm() {
-            debugger;
+
             var emptyFields = [];
-            var name = document.getElementById('<%= txtName.ClientID %>').value;
-            var FirmName = document.getElementById('<%= txtFirmName.ClientID %>').value;
-            var RegisteredOffice = document.getElementById('<%= txtRegisteredOffice.ClientID %>').value;
-            var State = document.getElementById('<%= ddlState.ClientID %>').value;
-            var Gst = document.getElementById('<%= txtGST.ClientID %>').value;
-            var District = document.getElementById('<%= ddlDistrict.ClientID %>').value;
-            var BranchOffice = document.getElementById('<%= txtBranchOffice.ClientID %>').value;
-            var District1 = document.getElementById('<%= ddlDistrict1.ClientID %>').value;
+            
             var CertifacateOld = document.getElementById('<%= txtLicenceOld.ClientID %>').value;
             var CertificateNew = document.getElementById('<%= txtLicenceNew.ClientID %>').value;
-            var DateInitialIssue = document.getElementById('<%= txtDateofIntialissue.ClientID %>').value;
-            var DateExpiry = document.getElementById('<%= txtDateofExpiry.ClientID %>').value;
-            var DateRenewal = document.getElementById('<%= txtDateofRenewal.ClientID %>').value;
-            var VoltageLevelWithEffect = document.getElementById('<%= txtVoltageLevelWithEffect.ClientID %>').value;
-            var VoltageLevel = document.getElementById('<%= ddlVoltageLevel.ClientID %>');
-            var txtGST = document.getElementById('<%= txtGST.ClientID %>');
-            var regex = /^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
-
-            if (Gst.trim() === '') {
-                emptyFields.push('Gst Number')
-            }
-            else if (!regex.test(txtGST.value)) {
-                emptyFields.push("GST is incorrect. Only Haryana's GST is valid");
-
-            }
-
-
-            if (name.trim() === '') {
-                emptyFields.push('Name');
-            }
-            if (FirmName.trim() === '') {
-                emptyFields.push('Firm Name');
-            }
-
-
-            if (RegisteredOffice.trim() === '') {
-                emptyFields.push('Registered Office Address.');
-
-            }
-            if (BranchOffice.trim() === '') {
-                emptyFields.push('Branch Office Address.');
-
-            }
-
-            if (VoltageLevelWithEffect.trim() === '') {
-                emptyFields.push('VoltageLevelWithEffect.');
-
-            }
-
-            if (State && State.selectedIndex === 0) {
-                emptyFields.push('State.');
-
-            }
-            if (District && District.selectedIndex === 0) {
-                emptyFields.push('District.');
-
-            }
-            if (District1 && District1.selectedIndex === 0) {
-                emptyFields.push('District.');
-
-            }
-
-            if (VoltageLevel && VoltageLevel.selectedIndex === 0) {
-                emptyFields.push('VoltageLevel.');
-
-            }
+           
 
             if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
                 emptyFields.push('Certificate No.(Old or New)');
 
             }
-            if (DateInitialIssue.trim() === '') {
-                emptyFields.push('Date Initial Issue');
-
-            }
-            if (DateExpiry.trim() === '') {
-                emptyFields.push('Date of Expiry');
-
-            }
-            if (DateRenewal.trim() === '') {
-                emptyFields.push('Date Renewal');
-
-            }
-            if (DateRenewal < DateInitialIssue) {
-                emptyFields.push('Date of Renewal is greater then Date of Initial issue');
-
-            }
-            if (DateExpiry < DateInitialIssue) {
-                emptyFields.push('Date of Expiry is greater then Date of Initial issue');
-
-            }
-            if (DateExpiry < DateRenewal) {
-                emptyFields.push('Date of Expiry is greater then Date of Renewal');
-
-            }
-
             if (emptyFields.length > 0) {
                 var message = 'Please enter values for the following fields:\n\n';
                 message += emptyFields.join('\n');
@@ -682,4 +593,12 @@
             }
         }
     </script>
+      <script type="text/javascript">
+          function alertWithRedirect() {
+              if (confirm('Not able to find Your Information Please Login Again or Try Again later')) {
+                  window.location.href = "/Login.aspx";
+              } else {
+              }
+          }
+      </script>
 </asp:Content>
