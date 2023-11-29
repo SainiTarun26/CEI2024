@@ -61,9 +61,10 @@ namespace CEI_PRoject.Admin
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //
+
+                Response.Redirect("/Login.aspx");
             }
         }
         private void ddlQualificationBind()
