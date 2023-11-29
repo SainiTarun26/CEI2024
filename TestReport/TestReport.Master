@@ -2171,8 +2171,8 @@
                                                 </svg>SINGLE/THREE-PHASE</label>
                                         </div>
                                     </div>
-                                    <%--      <div class="col-2" style="text-align:center;">
-                                    <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" ValidationGroup="Submit"/>
+                                          <%--<div class="col-2" style="text-align:center;">
+                                    <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" ValidationGroup="Submit"/>
                                     </div>--%>
                                 </div>
                                 <div class="row">
@@ -2237,19 +2237,22 @@
                                      <div class="col-6" style="text-align: end;" runat="server" id="Verify">
                                 <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                OnClick="btnVerify_Click" />
-                               <br />
-                              
+                               <br />                              
                                  </div>
                                     <div class="col-6">
                                        <asp:Button ID="btnSubmit" Text="Submit" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                                     </div>
                                 </div>
-                               <div class="row">
+                               <div class="row" id="lbltext" runat="server">
                                    <div class="col-12" style="text-align:center;">
-                                        <label style="font-size: 15px; font-weight: 700; margin-bottom: 20px;">Submit Will be Enable When You Verify Your Details.</label>
+                                        <label  style="font-size: 15px; font-weight: 700; margin-bottom: 20px;">Submit Will be Enable When You Verify Your Details.</label>
                                        </div>
                                </div>
+                               <div class="col-8" style="text-align:center;">
+                                    <asp:Button ID="BtnBack1" runat="server" OnClick="BtnBack1_Click"  Text="Back" Visible="false" class="btn btn-primary mr-2" />
+                                    </div>
                             </div>
+                            
                             <div>
                             </div>
                         </div>

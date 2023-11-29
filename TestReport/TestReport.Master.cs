@@ -65,9 +65,35 @@ namespace CEIHaryana.TestReport
                     }
                     else
                     {
-                        Contractor.Visible = true;
-                        DivStatus.Visible = true;
-                        btnSubmit.Visible = true;
+                        if (Convert.ToString(Session["Approval"]) == "Reject" || Convert.ToString(Session["Approval"]) == "Accept")
+                        {
+                            Contractor.Visible = true;
+                            DivStatus.Visible = true;
+                            BtnBack1.Visible = true;
+                            btnVerify.Visible = false;
+
+                            string response = Session["Approval"].ToString();
+                            ddlforResponse.SelectedIndex = ddlforResponse.Items.IndexOf(ddlforResponse.Items.FindByText(response));
+                            if (ddlforResponse.SelectedItem.Text == "Reject")
+                            {
+                                if (Convert.ToString(Session["ReasionForRejection"]) != null)
+                                {
+                                    Rejection.Visible = true;
+                                    txtRejection.Text = Session["ReasionForRejection"].ToString();
+                                    txtRejection.Enabled = false;
+                                }
+                            }
+
+                            ddlforResponse.Enabled = false;
+                            lbltext.Visible = false;
+                        }
+                        else
+                        {
+                            Contractor.Visible = true;
+                            DivStatus.Visible = true;
+                            btnSubmit.Visible = false;
+                        }
+
                     }
                 }
             }
@@ -82,7 +108,7 @@ namespace CEIHaryana.TestReport
         {
             try
             {
-                if (Session["Value"]!=null )
+                if (Session["Value"] != null)
                 {
                     Type = Session["Value"].ToString();
                 }
@@ -98,9 +124,9 @@ namespace CEIHaryana.TestReport
                     else
                     {
                         lblLinePage.Visible = false;
-                     }
+                    }
                 }
-              
+
                 if (Type.Trim() == "Substation Transformer")
                 {
                     lblSubStationPage.Visible = true;
@@ -205,9 +231,20 @@ namespace CEIHaryana.TestReport
 
         protected void ddlSearchingNo_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             string id = ddlSearchingNo.SelectedValue;
             Session["ValueId"] = id;
             Type = Session["Value"].ToString();
+
+            //if(Convert.ToString(Session["Approval"])=="Accept")
+            //{
+            //    Contractor.Visible = true;
+            //    DivStatus.Visible = true;
+            //    ddlforResponse.Visible = true;
+
+            //    string Response = Session["Approval"].ToString();
+            //    ddlforResponse.SelectedIndex = ddlforResponse.Items.IndexOf(ddlforResponse.Items.FindByText(Response));
+            //}
 
 
             if (Type.Trim() == "Line")
@@ -235,7 +272,7 @@ namespace CEIHaryana.TestReport
 
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlforResponse.SelectedValue == "2")
+            if (ddlforResponse.SelectedValue == "2")
             {
                 Rejection.Visible = true;
             }
@@ -245,7 +282,7 @@ namespace CEIHaryana.TestReport
                 Rejection.Visible = false;
             }
 
-                    
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -281,6 +318,11 @@ namespace CEIHaryana.TestReport
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
 
             }
+        }
+
+        protected void BtnBack1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Contractor/TestReportForContractor.aspx");
         }
     }
 }
