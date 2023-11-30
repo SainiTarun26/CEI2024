@@ -266,7 +266,7 @@ namespace CEI_PRoject.Admin
                 }
                
                     GetIP();
-                    REID = hdnId.Value; ;
+                    REID = hdnId.Value; 
                     string Createdby = Convert.ToString(Session["AdminID"]);
                     CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text, FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(),
                      ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,

@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Admin
 {
-    public partial class Dashboard : System.Web.UI.Page
+    public partial class ReportDashboard : System.Web.UI.Page
     {
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -53,11 +53,11 @@ namespace CEIHaryana.Admin
                 {
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    string id = lblID.Text;
+                    Label lblArea = (Label)row.FindControl("lblArea");
+                    Session["Area"] = lblArea.Text.Trim();
                     if (e.CommandName == "Select")
                     {
-                        Response.Redirect("/TestReport/TestReport.aspx", false);
+                        Response.Redirect("/Admin/RequestPendingDivision.aspx", false);
                     }
                 }
             }

@@ -150,12 +150,13 @@
     <Content Include="Admin\AddWiremanDetails.aspx" />
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
-    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\ReportDashboard.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
+    <Content Include="Admin\RequestPendingDivision.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
@@ -1639,12 +1640,12 @@
     <Compile Include="Admin\AllTestReports.aspx.designer.cs">
       <DependentUpon>AllTestReports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="Admin\ReportDashboard.aspx.cs">
+      <DependentUpon>ReportDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="Admin\ReportDashboard.aspx.designer.cs">
+      <DependentUpon>ReportDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\IntimationForHistory.aspx.cs">
       <DependentUpon>IntimationForHistory.aspx</DependentUpon>
@@ -1680,6 +1681,13 @@
     </Compile>
     <Compile Include="Admin\RegistrationDetailsSelected.aspx.designer.cs">
       <DependentUpon>RegistrationDetailsSelected.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RequestPendingDivision.aspx.cs">
+      <DependentUpon>RequestPendingDivision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RequestPendingDivision.aspx.designer.cs">
+      <DependentUpon>RequestPendingDivision.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StaffDetailsData.aspx.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>
