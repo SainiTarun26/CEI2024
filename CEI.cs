@@ -1547,6 +1547,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable RequestPendingDaysData(string dated)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowRequestPendingDaysData", dated);
+        } 
+        public DataSet DasboardCalculations()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DashboardCalculations");
         }
     }
 }
