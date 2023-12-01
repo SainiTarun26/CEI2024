@@ -226,6 +226,24 @@
     margin-bottom: -15px;
 }
         input#ContentPlaceHolder1_TextBox11 {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 15px;
+            padding: 0px;
+            margin-top: -13%;
+            margin-bottom: -15px;
+        }  
+         input#ContentPlaceHolder1_TextBox12 {
+     border: none;
+     background: transparent;
+     color: white;
+     font-size: 15px;
+     padding: 0px;
+     margin-top: -13%;
+     margin-bottom: -15px;
+ }  
+        input#ContentPlaceHolder1_TextBox13 {
     border: none;
     background: transparent;
     color: white;
@@ -233,6 +251,156 @@
     padding: 0px;
     margin-top: -13%;
     margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox14 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox15 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox16 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox17 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox18 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox19 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox20 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox21 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox22 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox23 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox24 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox25 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox26 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox27 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox28 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox29 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        .au-card.au-card--bg-blue.au-card-top-countries.m-b-40 {
+    height: 380px;
+}
+     div#officers_table {
+    height: 335px;
 }
     </style>
 </asp:Content>
@@ -434,7 +602,7 @@
                             <h2 class="title-1 m-b-25">Officers Pendency</h2>
                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
                                 <div class="au-card-inner">
-                                    <div class="table-responsive" style="overflow-y: hidden;">
+                                    <div class="table-responsive" id="officers_table">
                                         <table class="table table-top-countries">
                                             <tbody>
 
@@ -482,6 +650,60 @@
                                                     <td class="text-right">
                                                         <asp:TextBox class="form-control" ID="TextBox11" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
                                                 </tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox12" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox13" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox14" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox15" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox16" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox17" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox18" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox19" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox20" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox21" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox22" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox23" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox24" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox25" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox26" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox27" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
+                                                <tr>
+    <td>
+        <asp:TextBox class="form-control" ID="TextBox28" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+    <td class="text-right">
+        <asp:TextBox class="form-control" ID="TextBox29" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+</tr>
                                             </tbody>
                                         </table>
                                     </div>
