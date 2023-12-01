@@ -207,14 +207,19 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+                                 <asp:BoundField DataField="Initiated" HeaderText="Initiated">
+                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                            </asp:BoundField>
+                                 <asp:BoundField DataField="InProgress" HeaderText="In Progress">
+                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="ActionTaken" HeaderText="Action Taken">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Pending" HeaderText="Pending">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
-                            </asp:BoundField>
+                       
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

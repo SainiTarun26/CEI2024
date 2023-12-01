@@ -33,7 +33,7 @@
     <style type="text/css">
         canvas#doughutChart {
     height: 200px !important;
-    width:460px !important;
+    width:525px !important;
 }
         canvas#barChart {
     height: 200px !important;
