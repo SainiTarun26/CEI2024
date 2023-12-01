@@ -35,21 +35,18 @@ namespace CEIHaryana.Admin
                 DataTable dt = ds.Tables[0];
 
                 // Assuming dt has "Total" and "Inprogressorpending" columns
-                var categories = dt.AsEnumerable().Select(row => row.Field<int>("RecordCount").ToString()).ToArray();
+                var categories = dt.AsEnumerable().Select(row => row.Field<string>("Division")).ToArray();
                 var valuesRecordCount = dt.AsEnumerable().Select(row => row.Field<int>("RecordCount")).ToArray();
                 var valuesInitiated = dt.AsEnumerable().Select(row => row.Field<int>("Inprogressorpending")).ToArray();
 
                 // Duplicate the data 15 times
-                categories = Enumerable.Repeat(categories, 5).SelectMany(x => x).ToArray();
+                categories = Enumerable.Repeat(categories, 1).SelectMany(x => x).ToArray();
                 valuesRecordCount = Enumerable.Repeat(valuesRecordCount, 5).SelectMany(x => x).ToArray();
                 valuesInitiated = Enumerable.Repeat(valuesInitiated, 5).SelectMany(x => x).ToArray();
 
                 // Render the JavaScript code to create the Chart.js chart
-                string script = $@"
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {{
-    type: 'bar',
-    data: {{
+                string script = $@"var ctx = document.getElementById('myChart').getContext('2d');var myChart = new Chart(ctx, 
+        {{    type: 'bar',    data: {{
         labels: {Newtonsoft.Json.JsonConvert.SerializeObject(categories)},
         datasets: [
             {{
