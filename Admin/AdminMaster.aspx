@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template"> 
+    <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
     <title>Dashboard</title>
@@ -15,7 +15,8 @@
     <link href="/Dashboard_Css/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css" integrity="sha512-D1liES3uvDpPrgk7vXR/hR/sukGn7EtDWEyvpdLsyalQYq6v6YUsTUJmku7B4rcuQ21rf0UTksw2i/2Pdjbd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Bootstrap CSS-->
     <link href="/Dashboard_Css/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
@@ -28,23 +29,46 @@
     <link href="/Dashboard_Css/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <!-- Example using CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
     <!-- Main CSS-->
     <link href="/Dashboard_Css/css/theme.css" rel="stylesheet" media="all">
     <style type="text/css">
+        .overview__inner {
+            margin-top: -15px;
+        }
+
+        i.bi.bi-journal-medical {
+            font-size: 40px;
+        }
+
+        i.bi.bi-folder-symlink-fill {
+            font-size: 40px;
+        }
+
+        i.bi.bi-file-earmark-check {
+            font-size: 40px;
+        }
+
+        i.bi.bi-file-earmark-plus {
+            font-size: 40px;
+        }
+
         canvas#doughutChart {
-    height: 200px !important;
-    width:525px !important;
-}
+            height: 200px !important;
+            width: 525px !important;
+        }
+
         canvas#barChart {
-    height: 200px !important;
-}
+            height: 200px !important;
+        }
+
         .overview-box .text span {
-    font-size: 15px !important;
-    color: rgba(255, 255, 255, 0.6);
-}
+            font-size: 15px !important;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         .col-lg-6 {
             max-width: 47% !important;
         }
@@ -59,7 +83,7 @@
 
         h2 {
             font-size: 20px !important;
-            font-weight:700 !important;
+            font-weight: 700 !important;
         }
 
         .au-card.recent-report {
@@ -84,11 +108,131 @@
             margin-right: auto !important;
             margin-left: auto !important;
         }
+
         canvas#recent-rep-chart {
-    height: 160px !important;
-}
+            height: 160px !important;
+        }
+
         canvas#percent-chart {
-    height: 190px !important;
+            height: 190px !important;
+        }
+
+        .icon {
+            margin-top: -8px;
+        }
+
+        input#ContentPlaceHolder1_txtFirmName {
+            border: none;
+            background: #2d51fe;
+            color: white;
+            font-size: 15px;
+            padding: 0px;
+            margin-top: -13%;
+            margin-bottom: -15px;
+        }
+
+        input#ContentPlaceHolder1_TextBox1 {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 15px;
+            padding: 0px;
+            margin-top: -13%;
+            margin-bottom: -15px;
+        }
+
+        input#ContentPlaceHolder1_TextBox3 {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 15px;
+            padding: 0px;
+            margin-top: -13%;
+            margin-bottom: -15px;
+        }
+
+        input#ContentPlaceHolder1_TextBox4 {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 15px;
+            padding: 0px;
+            margin-top: -13%;
+            margin-bottom: -15px;
+        }
+
+        input#ContentPlaceHolder1_TextBox2 {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 15px;
+            padding: 0px;
+            margin-top: -13%;
+            margin-bottom: -15px;
+        }
+
+        input#ContentPlaceHolder1_TextBox5 {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 15px;
+            padding: 0px;
+            margin-top: -13%;
+            margin-bottom: -15px;
+        }
+        input#ContentPlaceHolder1_TextBox6 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox7 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox8 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox9 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox10 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
+}
+        input#ContentPlaceHolder1_TextBox11 {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin-top: -13%;
+    margin-bottom: -15px;
 }
     </style>
 </asp:Content>
@@ -113,11 +257,11 @@
                                 <div class="overview__inner">
                                     <div class="overview-box clearfix">
                                         <div class="icon">
-                                            <i class="zmdi zmdi-account-o"></i>
+                                            <i class="bi bi-file-earmark-plus"></i>
                                         </div>
                                         <div class="text">
                                             <h2>10368</h2>
-                                            <span>members online</span>
+                                            <span>Total Requests Recieved</span>
                                         </div>
                                     </div>
                                     <%--<div class="overview-chart">
@@ -131,11 +275,11 @@
                                 <div class="overview__inner">
                                     <div class="overview-box clearfix">
                                         <div class="icon">
-                                            <i class="zmdi zmdi-shopping-cart"></i>
+                                            <i class="bi bi-file-earmark-check"></i>
                                         </div>
                                         <div class="text">
                                             <h2>388,688</h2>
-                                            <span>items solid</span>
+                                            <span>Approved/Rejected</span>
                                         </div>
                                     </div>
                                     <%--<div class="overview-chart">
@@ -149,11 +293,11 @@
                                 <div class="overview__inner">
                                     <div class="overview-box clearfix">
                                         <div class="icon">
-                                            <i class="zmdi zmdi-calendar-note"></i>
+                                            <i class="bi bi-journal-medical"></i>
                                         </div>
                                         <div class="text">
                                             <h2>1,086</h2>
-                                            <span>this week</span>
+                                            <span>In Process</span>
                                         </div>
                                     </div>
                                     <%--<div class="overview-chart">
@@ -167,11 +311,11 @@
                                 <div class="overview__inner">
                                     <div class="overview-box clearfix">
                                         <div class="icon">
-                                            <i class="zmdi zmdi-money"></i>
+                                            <i class="bi bi-folder-symlink-fill"></i>
                                         </div>
                                         <div class="text">
                                             <h2>$1,060,386</h2>
-                                            <span>total earnings</span>
+                                            <span>Initiated</span>
                                         </div>
                                     </div>
                                     <%--<div class="overview-chart">
@@ -186,25 +330,25 @@
                     <div class="row" style="margin-left: 20px;">
 
                         <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Bar chart</h3>
-                                          <canvas id="myChart" width="400" height="200"></canvas>
-                                    </div>
+                            <div class="au-card m-b-30">
+                                <div class="au-card-inner">
+                                    <h3 class="title-2 m-b-40">Pending Status(division Wise)</h3>
+                                    <canvas id="myChart" width="400" height="200"></canvas>
                                 </div>
                             </div>
-                        <div class="col-lg-6" style="margin-left:30px !important;">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Doughut Chart</h3>
-                                        <canvas id="doughutChart"></canvas>
-                                    </div>
+                        </div>
+                        <div class="col-lg-6" style="margin-left: 30px !important;">
+                            <div class="au-card m-b-30">
+                                <div class="au-card-inner">
+                                    <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
+                                    <canvas id="doughutChart"></canvas>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    <div class="row" style="margin-top:-20px !important;">
+                    <div class="row" style="margin-top: -20px !important;">
                         <div class="col-lg-9">
-                            <h2 class="title-1 m-b-25">Earnings By Items</h2>
+                            <h2 class="title-1 m-b-25">Division Wise Report</h2>
                             <div class="table-responsive table--no-card m-b-40">
                                 <table class="table table-borderless table-striped table-earning">
                                     <thead>
@@ -287,43 +431,56 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <h2 class="title-1 m-b-25">Top countries</h2>
+                            <h2 class="title-1 m-b-25">Officers Pendency</h2>
                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
                                 <div class="au-card-inner">
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="overflow-y: hidden;">
                                         <table class="table table-top-countries">
                                             <tbody>
+
                                                 <tr>
-                                                    <td>United States</td>
-                                                    <td class="text-right">$119</td>
+                                                    <td>
+                                                        <h4 style="font-weight: 800;">Officer Id</h4>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h4 style="font-weight: 800;">Count</h4>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Australia</td>
-                                                    <td class="text-right">$70</td>
+                                                    <td>
+                                                        <asp:TextBox class="form-control" ID="txtFirmName" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+                                                    <td class="text-right">
+                                                        <asp:TextBox class="form-control" ID="TextBox6" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>United Kingdom</td>
-                                                    <td class="text-right">$46</td>
+                                                    <td>
+                                                        <asp:TextBox class="form-control" ID="TextBox1" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+                                                    <td class="text-right">
+                                                        <asp:TextBox class="form-control" ID="TextBox7" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Turkey</td>
-                                                    <td class="text-right">$35</td>
+                                                    <td>
+                                                        <asp:TextBox class="form-control" ID="TextBox3" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+                                                    <td class="text-right">
+                                                        <asp:TextBox class="form-control" ID="TextBox8" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Germany</td>
-                                                    <td class="text-right">$20</td>
+                                                    <td>
+                                                        <asp:TextBox class="form-control" ID="TextBox4" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+                                                    <td class="text-right">
+                                                        <asp:TextBox class="form-control" ID="TextBox9" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>France</td>
-                                                    <td class="text-right">$103</td>
+                                                    <td>
+                                                        <asp:TextBox class="form-control" ID="TextBox2" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+                                                    <td class="text-right">
+                                                        <asp:TextBox class="form-control" ID="TextBox10" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Australia</td>
-                                                    <td class="text-right">$5,366.96</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Italy</td>
-                                                    <td class="text-right">$1639.32</td>
+                                                    <td>
+                                                        <asp:TextBox class="form-control" ID="TextBox5" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
+                                                    <td class="text-right">
+                                                        <asp:TextBox class="form-control" ID="TextBox11" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></td>
                                                 </tr>
                                             </tbody>
                                         </table>
