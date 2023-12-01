@@ -31,6 +31,13 @@
     <!-- Main CSS-->
     <link href="/Dashboard_Css/css/theme.css" rel="stylesheet" media="all">
     <style type="text/css">
+        canvas#doughutChart {
+    height: 200px !important;
+    width:460px !important;
+}
+        canvas#barChart {
+    height: 200px !important;
+}
         .overview-box .text span {
     font-size: 15px !important;
     color: rgba(255, 255, 255, 0.6);
@@ -175,68 +182,24 @@
                 <div class="card" style="background: #f9f9f9; margin: 5px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 12px;">
                     <div class="row" style="margin-left: 20px;">
 
-                        <div class="col-lg-6" style="margin-right: 30px;">
-                            <div class="au-card recent-report">
-                                <div class="au-card-inner">
-                                    <h3 class="title-2">recent reports</h3>
-                                    <div class="chart-info">
-                                        <div class="chart-info__left">
-                                            <div class="chart-note">
-                                                <span class="dot dot--blue"></span>
-                                                <span>products</span>
-                                            </div>
-                                            <div class="chart-note mr-0">
-                                                <span class="dot dot--green"></span>
-                                                <span>services</span>
-                                            </div>
-                                        </div>
-                                        <div class="chart-info__right">
-                                            <div class="chart-statis">
-                                                <span class="index incre">
-                                                    <i class="zmdi zmdi-long-arrow-up"></i>25%</span>
-                                                <span class="label">products</span>
-                                            </div>
-                                            <div class="chart-statis mr-0">
-                                                <span class="index decre">
-                                                    <i class="zmdi zmdi-long-arrow-down"></i>10%</span>
-                                                <span class="label">services</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="recent-report__chart">
-                                        <canvas id="recent-rep-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-lg-6">
-                            <div class="au-card chart-percent-card">
-                                <div class="au-card-inner">
-                                    <h3 class="title-2 tm-b-5">char by %</h3>
-                                    <div class="row no-gutters">
-                                        <div class="col-xl-6">
-                                            <div class="chart-note-wrap">
-                                                <div class="chart-note mr-0 d-block">
-                                                    <span class="dot dot--blue"></span>
-                                                    <span>products</span>
-                                                </div>
-                                                <div class="chart-note mr-0 d-block">
-                                                    <span class="dot dot--red"></span>
-                                                    <span>services</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <div class="percent-chart">
-                                                <canvas id="percent-chart"></canvas>
-                                            </div>
-                                        </div>
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Bar chart</h3>
+                                        <canvas id="barChart"></canvas>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <div class="col-lg-6" style="margin-left:30px !important;">
+                                <div class="au-card m-b-30">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 m-b-40">Doughut Chart</h3>
+                                        <canvas id="doughutChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
-                    <div class="row" style="margin-top:-35px !important;">
+                    <div class="row" style="margin-top:-20px !important;">
                         <div class="col-lg-9">
                             <h2 class="title-1 m-b-25">Earnings By Items</h2>
                             <div class="table-responsive table--no-card m-b-40">
