@@ -27,6 +27,9 @@
     <link href="/Dashboard_Css/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- Example using CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Main CSS-->
     <link href="/Dashboard_Css/css/theme.css" rel="stylesheet" media="all">
@@ -186,7 +189,7 @@
                                 <div class="au-card m-b-30">
                                     <div class="au-card-inner">
                                         <h3 class="title-2 m-b-40">Bar chart</h3>
-                                        <canvas id="barChart"></canvas>
+                                          <canvas id="myChart" width="400" height="200"></canvas>
                                     </div>
                                 </div>
                             </div>
