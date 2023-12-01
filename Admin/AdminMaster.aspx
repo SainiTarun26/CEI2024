@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="AdminMaster.aspx.cs" Inherits="CEIHaryana.Admin.AdminMaster" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
@@ -82,7 +83,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <div class="content-wrapper">
+    <div class="content-wrapper">
         <%--<div class="main-content">--%>
         <div class="section__content section__content--p30">
             <div class="container-fluid">
@@ -388,4 +389,5 @@
 
     <!-- Main JS-->
     <script src="/Dashboard_Css/js/main.js"></script>
+
 </asp:Content>
