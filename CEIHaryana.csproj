@@ -156,6 +156,7 @@
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
+    <Content Include="Admin\RequestPendingDays.aspx" />
     <Content Include="Admin\RequestPendingDivision.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
@@ -1681,6 +1682,13 @@
     </Compile>
     <Compile Include="Admin\RegistrationDetailsSelected.aspx.designer.cs">
       <DependentUpon>RegistrationDetailsSelected.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RequestPendingDays.aspx.cs">
+      <DependentUpon>RequestPendingDays.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RequestPendingDays.aspx.designer.cs">
+      <DependentUpon>RequestPendingDays.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\RequestPendingDivision.aspx.cs">
       <DependentUpon>RequestPendingDivision.aspx</DependentUpon>
