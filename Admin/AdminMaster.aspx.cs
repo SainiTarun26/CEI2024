@@ -35,8 +35,8 @@ namespace CEIHaryana.Admin
                 DataTable dt = ds.Tables[0];
 
                 // Assuming dt has "Total" and "Inprogressorpending" columns
-                var categories = dt.AsEnumerable().Select(row => row.Field<int>("Total").ToString()).ToArray();
-                var valuesRecordCount = dt.AsEnumerable().Select(row => row.Field<int>("Total")).ToArray();
+                var categories = dt.AsEnumerable().Select(row => row.Field<int>("RecordCount").ToString()).ToArray();
+                var valuesRecordCount = dt.AsEnumerable().Select(row => row.Field<int>("RecordCount")).ToArray();
                 var valuesInitiated = dt.AsEnumerable().Select(row => row.Field<int>("Inprogressorpending")).ToArray();
 
                 // Duplicate the data 15 times
