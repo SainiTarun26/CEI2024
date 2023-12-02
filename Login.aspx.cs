@@ -27,7 +27,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Admin";
                         Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                        Response.Redirect("Admin/AddContractorDetails.aspx", false);
+                        Response.Redirect("Admin/AdminMaster.aspx", false);
                     }
                     else
                     {
@@ -37,7 +37,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Admin";
                         Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                        Response.Redirect("Admin/AddContractorDetails.aspx", false);
+                        Response.Redirect("Admin/AdminMaster.aspx", false);
                     }
 
                 }

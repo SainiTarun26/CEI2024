@@ -732,6 +732,8 @@ namespace CEIHaryana.TestReport
             Earthingtype10.Visible = false;
             Earthingtype11.Visible = false;
             Earthingtype12.Visible = false;
+            Earthingtype13.Visible = false;
+            Earthingtype14.Visible = false;
             Earthingtype15.Visible = false;
             if (ddlNoOfEarthing.SelectedValue.Trim() == "1")
             {

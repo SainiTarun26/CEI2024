@@ -54,17 +54,17 @@ namespace CEIHaryana.Admin
         labels: {Newtonsoft.Json.JsonConvert.SerializeObject(categories)},
         datasets: [
             {{
-                label: 'Total Record',
+                label: 'Pending',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesRecordCount)},
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(255, 99, 71, 0.8)',
+                borderColor: 'rgba(255, 99, 71, 1)',
                 borderWidth: 1
             }},
             {{
-                label: 'Pending',
+                label: 'Total Record',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesInitiated)},
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(60,179,113,0.8)',
+                borderColor: 'rgba(60,179,113,1)',
                 borderWidth: 1
             }}
         ]
@@ -118,8 +118,8 @@ namespace CEIHaryana.Admin
         datasets: [
             {{
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
-                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(255, 205, 86, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 205, 86, 1)', 'rgba(54, 162, 235, 1)'],
+                backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
+                borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
                 borderWidth: 1
             }}
         ]
