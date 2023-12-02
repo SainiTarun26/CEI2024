@@ -676,7 +676,7 @@
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                            
-                                 <asp:BoundField DataField="UserId" HeaderText="Staff UserId">
+                             <asp:BoundField DataField="UserId" HeaderText="Staff UserId">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>
