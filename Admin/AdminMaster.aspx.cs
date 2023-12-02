@@ -54,14 +54,14 @@ namespace CEIHaryana.Admin
         labels: {Newtonsoft.Json.JsonConvert.SerializeObject(categories)},
         datasets: [
             {{
-                label: 'Pending',
+                label: 'Total Record',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesRecordCount)},
                 backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 borderColor: 'rgba(255, 99, 71, 1)',
                 borderWidth: 1
             }},
             {{
-                label: 'Total Record',
+                label: 'Pending',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesInitiated)},
                 backgroundColor: 'rgba(60,179,113,0.8)',
                 borderColor: 'rgba(60,179,113,1)',
