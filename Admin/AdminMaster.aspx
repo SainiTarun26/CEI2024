@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
+    <meta name="author" content="Hau Nguyen">   
+    <meta name="keywords" content="CEI cei haryana">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title Page-->
     <title>Dashboard</title>
 
@@ -397,10 +398,69 @@
     margin-bottom: -15px;
 }
         .au-card.au-card--bg-blue.au-card-top-countries.m-b-40 {
-    height: 380px;
+    height: 280px;
 }
+   
      div#officers_table {
-    height: 335px;
+    height: 250px;
+    margin-top:-10px;
+}
+     ::-webkit-scrollbar {
+    display: none;
+}
+     h2.title-1.m-b-25 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+     input#ContentPlaceHolder1_TotalRequestRecieved{
+     border: none;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+    padding: 0px;
+    margin-top: -7%;
+    margin-bottom: -15px;
+    font-weight: 700;
+     }
+     input#ContentPlaceHolder1_Approved_rejected
+     {
+     border: none;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+    padding: 0px;
+    margin-top: -7%;
+    margin-bottom: -15px;
+    font-weight: 700;
+     }
+     input#ContentPlaceHolder1_In_process
+     {
+     border: none;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+    padding: 0px;
+    margin-top: -7%;
+    margin-bottom: -15px;
+    font-weight: 700;
+     }
+     input#ContentPlaceHolder1_Initiated
+     {
+     border: none;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+    padding: 0px;
+    margin-top: -7%;
+    margin-bottom: -15px;
+    font-weight: 700;
+     }
+     .title-2 {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+
 }
     </style>
 </asp:Content>
@@ -428,7 +488,11 @@
                                             <i class="bi bi-file-earmark-plus"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>10368</h2>
+                                          <h2>
+                                              <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox>
+
+                                          </h2>
+
                                             <span>Total Requests Recieved</span>
                                         </div>
                                     </div>
@@ -446,7 +510,8 @@
                                             <i class="bi bi-file-earmark-check"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>388,688</h2>
+                                           <h2><asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
+
                                             <span>Approved/Rejected</span>
                                         </div>
                                     </div>
@@ -464,7 +529,10 @@
                                             <i class="bi bi-journal-medical"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>1,086</h2>
+                                          <h2>
+                                              <asp:TextBox class="form-control" ID="In_process" runat="server" onkeydown="return preventEnterSubmit(event)" 
+                                                  autocomplete="off"></asp:TextBox></h2>
+
                                             <span>In Process</span>
                                         </div>
                                     </div>
@@ -482,7 +550,8 @@
                                             <i class="bi bi-folder-symlink-fill"></i>
                                         </div>
                                         <div class="text">
-                                            <h2>$1,060,386</h2>
+                                         <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
+                                        
                                             <span>Initiated</span>
                                         </div>
                                     </div>
@@ -509,7 +578,8 @@
                             <div class="au-card m-b-30">
                                 <div class="au-card-inner">
                                     <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
-                                    <canvas id="doughutChart"></canvas>
+                                 <canvas id="myDoughnutChart" width="400" height="400"></canvas>
+
                                 </div>
                             </div>
                         </div>
@@ -517,8 +587,9 @@
                     <div class="row" style="margin-top: -20px !important;">
                         <div class="col-lg-9">
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
-                            <div class="table-responsive table--no-card m-b-40">
-                                   <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                            <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);">
+                            <div>
+                                   <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
@@ -573,10 +644,12 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
                             </div>
+                                </div>
                         </div>
                         <div class="col-lg-3">
                             <h2 class="title-1 m-b-25">Officers Pendency</h2>
-                            <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
+                                                       <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);">
+                             
                                 <div class="au-card-inner">
                                     <div class="table-responsive" id="officers_table">
                                         <table class="table table-top-countries">
@@ -710,5 +783,6 @@
 
     <!-- Main JS-->
     <script src="/Dashboard_Css/js/main.js"></script>
-
+    
+    
 </asp:Content>
