@@ -518,84 +518,60 @@
                         <div class="col-lg-9">
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
                             <div class="table-responsive table--no-card m-b-40">
-                                <table class="table table-borderless table-striped table-earning">
-                                    <thead>
-                                        <tr>
-                                            <th>date</th>
-                                            <th>order ID</th>
-                                            <th>name</th>
-                                            <th class="text-right">price</th>
-                                            <th class="text-right">quantity</th>
-                                            <th class="text-right">total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>2018-09-29 05:57</td>
-                                            <td>100398</td>
-                                            <td>iPhone X 64Gb Grey</td>
-                                            <td class="text-right">$999.00</td>
-                                            <td class="text-right">1</td>
-                                            <td class="text-right">$999.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2018-09-28 01:22</td>
-                                            <td>100397</td>
-                                            <td>Samsung S8 Black</td>
-                                            <td class="text-right">$756.00</td>
-                                            <td class="text-right">1</td>
-                                            <td class="text-right">$756.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2018-09-27 02:12</td>
-                                            <td>100396</td>
-                                            <td>Game Console Controller</td>
-                                            <td class="text-right">$22.00</td>
-                                            <td class="text-right">2</td>
-                                            <td class="text-right">$44.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2018-09-26 23:06</td>
-                                            <td>100395</td>
-                                            <td>iPhone X 256Gb Black</td>
-                                            <td class="text-right">$1199.00</td>
-                                            <td class="text-right">1</td>
-                                            <td class="text-right">$1199.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2018-09-25 19:03</td>
-                                            <td>100393</td>
-                                            <td>USB 3.0 Cable</td>
-                                            <td class="text-right">$10.00</td>
-                                            <td class="text-right">3</td>
-                                            <td class="text-right">$30.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2018-09-29 05:57</td>
-                                            <td>100392</td>
-                                            <td>Smartwatch 4.0 LTE Wifi</td>
-                                            <td class="text-right">$199.00</td>
-                                            <td class="text-right">6</td>
-                                            <td class="text-right">$1494.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2018-09-24 19:10</td>
-                                            <td>100391</td>
-                                            <td>Camera C430W 4k</td>
-                                            <td class="text-right">$699.00</td>
-                                            <td class="text-right">1</td>
-                                            <td class="text-right">$699.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2018-09-22 00:43</td>
-                                            <td>100393</td>
-                                            <td>USB 3.0 Cable</td>
-                                            <td class="text-right">$10.00</td>
-                                            <td class="text-right">3</td>
-                                            <td class="text-right">$30.00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                   <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                        <PagerStyle CssClass="pagination-ys" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <HeaderStyle Width="34%" CssClass="headercolor" />
+                                <ItemStyle Width="34%" />
+                                <HeaderTemplate>
+                                   Division
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Division") %> ' CommandName="Select"><%#Eval("Division") %></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            <asp:BoundField DataField="RecordCount" HeaderText="Total Requests Received till date">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                                 <asp:BoundField DataField="Initiated" HeaderText="Initiated">
+                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                            </asp:BoundField>
+                                 <asp:BoundField DataField="InProgress" HeaderText="In Progress">
+                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ActionTaken" HeaderText="Action Taken">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+                       
+                        </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    </asp:GridView>
                             </div>
                         </div>
                         <div class="col-lg-3">
