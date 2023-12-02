@@ -648,7 +648,7 @@
                         </div>
                         <div class="col-lg-3">
                             <h2 class="title-1 m-b-25">Officers Pendency</h2>
-                                                       <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);">
+                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);">
                              
                                 <div class="au-card-inner">
                                     <div class="table-responsive" id="officers_table">
