@@ -41,19 +41,19 @@
         }
 
         i.bi.bi-journal-medical {
-            font-size: 40px;
+            font-size: 32px;
         }
 
         i.bi.bi-folder-symlink-fill {
-            font-size: 40px;
+            font-size: 32px;
         }
 
         i.bi.bi-file-earmark-check {
-            font-size: 40px;
+            font-size: 32px;
         }
 
         i.bi.bi-file-earmark-plus {
-            font-size: 40px;
+            font-size: 32px;
         }
 
         canvas#doughutChart {
@@ -473,17 +473,37 @@
      }
      canvas#myDoughnutChart {
     margin-top: -50px;
+    height:290px;
 }
      canvas#myChart {
     height: 240px !important;
 }
      th.headercolor {
     background: #1d4be3;
+    padding:9px;
 }
      .au-card.au-card--bg-blue.au-card-top-countries.m-b-40 {   
     background: white;
     padding: 10px;
 }
+    th.division-align {
+    text-align: left;
+}
+    th.staff-align {
+    text-align: left;
+}
+  <%--.overview-item.overview-item--c1 {
+    background-image: -webkit-linear-gradient(90deg, #3f5efb 0%, #93d2d2 100%);
+    background-image: -ms-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+}
+    .overview-item.overview-item--c2 {
+    background-image: -webkit-linear-gradient(90deg, #ffa2b6 0%, #e2c7cc 100%);
+    background-image: -ms-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+}
+    .overview-item.overview-item--c3 {
+    background-image: -webkit-linear-gradient(90deg, #ee0979 0%, #ffe6a9 100%);
+    background-image: -ms-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
+}--%>
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -500,7 +520,7 @@
                             </div>
                         </div>
                     </div>--%>
-                <div class="card" style="background: #f9f9f9; margin: 5px; margin-top: 10px; margin-bottom: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 2px 30px 5px 30px;">
+                <div class="card" style="background: #f9f9f9; margin: 15px; margin-top: 10px; margin-bottom: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 0px 24px 5px 25px;border-radius:10px;">
                     <div class="row m-t-25">
                         <div class="col-sm-6 col-lg-3">
                             <div class="overview-item overview-item--c1">
@@ -585,12 +605,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="card" style="background: #f9f9f9; margin: 5px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 12px;">
+                <div class="card" style="background: #f9f9f9; margin: 5px;border-radius:10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-top: 15px;margin:18px;">
                     <div class="row" style="margin-left: 4px;">
 
                         <div class="col-lg-6">
                             <div class="au-card m-b-30">
-                                <div class="au-card-inner">
+                                <div class="au-card-inner" style="text-align: -webkit-center !important;">
                                     <h3 class="title-2 m-b-40">Pending Status(division Wise)</h3>
                                     <canvas id="myChart" width="400" height="200"></canvas>
                                 </div>
@@ -598,7 +618,7 @@
                         </div>
                         <div class="col-lg-6" style="margin-left: 53px !important;">
                             <div class="au-card m-b-30">
-                                <div class="au-card-inner">
+                                <div class="au-card-inner" style="text-align: -webkit-center !important;">
                                     <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
                                  <canvas id="myDoughnutChart" width="400" height="322"></canvas>
 
@@ -607,7 +627,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: -20px !important;">
-                        <div class="col-lg-9">
+                        <div class="col-lg-8" style="margin-left:20px;">
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
                             <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); padding:10px;border-radius:10px;">
                             <div>
@@ -623,7 +643,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle Width="34%" CssClass="headercolor" />
+                                <HeaderStyle Width="34%" CssClass="headercolor division-align" />
                                 <ItemStyle Width="34%" />
                                 <HeaderTemplate>
                                    Division
@@ -638,8 +658,8 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             <asp:BoundField DataField="RecordCount" HeaderText="Total Requests Received till date">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Center" Width="15%" />
                             </asp:BoundField>
                                  <asp:BoundField DataField="Initiated" HeaderText="Initiated">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
@@ -668,9 +688,10 @@
                             </div>
                                 </div>
                         </div>
-                        <div class="col-lg-3">
-                            <h2 class="title-1 m-b-25">Officers Pendency</h2>
-                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);">
+
+                        <div class="col-lg-3" style="margin-left: 60px;">
+                            <h2 class="title-1 m-b-25" style="margin-left:-50px;">Officers Pendency</h2>
+                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);margin-left:-50px;">
                              
                                 <div class="au-card-inner">
                                     <div class="table-responsive" id="officers_table">
@@ -680,8 +701,8 @@
                         <Columns>
                            
                              <asp:BoundField DataField="UserId" HeaderText="Staff UserId">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                                <HeaderStyle HorizontalAlign="left" Width="13%" CssClass="headercolor staff-align" />
+                                <ItemStyle HorizontalAlign="left" Width="13%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Pending" HeaderText="Pending">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
