@@ -462,6 +462,19 @@
     line-height: 1;
 
 }
+     input#ContentPlaceHolder1_TextBox30{
+          border: none;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+    padding: 0px;
+    margin-top: -7%;
+    margin-bottom: -15px;
+    font-weight: 700;
+     }
+     canvas#myDoughnutChart {
+    margin-top: -50px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -578,7 +591,7 @@
                             <div class="au-card m-b-30">
                                 <div class="au-card-inner">
                                     <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
-                                 <canvas id="myDoughnutChart" width="400" height="400"></canvas>
+                                 <canvas id="myDoughnutChart" width="400" height="322"></canvas>
 
                                 </div>
                             </div>

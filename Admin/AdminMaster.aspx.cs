@@ -123,7 +123,6 @@ namespace CEIHaryana.Admin
         maintainAspectRatio: true, // Set to true to keep the aspect ratio of the chart
         title: {{
             display: true,
-            text: 'Doughnut Chart Example'
         }}
     }}
 }});
