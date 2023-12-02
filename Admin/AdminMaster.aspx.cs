@@ -22,6 +22,7 @@ namespace CEIHaryana.Admin
                     BindBarChart();
                     GridViewBind();
                     BindDoughnutChart();
+                    OfficersGridBind();
                 }
                 catch             
                 { 
@@ -92,8 +93,13 @@ namespace CEIHaryana.Admin
 
         private void BindDoughnutChart()
         {
-            DataSet ds = cei.DasboardPieChartCalculations();
 
+            DataSet ds = new DataSet();
+            ds = cei.DasboardPieChartCalculations();
+            TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["TotalCount"].ToString();
+            TextBox30.Text = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
+            In_process.Text = ds.Tables[0].Rows[0]["InprogressCount"].ToString();
+            Initiated.Text = ds.Tables[0].Rows[0]["InitiatedCount"].ToString();
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
@@ -130,12 +136,14 @@ namespace CEIHaryana.Admin
 
                 // Register the JavaScript code on the page
                 ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);
+
             }
             else
             {
                 // Handle the case when there is no data
                 // Display a message or take appropriate action
             }
+
         }
 
 
@@ -153,6 +161,23 @@ namespace CEIHaryana.Admin
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }  
+        private void OfficersGridBind()
+        {
+            DataSet ds = new DataSet();
+            ds = cei.StaffPendingRecordsCount();
+            if (ds.Tables.Count > 0)
+            {
+                OfficersGrid.DataSource = ds;
+                OfficersGrid.DataBind();
+            }
+            else
+            {
+                OfficersGrid.DataSource = null;
+                OfficersGrid.DataBind();
                 string script = "alert(\"No Record Found\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
