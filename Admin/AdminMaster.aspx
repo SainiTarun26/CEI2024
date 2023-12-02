@@ -398,16 +398,15 @@
     margin-bottom: -15px;
 }
         .au-card.au-card--bg-blue.au-card-top-countries.m-b-40 {
-    height: 280px;
+    height: 300px;
 }
    
      div#officers_table {
-    height: 250px;
-    margin-top:-10px;
+    height: 280px;
 }
-     ::-webkit-scrollbar {
+    <%-- ::-webkit-scrollbar {
     display: none;
-}
+}--%>
      h2.title-1.m-b-25 {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -476,10 +475,14 @@
     margin-top: -50px;
 }
      canvas#myChart {
-    height: 272px !important;
+    height: 240px !important;
 }
      th.headercolor {
     background: #1d4be3;
+}
+     .au-card.au-card--bg-blue.au-card-top-countries.m-b-40 {   
+    background: white;
+    padding: 10px;
 }
     </style>
 </asp:Content>
@@ -583,7 +586,7 @@
                     </div>
                 </div>
                 <div class="card" style="background: #f9f9f9; margin: 5px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 12px;">
-                    <div class="row" style="margin-left: 20px;">
+                    <div class="row" style="margin-left: 4px;">
 
                         <div class="col-lg-6">
                             <div class="au-card m-b-30">
@@ -593,7 +596,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6" style="margin-left: 30px !important;">
+                        <div class="col-lg-6" style="margin-left: 53px !important;">
                             <div class="au-card m-b-30">
                                 <div class="au-card-inner">
                                     <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
@@ -606,7 +609,7 @@
                     <div class="row" style="margin-top: -20px !important;">
                         <div class="col-lg-9">
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
-                            <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);">
+                            <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); padding:10px;border-radius:10px;">
                             <div>
                          <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
