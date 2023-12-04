@@ -405,7 +405,7 @@
 }
    
      div#officers_table {
-    height: 280px;
+    height: 300px;
 }
     <%-- ::-webkit-scrollbar {
     display: none;
@@ -680,11 +680,6 @@
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
                            
                             <div>
-                                <div class="row">
-                                    <div class="col-12" style="text-align:end;">
-                                        <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i>
-                                    </div>
-                                </div>
                          <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
@@ -865,10 +860,13 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
-                                <div class="row" style="text-align: center; margin-top: 10px;">
-                                            <div class="col-12">
-                                                <i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%>
-                                            </div>
+                                <div class="row" style="text-align: center; margin-top: 10px;margin-bottom:10px;">
+                                    <div class="col-6" style="text-align:end;">
+   <a href="#"> <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
+    </div>
+                                            <div class="col-6" style="text-align:left;margin-top: auto;">
+                                               <a href="#"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
+                                            </div>                                    
                                         </div>
                             </div>
                                
