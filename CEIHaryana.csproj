@@ -152,6 +152,7 @@
     <Content Include="Admin\AdminMaster.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
+    <Content Include="Admin\DistrictData.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
     <Content Include="Admin\Projects.aspx" />
@@ -1858,6 +1859,13 @@
     </Compile>
     <Compile Include="Admin\Consolidated_Report.aspx.designer.cs">
       <DependentUpon>Consolidated_Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DistrictData.aspx.cs">
+      <DependentUpon>DistrictData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DistrictData.aspx.designer.cs">
+      <DependentUpon>DistrictData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\IntimationForHistory.aspx.cs">
       <DependentUpon>IntimationForHistory.aspx</DependentUpon>
