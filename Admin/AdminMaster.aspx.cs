@@ -13,6 +13,8 @@ namespace CEIHaryana.Admin
     public partial class AdminMaster : System.Web.UI.Page
     {
         CEI cei = new CEI();
+        string Division = string.Empty;
+        string dated = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,8 +22,8 @@ namespace CEIHaryana.Admin
                 try
                 {
                     BindBarChart();
-                    GridViewBind();
                     BindDoughnutChart();
+                    GridViewBind();
                     OfficersGridBind();
                 }
                 catch             
@@ -56,15 +58,15 @@ namespace CEIHaryana.Admin
             {{
                 label: 'Total Record',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesRecordCount)},
-                backgroundColor: 'rgba(255, 99, 71, 0.8)',
-                borderColor: 'rgba(255, 99, 71, 1)',
+                backgroundColor: 'rgba(60,179,113,0.8)',
+                borderColor: 'rgba(60,179,113,1)',
                 borderWidth: 1
             }},
             {{
                 label: 'Pending',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesInitiated)},
-                backgroundColor: 'rgba(60,179,113,0.8)',
-                borderColor: 'rgba(60,179,113,1)',
+backgroundColor: 'rgba(255, 99, 71, 0.8)',
+                borderColor: 'rgba(255, 99, 71, 1)',
                 borderWidth: 1
             }}
         ]
@@ -195,8 +197,13 @@ namespace CEIHaryana.Admin
                     Session["Area"] = lblArea.Text.Trim();
                     if (e.CommandName == "Select")
                     {
-                        Response.Redirect("/Admin/RequestPendingDivision.aspx", false);
+                        GridView1.Visible = false;
+                        BindGridView();
+                        GridView2.Visible = true;
+                        
                     }
+                    BindBarChart();
+                    BindDoughnutChart();
                 }
             }
             catch { }
@@ -215,7 +222,107 @@ namespace CEIHaryana.Admin
             }
         }
 
+        private void BindGridView()
+        {
+            try
+            {
+                if (Convert.ToString(Session["Area"]) != null && Convert.ToString(Session["Area"]) != "")
+                {
+                    Division = Convert.ToString(Session["Area"]);
+                }
+                DataTable ds = new DataTable();
+                ds = cei.RequestPendingDivision(Division);
+                if (ds.Rows.Count > 0)
+                {
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    string script = "alert(\"No Data Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                //
+            }
+        }
 
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                //Session["Id"] = string.Empty;
+                string CreatedDate = string.Empty;
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
 
+                if (e.CommandName == "Select15Days")
+                {
+                    Session["Days"] = "15days";
+                }
+                else if (e.CommandName == "Select15to30Days")
+                {
+                    Session["Days"] = "15to30days";
+                }
+                else if (e.CommandName == "Select30to45Days")
+                {
+                    Session["Days"] = "30to45days";
+                }
+                else if (e.CommandName == "SelectMoreThan45Days")
+                {
+                    Session["Days"] = "Morethen45days";
+                }
+                GridView1.Visible = false;
+                GridView2.Visible = false;
+                BindDaysGridView();
+                GridView3.Visible = true;
+                BindBarChart();
+                BindDoughnutChart();
+
+            }
+            catch (Exception)
+            {
+
+                // throw;
+            }
+
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            BindGridView();
+        }
+
+        private void BindDaysGridView()
+        {
+            try
+            {
+                dated = Session["Days"].ToString();
+                Division = Convert.ToString(Session["Area"]);
+                DataTable ds = new DataTable();
+                ds = cei.RequestPendingDaysData(dated, Division);
+                if (ds.Rows.Count > 0)
+                {
+                    GridView3.DataSource = ds;
+                    GridView3.DataBind();
+                }
+                else
+                {
+                    string script = "alert(\"No Data Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView3.PageIndex = e.NewPageIndex;
+            BindGridView();
+        }
     }
 }

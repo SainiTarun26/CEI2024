@@ -152,14 +152,12 @@
     <Content Include="Admin\AdminMaster.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
-    <Content Include="Admin\ReportDashboard.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
     <Content Include="Admin\RequestPendingDays.aspx" />
-    <Content Include="Admin\RequestPendingDivision.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
@@ -1861,13 +1859,6 @@
     <Compile Include="Admin\Consolidated_Report.aspx.designer.cs">
       <DependentUpon>Consolidated_Report.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\ReportDashboard.aspx.cs">
-      <DependentUpon>ReportDashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\ReportDashboard.aspx.designer.cs">
-      <DependentUpon>ReportDashboard.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\IntimationForHistory.aspx.cs">
       <DependentUpon>IntimationForHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1909,13 +1900,6 @@
     </Compile>
     <Compile Include="Admin\RequestPendingDays.aspx.designer.cs">
       <DependentUpon>RequestPendingDays.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\RequestPendingDivision.aspx.cs">
-      <DependentUpon>RequestPendingDivision.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\RequestPendingDivision.aspx.designer.cs">
-      <DependentUpon>RequestPendingDivision.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StaffDetailsData.aspx.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>

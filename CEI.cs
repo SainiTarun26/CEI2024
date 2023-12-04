@@ -1539,14 +1539,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
 
-        public DataTable RequestPendingDivision()
+        public DataTable RequestPendingDivision(string Division)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRecordsAccordingToDays");
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRecordsAccordingToDays", Division);
         }
 
-        public DataTable RequestPendingDaysData(string dated)
+        public DataTable RequestPendingDaysData(string dated,string Division)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowRequestPendingDaysData", dated);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowRequestPendingDaysData", dated, Division);
         } 
         public DataSet DasboardCalculations()
         {

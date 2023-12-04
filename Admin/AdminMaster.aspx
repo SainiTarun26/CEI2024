@@ -68,6 +68,9 @@
         .overview-box .text span {
             font-size: 15px !important;
             color: rgba(255, 255, 255, 0.6);
+            MARGIN-LEFT: 60PX;
+            FONT-WEIGHT: 400;
+            COLOR: WHITE;
         }
 
         .col-lg-6 {
@@ -411,70 +414,77 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
-     input#ContentPlaceHolder1_TotalRequestRecieved{
-     border: none;
-    background: transparent;
-    color: white;
-    font-size: 13px;
-    padding: 0px;
-    margin-top: -7%;
-    margin-bottom: -15px;
-    font-weight: 700;
-     }
-     input#ContentPlaceHolder1_Approved_rejected
-     {
-     border: none;
-    background: transparent;
-    color: white;
-    font-size: 13px;
-    padding: 0px;
-    margin-top: -7%;
-    margin-bottom: -15px;
-    font-weight: 700;
-     }
-     input#ContentPlaceHolder1_In_process
-     {
-     border: none;
-    background: transparent;
-    color: white;
-    font-size: 13px;
-    padding: 0px;
-    margin-top: -7%;
-    margin-bottom: -15px;
-    font-weight: 700;
-     }
-     input#ContentPlaceHolder1_Initiated
-     {
-     border: none;
-    background: transparent;
-    color: white;
-    font-size: 13px;
-    padding: 0px;
-    margin-top: -7%;
-    margin-bottom: -15px;
-    font-weight: 700;
-     }
-     .title-2 {
-    text-transform: capitalize;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1;
+        input#ContentPlaceHolder1_TotalRequestRecieved {
+            TEXT-ALIGN: END;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            padding: 0px;
+            margin-top: -30%;
+            margin-bottom: -2px;
+            font-weight: 700;
+        }
 
-}
-     input#ContentPlaceHolder1_TextBox30{
-          border: none;
-    background: transparent;
-    color: white;
-    font-size: 13px;
-    padding: 0px;
-    margin-top: -7%;
-    margin-bottom: -15px;
-    font-weight: 700;
-     }
-     canvas#myDoughnutChart {
-    margin-top: -50px;
-    height:290px;
-}
+        input#ContentPlaceHolder1_Approved_rejected {
+            TEXT-ALIGN: END;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            padding: 0px;
+            margin-top: -30%;
+            margin-bottom: -2px;
+            font-weight: 700;
+        }
+
+        input#ContentPlaceHolder1_In_process {
+            TEXT-ALIGN: END;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            padding: 0px;
+            margin-top: -30%;
+            margin-bottom: -2px;
+            font-weight: 700;
+        }
+
+        input#ContentPlaceHolder1_Initiated {
+            TEXT-ALIGN: END;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            padding: 0px;
+            margin-top: -30%;
+            margin-bottom: -2px;
+            font-weight: 700;
+        }
+
+        .title-2 {
+            text-transform: capitalize;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        input#ContentPlaceHolder1_TextBox30 {
+            TEXT-ALIGN: END;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            padding: 0px;
+            margin-top: -30%;
+            margin-bottom: -2px;
+            font-weight: 700;
+        }
+
+        canvas#myDoughnutChart {
+            margin-top: -50px;
+            height: 290px;
+        }
      canvas#myChart {
     height: 240px !important;
 }
@@ -504,24 +514,38 @@
  .overview-item.overview-item--c4 {
     background: #ff826c;
 }
- h3.title-2.m-b-40 {
-    margin-top: -20px;
-    margin-bottom: 30px;
-    font-weight: 700;
-}
- a#ContentPlaceHolder1_HyperLink1 {
-    color: blue;
-    text-decoration-line: underline;
-    font-size: 17px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
- .bi-printer-fill::before {
-    content: "\f500";
-    color: blue !important;
-    font-size: 30px;
-    margin-right: 6px;
-}
+        h3.title-2.m-b-40 {
+            margin-top: -20px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        a#ContentPlaceHolder1_HyperLink1 {
+            color: blue;
+            text-decoration-line: underline;
+            font-size: 17px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        .bi-printer-fill::before {
+            content: "\f500";
+            color: blue !important;
+            font-size: 30px;
+            margin-right: 6px;
+        }
+
+        span#APPROVED {
+            MARGIN-LEFT: 95PX;
+        }
+
+        span#PROCESS {
+            margin-left: 68%;
+        }
+
+        span#INITIATED {
+            margin-left: 74%;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -538,6 +562,9 @@
                             </div>
                         </div>
                     </div>--%>
+                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
                 <div class="card" style="background: #f9f9f9; margin: 15px; margin-top: 10px; margin-bottom: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 0px 24px 5px 25px;border-radius:10px;">
                     <div class="row m-t-25">
                         <div class="col-sm-6 col-lg-3">
@@ -572,7 +599,7 @@
                                         <div class="text">
                                            <h2><asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
 
-                                            <span>Approved/Rejected</span>
+                                             <span id="APPROVED">Approved/Rejected</span>
                                         </div>
                                     </div>
                                     <%--<div class="overview-chart">
@@ -593,7 +620,8 @@
                                               <asp:TextBox class="form-control" ID="In_process" runat="server" onkeydown="return preventEnterSubmit(event)" 
                                                   autocomplete="off"></asp:TextBox></h2>
 
-                                            <span>In Process</span>
+                                           <span id="PROCESS">In Process</span>
+
                                         </div>
                                     </div>
                                     <%--<div class="overview-chart">
@@ -612,7 +640,8 @@
                                         <div class="text">
                                          <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
                                         
-                                            <span>Initiated</span>
+                                         <span id="INITIATED">Initiated</span>
+                     
                                         </div>
                                     </div>
                                     <%--<div class="overview-chart">
@@ -644,8 +673,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: -20px !important;">
-                        <div class="col-lg-8" style="margin-left:20px;">
+                   <div class="row" style="margin-top: -10px !important;">
+                  <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);margin-left:35px;border-radius:10px;">
+
+                        <div class="col-lg-12">
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
                             <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); padding:10px;border-radius:10px;">
                             <div>
@@ -703,6 +734,132 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
+                                <asp:GridView class="table-responsive table table-striped table-hover"  ID="GridView2" Visible="false"
+                                    OnRowCommand="GridView2_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10"
+                                    AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" 
+                            BorderWidth="1px" BorderColor="#dbddff">
+                           <PagerStyle CssClass="pagination-ys" />
+                            <Columns>
+                                      <asp:TemplateField HeaderText="Sr No">
+                                <HeaderStyle Width="5%"  />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField> 
+                              <%--   <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblCreatedDate15Days" runat="server" Text='<%#Eval("CreatedDate15Days") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="lbl15To30Days" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblCreatedDate15to30Days" runat="server" Text='<%#Eval("CreatedDate15to30Days") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblCreatedDate30to45Days" runat="server" Text='<%#Eval("CreatedDate30to45Days") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                 <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblCreatedDateMoreThan45Days" runat="server" Text='<%#Eval("CreatedDateMoreThan45Days") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="15 Days">
+                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
+                                    <ItemStyle Width="25%" />
+                                    <ItemTemplate>                                     
+                                        <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("15Days") %> ' CommandName="Select15Days"><%#Eval("15Days") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="1 Month">
+                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
+                                    <ItemStyle Width="25%" />
+                                    <ItemTemplate>                                    
+                                        <asp:LinkButton ID="LinkButton2" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("15to30Days") %> ' CommandName="Select15to30Days"><%#Eval("15to30Days") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="45 Days">
+                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
+                                    <ItemStyle Width="25%" />
+                                    <ItemTemplate>                                      
+                                        <asp:LinkButton ID="LinkButton3" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("30to45Days") %> ' CommandName="Select30to45Days"><%#Eval("30to45Days") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="More than 45 Days">
+                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
+                                    <ItemStyle Width="25%" />
+                                    <ItemTemplate>                                      
+                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>                              
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView3" Width="100%" AutoGenerateColumns="false"
+                            OnPageIndexChanging="GridView3_PageIndexChanging" AllowPaging="true" PageSize="20"
+                            runat="server" BorderWidth="1px" BorderColor="#dbddff">
+                            <PagerStyle CssClass="pagination-ys" />
+                            <Columns>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <HeaderStyle Width="34%" CssClass="headercolor" />
+                                    <ItemStyle Width="34%" />
+                                    <HeaderTemplate>
+                                        Application Request
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="DateOfSubmission" HeaderText="Date Of Application">
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Applied For">
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Id" HeaderText="Owner Application Number">
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AssignTo" HeaderText="Pending With">
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status Of Application">
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                </asp:BoundField>
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
                                 <div class="row" style="text-align: center; margin-top: 10px;">
                                             <div class="col-12">
                                                 <i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%>
@@ -711,9 +868,9 @@
                             </div>
                                 </div>
                         </div>
-
-                        <div class="col-lg-3" style="margin-left: 60px;">
-                            <h2 class="title-1 m-b-25" style="margin-left:-50px;">Officers Pendency</h2>
+                        <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);background: #604db8; width:27%;border-radius:10px;margin-left: 35px;">
+                        <div class="col-lg-12">
+                            <h2 class="title-1 m-b-25" style="color:white;">Officers Pendency</h2>
                              <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);margin-left:-50px;">
                              
                                 <div class="au-card-inner">
@@ -750,6 +907,8 @@
                         </div>
                     </div>
                 </div>
+                        </ContentTemplate>
+                 </asp:UpdatePanel>
             </div>
             <%-- </div>--%>
         </div>
