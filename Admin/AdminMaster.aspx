@@ -680,6 +680,11 @@
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
                            
                             <div>
+                                <div class="row">
+                                    <div class="col-12" style="text-align:end;">
+                                        <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i>
+                                    </div>
+                                </div>
                          <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
