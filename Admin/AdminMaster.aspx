@@ -492,18 +492,36 @@
     th.staff-align {
     text-align: left;
 }
-  <%--.overview-item.overview-item--c1 {
-    background-image: -webkit-linear-gradient(90deg, #3f5efb 0%, #93d2d2 100%);
-    background-image: -ms-linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
+.overview-item.overview-item--c1 {
+    background: #604db8;
 }
-    .overview-item.overview-item--c2 {
-    background-image: -webkit-linear-gradient(90deg, #ffa2b6 0%, #e2c7cc 100%);
-    background-image: -ms-linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+ .overview-item.overview-item--c2 {
+    background: #63c28d;
 }
-    .overview-item.overview-item--c3 {
-    background-image: -webkit-linear-gradient(90deg, #ee0979 0%, #ffe6a9 100%);
-    background-image: -ms-linear-gradient(90deg, #ee0979 0%, #ff6a00 100%);
-}--%>
+ .overview-item.overview-item--c3 {
+    background: #f13a94;
+}
+ .overview-item.overview-item--c4 {
+    background: #ff826c;
+}
+ h3.title-2.m-b-40 {
+    margin-top: -20px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+ a#ContentPlaceHolder1_HyperLink1 {
+    color: blue;
+    text-decoration-line: underline;
+    font-size: 17px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+ .bi-printer-fill::before {
+    content: "\f500";
+    color: blue !important;
+    font-size: 30px;
+    margin-right: 6px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -720,6 +738,11 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
+                                        <div class="row" style="text-align:center;margin-top:10px;">
+    <div class="col-12">
+        <i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%>
+        </div>
+</div>
                                     </div>
                                 </div>
                             </div>
