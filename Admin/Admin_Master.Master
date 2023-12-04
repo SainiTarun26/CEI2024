@@ -46,6 +46,13 @@
             zoom: 90%; /* Webkit browsers */
             zoom: 90%; /* Webkit browsers */
         }
+        .sidebar .nav .nav-item .nav-link i {
+    color: inherit;
+    font-size: 20px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    margin-right: 10px;
+}
     </style>
 </head>
 <body>
@@ -275,15 +282,15 @@
                                     <span class="menu-title">Dashboard</span>
                                 </a>
                             </li>
-                              <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/Admin/ReportDashboard.aspx">
-                                    <i class="icon-layout menu-icon"></i>
+                                    <i class="bi bi-journal-plus"></i>
                                     <span class="menu-title">PendingData</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                                    <i class="icon-layout menu-icon"></i>
+                                    <i class="bi bi-file-earmark-person-fill"></i>
                                     <span class="menu-title">Staff Details</span>
                                     <i class="menu-arrow"></i>
                                 </a>
@@ -297,7 +304,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                    <i class="icon-layout menu-icon"></i>
+                                    <i class="bi bi-journal-plus"></i>
                                     <span class="menu-title">Add Staff Details</span>
                                     <i class="menu-arrow"></i>
                                 </a>
@@ -311,7 +318,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-                                    <i class="icon-layout menu-icon"></i>
+                                    <i class="bi bi-file-earmark-break-fill"></i>
                                     <span class="menu-title">Print Forms</span>
                                     <i class="menu-arrow"></i>
                                 </a>
@@ -323,7 +330,7 @@
                                     </ul>
                                 </div>
                             </li>
-         <%--                   <li class="nav-item">
+                            <%--                   <li class="nav-item">
     <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
         <i class="icon-layout menu-icon"></i>
         <span class="menu-title">All Test Reports</span>
@@ -339,19 +346,19 @@
 </li>--%>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/Projects.aspx">
-                                    <i class="icon-layout menu-icon"></i>
+                                    <i class="bi bi-file-medical-fill"></i>
                                     <span class="menu-title">Work Intimations</span>
                                 </a>
                             </li>
-                                 <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/Admin/TestHistoryReport.aspx">
-                                    <i class="icon-layout menu-icon"></i>
+                                    <i class="bi bi-journal-bookmark-fill"></i>
                                     <span class="menu-title">Test Report History</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">
-                                    <i class="icon-layout menu-icon"></i>
+                                    <i class="bi bi-journal-bookmark"></i>
                                     <span class="menu-title">Inspection History</span>
                                 </a>
                             </li>
