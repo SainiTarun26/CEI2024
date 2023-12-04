@@ -546,6 +546,12 @@
         span#INITIATED {
             margin-left: 74%;
         }
+        table#ContentPlaceHolder1_GridView2 {
+    width: 775px !important;
+}
+        table#ContentPlaceHolder1_GridView3 {
+    width: 775px !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
