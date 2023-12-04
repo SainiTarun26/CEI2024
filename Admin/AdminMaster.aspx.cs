@@ -274,10 +274,11 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 {
                     Session["Days"] = "Morethen45days";
                 }
-                GridView1.Visible = false;
-                GridView2.Visible = false;
-                BindDaysGridView();
-                GridView3.Visible = true;
+                //GridView1.Visible = false;
+                //GridView2.Visible = false;
+                //BindDaysGridView();
+                //GridView3.Visible = true;
+                Response.Redirect("/Admin/DistrictData.aspx");
                 BindBarChart();
                 BindDoughnutChart();
 
@@ -296,33 +297,6 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             BindGridView();
         }
 
-        private void BindDaysGridView()
-        {
-            try
-            {
-                dated = Session["Days"].ToString();
-                Division = Convert.ToString(Session["Area"]);
-                DataTable ds = new DataTable();
-                ds = cei.RequestPendingDaysData(dated, Division);
-                if (ds.Rows.Count > 0)
-                {
-                    GridView3.DataSource = ds;
-                    GridView3.DataBind();
-                }
-                else
-                {
-                    string script = "alert(\"No Data Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView3.PageIndex = e.NewPageIndex;
-            BindGridView();
-        }
+      
     }
 }

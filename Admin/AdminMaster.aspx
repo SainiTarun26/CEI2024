@@ -774,21 +774,21 @@
                                         <asp:Label ID="lblCreatedDateMoreThan45Days" runat="server" Text='<%#Eval("CreatedDateMoreThan45Days") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>--%>
-                                <asp:TemplateField HeaderText="15 Days">
+                                <asp:TemplateField HeaderText="Less than 15 Days">
                                     <HeaderStyle Width="25%" CssClass="headercolor"  />
                                     <ItemStyle Width="25%" />
                                     <ItemTemplate>                                     
                                         <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("15Days") %> ' CommandName="Select15Days"><%#Eval("15Days") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="1 Month">
+                                <asp:TemplateField HeaderText="15 to 30 days">
                                     <HeaderStyle Width="25%" CssClass="headercolor"  />
                                     <ItemStyle Width="25%" />
                                     <ItemTemplate>                                    
                                         <asp:LinkButton ID="LinkButton2" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("15to30Days") %> ' CommandName="Select15to30Days"><%#Eval("15to30Days") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="45 Days">
+                                <asp:TemplateField HeaderText="30 to 45 Days">
                                     <HeaderStyle Width="25%" CssClass="headercolor"  />
                                     <ItemStyle Width="25%" />
                                     <ItemTemplate>                                      
@@ -813,59 +813,7 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
-                                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView3" Width="100%" AutoGenerateColumns="false"
-                            OnPageIndexChanging="GridView3_PageIndexChanging" AllowPaging="true" PageSize="20"
-                            runat="server" BorderWidth="1px" BorderColor="#dbddff">
-                            <PagerStyle CssClass="pagination-ys" />
-                            <Columns>
-                                <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
-                                    <ItemTemplate>
-                                        <%#Container.DataItemIndex+1 %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField>
-                                    <HeaderStyle Width="34%" CssClass="headercolor" />
-                                    <ItemStyle Width="34%" />
-                                    <HeaderTemplate>
-                                        Application Request
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="DateOfSubmission" HeaderText="Date Of Application">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Applied For">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Id" HeaderText="Owner Application Number">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="AssignTo" HeaderText="Pending With">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status Of Application">
-                                    <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>
-                            </Columns>
-                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                            <RowStyle ForeColor="#000066" />
-                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
+                                
                                 <div class="row" style="text-align: center; margin-top: 10px;margin-bottom:10px;">
                                     <div class="col-6" style="text-align:end;">
    <a href="#"> <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
