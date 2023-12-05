@@ -1759,6 +1759,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
+    <Content Include="Officers\OfficerDashboard.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
@@ -2020,6 +2021,13 @@
     </Compile>
     <Compile Include="Officers\InstallationIntimationDetails.aspx.designer.cs">
       <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\OfficerDashboard.aspx.cs">
+      <DependentUpon>OfficerDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\OfficerDashboard.aspx.designer.cs">
+      <DependentUpon>OfficerDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\Officers.Master.cs">
       <DependentUpon>Officers.Master</DependentUpon>
