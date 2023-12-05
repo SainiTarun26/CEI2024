@@ -162,6 +162,7 @@
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
+    <Content Include="Admin\ChallanReport.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="assetsnew\css\style.css" />
     <Content Include="assetsnew\css\style2.css" />
@@ -1929,6 +1930,13 @@
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ChallanReport.aspx.cs">
+      <DependentUpon>ChallanReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ChallanReport.aspx.designer.cs">
+      <DependentUpon>ChallanReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WorkIntimationDetail.aspx.cs">
       <DependentUpon>WorkIntimationDetail.aspx</DependentUpon>
