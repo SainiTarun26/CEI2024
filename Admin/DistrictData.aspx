@@ -165,6 +165,9 @@
        span.select2-dropdown.select2-dropdown--below {
            margin-top: 50px !important;
        }
+       .wrap-text {
+    white-space: normal !important;
+}
    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -178,7 +181,12 @@
                 </div>
                 <br />
                 <div class="col-md-4"></div>
-                <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;">
+                    <div class="card-body">
                     <div class="row">
                     <div class="col-12">
                   <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView3" Width="100%" AutoGenerateColumns="false"
@@ -195,17 +203,17 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="34%" CssClass="headercolor" />
-                                    <ItemStyle Width="34%" />
+                                    <ItemStyle Width="10"  wrap="true"/>
                                     <HeaderTemplate>
                                         Application Request
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server"  CssClass="wrap-text" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="DateOfSubmission" HeaderText="Date Of Application">
+                                <asp:BoundField DataField="DateOfSubmission" HeaderText="Application Date">
                                     <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                    <ItemStyle HorizontalAlign="center"  Width="13%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Applied For">
                                     <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
@@ -219,7 +227,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status Of Application">
+                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Application Status">
                                     <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>
@@ -236,14 +244,20 @@
                         </asp:GridView>
                         </div> 
                         </div>
-                    <div class="row" style="text-align: center; margin-top: 10px;margin-bottom:10px;">
-                                 <div class="col-6" style="text-align:end;">
-<a href="#"> <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
- </div>
-                                         <div class="col-6" style="text-align:left;margin-top: auto;">
-                                            <a href="#"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
-                                         </div>                                    
-                                     </div>
+                        </div>
+                    
+                    <div class="row" style="margin-bottom:20px;">
+    <div class="col-4"></div>
+    <div class="col-4" style="text-align: center;">
+        <asp:Button ID="BtnReset" Text="Submits" runat="server" class="btn btn-primary mr-2"
+            Style="padding-left: 17px; padding-right: 17px;" />
+        <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
+Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
+    </div>
+    <div class="col-4">
+        <asp:HiddenField ID="hdnId" runat="server" />
+    </div>
+</div>   
                     </div>
             </div>
         </div>

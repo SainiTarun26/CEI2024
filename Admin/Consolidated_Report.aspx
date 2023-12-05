@@ -95,6 +95,10 @@
   </script>--%>
 
     <style>
+       .example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
         .col-4 {
             top: 0px;
             left: 0px;
@@ -165,6 +169,13 @@
         span.select2-dropdown.select2-dropdown--below {
             margin-top: 50px !important;
         }
+        table.table.table-responsive.table-striped.table-hover {
+    margin-bottom: 0px;
+}
+        th#request {
+    color: blue;
+    text-decoration: underline;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -262,27 +273,25 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
                     <div class="card">
-                        <table class="table">
-  <thead class="thead-dark">
+                        <table class="table table-responsive table-striped table-hover table-bordered example">
+  <thead style="background:#604db8;color:white;">
     <tr>
-      <th scope="col">All Application request ( Haryana)</th>
-      <th scope="col">Date of application</th>
+      <th scope="col" style="width:1%;">All Application request</th>
+      <th scope="col" style="text-align:center;">Application Date</th>
       <th scope="col">Installation applied for</th>
-      <th scope="col">Owner application Number </th>
-      <th scope="col">Status of application</th>
-      <th scope="col">Pending with
-(Only in case of pending Status)
- </th>
+      <th scope="col" style="text-align:center;">Owner application Number </th>
+      <th scope="col"> Application Status</th>
+      <th scope="col">Pending with</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Rewari-Line-Substation-GeneratingSet</th>
-      <td>28-06-2001</td>
+      <th scope="row" id="request">Rewari-Line-Substation-GeneratingSet</th>
+      <td style="text-align:center;">28-06-2001</td>
       <td>Line</td>
-      <td>100001</td>
+      <td style="text-align:center;">100001</td>
       <td>Pending</td>
-      <td>JE_GU-I</td>
+      <td>JE_GURUGRAM-I</td>
     </tr>
   </tbody>
 </table>

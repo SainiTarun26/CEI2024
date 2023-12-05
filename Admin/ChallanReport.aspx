@@ -184,23 +184,25 @@
                 </div>
                <%-- <h7 class="card-title fw-semibold mb-4">Personal Details</h7>--%>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
-                    <div class="row" style="margin-top:15px;">
-                        <div class="col-4">
+                    <div class="row" style="margin-top:15px; margin-bottom:15PX !important;">
+                        <div class="col-6">
                             <label>
                                 Inspection Request details   
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlState" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                         </div>
-                        <div class="col-4">
+                       
+                   
+                        <div class="col-6">
                             <label>
                                 Upload Challan
                             </label>
                             
                             <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
                         </div>
-                        
-                    </div>
+                       </div>
+                    
                 </div>
                 <div class="row" style="margin-top:15px;">
                     <div class="col-4"></div>
