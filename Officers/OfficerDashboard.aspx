@@ -59,7 +59,7 @@
         .overview-box .text span {
             font-size: 15px !important;
             color: rgba(255, 255, 255, 0.6);
-            MARGIN-LEFT: 60PX;
+            MARGIN-LEFT: 24PX;
             FONT-WEIGHT: 400;
             COLOR: WHITE;
         }
@@ -526,15 +526,15 @@
         }
 
         span#APPROVED {
-            MARGIN-LEFT: 95PX;
+            MARGIN-LEFT: 65PX;
         }
 
         span#PROCESS {
-            margin-left: 68%;
+            margin-left: 63%;
         }
 
         span#INITIATED {
-            margin-left: 74%;
+            margin-left: 70%;
         }
         table#ContentPlaceHolder1_GridView2 {
     width: 775px !important;
