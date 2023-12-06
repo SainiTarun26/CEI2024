@@ -582,7 +582,7 @@
                                         </div>
                                         <div class="text">
                                           <h2>
-                                              <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox>
+                                              <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" readonly="true"></asp:TextBox>
 
                                           </h2>
 
@@ -603,7 +603,7 @@
                                             <i class="bi bi-file-earmark-check"></i>
                                         </div>
                                         <div class="text">
-                                           <h2><asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
+                                           <h2><asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"  readonly="true"></asp:TextBox></h2>
 
                                              <span id="APPROVED">Approved/Rejected</span>
                                         </div>
@@ -624,7 +624,7 @@
                                         <div class="text">
                                           <h2>
                                               <asp:TextBox class="form-control" ID="In_process" runat="server" onkeydown="return preventEnterSubmit(event)" 
-                                                  autocomplete="off"></asp:TextBox></h2>
+                                                  autocomplete="off"  readonly="true"></asp:TextBox></h2>
 
                                            <span id="PROCESS">In Process</span>
 
@@ -644,7 +644,7 @@
                                             <i class="bi bi-folder-symlink-fill"></i>
                                         </div>
                                         <div class="text">
-                                         <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
+                                         <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" readonly="true" ></asp:TextBox></h2>
                                         
                                          <span id="INITIATED">Initiated</span>
                      
@@ -822,7 +822,7 @@
                                     <div class="col-6" id="Back" runat="server" visible="false" style="text-align: end;">
                                         <a href="/Admin/AdminMaster.aspx"><i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
                                     </div>
-                                    <div class="col-6"  id="PrintableDivision" runat="server" style="text-align: left; margin-top: auto;">
+                                    <div class="col-6"  id="PrintableDivision" runat="server" style="text-align: end; margin-top: auto;">
                                          <a href="#" id="btnPrint" onclick="printDiv('printableDiv');"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
                                     </div>
                                     <div class="col-6" id="PrintableDistrict" runat="server" visible="false" style="text-align: left; margin-top: auto;">
