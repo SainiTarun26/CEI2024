@@ -49,5 +49,43 @@ namespace CEIHaryana.Admin
             GridView3.PageIndex = e.NewPageIndex;
             //BindGridView();
         }
+
+        protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                Session["InspectionId"] = lblID.Text;
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval"] = lblApproval.Text.Trim();
+                Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                string installationType = lblInstallationType.Text.Trim();
+                Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
+                string TestRportId = lblTestRportId.Text.Trim();
+                if (installationType.Trim() == "Line")
+                {
+                    Session["LineID"] = installationType;
+                }
+                else if (installationType.Trim() == "Substation Transformer")
+                {
+                    Session["SubStationID"] = TestRportId;
+                }
+                else if (installationType.Trim() == "Generating Station")
+                {
+                    Session["GeneratingSetId"] = TestRportId;
+                }
+
+                if (e.CommandName == "Select")
+                {
+                    Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
     }
 }

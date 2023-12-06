@@ -375,30 +375,53 @@
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report"></asp:LinkButton>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4" id="ApprovalRequired" runat="server" visible="false">
+           <div class="row">
+                <div class="col-4" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -50px;">
                     <br />
                     <br />
-                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;">
+                    <label>
+                        Approval
+                        <samp style="color: red">* </samp>
+                    </label>
+                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Accepted" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
-                <div class="col-4"></div>
+               
                 <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
                         Reason For Rejection<samp style="color: red"> * </samp>
                     </label>
-                    <asp:TextBox ID="MultiLine" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <asp:TextBox ID="txtRejected" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4" style="text-align: center;">
-                   <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+            <div class="row" style="margin-bottom: 25px; margin-top:-45px;">
+                <div class="col-4" id="DivToAssign" runat="server" visible="false">
+                    <br />
+                    <br />  
+                    <label>To Assign Staff</label>
+                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlToAssign" selectionmode="Multiple" Style="width: 100% !important;">
+                    </asp:DropDownList>
+                </div>
+               
+                <div class="col-4" style="text-align: center;margin-top:45px;" id="DivAdditionalNote" runat="server" visible="false" >
+                    <label>Additional Note</label>
+                    <asp:TextBox ID="txtAdditionalNote" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-5" style="text-align: end;">
+                    <asp:Button ID="btnAction" Text="Take Action" runat="server" class="btn btn-primary mr-2" OnClick="btnAction_Click" />
+                </div>
+                <div class="col-2" style="text-align: center;">
+                    <asp:Button ID="btnUpdate" Text="Update" runat="server" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
+                </div>
+                <div class="col-5" style="text-align: left;">
+                    <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>
             </div>
         </div>

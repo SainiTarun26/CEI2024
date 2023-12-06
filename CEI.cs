@@ -1560,5 +1560,34 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffPendingRecordsCount");
         }
+
+        public DataSet DdlToAssign()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToAssign");
+        }
+        #region Update Inspection Data For Action
+        public void UpdateInspectionDataOnAction(string ID, string AcceptedOrRejected, string ReasonForRejection, string AssignTo, string AdditionalNotes)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdateAction");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrRejected);
+
+            cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.Parameters.AddWithValue("@Staff", AssignTo);
+            cmd.Parameters.AddWithValue("@AdditionalNotes", AdditionalNotes);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
     }
 }

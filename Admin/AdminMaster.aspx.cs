@@ -158,6 +158,7 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
+
             }
             else
             {
@@ -204,6 +205,9 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                     }
                     BindBarChart();
                     BindDoughnutChart();
+                    Back.Visible = true;
+                    PrintableDistrict.Visible = true;
+                    PrintableDivision.Visible = false;
                 }
             }
             catch { }

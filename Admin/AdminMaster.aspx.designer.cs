@@ -87,6 +87,33 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
+        /// Back control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Back;
+
+        /// <summary>
+        /// PrintableDivision control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PrintableDivision;
+
+        /// <summary>
+        /// PrintableDistrict control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PrintableDistrict;
+
+        /// <summary>
         /// OfficersGrid control.
         /// </summary>
         /// <remarks>

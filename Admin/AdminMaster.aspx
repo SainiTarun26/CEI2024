@@ -16,8 +16,8 @@
     <link href="/Dashboard_Css/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css" integrity="sha512-D1liES3uvDpPrgk7vXR/hR/sukGn7EtDWEyvpdLsyalQYq6v6YUsTUJmku7B4rcuQ21rf0UTksw2i/2Pdjbd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css"/>
     <!-- Bootstrap CSS-->
     <link href="/Dashboard_Css/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
@@ -686,6 +686,7 @@
                             <h2 class="title-1 m-b-25">Division Wise Report</h2>
                            
                             <div>
+                                <div id="printableDiv">
                          <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
@@ -740,6 +741,8 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
+                                    </div>
+                                <div id="printableDiv2">
                                 <asp:GridView class="table-responsive table table-striped table-hover"  ID="GridView2" Visible="false"
                                     OnRowCommand="GridView2_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10"
                                     AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" 
@@ -782,90 +785,92 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="15 to 30 days">
-                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
+                                    <HeaderStyle Width="25%" CssClass="headercolor" />
                                     <ItemStyle Width="25%" />
-                                    <ItemTemplate>                                    
-                                        <asp:LinkButton ID="LinkButton2" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("15to30Days") %> ' CommandName="Select15to30Days"><%#Eval("15to30Days") %></asp:LinkButton>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton2" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("15to30Days") %> ' CommandName="Select15to30Days"><%#Eval("15to30Days") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="30 to 45 Days">
-                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
+                                    <HeaderStyle Width="25%" CssClass="headercolor" />
                                     <ItemStyle Width="25%" />
-                                    <ItemTemplate>                                      
-                                        <asp:LinkButton ID="LinkButton3" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("30to45Days") %> ' CommandName="Select30to45Days"><%#Eval("30to45Days") %></asp:LinkButton>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton3" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("30to45Days") %> ' CommandName="Select30to45Days"><%#Eval("30to45Days") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="More than 45 Days">
-                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
+                                    <HeaderStyle Width="25%" CssClass="headercolor" />
                                     <ItemStyle Width="25%" />
-                                    <ItemTemplate>                                      
-                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
                                     </ItemTemplate>
-                                </asp:TemplateField>                              
+                                </asp:TemplateField>
                             </Columns>
-                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                            <RowStyle ForeColor="#000066" />
-                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
-                                
-                                <div class="row" style="text-align: center; margin-top: 10px;margin-bottom:10px;">
-                                    <div class="col-6" style="text-align:end;">
-   <a href="#"> <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
-    </div>
-                                            <div class="col-6" style="text-align:left;margin-top: auto;">
-                                               <a href="#"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
-                                            </div>                                    
-                                        </div>
-                            </div>
-                               
-                        </div>
-                      </div>
-                        <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);background: #604db8; width:27%;border-radius:10px;margin-left: 35px;">
-                        <div class="col-lg-10">
-                            <h2 class="title-1 m-b-25" style="color:white;">Officers Pendency</h2>
-                             <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);margin-left: 0px;
-    margin-right: -50px;">
-                                <div class="au-card-inner">
-                                    <div class="table-responsive" id="officers_table">
-                                        <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="OfficersGrid" runat="server" Width="100%" AllowPaging="true" PageSize="20"
-                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                           
-                             <asp:BoundField DataField="UserId" HeaderText="Staff UserId">
-                                <HeaderStyle HorizontalAlign="left" Width="13%" CssClass="headercolor staff-align" />
-                                <ItemStyle HorizontalAlign="left" Width="13%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Pending" HeaderText="Pending">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
-                       
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                        </asp:GridView>
-                                        
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                    <RowStyle ForeColor="#000066" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                </asp:GridView>
+                                    </div>
+
+                                <div class="row" style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+                                    <div class="col-6" id="Back" runat="server" visible="false" style="text-align: end;">
+                                        <a href="/Admin/AdminMaster.aspx"><i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
+                                    </div>
+                                    <div class="col-6"  id="PrintableDivision" runat="server" style="text-align: left; margin-top: auto;">
+                                         <a href="#" id="btnPrint" onclick="printDiv('printableDiv');"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
+                                    </div>
+                                    <div class="col-6" id="PrintableDistrict" runat="server" visible="false" style="text-align: left; margin-top: auto;">
+                                         <a href="#" id="btnPrintDistrict" onclick="printDiv2('printableDiv2');"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
                                     </div>
                                 </div>
-                             </div>
+                            </div>
+
                         </div>
-                    </div>
-                
-                        </ContentTemplate>
+                  </div>
+                       <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 27%; border-radius: 10px; margin-left: 35px;">
+                           <div class="col-lg-10">
+                               <h2 class="title-1 m-b-25" style="color: white;">Officers Pendency</h2>
+                               <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
+                                   <div class="au-card-inner">
+                                       <div class="table-responsive" id="officers_table">
+                                           <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="OfficersGrid" runat="server" Width="100%" AllowPaging="true" PageSize="20"
+                                               AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                               <PagerStyle CssClass="pagination-ys" />
+                                               <Columns>
+
+                                                   <asp:BoundField DataField="UserId" HeaderText="Staff UserId">
+                                                       <HeaderStyle HorizontalAlign="left" Width="13%" CssClass="headercolor staff-align" />
+                                                       <ItemStyle HorizontalAlign="left" Width="13%" />
+                                                   </asp:BoundField>
+                                                   <asp:BoundField DataField="Pending" HeaderText="Pending">
+                                                       <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                       <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                   </asp:BoundField>
+
+                                               </Columns>
+                                               <FooterStyle BackColor="White" ForeColor="#000066" />
+                                               <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                               <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                               <RowStyle ForeColor="#000066" />
+                                               <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                               <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                               <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                               <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                               <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                           </asp:GridView>
+
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                    </ContentTemplate>
                  </asp:UpdatePanel>
             </div>
             <%-- </div>--%>
@@ -890,5 +895,30 @@
     <!-- Main JS-->
     <script src="/Dashboard_Css/js/main.js"></script>
     
-    
+    <script>
+
+      function printDiv(printableDiv) {
+          var printContents = document.getElementById(printableDiv).innerHTML;
+          var originalContents = document.body.innerHTML;
+
+          document.body.innerHTML = printContents;
+
+          window.print();
+
+          document.body.innerHTML = originalContents;
+      }
+  </script>  
+    <script>
+
+      function printDiv2(printableDiv2) {
+          var printContents = document.getElementById(printableDiv2).innerHTML;
+          var originalContents = document.body.innerHTML;
+
+          document.body.innerHTML = printContents;
+
+          window.print();
+
+          document.body.innerHTML = originalContents;
+      }
+  </script>
 </asp:Content>

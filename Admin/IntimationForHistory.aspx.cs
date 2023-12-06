@@ -37,6 +37,7 @@ namespace CEIHaryana.Admin
                     }
                     GetDetailsWithId();
                     Visibilty();
+                    BindDropDownToAssign();
                 }
             }
             catch
@@ -666,6 +667,79 @@ namespace CEIHaryana.Admin
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx");
+        }
+        //protected void btnBack_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx");
+        //}
+
+        protected void btnAction_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ApprovalRequired.Visible = true;
+                DivToAssign.Visible = true;
+                DivAdditionalNote.Visible = true;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+        protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlReview.SelectedValue == "2")
+            {
+                Rejection.Visible = true;
+            }
+            else
+            {
+                Rejection.Visible = false;
+            }
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                CEI.UpdateInspectionDataOnAction(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, ddlToAssign.SelectedItem.ToString(), txtAdditionalNote.Text);
+
+
+                ddlReview.SelectedIndex = 0;
+                txtRejected.Text = string.Empty;
+                ddlToAssign.SelectedIndex = 0;
+                txtAdditionalNote.Text = string.Empty;
+
+                string script = "alert('Data updated successfully.');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+        private void BindDropDownToAssign()
+        {
+            try
+            {
+                DataSet dsAssign = new DataSet();
+                dsAssign = CEI.DdlToAssign();
+                ddlToAssign.DataSource = dsAssign;
+                ddlToAssign.DataTextField = "StaffUserId";
+                ddlToAssign.DataValueField = "Id";
+                ddlToAssign.DataBind();
+                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
+
+                Rejection.Visible = ddlReview.SelectedValue == "2";
+                dsAssign.Clear();
+            }
+            catch (Exception)
+            {
+                //msg.Text = ex.Message;
+            }
         }
     }
 }
