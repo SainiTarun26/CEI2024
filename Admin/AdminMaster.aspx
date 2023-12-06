@@ -756,27 +756,10 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField> 
-                              <%--   <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblCreatedDate15Days" runat="server" Text='<%#Eval("CreatedDate15Days") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-
-                                <asp:TemplateField HeaderText="lbl15To30Days" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblCreatedDate15to30Days" runat="server" Text='<%#Eval("CreatedDate15to30Days") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblCreatedDate30to45Days" runat="server" Text='<%#Eval("CreatedDate30to45Days") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblCreatedDateMoreThan45Days" runat="server" Text='<%#Eval("CreatedDateMoreThan45Days") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
+                               <asp:BoundField DataField="DistrictofData" HeaderText="District">
+                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                            </asp:BoundField>
                                 <asp:TemplateField HeaderText="Less than 15 Days">
                                     <HeaderStyle Width="25%" CssClass="headercolor"  />
                                     <ItemStyle Width="25%" />

@@ -106,8 +106,8 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             {
                 DataTable dt = ds.Tables[0];
 
-                // Assuming the columns are named as specified in your stored procedure
-                var labels = new[] { "InitiatedCount", "InprogressCount", "AcceptedCount", "RejectedCount" };
+                var labelsValues = new[] { "Initiated", "Inprogress", "Accepted", "Rejected" };
+                var labels = new[] { "Percentage_Initiated", "Percentage_Inprogress", "Percentage_Accepted", "Percentage_Rejected" };
 
                 // Extract values from the DataTable
                 var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
@@ -116,7 +116,7 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');var myDoughnutChart = new Chart(ctx, {{
     type: 'doughnut',
     data: {{
-        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labels)},
+        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
         datasets: [
             {{
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
@@ -133,6 +133,7 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             display: true,
         }}
     }}
+
 }});
 ";
 

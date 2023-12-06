@@ -1589,5 +1589,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
+
+        public DataSet DivisionsDistrictHistory(string loginid)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DivisionDistrictsHistory", loginid);
+        }
     }
 }

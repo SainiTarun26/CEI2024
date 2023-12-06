@@ -207,7 +207,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Staff";
                         Response.Cookies["StaffID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                        Response.Redirect("Officers/InstallationIntimationDetails.aspx", false);
+                        Response.Redirect("Officers/OfficerDashboard.aspx", false);
                     }
                     else
                     {
@@ -217,7 +217,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Staff";
                         Response.Cookies["StaffID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                        Response.Redirect("Officers/InstallationIntimationDetails.aspx", false);
+                        Response.Redirect("Officers/OfficerDashboard.aspx", false);
                     }
                 }
 
