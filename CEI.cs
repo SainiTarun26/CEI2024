@@ -1134,6 +1134,26 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        #endregion  
+        #region Update Inspection PendingPayment Data
+        public void updateInspectionPending(string ID, string TransactionId, string TransctionDate, string ChallanAttachment)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdateInspectionPaymentHistory");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID ", ID);
+            cmd.Parameters.AddWithValue("@TransactionId ", TransactionId);
+            cmd.Parameters.AddWithValue("@TransctionDate ", TransctionDate);
+            cmd.Parameters.AddWithValue("@ChallanAttachment", ChallanAttachment);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
         #endregion
         public string GenerateUniqueID()
         {
@@ -1461,11 +1481,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerNotifiction", ID);
         }
-        public DataSet GetPaymentInformation(string Id)
+        public DataSet GetPaymentInformation(string Id,string IntimationId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_paymentCalculation", Id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_paymentCalculation", Id, IntimationId);
         }
-        public string GetTotalPaymentInformation(string Id)
+        public string GetTotalPaymentInformation(string Id, string IntimationId)
         {
             SqlCommand cmd = new SqlCommand("sp_TotalPayment");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1478,6 +1498,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ID", Id);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             outputParam = new SqlParameter("@TotalPayment", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
@@ -1611,6 +1632,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet DivisionInspectionHistory(string LoginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DivisionRequestHistory", LoginId);
+        }
+        public DataTable SiteOwnerPendingPayment(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PendingInspectionPaymentData", SiteOwnerId);
         }
     }
 }

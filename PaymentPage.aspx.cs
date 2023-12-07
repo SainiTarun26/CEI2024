@@ -12,6 +12,9 @@ namespace CEIHaryana
     public partial class PaymentPage : System.Web.UI.Page
     {
         CEI cei = new CEI();
+        string LoginId = string.Empty;
+        string IntimationId = string.Empty;
+        string id = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -19,6 +22,17 @@ namespace CEIHaryana
                 if (!IsPostBack)
                 {
                     GridViewBind();
+                    if(txtPayment.Text == "0")
+                    {
+                        btnFinalSubmit.Visible = true;
+                        btnSubmit.Visible = false;
+                        ChallanUpload.Visible = false;
+
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
             catch
@@ -28,10 +42,11 @@ namespace CEIHaryana
         }
         protected void GridViewBind()
         {
-            string LoginId = string.Empty;
-            LoginId = Session["SiteOwnerId"].ToString(); 
+            
+            LoginId = Session["SiteOwnerId"].ToString();
+            IntimationId = Session["PendingIntimations"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.GetPaymentInformation(LoginId);
+            ds = cei.GetPaymentInformation(LoginId, IntimationId);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -44,7 +59,7 @@ namespace CEIHaryana
                 ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
             }
             ds.Dispose();
-          string TotalPayment = cei.GetTotalPaymentInformation(LoginId);
+          string TotalPayment = cei.GetTotalPaymentInformation(LoginId, IntimationId);
             txtPayment.Text = TotalPayment;
         }
 
@@ -71,6 +86,15 @@ namespace CEIHaryana
         protected void ChallanUpload_Click(object sender, EventArgs e)
         {
             Response.Redirect("/SiteOwnerPages/ChallanReport.aspx");
+        }
+
+        protected void btnFinalSubmit_Click(object sender, EventArgs e)
+        {
+            id = Session["PendingPaymentId"].ToString();
+            string transactionId = string.Empty;
+            string transactiondate = string.Empty;
+           // CEI.updateInspectionPending(id, transactionId, transactiondate, transactiondate);
+
         }
     }
 }

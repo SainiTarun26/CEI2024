@@ -1770,6 +1770,7 @@
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
+    <Content Include="SiteOwnerPages\PendingPayment.aspx" />
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
@@ -2089,6 +2090,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\InspectionHistory.aspx.designer.cs">
       <DependentUpon>InspectionHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PendingPayment.aspx.cs">
+      <DependentUpon>PendingPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PendingPayment.aspx.designer.cs">
+      <DependentUpon>PendingPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\PeroidicInspection.aspx.cs">
       <DependentUpon>PeroidicInspection.aspx</DependentUpon>

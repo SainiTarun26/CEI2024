@@ -229,6 +229,7 @@
                                 </div>
                             </div>
                             <div class="col-6" style="text-align: end;">
+                                <asp:Button type="submit" ID="btnFinalSubmit" ValidationGroup="Submit" Visible="false" Text="Submit" runat="server" class="btn btn-primary mr-2" />  
                                 <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Make Payment" runat="server" class="btn btn-primary mr-2" />
                                 <asp:Button type="submit" ID="ChallanUpload" ValidationGroup="Submit" Text="Upload Challan" runat="server" class="btn btn-primary mr-2" OnClick="ChallanUpload_Click" />
                             </div>

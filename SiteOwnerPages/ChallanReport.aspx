@@ -141,7 +141,7 @@
                 <div class="row" style="margin-top: 15px;">
                     <div class="col-12" style="text-align: center;">
                         <asp:Button ID="BtnReset" Text="Submits" runat="server" class="btn btn-primary mr-2"
-                            Style="padding-left: 17px; padding-right: 17px;" />
+                            Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnReset_Click" />
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
                     </div>
