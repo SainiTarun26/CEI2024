@@ -1785,6 +1785,9 @@
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
     <Content Include="TestReportModal\LineTestReportModal.aspx" />
     <Content Include="TestReportModal\SubstationTransformerTestReportModal.aspx" />
+    <Content Include="TestReportsNew\GeneratingSet.aspx" />
+    <Content Include="TestReportsNew\LineTestReport.aspx" />
+    <Content Include="TestReportsNew\SubstationTestReport.aspx" />
     <Content Include="TestReport\GeneratingSetTestReport.aspx" />
     <Content Include="TestReport\LiftTestReport.aspx" />
     <Content Include="TestReport\LineTestReport.aspx" />
@@ -2206,6 +2209,34 @@
     <Compile Include="TestReportModal\SubstationTransformerTestReportModal.aspx.designer.cs">
       <DependentUpon>SubstationTransformerTestReportModal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestReportsNew\GeneratingSet.aspx.cs">
+      <DependentUpon>GeneratingSet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportsNew\GeneratingSet.aspx.designer.cs">
+      <DependentUpon>GeneratingSet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportsNew\LineTestReport.aspx.cs">
+      <DependentUpon>LineTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportsNew\LineTestReport.aspx.designer.cs">
+      <DependentUpon>LineTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportsNew\SubstationTestReport.aspx.cs">
+      <DependentUpon>SubstationTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportsNew\SubstationTestReport.aspx.designer.cs">
+      <DependentUpon>SubstationTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportsNew\TestReport.Master.cs">
+      <DependentUpon>TestReport.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportsNew\TestReport.Master.designer.cs">
+      <DependentUpon>TestReport.Master</DependentUpon>
+    </Compile>
     <Compile Include="TestReport\GeneratingSetTestReport.aspx.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2536,6 +2567,7 @@
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
     <Content Include="SiteOwnerPages\SiteOwner.Master" />
+    <Content Include="TestReportsNew\TestReport.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
