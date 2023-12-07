@@ -23,6 +23,7 @@ namespace CEIHaryana.Officers
                     GridViewBind();
                     BindBarChart();
                     BindDoughnutChart();
+                    OfficersGridBind();
                 }
             }
             catch { }
@@ -214,6 +215,23 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
 
         }
 
-
+        private void OfficersGridBind()
+        {
+            LoginId = Session["StaffID"].ToString();
+            DataSet ds = new DataSet();
+            ds = cei.StaffPendingDivisionWise(LoginId);
+            if (ds.Tables.Count > 0)
+            {
+                OfficersGrid.DataSource = ds;
+                OfficersGrid.DataBind();
+            }
+            else
+            {
+                OfficersGrid.DataSource = null;
+                OfficersGrid.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
     }
 }
