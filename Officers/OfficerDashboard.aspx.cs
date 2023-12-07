@@ -20,7 +20,7 @@ namespace CEIHaryana.Officers
             {
                 if (!IsPostBack)
                 {
-                    GridViewBind();
+                    GridViewDivisionBind();
                     BindBarChart();
                     BindDoughnutChart();
                     OfficersGridBind();
@@ -29,12 +29,30 @@ namespace CEIHaryana.Officers
             catch { }
 
         }
+        private void GridViewDivisionBind()
+        {
+            LoginId = Session["StaffID"].ToString();
+            DataSet ds = new DataSet();
+            ds = cei.DivisionInspectionHistory(LoginId);
+            if (ds.Tables.Count > 0)
+            {
+                GridView2.DataSource = ds;
+                GridView2.DataBind();
 
+            }
+            else
+            {
+                GridView2.DataSource = null;
+                GridView2.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
         private void GridViewBind()
         {
             LoginId = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.DivisionsDistrictHistory(LoginId);
+            ds = cei.GetRecordsDivisionistrict(LoginId);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -85,7 +103,7 @@ namespace CEIHaryana.Officers
                 //GridView2.Visible = false;
                 //BindDaysGridView();
                 //GridView3.Visible = true;
-                Response.Redirect("/Admin/DistrictData.aspx");
+                Response.Redirect("/Officers/DistrictData.aspx", false);
                 BindBarChart();
                 BindDoughnutChart();
 
@@ -102,7 +120,7 @@ namespace CEIHaryana.Officers
         {
             LoginId = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.DivisionsDistrictHistory(LoginId);
+            ds = cei.GetRecordsDivisionistrict(LoginId);
 
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -128,14 +146,16 @@ namespace CEIHaryana.Officers
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesRecordCount)},
                 backgroundColor: 'rgba(60,179,113,0.8)',
                 borderColor: 'rgba(60,179,113,1)',
-                borderWidth: 1
+                borderWidth: 1,
+ barThickness: 20
             }},
             {{
                 label: 'Pending',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesInitiated)},
 backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 borderColor: 'rgba(255, 99, 71, 1)',
-                borderWidth: 1
+                borderWidth: 1,
+ barThickness: 20
             }}
         ]
     }},

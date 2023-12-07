@@ -676,9 +676,66 @@
                          <h2 class="title-1 m-b-25">Division Wise Report</h2>
 
                          <div>
+                                <div id="printableDiv2">
+                         <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                        <PagerStyle CssClass="pagination-ys" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <HeaderStyle Width="34%" CssClass="headercolor division-align" />
+                                <ItemStyle Width="34%" />
+                                <HeaderTemplate>
+                                   Division
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Division") %> ' CommandName="Select"><%#Eval("Division") %></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            <asp:BoundField DataField="RecordCount" HeaderText="Total Requests Received till date">
+                                <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Center" Width="15%" />
+                            </asp:BoundField>
+                                 <asp:BoundField DataField="Initiated" HeaderText="Initiated">
+                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                            </asp:BoundField>
+                                 <asp:BoundField DataField="InProgress" HeaderText="In Progress">
+                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ActionTaken" HeaderText="Action Taken">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+                       
+                        </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    </asp:GridView>
+                                    </div>
+                             <div  id="printableDiv">
                              <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1"
                                  OnRowCommand="GridView1_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10"
-                                 AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
+                                 AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" Visible="false"
                                  BorderWidth="1px" BorderColor="#dbddff">
                                  <PagerStyle CssClass="pagination-ys" />
                                  <Columns>
@@ -732,13 +789,13 @@
                                  <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                  <SortedDescendingHeaderStyle BackColor="#00547E" />
                              </asp:GridView>
-
+</div>
                              <div class="row" style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
                                  <%--<div class="col-6" style="text-align:end;">
 <a href="#"> <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
  </div>--%>
                                  <div class="col-6" style="text-align: left; margin-top: auto;">
-                                     <a href="#"><i class="bi bi-printer-fill"></i></a>
+                                     <a href="#" onclick="printDiv('printableDiv');"><i class="bi bi-printer-fill"></i></a>
                                  </div>
                              </div>
                          </div>
@@ -789,5 +846,17 @@
          <%-- </div>--%>
      </div>
  </div>
+       <script>
 
+      function printDiv(printableDiv) {
+          var printContents = document.getElementById(printableDiv).innerHTML;
+          var originalContents = document.body.innerHTML;
+
+          document.body.innerHTML = printContents;
+
+          window.print();
+
+          document.body.innerHTML = originalContents;
+      }
+       </script>  
 </asp:Content>

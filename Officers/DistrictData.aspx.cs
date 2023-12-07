@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CEIHaryana.Admin
+namespace CEIHaryana.Officers
 {
     public partial class DistrictData : System.Web.UI.Page
     {
@@ -26,9 +26,9 @@ namespace CEIHaryana.Admin
             try
             {
                 dated = Session["Days"].ToString();
-                Division = Convert.ToString(Session["Area"]);
+                Division = Session["StaffID"].ToString();
                 DataTable ds = new DataTable();
-                ds = cei.RequestPendingDaysData(dated, Division);
+                ds = cei.ShowPendingDivisionDaysData(dated, Division);
                 if (ds.Rows.Count > 0)
                 {
                     GridView3.DataSource = ds;
@@ -84,6 +84,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
     }

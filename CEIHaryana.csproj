@@ -1757,6 +1757,7 @@
     <Content Include="js2\wizard.js" />
     <Content Include="js2\x-editable.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Officers\DistrictData.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
@@ -2007,6 +2008,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\DistrictData.aspx.cs">
+      <DependentUpon>DistrictData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\DistrictData.aspx.designer.cs">
+      <DependentUpon>DistrictData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\Inspection.aspx.cs">
       <DependentUpon>Inspection.aspx</DependentUpon>

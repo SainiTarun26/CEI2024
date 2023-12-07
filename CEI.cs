@@ -1593,11 +1593,24 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet DivisionsDistrictHistory(string loginid)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DivisionDistrictsHistory", loginid);
+        } 
+        public DataSet GetRecordsDivisionistrict(string loginid)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRecordsDivisionistrict", loginid);
         }
 
         public DataSet StaffPendingDivisionWise(string loginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffDivisionWise", loginId);
+        }
+        public DataTable ShowPendingDivisionDaysData(string dated, string Division)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowPendingDivisionDaysData", dated, Division);
+        }
+
+        public DataSet DivisionInspectionHistory(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DivisionRequestHistory", LoginId);
         }
     }
 }
