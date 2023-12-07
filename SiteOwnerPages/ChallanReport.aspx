@@ -1,103 +1,105 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="ChallanReport.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.ChallanReport" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
-   <link rel="stylesheet" href="/css2/style.css" />
-   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <!------ Include the above in your HEAD tag ---------->
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="stylesheet" href="/css2/style.css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
-   <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
-   <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
-   <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
+    <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
 
 
-   
 
-   <style>
-       .col-4 {
-           top: 0px;
-           left: 0px;
-       }
 
-       .form-control {
-           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-           margin-left: 0px !important;
-           height: 30px;
-           font-size: 12px !important;
-       }
+    <style>
+        .col-4 {
+            top: 0px;
+            left: 0px;
+        }
 
-       select.form-control {
-           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-           margin-left: 0px !important;
-           height: 30px !important;
-           font-size: 12px !important;
-       }
+        .form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+            font-size: 12px !important;
+        }
 
-       label {
-           font-size: 13px;
-       }
+        select.form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px !important;
+            font-size: 12px !important;
+        }
 
-       .form-control:focus {
-           border: 2px solid #80bdff;
-           font-size: 12px !important;
-       }
+        label {
+            font-size: 13px;
+        }
 
-       select.form-control:focus {
-           border: 2px solid #80bdff;
-           font-size: 12px !important;
-       }
+        .form-control:focus {
+            border: 2px solid #80bdff;
+            font-size: 12px !important;
+        }
 
-       .select2-container .select2-selection--single .form-control {
-           height: 30px !important;
-       }
+        select.form-control:focus {
+            border: 2px solid #80bdff;
+            font-size: 12px !important;
+        }
 
-       .select2-container--default .select2-selection--single {
-           border: 1px solid #ccc !important;
-           border-radius: 0px !important;
-       }
+        .select2-container .select2-selection--single .form-control {
+            height: 30px !important;
+        }
 
-       span.select2-selection.select2-selection--single {
-           padding: 0px 0px 0px 5px;
-           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-           margin-left: 0px !important;
-           height: 30px;
-           border-radius: 5px !important;
-       }
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
 
-           span.select2-selection.select2-selection--single:focus {
-               border: 2px solid #80bdff;
-           }
+        span.select2-selection.select2-selection--single {
+            padding: 0px 0px 0px 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+            border-radius: 5px !important;
+        }
 
-       .card .card-title {
-           font-size: 1rem !important;
-       }
+            span.select2-selection.select2-selection--single:focus {
+                border: 2px solid #80bdff;
+            }
 
-       .btn-primary:hover {
-           box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-       }
+        .card .card-title {
+            font-size: 1rem !important;
+        }
 
-       button.btn.btn-primary.mr-2 {
-           padding: 10px 25px 10px 25px;
-           font-size: 18px;
-       }
+        .btn-primary:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
 
-       span.select2-dropdown.select2-dropdown--below {
-           margin-top: 50px !important;
-       }
-       input#ContentPlaceHolder1_FileUpload1{
-           padding:3px;
-       }
-   </style>
+        button.btn.btn-primary.mr-2 {
+            padding: 10px 25px 10px 25px;
+            font-size: 18px;
+        }
+
+        span.select2-dropdown.select2-dropdown--below {
+            margin-top: 50px !important;
+        }
+
+        input#ContentPlaceHolder1_FileUpload1 {
+            padding: 3px;
+        }
+    </style>
 </asp:Content>
-    
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="content-wrapper">
+    <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row">
@@ -108,9 +110,9 @@
                     <br />
                     <div class="col-md-4"></div>
                 </div>
-               <%-- <h7 class="card-title fw-semibold mb-4">Personal Details</h7>--%>
+                <%-- <h7 class="card-title fw-semibold mb-4">Personal Details</h7>--%>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
-                    <div class="row" style="margin-top:15px; margin-bottom:15PX !important;">
+                    <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
                         <div class="col-6">
                             <label>
                                 Inspection Request details   
@@ -118,29 +120,26 @@
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlState" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                         </div>
-                       
-                   
                         <div class="col-6">
                             <label>
                                 Upload Challan
                             </label>
                             <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
                         </div>
-                       </div>
-                      <div class="col-4">     
-                        <label for="txttransactionId" class="col-sm-3 col-form-label" style="margin-top: -6px;">Transaction Id</label>
-                              <div class="col-sm-9" style="margin-left: -35px;">
-                                  <asp:TextBox ID="txttransactionId" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"  style="height:30px;"></asp:TextBox><br />
-                              </div></div>
-                    <div class="col-4">     
-                        <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Transaction Date</label>
-                              <div class="col-sm-9" style="margin-left: -35px;">
-                                  <asp:TextBox ID="txttransactionDate" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"  style="height:30px;"></asp:TextBox><br />
-                              </div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Transaction Id</label>
+                            <asp:TextBox ID="txttransactionId" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
+                        </div>
+                        <div class="col-6">
+                            <label>Transaction Date</label>
+                            <asp:TextBox ID="txttransactionDate" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
+                        </div>
+                    </div>
                 </div>
-                <div class="row" style="margin-top:15px;">
-                  
-                    <div class="col-4" style="text-align: center;">
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-12" style="text-align: center;">
                         <asp:Button ID="BtnReset" Text="Submits" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;" />
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
@@ -149,7 +148,7 @@
                     <div class="col-4">
                         <asp:HiddenField ID="hdnId" runat="server" />
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </div>

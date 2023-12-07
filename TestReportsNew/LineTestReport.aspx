@@ -16,7 +16,7 @@
     color: #252525;
     background-color: #f9f9f9;
 }
-        a.nav-link.dropdown-toggle{
+        a.nav-link.dropdown-toggle{ 
             border-radius:0px !important;
         }
         </style>
