@@ -1963,6 +1963,15 @@
         zoom: 90%; /* Webkit browsers */
         zoom: 90%; /* Webkit browsers */
     }
+    a.nav-link.dropdown-toggle.active {
+    color: black;
+    border-color: #f9f9f9;
+    background: #f9f9f9;
+}a.nav-link.dropdown-toggle {
+    color: white;
+    background-color:blue;
+    border-color:blue;
+}
 </style>
 </head>
 <body>

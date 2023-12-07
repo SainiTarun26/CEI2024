@@ -67,5 +67,10 @@ namespace CEIHaryana
 
             }
         }
+
+        protected void ChallanUpload_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/ChallanReport.aspx");
+        }
     }
 }

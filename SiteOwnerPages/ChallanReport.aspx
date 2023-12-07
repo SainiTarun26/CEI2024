@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="ChallanReport.aspx.cs" Inherits="CEIHaryana.Admin.ChallanReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="ChallanReport.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.ChallanReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+      <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
    <link rel="stylesheet" href="/css2/style.css" />
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -17,82 +17,7 @@
    <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
 
 
-   <%--<script type="text/javascript">
-    $(document).ready(function () {
-        $("#<%=txtDateofIntialissue.ClientID%>").datepicker({
-            dateFormat: "dd/mm/yy",
-            changeMonth: true,
-            changeYear: true,
-            minDate: -7,
-            maxDate: +7
-        });
-        $("#<%=txtDateofIntialissue.ClientID%>").keydown(function () {
-            //code to not allow any changes to be made to input field
-            return false;
-        });
-
-        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
-        function EndRequestHandler(sender, args) {
-            $("#<%=txtDateofIntialissue.ClientID%>").datepicker({
-                dateFormat: "dd/mm/yy",
-                changeMonth: true,
-                changeYear: true,
-                minDate: -7,
-                maxDate: +7
-            });
-            $("#<%=txtDateofIntialissue.ClientID%>").keydown(function () {
-                //code to not allow any changes to be made to input field
-                return false;
-            });
-        }
-    });
-    }
-</script>--%>
-   <%--<script type="text/javascript">
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
-        }
-        return true;
-    }
-
-    //Allow Only Aplhabet, Delete and Backspace
-
-    function isAlpha(keyCode) {
-
-        return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-
-    }
-
-    function alphabetKey(e) {
-        var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-        var k;
-        k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-        return (allow.indexOf(String.fromCharCode(k)) != -1);
-    }
-</script>--%>
-   <%--<script type="text/javascript">
-     function alertWithRedirectdata() {
-         if (confirm('Data Added Successfully')) {
-             window.location.href = "/Admin/AddContractorDetails.aspx";
-         } else {
-         }
-     }
- </script>--%>
-   <%--     <script>
-    
-     function printDiv(printableDiv) {
-         var printContents = document.getElementById(printableDiv).innerHTML;
-         var originalContents = document.body.innerHTML;
-
-         document.body.innerHTML = printContents;
-
-         window.print();
-
-         document.body.innerHTML = originalContents;
-     }
- </script>--%>
+   
 
    <style>
        .col-4 {
@@ -170,8 +95,9 @@
        }
    </style>
 </asp:Content>
+    
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="content-wrapper">
+     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row">
@@ -198,14 +124,22 @@
                             <label>
                                 Upload Challan
                             </label>
-                            
                             <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
                         </div>
                        </div>
-                    
+                      <div class="col-4">     
+                        <label for="txttransactionId" class="col-sm-3 col-form-label" style="margin-top: -6px;">Transaction Id</label>
+                              <div class="col-sm-9" style="margin-left: -35px;">
+                                  <asp:TextBox ID="txttransactionId" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"  style="height:30px;"></asp:TextBox><br />
+                              </div></div>
+                    <div class="col-4">     
+                        <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Transaction Date</label>
+                              <div class="col-sm-9" style="margin-left: -35px;">
+                                  <asp:TextBox ID="txttransactionDate" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"  style="height:30px;"></asp:TextBox><br />
+                              </div></div>
                 </div>
                 <div class="row" style="margin-top:15px;">
-                    <div class="col-4"></div>
+                  
                     <div class="col-4" style="text-align: center;">
                         <asp:Button ID="BtnReset" Text="Submits" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;" />

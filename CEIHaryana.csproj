@@ -162,7 +162,6 @@
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
-    <Content Include="Admin\ChallanReport.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="assetsnew\css\style.css" />
     <Content Include="assetsnew\css\style2.css" />
@@ -1766,6 +1765,7 @@
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
+    <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
@@ -1936,13 +1936,6 @@
     <Compile Include="Admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\ChallanReport.aspx.cs">
-      <DependentUpon>ChallanReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\ChallanReport.aspx.designer.cs">
-      <DependentUpon>ChallanReport.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\WorkIntimationDetail.aspx.cs">
       <DependentUpon>WorkIntimationDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2062,6 +2055,13 @@
       <DependentUpon>PaymentPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteOwnerPages\ChallanReport.aspx.cs">
+      <DependentUpon>ChallanReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ChallanReport.aspx.designer.cs">
+      <DependentUpon>ChallanReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.cs">
       <DependentUpon>CreateInspectionReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

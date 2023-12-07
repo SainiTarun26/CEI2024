@@ -22,8 +22,8 @@
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="card" style="box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;border-radius:0px !important;background:#f9f9f9;margin-left: 24px;margin-top:-2px;
-    margin-right: 2%;">
+    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;border-radius:0px !important;background:#f9f9f9;margin-left: 24px;margin-top:-1px;
+   margin-right: 2%;">
         <div class="card-body" id="divLine" asp-validation-summary="ModelOnly" runat="server" style="margin-top: -30px;">
     <div id="IfInstallationIsLine" runat="server">
     <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -20px;">
