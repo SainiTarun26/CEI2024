@@ -14,6 +14,7 @@ namespace CEIHaryana.Officers
 
         CEI cei = new CEI();
         string LoginId = string.Empty;
+        string Division = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -34,6 +35,10 @@ namespace CEIHaryana.Officers
             LoginId = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
             ds = cei.DivisionInspectionHistory(LoginId);
+            TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["RecordCount"].ToString();
+            TextBox30.Text = ds.Tables[0].Rows[0]["ActionTaken"].ToString();
+            In_process.Text = ds.Tables[0].Rows[0]["InProgress"].ToString();
+            Initiated.Text = ds.Tables[0].Rows[0]["Initiated"].ToString();
             if (ds.Tables.Count > 0)
             {
                 GridView2.DataSource = ds;
@@ -50,10 +55,13 @@ namespace CEIHaryana.Officers
         }
         private void GridViewBind()
         {
-            LoginId = Session["StaffID"].ToString();
-            DataSet ds = new DataSet();
-            ds = cei.GetRecordsDivisionistrict(LoginId);
-            if (ds.Tables.Count > 0)
+            if (Convert.ToString(Session["Area"]) != null && Convert.ToString(Session["Area"]) != "")
+            {
+                Division = Convert.ToString(Session["Area"]);
+            }
+            DataTable ds = new DataTable();
+            ds = cei.RequestPendingDivision(Division);
+            if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
@@ -120,8 +128,8 @@ namespace CEIHaryana.Officers
         {
             LoginId = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.GetRecordsDivisionistrict(LoginId);
-
+            ds = cei.RecordsDivisionDistrict(LoginId);
+           
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
@@ -184,10 +192,7 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
 
             DataSet ds = new DataSet();
             ds = cei.DasboardPieChartCalculations();
-            TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["TotalCount"].ToString();
-            TextBox30.Text = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
-            In_process.Text = ds.Tables[0].Rows[0]["InprogressCount"].ToString();
-            Initiated.Text = ds.Tables[0].Rows[0]["InitiatedCount"].ToString();
+          
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
@@ -252,6 +257,32 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 string script = "alert(\"No Record Found\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
+        }
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblArea = (Label)row.FindControl("lblArea");
+                    Session["Area"] = lblArea.Text.Trim();
+                    if (e.CommandName == "Select")
+                    {
+                        GridView1.Visible = true;
+                        GridView2.Visible = false;
+
+                    }
+                    BindBarChart();
+                    Back.Visible = true;
+                    PrintDistrict.Visible  = true;
+                    PrintDivision.Visible = false;
+                    BindDoughnutChart();
+                    GridViewBind();
+                }
+            }
+            catch { }
         }
     }
 }

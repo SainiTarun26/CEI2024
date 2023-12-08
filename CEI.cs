@@ -1643,5 +1643,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PendingInspectionPaymentData", SiteOwnerId);
         }
+        public DataSet RecordsDivisionDistrict(string loginid)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_BindDivisionBarGraph", loginid);
+        }
     }
 }
