@@ -27,6 +27,10 @@
  <!-- Main CSS-->
  <link href="/Dashboard_Css/css/theme.css" rel="stylesheet" media="all">
         <style type="text/css">
+            canvas#myDoughnutChart{
+                height: 240px !important;
+    width: 300px !important;
+            }
         .overview__inner {
             margin-top: -15px;
         }
@@ -396,7 +400,7 @@
 }
    
      div#officers_table {
-    height: 300px;
+    height: 155px;
 }
     <%-- ::-webkit-scrollbar {
     display: none;
@@ -537,7 +541,7 @@
             margin-left: 70%;
         }
         table#ContentPlaceHolder1_GridView2 {
-    width: 775px !important;
+    width: 735px !important;
 }
         table#ContentPlaceHolder1_GridView3 {
     width: 775px !important;
@@ -572,7 +576,7 @@
                                      </div>
                                      <div class="text">
                                        <h2>
-                                           <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox>
+                                           <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox>
 
                                        </h2>
 
@@ -593,7 +597,7 @@
                                          <i class="bi bi-file-earmark-check"></i>
                                      </div>
                                      <div class="text">
-                                        <h2><asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
+                                        <h2><asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
 
                                           <span id="APPROVED">Approved/Rejected</span>
                                      </div>
@@ -614,7 +618,7 @@
                                      <div class="text">
                                        <h2>
                                            <asp:TextBox class="form-control" ID="In_process" runat="server" onkeydown="return preventEnterSubmit(event)" 
-                                               autocomplete="off"></asp:TextBox></h2>
+                                               autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
 
                                         <span id="PROCESS">In Process</span>
 
@@ -634,7 +638,7 @@
                                          <i class="bi bi-folder-symlink-fill"></i>
                                      </div>
                                      <div class="text">
-                                      <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"></asp:TextBox></h2>
+                                      <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
                                      
                                       <span id="INITIATED">Initiated</span>
                   
@@ -703,7 +707,7 @@
                                         <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                            <asp:BoundField DataField="RecordCount" HeaderText="Total Requests Received till date">
+                            <asp:BoundField DataField="RecordCount" HeaderText="Total Applications  ">
                                 <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Center" Width="15%" />
                             </asp:BoundField>
@@ -775,7 +779,7 @@
                                          <HeaderStyle Width="25%" CssClass="headercolor" />
                                          <ItemStyle Width="25%" />
                                          <ItemTemplate>
-                                             <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
+                                             <asp:LinkButton ID="LinkButton5" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
                                          </ItemTemplate>
                                      </asp:TemplateField>
                                  </Columns>
@@ -794,7 +798,7 @@
                                  <%--<div class="col-6" style="text-align:end;">
 <a href="#"> <i class="bi bi-box-arrow-left" style="background: blue; font-size: 25px; padding: 0px 10px 0px 5px; border-radius: 10px;"></i></a>
  </div>--%>
-                                 <div class="col-6" style="text-align: left; margin-top: auto;">
+                                 <div class="col-12" style="text-align: center; margin-top: auto;">
                                      <a href="#" onclick="printDiv('printableDiv');"><i class="bi bi-printer-fill"></i></a>
                                  </div>
                              </div>
@@ -848,15 +852,15 @@
  </div>
        <script>
 
-      function printDiv(printableDiv) {
-          var printContents = document.getElementById(printableDiv).innerHTML;
-          var originalContents = document.body.innerHTML;
+           function printDiv(printableDiv) {
+               var printContents = document.getElementById(printableDiv).innerHTML;
+               var originalContents = document.body.innerHTML;
 
-          document.body.innerHTML = printContents;
+               document.body.innerHTML = printContents;
 
-          window.print();
+               window.print();
 
-          document.body.innerHTML = originalContents;
-      }
+               document.body.innerHTML = originalContents;
+           }
        </script>  
 </asp:Content>

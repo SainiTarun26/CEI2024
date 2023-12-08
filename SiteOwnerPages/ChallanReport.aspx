@@ -117,30 +117,36 @@
                             <label>
                                 Inspection Request details   
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlState" TabIndex="8" runat="server" AutoPostBack="true">
-                            </asp:DropDownList>
+                            <asp:TextBox ID="txtInspectionDetails" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
+                       
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                             
                         </div>
                         <div class="col-6">
                             <label>
                                 Upload Challan
                             </label>
                             <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
+                      <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="FileUpload1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label>Transaction Id</label>
                             <asp:TextBox ID="txttransactionId" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
-                        </div>
+                       
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                       </div>
                         <div class="col-6">
                             <label>Transaction Date</label>
-                            <asp:TextBox ID="txttransactionDate" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
-                        </div>
+                            <asp:TextBox ID="txttransactionDate"  min='0000-01-01' max='9999-01-01' Type="Date"   runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                      </div>
                     </div>
                 </div>
                 <div class="row" style="margin-top: 15px;">
                     <div class="col-12" style="text-align: center;">
-                        <asp:Button ID="BtnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2"
+                        <asp:Button ID="BtnSubmit" Text="Submit" ValidationGroup="Submit" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnSubmit_Click" />
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>

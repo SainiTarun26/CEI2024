@@ -19,6 +19,14 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
+                    if (Session["SiteOwnerId"] != null)
+                    {
+                        txtInspectionDetails.Text = Session["SiteOwnerId"].ToString();
+                    }
+                    else
+                    {
+                        
+                    }
                 }
             }
             catch { }
