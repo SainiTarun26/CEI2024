@@ -461,12 +461,13 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
                 // DateTime myDate = Convert.ToDateTime(txtDate.Text);
-                CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
+                string generatedId = CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
                     txtLineLength.Text,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
                     flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
                 DataSaved.Visible = true;
+                Session["PendingPaymentId"] = generatedId;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully')", true);
-                Response.Redirect("/PaymentPage.aspx");
+                Response.Redirect("/PaymentPage.aspx",false);
                 //}
                 //else
                 //{

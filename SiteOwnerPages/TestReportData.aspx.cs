@@ -62,6 +62,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
                 string IntimationId = lblIntimationId.Text;
                 Session["IntimationId"] = IntimationId;
+                Session["PendingIntimations"] = IntimationId;
                 Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                 Session["InspectionType"] = lblInspectionType.Text;
                 Label lblApplicantType = (Label)row.FindControl("lblApplicantType");

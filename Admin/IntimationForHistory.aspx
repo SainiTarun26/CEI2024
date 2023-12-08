@@ -367,7 +367,7 @@
                     </table>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom:25px;">
                 <div class="col-4">
                     <asp:TextBox ID="txtTestReportId" class="form-control" Visible="false" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -375,8 +375,8 @@
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report"></asp:LinkButton>
                 </div>
             </div>
-           <div class="row">
-                <div class="col-4" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -50px;">
+           <div class="row" style="margin-top: -30px;">
+                <div class="col-3" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -45px;">
                     <br />
                     <br />
                     <label>
@@ -391,29 +391,29 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
                
-                <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                <div class="col-3" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
                         Reason For Rejection<samp style="color: red"> * </samp>
                     </label>
                     <asp:TextBox ID="txtRejected" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
-            </div>
-            <div class="row" style="margin-bottom: 25px; margin-top:-45px;">
-                <div class="col-4" id="DivToAssign" runat="server" visible="false">
+          
+           
+                <div class="col-3" id="DivToAssign" runat="server" visible="false" style="margin-top:-45px;">
                     <br />
-                    <br />  
+                    <br />
                     <label>To Assign Staff</label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlToAssign" selectionmode="Multiple" Style="width: 100% !important;">
                     </asp:DropDownList>
                 </div>
                
-                <div class="col-4" style="text-align: center;margin-top:45px;" id="DivAdditionalNote" runat="server" visible="false" >
+                <div class="col-3" id="DivAdditionalNote" runat="server" visible="false" >
                     <label>Additional Note</label>
                     <asp:TextBox ID="txtAdditionalNote" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
             </div>
-            <div class="row" style="margin-top: 10px;">
+            <div class="row" style="margin-top: 25px;">
                 <div class="col-5" style="text-align: end;">
                     <asp:Button ID="btnAction" Text="Take Action" runat="server" class="btn btn-primary mr-2" OnClick="btnAction_Click" />
                 </div>

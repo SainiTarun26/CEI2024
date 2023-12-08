@@ -51,13 +51,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txttransactionDate;
 
         /// <summary>
-        /// BtnReset control.
+        /// BtnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnReset;
+        protected global::System.Web.UI.WebControls.Button BtnSubmit;
 
         /// <summary>
         /// hdnId control.

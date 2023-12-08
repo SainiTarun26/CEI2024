@@ -62,8 +62,7 @@ namespace CEIHaryana
                 ds.Dispose();
                 string TotalPayment = cei.GetTotalPaymentInformation(LoginId, IntimationId);
                 txtPayment.Text = TotalPayment;
-            }
-            catch { }
+            }catch { }
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -96,6 +95,7 @@ namespace CEIHaryana
             id = Session["PendingPaymentId"].ToString();
             string NullData = string.Empty;
             cei.updateInspectionPending(id, NullData, NullData, NullData);
+            Response.Redirect("/SiteOwnerPages/TestReportData.aspx", false);
 
         }
     }
