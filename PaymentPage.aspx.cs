@@ -42,25 +42,28 @@ namespace CEIHaryana
         }
         protected void GridViewBind()
         {
-            
-            LoginId = Session["SiteOwnerId"].ToString();
-            IntimationId = Session["PendingIntimations"].ToString();
-            DataSet ds = new DataSet();
-            ds = cei.GetPaymentInformation(LoginId, IntimationId);
-            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            try
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                LoginId = Session["SiteOwnerId"].ToString();
+                IntimationId = Session["PendingIntimations"].ToString();
+                DataSet ds = new DataSet();
+                ds = cei.GetPaymentInformation(LoginId, IntimationId);
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    string script = "alert(\"Please Fill the Form first for knowing Payment History\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
+                }
+                ds.Dispose();
+                string TotalPayment = cei.GetTotalPaymentInformation(LoginId, IntimationId);
+                txtPayment.Text = TotalPayment;
             }
-            else
-            {
-                GridView1.DataSource = null;
-                string script = "alert(\"Please Fill the Form first for knowing Payment History\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
-            }
-            ds.Dispose();
-          string TotalPayment = cei.GetTotalPaymentInformation(LoginId, IntimationId);
-            txtPayment.Text = TotalPayment;
+            catch { }
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -91,9 +94,8 @@ namespace CEIHaryana
         protected void btnFinalSubmit_Click(object sender, EventArgs e)
         {
             id = Session["PendingPaymentId"].ToString();
-            string transactionId = string.Empty;
-            string transactiondate = string.Empty;
-           // CEI.updateInspectionPending(id, transactionId, transactiondate, transactiondate);
+            string NullData = string.Empty;
+            cei.updateInspectionPending(id, NullData, NullData, NullData);
 
         }
     }
