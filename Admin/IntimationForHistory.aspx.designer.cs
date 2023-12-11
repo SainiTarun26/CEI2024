@@ -330,13 +330,13 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.LinkButton lnkDocument;
 
         /// <summary>
-        /// Tr12 control.
+        /// txtTestReportId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr12;
+        protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
 
         /// <summary>
         /// lnkRedirect control.
@@ -346,15 +346,6 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkRedirect;
-
-        /// <summary>
-        /// txtTestReportId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
 
         /// <summary>
         /// ApprovalRequired control.

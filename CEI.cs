@@ -1051,7 +1051,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Insert Inspection Data
-        public string InsertInspectionData(string ContactNo, string TestRportId, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
+        public void InsertInspectionData(string ContactNo, string TestRportId, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
       string VoltageLevel,string LineLength, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
       string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
       string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
@@ -1099,10 +1099,20 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
-            int generatedId = Convert.ToInt32(outputParam.Value);
+            //int generatedId = Convert.ToInt32(outputParam.Value);
 
-            return generatedId.ToString();
             //con.Close();
+        }
+        public string InspectionId()
+        {
+            if (outputParam != null)
+            {
+                return outputParam.Value.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
         #endregion
         #region Update Work Intimation Contractor Data

@@ -26,6 +26,7 @@ namespace CEIHaryana.SiteOwnerPages
                         txtWorkType.Text = "Line";
                         txtLineLength.Text = Session["LineLength"].ToString();
                         id = Session["LineID"].ToString();
+                        
                     }
                     else if (Session["SubStationID"] != null)
                     {
@@ -38,7 +39,9 @@ namespace CEIHaryana.SiteOwnerPages
                         txtWorkType.Text = "Generating Station";
                         id = Session["GeneratingSetId"].ToString();
                     }
+                    Session["Data1"] = txtWorkType.Text;
                     txtVoltage.Text = Session["Voltage"].ToString();
+                    Session["Data2"] = txtVoltage.Text;
                     txtPremises.Text = Session["InspectionType"].ToString();
                     txtApplicantType.Text = Session["ApplicantType"].ToString();
                     txtContact.Text = Session["ContactNo"].ToString();
@@ -105,27 +108,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                //bool allFilesArePDF = true;
-
-                //for (int i = 1; i <= 15; i++)
-                //{
-                //    FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
-
-                //    if (fileUploadControl.HasFile)
-                //    {
-                //        string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
-
-                //        if (fileExtension.ToLower() != ".pdf")
-                //        {
-                //            allFilesArePDF = false;
-                //            break;
-
-                //        }
-                //    }
-                //}
-
-                //if (allFilesArePDF)
-                //{
+              
                     string Assign = string.Empty;
                 string To = string.Empty;
                 string input = txtVoltage.Text;
@@ -463,18 +446,17 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
                 // DateTime myDate = Convert.ToDateTime(txtDate.Text);
-                string generatedId = CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
+
+                CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
                     txtLineLength.Text,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
                     flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, District, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
-                DataSaved.Visible = true;
+
+                string generatedId = CEI.InspectionId();
+               DataSaved.Visible = true;
                 Session["PendingPaymentId"] = generatedId;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully')", true);
-                Response.Redirect("/PaymentPage.aspx",false);
-                //}
-                //else
-                //{
-                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
-                //}
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+             
             }
             catch
             { }

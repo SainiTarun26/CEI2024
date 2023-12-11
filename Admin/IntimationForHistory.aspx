@@ -363,19 +363,6 @@
                                 </td>
                              
                             </tr>
-                            <tr id="Tr12" runat="server" visible="true">
-    <td>
-        <div class="col-12">
-            View Test Report<samp style="color: red"> * </samp>
-        </div>
-    </td>
-    <td>
-        <div class="col-12">
-            <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="Open Document"></asp:LinkButton>
-        </div>
-    </td>
- 
-</tr>
                         </tbody>
                     </table>
                 </div>
@@ -385,7 +372,7 @@
                     <asp:TextBox ID="txtTestReportId" class="form-control" Visible="false" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4" style="text-align: center">
-                    
+                    <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report"></asp:LinkButton>
                 </div>
             </div>
            <div class="row" style="margin-top: -30px;">

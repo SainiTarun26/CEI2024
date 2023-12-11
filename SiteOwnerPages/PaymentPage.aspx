@@ -1,10 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PaymentPage.aspx.cs" Inherits="CEIHaryana.PaymentPage" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="PaymentPage.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.PaymentPage" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
@@ -161,18 +156,10 @@
         th {
             background: #9292cc;
         }
-        table#ContentPlaceHolder1_GridView1 {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    width: 100% !important;
-}
-        .grid1{
-             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="content-wrapper" style="background: #f3f1f1; padding-top: 40px; padding-bottom: 205px;">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <div class="content-wrapper" style="background: #f3f1f1; padding-top: 40px; padding-bottom: 205px;">
             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; border-radius: 5px !important; margin: 0px 40px 0px 40px;">
                 <div class="card-body">
                     <div class="row" style="text-align: center;">
@@ -180,7 +167,7 @@
                             <h2 class="card-title fw-semibold mb-4">PAYMENT DETAILS</h2>
                         </div>
                     </div>
-                    <div class="card" style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;">
+                    <div class="card" style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important; margin-bottom:20px;">
                         <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                             AutoGenerateColumns="false">
                             <Columns>
@@ -234,7 +221,7 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
-
+                         </div>
                         <div class="row" style="margin-bottom: -30px; margin-left: 30px;">
                             <div class="col-6">
                                 <div class="form-group row">
@@ -250,11 +237,8 @@
                                 <asp:Button type="submit" ID="ChallanUpload" ValidationGroup="Submit" Text="Upload Challan" runat="server" class="btn btn-primary mr-2" OnClick="ChallanUpload_Click" />
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
-    </form>
-    
-</body>
-</html>
+</asp:Content>

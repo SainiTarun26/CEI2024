@@ -487,13 +487,13 @@ namespace CEIHaryana.Contractor
                         // DataSaved.Visible = true;
 
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                        //HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer, " + " Your Account is created. Your user id is PAN Number and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT&route=2&peid=1101407410000040566");
-                        //HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
-                        //System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
-                        //string responseString = respStreamReader.ReadToEnd();
+                        HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer, " + " Your Account is created. Your user id is PAN Number and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT&route=2&peid=1101407410000040566");
+                        HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
+                        System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
+                        string responseString = respStreamReader.ReadToEnd();
 
-                        //respStreamReader.Close();
-                        //myResp.Close();
+                        respStreamReader.Close();
+                        myResp.Close();
 
 
                     }

@@ -63,6 +63,7 @@ namespace CEIHaryana.SiteOwnerPages
                     flpPhotourl = path + fileName;
                 }
                 CEI.updateInspectionPending(id, txttransactionId.Text, txttransactionDate.Text, flpPhotourl);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
             }
             catch { }
         }

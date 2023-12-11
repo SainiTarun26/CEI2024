@@ -158,4 +158,12 @@
             </div>
         </div>
     </div>
+       <script type="text/javascript">
+           function alertWithRedirect() {
+             if (confirm('Challan Uploaded Successfully')) {
+                 window.location.href = "/SiteOwnerPages/InspectionHistory.aspx";
+             } else {
+             }
+         }
+       </script>
 </asp:Content>

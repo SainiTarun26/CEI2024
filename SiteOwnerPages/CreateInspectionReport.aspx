@@ -237,6 +237,8 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="padding: 0px;" />
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+    ControlToValidate="FileUpload1" ErrorMessage="Please select a file" ValidationGroup="Submit"  Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -249,7 +251,9 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                        </div>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+    ControlToValidate="FileUpload2" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                            </div>
                                                     </td>
                                                 </tr>
                                             </div>
@@ -263,7 +267,9 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                        </div>
+                                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+    ControlToValidate="FileUpload3" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                            </div>
                                                     </td>
                                                 </tr>
                                             </div>
@@ -277,7 +283,10 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                        </div>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+    ControlToValidate="FileUpload4" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                            </div>
                                                     </td>
                                                 </tr>
                                                 <tr id="Tr5" runat="server" visible="true">
@@ -289,7 +298,10 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                        </div>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+    ControlToValidate="FileUpload5" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                            </div>
                                                     </td>
                                                 </tr>
                                                 <tr id="Tr6" runat="server" visible="true">
@@ -301,7 +313,10 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                        </div>
+                                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+    ControlToValidate="FileUpload6" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                            </div>
                                                     </td>
                                                 </tr>
                                                 <tr id="Tr7" runat="server" visible="true">
@@ -314,7 +329,10 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload7" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                        </div>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
+    ControlToValidate="FileUpload7" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                            </div>
                                                     </td>
                                                 </tr>
                                                 <tr id="Tr8" runat="server" visible="true">
@@ -326,6 +344,9 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="padding: 0px;" />
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+    ControlToValidate="FileUpload8" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -340,6 +361,9 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server"
+    ControlToValidate="FileUpload9" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -353,7 +377,10 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload10" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                        </div>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server"
+    ControlToValidate="FileUpload10" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                            </div>
                                                     </td>
                                                 </tr>
                                                 <tr id="Tr13" runat="server" visible="true">
@@ -365,7 +392,10 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                        </div>
+                                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server"
+    ControlToValidate="FileUpload13" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                            </div>
                                                     </td>
                                                 </tr>
                                                 <tr id="Tr11" runat="server" visible="true">
@@ -377,7 +407,10 @@
                                                     <td>
                                                         <div class="col-12">
                                                             <asp:FileUpload ID="FileUpload11" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                        </div>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server"
+    ControlToValidate="FileUpload11" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                            </div>
                                                     </td>
                                                 </tr>
                                             </div>
@@ -391,7 +424,10 @@
                                                 <td>
                                                     <div class="col-12">
                                                         <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    </div>
+                                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server"
+    ControlToValidate="FileUpload12" ErrorMessage="Please select a file"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    
+                                                        </div>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -426,4 +462,12 @@
     </div>
     <footer class="footer">
     </footer>
+     <script type="text/javascript">
+         function alertWithRedirectdata() {
+             if (confirm('Inspection Added Successfully')) {
+                 window.location.href = "/SiteOwnerPages/PaymentPage.aspx";
+             } else {
+             }
+         }
+     </script>
 </asp:Content>

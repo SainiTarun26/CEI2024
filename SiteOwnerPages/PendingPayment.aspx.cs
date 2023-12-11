@@ -62,7 +62,7 @@ namespace CEIHaryana.SiteOwnerPages
             if (e.CommandName == "Select")
 
             {
-                Response.Redirect("/PaymentPage.aspx");
+                Response.Redirect("/SiteOwnerPages/PaymentPage.aspx");
 
             }
         }
