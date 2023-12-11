@@ -1,4 +1,4 @@
-﻿    using CEI_PRoject;
+﻿using CEI_PRoject;
 using iTextSharp.text.pdf;
 using System;
 using System.Configuration;
@@ -65,7 +65,7 @@ namespace CEIHaryana.Contractor
                     }
                 }
             }
-            catch 
+            catch
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -74,6 +74,7 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                // DivInstallationType.Visible = false;
                 REID = Session["id"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetWorkIntimationDataForAdmin(REID);
@@ -87,13 +88,18 @@ namespace CEIHaryana.Contractor
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
-                // ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByValue(dp_Id1));
-                ddlPremises.SelectedValue = dp_Id1;
+
+                ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
+                //ddlPremises.SelectedValue = dp_Id1;
+                txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
                 ddlVoltageLevel.SelectedIndex = ddlVoltageLevel.Items.IndexOf(ddlVoltageLevel.Items.FindByText(dp_Id3));
+                string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                // ddlVoltageLevel.SelectedValue = dp_Id3;
+                ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
@@ -126,6 +132,11 @@ namespace CEIHaryana.Contractor
                     txtinstallationType1.Text = dp_Id8;
                     txtinstallationNo1.Text = dp_Id9;
                 }
+                else
+                {
+                    Installation.Visible = false;
+                    installationType1.Visible = false;
+                }
                 if (dp_Id10 != "")
                 {
                     Installation.Visible = true;
@@ -133,12 +144,24 @@ namespace CEIHaryana.Contractor
                     txtinstallationType2.Text = dp_Id10;
                     txtinstallationNo2.Text = dp_Id11;
                 }
+                else
+                {
+
+                    Installation.Visible = false;
+                    installationType2.Visible = false;
+                }
                 if (dp_Id12 != "")
                 {
                     Installation.Visible = true;
                     installationType3.Visible = true;
                     txtinstallationType3.Text = dp_Id12;
                     txtinstallationNo3.Text = dp_Id13;
+                }
+                else
+                {
+
+                    Installation.Visible = false;
+                    installationType3.Visible = false;
                 }
                 if (dp_Id14 != "")
                 {
@@ -183,7 +206,7 @@ namespace CEIHaryana.Contractor
                     hiddenfield.Visible = true;
                     hiddenfield1.Visible = true;
                     customFile.Visible = false;
-                    customFileLocation.Visible = true;
+                    customFileLocation.Visible = false;
                     txtCompletionDateAPWO.Text = DateTime.Parse(dp_Id6).ToString("yyyy-MM-dd");
                 }
                 //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
@@ -265,7 +288,7 @@ namespace CEIHaryana.Contractor
                 ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
                 dsDistrict.Clear();
             }
-            catch 
+            catch
             {
 
             }
@@ -304,7 +327,7 @@ namespace CEIHaryana.Contractor
                 ddlVoltageLevel.Items.Insert(0, new ListItem("Select", "0"));
                 dsVoltage.Clear();
             }
-            catch 
+            catch
             {
             }
 
@@ -359,102 +382,128 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string mobilenumber = txtPhone.Text.Trim();
-                if (Session["ContractorID"] != null)
+                bool atLeastOneSupervisorChecked = false;
+
+                foreach (GridViewRow row in GridView1.Rows)
                 {
+                    
+                    Label lblCategory = (Label)row.FindControl("lblCategory"); 
+                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
-                    ContractorID = Session["ContractorID"].ToString();
-
-                    string filePathInfo = "";
-                    if (ddlAnyWork.SelectedValue == "Yes")
+                    if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
                     {
-                        try
-                        {
-                            string FilName = string.Empty;
-                            //if (customFile.PostedFile.FileName.Length > 0)
-                            //{
-                            FilName = Path.GetFileName(customFile.PostedFile.FileName);
-                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
-                            {
-                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
-                            }
-
-                            string ext = customFile.PostedFile.FileName.Split('.')[1];
-                            string path = "";
-                            path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                            string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                            string filePathInfo2 = "";
-                            filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                            customFile.PostedFile.SaveAs(filePathInfo2);
-                            filePathInfo = path + fileName;
-                            // }
-                        }
-                        catch (Exception ex)
-                        {
-                            string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                        }
+                        atLeastOneSupervisorChecked = true;
+                        break;
                     }
+                }
 
-                    DataSet ds1 = new DataSet();
-                    ds1 = CEI.InsertSiteOwnerData(txtPAN.Text);
-                    if (ds1 != null && ds1.Tables.Count > 0)
-                    {
-                        if (ds1.Tables[0].Rows.Count > 0)
-                        {
-                            string alert = "alert('This User Is Already Exist User Can login with Provided Usename And Password');";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
-                            Response.Redirect("/Contractor/Work_Intimation.aspx");
-                        }
-                    }
-                    else
-                    {
-                      
-                    }
-                    hdnId.Value = ContractorID;
-                    CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, ddlDistrict.SelectedItem.ToString()
-                      , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
-                      txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
-                      txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
-                      txtinstallationNo6.Text, txtinstallationType7.Text, txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
-                      txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text, ddlApplicantType.SelectedItem.ToString(), ContractorID);
-
-                    string projectId = CEI.projectId();
-                    if (projectId != "" && projectId != null)
-                    {
-                        ContractorID = Session["ContractorID"].ToString();
-                        string AssignBy = ContractorID;
-
-                        foreach (GridViewRow row in GridView1.Rows)
-                        {
-
-                            if ((row.FindControl("CheckBox1") as CheckBox).Checked)
-                            {
-                                Label lblREID = (Label)row.FindControl("lblREID");
-                                string Reid = lblREID.Text;
-                                CEI.SetDataInStaffAssined(Reid, projectId, AssignBy);
-
-                            }
-                        }
-                    }
-                    // DataSaved.Visible = true;
-
-                    string alertScript = "alert('User Created Successfully User Id And password will be sent Via Text Mesaage.');";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer, " + " Your Account is created. Your user id is PAN Number and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT&route=2&peid=1101407410000040566");
-                    HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
-                    System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
-                    string responseString = respStreamReader.ReadToEnd();
-
-                    respStreamReader.Close();
-                    myResp.Close();
-
+                if (!atLeastOneSupervisorChecked)
+                {
+                    // No Supervisor checkbox is selected
+                    // Add your logic or show a message here
+                    Response.Write("<script>alert('Please select at least one Supervisor.');</script>");
+                    return;
                 }
                 else
                 {
-                    Response.Redirect("/Login.aspx");
+                    string mobilenumber = txtPhone.Text.Trim();
+                    if (Session["ContractorID"] != null)
+                    {
+
+                        ContractorID = Session["ContractorID"].ToString();
+
+                        string filePathInfo = "";
+                        if (ddlAnyWork.SelectedValue == "Yes")
+                        {
+                            try
+                            {
+                                string FilName = string.Empty;
+                                //if (customFile.PostedFile.FileName.Length > 0)
+                                //{
+                                FilName = Path.GetFileName(customFile.PostedFile.FileName);
+                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                                {
+                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                                }
+
+                                string ext = customFile.PostedFile.FileName.Split('.')[1];
+                                string path = "";
+                                path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
+                                string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                                string filePathInfo2 = "";
+                                filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
+                                customFile.PostedFile.SaveAs(filePathInfo2);
+                                filePathInfo = path + fileName;
+                                // }
+                            }
+                            catch (Exception ex)
+                            {
+                                string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                            }
+                        }
+
+                        //DataSet ds1 = new DataSet();
+                        //ds1 = CEI.InsertSiteOwnerData(txtPAN.Text);
+                        //if (ds1 != null && ds1.Tables.Count > 0)
+                        //{
+                        //    if (ds1.Tables[0].Rows.Count > 0)
+                        //    {
+                        //        string alert = "alert('This User Is Already Exist User Can login with Provided Usename And Password');";
+                        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
+                        //        Response.Redirect("/Contractor/Work_Intimation.aspx" ,false);
+                        //    }
+                        //}
+                        //else
+                        //{
+
+                        //}
+                        hdnId.Value = ContractorID;
+                        CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, ddlDistrict.SelectedItem.ToString()
+                          , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
+                          txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
+                          txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
+                          txtinstallationNo6.Text, txtinstallationType7.Text, txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
+                          txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text, ddlApplicantType.SelectedItem.ToString(), ContractorID);
+
+                        string projectId = CEI.projectId();
+                        if (projectId != "" && projectId != null)
+                        {
+                            ContractorID = Session["ContractorID"].ToString();
+                            string AssignBy = ContractorID;
+
+                            foreach (GridViewRow row in GridView1.Rows)
+                            {
+
+                                if ((row.FindControl("CheckBox1") as CheckBox).Checked)
+                                {
+                                    Label lblREID = (Label)row.FindControl("lblREID");
+                                    string Reid = lblREID.Text;
+                                    CEI.SetDataInStaffAssined(Reid, projectId, AssignBy);
+
+                                }
+                            }
+                        }
+                        // DataSaved.Visible = true;
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                        //HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer, " + " Your Account is created. Your user id is PAN Number and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT&route=2&peid=1101407410000040566");
+                        //HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
+                        //System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
+                        //string responseString = respStreamReader.ReadToEnd();
+
+                        //respStreamReader.Close();
+                        //myResp.Close();
+
+
+                    }
+
+                    else
+                    {
+                        Response.Redirect("/Login.aspx", false);
+                    }
+                    Reset();
                 }
-                Reset();
             }
             catch (Exception)
             {
@@ -649,15 +698,15 @@ namespace CEIHaryana.Contractor
             {
                 string valueToAddBack = txtinstallationType1.Text;
 
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
 
-            }
-            installationType1.Visible = false;
-            txtinstallationType1.Text = string.Empty;
-            txtinstallationNo1.Text = string.Empty;
+                }
+                installationType1.Visible = false;
+                txtinstallationType1.Text = string.Empty;
+                txtinstallationNo1.Text = string.Empty;
             }
             catch { }
         }

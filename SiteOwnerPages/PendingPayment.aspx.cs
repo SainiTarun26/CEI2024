@@ -55,6 +55,10 @@ namespace CEIHaryana.SiteOwnerPages
             Session["PendingPaymentId"] = lblID.Text;
             Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
             Session["PendingIntimations"] = lblIntimationId.Text;
+            Label lblType = (Label)row.FindControl("lblType");
+            Session["Data1"] = lblType.Text;
+            Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
+            Session["Data2"] = lblVoltageLevel.Text;
             if (e.CommandName == "Select")
 
             {

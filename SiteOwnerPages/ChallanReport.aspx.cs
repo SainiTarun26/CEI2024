@@ -37,12 +37,16 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+               
+                    
+                
                 id = Session["PendingPaymentId"].ToString();
                 string FileName = string.Empty;
                 string filepath = string.Empty;
                 string flpPhotourl = string.Empty;
                 if (FileUpload1.PostedFile.FileName.Length > 0)
                 {
+
                     FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ChallanReport/")))
                     {

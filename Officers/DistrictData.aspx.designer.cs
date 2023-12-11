@@ -24,13 +24,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.GridView GridView3;
 
         /// <summary>
-        /// BtnReset control.
+        /// BtnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnReset;
+        protected global::System.Web.UI.WebControls.Button BtnBack;
 
         /// <summary>
         /// hdnId control.

@@ -87,5 +87,16 @@ namespace CEIHaryana.Officers
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("/Officers/OfficerDashboard.aspx");
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

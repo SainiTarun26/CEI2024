@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="images/favicon.png" />
       <style type="text/css">
+            .navbar .navbar-brand-wrapper .navbar-brand img{
+              max-width: 100% !important;
+          }
         span.menu-title {
             COLOR: #F9F9F9 !IMPORTANT;
         }

@@ -86,5 +86,17 @@ namespace CEIHaryana.Admin
             {
             }
         }
+
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("/Admin/AdminMaster.aspx");
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

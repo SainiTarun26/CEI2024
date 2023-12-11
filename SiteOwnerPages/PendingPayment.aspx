@@ -107,7 +107,7 @@
                     </div>
                     <table class="table table-responsive">
                         <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
                            <PagerStyle CssClass="pagination-ys" />  
                            <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -130,10 +130,15 @@
                                         <asp:Label ID="lblType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField> 
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" CssClass="headercolor"/>
                                     <ItemStyle Width="10%" />
-                                    <HeaderTemplate>Application For Test Report
+                                    <HeaderTemplate>Application For Inspection
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>

@@ -66,10 +66,7 @@ namespace CEIHaryana
             catch { }
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
+     
 
      
 
@@ -90,23 +87,20 @@ namespace CEIHaryana
         {
             try
             {
-                Button btn = sender as Button;
-                GridViewRow row = btn.NamingContainer as GridViewRow;
-                Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
-                Session["Data1"] = lblInstallationType.Text;
-                Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
-                Session["Data2"] = lblVoltageLevel.Text;
                 Response.Redirect("/SiteOwnerPages/ChallanReport.aspx");
             }catch { }
         }
 
         protected void btnFinalSubmit_Click(object sender, EventArgs e)
         {
-            id = Session["PendingPaymentId"].ToString();
-            string NullData = "true";;
-            string NullDate = string.Empty;
-            cei.updateInspectionPending(id, NullData, NullDate, NullData);
-            Response.Redirect("/SiteOwnerPages/TestReportData.aspx", false);
+            try
+            {
+                id = Session["PendingPaymentId"].ToString();
+                string NullData = "0 Payment"; ;
+                string NullDate = string.Empty;
+                cei.updateInspectionPending(id, NullData, NullDate, NullData);
+                Response.Redirect("/SiteOwnerPages/TestReportData.aspx", false);
+            }catch { }
 
         }
     }

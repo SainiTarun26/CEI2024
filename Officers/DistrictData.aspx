@@ -197,33 +197,33 @@
                                        <asp:TemplateField HeaderText="SNo">
                                            <HeaderStyle Width="5%" CssClass="headercolor" />
                                            <ItemStyle Width="5%" />
-                                           <ItemTemplate>
-                                               <%#Container.DataItemIndex+1 %>
-                                           </ItemTemplate>
-                                       </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Id" Visible="False">
-    <ItemTemplate>
-        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
-<asp:TemplateField HeaderText="Id" Visible="False">
-    <ItemTemplate>
-        <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
-<asp:TemplateField HeaderText="Id" Visible="False">
-    <ItemTemplate>
-        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>  
-<asp:TemplateField HeaderText="Id" Visible="False">
-    <ItemTemplate>
-        <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
-                                       <asp:TemplateField>
-                                           <HeaderStyle Width="34%" CssClass="headercolor" />
-                                           <ItemStyle Width="34%" />
+                     <ItemTemplate>
+                         <%#Container.DataItemIndex+1 %>
+                     </ItemTemplate>
+                 </asp:TemplateField>
+                     <asp:TemplateField HeaderText="Id" Visible="False">
+                         <ItemTemplate>
+                             <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                         </ItemTemplate>
+                     </asp:TemplateField>
+                     <asp:TemplateField HeaderText="Id" Visible="False">
+                         <ItemTemplate>
+                             <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                         </ItemTemplate>
+                     </asp:TemplateField>
+                     <asp:TemplateField HeaderText="Id" Visible="False">
+                         <ItemTemplate>
+                             <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                         </ItemTemplate>
+                     </asp:TemplateField>
+                     <asp:TemplateField HeaderText="Id" Visible="False">
+                         <ItemTemplate>
+                             <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                         </ItemTemplate>
+                     </asp:TemplateField>
+                     <asp:TemplateField>
+                         <HeaderStyle Width="34%" CssClass="headercolor" />
+                         <ItemStyle Width="34%" />
                                            <HeaderTemplate>
                                                Application Request
                                            </HeaderTemplate>
@@ -243,7 +243,7 @@
                                            <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                            <ItemStyle HorizontalAlign="center" Width="13%" />
                                        </asp:BoundField>
-                                       <asp:BoundField DataField="AssignTo" HeaderText="Pending With">
+                                       <asp:BoundField DataField="PendingWith" HeaderText="Pending With">
                                            <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                            <ItemStyle HorizontalAlign="center" Width="13%" />
                                        </asp:BoundField>
@@ -269,8 +269,8 @@
                     <div class="row" style="margin-bottom:20px;">
     <div class="col-4"></div>
     <div class="col-4" style="text-align: center;">
-        <asp:Button ID="BtnReset" Text="Submits" runat="server" class="btn btn-primary mr-2"
-            Style="padding-left: 17px; padding-right: 17px;" />
+        <asp:Button ID="BtnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
+            Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnBack_Click"/>
         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
     </div>

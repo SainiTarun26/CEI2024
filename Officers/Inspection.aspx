@@ -373,7 +373,19 @@
 
                                 </div>
                             </td>
-                        </tr>
+                        </tr>    <tr id="Tr12" runat="server" visible="true">
+    <td>
+        <div class="col-12">
+            View Test Report<samp style="color: red"> * </samp>
+        </div>
+    </td>
+    <td>
+        <div class="col-12">
+            <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+
+        </div>
+    </td>
+</tr>
                     </tbody>
                 </table>
             </div>
@@ -383,10 +395,10 @@
                   <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
             </div>
-            <div class="col-4" style="text-align: center">
+        <%--    <div class="col-4" style="text-align: center">
               
                 <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
-            </div>
+            </div>--%>
         </div>  
       <%--  <div class="row">
             <div class="col-md-7">

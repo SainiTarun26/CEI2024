@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -50,14 +50,16 @@
             padding: 5px 10px 5px 10px;
             background: left 3px top 5px no-repeat #563d7c;
         }
-        .submit:hover {
-    border: 1px solid #563d7c;
-    border-radius: 5px;
-    color: white;
-    padding: 5px 10px 5px 10px;
-    background: left 3px top 5px no-repeat #26005f;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+
+            .submit:hover {
+                border: 1px solid #563d7c;
+                border-radius: 5px;
+                color: white;
+                padding: 5px 10px 5px 10px;
+                background: left 3px top 5px no-repeat #26005f;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+
         .table-dark {
             text-align: center !important;
             background-color: #9292cc !important;
@@ -146,12 +148,14 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
-        .headercolor{
-    background-color: #9292cc;
-}
+
+        .headercolor {
+            background-color: #9292cc;
+        }
+
         th {
-    background: #9292cc;
-}
+            background: #9292cc;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -190,7 +194,7 @@
                                     <label for="Name">
                                         Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" onKeyPress="return allowAlphabets(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4" id="agency" runat="server">
@@ -276,11 +280,16 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
                                 <div class="col-4" runat="server">
-                                    <label for="PanNumber">PAN Number of Site Owner
+                                    <label for="PanNumber">
+                                        PAN Number of Site Owner
                                         <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter PAN Number</asp:RequiredFieldValidator>
+                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter PAN Number</asp:RequiredFieldValidator>--%>
+                                    <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
+                                        ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />
+                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                             
                                     <%--<div class="col-4">
                             <label>
                                 Work Details
@@ -291,7 +300,8 @@
                             <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>--%>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4" id="InstallationType" runat="server" visible="false">
+                                    <%--<div class="col-4" id="DivInstallationType" runat="server" visible="false">--%>
                                     <label>
                                         Select Installation Type
         <samp style="color: red">* </samp>
@@ -317,7 +327,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="table-responsive pt-3" id="Installation" runat="server" visible="false">
+                                    <div class="table-responsive pt-3" id="Installation" runat="server">
                                         <table class="table table-bordered table-striped">
                                             <thead class="table-dark">
                                                 <tr>
@@ -329,16 +339,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <div id="installationType1" runat="server" visible="False">
+                                                <div id="installationType1" runat="server">
                                                     <tr>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" Text="Line" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo1" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
 
                                                             </div>
@@ -348,16 +358,16 @@
                                                         </td>
                                                     </tr>
                                                 </div>
-                                                <div id="installationType2" runat="server" visible="False">
+                                                <div id="installationType2" runat="server">
                                                     <tr>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType2"  Text="Substation Tramsformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo2" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -366,16 +376,16 @@
                                                         </td>
                                                     </tr>
                                                 </div>
-                                                <div id="installationType3" runat="server" visible="False">
+                                                <div id="installationType3" runat="server">
                                                     <tr>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Genrating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div style="margin-left: 15px !important; margin-right: 15px !important;">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -393,7 +403,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -412,7 +422,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo5" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtinstallationNo5" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -431,7 +441,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo6" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtinstallationNo6" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -449,7 +459,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo7" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtinstallationNo7" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -467,7 +477,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtinstallationNo8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtinstallationNo8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtinstallationNo8" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -487,6 +497,7 @@
                 <h7 class="card-title fw-semibold mb-4">Work Schedule</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
+
                         <div class="col-4">
                             <label for="StartDate">
                                 Work Start Date<samp style="color: red"> * </samp>
@@ -494,14 +505,18 @@
                             <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" TabIndex="14" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtStartDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Start Date</asp:RequiredFieldValidator>
                         </div>
+
                         <div class="col-4">
                             <label for="CompletitionDate">
                                 Tentative Work Completition Date<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" TabIndex="15" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtCompletitionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Completition Date</asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="cmpDate" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletitionDate" Operator="GreaterThanEqual"
+                                ErrorMessage="Tentative Completion Date must be greater than Start Date" Display="Dynamic" ForeColor="Red" />
+                     
+                            </div>
 
-                        </div>
                         <div class="col-4">
                             <label>
                                 If any work issued by any Agency/ Dept. / Owner<samp style="color: red"> * </samp>
@@ -525,18 +540,24 @@
 
                             <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Visible="false" TabIndex="14" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
                             <%--<input type="file" id="customFile" name="img[]" runat="server" class="file-upload-default" onchange="FileName()"/>--%>
-                              <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
-                                
+                            <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
+
                             <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select File</asp:RequiredFieldValidator>
                         </div>
+
                         <div class="col-4" id="hiddenfield1" runat="server">
                             <label for="CompletionDateasperWorkOrder">
                                 Completion Date as per Work Order<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" onkeydown="return preventEnterSubmit(event)" TabIndex="15" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCompletionDateAPWO" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Completion Date as per Work Order</asp:RequiredFieldValidator>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator0" runat="server" ControlToValidate="txtCompletionDateAPWO" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletionDateAPWO" Operator="GreaterThanEqual" ErrorMessage="Work Completion Date must be greater than  Start Date" Display="Dynamic" ForeColor="Red" />
+
+
                         </div>
+
                     </div>
                 </div>
                 <div>
@@ -549,11 +570,16 @@
                                         <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
                                             <Columns>
                                                 <asp:TemplateField Visible="False">
-                                                    <HeaderTemplate >
+                                                    <HeaderTemplate>
                                                         <asp:CheckBox ID="chkSelectAll" runat="server" />
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
                                                         <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="REID" Visible="false">
@@ -562,27 +588,27 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="REID" HeaderText="ID">
-                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor"/>
+                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="center" Width="10%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Category" HeaderText="Category">
-                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor"/>
+                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="center" Width="10%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="16%" CssClass="headercolor"/>
+                                                    <HeaderStyle HorizontalAlign="Left" Width="16%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="16%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                                    <HeaderStyle HorizontalAlign="right" Width="24%" CssClass="headercolor"/>
+                                                    <HeaderStyle HorizontalAlign="right" Width="24%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="right" Width="24%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
-                                                    <HeaderStyle HorizontalAlign="right" Width="22%" CssClass="headercolor"/>
+                                                    <HeaderStyle HorizontalAlign="right" Width="22%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="right" Width="22%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                                    <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
+                                                    <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="right" Width="20%" />
                                                 </asp:BoundField>
                                             </Columns>
@@ -605,6 +631,7 @@
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
                             <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />
+                            <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                         </div>
@@ -620,7 +647,7 @@
     </div>
     <footer class="footer">
     </footer>
-       <script src="/Assets/js/js/vendor.bundle.base.js"></script>
+    <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
     <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
     <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
@@ -632,19 +659,19 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-   
-   <script type="text/javascript">
-      
-       function FileName() {
-           var fileInput = document.getElementById('customFile');
-           var selectedFileName = document.getElementById('customFileLocation');
 
-           if (fileInput.files.length > 0) {
-               // Update the TextBox value with the selected file name
-               selectedFileName.value = fileInput.files[0].name;
-           }
-       }
-   </script>
+    <script type="text/javascript">
+
+        function FileName() {
+            var fileInput = document.getElementById('customFile');
+            var selectedFileName = document.getElementById('customFileLocation');
+
+            if (fileInput.files.length > 0) {
+                // Update the TextBox value with the selected file name
+                selectedFileName.value = fileInput.files[0].name;
+            }
+        }
+    </script>
 
     <script type="text/javascript">
         function ValidatePincode() {
@@ -666,7 +693,7 @@
                 return false;
             }
         }
-   </script>
+    </script>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
@@ -677,14 +704,14 @@
     </script>
     <script type="text/javascript">
         function ValidateEmail() {
-            
+
             var email1 = document.getElementById("<%=txtEmail.ClientID %>");
             email = email1.value;
             var lblError = document.getElementById("lblError");
             lblError.innerHTML = "";
             var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
             if (email == "") {
-               // lblError.innerHTML = "Please Enter Email" + "\n";
+                // lblError.innerHTML = "Please Enter Email" + "\n";
                 return false;
             }
             else if (expr.test(email)) {
@@ -806,7 +833,7 @@
 
     <script type="text/javascript">
         function showHide() {
-            
+
             let experience = document.getElementById('experience');
             if (experience.value == 1) {
                 document.getElementById('hidden-field').style.display = 'block';
@@ -822,7 +849,7 @@
     </script>
     <script type="text/javascript">
         function showHide1() {
-            
+
             let experience = document.getElementById('ddlworktype');
             if (experience.value == 1) {
                 document.getElementById('individual').style.display = 'block';
@@ -836,4 +863,62 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function allowAlphabets(event) {
+            var keyCode = event.which || event.keyCode;
+
+            // Allow only alphabetical keys
+            if ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122)) {
+                return true;
+            } else {
+                event.preventDefault();
+                return false;
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function restrictInput(event) {
+            var allowedKeys = [49, 50, 51, 52, 53]; // ASCII codes for 1, 2, 3, 4, 5
+            var keyCode = event.which || event.keyCode;
+
+            if (allowedKeys.indexOf(keyCode) === -1) {
+                event.preventDefault();
+                return false;
+            }
+
+            return true;
+        }
+ </script>
+
+    <%-- <script type="text/javascript">
+        function validateCheckBoxes() {
+            var gridView = document.getElementById('<%= GridView1.ClientID %>');
+            var checkBoxes = gridView.getElementsByTagName("input");
+            var checkBoxChecked = false;
+
+            for (var i = 0; i < checkBoxes.length; i++) {
+                if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked) {
+                    checkBoxChecked = true;
+                    break;
+                }
+            }
+            if (!checkBoxChecked) {
+                alert("Please select at least one checkbox.");
+                return false;
+            } else {
+                // If at least one checkbox is selected, submit the form
+                return true;
+            }
+        }
+    </script>--%>
+
+      <script type="text/javascript">
+          function alertWithRedirect() {
+              if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
+                  window.location.href = "/Contractor/Work_Intimation.aspx";
+              } else {
+              }
+          }
+      </script>
 </asp:Content>

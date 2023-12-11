@@ -148,7 +148,7 @@
                                     <HeaderStyle Width="35%" CssClass="headercolor"/>
                                     <ItemStyle Width="35%" />
                                     <HeaderTemplate>
-                                        TestReportId
+                                       Application
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Application") %> ' CommandName="Select"><%#Eval("Application") %></asp:LinkButton>

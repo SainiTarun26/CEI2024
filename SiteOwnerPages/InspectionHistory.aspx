@@ -129,7 +129,7 @@
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" CssClass="headercolor"/>
                                     <ItemStyle Width="10%" />
-                                    <HeaderTemplate>Application For Test Report
+                                    <HeaderTemplate>Application For Inspection
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>

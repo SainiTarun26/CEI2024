@@ -243,7 +243,7 @@
                                            <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                            <ItemStyle HorizontalAlign="center" Width="13%" />
                                        </asp:BoundField>
-                                       <asp:BoundField DataField="AssignTo" HeaderText="Pending With">
+                                       <asp:BoundField DataField="PendingWith" HeaderText="Pending With">
                                            <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                            <ItemStyle HorizontalAlign="center" Width="13%" />
                                        </asp:BoundField>
@@ -269,8 +269,8 @@
                     <div class="row" style="margin-bottom:20px;">
     <div class="col-4"></div>
     <div class="col-4" style="text-align: center;">
-        <asp:Button ID="BtnReset" Text="Submits" runat="server" class="btn btn-primary mr-2"
-            Style="padding-left: 17px; padding-right: 17px;" />
+        <asp:Button ID="BtnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
+            Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnBack_Click" />
         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
     </div>
