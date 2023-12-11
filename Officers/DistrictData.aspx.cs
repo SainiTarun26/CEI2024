@@ -79,7 +79,7 @@ namespace CEIHaryana.Officers
 
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+                    Response.Redirect("/Officers/Inspection.aspx", false);
                 }
             }
             catch (Exception ex)

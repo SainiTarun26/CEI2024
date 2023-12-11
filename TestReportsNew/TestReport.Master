@@ -2192,14 +2192,20 @@
   <li class="nav-item dropdown">
    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Substation Transformer</a>
    <div class="dropdown-menu">
-     <a class="dropdown-item" href="#">Action</a>
-     <a class="dropdown-item" href="#">Another action</a>
+     <a class="dropdown-item" href="#">Substation Transformer 1</a>
+     <a class="dropdown-item" href="#">Substation Transformer 2</a>
+     <a class="dropdown-item" href="#">Substation Transformer 3</a>
+     <a class="dropdown-item" href="#">Substation Transformer 4</a>
+     <a class="dropdown-item" href="#">Substation Transformer 5</a>
    </div>
  </li> <li class="nav-item dropdown">
    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Generating Set</a>
    <div class="dropdown-menu">
-     <a class="dropdown-item" href="#">Action</a>
-     <a class="dropdown-item" href="#">Another action</a>
+     <a class="dropdown-item" href="#">Generating Set 1</a>
+     <a class="dropdown-item" href="#">Generating Set 2</a>
+     <a class="dropdown-item" href="#">Generating Set 3</a>
+     <a class="dropdown-item" href="#">Generating Set 4</a>
+     <a class="dropdown-item" href="#">Generating Set 5</a>
    </div>
  </li>
 </ul>

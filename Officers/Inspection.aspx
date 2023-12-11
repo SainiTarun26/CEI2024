@@ -429,4 +429,11 @@
          
     </div>
          </div>
+      <script type="text/javascript">
+          function alertWithRedirectdata() {
+              if (confirm('Data Added Successfully')) {
+              } else {
+              }
+          }
+      </script>
 </asp:Content>

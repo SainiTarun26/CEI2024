@@ -88,7 +88,16 @@ namespace CEIHaryana
 
         protected void ChallanUpload_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/ChallanReport.aspx");
+            try
+            {
+                Button btn = sender as Button;
+                GridViewRow row = btn.NamingContainer as GridViewRow;
+                Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                Session["Data1"] = lblInstallationType.Text;
+                Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
+                Session["Data2"] = lblVoltageLevel.Text;
+                Response.Redirect("/SiteOwnerPages/ChallanReport.aspx");
+            }catch { }
         }
 
         protected void btnFinalSubmit_Click(object sender, EventArgs e)

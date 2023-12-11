@@ -145,8 +145,10 @@ namespace CEIHaryana.SiteOwnerPages
                 string flpPhotourl10 = string.Empty;
                 string flpPhotourl11 = string.Empty;
                 string flpPhotourl12 = string.Empty;
+                string District = string.Empty;
                 string FeesLeft = string.Empty;
-                To = Session["District"].ToString();
+                District = Session["District"].ToString();
+                To = Session["Division"].ToString() ;
                 if (Session["LineID"] != null)
                 {
                     txtWorkType.Text = "Line";
@@ -463,7 +465,7 @@ namespace CEIHaryana.SiteOwnerPages
                 // DateTime myDate = Convert.ToDateTime(txtDate.Text);
                 string generatedId = CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
                     txtLineLength.Text,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
+                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, District, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
                 DataSaved.Visible = true;
                 Session["PendingPaymentId"] = generatedId;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully')", true);

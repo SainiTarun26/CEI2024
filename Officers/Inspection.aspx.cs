@@ -17,10 +17,18 @@ namespace CEIHaryana.Officers
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                GetData();
-                Visibility();
+                if (!IsPostBack)
+                {
+                    GetData();
+                    Visibility();
+                }
+            }
+            catch 
+            {
+                Response.Redirect("/Login.aspx");
+            
             }
         }
         protected void Visibility()
@@ -403,12 +411,28 @@ namespace CEIHaryana.Officers
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            ID = Session["InspectionId"].ToString();
-            CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, txtAdditionalNotes.Text);
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, txtAdditionalNotes.Text);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                if (Session["Area"] != null)
+                {
+                    Response.Redirect("/Officers/OfficerDashboard.aspx",false);
+                }
+                else
+                {
+
+                    Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
+
+                }
+
+            }
+            catch (Exception ex) { }
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Officers/InstallationIntimationDetails.aspx");
+            Response.Redirect("/Officers/InstallationIntimationDetails.aspx",false);
 
         }
     }

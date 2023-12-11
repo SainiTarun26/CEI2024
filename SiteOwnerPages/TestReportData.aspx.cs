@@ -75,6 +75,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["ContactNo"] = lblContactNo.Text;
                 Label lblLineLength = (Label)row.FindControl("lblLineLength");
                 Session["LineLength"] = lblLineLength.Text;
+                Label lblDivisionId = (Label)row.FindControl("lblDivisionId");
+                Session["Division"] = lblDivisionId.Text.Trim();
                 Session["Approval"] = null;
                 if (e.CommandName == "Select")
                 {

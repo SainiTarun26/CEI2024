@@ -70,6 +70,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["Voltage"] = lblVoltage.Text;
                 Label lblContactNo = (Label)row.FindControl("lblContactNo");
                 Session["ContactNo"] = lblContactNo.Text;
+                Label lblDivisionId = (Label)row.FindControl("lblDivisionId");
+                Session["Division"] = lblDivisionId.Text.Trim();
                 Session["Approval"] = null;
                 if (e.CommandName == "Select")
                 {

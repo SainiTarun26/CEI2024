@@ -1057,7 +1057,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
       string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
       string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
       string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite,
-      string StructureStabilityResolvedByAuthorizedEngineer, string Staff, string Division, string RequestDetails, string DateOfSubmission, string CreatedBy)
+      string StructureStabilityResolvedByAuthorizedEngineer, string Staff, string District, string Division, string RequestDetails, string DateOfSubmission, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1090,6 +1090,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
             cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
             cmd.Parameters.AddWithValue("@Staff ", Staff);
+            cmd.Parameters.AddWithValue("@District ", District);
             cmd.Parameters.AddWithValue("@Division ", Division);
             cmd.Parameters.AddWithValue("@RequestDetails ", RequestDetails);
             cmd.Parameters.AddWithValue("@DateOfSubmission ", DateOfSubmission);
