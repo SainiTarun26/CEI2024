@@ -363,6 +363,18 @@
                                 </td>
                              
                             </tr>
+                                <tr id="Tr12" runat="server" visible="true">
+                                <td>
+                                    <div class="col-12">
+                                        View Test Report<samp style="color: red"> * </samp>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-12">
+                                        <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="Open Document"></asp:LinkButton>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -371,9 +383,9 @@
                 <div class="col-4">
                     <asp:TextBox ID="txtTestReportId" class="form-control" Visible="false" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4" style="text-align: center">
+                <%--<div class="col-4" style="text-align: center">
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report"></asp:LinkButton>
-                </div>
+                </div>--%>
             </div>
            <div class="row" style="margin-top: -30px;">
                 <div class="col-3" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -45px;">
@@ -388,8 +400,9 @@
                         <asp:ListItem Text="Accepted" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
                     </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
+                   <asp:CustomValidator runat="server" ID="cvAtLeastOneSelected" ForeColor="Red" ClientValidationFunction="validateDropdowns"  ErrorMessage="Please select at least one option from the dropdowns." 
+     Display="Dynamic" ValidationGroup="Update"></asp:CustomValidator>
+  </div>
                
                 <div class="col-3" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
@@ -408,7 +421,7 @@
                     </asp:DropDownList>
                 </div>
                
-                <div class="col-3" id="DivAdditionalNote" runat="server" visible="false" >
+                <div class="col-6" id="DivAdditionalNote" runat="server" visible="false" >
                     <label>Additional Note</label>
                     <asp:TextBox ID="txtAdditionalNote" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -418,7 +431,7 @@
                     <asp:Button ID="btnAction" Text="Take Action" runat="server" class="btn btn-primary mr-2" OnClick="btnAction_Click" />
                 </div>
                 <div class="col-2" style="text-align: center;">
-                    <asp:Button ID="btnUpdate" Text="Update" runat="server" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
+                    <asp:Button ID="btnUpdate" Text="Save" runat="server" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
                 </div>
                 <div class="col-5" style="text-align: left;">
                     <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />

@@ -18,7 +18,7 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    BindGrid();
+                    AllDataGrid();
                     DdlBindStaffPendingWith();
                     DdlDivisionData();
                 }
@@ -68,8 +68,29 @@ namespace CEIHaryana.Admin
             }
         }
 
-
-        private void BindGrid()
+        private void AllDataGrid()
+        {
+            try
+            {
+                DataTable ds = new DataTable();
+                ds = CEI.InspectionHistoryForAdminData();
+                if (ds.Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch { }
+        }
+            private void BindGrid()
         {
             try
             {

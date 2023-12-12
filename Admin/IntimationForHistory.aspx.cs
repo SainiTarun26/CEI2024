@@ -35,9 +35,24 @@ namespace CEIHaryana.Admin
                         txtWorkType.Text = "Generating Station";
                         Id = Session["GeneratingSetId"].ToString();
                     }
+
                     GetDetailsWithId();
                     Visibilty();
                     BindDropDownToAssign();
+                    string Approval = Session["Approval"].ToString();
+                    if (Approval.Trim() == "Accepted" || Approval.Trim() == "Rejected")
+                    {
+                        ApprovalRequired.Visible = true;
+                        btnAction.Visible = false;
+                        ddlReview.Attributes.Add("disabled", "true");
+                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Approval));
+                        DivToAssign.Visible = false;
+                        btnUpdate.Visible = false;
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
             catch
@@ -48,6 +63,10 @@ namespace CEIHaryana.Admin
 
         private void Visibilty()
         {
+            btnUpdate.Visible = false;
+            btnAction.Visible = true;
+            Uploads.Visible = true;
+            Uploads.Visible = true
             Uploads.Visible = true;
             Uploads.Visible = true;
             if (txtWorkType.Text == "Line")
@@ -680,11 +699,14 @@ namespace CEIHaryana.Admin
                 ApprovalRequired.Visible = true;
                 DivToAssign.Visible = true;
                 DivAdditionalNote.Visible = true;
+                btnUpdate.Visible = true;
+                btnAction.Visible = false;
+
             }
 
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+
             }
         }
 
