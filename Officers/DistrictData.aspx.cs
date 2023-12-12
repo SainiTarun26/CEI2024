@@ -27,8 +27,9 @@ namespace CEIHaryana.Officers
             {
                 dated = Session["Days"].ToString();
                 Division = Session["StaffID"].ToString();
+                string District = Session["DistrictOfData"].ToString();
                 DataTable ds = new DataTable();
-                ds = cei.ShowPendingDivisionDaysData(dated, Division);
+                ds = cei.ShowPendingDivisionDaysData(dated, Division, District);
                 if (ds.Rows.Count > 0)
                 {
                     GridView3.DataSource = ds;
@@ -38,6 +39,7 @@ namespace CEIHaryana.Officers
                 {
                     string script = "alert(\"No Data Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
+                    Response.Redirect("/Officers/OfficerDashboard.aspx");
                 }
             }
             catch (Exception)

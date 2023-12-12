@@ -1642,9 +1642,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffDivisionWise", loginId);
         }
-        public DataTable ShowPendingDivisionDaysData(string dated, string Division)
+        public DataTable ShowPendingDivisionDaysData(string dated, string Division, string District)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowPendingDivisionDaysData", dated, Division);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowPendingDivisionDaysData", dated, Division, District);
         }
 
         public DataSet DivisionInspectionHistory(string LoginId)
