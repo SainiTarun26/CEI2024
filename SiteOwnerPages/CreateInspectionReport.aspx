@@ -470,4 +470,11 @@
              }
          }
      </script>
+         <script type="text/javascript">
+             function alertWithRedirect() {
+                 if (confirm('Select all PDF files only')) {
+                 } else {
+                 }
+             }
+         </script>
 </asp:Content>

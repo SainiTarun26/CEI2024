@@ -156,9 +156,9 @@ namespace CEIHaryana
                     if (chkSignedin.Checked == true)
                     {
                         Session["SupervisorID"] = txtUserID.Text;
-                        Session["logintype"] = "Supervisor/Wireman";
+                        Session["logintype"] = "Supervisor";
                         Response.Cookies["SupervisorID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Supervisor/Wireman";
+                        Response.Cookies["logintype"].Value = "Supervisor";
                         Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
                         Response.Redirect("Supervisor/IntimationData.aspx", false);
@@ -166,9 +166,9 @@ namespace CEIHaryana
                     else
                     {
                         Session["SupervisorID"] = txtUserID.Text;
-                        Session["logintype"] = "Supervisor/Wireman";
+                        Session["logintype"] = "Supervisor";
                         Response.Cookies["SupervisorID"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Supervisor/Wireman";
+                        Response.Cookies["logintype"].Value = "Supervisor";
                         Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Supervisor/IntimationData.aspx", false);

@@ -156,6 +156,25 @@
         th {
             background: #9292cc;
         }
+            input#ContentPlaceHolder1_txtPayment {
+    margin-top: -23px !important;
+    background: white;
+    border-color: white;
+    box-shadow: none;
+    font-size: 16px !important;
+    font-weight: 700;
+    padding: 0px;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    width: 50%;
+    padding-left:15px;
+    margin-left: 14px !important;
+}
+       svg {
+    /* top: 10px; */
+    margin-top: 9px;
+    margin-left:15px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -226,14 +245,17 @@
                             <div class="col-6">
                                 <div class="form-group row">
                                     <label for="search" class="col-sm-3 col-form-label">Total payment:</label>
+                                     <div class="col-sm-8" style="margin-left:-35px;">
                                     <div class="col-sm-8">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 64C0 46.3 14.3 32 32 32H96h16H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H231.8c9.6 14.4 16.7 30.6 20.7 48H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H252.4c-13.2 58.3-61.9 103.2-122.2 110.9L274.6 422c14.4 10.3 17.7 30.3 7.4 44.6s-30.3 17.7-44.6 7.4L13.4 314C2.1 306-2.7 291.5 1.5 278.2S18.1 256 32 256h80c32.8 0 61-19.7 73.3-48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H185.3C173 115.7 144.8 96 112 96H96 32C14.3 96 0 81.7 0 64z"/></svg>
                                         <asp:TextBox ID="txtPayment" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="margin-top: 4px"></asp:TextBox><br />
                                     </div>
                                 </div>
                             </div>
+                                </div>
                             <div class="col-6" style="text-align: end;">
                                 <asp:Button type="submit" ID="btnFinalSubmit" ValidationGroup="Submit" Visible="false" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnFinalSubmit_Click" />  
-                                <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Make Payment" runat="server" class="btn btn-primary mr-2" />
+                                <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit"  disabled="true" Text="Make Payment" runat="server" class="btn btn-primary mr-2" />
                                 <asp:Button type="submit" ID="ChallanUpload" ValidationGroup="Submit" Text="Upload Challan" runat="server" class="btn btn-primary mr-2" OnClick="ChallanUpload_Click" />
                             </div>
                         </div>
