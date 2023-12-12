@@ -66,7 +66,7 @@ namespace CEIHaryana.Admin
             btnUpdate.Visible = false;
             btnAction.Visible = true;
             Uploads.Visible = true;
-            Uploads.Visible = true
+            Uploads.Visible = true;
             Uploads.Visible = true;
             Uploads.Visible = true;
             if (txtWorkType.Text == "Line")
