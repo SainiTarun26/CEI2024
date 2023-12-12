@@ -206,7 +206,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnktest_Click" Text="Open Document">LinkButton</asp:LinkButton>
+                                            <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnktest_Click" Text="Open Document"></asp:LinkButton>
                                         </div>
                                     </td>
                                   

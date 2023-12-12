@@ -134,7 +134,7 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
-                    Installation.Visible = false;
+                   // Installation.Visible = false;
                     installationType1.Visible = false;
                 }
                 if (dp_Id10 != "")
@@ -147,7 +147,7 @@ namespace CEIHaryana.Contractor
                 else
                 {
 
-                    Installation.Visible = false;
+                   // Installation.Visible = false;
                     installationType2.Visible = false;
                 }
                 if (dp_Id12 != "")
@@ -160,7 +160,7 @@ namespace CEIHaryana.Contractor
                 else
                 {
 
-                    Installation.Visible = false;
+                  //  Installation.Visible = false;
                     installationType3.Visible = false;
                 }
                 if (dp_Id14 != "")
@@ -494,6 +494,8 @@ namespace CEIHaryana.Contractor
 
                         respStreamReader.Close();
                         myResp.Close();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
 
 
                     }

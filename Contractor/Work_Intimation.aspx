@@ -42,6 +42,14 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
+         <script type="text/javascript">
+             function alertWithRedirectdata() {
+                 if (confirm('Intimation Created Successfully')) {
+                     window.location.href = "/Contractor/Work_Intimation.aspx";
+                 } else {
+                 }
+             }
+         </script>
     <style>
         .submit {
             border: 1px solid #563d7c;
@@ -313,7 +321,7 @@
                                 </div>
                                 <div class="col-4">
                                     <label>
-                                        Select Applicant Type
+                                        Applicant Type
         <samp style="color: red">* </samp>
                                     </label>
                                     <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="13" ID="ddlApplicantType" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
@@ -543,8 +551,9 @@
                             <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
 
                             <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select File</asp:RequiredFieldValidator>
-                        </div>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+    ControlToValidate="customFile" ErrorMessage="Required"  ValidationGroup="Submit" Display="Dynamic"  ForeColor="Red"></asp:RequiredFieldValidator>
+                                                     </div>
 
                         <div class="col-4" id="hiddenfield1" runat="server">
                             <label for="CompletionDateasperWorkOrder">

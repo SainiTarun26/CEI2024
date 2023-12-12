@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Consolidated_Report.aspx.cs" Inherits="CEIHaryana.Admin.Consolidated_Report" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -180,8 +181,21 @@
             text-decoration: underline;
         }
     </style>
+     <script>
+         function printDiv(printableDiv) {
+             var printContents = document.getElementById(printableDiv).innerHTML;
+             var originalContents = document.body.innerHTML;
 
-       <script type="text/javascript">
+             // Print as HTML
+             document.body.innerHTML = printContents;
+             window.print();
+
+             // Restore original content
+             document.body.innerHTML = originalContents;
+         }
+
+     </script>
+    <script type="text/javascript">
         $(document).ready(function () {
             // Attach the change event to the dropdown
             $("#ddlInstallatiosType").change(function () {
@@ -207,10 +221,10 @@
                 }
             });
         }
-       </script>
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="content-wrapper">
+    <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row">
@@ -247,7 +261,8 @@
                                 District:
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlDistrict" TabIndex="8" runat="server" AutoPostBack="true">
-                            </asp:DropDownList>
+                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                </asp:DropDownList>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
@@ -282,10 +297,10 @@
                                 Status:        
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlStatus" TabIndex="8" runat="server" AutoPostBack="true">
-                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                             <asp:ListItem Value="1" Text="Initiated"></asp:ListItem>
-                             <asp:ListItem Value="2" Text="Accepted"></asp:ListItem>
-                             <asp:ListItem Value="3" Text="Rejected"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                <asp:ListItem Value="1" Text="Initiated"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="Accepted"></asp:ListItem>
+                                <asp:ListItem Value="3" Text="Rejected"></asp:ListItem>
                                 <asp:ListItem Value="4" Text="Pending"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
@@ -302,8 +317,10 @@
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Show" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
-                        <asp:Button ID="BtnReset" Text="Export" runat="server" class="btn btn-primary mr-2"
-                            Style="padding-left: 17px; padding-right: 17px;" />
+                        <asp:Button ID="BtnExport"  Text="Export" OnClientClick="printDiv('printableDiv');" runat="server" class="btn btn-primary mr-2"
+                            Style="padding-left: 17px; padding-right: 17px;" /> 
+                        <asp:Button ID="BtnReset"  Text="Reset" runat="server" class="btn btn-primary mr-2"
+                            Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnReset_Click" />
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
                     </div>
@@ -312,9 +329,9 @@
                     </div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
-                    <div class="card">
+                    <div class="card" id="printableDiv">
                         <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" runat="server"
-                        Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
+                            Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
 
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
@@ -323,40 +340,22 @@
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                             
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" CssClass="headercolor" />
                                     <ItemStyle Width="10%" />
                                     <HeaderTemplate>
-                                        Application For Test Report
+                                        Application For Inspection
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForInspection") %> ' CommandName="Select"><%#Eval("ApplicationForInspection") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="ApplicantType" HeaderText="All Application Request">
+                                <asp:BoundField DataField="Createddate1" HeaderText="Application Date">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="CreatedDate1" HeaderText="Application Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Applied For">
+                                <asp:BoundField DataField="Installationfor" HeaderText="Installation Applied For">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
@@ -368,7 +367,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="AssignTo" HeaderText="Pending With">
+                                <asp:BoundField DataField="AssignedStaff" HeaderText="Pending With">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
@@ -402,4 +401,5 @@
             </div>
         </div>
     </div>
+    
 </asp:Content>

@@ -366,7 +366,7 @@
                             <label for="LicenceOld">
                                 Licence no (Old)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceOld" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceOld" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                             
                         </div>
@@ -374,7 +374,7 @@
                             <label for="LicenceNew">
                                 Licence No. (New)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
+                            <asp:TextBox class="form-control" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
                          
                         </div>
 

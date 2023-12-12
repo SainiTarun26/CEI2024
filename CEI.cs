@@ -1,5 +1,6 @@
 ﻿using CEIHaryana.Contractor;
 using iTextSharp.text.pdf.parser;
+using Pipelines.Sockets.Unofficial.Arenas;
 using System;
 using System.Configuration;
 using System.Data;
@@ -1676,6 +1677,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet ConsolidateSearchData(string SubmittedDate,string EndDate,string Division,string District,string Status,string Inspectiontype,
     string PendingWith,string OwnerApplication,string GSTNumber)
         {
+            DataSet ds = new DataSet();
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
             SqlCommand cmd = new SqlCommand("sp_ConsolidatedSearch", connection);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -1691,19 +1693,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@OwnerApplication", OwnerApplication);
             cmd.Parameters.AddWithValue("@GSTNumber",GSTNumber);
 
-            DataSet ds = new DataSet();
+            connection.Open();
 
-            try
+            // Use a SqlDataAdapter to fill the DataSet
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
             {
-                connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(ds);
             }
-            finally
-            {
-                connection.Close();
-            }
-
             return ds;
         }
 

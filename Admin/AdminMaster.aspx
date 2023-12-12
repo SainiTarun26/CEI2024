@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">   
+    <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="CEI cei haryana">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
     <link href="/Dashboard_Css/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="/Dashboard_Css/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css" />
     <!-- Bootstrap CSS-->
     <link href="/Dashboard_Css/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
@@ -573,297 +573,304 @@
                             </div>
                         </div>
                     </div>--%>
-                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                <div class="card" style="background: #f9f9f9; margin: 15px; margin-top: 10px; margin-bottom: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 0px 24px 5px 25px;border-radius:10px;">
-                    <div class="row m-t-25">
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c1">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="bi bi-file-earmark-plus"></i>
-                                        </div>
-                                        <div class="text">
-                                          <h2>
-                                              <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" readonly="true"></asp:TextBox>
+                        <div class="card" style="background: #f9f9f9; margin: 15px; margin-top: 10px; margin-bottom: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 0px 24px 5px 25px; border-radius: 10px;">
+                            <div class="row m-t-25">
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="overview-item overview-item--c1">
+                                        <div class="overview__inner">
+                                            <div class="overview-box clearfix">
+                                                <div class="icon">
+                                                    <i class="bi bi-file-earmark-plus"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h2>
+                                                        <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox>
 
-                                          </h2>
+                                                    </h2>
 
-                                            <span>Total Requests Recieved</span>
-                                        </div>
-                                    </div>
-                                    <%--<div class="overview-chart">
+                                                    <span>Total Requests Recieved</span>
+                                                </div>
+                                            </div>
+                                            <%--<div class="overview-chart">
                                         <canvas id="widgetChart1"></canvas>
                                     </div>--%>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c2">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="bi bi-file-earmark-check"></i>
-                                        </div>
-                                        <div class="text">
-                                           <h2><asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off"  readonly="true"></asp:TextBox></h2>
-
-                                             <span id="APPROVED">Approved/Rejected</span>
                                         </div>
                                     </div>
-                                    <%--<div class="overview-chart">
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="overview-item overview-item--c2">
+                                        <div class="overview__inner">
+                                            <div class="overview-box clearfix">
+                                                <div class="icon">
+                                                    <i class="bi bi-file-earmark-check"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h2>
+                                                        <asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
+
+                                                    <span id="APPROVED">Approved/Rejected</span>
+                                                </div>
+                                            </div>
+                                            <%--<div class="overview-chart">
                                         <canvas id="widgetChart2"></canvas>
                                     </div>--%>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c3">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="bi bi-journal-medical"></i>
-                                        </div>
-                                        <div class="text">
-                                          <h2>
-                                              <asp:TextBox class="form-control" ID="In_process" runat="server" onkeydown="return preventEnterSubmit(event)" 
-                                                  autocomplete="off"  readonly="true"></asp:TextBox></h2>
-
-                                           <span id="PROCESS">In Process</span>
-
                                         </div>
                                     </div>
-                                    <%--<div class="overview-chart">
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="overview-item overview-item--c3">
+                                        <div class="overview__inner">
+                                            <div class="overview-box clearfix">
+                                                <div class="icon">
+                                                    <i class="bi bi-journal-medical"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h2>
+                                                        <asp:TextBox class="form-control" ID="In_process" runat="server" onkeydown="return preventEnterSubmit(event)"
+                                                            autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
+
+                                                    <span id="PROCESS">In Process</span>
+
+                                                </div>
+                                            </div>
+                                            <%--<div class="overview-chart">
                                         <canvas id="widgetChart3"></canvas>
                                     </div>--%>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c4">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="bi bi-folder-symlink-fill"></i>
-                                        </div>
-                                        <div class="text">
-                                         <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" readonly="true" ></asp:TextBox></h2>
-                                        
-                                         <span id="INITIATED">Initiated</span>
-                     
                                         </div>
                                     </div>
-                                    <%--<div class="overview-chart">
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="overview-item overview-item--c4">
+                                        <div class="overview__inner">
+                                            <div class="overview-box clearfix">
+                                                <div class="icon">
+                                                    <i class="bi bi-folder-symlink-fill"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h2>
+                                                        <asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
+
+                                                    <span id="INITIATED">Initiated</span>
+
+                                                </div>
+                                            </div>
+                                            <%--<div class="overview-chart">
                                         <canvas id="widgetChart4"></canvas>
                                     </div>--%>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" style="background: #f9f9f9; margin: 5px;border-radius:10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-top: 15px;margin:18px;">
-                    <div class="row" style="margin-left: 4px;">
-
-                        <div class="col-lg-6">
-                            <div class="au-card m-b-30">
-                                <div class="au-card-inner" style="text-align: -webkit-center !important;">
-                                    <h3 class="title-2 m-b-40">Pending Status(division Wise)</h3>
-                                    <canvas id="myChart" width="400" height="200"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6" style="margin-left: 53px !important;">
-                            <div class="au-card m-b-30">
-                                <div class="au-card-inner" style="text-align: -webkit-center !important;">
-                                    <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
-                                 <canvas id="myDoughnutChart" width="400" height="322"></canvas>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="row" style="margin-top: -10px !important;">
-                  <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);margin-left:35px;border-radius:10px;">
-                      
-                        <div class="col-lg-12">
-                            <h2 class="title-1 m-b-25">Division Wise Report</h2>
-                           
-                            <div>
-                                <div id="printableDiv">
-                         <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <HeaderStyle Width="34%" CssClass="headercolor division-align" />
-                                <ItemStyle Width="34%" />
-                                <HeaderTemplate>
-                                   Division
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Division") %> ' CommandName="Select"><%#Eval("Division") %></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            <asp:BoundField DataField="RecordCount" HeaderText="Total Requests Received till date">
-                                <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Center" Width="15%" />
-                            </asp:BoundField>
-                                 <asp:BoundField DataField="Initiated" HeaderText="Initiated">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
-                            </asp:BoundField>
-                                 <asp:BoundField DataField="InProgress" HeaderText="In Progress">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="Action Taken">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
-                       
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
-                                    </div>
-                                <div id="printableDiv2">
-                                <asp:GridView class="table-responsive table table-striped table-hover"  ID="GridView2" Visible="false"
-                                    OnRowCommand="GridView2_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10"
-                                    AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" 
-                            BorderWidth="1px" BorderColor="#dbddff">
-                           <PagerStyle CssClass="pagination-ys" />
-                            <Columns>
-                                      <asp:TemplateField HeaderText="Sr No">
-                                <HeaderStyle Width="5%"  />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField> 
-                                  <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblDistrictofData" runat="server" Text='<%#Eval("DistrictofData") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                               <asp:BoundField DataField="DistrictofData" HeaderText="District">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
-                            </asp:BoundField>
-                                <asp:TemplateField HeaderText="Less than 15 Days">
-                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
-                                    <ItemStyle Width="25%" />
-                                    <ItemTemplate>                                     
-                                        <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true"   CommandArgument=' <%#Eval("15Days") %> ' CommandName="Select15Days"><%#Eval("15Days") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="15 to 30 days">
-                                    <HeaderStyle Width="25%" CssClass="headercolor" />
-                                    <ItemStyle Width="25%" />
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton2" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("15to30Days") %> ' CommandName="Select15to30Days"><%#Eval("15to30Days") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="30 to 45 Days">
-                                    <HeaderStyle Width="25%" CssClass="headercolor" />
-                                    <ItemStyle Width="25%" />
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton3" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("30to45Days") %> ' CommandName="Select30to45Days"><%#Eval("30to45Days") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="More than 45 Days">
-                                    <HeaderStyle Width="25%" CssClass="headercolor" />
-                                    <ItemStyle Width="25%" />
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                    <RowStyle ForeColor="#000066" />
-                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                </asp:GridView>
-                                    </div>
-
-                                <div class="row" style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
-                                    <div class="col-6" id="Back" runat="server" visible="false" style="text-align: end;">
-                                              <a href="/Admin/AdminMaster.aspx"><svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" fill="blue" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM231 127c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-71 71L376 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-182.1 0 71 71c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L119 273c-9.4-9.4-9.4-24.6 0-33.9L231 127z"/></svg></a>      </div>
-                                    <div class="col-6"  id="PrintableDivision" runat="server" style="text-align: end; margin-top: auto;">
-                                         <a href="#" id="btnPrint" onclick="printDiv('printableDiv');"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
-                                    </div>
-                                    <div class="col-6" id="PrintableDistrict" runat="server" visible="false" style="text-align: left; margin-top: auto;">
-                                         <a href="#" id="btnPrintDistrict" onclick="printDiv2('printableDiv2');"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                  </div>
-                       <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 27%; border-radius: 10px; margin-left: 35px;">
-                           <div class="col-lg-10">
-                               <h2 class="title-1 m-b-25" style="color: white;">Officers Pendency</h2>
-                               <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
-                                   <div class="au-card-inner">
-                                       <div class="table-responsive" id="officers_table">
-                                           <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="OfficersGrid" runat="server" Width="100%" AllowPaging="true" PageSize="20"
-                                               AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                               <PagerStyle CssClass="pagination-ys" />
-                                               <Columns>
+                        <div class="card" style="background: #f9f9f9; margin: 5px; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-top: 15px; margin: 18px;">
+                            <div class="row" style="margin-left: 4px;">
 
-                                                   <asp:BoundField DataField="UserId" HeaderText="Staff UserId">
-                                                       <HeaderStyle HorizontalAlign="left" Width="13%" CssClass="headercolor staff-align" />
-                                                       <ItemStyle HorizontalAlign="left" Width="13%" />
-                                                   </asp:BoundField>
-                                                   <asp:BoundField DataField="Pending" HeaderText="Pending">
-                                                       <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                       <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                   </asp:BoundField>
+                                <div class="col-lg-6">
+                                    <div class="au-card m-b-30">
+                                        <div class="au-card-inner" style="text-align: -webkit-center !important;">
+                                            <h3 class="title-2 m-b-40">Pending Status(division Wise)</h3>
+                                            <canvas id="myChart" width="400" height="200"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" style="margin-left: 53px !important;">
+                                    <div class="au-card m-b-30">
+                                        <div class="au-card-inner" style="text-align: -webkit-center !important;">
+                                            <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
+                                            <canvas id="myDoughnutChart" width="400" height="322"></canvas>
 
-                                               </Columns>
-                                               <FooterStyle BackColor="White" ForeColor="#000066" />
-                                               <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                               <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                               <RowStyle ForeColor="#000066" />
-                                               <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                               <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                               <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                               <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                               <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                           </asp:GridView>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: -10px !important;">
+                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 35px; border-radius: 10px;">
 
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
+                                    <div class="col-lg-12">
+                                        <h2 class="title-1 m-b-25">Division Wise Report</h2>
+
+                                        <div>
+                                            <div id="printableDiv">
+                                                <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                                                    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                                                    <PagerStyle CssClass="pagination-ys" />
+                                                    <Columns>
+                                                        <asp:TemplateField HeaderText="SNo">
+                                                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                            <ItemStyle Width="5%" />
+                                                            <ItemTemplate>
+                                                                <%#Container.DataItemIndex+1 %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField>
+                                                            <HeaderStyle Width="34%" CssClass="headercolor division-align" />
+                                                            <ItemStyle Width="34%" />
+                                                            <HeaderTemplate>
+                                                                Division
+                                                            </HeaderTemplate>
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Division") %> ' CommandName="Select"><%#Eval("Division") %></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area") %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:BoundField DataField="RecordCount" HeaderText="Total Requests Received till date">
+                                                            <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
+                                                            <ItemStyle HorizontalAlign="Center" Width="15%" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="Initiated" HeaderText="Initiated">
+                                                            <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                            <ItemStyle HorizontalAlign="center" Width="13%" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="InProgress" HeaderText="In Progress">
+                                                            <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                            <ItemStyle HorizontalAlign="center" Width="13%" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="ActionTaken" HeaderText="Action Taken">
+                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                        </asp:BoundField>
+
+                                                    </Columns>
+                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                    <RowStyle ForeColor="#000066" />
+                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                </asp:GridView>
+                                            </div>
+                                            <div id="printableDiv2">
+                                                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView2" Visible="false"
+                                                    OnRowCommand="GridView2_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10"
+                                                    AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
+                                                    BorderWidth="1px" BorderColor="#dbddff">
+                                                    <PagerStyle CssClass="pagination-ys" />
+                                                    <Columns>
+                                                        <asp:TemplateField HeaderText="Sr No">
+                                                            <HeaderStyle Width="5%" />
+                                                            <ItemStyle Width="5%" />
+                                                            <ItemTemplate>
+                                                                <%#Container.DataItemIndex+1 %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="lblDistrictofData" runat="server" Text='<%#Eval("DistrictofData") %>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:BoundField DataField="DistrictofData" HeaderText="District">
+                                                            <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                            <ItemStyle HorizontalAlign="center" Width="13%" />
+                                                        </asp:BoundField>
+                                                        <asp:TemplateField HeaderText="Less than 15 Days">
+                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
+                                                            <ItemStyle Width="25%" />
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("15Days") %> ' CommandName="Select15Days"><%#Eval("15Days") %></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="15 to 30 days">
+                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
+                                                            <ItemStyle Width="25%" />
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="LinkButton2" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("15to30Days") %> ' CommandName="Select15to30Days"><%#Eval("15to30Days") %></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="30 to 45 Days">
+                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
+                                                            <ItemStyle Width="25%" />
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="LinkButton3" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("30to45Days") %> ' CommandName="Select30to45Days"><%#Eval("30to45Days") %></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="More than 45 Days">
+                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
+                                                            <ItemStyle Width="25%" />
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>
+                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                    <RowStyle ForeColor="#000066" />
+                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                </asp:GridView>
+                                            </div>
+
+                                            <div class="row" style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+                                                <div class="col-6" id="Back" runat="server" visible="false" style="text-align: end;">
+                                                    <a href="/Admin/AdminMaster.aspx">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" fill="blue" viewBox="0 0 512 512">
+                                                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                                            <path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM231 127c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-71 71L376 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-182.1 0 71 71c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L119 273c-9.4-9.4-9.4-24.6 0-33.9L231 127z" />
+                                                        </svg></a>
+                                                </div>
+                                                <div class="col-6" id="PrintableDivision" runat="server" style="text-align: end; margin-top: auto;">
+                                                    <a href="#" id="btnPrint" onclick="printDiv('printableDiv');"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
+                                                </div>
+                                                <div class="col-6" id="PrintableDistrict" runat="server" visible="false" style="text-align: left; margin-top: auto;">
+                                                    <a href="#" id="btnPrintDistrict" onclick="printDiv2('printableDiv2');"><i class="bi bi-printer-fill"></i><%--<asp:HyperLink ID="HyperLink1" runat="server">Print</asp:HyperLink>--%></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 27%; border-radius: 10px; margin-left: 35px;">
+                                    <div class="col-lg-10">
+                                        <h2 class="title-1 m-b-25" style="color: white;">Officers Pendency</h2>
+                                        <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
+                                            <div class="au-card-inner">
+                                                <div class="table-responsive" id="officers_table">
+                                                    <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="OfficersGrid" runat="server" Width="100%" AllowPaging="true" PageSize="20"
+                                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                                        <PagerStyle CssClass="pagination-ys" />
+                                                        <Columns>
+
+                                                            <asp:BoundField DataField="UserId" HeaderText="Staff UserId">
+                                                                <HeaderStyle HorizontalAlign="left" Width="13%" CssClass="headercolor staff-align" />
+                                                                <ItemStyle HorizontalAlign="left" Width="13%" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Pending" HeaderText="Pending">
+                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                            </asp:BoundField>
+
+                                                        </Columns>
+                                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                        <RowStyle ForeColor="#000066" />
+                                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                    </asp:GridView>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                     </ContentTemplate>
-                 </asp:UpdatePanel>
+                </asp:UpdatePanel>
             </div>
             <%-- </div>--%>
         </div>
@@ -871,7 +878,7 @@
     <script src="/Dashboard_Css/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="/Dashboard_Css/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="/Dashboard_Css/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+
     <!-- Vendor JS       -->
     <script src="/Dashboard_Css/vendor/slick/slick.min.js">    </script>
     <script src="/Dashboard_Css/vendor/wow/wow.min.js"></script>
@@ -886,7 +893,7 @@
 
     <!-- Main JS-->
     <script src="/Dashboard_Css/js/main.js"></script>
-    
+
     <script>
 
       function printDiv(printableDiv) {
@@ -899,18 +906,18 @@
 
           document.body.innerHTML = originalContents;
       }
-  </script>  
+    </script>
     <script>
 
-      function printDiv2(printableDiv2) {
-          var printContents = document.getElementById(printableDiv2).innerHTML;
-          var originalContents = document.body.innerHTML;
+        function printDiv2(printableDiv2) {
+            var printContents = document.getElementById(printableDiv2).innerHTML;
+            var originalContents = document.body.innerHTML;
 
-          document.body.innerHTML = printContents;
+            document.body.innerHTML = printContents;
 
-          window.print();
+            window.print();
 
-          document.body.innerHTML = originalContents;
-      }
-  </script>
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 </asp:Content>

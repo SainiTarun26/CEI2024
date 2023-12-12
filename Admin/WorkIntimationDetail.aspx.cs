@@ -127,6 +127,11 @@ namespace CEIHaryana.Admin
                         txtinstallationType1.Text = dp_Id8;
                         txtinstallationNo1.Text = dp_Id9;
                     }
+                    else
+                    {
+                        // Installation.Visible = false;
+                        installationType1.Visible = false;
+                    }
                     if (dp_Id10 != "")
                     {
                         Installation.Visible = true;
@@ -134,12 +139,24 @@ namespace CEIHaryana.Admin
                         txtinstallationType2.Text = dp_Id10;
                         txtinstallationNo2.Text = dp_Id11;
                     }
+                    else
+                    {
+
+                        // Installation.Visible = false;
+                        installationType2.Visible = false;
+                    }
                     if (dp_Id12 != "")
                     {
                         Installation.Visible = true;
                         installationType3.Visible = true;
                         txtinstallationType3.Text = dp_Id12;
                         txtinstallationNo3.Text = dp_Id13;
+                    }
+                    else
+                    {
+
+                        //  Installation.Visible = false;
+                        installationType3.Visible = false;
                     }
                     if (dp_Id14 != "")
                     {

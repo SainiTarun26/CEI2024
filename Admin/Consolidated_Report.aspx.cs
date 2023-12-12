@@ -12,22 +12,13 @@ namespace CEIHaryana.Admin
     public partial class Consolidated_Report : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string submittedDate = string.Empty;
-        string EndDate = string.Empty;
-        string Division = string.Empty;
-        string District = string.Empty;
-        string Status = string.Empty;
-        string InspectionType = string.Empty;
-        string PendingWith = string.Empty;
-        string OwnerApplication = string.Empty;
-        string GSTNumber = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!IsPostBack)
                 {
-
+                    BindGrid();
                     DdlBindStaffPendingWith();
                     DdlDivisionData();
                 }
@@ -45,8 +36,8 @@ namespace CEIHaryana.Admin
                 DataSet dsStaff = new DataSet();
                 dsStaff = CEI.GetDdlDivisionData();
                 DdlDivision.DataSource = dsStaff;
-                DdlDivision.DataTextField = "Area";
-                DdlDivision.DataValueField = "Area";
+                DdlDivision.DataTextField = "HeadOffice";
+                DdlDivision.DataValueField = "HeadOffice";
                 DdlDivision.DataBind();
                 DdlDivision.Items.Insert(0, new ListItem("Select", "0"));
                 dsStaff.Clear();
@@ -82,6 +73,7 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                //Using Ternary operator In case value 0 then pass null
                 string submittedDate = string.IsNullOrEmpty(txtSubmitted.Text.Trim()) ? null : txtSubmitted.Text.Trim();
                 string endDate = string.IsNullOrEmpty(txtEndDate.Text.Trim()) ? null : txtEndDate.Text.Trim();
                 string division = DdlDivision.SelectedValue == "0" ? null : DdlDivision.SelectedValue;
@@ -91,10 +83,10 @@ namespace CEIHaryana.Admin
                 string pendingWith = DdlStaffPendingWith.SelectedValue == "0" ? null : DdlStaffPendingWith.SelectedValue;
                 string ownerApplication = string.IsNullOrEmpty(txtownerApplication.Text.Trim()) ? null : txtownerApplication.Text.Trim();
                 string gstNumber = string.IsNullOrEmpty(txtGST.Text.Trim()) ? null : txtGST.Text.Trim();
-                DataSet ds = new DataSet();
-                 ds = CEI.ConsolidateSearchData(submittedDate, endDate, division, district, status, inspectionType, pendingWith,
+               // DataSet ds = new DataSet();
+                DataSet ds = CEI.ConsolidateSearchData(submittedDate, endDate, division, district, status, inspectionType, pendingWith,
                     ownerApplication, gstNumber);
-                if (ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
@@ -171,6 +163,23 @@ namespace CEIHaryana.Admin
             try
             {
                 BindGrid();
+            }
+            catch { }
+        }
+
+        protected void BtnReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtSubmitted.Text = "";
+                txtEndDate.Text = "";
+                DdlDivision.SelectedValue = "0";
+                DdlDistrict.SelectedValue = "0";
+                ddlStatus.SelectedValue = "0";
+                ddlInstallatiosType.SelectedValue = "0";
+                DdlStaffPendingWith.SelectedValue = "0";
+                txtownerApplication.Text = "";
+                txtGST.Text = "";
             }
             catch { }
         }
