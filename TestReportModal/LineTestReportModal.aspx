@@ -2679,8 +2679,12 @@ margin-top: 20px;
                                         </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
+                            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;margin-left: -25px;
+    margin-right: -25px;
+    margin-top: 30px;">
                             <div id="Contractor" runat="server" visible="false">
-                                <div class="row">
+                                <div class="row" style="padding-left: 20px;
+    padding-bottom: 20px;">
                                     <div class="col-4">
                                         <label for="Name">
                                             Form Status<samp style="color: red">* </samp>
@@ -2714,7 +2718,8 @@ margin-top: 20px;
                             </div>
                             <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             <br />
-                            <div class="row" style="margin-top: 40px;" >
+                                  </div>
+                            <div class="row" >
                                 <div class="col-4" style="margin-top: 40px; text-align: Center;" runat="server" id="Contractor3" visible="false">
                                     <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                         Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
@@ -2723,7 +2728,7 @@ margin-top: 20px;
                                 </div>
                                 <div class="col-4" style="margin-top: 40px;" runat="server" id="Contractor2" visible="false">
                                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnAccept_Click" />
+                                        Style=" border-color: #d42766;" OnClick="btnAccept_Click" />
 
                                 </div>
                                 <div class="col-6" id="SiteOwner" runat="server" visible="false" style="text-align: end;">
@@ -2739,6 +2744,7 @@ margin-top: 20px;
                                     <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
                                 </div>
                             </div>
+                              
                         </div>
                     </div>
                 </li>

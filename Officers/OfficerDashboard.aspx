@@ -867,15 +867,15 @@
        </script>   
     <script>
 
-           function printDiv(printableDiv) {
-               var printContents = document.getElementById(printableDiv).innerHTML;
-               var originalContents = document.body.innerHTML;
+        function printDiv(printableDiv) {
+            var printContents = document.getElementById(printableDiv).innerHTML;
+            var originalContents = document.body.innerHTML;
 
-               document.body.innerHTML = printContents;
+            document.body.innerHTML = printContents;
 
-               window.print();
+            window.print();
 
-               document.body.innerHTML = originalContents;
-           }
-       </script>  
+            document.body.innerHTML = originalContents;
+        }
+    </script>  
 </asp:Content>

@@ -38,6 +38,18 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
+    <script type="text/javascript">
+        function validateDropdowns(sender, args) {
+            var ddlReview = document.getElementById('<%= ddlReview.ClientID %>');
+      var ddlToAssign = document.getElementById('<%= ddlToAssign.ClientID %>');
+
+            var selectedValueReview = ddlReview.options[ddlReview.selectedIndex].value;
+            var selectedValueToAssign = ddlToAssign.options[ddlToAssign.selectedIndex].value;
+
+            // Check if either dropdown has a selected value
+            args.IsValid = selectedValueReview !== "0" || selectedValueToAssign !== "0";
+        }
+</script>
     <style>
         .submit {
             border: 1px solid #563d7c;
