@@ -293,24 +293,12 @@
                                         <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter PAN Number</asp:RequiredFieldValidator>--%>
                                     <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                         ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />
                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                             
-                                    <%--<div class="col-4">
-                            <label>
-                                Work Details
-                            <samp style="color: red">* </samp>
-                            </label>
-                            <asp:ListBox ID="ddlWorkDetail" Style="width: 100% !important;" class="chosen-select form-control  select-form" value="select multiple" TabIndex="9" AutoPostBack="true" placeholder="your hint" runat="server" SelectionMode="Multiple"></asp:ListBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="ddlWorkDetail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Details</asp:RequiredFieldValidator>
-                            <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>--%>
-                                </div>
+                              </div>
                                 <div class="col-4" id="InstallationType" runat="server" visible="false">
-                                    <%--<div class="col-4" id="DivInstallationType" runat="server" visible="false">--%>
-                                    <label>
+                                     <label>
                                         Select Installation Type
         <samp style="color: red">* </samp>
                                     </label>
@@ -543,11 +531,8 @@
                                 Attached Copy of Work Order<samp style="color: red"> * </samp>
                             </label>
 
-                            <%--                            <asp:TextBox class="form-control" ID="txtcustomFile" Type="file" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                            <%-- <input type="file" id="customFile" runat="server" name="imageInput" CssClass="form-control" AutoPostBack="true" TabIndex="14" accept="image/*">--%>
-
+                          
                             <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Visible="false" TabIndex="14" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
-                            <%--<input type="file" id="customFile" name="img[]" runat="server" class="file-upload-default" onchange="FileName()"/>--%>
                             <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
 
                             <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
