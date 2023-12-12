@@ -16,9 +16,16 @@ namespace CEIHaryana.Admin
         string dated = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                BindDaysGridView();
+                if (!IsPostBack)
+                {
+                    BindDaysGridView();
+                }
+            }
+            catch 
+            { 
+                Response.Redirect("/Login.aspx");
             }
         }
         private void BindDaysGridView()
@@ -27,8 +34,9 @@ namespace CEIHaryana.Admin
             {
                 dated = Session["Days"].ToString();
                 Division = Convert.ToString(Session["Area"]);
+                string District = Session["DistrictOfData"].ToString();
                 DataTable ds = new DataTable();
-                ds = cei.RequestPendingDaysData(dated, Division);
+                ds = cei.RequestPendingDaysData(dated, Division, District);
                 if (ds.Rows.Count > 0)
                 {
                     GridView3.DataSource = ds;

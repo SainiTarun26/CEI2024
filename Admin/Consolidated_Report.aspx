@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Consolidated_Report.aspx.cs" Inherits="CEIHaryana.Admin.Consolidated_Report" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+   <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -95,10 +95,11 @@
   </script>--%>
 
     <style>
-       .example {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
+        .example {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
         .col-4 {
             top: 0px;
             left: 0px;
@@ -169,17 +170,47 @@
         span.select2-dropdown.select2-dropdown--below {
             margin-top: 50px !important;
         }
+
         table.table.table-responsive.table-striped.table-hover {
-    margin-bottom: 0px;
-}
+            margin-bottom: 0px;
+        }
+
         th#request {
-    color: blue;
-    text-decoration: underline;
-}
+            color: blue;
+            text-decoration: underline;
+        }
     </style>
+
+       <script type="text/javascript">
+        $(document).ready(function () {
+            // Attach the change event to the dropdown
+            $("#ddlInstallatiosType").change(function () {
+                // Call the JavaScript function to filter the GridView
+                filterGridView();
+            });
+        });
+
+        function filterGridView() {
+            // Get the selected value from the dropdown
+            var filterValue = $("#ddlInstallatiosType").val().toLowerCase();
+
+            // Loop through each row in the GridView
+            $("#<%= GridView1.ClientID %> tr:gt(0)").each(function () {
+                // Get the text content of the cell in the specified column
+                var cellText = $(this).find("td:eq(1)").text().toLowerCase(); // Assuming the filter is based on the second column
+
+                // Show or hide the row based on whether it matches the selected value
+                if (filterValue === "all" || cellText.indexOf(filterValue) !== -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+       </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="content-wrapper">
+     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row">
@@ -190,78 +221,87 @@
                     <br />
                     <div class="col-md-4"></div>
                 </div>
-               <%-- <h7 class="card-title fw-semibold mb-4">Personal Details</h7>--%>
+                <%-- <h7 class="card-title fw-semibold mb-4">Personal Details</h7>--%>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
-                    <div class="row" style="margin-top:15px;">
+                    <div class="row" style="margin-top: 15px;">
                         <div class="col-4">
                             <label>
                                 Type of Installation:        
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlState" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlInstallatiosType" TabIndex="8" runat="server" AutoPostBack="true">
+                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                <asp:ListItem Value="1" Text="Line"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="Substation Transformer"></asp:ListItem>
+                                <asp:ListItem Value="3" Text="Generating Station"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-4">
                             <label>
                                 Division:
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DropDownList1" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlDivision" TabIndex="8" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DdlDivision_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                         <div class="col-4">
                             <label>
                                 District:
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DropDownList2" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlDistrict" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                         </div>
                     </div>
-                    <div class="row" style="margin-top:15px;">
+                    <div class="row" style="margin-top: 15px;">
                         <div class="col-4">
                             <label for="DateofRenewal">
                                 Application Submission Date From:
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDateofRenewal" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtSubmitted" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                         <div class="col-4">
                             <label for="DateofRenewal">
                                 Application Submission Date To:
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox1" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtEndDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                         <div class="col-4">
                             <label for="LicenceNew">
                                 Owner Application No.:
                             </label>
-                            <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
+                            <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtownerApplication" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
                         </div>
                     </div>
-                    <div class="row" style="margin-top:15px;">
+                    <div class="row" style="margin-top: 15px;">
                         <div class="col-4">
                             <label for="LicenceNew">
                                 GST No.:
                             </label>
-                            <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="TextBox2" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
+                            <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtGST" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
                         </div>
                         <div class="col-4">
                             <label>
                                 Status:        
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DropDownList3" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlStatus" TabIndex="8" runat="server" AutoPostBack="true">
+                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                             <asp:ListItem Value="1" Text="Initiated"></asp:ListItem>
+                             <asp:ListItem Value="2" Text="Accepted"></asp:ListItem>
+                             <asp:ListItem Value="3" Text="Rejected"></asp:ListItem>
+                                <asp:ListItem Value="4" Text="Pending"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-4">
                             <label>
                                 Pending With:
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DropDownList4" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlStaffPendingWith" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top:15px;">
+                <div class="row" style="margin-top: 15px;">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="btnSubmit" Text="Show" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                        <asp:Button ID="btnSubmit" Text="Show" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
                         <asp:Button ID="BtnReset" Text="Export" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;" />
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
@@ -273,29 +313,90 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
                     <div class="card">
-                        <table class="table table-responsive table-striped table-hover table-bordered example">
-  <thead style="background:#604db8;color:white;">
-    <tr>
-      <th scope="col" style="width:1%;">All Application request</th>
-      <th scope="col" style="text-align:center;">Application Date</th>
-      <th scope="col">Installation applied for</th>
-      <th scope="col" style="text-align:center;">Owner application Number </th>
-      <th scope="col"> Application Status</th>
-      <th scope="col">Pending with</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row" id="request">Rewari-Line-Substation-GeneratingSet</th>
-      <td style="text-align:center;">28-06-2001</td>
-      <td>Line</td>
-      <td style="text-align:center;">100001</td>
-      <td>Pending</td>
-      <td>JE_GURUGRAM-I</td>
-    </tr>
-  </tbody>
-</table>
+                        <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" runat="server"
+                        Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
 
+                            <PagerStyle CssClass="pagination-ys" />
+                            <Columns>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <HeaderStyle Width="10%" CssClass="headercolor" />
+                                    <ItemStyle Width="10%" />
+                                    <HeaderTemplate>
+                                        Application For Test Report
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="ApplicantType" HeaderText="All Application Request">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CreatedDate1" HeaderText="Application Date">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Applied For">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Id" HeaderText="Owner Application Number">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AssignTo" HeaderText="Pending With">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+
+                            </Columns>
+                        </asp:GridView>
+                        <%-- <table class="table table-responsive table-striped table-hover table-bordered example">
+                            <thead style="background: #604db8; color: white;">
+                                <tr>
+                                    <th scope="col" style="width: 1%;">All Application request</th>
+                                    <th scope="col" style="text-align: center;">Application Date</th>
+                                    <th scope="col">Installation applied for</th>
+                                    <th scope="col" style="text-align: center;">Owner application Number </th>
+                                    <th scope="col">Application Status</th>
+                                    <th scope="col">Pending with</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" id="request">Rewari-Line-Substation-GeneratingSet</th>
+                                    <td style="text-align: center;">28-06-2001</td>
+                                    <td>Line</td>
+                                    <td style="text-align: center;">100001</td>
+                                    <td>Pending</td>
+                                    <td>JE_GURUGRAM-I</td>
+                                </tr>
+                            </tbody>
+                        </table>--%>
                     </div>
                 </div>
             </div>

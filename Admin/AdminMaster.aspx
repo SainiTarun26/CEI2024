@@ -761,6 +761,11 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField> 
+                                  <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblDistrictofData" runat="server" Text='<%#Eval("DistrictofData") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                <asp:BoundField DataField="DistrictofData" HeaderText="District">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />

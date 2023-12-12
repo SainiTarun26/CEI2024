@@ -234,6 +234,7 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 if (Convert.ToString(Session["Area"]) != null && Convert.ToString(Session["Area"]) != "")
                 {
                     Division = Convert.ToString(Session["Area"]);
+
                 }
                 DataTable ds = new DataTable();
                 ds = cei.RequestPendingDivision(Division);
@@ -262,7 +263,8 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 string CreatedDate = string.Empty;
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-
+                Label lblDistrictofData = (Label)row.FindControl("lblDistrictofData");
+                Session["DistrictOfData"] = lblDistrictofData.Text.Trim();
                 if (e.CommandName == "Select15Days")
                 {
                     Session["Days"] = "15days";
