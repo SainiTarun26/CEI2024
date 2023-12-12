@@ -141,14 +141,14 @@
                          <li class="nav-item nav-profile dropdown">
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                                    <img class="avatar" src="/Assets/images.png" alt="profile" />
+                               
+                                   
                                     <img class="avatar" src="/Assets/images.png" alt="profile" />
                                 </a>
-                                </a>
+                               
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                    <a class="dropdown-item">
+                                
+                                   
                                     <a class="dropdown-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="black" viewBox="0 0 448 512">
                                             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
@@ -156,10 +156,10 @@
                                         </svg>
                                         <i class="ti-user text-primary"></i>
                                         <asp:Label ID="lblName" runat="server" />
-                                        <asp:Label ID="Label1" runat="server" />
+                                       
                                     </a>
-                                    </a>
-                                    <a class="dropdown-item">
+                                   
+                                   
                                     <a class="dropdown-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#252525" viewBox="0 0 512 512">
                                             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
@@ -167,11 +167,11 @@
                                         </svg>
                                         <i class="ti-power-off text-primary"></i>
                                         <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" />
-                                        <asp:Button ID="Button1" OnClick="btnLogout_Click" Text="Logout" runat="server"/>
+                                       
                                     </a>
-                                    </a>
+                                   
                                 </div>
-                                </div>
+                               
                             </li>
                         </ul>
                         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
