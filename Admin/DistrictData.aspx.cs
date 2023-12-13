@@ -46,6 +46,7 @@ namespace CEIHaryana.Admin
                 {
                     string script = "alert(\"No Data Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
+                   
                 }
             }
             catch (Exception)

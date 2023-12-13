@@ -37,9 +37,7 @@ namespace CEIHaryana.Officers
                 }
                 else
                 {
-                    string script = "alert(\"No Data Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
-                    Response.Redirect("/Officers/OfficerDashboard.aspx");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
                 }
             }
             catch (Exception)

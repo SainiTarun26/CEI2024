@@ -283,4 +283,12 @@ Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 
         </div>
     </div>
 </div>
+      <script type="text/javascript">
+          function alertWithRedirect() {
+              if (confirm('No Data Found')) {
+                  window.location.href = "/Officers/OfficerDashboard.aspxx";
+              } else {
+              }
+          }
+      </script>
 </asp:Content>

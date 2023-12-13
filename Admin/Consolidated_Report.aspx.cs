@@ -37,7 +37,7 @@ namespace CEIHaryana.Admin
                 dsStaff = CEI.GetDdlDivisionData();
                 DdlDivision.DataSource = dsStaff;
                 DdlDivision.DataTextField = "HeadOffice";
-                DdlDivision.DataValueField = "HeadOffice";
+                DdlDivision.DataValueField = "Area";
                 DdlDivision.DataBind();
                 DdlDivision.Items.Insert(0, new ListItem("Select", "0"));
                 dsStaff.Clear();
@@ -157,7 +157,7 @@ namespace CEIHaryana.Admin
 
         protected void DdlDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLoadBindDistrict(DdlDivision.SelectedItem.ToString());
+            ddlLoadBindDistrict(DdlDivision.SelectedValue);
         }
 
         private void ddlLoadBindDistrict(string Area)
