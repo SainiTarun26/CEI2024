@@ -211,22 +211,26 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="card-body" id="divLine" asp-validation-summary="ModelOnly" runat="server" style="margin-top: -30px;">
-                <div id="IfInstallationIsLine" runat="server">
-                    <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-sm-4" style="text-align: center;">
-                                <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                    Data Updated Successfully !!!.
-                                </label>
-                                <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                    Data Saved Successfully !!!.
-                                </label>
-                            </div>
-                        </div>
+  <div class="content-wrapper">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12" style="text-align: center;">
+                        <h7 class="card-title fw-semibold mb-4" id="maincard">Line Test Report</h7>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-sm-4" style="text-align: center;">
+                        <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Updated Successfully !!!.
+                        </label>
+                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Saved Successfully !!!.
+                        </label>
+                    </div>
+                </div>
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
                                 <div>
@@ -993,9 +997,10 @@
                             </Triggers>
                         </asp:UpdatePanel>
                     </div>
-                </div>
-            </div>
-
+        </div>
+    </div>
+    <footer class="footer">
+    </footer>
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
     <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
@@ -1008,13 +1013,13 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-    <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
-                window.location.href = "/Supervisor/IntimationData.aspx";
-            } else {
-            }
-        }
-    </script>
-
+   <script type="text/javascript">
+       function alertWithRedirect() {
+           if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
+               window.location.href = "/Supervisor/IntimationData.aspx";
+           } else {
+           }
+       }
+   </script>
 </asp:Content>
+

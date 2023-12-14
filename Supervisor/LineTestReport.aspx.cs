@@ -978,7 +978,7 @@ namespace CEIHaryana.Supervisor
                             Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
                             btnSubmit.Visible = false;
                             Session["SubmittedValue2"] = sessionValue;
-                            divLine.Visible = false;
+                            //divLine.Visible = false;
                             Session["LineId"] = "";
                             Session["TestReportId"] = TestReportId;
                             Page.Session["Page"] = 0;
