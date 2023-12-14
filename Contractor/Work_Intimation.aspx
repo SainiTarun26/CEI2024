@@ -204,6 +204,7 @@
     margin-left: -2px;
     cursor: pointer;
 }
+ 
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -400,8 +401,8 @@
 
                                 </div>
                             </td>
-                            <td>
-                             <asp:ImageButton ID="imgDelete1" ImageUrl="../Image/Image/ImageToDelete-removebg-preview.jpeg" height="30" width="30"   OnClick="imgDelete1_Click"
+                            <td style="text-align: center !important;">
+                             <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" height="30" width="30"   OnClick="imgDelete1_Click"
        runat="server" />  </td>
                         </tr>
                     </div>
@@ -418,8 +419,8 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                 </div>
                             </td>
-                            <td>
-                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="../Image/Image/ImageToDelete-removebg-preview.jpeg" height="30" width="30"   OnClick="imgDelete2_Click" runat="server" /> </td>
+                            <td style="text-align: center !important;">
+                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" height="30" width="30"   OnClick="imgDelete2_Click" runat="server" /> </td>
                         </tr>
                     </div>
                     <div id="installationType3" runat="server">
@@ -435,7 +436,8 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                 </div>
                             </td>
-                            <td><asp:ImageButton ID="imgDelete3" ImageUrl="../Image/Image/ImageToDelete-removebg-preview.jpeg" height="30" width="30"   OnClick="imgDelete3_Click" runat="server" /></td>
+                            <td style="text-align: center !important;">
+                                <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" height="30" width="30"   OnClick="imgDelete3_Click" runat="server" /></td>
                         </tr>
                     </div>
                     <div id="installationType4" runat="server" visible="False">
