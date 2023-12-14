@@ -307,34 +307,37 @@
         District
 <samp style="color: red">* </samp>
     </label>
-    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
-    </asp:DropDownList>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div>
-                                       <div class="col-4" runat="server">
-    <label for="Pin">PinCode</label>
-    <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <span id="lblPinError" style="color: red"></span>
-</div>
-
-
-                                    </div>
-                                    <div class="row">
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
                                         <div class="col-4" runat="server">
-    <label for="Email">Email <samp style="color: red">* </samp></label>
-    <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <span id="lblError" style="color: red"></span>
-</div>
+                                            <label for="Pin">PinCode</label>
+                                            <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <span id="lblPinError" style="color: red"></span>
+                                        </div>
+
+
                                     </div>
-                                </div>
+                                        <div class="row">
+                                            <div class="col-4" runat="server">
+                                                <label for="Email">Email
+                                                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <span id="lblError" style="color: red"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                             <div style="margin-top: 15px;">
                                 <div class="row" style="margin-top: 25px; margin-bottom: 8px;">
                                     <div class="col-12">
-                                <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%;font-size:18px !important;">Application Details</h7>
-                              </div>
+                                        <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%; font-size: 18px !important;">Application Details</h7>
                                     </div>
-                                    <div class="card" style="padding: 15px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                </div>
+                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                                     <div class="row">
                                         <div class="col-4">
