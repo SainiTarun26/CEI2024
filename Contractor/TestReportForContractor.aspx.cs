@@ -58,7 +58,22 @@ namespace CEIHaryana.Contractor
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     string id = lblID.Text;
-                    Session["LineID"] = id;
+                    Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
+                    if(lblTypeOf.Text.Trim() == "Line")
+                    {
+
+                        Session["LineID"] = id;
+                    }
+                    else if (lblTypeOf.Text.Trim() == "Substation")
+                    {
+
+                        Session["SubStationID"] = id;
+                    }
+                    else if (lblTypeOf.Text.Trim() == "Generating")
+                    {
+
+                        Session["GeneratingSetId"] = id;
+                    }
                     Label lblApproval = (Label)row.FindControl("lblApproval");
                     Session["Approval1"] = lblApproval.Text;
                     Session["Approval"] = lblApproval.Text;
@@ -71,7 +86,7 @@ namespace CEIHaryana.Contractor
                     {
                         //if (lblApproval.Text.Trim() == "Reject")
                         //{
-                        Response.Redirect("/TestReport/TestReport.aspx", false);
+                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
                         //}
                         //else
                         //{

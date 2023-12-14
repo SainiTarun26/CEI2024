@@ -220,6 +220,11 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
+                                    <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>

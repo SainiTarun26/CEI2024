@@ -1467,6 +1467,7 @@
     <Content Include="Contractor\SubstationTransformer.aspx" />
     <Content Include="Contractor\TestReportForContractor.aspx" />
     <Content Include="Contractor\TestReportHistory.aspx" />
+    <Content Include="Contractor\TestReportsWithIntimation.aspx" />
     <Content Include="Contractor\Work_Intimation.aspx" />
     <Content Include="css2\icons\tabler-icons\fonts\tabler-icons.svg" />
     <Content Include="css2\icons\tabler-icons\tabler-icons.css" />
@@ -1988,6 +1989,13 @@
     </Compile>
     <Compile Include="Contractor\TestReportHistory.aspx.designer.cs">
       <DependentUpon>TestReportHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\TestReportsWithIntimation.aspx.cs">
+      <DependentUpon>TestReportsWithIntimation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\TestReportsWithIntimation.aspx.designer.cs">
+      <DependentUpon>TestReportsWithIntimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\Work_Intimation.aspx.cs">
       <DependentUpon>Work_Intimation.aspx</DependentUpon>

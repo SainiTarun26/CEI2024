@@ -354,7 +354,7 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="/Contractor/TestReportForContractor.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Test Reports History</span>
+                                    <span class="menu-title">Pending Test Reports</span>
                                 </a>
                             </li>
                         </ul>

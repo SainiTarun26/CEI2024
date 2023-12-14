@@ -543,11 +543,10 @@
 
                         <div class="col-4" id="hiddenfield1" runat="server">
                             <label for="CompletionDateasperWorkOrder">
-                                Completion Date as per Work Order<samp style="color: red"> * </samp>
+                                Completion Date as per Work Order
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" onkeydown="return preventEnterSubmit(event)" TabIndex="15" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator0" runat="server" ControlToValidate="txtCompletionDateAPWO" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-
+                           
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletionDateAPWO" Operator="GreaterThanEqual" ErrorMessage="Work Completion Date must be greater than  Start Date" Display="Dynamic" ForeColor="Red" />
 
 

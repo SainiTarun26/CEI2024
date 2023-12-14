@@ -367,15 +367,15 @@
                                 Licence no (Old)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceOld" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                            
+                             
                         </div>
                         <div class="col-4">
                             <label for="LicenceNew">
                                 Licence No. (New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
-                         
+                         <asp:CustomValidator ID="cvBothEmpty" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
+                            
                         </div>
 
                         <div class="col-4">
@@ -465,6 +465,19 @@
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
     </footer>
+    <script type="text/javascript">
+        function validateBothEmpty(source, args) {
+            var textBox1Value = document.getElementById('<%= txtLicenceOld.ClientID %>').value;
+     var textBox2Value = document.getElementById('<%= txtLicenceNew.ClientID %>').value;
+
+            // Check if both textboxes are empty
+            if (textBox1Value.trim() === '' && textBox2Value.trim() === '') {
+                args.IsValid = false;
+            } else {
+                args.IsValid = true;
+            }
+        }
+ </script>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {

@@ -287,7 +287,9 @@
                                 Certificate No. (New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateNew" runat="server" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
-                             </div>
+                           <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
+
+                            </div>
                         <div class="col-4">
                             <label for="DateofIntialissue">
                                 Date of Initial issue<samp style="color: red"> * </samp>
@@ -403,7 +405,19 @@
         $('.select2').select2();
 
     </script>
+    <script type="text/javascript">
+        function validateBothEmpty(source, args) {
+            var textBox1Value = document.getElementById('<%= CertificateOld.ClientID %>').value;
+var textBox2Value = document.getElementById('<%= CertificateNew.ClientID %>').value;
 
+            // Check if both textboxes are empty
+            if (textBox1Value.trim() === '' && textBox2Value.trim() === '') {
+                args.IsValid = false;
+            } else {
+                args.IsValid = true;
+            }
+        }
+    </script>
     <script type="text/javascript">
         function validateForm() {
             debugger;
