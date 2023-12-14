@@ -79,6 +79,13 @@
 .headercolor{
     background-color: #9292cc;
 }
+h6.card-title.fw-semibold.mb-4 {
+    font-size: 1rem;
+    margin-bottom: 16px !important;
+}
+table#ContentPlaceHolder1_GridView1 {
+    margin-top: -6px !important;
+}
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

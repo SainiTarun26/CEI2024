@@ -838,7 +838,7 @@
                                         <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
                                             <div class="au-card-inner">
                                                 <div class="table-responsive" id="officers_table">
-                                                    <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="OfficersGrid" runat="server" Width="100%" AllowPaging="true" PageSize="20"
+                                                    <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="OfficersGrid" runat="server" Width="100%"
                                                         AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                                         <PagerStyle CssClass="pagination-ys" />
                                                         <Columns>

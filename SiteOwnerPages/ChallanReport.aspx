@@ -115,7 +115,7 @@
                     <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
                         <div class="col-6">
                             <label>
-                                Inspection Request details   
+                                Inspection Request details   <samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox ID="txtInspectionDetails" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
 
@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="col-6">
-                            <label>Transaction Id</label>
+                            <label>Transaction Id<samp style="color: red"> * </samp></label>
                             <asp:TextBox ID="txttransactionId" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -132,7 +132,7 @@
                     </div>
                     <div class="row" style="margin-top: -40px !important;">
                         <div class="col-6">
-                            <label>Transaction Date</label>
+                            <label>Transaction Date<samp style="color: red"> * </samp></label>
                             <asp:TextBox ID="txttransactionDate" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
@@ -140,7 +140,7 @@
 
                         <div class="col-6">
                             <label>
-                                Upload Challan
+                                Upload Challan (Only PDF Allowed, Size not more than 1 Mb)<samp style="color: red"> * </samp>
                             </label>
                             <asp:FileUpload ID="FileUpload1" runat="server" class="form-control" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="FileUpload1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>

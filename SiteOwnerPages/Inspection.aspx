@@ -7,18 +7,12 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -149,6 +143,12 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+
+        span {
+            font-weight: 400;
+            color: red;
+            font-size: 12px;
+        }
     </style>
 
 </asp:Content>
@@ -206,8 +206,10 @@
                         <div id="LineSubstationSupplier" runat="server" visible="false" >
                             <tr id="Tr1" runat="server">
                                 <td>
+                                     
                                     <div class="col-12">
-                                        Request letter from concerned Officer<samp style="color: red"> * </samp>
+                                        Request letter from concerned Officer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                      
                                     </div>
                                 </td>
                                 <td>
@@ -222,7 +224,7 @@
                             <tr id="Tr2" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Manufacturing test report of equipment<samp style="color: red"> * </samp>
+                                        Manufacturing test report of equipment<span>(Upload PDF Only, Size not more than 1Mb)</span>
                                     </div>
                                 </td>
                                 <td>
@@ -240,7 +242,7 @@
                             <tr id="Tr3" runat="server">
                                 <td>
                                     <div class="col-12">
-                                        Single line diagram of Line<samp style="color: red"> * </samp>
+                                        Single line diagram of Line<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -258,7 +260,7 @@
                             <tr id="Tr4" runat="server">
                                 <td>
                                     <div class="col-12">
-                                        Copy of demand notice issued by UHDVN/ DHBVN<samp style="color: red"> * </samp>
+                                        Copy of demand notice issued by UHDVN/ DHBVN&nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -274,7 +276,7 @@
                             <tr id="Tr5" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice of transformer<samp style="color: red"> * </samp>
+                                        Invoice of transformer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -290,7 +292,7 @@
                             <tr id="Tr6" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Manufacturing test certificate of transformer<samp style="color: red"> * </samp>
+                                        Manufacturing test certificate of transformer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -307,7 +309,8 @@
                             <tr id="Tr7" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Single line diagram
+                                        Single line diagram &nbsp;
+                                                       <span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                                         <samp style="color: red">* </samp>
                                     </div>
                                 </td>
@@ -324,7 +327,7 @@
                             <tr id="Tr8" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice of fire extinguisher system, apparatus installed at the site<samp style="color: red"> * </samp>
+                                        Invoice of fire extinguisher system, apparatus installed at the site &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -342,7 +345,7 @@
                             <tr id="Tr9" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice of DG set<samp style="color: red"> * </samp>
+                                        Invoice of DG set &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -359,7 +362,7 @@
                             <tr id="Tr10" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Manufacturing test certificate of DG set
+                                        Manufacturing test certificate of DG set &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span>
                                                         <samp style="color: red">* </samp>
                                     </div>
                                 </td>
@@ -377,7 +380,7 @@
                             <tr id="Tr13" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice Of fire Extinguisher/apparatus installed at the site<samp style="color: red"> * </samp>
+                                        Invoice Of fire Extinguisher/apparatus installed at the site &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -393,7 +396,7 @@
                             <tr id="Tr11" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Structure stability report issued by authorized engineer<samp style="color: red"> * </samp>
+                                        Structure stability report issued by authorized engineer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                     </div>
                                 </td>
                                 <td>
@@ -411,7 +414,7 @@
                         <tr id="LinePersonal" runat="server" visible="false">
                             <td>
                                 <div class="col-12">
-                                    Demand Notice<samp style="color: red"> * </samp>
+                                    Demand Notice &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
                                 </div>
                             </td>
                             <td>

@@ -18,6 +18,13 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        div#IntimationData {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 20px;
+    padding: 15px;
+}
          .card .card-title {
      font-size: 22px !important;
      font-weight: 700;

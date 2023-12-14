@@ -16,6 +16,10 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+        .form-group.row {
+            margin-bottom: -5px;
+        }
+
         .col-4 {
             margin-bottom: 8px;
         }
@@ -153,12 +157,27 @@
         .headercolor {
             background-color: #9292cc;
         }
+
+        h6.card-title.fw-semibold.mb-4 {
+            font-size: 1rem !important;
+            margin-bottom: 3px !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
+                   <div class="row ">
+    <div class="col-sm-4 col-md-4">
+        <h6 class="card-title fw-semibold mb-4">
+            <asp:Label ID="Label1" runat="server"></asp:Label>WORK INTIMATION HISTORY</h6>
+    </div>
+    <%--  <div class="col-sm-6 col-md-6"></div>
+    <div class="col-sm-2 col-md-2">
+        <asp:Button ID="btnAddnew" runat="server" class="btn btn-primary" Style="margin-left: 10px;" Text="Add New" OnClick="btnAddnew_Click" />
+    </div>--%>
+</div>
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">

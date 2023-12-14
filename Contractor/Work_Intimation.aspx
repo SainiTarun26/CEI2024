@@ -81,6 +81,7 @@
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
             height: 30px;
+               font-size:13px;
         }
 
         select.form-control {
@@ -227,7 +228,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row"  style="margin-top: -20px;">
                                 <div class="col-8">
                                     <label for="Address">
                                         Address of Site(As Per Demand Notice of Utility or Electricity Bill)
@@ -242,7 +243,7 @@
                                     <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row"  style="margin-top: -10px;">
                                 <div class="col-4">
                                     <label>
                                         District
@@ -307,7 +308,7 @@
                                     <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4"  style="margin-top:-20px;">
                                     <label>
                                         Applicant Type
         <samp style="color: red">* </samp>
