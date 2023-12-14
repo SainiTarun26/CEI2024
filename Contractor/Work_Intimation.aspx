@@ -307,34 +307,37 @@
         District
 <samp style="color: red">* </samp>
     </label>
-    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
-    </asp:DropDownList>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div>
-                                       <div class="col-4" runat="server">
-    <label for="Pin">PinCode</label>
-    <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <span id="lblPinError" style="color: red"></span>
-</div>
-
-
-                                    </div>
-                                    <div class="row">
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
                                         <div class="col-4" runat="server">
-    <label for="Email">Email <samp style="color: red">* </samp></label>
-    <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <span id="lblError" style="color: red"></span>
-</div>
+                                            <label for="Pin">PinCode</label>
+                                            <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <span id="lblPinError" style="color: red"></span>
+                                        </div>
+
+
                                     </div>
-                                </div>
+                                        <div class="row">
+                                            <div class="col-4" runat="server">
+                                                <label for="Email">Email
+                                                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <span id="lblError" style="color: red"></span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                             <div style="margin-top: 15px;">
                                 <div class="row" style="margin-top: 25px; margin-bottom: 8px;">
                                     <div class="col-12">
-                                <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%;font-size:18px !important;">Application Details</h7>
-                              </div>
+                                        <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%; font-size: 18px !important;">Application Details</h7>
                                     </div>
-                                    <div class="card" style="padding: 15px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                </div>
+                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                                     <div class="row">
                                         <div class="col-4">
@@ -398,9 +401,8 @@
                                 </div>
                             </td>
                             <td>
-                               <%-- <asp:Button runat="server" ID="btnDelete1" Text="<i class='icon-camera-retro'></i>DELETE" CssClass="submit" OnClick="btnDelete1_Click" />--%>
-                                <svg id="svgcross" xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="red" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
-                            </td>
+                             <asp:ImageButton ID="imgDelete1" ImageUrl="../Image/ImageToDelete.jpeg" height="30" width="30"   OnClick="imgDelete1_Click"
+       runat="server" />  </td>
                         </tr>
                     </div>
                     <div id="installationType2" runat="server">
@@ -417,10 +419,7 @@
                                 </div>
                             </td>
                             <td>
-                                                                <svg id="svgcross1" xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="red" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
-
-                                <%--<asp:Button runat="server" ID="btnDelete2" Text="DELETE" CssClass="submit" OnClick="btnDelete2_Click" />--%>
-                            </td>
+                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="../Image/ImageToDelete.jpeg" height="30" width="30"   OnClick="imgDelete2_Click" runat="server" /> </td>
                         </tr>
                     </div>
                     <div id="installationType3" runat="server">
@@ -436,11 +435,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                 </div>
                             </td>
-                            <td>
-                                                                <svg id="svgcross2" xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="red" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
-
-    
-                            </td>
+                            <td><asp:ImageButton ID="imgDelete3" ImageUrl="../Image/ImageToDelete.jpeg" height="30" width="30"   OnClick="imgDelete3_Click" runat="server" /></td>
                         </tr>
                     </div>
                     <div id="installationType4" runat="server" visible="False">

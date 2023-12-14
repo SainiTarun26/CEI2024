@@ -1,95 +1,107 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/TestReport/TestReport.Master" EnableEventValidation="false" CodeBehind="LineTestReport.aspx.cs" Inherits="CEIHaryana.TestReport.LineTestReport" %>
-
-
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="LineTestReport.aspx.cs" Inherits="CEIHaryana.Supervisor.LineTestReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>CEI</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="/Assets/css/feather/feather.css" />
-    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />
-    <link rel="stylesheet" href="/Assets/css/css/vendor.bundle.base.css" />
-    <link rel="stylesheet" href="/Assets/css/datatables.net-bs4/dataTables.bootstrap4.css" />
-    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />
-    <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css" />
-    <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css" />
-    <link rel="shortcut icon" href="images/favicon.png" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="stylesheet" href="/css2/style.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <style type="text/css">
-        li.tab-content.tab-content-first.typography {
-            border: 8px solid #CED4DA;
-            border-top: 0;
-            padding: 2rem 1rem;
-            text-align: justify;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            width: 99%;
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
         }
 
-        svg {
-            margin-right: 8px !important;
+        //Allow Only Aplhabet, Delete and Backspace
+
+        function isAlpha(keyCode) {
+
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+
         }
 
-        
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+    </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('Intimation Created Successfully')) {
+                window.location.href = "/Contractor/Work_Intimation.aspx";
+            } else {
+            }
+        }
+    </script>
+    <style>
+        .submit {
+            border: 1px solid #563d7c;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px 5px 10px;
+            background: left 3px top 5px no-repeat #563d7c;
+        }
+
+            .submit:hover {
+                border: 1px solid #563d7c;
+                border-radius: 5px;
+                color: white;
+                padding: 5px 10px 5px 10px;
+                background: left 3px top 5px no-repeat #26005f;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+
         .table-dark {
             text-align: center !important;
             background-color: #9292cc !important;
         }
 
-        div#ContentPlaceHolder1_individual {
-            top: 15px;
-        }
-
         .col-4 {
-            left: 0px;
-        }
-
-        .col-2 {
-            top: 15px;
-            left: 0px;
+            margin-bottom: 15px;
         }
 
         .form-control {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
             height: 30px;
-            font-size: 12px !important;
-            padding: 0px 5px !important;
+            font-size: 13px;
         }
 
         select.form-control {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
-            height: 30px !important;
-            font-size: 12px !important;
-            padding: 0px 5px !important;
+            height: 30px;
         }
 
         label {
             font-size: 13px;
-            margin-top: 15px;
         }
 
         .form-control:focus {
             border: 2px solid #80bdff;
-            font-size: 12px !important;
         }
 
         select.form-control:focus {
             border: 2px solid #80bdff;
-            font-size: 12px !important;
         }
 
-        .select2-container .select2-selection--single .form-control {
+        .select2-container .select2-selection--single {
             height: 30px !important;
         }
 
@@ -123,82 +135,102 @@
             font-size: 18px;
         }
 
-        span.select2-dropdown.select2-dropdown--below {
-            margin-top: 30px !important;
+        select.form-control.select-form.select2 {
+            height: 30px !important;
+            padding: 2px 0px 5px 10px;
         }
 
-      
-        span.menu-title {
-            COLOR: #F9F9F9 !IMPORTANT;
+        ul.chosen-choices {
+            border-radius: 5px;
         }
 
-        ::before {
-            color: #382c2c;
+        input#customFile {
+            padding: 0px 0px 0px 0px;
         }
 
-        img {
-            height: 60px !important;
-            width: 222px;
-            margin-left: 8px !important;
-            max-width: 126% !important;
+        input#ContentPlaceHolder1_txtName {
+            font-size: 12.5px !important;
         }
 
-        .avatar {
-            width: 60px !important;
+
+        input#ContentPlaceHolder1_txtagency {
+            font-size: 12.5px;
         }
 
-        nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
-            box-shadow: 0px 5px 21px -5px #CDD1E1;
+        .headercolor {
+            background-color: #9292cc;
         }
 
-        body {
-            -moz-transform: scale(0.5, 0.5); /* Moz-browsers */
-            zoom: 0.5; /* Other non-webkit browsers */
-            zoom: 90%; /* Webkit browsers */
-            zoom: 90%; /* Webkit browsers */
+        th {
+            background: #9292cc;
+        }
+
+        .card .card-title {
+            font-size: 20px !important;
+            color: #010101;
+            text-transform: capitalize;
+            font-weight: 700;
+        }
+
+        div#row2 {
+            margin-top: -20px;
+        }
+
+        div#row3 {
+            margin-top: -20px;
+        }
+
+        svg#svgcross {
+            height: 35px;
+            width: 67px;
+        }
+
+        svg#svgcross1 {
+            height: 35px;
+            width: 67px;
+        }
+
+        svg#svgcross2 {
+            height: 35px;
+            width: 67px;
+        }
+
+        td {
+            padding-top: 12px !important;
+            padding-bottom: 0px !important;
+        }
+
+        svg#search1:hover {
+            height: 22px;
+            width: 22px;
+            fill: #4b49ac;
+            transition: ease-out;
+            margin-left: -2px;
+            cursor: pointer;
         }
     </style>
-<script type="text/javascript">
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
-        }
-        return true;
-    }
-
-    function isAlpha(keyCode) {
-        return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190);
-    }
-
-    function alphabetKey(e) {
-        var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b';
-        var k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-        return (allow.indexOf(String.fromCharCode(k)) != -1);
-    }
-</script>
-
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <ul>
-        <li class="tab-content tab-content-first typography" style="margin-left: 5px; margin-right: 20px;">
-            <div class="card-body" id="divLine" asp-validation-summary="ModelOnly" runat="server" style="margin-top: -30px;">
-                <div id="IfInstallationIsLine" runat="server">
-                    <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-sm-4" style="text-align: center;">
-                                <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                    Data Updated Successfully !!!.
-                                </label>
-                                <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                    Data Saved Successfully !!!.
-                                </label>
-                            </div>
-                        </div>
+  <div class="content-wrapper">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12" style="text-align: center;">
+                        <h7 class="card-title fw-semibold mb-4" id="maincard">Line Test Report</h7>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-sm-4" style="text-align: center;">
+                        <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Updated Successfully !!!.
+                        </label>
+                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Saved Successfully !!!.
+                        </label>
+                    </div>
+                </div>
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
                                 <div>
@@ -965,10 +997,10 @@
                             </Triggers>
                         </asp:UpdatePanel>
                     </div>
-                </div>
-            </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+    <footer class="footer">
+    </footer>
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
     <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
@@ -981,13 +1013,13 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-    <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
-                window.location.href = "/Supervisor/IntimationData.aspx";
-            } else {
-            }
-        }
-    </script>
-
+   <script type="text/javascript">
+       function alertWithRedirect() {
+           if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
+               window.location.href = "/Supervisor/IntimationData.aspx";
+           } else {
+           }
+       }
+   </script>
 </asp:Content>
+

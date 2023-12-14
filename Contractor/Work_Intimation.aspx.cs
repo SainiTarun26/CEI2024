@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Net;
+using System.Net.Mail;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static System.Net.WebRequestMethods;
@@ -486,14 +487,18 @@ namespace CEIHaryana.Contractor
                         }
                         // DataSaved.Visible = true;
 
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                        HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create("http://smpanelv.yieldplus.in/api/mt/SendSMS?APIKey=546t3yI5n06VJogf7Keaiw&senderid=SDEI&channel=Trans&DCS=0&flashsms=0&number=" + mobilenumber + "&text=Dear Customer, " + " Your Account is created. Your user id is PAN Number and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT&route=2&peid=1101407410000040566");
-                        HttpWebResponse myResp = (HttpWebResponse)myReq.GetResponse();
-                        System.IO.StreamReader respStreamReader = new System.IO.StreamReader(myResp.GetResponseStream());
-                        string responseString = respStreamReader.ReadToEnd();
+                        MailMessage mailMessage = new MailMessage();
+                        mailMessage.From = new MailAddress("cs.nehaa6@gmail.com"); 
+                        mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Site Owner ID and Password"; string body = $"Dear Customer, Your Account is created. Your user id is {txtPAN.Text} and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT";
+                        mailMessage.Body = body;
 
-                        respStreamReader.Close();
-                        myResp.Close();
+                        SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                        smtpClient.Port = 587;
+                        smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
+                        smtpClient.EnableSsl = true; 
+
+                        smtpClient.Send(mailMessage);
+
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
 
@@ -816,6 +821,68 @@ namespace CEIHaryana.Contractor
             installationType8.Visible = false;
             txtinstallationType8.Text = string.Empty;
             txtinstallationNo8.Text = string.Empty;
+        }
+
+        protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType1.Text;
+
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+
+                installationType1.Visible = false;
+                txtinstallationType1.Text = string.Empty;
+                txtinstallationNo1.Text = string.Empty;
+            }
+            catch
+            {
+                // Handle exceptions appropriately
+            }
+        }
+
+        protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType2.Text;
+
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+
+                }
+                installationType2.Visible = false;
+                txtinstallationType2.Text = string.Empty;
+                txtinstallationNo2.Text = string.Empty;
+            }
+            catch
+            {
+                // Handle exceptions appropriately
+            }
+        }
+        protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType3.Text;
+
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+
+                }
+                installationType3.Visible = false;
+                txtinstallationType3.Text = string.Empty;
+                txtinstallationNo3.Text = string.Empty;
+            }
+            catch { }
         }
     }
 }
