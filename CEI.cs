@@ -1677,30 +1677,39 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet ConsolidateSearchData(string SubmittedDate,string EndDate,string Division,string District,string Status,string Inspectiontype,
     string PendingWith,string OwnerApplication,string GSTNumber)
         {
-            DataSet ds = new DataSet();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-            SqlCommand cmd = new SqlCommand("sp_ConsolidatedSearch", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            // Add parameters with named parameters
-            cmd.Parameters.AddWithValue("@SubmittedDate", SubmittedDate);
-            cmd.Parameters.AddWithValue("@EndDate", EndDate);
-            cmd.Parameters.AddWithValue("@Division", Division);
-            cmd.Parameters.AddWithValue("@District", District);
-            cmd.Parameters.AddWithValue("@Status", Status);
-            cmd.Parameters.AddWithValue("@Inspectiontype", Inspectiontype);
-            cmd.Parameters.AddWithValue("@PendingWith", PendingWith);
-            cmd.Parameters.AddWithValue("@OwnerApplication", OwnerApplication);
-            cmd.Parameters.AddWithValue("@GSTNumber",GSTNumber);
-
-            connection.Open();
-
-            // Use a SqlDataAdapter to fill the DataSet
-            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            try
             {
-                adapter.Fill(ds);
+                DataSet ds = new DataSet();
+                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+                SqlCommand cmd = new SqlCommand("sp_ConsolidatedSearch", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add parameters with named parameters
+                cmd.Parameters.AddWithValue("@SubmittedDate", SubmittedDate);
+                cmd.Parameters.AddWithValue("@EndDate", EndDate);
+                cmd.Parameters.AddWithValue("@Division", Division);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Status", Status);
+                cmd.Parameters.AddWithValue("@Inspectiontype", Inspectiontype);
+                cmd.Parameters.AddWithValue("@PendingWith", PendingWith);
+                cmd.Parameters.AddWithValue("@OwnerApplication", OwnerApplication);
+                cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
+
+                connection.Open();
+
+                // Use a SqlDataAdapter to fill the DataSet
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(ds);
+                }
+                return ds;
+
             }
-            return ds;
+            catch(Exception ex)
+            {
+                return null;
+            }
+
         }
 
 
