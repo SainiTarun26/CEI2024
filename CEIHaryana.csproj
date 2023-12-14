@@ -1777,6 +1777,7 @@
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
+    <Content Include="Supervisor\LineTestReport.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
     <Content Include="Supervisor\SupervisorGeneraterSetTestReport.aspx" />
     <Content Include="Supervisor\SupervisorLineTestReport.aspx" />
@@ -2148,6 +2149,13 @@
     </Compile>
     <Compile Include="Supervisor\IntimationData.aspx.designer.cs">
       <DependentUpon>IntimationData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\LineTestReport.aspx.cs">
+      <DependentUpon>LineTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\LineTestReport.aspx.designer.cs">
+      <DependentUpon>LineTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\Supervisor.Master.cs">
       <DependentUpon>Supervisor.Master</DependentUpon>
