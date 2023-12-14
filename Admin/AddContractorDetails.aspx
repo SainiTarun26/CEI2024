@@ -374,7 +374,7 @@
                                 Licence No. (New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
-                         <asp:CustomValidator ID="cvBothEmpty" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
+                         <asp:CustomValidator ID="cvBothEmpty" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage=" Add Atleast one License" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
                             
                         </div>
 
@@ -443,7 +443,7 @@
                         
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                            
-                            OnClick="btnSubmit_Click" OnClientClick="validateForm()" />
+                            OnClick="btnSubmit_Click"  />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;"
                             OnClick="BtnReset_Click" />

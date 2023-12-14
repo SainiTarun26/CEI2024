@@ -379,7 +379,7 @@
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="btnSubmit" Text="Submit"  OnClientClick="validateForm()" runat="server" class="btn btn-primary mr-2" TabIndex="18"
+                        <asp:Button ID="btnSubmit" Text="Submit"  runat="server" class="btn btn-primary mr-2" TabIndex="18"
                             ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" TabIndex="19"
                             Style="padding-left: 17px; padding-right: 17px;"
