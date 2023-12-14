@@ -1683,6 +1683,8 @@
     <Content Include="DataTableJs\jquery.js" />
     <Content Include="DataTableJs\jqueryDataTable.js" />
     <Content Include="Global.asax" />
+    <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
+    <Content Include="Image\Image\ImageToDelete.jpeg" />
     <Content Include="js2\ace.js" />
     <Content Include="js2\alerts.js" />
     <Content Include="js2\avgrund.js" />

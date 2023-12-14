@@ -401,7 +401,7 @@
                                 </div>
                             </td>
                             <td>
-                             <asp:ImageButton ID="imgDelete1" ImageUrl="../Image/ImageToDelete.jpeg" height="30" width="30"   OnClick="imgDelete1_Click"
+                             <asp:ImageButton ID="imgDelete1" ImageUrl="../Image/Image/ImageToDelete-removebg-preview.jpeg" height="30" width="30"   OnClick="imgDelete1_Click"
        runat="server" />  </td>
                         </tr>
                     </div>
@@ -419,7 +419,7 @@
                                 </div>
                             </td>
                             <td>
-                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="../Image/ImageToDelete.jpeg" height="30" width="30"   OnClick="imgDelete2_Click" runat="server" /> </td>
+                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="../Image/Image/ImageToDelete-removebg-preview.jpeg" height="30" width="30"   OnClick="imgDelete2_Click" runat="server" /> </td>
                         </tr>
                     </div>
                     <div id="installationType3" runat="server">
@@ -435,7 +435,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                 </div>
                             </td>
-                            <td><asp:ImageButton ID="imgDelete3" ImageUrl="../Image/ImageToDelete.jpeg" height="30" width="30"   OnClick="imgDelete3_Click" runat="server" /></td>
+                            <td><asp:ImageButton ID="imgDelete3" ImageUrl="../Image/Image/ImageToDelete-removebg-preview.jpeg" height="30" width="30"   OnClick="imgDelete3_Click" runat="server" /></td>
                         </tr>
                     </div>
                     <div id="installationType4" runat="server" visible="False">
