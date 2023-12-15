@@ -47,7 +47,7 @@ namespace CEIHaryana.Officers
         protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView3.PageIndex = e.NewPageIndex;
-            //BindGridView();
+            BindDaysGridView();
         }
 
         protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)

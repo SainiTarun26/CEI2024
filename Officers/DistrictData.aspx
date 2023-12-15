@@ -172,123 +172,120 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
-    <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
-                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">DISTRICT REPORT</h6>
-                </div>
-                <br />
-                <div class="col-md-4"></div>
-                <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 30px;
-    margin-bottom: 10px;">
-                    <div class="card-body">
-                    <div class="row">
-                    <div class="col-12">
-                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView3" Width="100%" AutoGenerateColumns="false"
-                                   OnPageIndexChanging="GridView3_PageIndexChanging" AllowPaging="true" PageSize="20"
-                                   runat="server" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView3_RowCommand">
-                                   <PagerStyle CssClass="pagination-ys" />
-                                   <Columns>
-                                       <asp:TemplateField HeaderText="SNo">
-                                           <HeaderStyle Width="5%" CssClass="headercolor" />
-                                           <ItemStyle Width="5%" />
-                     <ItemTemplate>
-                         <%#Container.DataItemIndex+1 %>
-                     </ItemTemplate>
-                 </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Id" Visible="False">
-                         <ItemTemplate>
-                             <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                         </ItemTemplate>
-                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Id" Visible="False">
-                         <ItemTemplate>
-                             <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
-                         </ItemTemplate>
-                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Id" Visible="False">
-                         <ItemTemplate>
-                             <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
-                         </ItemTemplate>
-                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="Id" Visible="False">
-                         <ItemTemplate>
-                             <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                         </ItemTemplate>
-                     </asp:TemplateField>
-                     <asp:TemplateField>
-                         <HeaderStyle Width="34%" CssClass="headercolor" />
-                         <ItemStyle Width="34%" />
-                                           <HeaderTemplate>
-                                               Application Request
-                                           </HeaderTemplate>
-                                           <ItemTemplate>
-                                               <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
-                                           </ItemTemplate>
-                                       </asp:TemplateField>
-                                       <asp:BoundField DataField="DateOfSubmission" HeaderText="Date Of Application">
-                                           <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                           <ItemStyle HorizontalAlign="center" Width="13%" />
-                                       </asp:BoundField>
-                                       <asp:BoundField DataField="InstallationType" HeaderText="Installation Applied For">
-                                           <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                           <ItemStyle HorizontalAlign="center" Width="13%" />
-                                       </asp:BoundField>
-                                       <asp:BoundField DataField="Id" HeaderText="Owner Application Number">
-                                           <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                           <ItemStyle HorizontalAlign="center" Width="13%" />
-                                       </asp:BoundField>
-                                       <asp:BoundField DataField="PendingWith" HeaderText="Pending With">
-                                           <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                           <ItemStyle HorizontalAlign="center" Width="13%" />
-                                       </asp:BoundField>
-                                       <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status Of Application">
-                                           <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                           <ItemStyle HorizontalAlign="center" Width="13%" />
-                                       </asp:BoundField>
-                                   </Columns>
-                                   <FooterStyle BackColor="White" ForeColor="#000066" />
-                                   <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                   <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                   <RowStyle ForeColor="#000066" />
-                                   <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                   <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                   <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                   <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                   <SortedDescendingHeaderStyle BackColor="#00547E" />
-                               </asp:GridView>
-                        </div> 
-                        </div>
-                        </div>
-                    
-                    <div class="row" style="margin-bottom:20px;">
-    <div class="col-4"></div>
-    <div class="col-4" style="text-align: center;">
-        <asp:Button ID="BtnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-            Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnBack_Click"/>
-        <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
-Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
-    </div>
-    <div class="col-4">
-        <asp:HiddenField ID="hdnId" runat="server" />
-    </div>
-</div>   
+        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
+                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">DISTRICT REPORT</h6>
                     </div>
+                    <br />
+                    <div class="col-md-4"></div>
+                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: 10px; margin-right: 10px; margin-top: 30px; margin-bottom: 10px;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView3" Width="100%" AutoGenerateColumns="false"
+                                        OnPageIndexChanging="GridView3_PageIndexChanging" AllowPaging="true" PageSize="20"
+                                        runat="server" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView3_RowCommand">
+                                        <PagerStyle CssClass="pagination-ys" />
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="SNo">
+                                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                <ItemStyle Width="5%" />
+                                                <ItemTemplate>
+                                                    <%#Container.DataItemIndex+1 %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderStyle Width="34%" CssClass="headercolor" />
+                                                <ItemStyle Width="34%" />
+                                                <HeaderTemplate>
+                                                    Application Request
+                                          
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="DateOfSubmission" HeaderText="Date Of Application">
+                                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Applied For">
+                                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="Id" HeaderText="Owner Application Number">
+                                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="PendingWith" HeaderText="Pending With">
+                                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status Of Application">
+                                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="13%" />
+                                            </asp:BoundField>
+                                        </Columns>
+                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                        <RowStyle ForeColor="#000066" />
+                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-4"></div>
+                            <div class="col-4" style="text-align: center;">
+                                <asp:Button ID="BtnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
+                                    Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnBack_Click" />
+                                <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
+Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
+                            </div>
+                            <div class="col-4">
+                                <asp:HiddenField ID="hdnId" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-      <script type="text/javascript">
-          function alertWithRedirect() {
-              if (confirm('No Data Found')) {
-                  window.location.href = "/Officers/OfficerDashboard.aspx";
-              } else {
-              }
-          }
-      </script>
+    <script type="text/javascript">
+        function alertWithRedirect() {
+            if (confirm('No Data Found')) {
+                window.location.href = "/Officers/OfficerDashboard.aspx";
+            } else {
+            }
+        }
+    </script>
 </asp:Content>

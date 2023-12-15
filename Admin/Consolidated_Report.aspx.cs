@@ -103,9 +103,11 @@ namespace CEIHaryana.Admin
                 string pendingWith = DdlStaffPendingWith.SelectedValue == "0" ? null : DdlStaffPendingWith.SelectedValue;
                 string ownerApplication = string.IsNullOrEmpty(txtownerApplication.Text.Trim()) ? null : txtownerApplication.Text.Trim();
                 string gstNumber = string.IsNullOrEmpty(txtGST.Text.Trim()) ? null : txtGST.Text.Trim();
-               // DataSet ds = new DataSet();
+                string LoginId = Session["AdminID"].ToString();
+                // DataSet ds = new DataSet();
                 DataSet ds = CEI.ConsolidateSearchData(submittedDate, endDate, division, district, status, inspectionType, pendingWith,
-                    ownerApplication, gstNumber);
+                    ownerApplication, gstNumber, LoginId);
+
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;

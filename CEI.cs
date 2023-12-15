@@ -1675,7 +1675,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #endregion
 
         public DataSet ConsolidateSearchData(string SubmittedDate,string EndDate,string Division,string District,string Status,string Inspectiontype,
-    string PendingWith,string OwnerApplication,string GSTNumber)
+    string PendingWith,string OwnerApplication,string GSTNumber,string Assignto)
         {
             try
             {
@@ -1694,6 +1694,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@PendingWith", PendingWith);
                 cmd.Parameters.AddWithValue("@OwnerApplication", OwnerApplication);
                 cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
+                cmd.Parameters.AddWithValue("@AssignTo", Assignto);
 
                 connection.Open();
 

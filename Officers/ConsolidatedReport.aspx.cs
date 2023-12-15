@@ -105,9 +105,10 @@ namespace CEIHaryana.Officers
                 string pendingWith = DdlStaffPendingWith.SelectedValue == "0" ? null : DdlStaffPendingWith.SelectedValue;
                 string ownerApplication = string.IsNullOrEmpty(txtownerApplication.Text.Trim()) ? null : txtownerApplication.Text.Trim();
                 string gstNumber = string.IsNullOrEmpty(txtGST.Text.Trim()) ? null : txtGST.Text.Trim();
+                string LoginId = Session["StaffID"].ToString();
                 // DataSet ds = new DataSet();
                 DataSet ds = CEI.ConsolidateSearchData(submittedDate, endDate, division, district, status, inspectionType, pendingWith,
-                    ownerApplication, gstNumber);
+                    ownerApplication, gstNumber, LoginId);
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -206,6 +207,11 @@ namespace CEIHaryana.Officers
                 txtGST.Text = "";
             }
             catch { }
+        }
+        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            BindGrid();
         }
     }
 }
