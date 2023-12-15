@@ -51,6 +51,10 @@
         }
     </script>
     <style>
+        td {
+            padding: 8px !important;
+        }
+
         .submit {
             border: 1px solid #563d7c;
             border-radius: 5px;
@@ -180,32 +184,41 @@
         div#row3 {
             margin-top: -20px;
         }
+
         svg#svgcross {
-    height: 35px;
-    width: 67px;
-}
- svg#svgcross1 {
-    height: 35px;
-    width: 67px;
-}
- svg#svgcross2 {
-    height: 35px;
-    width: 67px;
-}
- td {
-    padding-top: 12px !important;
-    padding-bottom: 0px !important;
-}
- svg#search1:hover {
-    height: 22px;
-    width: 22px;
-    fill: #4b49ac;
-    transition: ease-out;
-    margin-left: -2px;
-    cursor: pointer;
-}
- 
-</style>
+            height: 35px;
+            width: 67px;
+        }
+
+        svg#svgcross1 {
+            height: 35px;
+            width: 67px;
+        }
+
+        svg#svgcross2 {
+            height: 35px;
+            width: 67px;
+        }
+
+        td {
+            padding-top: 12px !important;
+            padding-bottom: 0px !important;
+        }
+
+        svg#search1:hover {
+            height: 22px;
+            width: 22px;
+            fill: #4b49ac;
+            transition: ease-out;
+            margin-left: -2px;
+            cursor: pointer;
+        }
+
+        th.textalignleft {
+            text-align: justify;
+            padding: 9px !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -214,7 +227,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12" style="text-align: center;">
-                        <h7 class="card-title fw-semibold mb-4" ID="maincard">WORK INTIMATION DETAILS</h7>
+                        <h7 class="card-title fw-semibold mb-4" id="maincard">WORK INTIMATION DETAILS</h7>
                     </div>
                 </div>
                 <div class="row">
@@ -234,11 +247,11 @@
                             <div>
                                 <div class="row" style="margin-bottom: 8px;">
                                     <div class="col-12">
-                                <h7 class="card-title fw-semibold mb-4" style="font-size:18px !important;">Site Owner Information</h7>
-                                </div>
+                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
                                     </div>
+                                </div>
 
-                                    <div class="card" style="padding: 15px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                                     <div class="row">
                                         <div class="col-3" runat="server">
@@ -253,9 +266,12 @@
                                         </div>
                                         <div class="col-1" style="padding: 0px; margin-top: 31px;">
                                             <span>
-                                            <svg id="search1" xmlns="http://www.w3.org/2000/svg" height="19" width="19" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                                                <svg id="search1" xmlns="http://www.w3.org/2000/svg" height="19" width="19" viewBox="0 0 512 512">
+                                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                                                </svg>
                                             </span>
-                                                </div>
+                                        </div>
                                         <div class="col-4">
                                             <label>
                                                 Electrical Installation For<samp style="color: red"> * </samp>
@@ -297,17 +313,17 @@
                                         </div>
                                     </div>
                                     <div class="row" id="row3">
-                                       
-                                            <div class="col-4" runat="server">
-                                                <label for="Pin">State</label>
-                                                <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           
+
+                                        <div class="col-4" runat="server">
+                                            <label for="Pin">State</label>
+                                            <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                         </div>
                                         <div class="col-4">
-    <label>
-        District
-<samp style="color: red">* </samp>
-    </label>
+                                            <label>
+                                                District
+                                                <samp style="color: red">* </samp>
+                                            </label>
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
@@ -320,17 +336,18 @@
 
 
                                     </div>
-                                        <div class="row">
-                                            <div class="col-4" runat="server">
-                                                <label for="Email">Email
+                                    <div class="row">
+                                        <div class="col-4" runat="server">
+                                            <label for="Email">
+                                                Email
                                                     <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                <span id="lblError" style="color: red"></span>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
-                                            </div>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <span id="lblError" style="color: red"></span>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                             <div style="margin-top: 15px;">
                                 <div class="row" style="margin-top: 25px; margin-bottom: 8px;">
@@ -342,201 +359,203 @@
 
                                     <div class="row">
                                         <div class="col-4">
-    <label>
-        Type of Premises
-<samp style="color: red">* </samp>
-    </label>
-    <asp:DropDownList class="form-control  select-form select2" TabIndex="9" runat="server" AutoPostBack="true" ID="ddlPremises" selectionmode="Multiple" OnSelectedIndexChanged="ddlPremises_SelectedIndexChanged" Style="width: 100% !important">
-    </asp:DropDownList>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div>
+                                            <label>
+                                                Type of Premises
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="9" runat="server" AutoPostBack="true" ID="ddlPremises" selectionmode="Multiple" OnSelectedIndexChanged="ddlPremises_SelectedIndexChanged" Style="width: 100% !important">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
                                         <div class="col-4">
-    <label>
-        Highest Voltage Level of Work
-<samp style="color: red">* </samp>
-    </label>
-    <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" TabIndex="10" ID="ddlVoltageLevel" runat="server">
-    </asp:DropDownList>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div>
-                                                                <div class="col-4">
-                            <label>
-                                Applicant Type
-<samp style="color: red">* </samp>
-                            </label>
-                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="13" ID="ddlApplicantType" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Private/Personal Installation" Value="2"></asp:ListItem>
-                            </asp:DropDownList>
+                                            <label>
+                                                Highest Voltage Level of Work
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" TabIndex="10" ID="ddlVoltageLevel" runat="server">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-4">
+                                            <label>
+                                                Applicant Type
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="13" ID="ddlApplicantType" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="Private/Personal Installation" Value="2"></asp:ListItem>
+                                            </asp:DropDownList>
 
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                        </div>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
                                     </div>
                                     <div class="row">
-    <div class="col-12">
-        <div class="table-responsive pt-3" id="Installation" runat="server">
-            <table class="table table-bordered table-striped">
-                <thead class="table-dark">
-                    <tr>
-                        <th style="width: 70%;">Installation Type
-                        </th>
-                        <th style="width: 20%;">No of Installations
-                        </th>
-                        <th style="width: 10%;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <div id="installationType1" runat="server">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" Text="Line" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo1" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                        <div class="col-12">
+                                            <div class="table-responsive pt-3" id="Installation" runat="server">
+                                                <table class="table table-bordered table-striped">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th style="width: 70%;">Installation Type
+                                                            </th>
+                                                            <th style="width: 20%;">No of Installations
+                                                            </th>
+                                                            <th style="width: 10%;"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <div id="installationType1" runat="server">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" Text="Line" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo1" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
 
-                                </div>
-                            </td>
-                            <td style="text-align: center !important;">
-                             <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" height="30" width="30"   OnClick="imgDelete1_Click"
-       runat="server" />  </td>
-                        </tr>
-                    </div>
-                    <div id="installationType2" runat="server">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo2" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td style="text-align: center !important;">
-                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" height="30" width="30"   OnClick="imgDelete2_Click" runat="server" /> </td>
-                        </tr>
-                    </div>
-                    <div id="installationType3" runat="server">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td>
-                                <div style="margin-left: 15px !important; margin-right: 15px !important;">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td style="text-align: center !important;">
-                                <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" height="30" width="30"   OnClick="imgDelete3_Click" runat="server" /></td>
-                        </tr>
-                    </div>
-                    <div id="installationType4" runat="server" visible="False">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td>
-                                <asp:Button runat="server" ID="btnDelete4" Text="DELETE" CssClass="submit" OnClick="btnDelete4_Click" />
-                            </td>
-                        </tr>
-                    </div>
-                    <div id="installationType5" runat="server" visible="False">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType5" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete1_Click"
+                                                                        runat="server" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType2" runat="server">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo2" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete2_Click" runat="server" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType3" runat="server">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div style="margin-left: 15px !important; margin-right: 15px !important;">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete3_Click" runat="server" /></td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType4" runat="server" visible="False">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Button runat="server" ID="btnDelete4" Text="DELETE" CssClass="submit" OnClick="btnDelete4_Click" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType5" runat="server" visible="False">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType5" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo5" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtinstallationNo5" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td>
-                                <asp:Button runat="server" ID="btnDelete5" Text="DELETE" CssClass="submit" OnClick="btnDelete5_Click" />
-                            </td>
-                        </tr>
-                    </div>
-                    <div id="installationType6" runat="server" visible="False">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType6" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo5" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtinstallationNo5" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Button runat="server" ID="btnDelete5" Text="DELETE" CssClass="submit" OnClick="btnDelete5_Click" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType6" runat="server" visible="False">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType6" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo6" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtinstallationNo6" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td>
-                                <asp:Button runat="server" ID="btnDelete6" Text="DELETE" CssClass="submit" OnClick="btnDelete6_Click" />
-                            </td>
-                        </tr>
-                    </div>
-                    <div id="installationType7" runat="server" visible="False">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType7" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo7" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtinstallationNo7" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td>
-                                <asp:Button runat="server" ID="btnDelete7" Text="DELETE" CssClass="submit" OnClick="btnDelete7_Click" />
-                            </td>
-                        </tr>
-                    </div>
-                    <div id="installationType8" runat="server" visible="False">
-                        <tr>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationType8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:TextBox class="form-control" ID="txtinstallationNo8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtinstallationNo8" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                </div>
-                            </td>
-                            <td>
-                                <asp:Button runat="server" ID="btnDelete8" Text="DELETE" CssClass="submit" OnClick="btnDelete8_Click" />
-                            </td>
-                        </tr>
-                    </div>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo6" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtinstallationNo6" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Button runat="server" ID="btnDelete6" Text="DELETE" CssClass="submit" OnClick="btnDelete6_Click" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType7" runat="server" visible="False">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType7" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo7" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtinstallationNo7" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Button runat="server" ID="btnDelete7" Text="DELETE" CssClass="submit" OnClick="btnDelete7_Click" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType8" runat="server" visible="False">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtinstallationNo8" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Button runat="server" ID="btnDelete8" Text="DELETE" CssClass="submit" OnClick="btnDelete8_Click" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -561,10 +580,10 @@
                             </div>
 
                             <div class="row" style="margin-top: -10px;">
-                                
-                                
-                                
-                                
+
+
+
+
                                 <div class="col-4" id="OtherPremises" runat="server">
                                     <label for="OtherPremises">
                                         Other Premises<samp style="color: red"> * </samp>
@@ -572,7 +591,7 @@
                                     <asp:TextBox class="form-control" ID="txtOtherPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
                                 </div>
-                                
+
 
                                 <div class="col-4" id="InstallationType" runat="server" visible="false">
                                     <label>
@@ -584,13 +603,13 @@
                                     <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <h7 class="card-title fw-semibold mb-4" style="font-size:18px !important;">Work Schedule</h7>
+                <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Work Schedule</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
 
@@ -655,7 +674,7 @@
                     </div>
                 </div>
                 <div>
-                    <h7 class="card-title fw-semibold mb-4" style="font-size:18px !important;">Assign Supervisor/Wireman Details For Above Work</h7>
+                    <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Assign Supervisor/Wireman Details For Above Work</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <div class="row">
                             <div class="col-12">
@@ -686,24 +705,24 @@
                                                     <ItemStyle HorizontalAlign="center" Width="10%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Category" HeaderText="Category">
-                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="center" Width="10%" />
+                                                    <HeaderStyle HorizontalAlign="left" Width="10%" CssClass="headercolor textalignleft" />
+                                                    <ItemStyle HorizontalAlign="left" Width="10%" cssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="16%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="16%" />
+                                                    <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor textalignleft" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                                    <HeaderStyle HorizontalAlign="right" Width="24%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="right" Width="24%" />
+                                                    <HeaderStyle HorizontalAlign="center" Width="19%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center" Width="19%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
-                                                    <HeaderStyle HorizontalAlign="right" Width="22%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="right" Width="22%" />
+                                                    <HeaderStyle HorizontalAlign="center" Width="18%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center" Width="18%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                                    <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="right" Width="20%" />
+                                                    <HeaderStyle HorizontalAlign="left" Width="20%" CssClass="headercolor textalignleft" />
+                                                    <ItemStyle HorizontalAlign="left" Width="20%" cssClass="textalignleft" />
                                                 </asp:BoundField>
                                             </Columns>
                                             <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -726,7 +745,7 @@
                         <div class="col-4" style="text-align: center;">
                             <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />
                             <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                            <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" style="padding-left:18px;padding-right:18px;"/>
+                            <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" Style="padding-left: 18px; padding-right: 18px;" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                         </div>
                         <div class="col-4"></div>

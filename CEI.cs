@@ -1659,9 +1659,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_BindDivisionBarGraph", loginid);
         }
-        public DataSet GetStaffDetailsDropDown()
+        public DataSet GetStaffDetailsDropDown(string Division)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffDetails");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffDetails", Division);
         }
         public DataSet GetDdlDivisionData()
         {

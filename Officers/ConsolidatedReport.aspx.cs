@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CEIHaryana.Admin
+namespace CEIHaryana.Officers
 {
-    public partial class Consolidated_Report : System.Web.UI.Page
+    public partial class ConsolidatedReport : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -71,9 +71,11 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                DataTable ds = new DataTable();
-                ds = CEI.InspectionHistoryForAdminData();
-                if (ds.Rows.Count > 0)
+                string LoginID = string.Empty;
+                LoginID = Session["StaffID"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.StaffLogin(LoginID);
+                if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
@@ -89,7 +91,7 @@ namespace CEIHaryana.Admin
             }
             catch { }
         }
-            private void BindGrid()
+        private void BindGrid()
         {
             try
             {
@@ -103,7 +105,7 @@ namespace CEIHaryana.Admin
                 string pendingWith = DdlStaffPendingWith.SelectedValue == "0" ? null : DdlStaffPendingWith.SelectedValue;
                 string ownerApplication = string.IsNullOrEmpty(txtownerApplication.Text.Trim()) ? null : txtownerApplication.Text.Trim();
                 string gstNumber = string.IsNullOrEmpty(txtGST.Text.Trim()) ? null : txtGST.Text.Trim();
-               // DataSet ds = new DataSet();
+                // DataSet ds = new DataSet();
                 DataSet ds = CEI.ConsolidateSearchData(submittedDate, endDate, division, district, status, inspectionType, pendingWith,
                     ownerApplication, gstNumber);
                 if (ds != null && ds.Tables.Count > 0)
@@ -157,6 +159,7 @@ namespace CEIHaryana.Admin
         protected void DdlDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlLoadBindDistrict(DdlDivision.SelectedValue);
+
             DdlBindStaffPendingWith(DdlDivision.SelectedValue);
         }
 
