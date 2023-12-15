@@ -91,7 +91,7 @@
         }
 
         label {
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .form-control:focus {
@@ -167,7 +167,7 @@
         }
 
         .card .card-title {
-            font-size: 20px !important;
+            font-size: 23px !important;
             color: #010101;
             text-transform: capitalize;
             font-weight: 700;
@@ -218,7 +218,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12" style="text-align: center;">
-                        <h7 class="card-title fw-semibold mb-4" id="maincard">Line Test Report</h7>
+                        <h7 class="card-title fw-semibold mb-4" id="maincard">LINE TEST REPORT</h7>
                     </div>
                 </div>
                 <div class="row">
@@ -234,7 +234,12 @@
                 </div>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;background:#f9f9f9; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;padding-top:10px;padding-bottom:0px;">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-12" style="text-align: left;">
+                                <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Intimation/Installation Details</h7>
+                            </div>
+                        </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background:#d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
                             <div class="row">
                                 <div class="col-3" id="Div8" runat="server">
                                     <label for="Name">
@@ -256,7 +261,7 @@
                                 </div>
                                 <div class="col-3" id="Div10" runat="server">
                                     <label for="Name">
-                                       Type of Installation
+                                        Type of Installation
             <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="TextBox3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -265,7 +270,7 @@
                                 </div>
                                 <div class="col-3" id="Div12" runat="server">
                                     <label for="Name">
-                                       No of Installations
+                                        No of Installations
             <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="TextBox4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -274,7 +279,12 @@
                                 </div>
                             </div>
                         </div>
-                           <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px;margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-12" style="text-align: left;">
+                                <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Installation Details</h7>
+                            </div>
+                        </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div>
                                 <div class="row">
                                     <div class="col-3">
@@ -329,7 +339,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div id="LineTypeOverhead" runat="server" visible="false">
                                 <div class="row">
                                     <div class="col-3">
@@ -361,7 +371,7 @@
                                 </div>
                             </div>
                             <div id="OverheadBare" visible="false" runat="server">
-                                <div class="row" style="margin-top:20px;">
+                                <div class="row" style="margin-top: 20px;">
                                     <div class="col-3">
                                         <label>
                                             Number of Pole/Tower<samp style="color: red"> * </samp>
@@ -393,7 +403,7 @@
                                         <asp:TextBox class="form-control" ID="txtRailwayCrossingNo" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtRailwayCrossingNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter No. of Railway Crossings</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div5" runat="server" style="margin-top:-20px;">
+                                    <div class="col-3" id="Div5" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of Road Crossing
                             <samp style="color: red">* </samp>
@@ -401,7 +411,7 @@
                                         <asp:TextBox class="form-control" ID="txtRoadCrossingNo" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="9" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtRoadCrossingNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Size of Ground Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div6" runat="server" style="margin-top:-20px;">
+                                    <div class="col-3" id="Div6" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of River/Canal Crossing
                             <samp style="color: red">* </samp>
@@ -410,7 +420,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtRiverCanalCrossing" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number of River/Canal Crossing
                                         </asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div7" runat="server" style="margin-top:-20px;">
+                                    <div class="col-3" id="Div7" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of Power Line Crossing:	
                             <samp style="color: red">* </samp>
@@ -422,7 +432,7 @@
                             </div>
                             <div id="OverheadCable" runat="server" visible="false">
                                 <div
-                                    class="row" style="margin-top:20px !important;">
+                                    class="row" style="margin-top: 20px !important;">
                                     <div class="col-3">
                                         <label>
                                             Number of Pole/Tower<samp style="color: red"> * </samp>
@@ -454,7 +464,7 @@
                                         <asp:TextBox class="form-control" ID="txtRoadCrossingNmbr" MaxLength="2" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtRoadCrossingNmbr" ErrorMessage="txtRoadCrossingNmbr" ValidationGroup="Submit" ForeColor="Red">Please Enter NO. of Road Crossing</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div21" runat="server" style="margin-top:-20px;">
+                                    <div class="col-3" id="Div21" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of River/Canal Crossing
                             <samp style="color: red">* </samp>
@@ -462,7 +472,7 @@
                                         <asp:TextBox class="form-control" ID="txtRiverCanalCrossingNmber" MaxLength="2" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtRiverCanalCrossingNmber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter No. of River/Canal Crossing</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div22" runat="server" style="margin-top:-20px;">
+                                    <div class="col-3" id="Div22" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of Power Line Crossing:	
                             <samp style="color: red">* </samp>
@@ -524,7 +534,7 @@
                                 </div>
                             </div>
                             <div id="Insulation220vAbove" runat="server" visible="false">
-                                <div class="row" style="margin-top:20px !important;">
+                                <div class="row" style="margin-top: 10px !important;">
                                     <div class="col-3">
                                         <label>
                                             Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
@@ -671,9 +681,15 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div id="Earthing" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-12" style="text-align: left;">
+                                <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Earthing Details</h7>
                             </div>
-                            <div  id="Earthing" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px;margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <div >
+                        </div>
+                        
+                            <div>
                                 <div class="row">
                                     <div class="col-3">
                                         <label>
@@ -1002,43 +1018,40 @@
                                     </div>
                                 </div>
                             </div>
-                                </div>
-                            <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
-                                <%--  <div class="col-2"></div>--%>
-                                <div class="col-12" style="text-align: center;">
-                                    <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
-                                    <br />
-                                    <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                        Please Verify this.
-                                    </label>
-                                </div>
+                        </div>
+                       
+                        <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
+                            <%--  <div class="col-2"></div>--%>
+                            <div class="col-12" style="text-align: center;">
+                                <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
+                                <br />
+                                <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                    Please Verify this.
+                                </label>
                             </div>
-                            <div class="row" id="OTP" runat="server" visible="false">
-                                <div class="col-4"></div>
-                                <div class="col-4">
-                                    <label>
-                                        Enter the OTP you received to Your Phone Number
-                                                        <samp style="color: red">* </samp>
-                                    </label>
-                                    <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
-
-                                </div>
+                        </div>
+                        <div class="row" id="OTP" runat="server" visible="false">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <label>
+                                    Enter the OTP you received to Your Phone Number <samp style="color: red">* </samp>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="row">
-                                <div class="col-4">
-                                </div>
-                                <div class="col-4" style="text-align: center;">
-                                    <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
-                                    <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
-                                    <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
-                                </div>
-                                <div class="col-4">
-                                    <asp:HiddenField ID="hdn" Value="0" runat="server" />
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
                             </div>
-                        
-                    
+                            <div class="col-4" style="text-align: center;">
+                                <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
+                                <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
+                                <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
+                            </div>
+                            <div class="col-4">
+                                <asp:HiddenField ID="hdn" Value="0" runat="server" />
+                            </div>
+                        </div>
                     </ContentTemplate>
                     <Triggers>
                         <asp:AsyncPostBackTrigger ControlID="btnSubmit" EventName="Click" />

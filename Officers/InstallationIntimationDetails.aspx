@@ -151,7 +151,7 @@
                                        Application
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Application") %> ' CommandName="Select"><%#Eval("Application") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForInspection") %> ' CommandName="Select"><%#Eval("ApplicationForInspection") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                   <%--              <asp:BoundField DataField="Application" HeaderText="Application">
