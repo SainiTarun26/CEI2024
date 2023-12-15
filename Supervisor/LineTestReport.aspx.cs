@@ -963,48 +963,11 @@ namespace CEIHaryana.Supervisor
                txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
                txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
                txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-                    Page.Session["Visible"] = 1;
-                    if (btnSubmit.Text.Trim() == "Submit" || btnSubmit.Text.Trim() == "Next")
-                    {
-                        Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
-                        Reset();
-                        DataSaved.Visible = true;
-                        labelVerification.Visible = false;
-                        PageWorking();
-                        int currentValue = Convert.ToInt32(Session["Page"]);
-
-                        if (currentValue == Convert.ToInt32(sessionValue))
-                        {
-                            Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
-                            btnSubmit.Visible = false;
-                            Session["SubmittedValue2"] = sessionValue;
-                            //divLine.Visible = false;
-                            Session["LineId"] = "";
-                            Session["TestReportId"] = TestReportId;
-                            Page.Session["Page"] = 0;
-                            if (nextSessionName.Trim() == "Substation Transformer")
-                            {
-                                Response.Redirect("SubstationTransformer.aspx", false);
-                            }
-                            else if (nextSessionName.Trim() == "Generating Station")
-                            {
-                                Response.Redirect("GeneratingSetTestReport.aspx", false);
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-
-                            }
-                        }
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted')", true);
-                    }
-                    else
-                    {
+                   
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
                         Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                    }
+                    
                 }
 
 
