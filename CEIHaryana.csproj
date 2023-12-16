@@ -1779,6 +1779,7 @@
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
+    <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\LineTestReport.aspx" />
     <Content Include="Supervisor\SubstationTestReport.aspx" />
@@ -2154,6 +2155,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\TestReportData.aspx.designer.cs">
       <DependentUpon>TestReportData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\GeneratingSetTestReport.aspx.cs">
+      <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\GeneratingSetTestReport.aspx.designer.cs">
+      <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\IntimationData.aspx.cs">
       <DependentUpon>IntimationData.aspx</DependentUpon>
