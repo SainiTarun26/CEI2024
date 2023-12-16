@@ -72,10 +72,6 @@
           background-color: #9292cc !important;
       }
 
-      .col-4 {
-          margin-bottom: 15px;
-      }
-
       .form-control {
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           margin-left: 0px !important;
@@ -238,7 +234,7 @@
                              <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Intimation/Installation Details</h7>
                          </div>
                      </div>
-                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background:#d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
+                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background:#d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 20px;">
                          <div class="row">
                              <div class="col-3" id="Div8" runat="server">
                                  <label for="Name">
@@ -281,10 +277,7 @@
                          </div>
                      </div>
                      <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                       
-
-
-                      
+                     
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-sm-4" style="text-align: center;">
@@ -299,7 +292,7 @@
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
                         <div class="row">
-                            <div class="col-4" id="Div121" runat="server">
+                            <div class="col-3" id="Div121" runat="server">
                                 <label for="Voltage">
                                     Serial number of transformer  
                                         <samp style="color: red">* </samp>
@@ -307,7 +300,7 @@
                                 <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="1" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rvftransformerSerialnumber" ForeColor="Red" ControlToValidate="txtTransformerSerialNumber" runat="server" ErrorMessage="Please Enter Serial Number" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="col-2" style="margin-top: -15px;">
+                            <div class="col-3">
                                 <label>
                                     Capacity of transformer
                                         <samp style="color: red">* </samp>
@@ -321,7 +314,7 @@
                                 <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>--%>
                             </div>
-                            <div class="col-2" style="margin-top: -15px;">
+                            <div class="col-3" >
                                 <label>
                                     Capacity of transformer 
                                         <samp style="color: red">* </samp>
@@ -331,7 +324,7 @@
                                 <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                         </asp:DropDownList>--%>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <label>
                                     Type of transformer
                                         <samp style="color: red">* </samp>
@@ -346,7 +339,7 @@
                         </div>
                         <div id="InCaseOfOil" runat="server" visible="false">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-3">
                                     <label for="Voltage">
                                         Primary voltage(in kva)  
                             <samp style="color: red">* </samp>
@@ -355,7 +348,7 @@
                                 </asp:DropDownList>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="PrimaryVoltage" runat="server" ErrorMessage="Please Select Primary Voltage" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                               </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <label for="Voltage">
                                         Secondary Voltage(in volte)  
                                         <samp style="color: red">* </samp>
@@ -364,7 +357,7 @@
                                 </asp:DropDownList>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="PrimaryVoltage" runat="server" ErrorMessage="Please Select Secondary Voltage" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                </div>
-                                <div id="Capacity" class="col-4" runat="server" visible="false">
+                                <div id="Capacity" class="col-3" runat="server" visible="false">
                                     <label for="Voltage">
                                         Capacity of oil(in liters)  
                                         <samp style="color: red">* </samp>
@@ -372,16 +365,16 @@
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="Red" ControlToValidate="txtOilCapacity" runat="server" ErrorMessage="Please Enter Oil Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                 </div>
-                                <div id="BDV" class="col-4" runat="server" visible="false">
+                                <div id="BDV" class="col-3" runat="server" visible="false">
                                     <label for="Voltage">
-                                        BDV level of oil (in kv) Break down voltage  
+                                        BDV level of oil Break down voltage  
                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" Text=" (in kv) " AutoPostBack="true" ID="txtOilBDV" MaxLength="3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ForeColor="Red" ControlToValidate="txtOilBDV" runat="server" ErrorMessage="Please Enter Oil BDV" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
-                            <label style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
+                            <label style="margin-bottom: 20px; font-size: 17px !important; font-weight: 700;">HT/LT side Insulation Resistance</label>
                             <div class="HTInsulationResistance">
                                 <div class="row" style="margin-top: -15px;">
                                     <div class="col-4" id="Div124" runat="server">
@@ -392,16 +385,15 @@
                                         <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtHTsideInsulation" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="9" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ForeColor="Red" ControlToValidate="txtHTsideInsulation" runat="server" ErrorMessage="Please Enter HTSideInsulation" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-4" style="margin-top: -35px;">
-                                        <label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
-                                        <label for="Voltage" style="margin-top: -15px;">
+                                    <div class="col-4" style="margin-top:7px;">                                        
+                                        <label for="Voltage">
                                             LT side Insulation Resistance—LV/Earth
                                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLTSideInsulation" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ForeColor="Red" ControlToValidate="txtLTSideInsulation" runat="server" ErrorMessage="Please Enter LTSideInsulation" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-4" style="margin-top: -45px;">
+                                    <div class="col-4" style="margin-top: -41px;">
                                         <br /> <br />
                                    <%--     <label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>--%>
                                         <label for="Voltage" style="margin-top: -15px;">
@@ -411,22 +403,22 @@
                                         <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLowestValue" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="11" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ForeColor="Red" ControlToValidate="txtLowestValue" runat="server" ErrorMessage="Please Enter Lowest Value" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-4">
-                                        <label for="Voltage">
-                                            Lightning Arrestor (LA) Location  
- <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="13" runat="server" AutoPostBack="true" ID="ddlLghtningArrestor" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlLghtningArrestor_SelectedIndexChanged">
-                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                            <asp:ListItem Value="1" Text="On HT side"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="On LT side"></asp:ListItem>
-                                            <asp:ListItem Value="3" Text="Other"></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator101" ForeColor="Red" ControlToValidate="ddlLghtningArrestor" runat="server" ErrorMessage="Please Select (LA) Location" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                       <label for="Voltage">
+                                           Lightning Arrestor (LA) Location  
+<samp style="color: red">* </samp>
+                                       </label>
+                                       <asp:DropDownList class="form-control  select-form select2" TabIndex="13" runat="server" AutoPostBack="true" ID="ddlLghtningArrestor" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlLghtningArrestor_SelectedIndexChanged">
+                                           <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                           <asp:ListItem Value="1" Text="On HT side"></asp:ListItem>
+                                           <asp:ListItem Value="2" Text="On LT side"></asp:ListItem>
+                                           <asp:ListItem Value="3" Text="Other"></asp:ListItem>
+                                       </asp:DropDownList>
+                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator101" ForeColor="Red" ControlToValidate="ddlLghtningArrestor" runat="server" ErrorMessage="Please Select (LA) Location" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
 
-                                    </div>
+                                   </div>
+                                </div>
+                                <div class="row">                                    
                                     <div class="col-4" runat="server" id="OtherLaDiv" visible="false">
                                         <label for="Voltage">
                                             Other (LA) Location  
@@ -449,7 +441,113 @@
                                             <asp:ListItem Value="1" Text="Breaker" Selected="True"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
+                                     </div>
+                                 </div>
+                            <div id="TypeOfHTBreaker" runat="server" visible="false">
+                                <div class="row">
                                     <div class="col-4">
+                                        <label for="Voltage">
+                                            Load breaking capacity of breaker   
+                                                    <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" Text="(IN KA)" ID="txtBreakerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ForeColor="Red" ControlToValidate="txtBreakerCapacity" runat="server" ErrorMessage="Please Enter Breaker Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-4">
+                                        <label>
+                                            Type of LT protection
+                                                    <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="16" runat="server" AutoPostBack="true" ID="ddlLTProtection" OnSelectedIndexChanged="ddlLTProtection_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
+                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                            <asp:ListItem Value="1" Text="Fuse Unit"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="Breaker"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" ForeColor="Red" ControlToValidate="ddlLTProtection" runat="server" InitialValue="0" ErrorMessage="Please Select LT Protection" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-4" id="FuseUnit" runat="server" visible="false">
+                                        <label for="Voltage">
+                                            Capacity of individual fuse(IN AMPS)  
+                                                    <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtIndividualCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="18" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ForeColor="Red" ControlToValidate="txtIndividualCapacity" runat="server" ErrorMessage="Please Enter Individual Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Breaker" runat="server" visible="false">
+                                <div class="row">
+                                    <div class="col-4" id="Div167" runat="server">
+                                        <label for="Voltage">
+                                            Capacity of LT Breaker(IN AMPS)  
+                                                    <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTBreakerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" ForeColor="Red" ControlToValidate="txtLTBreakerCapacity" runat="server" ErrorMessage="Please Enter LT Breaker Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-4" id="Div168" runat="server">
+                                        <label for="Voltage">
+                                            Load Breaking Capacity of Breaker
+                                                    <samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" Text="(IN AMPS)" ID="txtLoadBreakingCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ForeColor="Red" ControlToValidate="txtLoadBreakingCapacity" runat="server" ErrorMessage="Please Enter Load Breaking Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                    </div>
+                               <div class="col-4" id="Div169" runat="server">
+       <label for="Voltage">
+           Mean Sea Level of transformer plinth   
+       </label>
+       <asp:TextBox class="form-control" AutoPostBack="true" Text="(IN METRES)" ID="txtSealLevelPlinth" onKeyPress="return isNumberKey(event);" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+       </div>
+                                </div>
+                            </div>
+                               <div class="row" id="MeanSeaPlinth" runat="server" visible="false">
+                                 
+                                   </div>
+                        </div>                        
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                <div class="row" style="margin-top: 50px;" id="Declaration" runat="server" visible="false">
+                    <div class="col-12" style="text-align: center;">
+                        <asp:CheckBox ID="CheckBox2" runat="server" OnCheckedChanged="CheckBox2_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
+                        <br />
+                        <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Please Verify this.
+                        </label>
+                    </div>
+                </div>
+                 <div class="row"  id="OTP" runat="server" visible="false">
+                                     <div class="col-4"></div>
+                                      <div class="col-4">
+                                          <label>
+                                              Enter the OTP you received to Your Phone Number
+                                                        <samp style="color: red">* </samp>
+                                            </label>
+                                        <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator100" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
+                                                           
+                                    </div>
+                                 </div>
+                
+
+
+
+
+
+
+
+
+
+                     </div> 
+                     <div class="row" style="margin-top: 10px;">
+    <div class="col-12" style="text-align: left;">
+        <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Earthing Details</h7>
+    </div>
+</div>
+<div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
+                         
+                     <div class="col-3">
                                         <label for="Name">
                                             Number of Earthing:
                                         <samp style="color: red">* </samp>
@@ -458,7 +556,7 @@
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ForeColor="Red" ControlToValidate="ddlEarthingsubstation" runat="server" ErrorMessage="Please Select Earthing No" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
+                     <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
                                         <table class="table table-bordered table-striped">
                                             <thead class="table-dark">
                                                 <tr>
@@ -1259,215 +1357,21 @@
                                             </tbody>
                                         </table>
                                     </div>
+    </div>
+                     <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4" style="text-align: center;">
+        <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
+         <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
+        <asp:Button ID="BtnSubmitSubstation" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+            OnClick="BtnSubmitSubstation_Click" />
+    </div>
+    <div class="col-4">
+        <asp:HiddenField ID="hdn" Value="0" runat="server" />
+        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtValue" Visible="false" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                </div>
-                            </div>
-                            <div id="TypeOfHTBreaker" runat="server" visible="false">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <label for="Voltage">
-                                            Load breaking capacity of breaker (IN KA)  
-                                                    <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ForeColor="Red" ControlToValidate="txtBreakerCapacity" runat="server" ErrorMessage="Please Enter Breaker Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-4">
-                                        <label>
-                                            Type of LT protection
-                                                    <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="16" runat="server" AutoPostBack="true" ID="ddlLTProtection" OnSelectedIndexChanged="ddlLTProtection_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
-                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                            <asp:ListItem Value="1" Text="Fuse Unit"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="Breaker"></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" ForeColor="Red" ControlToValidate="ddlLTProtection" runat="server" InitialValue="0" ErrorMessage="Please Select LT Protection" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-4" id="FuseUnit" runat="server" visible="false">
-                                        <label for="Voltage">
-                                            Capacity of individual fuse(IN AMPS)  
-                                                    <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtIndividualCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="18" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ForeColor="Red" ControlToValidate="txtIndividualCapacity" runat="server" ErrorMessage="Please Enter Individual Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="Breaker" runat="server" visible="false">
-                                <div class="row">
-                                    <div class="col-4" id="Div167" runat="server">
-                                        <label for="Voltage">
-                                            Capacity of LT Breaker(IN AMPS)  
-                                                    <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTBreakerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" ForeColor="Red" ControlToValidate="txtLTBreakerCapacity" runat="server" ErrorMessage="Please Enter LT Breaker Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="col-4" id="Div168" runat="server">
-                                        <label for="Voltage">
-                                            Load Breaking Capacity of Breaker (IN AMPS)  
-                                                    <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ForeColor="Red" ControlToValidate="txtLoadBreakingCapacity" runat="server" ErrorMessage="Please Enter Load Breaking Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                                    </div>
-                               
-                                </div>
-                            </div>
-                               <div class="row" id="MeanSeaPlinth" runat="server" visible="false">
-                                 <div class="col-4" id="Div169" runat="server">
-                                        <label for="Voltage">
-                                            Mean Sea Level of transformer plinth (IN METRES)  
-                                        </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" onKeyPress="return isNumberKey(event);" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
-                                   </div>
-                        </div>
-                        <%--<div class="InCaseOfDry">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <label for="Voltage">
-                                                            Primary voltage(in kva)  
-                                                            <samp style="color: red">* </samp>
-                                                        </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox1" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <label for="Voltage">
-                                                            Secondary Voltage(in volte)  
-                                                            <samp style="color: red">* </samp>
-                                                        </label>
-                                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox2" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </div>
-
-                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">HT side Insulation Resistance</label>
-                                                <div class="HTInsulationResistance">
-                                                    <div class="row" style="margin-top: -15px;">
-                                                        <div class="col-4">
-                                                            <label for="Voltage" style="margin-top: 10px;">
-                                                                Red Phase – Earth Wire (in Mohm)  
-                                            <samp style="color: red">* </samp>
-                                                            </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox3" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        </div>
-                                                        <div class="col-4" id="Div9" runat="server">
-                                                            <label for="Voltage" style="margin-top: 10px;">
-                                                                Yellow Phase – Earth Wire (in Mohm)   
-                                            <samp style="color: red">* </samp>
-                                                            </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox4" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        </div>
-                                                        <div class="col-4" id="Div10" runat="server">
-                                                            <label for="Voltage" style="margin-top: 10px;">
-                                                                Blue Phase – Earth Wire (in Mohm)  
-                                            <samp style="color: red">* </samp>
-                                                            </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox5" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
-                                                <div class="LTInsulationResistance">
-                                                    <div class="row" style="margin-top: -15px;">
-                                                        <div class="col-4" id="Div12" runat="server">
-                                                            <label for="Voltage" style="margin-top: 10px;">
-                                                                Red Phase – Earth Wire (in Mohm)  
-                                <samp style="color: red">* </samp>
-                                                            </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox6" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        </div>
-                                                        <div class="col-4" id="Div13" runat="server">
-                                                            <label for="Voltage" style="margin-top: 10px;">
-                                                                Yellow Phase – Earth Wire (in Mohm)   
-                                <samp style="color: red">* </samp>
-                                                            </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox7" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        </div>
-                                                        <div class="col-4" id="Div14" runat="server">
-                                                            <label for="Voltage" style="margin-top: 10px;">
-                                                                Blue Phase – Earth Wire (in Mohm)  
-                                <samp style="color: red">* </samp>
-                                                            </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox8" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <label for="Voltage" style="margin-top: 30px; margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>
-                                                <div class="LTInsulationResistance">
-                                                    <div class="row" style="margin-top: -15px;">
-                                                        <div class="col-4" id="Div16" runat="server">
-                                                            <label for="Voltage" style="margin-top: 10px;">
-                                                                Red Phase – Earth Wire (in Mohm)  
-                                                                    <samp style="color: red">* </samp>
-                                                            </label>
-                                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox9" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4" id="Div17" runat="server">
-                                                    <label for="Voltage">
-                                                        Lightning Arrestor (LA) Location  
-                                                        <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox10" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4">
-                                                    <label>
-                                                        Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
-                                                    </label>
-                                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="DropDownList1" selectionmode="Multiple" Style="width: 100% !important">
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>--%>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-                <div class="row" style="margin-top: 50px;" id="Declaration" runat="server" visible="false">
-                    <div class="col-12" style="text-align: center;">
-                        <asp:CheckBox ID="CheckBox2" runat="server" OnCheckedChanged="CheckBox2_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
-                        <br />
-                        <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                            Please Verify this.
-                        </label>
-                    </div>
-                </div>
-                 <div class="row"  id="OTP" runat="server" visible="false">
-                                     <div class="col-4"></div>
-                                      <div class="col-4">
-                                          <label>
-                                              Enter the OTP you received to Your Phone Number
-                                                        <samp style="color: red">* </samp>
-                                            </label>
-                                        <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator100" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
-                                                           
-                                    </div>
-                                 </div>
-                <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
-                         <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
-                        <asp:Button ID="BtnSubmitSubstation" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                            OnClick="BtnSubmitSubstation_Click" />
-                    </div>
-                    <div class="col-4">
-                        <asp:HiddenField ID="hdn" Value="0" runat="server" />
-                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtValue" Visible="false" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-                     </div>                    
+    </div>
+</div>
                  </ContentTemplate>
                  <Triggers>
                  
