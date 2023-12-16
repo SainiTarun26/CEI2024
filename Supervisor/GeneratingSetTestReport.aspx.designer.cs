@@ -60,13 +60,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtApplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtApplication;
 
         /// <summary>
         /// RequiredFieldValidator34 control.
@@ -87,13 +87,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtId;
 
         /// <summary>
         /// RequiredFieldValidator75 control.
@@ -114,13 +114,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div10;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtInstallation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtInstallation;
 
         /// <summary>
         /// RequiredFieldValidator76 control.
@@ -141,13 +141,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div12;
 
         /// <summary>
-        /// TextBox4 control.
+        /// txtInstallations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtInstallations;
 
         /// <summary>
         /// RequiredFieldValidator77 control.

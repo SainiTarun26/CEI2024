@@ -245,8 +245,8 @@
                                      Application
          <samp style="color: red">* </samp>
                                  </label>
-                                 <asp:TextBox class="form-control" ID="TextBox1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="txtLineLength" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                 <asp:TextBox class="form-control" ID="txtApplication" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="txtApplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                              </div>
                              <div class="col-3" id="Div9" runat="server">
@@ -254,8 +254,8 @@
                                      Installation ID
          <samp style="color: red">* </samp>
                                  </label>
-                                 <asp:TextBox class="form-control" ID="TextBox2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ControlToValidate="txtLineLength" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                 <asp:TextBox class="form-control" ID="txtId" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ControlToValidate="txtId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                              </div>
                              <div class="col-3" id="Div10" runat="server">
@@ -263,8 +263,8 @@
                                      Type of Installation
          <samp style="color: red">* </samp>
                                  </label>
-                                 <asp:TextBox class="form-control" ID="TextBox3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtLineLength" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                 <asp:TextBox class="form-control" ID="txtInstallation" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                              </div>
                              <div class="col-3" id="Div12" runat="server">
@@ -272,8 +272,8 @@
                                      No of Installations
          <samp style="color: red">* </samp>
                                  </label>
-                                 <asp:TextBox class="form-control" ID="TextBox4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator77" runat="server" ControlToValidate="txtLineLength" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                 <asp:TextBox class="form-control" ID="txtInstallations" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator77" runat="server" ControlToValidate="txtInstallations" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                              </div>
                          </div>
@@ -1073,7 +1073,7 @@
                      <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
                          <%--  <div class="col-2"></div>--%>
                          <div class="col-12" style="text-align: center;">
-                             <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
+                             <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
                              <br />
                              <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                                  Please Verify this.
@@ -1096,7 +1096,7 @@
                          <div class="col-4" style="text-align: center;">
                              <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
                              <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
-                             <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
+                             <asp:Button ID="btnSubmit" OnClick="BtnSubmitGeneratingSet_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
                          </div>
                          <div class="col-4">
                              <asp:HiddenField ID="hdn" Value="0" runat="server" />
