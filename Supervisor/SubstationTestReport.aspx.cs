@@ -64,6 +64,11 @@ namespace CEIHaryana.Supervisor
                         BtnSubmitSubstation.Visible = false;
                     }
 
+                    txtapplication.Text = Session["Application"].ToString().Trim();
+                    txtInstallation.Text = Session["Typs"].ToString().Trim();
+                    txtid.Text = Session["Intimations"].ToString().Trim();
+                    txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
+
                 }
             }
             catch
@@ -1032,9 +1037,10 @@ namespace CEIHaryana.Supervisor
 
                         SubstationId = Session["SubstationId"].ToString();
                     }
-                    string TestReportId = Session["TestReportId"].ToString();
+                    string TestReportId = Session["id"].ToString();
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SupervisorID"].ToString();
+                    string installationNo = Session["IHID"].ToString();
                     CEI.InsertSubstationData(IdUpdate, SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
                       PrimaryVoltage.SelectedItem.ToString(), ddlSecondaryVoltage.SelectedValue, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                        txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(), txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
@@ -1054,49 +1060,12 @@ namespace CEIHaryana.Supervisor
                        txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), txtOtherEarthing19.Text, ddlSubstationEarthing20.SelectedItem.ToString(),
                        txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtOtherEarthing20.Text, txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
                        txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
-                    Page.Session["Visible"] = 1;
-                    if (BtnSubmitSubstation.Text.Trim() == "Submit" || BtnSubmitSubstation.Text.Trim() == "Next")
-                    {
-                        Session["Page"] = Convert.ToInt32(Session["Page"]) + 1;
-                        Reset();
-                        //  DataSaved.Visible = true;
-
-                        labelVerification.Visible = false;
-                        PageWorking();
-                        int currentValue = Convert.ToInt32(Session["Page"]);
-                        if (currentValue == Convert.ToInt32(sessionValue))
-                        {
-                            Session["Count"] = Convert.ToInt32(Session["Count"]) + 1;
-                            BtnSubmitSubstation.Visible = false;
-                            Session["SubmittedValue"] = sessionValue;
-                            //divtrasformer.Visible = false;
-                            Session["SubstationId"] = "";
-                            //NextSessionValueAndName();
-                            Session["TestReportId"] = TestReportId;
-                            Page.Session["Page"] = 0;
-                            if (nextSessionName.Trim() == "Line")
-                            {
-                                Response.Redirect("LineTestReport.aspx", false);
-                            }
-                            else if (nextSessionName.Trim() == "Generating Station")
-                            {
-                                Response.Redirect("GeneratingSetTestReport.aspx", false);
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                            }
-                        }
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted')", true);
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+                    CEI.UpdateInstallations(installationNo, IntimationId);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
 
                         Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                    }
+                    
                 }
             }
             catch (Exception)

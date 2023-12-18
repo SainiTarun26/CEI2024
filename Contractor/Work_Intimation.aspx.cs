@@ -444,21 +444,7 @@ namespace CEIHaryana.Contractor
                             }
                         }
 
-                        //DataSet ds1 = new DataSet();
-                        //ds1 = CEI.InsertSiteOwnerData(txtPAN.Text);
-                        //if (ds1 != null && ds1.Tables.Count > 0)
-                        //{
-                        //    if (ds1.Tables[0].Rows.Count > 0)
-                        //    {
-                        //        string alert = "alert('This User Is Already Exist User Can login with Provided Usename And Password');";
-                        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
-                        //        Response.Redirect("/Contractor/Work_Intimation.aspx" ,false);
-                        //    }
-                        //}
-                        //else
-                        //{
-
-                        //}
+                       
                         hdnId.Value = ContractorID;
                         CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, ddlDistrict.SelectedItem.ToString()
                           , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
@@ -485,8 +471,25 @@ namespace CEIHaryana.Contractor
                                 }
                             }
                         }
-                        // DataSaved.Visible = true;
+                        TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
+                        TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
 
+                        for (int i = 0; i < typeTextBoxes.Length; i++)
+                        {
+                            string installationType = typeTextBoxes[i].Text;
+                            string installationNoText = noTextBoxes[i].Text;
+
+                            int installationNo;
+
+                            if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
+                            {
+                                // Save data according to the number of installations
+                                for (int j = 0; j < installationNo; j++)
+                                {
+                                    CEI.AddInstallations(projectId, installationType, installationNo);
+                                }
+                            }
+                        }
                         MailMessage mailMessage = new MailMessage();
                         mailMessage.From = new MailAddress("cs.nehaa6@gmail.com"); 
                         mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Site Owner ID and Password"; string body = $"Dear Customer, Your Account is created. Your user id is {txtPAN.Text} and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT";

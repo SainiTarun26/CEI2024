@@ -67,8 +67,9 @@ namespace CEIHaryana.Supervisor
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
                 Session["id"] = lblID.Text;
-                ClientScript.RegisterStartupScript(this.GetType(), "Pop", "showModal();", true);
-                    GetDetails();
+                //ClientScript.RegisterStaxrtupScript(this.GetType(), "Pop", "showModal();", true);
+                //    GetDetails();
+                Response.Redirect("/Supervisor/InstallationDetails.aspx");
 
                 
             }

@@ -30,11 +30,9 @@ namespace CEIHaryana.Supervisor
                     // GetHistoryDataById();
                     ddlLoadBindVoltage();
                     ddlEarthing();
-                    SessionValue();
-                    PageWorking();
                     Insulation440vAbove.Visible = false;
                     Insulation220vAbove.Visible = false;
-                    BtnBack.Visible = false;
+                   // BtnBack.Visible = false;
                     if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
                     {
                         // GetHistoryDataById();
@@ -47,21 +45,15 @@ namespace CEIHaryana.Supervisor
                     if (Convert.ToString(Session["Approval"]) == "Reject")
                     {
                         LineId = Session["LineID"].ToString().Trim();
-                        BtnBack.Visible = true;
+                      //  BtnBack.Visible = true;
                         GetHistoryDataById();
 
                     }
-                    if (Convert.ToString(Session["ContractorID"]) == null || Convert.ToString(Session["ContractorID"]) == "")
-                    {
 
-                    }
-                    else
-                    {
-                        BtnBack.Visible = false;
-                        btnVerify.Visible = false;
-                        btnSubmit.Visible = false;
-                    }
-
+                    txtapplication.Text = Session["Application"].ToString().Trim();
+                    txtInstallation.Text = Session["Typs"].ToString().Trim();
+                    txtid.Text = Session["Intimations"].ToString().Trim();
+                    txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
                 }
             }
             catch
@@ -70,18 +62,6 @@ namespace CEIHaryana.Supervisor
             }
         }
 
-        protected void BtnBack_Click(object sender, EventArgs e)
-        {
-            Session["LineID"] = "";
-            if (Session["TestReportHistory"] != null)
-            {
-                Response.Redirect("/Supervisor/TestReportHistory.aspx");
-            }
-            else
-            {
-                Response.Redirect("/Admin/TestHistoryReport.aspx", false);
-            }
-        }
         private void GetHistoryDataById()
         {
             try
@@ -480,7 +460,7 @@ namespace CEIHaryana.Supervisor
                     else
                     {
                         btnSubmit.Visible = false;
-                        BtnBack.Visible = true;
+                        //BtnBack.Visible = true;
 
                     }
                 }
@@ -944,10 +924,11 @@ namespace CEIHaryana.Supervisor
                     {
                         GeneratedLineId = Session["GeneratedLineId"].ToString();
                     }
-                    string TestReportId = Session["TestReportId"].ToString();
+                    //string TestReportId = Session["TestReportId"].ToString();
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SupervisorID"].ToString();
-                    CEI.InsertLineData(LineId, GeneratedLineId, TestReportId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                    string installationNo = Session["IHID"].ToString();
+                    CEI.InsertLineData(LineId, GeneratedLineId, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
                    ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
                   txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
                    ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
@@ -963,10 +944,11 @@ namespace CEIHaryana.Supervisor
                txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
                txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
                txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-                   
+
+                    CEI.UpdateInstallations(installationNo, IntimationId);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
-                        Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+                        //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
                     
                 }
 
@@ -979,81 +961,7 @@ namespace CEIHaryana.Supervisor
                 DataSaved.Visible = false;
             }
         }
-        public void SessionValue()
-        {
-            string[] installationTypes = { "installationType1", "installationType2", "installationType3", "installationType4", "installationType5", "installationType7", "installationType8", "installationNo8" };
-
-            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
-
-            int count = Convert.ToInt32(Session["Count"]);
-            for (int i = count; i < installationNumbers.Length; i++)
-            {
-                sessionName = Session[installationTypes[i]] as string;
-                sessionValue = Session[installationNumbers[i]] as string;
-                if (!string.IsNullOrEmpty(sessionName))
-                {
-                    nextSessionName = Session[installationTypes[i + 1]] as string;
-                    nextSessionValue = Session[installationNumbers[i + 1]] as string;
-                    break;
-                }
-            }
-        }
-        public void NextSessionValueAndName()
-        {
-            SessionValue();
-            string[] installationNumbers = { "installationNo1", "installationNo2", "installationNo3", "installationNo4", "installationNo5", "installationNo6", "installationNo7", "installationNo8" };
-            for (int i = 0; i < installationNumbers.Length; i++)
-            {
-                sessionName = Session["installationType" + (i + 1)] as string;
-                sessionValue = Session[installationNumbers[i]] as string;
-
-                if (!string.IsNullOrEmpty(sessionName))
-                {
-                    if (i < installationNumbers.Length - 1)
-                    {
-                        nextSessionName = Session["installationType" + (i + 1)] as string;
-                        nextSessionValue = Session[installationNumbers[i + 1]] as string;
-                        //if (nextSessionName == "Substation Transformer")
-                        //{
-                        //    Response.Redirect("SubstationTransformer.aspx");
-                        //}
-                        //else if (nextSessionName == "Generating Station")
-                        //{
-                        //    Response.Redirect("GeneratingSetTestReport.aspx");
-                        //}
-                        //else
-                        //{
-                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been submitted and is under review by the Contractor for final submission')", true);
-
-                        //}
-                    }
-                }
-            }
-        }
-
-
-        public void PageWorking()
-        {
-            try
-            {
-                SessionValue();
-                x = Convert.ToInt32(Session["Page"]);
-                if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
-                {
-                    Declaration.Visible = true;
-                    btnSubmit.Text = "Submit";
-                    btnSubmit.Attributes.Add("disabled", "true");
-                    btnVerify.Visible = true;
-                }
-                else
-                {
-                    Declaration.Visible = false;
-                    btnSubmit.Text = "Next";
-                }
-            }
-            catch (Exception) { }
-
-        }
+     
         public void Reset()
         {
             txtLineLength.Text = "";

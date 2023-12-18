@@ -107,12 +107,12 @@ namespace CEI_PRoject
         }
         #endregion
         #region Insert Intimtion Data
-        public void IntimationDataInsertion(string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address,string District, string Pincode,
+        public void IntimationDataInsertion(string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
 string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
 string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
 string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
 string Email, string WorkStartDate, string CompletionDate,
-string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder,string ApplicantType, string CreatedBy)
+string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -179,11 +179,49 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder,st
                 return null;
             }
         }
+        public void AddInstallations(string IntimationId, string Typeofinstallation, int Noofinstallation)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InstallationsCount");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
+            cmd.Parameters.AddWithValue("@Noofinstallation", Noofinstallation);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public void UpdateInstallations(string Id,string IntimationId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_CheckTestReportHistory");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id ", Id);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
         public DataSet InsertSiteOwnerData(string SiteOwnerUserId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSiteOwnerLogin", SiteOwnerUserId);
         }
-     
+
         #endregion
         #region Insert Supervisor Data
         public void InserSupervisorData(string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
@@ -321,7 +359,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder,st
         }
         #endregion
         #region Update Line Data
-        public void UpdateLineData(string ID, string RejectOrApprovedFronContractor,string ReasonForRejection)
+        public void UpdateLineData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
         {
             SqlCommand cmd = new SqlCommand("sp_ContractorTestReortApproval");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -341,7 +379,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder,st
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string IdUpdate, string LineId, string TestReportId,string IntimationId, string LineVoltage,string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string IdUpdate, string LineId, string IntimationId, string LineVoltage, string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -350,7 +388,7 @@ Valueinohms10, string EarthingType11, string Valueinohms11, string EarthingType1
 EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, string CableSize, string RailwayCrossingNoForOC, string RoadCrossingNoForOC,
             string RiverCanalCrossingNoForOC, string PowerLineCrossingNoForOc, string RedPhaseEarthWire, string YellowPhaseEarth,
             string BluePhaseEarthWire, string RedPhaseYellowPhase, string RedPhaseBluePhase, string BluePhaseYellowPhase, string PhasewireNeutralwire,
-            string PhasewireEarth, string NeutralwireEarth, string TypeofCable,string OtherCable, string SizeofCable, string Cablelaidin,
+            string PhasewireEarth, string NeutralwireEarth, string TypeofCable, string OtherCable, string SizeofCable, string Cablelaidin,
             string RedPhaseEarthWirefor440orAbove, string YellowPhaseEarthWire440orAbove, string BluePhaseEarthWire440orAbove,
             string RedPhaseYellowPhase440orAbove, string RedPhaseBluePhase440orAbove, string BluePhaseYellowPhase440orAbove,
             string PhasewireNeutralwire220OrAbove, string PhasewireEarth220OrAbove, string NeutralwireEarth220OrAbove, string CreatedBy
@@ -368,7 +406,6 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
             cmd.Parameters.AddWithValue("@Id", LineId);
-            cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
             cmd.Parameters.AddWithValue("@LineLength", LineLength);
@@ -449,9 +486,9 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert Substation Data
-        public void InsertSubstationData(string IdUpdate,string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string IdUpdate, string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
-            string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation,string OtherLALocation,
+            string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation, string OtherLALocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
             string UsedFor1, string OtherEarthing1, string EarthingType2, string Valueinohms2, string UsedFor2, string OtherEarthing2, string EarthingType3, string Valueinohms3, string UsedFor3, string OtherEarthing3,
             string EarthingType4, string Valueinohms4, string UsedFor4, string OtherEarthing4, string EarthingType5, string Valueinohms5, string UsedFor5, string OtherEarthing5,
@@ -901,7 +938,7 @@ string EarthingValue14, string UsedFor14, string OtherEarthing14, string Earthin
         #endregion 
         #region Insert Test Report Data
         public void InsertTestReportData(string IntimationId, string InstallationFor, string NameOfOwner, string NameOfAgency, string ContactNo,
-            string AddressOfSite, string TypeOfPremises, string VoltageLevel, string WorkStartDate, string WorkCompletionDate,string SanctionLoad,
+            string AddressOfSite, string TypeOfPremises, string VoltageLevel, string WorkStartDate, string WorkCompletionDate, string SanctionLoad,
             string InstallationType1, string TypeOfInstallation1, string InstallationType2, string TypeOfInstallation2, string
 InstallationType3, string TypeOfInstallation3, string InstallationType4, string TypeOfInstallation4, string InstallationType5,
             string TypeOfInstallation5, string InstallationType6, string TypeOfInstallation6, string InstallationType7,
@@ -1053,7 +1090,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #endregion
         #region Insert Inspection Data
         public void InsertInspectionData(string ContactNo, string TestRportId, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-      string VoltageLevel,string LineLength, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
+      string VoltageLevel, string LineLength, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
       string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
       string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
       string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
@@ -1198,8 +1235,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             {
                 return null;
             }
-        } 
-        
+        }
+
         #region Bind DropDown Draw State
         public DataSet GetddlDrawState()
         {
@@ -1232,7 +1269,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperwiserDetails", REID);
         }
         #endregion
-        public string ValidateOTP( string mobilenumber)
+        public string ValidateOTP(string mobilenumber)
         {
             //string mobilenumber = Session["Contact"].ToString();
             Random random = new Random();
@@ -1263,7 +1300,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlEarthingSubstation()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_EarthingSubstation");
-        } 
+        }
         public DataSet GetddlPrimaryVotlage()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PrimaryVoltage");
@@ -1275,7 +1312,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetContractorContact(string UserId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorContactNo", UserId);
-        } 
+        }
         public DataSet GetddlTestReportVoltage()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReprortVoltage");
@@ -1283,7 +1320,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetddlAssignedWorkForSupervisor()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_WorkDetail");
-        } 
+        }
         public DataSet GetContractorNotifications(string ID)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ContractorNotificationData", ID);
@@ -1352,7 +1389,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet LineTestReportData(string LineID)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineData", LineID);
-        } 
+        }
         public DataSet SubstationTestReportData(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SubstationDataWithId", Id);
@@ -1360,7 +1397,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet StaffLogin(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffLogin", Id);
-        } 
+        }
         public DataSet InspectionData(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionData", Id);
@@ -1372,7 +1409,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet TransformerTestReportData(string SubStationId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubstationHistory", SubStationId);
-        } 
+        }
         public DataTable TestReportSubstationData(string SubStationId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerTransformerReportData", SubStationId);
@@ -1380,11 +1417,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable TestReportGeneratingData(string PanId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerGeneratingReportData", PanId);
-        }  
+        }
         public DataTable SiteOwnerInspectionData(string SiteOwnerId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistory", SiteOwnerId);
-        } 
+        }
         public DataSet GeneratingTestReportData(string GeneratingSetId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetGenratingSetHistory", GeneratingSetId);
@@ -1471,7 +1508,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSupervisorData", UserId);
         }
-        public DataSet GetTestReportHistoryForUpdate(string Type,string TestReportId)
+        public DataSet GetTestReportHistoryForUpdate(string Type, string TestReportId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SearchingTestReportHistory", Type, TestReportId);
         }
@@ -1482,11 +1519,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable LineDataForAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Linedataforadmin");
-        }  
+        }
         public DataTable SubstationDataForAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Substationdataforadmin");
-        } 
+        }
         public DataTable GeneratingDataForAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Generatingdataforadmin");
@@ -1499,7 +1536,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerNotifiction", ID);
         }
-        public DataSet GetPaymentInformation(string Id,string IntimationId)
+        public DataSet GetPaymentInformation(string Id, string IntimationId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_paymentCalculation", Id, IntimationId);
         }
@@ -1548,7 +1585,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataTable TestReportDataForAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryAdmin");
-        } 
+        }
         public DataSet TestReportContractorHistory(string LoginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportContractorHistory", LoginId);
@@ -1583,10 +1620,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRecordsAccordingToDays", Division);
         }
 
-        public DataTable RequestPendingDaysData(string dated,string Division,string District)
+        public DataTable RequestPendingDaysData(string dated, string Division, string District)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowRequestPendingDaysData", dated, Division, District);
-        } 
+        }
         public DataSet DasboardCalculations()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DashboardCalculations");
@@ -1632,7 +1669,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet DivisionsDistrictHistory(string loginid)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DivisionDistrictsHistory", loginid);
-        } 
+        }
         public DataSet GetRecordsDivisionistrict(string loginid)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRecordsDivisionistrict", loginid);
@@ -1674,8 +1711,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
 
-        public DataSet ConsolidateSearchData(string SubmittedDate,string EndDate,string Division,string District,string Status,string Inspectiontype,
-    string PendingWith,string OwnerApplication,string GSTNumber,string Assignto)
+        public DataSet ConsolidateSearchData(string SubmittedDate, string EndDate, string Division, string District, string Status, string Inspectiontype,
+    string PendingWith, string OwnerApplication, string GSTNumber, string Assignto)
         {
             try
             {
@@ -1706,13 +1743,17 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 return ds;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
 
         }
 
+        public DataTable GetInstllationsforSupervisor(string IntimationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallation", IntimationId);
 
+        }
     }
 }

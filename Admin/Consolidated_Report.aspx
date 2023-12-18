@@ -389,6 +389,7 @@
 
                             </Columns>
                         </asp:GridView>
+                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Download in Excel</asp:LinkButton>
                         <%-- <table class="table table-responsive table-striped table-hover table-bordered example">
                             <thead style="background: #604db8; color: white;">
                                 <tr>

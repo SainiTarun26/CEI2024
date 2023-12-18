@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Admin
@@ -205,6 +207,52 @@ namespace CEIHaryana.Admin
                 txtGST.Text = "";
             }
             catch { }
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            ExportToExcel();
+        }
+
+        private void ExportToExcel()
+        {
+            try
+            {
+                Response.Clear();
+                Response.Buffer = true;
+                Response.ClearContent();
+                Response.ClearHeaders();
+                Response.Charset = "";
+                string FileName = "ConsolidatedReport_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
+                Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
+                Response.ContentType = "application/ms-excel";
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+
+                using (StringWriter sw = new StringWriter())
+                {
+                    using (HtmlTextWriter htw = new HtmlTextWriter(sw))
+                    {
+                        // Set GridView properties
+                        GridView1.AllowPaging = false;
+                        GridView1.AutoGenerateColumns = true;
+
+                        // Create a form to contain the grid
+                        HtmlForm frm = new HtmlForm();
+                        GridView1.Parent.Controls.Add(frm);
+                        frm.Attributes["runat"] = "server";
+                        frm.Controls.Add(GridView1);
+                        frm.RenderControl(htw);
+
+                        // End the HTML response and output to the browser
+                        Response.Write(sw.ToString());
+                        Response.End();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+            }
         }
     }
 }

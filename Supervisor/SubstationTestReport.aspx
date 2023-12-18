@@ -236,40 +236,43 @@
                      </div>
                      <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background:#d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 20px;">
                          <div class="row">
-                             <div class="col-3" id="Div8" runat="server">
-                                 <label for="Name">
-                                     Application
-         <samp style="color: red">* </samp>
-                                 </label>
-                                 <asp:TextBox class="form-control" ID="TextBox1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                
+                                <div class="col-3" id="Div8" runat="server">
+                                    <label for="Name">
+                                        Application
+            <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;width:100%"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
-                             </div>
-                             <div class="col-3" id="Div9" runat="server">
-                                 <label for="Name">
-                                     Installation ID
-         <samp style="color: red">* </samp>
-                                 </label>
-                                 <asp:TextBox class="form-control" ID="TextBox2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-3" id="Div9" runat="server">
+                                    <label for="Name">
+                                        Intimation ID
+            <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtid" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator102" runat="server" ControlToValidate="txtid" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
-                             </div>
-                             <div class="col-3" id="Div10" runat="server">
-                                 <label for="Name">
-                                     Type of Installation
-         <samp style="color: red">* </samp>
-                                 </label>
-                                 <asp:TextBox class="form-control" ID="TextBox3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-3" id="Div10" runat="server">
+                                    <label for="Name">
+                                        Type of Installation
+            <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator103" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
-                             </div>
-                             <div class="col-3" id="Div12" runat="server">
-                                 <label for="Name">
-                                     No of Installations
-         <samp style="color: red">* </samp>
-                                 </label>
-                                 <asp:TextBox class="form-control" ID="TextBox4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-3" id="Div12" runat="server">
+                                    <label for="Name">
+                                        No of Installations
+            <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator104" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
-                             </div>
-                         </div>
+                                </div>
+                            </div>
                      </div>
                      <div class="row" style="margin-top: 10px;">
                          <div class="col-12" style="text-align: left;">
@@ -297,7 +300,7 @@
                                     Serial number of transformer  
                                         <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="1" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber"  MaxLength="12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="1" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rvftransformerSerialnumber" ForeColor="Red" ControlToValidate="txtTransformerSerialNumber" runat="server" ErrorMessage="Please Enter Serial Number" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-3">
@@ -450,7 +453,7 @@
                                             Load breaking capacity of breaker   
                                                     <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" Text="(IN KA)" ID="txtBreakerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" AutoPostBack="true"  ID="txtBreakerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ForeColor="Red" ControlToValidate="txtBreakerCapacity" runat="server" ErrorMessage="Please Enter Breaker Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-4">
@@ -491,14 +494,14 @@
                                             Load Breaking Capacity of Breaker
                                                     <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" Text="(IN AMPS)" ID="txtLoadBreakingCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" onKeyPress="return isNumberKey(event);" MaxLength="4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ForeColor="Red" ControlToValidate="txtLoadBreakingCapacity" runat="server" ErrorMessage="Please Enter Load Breaking Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                     </div>
                                <div class="col-4" id="Div169" runat="server">
        <label for="Voltage">
            Mean Sea Level of transformer plinth   
        </label>
-       <asp:TextBox class="form-control" AutoPostBack="true" Text="(IN METRES)" ID="txtSealLevelPlinth" onKeyPress="return isNumberKey(event);" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+       <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" onKeyPress="return isNumberKey(event);" MaxLength="5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
        </div>
                                 </div>
                             </div>

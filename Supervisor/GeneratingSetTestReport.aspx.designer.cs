@@ -60,13 +60,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
 
         /// <summary>
-        /// txtApplication control.
+        /// txtapplication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApplication;
+        protected global::System.Web.UI.WebControls.TextBox txtapplication;
 
         /// <summary>
         /// RequiredFieldValidator34 control.
@@ -87,13 +87,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
 
         /// <summary>
-        /// txtId control.
+        /// txtid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtId;
+        protected global::System.Web.UI.WebControls.TextBox txtid;
 
         /// <summary>
         /// RequiredFieldValidator75 control.
@@ -141,13 +141,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div12;
 
         /// <summary>
-        /// txtInstallations control.
+        /// txtNOOfInstallation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInstallations;
+        protected global::System.Web.UI.WebControls.TextBox txtNOOfInstallation;
 
         /// <summary>
         /// RequiredFieldValidator77 control.
