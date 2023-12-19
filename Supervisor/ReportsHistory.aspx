@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="InstallationDetails.aspx.cs" Inherits="CEIHaryana.Supervisor.InstallationDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="ReportsHistory.aspx.cs" Inherits="CEIHaryana.Supervisor.ReportsHistory" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+      <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -88,9 +88,7 @@ table#ContentPlaceHolder1_GridView1 {
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="content-wrapper">
-          <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    
+      <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
@@ -142,7 +140,6 @@ table#ContentPlaceHolder1_GridView1 {
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblTyps" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
-                                        <asp:Label ID="lblhistory" runat="server" Text='<%#Eval("history") %>'></asp:Label>
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                         <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
                                     </ItemTemplate>
@@ -153,8 +150,7 @@ table#ContentPlaceHolder1_GridView1 {
                                     <ItemStyle Width="25%" />
                                     <ItemTemplate>
                                          <asp:Label ID="lblApllication" runat="server" Visible="false" Text='<%#Eval("Apllication") %>'></asp:Label>
-                                           <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("Apllication") %> ' 
-                                               CommandName="Select" ><%#Eval("Apllication") %></asp:LinkButton>
+                                           <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"  CommandArgument=' <%#Eval("Apllication") %> ' CommandName="Select"><%#Eval("Apllication") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Typs" HeaderText="Installations Type">
@@ -221,5 +217,4 @@ table#ContentPlaceHolder1_GridView1 {
             }
         }
     </script>
-
 </asp:Content>

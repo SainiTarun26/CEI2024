@@ -29,7 +29,7 @@ namespace CEIHaryana.Supervisor
         public void GridViewBind()
         {
             string LoginId = string.Empty;
-            LoginId = Session["SupervisorID"].ToString();
+            LoginId = Session["id"].ToString();
             DataSet ds = new DataSet();
             ds = cei.GetSuppervisorTestReportHistory(LoginId);
             if (ds.Tables.Count > 0)
@@ -56,9 +56,6 @@ namespace CEIHaryana.Supervisor
                 {
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    string id = lblID.Text;
-                    Session["LineID"] = id;
                     Label lblApproval = (Label)row.FindControl("lblApproval");
                     Session["Approval1"] = lblApproval.Text;
                     Session["Approval"] = lblApproval.Text;
@@ -67,14 +64,28 @@ namespace CEIHaryana.Supervisor
                     Session["TestReportHistory"] = "True";
                     if (e.CommandName == "Select")
                     {
-                        //if (lblApproval.Text.Trim() == "Reject")
-                        //{
-                            Response.Redirect("/TestReport/TestReport.aspx", false);
-                        //}
-                        //else
-                        //{
-                        //    Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
-                        //}
+                        Label lblID = (Label)row.FindControl("lblID");
+                        string id = lblID.Text;
+                        Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
+                        if (lblTypeOf.Text.Trim() == "Line")
+                        {
+                            Session["LineID"] = id;
+                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                        }
+                        else if (lblTypeOf.Text.Trim() == "Substation Transformer")
+                        {
+
+                            Session["SubStationID"] = id;
+                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+
+                        }
+                        else if (lblTypeOf.Text.Trim() == "Generating Set")
+                        {
+
+                            Session["GeneratingSetId"] = id;
+                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+
+                        }
 
                     }
                 }
@@ -82,25 +93,25 @@ namespace CEIHaryana.Supervisor
             catch { }
         }
 
-        protected void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string searhterm = txtSearch.Text.Trim();
-            string LoginId = string.Empty;
-            LoginId = Session["SupervisorID"].ToString();
+        //protected void txtSearch_TextChanged(object sender, EventArgs e)
+        //{
+        //    string searhterm = txtSearch.Text.Trim();
+        //    string LoginId = string.Empty;
+        //    LoginId = Session["SupervisorID"].ToString();
 
-            DataSet ds = new DataSet();
-            ds = cei.SearchingOnLine(searhterm, LoginId);
-            if (ds.Tables.Count > 0)
-            {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-            }
-            else
-            {
-                string script = "alert(\"No Record Match\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
-            }
-        }
+        //    DataSet ds = new DataSet();
+        //    ds = cei.SearchingOnLine(searhterm, LoginId);
+        //    if (ds.Tables.Count > 0)
+        //    {
+        //        GridView1.DataSource = ds;
+        //        GridView1.DataBind();
+        //    }
+        //    else
+        //    {
+        //        string script = "alert(\"No Record Match\");";
+        //        ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
+        //    }
+        //}
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

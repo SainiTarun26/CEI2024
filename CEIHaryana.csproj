@@ -1783,6 +1783,7 @@
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\LineTestReport.aspx" />
+    <Content Include="Supervisor\ReportsHistory.aspx" />
     <Content Include="Supervisor\SubstationTestReport.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
     <Content Include="Supervisor\SupervisorGeneraterSetTestReport.aspx" />
@@ -2183,6 +2184,13 @@
     </Compile>
     <Compile Include="Supervisor\LineTestReport.aspx.designer.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\ReportsHistory.aspx.cs">
+      <DependentUpon>ReportsHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\ReportsHistory.aspx.designer.cs">
+      <DependentUpon>ReportsHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\SubstationTestReport.aspx.cs">
       <DependentUpon>SubstationTestReport.aspx</DependentUpon>
