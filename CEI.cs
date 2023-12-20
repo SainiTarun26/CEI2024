@@ -1434,9 +1434,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffAssignedtoContractor", ID);
         }
-        public DataSet GetddlVoltageForLine()
+        public DataSet GetddlVoltageForLine(string voltage)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LineVoltage");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LineVoltage", voltage);
         }
         public DataTable WorkIntimationDataforAdmin()
         {
@@ -1768,5 +1768,56 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberId", PANNumber);
         }
+        #region Insert New user data Data
+        public void InserNewUserData(string ApplicationFor, string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
+      string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
+      string DateofRenewal, string votagelevel, string voltageWithEffect, string AnyContractor, string AttachedContractorld,
+    string CreatedBy, string UserId, string CommunicationAddress, string CommState, string CommDistrict,string CommPin,string Password, string IPAddress)
+        {
+
+            SqlCommand cmd = new SqlCommand("sp_NewUserRegistration");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
+            cmd.Parameters.AddWithValue("@REID", REID);
+            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@Age", Age);
+            cmd.Parameters.AddWithValue("@FatherName", FatherName);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@PinCode", PinCode);
+            cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+            cmd.Parameters.AddWithValue("@Qualification", Qualification);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@CertificateOld", CertificateOld);
+            cmd.Parameters.AddWithValue("@CertificateNew", CertificateNew);
+            cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
+            cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
+            cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
+            cmd.Parameters.AddWithValue("@votagelevel", votagelevel);
+            cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffect);
+            cmd.Parameters.AddWithValue("@AnyContractor", AnyContractor);
+            cmd.Parameters.AddWithValue("@AttachedContractorld", AttachedContractorld);
+            cmd.Parameters.AddWithValue("@Category", "Supervisor");
+            cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.Parameters.AddWithValue("@CommunicationAddress", CommunicationAddress);
+            cmd.Parameters.AddWithValue("@CommState", CommState);
+            cmd.Parameters.AddWithValue("@CommDistrict", CommDistrict);
+            cmd.Parameters.AddWithValue("@CommPin", CommPin);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.Parameters.AddWithValue("@IPAddress", IPAddress);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
     }
 }

@@ -494,7 +494,7 @@ namespace CEIHaryana.TestReportsNew
         {
 
             DataSet dsVoltage = new DataSet();
-            dsVoltage = CEI.GetddlVoltageForLine();
+            //dsVoltage = CEI.GetddlVoltageForLine();
             ddlLineVoltage.DataSource = dsVoltage;
             ddlLineVoltage.DataTextField = "Voltage";
             ddlLineVoltage.DataValueField = "Id";

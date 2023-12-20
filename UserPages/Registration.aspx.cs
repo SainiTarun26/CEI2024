@@ -201,7 +201,7 @@ namespace CEIHaryana.UserPages
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
 
-                    Response.Redirect("Qualification.aspx");
+                    //Response.Redirect("Qualification.aspx");
 
                 }
             }

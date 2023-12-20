@@ -472,9 +472,10 @@ namespace CEIHaryana.Supervisor
         }
         private void ddlLoadBindVoltage()
         {
-
+            string Voltage = string.Empty;
+            Voltage = Session["VoltageLevel"].ToString();
             DataSet dsVoltage = new DataSet();
-            dsVoltage = CEI.GetddlVoltageForLine();
+            dsVoltage = CEI.GetddlVoltageForLine(Voltage);
             ddlLineVoltage.DataSource = dsVoltage;
             ddlLineVoltage.DataTextField = "Voltage";
             ddlLineVoltage.DataValueField = "Id";

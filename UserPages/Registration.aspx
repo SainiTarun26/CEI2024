@@ -450,63 +450,19 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">Certificate Application For:</label>
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">Applying For:</label>
                                                 <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
                                                     <asp:DropDownList class="select-form select2" ID="ddlcategory" Style="margin-left: -35px;" runat="server">
                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                        <asp:ListItem Text="Supervisor" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="Wireman" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="Contractor license" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Please Select Category" ErrorMessage="Please Select Category" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <%--<div class="row">
-                                        <div class="col-md-6">
-                                            <form class="forms-sample">
-                                                <div class="form-group">
-                                                    <label style="font-size: 9px;">
-                                                        UPLOAD Photo (PLEASE UPLOAD PHOTO SIZE
-                                                    20KB TO 50KB)</label>
-                                                    <input type="file" name="img[]" class="file-upload-default">
-                                                    <div class="input-group col-xs-12">
-                                                        <asp:TextBox ID="selectedFileName1" runat="server" CssClass="form-control file-upload-info"
-                                                            Enabled="false" placeholder="Upload Photo" Style="width: 50%;"></asp:TextBox>
-                                                        <span class="input-group-append">
-                                                            <asp:Button ID="Button1" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="openFileDialog1(); return false;" />
-                                                            <input type="file" id="fileInput1" name="fileInput1" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="updateFileName1(); validateFile1();return validateForm1();" />
-                                                        </span>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="selectedFileName1"
-                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Photo</asp:RequiredFieldValidator>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label style="font-size: 9px;">
-                                                        UPLOAD Signature (PLEASE UPLOAD PHOTO SIZE
-                                                    20KB TO 50KB)</label>
-                                                    <input type="file" name="img[]" class="file-upload-default" />
-                                                    <div class="input-group col-xs-12">
-                                                        <asp:TextBox ID="selectedFileName" runat="server" CssClass="form-control file-upload-info"
-                                                            Enabled="false" placeholder="Upload Signature" Style="width: 50%;"></asp:TextBox>
-                                                        <span class="input-group-append">
-                                                            <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="openFileDialog(); return false;" />
-                                                            <input type="file" id="fileInput" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="updateFileName(); validateFile(); return validateForm1();" />
-                                                        </span>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="selectedFileName"
-                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Signature</asp:RequiredFieldValidator>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-6" style="display: flex; align-items: center; justify-content: center; font-size: 15px;">
-                                            <asp:Image ID="uploadedImage1" runat="server" Style="max-width: 120px; max-height: 130px; border: none; margin-right: 30px;"></asp:Image>
-                                        
-                                            <asp:Image ID="uploadedImage" runat="server" Style="max-width: 120px; max-height: 100px; border: none;"></asp:Image>
-                                          
-
-                                        </div>
-                                    </div>--%>
                                     <hr />
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
@@ -578,7 +534,7 @@
                                                                     <ContentTemplate>
                                                                         <div class="form-group" style="margin-top: 20px;">
                                                                             <label>Date of Birth</label>
-                                                                            <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDOB" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="false" OnTextChanged="txtDOB_TextChanged"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDOB" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true" OnTextChanged="txtDOB_TextChanged"> </asp:TextBox>
                                                                     </ContentTemplate>
                                                                     <Triggers>
                                                                         <asp:AsyncPostBackTrigger ControlID="txtDOB" EventName="TextChanged" />
@@ -670,6 +626,13 @@
                                                         <span id="lblErrorContect" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtphone"
                                                             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Phone No.</asp:RequiredFieldValidator>
+                                                    </div>   
+                                                    <div class="form-group">
+                                                        <label for="phone">Password</label>
+                                                        <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
+                                                        <span id="lblErrorPassword" style="color: red"></span>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ControlToValidate="txtPassword"
+                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Phone No.</asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -727,6 +690,13 @@
                                                             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Email</asp:RequiredFieldValidator>
                                                     </div>
 
+                                                    <div class="form-group">
+                                                        <label for="phone">Confirm Password</label>
+                                                        <asp:TextBox class="form-control" ID="txtConfirmPswrd" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
+                                                        <span id="lblrPassword" style="color: red"></span>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtConfirmPswrd"
+                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Required.</asp:RequiredFieldValidator>
+                                                    </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
                                                 </div>
@@ -738,7 +708,7 @@
                                               
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
-                                                <asp:Button type="button" OnClientClick="return validateForm();" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                <asp:Button type="button" OnClientClick="return validateForm();" ValidationGroup="Submit" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
                                                     OnClick="btnNext_Click" />
                                             </div>
                                             <asp:HiddenField ID="hdnId" runat="server" />

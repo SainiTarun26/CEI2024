@@ -89,6 +89,8 @@ namespace CEIHaryana.Supervisor
                         Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
                         Label lblID = (Label)row.FindControl("lblID");
                         Session["IHID"] = lblID.Text.Trim();
+                        Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
+                        Session["VoltageLevel"] = lblVoltageLevel.Text.Trim();
                         if (lblTyps.Text.Trim() == "Line")
                         {
                             Response.Redirect("/Supervisor/LineTestReport.aspx", false);

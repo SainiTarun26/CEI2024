@@ -140,7 +140,10 @@ table#ContentPlaceHolder1_GridView1 {
                                 </asp:TemplateField>
                                   
                                 <asp:TemplateField HeaderText="Id" Visible="False">
+
                                     <ItemTemplate>
+                                        <asp:Label ID="lblVoltageLevel" runat="server" Visible="false" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
+
                                         <asp:Label ID="lblTyps" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
                                         <asp:Label ID="lblhistory" runat="server" Text='<%#Eval("history") %>'></asp:Label>
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>

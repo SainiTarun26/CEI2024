@@ -212,7 +212,26 @@ namespace CEIHaryana.Contractor
                 }
                 //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
-
+                txtPAN.Attributes.Add("readonly", "readonly");
+                ddlworktype.Attributes.Add("disabled", "disabled");
+                txtName.Attributes.Add("readonly", "readonly");
+                txtagency.Attributes.Add("readonly", "readonly");
+                txtPhone.Attributes.Add("readonly", "readonly");
+                txtAddress.Attributes.Add("readonly", "readonly");
+                ddlDistrict.Attributes.Add("disabled", "disabled");
+                txtPin.Attributes.Add("readonly", "readonly");
+                txtOtherPremises.Attributes.Add("readonly", "readonly");
+                txtEmail.Attributes.Add("readonly", "readonly");
+                ddlPremises.Attributes.Add("disabled", "disabled");
+                ddlVoltageLevel.Attributes.Add("disabled", "disabled");
+                ddlApplicantType.Attributes.Add("disabled", "disabled");
+                txtinstallationNo1.Attributes.Add("disabled", "disabled");
+                txtinstallationNo2.Attributes.Add("disabled", "disabled");
+                txtinstallationNo3.Attributes.Add("disabled", "disabled");
+                txtStartDate.Attributes.Add("readonly", "readonly");
+                txtCompletitionDate.Attributes.Add("readonly", "readonly");
+                ddlAnyWork.Attributes.Add("disabled", "disabled");
+                txtCompletionDateAPWO.Attributes.Add("disabled", "disabled");
             }
             catch { }
         }
@@ -223,19 +242,23 @@ namespace CEIHaryana.Contractor
             {
 
                 string PANNumber = txtPAN.Text.Trim();
-                //DataSet ds = CEI.GetDetailsByPanNumberId(PANNumber);
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(PANNumber);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    string Id = ds.Tables[0].Rows[0]["Id"].ToString();
-                    Session["id"] = Id.Trim();
-                    Response.Redirect("/Contractor/Work_Intimation.aspx");
+                    string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
+                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    string District = ds.Tables[0].Rows[0]["District"].ToString();
+                    ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
+                    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 }
 
-                GetassigneddatatoContractor();
-                GridView1.Columns[0].Visible = false;
-                //Session["PANid"]="";
             }
             catch { }
         }

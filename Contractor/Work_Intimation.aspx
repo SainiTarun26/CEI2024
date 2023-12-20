@@ -259,12 +259,12 @@
                                                 ID (PAN Card)
             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10"  AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
-                                       <%-- <div class="col-1" style="padding: 0px; margin-top: 31px;">
+                                        <%-- <div class="col-1" style="padding: 0px; margin-top: 31px;">
                                             <span>
                                                 <svg id="search1" xmlns="http://www.w3.org/2000/svg" height="19" width="19" viewBox="0 0 512 512">
                                                     <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
@@ -661,11 +661,10 @@
 
                         <div class="col-4" id="hiddenfield1" runat="server">
                             <label for="CompletionDateasperWorkOrder">
-                                Completion Date as per Work Order<samp style="color: red"> * </samp>
+                                Completion Date as per Work Order
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" onkeydown="return preventEnterSubmit(event)" TabIndex="15" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator0" runat="server" ControlToValidate="txtCompletionDateAPWO" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-
+                          
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletionDateAPWO" Operator="GreaterThanEqual" ErrorMessage="Work Completion Date must be greater than  Start Date" Display="Dynamic" ForeColor="Red" />
 
 
@@ -706,7 +705,7 @@
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Category" HeaderText="Category">
                                                     <HeaderStyle HorizontalAlign="left" Width="10%" CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="left" Width="10%" cssClass="textalignleft" />
+                                                    <ItemStyle HorizontalAlign="left" Width="10%" CssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
                                                     <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor textalignleft" />
@@ -722,7 +721,7 @@
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="License">
                                                     <HeaderStyle HorizontalAlign="left" Width="20%" CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="left" Width="20%" cssClass="textalignleft" />
+                                                    <ItemStyle HorizontalAlign="left" Width="20%" CssClass="textalignleft" />
                                                 </asp:BoundField>
                                             </Columns>
                                             <FooterStyle BackColor="White" ForeColor="#000066" />

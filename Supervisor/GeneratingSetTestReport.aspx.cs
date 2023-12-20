@@ -445,9 +445,13 @@ namespace CEIHaryana.Supervisor
             {
                 Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
             }
+            else if (Session["TestReportHistory"] == null)
+            {
+                Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+            }
             else
             {
-                Response.Redirect("/Admin/TestHistoryReport.aspx", false);
+               // Response.Redirect("/Admin/TestHistoryReport.aspx", false);
 
             }
         }
