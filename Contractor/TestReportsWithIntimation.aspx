@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="TestReportsWithIntimation.aspx.cs" Inherits="CEIHaryana.Contractor.TestReportsWithIntimation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="TestReportsWithIntimation.aspx.cs" Inherits="CEIHaryana.Contractor.TestReportsWithIntimation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />

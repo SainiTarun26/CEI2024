@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LineTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.LineTestReportModal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="LineTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.LineTestReportModal" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SubstationTransformerTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.SubstationTransformerTestReportModal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="SubstationTransformerTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.SubstationTransformerTestReportModal" %>
 
 <!DOCTYPE html>
 
