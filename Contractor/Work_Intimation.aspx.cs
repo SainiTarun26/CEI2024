@@ -216,6 +216,29 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
+
+        protected void txtPAN_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string PANNumber = txtPAN.Text.Trim();
+                //DataSet ds = CEI.GetDetailsByPanNumberId(PANNumber);
+                DataSet ds = new DataSet();
+                ds = CEI.GetDetailsByPanNumberId(PANNumber);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    string Id = ds.Tables[0].Rows[0]["Id"].ToString();
+                    Session["id"] = Id.Trim();
+                    Response.Redirect("/Contractor/Work_Intimation.aspx");
+                }
+
+                GetassigneddatatoContractor();
+                GridView1.Columns[0].Visible = false;
+                //Session["PANid"]="";
+            }
+            catch { }
+        }
         protected void worktypevisiblity()
         {
             try
@@ -541,6 +564,8 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
+
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -887,5 +912,8 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
+
+
+       
     }
 }
