@@ -699,7 +699,7 @@ namespace CEIHaryana.Supervisor
             {
                 if (Convert.ToString(Session["VoltageLevel"]) == "upto 650 V" && ddltransformerType.SelectedValue == "1")
                 {
-                    primaryVoltageLevel.Visible = false;
+                    PrimaryVoltageLevel.Visible = false;
                     InCaseOfOil.Visible = true;
                     Capacity.Visible = true;
                     BDV.Visible = true;
@@ -707,21 +707,21 @@ namespace CEIHaryana.Supervisor
                 }
                 else if (Convert.ToString(Session["VoltageLevel"]) != null && ddltransformerType.SelectedValue == "1")
                 {
-                    primaryVoltageLevel.Visible = true;
+                    PrimaryVoltageLevel.Visible = true;
                     InCaseOfOil.Visible = true;
                     Capacity.Visible = true;
                     BDV.Visible = true;
                 }
                 else if (Convert.ToString(Session["VoltageLevel"]) == "upto 650 V" && ddltransformerType.SelectedValue == "2")
                 {
-                    primaryVoltageLevel.Visible = false;
+                    PrimaryVoltageLevel.Visible = false;
                     InCaseOfOil.Visible = true;
                     Capacity.Visible = false;
                     BDV.Visible = false;
                 }
                 else if (Convert.ToString(Session["VoltageLevel"]) != null && ddltransformerType.SelectedValue == "2")
                 {
-                    primaryVoltageLevel.Visible = true;
+                    PrimaryVoltageLevel.Visible = true;
                     InCaseOfOil.Visible = true;
                     Capacity.Visible = false;
                     BDV.Visible = false;
@@ -1094,8 +1094,8 @@ namespace CEIHaryana.Supervisor
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
 
-                    Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-
+                    //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+                    Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
                 }
             }
             catch (Exception)

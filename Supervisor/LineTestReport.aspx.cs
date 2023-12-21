@@ -951,6 +951,7 @@ namespace CEIHaryana.Supervisor
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
                     //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+                    Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
 
                 }
 
@@ -1101,7 +1102,6 @@ namespace CEIHaryana.Supervisor
                 // Response.Redirect("/Admin/TestHistoryReport.aspx", false);
 
             }
-
         }
     }
 }

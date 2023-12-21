@@ -342,7 +342,7 @@
                         </div>
                         <div id="InCaseOfOil" runat="server" visible="false">
                             <div class="row">
-                                <div class="col-3" id="primaryVoltageLevel" runat="server" Visible="false">
+                                <div class="col-3" id="PrimaryVoltageLevel" runat="server" Visible="false">
                                     <label for="Voltage">
                                         Primary voltage(in kva)  
                             <samp style="color: red">* </samp>

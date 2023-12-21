@@ -672,7 +672,7 @@ namespace CEIHaryana.Supervisor
                     CEI.UpdateInstallations(installationNo, IntimationId);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
-                   
+                    Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
                 }
 
             }

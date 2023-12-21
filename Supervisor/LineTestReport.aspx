@@ -1045,7 +1045,7 @@
                             </div>
                             <div class="col-4" style="text-align: center;">
                             <%--    <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
-                                <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" Onclick="BtnBack_Click"/>
+                                <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
                                 <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
                                 <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
                             </div>
