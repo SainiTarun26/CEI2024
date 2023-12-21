@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,27 +13,43 @@ namespace CEIHaryana.UserPages
     {
         string REID = string.Empty;
         CEI CEI = new CEI();
+        string ipaddress;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                ddlLoadBindState();
-                ddlLoadBindState1();
-                if (Convert.ToString(Session["RegistrationID"]) == null || Convert.ToString(Session["RegistrationID"]) == "")
+                if (!IsPostBack)
                 {
+                    ddlLoadBindState();
+                    ddlLoadBindState1();
+                    if (Convert.ToString(Session["RegistrationID"]) == null || Convert.ToString(Session["RegistrationID"]) == "")
+                    {
+
+                    }
+                    else
+                    {
+                        REID = Session["RegistrationID"].ToString();
+                        hdnId.Value = REID;
+                        btnNext.Text = "Update";
+                        GetUserRegistartionData();
+                    }
 
                 }
-                else
-                {
-                    REID = Session["RegistrationID"].ToString();
-                    hdnId.Value = REID;
-                    btnNext.Text = "Update";
-                    GetUserRegistartionData();
-                }
-
+            }
+            catch 
+            { 
+                Response.Redirect("/Login.aspx");
             }
         }
+        #region GetIP
+        protected void GetIP()
+        {
 
+            ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (ipaddress == "" || ipaddress == null)
+                ipaddress = Request.ServerVariables["REMOTE_ADDR"];
+        }
+        #endregion
         protected void GetUserRegistartionData()
         {
             REID = Session["RegistrationID"].ToString();
@@ -87,123 +104,36 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                string Category = "";
-                if (ddlcategory.SelectedValue == "1")
-                {
-                    Category = "Supervisor";
 
-                }
-                else
+               string Category = string.Empty;
+                string UserId = string.Empty;
+                string name = txtName.Text;
+                string dob = txtDOB.Text;
+
+                string firstNamePart = name.Length >= 4 ? name.Substring(0, 4) : name;
+
+                string numericDOB = new string(dob.Where(char.IsDigit).ToArray());
+
+                string userId = $"{firstNamePart}{numericDOB}";
+
+                if (ddlcategory.SelectedValue == "1")
                 {
                     Category = "Wireman";
                 }
-
-                if (btnNext.Text == "Update")
+                else if(ddlcategory.SelectedValue == "2")
                 {
-                    REID = Session["RegistrationID"].ToString();
-                    hdnId.Value = REID;
-
-                    SqlCommand cmd = new SqlCommand("sp_UserRegistration");
-                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                    cmd.Connection = con;
-                    if (con.State == ConnectionState.Closed)
-                    {
-                        con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                        con.Open();
-                    }
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@REID", REID);
-
-                    cmd.Parameters.AddWithValue("@Category", Category);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@FatherName", txtFatherNmae.Text);
-                    cmd.Parameters.AddWithValue("@Gender", ddlGender.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@Nationality", "INDIAN");
-                    cmd.Parameters.AddWithValue("@AdhaarNo", txtAadhaar.Text);
-                    cmd.Parameters.AddWithValue("@DOB", txtDOB.Text);
-                    cmd.Parameters.AddWithValue("@Age", txtyears.Text);
-                    cmd.Parameters.AddWithValue("@CommunicationAddress", txtCommunicationAddress.Text);
-                    cmd.Parameters.AddWithValue("@CommunicationState", ddlState1.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@DistrictCommunication", ddlDistrict1.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@CommunicationPin", txtPinCode.Text);
-                    cmd.Parameters.AddWithValue("@PermanentAddress", txtPermanentAddress.Text);
-                    cmd.Parameters.AddWithValue("@PermanentState", ddlState.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@PermanentDistrict", ddlDistrict.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@PermanentPin", txtPin.Text);
-                    cmd.Parameters.AddWithValue("@PhoneNo", txtphone.Text);
-                    cmd.Parameters.AddWithValue("@EmailId", txtEmail.Text);
-                    SqlParameter outputParam = new SqlParameter("@RegistrationID", SqlDbType.Int);
-                    outputParam.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(outputParam);
-                    SqlParameter categoryOutputParam = new SqlParameter("@InsertedCategory", SqlDbType.NVarChar, 50);
-                    categoryOutputParam.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(categoryOutputParam);
-                    cmd.ExecuteNonQuery();
-
-                    int registrationId = 0;
-                    string insertedCategory = categoryOutputParam.Value.ToString();
-                    Session["REID"] = registrationId;
-                    Session["InsertedCategory"] = insertedCategory;
-
-                    int ivalue = CEI.updateUserRegistration(registrationId);
-
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
-
-                    Response.Redirect("Qualification.aspx");
+                    Category = "Supervisor";
                 }
                 else
                 {
-                    SqlCommand cmd = new SqlCommand("sp_UserRegistration");
-                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                    cmd.Connection = con;
-                    if (con.State == ConnectionState.Closed)
-                    {
-                        con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                        con.Open();
-                    }
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@REID", REID);
-
-                    cmd.Parameters.AddWithValue("@Category", Category);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@FatherName", txtFatherNmae.Text);
-                    cmd.Parameters.AddWithValue("@Gender", ddlGender.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@Nationality", "INDIAN");
-                    cmd.Parameters.AddWithValue("@AdhaarNo", txtAadhaar.Text);
-                    cmd.Parameters.AddWithValue("@DOB", txtDOB.Text);
-                    cmd.Parameters.AddWithValue("@Age", txtyears.Text);
-                    cmd.Parameters.AddWithValue("@CommunicationAddress", txtCommunicationAddress.Text);
-                    cmd.Parameters.AddWithValue("@CommunicationState", ddlState1.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@DistrictCommunication", ddlDistrict1.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@CommunicationPin", txtPinCode.Text);
-                    cmd.Parameters.AddWithValue("@PermanentAddress", txtPermanentAddress.Text);
-                    cmd.Parameters.AddWithValue("@PermanentState", ddlState.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@PermanentDistrict", ddlDistrict.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@PermanentPin", txtPin.Text);
-                    cmd.Parameters.AddWithValue("@PhoneNo", txtphone.Text);
-                    cmd.Parameters.AddWithValue("@EmailId", txtEmail.Text);
-                    SqlParameter outputParam = new SqlParameter("@RegistrationID", SqlDbType.Int);
-                    outputParam.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(outputParam);
-                    SqlParameter categoryOutputParam = new SqlParameter("@InsertedCategory", SqlDbType.NVarChar, 50);
-                    categoryOutputParam.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(categoryOutputParam);
-                    cmd.ExecuteNonQuery();
-
-                    int registrationId = Convert.ToInt32(outputParam.Value);
-                    string insertedCategory = categoryOutputParam.Value.ToString();
-                    Session["RegistrationID"] = registrationId;
-                    Session["InsertedCategory"] = insertedCategory;
-
-                    int ivalue = CEI.updateUserRegistration(registrationId);
-
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-
-                    //Response.Redirect("Qualification.aspx");
-
+                    Category = "Contractor";
                 }
+                
+                CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(),txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+                   txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text, 
+                    txtEmail.Text, Category, UserId, UserId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
+                    txtPin.Text, txtConfirmPswrd.Text, ipaddress);
+               
             }
             catch (Exception)
             {

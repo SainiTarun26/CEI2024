@@ -1764,15 +1764,15 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationHistory", IntimationId);
 
         }
+
         public DataSet GetDetailsByPanNumberId(string PANNumber)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberId", PANNumber);
         }
         #region Insert New user data Data
-        public void InserNewUserData(string ApplicationFor, string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
-      string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
-      string DateofRenewal, string votagelevel, string voltageWithEffect, string AnyContractor, string AttachedContractorld,
-    string CreatedBy, string UserId, string CommunicationAddress, string CommState, string CommDistrict,string CommPin,string Password, string IPAddress)
+        public void InserNewUserData(string ApplicationFor, string Name, string DateOfBirth,string Age, string FatherName, string Address, string District,
+            string State, string PinCode, string PhoneNo, string Email,string Category, string CreatedBy, string UserId, 
+            string CommunicationAddress, string CommState, string CommDistrict,string CommPin,string Password, string IPAddress)
         {
 
             SqlCommand cmd = new SqlCommand("sp_NewUserRegistration");
@@ -1786,8 +1786,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
-            cmd.Parameters.AddWithValue("@REID", REID);
             cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             cmd.Parameters.AddWithValue("@Age", Age);
             cmd.Parameters.AddWithValue("@FatherName", FatherName);
             cmd.Parameters.AddWithValue("@Address", Address);
@@ -1795,18 +1795,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@State", State);
             cmd.Parameters.AddWithValue("@PinCode", PinCode);
             cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
-            cmd.Parameters.AddWithValue("@Qualification", Qualification);
             cmd.Parameters.AddWithValue("@Email", Email);
-            cmd.Parameters.AddWithValue("@CertificateOld", CertificateOld);
-            cmd.Parameters.AddWithValue("@CertificateNew", CertificateNew);
-            cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
-            cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
-            cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
-            cmd.Parameters.AddWithValue("@votagelevel", votagelevel);
-            cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffect);
-            cmd.Parameters.AddWithValue("@AnyContractor", AnyContractor);
-            cmd.Parameters.AddWithValue("@AttachedContractorld", AttachedContractorld);
-            cmd.Parameters.AddWithValue("@Category", "Supervisor");
+            cmd.Parameters.AddWithValue("@Category", Category);
             cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
             cmd.Parameters.AddWithValue("@UserId", UserId);
             cmd.Parameters.AddWithValue("@CommunicationAddress", CommunicationAddress);
@@ -1819,5 +1809,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
+
+        public DataSet GetddlSecondaryVotlage(string Volts)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SecondryVoltage", Volts);
+        }
+        public DataSet GetddlPrimaryVotlage(string Volts)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PrimaryVoltage", Volts);
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace CEIHaryana.Supervisor
                     ddlEarthing();
                     Insulation440vAbove.Visible = false;
                     Insulation220vAbove.Visible = false;
-                   // BtnBack.Visible = false;
+                    // BtnBack.Visible = false;
                     if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
                     {
                         // GetHistoryDataById();
@@ -45,7 +45,7 @@ namespace CEIHaryana.Supervisor
                     if (Convert.ToString(Session["Approval"]) == "Reject")
                     {
                         LineId = Session["LineID"].ToString().Trim();
-                      //  BtnBack.Visible = true;
+                        //  BtnBack.Visible = true;
                         GetHistoryDataById();
 
                     }
@@ -54,6 +54,7 @@ namespace CEIHaryana.Supervisor
                     txtInstallation.Text = Session["Typs"].ToString().Trim();
                     txtid.Text = Session["Intimations"].ToString().Trim();
                     txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
+                    BtnBack.Visible = true;
                 }
             }
             catch
@@ -947,10 +948,10 @@ namespace CEIHaryana.Supervisor
                txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
 
                     CEI.UpdateInstallations(installationNo, IntimationId);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
-                        //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                    
+                    //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+
                 }
 
 
@@ -962,7 +963,7 @@ namespace CEIHaryana.Supervisor
                 DataSaved.Visible = false;
             }
         }
-     
+
         public void Reset()
         {
             txtLineLength.Text = "";
@@ -1086,6 +1087,20 @@ namespace CEIHaryana.Supervisor
 
             }
 
+
+        }
+
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            if (Session["TestReportHistory"] == null)
+            {
+                Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+            }
+            else
+            {
+                // Response.Redirect("/Admin/TestHistoryReport.aspx", false);
+
+            }
 
         }
     }

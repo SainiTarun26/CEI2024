@@ -49,6 +49,32 @@
           }
       }
   </script>
+    <script type="text/javascript">
+        function validateVoltageInput() {
+            var txtGeneratorVoltage = document.getElementById('<%=txtGeneratorVoltage.ClientID%>');
+        var voltageLevel = '<%= Session["VoltageLevel"] %>';
+
+            if (voltageLevel === 'upto 650 V') {
+                if (parseInt(txtGeneratorVoltage.value) > 650) {
+                    txtGeneratorVoltage.value = '650';
+                }
+            } else if (voltageLevel === 'upto 11 KV') {
+                if (parseInt(txtGeneratorVoltage.value) > 11000) {
+                    txtGeneratorVoltage.value = '11000';
+                }
+            } else if (voltageLevel === 'upto 33 KV') {
+                if (parseInt(txtGeneratorVoltage.value) > 11000) {
+                    txtGeneratorVoltage.value = '33000';
+                }
+            } else if (voltageLevel === 'upto 66 KV') {
+                if (parseInt(txtGeneratorVoltage.value) > 11000) {
+                    txtGeneratorVoltage.value = '66000';
+                }
+            } else {
+
+            }
+        }
+    </script>
   <style>
       .submit {
           border: 1px solid #563d7c;
@@ -339,7 +365,7 @@
                                         Generator voltage level(IN VOLTS)
                                                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtGeneratorVoltage" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" MaxLength="5" placeholder="" AutoPostBack="true" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtGeneratorVoltage" onkeydown="return preventEnterSubmit(event)" oninput="validateVoltageInput()" onkeypress="return isNumberKey(event);" MaxLength="5" placeholder="" AutoPostBack="true" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ControlToValidate="txtGeneratorVoltage" ValidationGroup="Submit" ErrorMessage="Please Enter Generator Voltage"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4">

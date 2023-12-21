@@ -342,12 +342,12 @@
                         </div>
                         <div id="InCaseOfOil" runat="server" visible="false">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-3" id="primaryVoltageLevel" runat="server" Visible="false">
                                     <label for="Voltage">
                                         Primary voltage(in kva)  
                             <samp style="color: red">* </samp>
                                     </label>
-                                       <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="PrimaryVoltage" selectionmode="Multiple" Style="width: 100% !important">
+                                       <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server"  AutoPostBack="true" ID="PrimaryVoltage" selectionmode="Multiple" Style="width: 100% !important">
                                 </asp:DropDownList>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="PrimaryVoltage" runat="server" ErrorMessage="Please Select Primary Voltage" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                               </div>
@@ -373,7 +373,7 @@
                                         BDV level of oil Break down voltage  
                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" Text=" (in kv) " AutoPostBack="true" ID="txtOilBDV" MaxLength="3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="(in kv) " autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ForeColor="Red" ControlToValidate="txtOilBDV" runat="server" ErrorMessage="Please Enter Oil BDV" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                 </div>
                             </div>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -68,7 +69,7 @@ namespace CEIHaryana.Supervisor
                     txtInstallation.Text = Session["Typs"].ToString().Trim();
                     txtid.Text = Session["Intimations"].ToString().Trim();
                     txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
-
+                    BtnBack.Visible = true;
                 }
             }
             catch
@@ -81,6 +82,10 @@ namespace CEIHaryana.Supervisor
             if (Session["TestReportHistory"] != null)
             {
                 Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+            }
+            else if (Session["TestReportHistory"] == null)
+            {
+                Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
             }
             else
             {
@@ -649,9 +654,10 @@ namespace CEIHaryana.Supervisor
         }
         private void ddlPrimaryVoltage()
         {
-
+            string Volts = string.Empty;
+            Volts = Session["VoltageLevel"].ToString();
             DataSet dsPrimaryVoltage = new DataSet();
-            dsPrimaryVoltage = CEI.GetddlPrimaryVotlage();
+            dsPrimaryVoltage = CEI.GetddlPrimaryVotlage(Volts);
             PrimaryVoltage.DataSource = dsPrimaryVoltage;
             PrimaryVoltage.DataTextField = "Volts";
             PrimaryVoltage.DataValueField = "Volts";
@@ -675,9 +681,10 @@ namespace CEIHaryana.Supervisor
         }
         private void ddlSecondarVoltage()
         {
-
+            string Volts = string.Empty;
+            Volts = Session["VoltageLevel"].ToString();
             DataSet dsSecondaryVoltage = new DataSet();
-            dsSecondaryVoltage = CEI.GetddlSecondaryVotlage();
+            dsSecondaryVoltage = CEI.GetddlSecondaryVotlage(Volts);
             ddlSecondaryVoltage.DataSource = dsSecondaryVoltage;
             ddlSecondaryVoltage.DataTextField = "Volts";
             ddlSecondaryVoltage.DataValueField = "Volts";
@@ -688,19 +695,42 @@ namespace CEIHaryana.Supervisor
         }
         protected void ddltransformerType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddltransformerType.SelectedValue == "1")
+            try
             {
-                InCaseOfOil.Visible = true;
-                Capacity.Visible = true;
-                BDV.Visible = true;
-            }
-            else
-            {
-                InCaseOfOil.Visible = true;
-                Capacity.Visible = false;
-                BDV.Visible = false;
-            }
+                if (Convert.ToString(Session["VoltageLevel"]) == "upto 650 V" && ddltransformerType.SelectedValue == "1")
+                {
+                    primaryVoltageLevel.Visible = false;
+                    InCaseOfOil.Visible = true;
+                    Capacity.Visible = true;
+                    BDV.Visible = true;
 
+                }
+                else if (Convert.ToString(Session["VoltageLevel"]) != null && ddltransformerType.SelectedValue == "1")
+                {
+                    primaryVoltageLevel.Visible = true;
+                    InCaseOfOil.Visible = true;
+                    Capacity.Visible = true;
+                    BDV.Visible = true;
+                }
+                else if (Convert.ToString(Session["VoltageLevel"]) == "upto 650 V" && ddltransformerType.SelectedValue == "2")
+                {
+                    primaryVoltageLevel.Visible = false;
+                    InCaseOfOil.Visible = true;
+                    Capacity.Visible = false;
+                    BDV.Visible = false;
+                }
+                else if (Convert.ToString(Session["VoltageLevel"]) != null && ddltransformerType.SelectedValue == "2")
+                {
+                    primaryVoltageLevel.Visible = true;
+                    InCaseOfOil.Visible = true;
+                    Capacity.Visible = false;
+                    BDV.Visible = false;
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex) { }
         }
         protected void txtTransformerCapacity_TextChanged(object sender, EventArgs e)
         {
@@ -1064,8 +1094,8 @@ namespace CEIHaryana.Supervisor
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
 
-                        Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                    
+                    Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+
                 }
             }
             catch (Exception)
@@ -1301,7 +1331,6 @@ namespace CEIHaryana.Supervisor
                 RequiredFieldValidator79.Visible = false;
             }
         }
-
         protected void ddlUsedFor7_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlUsedFor7.SelectedItem.ToString() == "Other")
@@ -1400,7 +1429,6 @@ namespace CEIHaryana.Supervisor
                 RequiredFieldValidator51.Visible = false;
             }
         }
-
 
         protected void ddlUsedFor14_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1527,15 +1555,12 @@ namespace CEIHaryana.Supervisor
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('InvalidOTP Please Try Again')", true);
 
                     }
-
                 }
             }
             catch
             {
 
             }
-
-
         }
     }
 }
