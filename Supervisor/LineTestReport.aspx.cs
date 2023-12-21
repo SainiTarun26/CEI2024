@@ -1064,7 +1064,7 @@ namespace CEIHaryana.Supervisor
                     DataSet ds = new DataSet();
                     ds = CEI.GetSuperVisorContact(id);
                     string Contact = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
-                    string mobilenumber = "7087191855";
+                    string mobilenumber = Contact.Trim(); ;
                     Session["OTP"] = CEI.ValidateOTP(mobilenumber);
                 }
                 else
