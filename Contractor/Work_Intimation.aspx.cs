@@ -492,12 +492,13 @@ namespace CEIHaryana.Contractor
 
                        
                         hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text,
-                            ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(),
-                            txtPAN.Text,txtinstallationType1.Text,txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, 
-                            txtinstallationNo3.Text,txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
-                          txtinstallationNo6.Text, txtinstallationType7.Text, txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
-                          txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
+                        CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, 
+                            txtAddress.Text,ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, 
+                            ddlVoltageLevel.SelectedItem.ToString(),txtPAN.Text,txtinstallationType1.Text,txtinstallationNo1.Text, txtinstallationType2.Text,
+                            txtinstallationNo2.Text, txtinstallationType3.Text,txtinstallationNo3.Text,txtinstallationType4.Text, txtinstallationNo4.Text,
+                            txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,txtinstallationNo6.Text, txtinstallationType7.Text, 
+                            txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,txtEmail.Text, txtStartDate.Text,
+                            txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
                           ddlApplicantType.SelectedItem.ToString(), ContractorID);
 
                         string projectId = CEI.projectId();
@@ -539,7 +540,8 @@ namespace CEIHaryana.Contractor
                         }
                         MailMessage mailMessage = new MailMessage();
                         mailMessage.From = new MailAddress("cs.nehaa6@gmail.com"); 
-                        mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Site Owner ID and Password"; string body = $"Dear Customer, Your Account is created. Your user id is {txtPAN.Text} and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT";
+                        mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Site Owner ID and Password"; 
+                        string body = $"Dear Customer, Your Account is created. Your user id is {txtPAN.Text} and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT";
                         mailMessage.Body = body;
 
                         SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
