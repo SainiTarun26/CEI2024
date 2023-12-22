@@ -254,5 +254,11 @@ namespace CEIHaryana.Admin
                 // Handle exceptions
             }
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            BindGrid();
+        }
     }
 }

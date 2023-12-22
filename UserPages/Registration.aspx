@@ -330,6 +330,14 @@
             margin-top: 20px;
         }
     </style>
+     <script type="text/javascript">
+         function alertWithRedirectdata() {
+             if (confirm('Registration Successfull Your UserId Will be sent through email Login For Further process')) {
+                 window.location.href = "/Login.aspx";
+             } else {
+             }
+         }
+     </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -622,17 +630,21 @@
                                                     </asp:UpdatePanel>
                                                     <div class="form-group" style="margin-top: -30px;">
                                                         <label for="phone">Phone No.</label>
-                                                        <asp:TextBox class="form-control" ID="txtphone" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
+                                                        <asp:TextBox class="form-control" ID="txtphone" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="10" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorContect" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtphone"
                                                             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Phone No.</asp:RequiredFieldValidator>
                                                     </div>   
                                                     <div class="form-group">
                                                         <label for="phone">Password</label>
-                                                        <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
+                                                        <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorPassword" style="color: red"></span>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ControlToValidate="txtPassword"
-                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Phone No.</asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="regexPassword" runat="server"
+                                                            ControlToValidate="txtPassword"
+                                                            ErrorMessage="Password must be 8 to 15 characters long and include a combination of small, large, and special characters."
+                                                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"  ForeColor="Red"
+                                                            Display="Dynamic">
+                                                        </asp:RegularExpressionValidator>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -690,13 +702,19 @@
                                                             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Email</asp:RequiredFieldValidator>
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <label for="phone">Confirm Password</label>
-                                                        <asp:TextBox class="form-control" ID="txtConfirmPswrd" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
-                                                        <span id="lblrPassword" style="color: red"></span>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtConfirmPswrd"
-                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Required.</asp:RequiredFieldValidator>
-                                                    </div>
+                                                            <div class="form-group">
+                                                                <label for="phone">Confirm Password</label>
+                                                                <asp:TextBox class="form-control" ID="txtConfirmPswrd" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
+                                                                <span id="lblrPassword" style="color: red"></span>
+                                                                <asp:CompareValidator ID="comparePassword" runat="server"
+                                                                    ControlToCompare="txtPassword"
+                                                                    ControlToValidate="txtConfirmPswrd"
+                                                                    ErrorMessage="The confirm password must match the password."
+                                                                    Type="String"
+                                                                    Operator="Equal" ForeColor="Red"
+                                                                    Display="Dynamic">
+                                                                </asp:CompareValidator>
+                                                            </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
                                                 </div>
@@ -704,8 +722,8 @@
                                         </div>
                                         <div class="row" style="margin-left: 0px;">
                                             <div class="col-md-6">
-                                            <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnBack_Click"/>
-                                              
+                                                <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnBack_Click" />
+
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
                                                 <asp:Button type="button" OnClientClick="return validateForm();" ValidationGroup="Submit" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"

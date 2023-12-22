@@ -106,7 +106,6 @@ namespace CEIHaryana.UserPages
             {
 
                string Category = string.Empty;
-                string UserId = string.Empty;
                 string name = txtName.Text;
                 string dob = txtDOB.Text;
 
@@ -128,12 +127,15 @@ namespace CEIHaryana.UserPages
                 {
                     Category = "Contractor";
                 }
-                
-                CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(),txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
-                   txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text, 
-                    txtEmail.Text, Category, UserId, UserId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
-                    txtPin.Text, txtConfirmPswrd.Text, ipaddress);
-               
+                GetIP();
+                CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+       txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
+       txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
+       txtPin.Text, txtConfirmPswrd.Text, ipaddress);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+
+
             }
             catch (Exception)
             {
