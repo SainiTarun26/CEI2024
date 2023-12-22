@@ -29,7 +29,7 @@ namespace CEIHaryana.Supervisor
         public void GridViewBind()
         {
             string LoginId = string.Empty;
-            LoginId = Session["id"].ToString();
+            LoginId = Session["SupervisorID"].ToString();
             DataSet ds = new DataSet();
             ds = cei.GetSuppervisorTestReportHistory(LoginId);
             if (ds.Tables.Count > 0)

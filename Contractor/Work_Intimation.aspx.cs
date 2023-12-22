@@ -492,12 +492,13 @@ namespace CEIHaryana.Contractor
 
                        
                         hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text, ddlDistrict.SelectedItem.ToString()
-                          , txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text,
-                          txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
-                          txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
+                        CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, txtAddress.Text,
+                            ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, ddlVoltageLevel.SelectedItem.ToString(),
+                            txtPAN.Text,txtinstallationType1.Text,txtinstallationNo1.Text, txtinstallationType2.Text, txtinstallationNo2.Text, txtinstallationType3.Text, 
+                            txtinstallationNo3.Text,txtinstallationType4.Text, txtinstallationNo4.Text, txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
                           txtinstallationNo6.Text, txtinstallationType7.Text, txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
-                          txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text, ddlApplicantType.SelectedItem.ToString(), ContractorID);
+                          txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
+                          ddlApplicantType.SelectedItem.ToString(), ContractorID);
 
                         string projectId = CEI.projectId();
                         if (projectId != "" && projectId != null)

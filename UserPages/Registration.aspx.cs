@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -36,8 +38,8 @@ namespace CEIHaryana.UserPages
 
                 }
             }
-            catch 
-            { 
+            catch
+            {
                 Response.Redirect("/Login.aspx");
             }
         }
@@ -105,7 +107,7 @@ namespace CEIHaryana.UserPages
             try
             {
 
-               string Category = string.Empty;
+                string Category = string.Empty;
                 string name = txtName.Text;
                 string dob = txtDOB.Text;
 
@@ -119,7 +121,7 @@ namespace CEIHaryana.UserPages
                 {
                     Category = "Wireman";
                 }
-                else if(ddlcategory.SelectedValue == "2")
+                else if (ddlcategory.SelectedValue == "2")
                 {
                     Category = "Supervisor";
                 }
@@ -132,7 +134,22 @@ namespace CEIHaryana.UserPages
        txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
        txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
        txtPin.Text, txtConfirmPswrd.Text, ipaddress);
+
+
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("cs.nehaa6@gmail.com");
+                mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Login ID"; string body = $"Dear Customer, Your Account is created. Your user id is First 4 character of your Name + your full date of birth. ";
+                mailMessage.Body = body;
+
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
+                smtpClient.EnableSsl = true;
+
+                smtpClient.Send(mailMessage);
+
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
 
 
 

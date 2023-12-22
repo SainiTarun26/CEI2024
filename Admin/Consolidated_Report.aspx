@@ -332,7 +332,7 @@
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
                     <div class="card" id="printableDiv">
                         <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" runat="server"
-     Width="100%" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
+                            Width="100%" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -340,8 +340,8 @@
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                             <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
                                     <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>

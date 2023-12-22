@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="CEIHaryana.UserPages.Registration" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Registration.aspx.cs" Inherits="CEIHaryana.UserPages.Registration" %>
 
 <!DOCTYPE html>
 
@@ -330,14 +330,14 @@
             margin-top: 20px;
         }
     </style>
-     <script type="text/javascript">
-         function alertWithRedirectdata() {
-             if (confirm('Registration Successfull Your UserId Will be sent through email Login For Further process')) {
-                 window.location.href = "/Login.aspx";
-             } else {
-             }
-         }
-     </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('Registration Successfull Your UserId Will be sent through email Login For Further process')) {
+                window.location.href = "/Login.aspx";
+            } else {
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -458,7 +458,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">Applying For:</label>
+                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">Applying For<samp style="color: red">* </samp>:</label>
                                                 <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
                                                     <asp:DropDownList class="select-form select2" ID="ddlcategory" Style="margin-left: -35px;" runat="server">
                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -466,7 +466,7 @@
                                                         <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
                                                         <asp:ListItem Text="Contractor license" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Please Select Category" ErrorMessage="Please Select Category" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                 </div>
                                             </div>
                                         </div>
@@ -480,14 +480,15 @@
                                                         <div class="col-md-4">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
-                                                                    <label for="Name">Name of Applicant</label>
-                                                                    <asp:TextBox class="form-control" ID="txtName"  autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                    <label for="Name">Name of Applicant<samp style="color: red">* </samp></label>
+                                                                    <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName"
-                                                                        ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Name</asp:RequiredFieldValidator>
+                                                                        ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>
                                                                         Nationality
+                                                                        <samp style="color: red">* </samp>
                                                                     </label>
                                                                     <asp:TextBox class="form-control" ID="txtNationality" runat="server" TabIndex="2" placeholder="INDIA" disabled MaxLength="30"> </asp:TextBox>
                                                                 </div>
@@ -504,16 +505,17 @@
                                                         <div class="col-md-4">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
-                                                                    <label for="FatherName">Father's Name</label>
+                                                                    <label for="FatherName">Father's Name<samp style="color: red">* </samp> </label>
                                                                     <asp:TextBox class="form-control" ID="txtFatherNmae" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFatherNmae"
-                                                                        ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Father Name</asp:RequiredFieldValidator>
+                                                                        ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="form-group" style="margin-top: -26px; margin-bottom: 0px;">
-                                                                    <label for="Aadhaar">Aadhaar Card No.</label>
-                                                                    <asp:TextBox class="form-control" ID="txtAadhaar" autocomplete="off" MaxLength="12" onkeypress="return isNumberKey(event)" runat="server"> </asp:TextBox>
+                                                                    <label for="Aadhaar">Aadhaar Card No.<samp style="color: red">* </samp></label>
+                                                                    <asp:TextBox class="form-control" ID="txtAadhaar" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="formatAadhaarInput()" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAadhaar"
-                                                                        ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Aadhaar No.</asp:RequiredFieldValidator>
+                                                                        ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                    <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtAadhaar"   ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
                                                                 </div>
                                                                 <%--<asp:UpdatePanel ID="UpdatePanelCalculatedMonths" runat="server">
                                                                     <ContentTemplate>
@@ -528,7 +530,7 @@
                                                         <div class="col-md-4">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
-                                                                    <label for="Gender">Gender</label>
+                                                                    <label for="Gender">Gender<samp style="color: red">* </samp></label>
                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                         ID="ddlGender" runat="server" TabIndex="16">
                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -536,12 +538,12 @@
                                                                         <asp:ListItem Text="Female" Value="2"></asp:ListItem>
                                                                         <asp:ListItem Text="Others" Value="3"></asp:ListItem>
                                                                     </asp:DropDownList>
-                                                                    <asp:RequiredFieldValidator ID="Req_Estate" Text="Please Select Gender" ErrorMessage="Please Select Gender" ControlToValidate="ddlGender" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                    <asp:RequiredFieldValidator ID="Req_Estate" ErrorMessage="Required" ControlToValidate="ddlGender" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                 </div>
                                                                 <asp:UpdatePanel ID="UpdatePanelDOB" runat="server">
                                                                     <ContentTemplate>
                                                                         <div class="form-group" style="margin-top: 20px;">
-                                                                            <label>Date of Birth</label>
+                                                                            <label>Date of Birth<samp style="color: red">* </samp></label>
                                                                             <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDOB" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true" OnTextChanged="txtDOB_TextChanged"> </asp:TextBox>
                                                                     </ContentTemplate>
                                                                     <Triggers>
@@ -549,7 +551,7 @@
                                                                     </Triggers>
                                                                 </asp:UpdatePanel>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtDOB"
-                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Date Of Birth</asp:RequiredFieldValidator>
+                                                                    ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <br />
 
@@ -581,10 +583,10 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="CommunicationAddress">Address for Communication</label>
-                                                        <asp:TextBox class="form-control" ID="txtCommunicationAddress"  autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
+                                                        <label for="CommunicationAddress">Address for Communication<samp style="color: red">* </samp></label>
+                                                        <asp:TextBox class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
-                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Communication Address</asp:RequiredFieldValidator>
+                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
                                                         <ContentTemplate>
@@ -592,7 +594,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="State1">State</label>
+                                                                            <label for="State1">State<samp style="color: red">* </samp></label>
                                                                             <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 94px; height: 26px;"
                                                                                 ID="ddlState1" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlState1_SelectedIndexChanged">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -600,12 +602,12 @@
                                                                         <asp:ListItem Text="Female" Value="2"></asp:ListItem>
                                                                         <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
                                                                             </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Please Select State" ErrorMessage="Please Select State" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Please Select State" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="District">District</label>
+                                                                            <label for="District">District<samp style="color: red">* </samp></label>
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 94px; height: 25px;"
                                                                                 ID="ddlDistrict1" AutoPostBack="true" runat="server" TabIndex="16">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -613,12 +615,12 @@
                                                                         <asp:ListItem Text="Female" Value="2"></asp:ListItem>
                                                                         <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
                                                                             </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select District" ErrorMessage="Please Select District" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13"  ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="Name">Pincode</label>
+                                                                            <label for="Name">Pincode<samp style="color: red">* </samp></label>
                                                                             <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPinCode" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtPinCode"
                                                                                 ErrorMessage="Please Enter Your Pincode" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Pincode</asp:RequiredFieldValidator>
@@ -629,20 +631,20 @@
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
                                                     <div class="form-group" style="margin-top: -30px;">
-                                                        <label for="phone">Phone No.</label>
+                                                        <label for="phone">Phone No.<samp style="color: red">* </samp></label>
                                                         <asp:TextBox class="form-control" ID="txtphone" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="10" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorContect" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtphone"
-                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Phone No.</asp:RequiredFieldValidator>
-                                                    </div>   
+                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                    </div>
                                                     <div class="form-group">
-                                                        <label for="phone">Password</label>
+                                                        <label for="phone">Password<samp style="color: red">* </samp></label>
                                                         <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorPassword" style="color: red"></span>
                                                         <asp:RegularExpressionValidator ID="regexPassword" runat="server"
                                                             ControlToValidate="txtPassword"
                                                             ErrorMessage="Password must be 8 to 15 characters long and include a combination of small, large, and special characters."
-                                                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"  ForeColor="Red"
+                                                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" ForeColor="Red"
                                                             Display="Dynamic">
                                                         </asp:RegularExpressionValidator>
                                                     </div>
@@ -662,7 +664,7 @@
                                                                         <div class="row">
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label for="State">State</label>
+                                                                                    <label for="State">State<samp style="color: red">* </samp></label>
                                                                                     <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 85px; height: 29px;"
                                                                                         ID="ddlState" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -672,7 +674,7 @@
                                                                             </div>
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label for="District">District</label>
+                                                                                    <label for="District">District<samp style="color: red">* </samp></label>
                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; height: 30px;"
                                                                                         ID="ddlDistrict" AutoPostBack="true" runat="server" TabIndex="16">
                                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -685,7 +687,7 @@
                                                                             </div>
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label for="Pincode">Pincode</label>
+                                                                                    <label for="Pincode">Pincode<samp style="color: red">* </samp></label>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPin" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtPin"
                                                                                         ErrorMessage="Please Enter Your Pin" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Pin</asp:RequiredFieldValidator>
@@ -695,7 +697,7 @@
                                                             </asp:UpdatePanel>
                                                             </div>
                                                     <div class="form-group" style="margin-top: -30px;">
-                                                        <label for="Email">Email Id</label>
+                                                        <label for="Email">Email Id<samp style="color: red">* </samp></label>
                                                         <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" onkeyup="return ValidateEmail();" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblError" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtEmail"
@@ -703,7 +705,7 @@
                                                     </div>
 
                                                             <div class="form-group">
-                                                                <label for="phone">Confirm Password</label>
+                                                                <label for="phone">Confirm Password<samp style="color: red">* </samp></label>
                                                                 <asp:TextBox class="form-control" ID="txtConfirmPswrd" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
                                                                 <span id="lblrPassword" style="color: red"></span>
                                                                 <asp:CompareValidator ID="comparePassword" runat="server"
@@ -720,14 +722,19 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <br />
+                                        <br />
+                                        <br />
+
                                         <div class="row" style="margin-left: 0px;">
                                             <div class="col-md-6">
                                                 <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnBack_Click" />
 
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
-                                                <asp:Button type="button" OnClientClick="return validateForm();" ValidationGroup="Submit" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
                                                     OnClick="btnNext_Click" />
+                                                <%--OnClientClick="return validateForm();"--%>
                                             </div>
                                             <asp:HiddenField ID="hdnId" runat="server" />
                                         </div>
@@ -969,5 +976,36 @@
            return isValid;
        }
    </script>--%>
+    <%-- <script>
+          function validateAadhaar() {
+              var aadhaarNumber = document.getElementById('txtAadhaar').value;
+
+              // Define the regular expression pattern for Aadhaar card number
+              var aadhaarPattern = /^\d{12}$/;
+
+              // Check if the entered Aadhaar number matches the pattern
+              if (aadhaarPattern.test(aadhaarNumber)) {
+                  alert('Aadhaar number is valid!');
+              } else {
+                  alert('Invalid Aadhaar number! Please enter a valid 12-digit Aadhaar number.');
+              }
+          }
+      </script>--%>
+       <script type="text/javascript">
+           function formatAadhaarInput() {
+               var aadhaarTextbox = document.getElementById('<%= txtAadhaar.ClientID %>');
+               var inputValue = aadhaarTextbox.value.replace(/\s/g, ''); // Remove existing spaces
+               var formattedValue = '';
+
+               for (var i = 0; i < inputValue.length; i++) {
+                   if (i > 0 && i % 4 === 0) {
+                       formattedValue += ' '; // Insert a space after every 4 characters
+                   }
+                   formattedValue += inputValue[i];
+               }
+
+               aadhaarTextbox.value = formattedValue;
+           }
+       </script>
 </body>
 </html>

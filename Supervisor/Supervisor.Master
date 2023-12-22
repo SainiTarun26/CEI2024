@@ -365,7 +365,7 @@
                                 </a>
                             </li>
                              <li class="nav-item">
-                               <a class="nav-link" href="TestReportIntimationHistory.aspx">
+                               <a class="nav-link" href="TestReportHistory.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Test Report History</span>
                                 </a> </li>
