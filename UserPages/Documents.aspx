@@ -20,20 +20,14 @@
     <link href="/assetsnew/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <link href="/assetsnew/css/style2.css" rel="stylesheet" />
     <link rel="stylesheet" href="/vendors/feather/feather.css" />
     <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css" />
     <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css" />
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
     <link rel="stylesheet" href="/vendors/select2/select2.min.css" />
     <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
-    <!-- endinject -->
     <link rel="shortcut icon" href="/images/favicon.png" />
     <style>
         img#ProfilePhoto {
@@ -257,7 +251,6 @@
 
     <form id="form1" runat="server">
         <div>
-            <!-- ======= Top Bar ======= -->
             <section id="topbar" class="d-flex align-items-center">
                 <div class="container d-flex justify-content-center justify-content-md-between">
                     <div class="contact-info d-flex align-items-center">
