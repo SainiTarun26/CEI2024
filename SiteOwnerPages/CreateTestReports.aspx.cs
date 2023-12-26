@@ -29,7 +29,19 @@ namespace CEIHaryana.SiteOwnerPages
                 Response.Redirect("/login.aspx");
             }
         }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.Header)
+                {
 
+                    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
+                    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                }
+            }
+            catch { }
+        }
         private void getWorkIntimationData()
         {
             string Id = Session["SiteOwnerId"].ToString();

@@ -329,6 +329,12 @@
         div#CalculatedDatey {
             margin-top: 20px;
         }
+
+        select#ddlState1:hover {
+            height: 31px;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+        }
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -445,8 +451,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
                             <div class="card"
                                 style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                 <div class="card-body">
@@ -458,7 +464,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-4 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">Applying For<samp style="color: red">* </samp>:</label>
+                                                <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">Applying For<samp style="color: red">* </samp>
+                                                    :</label>
                                                 <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
                                                     <asp:DropDownList class="select-form select2" ID="ddlcategory" Style="margin-left: -35px;" runat="server">
                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -480,7 +487,8 @@
                                                         <div class="col-md-4">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
-                                                                    <label for="Name">Name of Applicant<samp style="color: red">* </samp></label>
+                                                                    <label for="Name">Name of Applicant<samp style="color: red">* </samp>
+                                                                    </label>
                                                                     <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName"
                                                                         ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -505,17 +513,19 @@
                                                         <div class="col-md-4">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
-                                                                    <label for="FatherName">Father's Name<samp style="color: red">* </samp> </label>
+                                                                    <label for="FatherName">Father's Name<samp style="color: red">* </samp>
+                                                                    </label>
                                                                     <asp:TextBox class="form-control" ID="txtFatherNmae" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFatherNmae"
                                                                         ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="form-group" style="margin-top: -26px; margin-bottom: 0px;">
-                                                                    <label for="Aadhaar">Aadhaar Card No.<samp style="color: red">* </samp></label>
+                                                                <div class="form-group" style="margin-bottom: 0px;">
+                                                                    <label for="Aadhaar">Aadhaar Card No.<samp style="color: red">* </samp>
+                                                                    </label>
                                                                     <asp:TextBox class="form-control" ID="txtAadhaar" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="formatAadhaarInput()" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAadhaar"
                                                                         ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                    <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtAadhaar"   ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
+                                                                    <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtAadhaar" ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
                                                                 </div>
                                                                 <%--<asp:UpdatePanel ID="UpdatePanelCalculatedMonths" runat="server">
                                                                     <ContentTemplate>
@@ -530,7 +540,8 @@
                                                         <div class="col-md-4">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
-                                                                    <label for="Gender">Gender<samp style="color: red">* </samp></label>
+                                                                    <label for="Gender">Gender<samp style="color: red">* </samp>
+                                                                    </label>
                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                         ID="ddlGender" runat="server" TabIndex="16">
                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -543,7 +554,8 @@
                                                                 <asp:UpdatePanel ID="UpdatePanelDOB" runat="server">
                                                                     <ContentTemplate>
                                                                         <div class="form-group" style="margin-top: 20px;">
-                                                                            <label>Date of Birth<samp style="color: red">* </samp></label>
+                                                                            <label>Date of Birth<samp style="color: red">* </samp>
+                                                                            </label>
                                                                             <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDOB" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true" OnTextChanged="txtDOB_TextChanged"> </asp:TextBox>
                                                                     </ContentTemplate>
                                                                     <Triggers>
@@ -571,7 +583,7 @@
                                                     </div>
 
                                                 </div>
-                                                <hr style="margin-top: 26px;" />
+                                                <hr style="margin-top: 10px;" />
                                             </div>
 
                                             <div class="row">
@@ -583,7 +595,8 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="CommunicationAddress">Address for Communication<samp style="color: red">* </samp></label>
+                                                        <label for="CommunicationAddress">Address for Communication<samp style="color: red">* </samp>
+                                                        </label>
                                                         <asp:TextBox class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
                                                             ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -594,8 +607,9 @@
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="State1">State<samp style="color: red">* </samp></label>
-                                                                            <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 94px; height: 26px;"
+                                                                            <label for="State1">State<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 26px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
                                                                                 ID="ddlState1" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlState1_SelectedIndexChanged">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                 <%--<asp:ListItem Text="Male" Value="1"></asp:ListItem>
@@ -607,20 +621,22 @@
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="District">District<samp style="color: red">* </samp></label>
-                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 94px; height: 25px;"
+                                                                            <label for="District">District<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 25px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
                                                                                 ID="ddlDistrict1" AutoPostBack="true" runat="server" TabIndex="16">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                 <%--<asp:ListItem Text="Male" Value="1"></asp:ListItem>
                                                                         <asp:ListItem Text="Female" Value="2"></asp:ListItem>
                                                                         <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
                                                                             </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13"  ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="Name">Pincode<samp style="color: red">* </samp></label>
+                                                                            <label for="Name">Pincode<samp style="color: red">* </samp>
+                                                                            </label>
                                                                             <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPinCode" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtPinCode"
                                                                                 ErrorMessage="Please Enter Your Pincode" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Pincode</asp:RequiredFieldValidator>
@@ -630,15 +646,17 @@
                                                             </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
-                                                    <div class="form-group" style="margin-top: -30px;">
-                                                        <label for="phone">Phone No.<samp style="color: red">* </samp></label>
+                                                    <div class="form-group" style="margin-top: -20px;">
+                                                        <label for="phone">Phone No.<samp style="color: red">* </samp>
+                                                        </label>
                                                         <asp:TextBox class="form-control" ID="txtphone" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="2" MaxLength="10" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorContect" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtphone"
                                                             ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="phone">Password<samp style="color: red">* </samp></label>
+                                                        <label for="phone">Password<samp style="color: red">* </samp>
+                                                        </label>
                                                         <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorPassword" style="color: red"></span>
                                                         <asp:RegularExpressionValidator ID="regexPassword" runat="server"
@@ -647,9 +665,9 @@
                                                             ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" ForeColor="Red"
                                                             Display="Dynamic">
                                                         </asp:RegularExpressionValidator>
-                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPassword"
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPassword"
                                                             ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -666,8 +684,9 @@
                                                                         <div class="row">
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label for="State">State<samp style="color: red">* </samp></label>
-                                                                                    <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 85px; height: 29px;"
+                                                                                    <label for="State">State<samp style="color: red">* </samp>
+                                                                                    </label>
+                                                                                    <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 29px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
                                                                                         ID="ddlState" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                     </asp:DropDownList>
@@ -676,8 +695,9 @@
                                                                             </div>
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label for="District">District<samp style="color: red">* </samp></label>
-                                                                                    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; height: 30px;"
+                                                                                    <label for="District">District<samp style="color: red">* </samp>
+                                                                                    </label>
+                                                                                    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 30px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
                                                                                         ID="ddlDistrict" AutoPostBack="true" runat="server" TabIndex="16">
                                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                         <%--<asp:ListItem Text="Male" Value="1"></asp:ListItem>
@@ -689,7 +709,8 @@
                                                                             </div>
                                                                             <div class="col-md-4">
                                                                                 <div class="form-group">
-                                                                                    <label for="Pincode">Pincode<samp style="color: red">* </samp></label>
+                                                                                    <label for="Pincode">Pincode<samp style="color: red">* </samp>
+                                                                                    </label>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPin" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtPin"
                                                                                         ErrorMessage="Please Enter Your Pin" ValidationGroup="Submit" ForeColor="Red">Please Enter Your Pin</asp:RequiredFieldValidator>
@@ -698,8 +719,9 @@
                                                                 </ContentTemplate>
                                                             </asp:UpdatePanel>
                                                             </div>
-                                                    <div class="form-group" style="margin-top: -30px;">
-                                                        <label for="Email">Email Id<samp style="color: red">* </samp></label>
+                                                    <div class="form-group" style="margin-top: -20px;">
+                                                        <label for="Email">Email Id<samp style="color: red">* </samp>
+                                                        </label>
                                                         <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" onkeyup="return ValidateEmail();" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblError" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtEmail"
@@ -707,7 +729,8 @@
                                                     </div>
 
                                                             <div class="form-group">
-                                                                <label for="phone">Confirm Password<samp style="color: red">* </samp></label>
+                                                                <label for="phone">Confirm Password<samp style="color: red">* </samp>
+                                                                </label>
                                                                 <asp:TextBox class="form-control" ID="txtConfirmPswrd" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" Style="width: 100%;"> </asp:TextBox>
                                                                 <span id="lblrPassword" style="color: red"></span>
                                                                 <asp:CompareValidator ID="comparePassword" runat="server"
@@ -718,9 +741,9 @@
                                                                     Operator="Equal" ForeColor="Red"
                                                                     Display="Dynamic">
                                                                 </asp:CompareValidator>
-                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtConfirmPswrd"
-                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                              
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtConfirmPswrd"
+                                                                    ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                                             </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
@@ -732,7 +755,7 @@
                                         <br />
 
                                         <div class="row" style="margin-left: 0px;">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style="padding-left: 0px;">
                                                 <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnBack_Click" />
 
                                             </div>
@@ -747,7 +770,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
                     </div>
                 </div>
             </section>
@@ -755,25 +778,23 @@
         </main>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
-        <footer id="footer" style="background: #d1e6ff;">
+        <footer id="footer" style="background-color: #d1e6ff !important;">
 
-            <%-- <div class="container py-4">
+
+            <div class="container py-4">
                 <div class="copyright">
-                    &copy; Copyright
-                <strong>
-                    <span>BizLand</span>
-                </strong>
-                    . All Rights Reserved
+                    All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
+                    SCO NO 117-118, Top Floor, Sector 17-B,Chandigarh-160017. </span>
                 </div>
-                <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-                    Designed by
-                <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
+                <%--<div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+                Developed by
+<a href="http://safedot.in/">Safedot E Solution Pvt. Ltd.</a>
             </div>--%>
+            </div>
         </footer>
         <!-- End Footer -->
         <div id="preloader"></div>
@@ -996,21 +1017,21 @@
               }
           }
       </script>--%>
-       <script type="text/javascript">
-           function formatAadhaarInput() {
-               var aadhaarTextbox = document.getElementById('<%= txtAadhaar.ClientID %>');
-               var inputValue = aadhaarTextbox.value.replace(/\s/g, ''); // Remove existing spaces
-               var formattedValue = '';
+    <script type="text/javascript">
+        function formatAadhaarInput() {
+            var aadhaarTextbox = document.getElementById('<%= txtAadhaar.ClientID %>');
+            var inputValue = aadhaarTextbox.value.replace(/\s/g, ''); // Remove existing spaces
+            var formattedValue = '';
 
-               for (var i = 0; i < inputValue.length; i++) {
-                   if (i > 0 && i % 4 === 0) {
-                       formattedValue += ' '; // Insert a space after every 4 characters
-                   }
-                   formattedValue += inputValue[i];
-               }
+            for (var i = 0; i < inputValue.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' '; // Insert a space after every 4 characters
+                }
+                formattedValue += inputValue[i];
+            }
 
-               aadhaarTextbox.value = formattedValue;
-           }
-       </script>
+            aadhaarTextbox.value = formattedValue;
+        }
+    </script>
 </body>
 </html>

@@ -115,24 +115,33 @@ table#ContentPlaceHolder1_GridView1 {
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10" 
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"  BorderWidth="1px" BorderColor="#dbddff">
+                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10"
+                            AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
-                                
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor"/>
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                <asp:TemplateField >
+                                     <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <HeaderTemplate>
+                                        <asp:CheckBox ID="chkSelectAll" runat="server" />
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblIntimations" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                
+
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Ids") %>'></asp:Label>
@@ -142,7 +151,7 @@ table#ContentPlaceHolder1_GridView1 {
                                 <asp:TemplateField HeaderText="Id" Visible="False">
 
                                     <ItemTemplate>
-                                        <asp:Label ID="lblVoltageLevel" runat="server" Visible="false" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
+                                       <%-- <asp:Label ID="lblVoltageLevel" runat="server" Visible="false" Text='<%#Eval("VoltageLevel") %>'></asp:Label>--%>
 
                                         <asp:Label ID="lblTyps" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
                                         <asp:Label ID="lblhistory" runat="server" Text='<%#Eval("history") %>'></asp:Label>
@@ -159,6 +168,7 @@ table#ContentPlaceHolder1_GridView1 {
                                            <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("Apllication") %> ' 
                                                CommandName="Select" ><%#Eval("Apllication") %></asp:LinkButton>
                                     </ItemTemplate>
+
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Typs" HeaderText="Installations Type">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
@@ -224,5 +234,12 @@ table#ContentPlaceHolder1_GridView1 {
             }
         }
     </script>
-
+      <script type="text/javascript">
+          function SelectAllCheckboxes(headerCheckbox) {
+              var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
+              for (var i = 0; i < checkboxes.length; i++) {
+                  checkboxes[i].checked = headerCheckbox.checked;
+              }
+          }
+      </script>
 </asp:Content>
