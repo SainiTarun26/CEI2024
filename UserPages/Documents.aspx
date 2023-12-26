@@ -299,85 +299,24 @@
                                     <span>Home</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">About CEI</a>
-                                </li>
-                                <li>
-                                    <a href="#">State Licensing Board, Haryana</a>
-                                </li>
-                                <li>
-                                    <a href="#">Functions</a>
-                                </li>
-                            </ul>--%>
                             </li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Lift & Esclator</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Procedure For Registration/
-                                    <br>
-                                        Inspection Lifts and Esclators
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Checklist for Registration/
-                                    <br>
-                                        Inspection of Lifts and Esclators
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Forms</a>
-                                </li>
-                            </ul>--%>
                             </li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Licensing</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Procedure/ Condition
-                                    <br>
-                                        for Various Licences/ Certificates
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Electrical Supervisor Competency
-                                    <br />
-                                        Certificate(Excemption)
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Forms(Licence)</a>
-                                </li>
-                            </ul>--%>
                             </li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Inspection</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Checklist for Online Service(Inspection)</a>
-                                </li>
-                                <li>
-                                    <a href="#">Procedure for Electrical Installation</a>
-                                </li>
-                                <li>
-                                    <a href="#">Procedure for Grant of
-                                    <br>
-                                        approval for Energisation of
-                                    <br>
-                                        New Electrical Installation
-                                    </a>
-                                </li>
-                            </ul>--%>
                             </li>
                             <li>
                                 <a class="nav-link scrollto" href="#team">Publication</a>
@@ -387,11 +326,6 @@
                                     <span>Services</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Our Services</a>
-                                </li>
-                            </ul>--%>
                             </li>
                             <li>
                                 <a class="nav-link scrollto" href="#contact">Contact Us</a>

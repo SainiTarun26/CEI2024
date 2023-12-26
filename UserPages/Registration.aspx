@@ -647,7 +647,9 @@
                                                             ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" ForeColor="Red"
                                                             Display="Dynamic">
                                                         </asp:RegularExpressionValidator>
-                                                    </div>
+                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPassword"
+                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -716,6 +718,9 @@
                                                                     Operator="Equal" ForeColor="Red"
                                                                     Display="Dynamic">
                                                                 </asp:CompareValidator>
+                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtConfirmPswrd"
+                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                              
                                                             </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
