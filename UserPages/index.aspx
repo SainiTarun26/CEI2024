@@ -24,6 +24,9 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
+        #hero {
+    height: 63vh !important;
+}
         .body{
             zoom:90% !important; 
         }
@@ -257,9 +260,9 @@ padding: 10px 0px 10px 10px;}
             <section id="topbar" class="d-flex align-items-center">
                 <div class="container d-flex justify-content-center justify-content-md-between">
                     <div class="contact-info d-flex align-items-center">
-                        <i class="bi bi-envelope d-flex align-items-center">
+                       <%-- <i class="bi bi-envelope d-flex align-items-center">
                             <a href="mailto:contact@example.com">contact@example.com</a>
-                        </i>
+                        </i>--%>
                         <i class="bi bi-phone d-flex align-items-center ms-4">
                             <span>+1 5589 55488 55</span>
                         </i>
@@ -464,7 +467,7 @@ padding: 10px 0px 10px 10px;}
                             <div>
                                 <h1>Welcome to
               <span>CEI, Haryana</span>
-                                </h1>]iu
+                                </h1>
                                 <h2>SCO NO 117-118, TOP FLOOR, SECTOR 17-B, CHANDIGARH</h2>
                                 <!-- <div class="d-flex">
         <a href="#about" class="btn-get-started scrollto">Get Started</a>
@@ -549,7 +552,7 @@ padding: 10px 0px 10px 10px;}
                 <!-- ======= About Section ======= -->
                 <section id="about" class="about section-bg" style="margin-top: -40px;">
                     <div class="row">
-                        <div class="col-lg-2" style="margin-left: 20px; margin-top: 85px;" data-aos="fade-right">
+                        <div class="col-lg-2" style="margin-left: 20px;" data-aos="fade-right">
                             <div class="card" style="width: 220px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                 <div class="card-header"
                                     style="background-color: #106eea; color: #f9f9f9; text-align: center; font-weight: 700;">
@@ -602,23 +605,23 @@ padding: 10px 0px 10px 10px;}
                             </div>
                         </div>
                         <div class="col-lg-9" style="margin-top: -15px;">
-                            <div class="container" data-aos="fade-up">
-                                <div class="section-title">
-                                    <h3>
-                                        <span>About CEI</span>
-                                    </h3>
-                                </div>
-                                <div class="row">
+                            <div class="container" data-aos="fade-up">                               
+                                <div class="row" style="margin-top:15px;">
                                     <div class="col-lg-6" data-aos-delay="100">
-                                        <img src="/Assets/about_bg.png" class="img-fluid" alt="" data-aos="flip-up">
-                                        <br>
+                                        <img src="/Assets/about_bg.png" class="img-fluid" alt="" data-aos="flip-up"/>
+                                        <br/>
                                         <img src="/Assets/about_bg2.png" class="img-fluid" alt="" style="margin-top: 45px;"
-                                            data-aos="flip-down">
+                                            data-aos="flip-down"/>
                                     </div>
                                     <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
-                                        data-aos-delay="100">
-                                        <h3>Chief Electrical Inspector Department, Haryana.</h3>
-                                        <p class="fst-italic">
+                                        data-aos-delay="100" style="margin-top:-40px;">
+                                         <div class="section-title">
+     <h3 style="font-size:30px; margin-top:-20px;text-align:justify">
+         <span>About CEI</span>
+     </h3>
+ </div>
+                                        <h3 style="margin-top:-20px; font-size:22px;">Chief Electrical Inspector Department, Haryana.</h3>
+                                        <p class="fst-italic" style="text-align:justify;">
                                             On creation of the State of Haryana in the 1966, Electrical Inspectorate Haryana started its
                   functioning with Headquarters at Chandigarh.
                   The Department functions under the administrative control of the Principal Secretary to Govt.
@@ -666,19 +669,20 @@ padding: 10px 0px 10px 10px;}
             <footer id="footer" style="background-color: #d1e6ff !important;">
 
 
-                <%--<div class="container py-4">
+                <div class="container py-4">
                     <div class="copyright">
-                        All Rights Reserved
+                        All Rights Reserved @ <span style="color:blue;">Chief Electrical Inspector Govt. of Haryana,
+                            SCO NO 117-118, Top Floor, Sector 17-B,Chandigarh-160017. </span>
                     </div>
-                    <div class="credits">
+                    <%--<div class="credits">
                         <!-- All the links in the footer should remain intact. -->
                         <!-- You can delete the links only if you purchased the pro version. -->
                         <!-- Licensing information: https://bootstrapmade.com/license/ -->
                         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
                         Developed by
         <a href="http://safedot.in/">Safedot E Solution Pvt. Ltd.</a>
-                    </div>
-                </div>--%>
+                    </div>--%>
+                </div>
             </footer>
             <!-- End Footer -->
             <div id="preloader"></div>
