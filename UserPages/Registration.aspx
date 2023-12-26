@@ -467,7 +467,7 @@
                                                 <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">Applying For<samp style="color: red">* </samp>
                                                     :</label>
                                                 <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
-                                                    <asp:DropDownList class="select-form select2" ID="ddlcategory" Style="margin-left: -35px;" runat="server">
+                                                    <asp:DropDownList class="select-form select2" ID="ddlcategory" AutoPostBack="true" Style="margin-left: -35px;" runat="server" OnSelectedIndexChanged="ddlcategory_SelectedIndexChanged">
                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                         <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
