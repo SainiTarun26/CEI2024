@@ -78,39 +78,11 @@ namespace CEIHaryana.SiteOwnerPages
 
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblhistory = (Label)row.FindControl("lblhistory");
-                    if (lblhistory.Text.Trim() == "Generated")
-                    {
-                        string script = "alert(\"You already created a test report for this. It is now only visible under Test Report History.\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    }
-                    else
-                    {
-                        Label lblTyps = (Label)row.FindControl("lblTyps");
-                        Session["Typs"] = lblTyps.Text.Trim();
-                        Label lblApllication = (Label)row.FindControl("lblApllication");
-                        Session["Application"] = lblApllication.Text.Trim();
-                        Label lblIntimations = (Label)row.FindControl("lblIntimations");
-                        Session["Intimations"] = lblIntimations.Text.Trim();
-                        Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
-                        Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
-                        Label lblID = (Label)row.FindControl("lblID");
-                        Session["IHID"] = lblID.Text.Trim();
-                        Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
-                        Session["VoltageLevel"] = lblVoltageLevel.Text.Trim();
-                        if (lblTyps.Text.Trim() == "Line")
-                        {
-                            Response.Redirect("/Supervisor/LineTestReport.aspx", false);
-                        }
-                        else if (lblTyps.Text.Trim() == "Substation Transformer")
-                        {
-                            Response.Redirect("/Supervisor/SubstationTestReport.aspx", false);
-                        }
-                        else if (lblTyps.Text.Trim() == "Generating Set")
-                        {
-                            Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
-                        }
-                    }
+                 
+                     
+                            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
+                      
+                    
 
 
                 }

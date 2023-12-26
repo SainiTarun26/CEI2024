@@ -106,53 +106,56 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-
-                string Category = string.Empty;
-                string name = txtName.Text;
-                string dob = txtDOB.Text;
-
-                string firstNamePart = name.Length >= 4 ? name.Substring(0, 4) : name;
-
-                string numericDOB = new string(dob.Where(char.IsDigit).ToArray());
-
-                string userId = $"{firstNamePart}{numericDOB}";
-
-                if (ddlcategory.SelectedValue == "1")
+                if (txtPassword.Text != txtConfirmPswrd.Text)
                 {
-                    Category = "Wireman";
+
+                    string Category = string.Empty;
+                    string name = txtName.Text;
+                    string dob = txtDOB.Text;
+
+                    string firstNamePart = name.Length >= 4 ? name.Substring(0, 4) : name;
+
+                    string numericDOB = new string(dob.Where(char.IsDigit).ToArray());
+
+                    string userId = $"{firstNamePart}{numericDOB}";
+
+                    if (ddlcategory.SelectedValue == "1")
+                    {
+                        Category = "Wireman";
+                    }
+                    else if (ddlcategory.SelectedValue == "2")
+                    {
+                        Category = "Supervisor";
+                    }
+                    else
+                    {
+                        Category = "Contractor";
+                    }
+                    GetIP();
+                    CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+           txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
+           txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
+           txtPin.Text, txtConfirmPswrd.Text, ipaddress);
+
+
+                    MailMessage mailMessage = new MailMessage();
+                    mailMessage.From = new MailAddress("cs.nehaa6@gmail.com");
+                    mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Credentials"; string body = $"Dear Customer, Your Account is created. Your user id is First 4 characters of your Name + your date of birth. ";
+                    mailMessage.Body = body;
+
+                    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                    smtpClient.Port = 587;
+                    smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
+                    smtpClient.EnableSsl = true;
+
+                    smtpClient.Send(mailMessage);
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
                 }
-                else if (ddlcategory.SelectedValue == "2")
-                {
-                    Category = "Supervisor";
+
+                else { 
                 }
-                else
-                {
-                    Category = "Contractor";
-                }
-                GetIP();
-                CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
-       txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
-       txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
-       txtPin.Text, txtConfirmPswrd.Text, ipaddress);
-
-
-                MailMessage mailMessage = new MailMessage();
-                mailMessage.From = new MailAddress("cs.nehaa6@gmail.com");
-                mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Credentials"; string body = $"Dear Customer, Your Account is created. Your user id is First 4 characters of your Name + your date of birth. ";
-                mailMessage.Body = body;
-
-                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-                smtpClient.Port = 587;
-                smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
-                smtpClient.EnableSsl = true;
-
-                smtpClient.Send(mailMessage);
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-
-
-
-
             }
             catch (Exception)
             {

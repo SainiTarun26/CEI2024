@@ -242,6 +242,7 @@ namespace CEIHaryana.Contractor
             {
 
                 string PANNumber = txtPAN.Text.Trim();
+                Page.ClientScript.RegisterStartupScript(GetType(), "validatePAN", "if(!validatePAN()) { alert('PAN card is Invalid'); return; }", true);
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(PANNumber);
                 if (ds.Tables[0].Rows.Count > 0)

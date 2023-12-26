@@ -50,6 +50,28 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function validatePAN() {
+            var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
+     var panValidator = document.getElementById('<%= revPAN.ClientID %>');
+
+            if (panTextBox.value.length > 0 && !panValidator.isvalid) {
+                alert("Please enter a valid PAN number.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function preventEnterSubmit(e) {
+            // Prevent form submission on Enter key press
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        }
+ </script>
     <style>
         td {
             padding: 8px !important;

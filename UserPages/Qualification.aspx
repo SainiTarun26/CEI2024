@@ -112,10 +112,10 @@
 
         input.form-control {
             height: 1px;
-            width: 90%;
+            width: 100% !important;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             padding: 0px 0px 0px 0px;
-            height: 30px !important;
+            height: 25px !important;
             text-align: center;
         }
 
@@ -157,7 +157,7 @@
         }
 
         select#ddlQualification {
-            height: 30px;
+            height: 25px;
             width: 100%;
             font-size: 13px;
             text-align: center;
@@ -167,7 +167,7 @@
         }
 
             select#ddlQualification:hover {
-                height: 30px;
+                height: 25px;
                 width: 100%;
                 font-size: 13px;
                 text-align: center;
@@ -176,8 +176,92 @@
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
 
+        select#DropDownList1 {
+            height: 25px;
+            width: 100%;
+            font-size: 13px;
+            text-align: center;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+            select#DropDownList1:hover {
+                height: 25px;
+                width: 100%;
+                font-size: 13px;
+                text-align: center;
+                border: 1px solid #ced4da;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+
+             select#DropDownList2 {
+     height: 25px;
+     width: 100%;
+     font-size: 13px;
+     text-align: center;
+     border: 1px solid #ced4da;
+     border-radius: 5px;
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+ }
+
+     select#DropDownList2:hover {
+         height: 25px;
+         width: 100%;
+         font-size: 13px;
+         text-align: center;
+         border: 1px solid #ced4da;
+         border-radius: 5px;
+         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+     }
+
+     
+             select#DropDownList3 {
+     height: 30px;
+     width: 100%;
+     font-size: 13px;
+     text-align: center;
+     border: 1px solid #ced4da;
+     border-radius: 5px;
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+ }
+
+     select#DropDownList3:hover {
+         height: 30px;
+         width: 100%;
+         font-size: 13px;
+         text-align: center;
+         border: 1px solid #ced4da;
+         border-radius: 5px;
+         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+     }
+             select#DropDownList4 {
+     height: 30px;
+     width: 100%;
+     font-size: 13px;
+     text-align: center;
+     border: 1px solid #ced4da;
+     border-radius: 5px;
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+ }
+
+     select#DropDownList4:hover {
+         height: 30px;
+         width: 100%;
+         font-size: 13px;
+         text-align: center;
+         border: 1px solid #ced4da;
+         border-radius: 5px;
+         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+     }
+
+
+
+
+
         select#ddlQualification1 {
-            height: 30px;
+            height: 25px;
             width: 100%;
             font-size: 13px;
             text-align: center;
@@ -187,7 +271,7 @@
         }
 
             select#ddlQualification1:hover {
-                height: 30px;
+                height: 25px;
                 width: 100%;
                 font-size: 13px;
                 text-align: center;
@@ -197,7 +281,7 @@
             }
 
         select#ddlQualification2 {
-            height: 30px;
+            height: 25px;
             width: 100%;
             font-size: 13px;
             text-align: center;
@@ -207,7 +291,7 @@
         }
 
             select#ddlQualification2:hover {
-                height: 30px;
+                height: 25px;
                 width: 100%;
                 font-size: 13px;
                 text-align: center;
@@ -381,8 +465,7 @@
                 <section id="about" class="about section-bg">
                     <div class="container" data-aos="fade-up">
                         <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <p style="text-align: center;">
                                     (Please read the instructions carefully as given in Instruction
                             Page before filling the form)
@@ -401,10 +484,10 @@
                                                     <thead>
                                                         <tr style="text-align: center;">
 
-                                                            <th scope="col">Exam Name</th>
+                                                            <th scope="col" style="width: 20% !important;">Exam Name</th>
                                                             <th scope="col">Board/University Name</th>
-                                                            <th scope="col">Passing Year</th>
-                                                            <th scope="col">Obtained Marks&nbsp;/&nbsp;Max Marks
+                                                            <th scope="col" style="width: 0% !important;">Passing Year</th>
+                                                            <th scope="col" style="width: 0% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks
                                                         <%--<div class="row">
                                                             <div class="col-md-6">
                                                                 <p>Obtained Marks</p>
@@ -414,7 +497,7 @@
                                                             </div>
                                                         </div>--%>
                                                             </th>
-                                                            <th scope="col">% </th>
+                                                            <th scope="col" style="width: 10% !important;">% </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -604,6 +687,7 @@
                                                             <th scope="col">Permit No.</th>
                                                             <th scope="col">Issuing Authority</th>
                                                             <th scope="col">Issue Date</th>
+                                                            <th scope="col">Expiry Date</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -622,6 +706,9 @@
                                                             <td>
                                                                 <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtIssuingDate" runat="server"> </asp:TextBox>
                                                             </td>
+                                                            <td>
+    <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="TextBox5" runat="server"> </asp:TextBox>
+</td>
                                                         </tr>
                                                         <tr>
                                                             <td style="text-align: center; font-size: 13px;">2
@@ -637,6 +724,9 @@
                                                             </td>
                                                             <td>
                                                                 <asp:TextBox class="form-control" type="date" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtIssuingDate1" runat="server"> </asp:TextBox>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" type="date" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtIssuingDate2" runat="server"> </asp:TextBox>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -701,9 +791,13 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                         <tr style="text-align: center;">
-                                                            <th scope="col">Sno.</th>
-                                                            <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
+                                                          <%--  <th scope="col">Sno.</th>--%>
+                                                            <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Experienced in &nbsp;
                                                         &nbsp;&nbsp; &nbsp; </th>
+                                                                <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Training Under &nbsp;
+&nbsp;&nbsp; &nbsp; </th>
+                                                            <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
+&nbsp;&nbsp; &nbsp; </th>
                                                             <th scope="col">Post Description</th>
                                                             <th scope="col">From</th>
                                                             <th scope="col">To</th>
@@ -711,7 +805,25 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td style="text-align: center; font-size: 13px;">1
+                                                          <%--  <td style="text-align: center; font-size: 13px;">1
+                                                            </td>--%>
+                                                            <td>
+    <asp:DropDownList class="  select-form select2" ID="DropDownList2" runat="server" TabIndex="16" AutoPostBack="true">
+        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+        <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+        <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+        <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+
+    </asp:DropDownList>
+</td>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="DropDownList1" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+
+                                                                </asp:DropDownList>
                                                             </td>
                                                             <td>
                                                                 <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployerName1" runat="server"> </asp:TextBox>
@@ -735,33 +847,48 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="hidethis" style="display: none;">
-                                                            <td style="text-align: center; font-size: 13px;">2
+                                                                                                                        <td>
+    <asp:DropDownList class="  select-form select2" ID="DropDownList3" runat="server" TabIndex="16" AutoPostBack="true">
+        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+        <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+        <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+        <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+
+    </asp:DropDownList>
+</td>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="DropDownList4" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+
+                                                                </asp:DropDownList>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer" runat="server"> </asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtEmployer"
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtEmployerName1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtDescript" runat="server"> </asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtDescript"
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="TextBox2" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtDescription1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtFrm1" runat="server"> </asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtFrm1"
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox3" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtFrom1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtToDate" runat="server"> </asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtToDate"
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox4" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtTo1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
-
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="font-size: 12px;">Add more Experience?</td>
-                                                            <td colspan="5" style="font-size: 12px;">
+                                                          
+                                                            <td colspan="6" style="font-size: 12px;">Add more Experience?
                                                                 <input type="radio" name="citizen" value="yes" onclick="on();" />Yes
                                                                 <input type="radio" name="citizen"
                                                                     value="no" onclick="off();" />No</td>
@@ -782,7 +909,7 @@
                                                 </asp:RadioButtonList>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <%--<div class="row">
                                             <div class="table-responsive" id="RetiredEmployee" runat="server">
                                                 <table class="table table-bordered">
                                                     <thead>
@@ -815,7 +942,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-6">
                                                 <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
