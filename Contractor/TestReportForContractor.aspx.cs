@@ -84,15 +84,19 @@ namespace CEIHaryana.Contractor
                     Session["ReasionForRejection"] = lblReasionRejection.Text;
                     if (e.CommandName == "Select")
                     {
-                        //if (lblApproval.Text.Trim() == "Reject")
-                        //{
-                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                        //}
-                        //else
-                        //{
-                        //    Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
-                        //}
-
+                        if (lblTypeOf.Text.Trim() == "Line") 
+                        {
+                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                        }
+                        else if (lblTypeOf.Text.Trim() == "Substation")
+                        {
+                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                        }
+                        else if (lblTypeOf.Text.Trim() == "Generating")
+                        {
+                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                        }
+                 
                     }
                 }
             }

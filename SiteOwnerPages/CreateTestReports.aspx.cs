@@ -1,21 +1,16 @@
-﻿using System;
+﻿using CEI_PRoject;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CEIHaryana;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using CEI_PRoject;
-using System.Runtime.ConstrainedExecution;
 
-namespace CEIHaryana.Supervisor
+namespace CEIHaryana.SiteOwnerPages
 {
-    public partial class InstallationDetails : System.Web.UI.Page
+    public partial class CreateTestReports : System.Web.UI.Page
     {
-
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,13 +18,13 @@ namespace CEIHaryana.Supervisor
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
+                    if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
                         getWorkIntimationData();
                     }
                 }
             }
-            catch 
+            catch
             {
                 Response.Redirect("/login.aspx");
             }
@@ -37,11 +32,11 @@ namespace CEIHaryana.Supervisor
 
         private void getWorkIntimationData()
         {
-            string Id = Session["id"].ToString();
+            string Id = Session["SiteOwnerId"].ToString();
 
-            DataTable ds = new DataTable();
-            ds = CEI.GetInstllationsforSupervisor(Id);
-            if (ds.Rows.Count > 0)
+            DataSet ds = new DataSet();
+            ds = CEI.TestReportData(Id);
+            if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();

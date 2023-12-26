@@ -322,6 +322,12 @@
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Pending Payments</span>
                                 </a>
+                            </li>    
+                          <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Create TestReports</span>
+                                </a>
                             </li>
                      <%--     <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/PeroidicInspection.aspx">

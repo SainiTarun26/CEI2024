@@ -60,13 +60,13 @@ namespace CEIHaryana
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// WrongCredentials control.
+        /// chkSignedin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WrongCredentials;
+        protected global::System.Web.UI.WebControls.CheckBox chkSignedin;
 
         /// <summary>
         /// BtnLogin control.
@@ -78,21 +78,12 @@ namespace CEIHaryana
         protected global::System.Web.UI.WebControls.Button BtnLogin;
 
         /// <summary>
-        /// chkSignedin control.
+        /// WrongCredentials control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkSignedin;
-
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WrongCredentials;
     }
 }

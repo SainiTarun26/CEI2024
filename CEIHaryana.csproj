@@ -1771,6 +1771,7 @@
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
+    <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
@@ -2093,6 +2094,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.designer.cs">
       <DependentUpon>CreateInspectionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\CreateTestReports.aspx.cs">
+      <DependentUpon>CreateTestReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\CreateTestReports.aspx.designer.cs">
+      <DependentUpon>CreateTestReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GeneratingSet.aspx.cs">
       <DependentUpon>GeneratingSet.aspx</DependentUpon>

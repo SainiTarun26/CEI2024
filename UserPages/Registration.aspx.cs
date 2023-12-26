@@ -138,7 +138,7 @@ namespace CEIHaryana.UserPages
 
                 MailMessage mailMessage = new MailMessage();
                 mailMessage.From = new MailAddress("cs.nehaa6@gmail.com");
-                mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Login ID"; string body = $"Dear Customer, Your Account is created. Your user id is First 4 character of your Name + your full date of birth. ";
+                mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Credentials"; string body = $"Dear Customer, Your Account is created. Your user id is First 4 characters of your Name + your date of birth. ";
                 mailMessage.Body = body;
 
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
