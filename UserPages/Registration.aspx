@@ -471,7 +471,7 @@
                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                         <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
-                                                        <asp:ListItem Text="Contractor license" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                 </div>
@@ -487,7 +487,9 @@
                                                         <div class="col-md-4">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
-                                                                    <label for="Name">Name of Applicant<samp style="color: red">* </samp>
+                                                                    <label id ="WireSup" runat="server" visible="true">Name of Applicant<samp style="color: red">* </samp>
+                                                                    </label>
+                                                                    <label id ="contractor" runat="server" visible="false">Name in which Electrical contractor license is applied for<samp style="color: red">* </samp>
                                                                     </label>
                                                                     <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName"

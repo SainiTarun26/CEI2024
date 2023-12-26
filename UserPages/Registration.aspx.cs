@@ -378,5 +378,19 @@ namespace CEIHaryana.UserPages
         {
             Response.Redirect("/Login.aspx");
         }
+
+        protected void ddlcategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlcategory.SelectedValue =="3")
+            {
+                contractor.Visible = true;
+                WireSup.Visible = false;
+            }
+            else
+            {
+                contractor.Visible = false;
+                WireSup.Visible = true;
+            }
+        }
     }
 }
