@@ -134,11 +134,11 @@ table#ContentPlaceHolder1_GridView1 {
                                           <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                <asp:BoundField DataField="Name" HeaderText="Site Owner Name">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="ContactNo" HeaderText="Contact No">
+                                <asp:BoundField DataField="ContactNo" HeaderText="Site Owner Contact">
                                     <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>

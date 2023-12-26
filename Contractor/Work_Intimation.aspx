@@ -946,7 +946,8 @@
     <script type="text/javascript">
         function showHide() {
 
-            let experience = document.getElementById('experience');
+            let experience = document.getElementById(
+                'experience');
             if (experience.value == 1) {
                 document.getElementById('hidden-field').style.display = 'block';
             } else {
