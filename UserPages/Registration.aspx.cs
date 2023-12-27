@@ -155,12 +155,15 @@ namespace CEIHaryana.UserPages
                 }
 
                 else 
-                { 
+                {
+                    // Passwords do not match, show an alert
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please enter the same passwords.');", true);
                 }
             }
             catch (Exception)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please Add same Passwords');", true);
+                //  ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please Add same Passwords');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('An error occurred:');", true);
                 return; 
             }
         }

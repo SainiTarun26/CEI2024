@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="ConsolidatedReport.aspx.cs" Inherits="CEIHaryana.Officers.ConsolidatedReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="ConsolidatedReport.aspx.cs" Inherits="CEIHaryana.Officers.ConsolidatedReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -388,6 +388,7 @@
 
                             </Columns>
                         </asp:GridView>
+                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Download in Excel</asp:LinkButton>
                         <%-- <table class="table table-responsive table-striped table-hover table-bordered example">
                             <thead style="background: #604db8; color: white;">
                                 <tr>
