@@ -154,7 +154,8 @@ namespace CEIHaryana.UserPages
 
                 }
 
-                else { 
+                else 
+                { 
                 }
             }
             catch (Exception)
