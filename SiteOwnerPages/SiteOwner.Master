@@ -326,7 +326,7 @@
                           <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Create TestReports</span>
+                                    <span class="menu-title">Create Inspections</span>
                                 </a>
                             </li>
                      <%--     <li class="nav-item">

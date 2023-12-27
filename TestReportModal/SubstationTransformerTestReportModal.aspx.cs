@@ -39,19 +39,11 @@ namespace CEIHaryana.TestReportModal
                 {
                     ID = Session["SubStationID"].ToString();
                     GetDetailswithId();
-                    if (Convert.ToString(Session["Approval"]) == null || Convert.ToString(Session["Approval"]) == "")
-                    {
-                        SiteOwner.Visible = true;
-                        SiteOwner2.Visible = false;
-                        IntimationData.Visible = true;
-                    }
-                    else
-                    {
+                    
                         SiteOwner.Visible = false;
                         SiteOwner2.Visible = true;
                         IntimationData.Visible = true;
-
-                    }
+                  
                 }
                 else if (Session["InspectionTestReportId"] != null)
                 {
@@ -543,7 +535,7 @@ namespace CEIHaryana.TestReportModal
         protected void btnBack2_Click(object sender, EventArgs e)
         {
           
-                Response.Redirect("/SiteOwnerPages/Inspection.aspx", false);
+                Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
             
         }
     }

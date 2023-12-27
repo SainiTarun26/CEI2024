@@ -60,6 +60,7 @@ namespace CEIHaryana.SiteOwnerPages
                 string script = "alert(\"No Record Found\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
+            
             ds.Dispose();
         }
 
@@ -78,12 +79,9 @@ namespace CEIHaryana.SiteOwnerPages
 
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                 
-                     
-                            Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
-                      
-                    
-
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Session["id"] = lblID.Text;
+                    Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
 
                 }
                 else
@@ -92,7 +90,8 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
             catch (Exception)
-            { }
+            { 
+            }
         }
     }
 }

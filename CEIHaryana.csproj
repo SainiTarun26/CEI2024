@@ -1772,6 +1772,7 @@
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
+    <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
@@ -1812,6 +1813,7 @@
     <Content Include="UserPages\FormPrintContractor.aspx" />
     <Content Include="UserPages\FormPrintSupervisor.aspx" />
     <Content Include="UserPages\FormPrintWiremen.aspx" />
+    <Content Include="UserPages\Instructions.aspx" />
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
     <Content Include="UserPages\index.aspx" />
@@ -2101,6 +2103,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\CreateTestReports.aspx.designer.cs">
       <DependentUpon>CreateTestReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection.aspx.cs">
+      <DependentUpon>GenerateInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection.aspx.designer.cs">
+      <DependentUpon>GenerateInspection.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GeneratingSet.aspx.cs">
       <DependentUpon>GeneratingSet.aspx</DependentUpon>
@@ -2409,6 +2418,13 @@
     </Compile>
     <Compile Include="UserPages\FormPrintWiremen.aspx.designer.cs">
       <DependentUpon>FormPrintWiremen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\Instructions.aspx.cs">
+      <DependentUpon>Instructions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Instructions.aspx.designer.cs">
+      <DependentUpon>Instructions.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Qualification.aspx.cs">
       <DependentUpon>Qualification.aspx</DependentUpon>

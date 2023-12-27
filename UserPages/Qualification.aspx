@@ -43,6 +43,10 @@
         }
     </script>
     <style>
+        img {
+    margin-bottom: 20px !important;
+    margin-top: 10px;
+}
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -466,10 +470,11 @@
                     <div class="container" data-aos="fade-up">
                         <div class="row">
                             <div class="col-md-12">
-                                <p style="text-align: center;">
+                                <p style="text-align: center;font-weight: 700;margin-top: -40px;margin-bottom:10px;">
                                     (Please read the instructions carefully as given in Instruction
-                            Page before filling the form)
-                                </p>
+                            Page before filling the form) </p>
+                                    <img src="/Assets/capsules/qualification.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left:5%;" />
+                               
                                 <div class="card"
                                     style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                     <div class="card-body">

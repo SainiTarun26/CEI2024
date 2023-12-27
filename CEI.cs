@@ -6,6 +6,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Net;
+using System.Net.Mail;
+using System.Net.Sockets;
 using static System.Net.WebRequestMethods;
 
 namespace CEI_PRoject
@@ -379,7 +381,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string IdUpdate, string LineId, string IntimationId, string LineVoltage, string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string IdUpdate, string Count, string LineId, string IntimationId, string LineVoltage, string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -405,6 +407,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
+            cmd.Parameters.AddWithValue("@Count", Count);
             cmd.Parameters.AddWithValue("@Id", LineId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
@@ -486,7 +489,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert Substation Data
-        public void InsertSubstationData(string IdUpdate, string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string IdUpdate, string Count, string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
             string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation, string OtherLALocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
@@ -513,6 +516,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
+            cmd.Parameters.AddWithValue("@Count", Count);
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
@@ -710,7 +714,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert GeneratingSet Data
-        public void InsertGeneratingSetData(string IdUpdate, string Id, string TestReportId, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
+        public void InsertGeneratingSetData(string IdUpdate, string Count, string Id, string TestReportId, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
 string BreakingCapacityofBreaker, string TypeOfPlant, string CapacityOfPlantType, string CapacityOfPlant, string HighestVoltageLevelOfDCString, string LowestInsulationBetweenDCWireToEarth,
 string NoOfPowerPCV, string LTACBreakerCapacity, string ACCablesLowestInsulation, string NumberOfEarthing, string EarthingType1, string EarthingValue1, string UsedFor1, string OtherEarthing1, string EarthingType2,
 string EarthingValue2, string UsedFor2, string OtherEarthing2, string EarthingType3, string EarthingValue3, string UsedFor3, string OtherEarthing3, string EarthingType4, string EarthingValue4, string UsedFor4, string OtherEarthing4, string EarthingType5, string EarthingValue5,
@@ -730,6 +734,7 @@ string EarthingValue14, string UsedFor14, string OtherEarthing14, string Earthin
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
+            cmd.Parameters.AddWithValue("@Count", Count);
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
@@ -1286,6 +1291,29 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             respStreamReader.Close();
             myResp.Close();
             return otp;
+        }   
+        public string ValidateOTPthroughEmail(string Email)
+        {
+            //string mobilenumber = Session["Contact"].ToString();
+            Random random = new Random();
+            int otpInt = random.Next(100000, 999999);
+
+            string otp = otpInt.ToString("D6");
+            //Session["OTP"] = otp;
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("cs.nehaa6@gmail.com");
+            mailMessage.To.Add(Email); mailMessage.Subject = "Your Site Owner ID and Password";
+            string body = $"Dear Customer,"+ otp + " is the OTP for your request send to CEI Department, HRY.OTPs are SECRET.DO NOT share OTP with anyone";
+            mailMessage.Body = body;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
+            return otp;
         }
         public DataTable InspectionHistoryForAdminData()
         {
@@ -1826,6 +1854,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet TestReportData(string PANNumber)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner", PANNumber);
+        }
+        public DataSet SiteOwnerInstallations(string IntimationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationForSiteOwner", IntimationId);
+        } 
+        public DataSet GetData(string Inspectiontype,string IntimationId, string Count)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspection", Inspectiontype, IntimationId, Count);
         }
     }
 }

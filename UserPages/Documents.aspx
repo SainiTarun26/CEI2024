@@ -245,6 +245,10 @@
       margin-top: 15px;
       margin-bottom: 15px;
   }
+            img {
+    margin-top: 13px;
+    margin-bottom: 21px;
+}
     </style>
 </head>
 <body>
@@ -345,11 +349,12 @@
                     <div class="container" data-aos="fade-up">
                         <div class="row">
                             <div class="col-md-1"></div>
-                            <div class="col-md-10">
-                                <p style="text-align: center;">
+                            <div class="col-md-12">
+                                <p style="text-align: center;margin-top: -40px; font-weight: 700;">
                                     (Please read the instructions carefully as given in Instruction
                             Page before filling the form)
                                 </p>
+                                <img src="/Assets/capsules/documents.png" alt="NO IMAGE FOUND" style="width: 90%;margin-left:5%;" />
                                 <div class="card"
                                     style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                     <div class="card-body">
