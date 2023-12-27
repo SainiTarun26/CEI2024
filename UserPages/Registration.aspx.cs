@@ -106,7 +106,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (txtPassword.Text != txtConfirmPswrd.Text)
+                if (txtPassword.Text == txtConfirmPswrd.Text)
                 {
 
                     string Category = string.Empty;
@@ -160,7 +160,8 @@ namespace CEIHaryana.UserPages
             }
             catch (Exception)
             {
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please Add same Passwords');", true);
+                return; 
             }
         }
 

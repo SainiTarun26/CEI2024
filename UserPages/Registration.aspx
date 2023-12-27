@@ -762,7 +762,7 @@
 
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
-                                                <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
                                                     OnClick="btnNext_Click" />
                                                 <%--OnClientClick="return validateForm();"--%>
                                             </div>
