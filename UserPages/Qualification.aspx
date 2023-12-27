@@ -791,10 +791,10 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                         <tr style="text-align: center;">
-                                                          <%--  <th scope="col">Sno.</th>--%>
+                                                            <%--  <th scope="col">Sno.</th>--%>
                                                             <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Experienced in &nbsp;
                                                         &nbsp;&nbsp; &nbsp; </th>
-                                                                <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Training Under &nbsp;
+                                                            <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Training Under &nbsp;
 &nbsp;&nbsp; &nbsp; </th>
                                                             <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
 &nbsp;&nbsp; &nbsp; </th>
@@ -805,17 +805,17 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                          <%--  <td style="text-align: center; font-size: 13px;">1
+                                                            <%--  <td style="text-align: center; font-size: 13px;">1
                                                             </td>--%>
                                                             <td>
-    <asp:DropDownList class="  select-form select2" ID="DropDownList2" runat="server" TabIndex="16" AutoPostBack="true">
-        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-        <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
-        <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
-        <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+                                                                <asp:DropDownList class="  select-form select2" ID="DropDownList2" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
 
-    </asp:DropDownList>
-</td>
+                                                                </asp:DropDownList>
+                                                            </td>
                                                             <td>
                                                                 <asp:DropDownList class="  select-form select2" ID="DropDownList1" runat="server" TabIndex="16" AutoPostBack="true">
                                                                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -909,7 +909,7 @@
                                                 </asp:RadioButtonList>
                                             </div>
                                         </div>
-                                        <%--<div class="row">
+                                        <div class="row">
                                             <div class="table-responsive" id="RetiredEmployee" runat="server">
                                                 <table class="table table-bordered">
                                                     <thead>
@@ -942,7 +942,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>--%>
+                                        </div>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-6">
                                                 <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
