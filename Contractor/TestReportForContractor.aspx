@@ -220,7 +220,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("Type") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">

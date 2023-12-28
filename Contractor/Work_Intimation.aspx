@@ -278,7 +278,7 @@
                                     <div class="row">
                                         <div class="col-4" runat="server">
                                             <label for="PanNumber">
-                                                ID (PAN Card)
+                                                PAN Card
             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

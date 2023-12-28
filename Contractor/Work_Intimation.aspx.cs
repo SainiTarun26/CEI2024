@@ -242,7 +242,18 @@ namespace CEIHaryana.Contractor
             {
 
                 string PANNumber = txtPAN.Text.Trim();
-                Page.ClientScript.RegisterStartupScript(GetType(), "validatePAN", "if(!validatePAN()) { alert('PAN card is Invalid'); return; }", true);
+
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
+                if (!regex.IsMatch(PANNumber))
+                {
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
+
+                    return;
+                }
+
+
+
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(PANNumber);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -259,9 +270,17 @@ namespace CEIHaryana.Contractor
                     txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
+                }
 
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Log the exception or provide a more detailed error message
+                Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
+            }
         }
         protected void worktypevisiblity()
         {
