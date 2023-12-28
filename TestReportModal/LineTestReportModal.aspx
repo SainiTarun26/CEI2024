@@ -2015,7 +2015,14 @@ margin-top: 20px;
     margin: 5px 0px 10px 20px;
     width: 97%;
 }
-    </style>
+    </style><script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('You did not add any Email Please Contact Admin For Update your Email')) {
+                window.location.href = "/Contractor/Work_Intimation.aspx";
+            } else {
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">

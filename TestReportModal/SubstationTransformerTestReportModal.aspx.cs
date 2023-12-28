@@ -452,6 +452,7 @@ namespace CEIHaryana.TestReportModal
                 txtSealLevelPlinth.Text = ds.Tables[0].Rows[0]["SeaLevelOfTransformerInMeters"].ToString();
                 txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
             }
             catch
             {
@@ -510,21 +511,23 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 if (btnVerify.Text == "SendOTP")
-            {
-                OTP.Visible = true;
-                string mobilenumber = Session["Contact"].ToString();
-                Session["OTP"] = CEI.ValidateOTP(mobilenumber);
-                btnVerify.Text = "Verify";
-            }
-            else
-            {
-                if (Session["OTP"].ToString() == txtOtp.Text)
                 {
-                    Contractor2.Visible = true;
-                    Contractor3.Visible = false;
+                    OTP.Visible = true;
+                    string Email = Session["Email"].ToString();
+                    if (Email.Trim() == "")
+                    {
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+
+                    }
+                    else
+                    {
+                        Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
+                        btnVerify.Text = "Verify";
+                    }
                 }
                 }
-            }
             catch
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);

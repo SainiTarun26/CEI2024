@@ -361,15 +361,15 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="/Contractor/TestReportForContractor.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Pending Test Reports</span>
+                                    <span class="menu-title">Approval Pending Test Reports</span>
                                 </a>
                             </li>
-                             <%-- <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
+                              <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/Approved_Test_Reports.aspx">
                                     <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Consolidated Report</span>
+                                    <span class="menu-title">Action Taken</span>
                                 </a>
-                            </li>--%>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

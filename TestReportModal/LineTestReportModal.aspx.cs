@@ -576,6 +576,7 @@ namespace CEIHaryana.TestReportModal
                 txtCableLaid.Text = ds.Tables[0].Rows[0]["Cablelaidin"].ToString();
                 txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
             }
             catch
             {
@@ -645,9 +646,19 @@ namespace CEIHaryana.TestReportModal
                 if (btnVerify.Text == "SendOTP")
                 {
                     OTP.Visible = true;
-                    string mobilenumber = Session["Contact"].ToString();
-                    Session["OTP"] = CEI.ValidateOTP(mobilenumber);
-                    btnVerify.Text = "Verify";
+                    string Email = Session["Email"].ToString();
+                    if (Email.Trim() == "")
+                    {
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+
+                    }
+                    else
+                    {
+                        Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
+                        btnVerify.Text = "Verify";
+                    }
                 }
                 else
                 {
