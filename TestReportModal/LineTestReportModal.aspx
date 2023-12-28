@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="LineTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.LineTestReportModal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="LineTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.LineTestReportModal" %>
 
 <!DOCTYPE html>
 
@@ -17,6 +17,14 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+            div#IntimationData{
+       background: #ffffff !important;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+margin-left: -25px !important;
+margin-right: -25px !important;
+margin-top: 20px !important;
+padding: 15px !important;
+    }
         .card .card-title {
             font-size: 22px !important;
             font-weight: 700;
@@ -2015,13 +2023,14 @@ margin-top: 20px;
     margin: 5px 0px 10px 20px;
     width: 97%;
 }
-    </style><script type="text/javascript">
-                function alertWithRedirectdata() {
-                    if (confirm('You did not add any Email Please Contact Admin For Update your Email')) {
-                        window.location.href = "/Contractor/Work_Intimation.aspx";
-                    } else {
-                    }
-                }
+    </style>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('You did not add any Email Please Contact Admin For Update your Email')) {
+                window.location.href = "/Contractor/Work_Intimation.aspx";
+            } else {
+            }
+        }
     </script>
 </head>
 <body>
@@ -2035,7 +2044,7 @@ margin-top: 20px;
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
                                     <div class="card" id="IntimationData" runat="server" visible="true" style="background: #fcfcfc;">
-                                        <div class="card-title"  style="margin-bottom:1px;">Work Intimation Details</div>
+                                        <div class="card-title" style="margin-bottom: 1px;">Work Intimation Details</div>
                                         <div>
                                             <div class="row row-modal">
                                                 <div class="col-6" runat="server">
@@ -2106,7 +2115,7 @@ margin-top: 20px;
                                         </div>
                                     </div>
                                     <div class="card" id="inspection-card" style="background: #fcfcfc;">
-                                            <div class="card-title" style="margin-bottom:3px;">Test Report Details</div>
+                                        <div class="card-title" style="margin-bottom: 3px;">Test Report Details</div>
                                         <div class="card" id="inspection-card-child1" style="background: #fcfcfc;">
                                             <div>
                                                 <div class="row">
@@ -2297,445 +2306,442 @@ margin-top: 20px;
                                             </div>
                                         </div>
                                         <div class="card" id="inspection-card-child3" style="background: #fcfcfc;">
-                                        <div id="Insulation440vAbove" runat="server" visible="false">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <label>
-                                                        Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtRedEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div32" runat="server">
-                                                    <label for="Name">
-                                                        Yellow Phase – Earth Wire (in Mohm)	
+                                            <div id="Insulation440vAbove" runat="server" visible="false">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <label>
+                                                            Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtRedEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div32" runat="server">
+                                                        <label for="Name">
+                                                            Yellow Phase – Earth Wire (in Mohm)	
                             <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtYellowEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div33" runat="server">
-                                                    <label for="Name">
-                                                        Blue Phase – Earth Wire (in Mohm)	
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtYellowEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div33" runat="server">
+                                                        <label for="Name">
+                                                            Blue Phase – Earth Wire (in Mohm)	
                     <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtBlueEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div34" runat="server">
-                                                    <label for="Name">
-                                                        Red Phase – Yellow Phase(in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtBlueEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div34" runat="server">
+                                                        <label for="Name">
+                                                            Red Phase – Yellow Phase(in Mohm)
                     <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtRedYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div35" runat="server">
-                                                    <label for="Name">
-                                                        Blue Phase – Yellow Phase(in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtRedYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div35" runat="server">
+                                                        <label for="Name">
+                                                            Blue Phase – Yellow Phase(in Mohm)
                     <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtBlueYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div36" runat="server">
-                                                    <label for="Name">
-                                                        Red Phase – Blue Phase(in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtBlueYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div36" runat="server">
+                                                        <label for="Name">
+                                                            Red Phase – Blue Phase(in Mohm)
                     <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtRedBluePhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtRedBluePhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div id="Insulation220vAbove" runat="server" visible="false">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <label>
-                                                        Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtNeutralWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div37" runat="server">
-                                                    <label for="Name">
-                                                        Phase wire - Earth (in Mohm)
+                                            <div id="Insulation220vAbove" runat="server" visible="false">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <label>
+                                                            Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtNeutralWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div37" runat="server">
+                                                        <label for="Name">
+                                                            Phase wire - Earth (in Mohm)
                             <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div39" runat="server">
-                                                    <label for="Name">
-                                                        Neutral wire - Earth (in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div39" runat="server">
+                                                        <label for="Name">
+                                                            Neutral wire - Earth (in Mohm)
                     <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtNeutralWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtNeutralWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <label>
-                                                        Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtRedWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div38" runat="server">
-                                                    <label for="Name">
-                                                        Yellow Phase – Earth Wire (in Mohm)	
+                                            <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <label>
+                                                            Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtRedWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div38" runat="server">
+                                                        <label for="Name">
+                                                            Yellow Phase – Earth Wire (in Mohm)	
         <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div40" runat="server">
-                                                    <label for="Name">
-                                                        Blue Phase – Earth Wire (in Mohm)	
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div40" runat="server">
+                                                        <label for="Name">
+                                                            Blue Phase – Earth Wire (in Mohm)	
                                                         <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div41" runat="server">
-                                                    <label for="Name">
-                                                        Red Phase – Yellow Phase(in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div41" runat="server">
+                                                        <label for="Name">
+                                                            Red Phase – Yellow Phase(in Mohm)
                                                         <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtRedYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div42" runat="server">
-                                                    <label for="Name">
-                                                        Blue Phase – Yellow Phase(in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtRedYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div42" runat="server">
+                                                        <label for="Name">
+                                                            Blue Phase – Yellow Phase(in Mohm)
                                                         <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtBlueYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div43" runat="server">
-                                                    <label for="Name">
-                                                        Red Phase – Blue Phase(in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtBlueYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div43" runat="server">
+                                                        <label for="Name">
+                                                            Red Phase – Blue Phase(in Mohm)
                                                         <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtRedBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtRedBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div id="UndergroundInsulation220vAbove" runat="server" visible="false">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <label>
-                                                        Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div44" runat="server">
-                                                    <label for="Name">
-                                                        Phase wire - Earth (in Mohm)
+                                            <div id="UndergroundInsulation220vAbove" runat="server" visible="false">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <label>
+                                                            Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div44" runat="server">
+                                                        <label for="Name">
+                                                            Phase wire - Earth (in Mohm)
                             <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtPhaseWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                </div>
-                                                <div class="col-4" id="Div45" runat="server">
-                                                    <label for="Name">
-                                                        Neutral wire - Earth (in Mohm)
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtPhaseWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
+                                                    <div class="col-4" id="Div45" runat="server">
+                                                        <label for="Name">
+                                                            Neutral wire - Earth (in Mohm)
                                                         <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                        </label>
+                                                        <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                            </div>
                                     </div>
                                     <div class="card" id="earthing-card" style="background: #fcfcfc;">
                                         <div class="card-title">Earthing Details</div>
-                                    <div id="Earthing" runat="server" visible="true">
-                                        <div class="row card">
-                                            <div class="col-4">
-                                                <label>
-                                                    Number of Earthing:
+                                        <div id="Earthing" runat="server" visible="true">
+                                            <div class="row card">
+                                                <div class="col-4">
+                                                    <label>
+                                                        Number of Earthing:
                                                     <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtEarthing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true">
-                                                <table class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>S.No.
-                                                            </th>
-                                                            <th style="width: 60% !important;">Earthing Type
-                                                            </th>
-                                                            <th>Value in(ohms)
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr id="Earthingtype1" visible="false" runat="server" style="display: table-row;">
-                                                            <td>1
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtearthingValue1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype2" style="display: none" runat="server">
-                                                            <td>2
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType2" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue2" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype3" runat="server" style="display: none">
-                                                            <td>3
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType3" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue3" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype4" runat="server" style="display: none">
-                                                            <td>4
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType4" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12" id="Div15" runat="server">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue4" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype5" runat="server" style="display: none">
-                                                            <td>5
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue5" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype6" runat="server" style="display: none">
-                                                            <td>6
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType6" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue6" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype7" runat="server" style="display: none">
-                                                            <td>7
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType7" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue7" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype8" runat="server" style="display: none">
-                                                            <td>8
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType8" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue8" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype9" runat="server" style="display: none">
-                                                            <td>9
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType9" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                    </label>
+                                                    <asp:TextBox class="form-control" ID="txtEarthing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                </div>
+                                                <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true">
+                                                    <table class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
+                                                        <thead class="table-dark">
+                                                            <tr>
+                                                                <th>S.No.
+                                                                </th>
+                                                                <th style="width: 60% !important;">Earthing Type
+                                                                </th>
+                                                                <th>Value in(ohms)
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr id="Earthingtype1" visible="false" runat="server" style="display: table-row;">
+                                                                <td>1
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtearthingValue1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype2" style="display: none" runat="server">
+                                                                <td>2
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType2" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue2" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype3" runat="server" style="display: none">
+                                                                <td>3
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType3" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue3" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype4" runat="server" style="display: none">
+                                                                <td>4
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType4" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12" id="Div15" runat="server">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue4" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype5" runat="server" style="display: none">
+                                                                <td>5
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue5" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype6" runat="server" style="display: none">
+                                                                <td>6
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType6" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue6" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype7" runat="server" style="display: none">
+                                                                <td>7
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType7" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue7" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype8" runat="server" style="display: none">
+                                                                <td>8
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType8" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue8" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype9" runat="server" style="display: none">
+                                                                <td>9
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType9" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue9" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype10" runat="server" style="display: none">
-                                                            <td>10
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType10" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue9" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype10" runat="server" style="display: none">
+                                                                <td>10
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType10" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue10" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype11" runat="server" style="display: none">
-                                                            <td>11
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType11" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue10" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype11" runat="server" style="display: none">
+                                                                <td>11
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType11" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue11" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype12" runat="server" style="display: none">
-                                                            <td>12
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType12" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue11" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype12" runat="server" style="display: none">
+                                                                <td>12
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType12" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue12" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype13" runat="server" style="display: none">
-                                                            <td>13
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType13" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue12" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype13" runat="server" style="display: none">
+                                                                <td>13
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType13" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue13" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype14" runat="server" style="display: none">
-                                                            <td>14
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType14" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue13" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype14" runat="server" style="display: none">
+                                                                <td>14
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType14" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue14" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Earthingtype15" runat="server" style="display: none">
-                                                            <td>15
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType15" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue14" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="Earthingtype15" runat="server" style="display: none">
+                                                                <td>15
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingType15" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingValue15" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-12">
+                                                                        <asp:TextBox class="form-control" ID="txtEarthingValue15" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                        </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-                            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;margin-left: -25px;
-    margin-right: -25px;
-    margin-top: 30px;">
-                            <div id="Contractor" runat="server" visible="false">
-                                <div class="row" style="padding-left: 20px;
-    padding-bottom: 20px;">
-                                    <div class="col-4">
-                                        <label for="Name">
-                                            Form Status<samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
-                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px;">
+                                <div id="Contractor" runat="server" visible="false">
+                                    <div class="row" style="padding-left: 20px; padding-bottom: 20px;">
+                                        <div class="col-4">
+                                            <label for="Name">
+                                                Form Status<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
+                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
-                                    </div>
-                                    <div class="col-4" id="Rejection" runat="server" visible="False">
-                                        <label for="Name">
-                                            Reason For Rejection
+                                        </div>
+                                        <div class="col-4" id="Rejection" runat="server" visible="False">
+                                            <label for="Name">
+                                                Reason For Rejection
                             <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
-                                    </div>
-                                    <div class="col-4" id="OTP" runat="server" visible="false">
-                                        <label for="Name">
-                                            Enter OTP
+                                        </div>
+                                        <div class="col-4" id="OTP" runat="server" visible="false">
+                                            <label for="Name">
+                                                Enter OTP
                             <samp style="color: red">* </samp>
-                                        </label>
-                                        <asp:TextBox class="form-control" ID="txtOtp" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtOtp" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
+                                        </div>
                                     </div>
                                 </div>
+                                <asp:HiddenField ID="hdn" Value="0" runat="server" />
+                                <br />
                             </div>
-                            <asp:HiddenField ID="hdn" Value="0" runat="server" />
-                            <br />
-                                  </div>
-                            <div class="row" >
+                            <div class="row">
                                 <div class="col-12" style="margin-top: 40px; text-align: Center;" runat="server" id="Contractor3" visible="false">
                                     <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                         OnClick="btnVerify_Click" />
+                                        OnClick="btnVerify_Click" />
                                     <br />
                                     <label>Submit Will be Enable When You Verify Your Details</label>
                                 </div>
                                 <div class="col-4" style="margin-top: 40px;" runat="server" id="Contractor2" visible="false">
                                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                        Style=" border-color: #d42766;" OnClick="btnAccept_Click" />
+                                        Style="border-color: #d42766;" OnClick="btnAccept_Click" />
 
                                 </div>
                                 <div class="col-6" id="SiteOwner" runat="server" visible="false" style="text-align: end;">
@@ -2751,7 +2757,7 @@ margin-top: 20px;
                                     <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
                                 </div>
                             </div>
-                              
+
                         </div>
                     </div>
                 </li>

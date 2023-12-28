@@ -18,6 +18,13 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        div#Contractor {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: 20px;
+    padding: 15px;
+}
         div#IntimationData {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-left: -20px;
@@ -2009,13 +2016,14 @@ margin-top: 20px;
     margin: 5px 0px 10px 20px;
     width: 97%;
 }
-    </style><script type="text/javascript">
-                        function alertWithRedirectdata() {
-                            if (confirm('You did not add any Email Please Contact Admin For Update your Email')) {
-                                window.location.href = "/Contractor/Work_Intimation.aspx";
-                            } else {
-                            }
-                        }
+    </style>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('You did not add any Email Please Contact Admin For Update your Email')) {
+                window.location.href = "/Contractor/Work_Intimation.aspx";
+            } else {
+            }
+        }
     </script>
     <script type="text/javascript">
         function isNumberKey(evt) {
@@ -2870,7 +2878,8 @@ margin-top: 20px;
                                     </div>
                               </div>
                                                                                 </div>
-                        <div class="row" id="Contractor" runat="server" visible="false">
+                        <div class="row card" id="Contractor" runat="server" visible="false">
+                          
                             <div class="col-4">
                                 <label for="Name">
                                     Form Status<samp style="color: red">* </samp>
@@ -2884,7 +2893,7 @@ margin-top: 20px;
                                  <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             
                             </div>
-                            <div class="col-4"></div>
+                          
                             <div class="col-4" id="Rejection" runat="server" visible="false">
                                 <label for="Name">
                                     Reason For Rejection
@@ -2894,6 +2903,7 @@ margin-top: 20px;
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
                             </div>
+                             
                             <div class="col-4" id="OTP" runat="server" visible="false">
                                 <label for="Name">
                                     Enter OTP
