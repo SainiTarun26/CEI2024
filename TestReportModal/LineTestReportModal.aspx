@@ -2016,12 +2016,12 @@ margin-top: 20px;
     width: 97%;
 }
     </style><script type="text/javascript">
-        function alertWithRedirectdata() {
-            if (confirm('You did not add any Email Please Contact Admin For Update your Email')) {
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
-        }
+                function alertWithRedirectdata() {
+                    if (confirm('You did not add any Email Please Contact Admin For Update your Email')) {
+                        window.location.href = "/Contractor/Work_Intimation.aspx";
+                    } else {
+                    }
+                }
     </script>
 </head>
 <body>
@@ -2727,9 +2727,9 @@ margin-top: 20px;
                             <br />
                                   </div>
                             <div class="row" >
-                                <div class="col-4" style="margin-top: 40px; text-align: Center;" runat="server" id="Contractor3" visible="false">
+                                <div class="col-12" style="margin-top: 40px; text-align: Center;" runat="server" id="Contractor3" visible="false">
                                     <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                        Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClick="btnVerify_Click" />
+                                         OnClick="btnVerify_Click" />
                                     <br />
                                     <label>Submit Will be Enable When You Verify Your Details</label>
                                 </div>

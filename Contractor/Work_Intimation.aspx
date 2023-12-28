@@ -74,7 +74,7 @@
  </script>
     <style>
         td {
-            padding: 8px !important;
+            padding: 10px !important;
         }
 
         .submit {
@@ -730,8 +730,8 @@
                                                     <ItemStyle HorizontalAlign="left" Width="20%" CssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="textalignleft" />
+                                                    <HeaderStyle HorizontalAlign="Left" Width="34%" CssClass="headercolor textalignleft" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="34%" CssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
                                                     <HeaderStyle HorizontalAlign="center" Width="19%" CssClass="headercolor" />
