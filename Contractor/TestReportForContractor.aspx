@@ -234,23 +234,32 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle Width="34%" CssClass="headercolor" />
-                                <ItemStyle Width="34%" />
+                                <HeaderStyle Width="34%" CssClass="headercolor leftalign" />
+                                <ItemStyle Width="34%" cssclass="leftalign" />
                                 <HeaderTemplate>
-                                    Test Report Application
+                                  <%--  Test Report Application--%>
+                                    Intimation Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select" Style="text-align: left;"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Noofinstallation" HeaderText="No of Installations">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Approval" HeaderText="Approval">
+                            <%--  <asp:BoundField DataField="Approval" HeaderText="Approval">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                             <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />

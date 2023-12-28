@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <style type="text/css">
         a.close-modal {
-    width: 0px !important;
-}
+            width: 0px !important;
+        }
+
         .jquery-modal.blocker.current {
             margin-top: 50px;
             height: 95%;
@@ -32,15 +33,14 @@
             top: 50%; /* Center vertically */
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -40%); /* Center using transform */
-           z-index: 9999; /* Ensure it's on top of other content */
-            
+            z-index: 9999; /* Ensure it's on top of other content */
         }
 
         .row-modal {
             margin-top: 15px;
         }
 
-       
+
 
         th.GridViewRowHeader {
             padding: 10px 17px 10px 10px;
@@ -73,68 +73,79 @@
         td.IntimationIdRow {
             padding: 0px 5px 0px 5px;
         }
+
         .pagination-ys {
-    /*display: inline-block;*/
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px;
-}
- 
-.pagination-ys table > tbody > tr > td {
-    display: contents;
-}
- 
-.pagination-ys table > tbody > tr > td > a,
-.pagination-ys table > tbody > tr > td > span {
-    position: relative;
-    float: left;
-    padding: 8px 12px;
-    line-height: 1.42857143;
-    text-decoration: none;
-    color: #dd4814;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    margin-left: -1px;
-}
- 
-.pagination-ys table > tbody > tr > td > span {
-    position: relative;
-    float: left;
-    padding: 8px 12px;
-    line-height: 1.42857143;
-    text-decoration: none;    
-    margin-left: -1px;
-    z-index: 2;
-    color: #aea79f;
-    background-color: #f5f5f5;
-    border-color: #dddddd;
-    cursor: default;
-}
- 
-.pagination-ys table > tbody > tr > td:first-child > a,
-.pagination-ys table > tbody > tr > td:first-child > span {
-    margin-left: 0;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-}
- 
-.pagination-ys table > tbody > tr > td:last-child > a,
-.pagination-ys table > tbody > tr > td:last-child > span {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-}
- 
-.pagination-ys table > tbody > tr > td > a:hover,
-.pagination-ys table > tbody > tr > td > span:hover,
-.pagination-ys table > tbody > tr > td > a:focus,
-.pagination-ys table > tbody > tr > td > span:focus {
-    color: #97310e;
-    background-color: #eeeeee;
-    border-color: #dddddd;
-}
-.headercolor{
-    background-color: #9292cc;
-}
+            /*display: inline-block;*/
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+            .pagination-ys table > tbody > tr > td {
+                display: contents;
+            }
+
+                .pagination-ys table > tbody > tr > td > a,
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    color: #dd4814;
+                    background-color: #ffffff;
+                    border: 1px solid #dddddd;
+                    margin-left: -1px;
+                }
+
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    margin-left: -1px;
+                    z-index: 2;
+                    color: #aea79f;
+                    background-color: #f5f5f5;
+                    border-color: #dddddd;
+                    cursor: default;
+                }
+
+                .pagination-ys table > tbody > tr > td:first-child > a,
+                .pagination-ys table > tbody > tr > td:first-child > span {
+                    margin-left: 0;
+                    border-bottom-left-radius: 4px;
+                    border-top-left-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td:last-child > a,
+                .pagination-ys table > tbody > tr > td:last-child > span {
+                    border-bottom-right-radius: 4px;
+                    border-top-right-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td > a:hover,
+                .pagination-ys table > tbody > tr > td > span:hover,
+                .pagination-ys table > tbody > tr > td > a:focus,
+                .pagination-ys table > tbody > tr > td > span:focus {
+                    color: #97310e;
+                    background-color: #eeeeee;
+                    border-color: #dddddd;
+                }
+
+        .headercolor {
+            background-color: #9292cc;
+        }
+
+        th.headercolor {
+            text-align: left;
+        }
+
+        td.itemstylecss {
+            text-align: left;
+            padding-left: 12px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -153,39 +164,49 @@
                             <div class="form-group row" style="margin-bottom: 0px !important;">
                                 <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-10" style="margin-left: -130px; margin-top: auto; margin-bottom: auto;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged"  Font-Size="12px"  Style="font-size: 12px; height: 30px;"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged" Font-Size="12px" Style="font-size: 12px; height: 30px;"></asp:TextBox><br />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top:3%">
-                        <asp:GridView class="table-responsive table table-striped table-hover"  ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
+                    <div style="margin-top: 3%">
+                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
                             AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
-                           <PagerStyle CssClass="pagination-ys" />
+                            <PagerStyle CssClass="pagination-ys" />
                             <Columns>
-                                      <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Application">
-                                    <HeaderStyle Width="25%" CssClass="headercolor"  />
-                                    <ItemStyle Width="25%" />
+                                <asp:TemplateField HeaderText="WorkIntimation">
+                                    <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     <ItemTemplate>
-                                      <%--  <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Select"><%#Eval("Id") %></asp:LinkButton> --%>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="ShowPopup_Click"  CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
+                                        <%--  <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Select"><%#Eval("Id") %></asp:LinkButton> --%>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="ShowPopup_Click" CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
+                                <asp:BoundField DataField="NameOfOwner" HeaderText="Site Owner Name">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="State" HeaderText="State">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="left" CssClass="GridViewRowItems itemstylecss" />
+                                </asp:BoundField>
+
                                 <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
@@ -206,8 +227,8 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
-                 </div>
-                    <div id="ex1" class="modal" style="height:auto;">
+                    </div>
+                    <div id="ex1" class="modal" style="height: auto;">
                         <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
                         <div class="col-md-12">
                             <div class="row row-modal">
@@ -229,7 +250,7 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                              <%--  <div class="col-6" id="individual9" runat="server">
+                                <%--  <div class="col-6" id="individual9" runat="server">
                                     <label for="Name">
                                         Contact No.(Contractor)
                                     </label>
@@ -263,13 +284,12 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                              <%--  <div class="col-6" id="individual4" runat="server">
+                                <%--  <div class="col-6" id="individual4" runat="server">
                                     <label for="Name">
                                         Work Details
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtWorkDetail" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>--%>
-                                
                             </div>
                             <div class="row row-modal">
                                 <div class="col-6" id="individual6" runat="server">
@@ -288,9 +308,8 @@
                         </div>
 
                         <div class="modal-footer" style="margin-top: 10px;">
-                            <asp:Button ID="btnSubmit" Text="Next" OnClientClick="return CloseModalAndRedirect()" AutoPostBack="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                />
-                         
+                            <asp:Button ID="btnSubmit" Text="Next" OnClientClick="return CloseModalAndRedirect()" AutoPostBack="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+
                             <%--<a href="#" onclick="closeModal();">Close</a>--%>
                         </div>
                     </div>
@@ -312,7 +331,7 @@
             $('#ex1').modal('hide');
             window.location.href = "TestReportForm.aspx";
         }
-       
+
     </script>
 
     <%-- <script type="text/javascript">
