@@ -64,12 +64,12 @@ namespace CEIHaryana.Contractor
 
                         Session["LineID"] = id;
                     }
-                    else if (lblTypeOf.Text.Trim() == "Substation")
+                    else if (lblTypeOf.Text.Trim() == "Substation Transformer")
                     {
 
                         Session["SubStationID"] = id;
                     }
-                    else if (lblTypeOf.Text.Trim() == "Generating")
+                    else if (lblTypeOf.Text.Trim() == "Generating Station")
                     {
 
                         Session["GeneratingSetId"] = id;
