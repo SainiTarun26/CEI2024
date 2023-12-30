@@ -94,48 +94,62 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Label lblCategory = (Label)row.FindControl("lblCategory");
                     Label lblApplicant = (Label)row.FindControl("lblApplicant");
-                  
-                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-                    Uploads.Visible = true;
-                    if (lblCategory != null && lblCategory.Text == "Line" && chk != null && chk.Checked)
-                    {
-                        if (lblApplicant.Text.Trim() == "Supplier Installation")
-                        {
-                            LineSubstationSupplier.Visible = true;
-                            SupplierSub.Visible = true;
-                        }
-                        else if (lblApplicant.Text.Trim() == "Private/Personal Installation")
-                        {
-                            LinePersonal.Visible = true;
-                            SupplierSub.Visible = true;
-                        }
-                    }
-                    if (lblCategory != null && lblCategory.Text == "Substation Transformer" && chk != null && chk.Checked)
-                    {
-                        if (txtApplicantType.Text.Trim() == "Supplier Installation")
-                        {
-                            LineSubstationSupplier.Visible = true;
-                        }
-                        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                        {
-                            PersonalSub.Visible = true;
-                        }
-                    }
-                     if (lblCategory != null && lblCategory.Text == "Generating Set" && chk != null && chk.Checked)
-                    {
-                        if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                        {
-                            PersonalGenerating.Visible = true;
-                        }
-                        else
-                        {
-                            PersonalGenerating.Visible = false;
-                        }
-                    }
 
+                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+
+                    // Show Uploads if any checkbox is checked
+                    Uploads.Visible = GridView1.Rows.Cast<GridViewRow>().Any(r => ((CheckBox)r.FindControl("CheckBox1")).Checked);
+
+                    // Show fields based on the category and applicant type
+                    if (chk.Checked)
+                    {
+                        if (lblCategory.Text == "Line")
+                        {
+                            if (lblApplicant.Text.Trim() == "Supplier Installation")
+                            {
+                                LineSubstationSupplier.Visible = true;
+                                SupplierSub.Visible = true;
+                            }
+                            else if (lblApplicant.Text.Trim() == "Private/Personal Installation")
+                            {
+                                LinePersonal.Visible = true;
+                                SupplierSub.Visible = true;
+                            }
+                        }
+                        else if (lblCategory.Text == "Substation Transformer")
+                        {
+                            if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                            {
+                                LineSubstationSupplier.Visible = true;
+                            }
+                            else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                            {
+                                PersonalSub.Visible = true;
+                            }
+                        }
+                        else if (lblCategory.Text == "Generating Set")
+                        {
+                            if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                            {
+                                PersonalGenerating.Visible = true;
+                            }
+                            else
+                            {
+                                PersonalGenerating.Visible = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Hide the fields if the checkbox is unchecked
+                        LineSubstationSupplier.Visible = false;
+                        SupplierSub.Visible = false;
+                        LinePersonal.Visible = false;
+                        PersonalSub.Visible = false;
+                        PersonalGenerating.Visible = false;
+                    }
                 }
             }
-            
             catch (Exception)
             {
                 // Handle the exception appropriately
