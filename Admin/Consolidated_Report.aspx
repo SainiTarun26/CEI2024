@@ -365,6 +365,10 @@
                                         <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForInspection") %> ' CommandName="Select"><%#Eval("ApplicationForInspection") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:BoundField DataField="ApplicationForInspection" HeaderText="  Application For Inspection" Visible="False">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
                                 <asp:BoundField DataField="Createddate1" HeaderText="Application Date">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />

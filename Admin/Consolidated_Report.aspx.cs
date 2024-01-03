@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using OfficeOpenXml;
 
 namespace CEIHaryana.Admin
 {
@@ -211,10 +212,46 @@ namespace CEIHaryana.Admin
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            ExportToExcel();
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                // Add a worksheet to the workbook
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+                // Add header row starting from the 5th column
+                int startColumn = 4;
+                int row = 1;
+
+                foreach (DataControlField column in GridView1.Columns)
+                {
+                    if (column is BoundField)
+                    {
+                        BoundField boundField = (BoundField)column;
+                        worksheet.Cells[row, startColumn].Value = boundField.HeaderText;
+                        startColumn++;
+                    }
+                }
+
+                // Add data rows
+                foreach (GridViewRow gridRow in GridView1.Rows)
+                {
+                    row++;
+                    for (int i = 5; i < GridView1.Columns.Count + 5; i++) // Start from the 5th column
+                    {
+                        worksheet.Cells[row, startColumn].Value = gridRow.Cells[i - 3].Text;
+                    }
+                }
+
+                // Save the Excel package to the response stream
+                Response.Clear();
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;filename=ExportedData.xlsx");
+                Response.BinaryWrite(package.GetAsByteArray());
+                Response.End();
+            }
         }
 
-        private void ExportToExcel()
+            private void ExportToExcel()
         {
 
             try
@@ -233,10 +270,6 @@ namespace CEIHaryana.Admin
                 {
                     using (HtmlTextWriter htw = new HtmlTextWriter(sw))
                     {
-                        // Set GridView properties
-                        GridView1.AllowPaging = false;
-                        GridView1.AutoGenerateColumns = true;
-
                         // Create a form to contain the grid
                         HtmlForm frm = new HtmlForm();
                         GridView1.Parent.Controls.Add(frm);
