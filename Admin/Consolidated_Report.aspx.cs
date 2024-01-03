@@ -212,46 +212,84 @@ namespace CEIHaryana.Admin
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            using (ExcelPackage package = new ExcelPackage())
+            try
             {
-                // Add a worksheet to the workbook
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
-
-                // Add header row starting from the 5th column
-                int startColumn = 4;
-                int row = 1;
-
-                foreach (DataControlField column in GridView1.Columns)
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                using (ExcelPackage package = new ExcelPackage())
                 {
-                    if (column is BoundField)
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+                    string LoginID = string.Empty;
+                    LoginID = Session["StaffID"].ToString();
+                    DataSet ds = new DataSet();
+                    ds = CEI.StaffLogin(LoginID);
+
+                    // Custom header names
+                    Dictionary<string, string> columnHeadersMapping = new Dictionary<string, string>
+      {
+          {"ApplicationForInspection", " Application For Inspection"},
+          {"Createddate1", "Application Date"},
+          {"Installationfor", "Installation Applied For"},
+          {"Id", "Owner Application Number"},
+          {"AcceptedOrRejected", "Status"},
+          {"AssignedStaff", "Pending With"}
+      };
+
+                    // List of specific columns to export
+                    List<string> columnsToExport = new List<string>(columnHeadersMapping.Keys);
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
-                        BoundField boundField = (BoundField)column;
-                        worksheet.Cells[row, startColumn].Value = boundField.HeaderText;
-                        startColumn++;
+                        // Add header row with custom header names for specific columns
+                        int col = 1;
+                        foreach (string columnName in columnsToExport)
+                        {
+                            worksheet.Cells[1, col].Value = columnHeadersMapping[columnName];
+                            col++;
+                        }
+
+                        // Add data rows for specific columns
+                        int row = 2;
+                        foreach (DataRow dataRow in ds.Tables[0].Rows)
+                        {
+                            col = 1;
+                            foreach (string columnName in columnsToExport)
+                            {
+                                if (ds.Tables[0].Columns.Contains(columnName))
+                                {
+                                    worksheet.Cells[row, col].Value = dataRow[columnName];
+                                }
+                                else
+                                {
+                                    // Handle the case where the specified column is not found in the DataTable
+                                    worksheet.Cells[row, col].Value = DBNull.Value;
+                                }
+                                col++;
+                            }
+                            row++;
+                        }
+
+                        Response.Clear();
+                        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                        Response.AddHeader("content-disposition", "attachment;filename=ExportedData.xlsx");
+                        Response.BinaryWrite(package.GetAsByteArray());
+                        Response.Flush();
+                        HttpContext.Current.ApplicationInstance.CompleteRequest();
+                    }
+                    else
+                    {
+                        string script = "alert(\"No Record Found\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                     }
                 }
-
-                // Add data rows
-                foreach (GridViewRow gridRow in GridView1.Rows)
-                {
-                    row++;
-                    for (int i = 5; i < GridView1.Columns.Count + 5; i++) // Start from the 5th column
-                    {
-                        worksheet.Cells[row, startColumn].Value = gridRow.Cells[i - 3].Text;
-                    }
-                }
-
-                // Save the Excel package to the response stream
-                Response.Clear();
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", "attachment;filename=ExportedData.xlsx");
-                Response.BinaryWrite(package.GetAsByteArray());
-                Response.End();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately, for example, log the exception
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 
-            private void ExportToExcel()
+        private void ExportToExcel()
         {
 
             try

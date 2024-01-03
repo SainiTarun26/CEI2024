@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -218,7 +219,76 @@ namespace CEIHaryana.Officers
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            ExportToExcel();
+            try
+            {
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                    DataTable ds = CEI.InspectionHistoryForAdminData();
+
+                    //custom header names
+                    Dictionary<string, string> columnHeadersMapping = new Dictionary<string, string>
+             {
+             {"ApplicationForInspection", " Application For Inspection"},
+             {"Createddate1", "Application Date"},
+             {"Installationfor", "Installation Applied For"},
+             {"Id", "Owner Application Number"},
+             {"AcceptedOrRejected", "Status"},
+             {"AssignedStaff", "Pending With"}
+             };
+
+                    // List of specific columns to export
+                    List<string> columnsToExport = new List<string>(columnHeadersMapping.Keys);
+                    if (ds.Rows.Count > 0)
+                    {
+                        // Add header row with custom header names for specific columns
+                        int col = 1;
+                        foreach (string columnName in columnsToExport)
+                        {
+                            worksheet.Cells[1, col].Value = columnHeadersMapping[columnName];
+                            col++;
+                        }
+
+                        // Add data rows for specific columns
+                        int row = 2;
+                        foreach (DataRow dataRow in ds.Rows)
+                        {
+                            col = 1;
+                            foreach (string columnName in columnsToExport)
+                            {
+                                if (ds.Columns.Contains(columnName))
+                                {
+                                    worksheet.Cells[row, col].Value = dataRow[columnName];
+                                }
+                                else
+                                {
+                                    // Handle the case where the specified column is not found in the DataTable
+                                    worksheet.Cells[row, col].Value = DBNull.Value;
+                                }
+                                col++;
+                            }
+                            row++;
+                        }
+
+                        Response.Clear();
+                        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                        Response.AddHeader("content-disposition", "attachment;filename=ExportedData.xlsx");
+                        Response.BinaryWrite(package.GetAsByteArray());
+                        Response.Flush();
+                        HttpContext.Current.ApplicationInstance.CompleteRequest();
+                    }
+                    else
+                    {
+                        string script = "alert(\"No Record Found\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    }
+                }
+
+            }
+            catch
+            {
+            }
         }
 
         private void ExportToExcel()
