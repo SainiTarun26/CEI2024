@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TestReport/TestReport.Master" AutoEventWireup="true" CodeBehind="LiftTestReport.aspx.cs" Inherits="CEIHaryana.TestReport.LiftTestReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TestReport/TestReport.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="LiftTestReport.aspx.cs" Inherits="CEIHaryana.TestReport.LiftTestReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
             <title>CEI</title>
 <meta charset="utf-8"/>

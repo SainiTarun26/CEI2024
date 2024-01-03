@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="DistrictData.aspx.cs" Inherits="CEIHaryana.Admin.DistrictData" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="DistrictData.aspx.cs" Inherits="CEIHaryana.Admin.DistrictData" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
    <link rel="stylesheet" href="/css2/style.css" />

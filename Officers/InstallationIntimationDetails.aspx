@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="InstallationIntimationDetails.aspx.cs" Inherits="CEIHaryana.Officers.InstallationIntimationDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="InstallationIntimationDetails.aspx.cs" Inherits="CEIHaryana.Officers.InstallationIntimationDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
  <link rel="stylesheet" href="/css2/style.css" />

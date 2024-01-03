@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="OfficerDashboard.aspx.cs" Inherits="CEIHaryana.Officers.OfficerDashboard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="OfficerDashboard.aspx.cs" Inherits="CEIHaryana.Officers.OfficerDashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <title>Dashboard</title>
 

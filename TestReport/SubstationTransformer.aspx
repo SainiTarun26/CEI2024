@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/TestReport/TestReport.Master" CodeBehind="SubstationTransformer.aspx.cs" Inherits="CEIHaryana.TestReport.SubstationTransformer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/TestReport/TestReport.Master" EnableEventValidation="false" CodeBehind="SubstationTransformer.aspx.cs" Inherits="CEIHaryana.TestReport.SubstationTransformer" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
