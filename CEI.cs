@@ -63,6 +63,32 @@ namespace CEI_PRoject
             }
         }
         #endregion
+        #region Check ApplicationStatus
+        public string checkApplicationStatus(string UserName)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "sp_ApplicationStatus";
+
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.Add("@UserId", SqlDbType.VarChar, 50).Value = UserName;
+           SqlParameter outputParam = new SqlParameter("@ApplicationStatus", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+            string applicationStatus = outputParam.Value.ToString();
+            return applicationStatus;
+        }
+
+        #endregion
         #region UpdateInspection
         public void UpdateInspectionData(string Id_Update, string TestRportId, string Inspectiontype, string ApplicantType, string InstallationType,
               string VoltageLevel, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
@@ -1483,9 +1509,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_updateUserRegistration", registrationId);
         }
 
-        public int UserDocuments(string REID, string flpPhotourl8, string flpPhotourl, string flpPhotourl1, string flpPhotourl2, string flpPhotourl3, string flpPhotourl4, string flpPhotourl5, string flpPhotourl9, string flpPhotourl6, string flpPhotourl7)
+        public int UserDocuments(string UserId, string flpPhotourl8, string flpPhotourl, string flpPhotourl1, string flpPhotourl2, string flpPhotourl3, string flpPhotourl4, string flpPhotourl5, string flpPhotourl9, string flpPhotourl6, string flpPhotourl7)
         {
-            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UserDocuments", REID, flpPhotourl8, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl9, flpPhotourl6, flpPhotourl7);
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UserDocuments", UserId, flpPhotourl8, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl9, flpPhotourl6, flpPhotourl7);
         }
         public DataTable RegistrationDetails()
         {
@@ -1798,7 +1824,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberId", PANNumber);
         }
         #region Insert New user data Data
-        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName, string Address, string District,
+        public void InserNewUserData(string ApplicationFor, string Name,string ApplicationStatus, string Age, string CalculatedAge, string FatherName, string Address, string District,
             string State, string PinCode, string PhoneNo, string Email,string Category, string CreatedBy, string UserId, 
             string CommunicationAddress, string CommState, string CommDistrict,string CommPin,string Password, string IPAddress)
         {
@@ -1816,6 +1842,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
                 cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
                 cmd.Parameters.AddWithValue("@Name", Name);
+                cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
                 cmd.Parameters.AddWithValue("@Age", Age);
                 cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);

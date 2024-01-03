@@ -42,8 +42,15 @@ namespace CEIHaryana.UserPages
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            REID = Session["RegistrationID"].ToString();
-            hdnId.Value = REID;
+            if (Session["WiremanId"] != null)
+            {
+                REID = Session["WiremanId"].ToString();
+            }
+            else
+            {
+                REID = Session["SupervisorID"].ToString();
+            }
+            //hdnId.Value = REID;
             string FileName = string.Empty;
             string flpPhotourl = string.Empty;
             string flpPhotourl1 = string.Empty;
@@ -237,11 +244,20 @@ namespace CEIHaryana.UserPages
 
             }
             int ivalue = CEI.UserDocuments(REID, flpPhotourl8, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl9, flpPhotourl6, flpPhotourl7);
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
+            if (Session["WiremanId"] == null)
+            {
+                Response.Redirect("/Supervisor/IntimationData.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
+
             Response.Redirect("Qualification.aspx");
         }
     }

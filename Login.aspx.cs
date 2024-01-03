@@ -153,6 +153,8 @@ namespace CEIHaryana
                 }
                 else if (check == 6)
                 {
+                    string ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+
                     if (chkSignedin.Checked == true)
                     {
                         Session["SupervisorID"] = txtUserID.Text;
@@ -161,7 +163,6 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Supervisor";
                         Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                        Response.Redirect("Supervisor/IntimationData.aspx", false);
                     }
                     else
                     {
@@ -171,7 +172,18 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Supervisor";
                         Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                        Response.Redirect("Supervisor/IntimationData.aspx", false);
+                    }
+                    if(ApplicationStatus.Trim() == "New")
+                    {
+                        Response.Redirect("/UserPages/Qualification.aspx", false);
+                    }
+                    else if (ApplicationStatus.Trim() == "Mid")
+                    {
+                        Response.Redirect("/UserPages/Documents.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Supervisor/IntimationData.aspx", false);
                     }
                 }
                 else if (check == 7)
@@ -218,6 +230,41 @@ namespace CEIHaryana
                         Response.Cookies["StaffID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Officers/OfficerDashboard.aspx", false);
+                    }
+                }
+                else if (check == 9)
+                {
+                    string ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+
+                    if (chkSignedin.Checked == true)
+                    {
+                        Session["WiremanId"] = txtUserID.Text;
+                        Session["logintype"] = "Wireman";
+                        Response.Cookies["WiremanId"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "Wireman";
+                        Response.Cookies["WiremanId"].Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
+                    }
+                    else
+                    {
+                        Session["WiremanId"] = txtUserID.Text;
+                        Session["logintype"] = "Wireman";
+                        Response.Cookies["WiremanId"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "Wireman";
+                        Response.Cookies["WiremanId"].Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
+                    }
+                    if (ApplicationStatus.Trim() == "New")
+                    {
+                        Response.Redirect("/UserPages/Qualification.aspx", false);
+                    }
+                    else if (ApplicationStatus.Trim() == "Mid")
+                    {
+                        Response.Redirect("/UserPages/Documents.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
                     }
                 }
 

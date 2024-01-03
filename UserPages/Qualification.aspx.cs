@@ -47,8 +47,15 @@ namespace CEIHaryana.UserPages
 
         protected void GetUserQualification()
         {
-            REID = Session["RegistrationID"].ToString();
-            hdnId.Value = REID;
+            if (Session["WiremanId"] != null)
+            {
+                REID = Session["WiremanId"].ToString();
+            }
+            else
+            {
+                REID = Session["SupervisorID"].ToString();
+            }
+            //hdnId.Value = REID;
 
             SqlCommand cmd = new SqlCommand("sp_GetUserQualification");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -158,8 +165,8 @@ namespace CEIHaryana.UserPages
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Session["RegistrationID"].ToString();
-            Response.Redirect("Registration.aspx");
+            //Session["RegistrationID"].ToString();
+            Response.Redirect("/Login.aspx");
         }
         protected void CheckExperience()
         {
@@ -264,9 +271,15 @@ namespace CEIHaryana.UserPages
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            REID = Session["RegistrationID"].ToString();
-            hdnId.Value = REID;
-
+            if (Session["WiremanId"] != null)
+            {
+                REID = Session["WiremanId"].ToString();
+            }
+            else
+            {
+                REID = Session["SupervisorID"].ToString();
+            }
+            //hdnId.Value = REID;
             QualificationValidations();
             CheckExperience();
             validations();
@@ -283,7 +296,7 @@ namespace CEIHaryana.UserPages
                     con.Open();
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", REID);
+                cmd.Parameters.AddWithValue("@UserId", REID);
                 cmd.Parameters.AddWithValue("@UniversityName10th", txtUniversity.Text);
                 cmd.Parameters.AddWithValue("@PassingYear10th", txtPassingyear.Text);
                 cmd.Parameters.AddWithValue("@MarksObtained10th", txtmarksObtained.Text);
@@ -337,7 +350,7 @@ namespace CEIHaryana.UserPages
                 cmd.ExecuteNonQuery();
                 con.Close();
                 Session["Back"] = txtUniversity.Text;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
                 showAlert = true;
                 Response.Redirect("Documents.aspx");
             }

@@ -132,7 +132,7 @@ namespace CEIHaryana.UserPages
                         Category = "Contractor";
                     }
                     GetIP();
-                    CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+                    CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text,"New", txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
            txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
            txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
            txtPin.Text, txtConfirmPswrd.Text, ipaddress);

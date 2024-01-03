@@ -329,12 +329,12 @@
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="AdminDashboard.aspx">
+                                <a class="nav-link" href="/Wiremen/WiremenDashboard.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <%--<li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Staff Details</span>
@@ -357,11 +357,12 @@
                                 <div class="collapse" id="ui-basic">
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li>--%>
                             <%-- <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                                     <i class="icon-columns menu-icon"></i>
