@@ -218,26 +218,22 @@ namespace CEIHaryana.Admin
                 using (ExcelPackage package = new ExcelPackage())
                 {
                     ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                    DataTable ds = CEI.InspectionHistoryForAdminData();
 
-                    string LoginID = string.Empty;
-                    LoginID = Session["StaffID"].ToString();
-                    DataSet ds = new DataSet();
-                    ds = CEI.StaffLogin(LoginID);
-
-                    // Custom header names
+                    //custom header names
                     Dictionary<string, string> columnHeadersMapping = new Dictionary<string, string>
-      {
-          {"ApplicationForInspection", " Application For Inspection"},
-          {"Createddate1", "Application Date"},
-          {"Installationfor", "Installation Applied For"},
-          {"Id", "Owner Application Number"},
-          {"AcceptedOrRejected", "Status"},
-          {"AssignedStaff", "Pending With"}
-      };
+             {
+             {"ApplicationForInspection", " Application For Inspection"},
+             {"Createddate1", "Application Date"},
+             {"Installationfor", "Installation Applied For"},
+             {"Id", "Owner Application Number"},
+             {"AcceptedOrRejected", "Status"},
+             {"AssignedStaff", "Pending With"}
+             };
 
                     // List of specific columns to export
                     List<string> columnsToExport = new List<string>(columnHeadersMapping.Keys);
-                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    if (ds.Rows.Count > 0)
                     {
                         // Add header row with custom header names for specific columns
                         int col = 1;
@@ -249,12 +245,12 @@ namespace CEIHaryana.Admin
 
                         // Add data rows for specific columns
                         int row = 2;
-                        foreach (DataRow dataRow in ds.Tables[0].Rows)
+                        foreach (DataRow dataRow in ds.Rows)
                         {
                             col = 1;
                             foreach (string columnName in columnsToExport)
                             {
-                                if (ds.Tables[0].Columns.Contains(columnName))
+                                if (ds.Columns.Contains(columnName))
                                 {
                                     worksheet.Cells[row, col].Value = dataRow[columnName];
                                 }
@@ -281,11 +277,10 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                     }
                 }
+
             }
-            catch (Exception ex)
+            catch
             {
-                // Handle exceptions appropriately, for example, log the exception
-                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 

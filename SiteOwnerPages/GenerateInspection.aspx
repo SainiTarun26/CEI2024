@@ -276,7 +276,16 @@
                              <SortedDescendingCellStyle BackColor="#CAC9C9" />
                              <SortedDescendingHeaderStyle BackColor="#00547E" />
                          </asp:GridView>
-                   
+                   <div class="row" id="Documents" runat="server" visible="false">
+                         <div class="col-4">
+                            <label>
+                                Document Uploaded for
+                            </label>
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlDocumentFor" runat="server" AutoPostBack="true">
+                                
+                            </asp:DropDownList>
+                        </div>
+                       </div>
                             <div class="row">
                                 <div class="table-responsive pt-3" id="Uploads" runat="server" visible="false">
                                     <table class="table table-bordered table-striped">

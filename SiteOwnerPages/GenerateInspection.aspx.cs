@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.UserPages;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -97,7 +98,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
-                    // Show Uploads if any checkbox is checked
+                    Documents.Visible = true;
                     Uploads.Visible = GridView1.Rows.Cast<GridViewRow>().Any(r => ((CheckBox)r.FindControl("CheckBox1")).Checked);
 
                     // Show fields based on the category and applicant type
