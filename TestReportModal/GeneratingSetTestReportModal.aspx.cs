@@ -353,9 +353,10 @@ namespace CEIHaryana.TestReportModal
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-             id = Session["GeneratingSetId"].ToString();
-            CEI.UpdateGeneratingSetData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
-            Response.Redirect("/Contractor/GeneratingSetHistory.aspx");
+            string id = Session["IntimationId"].ToString();
+            string Counts = Session["Counts"].ToString();
+            CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+            Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
         }
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -682,7 +682,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
 
 
         #region Update Substation Data
-        public void UpdateSubstationData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
+        public void UpdateSubstationData(string ID,string Count, string RejectOrApprovedFronContractor, string ReasonForRejection)
         {
             SqlCommand cmd = new SqlCommand("sp_SubstationTestReportApproval");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -695,6 +695,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@Count", Count);
             cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
             cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
             cmd.ExecuteNonQuery();
@@ -702,7 +703,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Update GeneratingSet Data
-        public void UpdateGeneratingSetData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
+        public void UpdateGeneratingSetData(string ID,string Count, string RejectOrApprovedFronContractor, string ReasonForRejection)
         {
             SqlCommand cmd = new SqlCommand("sp_GeneratingTestReportApproval");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -715,6 +716,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@Count", Count);
             cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
             cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
             cmd.ExecuteNonQuery();

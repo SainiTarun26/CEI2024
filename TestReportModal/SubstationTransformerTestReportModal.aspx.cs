@@ -478,9 +478,10 @@ namespace CEIHaryana.TestReportModal
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-             id = Session["SubStationID"].ToString();
-            CEI.UpdateSubstationData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
-            Response.Redirect("/Contractor/SubstationTransformer.aspx");
+            string id = Session["IntimationId"].ToString();
+            string Counts = Session["Counts"].ToString();
+            CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+            Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {

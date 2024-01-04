@@ -601,7 +601,7 @@ namespace CEIHaryana.TestReportModal
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
                 CEI.UpdateLineData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
-                Response.Redirect("/Contractor/TestReportForContractor.aspx");
+                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
         }
 
