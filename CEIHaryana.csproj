@@ -1832,8 +1832,10 @@
     <Content Include="TestReport\Single-Three-Phase.aspx" />
     <Content Include="TestReport\SubstationTransformer.aspx" />
     <Content Include="TestReport\TestReport.aspx" />
+    <Content Include="UserPages\ApplicationForLiftEscalators.aspx" />
     <Content Include="UserPages\ContractorApplicationForm.aspx" />
     <Content Include="UserPages\Documents.aspx" />
+    <Content Include="UserPages\DocumentsForLift.aspx" />
     <Content Include="UserPages\FormPrintContractor.aspx" />
     <Content Include="UserPages\FormPrintSupervisor.aspx" />
     <Content Include="UserPages\FormPrintWiremen.aspx" />
@@ -2422,6 +2424,13 @@
     <Compile Include="TestReport\TestReport.Master.designer.cs">
       <DependentUpon>TestReport.Master</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\ApplicationForLiftEscalators.aspx.cs">
+      <DependentUpon>ApplicationForLiftEscalators.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\ApplicationForLiftEscalators.aspx.designer.cs">
+      <DependentUpon>ApplicationForLiftEscalators.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\ContractorApplicationForm.aspx.cs">
       <DependentUpon>ContractorApplicationForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2435,6 +2444,13 @@
     </Compile>
     <Compile Include="UserPages\Documents.aspx.designer.cs">
       <DependentUpon>Documents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\DocumentsForLift.aspx.cs">
+      <DependentUpon>DocumentsForLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\DocumentsForLift.aspx.designer.cs">
+      <DependentUpon>DocumentsForLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\FormPrintContractor.aspx.cs">
       <DependentUpon>FormPrintContractor.aspx</DependentUpon>

@@ -387,7 +387,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
         }
         #endregion
         #region Update Line Data
-        public void UpdateLineData(string ID, string RejectOrApprovedFronContractor, string ReasonForRejection)
+        public void UpdateLineData(string ID,string Count, string RejectOrApprovedFronContractor, string ReasonForRejection)
         {
             SqlCommand cmd = new SqlCommand("sp_ContractorTestReortApproval");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -400,6 +400,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@Count", Count);
             cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
             cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
             cmd.ExecuteNonQuery();

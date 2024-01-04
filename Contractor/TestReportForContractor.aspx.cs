@@ -59,7 +59,11 @@ namespace CEIHaryana.Contractor
                     Label lblID = (Label)row.FindControl("lblID");
                     string id = lblID.Text;
                     Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
-                    if(lblTypeOf.Text.Trim() == "Line")
+                    Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                    Label lblCounts = (Label)row.FindControl("lblCounts");
+                    Session["Counts"] = lblCounts.Text.Trim();
+                    Session["IntimationId"] = lblIntimationId.Text.Trim();
+                    if (lblTypeOf.Text.Trim() == "Line")
                     {
 
                         Session["LineID"] = id;

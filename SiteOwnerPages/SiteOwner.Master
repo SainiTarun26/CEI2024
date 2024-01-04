@@ -329,12 +329,12 @@
                                     <span class="menu-title">Create Inspections</span>
                                 </a>
                             </li>
-                     <%--     <li class="nav-item">
+                          <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/PeroidicInspection.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Periodic Inspection</span>
                                 </a>
-                            </li>--%>
+                            </li>
                           </ul>
                     </nav>
                     <div class="main-panel">

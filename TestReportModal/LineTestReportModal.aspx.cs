@@ -597,9 +597,11 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
-                string id = Session["LineID"].ToString();
-                CEI.UpdateLineData(id, ddlType.SelectedItem.ToString(), txtRejection.Text);
-                Response.Redirect("/Contractor/TestReportHistory.aspx");
+
+                string id = Session["IntimationId"].ToString();
+                string Counts = Session["Counts"].ToString();
+                CEI.UpdateLineData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                Response.Redirect("/Contractor/TestReportForContractor.aspx");
             }
         }
 
