@@ -1835,6 +1835,7 @@
     <Content Include="UserPages\ApplicationForLiftEscalators.aspx" />
     <Content Include="UserPages\ContractorApplicationForm.aspx" />
     <Content Include="UserPages\Documents.aspx" />
+    <Content Include="UserPages\DocumentsForContractor.aspx" />
     <Content Include="UserPages\DocumentsForLift.aspx" />
     <Content Include="UserPages\FormPrintContractor.aspx" />
     <Content Include="UserPages\FormPrintSupervisor.aspx" />
@@ -2444,6 +2445,13 @@
     </Compile>
     <Compile Include="UserPages\Documents.aspx.designer.cs">
       <DependentUpon>Documents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\DocumentsForContractor.aspx.cs">
+      <DependentUpon>DocumentsForContractor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\DocumentsForContractor.aspx.designer.cs">
+      <DependentUpon>DocumentsForContractor.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\DocumentsForLift.aspx.cs">
       <DependentUpon>DocumentsForLift.aspx</DependentUpon>

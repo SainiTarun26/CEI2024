@@ -597,7 +597,7 @@
                                                             </div>
                                                             <div class="col-3" id="Div10" runat="server">
                                                                 <label for="Name">
-                                                                    Date of Birth
+                                                                    Date of Issue
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
                                                                 <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
