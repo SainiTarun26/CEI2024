@@ -553,7 +553,7 @@
                                                                 <ContentTemplate>
                                                                     <td style="text-align: center;">
                                                                         <asp:DropDownList class="  select-form select2" ID="ddlQualification" runat="server" TabIndex="16" AutoPostBack="true">
-                                                                            <asp:ListItem Text="12th" Value="0"></asp:ListItem>
+                                                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="ITI(Certificate in Wireman,Linemen)" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="ITI(Certificate in Electrician)" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Diploma in  Wireman,Linemen" Value="3"></asp:ListItem>
@@ -606,7 +606,7 @@
 
                                                             <td style="text-align: center;">
                                                                 <asp:DropDownList class="select-form select2" ID="ddlQualification1" runat="server" TabIndex="16" AutoPostBack="true">
-                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Select Diploma" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Diploma in Electrical Engineering" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="Diploma in Electronics Engineering" Value="2"></asp:ListItem>
 
@@ -636,7 +636,7 @@
 
                                                             <td style="text-align: center;">
                                                                 <asp:DropDownList class="select-form select2" ID="ddlQualification2" runat="server" TabIndex="16" AutoPostBack="true">
-                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Select Degree" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Degree in Electrical Engineering" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="Degree in Electronics Engineering" Value="2"></asp:ListItem>
 
@@ -660,6 +660,36 @@
                                                             </td>
                                                             <td>
                                                                 <asp:TextBox class="form-control" autocomplete="off" ID="txtprcntg3" runat="server"> </asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td style="text-align: center;">
+                                                                <asp:DropDownList class="select-form select2" ID="ddlQualification3" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select Masters" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Masters in Electrical Engineering" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Masters in Electronics Engineering" Value="2"></asp:ListItem>
+
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtUniversity4" runat="server"> </asp:TextBox>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtPassingyear4" runat="server"> </asp:TextBox>
+                                                            </td>
+                                                            <td>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtmarksObtained4" runat="server"> </asp:TextBox>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtmarksmax4" runat="server"> </asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtprcntg4" runat="server"> </asp:TextBox>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -712,8 +742,8 @@
                                                                 <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtIssuingDate" runat="server"> </asp:TextBox>
                                                             </td>
                                                             <td>
-    <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="TextBox5" runat="server"> </asp:TextBox>
-</td>
+                                                                <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="TextBox5" runat="server"> </asp:TextBox>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <td style="text-align: center; font-size: 13px;">2
@@ -786,7 +816,7 @@
                                             </div>
                                         </div>
                                         <hr />
-                                        <a href="ContractorApplicationForm.aspx">ContractorApplicationForm.aspx</a>
+                                       <%-- <a href="ContractorApplicationForm.aspx">ContractorApplicationForm.aspx</a>--%>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-5">
                                                 <h4 class="card-title" style="font-size: 15px;">Detail of Experience.</h4>

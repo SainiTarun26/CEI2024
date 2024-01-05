@@ -348,6 +348,60 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtprcntg3;
 
         /// <summary>
+        /// ddlQualification3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlQualification3;
+
+        /// <summary>
+        /// txtUniversity4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUniversity4;
+
+        /// <summary>
+        /// txtPassingyear4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPassingyear4;
+
+        /// <summary>
+        /// txtmarksObtained4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtmarksObtained4;
+
+        /// <summary>
+        /// txtmarksmax4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtmarksmax4;
+
+        /// <summary>
+        /// txtprcntg4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtprcntg4;
+
+        /// <summary>
         /// RadioButtonList2 control.
         /// </summary>
         /// <remarks>
