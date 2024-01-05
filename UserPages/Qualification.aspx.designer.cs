@@ -465,51 +465,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
 
         /// <summary>
-        /// txtCategory1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory1;
-
-        /// <summary>
-        /// txtPermitNo1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPermitNo1;
-
-        /// <summary>
-        /// txtIssuingAuthority1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssuingAuthority1;
-
-        /// <summary>
-        /// txtIssuingDate1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssuingDate1;
-
-        /// <summary>
-        /// txtIssuingDate2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssuingDate2;
-
-        /// <summary>
         /// RadioButtonList3 control.
         /// </summary>
         /// <remarks>

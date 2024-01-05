@@ -43,6 +43,24 @@
         }
     </script>
     <style>
+        select#ddlQualification3 {
+    height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+                select#ddlQualification3:hover {
+    height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
         img {
     margin-bottom: 20px !important;
     margin-top: 10px;
@@ -743,25 +761,6 @@
                                                             </td>
                                                             <td>
                                                                 <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="TextBox5" runat="server"> </asp:TextBox>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="text-align: center; font-size: 13px;">2
-                                                            </td>
-                                                            <td>
-                                                                <asp:TextBox class="form-control" ID="txtCategory1" autocomplete="off" runat="server"> </asp:TextBox>
-                                                            </td>
-                                                            <td>
-                                                                <asp:TextBox class="form-control" ID="txtPermitNo1" autocomplete="off" runat="server"> </asp:TextBox>
-                                                            </td>
-                                                            <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtIssuingAuthority1" runat="server"> </asp:TextBox>
-                                                            </td>
-                                                            <td>
-                                                                <asp:TextBox class="form-control" type="date" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtIssuingDate1" runat="server"> </asp:TextBox>
-                                                            </td>
-                                                            <td>
-                                                                <asp:TextBox class="form-control" type="date" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtIssuingDate2" runat="server"> </asp:TextBox>
                                                             </td>
                                                         </tr>
                                                     </tbody>

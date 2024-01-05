@@ -19,6 +19,7 @@ namespace CEIHaryana.SiteOwnerPages
         DateTime inspectionCreatedDate;
         string voltage = string.Empty;
         string id = string.Empty;
+        bool Edit = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -57,6 +58,7 @@ namespace CEIHaryana.SiteOwnerPages
                                     string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
                                     ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                     btnSubmit.Visible = true;
+                                    Edit = true;
                                     //RejectedColumn.Visible = true;
                                 }
                                 else
@@ -64,7 +66,6 @@ namespace CEIHaryana.SiteOwnerPages
                                     string script = "alert(\"You Can't edit this inspection before 3 years\");";
                                     ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                     btnSubmit.Visible = false;
-
                                 }
                             }
                             else
@@ -74,6 +75,7 @@ namespace CEIHaryana.SiteOwnerPages
                                     string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
                                     ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                     btnSubmit.Visible = true;
+                                    Edit = true;
                                     //RejectedColumn.Visible = true;
                                 }
                                 else
@@ -91,29 +93,16 @@ namespace CEIHaryana.SiteOwnerPages
                                 string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
                                 ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                 btnSubmit.Visible = true;
+                                Edit = true;
 
                             }
                             else
                             {
                                 string script = "alert(\"You Can't edit inspection before 1 year\");";
                                 ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Enabled = true;
+                                btnSubmit.Visible = false;
                             }
                         }
-                        //if (Convert.ToString(Session["Type"]) == "Substation")
-                        //{
-                        //    string voltage = txtVoltage.Text;
-                        //    string voltagePart = voltage.Substring(0, voltage.Length - 2);
-                        //    string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
-                        //    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                        //    btnSubmit.Visible = true;
-                        //}
-                        //else
-                        //{
-                        //    string script = "alert(\"You Can't edit inspection \");";
-                        //    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                        //    btnSubmit.Enabled = true;
-                        //}
                     }
                     else
                     {
@@ -146,8 +135,9 @@ namespace CEIHaryana.SiteOwnerPages
 
         public void Visibilty()
         {
+
             Uploads.Visible = true;
-            Uploads.Visible = true;
+            // Uploads.Visible = true;
             if (txtWorkType.Text.Trim() == "Line")
             {
                 if (txtApplicantType.Text.Trim() == "Supplier Installation")
@@ -166,10 +156,12 @@ namespace CEIHaryana.SiteOwnerPages
                 if (txtApplicantType.Text.Trim() == "Supplier Installation")
                 {
                     LineSubstationSupplier.Visible = true;
+
                 }
                 else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                 {
                     PersonalSub.Visible = true;
+
                 }
             }
             else if (txtWorkType.Text.Trim() == "Generating Station")
@@ -194,7 +186,7 @@ namespace CEIHaryana.SiteOwnerPages
             //    btnBack.Visible = true;
             //}
             //else 
-            if (Session["Approval"].ToString().Trim() == "Rejected")
+            if (Edit == true)
             {
                 RejectedColumn.Visible = true;
                 RejectedColumnData1.Visible = true;
@@ -210,26 +202,45 @@ namespace CEIHaryana.SiteOwnerPages
                 RejectedColumnData11.Visible = true;
                 RejectedColumnData12.Visible = true;
                 RejectedColumnData13.Visible = true;
-                btnSubmit.Visible = true;
+                //btnSubmit.Visible = true;
                 btnBack.Visible = true;
             }
-            else
-            {
-                RejectedColumn.Visible = false;
-                RejectedColumnData1.Visible = false;
-                RejectedColumnData2.Visible = false;
-                RejectedColumnData3.Visible = false;
-                RejectedColumnData4.Visible = false;
-                RejectedColumnData5.Visible = false;
-                RejectedColumnData6.Visible = false;
-                RejectedColumnData7.Visible = false;
-                RejectedColumnData8.Visible = false;
-                RejectedColumnData9.Visible = false;
-                RejectedColumnData10.Visible = false;
-                RejectedColumnData11.Visible = false;
-                RejectedColumnData12.Visible = false;
-                RejectedColumnData13.Visible = false;
-            }
+            //if (Session["Approval"].ToString().Trim() == "Rejected")
+            //{
+            //    RejectedColumn.Visible = true;
+            //    RejectedColumnData1.Visible = true;
+            //    RejectedColumnData2.Visible = true;
+            //    RejectedColumnData3.Visible = true;
+            //    RejectedColumnData4.Visible = true;
+            //    RejectedColumnData5.Visible = true;
+            //    RejectedColumnData6.Visible = true;
+            //    RejectedColumnData7.Visible = true;
+            //    RejectedColumnData8.Visible = true;
+            //    RejectedColumnData9.Visible = true;
+            //    RejectedColumnData10.Visible = true;
+            //    RejectedColumnData11.Visible = true;
+            //    RejectedColumnData12.Visible = true;
+            //    RejectedColumnData13.Visible = true;
+            //    btnSubmit.Visible = true;
+            //    btnBack.Visible = true;
+            //}
+            //else
+            //{
+            //    RejectedColumn.Visible = false;
+            //    RejectedColumnData1.Visible = false;
+            //    RejectedColumnData2.Visible = false;
+            //    RejectedColumnData3.Visible = false;
+            //    RejectedColumnData4.Visible = false;
+            //    RejectedColumnData5.Visible = false;
+            //    RejectedColumnData6.Visible = false;
+            //    RejectedColumnData7.Visible = false;
+            //    RejectedColumnData8.Visible = false;
+            //    RejectedColumnData9.Visible = false;
+            //    RejectedColumnData10.Visible = false;
+            //    RejectedColumnData11.Visible = false;
+            //    RejectedColumnData12.Visible = false;
+            //    RejectedColumnData13.Visible = false;
+            //}
         }
 
         public void GetDetailsWithId()
@@ -274,13 +285,10 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
 
             }
-            catch
+            catch (Exception e)
             {
 
             }
-
-
-
         }
         protected void lnkInvoice_Click(object sender, EventArgs e)
         {
@@ -848,11 +856,6 @@ namespace CEIHaryana.SiteOwnerPages
               flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
               flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, CreatedBy);
 
-            //}
-            //else
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Select PDF Files only')", true);
-            //}
         }
 
     }

@@ -1899,13 +1899,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ActiontakenTestReport", LoginId);
         }
 
-        public void insertnewUseQualification(string UserId,string UniversityName10th,string PassingYear10th, string MarksObtained10th,string MarksMax10th,
+        public void InsertnewUseQualification(string UserId,string UniversityName10th,string PassingYear10th, string MarksObtained10th,string MarksMax10th,
             string Percentage10th,string Name12ITIDiploma, string UniversityName12thorITI,string PassingYear12thorITI, string MarksObtained12thorITI,
             string MarksMax12thorITI,string Percentage12thorITI,string NameofDiplomaDegree,string UniversityNameDiplomaorDegree,string PassingYearDiplomaorDegree,
             string MarksObtainedDiplomaorDegree,string MarksMaxDiplomaorDegree,string PercentageDiplomaorDegree,string NameofDegree,string UniversityNamePG,
-            string PassingYearPG,string MarksObtainedPG,string MarksMaxPG,string PercentagePG,string IsCertificateofCompetency,string CertificateofCompetency1
-            ,string PermitNo1,string IssuingAuthority1,string IssueDate1,string CertificateofCompetency2,string PermitNo2,string IssuingAuthority2,string IssueDate2,
-            string EmployedPermanent,string EmployerName,string PostDescription,string FromDate,string ToDate,string ExperienceEmployerName,
+            string PassingYearPG,string MarksObtainedPG,string MarksMaxPG,string PercentagePG,string NameofMasters, string MastersUniversityName, 
+            string MastersPassingYear, string MasterMarksObtained,string MastersMarksMax,string MatersPercentage, string IsCertificateofCompetency,string CertificateofCompetency1
+            ,string PermitNo1,string IssuingAuthority1,string IssueDate1,string EmployedPermanent,string EmployerName,string PostDescription,string FromDate,string ToDate,
+            string ExperienceEmployerName,
             string ExperiencePostDescription,string ExperienceFromDate,string ExperienceToDate,string RetiredEngineer,string RetiredEmployerName,
             string RetiredPostDescription,string RetiredFromDate,string RetiredToDate)
         {
@@ -1942,15 +1943,21 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@MarksObtainedPG", MarksObtainedPG);
             cmd.Parameters.AddWithValue("@MarksMaxPG", MarksMaxPG);
             cmd.Parameters.AddWithValue("@PercentagePG", PercentagePG);
+            cmd.Parameters.AddWithValue("@NameofMasters", NameofMasters);
+            cmd.Parameters.AddWithValue("@MastersUniversityName", MastersUniversityName);
+            cmd.Parameters.AddWithValue("@MastersPassingYear", MastersPassingYear);
+            cmd.Parameters.AddWithValue("@MasterMarksObtained", MasterMarksObtained);
+            cmd.Parameters.AddWithValue("@MastersMarksMax", MastersMarksMax);
+            cmd.Parameters.AddWithValue("@MatersPercentage", MatersPercentage);
             cmd.Parameters.AddWithValue("@IsCertificateofCompetency", IsCertificateofCompetency);
             cmd.Parameters.AddWithValue("@CertificateofCompetency1", CertificateofCompetency1);
             cmd.Parameters.AddWithValue("@PermitNo1", PermitNo1);
             cmd.Parameters.AddWithValue("@IssuingAuthority1", IssuingAuthority1);
             cmd.Parameters.AddWithValue("@IssueDate1", IssueDate1);
-            cmd.Parameters.AddWithValue("@CertificateofCompetency2", CertificateofCompetency2);
-            cmd.Parameters.AddWithValue("@PermitNo2", PermitNo2);
-            cmd.Parameters.AddWithValue("@IssuingAuthority2", IssuingAuthority2);
-            cmd.Parameters.AddWithValue("@IssueDate2", IssueDate2);
+            //cmd.Parameters.AddWithValue("@CertificateofCompetency2", CertificateofCompetency2);
+            //cmd.Parameters.AddWithValue("@PermitNo2", PermitNo2);
+            //cmd.Parameters.AddWithValue("@IssuingAuthority2", IssuingAuthority2);
+            //cmd.Parameters.AddWithValue("@IssueDate2", IssueDate2);
             cmd.Parameters.AddWithValue("@EmployedPermanent", EmployedPermanent);
             cmd.Parameters.AddWithValue("@EmployerName", EmployerName);
             cmd.Parameters.AddWithValue("@PostDescription", PostDescription);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CEI_PRoject;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,6 +12,7 @@ namespace CEIHaryana.UserPages
         string InsertedCategory = "";
         string REID = string.Empty;
         bool showAlert = false;
+        CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -98,11 +100,11 @@ namespace CEIHaryana.UserPages
                 txtIssuingAuthority.Text = ds.Tables[0].Rows[0]["IssuingAuthority1"].ToString();
                 string dp_Id7 = ds.Tables[0].Rows[0]["IssueDate1"].ToString();
                 txtIssuingDate.Text = DateTime.Parse(dp_Id7).ToString("yyyy-MM-dd");
-                txtCategory1.Text = ds.Tables[0].Rows[0]["CertificateofCompetency2"].ToString();
-                txtPermitNo1.Text = ds.Tables[0].Rows[0]["PermitNo2"].ToString();
-                txtIssuingAuthority1.Text = ds.Tables[0].Rows[0]["IssuingAuthority2"].ToString();
-                string dp_Id8 = ds.Tables[0].Rows[0]["IssueDate2"].ToString();
-                txtIssuingDate1.Text = DateTime.Parse(dp_Id8).ToString("yyyy-MM-dd");
+                //txtCategory1.Text = ds.Tables[0].Rows[0]["CertificateofCompetency2"].ToString();
+                //txtPermitNo1.Text = ds.Tables[0].Rows[0]["PermitNo2"].ToString();
+                //txtIssuingAuthority1.Text = ds.Tables[0].Rows[0]["IssuingAuthority2"].ToString();
+                //string dp_Id8 = ds.Tables[0].Rows[0]["IssueDate2"].ToString();
+                //txtIssuingDate1.Text = DateTime.Parse(dp_Id8).ToString("yyyy-MM-dd");
                 txtEmployerName.Text = ds.Tables[0].Rows[0]["EmployerName"].ToString();
                 txtDescription.Text = ds.Tables[0].Rows[0]["PostDescription"].ToString();
                 string dp_Id9 = ds.Tables[0].Rows[0]["FromDate"].ToString();
@@ -287,68 +289,15 @@ namespace CEIHaryana.UserPages
             if (!showAlert)
             {
 
-                SqlCommand cmd = new SqlCommand("sp_InsertUserQualification");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@UserId", REID);
-                cmd.Parameters.AddWithValue("@UniversityName10th", txtUniversity.Text);
-                cmd.Parameters.AddWithValue("@PassingYear10th", txtPassingyear.Text);
-                cmd.Parameters.AddWithValue("@MarksObtained10th", txtmarksObtained.Text);
-                cmd.Parameters.AddWithValue("@MarksMax10th", txtmarksmax.Text);
-                cmd.Parameters.AddWithValue("@Percentage10th", txtprcntg.Text);
-                cmd.Parameters.AddWithValue("@Name12ITIDiploma", ddlQualification.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@UniversityName12thorITI", txtUniversity1.Text);
-                cmd.Parameters.AddWithValue("@PassingYear12thorITI", txtPassingyear1.Text);
-                cmd.Parameters.AddWithValue("@MarksObtained12thorITI", txtmarksObtained1.Text);
-                cmd.Parameters.AddWithValue("@MarksMax12thorITI", txtmarksmax1.Text);
-                cmd.Parameters.AddWithValue("@Percentage12thorITI", txtprcntg1.Text);
-                cmd.Parameters.AddWithValue("@NameofDiplomaDegree", ddlQualification1.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@UniversityNameDiplomaorDegree", txtUniversity2.Text);
-                cmd.Parameters.AddWithValue("@PassingYearDiplomaorDegree", txtPassingyear2.Text);
-                cmd.Parameters.AddWithValue("@MarksObtainedDiplomaorDegree", txtmarksObtained2.Text);
-                cmd.Parameters.AddWithValue("@MarksMaxDiplomaorDegree", txtmarksmax2.Text);
-                cmd.Parameters.AddWithValue("@PercentageDiplomaorDegree", txtprcntg2.Text);
-                cmd.Parameters.AddWithValue("@NameofDegree", ddlQualification2.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@UniversityNamePG", txtUniversity3.Text);
-                cmd.Parameters.AddWithValue("@PassingYearPG", txtPassingyear3.Text);
-                cmd.Parameters.AddWithValue("@MarksObtainedPG", txtmarksObtained3.Text);
-                cmd.Parameters.AddWithValue("@MarksMaxPG", txtmarksmax3.Text);
-                cmd.Parameters.AddWithValue("@PercentagePG", txtprcntg3.Text);
-                cmd.Parameters.AddWithValue("@IsCertificateofCompetency", RadioButtonList2.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@CertificateofCompetency1", txtCategory.Text);
-                cmd.Parameters.AddWithValue("@PermitNo1", txtPermitNo.Text);
-                cmd.Parameters.AddWithValue("@IssuingAuthority1", txtIssuingAuthority.Text);
-                cmd.Parameters.AddWithValue("@IssueDate1", txtIssuingDate.Text);
-                cmd.Parameters.AddWithValue("@CertificateofCompetency2", txtCategory1.Text);
-                cmd.Parameters.AddWithValue("@PermitNo2", txtPermitNo1.Text);
-                cmd.Parameters.AddWithValue("@IssuingAuthority2", txtIssuingAuthority1.Text);
-                cmd.Parameters.AddWithValue("@IssueDate2", txtIssuingDate1.Text);
-                cmd.Parameters.AddWithValue("@EmployedPermanent", RadioButtonList3.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@EmployerName", txtEmployerName.Text);
-                cmd.Parameters.AddWithValue("@PostDescription", txtDescription.Text);
-                cmd.Parameters.AddWithValue("@FromDate", txtFrom.Text);
-                cmd.Parameters.AddWithValue("@ToDate", txtTo.Text);
-                cmd.Parameters.AddWithValue("@ExperienceEmployerName", txtEmployerName1.Text);
-                cmd.Parameters.AddWithValue("@ExperiencePostDescription", txtDescription1.Text);
-                cmd.Parameters.AddWithValue("@ExperienceFromDate", txtFrom1.Text);
-                cmd.Parameters.AddWithValue("@ExperienceToDate", txtTo1.Text);
-                //cmd.Parameters.AddWithValue("@ExperienceEmployerName1", txtEmployer.Text);
-                //cmd.Parameters.AddWithValue("@ExperiencePostDescription1", txtDescript.Text);
-                //cmd.Parameters.AddWithValue("@ExperienceFromDate1", txtFrm1.Text);
-                //cmd.Parameters.AddWithValue("@ExperienceToDate1", txtToDate.Text);
-                cmd.Parameters.AddWithValue("@RetiredEngineer", RadioButtonList1.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@RetiredEmployerName", txtEmployerName2.Text);
-                cmd.Parameters.AddWithValue("@RetiredPostDescription", txtDescription2.Text);
-                cmd.Parameters.AddWithValue("@RetiredFromDate", txtFrom2.Text);
-                cmd.Parameters.AddWithValue("@RetiredToDate", txtTo2.Text);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                CEI.InsertnewUseQualification(REID, txtUniversity.Text, txtPassingyear.Text, txtmarksObtained.Text, txtmarksmax.Text, txtprcntg.Text,ddlQualification.SelectedItem.ToString(),
+                    txtUniversity1.Text, txtPassingyear1.Text, txtmarksObtained1.Text, txtmarksmax1.Text, txtprcntg1.Text, ddlQualification1.SelectedItem.ToString(),
+                   txtUniversity2.Text, txtPassingyear2.Text, txtmarksObtained2.Text, txtmarksmax2.Text, txtprcntg2.Text, ddlQualification2.SelectedItem.ToString(),
+                  txtUniversity3.Text, txtPassingyear3.Text, txtmarksObtained3.Text, txtmarksmax3.Text, txtprcntg3.Text, ddlQualification3.SelectedItem.ToString(),
+                  txtUniversity4.Text, txtPassingyear4.Text, txtmarksObtained4.Text, txtmarksmax4.Text, txtprcntg4.Text, RadioButtonList2.SelectedItem.ToString(),
+                 txtCategory.Text, txtPermitNo.Text,txtIssuingAuthority.Text, txtIssuingDate.Text, RadioButtonList3.SelectedItem.ToString(),txtEmployerName.Text,txtDescription.Text,txtFrom.Text,txtTo.Text, txtEmployerName1.Text,
+                 txtDescription1.Text, txtFrom1.Text, txtTo1.Text, RadioButtonList1.SelectedItem.ToString(), txtEmployerName2.Text,
+                 txtDescription2.Text, txtFrom2.Text, txtTo2.Text);
+
                 Session["Back"] = txtUniversity.Text;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
                 showAlert = true;
