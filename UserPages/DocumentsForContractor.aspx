@@ -739,8 +739,7 @@ undertaken
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PHOTO SIZE
-20KB TO 50KB)</label>
+                                                                        (PLEASE UPLOAD PHOTO SIZE20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="TextBox10" runat="server" CssClass="form-control file-upload-info"
