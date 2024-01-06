@@ -25,7 +25,7 @@
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
         #hero {
-            height: 63vh !important;
+            height: 60vh !important;
         }
 
         .body {
