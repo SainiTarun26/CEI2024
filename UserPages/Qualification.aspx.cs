@@ -347,5 +347,24 @@ namespace CEIHaryana.UserPages
             }
 
         }
+
+        protected void btnAddMore_Click(object sender, EventArgs e)
+        {
+            if (Experience1.Visible == false)
+            {
+                Experience1.Visible = true;
+                Experience2.Visible = false;
+            }
+            else if(Experience1.Visible == true)
+            {
+                Experience1.Visible = true;
+                Experience2.Visible = true;
+            }
+            else
+            {
+                Experience1.Visible = false;
+                Experience2.Visible = false;
+            }
+        }
     }
 }

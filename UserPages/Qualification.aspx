@@ -881,11 +881,11 @@
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                         </tr>   
-                                                        <tr>
+                                                        <tr id="Experience1" runat="server" visible="false">
     <%--  <td style="text-align: center; font-size: 13px;">1
     </td>--%>
     <td>
-        <asp:DropDownList class="  select-form select2" ID="DropDownList3" runat="server" TabIndex="16" AutoPostBack="true">
+        <asp:DropDownList class="  select-form select2" ID="ddlExperience1" runat="server" TabIndex="16" AutoPostBack="true">
             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
             <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
             <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
@@ -894,7 +894,7 @@
         </asp:DropDownList>
     </td>
     <td>
-        <asp:DropDownList class="  select-form select2" ID="DropDownList4" runat="server" TabIndex="16" AutoPostBack="true">
+        <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder" runat="server" TabIndex="16" AutoPostBack="true">
             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
             <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
             <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
@@ -903,31 +903,31 @@
         </asp:DropDownList>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>
+        <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer" runat="server"> </asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtEmployerName1"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="TextBox2" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtDescription1"
+        <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription" runat="server"> </asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtPostDescription"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox3" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtFrom1"
+        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom" runat="server"> </asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtExperienceFrom"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox4" runat="server"> </asp:TextBox>
+        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" runat="server"> </asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtTo1"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
     </td>
 </tr>   
-                                                        <tr>
+                                                        <tr id="Experience2" runat="server" visible="false">
     <%--  <td style="text-align: center; font-size: 13px;">1
     </td>--%>
     <td>
-        <asp:DropDownList class="  select-form select2" ID="DropDownList5" runat="server" TabIndex="16" AutoPostBack="true">
+        <asp:DropDownList class="  select-form select2" ID="ddlExperience2" runat="server" TabIndex="16" AutoPostBack="true">
             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
             <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
             <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
@@ -936,7 +936,7 @@
         </asp:DropDownList>
     </td>
     <td>
-        <asp:DropDownList class="  select-form select2" ID="DropDownList6" runat="server" TabIndex="16" AutoPostBack="true">
+        <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder2" runat="server" TabIndex="16" AutoPostBack="true">
             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
             <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
             <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
@@ -945,23 +945,23 @@
         </asp:DropDownList>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="TextBox6" runat="server"> </asp:TextBox>
+        <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer2" runat="server"> </asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtEmployerName1"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="TextBox7" runat="server"> </asp:TextBox>
+        <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription2" runat="server"> </asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtDescription1"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox8" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtFrom1"
+        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" runat="server"> </asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExperienceFrom2"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
     </td>
     <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox9" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtTo1"
+        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo"
             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
     </td>
 </tr>   
@@ -969,8 +969,8 @@
                                                         <tr>
                                                           
                                                             <td colspan="6" style="font-size: 12px; text-align:end;">
-                                                                <asp:Button ID="Button1" runat="server" Text="Add More" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
-    OnClick="btnNext_Click" OnClientClick="return validateForm();"></asp:Button>
+                                                                <asp:Button ID="btnAddMore" runat="server" Text="Add More" class="btn btn-primary" 
+                                                                    Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnAddMore_Click" ></asp:Button>
                                                                </td>
                                                         </tr>
                                                     </tbody>
