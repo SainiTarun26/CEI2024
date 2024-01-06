@@ -43,6 +43,78 @@
         }
     </script>
     <style>
+        select#ddlExperience1{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        select#ddlTrainingUnder{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        select#ddlExperience2{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        select#ddlTrainingUnder2:Hover{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+            select#ddlExperience1:hover{
+        height: 25px !important;
+width: 100% !important;
+font-size: 13px !important;
+text-align: center !important;
+border: 1px solid #ced4da !important;
+border-radius: 5px !important;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    select#ddlTrainingUnder:hover{
+        height: 25px;
+width: 100%;
+font-size: 13px;
+text-align: center;
+border: 1px solid #ced4da;
+border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    select#ddlExperience2{
+        height: 25px;
+width: 100%;
+font-size: 13px;
+text-align: center;
+border: 1px solid #ced4da;
+border-radius: 5px;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    select#ddlTrainingUnder2{
+        height: 25px;
+width: 100%;
+font-size: 13px;
+text-align: center;
+border: 1px solid #ced4da;
+border-radius: 5px;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
         select#ddlQualification3 {
     height: 25px;
     width: 100%;
@@ -488,11 +560,12 @@
                     <div class="container" data-aos="fade-up">
                         <div class="row">
                             <div class="col-md-12">
-                                <p style="text-align: center;font-weight: 700;margin-top: -40px;margin-bottom:10px;">
+                                <p style="text-align: center; font-weight: 700; margin-top: -40px; margin-bottom: 10px;">
                                     (Please read the instructions carefully as given in Instruction
-                            Page before filling the form) </p>
-                                    <img src="/Assets/capsules/qualification.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left:5%;" />
-                               
+                            Page before filling the form)
+                                </p>
+                                <img src="/Assets/capsules/qualification.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
+
                                 <div class="card"
                                     style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                     <div class="card-body">
@@ -815,7 +888,7 @@
                                             </div>
                                         </div>
                                         <hr />
-                                       <%-- <a href="ContractorApplicationForm.aspx">ContractorApplicationForm.aspx</a>--%>
+                                        <%-- <a href="ContractorApplicationForm.aspx">ContractorApplicationForm.aspx</a>--%>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-5">
                                                 <h4 class="card-title" style="font-size: 15px;">Detail of Experience.</h4>
@@ -854,10 +927,20 @@
                                                             <td>
                                                                 <asp:DropDownList class="  select-form select2" ID="DropDownList1" runat="server" TabIndex="16" AutoPostBack="true">
                                                                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
-                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
-
+                                                                    <asp:ListItem Text="A class
+licensed electrical
+contractor"
+                                                                        Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Central
+government"
+                                                                        Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="State
+government"
+                                                                        Value="2"></asp:ListItem>
+                                                                                                                                        <asp:ListItem Text="Semi
+government
+department/organisation"
+                                                                        Value="2"></asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </td>
                                                             <td>
@@ -880,101 +963,114 @@
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtTo1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
-                                                        </tr>   
+                                                        </tr>
                                                         <tr id="Experience1" runat="server" visible="false">
-    <%--  <td style="text-align: center; font-size: 13px;">1
+                                                            <%--  <td style="text-align: center; font-size: 13px;">1
     </td>--%>
-    <td>
-        <asp:DropDownList class="  select-form select2" ID="ddlExperience1" runat="server" TabIndex="16" AutoPostBack="true">
-            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlExperience1" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
 
-        </asp:DropDownList>
-    </td>
-    <td>
-        <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder" runat="server" TabIndex="16" AutoPostBack="true">
-            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
-
-        </asp:DropDownList>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtEmployerName1"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtPostDescription"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtExperienceFrom"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtTo1"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
-    </td>
-</tr>   
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text=" A class
+licensed electrical
+contractor" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Central
+government" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="State
+government" Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Semi
+government
+department/organisation" Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtEmployerName1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtPostDescription"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtExperienceFrom"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtTo1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                        </tr>
                                                         <tr id="Experience2" runat="server" visible="false">
-    <%--  <td style="text-align: center; font-size: 13px;">1
+                                                            <%--  <td style="text-align: center; font-size: 13px;">1
     </td>--%>
-    <td>
-        <asp:DropDownList class="  select-form select2" ID="ddlExperience2" runat="server" TabIndex="16" AutoPostBack="true">
-            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlExperience2" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
 
-        </asp:DropDownList>
-    </td>
-    <td>
-        <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder2" runat="server" TabIndex="16" AutoPostBack="true">
-            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
-            <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder2" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="A class
+licensed electrical
+contractor" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Central
+government" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="State
+government" Value="2"></asp:ListItem>
+                                                                                                                                        <asp:ListItem Text="Semi
+government
+department/organisation" Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer2" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtEmployerName1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription2" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtDescription1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExperienceFrom2"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                        </tr>
 
-        </asp:DropDownList>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer2" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtEmployerName1"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription2" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtDescription1"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExperienceFrom2"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
-    </td>
-    <td>
-        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo"
-            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
-    </td>
-</tr>   
-                                                        
                                                         <tr>
-                                                          
+
                                                             <td colspan="4" style="font-size: 12px;">
-                                                                <asp:Button ID="btnAddMore" runat="server" Text="Add More" class="btn btn-primary" 
-                                                                    Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnAddMore_Click" ></asp:Button>
-                                                               </td>
-                                                            <td colspan="2" style="font-size: 12px;"><p style="font-size:12px;">Total Experience:</p>
-    <asp:TextBox class="form-control" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>
-   </td>
+                                                                <asp:Button ID="btnAddMore" runat="server" Text="Add More" class="btn btn-primary"
+                                                                    Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnAddMore_Click"></asp:Button>
+                                                            </td>
+                                                            <td colspan="2" style="font-size: 12px;">
+                                                                <p style="font-size: 12px;">Total Experience:</p>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
