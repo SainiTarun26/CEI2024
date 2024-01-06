@@ -44,7 +44,7 @@ namespace CEIHaryana.Supervisor
                         Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
                         GetHistoryDataById();
                         BtnBack.Visible = true;
-                       // BtnSubmitGeneratingSet.Text = "Update";
+                        // BtnSubmitGeneratingSet.Text = "Update";
 
 
                     }
@@ -61,7 +61,7 @@ namespace CEIHaryana.Supervisor
 
                         BtnBack.Visible = false;
                         btnVerify.Visible = false;
-                       // BtnSubmitGeneratingSet.Visible = false;
+                        // BtnSubmitGeneratingSet.Visible = false;
 
                     }
                     txtapplication.Text = Session["Application"].ToString().Trim();
@@ -451,7 +451,7 @@ namespace CEIHaryana.Supervisor
             }
             else
             {
-               // Response.Redirect("/Admin/TestHistoryReport.aspx", false);
+                // Response.Redirect("/Admin/TestHistoryReport.aspx", false);
 
             }
         }
@@ -763,7 +763,7 @@ namespace CEIHaryana.Supervisor
                 if (x + 1 == int.Parse(sessionValue) && nextSessionName == "")
                 {
                     Declaration.Visible = true;
-                   // BtnSubmitGeneratingSet.Text = "Submit";
+                    // BtnSubmitGeneratingSet.Text = "Submit";
                     //BtnSubmitGeneratingSet.Attributes.Add("disabled", "true");
                     btnVerify.Visible = true;
                 }
@@ -780,10 +780,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed1.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing1.Visible = true;
+                RequiredFieldValidator61.Visible = true;
             }
             else
             {
                 txtOtherEarthing1.Visible = false;
+                RequiredFieldValidator61.Visible = false;
             }
         }
 
@@ -792,10 +794,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed2.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing2.Visible = true;
+                RequiredFieldValidator62.Visible = true;
             }
             else
             {
                 txtOtherEarthing2.Visible = false;
+                RequiredFieldValidator62.Visible = false;
             }
         }
 
@@ -804,10 +808,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed3.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing3.Visible = true;
+                RequiredFieldValidator63.Visible = true;
             }
             else
             {
                 txtOtherEarthing3.Visible = false;
+                RequiredFieldValidator63.Visible = false;
             }
         }
 
@@ -816,10 +822,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed4.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing4.Visible = true;
+                RequiredFieldValidator64.Visible = true;
             }
             else
             {
                 txtOtherEarthing4.Visible = false;
+                RequiredFieldValidator64.Visible = false;
             }
         }
 
@@ -828,10 +836,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed5.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing5.Visible = true;
+                RequiredFieldValidator65.Visible = true;
             }
             else
             {
                 txtOtherEarthing5.Visible = false;
+                RequiredFieldValidator65.Visible = false;
             }
         }
 
@@ -840,10 +850,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed6.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing6.Visible = true;
+                RequiredFieldValidator66.Visible = true;
             }
             else
             {
                 txtOtherEarthing6.Visible = false;
+                RequiredFieldValidator66.Visible = false;
             }
         }
 
@@ -852,10 +864,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed7.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing7.Visible = true;
+                RequiredFieldValidator67.Visible = true;
             }
             else
             {
                 txtOtherEarthing7.Visible = false;
+                RequiredFieldValidator67.Visible = false;
             }
         }
 
@@ -864,10 +878,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed8.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing8.Visible = true;
+                RequiredFieldValidator68.Visible = true;
             }
             else
             {
                 txtOtherEarthing8.Visible = false;
+                RequiredFieldValidator68.Visible = false;
             }
         }
 
@@ -876,10 +892,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed10.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing10.Visible = true;
+                RequiredFieldValidator70.Visible = true;
             }
             else
             {
                 txtOtherEarthing10.Visible = false;
+                RequiredFieldValidator70.Visible = false;
             }
         }
 
@@ -888,10 +906,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed11.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing11.Visible = true;
+                RequiredFieldValidator71.Visible = true;
             }
             else
             {
                 txtOtherEarthing11.Visible = false;
+                RequiredFieldValidator71.Visible = false;
             }
         }
 
@@ -900,10 +920,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed12.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing12.Visible = true;
+                RequiredFieldValidator72.Visible = true;
             }
             else
             {
                 txtOtherEarthing12.Visible = false;
+                RequiredFieldValidator72.Visible = false;
             }
         }
 
@@ -912,10 +934,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed13.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing13.Visible = true;
+                RequiredFieldValidator73.Visible = true;
             }
             else
             {
                 txtOtherEarthing13.Visible = false;
+                RequiredFieldValidator73.Visible = false;
             }
         }
 
@@ -924,10 +948,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed14.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing14.Visible = true;
+                RequiredFieldValidator6.Visible = true;
             }
             else
             {
                 txtOtherEarthing14.Visible = false;
+                RequiredFieldValidator6.Visible = false;
             }
         }
 
@@ -936,10 +962,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed15.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing15.Visible = true;
+                RequiredFieldValidator7.Visible = true;
             }
             else
             {
                 txtOtherEarthing15.Visible = false;
+                RequiredFieldValidator7.Visible = false;
             }
         }
 
@@ -948,10 +976,12 @@ namespace CEIHaryana.Supervisor
             if (ddlGeneratingEarthingUsed9.SelectedItem.ToString() == "Other")
             {
                 txtOtherEarthing9.Visible = true;
+                RequiredFieldValidator69.Visible = true;
             }
             else
             {
                 txtOtherEarthing9.Visible = false;
+                RequiredFieldValidator69.Visible = false;
             }
         }
 
@@ -973,7 +1003,7 @@ namespace CEIHaryana.Supervisor
                 {
                     if (Session["OTP"].ToString() == txtOTP.Text.Trim())
                     {
-                      //  BtnSubmitGeneratingSet.Attributes.Remove("disabled");
+                        //  BtnSubmitGeneratingSet.Attributes.Remove("disabled");
                         btnVerify.Attributes.Add("disabled", "true");
                     }
                     else
