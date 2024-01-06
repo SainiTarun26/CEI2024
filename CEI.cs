@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Sockets;
 using System.Web.UI.WebControls;
+using System.Windows.Media.TextFormatting;
 using static System.Net.WebRequestMethods;
 
 namespace CEI_PRoject
@@ -1332,19 +1333,51 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             //Session["OTP"] = otp;
 
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("cs.nehaa6@gmail.com");
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "Your Site Owner ID and Password";
-            string body = $"Dear Customer,"+ otp + " is the OTP for your request send to CEI Department, HRY.OTPs are SECRET.DO NOT share OTP with anyone";
+            string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to CEI Department, HRY.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\\n\\nBest regards,\\n[CEI Haryana]\"";
             mailMessage.Body = body;
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
             smtpClient.EnableSsl = true;
 
             smtpClient.Send(mailMessage);
             return otp;
+        } 
+        public void NewCredentialsthroughEmail(string Email)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email); 
+            mailMessage.Subject = "Credentials";
+            string body = $"Dear Customer,\n\nWe are pleased to inform you that your account has been successfully created. Your user ID is the first 4 characters of your name combined with your date of birth.\n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]"; 
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
         }
+       
+        public void SiteOwnerCredentials(string Email , string pan)
+        {
+            
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email); mailMessage.Subject = "Your Site Owner ID and Password";
+            string body = $"Dear Customer,\n\nWe are pleased to inform you that your account has been successfully created. Your user id is {pan} and Password is 123456 Visit Website http://ceiharyana.com/ \n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]"; ;
+            mailMessage.Body = body;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
+        }
+
+
         public DataTable InspectionHistoryForAdminData()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionHistoryForAdmin");

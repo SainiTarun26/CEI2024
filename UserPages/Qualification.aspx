@@ -435,8 +435,7 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                     </a>
                     <h1 class="logo">
                         <a href="index.html">
-                            <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana
-                        <span>.</span></span>
+                            <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
                         </a>
                     </h1>
                     <!-- Uncomment below if you prefer to use an image logo -->
@@ -565,7 +564,9 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                             Page before filling the form)
                                 </p>
                                 <img src="/Assets/capsules/qualification.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
-
+                               
+                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
                                 <div class="card"
                                     style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                     <div class="card-body">
@@ -927,19 +928,13 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                                                             <td>
                                                                 <asp:DropDownList class="  select-form select2" ID="DropDownList1" runat="server" TabIndex="16" AutoPostBack="true">
                                                                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                    <asp:ListItem Text="A class
-licensed electrical
-contractor"
+                                                                    <asp:ListItem Text="A class licensed electrical contractor"
                                                                         Value="0"></asp:ListItem>
-                                                                    <asp:ListItem Text="Central
-government"
+                                                                    <asp:ListItem Text="Central government"
                                                                         Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="State
-government"
+                                                                    <asp:ListItem Text="State government"
                                                                         Value="2"></asp:ListItem>
-                                                                                                                                        <asp:ListItem Text="Semi
-government
-department/organisation"
+                                                                    <asp:ListItem Text="Semigovernment department/organisation"
                                                                         Value="2"></asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </td>
@@ -959,7 +954,7 @@ department/organisation"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtTo1" runat="server"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtTo1"  OnTextChanged="txtTo1_TextChanged"  runat="server"> </asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtTo1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
@@ -1007,7 +1002,7 @@ department/organisation" Value="2"></asp:ListItem>
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" runat="server"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" OnTextChanged="txtExperienceTo_TextChanged" runat="server"> </asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtTo1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
@@ -1055,7 +1050,7 @@ department/organisation" Value="2"></asp:ListItem>
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtExperienceTo2_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
@@ -1069,7 +1064,7 @@ department/organisation" Value="2"></asp:ListItem>
                                                             </td>
                                                             <td colspan="2" style="font-size: 12px;">
                                                                 <p style="font-size: 12px;">Total Experience:</p>
-                                                                <asp:TextBox class="form-control" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" ReadOnly="true" autocomplete="off" ID="txtTotalExperience" runat="server"> </asp:TextBox>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1139,6 +1134,8 @@ department/organisation" Value="2"></asp:ListItem>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>
+                        </ContentTemplate>
+                                     </asp:UpdatePanel>
                             </div>
                         </div>
                     </div>

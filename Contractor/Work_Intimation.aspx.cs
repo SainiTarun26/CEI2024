@@ -558,19 +558,8 @@ namespace CEIHaryana.Contractor
                                 }
                             }
                         }
-                        MailMessage mailMessage = new MailMessage();
-                        mailMessage.From = new MailAddress("cs.nehaa6@gmail.com"); 
-                        mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Site Owner ID and Password"; 
-                        string body = $"Dear Customer, Your Account is created. Your user id is {txtPAN.Text} and Password is 123456 Visit Website http://ceiharyana.com/ --SAFEDOT";
-                        mailMessage.Body = body;
-
-                        SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-                        smtpClient.Port = 587;
-                        smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
-                        smtpClient.EnableSsl = true; 
-
-                        smtpClient.Send(mailMessage);
-
+                        CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
+                       
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
 

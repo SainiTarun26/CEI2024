@@ -136,20 +136,7 @@ namespace CEIHaryana.UserPages
            txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
            txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
            txtPin.Text, txtConfirmPswrd.Text, ipaddress);
-
-
-                    MailMessage mailMessage = new MailMessage();
-                    mailMessage.From = new MailAddress("cs.nehaa6@gmail.com");
-                    mailMessage.To.Add(txtEmail.Text); mailMessage.Subject = "Your Credentials"; string body = $"Dear Customer, Your Account is created. Your user id is First 4 characters of your Name + your date of birth. ";
-                    mailMessage.Body = body;
-
-                    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-                    smtpClient.Port = 587;
-                    smtpClient.Credentials = new NetworkCredential("cs.nehaa6@gmail.com", "onzlivlqffxixxgg");
-                    smtpClient.EnableSsl = true;
-
-                    smtpClient.Send(mailMessage);
-
+                    CEI.NewCredentialsthroughEmail(txtEmail.Text);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
                 }

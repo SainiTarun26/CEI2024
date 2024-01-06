@@ -220,7 +220,7 @@
                                      <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
                                     <HeaderTemplate>
-                                        <asp:CheckBox ID="chkSelectAll" runat="server" />
+                                     <%--   <asp:CheckBox ID="chkSelectAll" runat="server" />--%>
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:CheckBox ID="CheckBox1" AutoPostBack="true" runat="server" HorizontalAlign="center" OnCheckedChanged="chkSelect_CheckedChanged" />
@@ -535,6 +535,7 @@
      </div>
     <footer class="footer">
     </footer>
+
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Inspection Added Successfully')) {

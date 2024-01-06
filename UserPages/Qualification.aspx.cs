@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace CEIHaryana.UserPages
 {
@@ -332,9 +333,130 @@ namespace CEIHaryana.UserPages
                 RetiredEmployee.Visible = false;
             }
         }
+        protected void txtTo1_TextChanged(object sender, EventArgs e)
+        {
 
+            // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
+            bool isExperienceVisible = true;  
 
-        protected void RadioButtonList3_SelectedIndexChanged(object sender, EventArgs e)
+            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtFrom1, txtExperienceFrom2 } : new TextBox[] { txtFrom1 };
+            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtTo1, txtExperienceTo2 } : new TextBox[] { txtTo1 };
+
+            int totalYears = 0, totalMonths = 0, totalDays = 0;
+
+            for (int i = 0; i < fromArray.Length; i++)
+            {
+                // Check if the TextBox controls are visible
+                if (fromArray[i].Visible && toArray[i].Visible)
+                {
+                    DateTime fromDate, toDate;
+
+                    // Use a try-catch block to handle parsing errors
+                    try
+                    {
+                        // Parse the 'From' and 'To' values
+                        if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
+                        {
+                            // Calculate the difference in years, months, and days
+                            TimeSpan difference = toDate - fromDate;
+                            totalYears += difference.Days / 365;
+                            totalMonths += (difference.Days % 365) / 30;
+                            totalDays += difference.Days % 30;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle parsing errors (e.g., invalid date format)
+                        // You can log the error or take appropriate action based on your needs
+                    }
+                }
+            }
+
+            // Display the calculated values in another TextBox
+            txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
+        }
+        protected void txtExperienceTo_TextChanged(object sender, EventArgs e)
+        {
+            bool isExperienceVisible = true;
+
+            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtFrom1, txtExperienceFrom2 } : new TextBox[] { txtFrom1 };
+            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtTo1, txtExperienceTo2 } : new TextBox[] { txtTo1 };
+
+            int totalYears = 0, totalMonths = 0, totalDays = 0;
+
+            for (int i = 0; i < fromArray.Length; i++)
+            {
+                // Check if the TextBox controls are visible
+                if (fromArray[i].Visible && toArray[i].Visible)
+                {
+                    DateTime fromDate, toDate;
+
+                    // Use a try-catch block to handle parsing errors
+                    try
+                    {
+                        // Parse the 'From' and 'To' values
+                        if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
+                        {
+                            // Calculate the difference in years, months, and days
+                            TimeSpan difference = toDate - fromDate;
+                            totalYears += difference.Days / 365;
+                            totalMonths += (difference.Days % 365) / 30;
+                            totalDays += difference.Days % 30;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle parsing errors (e.g., invalid date format)
+                        // You can log the error or take appropriate action based on your needs
+                    }
+                }
+            }
+
+            // Display the calculated values in another TextBox
+            txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
+        
+        }
+        protected void txtExperienceTo2_TextChanged(object sender, EventArgs e)
+        {
+            bool isExperienceVisible = true;
+
+            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtFrom1, txtExperienceFrom2 } : new TextBox[] { txtFrom1 };
+            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtTo1, txtExperienceTo2 } : new TextBox[] { txtTo1 };
+
+            int totalYears = 0, totalMonths = 0, totalDays = 0;
+
+            for (int i = 0; i < fromArray.Length; i++)
+            {
+                // Check if the TextBox controls are visible
+                if (fromArray[i].Visible && toArray[i].Visible)
+                {
+                    DateTime fromDate, toDate;
+
+                    // Use a try-catch block to handle parsing errors
+                    try
+                    {
+                        // Parse the 'From' and 'To' values
+                        if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
+                        {
+                            // Calculate the difference in years, months, and days
+                            TimeSpan difference = toDate - fromDate;
+                            totalYears += difference.Days / 365;
+                            totalMonths += (difference.Days % 365) / 30;
+                            totalDays += difference.Days % 30;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle parsing errors (e.g., invalid date format)
+                        // You can log the error or take appropriate action based on your needs
+                    }
+                }
+            }
+
+            // Display the calculated values in another TextBox
+            txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
+        }
+            protected void RadioButtonList3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RadioButtonList3.SelectedValue == "1")
             {
