@@ -526,12 +526,22 @@ namespace CEIHaryana.TestReportModal
                     {
                         Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
                         btnVerify.Text = "Verify";
+
                     }
                 }
+                else
+                {
+                    if (Session["OTP"].ToString() == txtOtp.Text)
+                    {
+                        Contractor2.Visible = true;
+                        Contractor3.Visible = false;
+                    }
                 }
+            }
             catch
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
             }
         }

@@ -291,7 +291,7 @@
                     </div>
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
                       <ul class="nav">
-                           <li class="nav-item">
+                        <%--   <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Test Reports</span>
@@ -304,6 +304,13 @@
                                         <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/GeneratingSet.aspx">Generating Station</a></li>
                                     </ul>
                                 </div>
+                            </li>--%>
+                           
+                          <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Create Inspections</span>
+                                </a>
                             </li>
                            <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
@@ -322,13 +329,7 @@
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Pending Payments</span>
                                 </a>
-                            </li>    
-                          <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Create Inspections</span>
-                                </a>
-                            </li>
+                            </li>   
                           <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/PeroidicInspection.aspx">
                                     <i class="icon-layout menu-icon"></i>

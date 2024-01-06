@@ -277,15 +277,16 @@ namespace CEI_PRoject.Admin
                     {
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
                         Session["ID"] = "";
-                        DataUpdated.Visible = true;
-                    }
-                    else
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
+
+                }
+                else
                     {
 
-                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-                        DataSaved.Visible = true;
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
-                    }
+                }
                     Reset();
                 
             }

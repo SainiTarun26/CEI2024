@@ -156,7 +156,7 @@
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="row">
-                <div class="col-4">
+                <div class="col-4" id="Inspection" runat="server" visible="false">
                     <label>
                         Type of Inspection
                     <samp style="color: red">* </samp>
@@ -206,7 +206,7 @@
                                 <td>
                                      
                                     <div class="col-12">
-                                        Request letter from concerned Officer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Request letter from concerned Officer &nbsp;
                                       
                                     </div>
                                 </td>
@@ -222,7 +222,7 @@
                             <tr id="Tr2" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Manufacturing test report of equipment<span>(Upload PDF Only, Size not more than 1Mb)</span>
+                                        Manufacturing test report of equipment
                                     </div>
                                 </td>
                                 <td>
@@ -240,7 +240,7 @@
                             <tr id="Tr3" runat="server">
                                 <td>
                                     <div class="col-12">
-                                        Single line diagram of Line<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Single line diagram of Line
                                     </div>
                                 </td>
                                 <td>
@@ -258,7 +258,7 @@
                             <tr id="Tr4" runat="server">
                                 <td>
                                     <div class="col-12">
-                                        Copy of demand notice issued by UHDVN/ DHBVN&nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Copy of demand notice issued by UHDVN/ DHBVN&nbsp;
                                     </div>
                                 </td>
                                 <td>
@@ -274,7 +274,7 @@
                             <tr id="Tr5" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice of transformer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Invoice of transformer &nbsp;
                                     </div>
                                 </td>
                                 <td>
@@ -290,7 +290,7 @@
                             <tr id="Tr6" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Manufacturing test certificate of transformer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Manufacturing test certificate of transformer &nbsp;
                                     </div>
                                 </td>
                                 <td>
@@ -307,9 +307,7 @@
                             <tr id="Tr7" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Single line diagram &nbsp;
-                                                       <span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
-                                                        <samp style="color: red">* </samp>
+                                        Single line diagram
                                     </div>
                                 </td>
                                 <td>
@@ -325,7 +323,7 @@
                             <tr id="Tr8" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice of fire extinguisher system, apparatus installed at the site &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Invoice of fire extinguisher system, apparatus installed at the site
                                     </div>
                                 </td>
                                 <td>
@@ -343,7 +341,7 @@
                             <tr id="Tr9" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice of DG set &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Invoice of DG set 
                                     </div>
                                 </td>
                                 <td>
@@ -360,8 +358,7 @@
                             <tr id="Tr10" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Manufacturing test certificate of DG set &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span>
-                                                        <samp style="color: red">* </samp>
+                                        Manufacturing test certificate of DG set 
                                     </div>
                                 </td>
                                 <td>
@@ -378,7 +375,7 @@
                             <tr id="Tr13" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Invoice Of fire Extinguisher/apparatus installed at the site &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Invoice Of fire Extinguisher/apparatus installed at the site 
                                     </div>
                                 </td>
                                 <td>
@@ -394,7 +391,7 @@
                             <tr id="Tr11" runat="server" visible="true">
                                 <td>
                                     <div class="col-12">
-                                        Structure stability report issued by authorized engineer &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                        Structure stability report issued by authorized engineer
                                     </div>
                                 </td>
                                 <td>
@@ -412,7 +409,7 @@
                         <tr id="LinePersonal" runat="server" visible="false">
                             <td>
                                 <div class="col-12">
-                                    Demand Notice &nbsp;<span>(Upload PDF Only, Size not more than 1Mb)</span><samp style="color: red"> * </samp>
+                                    Demand Notice 
                                 </div>
                             </td>
                             <td>

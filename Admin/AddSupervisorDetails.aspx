@@ -10,7 +10,22 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
+        <script type="text/javascript">
+            function alertWithRedirect() {
+                if (confirm('Supervisor Added Successfully')) {
+                    window.location.href = "/Admin/AddSupervisorDetails.aspx";
+                } else {
+                }
+            }
+        </script> 
+    <script type="text/javascript">
+            function alertWithRedirectData() {
+                if (confirm('Supervisor Updated Successfully')) {
+                    window.location.href = "/Admin/StaffDetailsData.aspx?category=Supervisor";
+                } else {
+                }
+            }
+    </script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode

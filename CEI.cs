@@ -745,7 +745,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert GeneratingSet Data
-        public void InsertGeneratingSetData(string IdUpdate, string Count, string Id, string TestReportId, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
+        public void InsertGeneratingSetData(string IdUpdate, string Count, string Id, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
 string BreakingCapacityofBreaker, string TypeOfPlant, string CapacityOfPlantType, string CapacityOfPlant, string HighestVoltageLevelOfDCString, string LowestInsulationBetweenDCWireToEarth,
 string NoOfPowerPCV, string LTACBreakerCapacity, string ACCablesLowestInsulation, string NumberOfEarthing, string EarthingType1, string EarthingValue1, string UsedFor1, string OtherEarthing1, string EarthingType2,
 string EarthingValue2, string UsedFor2, string OtherEarthing2, string EarthingType3, string EarthingValue3, string UsedFor3, string OtherEarthing3, string EarthingType4, string EarthingValue4, string UsedFor4, string OtherEarthing4, string EarthingType5, string EarthingValue5,
@@ -767,7 +767,6 @@ string EarthingValue14, string UsedFor14, string OtherEarthing14, string Earthin
             cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
             cmd.Parameters.AddWithValue("@Count", Count);
             cmd.Parameters.AddWithValue("@Id", Id);
-            cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacityType", GeneratingSetCapacityType);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacity", GeneratingSetCapacity);
@@ -1126,7 +1125,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #endregion
         #region Insert Inspection Data
         public void InsertInspectionData(string ContactNo, string TestRportId, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-      string VoltageLevel, string LineLength, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
+      string VoltageLevel, string LineLength,  string TestReportCount, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
       string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
       string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
       string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
@@ -1150,6 +1149,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
             cmd.Parameters.AddWithValue("@VoltageLevel ", VoltageLevel);
             cmd.Parameters.AddWithValue("@LineLength ", LineLength);
+            cmd.Parameters.AddWithValue("@TestReportCount ", TestReportCount);
             cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", RequestLetterFromConcernedOfficer);
             cmd.Parameters.AddWithValue("@ManufacturingTestReportOfEqipment ", ManufacturingTestReportOfEqipment);
             cmd.Parameters.AddWithValue("@SingleLineDiagramOfLine ", SingleLineDiagramOfLine);
@@ -1335,7 +1335,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("haryanacei@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "Your Site Owner ID and Password";
-            string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to CEI Department, HRY.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\\n\\nBest regards,\\n[CEI Haryana]\"";
+            string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to CEI Department, HRY.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
             mailMessage.Body = body;
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");

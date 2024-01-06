@@ -154,6 +154,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (chk.Checked)
                     {
                         Session["SelectedCategory"] = lblCategory.Text;
+                        Session["SelectedApplicant"] = lblApplicant.Text;
                         Session["SelectedVoltageLevel"] = lblVoltageLevel.Text;
                         Session["SelectedDivision"] = lblDivision.Text;
                         Session["SelectedDistrict"] = lblDistrict.Text;
@@ -804,6 +805,7 @@ namespace CEIHaryana.SiteOwnerPages
                 //else
                 //{
                     string lblCategory = Session["SelectedCategory"].ToString().Trim();
+                    string lblApplicant = Session["SelectedApplicant"].ToString().Trim();
                     string lblVoltageLevel = Session["SelectedVoltageLevel"].ToString().Trim();
                     string lblDivision = Session["SelectedDivision"].ToString().Trim();
                     string lblDistrict = Session["SelectedDistrict"].ToString().Trim();
@@ -1276,8 +1278,8 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         // DateTime myDate = Convert.ToDateTime(txtDate.Text);
 
-                        CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, lblCategory.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                            LineLength, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                        CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                            LineLength, Count, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
                             flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, District, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
 
                         string generatedId = CEI.InspectionId();

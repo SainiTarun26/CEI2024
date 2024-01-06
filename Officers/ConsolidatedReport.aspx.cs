@@ -277,7 +277,7 @@ namespace CEIHaryana.Officers
 
                         Response.Clear();
                         Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                        Response.AddHeader("content-disposition", "attachment;filename=ExportedData.xlsx");
+                        Response.AddHeader("content-disposition", "attachment;filename=CONSOLIDATEDREPORT.xlsx");
                         Response.BinaryWrite(package.GetAsByteArray());
                         Response.Flush();
                         HttpContext.Current.ApplicationInstance.CompleteRequest();

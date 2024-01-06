@@ -580,9 +580,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 // DateTime myDate = Convert.ToDateTime(txtDate.Text);
 
-                CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
-                    txtLineLength.Text,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, District, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
+                //CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text,
+                //    txtLineLength.Text,flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                //    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, District, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
 
                 string generatedId = CEI.InspectionId();
               // DataSaved.Visible = true;
