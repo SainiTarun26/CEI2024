@@ -968,10 +968,13 @@
                                                         
                                                         <tr>
                                                           
-                                                            <td colspan="6" style="font-size: 12px; text-align:end;">
+                                                            <td colspan="4" style="font-size: 12px;">
                                                                 <asp:Button ID="btnAddMore" runat="server" Text="Add More" class="btn btn-primary" 
                                                                     Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnAddMore_Click" ></asp:Button>
                                                                </td>
+                                                            <td colspan="2" style="font-size: 12px;"><p style="font-size:12px;">Total Experience:</p>
+    <asp:TextBox class="form-control" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>
+   </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
