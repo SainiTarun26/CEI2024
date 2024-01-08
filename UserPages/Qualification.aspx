@@ -1002,7 +1002,7 @@ department/organisation" Value="2"></asp:ListItem>
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" AutoPostBack="true" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" OnTextChanged="txtExperienceTo_TextChanged" runat="server"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" OnTextChanged="txtTo1_TextChanged" runat="server"> </asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtTo1"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
@@ -1024,14 +1024,18 @@ department/organisation" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="A class
 licensed electrical
-contractor" Value="0"></asp:ListItem>
+contractor"
+                                                                        Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Central
-government" Value="1"></asp:ListItem>
+government"
+                                                                        Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="State
-government" Value="2"></asp:ListItem>
-                                                                                                                                        <asp:ListItem Text="Semi
+government"
+                                                                        Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Semi
 government
-department/organisation" Value="2"></asp:ListItem>
+department/organisation"
+                                                                        Value="2"></asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </td>
                                                             <td>
@@ -1050,8 +1054,108 @@ department/organisation" Value="2"></asp:ListItem>
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td>
-                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtExperienceTo2_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Experience3" runat="server" visible="false">
+                                                            <%--  <td style="text-align: center; font-size: 13px;">1
+    </td>--%>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlExperience3" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder3" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text=" A class
+licensed electrical
+contractor" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Central
+government" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="State
+government" Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Semi
+government
+department/organisation" Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer3" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator163" runat="server" ControlToValidate="txtEmployerName1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription3" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator173" runat="server" ControlToValidate="txtPostDescription"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator183" runat="server" ControlToValidate="txtExperienceFrom"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" AutoPostBack="true" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo3" OnTextChanged="txtTo1_TextChanged" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator193" runat="server" ControlToValidate="txtTo1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Experience4" runat="server" visible="false">
+                                                            <%--  <td style="text-align: center; font-size: 13px;">1
+    </td>--%>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlExperience4" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Erection" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Operation" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Maintenance of Electrical Installation" Value="2"></asp:ListItem>
+
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:DropDownList class="  select-form select2" ID="ddlTrainingUnder4" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="A class
+licensed electrical
+contractor"
+                                                                        Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Central
+government"
+                                                                        Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="State
+government"
+                                                                        Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Semi
+government
+department/organisation"
+                                                                        Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtEmployer4" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator204" runat="server" ControlToValidate="txtEmployerName1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Name</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription4" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator241" runat="server" ControlToValidate="txtDescription1"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator224" runat="server" ControlToValidate="txtExperienceFrom2"
+                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
+                                                            </td>
+                                                            <td>
+                                                                <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" runat="server"> </asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator234" runat="server" ControlToValidate="txtExperienceTo"
                                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Date</asp:RequiredFieldValidator>
                                                             </td>
                                                         </tr>

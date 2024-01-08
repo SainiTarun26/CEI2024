@@ -59,7 +59,7 @@ namespace CEIHaryana.SiteOwnerPages
         private void getWorkIntimationData()
         {
             id = Session["id"].ToString();
-
+            Session["PendingIntimations"] = id;
             DataSet ds = new DataSet();
             ds = CEI.SiteOwnerInstallations(id);
             if (ds.Tables.Count > 0)

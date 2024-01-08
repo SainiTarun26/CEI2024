@@ -339,89 +339,8 @@ namespace CEIHaryana.UserPages
             // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
             bool isExperienceVisible = true;  
 
-            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtFrom1, txtExperienceFrom2 } : new TextBox[] { txtFrom1 };
-            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtTo1, txtExperienceTo2 } : new TextBox[] { txtTo1 };
-
-            int totalYears = 0, totalMonths = 0, totalDays = 0;
-
-            for (int i = 0; i < fromArray.Length; i++)
-            {
-                // Check if the TextBox controls are visible
-                if (fromArray[i].Visible && toArray[i].Visible)
-                {
-                    DateTime fromDate, toDate;
-
-                    // Use a try-catch block to handle parsing errors
-                    try
-                    {
-                        // Parse the 'From' and 'To' values
-                        if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
-                        {
-                            // Calculate the difference in years, months, and days
-                            TimeSpan difference = toDate - fromDate;
-                            totalYears += difference.Days / 365;
-                            totalMonths += (difference.Days % 365) / 30;
-                            totalDays += difference.Days % 30;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle parsing errors (e.g., invalid date format)
-                        // You can log the error or take appropriate action based on your needs
-                    }
-                }
-            }
-
-            // Display the calculated values in another TextBox
-            txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
-        }
-        protected void txtExperienceTo_TextChanged(object sender, EventArgs e)
-        {
-            bool isExperienceVisible = true;
-
-            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtFrom1, txtExperienceFrom2 } : new TextBox[] { txtFrom1 };
-            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtTo1, txtExperienceTo2 } : new TextBox[] { txtTo1 };
-
-            int totalYears = 0, totalMonths = 0, totalDays = 0;
-
-            for (int i = 0; i < fromArray.Length; i++)
-            {
-                // Check if the TextBox controls are visible
-                if (fromArray[i].Visible && toArray[i].Visible)
-                {
-                    DateTime fromDate, toDate;
-
-                    // Use a try-catch block to handle parsing errors
-                    try
-                    {
-                        // Parse the 'From' and 'To' values
-                        if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
-                        {
-                            // Calculate the difference in years, months, and days
-                            TimeSpan difference = toDate - fromDate;
-                            totalYears += difference.Days / 365;
-                            totalMonths += (difference.Days % 365) / 30;
-                            totalDays += difference.Days % 30;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle parsing errors (e.g., invalid date format)
-                        // You can log the error or take appropriate action based on your needs
-                    }
-                }
-            }
-
-            // Display the calculated values in another TextBox
-            txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
-        
-        }
-        protected void txtExperienceTo2_TextChanged(object sender, EventArgs e)
-        {
-            bool isExperienceVisible = true;
-
-            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtFrom1, txtExperienceFrom2 } : new TextBox[] { txtFrom1 };
-            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtTo1, txtExperienceTo2 } : new TextBox[] { txtTo1 };
+            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtFrom1, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtFrom1 };
+            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtTo1, txtExperienceTo2, txtExperienceTo3, txtExperienceTo4 } : new TextBox[] { txtTo1 };
 
             int totalYears = 0, totalMonths = 0, totalDays = 0;
 
@@ -472,15 +391,29 @@ namespace CEIHaryana.UserPages
 
         protected void btnAddMore_Click(object sender, EventArgs e)
         {
-            if (Experience1.Visible == false)
+            if (Experience3.Visible == true)
             {
                 Experience1.Visible = true;
-                Experience2.Visible = false;
+                Experience2.Visible = true;
+                Experience3.Visible = true;
+                Experience4.Visible = true;
+            }
+            else if (Experience2.Visible == true)
+            {
+                Experience1.Visible = true;
+                Experience2.Visible = true;
+                Experience3.Visible = true;
             }
             else if(Experience1.Visible == true)
             {
                 Experience1.Visible = true;
                 Experience2.Visible = true;
+            } 
+             
+            else if (Experience1.Visible == false)
+            {
+                Experience1.Visible = true;
+                Experience2.Visible = false;
             }
             else
             {

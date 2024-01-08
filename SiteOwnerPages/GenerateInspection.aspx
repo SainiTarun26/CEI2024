@@ -39,6 +39,9 @@
         }
     </script>
     <style>
+          th.headercolor {
+    background: #9292cc;
+}
         .submit {
             border: 1px solid #563d7c;
             border-radius: 5px;

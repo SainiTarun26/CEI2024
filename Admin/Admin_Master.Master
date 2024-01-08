@@ -77,6 +77,11 @@
         .dropdown-menu.dropdown-menu-right.navbar-dropdown.show {
             margin-top: -10px;
         }
+           button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
+    background: red;
+    padding: 1px 5px 4px 5px;
+    border-radius: 5px;
+}
     </style>
 </head>
 <body>
