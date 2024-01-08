@@ -42,19 +42,141 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
-        label {
-    font-size: 13px !important;
-}
-        ::placeholder {
-  color: black !important;
-  opacity: 1; /* Firefox */
-  font-size:11px !important;
-}
+        select#ddlapplicantdistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
 
-::-ms-input-placeholder { /* Edge 12-18 */
-  color:black !important;
-  font-size:11px !important;
-}
+        select#ddlApplicantState {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlagentdistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+            select#ddlagentdistrict:hover {
+                width: 100%;
+                height: 30PX;
+                width: 100%;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                border: 1px solid #CED4DA;
+                font-weight: 400;
+                font-size: 0.875rem;
+                border-radius: 4px;
+                background: #f6f9fe;
+            }
+
+        select#Dllagentdistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+            select#Dllagentdistrict:hover {
+                width: 100%;
+                height: 30PX;
+                width: 100%;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                border: 1px solid #CED4DA;
+                font-weight: 400;
+                font-size: 0.875rem;
+                border-radius: 4px;
+                background: #f6f9fe;
+            }
+
+        select#ddlliftdistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+            select#ddlliftdistrict:hover {
+                width: 100%;
+                height: 30PX;
+                width: 100%;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                border: 1px solid #CED4DA;
+                font-weight: 400;
+                font-size: 0.875rem;
+                border-radius: 4px;
+                background: #f6f9fe;
+            }
+
+        select#ddlfiltstate {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+            select#ddlfiltstate:hover {
+                width: 100%;
+                height: 30PX;
+                width: 100%;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                border: 1px solid #CED4DA;
+                font-weight: 400;
+                font-size: 0.875rem;
+                border-radius: 4px;
+                background: #f6f9fe;
+            }
+
+        label {
+            font-size: 13px !important;
+        }
+
+        ::placeholder {
+            color: black !important;
+            opacity: 1; /* Firefox */
+            font-size: 11px !important;
+        }
+
+        ::-ms-input-placeholder { /* Edge 12-18 */
+            color: black !important;
+            font-size: 11px !important;
+        }
+
         .choices__inner {
             display: inline-block;
             vertical-align: top;
@@ -594,230 +716,130 @@
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
+
                                                 <div class="card-body">
                                                     <div class="row" style="margin-top: -15px;">
                                                         <div class="col-12" style="text-align: left;">
-                                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">REGISTRATION DETAILS</h7>
+                                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">APPLICANT DETAILS</h7>
                                                         </div>
                                                     </div>
-                                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
+                                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 20px; margin-left: -20px; margin-right: -20px;">
                                                         <div class="row">
-                                                            <div class="col-3" id="Div8" runat="server">
+                                                            <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
-                                                                    Applicant Name
-                                                                    <samp style="color: red">* </samp>
+                                                                    Type of Applicant
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="TextBox1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
 
                                                             </div>
-                                                            <div class="col-3" id="Div9" runat="server">
-                                                                <label for="Name" style="font-size: 12px;">
-                                                                    Father's Name
-                                                                    <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" ID="txtid" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ControlToValidate="txtid" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-
-                                                            </div>
-                                                            <div class="col-3" id="Div10" runat="server">
-                                                                <label for="Name" style="font-size: 12px;">
-                                                                    Gender
-                                                                    <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-
-                                                            </div>
-                                                            <div class="col-3" id="Div12" runat="server">
-                                                                <label for="Name" style="font-size: 12px;">
-                                                                    Are you Indian
-                                                                    <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator77" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <label for="CommunicationAddress">
-                                                                        Address for Communication<samp style="color: red">* </samp>
-                                                                    </label>
-                                                                    <asp:TextBox class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
-                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
-                                                                    <ContentTemplate>
-                                                                        <div class="form-group">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group">
-                                                                                        <label for="State1">
-                                                                                            State<samp style="color: red">* </samp>
-                                                                                        </label>
-                                                                                        <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 26px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
-                                                                                            ID="ddlState1" runat="server" TabIndex="16">
-                                                                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                            <%--<asp:ListItem Text="Male" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Female" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
-                                                                                        </asp:DropDownList>
-                                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" CssClass="validation_required" Text="Please Select State" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group">
-                                                                                        <label for="District">
-                                                                                            District<samp style="color: red">* </samp>
-                                                                                        </label>
-                                                                                        <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 25px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
-                                                                                            ID="ddlDistrict1" AutoPostBack="true" runat="server" TabIndex="16">
-                                                                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                            <%--<asp:ListItem Text="Male" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Female" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
-                                                                                        </asp:DropDownList>
-                                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                    <div class="form-group">
-                                                                                        <label for="Name">
-                                                                                            Pincode<samp style="color: red">* </samp>
-                                                                                        </label>
-                                                                                        <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPinCode" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
-                                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" CssClass="validation_required" runat="server" ControlToValidate="txtPinCode"
-                                                                                            ErrorMessage="Please Enter Your Pincode" ValidationGroup="Submit" ForeColor="Red">Enter Pincode</asp:RequiredFieldValidator>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </ContentTemplate>
-                                                                </asp:UpdatePanel>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                                                    <ContentTemplate>
-                                                                        <div class="form-group">
-                                                                            <asp:CheckBox ID="CheckBox1" runat="server" Text="&nbsp;&nbsp;Permanent Address" Font-Size="Medium" Font-Bold="True" AutoPostBack="true" />
-                                                                            <asp:TextBox class="form-control" autocomplete="off" ID="txtPermanentAddress" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtPermanentAddress" CssClass="validation_required"
-                                                                                ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Permanent Address</asp:RequiredFieldValidator>
-                                                                        </div>
-                                                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                                            <ContentTemplate>
-                                                                                <div class="form-group">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-4">
-                                                                                            <div class="form-group">
-                                                                                                <label for="State">
-                                                                                                    State<samp style="color: red">* </samp>
-                                                                                                </label>
-                                                                                                <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 29px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
-                                                                                                    ID="ddlState" runat="server" TabIndex="16">
-                                                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                                </asp:DropDownList>
-                                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select State" CssClass="validation_required" ErrorMessage="Please Select State" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-4">
-                                                                                            <div class="form-group">
-                                                                                                <label for="District">
-                                                                                                    District<samp style="color: red">* </samp>
-                                                                                                </label>
-                                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 30px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
-                                                                                                    ID="ddlDistrict" AutoPostBack="true" runat="server" TabIndex="16">
-                                                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                                    <%--<asp:ListItem Text="Male" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Female" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
-                                                                                                </asp:DropDownList>
-                                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" Text="Select District" ErrorMessage="Please Select District" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-4">
-                                                                                            <div class="form-group">
-                                                                                                <label for="Pincode">
-                                                                                                    Pincode<samp style="color: red">* </samp>
-                                                                                                </label>
-                                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPin" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
-                                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" CssClass="validation_required" runat="server" ControlToValidate="txtPin"
-                                                                                                    ErrorMessage="Please Enter Your Pin" ValidationGroup="Submit" ForeColor="Red">Enter Pincode</asp:RequiredFieldValidator>
-                                                                                            </div>
-                                                                                        </div>
-                                                                            </ContentTemplate>
-                                                                        </asp:UpdatePanel>
-                                                                        </div>
-                                                                    </ContentTemplate>
-                                                                </asp:UpdatePanel>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body" style="margin-left: -17px; margin-right: -17px">
-                                                    <div class="row" style="margin-top: -15px;">
-                                                        <div class="col-12" style="text-align: left;">
-                                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">LOCAL AGENT DETAILS</h7>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
-                                                        <div class="row">
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
-                                                                   Name of Agent
-    <samp style="color: red">* </samp>
+                                                                    Name of Applicant
+   
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox1" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="TextBox2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
-                                                                   Contract
-    <samp style="color: red">* </samp>
+                                                                    Phone No.
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox2" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <label for="Name" style="font-size: 12px;">
-                                                                    Address
-    <samp style="color: red">* </samp>
-                                                                </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox3" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="TextBox3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-4">
+                                                        <div class="row" style="margin-top: 18px;">
+                                                            <div class="col-8">
                                                                 <label for="Name" style="font-size: 12px;">
-                                                                    District
-    <samp style="color: red">* </samp>
+                                                                    Office Address
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox4" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="TextBox6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
                                                                     State
-    <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox5" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:DropDownList class="select-form select2" ID="ddlApplicantState" AutoPostBack="true" runat="server">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+
+                                                                </asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-4" style="margin-top: 18px;">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    District
+                                                                </label>
+                                                                <asp:DropDownList class="select-form select2" ID="ddlapplicantdistrict" AutoPostBack="true" runat="server">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+
+                                                                </asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-4" style="margin-top: 18px;">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Pincode
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="TextBox5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 50px;">
+                                                        <div class="col-12" style="text-align: left;">
+                                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">LOCAL AGENT DETAILS</h7>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 20px; margin-left: -20px; margin-right: -20px;">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Name of Agent
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtagentname" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Contract
+   
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtphonecontract" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Address
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtaddress" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="margin-top: 18px;">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    District
+                                                                </label>
+                                                                <asp:DropDownList class="select-form select2" ID="ddlagentdistrict" AutoPostBack="true" runat="server">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    State
+                                                                </label>
+                                                                <asp:DropDownList class="select-form select2" ID="Dllagentdistrict" AutoPostBack="true" runat="server">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>
+                                                                </asp:DropDownList>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
                                                                     Pincode
-    <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox6" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="txtagentpincode" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-body" style="margin-left: -17px; margin-right: -17px">
+                                                <div class="card-body">
                                                     <div class="row" style="margin-top: -15px;">
                                                         <div class="col-12" style="text-align: left;">
                                                             <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">LIFT INSTALLATION DETAILS</h7>
@@ -830,24 +852,29 @@
                                                                     Owner Name
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox7" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="txtownername" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtownername" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
                                                                     Address
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox8" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="txtliftaddress" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtliftaddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
                                                                     District
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox9" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:DropDownList class="select-form select2" ID="ddlliftdistrict" AutoPostBack="true" runat="server">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="ddlliftdistrict" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -856,179 +883,192 @@
                                                                     State
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox10" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:DropDownList class="select-form select2" ID="ddlfiltstate" AutoPostBack="true" runat="server">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
+                                                                    <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="ddlfiltstate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
                                                                     PinCode
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox11" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="txtliftpincode" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtliftpincode" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
                                                                     Date of Erection
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox12" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox Type="date" class="form-control" ID="txtdateoferection" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtdateoferection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
-                                                                   Type of Lift
+                                                                    Type of Lift
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="TextBox13" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:TextBox class="form-control" ID="txttypeoflift" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txttypeoflift" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-body" style="margin-left: -17px; margin-right: -17px">
-    <div class="row" style="margin-top: -15px;">
-        <div class="col-12" style="text-align: left;">
-            <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">MAKER DETAILS</h7>
-        </div>
-    </div>
-    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
-        <div class="row">
-            <div class="col-4">
-                <label for="Name" style="font-size: 12px;">
-                    Maker's Name
+                                                <div class="card-body">
+                                                    <div class="row" style="margin-top: -15px;">
+                                                        <div class="col-12" style="text-align: left;">
+                                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">MAKER DETAILS</h7>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Maker's Name
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="TextBox14" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-            </div>
-            <div class="col-4">
-                <label for="Name" style="font-size: 12px;">
-                    Maker's Local Agent
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtmakername" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtmakername" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Maker's Local Agent
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="TextBox15" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-            </div>
-            <div class="col-4">
-                <label for="Name" style="font-size: 12px;">
-                    Address
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtmakerlocalagent" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtmakerlocalagent" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Address
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="TextBox16" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <label for="Name" style="font-size: 12px;">
-                   Contract Speed of Lift
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtmakeraddress" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtmakeraddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Contract Speed of Lift
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="TextBox17" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-            </div>
-            <div class="col-4">
-                <label for="Name" style="font-size: 12px;">
-                    Contract Load of Lift
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtliftspeed" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtliftspeed" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Contract Load of Lift
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="TextBox18" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-            </div>
-            <div class="col-4">
-                <label for="Name" style="font-size: 12px;">
-                    No. Person Carring Capicity of Lift 
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtliftload" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtliftload" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    No. of Person Carring Capicity of Lift 
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="TextBox19" Placeholder="(Including Lift Attendant)"  onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <label for="Name" style="font-size: 12px;">
-                   Total Weight of Lift Car (in Kg)
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtpersonload" Placeholder="(Including Lift Attendant)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtpersonload" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Total Weight of Lift Car (in Kg)
                     <samp style="color: red">* </samp>
-                </label>
-                <asp:TextBox class="form-control" ID="TextBox20" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="Including Contract Load" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-            </div>
-            <div class="col-4">
-    <label for="Name" style="font-size: 12px;">
-       Weight of the Counter Weight (in Kg)
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtliftweight" onkeydown="return preventEnterSubmit(event)" placeholder="Including Contract Load" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtliftweight" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Weight of the Counter Weight (in Kg)
         <samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="TextBox21" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="Including Contract Load" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-</div>
-                        <div class="col-4">
-    <label for="Name" style="font-size: 12px;">
-       Number
-        <samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="TextBox22" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="Including Contract Load" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-</div>
-        </div>
-        <div class="row">
-             <div class="col-4">
-     <label for="Name" style="font-size: 12px;">
-         Discription 
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtcounterweight" onkeydown="return preventEnterSubmit(event)" placeholder="Including Contract Load" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtcounterweight" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: -15px; margin-top: 50px;">
+                                                        <div class="col-12" style="text-align: left;">
+                                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">SUSPENSION ROPES DETAILS</h7>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    No. of suspension Roops
+                                                                    <samp style="color: red">* </samp>
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtnumber" onkeydown="return preventEnterSubmit(event)" placeholder="Including Contract Load" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtnumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Discription 
          <samp style="color: red">* </samp>
-     </label>
-     <asp:TextBox class="form-control" ID="TextBox23" Placeholder="(Including Lift Attendant)"  onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
- </div>
-             <div class="col-4">
-     <label for="Name" style="font-size: 12px;">
-         Weight (in Kg) 
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtdiscription" Placeholder="(Including Lift Attendant)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtdiscription" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Weight (in Kg) 
          <samp style="color: red">* </samp>
-     </label>
-     <asp:TextBox class="form-control" ID="TextBox24" Placeholder="(Including Lift Attendant)"  onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
- </div>
-            </div>
-        <div class="row">
-             <div class="col-4">
-     <label for="Name" style="font-size: 12px;">
-         Size in (mm2) 
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtweight" Placeholder="(Including Lift Attendant)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="txtweight" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Size in (mm2) 
          <samp style="color: red">* </samp>
-     </label>
-     <asp:TextBox class="form-control" ID="TextBox25" Placeholder="(Including Lift Attendant)"  onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
- </div>
-             <div class="col-4">
-     <label for="Name" style="font-size: 12px;">
-         Depth of Pit 
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtsize" Placeholder="(Including Lift Attendant)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtsize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Depth of Pit 
          <samp style="color: red">* </samp>
-     </label>
-     <asp:TextBox class="form-control" ID="TextBox26" Placeholder="(Including Lift Attendant)"  onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
- </div>
-             <div class="col-4">
-     <label for="Name" style="font-size: 12px;">
-         Travel and No. of Floors 
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtpitdepth" Placeholder="(Including Lift Attendant)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="txtpitdepth" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Travel and No. of Floors 
          <samp style="color: red">* </samp>
-     </label>
-     <asp:TextBox class="form-control" ID="TextBox27" Placeholder="(Including Lift Attendant)"  onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
- </div>
-            </div>
-        <div class="row">
-             <div class="col-4">
-     <label for="Name" style="font-size: 12px;">
-         Construction Details of OverHead Arrangement 
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txttotalfloors" Placeholder="(Including Lift Attendant)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="txttotalfloors" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="Name" style="font-size: 12px;">
+                                                                    Construction Details of OverHead Arrangement 
          <samp style="color: red">* </samp>
-     </label>
-     <asp:TextBox class="form-control" ID="TextBox28" Placeholder="( With Weight and Size of Beam )"  onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
- </div>
-            </div>
-    </div>
-</div>
+                                                                </label>
+                                                                <asp:TextBox class="form-control" ID="txtconstructiondetails" Placeholder="( With Weight and Size of Beam )" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ControlToValidate="txtconstructiondetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
