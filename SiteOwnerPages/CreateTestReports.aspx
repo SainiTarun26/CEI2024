@@ -114,7 +114,8 @@ table#ContentPlaceHolder1_GridView1 {
                             </div>
                         </div>
                     </div>
-                    <table class="table table-responsive">  <asp:GridView class="table-responsive table table-striped table-hover"  ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
+                    <table class="table table-responsive">
+                        <asp:GridView class="table-responsive table table-striped table-hover"  ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
                             AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                            <PagerStyle CssClass="pagination-ys" />
                             <Columns>
