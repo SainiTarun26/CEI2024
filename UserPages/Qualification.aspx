@@ -43,6 +43,78 @@
         }
     </script>
     <style>
+        select#ddlExperience3{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        select#ddlTrainingUnder3{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        select#ddlExperience4{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        select#ddlTrainingUnder4{
+            height: 25px;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+            select#ddlExperience3:hover{
+        height: 25px;
+width: 100%;
+font-size: 13px;
+text-align: center;
+border: 1px solid #ced4da;
+border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    select#ddlTrainingUnder3:hover{
+        height: 25px;
+width: 100%;
+font-size: 13px;
+text-align: center;
+border: 1px solid #ced4da;
+border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    select#ddlExperience4:hover{
+        height: 25px;
+width: 100%;
+font-size: 13px;
+text-align: center;
+border: 1px solid #ced4da;
+border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    select#ddlTrainingUnder4:hover{
+        height: 25px;
+width: 100%;
+font-size: 13px;
+text-align: center;
+border: 1px solid #ced4da;
+border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
         select#ddlExperience1{
             height: 25px;
     width: 100%;
