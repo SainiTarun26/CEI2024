@@ -1,8 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Qualification.aspx.cs" Inherits="CEIHaryana.UserPages.Qualification" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/UserPages/Registration.Master" EnableEventValidation="false" CodeBehind="Qualification.aspx.cs" Inherits="CEIHaryana.UserPages.Qualification" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <title></title>
     <meta content="" name="keywords" />
     <!-- Favicons -->
@@ -13,12 +12,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
     <!-- Vendor CSS Files -->
-    <link href="/assetsnew/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="/assetsnew/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/assetsnew/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="/assetsnew/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link href="/assetsnew/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="/assetsnew/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <link href="/assetsnew/css/style2.css" rel="stylesheet" />
@@ -27,8 +21,7 @@
     <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css" />
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="/vendors/select2/select2.min.css" />
-    <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
+  
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
@@ -43,168 +36,7 @@
         }
     </script>
     <style>
-        select#ddlExperience3{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-        select#ddlTrainingUnder3{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-        select#ddlExperience4{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-        select#ddlTrainingUnder4{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-            select#ddlExperience3:hover{
-        height: 25px;
-width: 100%;
-font-size: 13px;
-text-align: center;
-border: 1px solid #ced4da;
-border-radius: 5px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-    select#ddlTrainingUnder3:hover{
-        height: 25px;
-width: 100%;
-font-size: 13px;
-text-align: center;
-border: 1px solid #ced4da;
-border-radius: 5px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-    select#ddlExperience4:hover{
-        height: 25px;
-width: 100%;
-font-size: 13px;
-text-align: center;
-border: 1px solid #ced4da;
-border-radius: 5px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-    select#ddlTrainingUnder4:hover{
-        height: 25px;
-width: 100%;
-font-size: 13px;
-text-align: center;
-border: 1px solid #ced4da;
-border-radius: 5px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-        select#ddlExperience1{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-        select#ddlTrainingUnder{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-        select#ddlExperience2{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        }
-        select#ddlTrainingUnder2:Hover{
-            height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        }
-            select#ddlExperience1:hover{
-        height: 25px !important;
-width: 100% !important;
-font-size: 13px !important;
-text-align: center !important;
-border: 1px solid #ced4da !important;
-border-radius: 5px !important;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-    select#ddlTrainingUnder:hover{
-        height: 25px;
-width: 100%;
-font-size: 13px;
-text-align: center;
-border: 1px solid #ced4da;
-border-radius: 5px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-    select#ddlExperience2{
-        height: 25px;
-width: 100%;
-font-size: 13px;
-text-align: center;
-border: 1px solid #ced4da;
-border-radius: 5px;
-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    }
-    select#ddlTrainingUnder2{
-        height: 25px;
-width: 100%;
-font-size: 13px;
-text-align: center;
-border: 1px solid #ced4da;
-border-radius: 5px;
-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    }
-        select#ddlQualification3 {
-    height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-                select#ddlQualification3:hover {
-    height: 25px;
-    width: 100%;
-    font-size: 13px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+     
         img {
     margin-bottom: 20px !important;
     margin-top: 10px;
@@ -465,166 +297,24 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                 border-radius: 5px;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
+            .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover>a {
+    color: #106eea;
+    width: 79%;
+}
+            .card .card-body {
+    padding: 1.25rem 2.25rem;
+}
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
+
+    </asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
         <div>
             <!-- ======= Top Bar ======= -->
-            <section id="topbar" class="d-flex align-items-center">
-                <div class="container d-flex justify-content-center justify-content-md-between">
-                    <div class="contact-info d-flex align-items-center">
-                        <i class="bi bi-envelope d-flex align-items-center">
-                            <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-                        </i>
-                        <i class="bi bi-phone d-flex align-items-center ms-4">
-                            <span>0172 2704090</span>
-                        </i>
-                    </div>
-                    <div class="social-links d-none d-md-flex align-items-center">
-                        <a href="#" class="twitter">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" class="facebook">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="#" class="instagram">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="#" class="linkedin">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
+            
             <!-- ======= Header ======= -->
-            <header id="header" class="d-flex align-items-center"
-                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-                <div class="container d-flex align-items-center justify-content-between">
-                    <a href="index.html" class="logo">
-                        <img src="assets/img/haryana.png" alt="" />
-                    </a>
-                    <h1 class="logo">
-                        <a href="index.html">
-                            <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
-                        </a>
-                    </h1>
-                    <!-- Uncomment below if you prefer to use an image logo -->
-                    <nav id="navbar" class="navbar" style="box-shadow: none !important;">
-                        <ul>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Home</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">About CEI</a>
-                                </li>
-                                <li>
-                                    <a href="#">State Licensing Board, Haryana</a>
-                                </li>
-                                <li>
-                                    <a href="#">Functions</a>
-                                </li>
-                            </ul>--%>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Lift & Esclator</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Procedure For Registration/
-                                    <br>
-                                        Inspection Lifts and Esclators
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Checklist for Registration/
-                                    <br>
-                                        Inspection of Lifts and Esclators
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Forms</a>
-                                </li>
-                            </ul>--%>
-
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Licensing</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Procedure/ Condition
-                                    <br>
-                                        for Various Licences/ Certificates
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Electrical Supervisor Competency
-                                    <br />
-                                        Certificate(Excemption)
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Forms(Licence)</a>
-                                </li>
-                            </ul>--%>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Inspection</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Checklist for Online Service(Inspection)</a>
-                                </li>
-                                <li>
-                                    <a href="#">Procedure for Electrical Installation</a>
-                                </li>
-                                <li>
-                                    <a href="#">Procedure for Grant of
-                                    <br>
-                                        approval for Energisation of
-                                    <br>
-                                        New Electrical Installation
-                                    </a>
-                                </li>
-                            </ul>--%>
-                            </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#team">Publication</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Services</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                                <%--<ul>
-                                <li>
-                                    <a href="#">Our Services</a>
-                                </li>
-                            </ul>--%>
-                            </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                            </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#contact">Fee Schedule</a>
-                            </li>
-                        </ul>
-                        <i class="bi bi-list mobile-nav-toggle"></i>
-                    </nav>
-                    <!-- .navbar -->
-                </div>
-            </header>
+            
             <!-- End Header -->
             <main id="main">
                 <section id="about" class="about section-bg">
@@ -1052,7 +742,8 @@ contractor" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Central
 government" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="State
-government" Value="2"></asp:ListItem>
+government
+" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="Semi
 government
 department/organisation" Value="2"></asp:ListItem>
@@ -1152,7 +843,8 @@ contractor" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Central
 government" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="State
-government" Value="2"></asp:ListItem>
+government
+" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="Semi
 government
 department/organisation" Value="2"></asp:ListItem>
@@ -1294,11 +986,11 @@ department/organisation"
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 15px;">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style="padding-left:0px;">
                                                 <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
                                                     OnClick="btnBack_Click"></asp:Button>
                                             </div>
-                                            <div class="col-md-6" style="text-align: end;">
+                                            <div class="col-md-6" style="text-align: end;padding-right:0px;">
                                                 <asp:Button ID="btnNext" runat="server" Text="Next" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
                                                     OnClick="btnNext_Click" OnClientClick="return validateForm();"></asp:Button>
 
@@ -1466,6 +1158,7 @@ department/organisation"
                 }
             </script>
         </div>
-    </form>
-</body>
-</html>
+
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    </asp:Content>

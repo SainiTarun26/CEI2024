@@ -92,10 +92,10 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         CheckBox chk = rows.FindControl("CheckBox1") as CheckBox;
 
-                        // Check if the current checkbox is the one that triggered the event
+
                         if (chk != null && chk.ClientID == ((CheckBox)sender).ClientID)
                         {
-                            // Do any specific processing for the checked checkbox here
+
                         }
                         else
                         {

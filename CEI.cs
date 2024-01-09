@@ -1937,11 +1937,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             string MarksMax12thorITI,string Percentage12thorITI,string NameofDiplomaDegree,string UniversityNameDiplomaorDegree,string PassingYearDiplomaorDegree,
             string MarksObtainedDiplomaorDegree,string MarksMaxDiplomaorDegree,string PercentageDiplomaorDegree,string NameofDegree,string UniversityNamePG,
             string PassingYearPG,string MarksObtainedPG,string MarksMaxPG,string PercentagePG,string NameofMasters, string MastersUniversityName, 
-            string MastersPassingYear, string MasterMarksObtained,string MastersMarksMax,string MatersPercentage, string IsCertificateofCompetency,string CertificateofCompetency1
-            ,string PermitNo1,string IssuingAuthority1,string IssueDate1,string EmployedPermanent,string EmployerName,string PostDescription,string FromDate,string ToDate,
-            string ExperienceEmployerName,
-            string ExperiencePostDescription,string ExperienceFromDate,string ExperienceToDate,string RetiredEngineer,string RetiredEmployerName,
-            string RetiredPostDescription,string RetiredFromDate,string RetiredToDate)
+            string MastersPassingYear, string MasterMarksObtained,string MastersMarksMax,string MatersPercentage, string IsCertificateofCompetency,
+            string CertificateofCompetency1,string PermitNo1,string IssuingAuthority1,string IssueDate1,string EmployedPermanent,string EmployerName,
+            string PostDescription,string FromDate,string ToDate,string ExperienceEmployerName,string ExperiencePostDescription,string ExperienceFromDate,
+            string ExperienceToDate,string RetiredEngineer,string RetiredEmployerName,string RetiredPostDescription,string RetiredFromDate,string RetiredToDate)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertUserQualification");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);

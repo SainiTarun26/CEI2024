@@ -1,10 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DocumentsForLift.aspx.cs" Inherits="CEIHaryana.UserPages.DocumentsForLift" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/UserPages/Registration.Master" EnableEventValidation="false" CodeBehind="DocumentsForLift.aspx.cs" Inherits="CEIHaryana.UserPages.DocumentsForLift" %>
 
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title></title>
     <meta content=" " name="keywords" />
     <!-- Favicons -->
@@ -275,101 +272,12 @@
             margin-bottom: 21px;
         }
     </style>
-</head>
-<body>
+</asp:content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <form id="form1" runat="server">
+    <form id="form1">
         <div>
-            <section id="topbar" class="d-flex align-items-center">
-                <div class="container d-flex justify-content-center justify-content-md-between">
-                    <div class="contact-info d-flex align-items-center">
-                        <i class="bi bi-envelope d-flex align-items-center">
-                            <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-                        </i>
-                        <i class="bi bi-phone d-flex align-items-center ms-4">
-                            <span>0172 2704090</span>
-                        </i>
-                    </div>
-                    <div class="social-links d-none d-md-flex align-items-center">
-                        <a href="#" class="twitter">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" class="facebook">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="#" class="instagram">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="#" class="linkedin">
-                            <i class="bi bi-linkedin"></i>
-
-                        </a>
-                    </div>
-                </div>
-            </section>
-            <!-- ======= Header ======= -->
-            <header id="header" class="d-flex align-items-center"
-                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-                <div class="container d-flex align-items-center justify-content-between">
-                    <a href="index.html" class="logo">
-                        <img src="assets/img/haryana.png" alt="" />
-                    </a>
-                    <h1 class="logo">
-                        <a href="index.html">
-                            <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana
-                        <span>.</span></span>
-                        </a>
-                    </h1>
-                    <!-- Uncomment below if you prefer to use an image logo -->
-                    <nav id="navbar" class="navbar" style="box-shadow: none !important;">
-                        <ul>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Home</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Lift & Esclator</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Licensing</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Inspection</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#team">Publication</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">
-                                    <span>Services</span>
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                            </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#contact">Fee Schedule</a>
-                            </li>
-                        </ul>
-                        <i class="bi bi-list mobile-nav-toggle"></i>
-                    </nav>
-                    <!-- .navbar -->
-                </div>
-            </header>
-            <!-- End Header -->
-            <main id="main">
+          <main id="main">
                 <section id="about" class="about section-bg">
                     <div class="container" data-aos="fade-up">
                         <div class="row">
@@ -696,6 +604,4 @@ border-radius: 5px;">Back</button>--%>
     <script src="/js2/typeahead.js"></script>
     <script src="/js2/select2.js"></script>
    
-
-</body>
-</html>
+</asp:Content>
