@@ -94,7 +94,7 @@ namespace CEIHaryana.Supervisor
                 {
                     type = Session["value"].ToString();
                 }
-                if (Convert.ToString(Session["Approval3"]) == "Reject")
+                if (Convert.ToString(Session["Approval"]) == "Reject")
                 {
                     type = "Generating Station";
                 }
@@ -408,7 +408,7 @@ namespace CEIHaryana.Supervisor
 
                     if (Session["Approval"].ToString().Trim() == "Reject")
                     {
-
+                        btnSubmit.Text = "Update";
                         //BtnSubmitGeneratingSet.Text = "Update";
                     }
                     else

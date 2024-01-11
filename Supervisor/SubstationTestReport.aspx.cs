@@ -112,7 +112,7 @@ namespace CEIHaryana.Supervisor
                 {
                     Type = Session["Value"].ToString();
                 }
-                if (Convert.ToString(Session["Approval2"]) == "Reject")
+                if (Convert.ToString(Session["Approval"]) == "Reject")
                 {
                     Type = "Substation Transformer";
                 }
@@ -1047,10 +1047,10 @@ namespace CEIHaryana.Supervisor
 
             try
             {
-                if (BtnSubmitSubstation.Text.Trim() == "Update")
-                {
-                    IdUpdate = Session["ValueId"].ToString();
-                }
+                //if (BtnSubmitSubstation.Text.Trim() == "Update")
+                //{
+                //    IdUpdate = Session["ValueId"].ToString();
+                //}
 
 
                 if (Declaration.Visible == true && CheckBox2.Checked == false)
