@@ -465,6 +465,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-1"></div>
+                          <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                                                    <ContentTemplate>
                         <div class="col-md-12">
                             <div class="card"
                                 style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
@@ -786,6 +788,8 @@
                             </div>
                         </div>
                         <div class="col-md-1"></div>
+                                                                        </ContentTemplate>
+                              </asp:UpdatePanel>
                     </div>
                 </div>
             </section>

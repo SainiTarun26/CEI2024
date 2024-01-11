@@ -132,7 +132,7 @@ namespace CEIHaryana.UserPages
                         Category = "Contractor";
                     }
                     GetIP();
-                    CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text,"New", txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+                    CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
            txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
            txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
            txtPin.Text, txtConfirmPswrd.Text, ipaddress);
@@ -246,9 +246,6 @@ namespace CEIHaryana.UserPages
 
                         txtDOB.Text = "";
 
-
-
-
                         CalculatedDatey.Visible = false;
                     }
                     else if (ageDiff > 65)
@@ -275,18 +272,32 @@ namespace CEIHaryana.UserPages
 
                             else
                             {
-
-
                                 int ageYear = currentDate.Year - dobDate.Year;
                                 int ageMonth = currentDate.Month - dobDate.Month;
                                 int ageDay = currentDate.Day - dobDate.Day;
+
+                                if (currentDate > dobDate)
+                                {
+                                    if (ageYear < 0)
+                                    {
+                                        ageYear = -ageYear;
+                                    }
+                                    if (ageMonth < 0)
+                                    {
+                                        ageMonth = -ageMonth;
+                                    }
+                                    if (ageDay < 0)
+                                    {
+                                        ageDay = -ageDay;
+                                    }
+                                }
 
                                 // Adjust the age if the current day is before the birth day
                                 if (ageDay < 0)
                                 {
                                     ageMonth--;
+                                    //int daysInPreviousMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month - 1);
                                     ageDay += DateTime.DaysInMonth(currentDate.Year, currentDate.Month - 1);
-
                                 }
 
                                 // Adjust the age if the current month is before the birth month

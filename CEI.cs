@@ -1862,8 +1862,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberId", PANNumber);
         }
         #region Insert New user data Data
-        public void InserNewUserData(string ApplicationFor, string Name,string ApplicationStatus, string Age, string CalculatedAge, string FatherName, string Address, string District,
-            string State, string PinCode, string PhoneNo, string Email,string Category, string CreatedBy, string UserId, 
+        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName, string Address, 
+            string District,string State, string PinCode, string PhoneNo, string Email,string Category, string CreatedBy, string UserId, 
             string CommunicationAddress, string CommState, string CommDistrict,string CommPin,string Password, string IPAddress)
         {
             try
@@ -1880,7 +1880,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
                 cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
                 cmd.Parameters.AddWithValue("@Name", Name);
-                cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+                //cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
                 cmd.Parameters.AddWithValue("@Age", Age);
                 cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);
@@ -1933,15 +1933,20 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ActiontakenTestReport", LoginId);
         }
 
-        public void InsertnewUseQualification(string UserId,string UniversityName10th,string PassingYear10th, string MarksObtained10th,string MarksMax10th,
-            string Percentage10th,string Name12ITIDiploma, string UniversityName12thorITI,string PassingYear12thorITI, string MarksObtained12thorITI,
-            string MarksMax12thorITI,string Percentage12thorITI,string NameofDiplomaDegree,string UniversityNameDiplomaorDegree,string PassingYearDiplomaorDegree,
-            string MarksObtainedDiplomaorDegree,string MarksMaxDiplomaorDegree,string PercentageDiplomaorDegree,string NameofDegree,string UniversityNamePG,
-            string PassingYearPG,string MarksObtainedPG,string MarksMaxPG,string PercentagePG,string NameofMasters, string MastersUniversityName, 
-            string MastersPassingYear, string MasterMarksObtained,string MastersMarksMax,string MatersPercentage, string IsCertificateofCompetency,
-            string CertificateofCompetency1,string PermitNo1,string IssuingAuthority1,string IssueDate1,string EmployedPermanent,string EmployerName,
-            string PostDescription,string FromDate,string ToDate,string ExperienceEmployerName,string ExperiencePostDescription,string ExperienceFromDate,
-            string ExperienceToDate,string RetiredEngineer,string RetiredEmployerName,string RetiredPostDescription,string RetiredFromDate,string RetiredToDate)
+        public void InsertnewUseQualification(string UserId, string UniversityName10th, string PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
+              string Name12ITIDiploma, string UniversityName12thorITI, string PassingYear12thorITI, string MarksObtained12thorITI, string MarksMax12thorITI, string Percentage12thorITI,
+              string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, string PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
+              string NameofDegree, string UniversityNamePG, string PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
+              string NameofMasters, string MastersUniversityName, string MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage,
+              string IsCertificateofCompetency, string CertificateofCompetency1, string PermitNo1, string IssuingAuthority1, string IssueDate1, string ExpiryDate,
+              string EmployedPermanent, string PermanentEmployerName, string PostDescription, string FromDate, string ToDate,
+              string Experience, string TraningUnder, string ExperienceEmployerName, string ExperiencePostDescription, string ExperienceFromDate, string ExperienceToDate,
+              string Experience1, string TraningUnder1, string ExperienceEmployerName1, string ExperiencePostDescription1, string ExperienceFromDate1, string ExperienceToDate1,
+              string Experience2, string TraningUnder2, string ExperienceEmployerName2, string ExperiencePostDescription2, string ExperienceFromDate2, string ExperienceToDate2,
+              string Experience3, string TraningUnder3, string ExperienceEmployerName3, string ExperiencePostDescription3, string ExperienceFromDate3, string ExperienceToDate3,
+              string Experience4, string TraningUnder4, string ExperienceEmployerName4, string ExperiencePostDescription4, string ExperienceFromDate4, string ExperienceToDate4,
+              string TotalExperience, string RetiredEngineer
+              )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertUserQualification");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1958,60 +1963,99 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@MarksObtained10th", MarksObtained10th);
             cmd.Parameters.AddWithValue("@MarksMax10th", MarksMax10th);
             cmd.Parameters.AddWithValue("@Percentage10th", Percentage10th);
+
             cmd.Parameters.AddWithValue("@Name12ITIDiploma", Name12ITIDiploma);
             cmd.Parameters.AddWithValue("@UniversityName12thorITI", UniversityName12thorITI);
             cmd.Parameters.AddWithValue("@PassingYear12thorITI", PassingYear12thorITI);
             cmd.Parameters.AddWithValue("@MarksObtained12thorITI", MarksObtained12thorITI);
             cmd.Parameters.AddWithValue("@MarksMax12thorITI", MarksMax12thorITI);
             cmd.Parameters.AddWithValue("@Percentage12thorITI", Percentage12thorITI);
+
             cmd.Parameters.AddWithValue("@NameofDiplomaDegree", NameofDiplomaDegree);
             cmd.Parameters.AddWithValue("@UniversityNameDiplomaorDegree", UniversityNameDiplomaorDegree);
             cmd.Parameters.AddWithValue("@PassingYearDiplomaorDegree", PassingYearDiplomaorDegree);
             cmd.Parameters.AddWithValue("@MarksObtainedDiplomaorDegree", MarksObtainedDiplomaorDegree);
             cmd.Parameters.AddWithValue("@MarksMaxDiplomaorDegree", MarksMaxDiplomaorDegree);
             cmd.Parameters.AddWithValue("@PercentageDiplomaorDegree", PercentageDiplomaorDegree);
+
             cmd.Parameters.AddWithValue("@NameofDegree", NameofDegree);
             cmd.Parameters.AddWithValue("@UniversityNamePG", UniversityNamePG);
             cmd.Parameters.AddWithValue("@PassingYearPG", PassingYearPG);
             cmd.Parameters.AddWithValue("@MarksObtainedPG", MarksObtainedPG);
             cmd.Parameters.AddWithValue("@MarksMaxPG", MarksMaxPG);
             cmd.Parameters.AddWithValue("@PercentagePG", PercentagePG);
+
             cmd.Parameters.AddWithValue("@NameofMasters", NameofMasters);
             cmd.Parameters.AddWithValue("@MastersUniversityName", MastersUniversityName);
             cmd.Parameters.AddWithValue("@MastersPassingYear", MastersPassingYear);
             cmd.Parameters.AddWithValue("@MasterMarksObtained", MasterMarksObtained);
             cmd.Parameters.AddWithValue("@MastersMarksMax", MastersMarksMax);
-            cmd.Parameters.AddWithValue("@MatersPercentage", MatersPercentage);
+            cmd.Parameters.AddWithValue("@MastersPercentage", MatersPercentage);
+
             cmd.Parameters.AddWithValue("@IsCertificateofCompetency", IsCertificateofCompetency);
             cmd.Parameters.AddWithValue("@CertificateofCompetency1", CertificateofCompetency1);
             cmd.Parameters.AddWithValue("@PermitNo1", PermitNo1);
             cmd.Parameters.AddWithValue("@IssuingAuthority1", IssuingAuthority1);
             cmd.Parameters.AddWithValue("@IssueDate1", IssueDate1);
+            cmd.Parameters.AddWithValue("@ExpiryDate1", ExpiryDate);
             //cmd.Parameters.AddWithValue("@CertificateofCompetency2", CertificateofCompetency2);
             //cmd.Parameters.AddWithValue("@PermitNo2", PermitNo2);
             //cmd.Parameters.AddWithValue("@IssuingAuthority2", IssuingAuthority2);
             //cmd.Parameters.AddWithValue("@IssueDate2", IssueDate2);
             cmd.Parameters.AddWithValue("@EmployedPermanent", EmployedPermanent);
-            cmd.Parameters.AddWithValue("@EmployerName", EmployerName);
+            cmd.Parameters.AddWithValue("@EmployerName", PermanentEmployerName);
             cmd.Parameters.AddWithValue("@PostDescription", PostDescription);
             cmd.Parameters.AddWithValue("@FromDate", FromDate);
             cmd.Parameters.AddWithValue("@ToDate", ToDate);
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn", Experience);
+            cmd.Parameters.AddWithValue("@TrainingUnder", TraningUnder);
             cmd.Parameters.AddWithValue("@ExperienceEmployerName", ExperienceEmployerName);
             cmd.Parameters.AddWithValue("@ExperiencePostDescription", ExperiencePostDescription);
             cmd.Parameters.AddWithValue("@ExperienceFromDate", ExperienceFromDate);
             cmd.Parameters.AddWithValue("@ExperienceToDate", ExperienceToDate);
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn1", Experience1);
+            cmd.Parameters.AddWithValue("@TrainingUnder1", TraningUnder1);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName1", ExperienceEmployerName1);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription1", ExperiencePostDescription1);
+            cmd.Parameters.AddWithValue("@ExperienceFromDate1", ExperienceFromDate1);
+            cmd.Parameters.AddWithValue("@ExperienceToDate1", ExperienceToDate1);
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn2", Experience2);
+            cmd.Parameters.AddWithValue("@TrainingUnder2", TraningUnder2);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName2", ExperienceEmployerName2);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription2", ExperienceEmployerName2);
+            cmd.Parameters.AddWithValue("@ExperienceFromDate2 ", ExperienceFromDate2);
+            cmd.Parameters.AddWithValue("@ExperienceToDate2 ", ExperienceToDate2);
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn3", Experience3);
+            cmd.Parameters.AddWithValue("@TrainingUnder3", TraningUnder3);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName3", ExperienceEmployerName3);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription3", ExperiencePostDescription3);
+            cmd.Parameters.AddWithValue("@ExperienceFromDate3 ", ExperienceFromDate3);
+            cmd.Parameters.AddWithValue("@ExperienceToDate3 ", ExperienceToDate3);
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn4", Experience4);
+            cmd.Parameters.AddWithValue("@TrainingUnder4", TraningUnder4);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName4", ExperienceEmployerName4);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription4", ExperiencePostDescription4);
+            cmd.Parameters.AddWithValue("@ExperienceFromDate4 ", ExperienceFromDate4);
+            cmd.Parameters.AddWithValue("@ExperienceToDate4 ", ExperienceToDate4);
+
+            cmd.Parameters.AddWithValue("@TotalExperience ", TotalExperience);
+            cmd.Parameters.AddWithValue("@RetiredEngineer", RetiredEngineer);
             //cmd.Parameters.AddWithValue("@ExperienceEmployerName1", txtEmployer.Text);
             //cmd.Parameters.AddWithValue("@ExperiencePostDescription1", txtDescript.Text);
             //cmd.Parameters.AddWithValue("@ExperienceFromDate1", txtFrm1.Text);
             //cmd.Parameters.AddWithValue("@ExperienceToDate1", txtToDate.Text);
-            cmd.Parameters.AddWithValue("@RetiredEngineer", RetiredEngineer);
-            cmd.Parameters.AddWithValue("@RetiredEmployerName", RetiredEmployerName);
-            cmd.Parameters.AddWithValue("@RetiredPostDescription", RetiredPostDescription);
-            cmd.Parameters.AddWithValue("@RetiredFromDate", RetiredFromDate);
-            cmd.Parameters.AddWithValue("@RetiredToDate", RetiredToDate);
-
+            //cmd.Parameters.AddWithValue("@RetiredEmployerName", RetiredEmployerName);
+            //cmd.Parameters.AddWithValue("@RetiredPostDescription", RetiredPostDescription);
+            //cmd.Parameters.AddWithValue("@RetiredFromDate", RetiredFromDate);
+            //cmd.Parameters.AddWithValue("@RetiredToDate", RetiredToDate);
             cmd.ExecuteNonQuery();
             con.Close();
         }
     }
 }
+    
