@@ -2056,6 +2056,58 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        #region Contractor Application Form Data
+        public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
+            string TypeOfAuthority, string Name, string Address, string State, string District, string Pincode, string CompanyPenalities,
+            string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
+            string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring, string TypeOfEmployee1, string LicenseNo1,
+            string IssueDate1, string ValidityDate1, string Qualification1, string TypeOfEmployee2, string LicenseNo2, string IssueDate2,
+            string ValidityDate2, string Qualification2, string CreatedBy)
+        {
+            SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
+            cmd.Parameters.AddWithValue("StyleOfCompany", StyleOfCompany);
+            cmd.Parameters.AddWithValue("@CompanyRegisterdOffice", CompanyRegisterdOffice);
+            cmd.Parameters.AddWithValue("@CompanyPartnerOrDirector", CompanyPartnerOrDirector);
+            cmd.Parameters.AddWithValue("@TypeOfAuthority", TypeOfAuthority);
+            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Pincode", Pincode);
+            cmd.Parameters.AddWithValue("@CompanyPenalities", CompanyPenalities);
+            cmd.Parameters.AddWithValue("@LibraryAvailable", LibraryAvailable);
+            cmd.Parameters.AddWithValue("@AgentName", AgentName);
+            cmd.Parameters.AddWithValue("@ManufacturingFirmOrProductionUnit", ManufacturingFirmOrProductionUnit);
+            cmd.Parameters.AddWithValue("@ContractorLicencePreviouslyGranted", ContractorLicencePreviouslyGranted);
+            cmd.Parameters.AddWithValue("@NameOfIssuingAuthority", NameOfIssuingAuthority);
+            cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
+            cmd.Parameters.AddWithValue("@DateOfLicenseExpiring", DateOfLicenseExpiring);
+            cmd.Parameters.AddWithValue("@TypeOfEmployee1", TypeOfEmployee1);
+            cmd.Parameters.AddWithValue("@LicenseNo1", LicenseNo1);
+            cmd.Parameters.AddWithValue("@IssueDate1", IssueDate1);
+            cmd.Parameters.AddWithValue("@ValidityDate1", ValidityDate1);
+            cmd.Parameters.AddWithValue("@Qualification1", Qualification1);
+            cmd.Parameters.AddWithValue("@TypeOfEmployee2", TypeOfEmployee2);
+            cmd.Parameters.AddWithValue("@LicenseNo2", LicenseNo2);
+            cmd.Parameters.AddWithValue("@IssueDate2", IssueDate2);
+            cmd.Parameters.AddWithValue("@ValidityDate2", ValidityDate2);
+            cmd.Parameters.AddWithValue("@Qualification2", Qualification2);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+        #endregion
     }
 }
     

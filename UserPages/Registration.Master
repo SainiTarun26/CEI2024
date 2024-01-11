@@ -184,12 +184,19 @@
                                     aria-labelledby="navbarDropdownMenuAvatar" style="margin-left: -100px !important; width: 100%;">
                                     <li>
                                         <a class="dropdown-item" href="#">My profile</a>
+                                         <asp:Label ID="lblName" runat="server" Visible="false" />
                                     </li>
                                     <%--<li>
                                         <a class="dropdown-item" href="#">Settings</a>
                                     </li>--%>
                                     <li>
-                                        <a class="dropdown-item" href="#">Logout</a>
+                                          <a class="dropdown-item">
+                                       
+                                        <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server"  Style="background: #4b49ac;
+    border-color: #4b49ac;
+    color: white;
+    border-radius: 5px;"/>
+                                    </a>
                                     </li>
                                 </ul>
                             </div>

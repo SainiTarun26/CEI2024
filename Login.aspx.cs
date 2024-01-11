@@ -6,6 +6,7 @@ namespace CEIHaryana
     public partial class Login : System.Web.UI.Page
     {
         CEI cei = new CEI();
+        string ApplicationStatus = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -43,6 +44,7 @@ namespace CEIHaryana
                 }
                 else if (check == 2)
                 {
+                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
                     if (Status.Trim() == "1")
                     {
                         Session["ContractorID"] = txtUserID.Text;
@@ -51,7 +53,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Contractor";
                         Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                        Response.Redirect("/OTPVerification.aspx");
+                        //Response.Redirect("/OTPVerification.aspx");
                     }
                     else
                     {
@@ -63,7 +65,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                           // Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                         else
                         {
@@ -73,8 +75,20 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(1);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                           // Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
+                    }
+                    if (ApplicationStatus.Trim() == "New")
+                    {
+                        Response.Redirect("/UserPages/ContractorApplicationForm.aspx", false);
+                    }
+                    else if (ApplicationStatus.Trim() == "Mid")
+                    {
+                        Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Contractor/Work_Intimation.aspx", false);
                     }
 
 
@@ -153,7 +167,7 @@ namespace CEIHaryana
                 }
                 else if (check == 6)
                 {
-                    string ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+                     ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
 
                     if (chkSignedin.Checked == true)
                     {
@@ -234,7 +248,7 @@ namespace CEIHaryana
                 }
                 else if (check == 9)
                 {
-                    string ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+                     ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
 
                     if (chkSignedin.Checked == true)
                     {

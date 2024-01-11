@@ -814,7 +814,7 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" InitialValue="" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
                                             </div>
                                         </div>
-                                        <div class="row" id="competency" runat="server" visible="false">
+                                        <div class="row" id="competency" runat="server" visible="true">
                                             <div class="table-responsive" runat="server"  >
                                                 <table class="table table-bordered">
                                                     <thead>

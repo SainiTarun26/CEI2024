@@ -15,6 +15,15 @@ namespace CEIHaryana.UserPages
     {
 
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+
+        /// <summary>
         /// ScriptManager2 control.
         /// </summary>
         /// <remarks>
@@ -42,15 +51,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtapplication;
 
         /// <summary>
-        /// RequiredFieldValidator34 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator34;
-
-        /// <summary>
         /// Div9 control.
         /// </summary>
         /// <remarks>
@@ -67,15 +67,6 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtid;
-
-        /// <summary>
-        /// RequiredFieldValidator75 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator75;
 
         /// <summary>
         /// Div10 control.
@@ -96,15 +87,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtInstallation;
 
         /// <summary>
-        /// RequiredFieldValidator76 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator76;
-
-        /// <summary>
         /// Div12 control.
         /// </summary>
         /// <remarks>
@@ -123,15 +105,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtNOOfInstallation;
 
         /// <summary>
-        /// RequiredFieldValidator77 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator77;
-
-        /// <summary>
         /// contractor control.
         /// </summary>
         /// <remarks>
@@ -141,13 +114,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl contractor;
 
         /// <summary>
-        /// txtName control.
+        /// txtGstNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.TextBox txtGstNumber;
+
+        /// <summary>
+        /// regexValidatorGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexValidatorGST;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -159,31 +141,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// DropDownList2 control.
+        /// DdlPartnerOrDirector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList DdlPartnerOrDirector;
 
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// rfvPartnerOrDirector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-
-        /// <summary>
-        /// UpdatePanelCalculatedYears control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelCalculatedYears;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPartnerOrDirector;
 
         /// <summary>
         /// CalculatedDatey control.
@@ -195,31 +168,31 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl CalculatedDatey;
 
         /// <summary>
-        /// txtyears control.
+        /// txtAge control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtyears;
+        protected global::System.Web.UI.WebControls.TextBox txtAge;
 
         /// <summary>
-        /// ddlGender control.
+        /// ddlCompanyStyle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGender;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCompanyStyle;
 
         /// <summary>
-        /// Req_Estate control.
+        /// rfvCompanyStyle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator Req_Estate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCompanyStyle;
 
         /// <summary>
         /// btnBack control.
@@ -231,85 +204,85 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnBack;
 
         /// <summary>
-        /// UpdatePanelDOB control.
+        /// ddlRegisterdOffice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelDOB;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegisterdOffice;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// rfvRegisterdOffice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRegisterdOffice;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// ddlAuthorityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAuthorityType;
 
         /// <summary>
-        /// DropDownList3 control.
+        /// txtFullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.TextBox txtFullName;
 
         /// <summary>
-        /// txtDescription2 control.
+        /// txtAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription2;
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
-        /// TextBox2 control.
+        /// ddlState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.DropDownList ddlState;
 
         /// <summary>
-        /// DropDownList6 control.
+        /// ddlDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
 
         /// <summary>
-        /// DropDownList5 control.
+        /// txtPin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.TextBox txtPin;
 
         /// <summary>
-        /// TextBox1 control.
+        /// btnAddRow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Button btnAddRow;
 
         /// <summary>
         /// Label1 control.
@@ -321,13 +294,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label1;
 
         /// <summary>
-        /// DropDownList4 control.
+        /// txtCompanyPenalities control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.TextBox txtCompanyPenalities;
+
+        /// <summary>
+        /// ddlLibraryAvailable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLibraryAvailable;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -348,22 +330,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtAgentName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
-
-        /// <summary>
-        /// RequiredFieldValidator5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentName;
 
         /// <summary>
         /// Label3 control.
@@ -375,22 +348,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
 
         /// <summary>
-        /// DropDownList7 control.
+        /// ddlFirmOrUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFirmOrUnit;
 
         /// <summary>
-        /// RequiredFieldValidator6 control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// Label4 control.
@@ -402,22 +375,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
 
         /// <summary>
-        /// DropDownList8 control.
+        /// ddlLicenseGranted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLicenseGranted;
 
         /// <summary>
-        /// RequiredFieldValidator7 control.
+        /// RequiredFieldValidator3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
         /// Label5 control.
@@ -429,22 +402,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label5;
 
         /// <summary>
-        /// TextBox4 control.
+        /// txtIssuingAuthorityName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
-
-        /// <summary>
-        /// RequiredFieldValidator8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+        protected global::System.Web.UI.WebControls.TextBox txtIssuingAuthorityName;
 
         /// <summary>
         /// txtDOB control.
@@ -456,15 +420,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtDOB;
 
         /// <summary>
-        /// RequiredFieldValidator9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
-
-        /// <summary>
         /// Label7 control.
         /// </summary>
         /// <remarks>
@@ -474,111 +429,111 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label7;
 
         /// <summary>
-        /// TextBox5 control.
+        /// txtLicenseExpiryDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtLicenseExpiryDate;
 
         /// <summary>
-        /// RequiredFieldValidator10 control.
+        /// ddlTypofEmployee1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTypofEmployee1;
 
         /// <summary>
-        /// DropDownList9 control.
+        /// txtLicenseNumber1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList9;
+        protected global::System.Web.UI.WebControls.TextBox txtLicenseNumber1;
 
         /// <summary>
-        /// TextBox6 control.
+        /// txtIssueDate1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txtIssueDate1;
 
         /// <summary>
-        /// TextBox7 control.
+        /// txtValidityDate1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtValidityDate1;
 
         /// <summary>
-        /// TextBox12 control.
+        /// txtQualification1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox txtQualification1;
 
         /// <summary>
-        /// TextBox8 control.
+        /// ddlTypofEmployee2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTypofEmployee2;
 
         /// <summary>
-        /// DropDownList11 control.
+        /// txtLicenseNumber2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList11;
+        protected global::System.Web.UI.WebControls.TextBox txtLicenseNumber2;
 
         /// <summary>
-        /// TextBox9 control.
+        /// txtIssueDate2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.TextBox txtIssueDate2;
 
         /// <summary>
-        /// TextBox10 control.
+        /// txtValidityDate2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox txtValidityDate2;
 
         /// <summary>
-        /// TextBox13 control.
+        /// txtQualification2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtQualification2;
 
         /// <summary>
-        /// TextBox11 control.
+        /// BtnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.WebControls.Button BtnSubmit;
     }
 }
