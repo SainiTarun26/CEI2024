@@ -45,6 +45,11 @@ namespace CEIHaryana.Supervisor
                     if (Convert.ToString(Session["Approval"]) == "Reject")
                     {
                         LineId = Session["LineID"].ToString().Trim();
+                        Session["Application"] = Session["ApplicationForTestReport"].ToString().Trim();
+                        Session["Typs"] = Session["TypeOf"].ToString().Trim();
+                        Session["Intimations"] = Session["ID"].ToString().Trim();
+                        Session["IHID"] = Session["IHIDs"].ToString().Trim();
+                        Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();
                         //  BtnBack.Visible = true;
                         GetHistoryDataById();
 

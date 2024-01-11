@@ -448,7 +448,7 @@ namespace CEIHaryana.TestReportModal
                 txtLTProtection.Text = ds.Tables[0].Rows[0]["TypeOfLTProtection"].ToString();
                 txtIndividualCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfIndividualFuseInAMPS"].ToString();
                 txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
-                txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["RiverCanalCrossingNoForOC"].ToString();
+                //txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["RiverCanalCrossingNoForOC"].ToString();
                 txtSealLevelPlinth.Text = ds.Tables[0].Rows[0]["SeaLevelOfTransformerInMeters"].ToString();
                 txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();

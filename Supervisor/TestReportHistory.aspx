@@ -207,6 +207,10 @@
                                 <ItemTemplate>
                                     <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                                     <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
+                                    <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltagelevel") %>'></asp:Label>
+                                    <asp:Label ID="lblInstallationLine" runat="server" Text='<%#Eval("NoOfInstallation") %>'></asp:Label>
+                                    <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHIDs") %>'></asp:Label>
+                                    <asp:Label ID="lblApplicationForTestReport" runat="server" Text='<%#Eval("ApplicationForTestReport") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
@@ -219,6 +223,7 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                                
                             <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />

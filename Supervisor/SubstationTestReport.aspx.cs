@@ -43,15 +43,22 @@ namespace CEIHaryana.Supervisor
                         SubStationID = Session["ValueId"].ToString().Trim();
                         GetHistoryDataById();
                     }
-                    if (Convert.ToString(Session["Approval2"]) == "Reject")
+                    if (Convert.ToString(Session["Approval"]) == "Reject")
                     {
-                        SubStationID = Session["SubStationID"].ToString().Trim();
-                        GetHistoryDataById();
-                        BtnBack.Visible = true;
 
-                    }
-                    else
-                    {
+
+
+                        SubStationID = Session["SubStationID"].ToString().Trim();
+
+                        Session["Application"] = Session["ApplicationForTestReport"].ToString().Trim();
+                        Session["Typs"] = Session["TypeOf"].ToString().Trim();
+                        Session["Intimations"] = Session["ID"].ToString().Trim();
+                        Session["IHID"] = Session["IHIDs"].ToString().Trim();
+                        Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();
+
+
+                        GetHistoryDataById();
+                        //BtnBack.Visible = true;
 
                     }
                     if (Convert.ToString(Session["ContractorID"]) == null || Convert.ToString(Session["ContractorID"]) == "")

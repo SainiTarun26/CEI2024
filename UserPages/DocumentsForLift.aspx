@@ -304,7 +304,7 @@
 
                                                     <tbody>                                                        
                                                         <tr>
-                                                            <td style="text-align: center;">Cpoy of Anual Insurance Policy take by the Owner of the lift covering Insurance for the Person using the Lift.(<span
+                                                            <td style="text-align: center;">Copy of Anual Insurance Policy take by the Owner of the lift covering Insurance for the Person using the Lift.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -312,7 +312,7 @@
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PHOTO SIZE                                                     20KB TO 50KB)</label>
+                                                                        (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="selectedFileName" runat="server" CssClass="form-control file-upload-info"
@@ -371,8 +371,7 @@
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PHOTO SIZE
-                                                    20KB TO 50KB)</label>
+                                                                        (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtIdentity" runat="server" CssClass="form-control file-upload-info"
@@ -405,8 +404,7 @@
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PHOTO SIZE
-                                                    20KB TO 50KB)</label>
+                                                                        (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtDegreeDiploma" runat="server" CssClass="form-control file-upload-info"
@@ -435,8 +433,7 @@
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PHOTO SIZE
-                                                    20KB TO 50KB)</label>
+                                                                        (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtExperience" runat="server" CssClass="form-control file-upload-info"
@@ -466,8 +463,7 @@
                                                                     style="display: none;" />
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PHOTO SIZE
-                                                    20KB TO 50KB)</label>
+                                                                        (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtSignature" runat="server" CssClass="form-control file-upload-info"

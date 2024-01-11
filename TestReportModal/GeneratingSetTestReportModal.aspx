@@ -2603,7 +2603,7 @@
                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Reason For Rejection</asp:RequiredFieldValidator>
 
                                     </div>
                                     <div class="col-4" id="OTP" runat="server" visible="false">
