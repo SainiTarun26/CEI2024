@@ -10,6 +10,7 @@
     <link href="assetsnew/img/favicon.png" rel="icon" />
     <link href="assetsnew/img/apple-touch-icon.png" rel="apple-touch-icon" />
     <!-- Google Fonts -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
@@ -170,19 +171,19 @@
             height: 31px;
         }
 
-        select#ddlGender {
+        select#ddlCompanyStyle {
             height: 31px;
             width: 90%;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
 
-            select#ddlGender:hover {
+            select#ddlCompanyStyle:hover {
                 height: 31px;
                 width: 90%;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
 
-            select#ddlGender:focus {
+            select#ddlCompanyStyle:focus {
                 height: 31px;
                 width: 90%;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -331,7 +332,7 @@
                 font-size: 12px;
             }
 
-        select#ddlGender {
+        select#ddlCompanyStyle {
             color: #252525;
         }
 
@@ -560,6 +561,8 @@
                             <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                         </div>
                     </div>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                                    <ContentTemplate>
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">
@@ -631,50 +634,42 @@
                                                                         <label id="contractor" runat="server" visible="true">
                                                                             GST No.<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName"
-                                                                            CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                    </div>
+                                                                        <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" runat="server"> </asp:TextBox>
+                                                                        <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit" ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtGstNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter GST</asp:RequiredFieldValidator>
+                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="Gender">
                                                                             Whether the company have Partner/Director<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                            ID="DropDownList2" runat="server" TabIndex="16">
+                                                                        <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
+                                                                            ID="DdlPartnerOrDirector" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlPartner_SelectedIndexChanged">
                                                                             <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                         </asp:DropDownList>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Required" CssClass="validation_required" ControlToValidate="ddlGender" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Required" CssClass="validation_required" ControlToValidate="DdlPartnerOrDirector" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                     </div>
-                                                                    <asp:UpdatePanel ID="UpdatePanelCalculatedYears" runat="server">
-                                                                        <ContentTemplate>
                                                                             <div class="form-group" id="CalculatedDatey" runat="server" visible="false">
                                                                                 <label for="Age">Age</label>
                                                                                 <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" ID="txtyears" Width="210px" runat="server"> </asp:TextBox>
                                                                             </div>
-                                                                        </ContentTemplate>
-                                                                    </asp:UpdatePanel>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="forms-sample">
                                                                     <div class="form-group">
-                                                                        <label for="Gender">
+                                                                        <label>
                                                                             Style of Company<samp style="color: red">* </samp>
                                                                         </label>
                                                                         <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                            ID="ddlGender" runat="server" TabIndex="16">
+                                                                            ID="ddlCompanyStyle" runat="server" TabIndex="16">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="Proprietary Concern" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Company(Limited)" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Firm(Registered under the company's act.)" Value="3"></asp:ListItem>
                                                                             <asp:ListItem Text="Partnership Firm (As per selection, below field will display)" Value="3"></asp:ListItem>
                                                                         </asp:DropDownList>
-                                                                        <asp:RequiredFieldValidator ID="Req_Estate" ErrorMessage="Required" CssClass="validation_required" ControlToValidate="ddlGender" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                    </div>
-                                                                    <div class="form-group">
-
-                                                                        <asp:Button type="button" ID="btnBack" Text="Add More"  runat="server" class="btn btn-primary" Style="padding: 7px 5px 5px 5px; border-radius: 5px; margin-top: 13%;" />
+                                                                        <asp:RequiredFieldValidator ID="Req_Estate" ErrorMessage="Required" CssClass="validation_required" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                     </div>
 
                                                                     <%--<asp:UpdatePanel ID="UpdatePanelCalculatedMonths" runat="server">
@@ -694,11 +689,11 @@
                                                                         <ContentTemplate>
                                                                             <div class="form-group">
                                                                                 <label for="Gender">
-                                                                                    Whether the company has a registered office<samp style="color: red">* </samp>
+                                                                                   Registered office in (Haryana/UT Chandigarh/ NCT Delhi)<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                    ID="DropDownList1" runat="server" TabIndex="16">
-                                                                                    <asp:ListItem Text="(Haryana/UT Chandigarh/ NCT Delhi)" Value="0"></asp:ListItem>
+                                                                                    ID="ddlGender" runat="server" TabIndex="16">
+                                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                                 </asp:DropDownList>
@@ -727,7 +722,7 @@
                                                         </div>
 
                                                         <div class="row">
-                                                            <table class="table table-bordered" style="margin-top: 10px; margin-bottom: 20px; margin-left: 15px; width: 97%;">
+                                                            <table class="table table-bordered" id="ParteneDirector" runat="server" visible="true" style="margin-top: 10px; margin-bottom: 20px; margin-left: 15px; width: 97%;">
                                                                 <thead>
                                                                     <tr style="text-align: center;">
                                                                         <%--  <th scope="col" id="sno">Sno.</th>--%>
@@ -739,7 +734,7 @@
                                                                         <th scope="col" id="pincoe">Pincode</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
+                                                                <tbody id="dynamicTableBody">
                                                                     <tr>
                                                                         <%-- <td style="text-align: center; font-size: 13px;">1
                                                                         </td>--%>
@@ -759,15 +754,12 @@
                                                                         </td>
                                                                         <td>
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; width: 100%; border-radius: 5px;"
-                                                                                ID="DropDownList6" OnSelectedIndexChanged="DropDownList6_SelectedIndexChanged" AutoPostBack="true" runat="server" TabIndex="16">
-                                                                               <%-- <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                <asp:ListItem Text="Partner" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="Director" Value="2"></asp:ListItem>--%>
+                                                                                ID="ddlState" OnSelectedIndexChanged="ddlState_SelectedIndexChanged" AutoPostBack="true" runat="server" TabIndex="16">
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                         <td>
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; width: 100%; border-radius: 5px;"
-                                                                                ID="DropDownList5" runat="server" TabIndex="16">
+                                                                                ID="ddlDistrict" runat="server" TabIndex="16">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                 <asp:ListItem Text="Partner" Value="1"></asp:ListItem>
                                                                                 <asp:ListItem Text="Director" Value="2"></asp:ListItem>
@@ -777,6 +769,9 @@
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
+                                                            <div class="col-md-4">
+                                                             <asp:Button type="button" ID="btnBack" Text="Add More" onclick="btnAddMore_Click" runat="server" class="btn btn-primary" Style="padding: 7px 5px 5px 5px; border-radius: 5px; margin-top: 13%;" />
+                                                              </div>   
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-6">
@@ -828,7 +823,7 @@
                                                                         <label id="Label2" runat="server" visible="true">
                                                                             Full Name of Agent/Manager<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="TextBox3" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtName"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -991,6 +986,10 @@
                             </div>
                         </div>
                     </div>
+                                                                        
+                                                                    
+                                                                    </ContentTemplate>
+                        </asp:UpdatePanel>
                     <div class="col-md-1"></div>
                 </div>
 
@@ -1066,6 +1065,7 @@
     </script> --%>
 
     <%-- Multiselect Dropdown --%>
+    
     <script>
         $(document).ready(function () {
 
