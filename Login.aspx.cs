@@ -65,7 +65,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                           // Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                            // Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                         else
                         {
@@ -75,7 +75,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(1);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                           // Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                            // Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                     }
                     if (ApplicationStatus.Trim() == "New")
@@ -167,8 +167,8 @@ namespace CEIHaryana
                 }
                 else if (check == 6)
                 {
-                     ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
-
+                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+                    Session["InsertedCategory"] = "Supervisor";
                     if (chkSignedin.Checked == true)
                     {
                         Session["SupervisorID"] = txtUserID.Text;
@@ -187,7 +187,8 @@ namespace CEIHaryana
                         Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                     }
-                    if(ApplicationStatus.Trim() == "New")
+
+                    if (ApplicationStatus.Trim() == "New")
                     {
                         Response.Redirect("/UserPages/Qualification.aspx", false);
                     }
@@ -222,7 +223,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("/SiteOwnerPages/CreateTestReports.aspx", false);
                     }
-                }   
+                }
                 else if (check == 8)
                 {
                     if (chkSignedin.Checked == true)
@@ -248,8 +249,8 @@ namespace CEIHaryana
                 }
                 else if (check == 9)
                 {
-                     ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
-
+                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+                    Session["InsertedCategory"] = "Wireman";
                     if (chkSignedin.Checked == true)
                     {
                         Session["WiremanId"] = txtUserID.Text;
@@ -292,8 +293,8 @@ namespace CEIHaryana
                     // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
 
-               
-                
+
+
 
             }
             catch (Exception ex)

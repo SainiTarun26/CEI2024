@@ -28,11 +28,11 @@ namespace CEIHaryana.UserPages
                         //ddlQualification2.Attributes.Add("disabled", "disabled");
                         DdlDegree.Visible = false;
                         DdlMasters.Visible = false;
-                        
+
                     }
-                    else if(InsertedCategory == "Supervisor")
+                    else if (InsertedCategory == "Supervisor")
                     {
-                        DdlDegree.Visible = true;                        
+                        DdlDegree.Visible = true;
                         //DdlMasters.Visible = true;
                         //ddlQualification2.Attributes.Remove("disabled");
                     }
@@ -106,7 +106,7 @@ namespace CEIHaryana.UserPages
                 string dp_Id7 = ds.Tables[0].Rows[0]["IssueDate1"].ToString();
                 string dp_Id8 = ds.Tables[0].Rows[0]["ExpiryDate"].ToString();
                 txtIssuingDate.Text = DateTime.Parse(dp_Id7).ToString("yyyy-MM-dd");
-                txtExpiryDate.Text= DateTime.Parse(dp_Id8).ToString("yyyy-MM-dd");
+                txtExpiryDate.Text = DateTime.Parse(dp_Id8).ToString("yyyy-MM-dd");
                 //txtCategory1.Text = ds.Tables[0].Rows[0]["CertificateofCompetency2"].ToString();
                 //txtPermitNo1.Text = ds.Tables[0].Rows[0]["PermitNo2"].ToString();
                 //txtIssuingAuthority1.Text = ds.Tables[0].Rows[0]["IssuingAuthority2"].ToString();
@@ -296,25 +296,25 @@ namespace CEIHaryana.UserPages
             {
 
                 CEI.InsertnewUseQualification(REID, txtUniversity.Text, txtPassingyear.Text, txtmarksObtained.Text, txtmarksmax.Text, txtprcntg.Text,
-                  ddlQualification.SelectedItem.ToString(),txtUniversity1.Text, txtPassingyear1.Text, txtmarksObtained1.Text, txtmarksmax1.Text, txtprcntg1.Text,
-                  ddlQualification1.SelectedItem.ToString(),txtUniversity2.Text, txtPassingyear2.Text, txtmarksObtained2.Text, txtmarksmax2.Text, txtprcntg2.Text,
-                  ddlQualification2.SelectedItem.ToString(),txtUniversity3.Text, txtPassingyear3.Text, txtmarksObtained3.Text, txtmarksmax3.Text, txtprcntg3.Text,
-                  ddlQualification3.SelectedItem.ToString(),txtUniversity4.Text, txtPassingyear4.Text, txtmarksObtained4.Text, txtmarksmax4.Text, txtprcntg4.Text,
-                  RadioButtonList2.SelectedItem.ToString(), txtCategory.Text,    txtPermitNo.Text,  txtIssuingAuthority.Text,txtIssuingDate.Text,txtExpiryDate.Text,
-                  RadioButtonList3.SelectedItem.ToString(),txtPermanentEmployerName.Text,txtPermanentDescription.Text,txtPermanentFrom.Text,txtPermanentTo.Text,
+                  ddlQualification.SelectedItem.ToString(), txtUniversity1.Text, txtPassingyear1.Text, txtmarksObtained1.Text, txtmarksmax1.Text, txtprcntg1.Text,
+                  ddlQualification1.SelectedItem.ToString(), txtUniversity2.Text, txtPassingyear2.Text, txtmarksObtained2.Text, txtmarksmax2.Text, txtprcntg2.Text,
+                  ddlQualification2.SelectedItem.ToString(), txtUniversity3.Text, txtPassingyear3.Text, txtmarksObtained3.Text, txtmarksmax3.Text, txtprcntg3.Text,
+                  ddlQualification3.SelectedItem.ToString(), txtUniversity4.Text, txtPassingyear4.Text, txtmarksObtained4.Text, txtmarksmax4.Text, txtprcntg4.Text,
+                  RadioButtonList2.SelectedItem.ToString(), txtCategory.Text, txtPermitNo.Text, txtIssuingAuthority.Text, txtIssuingDate.Text, txtExpiryDate.Text,
+                  RadioButtonList3.SelectedItem.ToString(), txtPermanentEmployerName.Text, txtPermanentDescription.Text, txtPermanentFrom.Text, txtPermanentTo.Text,
                  // ddlExperience.SelectedItem.ToString(),ddlTrainingUnder.SelectedItem.ToString(),txtEmployerName1.Text, txtDescription1.Text, txtFrom1.Text, txtTo1.Text, 
-                 ddlExperiene.SelectedItem.ToString(),   ddlTraningUnder.SelectedItem.ToString(),  txtExperienceEmployer.Text, txtPostDescription.Text, txtExperienceFrom.Text,txtExperienceTo.Text,
-                 ddlExperience1.SelectedItem.ToString(), ddlTrainingUnder1.SelectedItem.ToString(),txtExperienceEmployer1.Text,txtPostDescription1.Text,txtExperienceFrom1.Text,txtExperienceTo1.Text,
-                 ddlExperience2.SelectedItem.ToString(), ddlTrainingUnder2.SelectedItem.ToString(),txtExperienceEmployer2.Text,txtPostDescription2.Text,txtExperienceFrom2.Text,txtExperienceTo2.Text,
-                 ddlExperience3.SelectedItem.ToString(), ddlTrainingUnder3.SelectedItem.ToString(),txtExperienceEmployer3.Text,txtPostDescription3.Text,txtExperienceFrom3.Text,txtExperienceTo3.Text,
-                 ddlExperience4.SelectedItem.ToString(), ddlTrainingUnder4.SelectedItem.ToString(),txtExperienceEmployer4.Text,txtPostDescription3.Text,txtExperienceFrom4.Text,txtExperienceTo4.Text,
+                 ddlExperiene.SelectedItem.ToString(), ddlTraningUnder.SelectedItem.ToString(), txtExperienceEmployer.Text, txtPostDescription.Text, txtExperienceFrom.Text, txtExperienceTo.Text,
+                 ddlExperience1.SelectedItem.ToString(), ddlTrainingUnder1.SelectedItem.ToString(), txtExperienceEmployer1.Text, txtPostDescription1.Text, txtExperienceFrom1.Text, txtExperienceTo1.Text,
+                 ddlExperience2.SelectedItem.ToString(), ddlTrainingUnder2.SelectedItem.ToString(), txtExperienceEmployer2.Text, txtPostDescription2.Text, txtExperienceFrom2.Text, txtExperienceTo2.Text,
+                 ddlExperience3.SelectedItem.ToString(), ddlTrainingUnder3.SelectedItem.ToString(), txtExperienceEmployer3.Text, txtPostDescription3.Text, txtExperienceFrom3.Text, txtExperienceTo3.Text,
+                 ddlExperience4.SelectedItem.ToString(), ddlTrainingUnder4.SelectedItem.ToString(), txtExperienceEmployer4.Text, txtPostDescription3.Text, txtExperienceFrom4.Text, txtExperienceTo4.Text,
                  txtTotalExperience.Text, RadioButtonList1.SelectedItem.ToString()
                  );
 
                 Session["Back"] = txtUniversity.Text;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
                 showAlert = true;
-                Response.Redirect("Documents.aspx");
+                Response.Redirect("/UserPages/Documents.aspx", false);
             }
         }
 
@@ -322,7 +322,7 @@ namespace CEIHaryana.UserPages
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // QualificationValidations();
+            // QualificationValidations();
             if (RadioButtonList2.SelectedValue == "0")
             {
                 competency.Visible = true;
@@ -349,7 +349,7 @@ namespace CEIHaryana.UserPages
         {
 
             // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
-            bool isExperienceVisible = true;  
+            bool isExperienceVisible = true;
 
             TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtExperienceFrom, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtExperienceFrom };
             TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtExperienceTo, txtExperienceTo2, txtExperienceTo3, txtExperienceTo4 } : new TextBox[] { txtExperienceTo };
@@ -416,12 +416,12 @@ namespace CEIHaryana.UserPages
                 Experience2.Visible = true;
                 Experience3.Visible = true;
             }
-            else if(Experience1.Visible == true)
+            else if (Experience1.Visible == true)
             {
                 Experience1.Visible = true;
                 Experience2.Visible = true;
-            } 
-             
+            }
+
             else if (Experience1.Visible == false)
             {
                 Experience1.Visible = true;

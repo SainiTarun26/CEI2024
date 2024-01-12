@@ -13,6 +13,7 @@ namespace CEIHaryana.UserPages
 {
     public partial class Registration : System.Web.UI.Page
     {
+
         string REID = string.Empty;
         CEI CEI = new CEI();
         string ipaddress;
@@ -133,16 +134,16 @@ namespace CEIHaryana.UserPages
                     }
                     Session["InsertedCategory"] = Category;
                     GetIP();
-                    CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text,"New", txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+                    CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
            txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(), ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
            txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
            txtPin.Text, txtConfirmPswrd.Text, ipaddress);
                     CEI.NewCredentialsthroughEmail(txtEmail.Text);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                   // Response.Redirect("Qualification.aspx",false);
+                    // Response.Redirect("Qualification.aspx",false);
 
                 }
-                else 
+                else
                 {
                     // Passwords do not match, show an alert
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please enter the same passwords.');", true);
@@ -152,7 +153,7 @@ namespace CEIHaryana.UserPages
             {
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please Add same Passwords');", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('An error occurred:');", true);
-                return; 
+                return;
             }
         }
 
@@ -272,10 +273,10 @@ namespace CEIHaryana.UserPages
                             }
 
                             else
-                            {                                
+                            {
                                 int ageYear = currentDate.Year - dobDate.Year;
                                 int ageMonth = currentDate.Month - dobDate.Month;
-                                int ageDay = currentDate.Day - dobDate.Day;                                
+                                int ageDay = currentDate.Day - dobDate.Day;
 
                                 if (currentDate > dobDate)
                                 {
@@ -284,7 +285,7 @@ namespace CEIHaryana.UserPages
                                         ageYear = -ageYear;
                                     }
                                     if (ageMonth < 0)
-                                    { 
+                                    {
                                         ageMonth = -ageMonth;
                                     }
                                     if (ageDay < 0)
@@ -298,7 +299,7 @@ namespace CEIHaryana.UserPages
                                 {
                                     ageMonth--;
                                     //int daysInPreviousMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month - 1);
-                                    ageDay +=  DateTime.DaysInMonth(currentDate.Year, currentDate.Month - 1);
+                                    ageDay += DateTime.DaysInMonth(currentDate.Year, currentDate.Month - 1);
                                 }
 
                                 // Adjust the age if the current month is before the birth month
@@ -315,7 +316,7 @@ namespace CEIHaryana.UserPages
 
                                 txtyears.Text = ageYear.ToString() + "Years-" + ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days";
 
-                                txtyears.Text = ageYear.ToString() + "Years-" + ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days";
+                                // txtyears.Text = ageYear.ToString() + "Years-" + ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days";
 
                             }
 
@@ -388,7 +389,7 @@ namespace CEIHaryana.UserPages
 
         protected void ddlcategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlcategory.SelectedValue =="3")
+            if (ddlcategory.SelectedValue == "3")
             {
                 contractor.Visible = true;
                 WireSup.Visible = false;
