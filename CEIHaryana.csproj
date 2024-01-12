@@ -1840,10 +1840,10 @@
     <Content Include="UserPages\FormPrintContractor.aspx" />
     <Content Include="UserPages\FormPrintSupervisor.aspx" />
     <Content Include="UserPages\FormPrintWiremen.aspx" />
+    <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
-    <Content Include="UserPages\index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
@@ -2427,94 +2427,75 @@
     </Compile>
     <Compile Include="UserPages\ApplicationForLiftEscalators.aspx.cs">
       <DependentUpon>ApplicationForLiftEscalators.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\ApplicationForLiftEscalators.aspx.designer.cs">
       <DependentUpon>ApplicationForLiftEscalators.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\ContractorApplicationForm.aspx.cs">
       <DependentUpon>ContractorApplicationForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\ContractorApplicationForm.aspx.designer.cs">
       <DependentUpon>ContractorApplicationForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Documents.aspx.cs">
       <DependentUpon>Documents.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\Documents.aspx.designer.cs">
       <DependentUpon>Documents.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\DocumentsForContractor.aspx.cs">
       <DependentUpon>DocumentsForContractor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\DocumentsForContractor.aspx.designer.cs">
       <DependentUpon>DocumentsForContractor.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\DocumentsForLift.aspx.cs">
       <DependentUpon>DocumentsForLift.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\DocumentsForLift.aspx.designer.cs">
       <DependentUpon>DocumentsForLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\FormPrintContractor.aspx.cs">
       <DependentUpon>FormPrintContractor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\FormPrintContractor.aspx.designer.cs">
       <DependentUpon>FormPrintContractor.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\FormPrintSupervisor.aspx.cs">
       <DependentUpon>FormPrintSupervisor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\FormPrintSupervisor.aspx.designer.cs">
       <DependentUpon>FormPrintSupervisor.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\FormPrintWiremen.aspx.cs">
       <DependentUpon>FormPrintWiremen.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\FormPrintWiremen.aspx.designer.cs">
       <DependentUpon>FormPrintWiremen.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Instructions.aspx.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\Instructions.aspx.designer.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Qualification.aspx.cs">
       <DependentUpon>Qualification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\Qualification.aspx.designer.cs">
       <DependentUpon>Qualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserPages\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserPages\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserPages\Registration.Master.cs">
-      <DependentUpon>Registration.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserPages\Registration.Master.designer.cs">
-      <DependentUpon>Registration.Master</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\CertificateRenewal.aspx.cs">
       <DependentUpon>CertificateRenewal.aspx</DependentUpon>
@@ -2735,7 +2716,6 @@
     <Content Include="TestReport\TestReport.Master" />
     <Content Include="SiteOwnerPages\SiteOwner.Master" />
     <Content Include="TestReportsNew\TestReport.Master" />
-    <Content Include="UserPages\Registration.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
