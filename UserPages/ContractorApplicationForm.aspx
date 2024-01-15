@@ -781,13 +781,12 @@
                                                                         <label id="Label1" runat="server" visible="true">
                                                                             Is company have any Penalties/Punishment<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <select id="choices-multiple-remove-button" placeholder="Select Multiple" multiple>
-                                                                            <option value="1">By state licensing board,Haryana/Chief Electrical inspector,Haryana</option>
-                                                                            <option value="3">Any court of law.</option>
-                                                                            <option value="2">By government & other agencies</option>
+                                                                        <asp:ListBox ID="choicesMultipleRemoveButton" runat="server" SelectionMode="Multiple" AutoPostBack="true" OnSelectedIndexChanged="choicesMultipleRemoveButton_SelectedIndexChanged">
+                                                                            <asp:ListItem Value="1">By state licensing board, Haryana/Chief Electrical inspector, Haryana</asp:ListItem>
+                                                                            <asp:ListItem Value="3">Any court of law.</asp:ListItem>
+                                                                            <asp:ListItem Value="2">By government & other agencies</asp:ListItem>
+                                                                        </asp:ListBox>
 
-
-                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>

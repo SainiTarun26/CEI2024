@@ -95,7 +95,10 @@ namespace CEIHaryana.UserPages
             // Add a new row when the "Add More" button is clicked
             AddNewRow();
         }
-
+        protected void choicesMultipleRemoveButton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdatePanel1.Update();
+        }
         private void AddNewRow()
         {
             // Create a new row
