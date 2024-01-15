@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">   
+<head runat="server">
     <title></title>
     <meta content="" name="keywords" />
     <!-- Favicons -->
@@ -67,9 +67,19 @@
         }
     </script>
     <style>
+        li#logout {
+            padding-left: 10px !important;
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding-right: 10px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+        }
+
+
         span#RequiredFieldValidator2 {
             color: red !important;
-            font-size: 20px !important;           
+            font-size: 20px !important;
         }
 
         select#ddlExperiene {
@@ -501,15 +511,20 @@
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
 
-            select#DropDownList3:hover {
-                height: 30px;
-                width: 100%;
-                font-size: 13px;
-                text-align: center;
-                border: 1px solid #ced4da;
-                border-radius: 5px;
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            }
+        span#user {
+            color: white;
+            font-size: 15px;
+        }
+
+        select#DropDownList3:hover {
+            height: 30px;
+            width: 100%;
+            font-size: 13px;
+            text-align: center;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
 
         select#DropDownList4 {
             height: 30px;
@@ -574,6 +589,31 @@
                 border-radius: 5px;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
+
+        ul#profile_drop {
+            margin-left: -86px;
+            width: 120px;
+            border-radius: 8px;
+        }
+
+        .navbar .dropdown ul li {
+            min-width: 100px;
+        }
+
+        li#ProfileUser:hover {
+            background: #d1e6ff;
+            text-decoration-line: none !important;
+        }
+
+        li#ProfileLogout:hover {
+            background: #d1e6ff;
+            text-decoration-line: none !important;
+        }
+
+        .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
+            color: #106eea;
+            text-decoration-line: none;
+        }
     </style>
 </head>
 <body>
@@ -611,16 +651,16 @@
             <header id="header" class="d-flex align-items-center"
                 style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
                 <div class="container d-flex align-items-center justify-content-between">
-                    <a href="index.html" class="logo">
+                    <%-- <a href="index.html" class="logo">
                         <img src="assets/img/haryana.png" alt="" />
-                    </a>
+                    </a>--%>
                     <h1 class="logo">
                         <a href="index.html">
                             <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
                         </a>
                     </h1>
                     <!-- Uncomment below if you prefer to use an image logo -->
-                    <nav id="navbar" class="navbar" style="box-shadow: none !important;">
+                    <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 65px;">
                         <ul>
                             <li class="dropdown">
                                 <a href="#">
@@ -708,9 +748,6 @@
                                 </li>
                             </ul>--%>
                             </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#team">Publication</a>
-                            </li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Services</span>
@@ -725,14 +762,46 @@
                             <li>
                                 <a class="nav-link scrollto" href="#contact">Contact Us</a>
                             </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#contact">Fee Schedule</a>
+
+                            <li class="dropdown" id="logout" style="margin-left: 300px;">
+                                <a href="#">
+                                    <span id="user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                        </svg></span>
+
+                                </a>
+                                <ul id="profile_drop">
+                                    <li id="ProfileUser">
+                                        <a href="#">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                                      User       <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                                    <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
+                                                </svg>&nbsp;&nbsp;Profile</span>
+
+                                        </a>
+                                    </li>
+                                    <li id="ProfileLogout">
+                                        <a href="#">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                                                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+                                                </svg>&nbsp;&nbsp;Logout</span>
+
+                                        </a>
+                                    </li>
+
+                                </ul>
                             </li>
                         </ul>
                         <i class="bi bi-list mobile-nav-toggle"></i>
                     </nav>
                     <!-- .navbar -->
                 </div>
+
             </header>
             <!-- End Header -->
             <main id="main">
@@ -794,8 +863,8 @@
 
                                                                         <asp:TextBox class="form-control" ID="txtPassingyear" type="date" runat="server" min='0000-01-01' max='9999-01-01' autocomplete="off"> </asp:TextBox>
                                                                         <div>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassingyear"
-                                                                            ErrorMessage="Please Add Your 10th Passing Year" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassingyear"
+                                                                                ErrorMessage="Please Add Your 10th Passing Year" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </td>
                                                                     <td>
@@ -1449,9 +1518,9 @@
                                                     </div>
                                                     <div class="col-md-6" style="text-align: end;">
                                                         <asp:Button ID="btnNext" runat="server" Text="Next" class="btn btn-primary"
-                                                        Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
-                                                        OnClick="btnNext_Click" ValidationGroup="Submit"
-                                                        OnClientClick="return validateForm();" />
+                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                            OnClick="btnNext_Click" ValidationGroup="Submit"
+                                                            OnClientClick="return validateForm();" />
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -1580,8 +1649,8 @@
                     var ddlQualification2 = document.getElementById('ddlQualification2');
                     var ddlExperiene = document.getElementById('ddlExperiene');
                     var ddlTraningUnder = document.getElementById('ddlTraningUnder');
-                    
-                    
+
+
 
                     if (ddlQualification.value === '0') { // Assuming '0' is the default value for "Select"
                         isValid = false;
@@ -1617,10 +1686,10 @@
                     } else {
                         ddlQualification2.style.border = ''; // Reset border if valid
                     }
-                   
 
-                   
-                    
+
+
+
 
                     // Validate txtUniversity
                     if (txtUniversity.value.trim() === '') {
@@ -1693,8 +1762,8 @@
                         txtprcntg1.style.border = '1px solid red';
                     } else {
                         txtprcntg1.style.border = '';
-                    }                   
-                    
+                    }
+
                     if (txtUniversity2.value.trim() === '') {
                         isValid = false;
                         txtUniversity2.style.border = '1px solid red';
@@ -1725,7 +1794,7 @@
                     } else {
                         txtprcntg2.style.border = '';
                     }
-                    
+
                     if (txtUniversity3.value.trim() === '') {
                         isValid = false;
                         txtUniversity3.style.border = '1px solid red';
