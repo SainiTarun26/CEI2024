@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf.parser;
 using Pipelines.Sockets.Unofficial.Arenas;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -2058,8 +2059,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #region Contractor Application Form Data
         public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
-            string TypeOfAuthority, string Name, string Address, string State, string District, string Pincode, string CompanyPenalities,
-            string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
+             string CompanyPenalities,string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
             string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring, string TypeOfEmployee1, string LicenseNo1,
             string IssueDate1, string ValidityDate1, string Qualification1, string TypeOfEmployee2, string LicenseNo2, string IssueDate2,
             string ValidityDate2, string Qualification2, string CreatedBy)
@@ -2078,12 +2078,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("StyleOfCompany", StyleOfCompany);
             cmd.Parameters.AddWithValue("@CompanyRegisterdOffice", CompanyRegisterdOffice);
             cmd.Parameters.AddWithValue("@CompanyPartnerOrDirector", CompanyPartnerOrDirector);
-            cmd.Parameters.AddWithValue("@TypeOfAuthority", TypeOfAuthority);
-            cmd.Parameters.AddWithValue("@Name", Name);
-            cmd.Parameters.AddWithValue("@Address", Address);
-            cmd.Parameters.AddWithValue("@State", State);
-            cmd.Parameters.AddWithValue("@District", District);
-            cmd.Parameters.AddWithValue("@Pincode", Pincode);
             cmd.Parameters.AddWithValue("@CompanyPenalities", CompanyPenalities);
             cmd.Parameters.AddWithValue("@LibraryAvailable", LibraryAvailable);
             cmd.Parameters.AddWithValue("@AgentName", AgentName);
@@ -2106,6 +2100,97 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.ExecuteNonQuery();
             con.Close();
 
+        }
+        public void ContractorPartners(Dictionary<string, string> data)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_ContractorPartners", con))
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TypeOfAuthority", data["TypeOfAuthority"]);
+                cmd.Parameters.AddWithValue("@Name", data["Name"]);
+                cmd.Parameters.AddWithValue("@Address", data["Address"]);
+                cmd.Parameters.AddWithValue("@State", data["State"]);
+                cmd.Parameters.AddWithValue("@District", data["District"]);
+                cmd.Parameters.AddWithValue("@Pincode", data["Pincode"]);
+                cmd.Parameters.AddWithValue("@CreatedBy", data["CreatedBy"]);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        #endregion
+
+        #region Insert ApplicationLift And Esculator
+        public void InsertListAndEscalators(string UserId, string ApplicantType, string ApplicantName, string ApplicantContact, string ApplicantOfficeAdd,
+            string ApplicantState, string ApplicantDistt, string ApplicantPincode, string AgentName, string AgentContect, string AgentAddres, string AgentState,
+            string AgentDistt, string AgentPincode, string OwnerName, string OwnerAddres, string OwnerState, string OwnerDistrict, string OwnerPincode,
+            string ErectionDate, string TypeOfLift, string MakersName, string MakersLocalAgent, string MakersAddress, string ContractSpeedLift, string ContractLoadLift,
+            string LiftCapcityMaxNoOfPerson, string TotalWeightLiftCar, string WeightCounterWeight, string NoOfSuspensionRoops, string Description, string Weight,
+            string Size, string PitDepth, string TravelAndNoOfFloors, string ConstructionDetailsOverheadArrangement//, string CopyOfAnnualInsurancePolicy, string CopyOfChallanTreasury,
+                                                                                                                   // string AnnualMaintenanceContract, string SaftyCertificate, string FormA, string FormB, string FormC
+            )
+        {
+            SqlCommand cmd = new SqlCommand("Sp_InsertLiftEscalators");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId ", UserId);
+            cmd.Parameters.AddWithValue("@ApplicantType	", ApplicantType);
+            cmd.Parameters.AddWithValue("@ApplicantName	", ApplicantName);
+            cmd.Parameters.AddWithValue("@ApplicantContactNo ", ApplicantContact);
+            cmd.Parameters.AddWithValue("@ApplicantOfficeAddress ", ApplicantOfficeAdd);
+            cmd.Parameters.AddWithValue("@ApplicantState ", ApplicantState);
+            cmd.Parameters.AddWithValue("@ApplicantDistrict ", ApplicantDistt);
+            cmd.Parameters.AddWithValue("@ApplicantPinCode ", ApplicantPincode);
+            cmd.Parameters.AddWithValue("@AgentName ", AgentName);
+            cmd.Parameters.AddWithValue("@AgentContactNo ", AgentContect);
+            cmd.Parameters.AddWithValue("@AgentAddress	", AgentAddres);
+            cmd.Parameters.AddWithValue("@AgentState ", AgentState);
+            cmd.Parameters.AddWithValue("@AgentDistrict	", AgentDistt);
+            cmd.Parameters.AddWithValue("@AgentPincode	", AgentPincode);
+            cmd.Parameters.AddWithValue("@OwnerName	", OwnerName);
+            cmd.Parameters.AddWithValue("@OwnerAddress ", OwnerAddres);
+            cmd.Parameters.AddWithValue("@OwnerState ", OwnerState);
+            cmd.Parameters.AddWithValue("@OwnerDistrict", OwnerDistrict);
+            cmd.Parameters.AddWithValue("@OwnerPincode ", OwnerPincode);
+            cmd.Parameters.AddWithValue("@ErectionDate ", ErectionDate);
+            cmd.Parameters.AddWithValue("@TypeOfLift ", TypeOfLift);
+            cmd.Parameters.AddWithValue("@MakersName ", MakersName);
+            cmd.Parameters.AddWithValue("@MakersLocalAgent ", MakersLocalAgent);
+            cmd.Parameters.AddWithValue("@MakersAddress ", MakersAddress);
+            cmd.Parameters.AddWithValue("@ContractSpeedLift	 ", ContractSpeedLift);
+            cmd.Parameters.AddWithValue("@ContractLoadLift ", ContractLoadLift);
+            cmd.Parameters.AddWithValue("@LiftCapcityMaxNoOfPerson ", LiftCapcityMaxNoOfPerson);
+            cmd.Parameters.AddWithValue("@TotalWeightLiftCar ", TotalWeightLiftCar);
+            cmd.Parameters.AddWithValue("@WeightCounterWeight ", WeightCounterWeight);
+            cmd.Parameters.AddWithValue("@NoOfSuspensionRoops ", NoOfSuspensionRoops);
+            cmd.Parameters.AddWithValue("@Description ", Description);
+            cmd.Parameters.AddWithValue("@Weight ", Weight);
+            cmd.Parameters.AddWithValue("@Size ", Size);
+            cmd.Parameters.AddWithValue("@PitDepth ", PitDepth);
+            cmd.Parameters.AddWithValue("@TravelAndNoOfFloors ", TravelAndNoOfFloors);
+            cmd.Parameters.AddWithValue("@ConstructionDetailsOverheadArrangement ", ConstructionDetailsOverheadArrangement);
+            //cmd.Parameters.AddWithValue("@CopyOfAnnualInsurancePolicy ", CopyOfAnnualInsurancePolicy);
+            //cmd.Parameters.AddWithValue("@CopyOfChallanTreasury", CopyOfChallanTreasury);
+            //cmd.Parameters.AddWithValue("@AnnualMaintenanceContract", AnnualMaintenanceContract);
+            //cmd.Parameters.AddWithValue("@SaftyCertificate", SaftyCertificate);
+            //cmd.Parameters.AddWithValue("@FormA", FormA);
+            //cmd.Parameters.AddWithValue("@FormB	", FormB);
+            //cmd.Parameters.AddWithValue("@FormC	 ", FormC);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
         #endregion
     }

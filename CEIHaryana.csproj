@@ -1782,10 +1782,6 @@
     <Content Include="js2\wizard.js" />
     <Content Include="js2\x-editable.js" />
     <Content Include="Login.aspx" />
-    <Content Include="multiselect_js\example-styles.css" />
-    <Content Include="multiselect_js\jquery-2.2.4.min.js" />
-    <Content Include="multiselect_js\jquery.multi-select.js" />
-    <Content Include="multiselect_js\jquery.multi-select.min.js" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
     <Content Include="Officers\Inspection.aspx" />

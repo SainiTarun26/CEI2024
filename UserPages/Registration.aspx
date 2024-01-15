@@ -519,7 +519,7 @@
                                                                     <ContentTemplate>
                                                                         <div class="form-group" id="CalculatedDatey" runat="server" visible="false">
                                                                             <label for="Age">Age</label>
-                                                                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" ID="txtyears" Width="210px" runat="server"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" ID="txtyears" Width="225px" runat="server"> </asp:TextBox>
                                                                         </div>
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>

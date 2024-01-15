@@ -33,40 +33,40 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
-        /// TextBox1 control.
+        /// ddlApplicantType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlApplicantType;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtNameOfApplicant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtNameOfApplicant;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtPhoneNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtPhoneNo;
 
         /// <summary>
-        /// TextBox6 control.
+        /// txtOfficeAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txtOfficeAddress;
 
         /// <summary>
         /// ddlApplicantState control.
@@ -87,76 +87,76 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.DropDownList ddlapplicantdistrict;
 
         /// <summary>
-        /// TextBox5 control.
+        /// txtPinCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtPinCode;
 
         /// <summary>
-        /// txtagentname control.
+        /// txtAgentName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtagentname;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentName;
 
         /// <summary>
-        /// txtphonecontract control.
+        /// txtAgentContactNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtphonecontract;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentContactNo;
 
         /// <summary>
-        /// txtaddress control.
+        /// txtAgentAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtaddress;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentAddress;
 
         /// <summary>
-        /// ddlagentdistrict control.
+        /// ddlAgentState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlagentdistrict;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAgentState;
 
         /// <summary>
-        /// Dllagentdistrict control.
+        /// dllAgentdistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Dllagentdistrict;
+        protected global::System.Web.UI.WebControls.DropDownList dllAgentdistrict;
 
         /// <summary>
-        /// txtagentpincode control.
+        /// txtAgentPincode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtagentpincode;
+        protected global::System.Web.UI.WebControls.TextBox txtAgentPincode;
 
         /// <summary>
-        /// txtownername control.
+        /// txtOwnerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtownername;
+        protected global::System.Web.UI.WebControls.TextBox txtOwnerName;
 
         /// <summary>
         /// RequiredFieldValidator8 control.
@@ -168,13 +168,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
-        /// txtliftaddress control.
+        /// txtLiftAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtliftaddress;
+        protected global::System.Web.UI.WebControls.TextBox txtLiftAddress;
 
         /// <summary>
         /// RequiredFieldValidator10 control.
@@ -186,13 +186,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
 
         /// <summary>
-        /// ddlliftdistrict control.
+        /// ddlLiftState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlliftdistrict;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLiftState;
 
         /// <summary>
         /// RequiredFieldValidator11 control.
@@ -204,13 +204,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
 
         /// <summary>
-        /// ddlfiltstate control.
+        /// ddlLiftDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlfiltstate;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLiftDistrict;
 
         /// <summary>
         /// RequiredFieldValidator18 control.
@@ -222,13 +222,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
 
         /// <summary>
-        /// txtliftpincode control.
+        /// txtLiftPincode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtliftpincode;
+        protected global::System.Web.UI.WebControls.TextBox txtLiftPincode;
 
         /// <summary>
         /// RequiredFieldValidator19 control.
@@ -240,13 +240,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
 
         /// <summary>
-        /// txtdateoferection control.
+        /// txtDateOfErection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdateoferection;
+        protected global::System.Web.UI.WebControls.TextBox txtDateOfErection;
 
         /// <summary>
         /// RequiredFieldValidator20 control.
@@ -258,13 +258,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
 
         /// <summary>
-        /// txttypeoflift control.
+        /// txtTypeOfLift control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txttypeoflift;
+        protected global::System.Web.UI.WebControls.TextBox txtTypeOfLift;
 
         /// <summary>
         /// RequiredFieldValidator21 control.
@@ -276,13 +276,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
 
         /// <summary>
-        /// txtmakername control.
+        /// txtMakerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmakername;
+        protected global::System.Web.UI.WebControls.TextBox txtMakerName;
 
         /// <summary>
         /// RequiredFieldValidator22 control.
@@ -294,13 +294,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator22;
 
         /// <summary>
-        /// txtmakerlocalagent control.
+        /// txtMakerLocalAgent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmakerlocalagent;
+        protected global::System.Web.UI.WebControls.TextBox txtMakerLocalAgent;
 
         /// <summary>
         /// RequiredFieldValidator23 control.
@@ -312,13 +312,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator23;
 
         /// <summary>
-        /// txtmakeraddress control.
+        /// txtMakerAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmakeraddress;
+        protected global::System.Web.UI.WebControls.TextBox txtMakerAddress;
 
         /// <summary>
         /// RequiredFieldValidator24 control.
@@ -330,13 +330,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
 
         /// <summary>
-        /// txtliftspeed control.
+        /// txtLiftSpeed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtliftspeed;
+        protected global::System.Web.UI.WebControls.TextBox txtLiftSpeed;
 
         /// <summary>
         /// RequiredFieldValidator25 control.
@@ -348,13 +348,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
 
         /// <summary>
-        /// txtliftload control.
+        /// txtLiftLoad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtliftload;
+        protected global::System.Web.UI.WebControls.TextBox txtLiftLoad;
 
         /// <summary>
         /// RequiredFieldValidator26 control.
@@ -366,13 +366,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator26;
 
         /// <summary>
-        /// txtpersonload control.
+        /// txtPersonLoad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpersonload;
+        protected global::System.Web.UI.WebControls.TextBox txtPersonLoad;
 
         /// <summary>
         /// RequiredFieldValidator27 control.
@@ -384,13 +384,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator27;
 
         /// <summary>
-        /// txtliftweight control.
+        /// txtLiftWeight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtliftweight;
+        protected global::System.Web.UI.WebControls.TextBox txtLiftWeight;
 
         /// <summary>
         /// RequiredFieldValidator28 control.
@@ -402,13 +402,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator28;
 
         /// <summary>
-        /// txtcounterweight control.
+        /// txtCounterWeight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcounterweight;
+        protected global::System.Web.UI.WebControls.TextBox txtCounterWeight;
 
         /// <summary>
         /// RequiredFieldValidator29 control.
@@ -420,13 +420,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator29;
 
         /// <summary>
-        /// txtnumber control.
+        /// txtNumberSuspension control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtnumber;
+        protected global::System.Web.UI.WebControls.TextBox txtNumberSuspension;
 
         /// <summary>
         /// RequiredFieldValidator30 control.
@@ -438,13 +438,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator30;
 
         /// <summary>
-        /// txtdiscription control.
+        /// txtDiscription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdiscription;
+        protected global::System.Web.UI.WebControls.TextBox txtDiscription;
 
         /// <summary>
         /// RequiredFieldValidator31 control.
@@ -456,13 +456,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator31;
 
         /// <summary>
-        /// txtweight control.
+        /// txtWeight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtweight;
+        protected global::System.Web.UI.WebControls.TextBox txtWeight;
 
         /// <summary>
         /// RequiredFieldValidator32 control.
@@ -474,13 +474,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator32;
 
         /// <summary>
-        /// txtsize control.
+        /// txtSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtsize;
+        protected global::System.Web.UI.WebControls.TextBox txtSize;
 
         /// <summary>
         /// RequiredFieldValidator33 control.
@@ -492,13 +492,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator33;
 
         /// <summary>
-        /// txtpitdepth control.
+        /// txtPitDepth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpitdepth;
+        protected global::System.Web.UI.WebControls.TextBox txtPitDepth;
 
         /// <summary>
         /// RequiredFieldValidator35 control.
@@ -510,13 +510,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator35;
 
         /// <summary>
-        /// txttotalfloors control.
+        /// txtTotalFloors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txttotalfloors;
+        protected global::System.Web.UI.WebControls.TextBox txtTotalFloors;
 
         /// <summary>
         /// RequiredFieldValidator36 control.
@@ -528,13 +528,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator36;
 
         /// <summary>
-        /// txtconstructiondetails control.
+        /// txtConstructionDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtconstructiondetails;
+        protected global::System.Web.UI.WebControls.TextBox txtConstructionDetails;
 
         /// <summary>
         /// RequiredFieldValidator37 control.
@@ -544,5 +544,14 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator37;
+
+        /// <summary>
+        /// BtnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSubmit;
     }
 }
