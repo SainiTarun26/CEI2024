@@ -47,6 +47,37 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        
+        select#ddlAuthority{
+    width: 100%;
+    height: 30PX;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid #CED4DA;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-radius: 4px;
+}
+        select#ddlState{
+    width: 100%;
+    height: 30PX;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid #CED4DA;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-radius: 4px;
+}
+        select#ddlDistrict{
+    width: 100%;
+    height: 30PX;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid #CED4DA;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-radius: 4px;
+}   
     input#txtContractorName{
     width: 100%;
     height: 30PX;
@@ -728,14 +759,14 @@ select#ddlEmployer2{
                                                                             Father's Name
                                                                     <samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtFatherName" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtFatherName" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                                                     </div>
                                                                     <div class="col-3" id="Div10" runat="server">
                                                                         <label for="Name">
                                                                             Date of Issue
                                                                     <samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtIssueDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtIssueDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" ></asp:TextBox>
 
                                                                     </div>
                                                                     <div class="col-3" id="Div12" runat="server">
@@ -743,7 +774,7 @@ select#ddlEmployer2{
                                                                             Applied For
                                                                     <samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtAppliedFor" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtAppliedFor" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
 
                                                                     </div>
                                                                 </div>
@@ -802,6 +833,23 @@ select#ddlEmployer2{
                                                                                 </asp:DropDownList>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
+                                                                                                                                                <div class="form-group" style="margin-top:20px;">
+
+                                                                        <label id="Label1" runat="server" visible="true">
+                                                                            Is company have any Penalties/Punishment<samp style="color: red">* </samp>
+                                                                        </label>
+                                                                        <label>
+                                                                            Multi-select
+<input mbsc-input id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
+                                                                        </label>
+                                                                        <select id="demo-multiple-select" multiple>
+                                                                            <option value="1">By state licensing board, Haryana/chief Electrical inspector, Haryana </option>
+                                                                            <option value="2">By government & other agencies</option>
+                                                                            <option value="3">Any court of law.</option>
+                                                                        </select>
+                                                                        <asp:ValidationSummary ID="vsSummary" Text="Required" runat="server" ValidationGroup="Submit" DisplayMode="BulletList" />
+
+                                                                    </div>
                                                                             <div class="form-group">
                                                                                 <button type="button" runat="server" visible="false" style="padding: 10px 20px 10px 20px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                                     Open modal
@@ -909,7 +957,7 @@ select#ddlEmployer2{
                                                                                                     </div>
                                                                                                     <div class="row" >
                                                                                                         <div class="col-12" style="text-align: end;">
-                                                                                                            <asp:Button type="Submit" ValidationGroup="ModalSubmit" ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 7px 5px 5px 5px; border-radius: 5px;" />
+                                                                                                            <asp:Button type="Submit" ValidationGroup="ModalSubmit" ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                                                                             </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -959,7 +1007,17 @@ select#ddlEmployer2{
                                                                                 </asp:DropDownList>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
-
+                                                                            <div class="form-group" style="margin-top:20px;">
+    <label for="Gender">
+        Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
+    </label>
+    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+        ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
+        <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+        <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+    </asp:DropDownList>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+</div>
                                                                         </div>
                                                                         <br />
 
@@ -1032,44 +1090,7 @@ select#ddlEmployer2{
 
 
                                                                                                                                        </div>
-                                                                <div class="row" style="margin-top:15px;">
-                                                                    <div class="col-md-6">
-                                                                        <div class="forms-sample">
-                                                                            <div class="form-group">
-
-                                                                                <label id="Label1" runat="server" visible="true">
-                                                                                    Is company have any Penalties/Punishment<samp style="color: red">* </samp>
-                                                                                </label>
-                                                                                <label>
-                                                                                    Multi-select
-        <input mbsc-input id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
-                                                                                </label>
-                                                                                <select id="demo-multiple-select" multiple>
-                                                                                    <option value="1">By state licensing board, Haryana/chief Electrical inspector, Haryana </option>
-                                                                                    <option value="2">By government & other agencies</option>
-                                                                                    <option value="3">Any court of law.</option>
-                                                                                </select>
-                                                                                <asp:ValidationSummary ID="vsSummary" Text="Required" runat="server" ValidationGroup="Submit" DisplayMode="BulletList" />
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-4" style="margin-bottom: 30px;">
-                                                                        <div class="forms-sample">
-                                                                            <div class="form-group">
-                                                                                <label for="Gender">
-                                                                                    Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
-                                                                                </label>
-                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                    ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
-                                                                                    <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-                                                                                    <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-                                                                                </asp:DropDownList>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                
                                                             </div>
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                                 <div class="col-md-12">
