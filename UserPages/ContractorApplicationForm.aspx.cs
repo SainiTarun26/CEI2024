@@ -83,14 +83,14 @@ namespace CEIHaryana.UserPages
 
             try
             {
-
-                //CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlRegisterdOffice.SelectedItem.ToString(),
-                //    DdlPartnerOrDirector.SelectedItem.ToString(), ddlAuthorityType.SelectedItem.ToString(), txtFullName.Text, txtAddress.Text,
-                //    ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPin.Text, txtCompanyPenalities.Text, ddlLibraryAvailable.SelectedItem.ToString(),
-                //    txtAgentName.Text, ddlFirmOrUnit.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssuingAuthorityName.Text, txtDOB.Text,
-                //    txtLicenseExpiryDate.Text, ddlTypofEmployee1.SelectedItem.ToString(), txtLicenseNumber1.Text, txtIssueDate1.Text, txtValidityDate1.Text,
-                //    txtQualification1.Text, ddlTypofEmployee2.SelectedItem.ToString(), txtLicenseNumber2.Text, txtIssueDate2.Text, txtValidityDate2.Text,
-                //    txtQualification2.Text, "Admin");
+                string Createdby = Session["ContractorID"].ToString();
+                string selectedValues = Request.Form["demo-multiple-select"];
+                CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
+                    DdlPartnerOrDirector.SelectedItem.ToString(), selectedValues, ddlAnnexureOrNot.SelectedItem.ToString(),
+                    txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text, txtDOB.Text,
+                    txtLicenseExpiry.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
+                    txtQualification1.Text, ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text, txtValidity2.Text,
+                    txtQualification2.Text, Createdby);
                 //CEI.ContractorPartners()
 
             }

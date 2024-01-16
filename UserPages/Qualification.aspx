@@ -1519,8 +1519,7 @@
                                                     <div class="col-md-6" style="text-align: end;">
                                                         <asp:Button ID="btnNext" runat="server" Text="Next" class="btn btn-primary"
                                                             Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
-                                                            OnClick="btnNext_Click" ValidationGroup="Submit"
-                                                            OnClientClick="return validateForm();" />
+                                                            OnClick="btnNext_Click" OnClientClick="return validateForm();" />
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -1609,12 +1608,6 @@
                     var txtmarksObtained2 = document.getElementById('txtmarksObtained2');
                     var txtmarksmax2 = document.getElementById('txtmarksmax2');
                     var txtprcntg2 = document.getElementById('txtprcntg2');
-                    var ddlQualification2 = document.getElementById('ddlQualification2');
-                    var txtUniversity3 = document.getElementById('txtUniversity3');
-                    var txtPassingyear3 = document.getElementById('txtPassingyear3');
-                    var txtmarksObtained3 = document.getElementById('txtmarksObtained3');
-                    var txtprcntg3 = document.getElementById('txtprcntg3');
-                    var txtmarksmax3 = document.getElementById('txtmarksmax3');
                     var txtCategory = document.getElementById('txtCategory');
                     var txtPermitNo = document.getElementById('txtPermitNo');
                     var txtIssuingAuthority = document.getElementById('txtIssuingAuthority');
@@ -1628,38 +1621,36 @@
                     var txtPostDescription = document.getElementById('txtPostDescription');
                     var txtExperienceFrom = document.getElementById('txtExperienceFrom');
                     var txtExperienceTo = document.getElementById('txtExperienceTo');
-                    var txtExperienceEmployer1 = document.getElementById('txtExperienceEmployer1');
-                    var txtPostDescription1 = document.getElementById('txtPostDescription1');
-                    var txtExperienceFrom1 = document.getElementById('txtExperienceFrom1');
-                    var txtExperienceTo1 = document.getElementById('txtExperienceTo1');
-                    var txtExperienceEmployer2 = document.getElementById('txtExperienceEmployer2');
-                    var txtPostDescription2 = document.getElementById('txtPostDescription2');
-                    var txtExperienceFrom2 = document.getElementById('txtExperienceFrom2');
-                    var txtExperienceTo2 = document.getElementById('txtExperienceTo2');
-                    var txtExperienceEmployer3 = document.getElementById('txtExperienceEmployer3');
-                    var txtPostDescription3 = document.getElementById('txtPostDescription3');
-                    var txtExperienceFrom3 = document.getElementById('txtExperienceFrom3');
-                    var txtExperienceTo3 = document.getElementById('txtExperienceTo3');
-                    var txtExperienceEmployer4 = document.getElementById('txtExperienceEmployer4');
-                    var txtPostDescription4 = document.getElementById('txtPostDescription4');
-                    var txtExperienceFrom4 = document.getElementById('txtExperienceFrom4');
-                    var txtExperienceTo4 = document.getElementById('txtExperienceTo4');
+                    //var txtExperienceEmployer1 = document.getElementById('txtExperienceEmployer1');
+                    //var txtPostDescription1 = document.getElementById('txtPostDescription1');
+                    //var txtExperienceFrom1 = document.getElementById('txtExperienceFrom1');
+                    //var txtExperienceTo1 = document.getElementById('txtExperienceTo1');
+                    //var txtExperienceEmployer2 = document.getElementById('txtExperienceEmployer2');
+                    //var txtPostDescription2 = document.getElementById('txtPostDescription2');
+                    //var txtExperienceFrom2 = document.getElementById('txtExperienceFrom2');
+                    //var txtExperienceTo2 = document.getElementById('txtExperienceTo2');
+                    //var txtExperienceEmployer3 = document.getElementById('txtExperienceEmployer3');
+                    //var txtPostDescription3 = document.getElementById('txtPostDescription3');
+                    //var txtExperienceFrom3 = document.getElementById('txtExperienceFrom3');
+                    //var txtExperienceTo3 = document.getElementById('txtExperienceTo3');
+                    //var txtExperienceEmployer4 = document.getElementById('txtExperienceEmployer4');
+                    //var txtPostDescription4 = document.getElementById('txtPostDescription4');
+                    //var txtExperienceFrom4 = document.getElementById('txtExperienceFrom4');
+                    //var txtExperienceTo4 = document.getElementById('txtExperienceTo4');
                     var ddlQualification = document.getElementById('ddlQualification');
                     var ddlQualification1 = document.getElementById('ddlQualification1');
-                    var ddlQualification2 = document.getElementById('ddlQualification2');
                     var ddlExperiene = document.getElementById('ddlExperiene');
                     var ddlTraningUnder = document.getElementById('ddlTraningUnder');
-
-
-
-                    if (ddlQualification.value === '0') { // Assuming '0' is the default value for "Select"
+                    var DdlDegree = document.getElementById('DdlDegree');
+                    var DdlMasters = document.getElementById('DdlMasters');
+                    if (ddlQualification.value === '0') {
                         isValid = false;
                         ddlQualification.style.border = '1px solid red';
                     } else {
-                        ddlQualification.style.border = ''; // Reset border if valid
+                        ddlQualification.style.border = '';
                     }
 
-                    if (ddlExperiene.value === '0') { // Assuming '0' is the default value for "Select"
+                    if (ddlExperiene.value === '0') { 
                         isValid = false;
                         ddlExperiene.style.border = '1px solid red';
                     } else {
@@ -1680,18 +1671,7 @@
                         ddlQualification1.style.border = ''; // Reset border if valid
                     }
 
-                    if (ddlQualification2.value === '0') { // Assuming '0' is the default value for "Select"
-                        isValid = false;
-                        ddlQualification2.style.border = '1px solid red';
-                    } else {
-                        ddlQualification2.style.border = ''; // Reset border if valid
-                    }
-
-
-
-
-
-                    // Validate txtUniversity
+                  
                     if (txtUniversity.value.trim() === '') {
                         isValid = false;
                         txtUniversity.style.border = '1px solid red';
@@ -1795,36 +1775,7 @@
                         txtprcntg2.style.border = '';
                     }
 
-                    if (txtUniversity3.value.trim() === '') {
-                        isValid = false;
-                        txtUniversity3.style.border = '1px solid red';
-                    } else {
-                        txtUniversity3.style.border = '';
-                    }
-                    if (txtPassingyear3.value.trim() === '') {
-                        isValid = false;
-                        txtPassingyear3.style.border = '1px solid red';
-                    } else {
-                        txtPassingyear3.style.border = '';
-                    }
-                    if (txtmarksObtained3.value.trim() === '') {
-                        isValid = false;
-                        txtmarksObtained3.style.border = '1px solid red';
-                    } else {
-                        txtmarksObtained3.style.border = '';
-                    }
-                    if (txtprcntg3.value.trim() === '') {
-                        isValid = false;
-                        txtprcntg3.style.border = '1px solid red';
-                    } else {
-                        txtprcntg3.style.border = '';
-                    }
-                    if (txtmarksmax3.value.trim() === '') {
-                        isValid = false;
-                        txtmarksmax3.style.border = '1px solid red';
-                    } else {
-                        txtmarksmax3.style.border = '';
-                    }
+                    
                     if (txtCategory.value.trim() === '') {
                         isValid = false;
                         txtCategory.style.border = '1px solid red';
@@ -1903,108 +1854,217 @@
                     } else {
                         txtExperienceTo.style.border = '';
                     }
-                    if (txtExperienceEmployer1.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceEmployer1.style.border = '1px solid red';
-                    } else {
-                        txtExperienceEmployer1.style.border = '';
+                    //if (txtExperienceEmployer1.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceEmployer1.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceEmployer1.style.border = '';
+                    //}
+                    //if (txtPostDescription1.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtPostDescription1.style.border = '1px solid red';
+                    //} else {
+                    //    txtPostDescription1.style.border = '';
+                    //}
+                    //if (txtExperienceFrom1.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceFrom1.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceFrom1.style.border = '';
+                    //}
+                    //if (txtExperienceTo1.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceTo1.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceTo1.style.border = '';
+                    //}
+                    //if (txtExperienceEmployer2.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceEmployer2.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceEmployer2.style.border = '';
+                    //}
+                    //if (txtPostDescription2.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtPostDescription2.style.border = '1px solid red';
+                    //} else {
+                    //    txtPostDescription2.style.border = '';
+                    //}
+                    //if (txtExperienceFrom2.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceFrom2.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceFrom2.style.border = '';
+                    //}
+                    //if (txtExperienceTo2.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceTo2.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceTo2.style.border = '';
+                    //}
+                    //if (txtExperienceEmployer3.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceEmployer3.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceEmployer3.style.border = '';
+                    //}
+                    //if (txtPostDescription3.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtPostDescription3.style.border = '1px solid red';
+                    //} else {
+                    //    txtPostDescription3.style.border = '';
+                    //}
+                    //if (txtExperienceFrom3.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceFrom3.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceFrom3.style.border = '';
+                    //}
+                    //if (txtExperienceTo3.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceTo3.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceTo3.style.border = '';
+                    //}
+                    //if (txtExperienceEmployer4.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceEmployer4.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceEmployer4.style.border = '';
+                    //}
+                    //if (txtPostDescription4.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtPostDescription4.style.border = '1px solid red';
+                    //} else {
+                    //    txtPostDescription4.style.border = '';
+                    //}
+                    //if (txtExperienceFrom4.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceFrom4.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceFrom4.style.border = '';
+                    //}
+                    //if (txtExperienceTo4.value.trim() === '') {
+                    //    isValid = false;
+                    //    txtExperienceTo4.style.border = '1px solid red';
+                    //} else {
+                    //    txtExperienceTo4.style.border = '';
+                    //}
+
+                    if (DdlDegree.style.visibility != "hidden") {
+                        var ddlQualification2 = document.getElementById('ddlQualification2');
+                        var txtUniversity3 = document.getElementById('txtUniversity3');
+                        var txtPassingyear3 = document.getElementById('txtPassingyear3');
+                        var txtmarksObtained3 = document.getElementById('txtmarksObtained3');
+                        var txtprcntg3 = document.getElementById('txtprcntg3');
+                        var txtmarksmax3 = document.getElementById('txtmarksmax3');
+                        if (ddlQualification2.value === '0') { // Assuming '0' is the default value for "Select"
+                            isValid = false;
+                            ddlQualification2.style.border = '1px solid red';
+                        } else {
+                            ddlQualification2.style.border = ''; // Reset border if valid
+                        }
+
+                        if (txtUniversity3.value.trim() === '') {
+                            isValid = false;
+                            txtUniversity3.style.border = '1px solid red';
+                        } else {
+                            txtUniversity3.style.border = '';
+                        }
+
+
+                        if (txtPassingyear3.value.trim() === '') {
+                            isValid = false;
+                            txtPassingyear3.style.border = '1px solid red';
+                        } else {
+                            txtPassingyear3.style.border = '';
+                        }
+
+
+                        if (txtmarksObtained3.value.trim() === '') {
+                            isValid = false;
+                            txtmarksObtained3.style.border = '1px solid red';
+                        } else {
+                            txtmarksObtained3.style.border = '';
+                        }
+
+                        if (txtmarksmax3.value.trim() === '') {
+                            isValid = false;
+                            txtmarksmax3.style.border = '1px solid red';
+                        } else {
+                            txtmarksmax3.style.border = '';
+                        }
+
+                        if (txtprcntg3.value.trim() === '') {
+                            isValid = false;
+                            txtprcntg3.style.border = '1px solid red';
+                        } else {
+                            txtprcntg3.style.border = '';
+                        }
+
+
                     }
-                    if (txtPostDescription1.value.trim() === '') {
-                        isValid = false;
-                        txtPostDescription1.style.border = '1px solid red';
-                    } else {
-                        txtPostDescription1.style.border = '';
+
+                    if (DdlMasters.style.visibility != "hidden") {
+                        var ddlQualification3 = document.getElementById('ddlQualification3');
+                        var txtUniversity4 = document.getElementById('txtUniversity4');
+                        var txtPassingyear4 = document.getElementById('txtPassingyear4');
+                        var txtmarksObtained4 = document.getElementById('txtmarksObtained4');
+                        var txtprcntg4 = document.getElementById('txtprcntg4');
+                        var txtmarksmax4 = document.getElementById('txtmarksmax4');
+                        if (ddlQualification3.value === '0') { // Assuming '0' is the default value for "Select"
+                            isValid = false;
+                            ddlQualification3.style.border = '1px solid red';
+                        } else {
+                            ddlQualification3.style.border = ''; // Reset border if valid
+                        }
+
+                        if (txtUniversity4.value.trim() === '') {
+                            isValid = false;
+                            txtUniversity4.style.border = '1px solid red';
+                        } else {
+                            txtUniversity4.style.border = '';
+                        }
+
+
+                        if (txtPassingyear4.value.trim() === '') {
+                            isValid = false;
+                            txtPassingyear4.style.border = '1px solid red';
+                        } else {
+                            txtPassingyear4.style.border = '';
+                        }
+
+
+                        if (txtmarksObtained4.value.trim() === '') {
+                            isValid = false;
+                            txtmarksObtained4.style.border = '1px solid red';
+                        } else {
+                            txtmarksObtained4.style.border = '';
+                        }
+
+                        if (txtmarksmax4.value.trim() === '') {
+                            isValid = false;
+                            txtmarksmax4.style.border = '1px solid red';
+                        } else {
+                            txtmarksmax4.style.border = '';
+                        }
+
+                        if (txtprcntg4.value.trim() === '') {
+                            isValid = false;
+                            txtprcntg4.style.border = '1px solid red';
+                        } else {
+                            txtprcntg4.style.border = '';
+                        }
+
+
                     }
-                    if (txtExperienceFrom1.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceFrom1.style.border = '1px solid red';
-                    } else {
-                        txtExperienceFrom1.style.border = '';
-                    }
-                    if (txtExperienceTo1.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceTo1.style.border = '1px solid red';
-                    } else {
-                        txtExperienceTo1.style.border = '';
-                    }
-                    if (txtExperienceEmployer2.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceEmployer2.style.border = '1px solid red';
-                    } else {
-                        txtExperienceEmployer2.style.border = '';
-                    }
-                    if (txtPostDescription2.value.trim() === '') {
-                        isValid = false;
-                        txtPostDescription2.style.border = '1px solid red';
-                    } else {
-                        txtPostDescription2.style.border = '';
-                    }
-                    if (txtExperienceFrom2.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceFrom2.style.border = '1px solid red';
-                    } else {
-                        txtExperienceFrom2.style.border = '';
-                    }
-                    if (txtExperienceTo2.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceTo2.style.border = '1px solid red';
-                    } else {
-                        txtExperienceTo2.style.border = '';
-                    }
-                    if (txtExperienceEmployer3.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceEmployer3.style.border = '1px solid red';
-                    } else {
-                        txtExperienceEmployer3.style.border = '';
-                    }
-                    if (txtPostDescription3.value.trim() === '') {
-                        isValid = false;
-                        txtPostDescription3.style.border = '1px solid red';
-                    } else {
-                        txtPostDescription3.style.border = '';
-                    }
-                    if (txtExperienceFrom3.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceFrom3.style.border = '1px solid red';
-                    } else {
-                        txtExperienceFrom3.style.border = '';
-                    }
-                    if (txtExperienceTo3.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceTo3.style.border = '1px solid red';
-                    } else {
-                        txtExperienceTo3.style.border = '';
-                    }
-                    if (txtExperienceEmployer4.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceEmployer4.style.border = '1px solid red';
-                    } else {
-                        txtExperienceEmployer4.style.border = '';
-                    }
-                    if (txtPostDescription4.value.trim() === '') {
-                        isValid = false;
-                        txtPostDescription4.style.border = '1px solid red';
-                    } else {
-                        txtPostDescription4.style.border = '';
-                    }
-                    if (txtExperienceFrom4.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceFrom4.style.border = '1px solid red';
-                    } else {
-                        txtExperienceFrom4.style.border = '';
-                    }
-                    if (txtExperienceTo4.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceTo4.style.border = '1px solid red';
-                    } else {
-                        txtExperienceTo4.style.border = '';
-                    }
+
 
 
                     if (!isValid) {
                         alert('Please fill in all the required fields.');
                     }
-
+                    window.validationResult = isValid;
                     return isValid;
                 }
             </script>

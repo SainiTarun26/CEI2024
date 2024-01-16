@@ -21,7 +21,6 @@ namespace CEIHaryana.UserPages
             {
                 if (Session["InsertedCategory"] != null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
                 {
-                    string InsertedCategory = "";
                     InsertedCategory = Session["InsertedCategory"].ToString();
                     if (InsertedCategory == "Wireman")
                     {
@@ -234,46 +233,47 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (ddlQualification1.SelectedValue != "0")
-                {
-                    if (txtUniversity2.Text == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Board/University Name');", true);
-                        showAlert = true;
-                    }
-                    else if (txtPassingyear2.Text == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Passing Year');", true);
-                        showAlert = true;
-                    }
-                    else if (txtmarksObtained2.Text == "" || txtmarksmax2.Text == "" || txtprcntg2.Text == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Marks');", true);
-                        showAlert = true;
-                    }
-                }
-                else if (ddlQualification2.SelectedValue != "0")
-                {
-                    if (txtUniversity3.Text == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Board/University Name');", true);
-                        showAlert = true;
-                    }
-                    else if (txtPassingyear3.Text == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Passing Year');", true);
-                        showAlert = true;
-                    }
-                    else if (txtmarksObtained3.Text == "" || txtmarksmax3.Text == "" || txtprcntg3.Text == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Marks');", true);
-                        showAlert = true;
-                    }
-                }
-                else
-                {
-                    showAlert = false;
-                }
+
+                //if (ddlQualification1.SelectedValue != "0")
+                //{
+                //    if (txtUniversity2.Text == "")
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Board/University Name');", true);
+                //        showAlert = true;
+                //    }
+                //    else if (txtPassingyear2.Text == "")
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Passing Year');", true);
+                //        showAlert = true;
+                //    }
+                //    else if (txtmarksObtained2.Text == "" || txtmarksmax2.Text == "" || txtprcntg2.Text == "")
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Marks');", true);
+                //        showAlert = true;
+                //    }
+                //}
+                //else if (ddlQualification2.SelectedValue != "0")
+                //{
+                //    if (txtUniversity3.Text == "")
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Board/University Name');", true);
+                //        showAlert = true;
+                //    }
+                //    else if (txtPassingyear3.Text == "")
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Passing Year');", true);
+                //        showAlert = true;
+                //    }
+                //    else if (txtmarksObtained3.Text == "" || txtmarksmax3.Text == "" || txtprcntg3.Text == "")
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Marks');", true);
+                //        showAlert = true;
+                //    }
+                //}
+                //else
+                //{
+                //    showAlert = false;
+                //}
             }
             catch { }
         }
@@ -290,9 +290,14 @@ namespace CEIHaryana.UserPages
             hdnId.Value = REID;
             QualificationValidations();
             CheckExperience();
-            validations();
+            //validations();
 
-            if (!showAlert)
+            
+            ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+
+            string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+
+            if (Convert.ToBoolean(validationResult))
             {
 
                 CEI.InsertnewUseQualification(REID, txtUniversity.Text, txtPassingyear.Text, txtmarksObtained.Text, txtmarksmax.Text, txtprcntg.Text,
