@@ -1782,6 +1782,8 @@
     <Content Include="js2\wizard.js" />
     <Content Include="js2\x-editable.js" />
     <Content Include="Login.aspx" />
+    <Content Include="MultiSelect_Css\mobiscroll.javascript.min.css" />
+    <Content Include="MultiSelect_Css\mobiscroll.javascript.min.js" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
     <Content Include="Officers\Inspection.aspx" />
