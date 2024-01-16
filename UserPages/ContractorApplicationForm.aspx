@@ -585,6 +585,12 @@ select#ddlEmployer2{
             }
         }
     </script>
+    <script>
+    $(document).ready(function () {
+        // Hide the modal on page load
+        $("#myModal").modal("hide");
+    });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -767,7 +773,7 @@ select#ddlEmployer2{
                                                                                     Whether the company have Partner/Director<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
-                                                                                    ID="DdlPartnerOrDirector" runat="server" TabIndex="16">
+                                                                                    ID="DdlPartnerOrDirector" runat="server" TabIndex="16"  OnSelectedIndexChanged="DdlPartnerOrDirector_SelectedIndexChanged">
                                                                                     <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="YES" Value="1" data-bs-toggle="modal" data-bs-target="#myModal"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -797,7 +803,7 @@ select#ddlEmployer2{
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <button type="button" style="padding: 10px 20px 10px 20px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                                                <button type="button" runat="server" visible="false" style="padding: 10px 20px 10px 20px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                                     Open modal
                                                                                 </button>
                                                                                 <div class="modal" id="myModal">
@@ -822,7 +828,7 @@ select#ddlEmployer2{
                                                                                                                         Type of Authority<samp style="color: red">* </samp>
                                                                                                                     </label>
                                                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                                                        ID="DropDownList3" runat="server" TabIndex="16">
+                                                                                                                        ID="ddlAuthority" runat="server" TabIndex="16">
                                                                                                                         <asp:ListItem Text="Director" Value="1"></asp:ListItem>
                                                                                                                         <asp:ListItem Text="Partner" Value="2"></asp:ListItem>
                                                                                                                     </asp:DropDownList>
@@ -838,7 +844,7 @@ select#ddlEmployer2{
                                                                                                                     <label id="Label8" runat="server" visible="true">
                                                                                                                         Full Name<samp style="color: red">* </samp>
                                                                                                                     </label>
-                                                                                                                    <asp:TextBox class="form-control" ID="TextBox5" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                                                    <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlUnitOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                                                                 </div>
                                                                                                             </div>
@@ -850,8 +856,8 @@ select#ddlEmployer2{
                                                                                                                     <label id="Label9" runat="server" visible="true">
                                                                                                                         Address<samp style="color: red">* </samp>
                                                                                                                     </label>
-                                                                                                                    <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                                                    <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtAddress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -862,17 +868,13 @@ select#ddlEmployer2{
                                                                                                             <div class="forms-sample">
                                                                                                                 <div class="form-group">
 
-                                                                                                                    <label id="Label10" runat="server" visible="true">
+                                                                                                                    <label>
                                                                                                                         State<samp style="color: red">* </samp>
                                                                                                                     </label>
                                                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                                                        ID="DropDownList1" runat="server" TabIndex="16">
-                                                                                                                        <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-                                                                                                                        <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                                                                                                        ID="ddlState" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged" runat="server" TabIndex="16">
                                                                                                                     </asp:DropDownList>
-                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtIssusuingName"
-                                                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                                                                </div>
+                                                                                                               </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="col-md-4">
@@ -883,9 +885,7 @@ select#ddlEmployer2{
                                                                                                                         District<samp style="color: red">* </samp>
                                                                                                                     </label>
                                                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                                                        ID="DropDownList2" runat="server" TabIndex="16">
-                                                                                                                        <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-                                                                                                                        <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                                                                                                        ID="ddlDistrict" runat="server" TabIndex="16">
                                                                                                                     </asp:DropDownList>
                                                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtDOB"
                                                                                                                         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -899,7 +899,7 @@ select#ddlEmployer2{
                                                                                                                     <label id="Label11" runat="server" visible="true">
                                                                                                                         Pin Code<samp style="color: red">* </samp>
                                                                                                                     </label>
-                                                                                                                    <asp:TextBox class="form-control" ID="TextBox2" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                                                    <asp:TextBox class="form-control" ID="txtPinCode" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtLicenseExpiry"
                                                                                                                         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                                                                 </div>
@@ -909,7 +909,7 @@ select#ddlEmployer2{
                                                                                                     </div>
                                                                                                     <div class="row" >
                                                                                                         <div class="col-12" style="text-align: end;">
-                                                                                                            <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button2" Text="Add More" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 7px 5px 5px 5px; border-radius: 5px;" />
+                                                                                                            <asp:Button type="Submit" ValidationGroup="ModalSubmit" ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 7px 5px 5px 5px; border-radius: 5px;" />
                                                                                                             </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -979,7 +979,7 @@ select#ddlEmployer2{
                                                                 </div>
 
                                                                 <%--<div class="row">
-                                                                    <table class="table table-bordered" id="ParteneDirector" runat="server" visible="true" style="margin-top: 10px; margin-bottom: 20px; margin-left: 15px; width: 97%;">
+                                                                    <table class="table table-bordered" id="xirector" runat="server" visible="true" style="margin-top: 10px; margin-bottom: 20px; margin-left: 15px; width: 97%;">
                                                                         <thead>
                                                                             <tr style="text-align: center;">
                                                                                 <th scope="col" style="padding-left: 1px; padding-right: 1px;">&nbsp; &nbsp; &nbsp; &nbsp; Type of Authority &nbsp;&nbsp;&nbsp; &nbsp; </th>

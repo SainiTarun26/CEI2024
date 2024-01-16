@@ -23,7 +23,7 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    //ddlLoadBindState();
+                    ddlLoadBindState();
                 }
             }
             catch
@@ -31,53 +31,66 @@ namespace CEIHaryana.UserPages
 
         }
 
-        //private void ddlLoadBindState()
-        //{
-        //    try
-        //    {
-        //        DataSet dsState = new DataSet();
-        //        dsState = CEI.GetddlDrawState();
-        //        ddlState.DataSource = dsState;
-        //        ddlState.DataTextField = "StateName";
-        //        ddlState.DataValueField = "StateID";
-        //        ddlState.DataBind();
-        //        ddlState.Items.Insert(0, new ListItem("Select", "0"));
-        //        dsState.Clear();
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
+        private void ddlLoadBindState()
+        {
+            try
+            {
+                DataSet dsState = new DataSet();
+                dsState = CEI.GetddlDrawState();
+                ddlState.DataSource = dsState;
+                ddlState.DataTextField = "StateName";
+                ddlState.DataValueField = "StateID";
+                ddlState.DataBind();
+                ddlState.Items.Insert(0, new ListItem("Select", "0"));
+                dsState.Clear();
+            }
+            catch (Exception)
+            {
+            }
+        }
 
-        //protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
-        //    }
-        //    catch { }
+        protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", "$('#myModal').modal('show');", true);
+            }
+            catch { }
 
-        //}
+        }
 
-        //private void ddlLoadBindDistrict(string state)
-        //{
-        //    try
-        //    {
-        //        DataSet dsDistrict = new DataSet();
-        //        dsDistrict = CEI.GetddlDrawDistrict(state);
-        //        ddlDistrict.DataSource = dsDistrict;
-        //        ddlDistrict.DataTextField = "District";
-        //        ddlDistrict.DataValueField = "District";
-        //        ddlDistrict.DataBind();
-        //        ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
-        //        dsDistrict.Clear();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        //msg.Text = ex.Message;
-        //    }
-        //}
+        private void ddlLoadBindDistrict(string state)
+        {
+            try
+            {
+                DataSet dsDistrict = new DataSet();
+                dsDistrict = CEI.GetddlDrawDistrict(state);
+                ddlDistrict.DataSource = dsDistrict;
+                ddlDistrict.DataTextField = "District";
+                ddlDistrict.DataValueField = "District";
+                ddlDistrict.DataBind();
+                ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
+                dsDistrict.Clear();
+            }
+            catch (Exception)
+            {
+                //msg.Text = ex.Message;
+            }
+        }
+        protected void DdlPartnerOrDirector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Check if the selected value is "YES"
+            if (DdlPartnerOrDirector.SelectedValue == "1")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", "$('#myModal').modal('show');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hideModal", "$('#myModal').modal('hide');", true);
 
+            }
+        }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
 
@@ -92,6 +105,19 @@ namespace CEIHaryana.UserPages
                     txtQualification1.Text, ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text, txtValidity2.Text,
                     txtQualification2.Text, Createdby);
                 //CEI.ContractorPartners()
+
+            }
+            catch { }
+        }
+        protected void btnModalSubmit_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string Createdby = Session["ContractorID"].ToString();
+
+                CEI.ContractorPartners(ddlAuthority.SelectedItem.ToString(), txtName.Text.Trim(), txtAddress.Text.Trim(), ddlState.SelectedItem.ToString(),
+                    ddlDistrict.SelectedItem.ToString(), txtPinCode.Text.Trim(), Createdby);
 
             }
             catch { }

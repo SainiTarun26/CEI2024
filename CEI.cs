@@ -2101,27 +2101,29 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
 
         }
-        public void ContractorPartners(Dictionary<string, string> data)
+        public void ContractorPartners(string TypeOfAuthority,string Name,string Address,string State,string District,string Pincode,string CreatedBy)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            using (SqlCommand cmd = new SqlCommand("sp_ContractorPartners", con))
+            SqlCommand cmd = new SqlCommand("sp_ContractorPartners");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
             {
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
 
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@TypeOfAuthority", data["TypeOfAuthority"]);
-                cmd.Parameters.AddWithValue("@Name", data["Name"]);
-                cmd.Parameters.AddWithValue("@Address", data["Address"]);
-                cmd.Parameters.AddWithValue("@State", data["State"]);
-                cmd.Parameters.AddWithValue("@District", data["District"]);
-                cmd.Parameters.AddWithValue("@Pincode", data["Pincode"]);
-                cmd.Parameters.AddWithValue("@CreatedBy", data["CreatedBy"]);
+                cmd.Parameters.AddWithValue("@TypeOfAuthority", TypeOfAuthority);
+                cmd.Parameters.AddWithValue("@Name", Name);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@State", State);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Pincode", Pincode);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
 
                 cmd.ExecuteNonQuery();
-            }
+                  con.Close();
+
         }
 
         #endregion
