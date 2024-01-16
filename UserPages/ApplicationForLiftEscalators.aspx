@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -43,6 +42,486 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        input#txtMakerName:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtMakerLocalAgent:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtMakerAddress:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtLiftSpeed:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtLiftLoad:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtPersonLoad:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtLiftWeight:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtCounterWeight:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtNumberSuspension:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtDiscription:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtWeight:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtSize:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtPitDepth:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtTotalFloors:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtConstructionDetails:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlApplicantType:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtNameOfApplicant:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtPhoneNo:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtOfficeAddress:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlApplicantState:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlapplicantdistrict:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtPinCode:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtAgentName:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtAgentContactNo:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtAgentAddress:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlAgentState:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#dllAgentdistrict:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtAgentPincode:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtOwnerName:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtLiftAddress:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlLiftState:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlLiftDistrict:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtLiftPincode:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtDateOfErection:Hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        input#txtTypeOfLift:hover {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlApplicantType {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlAgentState {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#select#dllAgentdistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlLiftState {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
+        select#ddlLiftDistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            background: #f6f9fe;
+        }
+
         select#ddlapplicantdistrict {
             width: 100%;
             height: 30PX;
@@ -91,7 +570,7 @@
                 background: #f6f9fe;
             }
 
-        select#Dllagentdistrict {
+        select#dllAgentdistrict {
             width: 100%;
             height: 30PX;
             width: 100%;
@@ -603,30 +1082,30 @@
         }
     </script>
 
-     <script type="text/javascript">
-         function isNumberKey(evt) {
-             var charCode = (evt.which) ? evt.which : event.keyCode
-             if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                 return false;
-             }
-             return true;
-         }
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
 
-         //Allow Only Aplhabet, Delete and Backspace
+        //Allow Only Aplhabet, Delete and Backspace
 
-         function isAlpha(keyCode) {
+        function isAlpha(keyCode) {
 
-             return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
 
-         }
+        }
 
-         function alphabetKey(e) {
-             var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-             var k;
-             k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-             return (allow.indexOf(String.fromCharCode(k)) != -1);
-         }
-     </script>
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -756,8 +1235,8 @@
                                                                     Type of Applicant
                                                                 </label>
                                                                 <%--<asp:TextBox class="form-control" ID="TextBox1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>--%>
-                                                                <asp:DropDownList ID="ddlApplicantType" runat="server" class="select-form select2" >
-                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>                                                                    
+                                                                <asp:DropDownList ID="ddlApplicantType" runat="server" class="select-form select2">
+                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Individual" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="Govt Organization/Department" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="Private Agency/Firm/Company" Value="3"></asp:ListItem>
@@ -790,8 +1269,7 @@
                                                                     State
                                                                 </label>
                                                                 <asp:DropDownList class="select-form select2" ID="ddlApplicantState" AutoPostBack="true" OnSelectedIndexChanged="ddlApplicantState_SelectedIndexChanged" runat="server">
-                                                                   <%-- <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
-
+                                                                    <%-- <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
                                                                 </asp:DropDownList>
                                                             </div>
                                                             <div class="col-4" style="margin-top: 18px;">
@@ -842,7 +1320,7 @@
                                                         <div class="row" style="margin-top: 18px;">
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
-                                                                     State
+                                                                    State
                                                                 </label>
                                                                 <asp:DropDownList class="select-form select2" ID="ddlAgentState" OnSelectedIndexChanged="ddlAgentState_SelectedIndexChanged" AutoPostBack="true" runat="server">
                                                                     <%--<asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -856,7 +1334,7 @@
                                                                     District
                                                                 </label>
                                                                 <asp:DropDownList class="select-form select2" ID="dllAgentdistrict" AutoPostBack="true" runat="server">
-                                                                 <%--   <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <%--   <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>--%>
@@ -901,7 +1379,7 @@
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
                                                                 <asp:DropDownList class="select-form select2" ID="ddlLiftState" OnSelectedIndexChanged="ddlLiftState_SelectedIndexChanged" AutoPostBack="true" runat="server">
-                                                                 <%--   <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <%--   <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>--%>
@@ -916,7 +1394,7 @@
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
                                                                 <asp:DropDownList class="select-form select2" ID="ddlLiftDistrict" AutoPostBack="true" runat="server">
-                                                                   <%-- <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                    <%-- <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                     <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
                                                                     <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
                                                                     <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>--%>
@@ -1044,7 +1522,7 @@
                                                                     <samp style="color: red">* </samp>
                                                                 </label>
                                                                 <asp:TextBox class="form-control" ID="txtNumberSuspension" onkeypress="return isNumberKey(event)" onkeydown="return preventEnterSubmit(event)" placeholder="Including Contract Load" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%; height: 30PX; width: 100%; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; border: 1px solid #CED4DA; font-weight: 400; font-size: 0.875rem; border-radius: 4px; background: #f6f9fe;"></asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtnumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtNumberSuspension" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                             <div class="col-4">
                                                                 <label for="Name" style="font-size: 12px;">
@@ -1099,26 +1577,29 @@
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ControlToValidate="txtconstructiondetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                                             </div>
                                                         </div>
-                                                        
-                                                        
-                                                   
-                                                </div>
 
-                                                   <div class="row">
-                                                            <div class="col-6" align="center" >
-<asp:Button ID="BtnSubmit" runat="server" text="Next" OnClick="BtnSubmit_Click" class="btn btn-primary" />
-                                                            </div>
+
+
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-6" style="text-align:justify; padding-left: 0px;">
+                                                            <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="Button1" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                         </div>
+                                                        <div class="col-6" style="text-align: end; padding-right: 0px;">
+                                                            <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                                OnClick="BtnSubmit_Click" />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-1"></div>
                     </div>
-                    <div class="col-md-1"></div>
-                </div>
-
             </section>
             <!-- End About Section -->
         </main>
