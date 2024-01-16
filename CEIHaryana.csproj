@@ -1784,6 +1784,8 @@
     <Content Include="Login.aspx" />
     <Content Include="MultiSelect_Css\mobiscroll.javascript.min.css" />
     <Content Include="MultiSelect_Css\mobiscroll.javascript.min.js" />
+    <Content Include="MultiSelect_Css\modal.css" />
+    <Content Include="MultiSelect_Css\modal.js" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
     <Content Include="Officers\Inspection.aspx" />
