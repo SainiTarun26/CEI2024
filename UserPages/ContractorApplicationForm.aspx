@@ -1,9 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ContractorApplicationForm.aspx.cs" Inherits="CEIHaryana.UserPages.ContractorApplicationForm" %>
 
 <!DOCTYPE html>
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ContractorApplicationForm.aspx.cs" Inherits="CEIHaryana.UserPages.ContractorApplicationForm" %>
-
-<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
