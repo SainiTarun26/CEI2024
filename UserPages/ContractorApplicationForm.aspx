@@ -1003,7 +1003,16 @@ select#ddlEmployer2{
                                                                                                             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                                             <ItemStyle HorizontalAlign="center" Width="15%" />
                                                                                                         </asp:BoundField>
-                                                                                                        </Columns>
+                                                                                                    </Columns>
+                                                                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                                                                    <RowStyle ForeColor="#000066" />
+                                                                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
                                                                                                 </asp:GridView>
 
 
@@ -1122,36 +1131,46 @@ select#ddlEmployer2{
                                                                     </div>
                                                                 </div>--%>
                                                                 <div class="row">
-                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
-                                                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                                                        <PagerStyle CssClass="pagination-ys" />
-                                                                        <Columns>
-                                                                            <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
-                                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                                            </asp:BoundField>
-                                                                            <asp:BoundField DataField="Name" HeaderText="Name">
-                                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                                            </asp:BoundField>
-                                                                            <asp:BoundField DataField="State" HeaderText="State">
-                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                            </asp:BoundField>
-                                                                            <asp:BoundField DataField="District" HeaderText="District">
-                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                            </asp:BoundField>
-                                                                            <asp:BoundField DataField="PinCode" HeaderText="PinCode">
-                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                            </asp:BoundField>
-                                                                            <asp:BoundField DataField="Address" HeaderText="Address">
-                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                            </asp:BoundField>
-                                                                        </Columns>
-                                                                    </asp:GridView>
+                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%" 
+                                                                                                    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                                                                                                    <PagerStyle CssClass="pagination-ys" />
+                                                                                                    <Columns>
+                                                                                                        <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                                                                        </asp:BoundField>
+
+                                                                                                        <asp:BoundField DataField="State" HeaderText="State">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="District" HeaderText="District">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="Address" HeaderText="Address">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                    </Columns>
+                                                                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                                                                    <RowStyle ForeColor="#000066" />
+                                                                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                                                                </asp:GridView>
                                                                 </div>
                                                             </div>
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">

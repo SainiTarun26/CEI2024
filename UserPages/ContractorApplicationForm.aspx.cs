@@ -26,7 +26,7 @@ namespace CEIHaryana.UserPages
                 if (!IsPostBack)
                 {
                     ddlLoadBindState();
-                    PartnersModalDirectorData();
+                    //PartnersModalDirectorData();
                 }
             }
             catch
@@ -112,7 +112,6 @@ namespace CEIHaryana.UserPages
                 if (DdlPartnerOrDirector.SelectedValue == "1" && ds.Rows.Count < 0)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PartnerDirectorAlert();", true);
-
                 }
                 else
                 {
@@ -120,9 +119,9 @@ namespace CEIHaryana.UserPages
                     string selectedValues = Request.Form["demo-multiple-select"];
                     CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
                         DdlPartnerOrDirector.SelectedItem.ToString(), selectedValues, ddlAnnexureOrNot.SelectedItem.ToString(),
-                        txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text, txtDOB.Text,
-                        txtLicenseExpiry.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
-                        txtQualification1.Text, ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text, txtValidity2.Text,
+                        txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text, 
+                        txtDOB.Text,txtLicenseExpiry.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
+                        txtQualification1.Text,ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text,txtValidity2.Text,
                         txtQualification2.Text, Createdby);
                 }
                 //CEI.ContractorPartners()

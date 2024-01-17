@@ -500,7 +500,7 @@
                                                         <tr>
                                                             <td style="text-align: center;">
                                                                 <p>Calibration Certificate from NABL or Government testing laboratory </p>
-                                                                <p>respect of electrical equipment’s(<span style="color: red;">★</span>)</p>
+                                                                <p>respect of electrical equipment’s invoices(<span style="color: red;">★</span>)</p>
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />

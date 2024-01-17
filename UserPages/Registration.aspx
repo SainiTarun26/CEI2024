@@ -485,6 +485,7 @@
                                                         <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
                                                         <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>
+                                                        <asp:ListItem Text="Lift" Value="4"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"  CssClass="validation_required"/>
                                                 </div>

@@ -128,6 +128,10 @@ namespace CEIHaryana.UserPages
                     {
                         Category = "Supervisor";
                     }
+                    else if (ddlcategory.SelectedValue == "4")
+                    {
+                        Category = "Lift";
+                    }
                     else
                     {
                         Category = "Contractor";

@@ -282,6 +282,40 @@ namespace CEIHaryana
                         Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
                     }
                 }
+                else if (check == 10)
+                {
+                    
+                    if (chkSignedin.Checked == true)
+                    {
+                        Session["LiftId"] = txtUserID.Text;
+                        Session["logintype"] = "Wireman";
+                        Response.Cookies["LiftId"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "Lift";
+                        Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(15);
+                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
+                    }
+                    else
+                    {
+                        Session["LiftId"] = txtUserID.Text;
+                        Session["logintype"] = "LiftId";
+                        Response.Cookies["LiftId"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "LiftId";
+                        Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(1);
+                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
+                    }
+                    if (ApplicationStatus.Trim() == "New")
+                    {
+                        Response.Redirect("/UserPages/ApplicationForLiftEscalators.aspx", false);
+                    }
+                    else if (ApplicationStatus.Trim() == "Mid")
+                    {
+                        Response.Redirect("/UserPages/DocumentsForLift.aspx", false);
+                    }
+                    else
+                    {
+                       
+                    }
+                }
 
                 else
                 {
