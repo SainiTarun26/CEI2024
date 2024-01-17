@@ -974,7 +974,7 @@ select#ddlEmployer2{
 
 
 
-                                                                                               <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" 
+                                                                                                <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" 
                                                                                                     AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                                                                                                     <PagerStyle CssClass="pagination-ys" />
                                                                                                     <Columns>
@@ -1003,7 +1003,8 @@ select#ddlEmployer2{
                                                                                                             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                                             <ItemStyle HorizontalAlign="center" Width="15%" />
                                                                                                         </asp:BoundField>
-                                                                                                </asp:GridView>--%>
+                                                                                                        </Columns>
+                                                                                                </asp:GridView>
 
 
 
@@ -1121,7 +1122,7 @@ select#ddlEmployer2{
                                                                     </div>
                                                                 </div>--%>
                                                                 <div class="row">
-                                                                    <%--<asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
+                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
                                                                         AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                                                         <PagerStyle CssClass="pagination-ys" />
                                                                         <Columns>
@@ -1149,7 +1150,8 @@ select#ddlEmployer2{
                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                                                                             </asp:BoundField>
-                                                                    </asp:GridView>--%>
+                                                                        </Columns>
+                                                                    </asp:GridView>
                                                                 </div>
                                                             </div>
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">

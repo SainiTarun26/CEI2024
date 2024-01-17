@@ -26,6 +26,7 @@ namespace CEIHaryana.UserPages
                 if (!IsPostBack)
                 {
                     ddlLoadBindState();
+                    PartnersModalDirectorData();
                 }
             }
             catch
