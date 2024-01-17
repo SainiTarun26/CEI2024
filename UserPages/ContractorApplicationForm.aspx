@@ -974,7 +974,7 @@ select#ddlEmployer2{
 
 
 
-                                                                                                <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" 
+                                                                                               <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" 
                                                                                                     AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                                                                                                     <PagerStyle CssClass="pagination-ys" />
                                                                                                     <Columns>
@@ -1003,16 +1003,16 @@ select#ddlEmployer2{
                                                                                                             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                                             <ItemStyle HorizontalAlign="center" Width="15%" />
                                                                                                         </asp:BoundField>
-                                                                                                </asp:GridView>
+                                                                                                </asp:GridView>--%>
 
 
 
                                                                                             </div>
 
                                                                                             <!-- Modal footer -->
-                                                                                            <div class="modal-footer">
-                                                                                                <%-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>--%>
-                                                                                            </div>
+                                                                                            <%--<div class="modal-footer">
+                                                                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                                                            </div>--%>
 
                                                                                         </div>
                                                                                     </div>
@@ -1121,8 +1121,7 @@ select#ddlEmployer2{
                                                                     </div>
                                                                 </div>--%>
                                                                 <div class="row">
-
-                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
+                                                                    <%--<asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
                                                                         AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                                                         <PagerStyle CssClass="pagination-ys" />
                                                                         <Columns>
@@ -1134,7 +1133,6 @@ select#ddlEmployer2{
                                                                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                                                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                                                                             </asp:BoundField>
-
                                                                             <asp:BoundField DataField="State" HeaderText="State">
                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                 <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -1151,11 +1149,8 @@ select#ddlEmployer2{
                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                                                                             </asp:BoundField>
-                                                                    </asp:GridView>
-
-
+                                                                    </asp:GridView>--%>
                                                                 </div>
-                                                                
                                                             </div>
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                                 <div class="col-md-12">
