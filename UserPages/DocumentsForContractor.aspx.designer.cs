@@ -24,13 +24,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// selectedFileName control.
+        /// txtIncomeTax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox selectedFileName;
+        protected global::System.Web.UI.WebControls.TextBox txtIncomeTax;
 
         /// <summary>
         /// btnUpload control.
@@ -42,22 +42,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnUpload;
 
         /// <summary>
-        /// fileInput control.
+        /// IncomeTax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile fileInput;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile IncomeTax;
 
         /// <summary>
-        /// RequiredFieldValidator10 control.
+        /// RequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator;
 
         /// <summary>
         /// hdnId control.
@@ -69,31 +69,31 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.HiddenField hdnId;
 
         /// <summary>
-        /// txtResidence control.
+        /// txtPan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtResidence;
+        protected global::System.Web.UI.WebControls.TextBox txtPan;
 
         /// <summary>
-        /// btnResidence control.
+        /// btnPan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnResidence;
+        protected global::System.Web.UI.WebControls.Button btnPan;
 
         /// <summary>
-        /// Residence control.
+        /// Pan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Residence;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile Pan;
 
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -105,13 +105,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// txtIdentity control.
+        /// txtAadhaar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdentity;
+        protected global::System.Web.UI.WebControls.TextBox txtAadhaar;
 
         /// <summary>
         /// btnIdentity control.
@@ -123,13 +123,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnIdentity;
 
         /// <summary>
-        /// Identit control.
+        /// Aadhaar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Identit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile Aadhaar;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -141,31 +141,31 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// txtDegreeDiploma control.
+        /// txtAge control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDegreeDiploma;
+        protected global::System.Web.UI.WebControls.TextBox txtAge;
 
         /// <summary>
-        /// btnDegreeDiploma control.
+        /// btnAge control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDegreeDiploma;
+        protected global::System.Web.UI.WebControls.Button btnAge;
 
         /// <summary>
-        /// DegreeDiploma control.
+        /// Age control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile DegreeDiploma;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile Age;
 
         /// <summary>
         /// RequiredFieldValidator3 control.
@@ -177,31 +177,31 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
-        /// txtExperience control.
+        /// txtCalibrationCertificate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExperience;
+        protected global::System.Web.UI.WebControls.TextBox txtCalibrationCertificate;
 
         /// <summary>
-        /// btnExperience control.
+        /// btnCalibration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExperience;
+        protected global::System.Web.UI.WebControls.Button btnCalibration;
 
         /// <summary>
-        /// Experience control.
+        /// Calibration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Experience;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile Calibration;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -213,31 +213,31 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// txtSignature control.
+        /// txtAnnexure control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSignature;
+        protected global::System.Web.UI.WebControls.TextBox txtAnnexure;
 
         /// <summary>
-        /// btnSignature control.
+        /// btnAnnexure control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignature;
+        protected global::System.Web.UI.WebControls.Button btnAnnexure;
 
         /// <summary>
-        /// Signature control.
+        /// Annexure control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Signature;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile Annexure;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -249,76 +249,31 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
-        /// txtSignatur control.
+        /// txtStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSignatur;
+        protected global::System.Web.UI.WebControls.TextBox txtStatus;
 
         /// <summary>
-        /// Button2 control.
+        /// BtnStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button BtnStatus;
 
         /// <summary>
-        /// Signatur control.
+        /// Status control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Signatur;
-
-        /// <summary>
-        /// RequiredFieldValidator8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
-
-        /// <summary>
-        /// HiddenField2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
-
-        /// <summary>
-        /// TextBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// File1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile File1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile Status;
 
         /// <summary>
         /// RequiredFieldValidator6 control.
@@ -330,40 +285,40 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
 
         /// <summary>
-        /// HiddenField1 control.
+        /// HiddenField2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtWorkOutHry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkOutHry;
 
         /// <summary>
-        /// Button3 control.
+        /// BtnWorkOutHry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button BtnWorkOutHry;
 
         /// <summary>
-        /// File2 control.
+        /// WorkOutHry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile File2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile WorkOutHry;
 
         /// <summary>
         /// RequiredFieldValidator7 control.
@@ -375,6 +330,51 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
 
         /// <summary>
+        /// HiddenField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+
+        /// <summary>
+        /// txtWorkPermitted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtWorkPermitted;
+
+        /// <summary>
+        /// BtnWorkPermitted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnWorkPermitted;
+
+        /// <summary>
+        /// WorkPermitted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile WorkPermitted;
+
+        /// <summary>
+        /// RequiredFieldValidator8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+
+        /// <summary>
         /// HiddenField3 control.
         /// </summary>
         /// <remarks>
@@ -384,40 +384,40 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.HiddenField HiddenField3;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtCopyOfLibrary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtCopyOfLibrary;
 
         /// <summary>
-        /// Button4 control.
+        /// BtnCopyOfLibrary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button BtnCopyOfLibrary;
 
         /// <summary>
-        /// File3 control.
+        /// CopyOfLibrary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile File3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile CopyOfLibrary;
 
         /// <summary>
-        /// RequiredFieldValidator20 control.
+        /// RequiredFieldValidator9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
         /// HiddenField4 control.
@@ -429,40 +429,40 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.HiddenField HiddenField4;
 
         /// <summary>
-        /// TextBox10 control.
+        /// txtGrantedLicense control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox txtGrantedLicense;
 
         /// <summary>
-        /// Button10 control.
+        /// BtnGrantedLicense control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button10;
+        protected global::System.Web.UI.WebControls.Button BtnGrantedLicense;
 
         /// <summary>
-        /// File10 control.
+        /// GrantedLicense control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile File10;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile GrantedLicense;
 
         /// <summary>
-        /// RequiredFieldValidator21 control.
+        /// RequiredFieldValidator10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
 
         /// <summary>
         /// HiddenField5 control.

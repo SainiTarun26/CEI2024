@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -407,17 +408,17 @@
                                                                         (PLEASE UPLOAD PHOTO SIZE                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
-                                                                        <asp:TextBox ID="selectedFileName" runat="server" CssClass="form-control file-upload-info"
+                                                                        <asp:TextBox ID="txtAnnualInsurancePolicy" runat="server" CssClass="form-control file-upload-info"
                                                                             Enabled="false" placeholder="Upload Matriculation certificate" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
-                                                                            <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MatriculationCertificateDialog(); return false;" />
-                                                                            <input type="file" id="fileInput" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="MatriculationCertificateName()" />
+                                                                            <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="AnnualInsuranceDialog(); return false;" />
+                                                                            <input type="file" id="AnnualInsurancePolicy" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="AnnualInsuranceName()" />
 
                                                                         </span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="selectedFileName"
-                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your  Matriculation certificate</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtAnnualInsurancePolicy"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select AnnualInsurancePolicy</asp:RequiredFieldValidator>
 
                                                                     </div>
                                                                 </div>
@@ -438,17 +439,17 @@
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
-                                                                        <asp:TextBox ID="txtResidence" runat="server" CssClass="form-control file-upload-info"
-                                                                            Enabled="false" placeholder="Upload Residence Proof" Style="width: 50%;"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtChallanTreasury" runat="server" CssClass="form-control file-upload-info"
+                                                                            Enabled="false" placeholder="Upload Copy of Challan of Treasury" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
-                                                                            <asp:Button ID="btnResidence" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ResidenceDialog(); return false;" />
-                                                                            <input type="file" id="Residence" name="Residence" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onchange="ResidenceDialogName()" runat="server" />
+                                                                            <asp:Button ID="btnchallanTreasury" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ChallanTreasuryDialog(); return false;" />
+                                                                            <input type="file" id="CopyChallanTreasury" name="CopyChallanTreasury" accept=".jpg, .jpeg, .png,.pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onchange="ChallanTreasuryName()" runat="server" />
 
                                                                         </span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtResidence"
-                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Residence Proof.</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtChallanTreasury"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select CopyChallanTreasury</asp:RequiredFieldValidator>
 
                                                                     </div>
                                                                 </div>
@@ -467,18 +468,18 @@
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
-                                                                        <asp:TextBox ID="txtIdentity" runat="server" CssClass="form-control file-upload-info"
+                                                                        <asp:TextBox ID="txtAnnualMaintenanceContract" runat="server" CssClass="form-control file-upload-info"
                                                                             Enabled="false" placeholder="Upload Identity Proof" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
-                                                                            <asp:Button ID="btnIdentity" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="IdentityDialog(); return false;" />
-                                                                            <input type="file" id="Identit" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
-                                                                                onchange="IdentityDialogName()" runat="server" />
+                                                                            <asp:Button ID="btnAnnualMaintenanceContract" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="AnnualMaintenanceContractDialog(); return false;" />
+                                                                            <input type="file" id="AnnualMaintenanceContract" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                onchange="AnnualMaintenanceContractName()" runat="server" />
 
                                                                         </span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="selectedFileName"
-                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Identity Proof</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAnnualMaintenanceContract"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select AnnualMaintenanceContract </asp:RequiredFieldValidator>
 
                                                                     </div>
                                                                 </div>
@@ -501,18 +502,18 @@
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
-                                                                        <asp:TextBox ID="txtDegreeDiploma" runat="server" CssClass="form-control file-upload-info"
+                                                                        <asp:TextBox ID="txtSafetyCertificate" runat="server" CssClass="form-control file-upload-info"
                                                                             Enabled="false" placeholder="Upload Degree/Diploma" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
-                                                                            <asp:Button ID="btnDegreeDiploma" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="DegreeDiplomaDialog(); return false;" />
-                                                                            <input type="file" id="DegreeDiploma" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
-                                                                                onchange="DegreeDiplomaName()" runat="server" />
+                                                                            <asp:Button ID="btnSafetyCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="SafetyCertificateDialog(); return false;" />
+                                                                            <input type="file" id="SafetyCertificate" name="fileInput" accept=".jpg, .jpeg, .png ,.pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                onchange="SafetyCertificateName()" runat="server" />
 
                                                                         </span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDegreeDiploma"
-                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Degree/Diploma</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtSafetyCertificate"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select SafetyCertificate</asp:RequiredFieldValidator>
 
                                                                     </div>
                                                                 </div>
@@ -531,18 +532,18 @@
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
-                                                                        <asp:TextBox ID="txtExperience" runat="server" CssClass="form-control file-upload-info"
+                                                                        <asp:TextBox ID="txtFormA" runat="server" CssClass="form-control file-upload-info"
                                                                             Enabled="false" placeholder="Upload Experience Certificate" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
-                                                                            <asp:Button ID="btnExperience" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ExperienceDialog(); return false;" />
-                                                                            <input type="file" id="Experience" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
-                                                                                onchange="ExperienceDialogName()" runat="server" />
+                                                                            <asp:Button ID="btnFormA" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="FormADialog(); return false;" />
+                                                                            <input type="file" id="FormA" name="fileInput" accept=".jpg, .jpeg, .png ,.pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                onchange="FormAName()" runat="server" />
 
                                                                         </span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="selectedFileName"
-                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Experience Certificate</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFormA"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select  FormA</asp:RequiredFieldValidator>
 
                                                                     </div>
                                                                 </div>
@@ -562,18 +563,18 @@
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
-                                                                        <asp:TextBox ID="txtSignature" runat="server" CssClass="form-control file-upload-info"
+                                                                        <asp:TextBox ID="txtFormB" runat="server" CssClass="form-control file-upload-info"
                                                                             Enabled="false" placeholder="Upload Signature" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
-                                                                            <asp:Button ID="btnSignature" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="SignatureDialog(); return false;" />
-                                                                            <input type="file" id="Signature" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
-                                                                                onchange="SignatureName()" runat="server" />
+                                                                            <asp:Button ID="btnFormB" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="FormBDialog(); return false;" />
+                                                                            <input type="file" id="FormB" name="fileInput" accept=".jpg, .jpeg, .png ,.pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                onchange="FormBName()" runat="server" />
 
                                                                         </span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtSignature"
-                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Specimen Signatures</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtFormB"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select FormB</asp:RequiredFieldValidator>
 
                                                                     </div>
                                                                 </div>
@@ -593,17 +594,17 @@
 20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
-                                                                        <asp:TextBox ID="txtSignatur" runat="server" CssClass="form-control file-upload-info"
+                                                                        <asp:TextBox ID="txtFormC" runat="server" CssClass="form-control file-upload-info"
                                                                             Enabled="false" placeholder="Upload Candidate Signature" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
-                                                                            <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="SignaturDialog(); return false;" />
-                                                                            <input type="file" id="Signatur" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="SignaturName()" />
+                                                                            <asp:Button ID="BtnFormC" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="FormCDialog(); return false;" />
+                                                                            <input type="file" id="FormC" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="FormCName()" />
 
                                                                         </span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="selectedFileName"
-                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Signature</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtFormC"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select FormC</asp:RequiredFieldValidator>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -622,7 +623,7 @@ border-radius: 5px;">Back</button>--%>
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
 
-                                                <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" OnClick="btnNext_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                             </div>
                                         </div>
                                     </div>
@@ -696,6 +697,113 @@ border-radius: 5px;">Back</button>--%>
     <script src="/js2/typeahead.js"></script>
     <script src="/js2/select2.js"></script>
    
+    <script type="text/javascript">
+
+
+    function AnnualInsuranceDialog() {
+        // Open the file dialog using the hidden input field
+        document.getElementById('AnnualInsurancePolicy').click();
+    }
+
+    // This function is called when a file is selected
+    function AnnualInsuranceName() {
+    var filesInput=document.getElementById('AnnualInsurancePolicy');
+    var selectedFileName =document.getElementById('txtAnnualInsurancePolicy');
+    if(filesInput.files.length > 0){
+     // Update the TextBox value with the selected file name
+     selectedFileName.value=filesInput.files[0].name;
+    }
+  }
+
+
+    function ChallanTreasuryDialog() {
+     // Open the file dialog using the hidden input field
+        document.getElementById('CopyChallanTreasury').click();
+    }
+    // This function is called when a file is selected
+    function ChallanTreasuryName() {
+        var filesInput = document.getElementById('CopyChallanTreasury');
+    var selectedFileName =document.getElementById('txtChallanTreasury');
+
+    if(filesInput.files.length > 0){
+     // Update the TextBox value with the selected file name
+     selectedFileName.value=filesInput.files[0].name;
+    }
+  }
+
+    function AnnualMaintenanceContractDialog() {
+     // Open the file dialog using the hidden input field
+        document.getElementById('AnnualMaintenanceContract').click();
+    }
+    // This function is called when a file is selected
+    function AnnualMaintenanceContractName() {
+    var filesInput=document.getElementById('AnnualMaintenanceContract');
+    var selectedFileName =document.getElementById('txtAnnualMaintenanceContract');
+
+    if(filesInput.files.length > 0){
+     selectedFileName.value=filesInput.files[0].name;
+    }
+  }
+
+    function SafetyCertificateDialog() {
+     // Open the file dialog using the hidden input field
+        document.getElementById('SafetyCertificate').click();
+    }
+    // This function is called when a file is selected
+    function SafetyCertificateName() {
+    var filesInput=document.getElementById('SafetyCertificate');
+    var selectedFileName =document.getElementById('txtSafetyCertificate');
+     // Update the TextBox value with the selected file name
+    if(filesInput.files.length > 0){
+     selectedFileName.value=filesInput.files[0].name;
+    }
+  }
+
+     function FormADialog() {
+     // Open the file dialog using the hidden input field
+         document.getElementById('FormA').click();
+    }
+    // This function is called when a file is selected
+    function FormAName() {
+    var filesInput=document.getElementById('FormA');
+    var selectedFileName =document.getElementById('txtFormA');
+     // Update the TextBox value with the selected file name
+    if(filesInput.files.length > 0){
+     selectedFileName.value=filesInput.files[0].name;
+    }
+  }
+
+    function FormBDialog() {
+     // Open the file dialog using the hidden input field
+        document.getElementById('FormB').click();
+    }
+    // This function is called when a file is selected
+    function FormBName() {
+    var filesInput=document.getElementById('FormB');
+    var selectedFileName =document.getElementById('txtFormB');
+     // Update the TextBox value with the selected file name
+    if(filesInput.files.length > 0){
+     selectedFileName.value=filesInput.files[0].name;
+    }
+  }
+
+     function FormCDialog() {
+     // Open the file dialog using the hidden input field
+         document.getElementById('FormC').click();
+    }
+    // This function is called when a file is selected
+    function FormCName() {
+    var filesInput=document.getElementById('FormC');
+    var selectedFileName =document.getElementById('txtFormC');
+     // Update the TextBox value with the selected file name
+    if(filesInput.files.length > 0){
+     selectedFileName.value=filesInput.files[0].name;
+    }
+  }
+
+
+    </Script>
 
 </body>
 </html>
+

@@ -608,6 +608,7 @@ select#ddlEmployer2{
             width: 100%;
         }
     </style>
+  
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Registration Successfull Your UserId Will be sent through email Login For Further process')) {
@@ -622,6 +623,14 @@ select#ddlEmployer2{
         $("#myModal").modal("hide");
     });
     </script>
+      <script type="text/javascript">
+        function PartnerDirectorAlert() {
+            if (confirm('Please Add You Partners Or Directors information')) {
+               DdlPartnerOrDirector.style.border = '1px solid red';;
+            } else {
+            }
+        }
+      </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -965,8 +974,36 @@ select#ddlEmployer2{
 
 
 
-                                                                                                <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                                                                                                <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" 
+                                                                                                    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                                                                                                    <PagerStyle CssClass="pagination-ys" />
+                                                                                                    <Columns>
+                                                                                                        <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                                                                        </asp:BoundField>
 
+                                                                                                        <asp:BoundField DataField="State" HeaderText="State">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="District" HeaderText="District">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                        <asp:BoundField DataField="Address" HeaderText="Address">
+                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                        </asp:BoundField>
+                                                                                                </asp:GridView>
 
 
 
@@ -974,7 +1011,7 @@ select#ddlEmployer2{
 
                                                                                             <!-- Modal footer -->
                                                                                             <div class="modal-footer">
-                                                                                               <%-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>--%>
+                                                                                                <%-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>--%>
                                                                                             </div>
 
                                                                                         </div>
@@ -1085,11 +1122,39 @@ select#ddlEmployer2{
                                                                 </div>--%>
                                                                 <div class="row">
 
-                                                                                                                                        <asp:GridView ID="GridView2" runat="server"></asp:GridView>
+                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
+                                                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                                                        <PagerStyle CssClass="pagination-ys" />
+                                                                        <Columns>
+                                                                            <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                                            </asp:BoundField>
+
+                                                                            <asp:BoundField DataField="State" HeaderText="State">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="District" HeaderText="District">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="Address" HeaderText="Address">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                    </asp:GridView>
 
 
-
-                                                                                                                                       </div>
+                                                                </div>
                                                                 
                                                             </div>
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
