@@ -22,6 +22,10 @@ namespace CEIHaryana.UserPages
         {
             try
             {
+                if (Session["ContractorID"] != null)
+                {
+                    REID = Session["ContractorID"].ToString();
+                }
                 string FileName = string.Empty;
                 string flpPhotourl = string.Empty;
                 string flpPhotourl1 = string.Empty;
@@ -34,9 +38,9 @@ namespace CEIHaryana.UserPages
                 string flpPhotourl8 = string.Empty;
                 string flpPhotourl9 = string.Empty;
                 string flpPhotourl10 = string.Empty;
+                int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                 if (IncomeTax.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (IncomeTax.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Income Tax document must be a PDF file with a maximum size of 2MB.')", true);
@@ -67,7 +71,6 @@ namespace CEIHaryana.UserPages
                 }
                 if (Pan.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (Pan.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan Card document must be a PDF file with a maximum size of 2MB.')", true);
@@ -97,7 +100,6 @@ namespace CEIHaryana.UserPages
                 }
                 if (Aadhaar.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (Aadhaar.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Aadhaar card must be a PDF file with a maximum size of 2MB.')", true);
@@ -124,7 +126,6 @@ namespace CEIHaryana.UserPages
 
                 if (Age.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (Age.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Age Certificate must be a PDF file with a maximum size of 2MB.')", true);
@@ -152,7 +153,6 @@ namespace CEIHaryana.UserPages
 
                 if (Calibration.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (Calibration.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Calibration Certificate must be a PDF file with a maximum size of 2MB.')", true);
@@ -178,7 +178,6 @@ namespace CEIHaryana.UserPages
                 }
                 if (Annexure.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (Annexure.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Annexure 3 & 5 must be a PDF file with a maximum size of 2MB.')", true);
@@ -204,7 +203,6 @@ namespace CEIHaryana.UserPages
                 }
                 if (Status.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (Status.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('status of the firm/company must be a PDF file with a maximum size of 2MB.')", true);
@@ -231,7 +229,6 @@ namespace CEIHaryana.UserPages
 
                 if (WorkOutHry.PostedFile.FileName.Length > 0)
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                     if (WorkOutHry.PostedFile.ContentLength > maxFileSize)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('works carried out in Haryana must be a PDF file with a maximum size of 2MB.')", true);
@@ -259,7 +256,6 @@ namespace CEIHaryana.UserPages
                 {
                     if (WorkPermitted.PostedFile.FileName.Length > 0)
                     {
-                        int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                         if (WorkPermitted.PostedFile.ContentLength > maxFileSize)
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of works permitted must be a PDF file with a maximum size of 2MB.')", true);
@@ -288,7 +284,6 @@ namespace CEIHaryana.UserPages
                 {
                     if (CopyOfLibrary.PostedFile.FileName.Length > 0)
                     {
-                        int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                         if (CopyOfLibrary.PostedFile.ContentLength > maxFileSize)
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Elibrary/library asper ANNEXURE 2 must be a PDF file with a maximum size of 2MB.')", true);
@@ -318,7 +313,6 @@ namespace CEIHaryana.UserPages
                 {
                     if (GrantedLicense.PostedFile.FileName.Length > 0)
                     {
-                        int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
                         if (GrantedLicense.PostedFile.ContentLength > maxFileSize)
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Previously Granted Contractor License must be a PDF file with a maximum size of 2MB.')", true);
@@ -344,9 +338,11 @@ namespace CEIHaryana.UserPages
                     }
 
                 }
-                int ivalue = CEI.DocumentsForContactor(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8, flpPhotourl9, flpPhotourl10);
+                CEI.DocumentsForContactor(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8, flpPhotourl9, flpPhotourl10);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
 
+
+                Response.Redirect("/Contractor/Work_Intimation.aspx", false);
             }
             catch (Exception ex) { }
         }

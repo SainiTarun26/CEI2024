@@ -608,7 +608,7 @@ select#ddlEmployer2{
             width: 100%;
         }
     </style>
-  
+
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Registration Successfull Your UserId Will be sent through email Login For Further process')) {
@@ -618,19 +618,19 @@ select#ddlEmployer2{
         }
     </script>
     <script>
-    $(document).ready(function () {
-        // Hide the modal on page load
-        $("#myModal").modal("hide");
-    });
+        $(document).ready(function () {
+            // Hide the modal on page load
+            $("#myModal").modal("hide");
+        });
     </script>
-      <script type="text/javascript">
+    <script type="text/javascript">
         function PartnerDirectorAlert() {
             if (confirm('Please Add You Partners Or Directors information')) {
-               DdlPartnerOrDirector.style.border = '1px solid red';;
+                DdlPartnerOrDirector.style.border = '1px solid red';;
             } else {
             }
         }
-      </script>
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -775,7 +775,7 @@ select#ddlEmployer2{
                                                                             Date of Issue
                                                                     <samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtIssueDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" ></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtIssueDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
 
                                                                     </div>
                                                                     <div class="col-3" id="Div12" runat="server">
@@ -813,7 +813,7 @@ select#ddlEmployer2{
                                                                                     Whether the company have Partner/Director<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
-                                                                                    ID="DdlPartnerOrDirector" runat="server" TabIndex="16"  OnSelectedIndexChanged="DdlPartnerOrDirector_SelectedIndexChanged">
+                                                                                    ID="DdlPartnerOrDirector" runat="server" TabIndex="16" OnSelectedIndexChanged="DdlPartnerOrDirector_SelectedIndexChanged">
                                                                                     <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="YES" Value="1" data-bs-toggle="modal" data-bs-target="#myModal"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -842,23 +842,23 @@ select#ddlEmployer2{
                                                                                 </asp:DropDownList>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
-                                                                                                                                                <div class="form-group" style="margin-top:20px;">
+                                                                            <div class="form-group" style="margin-top: 20px;">
 
-                                                                        <label id="Label1" runat="server" visible="true">
-                                                                            Is company have any Penalties/Punishment<samp style="color: red">* </samp>
-                                                                        </label>
-                                                                        <label>
-                                                                            Multi-select
-<input mbsc-input id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
-                                                                        </label>
-                                                                        <select id="demo-multiple-select" multiple>
-                                                                            <option value="1">By state licensing board, Haryana/chief Electrical inspector, Haryana </option>
-                                                                            <option value="2">By government & other agencies</option>
-                                                                            <option value="3">Any court of law.</option>
-                                                                        </select>
-                                                                        <asp:ValidationSummary ID="vsSummary" Text="Required" runat="server" ValidationGroup="Submit" DisplayMode="BulletList" />
-
-                                                                    </div>
+                                                                                <label id="Label1" runat="server" visible="true">
+                                                                                    Is company have any Penalties/Punishment<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <label>
+                                                                                    Multi-select
+                                                                                    <input mbsc-input id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
+                                                                                </label>
+                                                                                <select id="demo-multiple-select" multiple>
+                                                                                    <option value="1">By state licensing board, Haryana/chief Electrical inspector, Haryana </option>
+                                                                                    <option value="2">By government & other agencies</option>
+                                                                                    <option value="3">Any court of law.</option>
+                                                                                </select>
+                                                                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="demo-multiple-select" InitialValue="" ErrorMessage="Please select at least one option" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" ></asp:RequiredFieldValidator>--%>
+                                                                                <%--<asp:ValidationSummary ID="vsSummary" Text="Required" runat="server" ValidationGroup="Submit" DisplayMode="BulletList" />--%>
+                                                                            </div>
                                                                             <div class="form-group">
                                                                                 <button type="button" runat="server" visible="false" style="padding: 10px 20px 10px 20px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                                     Open modal
@@ -889,8 +889,8 @@ select#ddlEmployer2{
                                                                                                                         <asp:ListItem Text="Director" Value="1"></asp:ListItem>
                                                                                                                         <asp:ListItem Text="Partner" Value="2"></asp:ListItem>
                                                                                                                     </asp:DropDownList>
-                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtAgentName"
-                                                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddlAuthority" InitialValue="" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="ModalSubmit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtAgentName" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -902,7 +902,8 @@ select#ddlEmployer2{
                                                                                                                         Full Name<samp style="color: red">* </samp>
                                                                                                                     </label>
                                                                                                                     <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlUnitOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlUnitOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
+                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ErrorMessage="Required" ControlToValidate="txtName" runat="server" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -914,7 +915,9 @@ select#ddlEmployer2{
                                                                                                                         Address<samp style="color: red">* </samp>
                                                                                                                     </label>
                                                                                                                     <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtAddress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
+                                                                                                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtAddress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />--%>
+                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtAddress" runat="server" ValidationGroup="ModalSubmit" ForeColor="Red" />
+
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -931,7 +934,9 @@ select#ddlEmployer2{
                                                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                                                         ID="ddlState" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged" runat="server" TabIndex="16">
                                                                                                                     </asp:DropDownList>
-                                                                                                               </div>
+                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" Text="Please Select State" ErrorMessage="Required" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
+
+                                                                                                                </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="col-md-4">
@@ -944,8 +949,10 @@ select#ddlEmployer2{
                                                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                                                         ID="ddlDistrict" runat="server" TabIndex="16">
                                                                                                                     </asp:DropDownList>
-                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtDOB"
-                                                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtDOB"
+                                                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
+
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -957,24 +964,27 @@ select#ddlEmployer2{
                                                                                                                         Pin Code<samp style="color: red">* </samp>
                                                                                                                     </label>
                                                                                                                     <asp:TextBox class="form-control" ID="txtPinCode" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtLicenseExpiry"
-                                                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtLicenseExpiry"
+                                                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPinCode"
+                                                                                                                        ErrorMessage="Required" ValidationGroup="ModalSubmit" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
 
                                                                                                     </div>
-                                                                                                    <div class="row" >
+                                                                                                    <div class="row">
                                                                                                         <div class="col-12" style="text-align: end;">
                                                                                                             <asp:Button type="Submit" ValidationGroup="ModalSubmit" ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
-                                                                                                            </div>
+                                                                                                        </div>
                                                                                                     </div>
                                                                                                 </div>
 
 
 
 
-                                                                                                <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" 
+                                                                                                <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
                                                                                                     AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                                                                                                     <PagerStyle CssClass="pagination-ys" />
                                                                                                     <Columns>
@@ -1023,7 +1033,6 @@ select#ddlEmployer2{
                                                                                             <%--<div class="modal-footer">
                                                                                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                                                             </div>--%>
-
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -1053,18 +1062,24 @@ select#ddlEmployer2{
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                                                                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                --%>
                                                                             </div>
-                                                                            <div class="form-group" style="margin-top:20px;">
-    <label for="Gender">
-        Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
-    </label>
-    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-        ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
-        <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-        <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-    </asp:DropDownList>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div>
+                                                                            <div class="form-group" style="margin-top: 20px;">
+                                                                                <label for="Gender">
+                                                                                    Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                    ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
+                                                                                    <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                                                                    <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                --%>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlAnnexureOrNot" ValidationGroup="Submit"
+                                                                                    InitialValue="" ErrorMessage="Please select an option" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            </div>
                                                                         </div>
                                                                         <br />
 
@@ -1131,46 +1146,46 @@ select#ddlEmployer2{
                                                                     </div>
                                                                 </div>--%>
                                                                 <div class="row">
-                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%" 
-                                                                                                    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
-                                                                                                    <PagerStyle CssClass="pagination-ys" />
-                                                                                                    <Columns>
-                                                                                                        <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
-                                                                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="Name" HeaderText="Name">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                                                                        </asp:BoundField>
+                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
+                                                                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                                                                        <PagerStyle CssClass="pagination-ys" />
+                                                                        <Columns>
+                                                                            <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                                            </asp:BoundField>
 
-                                                                                                        <asp:BoundField DataField="State" HeaderText="State">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="District" HeaderText="District">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="PinCode" HeaderText="PinCode">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="Address" HeaderText="Address">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                    </Columns>
-                                                                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                                                                    <RowStyle ForeColor="#000066" />
-                                                                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                                                                </asp:GridView>
+                                                                            <asp:BoundField DataField="State" HeaderText="State">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="District" HeaderText="District">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                            <asp:BoundField DataField="Address" HeaderText="Address">
+                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                            </asp:BoundField>
+                                                                        </Columns>
+                                                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                                        <RowStyle ForeColor="#000066" />
+                                                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                                    </asp:GridView>
                                                                 </div>
                                                             </div>
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
@@ -1189,6 +1204,8 @@ select#ddlEmployer2{
                                                                                     Full Name of Agent/Manager<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:TextBox class="form-control" ID="txtAgentName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                             </div>
@@ -1207,6 +1224,9 @@ select#ddlEmployer2{
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlUnitOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlUnitOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                --%>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1222,7 +1242,10 @@ select#ddlEmployer2{
                                                                                     <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                                 </asp:DropDownList>
+                                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                --%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1237,6 +1260,8 @@ select#ddlEmployer2{
                                                                                     Name of Issuing Authority<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:TextBox class="form-control" ID="txtIssusuingName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                             </div>
@@ -1250,8 +1275,11 @@ select#ddlEmployer2{
                                                                                     Date of Birth<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDOB" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
+                                                                                <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtDOB"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtDOB"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1263,6 +1291,8 @@ select#ddlEmployer2{
                                                                                     Date of License Expiry<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseExpiry" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
+                                                                                <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtLicenseExpiry"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtLicenseExpiry"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                             </div>
@@ -1292,8 +1322,7 @@ select#ddlEmployer2{
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <%-- <td style="text-align: center; font-size: 13px;">1
-                </td>--%>
+                                                                                <%-- <td style="text-align: center; font-size: 13px;">1 </td>--%>
                                                                                 <td>
                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                         ID="ddlEmployer1" runat="server" TabIndex="16">
@@ -1301,33 +1330,28 @@ select#ddlEmployer2{
                                                                                         <asp:ListItem Text="Partner" Value="2"></asp:ListItem>
                                                                                         <asp:ListItem Text="Director" Value="3"></asp:ListItem>
                                                                                     </asp:DropDownList>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                    <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator11" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
 
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" ID="txtLicense1" runat="server"> </asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtLicense1"
-                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                    <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtLicense1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
 
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtIssueDate1" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtIssueDate1"
-                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtIssueDate1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtValidity1" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtValidity1"
-                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                    <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtValidity1"  CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" ID="txtQualification1" runat="server" Style="padding-left: 5px !important; padding-right: 1%; width: 100%;"> </asp:TextBox></td>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtQualification1"
-                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtQualification1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                             </tr>
                                                                             <tr>
-                                                                                <%-- <td style="text-align: center; font-size: 13px;">1
-    </td>--%>
+                                                                                <%-- <td style="text-align: center; font-size: 13px;">1</td>--%>
                                                                                 <td>
                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                         ID="ddlEmployer2" runat="server" TabIndex="16">
@@ -1335,38 +1359,35 @@ select#ddlEmployer2{
                                                                                         <asp:ListItem Text="Supervisor" Value="1"></asp:ListItem>
                                                                                         <asp:ListItem Text="Wiremen" Value="2"></asp:ListItem>
                                                                                     </asp:DropDownList>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" ID="txtLicense2" runat="server"> </asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtLicense2"
-                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtLicense2" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtIssueDate2" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtIssueDate2"
-                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtIssueDate2" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtValidity2" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtQualification1"
-                                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtQualification1"  CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" ID="txtQualification2" runat="server" Style="padding-left: 5px !important; padding-right: 1%; width: 100%;"> </asp:TextBox></td>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtQualification1"
-                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtQualification1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
                                                             </div>
                                                             <div class="row" style="margin-bottom: -75px; margin-top: 50px;">
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button1" Text="Back" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
-                                                            </div>
-                                                                <div class="col-md-6"  style="right:0px; text-align:end;padding-right:0px;">
-                                                                <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button3" Text="Next" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
+                                                                <div class="col-md-6" style="padding-left: 0px;">
+                                                                    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button1" Text="Back" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
+                                                                </div>
+                                                                <div class="col-md-6" style="right: 0px; text-align: end; padding-right: 0px;">
+                                                                    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button3" Text="Next" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1375,9 +1396,6 @@ select#ddlEmployer2{
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-
                         </ContentTemplate>
                     </asp:UpdatePanel>
                     <div class="col-md-1"></div>
@@ -1579,4 +1597,3 @@ select#ddlEmployer2{
     </script>
 </body>
 </html>
-

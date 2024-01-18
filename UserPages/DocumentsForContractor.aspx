@@ -285,6 +285,54 @@
             margin-top: 13px;
             margin-bottom: 21px;
         }
+        span#RequiredFieldValidator {
+    margin-top: 15px;
+}
+        span#RequiredFieldValidator7 {
+    margin-top: 15px;
+}
+        span#RequiredFieldValidator9 {
+    margin-top: 15px;
+}
+        td {
+    text-align: left !important;
+}
+        input#btnPan{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#btnAge{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#btnCalibration{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#btnAnnexure{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#BtnStatus{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#BtnWorkOutHry{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#BtnWorkPermitted{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#BtnCopyOfLibrary{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#BtnGrantedLicense{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
     </style>
 </head>
 <body>

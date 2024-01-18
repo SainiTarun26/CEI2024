@@ -1591,6 +1591,7 @@
             <script src="/js2/select2.js"></script>
             <script type="text/javascript">
                 function validateForm() {
+                    debugger;
                     var isValid = true;
                     var txtUniversity = document.getElementById('txtUniversity');
                     var txtPassingyear = document.getElementById('txtPassingyear');
@@ -1608,15 +1609,6 @@
                     var txtmarksObtained2 = document.getElementById('txtmarksObtained2');
                     var txtmarksmax2 = document.getElementById('txtmarksmax2');
                     var txtprcntg2 = document.getElementById('txtprcntg2');
-                    var txtCategory = document.getElementById('txtCategory');
-                    var txtPermitNo = document.getElementById('txtPermitNo');
-                    var txtIssuingAuthority = document.getElementById('txtIssuingAuthority');
-                    var txtIssuingDate = document.getElementById('txtIssuingDate');
-                    var txtExpiryDate = document.getElementById('txtExpiryDate');
-                    var txtPermanentEmployerName = document.getElementById('txtPermanentEmployerName');
-                    var txtPermanentDescription = document.getElementById('txtPermanentDescription');
-                    var txtPermanentFrom = document.getElementById('txtPermanentFrom');
-                    var txtPermanentTo = document.getElementById('txtPermanentTo');
                     var txtExperienceEmployer = document.getElementById('txtExperienceEmployer');
                     var txtPostDescription = document.getElementById('txtPostDescription');
                     var txtExperienceFrom = document.getElementById('txtExperienceFrom');
@@ -1643,6 +1635,7 @@
                     var ddlTraningUnder = document.getElementById('ddlTraningUnder');
                     var DdlDegree = document.getElementById('DdlDegree');
                     var DdlMasters = document.getElementById('DdlMasters');
+                    var competency = document.getElementById('competency');
                     if (ddlQualification.value === '0') {
                         isValid = false;
                         ddlQualification.style.border = '1px solid red';
@@ -1774,62 +1767,7 @@
                     } else {
                         txtprcntg2.style.border = '';
                     }
-
-                    
-                    if (txtCategory.value.trim() === '') {
-                        isValid = false;
-                        txtCategory.style.border = '1px solid red';
-                    } else {
-                        txtCategory.style.border = '';
-                    }
-                    if (txtPermitNo.value.trim() === '') {
-                        isValid = false;
-                        txtPermitNo.style.border = '1px solid red';
-                    } else {
-                        txtPermitNo.style.border = '';
-                    }
-                    if (txtIssuingAuthority.value.trim() === '') {
-                        isValid = false;
-                        txtIssuingAuthority.style.border = '1px solid red';
-                    } else {
-                        txtIssuingAuthority.style.border = '';
-                    }
-                    if (txtIssuingDate.value.trim() === '') {
-                        isValid = false;
-                        txtIssuingDate.style.border = '1px solid red';
-                    } else {
-                        txtIssuingDate.style.border = '';
-                    }
-                    if (txtExpiryDate.value.trim() === '') {
-                        isValid = false;
-                        txtExpiryDate.style.border = '1px solid red';
-                    } else {
-                        txtExpiryDate.style.border = '';
-                    }
-                    if (txtPermanentEmployerName.value.trim() === '') {
-                        isValid = false;
-                        txtPermanentEmployerName.style.border = '1px solid red';
-                    } else {
-                        txtPermanentEmployerName.style.border = '';
-                    }
-                    if (txtPermanentDescription.value.trim() === '') {
-                        isValid = false;
-                        txtPermanentDescription.style.border = '1px solid red';
-                    } else {
-                        txtPermanentDescription.style.border = '';
-                    }
-                    if (txtPermanentFrom.value.trim() === '') {
-                        isValid = false;
-                        txtPermanentFrom.style.border = '1px solid red';
-                    } else {
-                        txtPermanentFrom.style.border = '';
-                    }
-                    if (txtPermanentTo.value.trim() === '') {
-                        isValid = false;
-                        txtPermanentTo.style.border = '1px solid red';
-                    } else {
-                        txtPermanentTo.style.border = '';
-                    }
+               
                     if (txtExperienceEmployer.value.trim() === '') {
                         isValid = false;
                         txtExperienceEmployer.style.border = '1px solid red';
@@ -2059,7 +1997,77 @@
 
                     }
 
+                    if (competency.style.visibility != "hidden")
+                    {
+                        var txtCategory = document.getElementById('txtCategory');
+                        var txtPermitNo = document.getElementById('txtPermitNo');
+                        var txtIssuingAuthority = document.getElementById('txtIssuingAuthority');
+                        var txtIssuingDate = document.getElementById('txtIssuingDate');
+                        var txtExpiryDate = document.getElementById('txtExpiryDate');
+                        if (txtCategory.value.trim() === '') {
+                            isValid = false;
+                            txtCategory.style.border = '1px solid red';
+                        } else {
+                            txtCategory.style.border = '';
+                        }
+                        if (txtPermitNo.value.trim() === '') {
+                            isValid = false;
+                            txtPermitNo.style.border = '1px solid red';
+                        } else {
+                            txtPermitNo.style.border = '';
+                        }
+                        if (txtIssuingAuthority.value.trim() === '') {
+                            isValid = false;
+                            txtIssuingAuthority.style.border = '1px solid red';
+                        } else {
+                            txtIssuingAuthority.style.border = '';
+                        }
+                        if (txtIssuingDate.value.trim() === '') {
+                            isValid = false;
+                            txtIssuingDate.style.border = '1px solid red';
+                        } else {
+                            txtIssuingDate.style.border = '';
+                        }
+                        if (txtExpiryDate.value.trim() === '') {
+                            isValid = false;
+                            txtExpiryDate.style.border = '1px solid red';
+                        } else {
+                            txtExpiryDate.style.border = '';
+                        }
+                    }
 
+                    if (PermanentEmployee.style.visibility != "hidden")
+                    {
+                        var txtPermanentEmployerName = document.getElementById('txtPermanentEmployerName');
+                        var txtPermanentDescription = document.getElementById('txtPermanentDescription');
+                        var txtPermanentFrom = document.getElementById('txtPermanentFrom');
+                        var txtPermanentTo = document.getElementById('txtPermanentTo');
+
+                        if (txtPermanentEmployerName.value.trim() === '') {
+                            isValid = false;
+                            txtPermanentEmployerName.style.border = '1px solid red';
+                        } else {
+                            txtPermanentEmployerName.style.border = '';
+                        }
+                        if (txtPermanentDescription.value.trim() === '') {
+                            isValid = false;
+                            txtPermanentDescription.style.border = '1px solid red';
+                        } else {
+                            txtPermanentDescription.style.border = '';
+                        }
+                        if (txtPermanentFrom.value.trim() === '') {
+                            isValid = false;
+                            txtPermanentFrom.style.border = '1px solid red';
+                        } else {
+                            txtPermanentFrom.style.border = '';
+                        }
+                        if (txtPermanentTo.value.trim() === '') {
+                            isValid = false;
+                            txtPermanentTo.style.border = '1px solid red';
+                        } else {
+                            txtPermanentTo.style.border = '';
+                        }
+                    }
 
                     if (!isValid) {
                         alert('Please fill in all the required fields.');
