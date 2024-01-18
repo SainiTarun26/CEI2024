@@ -1224,10 +1224,10 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlTraningUnder" runat="server" TabIndex="16" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="A class licensed electrical contractor" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Central government" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="State government" Value="2"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="A class licensed electrical contractor" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="State government" Value="3"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                         <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ControlToValidate="DropDownList1" InitialValue="0" ForeColor="Red" 
                                                                     ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
@@ -1736,29 +1736,38 @@
                     } else {
                         txtprcntg1.style.border = '';
                     }
-
-                    if (txtUniversity2.value.trim() === '') {
+                    if (txtUniversity2.value.trim() === '')
+                    {
                         isValid = false;
                         txtUniversity2.style.border = '1px solid red';
-                    } else {
+                    }
+                    else
+                    {
                         txtUniversity2.style.border = '';
                     }
-                    if (txtPassingyear2.value.trim() === '') {
+                    if (txtPassingyear2.value.trim() === '')
+                    {
                         isValid = false;
                         txtPassingyear2.style.border = '1px solid red';
-                    } else {
+                    }
+                    else {
                         txtPassingyear2.style.border = '';
                     }
-                    if (txtmarksObtained2.value.trim() === '') {
+                    if (txtmarksObtained2.value.trim() === '')
+                    {
                         isValid = false;
                         txtmarksObtained2.style.border = '1px solid red';
-                    } else {
+                    }
+                    else
+                    {
                         txtmarksObtained2.style.border = '';
                     }
-                    if (txtmarksmax2.value.trim() === '') {
+                    if (txtmarksmax2.value.trim() === '')
+                    {
                         isValid = false;
                         txtmarksmax2.style.border = '1px solid red';
-                    } else {
+                    }
+                    else {
                         txtmarksmax2.style.border = '';
                     }
                     if (txtprcntg2.value.trim() === '') {
@@ -1767,7 +1776,6 @@
                     } else {
                         txtprcntg2.style.border = '';
                     }
-               
                     if (txtExperienceEmployer.value.trim() === '') {
                         isValid = false;
                         txtExperienceEmployer.style.border = '1px solid red';
