@@ -1108,6 +1108,7 @@
     </script>
 </head>
 <body>
+
     <form id="form1" runat="server">
         <!-- ======= Top Bar ======= -->
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
@@ -1330,11 +1331,7 @@
                                                                     State
                                                                 </label>
                                                                 <asp:DropDownList class="select-form select2" ID="ddlAgentState" OnSelectedIndexChanged="ddlAgentState_SelectedIndexChanged" AutoPostBack="true" runat="server">
-                                                                    <%--<asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                    <asp:ListItem Text="Permit" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="Competency" Value="2"></asp:ListItem>
-                                                                    <asp:ListItem Text="Contractor license" Value="3"></asp:ListItem>--%>
-                                                                </asp:DropDownList>
+                                                               </asp:DropDownList>
                                                                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlAgentState" InitialValue="0" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select State</asp:RequiredFieldValidator>--%>
                                                             </div>
                                                             <div class="col-4">
@@ -1597,7 +1594,7 @@
                                                             <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="Button1" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                         </div>
                                                         <div class="col-6" style="text-align: end; padding-right: 0px;">
-                                                            <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                            <asp:Button type="button" AutoPostback="true" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
                                                                 OnClick="BtnSubmit_Click" />
                                                         </div>
                                                     </div>

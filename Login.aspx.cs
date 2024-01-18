@@ -284,7 +284,7 @@ namespace CEIHaryana
                 }
                 else if (check == 10)
                 {
-                    
+                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
                     if (chkSignedin.Checked == true)
                     {
                         Session["LiftId"] = txtUserID.Text;
@@ -326,9 +326,6 @@ namespace CEIHaryana
                     // string script = "alert(\"Your UserName or Password is Invalid.\");";
                     // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
-
-
-
 
             }
             catch (Exception ex)

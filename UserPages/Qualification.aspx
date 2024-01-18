@@ -67,6 +67,11 @@
         }
     </script>
     <style>
+        #header .logo img {
+    max-height: 62px;
+    margin-left: -175px;
+    margin-top: 18px;
+}
         li#logout {
             padding-left: 10px !important;
             background: #4B49AC !important;
@@ -651,16 +656,16 @@
             <header id="header" class="d-flex align-items-center"
                 style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
                 <div class="container d-flex align-items-center justify-content-between">
-                    <%-- <a href="index.html" class="logo">
-                        <img src="assets/img/haryana.png" alt="" />
-                    </a>--%>
-                    <h1 class="logo">
+                     <a href="index.html" class="logo">
+                        <img src="../Assets/Add a heading (1).png" />
+                    </a>
+                    <%--<h1 class="logo">
                         <a href="index.html">
                             <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
                         </a>
-                    </h1>
+                    </h1>--%>
                     <!-- Uncomment below if you prefer to use an image logo -->
-                    <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 65px;">
+                    <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
                         <ul>
                             <li class="dropdown">
                                 <a href="#">
@@ -1224,10 +1229,10 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlTraningUnder" runat="server" TabIndex="16" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="A class licensed electrical contractor" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
-                                                                            <asp:ListItem Text="State government" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="A class licensed electrical contractor" Value="0"></asp:ListItem>
+                                                                            <asp:ListItem Text="Central government" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="State government" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="2"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                         <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ControlToValidate="DropDownList1" InitialValue="0" ForeColor="Red" 
                                                                     ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
@@ -1643,7 +1648,7 @@
                         ddlQualification.style.border = '';
                     }
 
-                    if (ddlExperiene.value === '0') { 
+                    if (ddlExperiene.value === '0') {
                         isValid = false;
                         ddlExperiene.style.border = '1px solid red';
                     } else {
@@ -1664,7 +1669,7 @@
                         ddlQualification1.style.border = ''; // Reset border if valid
                     }
 
-                  
+
                     if (txtUniversity.value.trim() === '') {
                         isValid = false;
                         txtUniversity.style.border = '1px solid red';
@@ -1736,38 +1741,29 @@
                     } else {
                         txtprcntg1.style.border = '';
                     }
-                    if (txtUniversity2.value.trim() === '')
-                    {
+
+                    if (txtUniversity2.value.trim() === '') {
                         isValid = false;
                         txtUniversity2.style.border = '1px solid red';
-                    }
-                    else
-                    {
+                    } else {
                         txtUniversity2.style.border = '';
                     }
-                    if (txtPassingyear2.value.trim() === '')
-                    {
+                    if (txtPassingyear2.value.trim() === '') {
                         isValid = false;
                         txtPassingyear2.style.border = '1px solid red';
-                    }
-                    else {
+                    } else {
                         txtPassingyear2.style.border = '';
                     }
-                    if (txtmarksObtained2.value.trim() === '')
-                    {
+                    if (txtmarksObtained2.value.trim() === '') {
                         isValid = false;
                         txtmarksObtained2.style.border = '1px solid red';
-                    }
-                    else
-                    {
+                    } else {
                         txtmarksObtained2.style.border = '';
                     }
-                    if (txtmarksmax2.value.trim() === '')
-                    {
+                    if (txtmarksmax2.value.trim() === '') {
                         isValid = false;
                         txtmarksmax2.style.border = '1px solid red';
-                    }
-                    else {
+                    } else {
                         txtmarksmax2.style.border = '';
                     }
                     if (txtprcntg2.value.trim() === '') {
@@ -1776,6 +1772,7 @@
                     } else {
                         txtprcntg2.style.border = '';
                     }
+
                     if (txtExperienceEmployer.value.trim() === '') {
                         isValid = false;
                         txtExperienceEmployer.style.border = '1px solid red';
@@ -2005,8 +2002,7 @@
 
                     }
 
-                    if (competency.style.visibility != "hidden")
-                    {
+                    if (competency.style.visibility != "hidden") {
                         var txtCategory = document.getElementById('txtCategory');
                         var txtPermitNo = document.getElementById('txtPermitNo');
                         var txtIssuingAuthority = document.getElementById('txtIssuingAuthority');
@@ -2044,8 +2040,7 @@
                         }
                     }
 
-                    if (PermanentEmployee.style.visibility != "hidden")
-                    {
+                    if (PermanentEmployee.style.visibility != "hidden") {
                         var txtPermanentEmployerName = document.getElementById('txtPermanentEmployerName');
                         var txtPermanentDescription = document.getElementById('txtPermanentDescription');
                         var txtPermanentFrom = document.getElementById('txtPermanentFrom');

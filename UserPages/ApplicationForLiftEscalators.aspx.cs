@@ -14,12 +14,16 @@ namespace CEIHaryana.UserPages
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                ddlLoadBindApplicantState();
-                ddlLoadBindAgentState();
-                ddlLoadBindLiftState();
+                if (!IsPostBack)
+                {
+                    ddlLoadBindApplicantState();
+                    ddlLoadBindAgentState();
+                    ddlLoadBindLiftState();
+                }
             }
+            catch { }
         }
 
         private void ddlLoadBindApplicantState()
@@ -87,8 +91,14 @@ namespace CEIHaryana.UserPages
 
         protected void ddlApplicantState_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            ddlLoadBindapplicantdistrict(ddlApplicantState.SelectedItem.ToString());
+            try
+            {
+                ddlLoadBindapplicantdistrict(ddlApplicantState.SelectedItem.ToString());
+            }
+            catch (Exception)
+            {
+                //msg.Text = ex.Message;
+            }
         }
         private void ddlLoadBindapplicantdistrict(string state)
         {
@@ -111,7 +121,11 @@ namespace CEIHaryana.UserPages
         }
         protected void ddlAgentState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLoadBindAgentDistrict(ddlAgentState.SelectedItem.ToString());
+            try
+            {
+                ddlLoadBindAgentDistrict(ddlAgentState.SelectedItem.ToString());
+            }
+            catch { }
         }
         private void ddlLoadBindAgentDistrict(string state)
         {
@@ -135,7 +149,11 @@ namespace CEIHaryana.UserPages
 
         protected void ddlLiftState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLoadBindLiftDistrict(ddlLiftState.SelectedItem.ToString());
+            try
+            {
+                ddlLoadBindLiftDistrict(ddlLiftState.SelectedItem.ToString());
+            }
+            catch { }
         }
 
         private void ddlLoadBindLiftDistrict(string state)
@@ -160,19 +178,26 @@ namespace CEIHaryana.UserPages
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
+            try
+            {
 
 
-            string userId = Session["LiftID"].ToString();
+                string userId = Session["LiftID"].ToString();
 
-            CEI.InsertListAndEscalators(userId, ddlApplicantType.SelectedItem.ToString(), txtNameOfApplicant.Text.Trim(), txtPhoneNo.Text.Trim(),
-              txtOfficeAddress.Text.Trim(), ddlApplicantState.SelectedItem.ToString(), ddlapplicantdistrict.SelectedItem.ToString(), txtPinCode.Text.Trim(),
-              txtAgentName.Text.Trim(), txtAgentContactNo.Text.Trim(), txtAgentAddress.Text.Trim(), ddlAgentState.SelectedValue == "0" ? null : ddlAgentState.SelectedItem.ToString(),
-              dllAgentdistrict.SelectedValue == "0" ? null : dllAgentdistrict.SelectedItem.ToString(), txtAgentPincode.Text.Trim(), txtOwnerName.Text.Trim(),
-              txtLiftAddress.Text.Trim(), ddlLiftState.SelectedItem.ToString(), ddlLiftDistrict.SelectedItem.ToString(), txtLiftPincode.Text.Trim(), txtDateOfErection.Text.Trim(),
-              txtTypeOfLift.Text.Trim(), txtMakerName.Text.Trim(), txtMakerLocalAgent.Text.Trim(), txtMakerAddress.Text.Trim(), txtLiftSpeed.Text.Trim(), txtLiftLoad.Text.Trim(),
-              txtPersonLoad.Text.Trim(), txtLiftWeight.Text.Trim(), txtCounterWeight.Text.Trim(), txtNumberSuspension.Text.Trim(), txtDiscription.Text.Trim(), txtWeight.Text.Trim(),
-              txtSize.Text.Trim(), txtPitDepth.Text.Trim(), txtTotalFloors.Text.Trim(), txtConstructionDetails.Text.Trim()
-                );
+                CEI.InsertListAndEscalators(userId, ddlApplicantType.SelectedItem.ToString(), txtNameOfApplicant.Text.Trim(), txtPhoneNo.Text.Trim(),
+                  txtOfficeAddress.Text.Trim(), ddlApplicantState.SelectedItem.ToString(), ddlapplicantdistrict.SelectedItem.ToString(), txtPinCode.Text.Trim(),
+                  txtAgentName.Text.Trim(), txtAgentContactNo.Text.Trim(), txtAgentAddress.Text.Trim(), ddlAgentState.SelectedValue == "0" ? null : ddlAgentState.SelectedItem.ToString(),
+                  dllAgentdistrict.SelectedValue == "0" ? null : dllAgentdistrict.SelectedItem.ToString(), txtAgentPincode.Text.Trim(), txtOwnerName.Text.Trim(),
+                  txtLiftAddress.Text.Trim(), ddlLiftState.SelectedItem.ToString(), ddlLiftDistrict.SelectedItem.ToString(), txtLiftPincode.Text.Trim(), txtDateOfErection.Text.Trim(),
+                  txtTypeOfLift.Text.Trim(), txtMakerName.Text.Trim(), txtMakerLocalAgent.Text.Trim(), txtMakerAddress.Text.Trim(), txtLiftSpeed.Text.Trim(), txtLiftLoad.Text.Trim(),
+                  txtPersonLoad.Text.Trim(), txtLiftWeight.Text.Trim(), txtCounterWeight.Text.Trim(), txtNumberSuspension.Text.Trim(), txtDiscription.Text.Trim(), txtWeight.Text.Trim(),
+                  txtSize.Text.Trim(), txtPitDepth.Text.Trim(), txtTotalFloors.Text.Trim(), txtConstructionDetails.Text.Trim()
+                    );
+            }
+            catch
+            {
+
+            }
         }
     }
 }

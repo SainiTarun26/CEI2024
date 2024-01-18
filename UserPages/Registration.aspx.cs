@@ -278,55 +278,16 @@ namespace CEIHaryana.UserPages
 
                             else
                             {
-                                int ageYear = currentDate.Year - dobDate.Year;
-                                int ageMonth = currentDate.Month - dobDate.Month;
-                                int ageDay = currentDate.Day - dobDate.Day;
+                                TimeSpan ageDifference = currentDate - selectedDOB;
+                                int ageYear = (int)(ageDifference.TotalDays / 365.25);
+                                int ageMonth = (int)((ageDifference.TotalDays % 365.25) / 30.44);
+                                int ageDay = (int)(ageDifference.TotalDays % 30.44);
 
-                                if (currentDate > dobDate)
-                                {
-                                    if (ageYear < 0)
-                                    {
-                                        ageYear = -ageYear;
-                                    }
-                                    if (ageMonth < 0)
-                                    {
-                                        ageMonth = -ageMonth;
-                                    }
-                                    if (ageDay < 0)
-                                    {
-                                        ageDay = -ageDay;
-                                    }
-                                }
+                                string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
+                                txtyears.Text = ageString;
 
-                                // Adjust the age if the current day is before the birth day
-                                if (ageDay < 0)
-                                {
-                                    ageMonth--;
-                                    //int daysInPreviousMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month - 1);
-                                    ageDay += DateTime.DaysInMonth(currentDate.Year, currentDate.Month - 1);
-                                }
-
-                                // Adjust the age if the current month is before the birth month
-                                if (ageMonth < 0)
-                                {
-                                    ageYear--;
-                                    ageMonth += 12;
-                                }
-                                if (currentDate.Year == dobDate.Year)
-                                {
-                                    ageYear = 0;
-                                }
-
-
-                                txtyears.Text = ageYear.ToString() + "Years-" + ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days";
-
-                                // txtyears.Text = ageYear.ToString() + "Years-" + ageMonth.ToString() + "Months-" + ageDay.ToString() + "Days";
-
+                                CalculatedDatey.Visible = true;
                             }
-
-                            //CalculatedDate.Visible = true;
-                            //CalculatedDateM.Visible = true;
-                            CalculatedDatey.Visible = true;
                         }
                     }
                 }
