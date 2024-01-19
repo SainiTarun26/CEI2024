@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <style>
+        input#btnMedicalCertificate {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+        input#btnRetired {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -383,7 +391,7 @@
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtPhoto" runat="server" CssClass="form-control file-upload-info"
-                                                                            Enabled="false" placeholder="Upload Matriculation certificate" Style="width: 50%;"></asp:TextBox>
+                                                                            Enabled="false" placeholder="Upload Matriculation certificate" Style="width: 54%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 

@@ -1596,489 +1596,146 @@
             <script src="/js2/select2.js"></script>
             <script type="text/javascript">
                 function validateForm() {
-                    debugger;
                     var isValid = true;
-                    var txtUniversity = document.getElementById('txtUniversity');
-                    var txtPassingyear = document.getElementById('txtPassingyear');
-                    var txtmarksObtained = document.getElementById('txtmarksObtained');
-                    var txtmarksmax = document.getElementById('txtmarksmax');
-                    var txtprcntg = document.getElementById('txtprcntg');
-                    var txtUniversity1 = document.getElementById('txtUniversity1');
-                    var txtPassingyear1 = document.getElementById('txtPassingyear1');
-                    var txtmarksObtained1 = document.getElementById('txtmarksObtained1');
-                    var txtmarksmax1 = document.getElementById('txtmarksmax1');
-                    var txtprcntg1 = document.getElementById('txtprcntg1');
-                    var ddlQualification = document.getElementById('ddlQualification');
-                    var txtUniversity2 = document.getElementById('txtUniversity2');
-                    var txtPassingyear2 = document.getElementById('txtPassingyear2');
-                    var txtmarksObtained2 = document.getElementById('txtmarksObtained2');
-                    var txtmarksmax2 = document.getElementById('txtmarksmax2');
-                    var txtprcntg2 = document.getElementById('txtprcntg2');
-                    var txtExperienceEmployer = document.getElementById('txtExperienceEmployer');
-                    var txtPostDescription = document.getElementById('txtPostDescription');
-                    var txtExperienceFrom = document.getElementById('txtExperienceFrom');
-                    var txtExperienceTo = document.getElementById('txtExperienceTo');
-                    //var txtExperienceEmployer1 = document.getElementById('txtExperienceEmployer1');
-                    //var txtPostDescription1 = document.getElementById('txtPostDescription1');
-                    //var txtExperienceFrom1 = document.getElementById('txtExperienceFrom1');
-                    //var txtExperienceTo1 = document.getElementById('txtExperienceTo1');
-                    //var txtExperienceEmployer2 = document.getElementById('txtExperienceEmployer2');
-                    //var txtPostDescription2 = document.getElementById('txtPostDescription2');
-                    //var txtExperienceFrom2 = document.getElementById('txtExperienceFrom2');
-                    //var txtExperienceTo2 = document.getElementById('txtExperienceTo2');
-                    //var txtExperienceEmployer3 = document.getElementById('txtExperienceEmployer3');
-                    //var txtPostDescription3 = document.getElementById('txtPostDescription3');
-                    //var txtExperienceFrom3 = document.getElementById('txtExperienceFrom3');
-                    //var txtExperienceTo3 = document.getElementById('txtExperienceTo3');
-                    //var txtExperienceEmployer4 = document.getElementById('txtExperienceEmployer4');
-                    //var txtPostDescription4 = document.getElementById('txtPostDescription4');
-                    //var txtExperienceFrom4 = document.getElementById('txtExperienceFrom4');
-                    //var txtExperienceTo4 = document.getElementById('txtExperienceTo4');
-                    var ddlQualification = document.getElementById('ddlQualification');
-                    var ddlQualification1 = document.getElementById('ddlQualification1');
-                    var ddlExperiene = document.getElementById('ddlExperiene');
-                    var ddlTraningUnder = document.getElementById('ddlTraningUnder');
+
+                    function validateField(element, fieldName) {
+                        if (element.value.trim() === '') {
+                            isValid = false;
+                            element.style.border = '1px solid red';
+                        } else {
+                            element.style.border = '';
+                        }
+                    }
+
+                    function validateDropdown(element) {
+                        if (element.value === '0') {
+                            isValid = false;
+                            element.style.border = '1px solid red';
+                        } else {
+                            element.style.border = '';
+                        }
+                    }
+
+                    // Qualification Section
+                    validateDropdown(document.getElementById('ddlQualification'));
+                    validateDropdown(document.getElementById('ddlExperiene'));
+                    validateDropdown(document.getElementById('ddlTraningUnder'));
+                    validateDropdown(document.getElementById('ddlQualification1'));
+
+                    // Qualification Details Section
+                    validateField(document.getElementById('txtUniversity'), 'University');
+                    validateField(document.getElementById('txtPassingyear'), 'Passing Year');
+                    validateField(document.getElementById('txtmarksObtained'), 'Marks Obtained');
+                    validateField(document.getElementById('txtmarksmax'), 'Maximum Marks');
+                    validateField(document.getElementById('txtprcntg'), 'Percentage');
+
+                    validateField(document.getElementById('txtUniversity1'), 'University');
+                    validateField(document.getElementById('txtPassingyear1'), 'Passing Year');
+                    validateField(document.getElementById('txtmarksObtained1'), 'Marks Obtained');
+                    validateField(document.getElementById('txtmarksmax1'), 'Maximum Marks');
+                    validateField(document.getElementById('txtprcntg1'), 'Percentage');
+
+                    validateField(document.getElementById('txtUniversity2'), 'University');
+                    validateField(document.getElementById('txtPassingyear2'), 'Passing Year');
+                    validateField(document.getElementById('txtmarksObtained2'), 'Marks Obtained');
+                    validateField(document.getElementById('txtmarksmax2'), 'Maximum Marks');
+                    validateField(document.getElementById('txtprcntg2'), 'Percentage');
+
+                    // Experience
+                    validateField(document.getElementById('txtPostDescription'), 'PostDescription');
+                    validateField(document.getElementById('txtExperienceFrom'), 'ExperienceFrom');
+                    validateField(document.getElementById('txtExperienceTo'), 'ExperienceTo');
+                    validateField(document.getElementById('txtExperienceEmployer'), 'ExperienceEmployer');
+
+                    // Competency Section
                     var DdlDegree = document.getElementById('DdlDegree');
+                    if (DdlDegree && DdlDegree.style.visibility !== 'hidden') {
+                        validateDropdown(document.getElementById('ddlQualification2'));
+                        validateField(document.getElementById('txtUniversity3'), 'University');
+                        validateField(document.getElementById('txtPassingyear3'), 'Passing Year');
+                        validateField(document.getElementById('txtmarksObtained3'), 'Marks Obtained');
+                        validateField(document.getElementById('txtprcntg3'), 'Maximum Marks');
+                        validateField(document.getElementById('txtmarksmax3'), 'Percentage');
+                    }
+
+                    DdlMasters
                     var DdlMasters = document.getElementById('DdlMasters');
+                    if (DdlMasters && DdlMasters.style.visibility !== 'hidden') {
+                        validateDropdown(document.getElementById('ddlQualification3'));
+
+                        validateField(document.getElementById('txtUniversity4'), 'University');
+                        validateField(document.getElementById('txtPassingyear4'), 'Passing Year');
+                        validateField(document.getElementById('txtmarksObtained4'), 'Marks Obtained');
+                        validateField(document.getElementById('txtprcntg4'), 'Maximum Marks');
+                        validateField(document.getElementById('txtmarksmax4'), 'Percentage');
+                    }
+
+                    // Experience
+                    var Experience1 = document.getElementById('Experience1');
+                    if (Experience1 && Experience1.style.visibility !== 'hidden') {
+                        validateDropdown(document.getElementById('ddlExperience1'));
+                        validateDropdown(document.getElementById('ddlTrainingUnder1'));
+                        validateField(document.getElementById('txtExperienceEmployer1'), 'ExperienceEmployer');
+                        validateField(document.getElementById('txtPostDescription1'), 'PostDescription');
+                        validateField(document.getElementById('txtExperienceFrom1'), 'ExperienceFrom');
+                        validateField(document.getElementById('txtExperienceTo1'), 'ExperienceTo');
+                    }
+
+                    var Experience2 = document.getElementById('Experience2');
+                    if (Experience2 && Experience2.style.visibility !== 'hidden') {
+                        validateDropdown(document.getElementById('ddlExperience2'));
+                        validateDropdown(document.getElementById('ddlTrainingUnder2'));
+                        validateField(document.getElementById('txtExperienceEmployer2'), 'ExperienceEmployer');
+                        validateField(document.getElementById('txtPostDescription2'), 'PostDescription');
+                        validateField(document.getElementById('txtExperienceFrom2'), 'ExperienceFrom');
+                        validateField(document.getElementById('txtExperienceTo2'), 'ExperienceTo');
+                    }
+
+                    var Experience3 = document.getElementById('Experience3');
+                    if (Experience3 && Experience3.style.visibility !== 'hidden') {
+                        validateDropdown(document.getElementById('ddlExperience3'));
+                        validateDropdown(document.getElementById('ddlTrainingUnder3'));
+                        validateField(document.getElementById('txtExperienceEmployer3'), 'ExperienceEmployer');
+                        validateField(document.getElementById('txtPostDescription3'), 'PostDescription');
+                        validateField(document.getElementById('txtExperienceFrom3'), 'ExperienceFrom');
+                        validateField(document.getElementById('txtExperienceTo3'), 'ExperienceTo');
+                    }
+
+                    var Experience4 = document.getElementById('Experience4');
+                    if (Experience4 && Experience4.style.visibility !== 'hidden') {
+                        validateDropdown(document.getElementById('ddlExperience4'));
+                        validateDropdown(document.getElementById('ddlTrainingUnder4'));
+                        validateField(document.getElementById('txtExperienceEmployer4'), 'ExperienceEmployer');
+                        validateField(document.getElementById('txtPostDescription4'), 'PostDescription');
+                        validateField(document.getElementById('txtExperienceFrom4'), 'ExperienceFrom');
+                        validateField(document.getElementById('txtExperienceTo4'), 'ExperienceTo');
+                    }
+
+                    // Competency Section
                     var competency = document.getElementById('competency');
-                    if (ddlQualification.value === '0') {
-                        isValid = false;
-                        ddlQualification.style.border = '1px solid red';
-                    } else {
-                        ddlQualification.style.border = '';
+                    if (competency && competency.style.visibility !== 'hidden') {
+                        validateField(document.getElementById('txtCategory'), 'Category');
+                        validateField(document.getElementById('txtPermitNo'), 'Permit No');
+                        validateField(document.getElementById('txtIssuingAuthority'), 'Issuing Authority');
+                        validateField(document.getElementById('txtIssuingDate'), 'Issuing Date');
+                        validateField(document.getElementById('txtExpiryDate'), 'Expiry Date');
                     }
 
-                    if (ddlExperiene.value === '0') {
-                        isValid = false;
-                        ddlExperiene.style.border = '1px solid red';
-                    } else {
-                        ddlExperiene.style.border = ''; // Reset border if valid
-                    }
-
-                    if (ddlTraningUnder.value === '0') { // Assuming '0' is the default value for "Select"
-                        isValid = false;
-                        ddlTraningUnder.style.border = '1px solid red';
-                    } else {
-                        ddlTraningUnder.style.border = ''; // Reset border if valid
-                    }
-
-                    if (ddlQualification1.value === '0') { // Assuming '0' is the default value for "Select"
-                        isValid = false;
-                        ddlQualification1.style.border = '1px solid red';
-                    } else {
-                        ddlQualification1.style.border = ''; // Reset border if valid
-                    }
-
-
-                    if (txtUniversity.value.trim() === '') {
-                        isValid = false;
-                        txtUniversity.style.border = '1px solid red';
-                    } else {
-                        txtUniversity.style.border = '';
-                    }
-
-
-                    if (txtPassingyear.value.trim() === '') {
-                        isValid = false;
-                        txtPassingyear.style.border = '1px solid red';
-                    } else {
-                        txtPassingyear.style.border = '';
-                    }
-
-
-                    if (txtmarksObtained.value.trim() === '') {
-                        isValid = false;
-                        txtmarksObtained.style.border = '1px solid red';
-                    } else {
-                        txtmarksObtained.style.border = '';
-                    }
-
-                    if (txtmarksmax.value.trim() === '') {
-                        isValid = false;
-                        txtmarksmax.style.border = '1px solid red';
-                    } else {
-                        txtmarksmax.style.border = '';
-                    }
-
-                    if (txtprcntg.value.trim() === '') {
-                        isValid = false;
-                        txtprcntg.style.border = '1px solid red';
-                    } else {
-                        txtprcntg.style.border = '';
-                    }
-
-                    if (txtUniversity1.value.trim() === '') {
-                        isValid = false;
-                        txtUniversity1.style.border = '1px solid red';
-                    } else {
-                        txtUniversity1.style.border = '';
-                    }
-
-                    if (txtPassingyear1.value.trim() === '') {
-                        isValid = false;
-                        txtPassingyear1.style.border = '1px solid red';
-                    } else {
-                        txtPassingyear1.style.border = '';
-                    }
-
-                    if (txtmarksObtained1.value.trim() === '') {
-                        isValid = false;
-                        txtmarksObtained1.style.border = '1px solid red';
-                    } else {
-                        txtmarksObtained1.style.border = '';
-                    }
-
-                    if (txtmarksmax1.value.trim() === '') {
-                        isValid = false;
-                        txtmarksmax1.style.border = '1px solid red';
-                    } else {
-                        txtmarksmax1.style.border = '';
-                    }
-
-                    if (txtprcntg1.value.trim() === '') {
-                        isValid = false;
-                        txtprcntg1.style.border = '1px solid red';
-                    } else {
-                        txtprcntg1.style.border = '';
-                    }
-
-                    if (txtUniversity2.value.trim() === '') {
-                        isValid = false;
-                        txtUniversity2.style.border = '1px solid red';
-                    } else {
-                        txtUniversity2.style.border = '';
-                    }
-                    if (txtPassingyear2.value.trim() === '') {
-                        isValid = false;
-                        txtPassingyear2.style.border = '1px solid red';
-                    } else {
-                        txtPassingyear2.style.border = '';
-                    }
-                    if (txtmarksObtained2.value.trim() === '') {
-                        isValid = false;
-                        txtmarksObtained2.style.border = '1px solid red';
-                    } else {
-                        txtmarksObtained2.style.border = '';
-                    }
-                    if (txtmarksmax2.value.trim() === '') {
-                        isValid = false;
-                        txtmarksmax2.style.border = '1px solid red';
-                    } else {
-                        txtmarksmax2.style.border = '';
-                    }
-                    if (txtprcntg2.value.trim() === '') {
-                        isValid = false;
-                        txtprcntg2.style.border = '1px solid red';
-                    } else {
-                        txtprcntg2.style.border = '';
-                    }
-
-                    if (txtExperienceEmployer.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceEmployer.style.border = '1px solid red';
-                    } else {
-                        txtExperienceEmployer.style.border = '';
-                    }
-                    if (txtPostDescription.value.trim() === '') {
-                        isValid = false;
-                        txtPostDescription.style.border = '1px solid red';
-                    } else {
-                        txtPostDescription.style.border = '';
-                    }
-                    if (txtExperienceFrom.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceFrom.style.border = '1px solid red';
-                    } else {
-                        txtExperienceFrom.style.border = '';
-                    }
-                    if (txtExperienceTo.value.trim() === '') {
-                        isValid = false;
-                        txtExperienceTo.style.border = '1px solid red';
-                    } else {
-                        txtExperienceTo.style.border = '';
-                    }
-                    //if (txtExperienceEmployer1.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceEmployer1.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceEmployer1.style.border = '';
-                    //}
-                    //if (txtPostDescription1.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtPostDescription1.style.border = '1px solid red';
-                    //} else {
-                    //    txtPostDescription1.style.border = '';
-                    //}
-                    //if (txtExperienceFrom1.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceFrom1.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceFrom1.style.border = '';
-                    //}
-                    //if (txtExperienceTo1.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceTo1.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceTo1.style.border = '';
-                    //}
-                    //if (txtExperienceEmployer2.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceEmployer2.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceEmployer2.style.border = '';
-                    //}
-                    //if (txtPostDescription2.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtPostDescription2.style.border = '1px solid red';
-                    //} else {
-                    //    txtPostDescription2.style.border = '';
-                    //}
-                    //if (txtExperienceFrom2.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceFrom2.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceFrom2.style.border = '';
-                    //}
-                    //if (txtExperienceTo2.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceTo2.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceTo2.style.border = '';
-                    //}
-                    //if (txtExperienceEmployer3.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceEmployer3.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceEmployer3.style.border = '';
-                    //}
-                    //if (txtPostDescription3.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtPostDescription3.style.border = '1px solid red';
-                    //} else {
-                    //    txtPostDescription3.style.border = '';
-                    //}
-                    //if (txtExperienceFrom3.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceFrom3.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceFrom3.style.border = '';
-                    //}
-                    //if (txtExperienceTo3.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceTo3.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceTo3.style.border = '';
-                    //}
-                    //if (txtExperienceEmployer4.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceEmployer4.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceEmployer4.style.border = '';
-                    //}
-                    //if (txtPostDescription4.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtPostDescription4.style.border = '1px solid red';
-                    //} else {
-                    //    txtPostDescription4.style.border = '';
-                    //}
-                    //if (txtExperienceFrom4.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceFrom4.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceFrom4.style.border = '';
-                    //}
-                    //if (txtExperienceTo4.value.trim() === '') {
-                    //    isValid = false;
-                    //    txtExperienceTo4.style.border = '1px solid red';
-                    //} else {
-                    //    txtExperienceTo4.style.border = '';
-                    //}
-
-                    if (DdlDegree.style.visibility != "hidden") {
-                        var ddlQualification2 = document.getElementById('ddlQualification2');
-                        var txtUniversity3 = document.getElementById('txtUniversity3');
-                        var txtPassingyear3 = document.getElementById('txtPassingyear3');
-                        var txtmarksObtained3 = document.getElementById('txtmarksObtained3');
-                        var txtprcntg3 = document.getElementById('txtprcntg3');
-                        var txtmarksmax3 = document.getElementById('txtmarksmax3');
-                        if (ddlQualification2.value === '0') { // Assuming '0' is the default value for "Select"
-                            isValid = false;
-                            ddlQualification2.style.border = '1px solid red';
-                        } else {
-                            ddlQualification2.style.border = ''; // Reset border if valid
-                        }
-
-                        if (txtUniversity3.value.trim() === '') {
-                            isValid = false;
-                            txtUniversity3.style.border = '1px solid red';
-                        } else {
-                            txtUniversity3.style.border = '';
-                        }
-
-
-                        if (txtPassingyear3.value.trim() === '') {
-                            isValid = false;
-                            txtPassingyear3.style.border = '1px solid red';
-                        } else {
-                            txtPassingyear3.style.border = '';
-                        }
-
-
-                        if (txtmarksObtained3.value.trim() === '') {
-                            isValid = false;
-                            txtmarksObtained3.style.border = '1px solid red';
-                        } else {
-                            txtmarksObtained3.style.border = '';
-                        }
-
-                        if (txtmarksmax3.value.trim() === '') {
-                            isValid = false;
-                            txtmarksmax3.style.border = '1px solid red';
-                        } else {
-                            txtmarksmax3.style.border = '';
-                        }
-
-                        if (txtprcntg3.value.trim() === '') {
-                            isValid = false;
-                            txtprcntg3.style.border = '1px solid red';
-                        } else {
-                            txtprcntg3.style.border = '';
-                        }
-
-
-                    }
-
-                    if (DdlMasters.style.visibility != "hidden") {
-                        var ddlQualification3 = document.getElementById('ddlQualification3');
-                        var txtUniversity4 = document.getElementById('txtUniversity4');
-                        var txtPassingyear4 = document.getElementById('txtPassingyear4');
-                        var txtmarksObtained4 = document.getElementById('txtmarksObtained4');
-                        var txtprcntg4 = document.getElementById('txtprcntg4');
-                        var txtmarksmax4 = document.getElementById('txtmarksmax4');
-                        if (ddlQualification3.value === '0') { // Assuming '0' is the default value for "Select"
-                            isValid = false;
-                            ddlQualification3.style.border = '1px solid red';
-                        } else {
-                            ddlQualification3.style.border = ''; // Reset border if valid
-                        }
-
-                        if (txtUniversity4.value.trim() === '') {
-                            isValid = false;
-                            txtUniversity4.style.border = '1px solid red';
-                        } else {
-                            txtUniversity4.style.border = '';
-                        }
-
-
-                        if (txtPassingyear4.value.trim() === '') {
-                            isValid = false;
-                            txtPassingyear4.style.border = '1px solid red';
-                        } else {
-                            txtPassingyear4.style.border = '';
-                        }
-
-
-                        if (txtmarksObtained4.value.trim() === '') {
-                            isValid = false;
-                            txtmarksObtained4.style.border = '1px solid red';
-                        } else {
-                            txtmarksObtained4.style.border = '';
-                        }
-
-                        if (txtmarksmax4.value.trim() === '') {
-                            isValid = false;
-                            txtmarksmax4.style.border = '1px solid red';
-                        } else {
-                            txtmarksmax4.style.border = '';
-                        }
-
-                        if (txtprcntg4.value.trim() === '') {
-                            isValid = false;
-                            txtprcntg4.style.border = '1px solid red';
-                        } else {
-                            txtprcntg4.style.border = '';
-                        }
-
-
-                    }
-
-                    if (competency.style.visibility != "hidden") {
-                        var txtCategory = document.getElementById('txtCategory');
-                        var txtPermitNo = document.getElementById('txtPermitNo');
-                        var txtIssuingAuthority = document.getElementById('txtIssuingAuthority');
-                        var txtIssuingDate = document.getElementById('txtIssuingDate');
-                        var txtExpiryDate = document.getElementById('txtExpiryDate');
-                        if (txtCategory.value.trim() === '') {
-                            isValid = false;
-                            txtCategory.style.border = '1px solid red';
-                        } else {
-                            txtCategory.style.border = '';
-                        }
-                        if (txtPermitNo.value.trim() === '') {
-                            isValid = false;
-                            txtPermitNo.style.border = '1px solid red';
-                        } else {
-                            txtPermitNo.style.border = '';
-                        }
-                        if (txtIssuingAuthority.value.trim() === '') {
-                            isValid = false;
-                            txtIssuingAuthority.style.border = '1px solid red';
-                        } else {
-                            txtIssuingAuthority.style.border = '';
-                        }
-                        if (txtIssuingDate.value.trim() === '') {
-                            isValid = false;
-                            txtIssuingDate.style.border = '1px solid red';
-                        } else {
-                            txtIssuingDate.style.border = '';
-                        }
-                        if (txtExpiryDate.value.trim() === '') {
-                            isValid = false;
-                            txtExpiryDate.style.border = '1px solid red';
-                        } else {
-                            txtExpiryDate.style.border = '';
-                        }
-                    }
-
-                    if (PermanentEmployee.style.visibility != "hidden") {
-                        var txtPermanentEmployerName = document.getElementById('txtPermanentEmployerName');
-                        var txtPermanentDescription = document.getElementById('txtPermanentDescription');
-                        var txtPermanentFrom = document.getElementById('txtPermanentFrom');
-                        var txtPermanentTo = document.getElementById('txtPermanentTo');
-
-                        if (txtPermanentEmployerName.value.trim() === '') {
-                            isValid = false;
-                            txtPermanentEmployerName.style.border = '1px solid red';
-                        } else {
-                            txtPermanentEmployerName.style.border = '';
-                        }
-                        if (txtPermanentDescription.value.trim() === '') {
-                            isValid = false;
-                            txtPermanentDescription.style.border = '1px solid red';
-                        } else {
-                            txtPermanentDescription.style.border = '';
-                        }
-                        if (txtPermanentFrom.value.trim() === '') {
-                            isValid = false;
-                            txtPermanentFrom.style.border = '1px solid red';
-                        } else {
-                            txtPermanentFrom.style.border = '';
-                        }
-                        if (txtPermanentTo.value.trim() === '') {
-                            isValid = false;
-                            txtPermanentTo.style.border = '1px solid red';
-                        } else {
-                            txtPermanentTo.style.border = '';
-                        }
+                    // Permanent Employee Section
+                    var PermanentEmployee = document.getElementById('PermanentEmployee');
+                    if (PermanentEmployee && PermanentEmployee.style.visibility !== 'hidden') {
+                        validateField(document.getElementById('txtPermanentEmployerName'), 'Employer Name');
+                        validateField(document.getElementById('txtPermanentDescription'), 'Description');
+                        validateField(document.getElementById('txtPermanentFrom'), 'From');
+                        validateField(document.getElementById('txtPermanentTo'), 'To');
                     }
 
                     if (!isValid) {
                         alert('Please fill in all the required fields.');
                     }
-                    window.validationResult = isValid;
                     return isValid;
                 }
-            </script>
+  </script>
         </div>
     </form>
 </body>
