@@ -15,7 +15,25 @@ namespace CEIHaryana.UserPages
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (!IsPostBack)
+                {
+                    if (Session["ContractorID"] != null)
+                    {
 
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+            }
+            catch 
+            {
+                Response.Redirect("/Login.aspx");
+            }
         }
 
         protected void btnNext_Click(object sender, EventArgs e)

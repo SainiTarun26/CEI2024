@@ -23,6 +23,10 @@ namespace CEIHaryana.Supervisor
                     {
                         getWorkIntimationData();
                     }
+                    else
+                    {
+
+                    }
                 }
             }
             catch { }

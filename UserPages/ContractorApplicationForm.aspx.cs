@@ -25,12 +25,21 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    ddlLoadBindState();
-                    //PartnersModalDirectorData();
+                    if (Session["ContractorID"] != null)
+                    {
+                        ddlLoadBindState();
+                        //PartnersModalDirectorData();
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
             catch
-            { }
+            {
+                Response.Redirect("/Login.aspx");
+            }
 
         }
 

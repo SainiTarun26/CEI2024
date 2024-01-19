@@ -18,12 +18,23 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    ddlLoadBindApplicantState();
-                    ddlLoadBindAgentState();
-                    ddlLoadBindLiftState();
+                    if (Session["LiftId"] != null) 
+                    {
+
+                        ddlLoadBindApplicantState();
+                        ddlLoadBindAgentState();
+                        ddlLoadBindLiftState();
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
-            catch { }
+            catch 
+            {
+                Response.Redirect("/Login.aspx");
+            }
         }
 
         private void ddlLoadBindApplicantState()

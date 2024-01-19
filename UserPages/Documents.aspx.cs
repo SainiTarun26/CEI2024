@@ -12,29 +12,43 @@ namespace CEIHaryana.UserPages
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Session["CandidateAge"] != null)
+                if (!IsPostBack)
                 {
-                    int candidateAge = (int)Session["CandidateAge"];
-                    string radioButtonSelection = Session["RadioButtonSelection"].ToString();
-                    if (candidateAge > 55)
+                    if (Session["SupervisorID"] != null || Session["WiremanId"] != null)
                     {
-                        Medicalfitness.Visible = true;
+                        if (Session["CandidateAge"] != null)
+                        {
+                            int candidateAge = (int)Session["CandidateAge"];
+                            string radioButtonSelection = Session["RadioButtonSelection"].ToString();
+                            if (candidateAge > 55)
+                            {
+                                Medicalfitness.Visible = true;
+                            }
+                            else if (radioButtonSelection == "Yes")
+                            {
+                                Retired.Visible = true;
+
+                            }
+
+
+                        }
+
+                        Medicalfitness.Visible = false;
+                        Retired.Visible = false;
                     }
-                    else if (radioButtonSelection == "Yes")
+                    else
                     {
-                        Retired.Visible = true;
 
                     }
 
 
                 }
-
-                Medicalfitness.Visible = false;
-                Retired.Visible = false;
-
-
+            }
+            catch 
+            {
+                Response.Redirect("/Login.aspx");
             }
 
 

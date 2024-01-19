@@ -16,37 +16,49 @@ namespace CEIHaryana.UserPages
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
+            try
             {
-                if (Session["InsertedCategory"] != null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
+                if (!IsPostBack)
                 {
-                    InsertedCategory = Session["InsertedCategory"].ToString();
-                    if (InsertedCategory == "Wireman")
+                    if (Session["SupervisorID"] != null || Session["WiremanId"] != null)
                     {
-                        //ddlQualification2.Attributes.Add("disabled", "disabled");
-                        DdlDegree.Visible = false;
-                        DdlMasters.Visible = false;
+                        if (Session["InsertedCategory"] != null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
+                        {
+                            InsertedCategory = Session["InsertedCategory"].ToString();
+                            if (InsertedCategory == "Wireman")
+                            {
+                                //ddlQualification2.Attributes.Add("disabled", "disabled");
+                                DdlDegree.Visible = false;
+                                DdlMasters.Visible = false;
 
+                            }
+                            else if (InsertedCategory == "Supervisor")
+                            {
+                                DdlDegree.Visible = true;
+                                //DdlMasters.Visible = true;
+                                //ddlQualification2.Attributes.Remove("disabled");
+                            }
+
+                        }
+                        if (Session["Back"] != null && !string.IsNullOrEmpty(Session["Back"].ToString()))
+                        {
+                            GetUserQualification();
+                        }
+                        else if (Session["Back"] == null)
+                        {
+
+
+                        }
                     }
-                    else if (InsertedCategory == "Supervisor")
+                    else
                     {
-                        DdlDegree.Visible = true;
-                        //DdlMasters.Visible = true;
-                        //ddlQualification2.Attributes.Remove("disabled");
+                      
                     }
-
                 }
-                if (Session["Back"] != null && !string.IsNullOrEmpty(Session["Back"].ToString()))
-                {
-                    GetUserQualification();
-                }
-                else if (Session["Back"] == null)
-                {
-
-
-                }
-
+            }
+            catch 
+            {
+                Response.Redirect("/Login.aspx");
             }
 
         }
@@ -279,47 +291,58 @@ namespace CEIHaryana.UserPages
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            if (Session["WiremanId"] != null)
+            try
             {
-                REID = Session["WiremanId"].ToString();
+                if (Session["WiremanId"] != null)
+                {
+                    REID = Session["WiremanId"].ToString();
+                }
+                else
+                {
+                    REID = Session["SupervisorID"].ToString();
+                }
+                hdnId.Value = REID;
+                QualificationValidations();
+                CheckExperience();
+                //validations();
+
+
+                ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+
+                string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+
+                bool isValidBoolean;
+                bool result;
+
+                // Check if the string is a valid boolean representation
+                if (!bool.TryParse(validationResult, out isValidBoolean))
+                {
+
+                    CEI.InsertnewUseQualification(REID, txtUniversity.Text, txtPassingyear.Text, txtmarksObtained.Text, txtmarksmax.Text, txtprcntg.Text,
+                      ddlQualification.SelectedItem.ToString(), txtUniversity1.Text, txtPassingyear1.Text, txtmarksObtained1.Text, txtmarksmax1.Text, txtprcntg1.Text,
+                      ddlQualification1.SelectedItem.ToString(), txtUniversity2.Text, txtPassingyear2.Text, txtmarksObtained2.Text, txtmarksmax2.Text, txtprcntg2.Text,
+                      ddlQualification2.SelectedItem.ToString(), txtUniversity3.Text, txtPassingyear3.Text, txtmarksObtained3.Text, txtmarksmax3.Text, txtprcntg3.Text,
+                      ddlQualification3.SelectedItem.ToString(), txtUniversity4.Text, txtPassingyear4.Text, txtmarksObtained4.Text, txtmarksmax4.Text, txtprcntg4.Text,
+                      RadioButtonList2.SelectedItem.ToString(), txtCategory.Text, txtPermitNo.Text, txtIssuingAuthority.Text, txtIssuingDate.Text, txtExpiryDate.Text,
+                      RadioButtonList3.SelectedItem.ToString(), txtPermanentEmployerName.Text, txtPermanentDescription.Text, txtPermanentFrom.Text, txtPermanentTo.Text,
+                     // ddlExperience.SelectedItem.ToString(),ddlTrainingUnder.SelectedItem.ToString(),txtEmployerName1.Text, txtDescription1.Text, txtFrom1.Text, txtTo1.Text, 
+                     ddlExperiene.SelectedItem.ToString(), ddlTraningUnder.SelectedItem.ToString(), txtExperienceEmployer.Text, txtPostDescription.Text, txtExperienceFrom.Text, txtExperienceTo.Text,
+                     ddlExperience1.SelectedItem.ToString(), ddlTrainingUnder1.SelectedItem.ToString(), txtExperienceEmployer1.Text, txtPostDescription1.Text, txtExperienceFrom1.Text, txtExperienceTo1.Text,
+                     ddlExperience2.SelectedItem.ToString(), ddlTrainingUnder2.SelectedItem.ToString(), txtExperienceEmployer2.Text, txtPostDescription2.Text, txtExperienceFrom2.Text, txtExperienceTo2.Text,
+                     ddlExperience3.SelectedItem.ToString(), ddlTrainingUnder3.SelectedItem.ToString(), txtExperienceEmployer3.Text, txtPostDescription3.Text, txtExperienceFrom3.Text, txtExperienceTo3.Text,
+                     ddlExperience4.SelectedItem.ToString(), ddlTrainingUnder4.SelectedItem.ToString(), txtExperienceEmployer4.Text, txtPostDescription3.Text, txtExperienceFrom4.Text, txtExperienceTo4.Text,
+                     txtTotalExperience.Text, RadioButtonList1.SelectedItem.ToString()
+                     );
+
+                    Session["Back"] = txtUniversity.Text;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
+                    showAlert = true;
+                    Response.Redirect("/UserPages/Documents.aspx", false);
+                }
             }
-            else
-            {
-                REID = Session["SupervisorID"].ToString();
-            }
-            hdnId.Value = REID;
-            QualificationValidations();
-            CheckExperience();
-            //validations();
-
-            
-            ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
-
-            string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
-
-            if (Convert.ToBoolean(validationResult))
+            catch
             {
 
-                CEI.InsertnewUseQualification(REID, txtUniversity.Text, txtPassingyear.Text, txtmarksObtained.Text, txtmarksmax.Text, txtprcntg.Text,
-                  ddlQualification.SelectedItem.ToString(), txtUniversity1.Text, txtPassingyear1.Text, txtmarksObtained1.Text, txtmarksmax1.Text, txtprcntg1.Text,
-                  ddlQualification1.SelectedItem.ToString(), txtUniversity2.Text, txtPassingyear2.Text, txtmarksObtained2.Text, txtmarksmax2.Text, txtprcntg2.Text,
-                  ddlQualification2.SelectedItem.ToString(), txtUniversity3.Text, txtPassingyear3.Text, txtmarksObtained3.Text, txtmarksmax3.Text, txtprcntg3.Text,
-                  ddlQualification3.SelectedItem.ToString(), txtUniversity4.Text, txtPassingyear4.Text, txtmarksObtained4.Text, txtmarksmax4.Text, txtprcntg4.Text,
-                  RadioButtonList2.SelectedItem.ToString(), txtCategory.Text, txtPermitNo.Text, txtIssuingAuthority.Text, txtIssuingDate.Text, txtExpiryDate.Text,
-                  RadioButtonList3.SelectedItem.ToString(), txtPermanentEmployerName.Text, txtPermanentDescription.Text, txtPermanentFrom.Text, txtPermanentTo.Text,
-                 // ddlExperience.SelectedItem.ToString(),ddlTrainingUnder.SelectedItem.ToString(),txtEmployerName1.Text, txtDescription1.Text, txtFrom1.Text, txtTo1.Text, 
-                 ddlExperiene.SelectedItem.ToString(), ddlTraningUnder.SelectedItem.ToString(), txtExperienceEmployer.Text, txtPostDescription.Text, txtExperienceFrom.Text, txtExperienceTo.Text,
-                 ddlExperience1.SelectedItem.ToString(), ddlTrainingUnder1.SelectedItem.ToString(), txtExperienceEmployer1.Text, txtPostDescription1.Text, txtExperienceFrom1.Text, txtExperienceTo1.Text,
-                 ddlExperience2.SelectedItem.ToString(), ddlTrainingUnder2.SelectedItem.ToString(), txtExperienceEmployer2.Text, txtPostDescription2.Text, txtExperienceFrom2.Text, txtExperienceTo2.Text,
-                 ddlExperience3.SelectedItem.ToString(), ddlTrainingUnder3.SelectedItem.ToString(), txtExperienceEmployer3.Text, txtPostDescription3.Text, txtExperienceFrom3.Text, txtExperienceTo3.Text,
-                 ddlExperience4.SelectedItem.ToString(), ddlTrainingUnder4.SelectedItem.ToString(), txtExperienceEmployer4.Text, txtPostDescription3.Text, txtExperienceFrom4.Text, txtExperienceTo4.Text,
-                 txtTotalExperience.Text, RadioButtonList1.SelectedItem.ToString()
-                 );
-
-                Session["Back"] = txtUniversity.Text;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
-                showAlert = true;
-                Response.Redirect("/UserPages/Documents.aspx", false);
             }
         }
 
@@ -352,45 +375,50 @@ namespace CEIHaryana.UserPages
         }
         protected void txtTo1_TextChanged(object sender, EventArgs e)
         {
-
-            // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
-            bool isExperienceVisible = true;
-
-            TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtExperienceFrom, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtExperienceFrom };
-            TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtExperienceTo, txtExperienceTo2, txtExperienceTo3, txtExperienceTo4 } : new TextBox[] { txtExperienceTo };
-
-            int totalYears = 0, totalMonths = 0, totalDays = 0;
-
-            for (int i = 0; i < fromArray.Length; i++)
+            try
             {
-                // Check if the TextBox controls are visible
-                if (fromArray[i].Visible && toArray[i].Visible)
-                {
-                    DateTime fromDate, toDate;
 
-                    // Use a try-catch block to handle parsing errors
-                    try
+                // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
+                bool isExperienceVisible = true;
+
+                TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtExperienceFrom, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtExperienceFrom };
+                TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtExperienceTo, txtExperienceTo2, txtExperienceTo3, txtExperienceTo4 } : new TextBox[] { txtExperienceTo };
+
+                int totalYears = 0, totalMonths = 0, totalDays = 0;
+
+                for (int i = 0; i < fromArray.Length; i++)
+                {
+                    // Check if the TextBox controls are visible
+                    if (fromArray[i].Visible && toArray[i].Visible)
                     {
-                        // Parse the 'From' and 'To' values
-                        if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
+                        DateTime fromDate, toDate;
+
+                        try
                         {
-                            // Calculate the difference in years, months, and days
-                            TimeSpan difference = toDate - fromDate;
-                            totalYears += difference.Days / 365;
-                            totalMonths += (difference.Days % 365) / 30;
-                            totalDays += difference.Days % 30;
+                            // Parse the 'From' and 'To' values
+                            if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
+                            {
+                                // Calculate the difference in years, months, and days
+                                TimeSpan difference = toDate - fromDate;
+                                totalYears += difference.Days / 365;
+                                totalMonths += (difference.Days % 365) / 30;
+                                totalDays += difference.Days % 30;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle parsing errors (e.g., invalid date format)
+                            // You can log the error or take appropriate action based on your needs
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        // Handle parsing errors (e.g., invalid date format)
-                        // You can log the error or take appropriate action based on your needs
-                    }
                 }
-            }
 
-            // Display the calculated values in another TextBox
-            txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
+                // Display the calculated values in another TextBox
+                txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
+            }
+            catch 
+            { 
+            }
         }
         protected void RadioButtonList3_SelectedIndexChanged(object sender, EventArgs e)
         {

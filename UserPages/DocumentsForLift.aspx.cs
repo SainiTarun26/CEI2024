@@ -16,14 +16,28 @@ namespace CEIHaryana.UserPages
         bool showAlert = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["LiftId"] != null)
+                {
 
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+                Response.Redirect("/Login.aspx");
+            }
         }
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
-                REID = "1234";
+                REID = Session["LiftId"].ToString();
                 string FileName = string.Empty;
                 string flpPhotourl = string.Empty;
                 string flpPhotourl1 = string.Empty;
