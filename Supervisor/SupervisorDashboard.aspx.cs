@@ -13,14 +13,23 @@ namespace CEIHaryana.Supervisor
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try { 
-            if (!IsPostBack)
+            try
             {
+                if (!IsPostBack)
+                {
+                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
+                    {
 
-                GetDetails();
+                        GetDetails();
+                    }
+                    else
+                    {
+                        Response.Redirect("/Login.aspx");
+                    }
+                }
             }
-         }
-            catch {
+            catch
+            {
                 Response.Redirect("/Login.aspx");
             }
         }

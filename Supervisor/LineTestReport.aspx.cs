@@ -25,41 +25,50 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
-                if (!IsPostBack)
+                if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
                 {
-                    // GetHistoryDataById();
-                    ddlLoadBindVoltage();
-                    ddlEarthing();
-                    Insulation440vAbove.Visible = false;
-                    Insulation220vAbove.Visible = false;
-                    // BtnBack.Visible = false;
-                    if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+
+                    if (!IsPostBack)
                     {
                         // GetHistoryDataById();
-                    }
-                    else
-                    {
-                        LineId = Session["ValueId"].ToString().Trim();
-                        GetHistoryDataById();
-                    }
-                    if (Convert.ToString(Session["Approval"]) == "Reject")
-                    {
-                        LineId = Session["LineID"].ToString().Trim();
-                        Session["Application"] = Session["ApplicationForTestReport"].ToString().Trim();
-                        Session["Typs"] = Session["TypeOf"].ToString().Trim();
-                        Session["Intimations"] = Session["ID"].ToString().Trim();
-                        Session["IHID"] = Session["IHIDs"].ToString().Trim();
-                        Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();
-                        //  BtnBack.Visible = true;
-                        GetHistoryDataById();
+                        ddlLoadBindVoltage();
+                        ddlEarthing();
+                        Insulation440vAbove.Visible = false;
+                        Insulation220vAbove.Visible = false;
+                        // BtnBack.Visible = false;
+                        if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                        {
+                            // GetHistoryDataById();
+                        }
+                        else
+                        {
+                            LineId = Session["ValueId"].ToString().Trim();
+                            GetHistoryDataById();
+                        }
+                        if (Convert.ToString(Session["Approval"]) == "Reject")
+                        {
+                            LineId = Session["LineID"].ToString().Trim();
+                            Session["Application"] = Session["ApplicationForTestReport"].ToString().Trim();
+                            Session["Typs"] = Session["TypeOf"].ToString().Trim();
+                            Session["Intimations"] = Session["ID"].ToString().Trim();
+                            Session["IHID"] = Session["IHIDs"].ToString().Trim();
+                            Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();
+                            //  BtnBack.Visible = true;
+                            GetHistoryDataById();
 
-                    }
+                        }
 
-                    txtapplication.Text = Session["Application"].ToString().Trim();
-                    txtInstallation.Text = Session["Typs"].ToString().Trim();
-                    txtid.Text = Session["Intimations"].ToString().Trim();
-                    txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
-                    BtnBack.Visible = true;
+                        txtapplication.Text = Session["Application"].ToString().Trim();
+                        txtInstallation.Text = Session["Typs"].ToString().Trim();
+                        txtid.Text = Session["Intimations"].ToString().Trim();
+                        txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
+                        BtnBack.Visible = true;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("/Login.aspx");
+
                 }
             }
             catch

@@ -862,7 +862,6 @@
                                                                         <asp:RequiredFieldValidator Class="validation" ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUniversity"
                                                                             ErrorMessage="Please Add Your 10th Board Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
 
-
                                                                     </td>
                                                                     <td>
 
@@ -1248,7 +1247,7 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtExperienceFrom"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
@@ -1295,7 +1294,7 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtExperienceFrom1"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
@@ -1341,7 +1340,7 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExperienceFrom2"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
@@ -1387,7 +1386,7 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator183" runat="server" ControlToValidate="txtExperienceFrom3"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
@@ -1433,7 +1432,7 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator224" runat="server" ControlToValidate="txtExperienceFrom4"
                                                                             ErrorMessage="Please Add Experience Date" ValidationGroup="Submit" ForeColor="Red">Please Add Experience Date</asp:RequiredFieldValidator>
                                                                     </td>

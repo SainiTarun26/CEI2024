@@ -24,55 +24,61 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
-
-                if (!IsPostBack)
+                if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
                 {
-                    ddlEarthing();
-                    SessionValue();
-                    PageWorking();
-                    if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                    if (!IsPostBack)
                     {
+                        ddlEarthing();
+                        SessionValue();
+                        PageWorking();
+                        if (Convert.ToString(Session["ValueId"]) == null || Convert.ToString(Session["ValueId"]) == "")
+                        {
 
+                        }
+                        else
+                        {
+                            Generaterset_Id = Session["ValueId"].ToString().Trim();
+                            GetHistoryDataById();
+                        }
+                        if (Convert.ToString(Session["Approval"]) == "Reject")
+                        {
+                            Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
+                            Session["Application"] = Session["ApplicationForTestReport"].ToString().Trim();
+                            Session["Typs"] = Session["TypeOf"].ToString().Trim();
+                            Session["Intimations"] = Session["ID"].ToString().Trim();
+                            Session["IHID"] = Session["IHIDs"].ToString().Trim();
+                            Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();
+                            GetHistoryDataById();
+                            BtnBack.Visible = true;
+                            // BtnSubmitGeneratingSet.Text = "Update";
+
+
+                        }
+                        else
+                        {
+
+                        }
+                        if (Convert.ToString(Session["ContractorID"]) == null || Convert.ToString(Session["ContractorID"]) == "")
+                        {
+
+                        }
+                        else
+                        {
+
+                            BtnBack.Visible = false;
+                            btnVerify.Visible = false;
+                            // BtnSubmitGeneratingSet.Visible = false;
+
+                        }
+                        txtapplication.Text = Session["Application"].ToString().Trim();
+                        txtInstallation.Text = Session["Typs"].ToString().Trim();
+                        txtid.Text = Session["Intimations"].ToString().Trim();
+                        txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
                     }
-                    else
-                    {
-                        Generaterset_Id = Session["ValueId"].ToString().Trim();
-                        GetHistoryDataById();
-                    }
-                    if (Convert.ToString(Session["Approval"]) == "Reject")
-                    {
-                        Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
-                        Session["Application"] = Session["ApplicationForTestReport"].ToString().Trim();
-                        Session["Typs"] = Session["TypeOf"].ToString().Trim();
-                        Session["Intimations"] = Session["ID"].ToString().Trim();
-                        Session["IHID"] = Session["IHIDs"].ToString().Trim();
-                        Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();
-                        GetHistoryDataById();
-                        BtnBack.Visible = true;
-                        // BtnSubmitGeneratingSet.Text = "Update";
-
-
-                    }
-                    else
-                    {
-
-                    }
-                    if (Convert.ToString(Session["ContractorID"]) == null || Convert.ToString(Session["ContractorID"]) == "")
-                    {
-
-                    }
-                    else
-                    {
-
-                        BtnBack.Visible = false;
-                        btnVerify.Visible = false;
-                        // BtnSubmitGeneratingSet.Visible = false;
-
-                    }
-                    txtapplication.Text = Session["Application"].ToString().Trim();
-                    txtInstallation.Text = Session["Typs"].ToString().Trim();
-                    txtid.Text = Session["Intimations"].ToString().Trim();
-                    txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
+                }
+                else
+                {
+                    Response.Redirect("/Login.aspx");
                 }
             }
             catch

@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.ConstrainedExecution;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,7 +21,7 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    if (Session["SupervisorID"] != null || Session["WiremanId"] != null)
+                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null || Session["WiremanId"] != null || Request.Cookies["WiremanId"] != null)
                     {
                         if (Session["InsertedCategory"] != null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
                         {
@@ -75,15 +76,10 @@ namespace CEIHaryana.UserPages
             }
             //hdnId.Value = REID;
 
-            SqlCommand cmd = new SqlCommand("sp_GetUserQualification");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", REID);
-            cmd.Connection = con;
-            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+            DataSet ds = new DataSet();
+            ds = CEI.GetQualificationHistory(REID);
+            if (ds.Tables.Count > 0)
             {
-                DataSet ds = new DataSet();
-                adp.Fill(ds);
                 txtUniversity.Text = ds.Tables[0].Rows[0]["UniversityName10th"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["PassingYear10th"].ToString();
                 txtPassingyear.Text = DateTime.Parse(dp_Id3).ToString("yyyy-MM-dd");
@@ -312,7 +308,7 @@ namespace CEIHaryana.UserPages
                 string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
 
                 bool isValidBoolean;
-                bool result;
+               // bool result;
 
                 // Check if the string is a valid boolean representation
                 if (!bool.TryParse(validationResult, out isValidBoolean))
@@ -398,11 +394,13 @@ namespace CEIHaryana.UserPages
                             // Parse the 'From' and 'To' values
                             if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
                             {
-                                // Calculate the difference in years, months, and days
                                 TimeSpan difference = toDate - fromDate;
-                                totalYears += difference.Days / 365;
-                                totalMonths += (difference.Days % 365) / 30;
-                                totalDays += difference.Days % 30;
+
+                                 totalYears = (int)(difference.TotalDays / 365.25); // 365.25 takes into account leap years
+                                 totalMonths = (int)((difference.TotalDays % 365.25) / 30.44); // 30.44 is the average number of days in a month
+                                 totalDays = (int)(difference.TotalDays % 30.44);
+
+
                             }
                         }
                         catch (Exception ex)

@@ -20,6 +20,10 @@ namespace CEIHaryana.Contractor
                 {
                     GridViewBind();
                 }
+                else
+                {
+
+                }
             }
             catch
             {

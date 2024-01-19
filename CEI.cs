@@ -2233,6 +2233,12 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
 
         #endregion
+
+        public DataSet GetQualificationHistory(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetUserQualification", id);
+
+        }
     }
 }
     

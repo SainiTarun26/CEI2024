@@ -27,6 +27,10 @@ namespace CEIHaryana.Supervisor
                     {
                         getWorkIntimationData();
                     }
+                    else
+                    {
+                        Response.Redirect("/Login.aspx");
+                    }
                 }
             }
             catch 

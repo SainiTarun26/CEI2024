@@ -91,7 +91,6 @@ namespace CEIHaryana
                         Response.Redirect("/Contractor/Work_Intimation.aspx", false);
                     }
 
-
                 }
                 else if (check == 3)
                 {
@@ -328,7 +327,7 @@ namespace CEIHaryana
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //
             }

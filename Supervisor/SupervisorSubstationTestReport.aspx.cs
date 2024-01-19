@@ -18,7 +18,14 @@ namespace CEIHaryana.Supervisor
             {
                 if (!IsPostBack)
                 {
-                    GridViewBind();
+                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
+                    {
+                        GridViewBind();
+                    }
+                    else
+                    {
+                        Response.Redirect("/Login.aspx");
+                    }
                 }
             }
             catch
