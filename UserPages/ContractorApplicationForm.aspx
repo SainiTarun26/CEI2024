@@ -1091,10 +1091,10 @@ select#ddlEmployer2{
                                                                     </div>
                                                                     <div class="col-3" id="Div10" runat="server">
                                                                         <label for="Name">
-                                                                            Date of Issue
+                                                                            Date of Birth
                                                                     <samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtIssueDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtBirthDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
 
                                                                     </div>
                                                                     <div class="col-3" id="Div12" runat="server">
@@ -1123,7 +1123,7 @@ select#ddlEmployer2{
                                                                                 <label id="contractor" runat="server" visible="true">
                                                                                     GST No.<samp style="color: red">* </samp>
                                                                                 </label>
-                                                                                <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" ID="txtGstNumber" MaxLength="10" autocomplete="off" runat="server"> </asp:TextBox>
                                                                                 <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit" ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtGstNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                             </div>
@@ -1720,11 +1720,11 @@ select#ddlEmployer2{
                 Select penalties or punishments<samp style="color: red">* </samp>
             </label>
             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                ID="DropDownList1" runat="server" TabIndex="16">
+                ID="ddlPenalities" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlPenalities_SelectedIndexChanged">
                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                 <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
                 <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="Any court of law." Value="2"></asp:ListItem>
+               <asp:ListItem Text="Any court of law." Value="3"></asp:ListItem>
             </asp:DropDownList>
             <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
             --%>
@@ -1739,7 +1739,7 @@ select#ddlEmployer2{
                 <label id="Label1" runat="server" visible="true">
                    <%-- Selected<samp style="color: red">* </samp>--%>
                 </label>
-                <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                <asp:TextBox class="form-control" ID="txtPenalities" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtAgentName"

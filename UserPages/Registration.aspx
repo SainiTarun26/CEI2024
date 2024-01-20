@@ -37,6 +37,34 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+          ul#profile_drop {
+    margin-left: -86px;
+    width: 120px;
+    border-radius: 8px;
+}
+        span#user {
+    color: white;
+    font-size: 15px;
+}
+                svg.bi.bi-person-circle {
+    color: white;
+}
+                        #header .logo img {
+    max-height: 62px;
+    margin-left: 41px;
+    margin-top: 6px;
+}
+       
+   
+        li#logout {
+            padding-left: 10px !important;
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding-right: 10px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+
+        }
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -390,66 +418,127 @@
             </div>
         </section>
         <!-- ======= Header ======= -->
-        <header id="header" class="d-flex align-items-center"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between">
-                <a href="index.html" class="logo">
-                    <img src="assets/img/haryana.png" alt="" />
-                </a>
-                <h1 class="logo">
-                    <a href="index.html">
-                        <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana
-                        <span>.</span></span>
+                                                 <header id="header" class="d-flex align-items-center"
+    style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+    <div class="container d-flex align-items-center justify-content-between" style="margin-left:-36px;">
+         <a href="index.html" class="logo">
+            <img src="../Assets/Add a heading (1).png" />
+        </a>
+        <%--<h1 class="logo">
+            <a href="index.html">
+                <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
+            </a>
+        </h1>--%>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
+            <ul>
+                <li class="dropdown">
+                    <a href="#">
+                        <span>Home</span>
+                        <i class="bi bi-chevron-down"></i>
                     </a>
-                </h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <nav id="navbar" class="navbar" style="box-shadow: none !important;">
-                    <ul>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Home</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Lift & Esclator</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Licensing</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Inspection</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link scrollto" href="#team">Publication</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Services</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                        </li>
-                        <li>
-                            <a class="nav-link scrollto" href="#contact">Fee Schedule</a>
-                        </li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-                <!-- .navbar -->
-            </div>
-        </header>
+                    <%--<ul>
+                    <li>
+                        <a href="#">About CEI</a>
+                    </li>
+                    <li>
+                        <a href="#">State Licensing Board, Haryana</a>
+                    </li>
+                    <li>
+                        <a href="#">Functions</a>
+                    </li>
+                </ul>--%>
+                </li>
+                <li class="dropdown">
+                    <a href="#">
+                        <span>Lift & Esclator</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <%--<ul>
+                    <li>
+                        <a href="#">Procedure For Registration/
+                        <br>
+                            Inspection Lifts and Esclators
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Checklist for Registration/
+                        <br>
+                            Inspection of Lifts and Esclators
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Forms</a>
+                    </li>
+                </ul>--%>
+
+                </li>
+                <li class="dropdown">
+                    <a href="#">
+                        <span>Licensing</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <%--<ul>
+                    <li>
+                        <a href="#">Procedure/ Condition
+                        <br>
+                            for Various Licences/ Certificates
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Electrical Supervisor Competency
+                        <br />
+                            Certificate(Excemption)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Forms(Licence)</a>
+                    </li>
+                </ul>--%>
+                </li>
+                <li class="dropdown">
+                    <a href="#">
+                        <span>Inspection</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <%--<ul>
+                    <li>
+                        <a href="#">Checklist for Online Service(Inspection)</a>
+                    </li>
+                    <li>
+                        <a href="#">Procedure for Electrical Installation</a>
+                    </li>
+                    <li>
+                        <a href="#">Procedure for Grant of
+                        <br>
+                            approval for Energisation of
+                        <br>
+                            New Electrical Installation
+                        </a>
+                    </li>
+                </ul>--%>
+                </li>
+                <li class="dropdown">
+                    <a href="#">
+                        <span>Services</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <%--<ul>
+                    <li>
+                        <a href="#">Our Services</a>
+                    </li>
+                </ul>--%>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#contact">Contact Us</a>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+    </div>
+
+</header>
         <!-- End Header -->
         <main id="main">
             <section id="about" class="about section-bg" style="padding-top: 20px;">

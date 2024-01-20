@@ -27,6 +27,7 @@ namespace CEIHaryana.UserPages
                 {
                     if (Session["ContractorID"] != null)
                     {
+                        ContractorInformation();
                         ddlLoadBindState();
                         //PartnersModalDirectorData();
                     }
@@ -42,7 +43,29 @@ namespace CEIHaryana.UserPages
             }
 
         }
+        private void ContractorInformation()
+        {
+            try
+            {
 
+                LoginID = Session["ContractorID"].ToString();
+                DataTable ds = new DataTable();
+                ds = CEI.ContractorBasicInformation(LoginID);
+                if (ds.Rows.Count > 0)
+                {
+                    txtContractorName.Text = ds.Rows[0]["Name"].ToString();
+                    txtFatherName.Text = ds.Rows[0]["FatherName"].ToString();
+                    txtBirthDate.Text = ds.Rows[0]["DOB"].ToString();
+                    txtAppliedFor.Text = ds.Rows[0]["ApplicationFor"].ToString();
+                }
+                else
+                {
+
+                }
+
+            }
+            catch { }
+        }
         private void ddlLoadBindState()
         {
             try
@@ -67,6 +90,29 @@ namespace CEIHaryana.UserPages
             {
                 ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", "$('#myModal').modal('show');", true);
+            }
+            catch { }
+
+        }
+        protected void ddlPenalities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlPenalities.SelectedValue != "0")
+                {
+                    string selectedValue = ddlPenalities.SelectedValue;
+                    ListItem itemToRemove = ddlPenalities.Items.FindByValue(selectedValue);
+                    if (itemToRemove != null)
+                    {
+                        ddlPenalities.Items.Remove(itemToRemove);
+                    }
+                    ddlPenalities.SelectedValue = "0";
+                }
+                else
+                {
+
+                }
+
             }
             catch { }
 
