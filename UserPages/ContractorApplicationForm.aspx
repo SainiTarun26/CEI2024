@@ -1095,10 +1095,10 @@ select#ddlEmployer2{
                                                                     </div>
                                                                     <div class="col-3" id="Div10" runat="server">
                                                                         <label for="Name">
-                                                                            Date of Issue
+                                                                            Date of Birth
                                                                     <samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtIssueDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtBirthDate" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
 
                                                                     </div>
                                                                     <div class="col-3" id="Div12" runat="server">
