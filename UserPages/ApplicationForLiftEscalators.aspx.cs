@@ -194,18 +194,22 @@ namespace CEIHaryana.UserPages
 
 
                 string userId = Session["LiftID"].ToString();
-
-                CEI.InsertListAndEscalators(userId, ddlApplicantType.SelectedItem.ToString(), txtNameOfApplicant.Text.Trim(), txtPhoneNo.Text.Trim(),
-                  txtOfficeAddress.Text.Trim(), ddlApplicantState.SelectedItem.ToString(), ddlapplicantdistrict.SelectedItem.ToString(), txtPinCode.Text.Trim(),
-                  txtAgentName.Text.Trim(), txtAgentContactNo.Text.Trim(), txtAgentAddress.Text.Trim(), ddlAgentState.SelectedValue == "0" ? null : ddlAgentState.SelectedItem.ToString(),
-                  dllAgentdistrict.SelectedValue == "0" ? null : dllAgentdistrict.SelectedItem.ToString(), txtAgentPincode.Text.Trim(), txtOwnerName.Text.Trim(),
-                  txtLiftAddress.Text.Trim(), ddlLiftState.SelectedItem.ToString(), ddlLiftDistrict.SelectedItem.ToString(), txtLiftPincode.Text.Trim(), txtDateOfErection.Text.Trim(),
-                  txtTypeOfLift.Text.Trim(), txtMakerName.Text.Trim(), txtMakerLocalAgent.Text.Trim(), txtMakerAddress.Text.Trim(), txtLiftSpeed.Text.Trim(), txtLiftLoad.Text.Trim(),
-                  txtPersonLoad.Text.Trim(), txtLiftWeight.Text.Trim(), txtCounterWeight.Text.Trim(), txtNumberSuspension.Text.Trim(), txtDiscription.Text.Trim(), txtWeight.Text.Trim(),
-                  txtSize.Text.Trim(), txtPitDepth.Text.Trim(), txtTotalFloors.Text.Trim(), txtConstructionDetails.Text.Trim()
-                    );
+                if (userId != null)
+                {
+                    CEI.InsertListAndEscalators(userId, ddlApplicantType.SelectedItem.ToString(), txtNameOfApplicant.Text.Trim(), txtPhoneNo.Text.Trim(),
+                      txtOfficeAddress.Text.Trim(), ddlApplicantState.SelectedItem.ToString(), ddlapplicantdistrict.SelectedItem.ToString(), txtPinCode.Text.Trim(),
+                      txtAgentName.Text.Trim(), txtAgentContactNo.Text.Trim(), txtAgentAddress.Text.Trim(), ddlAgentState.SelectedValue == "0" ? null : ddlAgentState.SelectedItem.ToString(),
+                      dllAgentdistrict.SelectedValue == "0" ? null : dllAgentdistrict.SelectedItem.ToString(), txtAgentPincode.Text.Trim(), txtOwnerName.Text.Trim(),
+                      txtLiftAddress.Text.Trim(), ddlLiftState.SelectedItem.ToString(), ddlLiftDistrict.SelectedItem.ToString(), txtLiftPincode.Text.Trim(), txtDateOfErection.Text.Trim(),
+                      txtTypeOfLift.Text.Trim(), txtMakerName.Text.Trim(), txtMakerLocalAgent.Text.Trim(), txtMakerAddress.Text.Trim(), txtLiftSpeed.Text.Trim(), txtLiftLoad.Text.Trim(),
+                      txtPersonLoad.Text.Trim(), txtLiftWeight.Text.Trim(), txtCounterWeight.Text.Trim(), txtNumberSuspension.Text.Trim(), txtDiscription.Text.Trim(), txtWeight.Text.Trim(),
+                      txtSize.Text.Trim(), txtPitDepth.Text.Trim(), txtTotalFloors.Text.Trim(), txtConstructionDetails.Text.Trim()
+                        );
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Application for Lift and Escalators added successfully!! ')", true);
+                    Response.Redirect("DocumentsForLift.aspx", false);
+                }
             }
-            catch
+            catch (Exception ex)
             {
 
             }
