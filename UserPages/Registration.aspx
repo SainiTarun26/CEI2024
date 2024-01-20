@@ -632,7 +632,7 @@
                                                                         <asp:ListItem Text="Female" Value="2"></asp:ListItem>
                                                                         <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
                                                                             </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" CssClass="validation_required" Text="Please Select State" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -655,7 +655,7 @@
                                                                             </label>
                                                                             <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPinCode" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" CssClass="validation_required" runat="server" ControlToValidate="txtPinCode"
-                                                                                ErrorMessage="Please Enter Your Pincode" ValidationGroup="Submit" ForeColor="Red">Enter Pincode</asp:RequiredFieldValidator>
+                                                                                ErrorMessage="Please Enter Your Pincode" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -692,7 +692,7 @@
                                                                 <asp:CheckBox ID="CheckBox1" runat="server" Text="&nbsp;&nbsp;Permanent Address" Font-Size="Medium" Font-Bold="True" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" />
                                                                 <asp:TextBox class="form-control" autocomplete="off" ID="txtPermanentAddress" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtPermanentAddress" CssClass="validation_required"
-                                                                    ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Permanent Address</asp:RequiredFieldValidator>
+                                                                    ErrorMessage="" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                             </div>
                                                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                                 <ContentTemplate>
@@ -706,7 +706,7 @@
                                                                                         ID="ddlState" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                     </asp:DropDownList>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select State" CssClass="validation_required" ErrorMessage="Please Select State" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Required" CssClass="validation_required" ErrorMessage="Please Select State" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-4">
@@ -720,7 +720,7 @@
                                                                         <asp:ListItem Text="Female" Value="2"></asp:ListItem>
                                                                         <asp:ListItem Text="Others" Value="3"></asp:ListItem>--%>
                                                                                     </asp:DropDownList>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" Text="Select District" ErrorMessage="Please Select District" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" Text="Required" ErrorMessage="Please Select District" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-4">
@@ -729,7 +729,7 @@
                                                                                     </label>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" MaxLength="6" ID="txtPin" onkeypress="return isNumberKey(event)" Style="padding: 0px 0px 0px 5px; height: 30px;" runat="server"> </asp:TextBox>
                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" CssClass="validation_required" runat="server" ControlToValidate="txtPin"
-                                                                                        ErrorMessage="Please Enter Your Pin" ValidationGroup="Submit" ForeColor="Red">Enter Pincode</asp:RequiredFieldValidator>
+                                                                                        ErrorMessage="Please Enter Your Pin" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                                 </div>
                                                                             </div>
                                                                 </ContentTemplate>
@@ -741,7 +741,7 @@
                                                         <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" runat="server" TabIndex="2" MaxLength="30" onkeyup="return ValidateEmail();" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblError" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" CssClass="validation_required" runat="server" ControlToValidate="txtEmail"
-                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Your Email</asp:RequiredFieldValidator>
+                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                     </div>
 
                                                             <div class="form-group">

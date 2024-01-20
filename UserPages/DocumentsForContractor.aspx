@@ -29,6 +29,15 @@
     <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <style>
+                        ul#profile_drop {
+    margin-left: -86px;
+    width: 120px;
+    border-radius: 8px;
+}
+        span#user {
+    color: white;
+    font-size: 15px;
+}
         .input-group, .asColorPicker-wrap {
             position: relative;
             display: flex;
