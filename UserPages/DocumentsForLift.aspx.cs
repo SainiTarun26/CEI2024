@@ -33,215 +33,239 @@ namespace CEIHaryana.UserPages
             }
         }
 
+
+        public bool IsValidPdforNot()
+        {
+            string[] fileuploadcontrol = { "AnnualInsurancePolicy", "CopyChallanTreasury", "AnnualMaintenanceContract", "SafetyCertificate", "FormA", "FormB", "FormC" };
+
+            bool allFilesArePDF = true;
+            int maxFileSize = 2 * 1024 * 1024;
+
+            foreach (string controlName in fileuploadcontrol)
+            {
+                var fileUploadControl = Request.Files[controlName];
+
+                if (fileUploadControl != null && fileUploadControl.ContentLength > 0)
+                {
+                    string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
+
+                    if (fileExtension.ToLower() != ".pdf" || fileUploadControl.ContentLength > maxFileSize)
+                    {
+                        allFilesArePDF = false;
+                        break;
+                    }
+                }
+            }
+            return allFilesArePDF;
+        }
+
+
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
-                REID = Session["LiftId"].ToString();
-                string FileName = string.Empty;
-                string flpPhotourl = string.Empty;
-                string flpPhotourl1 = string.Empty;
-                string flpPhotourl2 = string.Empty;
-                string flpPhotourl3 = string.Empty;
-                string flpPhotourl4 = string.Empty;
-                string flpPhotourl6 = string.Empty;
-                string flpPhotourl5 = string.Empty;
-
-
-                if (AnnualInsurancePolicy.PostedFile.FileName.Length > 0)
+                if (Convert.ToString(Session["LiftId"]) != null || Convert.ToString(Session["LiftId"]) != "")
                 {
-                    FileName = Path.GetFileName(AnnualInsurancePolicy.PostedFile.FileName);
-                    if (Path.GetExtension(FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+
+                    if (IsValidPdforNot())
                     {
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualInsurancePolicy/")))
+
+                        REID = Session["LiftId"].ToString();
+                        string FileName = string.Empty;
+                        string flpPhotourl = string.Empty;
+                        string flpPhotourl1 = string.Empty;
+                        string flpPhotourl2 = string.Empty;
+                        string flpPhotourl3 = string.Empty;
+                        string flpPhotourl4 = string.Empty;
+                        string flpPhotourl6 = string.Empty;
+                        string flpPhotourl5 = string.Empty;
+
+                        if (AnnualInsurancePolicy.PostedFile.FileName.Length > 0)
                         {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualInsurancePolicy/"));
+                            FileName = Path.GetFileName(AnnualInsurancePolicy.PostedFile.FileName);
+
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualInsurancePolicy/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualInsurancePolicy/"));
+                            }
+                            string ext = AnnualInsurancePolicy.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + REID + "/AnnualInsurancePolicy/";
+                            string filePathInfo2 = "";
+                            string filename = "AnnualInsurancePolicy" + "." + "pdf";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualInsurancePolicy/" + filename);
+                            //string existingFilePath = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualInsurancePolicy/" + filename);
+                            if (File.Exists(filePathInfo2))
+                            {
+                                File.Delete(filePathInfo2); // If the file exists, delete it
+                            }
+                            AnnualInsurancePolicy.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl = path + filename;
+
                         }
-                        string ext = AnnualInsurancePolicy.PostedFile.FileName.Split('.')[1];
-                        string path = "";
-                        path = "/Attachment/" + REID + "/AnnualInsurancePolicy/";
-                        string filePathInfo2 = "";
-                        string filename = "AnnualInsurancePolicy" + DateTime.Now.ToString("yyyyMMddHHmmssFF") + "." + ext;
-                        filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualInsurancePolicy/" + filename);
-                        AnnualInsurancePolicy.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl = path + filename;
+
+                        if (CopyChallanTreasury.PostedFile.FileName.Length > 0)
+                        {
+                            FileName = Path.GetFileName(CopyChallanTreasury.PostedFile.FileName);
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyChallanTreasury/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyChallanTreasury/"));
+                            }
+                            string ext = CopyChallanTreasury.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + REID + "/CopyChallanTreasury/";
+                            string filename = "CopyChallanTreasury" + "." + "pdf";
+                            string filePathInfo2 = "";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyChallanTreasury/" + filename);
+                            if (File.Exists(filePathInfo2))
+                            {
+                                File.Delete(filePathInfo2); // If the file exists, delete it
+                            }
+                            CopyChallanTreasury.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl1 = path + filename;
+                        }
+
+                        if (AnnualMaintenanceContract.PostedFile.FileName.Length > 0)
+                        {
+                            FileName = Path.GetFileName(AnnualMaintenanceContract.PostedFile.FileName);
+
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualMaintenanceContract/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualMaintenanceContract/"));
+                            }
+                            string ext = AnnualMaintenanceContract.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + REID + "/AnnualMaintenanceContract/";
+                            string filename = "AnnualMaintenanceContract" + "." + "pdf";
+                            string filePathInfo2 = "";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualMaintenanceContract/" + filename);
+                            if (File.Exists(filePathInfo2))
+                            {
+                                File.Delete(filePathInfo2); // If the file exists, delete it
+                            }
+                            AnnualMaintenanceContract.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl2 = path + filename;
+                        }
+
+                        if (SafetyCertificate.PostedFile.FileName.Length > 0)
+                        {
+                            FileName = Path.GetFileName(SafetyCertificate.PostedFile.FileName);
+
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/SafetyCertificate/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/SafetyCertificate/"));
+                            }
+
+                            string ext = SafetyCertificate.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + REID + "/SafetyCertificate/";
+                            string filename = "SafetyCertificate" + "." + "pdf";
+                            string filePathInfo2 = "";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/SafetyCertificate/" + filename);
+                            if (File.Exists(filePathInfo2))
+                            {
+                                File.Delete(filePathInfo2); // If the file exists, delete it
+                            }
+                            SafetyCertificate.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl3 = path + filename;
+
+                        }
+
+                        if (FormA.PostedFile.FileName.Length > 0)
+                        {
+                            FileName = Path.GetFileName(FormA.PostedFile.FileName);
+
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormA/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormA/"));
+                            }
+                            string ext = FormA.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + REID + "/FormA/";
+                            string filename = "FormA" + "." + "pdf";
+                            string filePathInfo2 = "";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormA/" + filename);
+                            if (File.Exists(filePathInfo2))
+                            {
+                                File.Delete(filePathInfo2); // If the file exists, delete it
+                            }
+                            FormA.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl4 = path + filename;
+
+                        }
+
+                        if (FormB.PostedFile.FileName.Length > 0)
+                        {
+                            FileName = Path.GetFileName(FormB.PostedFile.FileName);
+
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormB/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormB/"));
+                            }
+                            string ext = FormA.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + REID + "/FormB/";
+                            string filename = "FormB" + "." + "pdf";
+                            string filePathInfo2 = "";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormB/" + filename);
+                            if (File.Exists(filePathInfo2))
+                            {
+                                File.Delete(filePathInfo2); // If the file exists, delete it
+                            }
+                            FormB.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl5 = path + filename;
+                        }
+
+                        if (FormC.PostedFile.FileName.Length > 0)
+                        {
+                            FileName = Path.GetFileName(FormC.PostedFile.FileName);
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormC/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormC/"));
+                            }
+                            string ext = FormA.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + REID + "/FormC/";
+                            string filename = "FormA" + "." + "pdf";
+                            string filePathInfo2 = "";
+                            filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormC/" + filename);
+                            if (File.Exists(filePathInfo2))
+                            {
+                                File.Delete(filePathInfo2); // If the file exists, delete it
+                            }
+                            FormC.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl6 = path + filename;
+                        }
+
+
+
+
+
+
+
+
+
+                        int x = CEI.LiftEsculatorDocument(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, REID);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Documents are Uploaded successfull')", true);
+
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please only Upload pdf formate of AnnualInsurancePolicy')", true);
-                        //showAlert = true;
-                        return;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert(Please select file in pdf formate and size must be less then 2Mb)", true);
+                        Response.Redirect("/Login.aspx");
                     }
                 }
-
-                if (CopyChallanTreasury.PostedFile.FileName.Length > 0)
+                else
                 {
-                    FileName = Path.GetFileName(CopyChallanTreasury.PostedFile.FileName);
-                    if (Path.GetExtension(FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-                    {
-
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyChallanTreasury/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyChallanTreasury/"));
-                        }
-                        string ext = CopyChallanTreasury.PostedFile.FileName.Split('.')[1];
-                        string path = "";
-                        path = "/Attachment/" + REID + "/CopyChallanTreasury/";
-                        string filename = "CopyChallanTreasury" + DateTime.Now.ToString("yyyyMMddHHmmssFF") + "." + ext;
-                        string filePathInfo2 = "";
-                        filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyChallanTreasury/" + filename);
-                        CopyChallanTreasury.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl1 = path + filename;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please upload only pdf formate of ChallanTreasury')", true);
-                        //showAlert = true;
-                        return;
-                    }
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert(Please Login!!!!!!)", true);
                 }
 
-                if (AnnualMaintenanceContract.PostedFile.FileName.Length > 0)
-                {
-                    FileName = Path.GetFileName(AnnualMaintenanceContract.PostedFile.FileName);
-                    if (Path.GetExtension(FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-                    {
-
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualMaintenanceContract/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualMaintenanceContract/"));
-                        }
-                        string ext = AnnualMaintenanceContract.PostedFile.FileName.Split('.')[1];
-                        string path = "";
-                        path = "/Attachment/" + REID + "/AnnualMaintenanceContract/";
-                        string filename = "AnnualMaintenanceContract" + DateTime.Now.ToString("yyyyMMddHHmmssFF") + "." + ext;
-                        string filePathInfo2 = "";
-                        filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnualMaintenanceContract/" + filename);
-                        AnnualMaintenanceContract.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl2 = path + filename;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please upload only pdf formate of AnnualMaintenanceContract')", true);
-                        // showAlert = true;
-                        return;
-                    }
-                }
-
-                if (SafetyCertificate.PostedFile.FileName.Length > 0)
-                {
-                    FileName = Path.GetFileName(SafetyCertificate.PostedFile.FileName);
-                    if (Path.GetExtension(FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/SafetyCertificate/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/SafetyCertificate/"));
-                        }
-
-                        string ext = SafetyCertificate.PostedFile.FileName.Split('.')[1];
-                        string path = "";
-                        path = "/Attachment/" + REID + "/SafetyCertificate/";
-                        string filename = "SafetyCertificate" + DateTime.Now.ToString("yyyyMMddHHmmssFF") + "." + ext;
-                        string filePathInfo2 = "";
-                        filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/SafetyCertificate/" + filename);
-                        SafetyCertificate.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl3 = path + filePathInfo2;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please upload only pdf formate of SafetyCertificate')", true);
-                        //showAlert = true;
-                        return;
-                    }
-
-                }
-
-                if (FormA.PostedFile.FileName.Length > 0)
-                {
-                    FileName = Path.GetFileName(FormA.PostedFile.FileName);
-                    if (Path.GetExtension(FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormA/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormA/"));
-                        }
-                        string ext = FormA.PostedFile.FileName.Split('.')[1];
-                        string path = "";
-                        path = "/Attachment/" + REID + "/FormA/";
-                        string filename = "FormA" + DateTime.Now.ToString("yyyyMMddHHmmssFF") + "." + ext;
-                        string filePathInfo2 = "";
-                        filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormA/" + filename);
-                        FormA.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl4 = path + filePathInfo2;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please Upload only pdf formate of FormA')", true);
-                        //showAlert = true;
-                        return;
-                    }
-                }
-
-                if (FormB.PostedFile.FileName.Length > 0)
-                {
-                    FileName = Path.GetFileName(FormB.PostedFile.FileName);
-                    if (Path.GetExtension(FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormB/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormB/"));
-                        }
-                        string ext = FormA.PostedFile.FileName.Split('.')[1];
-                        string path = "";
-                        path = "/Attachment/" + REID + "/FormB/";
-                        string filename = "FormB" + DateTime.Now.ToString("yyyyMMddHHmmssFF") + "." + ext;
-                        string filePathInfo2 = "";
-                        filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormB/" + filename);
-                        FormB.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl5 = path + filePathInfo2;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Showlert", "alert('Please upload only pdf formate of FormB')", true);
-                        //showAlert = true;
-                        return;
-                    }
-                }
-
-                if (FormC.PostedFile.FileName.Length > 0)
-                {
-                    FileName = Path.GetFileName(FormC.PostedFile.FileName);
-                    if (Path.GetExtension(FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
-                    {
-
-
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormC/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormC/"));
-                        }
-                        string ext = FormA.PostedFile.FileName.Split('.')[1];
-                        string path = "";
-                        path = "/Attachment/" + REID + "/FormC/";
-                        string filename = "FormA" + DateTime.Now.ToString("yyyyMMddHHmmssFF") + "." + ext;
-                        string filePathInfo2 = "";
-                        filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/FormC/" + filename);
-                        FormC.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl6 = path + filePathInfo2;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please upload only pdf formate of FormC')", true);
-                        //showAlert = true;
-                        return;
-                    }
-                }
-
-                CEI.LiftEsculatorDocument(REID, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Documents are Uploaded successfull')", true);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured, please login again')", true);
+                Response.Redirect("/Login.aspx");
                 throw;
             }
 

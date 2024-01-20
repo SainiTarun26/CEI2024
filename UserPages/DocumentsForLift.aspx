@@ -31,58 +31,27 @@
     <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <style>
-        input#btnchallanTreasury{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+        /* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
-input#btnAnnualMaintenanceContract{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
 }
-input#btnSafetyCertificate{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f9f9f9; 
+  border-radius: 10px;
 }
-input#btnFormA{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white; 
 }
-input#btnFormB{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-input#BtnFormC{
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-                        ul#profile_drop {
-    margin-left: -86px;
-    width: 120px;
-    border-radius: 8px;
-}
-        span#user {
-    color: white;
-    font-size: 15px;
-}
-                svg.bi.bi-person-circle {
-    color: white;
-}
-                        #header .logo img {
-    max-height: 62px;
-    margin-left: -175px;
-    margin-top: 18px;
-}
-       
-   
-        li#logout {
-            padding-left: 10px !important;
-            background: #4B49AC !important;
-            border-radius: 51px !important;
-            padding-right: 10px !important;
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
-        }
-      
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -339,161 +308,66 @@ input#BtnFormC{
                 </div>
             </section>
             <!-- ======= Header ======= -->
-                                        <header id="header" class="d-flex align-items-center"
-    style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-    <div class="container d-flex align-items-center justify-content-between">
-         <a href="index.html" class="logo">
-            <img src="../Assets/Add a heading (1).png" />
-        </a>
-        <%--<h1 class="logo">
-            <a href="index.html">
-                <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
-            </a>
-        </h1>--%>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
-            <ul>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Home</span>
-                        <i class="bi bi-chevron-down"></i>
+            <header id="header" class="d-flex align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a href="index.html" class="logo">
+                        <img src="assets/img/haryana.png" alt="" />
                     </a>
-                    <%--<ul>
-                    <li>
-                        <a href="#">About CEI</a>
-                    </li>
-                    <li>
-                        <a href="#">State Licensing Board, Haryana</a>
-                    </li>
-                    <li>
-                        <a href="#">Functions</a>
-                    </li>
-                </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Lift & Esclator</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
-                    <li>
-                        <a href="#">Procedure For Registration/
-                        <br>
-                            Inspection Lifts and Esclators
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana
+                        <span>.</span></span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#">Checklist for Registration/
-                        <br>
-                            Inspection of Lifts and Esclators
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Forms</a>
-                    </li>
-                </ul>--%>
-
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Licensing</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
-                    <li>
-                        <a href="#">Procedure/ Condition
-                        <br>
-                            for Various Licences/ Certificates
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Electrical Supervisor Competency
-                        <br />
-                            Certificate(Excemption)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Forms(Licence)</a>
-                    </li>
-                </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Inspection</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
-                    <li>
-                        <a href="#">Checklist for Online Service(Inspection)</a>
-                    </li>
-                    <li>
-                        <a href="#">Procedure for Electrical Installation</a>
-                    </li>
-                    <li>
-                        <a href="#">Procedure for Grant of
-                        <br>
-                            approval for Energisation of
-                        <br>
-                            New Electrical Installation
-                        </a>
-                    </li>
-                </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Services</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
-                    <li>
-                        <a href="#">Our Services</a>
-                    </li>
-                </ul>--%>
-                </li>
-                <li>
-                    <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                </li>
-
-                <li class="dropdown" id="logout" style="margin-left: 300px;">
-                    <a href="#">
-                        <span id="user">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                            </svg></span>
-
-                    </a>
-                    <ul id="profile_drop">
-                        <li id="ProfileUser">
-                            <a href="#">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
-                          User       <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                        <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
-                                    </svg>&nbsp;&nbsp;Profile</span>
-
-                            </a>
-                        </li>
-                        <li id="ProfileLogout">
-                            <a href="#">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
-                                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
-                                    </svg>&nbsp;&nbsp;Logout</span>
-
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
-    </div>
-
-</header>
+                    </h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <nav id="navbar" class="navbar" style="box-shadow: none !important;">
+                        <ul>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Home</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Lift & Esclator</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Licensing</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Inspection</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link scrollto" href="#team">Publication</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Services</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link scrollto" href="#contact">Contact Us</a>
+                            </li>
+                            <li>
+                                <a class="nav-link scrollto" href="#contact">Fee Schedule</a>
+                            </li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+                    <!-- .navbar -->
+                </div>
+            </header>
             <!-- End Header -->
             <main id="main">
                 <section id="about" class="about section-bg">
@@ -530,7 +404,7 @@ input#BtnFormC{
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PDF SIZE                                                     20KB TO 50KB)</label>
+                                                                        (PLEASE UPLOAD PHOTO SIZE                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtAnnualInsurancePolicy" runat="server" CssClass="form-control file-upload-info"
@@ -560,7 +434,7 @@ input#BtnFormC{
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PDF SIZE
+                                                                        (PLEASE UPLOAD PHOTO SIZE
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
@@ -589,12 +463,12 @@ input#BtnFormC{
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PDF SIZE
+                                                                        (PLEASE UPLOAD PHOTO SIZE
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtAnnualMaintenanceContract" runat="server" CssClass="form-control file-upload-info"
-                                                                            Enabled="false" placeholder="Upload Anual Maintenance Contract" Style="width: 50%;"></asp:TextBox>
+                                                                            Enabled="false" placeholder="Upload Identity Proof" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
@@ -623,12 +497,12 @@ input#BtnFormC{
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PDF SIZE
+                                                                        (PLEASE UPLOAD PHOTO SIZE
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtSafetyCertificate" runat="server" CssClass="form-control file-upload-info"
-                                                                            Enabled="false" placeholder="Upload Safety Certificate" Style="width: 50%;"></asp:TextBox>
+                                                                            Enabled="false" placeholder="Upload Degree/Diploma" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
@@ -653,12 +527,12 @@ input#BtnFormC{
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PDF SIZE
+                                                                        (PLEASE UPLOAD PHOTO SIZE
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtFormA" runat="server" CssClass="form-control file-upload-info"
-                                                                            Enabled="false" placeholder="Upload Form A." Style="width: 50%;"></asp:TextBox>
+                                                                            Enabled="false" placeholder="Upload Experience Certificate" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
@@ -684,12 +558,12 @@ input#BtnFormC{
                                                                     style="display: none;" />
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PDF SIZE
+                                                                        (PLEASE UPLOAD PHOTO SIZE
                                                     20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtFormB" runat="server" CssClass="form-control file-upload-info"
-                                                                            Enabled="false" placeholder="Upload Form B." Style="width: 50%;"></asp:TextBox>
+                                                                            Enabled="false" placeholder="Upload Signature" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
@@ -715,12 +589,12 @@ input#BtnFormC{
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                        (PLEASE UPLOAD PDF SIZE
+                                                                        (PLEASE UPLOAD PHOTO SIZE
 20KB TO 50KB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtFormC" runat="server" CssClass="form-control file-upload-info"
-                                                                            Enabled="false" placeholder="Upload Form C." Style="width: 50%;"></asp:TextBox>
+                                                                            Enabled="false" placeholder="Upload Candidate Signature" Style="width: 50%;"></asp:TextBox>
 
                                                                         <span class="input-group-append">
 
@@ -931,4 +805,5 @@ border-radius: 5px;">Back</button>--%>
 
 </body>
 </html>
+
 

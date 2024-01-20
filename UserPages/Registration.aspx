@@ -533,7 +533,7 @@
                                                                     </label>
                                                                     <asp:TextBox class="form-control" ID="txtFatherNmae" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFatherNmae"
-                                                                     CssClass="validation_required"    ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="form-group" style="margin-bottom: 0px;">
                                                                     <label for="Aadhaar">Aadhaar Card No.<samp style="color: red">* </samp>
