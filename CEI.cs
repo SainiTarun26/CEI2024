@@ -2207,29 +2207,29 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ContractorDocuments", flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8, flpPhotourl9, flpPhotourl10);
         }
         #region InsertApplicationLift And Esculator Document
-        public void LiftEsculatorDocument(string REID, string flpPhotourl, string flpPhotourl1, string flpPhotourl2, string flpPhotourl3,
-            string flpPhotourl4, string flpPhotourl5, string flpPhotourl6)
-        {
-            SqlCommand cmd = new SqlCommand("Sp_LiftEsculatorDocument");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
-            cmd.Parameters.AddWithValue("@UserId", REID);
-            cmd.Parameters.AddWithValue("@CopyOfAnnualInsurancePolicy", flpPhotourl);
-            cmd.Parameters.AddWithValue("@CopyOfChallanTreasury", flpPhotourl1);
-            cmd.Parameters.AddWithValue("@AnnualMaintenanceContract", flpPhotourl2);
-            cmd.Parameters.AddWithValue("@SaftyCertificate", flpPhotourl3);
-            cmd.Parameters.AddWithValue("@FormA", flpPhotourl4);
-            cmd.Parameters.AddWithValue("@FormB", flpPhotourl5);
-            cmd.Parameters.AddWithValue("@FormC", flpPhotourl6);
-            cmd.ExecuteNonQuery();
-            con.Close();
+        //public void LiftEsculatorDocument(string REID, string flpPhotourl, string flpPhotourl1, string flpPhotourl2, string flpPhotourl3,
+        //    string flpPhotourl4, string flpPhotourl5, string flpPhotourl6)
+        //{
+        //    SqlCommand cmd = new SqlCommand("Sp_LiftEsculatorDocument");
+        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+        //    cmd.Connection = con;
+        //    if (con.State == ConnectionState.Closed)
+        //    {
+        //        con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        //        con.Open();
+        //    }
+        //    cmd.Parameters.AddWithValue("@UserId", REID);
+        //    cmd.Parameters.AddWithValue("@CopyOfAnnualInsurancePolicy", flpPhotourl);
+        //    cmd.Parameters.AddWithValue("@CopyOfChallanTreasury", flpPhotourl1);
+        //    cmd.Parameters.AddWithValue("@AnnualMaintenanceContract", flpPhotourl2);
+        //    cmd.Parameters.AddWithValue("@SaftyCertificate", flpPhotourl3);
+        //    cmd.Parameters.AddWithValue("@FormA", flpPhotourl4);
+        //    cmd.Parameters.AddWithValue("@FormB", flpPhotourl5);
+        //    cmd.Parameters.AddWithValue("@FormC", flpPhotourl6);
+        //    cmd.ExecuteNonQuery();
+        //    con.Close();
 
-        }
+        //}
 
 
         #endregion
