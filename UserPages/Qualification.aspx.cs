@@ -430,19 +430,7 @@ namespace CEIHaryana.UserPages
 
         }
 
-        protected void BtnAddMoreQualification_Click(object sender, EventArgs e)
-        {
-            if (DdlDegree.Visible == true)
-            {
-                DdlMasters.Visible = true;
-                BtnDelete.Visible = true;
-            }
-            else
-            {
-                DdlDegree.Visible = true;
-                BtnDelete.Visible = true;
-            }
-        }
+
         protected void BtnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -457,7 +445,10 @@ namespace CEIHaryana.UserPages
                     BtnDelete.Visible = false;
                 }
             }
-            catch { }
+            catch 
+            { 
+
+            }
 
         }
         protected void btnAddMore_Click(object sender, EventArgs e)
@@ -493,15 +484,28 @@ namespace CEIHaryana.UserPages
             }
         }
 
+        //protected void BtnAddMoreQualification_Click(object sender, EventArgs e)
+        //{
+        //    if (DdlDegree.Visible == true)
+        //    {
+        //        DdlMasters.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        DdlDegree.Visible = true;
+        //    }
+        //}
         protected void BtnAddMoreQualification_Click(object sender, EventArgs e)
         {
             if (DdlDegree.Visible == true)
             {
                 DdlMasters.Visible = true;
+                BtnDelete.Visible = true;
             }
             else
             {
                 DdlDegree.Visible = true;
+                BtnDelete.Visible = true;
             }
         }
     }
