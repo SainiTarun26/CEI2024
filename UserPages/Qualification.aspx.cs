@@ -373,12 +373,11 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-
                 // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
                 bool isExperienceVisible = true;
 
-                TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtExperienceFrom, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtExperienceFrom };
-                TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtExperienceTo, txtExperienceTo2, txtExperienceTo3, txtExperienceTo4 } : new TextBox[] { txtExperienceTo };
+                TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom,txtExperienceFrom1, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtExperienceFrom };
+                TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo,txtExperienceTo1, txtExperienceTo2, txtExperienceTo3 , txtExperienceTo4 } : new TextBox[] { txtExperienceTo };
 
                 int totalYears = 0, totalMonths = 0, totalDays = 0;
 
@@ -396,26 +395,26 @@ namespace CEIHaryana.UserPages
                             {
                                 TimeSpan difference = toDate - fromDate;
 
-                                 totalYears = (int)(difference.TotalDays / 365.25); // 365.25 takes into account leap years
-                                 totalMonths = (int)((difference.TotalDays % 365.25) / 30.44); // 30.44 is the average number of days in a month
-                                 totalDays = (int)(difference.TotalDays % 30.44);
-
-
+                                totalYears += (int)(difference.TotalDays / 365.25); // 365.25 takes into account leap years
+                                totalMonths += (int)((difference.TotalDays % 365.25) / 30.44); // 30.44 is the average number of days in a month
+                                totalDays += (int)(difference.TotalDays % 30.44);
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-
+                            // Handle the exception if needed
                         }
                     }
                 }
 
                 txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
             }
-            catch 
-            { 
+            catch
+            {
+                // Handle the exception if needed
             }
         }
+
         protected void RadioButtonList3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RadioButtonList3.SelectedValue == "1")

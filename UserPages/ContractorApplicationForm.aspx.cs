@@ -29,7 +29,14 @@ namespace CEIHaryana.UserPages
                     {
                         ContractorInformation();
                         ddlLoadBindState();
-                        //PartnersModalDirectorData();
+                        if (Session["PartnerDirector"] != null) 
+                        {
+                            PartnersModalDirectorData();
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
@@ -222,6 +229,8 @@ namespace CEIHaryana.UserPages
                     ddlDistrict.SelectedItem.ToString(), txtPinCode.Text.Trim(), Createdby);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", "$('#myModal').modal('show');", true);
                 PartnersModalDirectorData();
+                Session["PartnerDirector"] = "Added";
+                DdlPartnerOrDirector.SelectedValue = "0";
 
             }
             catch { }

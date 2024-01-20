@@ -46,6 +46,9 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        .modal-dialog{
+            border-radius:10px;
+        }
         .modal-content{
             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
@@ -1287,11 +1290,8 @@ select#ddlEmployer2{
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-
-
-
-
-                                                                                                <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
+                                                                                                <div class="row" style="margin-top:40px;">
+                                                                                                <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
                                                                                                     AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                                                                                                     <PagerStyle CssClass="pagination-ys" />
                                                                                                     <Columns>
@@ -1331,7 +1331,7 @@ select#ddlEmployer2{
                                                                                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                                                                                     <SortedDescendingHeaderStyle BackColor="#00547E" />
                                                                                                 </asp:GridView>
-
+                                                                                                    </div>
 
 
                                                                                             </div>
@@ -1453,7 +1453,7 @@ select#ddlEmployer2{
                                                                     </div>
                                                                 </div>--%>
                                                                 <div class="row">
-                                                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
+                                                                    <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView2" runat="server" Width="100%"
                                                                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                                                                         <PagerStyle CssClass="pagination-ys" />
                                                                         <Columns>
