@@ -1724,7 +1724,7 @@ select#ddlEmployer2{
                 Select penalties or punishments<samp style="color: red">* </samp>
             </label>
             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                ID="DropDownList1" runat="server" TabIndex="16">
+                ID="ddlPenalities" runat="server" TabIndex="16">
                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                 <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
                 <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
@@ -1743,7 +1743,7 @@ select#ddlEmployer2{
                 <label id="Label1" runat="server" visible="true">
                    <%-- Selected<samp style="color: red">* </samp>--%>
                 </label>
-                <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                <asp:TextBox class="form-control" ID="txtPenalities" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtAgentName"
