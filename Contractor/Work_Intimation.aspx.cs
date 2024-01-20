@@ -747,7 +747,7 @@ namespace CEIHaryana.Contractor
 
                     try
                     {
-                        txtPenalities.Text = ddlWorkDetail.SelectedValue;
+                        
                         string selectedValue = ddlWorkDetail.SelectedValue;
                         ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
                         if (itemToRemove != null)

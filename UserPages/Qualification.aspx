@@ -1067,10 +1067,12 @@
                                                                 </tr>
                                                                 <tr>
 
-                                                                    <td colspan="5" style="font-size: 12px;">
-                                                                        <asp:Button ID="BtnAddMoreQualification" runat="server" Text="Add More" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="BtnAddMoreQualification_Click"></asp:Button>
-                                                                    </td>
+                                                                 <td colspan="5" style="font-size: 12px;">
+     <asp:Button ID="BtnAddMoreQualification" runat="server" Text="Add More" class="btn btn-primary"
+         Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="BtnAddMoreQualification_Click"></asp:Button>
+     <asp:Button ID="BtnDelete" runat="server" Text="Delete" class="btn btn-primary"
+Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="BtnDelete_Click" Visible="false"></asp:Button>
+ </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>

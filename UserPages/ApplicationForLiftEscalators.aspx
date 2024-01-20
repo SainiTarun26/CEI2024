@@ -1323,6 +1323,8 @@
 
 </header>
         <!-- End Header -->
+         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
         <main id="main">
             <section id="about" class="about section-bg" style="padding-top: 20px;">
                 <div class="container" data-aos="fade-up">
@@ -1404,7 +1406,6 @@
                                                                     District
                                                                 </label>
                                                                 <asp:DropDownList class="select-form select2" ID="ddlapplicantdistrict" AutoPostBack="true" runat="server">
-                                                                    <%--  <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
                                                                 </asp:DropDownList>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" InitialValue="0" ControlToValidate="ddlapplicantdistrict" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select District</asp:RequiredFieldValidator>
                                                             </div>
@@ -1713,10 +1714,10 @@
 
                                                     <div class="row">
                                                         <div class="col-6" style="text-align: justify; padding-left: 0px;">
-                                                            <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="Button1" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                            <asp:Button type="button" AutoPostback="true" ID="Button1" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                         </div>
                                                         <div class="col-6" style="text-align: end; padding-right: 0px;">
-                                                            <asp:Button type="button" AutoPostback="true" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                            <asp:Button type="button" AutoPostback="true" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
                                                                 OnClick="BtnSubmit_Click" />
                                                         </div>
                                                     </div>
@@ -1732,6 +1733,8 @@
             </section>
             <!-- End About Section -->
         </main>
+                        </ContentTemplate>
+             </asp:UpdatePanel>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
         <footer id="footer" style="background-color: #d1e6ff !important;">

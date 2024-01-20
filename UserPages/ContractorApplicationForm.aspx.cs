@@ -100,11 +100,16 @@ namespace CEIHaryana.UserPages
             {
                 if (ddlPenalities.SelectedValue != "0")
                 {
+                    txtPenalities.Text = ddlPenalities.SelectedItem.ToString();
                     string selectedValue = ddlPenalities.SelectedValue;
                     ListItem itemToRemove = ddlPenalities.Items.FindByValue(selectedValue);
                     if (itemToRemove != null)
                     {
                         ddlPenalities.Items.Remove(itemToRemove);
+                    }
+                    else
+                    {
+
                     }
                     ddlPenalities.SelectedValue = "0";
                 }
@@ -114,7 +119,9 @@ namespace CEIHaryana.UserPages
                 }
 
             }
-            catch { }
+            catch 
+            { 
+            }
 
         }
 

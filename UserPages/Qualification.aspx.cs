@@ -405,13 +405,11 @@ namespace CEIHaryana.UserPages
                         }
                         catch (Exception ex)
                         {
-                            // Handle parsing errors (e.g., invalid date format)
-                            // You can log the error or take appropriate action based on your needs
+
                         }
                     }
                 }
 
-                // Display the calculated values in another TextBox
                 txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
             }
             catch 
@@ -432,6 +430,36 @@ namespace CEIHaryana.UserPages
 
         }
 
+        protected void BtnAddMoreQualification_Click(object sender, EventArgs e)
+        {
+            if (DdlDegree.Visible == true)
+            {
+                DdlMasters.Visible = true;
+                BtnDelete.Visible = true;
+            }
+            else
+            {
+                DdlDegree.Visible = true;
+                BtnDelete.Visible = true;
+            }
+        }
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DdlMasters.Visible == true)
+                {
+                    DdlMasters.Visible = false;
+                }
+                else
+                {
+                    DdlDegree.Visible = false;
+                    BtnDelete.Visible = false;
+                }
+            }
+            catch { }
+
+        }
         protected void btnAddMore_Click(object sender, EventArgs e)
         {
             if (Experience3.Visible == true)
