@@ -40,7 +40,7 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-
+                        Response.Redirect("/Login.aspx");
                     }
 
 
@@ -287,6 +287,14 @@ namespace CEIHaryana.UserPages
             {
 
             }
+        }
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["WiremanId"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("/Login.aspx");
         }
     }
 }

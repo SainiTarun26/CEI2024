@@ -287,7 +287,7 @@ namespace CEIHaryana
                     if (chkSignedin.Checked == true)
                     {
                         Session["LiftId"] = txtUserID.Text;
-                        Session["logintype"] = "Wireman";
+                        Session["logintype"] = "Lift";
                         Response.Cookies["LiftId"].Value = txtUserID.Text;
                         Response.Cookies["logintype"].Value = "Lift";
                         Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(15);

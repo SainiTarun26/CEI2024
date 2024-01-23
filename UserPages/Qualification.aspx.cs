@@ -53,7 +53,7 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                      
+                        Response.Redirect("/Login.aspx");
                     }
                 }
             }
@@ -111,9 +111,9 @@ namespace CEIHaryana.UserPages
                 txtPermitNo.Text = ds.Tables[0].Rows[0]["PermitNo1"].ToString();
                 txtIssuingAuthority.Text = ds.Tables[0].Rows[0]["IssuingAuthority1"].ToString();
                 string dp_Id7 = ds.Tables[0].Rows[0]["IssueDate1"].ToString();
-                string dp_Id8 = ds.Tables[0].Rows[0]["ExpiryDate"].ToString();
+                //string dp_Id8 = ds.Tables[0].Rows[0]["ExpiryDate"].ToString();
                 txtIssuingDate.Text = DateTime.Parse(dp_Id7).ToString("yyyy-MM-dd");
-                txtExpiryDate.Text = DateTime.Parse(dp_Id8).ToString("yyyy-MM-dd");
+                //txtExpiryDate.Text = DateTime.Parse(dp_Id8).ToString("yyyy-MM-dd");
                 //txtCategory1.Text = ds.Tables[0].Rows[0]["CertificateofCompetency2"].ToString();
                 //txtPermitNo1.Text = ds.Tables[0].Rows[0]["PermitNo2"].ToString();
                 //txtIssuingAuthority1.Text = ds.Tables[0].Rows[0]["IssuingAuthority2"].ToString();
@@ -506,6 +506,14 @@ namespace CEIHaryana.UserPages
                 DdlDegree.Visible = true;
                 BtnDelete.Visible = true;
             }
+        }
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["WiremanId"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("/Login.aspx");
         }
     }
 }

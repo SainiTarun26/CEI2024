@@ -46,57 +46,50 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
-        txtPenalities
-        {        height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-        }
-        select#ddlPenalities{
-                    height: 30PX;
-width: 100%;
-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-border: 1px solid #CED4DA;
-font-weight: 400;
-font-size: 0.875rem;
-border-radius: 4px;
-        }
-        input#txtBirthDate{
+        txtPenalities {
             height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
         }
-        .modal-dialog{
-            border-radius:10px;
+
+        select#ddlPenalities {
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
         }
-        .modal-content{
+
+        input#txtBirthDate {
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        .modal-dialog {
+            border-radius: 10px;
+        }
+
+        .modal-content {
             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
-           #header .logo img {
-    max-height: 62px;
-    margin-left: -175px;
-    margin-top: 8px !important;
-}
-        li#logout {
-            padding-left: 10px !important;
-            background: #4B49AC !important;
-            border-radius: 51px !important;
-            padding-right: 10px !important;
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
-        }
+
         #header .logo img {
-    max-height: 62px;
-    margin-left: -175px;
-    margin-top: 18px;
-}
+            max-height: 62px;
+            margin-left: -175px;
+            margin-top: 8px !important;
+        }
+
         li#logout {
             padding-left: 10px !important;
             background: #4B49AC !important;
@@ -105,329 +98,359 @@ border-radius: 4px;
             padding-top: 10px !important;
             padding-bottom: 10px !important;
         }
+
+        #header .logo img {
+            max-height: 62px;
+            margin-left: -175px;
+            margin-top: 18px;
+        }
+
+        li#logout {
+            padding-left: 10px !important;
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding-right: 10px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+        }
+
         select[data-multi-select-plugin] {
-    display: none !important;
-}
+            display: none !important;
+        }
 
-.multi-select-component {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: auto;
-    width: 100%;
-    padding: 3px 8px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    padding-bottom: 0px;
-    color: #555;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-}
+        .multi-select-component {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: auto;
+            width: 100%;
+            padding: 3px 8px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            padding-bottom: 0px;
+            color: #555;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+            -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+            transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        }
 
-.autocomplete-list {
-    border-radius: 4px 0px 0px 4px;
-}
+        .autocomplete-list {
+            border-radius: 4px 0px 0px 4px;
+        }
 
-.multi-select-component:focus-within {
-    box-shadow: inset 0px 0px 0px 2px #78ABFE;
-}
+        .multi-select-component:focus-within {
+            box-shadow: inset 0px 0px 0px 2px #78ABFE;
+        }
 
-.multi-select-component .btn-group {
-    display: none !important;
-}
+        .multi-select-component .btn-group {
+            display: none !important;
+        }
 
-.multiselect-native-select .multiselect-container {
-    width: 100%;
-}
+        .multiselect-native-select .multiselect-container {
+            width: 100%;
+        }
 
-.selected-wrapper {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    display: inline-block;
-    border: 1px solid #d9d9d9;
-    background-color: #ededed;
-    white-space: nowrap;
-    margin: 1px 5px 5px 0;
-    height: 22px;
-    vertical-align: top;
-    cursor: default;
-}
+        .selected-wrapper {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            display: inline-block;
+            border: 1px solid #d9d9d9;
+            background-color: #ededed;
+            white-space: nowrap;
+            margin: 1px 5px 5px 0;
+            height: 22px;
+            vertical-align: top;
+            cursor: default;
+        }
 
-.selected-wrapper .selected-label {
-    max-width: 514px;
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-left: 4px;
-    vertical-align: top;
-}
+            .selected-wrapper .selected-label {
+                max-width: 514px;
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-left: 4px;
+                vertical-align: top;
+            }
 
-.selected-wrapper .selected-close {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 14px;
-    line-height: 1.49em;
-    margin-left: 5px;
-    padding-bottom: 10px;
-    height: 100%;
-    vertical-align: top;
-    padding-right: 4px;
-    opacity: 0.2;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    font-weight: 700;
-}
+            .selected-wrapper .selected-close {
+                display: inline-block;
+                text-decoration: none;
+                font-size: 14px;
+                line-height: 1.49em;
+                margin-left: 5px;
+                padding-bottom: 10px;
+                height: 100%;
+                vertical-align: top;
+                padding-right: 4px;
+                opacity: 0.2;
+                color: #000;
+                text-shadow: 0 1px 0 #fff;
+                font-weight: 700;
+            }
 
-.search-container {
-    display: flex;
-    flex-direction: row;
-}
+        .search-container {
+            display: flex;
+            flex-direction: row;
+        }
 
-.search-container .selected-input {
-    background: none;
-    border: 0;
-    height: 20px;
-    width: 60px;
-    padding: 0;
-    margin-bottom: 6px;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
+            .search-container .selected-input {
+                background: none;
+                border: 0;
+                height: 20px;
+                width: 60px;
+                padding: 0;
+                margin-bottom: 6px;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
 
-.search-container .selected-input:focus {
-    outline: none;
-}
+                .search-container .selected-input:focus {
+                    outline: none;
+                }
 
-.dropdown-icon.active {
-    transform: rotateX(180deg)
-}
+        .dropdown-icon.active {
+            transform: rotateX(180deg)
+        }
 
-.search-container .dropdown-icon {
-    display: inline-block;
-    padding: 10px 5px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 10px;
-    height: 10px;
-    border: 0 !important;
-    /* needed */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    /* SVG background image */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23818181%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23818181%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-    background-position: center;
-    background-size: 10px;
-    background-repeat: no-repeat;
-}
+        .search-container .dropdown-icon {
+            display: inline-block;
+            padding: 10px 5px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 10px;
+            height: 10px;
+            border: 0 !important;
+            /* needed */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            /* SVG background image */
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23818181%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23818181%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            background-position: center;
+            background-size: 10px;
+            background-repeat: no-repeat;
+        }
 
-.search-container ul {
-    position: absolute;
-    list-style: none;
-    padding: 0;
-    z-index: 3;
-    margin-top: 29px;
-    width: 100%;
-    right: 0px;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-top: none;
-    border-bottom: none;
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-}
+        .search-container ul {
+            position: absolute;
+            list-style: none;
+            padding: 0;
+            z-index: 3;
+            margin-top: 29px;
+            width: 100%;
+            right: 0px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-bottom: none;
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        }
 
-.search-container ul :focus {
-    outline: none;
-}
+            .search-container ul :focus {
+                outline: none;
+            }
 
-.search-container ul li {
-    display: block;
-    text-align: left;
-    padding: 8px 29px 2px 12px;
-    border-bottom: 1px solid #ccc;
-    font-size: 14px;
-    min-height: 31px;
-}
+            .search-container ul li {
+                display: block;
+                text-align: left;
+                padding: 8px 29px 2px 12px;
+                border-bottom: 1px solid #ccc;
+                font-size: 14px;
+                min-height: 31px;
+            }
 
-.search-container ul li:first-child {
-    border-top: 1px solid #ccc;
-    border-radius: 4px 0px 0 0;
-}
+                .search-container ul li:first-child {
+                    border-top: 1px solid #ccc;
+                    border-radius: 4px 0px 0 0;
+                }
 
-.search-container ul li:last-child {
-    border-radius: 4px 0px 0 0;
-}
+                .search-container ul li:last-child {
+                    border-radius: 4px 0px 0 0;
+                }
 
 
-.search-container ul li:hover.not-cursor {
-    cursor: default;
-}
+                .search-container ul li:hover.not-cursor {
+                    cursor: default;
+                }
 
-.search-container ul li:hover {
-    color: #333;
-    background-color: rgb(251, 242, 152);
-    
-    border-color: #adadad;
-    cursor: pointer;
-}
+                .search-container ul li:hover {
+                    color: #333;
+                    background-color: rgb(251, 242, 152);
+                    border-color: #adadad;
+                    cursor: pointer;
+                }
 
-/* Adding scrool to select options */
-.autocomplete-list {
-    max-height: 130px;
-    overflow-y: auto;
-}
-        select#ddlAuthority{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-        select#ddlState{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-        select#ddlDistrict{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}   
-    input#txtContractorName{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-input#txtFatherName{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-input#txtIssueDate{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-input#txtAppliedFor{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-select#ddlOffice{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-select#DdlPartnerOrDirector{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-select#ddlAnnexureOrNot{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-select#ddlUnitOrNot{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-select#ddlLicenseGranted{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-select#ddlEmployer1{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
-select#ddlEmployer2{
-    width: 100%;
-    height: 30PX;
-    width: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #CED4DA;
-    font-weight: 400;
-    font-size: 0.875rem;
-    border-radius: 4px;
-}
+        /* Adding scrool to select options */
+        .autocomplete-list {
+            max-height: 130px;
+            overflow-y: auto;
+        }
+
+        select#ddlAuthority {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlState {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlDistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        input#txtContractorName {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        input#txtFatherName {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        input#txtIssueDate {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        input#txtAppliedFor {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlOffice {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#DdlPartnerOrDirector {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlAnnexureOrNot {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlUnitOrNot {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlLicenseGranted {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlEmployer1 {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
+        select#ddlEmployer2 {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+
         .modal-dialog {
             max-width: 1150px !important;
             height: auto !important;
@@ -848,23 +871,26 @@ select#ddlEmployer2{
         input#TextBox2 {
             width: 100%;
         }
+
         li#logout {
-    padding-left: 10px !important;
-    background: #4B49AC !important;
-    border-radius: 51px !important;
-    padding-right: 10px !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-}
+            padding-left: 10px !important;
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding-right: 10px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+        }
+
         ul#profile_drop {
-    margin-left: -86px;
-    width: 120px;
-    border-radius: 8px;
-}
+            margin-left: -86px;
+            width: 120px;
+            border-radius: 8px;
+        }
+
         span#user {
-    color: white;
-    font-size: 15px;
-}
+            color: white;
+            font-size: 15px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -916,32 +942,32 @@ select#ddlEmployer2{
                     </a>
                     <a href="#" class="linkedin">
                         <i class="bi bi-linkedin"></i>
-                            
+
                     </a>
                 </div>
             </div>
         </section>
         <!-- ======= Header ======= -->
-          <header id="header" class="d-flex align-items-center"
-    style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-    <div class="container d-flex align-items-center justify-content-between">
-         <a href="index.html" class="logo">
-            <img src="../Assets/Add a heading (1).png" />
-        </a>
-        <%--<h1 class="logo">
+        <header id="header" class="d-flex align-items-center"
+            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+            <div class="container d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo">
+                    <img src="../Assets/Add a heading (1).png" />
+                </a>
+                <%--<h1 class="logo">
             <a href="index.html">
                 <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
             </a>
         </h1>--%>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
-            <ul>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Home</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#">
+                                <span>Home</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <%--<ul>
                     <li>
                         <a href="#">About CEI</a>
                     </li>
@@ -952,13 +978,13 @@ select#ddlEmployer2{
                         <a href="#">Functions</a>
                     </li>
                 </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Lift & Esclator</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">
+                                <span>Lift & Esclator</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <%--<ul>
                     <li>
                         <a href="#">Procedure For Registration/
                         <br>
@@ -976,13 +1002,13 @@ select#ddlEmployer2{
                     </li>
                 </ul>--%>
 
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Licensing</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">
+                                <span>Licensing</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <%--<ul>
                     <li>
                         <a href="#">Procedure/ Condition
                         <br>
@@ -999,13 +1025,13 @@ select#ddlEmployer2{
                         <a href="#">Forms(Licence)</a>
                     </li>
                 </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Inspection</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">
+                                <span>Inspection</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <%--<ul>
                     <li>
                         <a href="#">Checklist for Online Service(Inspection)</a>
                     </li>
@@ -1021,62 +1047,64 @@ select#ddlEmployer2{
                         </a>
                     </li>
                 </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Services</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">
+                                <span>Services</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <%--<ul>
                     <li>
                         <a href="#">Our Services</a>
                     </li>
                 </ul>--%>
-                </li>
-                <li>
-                    <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                </li>
+                        </li>
+                        <li>
+                            <a class="nav-link scrollto" href="#contact">Contact Us</a>
+                        </li>
 
-                <li class="dropdown" id="logout" style="margin-left: 300px;">
-                    <a href="#">
-                        <span id="user">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                            </svg></span>
-
-                    </a>
-                    <ul id="profile_drop">
-                        <li id="ProfileUser">
+                        <li class="dropdown" id="logout" style="margin-left: 300px;">
                             <a href="#">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
-                          User       <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <span id="user">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                    </svg></span>
+
+                            </a>
+                            <ul id="profile_drop">
+                                <li id="ProfileUser">
+                                    <a href="#">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                          User      
+<path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
                                     </svg>&nbsp;&nbsp;Profile</span>
 
-                            </a>
-                        </li>
-                        <li id="ProfileLogout">
-                            <a href="#">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
-                                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
-                                    </svg>&nbsp;&nbsp;Logout</span>
+                                    </a>
+                                </li>
+                                <li id="ProfileLogout">
+                                    <a href="#">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+                                            </svg>&nbsp;&nbsp;</span>
+                                         <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                              
+                                    </a>
+                                </li>
 
-                            </a>
+                            </ul>
                         </li>
-
                     </ul>
-                </li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
-    </div>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+                <!-- .navbar -->
+            </div>
 
-</header>
+        </header>
         <!-- End Header -->
         <main id="main">
             <section id="about" class="about section-bg" style="padding-top: 20px;">
@@ -1196,19 +1224,19 @@ select#ddlEmployer2{
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
                                                                             <div class="form-group" style="margin-top: 20px;">
-    <label for="Gender">
-        Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
-    </label>
-    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-        ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
-        <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-        <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-    </asp:DropDownList>
-    <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-    --%>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlAnnexureOrNot" ValidationGroup="Submit"
-        InitialValue="" ErrorMessage="Please select an option" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-</div>
+                                                                                <label for="Gender">
+                                                                                    Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                    ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
+                                                                                    <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                                                                    <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                --%>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlAnnexureOrNot" ValidationGroup="Submit"
+                                                                                    InitialValue="" ErrorMessage="Please select an option" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            </div>
                                                                             <div class="form-group">
                                                                                 <button type="button" runat="server" visible="false" style="padding: 10px 20px 10px 20px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                                     Open modal
@@ -1330,48 +1358,48 @@ select#ddlEmployer2{
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="row" style="margin-top:40px;">
-                                                                                                <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
-                                                                                                    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
-                                                                                                    <PagerStyle CssClass="pagination-ys" />
-                                                                                                    <Columns>
-                                                                                                        <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
-                                                                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="Name" HeaderText="Name">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                                                                        </asp:BoundField>
+                                                                                                <div class="row" style="margin-top: 40px;">
+                                                                                                    <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
+                                                                                                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                                                                                                        <PagerStyle CssClass="pagination-ys" />
+                                                                                                        <Columns>
+                                                                                                            <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                                                            </asp:BoundField>
+                                                                                                            <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                                                                            </asp:BoundField>
 
-                                                                                                        <asp:BoundField DataField="State" HeaderText="State">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="District" HeaderText="District">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="PinCode" HeaderText="PinCode">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                        <asp:BoundField DataField="Address" HeaderText="Address">
-                                                                                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                                                                                                        </asp:BoundField>
-                                                                                                    </Columns>
-                                                                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                                                                    <RowStyle ForeColor="#000066" />
-                                                                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                                                                </asp:GridView>
-                                                                                                    </div>
+                                                                                                            <asp:BoundField DataField="State" HeaderText="State">
+                                                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                            </asp:BoundField>
+                                                                                                            <asp:BoundField DataField="District" HeaderText="District">
+                                                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                            </asp:BoundField>
+                                                                                                            <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                            </asp:BoundField>
+                                                                                                            <asp:BoundField DataField="Address" HeaderText="Address">
+                                                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                            </asp:BoundField>
+                                                                                                        </Columns>
+                                                                                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                                                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                                                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                                                                        <RowStyle ForeColor="#000066" />
+                                                                                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                                                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                                                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                                                                    </asp:GridView>
+                                                                                                </div>
 
 
                                                                                             </div>
@@ -1413,7 +1441,7 @@ select#ddlEmployer2{
                                                                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                                 --%>
                                                                             </div>
-                                                                            
+
                                                                         </div>
                                                                         <br />
 
@@ -1601,20 +1629,20 @@ select#ddlEmployer2{
                                                                             </div>
                                                                             <div class="form-group">
 
-    <label id="Label13" runat="server" visible="true">
-        Is Contractor License Previously Granted with same name<samp style="color: red">* </samp>
-    </label>
-    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-    ID="DropDownList1" runat="server" TabIndex="16">
-    <asp:ListItem Text="Select" Value="1"></asp:ListItem>
-    <asp:ListItem Text="YES" Value="2"></asp:ListItem>
-    <asp:ListItem Text="NO" Value="3"></asp:ListItem>
-</asp:DropDownList>
-    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
+                                                                                <label id="Label13" runat="server" visible="true">
+                                                                                    Is Contractor License Previously Granted with same name<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                    ID="DropDownList1" runat="server" TabIndex="16">
+                                                                                    <asp:ListItem Text="Select" Value="1"></asp:ListItem>
+                                                                                    <asp:ListItem Text="YES" Value="2"></asp:ListItem>
+                                                                                    <asp:ListItem Text="NO" Value="3"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                                <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtIssusuingName"
-        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-</div>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtIssusuingName"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -1631,17 +1659,17 @@ select#ddlEmployer2{
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                                                             </div>
-                                                                                                                                                        <div class="form-group">
+                                                                            <div class="form-group">
 
-    <label id="Label14" runat="server" visible="true">
-        Enter License No.<samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="TextBox2" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
+                                                                                <label id="Label14" runat="server" visible="true">
+                                                                                    Enter License No.<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <asp:TextBox class="form-control" ID="TextBox2" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtIssusuingName"
-        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-</div>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtIssusuingName"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -1761,73 +1789,73 @@ select#ddlEmployer2{
                                                                 </div>
                                                             </div>
                                                             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 0px;">
-                                                              <div class="row">
-                                                                  <div class="col-md-4">
-    <div class="forms-sample">
-        <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <div class="forms-sample">
+                                                                            <div class="form-group">
 
-            <label id="Label12" runat="server" visible="true">
-                Do company/firm have any penalties or punishments?<samp style="color: red">* </samp>
-            </label>
-            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                ID="DropDownList2" runat="server" TabIndex="16">
-                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                <asp:ListItem Text="No" Value="2"></asp:ListItem>
-            </asp:DropDownList>
-            <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-            --%>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                <label id="Label12" runat="server" visible="true">
+                                                                                    Do company/firm have any penalties or punishments?<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                    ID="DropDownList2" runat="server" TabIndex="16">
+                                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                                    <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                                                                                    <asp:ListItem Text="No" Value="2"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                --%>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
-        </div>
-    </div>
-</div>
-                                                                                                                                    <div class="col-md-4">
-    <div class="forms-sample">
-        <div class="form-group">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="forms-sample">
+                                                                            <div class="form-group">
 
-            <label id="Label10" runat="server" visible="true">
-                Select penalties or punishments<samp style="color: red">* </samp>
-            </label>
-            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                ID="ddlPenalities" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlPenalities_SelectedIndexChanged" AutoPostBack="true">
-                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
-                <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="Any court of law." Value="2"></asp:ListItem>
-            </asp:DropDownList>
-            <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-            --%>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                <label id="Label10" runat="server" visible="true">
+                                                                                    Select penalties or punishments<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                    ID="ddlPenalities" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlPenalities_SelectedIndexChanged" AutoPostBack="true">
+                                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                                    <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
+                                                                                    <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
+                                                                                    <asp:ListItem Text="Any court of law." Value="2"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                --%>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
-        </div>
-    </div>
-</div>
-    <div class="col-md-4">
-        <div class="forms-sample">
-            <div class="form-group">
-                <label id="Label1" runat="server" visible="true">
-                   <%-- Selected<samp style="color: red">* </samp>--%>
-                </label>
-                <asp:TextBox class="form-control" ID="txtPenalities" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server" TextMode="MultiLine" Rows="2"   > </asp:TextBox>
-                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="forms-sample">
+                                                                            <div class="form-group">
+                                                                                <label id="Label1" runat="server" visible="true">
+                                                                                    <%-- Selected<samp style="color: red">* </samp>--%>
+                                                                                </label>
+                                                                                <asp:TextBox class="form-control" ID="txtPenalities" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server" TextMode="MultiLine" Rows="2"> </asp:TextBox>
+                                                                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtAgentName"
-                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-            </div>
-        </div>
-    </div>
-    
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtAgentName"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
 
-</div>
+
+                                                                </div>
                                                             </div>
                                                             <div class="row" style="margin-bottom: -75px; margin-top: 50px;">
                                                                 <div class="col-md-6" style="padding-left: 0px;">
                                                                     <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button1" Text="Back" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                                 </div>
-                                                                <div class="col-md-6" style="padding-right: 0px;text-align:end;">
-    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button2" Text="Next" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
-</div>
+                                                                <div class="col-md-6" style="padding-right: 0px; text-align: end;">
+                                                                    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button2" Text="Next" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
