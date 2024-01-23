@@ -46,6 +46,33 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        txtPenalities
+        {        height: 30PX;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid #CED4DA;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-radius: 4px;
+        }
+        select#ddlPenalities{
+                    height: 30PX;
+width: 100%;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+border: 1px solid #CED4DA;
+font-weight: 400;
+font-size: 0.875rem;
+border-radius: 4px;
+        }
+        input#txtBirthDate{
+            height: 30PX;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid #CED4DA;
+    font-weight: 400;
+    font-size: 0.875rem;
+    border-radius: 4px;
+        }
         .modal-dialog{
             border-radius:10px;
         }
@@ -548,7 +575,7 @@ select#ddlEmployer2{
 
         select#ddlCompanyStyle {
             height: 31px;
-            width: 90%;
+            width: 100%;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
 
@@ -1168,7 +1195,20 @@ select#ddlEmployer2{
                                                                                 </asp:DropDownList>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
-
+                                                                            <div class="form-group" style="margin-top: 20px;">
+    <label for="Gender">
+        Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
+    </label>
+    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+        ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
+        <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+        <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+    </asp:DropDownList>
+    <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+    --%>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlAnnexureOrNot" ValidationGroup="Submit"
+        InitialValue="" ErrorMessage="Please select an option" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+</div>
                                                                             <div class="form-group">
                                                                                 <button type="button" runat="server" visible="false" style="padding: 10px 20px 10px 20px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                                     Open modal
@@ -1373,20 +1413,7 @@ select#ddlEmployer2{
                                                                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                                 --%>
                                                                             </div>
-                                                                            <div class="form-group" style="margin-top: 20px;">
-                                                                                <label for="Gender">
-                                                                                    Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
-                                                                                </label>
-                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                    ID="ddlAnnexureOrNot" runat="server" TabIndex="16">
-                                                                                    <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-                                                                                    <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-                                                                                </asp:DropDownList>
-                                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                                --%>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlAnnexureOrNot" ValidationGroup="Submit"
-                                                                                    InitialValue="" ErrorMessage="Please select an option" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                            </div>
+                                                                            
                                                                         </div>
                                                                         <br />
 
@@ -1542,7 +1569,7 @@ select#ddlEmployer2{
                                                                             <div class="form-group">
 
                                                                                 <label id="Label4" runat="server" visible="true">
-                                                                                    Is  Contractor License Previously Granted with same name<samp style="color: red">* </samp>
+                                                                                    Is  Contractor License Previously Granted with same name from other state<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                     ID="ddlLicenseGranted" runat="server" TabIndex="16">
@@ -1572,6 +1599,22 @@ select#ddlEmployer2{
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                             </div>
+                                                                            <div class="form-group">
+
+    <label id="Label13" runat="server" visible="true">
+        Is Contractor License Previously Granted with same name<samp style="color: red">* </samp>
+    </label>
+    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+    ID="DropDownList1" runat="server" TabIndex="16">
+    <asp:ListItem Text="Select" Value="1"></asp:ListItem>
+    <asp:ListItem Text="YES" Value="2"></asp:ListItem>
+    <asp:ListItem Text="NO" Value="3"></asp:ListItem>
+</asp:DropDownList>
+    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
+        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtIssusuingName"
+        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+</div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -1588,6 +1631,17 @@ select#ddlEmployer2{
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                                                             </div>
+                                                                                                                                                        <div class="form-group">
+
+    <label id="Label14" runat="server" visible="true">
+        Enter License No.<samp style="color: red">* </samp>
+    </label>
+    <asp:TextBox class="form-control" ID="TextBox2" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
+        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtIssusuingName"
+        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+</div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -1603,6 +1657,18 @@ select#ddlEmployer2{
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtLicenseExpiry"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                             </div>
+                                                                            <div class="form-group">
+
+                                                                                <label id="Labe20" runat="server" visible="true">
+                                                                                    Date of Issue<samp style="color: red">* </samp>
+                                                                                </label>
+                                                                                <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseIssue" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
+                                                                                <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtLicenseExpiry"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtLicenseIssue"
+                                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            </div>
+
                                                                         </div>
                                                                     </div>
 
@@ -1724,7 +1790,7 @@ select#ddlEmployer2{
                 Select penalties or punishments<samp style="color: red">* </samp>
             </label>
             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                ID="ddlPenalities" runat="server" TabIndex="16">
+                ID="ddlPenalities" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlPenalities_SelectedIndexChanged" AutoPostBack="true">
                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                 <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
                 <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
@@ -1743,7 +1809,7 @@ select#ddlEmployer2{
                 <label id="Label1" runat="server" visible="true">
                    <%-- Selected<samp style="color: red">* </samp>--%>
                 </label>
-                <asp:TextBox class="form-control" ID="txtPenalities" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                <asp:TextBox class="form-control" ID="txtPenalities" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server" TextMode="MultiLine" Rows="2"   > </asp:TextBox>
                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtAgentName"

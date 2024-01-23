@@ -107,29 +107,29 @@ namespace CEIHaryana.UserPages
             {
                 if (ddlPenalities.SelectedValue != "0")
                 {
-                    txtPenalities.Text = ddlPenalities.SelectedItem.ToString();
                     string selectedValue = ddlPenalities.SelectedValue;
+
+                    if (!string.IsNullOrEmpty(txtPenalities.Text))
+                    {
+                        // If the TextBox is not empty, append a comma and space
+                        txtPenalities.Text += ", ";
+                    }
+
+                    txtPenalities.Text += ddlPenalities.SelectedItem.ToString();
+
                     ListItem itemToRemove = ddlPenalities.Items.FindByValue(selectedValue);
                     if (itemToRemove != null)
                     {
                         ddlPenalities.Items.Remove(itemToRemove);
                     }
-                    else
-                    {
 
-                    }
                     ddlPenalities.SelectedValue = "0";
                 }
-                else
-                {
-
-                }
-
             }
-            catch 
-            { 
+            catch (Exception ex)
+            {
+                // Handle the exception, e.g., log or display an error message.
             }
-
         }
 
         private void ddlLoadBindDistrict(string state)
