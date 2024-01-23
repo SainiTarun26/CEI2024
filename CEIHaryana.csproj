@@ -1787,6 +1787,7 @@
     <Content Include="MultiSelect_Css\mobiscroll.javascript.min.js" />
     <Content Include="MultiSelect_Css\modal.css" />
     <Content Include="MultiSelect_Css\modal.js" />
+    <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
     <Content Include="Officers\Inspection.aspx" />
@@ -2064,6 +2065,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\ActionTakenInspections.aspx.cs">
+      <DependentUpon>ActionTakenInspections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\ActionTakenInspections.aspx.designer.cs">
+      <DependentUpon>ActionTakenInspections.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\ConsolidatedReport.aspx.cs">
       <DependentUpon>ConsolidatedReport.aspx</DependentUpon>

@@ -1490,6 +1490,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet StaffLogin(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffLogin", Id);
+        } 
+        public DataSet ActionTaken(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionActionTakenData", Id);
         }
         public DataSet InspectionData(string Id)
         {

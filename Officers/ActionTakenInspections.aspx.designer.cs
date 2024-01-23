@@ -11,7 +11,7 @@ namespace CEIHaryana.Officers
 {
 
 
-    public partial class InstallationIntimationDetails
+    public partial class ActionTakenInspections
     {
 
         /// <summary>
