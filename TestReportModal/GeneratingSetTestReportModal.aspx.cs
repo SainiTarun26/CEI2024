@@ -90,16 +90,24 @@ namespace CEIHaryana.TestReportModal
                 string value1 = Convert.ToString(Session["Approval"]);
                 if (value1.Trim() == "Accept")
                 {
-                    ddlType.Attributes.Add("Readonly", "true");
+                    //ddlType.Attributes.Add("disabled", "disabled");
+                    //ddlType.Attributes["onfocus"] = "this.size=3";                   
+                    // ddlType.Attributes.Add("ReadOnly", "true");
+                    ddlType.Attributes.Add("disabled", "disabled");
                     ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    BtnSubmitGeneratingSet.Text = "Back";
+
 
                 }
                 else if (value1.Trim() == "Reject")
                 {
-                    ddlType.Attributes.Add("Readonly", "true");
+
+                    ddlType.Attributes.Add("disabled", "disabled");
+                    // ddlType.Attributes.Add("ReadOnly", "true");                   
                     ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     Rejection.Visible = true;
                     txtRejection.Attributes.Add("Readonly", "true");
+                    BtnSubmitGeneratingSet.Text = "Back";
 
                 }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -353,10 +361,17 @@ namespace CEIHaryana.TestReportModal
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string id = Session["IntimationId"].ToString();
-            string Counts = Session["Counts"].ToString();
-            CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
-            Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+            if (BtnSubmitGeneratingSet.Text.Trim() == "Back")
+            {
+                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+            }
+            else
+            {
+                string id = Session["IntimationId"].ToString();
+                string Counts = Session["Counts"].ToString();
+                CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+            }
         }
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
         {

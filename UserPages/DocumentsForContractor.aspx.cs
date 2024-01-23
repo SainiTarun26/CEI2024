@@ -364,5 +364,12 @@ namespace CEIHaryana.UserPages
             }
             catch (Exception ex) { }
         }
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("/Login.aspx");
+        }
     }
 }

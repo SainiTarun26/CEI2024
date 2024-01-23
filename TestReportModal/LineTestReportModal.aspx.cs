@@ -100,14 +100,17 @@ namespace CEIHaryana.TestReportModal
                 string value1 = Convert.ToString(Session["Approval"]);
                 if (value1.Trim() == "Accept")
                 {
-                    ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.Attributes.Add("disabled", "disabled");
+                    // ddlType.Attributes.Add("Readonly", "true");
                     ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     btnSubmit.Text = "Back";
+
 
                 }
                 else if (value1.Trim() == "Reject")
                 {
-                    ddlType.Attributes.Add("Readonly", "true");
+                    // ddlType.Attributes.Add("Readonly", "true");
+                    ddlType.Attributes.Add("disabled", "disabled");
                     ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     Rejection.Visible = true;
                     txtRejection.Attributes.Add("Readonly", "true");
@@ -593,7 +596,7 @@ namespace CEIHaryana.TestReportModal
         {
             if (btnSubmit.Text == "Back")
             {
-                Response.Redirect("/Contractor/TestReportHistory.aspx");
+                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
             else
             {

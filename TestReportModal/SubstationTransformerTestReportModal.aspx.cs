@@ -87,15 +87,20 @@ namespace CEIHaryana.TestReportModal
                 string value1 = Convert.ToString(Session["Approval"]);
                 if (value1.Trim() == "Accept")
                 {
-                    ddlType.Attributes.Add("Readonly", "true");
+                    // ddlType.Attributes["onfocus"] = "this.size=3";
+                    ddlType.Attributes.Add("disabled", "disabled");
+                    //ddlType.Attributes.Add("Readonly", "true");                 
                     ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    BtnSubmit.Text = "Back";
                 }
                 else if (value1.Trim() == "Reject")
                 {
-                    ddlType.Attributes.Add("Readonly", "true");
+                    //ddlType.Attributes.Add("Readonly", "true");                  
+                    ddlType.Attributes.Add("disabled", "disabled");
                     ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     Rejection.Visible = true;
                     txtRejection.Attributes.Add("Readonly", "true");
+                    BtnSubmit.Text = "Back";
                 }
 
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -478,12 +483,20 @@ namespace CEIHaryana.TestReportModal
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string id = Session["IntimationId"].ToString();
-            string Counts = Session["Counts"].ToString();
-            CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
-            Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
-        }
-        protected void btnBack_Click(object sender, EventArgs e)
+            if (BtnSubmit.Text.Trim() == "Back")
+            {
+                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+            }
+            else
+            {
+                string id = Session["IntimationId"].ToString();
+                string Counts = Session["Counts"].ToString();
+                CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+
+            }
+            }
+            protected void btnBack_Click(object sender, EventArgs e)
         {
             if (Session["AdminID"] != null)
             {

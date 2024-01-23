@@ -91,14 +91,15 @@ namespace CEIHaryana.Contractor
                         {
                             Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
                         }
-                        else if (lblTypeOf.Text.Trim() == "Substation")
+                        else if (lblTypeOf.Text.Trim() == "Substation Transformer")
                         {
                             Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                         }
-                        else if (lblTypeOf.Text.Trim() == "Generating")
+                        else if (lblTypeOf.Text.Trim() == "Generating Station")
                         {
                             Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                         }
+
 
                     }
                 }
