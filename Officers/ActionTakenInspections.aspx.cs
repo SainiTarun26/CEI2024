@@ -29,7 +29,7 @@ namespace CEIHaryana.Officers
                 }
             }catch (Exception)
             {
-
+                Response.Redirect("/Login.aspx");
             }
 
         }
@@ -65,6 +65,15 @@ namespace CEIHaryana.Officers
 
                 }
             }
+        }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView1.PageIndex = e.NewPageIndex;
+                GridBind();
+            }
+            catch { }
         }
     }
 }

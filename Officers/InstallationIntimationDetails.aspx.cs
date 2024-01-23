@@ -14,11 +14,21 @@ namespace CEIHaryana.Officers
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            try
             {
-                GridBind();
+                if (!IsPostBack)
+                {
+                    if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
+                    {
+                        GridBind();
+                    }
+                }
             }
-
+            catch
+            {
+                Response.Redirect("/Login.aspx");
+            }
+            
         }
 
         public void GridBind()
@@ -52,6 +62,15 @@ namespace CEIHaryana.Officers
 
                 }
             }
+        }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView1.PageIndex = e.NewPageIndex;
+                GridBind();
+            }
+            catch { }
         }
     }
 
