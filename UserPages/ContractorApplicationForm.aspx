@@ -46,6 +46,11 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        th.headercolor {
+            background: #9292cc;
+            color: white;
+        }
+
         txtPenalities {
             height: 30PX;
             width: 100%;
@@ -843,7 +848,7 @@
         }
 
         td {
-            padding: 1% !important;
+            padding: 15px !important;
         }
 
             td#authoritytype {
@@ -1327,11 +1332,11 @@
                                                                                                     </div>
                                                                                                     <div class="row">
                                                                                                         <div class="col-12" style="text-align: end;">
-                                                                                                            <asp:Button type="Submit" ValidationGroup="ModalSubmit" ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" OnClientClick="return validateForm();" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                                                                            <asp:Button type="Submit" ValidationGroup="ModalSubmit" ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <hr style="margin-top:10px;margin-bottom:10px;"/>
+                                                                                                <hr style="margin-top: 10px; margin-bottom: 10px;" />
                                                                                                 <div class="row" style="margin-top: 40px;">
                                                                                                     <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
                                                                                                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
@@ -1339,33 +1344,34 @@
                                                                                                         <Columns>
                                                                                                             <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
                                                                                                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
                                                                                                             <asp:BoundField DataField="Name" HeaderText="Name">
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
+
                                                                                                             <asp:BoundField DataField="State" HeaderText="State">
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
                                                                                                             <asp:BoundField DataField="District" HeaderText="District">
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
                                                                                                             <asp:BoundField DataField="PinCode" HeaderText="PinCode">
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
                                                                                                             <asp:BoundField DataField="Address" HeaderText="Address">
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
                                                                                                         </Columns>
                                                                                                         <FooterStyle BackColor="White" ForeColor="#000066" />
                                                                                                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                                                                                                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                                                                        <RowStyle ForeColor="#000066" />
+                                                                                                        <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
                                                                                                         <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                                                                                                         <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                                                                                         <SortedAscendingHeaderStyle BackColor="#007DBB" />
@@ -1476,33 +1482,34 @@
                                                                         <Columns>
                                                                             <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
                                                                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="tdpadding" />
                                                                             </asp:BoundField>
                                                                             <asp:BoundField DataField="Name" HeaderText="Name">
                                                                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
                                                                             </asp:BoundField>
+
                                                                             <asp:BoundField DataField="State" HeaderText="State">
                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                             </asp:BoundField>
                                                                             <asp:BoundField DataField="District" HeaderText="District">
                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                             </asp:BoundField>
                                                                             <asp:BoundField DataField="PinCode" HeaderText="PinCode">
                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                             </asp:BoundField>
                                                                             <asp:BoundField DataField="Address" HeaderText="Address">
                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                             </asp:BoundField>
                                                                         </Columns>
                                                                         <FooterStyle BackColor="White" ForeColor="#000066" />
                                                                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                                                                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                                        <RowStyle ForeColor="#000066" />
+                                                                        <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
                                                                         <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                                                                         <SortedAscendingCellStyle BackColor="#F1F1F1" />
                                                                         <SortedAscendingHeaderStyle BackColor="#007DBB" />
@@ -1585,7 +1592,7 @@
                                                                                     Is Contractor License Previously Granted with same name<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                    ID="DropDownList1" runat="server" TabIndex="16" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true">
+                                                                                    ID="ddlSameNameLicense" runat="server" TabIndex="16" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true">
                                                                                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -1600,7 +1607,7 @@
                                                                         <div class="forms-sample">
                                                                             <div class="form-group" id="divDOB" runat="server" visible="false">
                                                                                 <label>
-                                                                                    Date of Birth<samp style="color: red">* </samp>
+                                                                                    Date of Issue<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDOB" placeholder="dd/mm/yyyy" runat="server" TabIndex="2" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
                                                                                 <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtDOB"
@@ -1613,7 +1620,7 @@
                                                                                 <label id="Label14" runat="server" visible="true">
                                                                                     Enter License No.<samp style="color: red">* </samp>
                                                                                 </label>
-                                                                                <asp:TextBox class="form-control" ID="TextBox2" autocomplete="off" onKeyPress="return isNumberKey(event) || alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" onKeyPress="return isNumberKey(event) || alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                                 <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtIssusuingName"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -1760,7 +1767,7 @@
                                                                                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
                                                                                     <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
-                                                                                    <asp:ListItem Text="Any court of law." Value="2"></asp:ListItem>
+                                                                                    <asp:ListItem Text="Any court of law." Value="3"></asp:ListItem>
                                                                                 </asp:DropDownList>
                                                                                 <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"--%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
@@ -1786,7 +1793,7 @@
                                                                     <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button1" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                                 </div>
                                                                 <div class="col-md-6" style="padding-right: 0px; text-align: end;">
-                                                                    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button2" Text="Next" OnClick="BtnSubmit_Click" OnClientClick="return validateForm();" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;"  />
+                                                                    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button2" Text="Next" OnClientClick="return validateForm();" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -2389,7 +2396,7 @@
         });
 
     </script>
-  
+
 
     <script type="text/javascript">
         function validateForm() {
@@ -2417,20 +2424,8 @@
             validateDropdown(document.getElementById('ddlCompanyStyle'));
             validateDropdown(document.getElementById('ddlOffice'));
 
+
             validateDropdown(document.getElementById('DdlPartnerOrDirector'));
-
-
-
-            var DdlPartnerOrDirector = document.getElementById('DdlPartnerOrDirector');
-            if (DdlPartnerOrDirector && DdlPartnerOrDirector.style.visibility !== 'hidden') {
-                validateDropdown(document.getElementById('ddlAuthority'));
-                validateField(document.getElementById('txtName'), 'Full Name');
-                validateField(document.getElementById('txtAddress'), 'Address');
-                validateDropdown(document.getElementById('ddlState'));
-                validateDropdown(document.getElementById('ddlDistrict'));
-                validateField(document.getElementById('txtPinCode'), 'PinCode');
-            }
-
             validateDropdown(document.getElementById('ddlAnnexureOrNot'));
 
             // Applicant details
@@ -2438,6 +2433,24 @@
             validateDropdown(document.getElementById('ddlUnitOrNot'));
 
             validateDropdown(document.getElementById('ddlLicenseGranted'));
+
+
+            var ddlLicenseGranted = document.getElementById('ddlLicenseGranted');
+            if (ddlLicenseGranted && ddlLicenseGranted.value === '1') {
+                validateField(document.getElementById('txtIssusuingName'), 'Issusuing Name');
+                validateField(document.getElementById('txtDOB'), 'DOB');
+                validateField(document.getElementById('txtLicenseExpiry'), 'License Expiry');
+                validateDropdown(document.getElementById('DropDownList1'));
+            }
+
+            var DropDownList1 = document.getElementById('DropDownList1');
+            if (DropDownList1 && DropDownList1.value === '1') {
+                validateField(document.getElementById('TextBox2'), 'TextBox2');
+                validateField(document.getElementById('txtLicenseIssue'), 'LicenseIssue');
+            }
+
+
+
 
             // EmployeeDetails
 
@@ -2456,14 +2469,17 @@
             // PENALTIES/PUNISHMENT
             validateDropdown(document.getElementById('DropDownList2'));
 
-
+            var DropDownList2 = document.getElementById('DropDownList2');
+            if (DropDownList2 && DropDownList2.value === '1') {
+                validateField(document.getElementById('txtPenalities'), 'Penalities');
+            }
 
             if (!isValid) {
                 alert('Please fill in all the required fields.');
             }
             return isValid;
         }
-    </script>
+  </script>
 
 </body>
 </html>

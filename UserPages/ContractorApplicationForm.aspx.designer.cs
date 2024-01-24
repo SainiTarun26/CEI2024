@@ -519,13 +519,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label13;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlSameNameLicense control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSameNameLicense;
 
         /// <summary>
         /// RequiredFieldValidator14 control.
@@ -582,13 +582,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label14;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtLicenseNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtLicenseNo;
 
         /// <summary>
         /// RequiredFieldValidator15 control.

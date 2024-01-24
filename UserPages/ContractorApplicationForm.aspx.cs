@@ -184,18 +184,27 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    string Createdby = Session["ContractorID"].ToString();
-                    string selectedValues = Request.Form["demo-multiple-select"];
-                    CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
-                        DdlPartnerOrDirector.SelectedItem.ToString(), ddlPenalities.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
-                        txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text,
-                        txtDOB.Text, txtLicenseExpiry.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
-                        txtQualification1.Text, ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text, txtValidity2.Text,
-                        txtQualification2.Text, Createdby);
+                    ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+
+                    string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+
+                    bool isValidBoolean;
+                    if (!bool.TryParse(validationResult, out isValidBoolean))
+                    {
+
+                        string Createdby = Session["ContractorID"].ToString();
+                        string selectedValues = txtPenalities.Text.Trim();
+                        CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
+                            DdlPartnerOrDirector.SelectedItem.ToString(), ddlPenalities.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
+                            txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text,
+                            txtDOB.Text, txtLicenseExpiry.Text, ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
+                            txtQualification1.Text, ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text, txtValidity2.Text,
+                            txtQualification2.Text, Createdby);
+                    }
 
                 }
                 //CEI.ContractorPartners()
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
 
 
                 Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
@@ -286,7 +295,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (DropDownList1.SelectedValue == "1") // "Yes" selected
+                if (ddlSameNameLicense.SelectedValue == "1") // "Yes" selected
                 {
                     divLicenseNo.Visible = true;
                     divDOIssue.Visible = true;
@@ -298,7 +307,10 @@ namespace CEIHaryana.UserPages
                 }
 
             }
-            catch { }
+            catch 
+            { 
+
+            }
         }
     }
 }

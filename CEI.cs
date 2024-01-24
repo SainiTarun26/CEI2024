@@ -2064,7 +2064,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region Contractor Application Form Data
         public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
              string CompanyPenalities,string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
-            string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring, string TypeOfEmployee1, string LicenseNo1,
+            string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring,string ContractorLicencePreviouslyGrantedWithSameName,
+            string LicenseNoIfYes,string DateoFIssue,  string TypeOfEmployee1, string LicenseNo1,
             string IssueDate1, string ValidityDate1, string Qualification1, string TypeOfEmployee2, string LicenseNo2, string IssueDate2,
             string ValidityDate2, string Qualification2, string CreatedBy)
         {
@@ -2090,6 +2091,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@NameOfIssuingAuthority", NameOfIssuingAuthority);
             cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             cmd.Parameters.AddWithValue("@DateOfLicenseExpiring", DateOfLicenseExpiring);
+            cmd.Parameters.AddWithValue("@ContractorLicencePreviouslyGrantedWithSameName", ContractorLicencePreviouslyGrantedWithSameName);
+            cmd.Parameters.AddWithValue("@LicenseNoIfYes", LicenseNoIfYes);
+            cmd.Parameters.AddWithValue("@DateoFIssue", DateoFIssue);
             cmd.Parameters.AddWithValue("@TypeOfEmployee1", TypeOfEmployee1);
             cmd.Parameters.AddWithValue("@LicenseNo1", LicenseNo1);
             cmd.Parameters.AddWithValue("@IssueDate1", IssueDate1);
