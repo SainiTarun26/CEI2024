@@ -356,7 +356,7 @@ namespace CEIHaryana.UserPages
                     }
 
                 }
-                CEI.DocumentsForContactor(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8, flpPhotourl9, flpPhotourl10);
+                CEI.DocumentsForContactor(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8, flpPhotourl9, flpPhotourl10, REID);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
 
 

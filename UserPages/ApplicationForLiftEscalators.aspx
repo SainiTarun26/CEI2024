@@ -1326,7 +1326,7 @@
         <!-- End Header -->
          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-        <main id="main">
+x<main id="main">
             <section id="about" class="about section-bg" style="padding-top: 20px;">
                 <div class="container" data-aos="fade-up">
                     <div class="row">
