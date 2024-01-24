@@ -563,6 +563,8 @@
                                             <h4 class="card-title">APPLICANT'S DETAIL</h4>
                                         </div>
                                     </div>
+                                    <asp:UpdatePanel ID="UpdatePanelCalculatedMonths" runat="server">
+                                                                    <ContentTemplate>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group row">
@@ -581,6 +583,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                                                        </ContentTemplate>
+                                        </asp:UpdatePanel>
                                     <hr />
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
@@ -594,7 +598,7 @@
                                                                     </label>
                                                                     <label id ="contractor" runat="server" visible="false">Name in which Electrical contractor license is applied for<samp style="color: red">* </samp>
                                                                         </label>
-                                                                    <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtName" MaxLength="50" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName"
                                                                        CssClass="validation_required"  ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 </div>
@@ -620,7 +624,7 @@
                                                                 <div class="form-group">
                                                                     <label for="FatherName">Father's Name<samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox class="form-control" ID="txtFatherNmae" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtFatherNmae" MaxLength="50" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFatherNmae"
                                                                      CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 </div>
@@ -702,7 +706,7 @@
                                                     <div class="form-group">
                                                         <label for="CommunicationAddress">Address for Communication<samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
+                                                        <asp:TextBox class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="200"> </asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
                                                          CssClass="validation_required"    ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
@@ -779,7 +783,7 @@
                                                         <ContentTemplate>
                                                             <div class="form-group">
                                                                 <asp:CheckBox ID="CheckBox1" runat="server" Text="&nbsp;&nbsp;Permanent Address" Font-Size="Medium" Font-Bold="True" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" />
-                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtPermanentAddress" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="30"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" autocomplete="off" ID="txtPermanentAddress" TextMode="MultiLine" runat="server" TabIndex="2" MaxLength="200"> </asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtPermanentAddress" CssClass="validation_required"
                                                                     ErrorMessage="" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                             </div>

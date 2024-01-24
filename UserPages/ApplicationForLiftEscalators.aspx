@@ -42,25 +42,28 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
-           ul#profile_drop {
-    margin-left: -86px;
-    width: 120px;
-    border-radius: 8px;
-}
+        ul#profile_drop {
+            margin-left: -86px;
+            width: 120px;
+            border-radius: 8px;
+        }
+
         span#user {
-    color: white;
-    font-size: 15px;
-}
-                svg.bi.bi-person-circle {
-    color: white;
-}
-                        #header .logo img {
-    max-height: 62px;
-    margin-left: -175px;
-    margin-top: 7px;
-}
-      
-  
+            color: white;
+            font-size: 15px;
+        }
+
+        svg.bi.bi-person-circle {
+            color: white;
+        }
+
+        #header .logo img {
+            max-height: 62px;
+            margin-left: -175px;
+            margin-top: 7px;
+        }
+
+
         li#logout {
             padding-left: 10px !important;
             background: #4B49AC !important;

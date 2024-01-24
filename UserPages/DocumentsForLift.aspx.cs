@@ -237,17 +237,9 @@ namespace CEIHaryana.UserPages
                             flpPhotourl6 = path + filename;
                         }
 
-
-
-
-
-
-
-
-
                         int x = CEI.LiftEsculatorDocument(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, REID);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Documents are Uploaded successfull')", true);
-
+                        Response.Redirect("/Login.aspx", false);
                     }
                     else
                     {
