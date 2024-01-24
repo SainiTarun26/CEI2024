@@ -29,7 +29,7 @@ namespace CEIHaryana.UserPages
                     {
                         ContractorInformation();
                         ddlLoadBindState();
-                        if (Session["PartnerDirector"] != null) 
+                        if (Session["PartnerDirector"] != null)
                         {
                             PartnersModalDirectorData();
                         }
@@ -40,7 +40,7 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+
                     }
                 }
             }
@@ -170,7 +170,7 @@ namespace CEIHaryana.UserPages
             }
             catch { }
         }
-         protected void BtnSubmit_Click(object sender, EventArgs e)
+        protected void BtnSubmit_Click(object sender, EventArgs e)
         {
 
             try
@@ -187,21 +187,25 @@ namespace CEIHaryana.UserPages
                     string Createdby = Session["ContractorID"].ToString();
                     string selectedValues = Request.Form["demo-multiple-select"];
                     CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
-                        DdlPartnerOrDirector.SelectedItem.ToString(), selectedValues, ddlAnnexureOrNot.SelectedItem.ToString(),
-                        txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text, 
-                        txtDOB.Text,txtLicenseExpiry.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
-                        txtQualification1.Text,ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text,txtValidity2.Text,
+                        DdlPartnerOrDirector.SelectedItem.ToString(), ddlPenalities.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
+                        txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text,
+                        txtDOB.Text, txtLicenseExpiry.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
+                        txtQualification1.Text, ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text, txtValidity2.Text,
                         txtQualification2.Text, Createdby);
+
                 }
                 //CEI.ContractorPartners()
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
 
+
+                Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
             }
             catch { }
         }
 
         private void PartnersModalDirectorData()
         {
-            
+
             LoginID = Session["ContractorID"].ToString();
             DataTable ds = new DataTable();
             ds = CEI.GetPartnersDirectorDate(LoginID);
@@ -214,7 +218,7 @@ namespace CEIHaryana.UserPages
             }
             else
             {
-               
+
             }
             ds.Dispose();
         }
@@ -235,12 +239,66 @@ namespace CEIHaryana.UserPages
             }
             catch { }
         }
-        protected void btnLogout_Click(object sender, EventArgs e)
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session.Abandon();
-            Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            try
+            {
+                if (DropDownList2.SelectedValue == "1") // "Yes" selected
+                {
+                    DdlPenelity.Visible = true;
+                    ShowPenelity.Visible = true;
+                }
+                else
+                {
+                    DdlPenelity.Visible = false;
+                    ShowPenelity.Visible = false;
+                }
+
+            }
+            catch { }
+        }
+
+        protected void ddlLicenseGranted_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlLicenseGranted.SelectedValue == "1") // "Yes" selected
+                {
+                    divIssueAuthority.Visible = true;
+                    divDOB.Visible = true;
+                    divLicenseExpiry.Visible = true;
+                    divLicensePreviouslyGranted.Visible = true;
+                }
+                else
+                {
+                    divIssueAuthority.Visible = false;
+                    divDOB.Visible = false;
+                    divLicenseExpiry.Visible = false;
+                    divLicensePreviouslyGranted.Visible = false;
+                }
+
+            }
+            catch { }
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DropDownList1.SelectedValue == "1") // "Yes" selected
+                {
+                    divLicenseNo.Visible = true;
+                    divDOIssue.Visible = true;
+                }
+                else
+                {
+                    divLicenseNo.Visible = false;
+                    divDOIssue.Visible = false;
+                }
+
+            }
+            catch { }
         }
     }
 }

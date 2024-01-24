@@ -63,7 +63,6 @@ namespace CEIHaryana.UserPages
             }
 
         }
-
         protected void GetUserQualification()
         {
             if (Session["WiremanId"] != null)
@@ -176,8 +175,6 @@ namespace CEIHaryana.UserPages
                 CheckExperience();
             }
         }
-
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             //Session["RegistrationID"].ToString();
@@ -236,7 +233,6 @@ namespace CEIHaryana.UserPages
             }
             catch (Exception ex) { }
         }
-
         protected void validations()
         {
             try
@@ -341,9 +337,6 @@ namespace CEIHaryana.UserPages
 
             }
         }
-
-
-
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             // QualificationValidations();
@@ -356,7 +349,6 @@ namespace CEIHaryana.UserPages
                 competency.Visible = false;
             }
         }
-
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -414,7 +406,6 @@ namespace CEIHaryana.UserPages
                 // Handle the exception if needed
             }
         }
-
         protected void RadioButtonList3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RadioButtonList3.SelectedValue == "1")
@@ -428,8 +419,6 @@ namespace CEIHaryana.UserPages
             }
 
         }
-
-
         protected void BtnDelete_Click(object sender, EventArgs e)
         {
             try

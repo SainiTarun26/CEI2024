@@ -1230,10 +1230,10 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlTraningUnder" runat="server" TabIndex="16" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="A class licensed electrical contractor" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Central government" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="State government" Value="2"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="A class licensed electrical contractor" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="State government" Value="3"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                         <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ControlToValidate="DropDownList1" InitialValue="0" ForeColor="Red" 
                                                                     ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
@@ -1276,10 +1276,10 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlTrainingUnder1" runat="server" TabIndex="16" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text=" A class licensed electricalcontractor" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Central government" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="State government" Value="2"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text=" A class licensed electricalcontractor" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="State government" Value="3"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                         <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator55" runat="server" ControlToValidate="ddlTrainingUnder" InitialValue="0" ForeColor="Red" 
                                                                     ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under "></asp:RequiredFieldValidator>--%>
@@ -1323,10 +1323,10 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlTrainingUnder2" runat="server" TabIndex="16" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="A classlicensed electricalcontractor" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Centralgovernment" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="Stategovernment" Value="2"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                         <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator57" runat="server" ControlToValidate="ddlTrainingUnder2" InitialValue="0" ForeColor="Red" 
                                                                     ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under "></asp:RequiredFieldValidator>--%>
@@ -1369,10 +1369,10 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlTrainingUnder3" runat="server" TabIndex="16" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text=" A classlicensed electricalcontractor" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Centralgovernment" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="Stategovernment" Value="2"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text=" A classlicensed electricalcontractor" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
+                                                                            <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                         <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator59" runat="server" ControlToValidate="ddlTrainingUnder3" InitialValue="0" ForeColor="Red" 
                                                                     ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under3 "></asp:RequiredFieldValidator>--%>
