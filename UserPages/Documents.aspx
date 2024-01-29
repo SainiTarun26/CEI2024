@@ -495,7 +495,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-12">
-                                <p style="text-align: center;margin-top: -40px; font-weight: 700;">
+                                <p style=" margin-top: -40px; font-weight: 700;">
                                     (Please read the instructions carefully as given in Instruction
                             Page before filling the form)
                                 </p>
@@ -516,7 +516,7 @@
 
                                                     <tbody>
                                                         <tr>
-                                                            <td style="text-align: center;">Candidate Photo.(<span
+                                                            <td style=" ">Candidate Photo.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -548,7 +548,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Matriculation certificate indicating date of birth.(<span
+                                                            <td style=" ">Matriculation certificate indicating date of birth.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -579,7 +579,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Residence Proof.(<span style="color: red;">★</span>)
+                                                            <td style=" ">Residence Proof.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
@@ -608,7 +608,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Identity Proof.(<span style="color: red;">★</span>)
+                                                            <td style=" ">Identity Proof.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
@@ -638,7 +638,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style=" ">
                                                                 <p>
                                                                     Degree/Diploma in Electrical Engineering.
                                                                 /Electrical<br />
@@ -675,7 +675,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Experience Certificate.(<span style="color: red;">★</span>)
+                                                            <td style=" ">Experience Certificate.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
@@ -705,7 +705,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Number of three Specimen signatures of the applicant(<span
+                                                            <td style=" ">Number of three Specimen signatures of the applicant(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -735,7 +735,7 @@
                                                             </td>
 
                                                         </tr>                                                                                                                <tr>
-                                                        <td style="text-align: center;">Candidate Signature.(<span
+                                                        <td style=" ">Candidate Signature.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                         <td>
@@ -765,7 +765,7 @@
                                                         </tr>
                                                         <tr>
                                                             <text runat="server" id="Medicalfitness">
-                                                                <td style="text-align: center;">
+                                                                <td style=" ">
                                                                     <p>
                                                                         Medical fitness certificate from Government/Government
                                                                     approved Hospital,<br />
@@ -804,7 +804,7 @@
                                                         </tr>
                                                         <tr>
                                                             <text runat="server" id="Retired">
-                                                                <td style="text-align: center;">Copy of retirement orders in case of retired engineers(<span
+                                                                <td style=" ">Copy of retirement orders in case of retired engineers(<span
                                                                     style="color: red;">★</span>)
                                                                 </td>
                                                                 <td>

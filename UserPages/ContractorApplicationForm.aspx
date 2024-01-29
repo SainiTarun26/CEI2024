@@ -95,22 +95,19 @@
             margin-top: 8px !important;
         }
 
-        li#logout {
-            padding: 10px;
+        li#logout { 
+            padding-left: 10px !important;
             background: #4B49AC !important;
             border-radius: 51px !important;
+            padding-right: 10px !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
         }
 
         #header .logo img {
             max-height: 62px;
             margin-left: -175px;
             margin-top: 18px;
-        }
-
-        li#logout {
-            padding: 10px;
-            background: #4B49AC !important;
-            border-radius: 51px !important;
         }
 
         select[data-multi-select-plugin] {
@@ -871,11 +868,6 @@
             width: 100%;
         }
 
-        li#logout {
-            padding: 10px;
-            background: #4B49AC !important;
-            border-radius: 51px !important;
-        }
 
         ul#profile_drop {
             margin-left: -86px;
@@ -1086,7 +1078,9 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
                                                 <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
-                                            </svg>&nbsp;&nbsp;Logout</span>
+                                             </svg>&nbsp;&nbsp;
+                                         <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                              </span>
 
                                     </a>
                                 </li>
@@ -1188,7 +1182,7 @@
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
                                                                                     ID="DdlPartnerOrDirector" runat="server" TabIndex="16" OnSelectedIndexChanged="DdlPartnerOrDirector_SelectedIndexChanged">
-                                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                                    <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="YES" Value="1" data-bs-toggle="modal" data-bs-target="#myModal"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                                 </asp:DropDownList>
@@ -1475,7 +1469,10 @@
                                                                         <asp:Button type="button" ID="btnBack" Text="Add More" OnClick="btnAddMore_Click" runat="server" class="btn btn-primary" Style="padding: 7px 5px 5px 5px; border-radius: 5px; margin-bottom: 5%;" />
                                                                     </div>
                                                                 </div>--%>
+                                                                  <hr style="margin-top:10px;margin-bottom:10px;"/>
+
                                                                 <div class="row">
+
                                                                     <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView2" runat="server" Width="100%"
                                                                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                                                                         <PagerStyle CssClass="pagination-ys" />

@@ -1867,9 +1867,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberId", PANNumber);
         }
         #region Insert New user data Data
-        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName, string Address, 
-            string District,string State, string PinCode, string PhoneNo, string Email,string Category, string CreatedBy, string UserId, 
-            string CommunicationAddress, string CommState, string CommDistrict,string CommPin,string Password, string IPAddress)
+        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
+            string gender, string aadhar, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
+            string Category, string CreatedBy, string UserId,
+            string CommunicationAddress, string CommState, string CommDistrict, string CommPin, string Password, string IPAddress)
         {
             try
             {
@@ -1889,6 +1890,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@Age", Age);
                 cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);
+                cmd.Parameters.AddWithValue("@Gender", gender);
+                cmd.Parameters.AddWithValue("@Aadhar", aadhar);
                 cmd.Parameters.AddWithValue("@Address", Address);
                 cmd.Parameters.AddWithValue("@District", District);
                 cmd.Parameters.AddWithValue("@State", State);
@@ -1908,7 +1911,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 con.Close();
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
         #endregion
