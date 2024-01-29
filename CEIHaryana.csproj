@@ -1849,6 +1849,7 @@
     <Content Include="UserPages\FormPrintWiremen.aspx" />
     <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
+    <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
@@ -2514,6 +2515,13 @@
     </Compile>
     <Compile Include="UserPages\Instructions.aspx.designer.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\Qualification.aspx.cs">
+      <DependentUpon>Qualification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Qualification.aspx.designer.cs">
+      <DependentUpon>Qualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
