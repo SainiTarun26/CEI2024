@@ -1,16 +1,16 @@
 ﻿using CEI_PRoject;
 using System;
-using System.Configuration;
+using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Runtime.ConstrainedExecution;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace CEIHaryana.UserPages
 {
-    public partial class Qualification : System.Web.UI.Page
-    {
+	public partial class Qualification : System.Web.UI.Page
+	{
         string InsertedCategory = "";
         string REID = string.Empty;
         bool showAlert = false;
@@ -57,7 +57,7 @@ namespace CEIHaryana.UserPages
                     }
                 }
             }
-            catch 
+            catch
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -304,7 +304,7 @@ namespace CEIHaryana.UserPages
                 string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
 
                 bool isValidBoolean;
-               // bool result;
+                // bool result;
 
                 // Check if the string is a valid boolean representation
                 if (!bool.TryParse(validationResult, out isValidBoolean))
@@ -368,8 +368,8 @@ namespace CEIHaryana.UserPages
                 // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
                 bool isExperienceVisible = true;
 
-                TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom,txtExperienceFrom1, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtExperienceFrom };
-                TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo,txtExperienceTo1, txtExperienceTo2, txtExperienceTo3 , txtExperienceTo4 } : new TextBox[] { txtExperienceTo };
+                TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom, txtExperienceFrom1, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4 } : new TextBox[] { txtExperienceFrom };
+                TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo, txtExperienceTo1, txtExperienceTo2, txtExperienceTo3, txtExperienceTo4 } : new TextBox[] { txtExperienceTo };
 
                 int totalYears = 0, totalMonths = 0, totalDays = 0;
 
@@ -433,8 +433,8 @@ namespace CEIHaryana.UserPages
                     BtnDelete.Visible = false;
                 }
             }
-            catch 
-            { 
+            catch
+            {
 
             }
 
