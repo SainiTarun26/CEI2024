@@ -19,7 +19,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (!IsPostBack)
+                if (!IsPostBack) 
                 {
                     if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null || Session["WiremanId"] != null || Request.Cookies["WiremanId"] != null)
                     {
