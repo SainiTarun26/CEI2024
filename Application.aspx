@@ -239,6 +239,120 @@
                     </tbody>
                 </table>
             </div>
+
+                         <hr />
+                                                <div class="row" style="margin-top: 15px;">
+                                                    <div class="col-md-10">
+                                                        <h4 class="card-title" style="font-size: 15px;">Whether you are holder of
+                                            certificate of competency/Wireman Permit issued by any state licincing
+                                            board/chief electrical inspector.</h4>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="No" Value="1"></asp:ListItem>
+                                                        </asp:RadioButtonList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" InitialValue="" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="competency" runat="server" visible="true">
+                                                    <div class="table-responsive" runat="server">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr style="text-align: center;">
+                                                                    <th scope="col">Sno.</th>
+                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Category &nbsp;
+                                                        &nbsp;&nbsp; &nbsp; </th>
+                                                                    <th scope="col">Permit No.</th>
+                                                                    <th scope="col">Issuing Authority</th>
+                                                                    <th scope="col">Issue Date</th>
+                                                                    <th scope="col">Expiry Date</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="text-align: center; font-size: 13px;">1
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtCategory" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator42" runat="server" InitialValue="" ControlToValidate="txtCategory" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Category">Please Enter Category</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtPermitNo" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator43" runat="server" InitialValue="" ControlToValidate="txtPermitNo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Permit No.">Please Enter Permit No.</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtIssuingAuthority" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" InitialValue="" ControlToValidate="txtIssuingAuthority" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter IssuingAuthority">Please Enter IssuingAuthority</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtIssuingDate" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" InitialValue="" ControlToValidate="txtIssuingDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Issuing Date">Please Select Issuing Date</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtExpiryDate" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" InitialValue="" ControlToValidate="txtExpiryDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Expiry Date">Please Select Expiry Date</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <hr />
+            
+                                                <div class="row" style="margin-top: 15px;">
+                                                    <div class="col-md-5">
+                                                        <h4 class="card-title" style="font-size: 15px;">Are you Employed on Permanent
+                                            Basis.</h4>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <asp:RadioButtonList ID="RadioButtonList3" runat="server" AutoPostBack="true" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="No" Value="1"></asp:ListItem>
+                                                        </asp:RadioButtonList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" InitialValue="" ControlToValidate="RadioButtonList3" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="PermanentEmployee" runat="server">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr style="text-align: center;">
+                                                                    <th scope="col">Sno.</th>
+                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
+                                                        &nbsp;&nbsp; &nbsp; </th>
+                                                                    <th scope="col">Post Description</th>
+                                                                    <th scope="col">From</th>
+                                                                    <th scope="col">To</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="text-align: center; font-size: 13px;">1
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtPermanentEmployerName" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator48" runat="server" ControlToValidate="txtPermanentEmployerName" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtPermanentDescription" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator49" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtPermanentFrom" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator50" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtPermanentTo" runat="server"> </asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+             
         </div>
     </form>
 </body>
