@@ -504,5 +504,124 @@ namespace CEIHaryana.UserPages
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
         }
+        protected void txtmarksmax_TextChanged(object sender, EventArgs e)
+        {
+            if (txtmarksObtained.Text == "" || txtmarksObtained.Text == null)
+            {
+
+            }
+            else
+            {
+                double ObtainedMarks = Convert.ToDouble(txtmarksObtained.Text);
+                double MaxiMarks = Convert.ToDouble(txtmarksmax.Text);
+                if (ObtainedMarks <= MaxiMarks)
+                {
+                    double percentage = (ObtainedMarks / MaxiMarks) * 100;
+                    txtprcntg.Text = percentage.ToString("F1");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please first Enter Obtained Marks')", true);
+                    return;
+                }
+
+            }
+        }
+
+        protected void txtmarksmax1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtmarksObtained1.Text == "" || txtmarksObtained1.Text == null)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please first Enter Obtained Marks')", true);
+                return;
+            }
+            else
+            {
+                double ObtainedMarks = Convert.ToDouble(txtmarksObtained1.Text);
+                double MaxiMarks = Convert.ToDouble(txtmarksmax1.Text);
+                if (ObtainedMarks <= MaxiMarks)
+                {
+                    double percentage = (ObtainedMarks / MaxiMarks) * 100;
+                    txtprcntg1.Text = percentage.ToString("F1");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please  Enter correct MaximumMarks')", true);
+                    return;
+                }
+            }
+        }
+
+        protected void txtmarksmax2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtmarksObtained2.Text == "" || txtmarksObtained2.Text == null)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please first Enter Obtained Marks')", true);
+                return;
+            }
+            else
+            {
+                double ObtainedMarks = Convert.ToDouble(txtmarksObtained2.Text);
+                double MaxiMarks = Convert.ToDouble(txtmarksmax2.Text);
+                if (ObtainedMarks <= MaxiMarks)
+                {
+                    double percentage = (ObtainedMarks / MaxiMarks) * 100;
+                    txtprcntg2.Text = percentage.ToString("F1");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please  Enter correct MaximumMarks')", true);
+                    return;
+                }
+            }
+        }
+
+        protected void txtmarksmax3_TextChanged(object sender, EventArgs e)
+        {
+            if (txtmarksObtained3.Text == "" || txtmarksObtained3.Text == null)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please first Enter Obtained Marks')", true);
+                return;
+            }
+            else
+            {
+                double ObtainedMarks = Convert.ToDouble(txtmarksObtained3.Text);
+                double MaxiMarks = Convert.ToDouble(txtmarksmax3.Text);
+                if (ObtainedMarks <= MaxiMarks)
+                {
+                    double percentage = (ObtainedMarks / MaxiMarks) * 100;
+                    txtprcntg3.Text = percentage.ToString("F1");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please  Enter correct MaximumMarks')", true);
+                    return;
+                }
+            }
+        }
+
+        protected void txtmarksmax4_TextChanged(object sender, EventArgs e)
+        {
+            if (txtmarksObtained4.Text == "" || txtmarksObtained4.Text == null)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please first Enter Obtained Marks')", true);
+                return;
+            }
+            else
+            {
+                double ObtainedMarks = Convert.ToDouble(txtmarksObtained4.Text);
+                double MaxiMarks = Convert.ToDouble(txtmarksmax4.Text);
+                if (ObtainedMarks <= MaxiMarks)
+                {
+                    double percentage = (ObtainedMarks / MaxiMarks) * 100;
+                    txtprcntg4.Text = percentage.ToString("F1");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please  Enter correct MaximumMarks')", true);
+                    return;
+                }
+            }
+        }
     }
 }

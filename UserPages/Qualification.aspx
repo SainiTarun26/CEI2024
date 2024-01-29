@@ -854,7 +854,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
+                                                             <tr>
                                                                     <td style="text-align: center; font-size: 15px !important;">10th
                                                                     </td>
                                                                     <td>
@@ -880,7 +880,7 @@
 
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <asp:TextBox class="form-control" ID="txtmarksmax" MaxLength="3" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" ID="txtmarksmax" MaxLength="3" AutoPostBack="true" onKeyPress="return isNumberKey(event);" OnTextChanged="txtmarksmax_TextChanged"   autocomplete="off" runat="server"> </asp:TextBox>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtmarksmax"
                                                                                     ErrorMessage="Please Add Max Marks in 10th" ValidationGroup="Submit" ForeColor="Red">Please Add Max Marks in 10th</asp:RequiredFieldValidator>
 
@@ -909,7 +909,7 @@
                                                                                     <asp:ListItem Text="Diploma in Electrical Engineering" Value="5"></asp:ListItem>
                                                                                     <asp:ListItem Text="Diploma in Electronics Engineering" Value="6"></asp:ListItem>
                                                                                 </asp:DropDownList>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" Text="*Please Select Qualification*" ErrorMessage="*Please Select Qualification*" ControlToValidate="ddlQualification" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" Text="Please Select Qualification" ErrorMessage="Please Select Qualification" ControlToValidate="ddlQualification" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                                                             </td>
                                                                         </ContentTemplate>
@@ -936,7 +936,7 @@
 
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax1" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" AutoPostBack="true" OnTextChanged="txtmarksmax1_TextChanged" onKeyPress="return isNumberKey(event);" ID="txtmarksmax1" runat="server"> </asp:TextBox>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtmarksmax1"
                                                                                     ErrorMessage="Please Add Max Marks" ValidationGroup="Submit" ForeColor="Red">Please Add Max Marks </asp:RequiredFieldValidator>
 
@@ -980,7 +980,7 @@
                                                                                     ErrorMessage="Please Enter Obtained Marks" ValidationGroup="Submit" ForeColor="Red">Please Enter Obtained Marks </asp:RequiredFieldValidator>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax2" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" AutoPostBack="true" OnTextChanged="txtmarksmax2_TextChanged" onKeyPress="return isNumberKey(event);" ID="txtmarksmax2" runat="server"> </asp:TextBox>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator40" runat="server" ControlToValidate="txtmarksmax2"
                                                                                     ErrorMessage="Please Enter Max Marks" ValidationGroup="Submit" ForeColor="Red">Please Enter Max Marks</asp:RequiredFieldValidator>
                                                                             </div>
@@ -1018,7 +1018,7 @@
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtmarksObtained3" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Obtained Marks">Please Enter Obtained Marks</asp:RequiredFieldValidator>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax3" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" AutoPostBack="true" OnTextChanged="txtmarksmax3_TextChanged" onKeyPress="return isNumberKey(event);" ID="txtmarksmax3" runat="server"> </asp:TextBox>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="txtmarksmax3" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Max Marks">Please Enter Max Marks</asp:RequiredFieldValidator>
                                                                             </div>
                                                                         </div>
@@ -1055,7 +1055,7 @@
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtmarksObtained4" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Obtained Marks">Please Enter Obtained Marks</asp:RequiredFieldValidator>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax4" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" OnTextChanged="txtmarksmax4_TextChanged" onKeyPress="return isNumberKey(event);" ID="txtmarksmax4" runat="server"> </asp:TextBox>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtmarksmax4" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Max Marks">Please Enter Max Marks</asp:RequiredFieldValidator>
                                                                             </div>
                                                                         </div>
@@ -1063,15 +1063,6 @@
                                                                     <td>
                                                                         <asp:TextBox class="form-control" autocomplete="off" ID="txtprcntg4" MaxLength="3" onKeyPress="return isNumberKey(event);" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtprcntg4" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Percentage">Please Enter Percentage</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-
-                                                                    <td colspan="5" style="font-size: 12px;">
-                                                                        <asp:Button ID="BtnAddMoreQualification" runat="server" Text="Add More" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="BtnAddMoreQualification_Click"></asp:Button>
-                                                                        <asp:Button ID="BtnDelete" runat="server" Text="Delete" class="btn btn-primary"
-                                                                            Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="BtnDelete_Click" Visible="false"></asp:Button>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>

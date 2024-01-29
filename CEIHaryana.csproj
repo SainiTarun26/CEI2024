@@ -181,6 +181,7 @@
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
+    <Content Include="Application.aspx" />
     <Content Include="assetsnew\css\style.css" />
     <Content Include="assetsnew\css\style2.css" />
     <Content Include="assetsnew\img\about.jpg" />
@@ -1989,6 +1990,13 @@
     </Compile>
     <Compile Include="Admin\WorkIntimationDetail.aspx.designer.cs">
       <DependentUpon>WorkIntimationDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Application.aspx.cs">
+      <DependentUpon>Application.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Application.aspx.designer.cs">
+      <DependentUpon>Application.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CEI.cs" />
