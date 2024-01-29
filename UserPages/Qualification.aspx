@@ -1549,7 +1549,7 @@
                                                 <div class="col-4">
                                                     <asp:HiddenField ID="hdnId" runat="server" />
                                                 </div>
-                                            </div>
+                                            </div> 
                                         </div>
                                         <div class="col-md-1"></div>
                                     </ContentTemplate>

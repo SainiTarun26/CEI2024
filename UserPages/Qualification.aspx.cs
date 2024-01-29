@@ -252,7 +252,7 @@ namespace CEIHaryana.UserPages
                 //    }
                 //    else if (txtmarksObtained2.Text == "" || txtmarksmax2.Text == "" || txtprcntg2.Text == "")
                 //    {
-                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add your Marks');", true);
+                //        ScriptManager.RegisterStar tupScript(this, this.GetType(), "alert", "alert('Please add your Marks');", true);
                 //        showAlert = true;
                 //    }
                 //}
