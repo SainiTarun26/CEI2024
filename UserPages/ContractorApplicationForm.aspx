@@ -1557,7 +1557,7 @@
                                                                         <div class="forms-sample">
                                                                             <div class="form-group">
                                                                                 <label id="Label4" runat="server" visible="true">
-                                                                                    Is  Contractor License Previously Granted with same name from other state<samp style="color: red">* </samp>
+                                                                                    Is Contractor License Previously Granted with same name from other state<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                     ID="ddlLicenseGranted" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlLicenseGranted_SelectedIndexChanged">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Application.aspx.cs" Inherits="CEIHaryana.Application" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="applicationtable.aspx.cs" Inherits="CEIHaryana.applicationtable" %>
 
 <!DOCTYPE html>
 
@@ -240,13 +240,13 @@
                             <tr>
                                 <th>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
                                 <td>
-                                    <asp:TextBox runat="server" ID="txtEmail" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txtDOB" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <th>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
                                 <td style="width: 240PX;">
-                                    <asp:TextBox runat="server" ID="txtContact" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txtUan" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
 
 
@@ -255,23 +255,23 @@
                             <tr>
                                 <th>D.O.B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
                                 <td style="width: 200px;">
-                                    <asp:TextBox Style="width: 280px;" runat="server" ID="txtDOB" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
+                                    <asp:TextBox Style="width: 280px;" runat="server" ID="TextBox4" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <td></td>
                                 <td></td>
                                 <th style="width: 150px;">Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
                                 <td>
-                                    <asp:TextBox runat="server" ID="txtCalculatedAge" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="TextBox5" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <th>Aadhaar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
                                 <td>
-                                    <asp:TextBox runat="server" ID="txtAdhaar" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="TextBox6" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <th style="width: 16%;">Permanent Address&nbsp;:</th>
                                 <td colspan="8">
-                                    <asp:TextBox runat="server" ID="txtPermanentAddress" MaxLength="60" type="text" class="form-control DynamicData"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="TextBox2" MaxLength="60" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
 
 
@@ -279,7 +279,7 @@
                             <tr>
                                 <th>Comm. Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
                                 <td colspan="8">
-                                    <asp:TextBox runat="server" ID="txtCommunicationAddress" MaxLength="60" type="text" class="form-control DynamicData"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="TextBox3" MaxLength="60" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
 
 
