@@ -19,6 +19,7 @@ namespace CEIHaryana
             {
                 if (!IsPostBack)
                 {
+                    GetUserQualification();
                 }
                 else
                 {
@@ -34,16 +35,16 @@ namespace CEIHaryana
         {
             try
             {
-                if (Session["WiremanId"] != null)
-                {
-                    REID = Session["WiremanId"].ToString();
-                }
-                else
-                {
-                    REID = Session["SupervisorID"].ToString();
-                }
+                //if (Session["WiremanId"] != null)
+                //{
+                //    REID = Session["WiremanId"].ToString();
+                //}
+                //else
+                //{
+                //    REID = Session["SupervisorID"].ToString();
+                //}
                 // hdnId.Value = REID;
-                //string REID = "Aman20010920";
+                string REID = "Aman20010920";
                 DataSet ds = new DataSet();
                 ds = CEI.QualificationData(REID);
 
@@ -77,7 +78,7 @@ namespace CEIHaryana
                 txtUniversity2.Text = ds.Tables[0].Rows[0]["UniversityNameDiplomaorDegree"].ToString();
                 string PassingYear2 = ds.Tables[0].Rows[0]["PassingYearDiplomaorDegree"].ToString();
                 txtPassingyear2.Text = DateTime.Parse(PassingYear2).ToString("yyyy-MM-dd");
-                //txtmarksDiploma.Text = ds.Tables[0].Rows[0]["DiplomaMarks"].ToString();
+                txtmarksDiploma.Text = ds.Tables[0].Rows[0]["DiplomaMarks"].ToString();
                 txtprcntg2.Text = ds.Tables[0].Rows[0]["PercentageDiplomaorDegree"].ToString();
 
                 txtDegree.Text = ds.Tables[0].Rows[0]["NameofDegree"].ToString();
@@ -132,6 +133,78 @@ namespace CEIHaryana
                 {
                     PermanentEmployee.Visible = false;
                 }
+
+                string ExperienceIn = ds.Tables[0].Rows[0]["ExperiencedIn"].ToString();
+                ddlExperiene.SelectedIndex = ddlExperiene.Items.IndexOf(ddlExperiene.Items.FindByText(ExperienceIn));
+                string TraningUnder = ds.Tables[0].Rows[0]["TrainingUnder"].ToString();
+                ddlTraningUnder.SelectedIndex = ddlTraningUnder.Items.IndexOf(ddlTraningUnder.Items.FindByText(TraningUnder));
+                txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName"].ToString();
+                txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription"].ToString();
+                string dp_Id11 = ds.Tables[0].Rows[0]["ExperienceFromDate"].ToString();
+                txtExperienceFrom.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
+                string dp_Id12 = ds.Tables[0].Rows[0]["ExperienceToDate"].ToString();
+                txtExperienceTo.Text = DateTime.Parse(dp_Id12).ToString("yyyy-MM-dd");
+
+                string ExperienceIn1 = ds.Tables[0].Rows[0]["ExperiencedIn1"].ToString();
+                if (ExperienceIn1 != null && ExperienceIn1 != "")
+                {
+                    Experience1.Visible = true;
+                    ddlExperience1.SelectedIndex = ddlExperience1.Items.IndexOf(ddlExperience1.Items.FindByText(ExperienceIn1));
+                    txtExperienceEmployer1.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName1"].ToString();
+                    string TraningUnder1 = ds.Tables[0].Rows[0]["TrainingUnder1"].ToString();
+                    ddlTrainingUnder1.SelectedIndex = ddlTrainingUnder1.Items.IndexOf(ddlTrainingUnder1.Items.FindByText(TraningUnder1));
+                    txtPostDescription1.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription1"].ToString();
+                    string dp_ExperinceFrom1 = ds.Tables[0].Rows[0]["ExperienceFromDate1"].ToString();
+                    txtExperienceFrom1.Text = DateTime.Parse(dp_ExperinceFrom1).ToString("yyyy-MM-dd");
+                    string dp_ExperinceTo1 = ds.Tables[0].Rows[0]["ExperienceToDate1"].ToString();
+                    txtExperienceTo1.Text = DateTime.Parse(dp_ExperinceTo1).ToString("yyyy-MM-dd");
+                }
+                string ExperienceIn2 = ds.Tables[0].Rows[0]["ExperiencedIn2"].ToString();
+                if (ExperienceIn2 != null && ExperienceIn2 != "")
+                {
+                    Experience2.Visible = true;
+                    ddlExperience2.SelectedIndex = ddlExperience2.Items.IndexOf(ddlExperience2.Items.FindByText(ExperienceIn2));
+                    string TraningUnder2 = ds.Tables[0].Rows[0]["TrainingUnder2"].ToString();
+                    ddlTrainingUnder2.SelectedIndex = ddlTrainingUnder2.Items.IndexOf(ddlTrainingUnder2.Items.FindByText(TraningUnder2));
+                    txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName2"].ToString();
+                    txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription2"].ToString();
+                    string dp_ExperinceFrom2 = ds.Tables[0].Rows[0]["ExperienceFromDate2"].ToString();
+                    txtExperienceFrom.Text = DateTime.Parse(dp_ExperinceFrom2).ToString("yyyy-MM-dd");
+                    string dp_ExperinceTo2 = ds.Tables[0].Rows[0]["ExperienceToDate2"].ToString();
+                    txtExperienceTo.Text = DateTime.Parse(dp_ExperinceTo2).ToString("yyyy-MM-dd");
+                }
+                string ExperienceIn3 = ds.Tables[0].Rows[0]["ExperiencedIn3"].ToString();
+                if (ExperienceIn3 != null && ExperienceIn3 != "")
+                {
+                    Experience3.Visible = true;
+                    ddlExperience3.SelectedIndex = ddlExperience3.Items.IndexOf(ddlExperience3.Items.FindByText(ExperienceIn3));
+                    string TraningUnder3 = ds.Tables[0].Rows[0]["TrainingUnder3"].ToString();
+                    ddlTrainingUnder3.SelectedIndex = ddlTrainingUnder3.Items.IndexOf(ddlTrainingUnder3.Items.FindByText(TraningUnder3));
+                    txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName3"].ToString();
+                    txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription3"].ToString();
+                    string dp_ExperinceFrom3 = ds.Tables[0].Rows[0]["ExperienceFromDate3"].ToString();
+                    txtExperienceFrom.Text = DateTime.Parse(dp_ExperinceFrom3).ToString("yyyy-MM-dd");
+                    string dp_ExperinceTo3 = ds.Tables[0].Rows[0]["ExperienceToDate3"].ToString();
+                    txtExperienceTo.Text = DateTime.Parse(dp_ExperinceTo3).ToString("yyyy-MM-dd");
+                }
+                string ExperienceIn4 = ds.Tables[0].Rows[0]["ExperiencedIn4"].ToString();
+                if (ExperienceIn4 != null && ExperienceIn4 != "")
+                {
+                    Experience4.Visible = true;
+                    ddlExperience4.SelectedIndex = ddlExperience4.Items.IndexOf(ddlExperience4.Items.FindByText(ExperienceIn4));
+                    string TraningUnder4 = ds.Tables[0].Rows[0]["TrainingUnder4"].ToString();
+                    ddlTrainingUnder4.SelectedIndex = ddlTrainingUnder4.Items.IndexOf(ddlTrainingUnder4.Items.FindByText(TraningUnder4));
+                    txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName4"].ToString();
+                    txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription4"].ToString();
+                    string dp_ExperinceFrom4 = ds.Tables[0].Rows[0]["ExperienceFromDate4"].ToString();
+                    txtExperienceFrom.Text = DateTime.Parse(dp_ExperinceFrom4).ToString("yyyy-MM-dd");
+                    string dp_ExperinceTo4 = ds.Tables[0].Rows[0]["ExperienceToDate4"].ToString();
+                    txtExperienceTo.Text = DateTime.Parse(dp_ExperinceTo4).ToString("yyyy-MM-dd");
+                }
+                txtTotalExperience.Text = ds.Tables[0].Rows[0]["TotalExperience"].ToString();
+
+                string value = ds.Tables[0].Rows[0]["RetiredEngineer"].ToString().Trim();
+                RadioButtonList1.Items.FindByText(value).Selected = true;
             }
             catch (Exception ex)
             {

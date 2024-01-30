@@ -2262,9 +2262,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         public DataSet QualificationData(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UserQualificationData", LoginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetRegistrationForm", LoginId);
 
         }
+        
     }
 }
     

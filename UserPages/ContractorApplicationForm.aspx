@@ -1674,8 +1674,8 @@
                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                         ID="ddlEmployer1" runat="server" TabIndex="16">
                                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                        <asp:ListItem Text="Partner" Value="1"></asp:ListItem>
-                                                                                        <asp:ListItem Text="Director" Value="2"></asp:ListItem>
+                                                                                        <asp:ListItem Text="Supervisor" Value="1"></asp:ListItem>
+                                                                                        <asp:ListItem Text="Wiremen" Value="2"></asp:ListItem>
                                                                                     </asp:DropDownList>
                                                                                     <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator11" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
 
