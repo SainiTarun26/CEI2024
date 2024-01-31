@@ -19,6 +19,10 @@ namespace CEIHaryana.Contractor
                     {
                         getWorkIntimationData();
                     }
+                    else
+                    {
+
+                    }
                 }
             }
             catch
@@ -64,6 +68,10 @@ namespace CEIHaryana.Contractor
                         Response.Redirect("/Contractor/Work_Intimation.aspx");
 
                     }
+                    else
+                    {
+
+                    }
                 }
             }
             catch { }
@@ -75,7 +83,10 @@ namespace CEIHaryana.Contractor
                 GridView1.PageIndex = e.NewPageIndex;
                 getWorkIntimationData();
             }
-            catch { }
+            catch 
+            {
+                
+            }
         }
     }
 }

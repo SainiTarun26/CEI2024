@@ -1326,7 +1326,7 @@
                                                                                                     </div>
                                                                                                     <div class="row">
                                                                                                         <div class="col-12" style="text-align: end;">
-                                                                                                            <asp:Button type="Submit" ValidationGroup="ModalSubmit" ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                                                                            <asp:Button type="Submit" OnClientClick="return validateFormodal();"  ID="btnModalSubmit" Text="Add" OnClick="btnModalSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -1787,10 +1787,10 @@
                                                             </div>
                                                             <div class="row" style="margin-bottom: -75px; margin-top: 50px;">
                                                                 <div class="col-md-6" style="padding-left: 0px;">
-                                                                    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button1" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
+                                                                    <asp:Button type="BtnSubmit" ID="Button1" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                                 </div>
                                                                 <div class="col-md-6" style="padding-right: 0px; text-align: end;">
-                                                                    <asp:Button type="BtnSubmit" ValidationGroup="Submit" ID="Button2" Text="Next" OnClientClick="return validateForm();" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
+                                                                    <asp:Button type="BtnSubmit" ID="Button2" Text="Next" OnClientClick="return validateForm();" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1995,6 +1995,7 @@
               }
           }
       </script>--%>
+  
     <script>
         mobiscroll.setOptions({
             locale: mobiscroll.localeEn,                                         // Specify language like: locale: mobiscroll.localePl or omit setting to use default
@@ -2394,9 +2395,8 @@
 
     </script>
 
-
     <script type="text/javascript">
-        function validateForm() {
+        function validateFormodal() {
             var isValid = true;
 
             function validateField(element, fieldName) {
@@ -2417,65 +2417,109 @@
                 }
             }
 
-            validateField(document.getElementById('txtGstNumber'), 'GstNumber');
-            validateDropdown(document.getElementById('ddlCompanyStyle'));
-            validateDropdown(document.getElementById('ddlOffice'));
 
 
-            validateDropdown(document.getElementById('DdlPartnerOrDirector'));
-            validateDropdown(document.getElementById('ddlAnnexureOrNot'));
-
-            // Applicant details
-            validateField(document.getElementById('txtAgentName'), 'AgentName');
-            validateDropdown(document.getElementById('ddlUnitOrNot'));
-
-            validateDropdown(document.getElementById('ddlLicenseGranted'));
 
 
-            var ddlLicenseGranted = document.getElementById('ddlLicenseGranted');
-            if (ddlLicenseGranted && ddlLicenseGranted.value === '1') {
-                validateField(document.getElementById('txtIssusuingName'), 'Issusuing Name');
-                validateField(document.getElementById('txtDOB'), 'DOB');
-                validateField(document.getElementById('txtLicenseExpiry'), 'License Expiry');
-                validateDropdown(document.getElementById('DropDownList1'));
+            var DdlPartnerOrDirector = document.getElementById('DdlPartnerOrDirector');
+            if (DdlPartnerOrDirector && DdlPartnerOrDirector.value === '1') {
+                validateDropdown(document.getElementById('ddlAuthority'));
+                validateField(document.getElementById('txtName'), 'Full Name');
+                validateField(document.getElementById('txtAddress'), 'Address');
+                validateDropdown(document.getElementById('ddlState'));
+                validateDropdown(document.getElementById('ddlDistrict'));
+                validateField(document.getElementById('txtPinCode'), 'PinCode');
             }
 
-            var DropDownList1 = document.getElementById('DropDownList1');
-            if (DropDownList1 && DropDownList1.value === '1') {
-                validateField(document.getElementById('TextBox2'), 'TextBox2');
-                validateField(document.getElementById('txtLicenseIssue'), 'LicenseIssue');
-            }
-
-
-
-
-            // EmployeeDetails
-
-            validateDropdown(document.getElementById('ddlEmployer1'));
-            validateField(document.getElementById('txtLicense1'), 'License1');
-            validateField(document.getElementById('txtIssueDate1'), 'IssueDate1');
-            validateField(document.getElementById('txtValidity1'), 'Validity1');
-            validateField(document.getElementById('txtQualification1'), 'Qualification1');
-
-            validateDropdown(document.getElementById('ddlEmployer2'));
-            validateField(document.getElementById('txtLicense2'), 'License2');
-            validateField(document.getElementById('txtIssueDate2'), 'IssueDate2');
-            validateField(document.getElementById('txtValidity2'), 'Validity2');
-            validateField(document.getElementById('txtQualification2'), 'Qualification2');
-
-            // PENALTIES/PUNISHMENT
-            validateDropdown(document.getElementById('DropDownList2'));
-
-            var DropDownList2 = document.getElementById('DropDownList2');
-            if (DropDownList2 && DropDownList2.value === '1') {
-                validateField(document.getElementById('txtPenalities'), 'Penalities');
-            }
 
             if (!isValid) {
                 alert('Please fill in all the required fields.');
             }
             return isValid;
         }
+  </script>
+
+  <script type="text/javascript">
+      function validateForm() {
+          var isValid = true;
+
+          function validateField(element, fieldName) {
+              if (element.value.trim() === '') {
+                  isValid = false;
+                  element.style.border = '1px solid red';
+              } else {
+                  element.style.border = '';
+              }
+          }
+
+          function validateDropdown(element) {
+              if (element.value === '0') {
+                  isValid = false;
+                  element.style.border = '1px solid red';
+              } else {
+                  element.style.border = '';
+              }
+          }
+
+          validateField(document.getElementById('txtGstNumber'), 'GstNumber');
+          validateDropdown(document.getElementById('ddlCompanyStyle'));
+          validateDropdown(document.getElementById('ddlOffice'));
+
+
+          validateDropdown(document.getElementById('DdlPartnerOrDirector'));
+          validateDropdown(document.getElementById('ddlAnnexureOrNot'));
+
+          // Applicant details
+          validateField(document.getElementById('txtAgentName'), 'AgentName');
+          validateDropdown(document.getElementById('ddlUnitOrNot'));
+
+          validateDropdown(document.getElementById('ddlLicenseGranted'));
+
+
+          var ddlLicenseGranted = document.getElementById('ddlLicenseGranted');
+          if (ddlLicenseGranted && ddlLicenseGranted.value === '1') {
+              validateField(document.getElementById('txtIssusuingName'), 'Issusuing Name');
+              validateField(document.getElementById('txtDOB'), 'DOB');
+              validateField(document.getElementById('txtLicenseExpiry'), 'License Expiry');
+              validateDropdown(document.getElementById('ddlSameNameLicense'));
+          }
+
+          var ddlSameNameLicense = document.getElementById('ddlSameNameLicense');
+          if (ddlSameNameLicense && ddlSameNameLicense.value === '1') {
+              validateField(document.getElementById('txtLicenseNo'), 'txtLicenseNo');
+              validateField(document.getElementById('txtLicenseIssue'), 'LicenseIssue');
+          }
+
+
+
+
+          // EmployeeDetails
+
+          validateDropdown(document.getElementById('ddlEmployer1'));
+          validateField(document.getElementById('txtLicense1'), 'License1');
+          validateField(document.getElementById('txtIssueDate1'), 'IssueDate1');
+          validateField(document.getElementById('txtValidity1'), 'Validity1');
+          validateField(document.getElementById('txtQualification1'), 'Qualification1');
+
+          validateDropdown(document.getElementById('ddlEmployer2'));
+          validateField(document.getElementById('txtLicense2'), 'License2');
+          validateField(document.getElementById('txtIssueDate2'), 'IssueDate2');
+          validateField(document.getElementById('txtValidity2'), 'Validity2');
+          validateField(document.getElementById('txtQualification2'), 'Qualification2');
+
+          // PENALTIES/PUNISHMENT
+          validateDropdown(document.getElementById('DropDownList2'));
+
+          var DropDownList2 = document.getElementById('DropDownList2');
+          if (DropDownList2 && DropDownList2.value === '1') {
+              validateField(document.getElementById('txtPenalities'), 'Penalities');
+          }
+
+          if (!isValid) {
+              alert('Please fill in all the required fields.');
+          }
+          return isValid;
+      }
   </script>
 
 </body>
