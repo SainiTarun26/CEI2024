@@ -52,11 +52,8 @@ namespace CEIHaryana.Contractor
 
                             GetDetails();
                             GetassigneddatatoContractor();
+                            Session["UpdationId"] =  Session["id"] ;
                             Session["id"] = "";
-                            btnReset.Visible = false;
-                            btnSubmit.Visible = false;
-                            btnBack.Visible = true;
-                            lnkFile.Visible = true;
                         }
 
                     }
@@ -125,6 +122,7 @@ namespace CEIHaryana.Contractor
                 string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
                 string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
                 string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
+                string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
 
                 if (dp_Id8 != "")
                 {
@@ -212,26 +210,42 @@ namespace CEIHaryana.Contractor
                 }
                 //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
-                txtPAN.Attributes.Add("readonly", "readonly");
-                ddlworktype.Attributes.Add("disabled", "disabled");
-                txtName.Attributes.Add("readonly", "readonly");
-                txtagency.Attributes.Add("readonly", "readonly");
-                txtPhone.Attributes.Add("readonly", "readonly");
-                txtAddress.Attributes.Add("readonly", "readonly");
-                ddlDistrict.Attributes.Add("disabled", "disabled");
-                txtPin.Attributes.Add("readonly", "readonly");
-                txtOtherPremises.Attributes.Add("readonly", "readonly");
-                txtEmail.Attributes.Add("readonly", "readonly");
-                ddlPremises.Attributes.Add("disabled", "disabled");
-                ddlVoltageLevel.Attributes.Add("disabled", "disabled");
-                ddlApplicantType.Attributes.Add("disabled", "disabled");
-                txtinstallationNo1.Attributes.Add("disabled", "disabled");
-                txtinstallationNo2.Attributes.Add("disabled", "disabled");
-                txtinstallationNo3.Attributes.Add("disabled", "disabled");
-                txtStartDate.Attributes.Add("readonly", "readonly");
-                txtCompletitionDate.Attributes.Add("readonly", "readonly");
-                ddlAnyWork.Attributes.Add("disabled", "disabled");
-                txtCompletionDateAPWO.Attributes.Add("disabled", "disabled");
+                if (TestReportGenerated.Trim() == "Yes") {
+                    txtPAN.Attributes.Add("readonly", "readonly");
+                    ddlworktype.Attributes.Add("disabled", "disabled");
+                    txtName.Attributes.Add("readonly", "readonly");
+                    txtagency.Attributes.Add("readonly", "readonly");
+                    txtPhone.Attributes.Add("readonly", "readonly");
+                    txtAddress.Attributes.Add("readonly", "readonly");
+                    ddlDistrict.Attributes.Add("disabled", "disabled");
+                    txtPin.Attributes.Add("readonly", "readonly");
+                    txtOtherPremises.Attributes.Add("readonly", "readonly");
+                    txtEmail.Attributes.Add("readonly", "readonly");
+                    ddlPremises.Attributes.Add("disabled", "disabled");
+                    ddlVoltageLevel.Attributes.Add("disabled", "disabled");
+                    ddlApplicantType.Attributes.Add("disabled", "disabled");
+                    txtinstallationNo1.Attributes.Add("disabled", "disabled");
+                    txtinstallationNo2.Attributes.Add("disabled", "disabled");
+                    txtinstallationNo3.Attributes.Add("disabled", "disabled");
+                    txtStartDate.Attributes.Add("readonly", "readonly");
+                    txtCompletitionDate.Attributes.Add("readonly", "readonly");
+                    ddlAnyWork.Attributes.Add("disabled", "disabled");
+                    txtCompletionDateAPWO.Attributes.Add("disabled", "disabled");
+
+                    btnReset.Visible = false;
+                    btnSubmit.Visible = false;
+                    btnBack.Visible = true;
+                    lnkFile.Visible = true;
+                }
+                else
+                {
+
+                    btnReset.Visible = false;
+                    btnSubmit.Visible = true;
+                    btnSubmit.Text = "Update";
+                    btnBack.Visible = true;
+                    lnkFile.Visible = true;
+                }
             }
             catch { }
         }
@@ -272,7 +286,7 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
+                   // Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
                 }
 
             }
@@ -449,6 +463,16 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                string UpdationId = string.Empty;
+                if (Session["UpdationId"] != null)
+                {
+                     UpdationId = Session["UpdationId"].ToString();
+                }
+                else
+                {
+                    UpdationId = null;
+
+                }
                 bool atLeastOneSupervisorChecked = false;
 
                 foreach (GridViewRow row in GridView1.Rows)
@@ -464,7 +488,7 @@ namespace CEIHaryana.Contractor
                     }
                 }
 
-                if (!atLeastOneSupervisorChecked)
+                if (!atLeastOneSupervisorChecked && btnSubmit.Text !="Update")
                 {
                     // No Supervisor checkbox is selected
                     // Add your logic or show a message here
@@ -512,7 +536,7 @@ namespace CEIHaryana.Contractor
 
                        
                         hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, 
+                        CEI.IntimationDataInsertion(UpdationId,ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, 
                             txtAddress.Text,ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, 
                             ddlVoltageLevel.SelectedItem.ToString(),txtPAN.Text,txtinstallationType1.Text,txtinstallationNo1.Text, txtinstallationType2.Text,
                             txtinstallationNo2.Text, txtinstallationType3.Text,txtinstallationNo3.Text,txtinstallationType4.Text, txtinstallationNo4.Text,
@@ -559,8 +583,13 @@ namespace CEIHaryana.Contractor
                             }
                         }
                         CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
-                       
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        if (btnSubmit.Text.Trim() =="Submit") {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
+                        }
 
 
 

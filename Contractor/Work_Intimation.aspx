@@ -51,6 +51,14 @@
         }
     </script>
     <script type="text/javascript">
+        function alertWithRedirectUpdation() {
+            if (confirm('Intimation Updated Successfully')) {
+                window.location.href = "/Contractor/PreviousProjects.aspx";
+            } else {
+            }
+        }
+    </script>
+    <script type="text/javascript">
         function validatePAN() {
             var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
      var panValidator = document.getElementById('<%= revPAN.ClientID %>');
