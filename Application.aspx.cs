@@ -28,7 +28,6 @@ namespace CEIHaryana
             }
             catch
             {
-
             }
 
         }
@@ -45,7 +44,7 @@ namespace CEIHaryana
                 //    REID = Session["SupervisorID"].ToString();
                 //}
                 // hdnId.Value = REID;
-                string REID = "Aman20010920";
+                string REID = "WXYZ20020206";
                 DataSet ds = new DataSet();
                 ds = CEI.QualificationData(REID);
 
@@ -79,12 +78,13 @@ namespace CEIHaryana
                 txtUniversity2.Text = ds.Tables[0].Rows[0]["UniversityNameDiplomaorDegree"].ToString();
                 string PassingYear2 = ds.Tables[0].Rows[0]["PassingYearDiplomaorDegree"].ToString();
                 txtPassingyear2.Text = DateTime.Parse(PassingYear2).ToString("yyyy-MM-dd");
-              //  txtmarksDiploma.Text = ds.Tables[0].Rows[0]["DiplomaMarks"].ToString();
+                txtmarksDiploma.Text = ds.Tables[0].Rows[0]["DiplomaMarks"].ToString();
                 txtprcntg2.Text = ds.Tables[0].Rows[0]["PercentageDiplomaorDegree"].ToString();
 
                 txtDegree.Text = ds.Tables[0].Rows[0]["NameofDegree"].ToString();
-                if (txtDegree.Text.Trim() != null && txtDegree.Text.Trim() != "")
+                if (txtDegree.Text.Trim() != null && txtDegree.Text.Trim() != "" && txtDegree.Text != "Select Degree")
                 {
+                    Degree.Visible = true;
                     txtUniversity3.Text = ds.Tables[0].Rows[0]["UniversityNamePG"].ToString();
                     string PassingYear3 = ds.Tables[0].Rows[0]["PassingYearPG"].ToString();
                     txtPassingyear3.Text = DateTime.Parse(PassingYear3).ToString("yyyy-MM-dd");
@@ -92,8 +92,9 @@ namespace CEIHaryana
                     txtprcntg3.Text = ds.Tables[0].Rows[0]["PercentagePG"].ToString();
                 }
                 txtMasters.Text = ds.Tables[0].Rows[0]["NameofMasters"].ToString();
-                if (txtMasters.Text.Trim() != null && txtMasters.Text.Trim() != "")
+                if (txtMasters.Text.Trim() != null && txtMasters.Text.Trim() != "" && txtMasters.Text != "Select Masters")
                 {
+                    Master.Visible = true;
                     txtUniversity4.Text = ds.Tables[0].Rows[0]["MastersUniversityName"].ToString();
                     string PassingYear4 = ds.Tables[0].Rows[0]["MastersPassingYear"].ToString();
                     txtPassingyear4.Text = DateTime.Parse(PassingYear4).ToString("yyyy-MM-dd");
@@ -104,7 +105,7 @@ namespace CEIHaryana
                 //RadioButtonList2.Items.FindByText(iscertificateCompetency).Selected = true;
                 if (iscertificateCompetency != "No")
                 {
-                  //  competency.Visible = true;
+                    Licence.Visible = true;
                     txtCategory.Text = ds.Tables[0].Rows[0]["CertificateofCompetency1"].ToString();
                     txtPermitNo.Text = ds.Tables[0].Rows[0]["PermitNo1"].ToString();
                     txtIssuingAuthority.Text = ds.Tables[0].Rows[0]["IssuingAuthority1"].ToString();
@@ -113,16 +114,12 @@ namespace CEIHaryana
                     string ExpiryDate = ds.Tables[0].Rows[0]["ExpiryDate1"].ToString();
                     txtExpiryDate.Text = DateTime.Parse(ExpiryDate).ToString("yyyy-MM-dd");
                 }
-                else
-                {
-                   // competency.Visible = false;
-                }
 
                 string PermanentEmploye = ds.Tables[0].Rows[0]["EmployedPermanent"].ToString().Trim();
-               // RadioButtonList3.Items.FindByText(PermanentEmploye).Selected = true;
+                // RadioButtonList3.Items.FindByText(PermanentEmploye).Selected = true;
                 if (PermanentEmploye != "No")
                 {
-                    //PermanentEmployee.Visible = true;
+                    EmployeDetail.Visible = true;
                     txtPermanentEmployerName.Text = ds.Tables[0].Rows[0]["EmployerName"].ToString();
                     txtPermanentDescription.Text = ds.Tables[0].Rows[0]["PostDescription"].ToString();
                     string PermanentFrom = ds.Tables[0].Rows[0]["FromDate"].ToString();
@@ -130,82 +127,66 @@ namespace CEIHaryana
                     string PermanentTo = ds.Tables[0].Rows[0]["ToDate"].ToString();
                     txtPermanentTo.Text = DateTime.Parse(PermanentTo).ToString("yyyy-MM-dd");
                 }
-                else
-                {
-                  //  PermanentEmployee.Visible = false;
-                }
-
-                string ExperienceIn = ds.Tables[0].Rows[0]["ExperiencedIn"].ToString();
-               // ddlExperiene.SelectedIndex = ddlExperiene.Items.IndexOf(ddlExperiene.Items.FindByText(ExperienceIn));
-                string TraningUnder = ds.Tables[0].Rows[0]["TrainingUnder"].ToString();
-               // ddlTraningUnder.SelectedIndex = ddlTraningUnder.Items.IndexOf(ddlTraningUnder.Items.FindByText(TraningUnder));
-               // txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName"].ToString();
-               // txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription"].ToString();
-                string dp_Id11 = ds.Tables[0].Rows[0]["ExperienceFromDate"].ToString();
-               // txtExperienceFrom.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
-                string dp_Id12 = ds.Tables[0].Rows[0]["ExperienceToDate"].ToString();
-               // txtExperienceTo.Text = DateTime.Parse(dp_Id12).ToString("yyyy-MM-dd");
+                //Experience Details
+                txtExperienceEmployer1.Text = ds.Tables[0].Rows[0]["ExperiencedIn"].ToString();
+                txtExperiencePost1.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription"].ToString();
+                string Dp_ExperienceFrom1 = ds.Tables[0].Rows[0]["ExperienceFromDate"].ToString();
+                txtExperienceFrom1.Text = DateTime.Parse(Dp_ExperienceFrom1).ToString("yyyy-MM-dd");
+                string Dp_ExperienceTo1 = ds.Tables[0].Rows[0]["ExperienceToDate"].ToString();
+                txtExperienceTo1.Text = DateTime.Parse(Dp_ExperienceTo1).ToString("yyyy-MM-dd");
 
                 string ExperienceIn1 = ds.Tables[0].Rows[0]["ExperiencedIn1"].ToString();
-                if (ExperienceIn1 != null && ExperienceIn1 != "")
+                if (ExperienceIn1 != null && ExperienceIn1 != "" && ExperienceIn1 != "Select")
                 {
-                    //Experience1.Visible = true;
-                    //ddlExperience1.SelectedIndex = ddlExperience1.Items.IndexOf(ddlExperience1.Items.FindByText(ExperienceIn1));
-                    //txtExperienceEmployer1.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName1"].ToString();
-                    //string TraningUnder1 = ds.Tables[0].Rows[0]["TrainingUnder1"].ToString();
-                    //ddlTrainingUnder1.SelectedIndex = ddlTrainingUnder1.Items.IndexOf(ddlTrainingUnder1.Items.FindByText(TraningUnder1));
-                    //txtPostDescription1.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription1"].ToString();
-                    string dp_ExperinceFrom1 = ds.Tables[0].Rows[0]["ExperienceFromDate1"].ToString();
-                   // txtExperienceFrom1.Text = DateTime.Parse(dp_ExperinceFrom1).ToString("yyyy-MM-dd");
-                    string dp_ExperinceTo1 = ds.Tables[0].Rows[0]["ExperienceToDate1"].ToString();
-                    //txtExperienceTo1.Text = DateTime.Parse(dp_ExperinceTo1).ToString("yyyy-MM-dd");
+                    Experience2.Visible = true;
+                    txtExperienceEmployer2.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName1"].ToString();
+                    txtExperiencePost2.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription1"].ToString();
+                    string Dp_ExperienceFrom2 = ds.Tables[0].Rows[0]["ExperienceFromDate1"].ToString();
+                    txtExperienceFrom2.Text = DateTime.Parse(Dp_ExperienceFrom2).ToString("yyyy-MM-dd");
+                    string Dp_ExperienceTo2 = ds.Tables[0].Rows[0]["ExperienceToDate1"].ToString();
+                    txtExperienceTo2.Text = DateTime.Parse(Dp_ExperienceTo2).ToString("yyyy-MM-dd");
                 }
                 string ExperienceIn2 = ds.Tables[0].Rows[0]["ExperiencedIn2"].ToString();
-                if (ExperienceIn2 != null && ExperienceIn2 != "")
+                if (ExperienceIn2 != null && ExperienceIn2 != "" && ExperienceIn2 != "Select")
                 {
-                //    Experience2.Visible = true;
-                //    ddlExperience2.SelectedIndex = ddlExperience2.Items.IndexOf(ddlExperience2.Items.FindByText(ExperienceIn2));
-                //    string TraningUnder2 = ds.Tables[0].Rows[0]["TrainingUnder2"].ToString();
-                //    ddlTrainingUnder2.SelectedIndex = ddlTrainingUnder2.Items.IndexOf(ddlTrainingUnder2.Items.FindByText(TraningUnder2));
-                //    txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName2"].ToString();
-                //    txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription2"].ToString();
-                //    string dp_ExperinceFrom2 = ds.Tables[0].Rows[0]["ExperienceFromDate2"].ToString();
-                //    txtExperienceFrom.Text = DateTime.Parse(dp_ExperinceFrom2).ToString("yyyy-MM-dd");
-                //    string dp_ExperinceTo2 = ds.Tables[0].Rows[0]["ExperienceToDate2"].ToString();
-                //    txtExperienceTo.Text = DateTime.Parse(dp_ExperinceTo2).ToString("yyyy-MM-dd");
+                    Experience3.Visible = true;
+                    txtExperienceEmployer3.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName2"].ToString();
+                    txtExperiencePost3.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription2"].ToString();
+                    string dp_ExperinceFrom3 = ds.Tables[0].Rows[0]["ExperienceFromDate2"].ToString();
+                    txtExperienceFrom3.Text = DateTime.Parse(dp_ExperinceFrom3).ToString("yyyy-MM-dd");
+                    string dp_ExperinceTo3 = ds.Tables[0].Rows[0]["ExperienceToDate2"].ToString();
+                    txtExperienceTo3.Text = DateTime.Parse(dp_ExperinceTo3).ToString("yyyy-MM-dd");
                 }
                 string ExperienceIn3 = ds.Tables[0].Rows[0]["ExperiencedIn3"].ToString();
-                if (ExperienceIn3 != null && ExperienceIn3 != "")
+                if (ExperienceIn3 != null && ExperienceIn3 != "" && ExperienceIn3 != "Select")
                 {
-                    //Experience3.Visible = true;
-                    //ddlExperience3.SelectedIndex = ddlExperience3.Items.IndexOf(ddlExperience3.Items.FindByText(ExperienceIn3));
-                    //string TraningUnder3 = ds.Tables[0].Rows[0]["TrainingUnder3"].ToString();
-                    //ddlTrainingUnder3.SelectedIndex = ddlTrainingUnder3.Items.IndexOf(ddlTrainingUnder3.Items.FindByText(TraningUnder3));
-                    //txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName3"].ToString();
-                    //txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription3"].ToString();
-                    //string dp_ExperinceFrom3 = ds.Tables[0].Rows[0]["ExperienceFromDate3"].ToString();
-                    //txtExperienceFrom.Text = DateTime.Parse(dp_ExperinceFrom3).ToString("yyyy-MM-dd");
-                    //string dp_ExperinceTo3 = ds.Tables[0].Rows[0]["ExperienceToDate3"].ToString();
-                    //txtExperienceTo.Text = DateTime.Parse(dp_ExperinceTo3).ToString("yyyy-MM-dd");
+                    Experience4.Visible = true;
+                    txtExperienceEmployer4.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName3"].ToString();
+                    txtExperiencePost4.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription3"].ToString();
+                    string dp_ExperinceFrom4 = ds.Tables[0].Rows[0]["ExperienceFromDate3"].ToString();
+                    txtExperienceFrom4.Text = DateTime.Parse(dp_ExperinceFrom4).ToString("yyyy-MM-dd");
+                    string dp_ExperinceTo4 = ds.Tables[0].Rows[0]["ExperienceToDate3"].ToString();
+                    txtExperienceTo4.Text = DateTime.Parse(dp_ExperinceTo4).ToString("yyyy-MM-dd");
                 }
                 string ExperienceIn4 = ds.Tables[0].Rows[0]["ExperiencedIn4"].ToString();
-                if (ExperienceIn4 != null && ExperienceIn4 != "")
+                if (ExperienceIn4 != null && ExperienceIn4 != "" && ExperienceIn4 != "Select")
                 {
-                    //Experience4.Visible = true;
-                    //ddlExperience4.SelectedIndex = ddlExperience4.Items.IndexOf(ddlExperience4.Items.FindByText(ExperienceIn4));
-                    //string TraningUnder4 = ds.Tables[0].Rows[0]["TrainingUnder4"].ToString();
-                    //ddlTrainingUnder4.SelectedIndex = ddlTrainingUnder4.Items.IndexOf(ddlTrainingUnder4.Items.FindByText(TraningUnder4));
-                    //txtExperienceEmployer.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName4"].ToString();
-                    //txtPostDescription.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription4"].ToString();
-                    //string dp_ExperinceFrom4 = ds.Tables[0].Rows[0]["ExperienceFromDate4"].ToString();
-                    //txtExperienceFrom.Text = DateTime.Parse(dp_ExperinceFrom4).ToString("yyyy-MM-dd");
-                    //string dp_ExperinceTo4 = ds.Tables[0].Rows[0]["ExperienceToDate4"].ToString();
-                    //txtExperienceTo.Text = DateTime.Parse(dp_ExperinceTo4).ToString("yyyy-MM-dd");
+                    Experience5.Visible = true;
+                    txtExperienceEmployer5.Text = ds.Tables[0].Rows[0]["ExperienceEmployerName4"].ToString();
+                    txtExperiencePost5.Text = ds.Tables[0].Rows[0]["ExperiencePostDescription4"].ToString();
+                    string dp_ExperinceFrom5 = ds.Tables[0].Rows[0]["ExperienceFromDate4"].ToString();
+                    txtExperienceFrom5.Text = DateTime.Parse(dp_ExperinceFrom5).ToString("yyyy-MM-dd");
+                    string dp_ExperinceTo5 = ds.Tables[0].Rows[0]["ExperienceToDate4"].ToString();
+                    txtExperienceTo5.Text = DateTime.Parse(dp_ExperinceTo5).ToString("yyyy-MM-dd");
                 }
                 //txtTotalExperience.Text = ds.Tables[0].Rows[0]["TotalExperience"].ToString();
-
                 string value = ds.Tables[0].Rows[0]["RetiredEngineer"].ToString().Trim();
                 //RadioButtonList1.Items.FindByText(value).Selected = true;
+                string path = ds.Tables[0].Rows[0]["Photo"].ToString();
+                string fullImagePath = Server.MapPath(path);
+                //byte[] images = (byte[])ds.Tables[0].Rows[0]["Photo"];
+                //string strBase64 = Convert.ToBase64String(images);
+                image.ImageUrl = fullImagePath;//"data:Image/png;base64," + strBase64;
             }
             catch (Exception ex)
             {

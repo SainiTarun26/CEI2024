@@ -222,7 +222,8 @@
                                     <asp:TextBox runat="server" ID="txtFatherName" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <td rowspan="3" colspan="3" style="text-align: center; width: 1px;">
-                                    <img src="Assets/depositphotos_59095205-stock-illustration-businessman-profile-icon.jpg" style="width: 150px;" />
+                                    <%--<img id="image" style="width: 150px;" />--%>
+                                    <asp:Image ID="image" Height="100px" Width="100px" runat="server" />
                                 </td>
                             </tr>
                             <tr>
@@ -298,7 +299,7 @@
                         <thead>
                             <tr style="text-align: center;">
 
-                                <th scope="col" style="width: 20% !important;">Exam Name</th>
+                                <th scope="col" style="width: 30% !important;">Exam Name</th>
                                 <th scope="col">Board/University Name</th>
                                 <th scope="col" style="width: 0% !important;">Passing Year</th>
                                 <th scope="col" style="width: 0% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks
@@ -362,14 +363,14 @@
                                     <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtPassingyear2" runat="server"> </asp:TextBox>
                                 </td>
                                 <td style="padding: 10px; padding-left: 30px !important;">
-                                    <asp:TextBox class="form-control tabletextbox" autocomplete="off" runat="server"> </asp:TextBox>
+                                    <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtmarksDiploma" runat="server"> </asp:TextBox>
 
                                 </td>
                                 <td style="padding: 10px; padding-left: 30px !important;">
                                     <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtprcntg2" runat="server"> </asp:TextBox>
                                 </td>
                             </tr>
-                            <tr id="Degree" runat="server">
+                            <tr id="Degree" runat="server" visible="false" >
 
                                 <td style="padding: 10px; padding-left: 30px !important;">
                                     <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtDegree" runat="server"> </asp:TextBox>
@@ -389,10 +390,8 @@
                                 </td>
                             </tr>
                             <tr id="Masters" visible="false" runat="server">
-
                                 <td style="padding: 10px; padding-left: 30px !important;">
                                     <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtMasters" runat="server"> </asp:TextBox>
-
                                 </td>
                                 <td style="padding: 10px; padding-left: 30px !important;">
                                     <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtUniversity4" runat="server"> </asp:TextBox>
@@ -402,7 +401,6 @@
                                 </td>
                                 <td style="padding: 10px; padding-left: 30px !important;">
                                     <asp:TextBox class="form-control tabletextbox" ID="txtmarksObtained4" runat="server"> </asp:TextBox>
-
                                 </td>
                                 <td style="padding: 10px; padding-left: 30px !important;">
                                     <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtprcntg4" runat="server"> </asp:TextBox>
@@ -412,8 +410,8 @@
                     </table>
 
                 </div>
+                <div id="Licence" runat="server" visible="false" >
                 <h3 class="card-title">Previous Licence Details</h3>
-
                 <div class="card" style="padding: 20px;">
 
                     <div class="table-responsive" runat="server">
@@ -430,26 +428,25 @@
                             </thead>
                             <tbody>
                                 <tr>
-
                                     <td style="padding: 10px; padding-left: 30px !important;">
                                         <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtCategory" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator42" runat="server" InitialValue="" ControlToValidate="txtCategory" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Category">Please Enter Category</asp:RequiredFieldValidator>
+                                        
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
                                         <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtPermitNo" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator43" runat="server" InitialValue="" ControlToValidate="txtPermitNo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Permit No.">Please Enter Permit No.</asp:RequiredFieldValidator>
+                                        
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
                                         <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtIssuingAuthority" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" InitialValue="" ControlToValidate="txtIssuingAuthority" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter IssuingAuthority">Please Enter IssuingAuthority</asp:RequiredFieldValidator>
+                                        
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
                                         <asp:TextBox class="form-control tabletextbox" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtIssuingDate" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" InitialValue="" ControlToValidate="txtIssuingDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Issuing Date">Please Select Issuing Date</asp:RequiredFieldValidator>
+                                        
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
                                         <asp:TextBox class="form-control tabletextbox" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtExpiryDate" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" InitialValue="" ControlToValidate="txtExpiryDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Expiry Date">Please Select Expiry Date</asp:RequiredFieldValidator>
+                                        
                                     </td>
                                 </tr>
                             </tbody>
@@ -457,8 +454,47 @@
                     </div>
 
                 </div>
-                <h3 class="card-title">Experience Details</h3>
+                    </div>
+                <div id="EmployeDetail" runat="server" visible="false">
+                <h3 class="card-title">Employment Details</h3>
+                <div class="card" style="padding: 20px;">
+                    <div class="table-responsive" runat="server">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employeer &nbsp;
+                                                        &nbsp;&nbsp; &nbsp; </th>
+                                    <th scope="col">Description of post held</th>
+                                    <th scope="col">From</th>
+                                    <th scope="col">To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; padding-left: 30px !important;">
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtPermanentEmployerName" runat="server"> </asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" InitialValue="" ControlToValidate="txtPermitNo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Permit No.">Please Enter Permit No.</asp:RequiredFieldValidator>
+                                    </td>
+                                    <td style="padding: 10px; padding-left: 30px !important;">
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtPermanentDescription" runat="server"> </asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" InitialValue="" ControlToValidate="txtIssuingAuthority" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter IssuingAuthority">Please Enter IssuingAuthority</asp:RequiredFieldValidator>
+                                    </td>
+                                    <td style="padding: 10px; padding-left: 30px !important;">
+                                        <asp:TextBox class="form-control tabletextbox" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtPermanentFrom" runat="server"> </asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" InitialValue="" ControlToValidate="txtIssuingDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Issuing Date">Please Select Issuing Date</asp:RequiredFieldValidator>
+                                    </td>
+                                    <td style="padding: 10px; padding-left: 30px !important;">
+                                        <asp:TextBox class="form-control tabletextbox" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtPermanentTo" runat="server"> </asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" InitialValue="" ControlToValidate="txtExpiryDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Expiry Date">Please Select Expiry Date</asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+                </div>
+                    </div>
+                <h3 class="card-title">Experience Details</h3>
                 <div class="card" style="padding: 20px;">
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -477,100 +513,100 @@
                                     <td style="text-align: center; font-size: 13px;">1
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtPermanentEmployerName" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator48" runat="server" ControlToValidate="txtPermanentEmployerName" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperienceEmployer1" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtPermanentDescription" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator49" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperiencePost1" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtPermanentFrom" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator50" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtPermanentTo" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo1" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="Experience2" runat="server" visible="false">
                                     <td style="text-align: center; font-size: 13px;">2
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox10" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPermanentEmployerName" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperienceEmployer2" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox11" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperiencePost2" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox12" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox13" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" runat="server"> </asp:TextBox>
+                                       
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="Experience3" runat="server" visible="false">
                                     <td style="text-align: center; font-size: 13px;">3
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox14" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtPermanentEmployerName" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperienceEmployer3" runat="server"> </asp:TextBox>
+                                        
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox15" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperiencePost3" runat="server"> </asp:TextBox>
+                                        
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox16" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" runat="server"> </asp:TextBox>
+                                        
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox17" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo3" runat="server"> </asp:TextBox>
+                                        
                                     </td>
                                 </tr>
-                                <tr>
-    <td style="text-align: center; font-size: 13px;">3
+                                <tr id="Experience4" runat="server" visible="false">
+    <td style="text-align: center; font-size: 13px;">4
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox18" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPermanentEmployerName" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperienceEmployer4" runat="server"> </asp:TextBox>
+       
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox19" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperiencePost4" runat="server"> </asp:TextBox>
+        
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox20" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" runat="server"> </asp:TextBox>
+        
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox21" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" runat="server"> </asp:TextBox>
+        
     </td>
 </tr>
-                                <tr>
-    <td style="text-align: center; font-size: 13px;">3
+                                <tr id="Experience5" runat="server" visible="false">
+    <td style="text-align: center; font-size: 13px;">5
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox22" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtPermanentEmployerName" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperienceEmployer5" runat="server"> </asp:TextBox>
+       
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox23" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="txtExperiencePost5" runat="server"> </asp:TextBox>
+       
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox24" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom5" runat="server"> </asp:TextBox>
+       
     </td>
     <td style="padding: 10px; padding-left: 30px !important;">
-        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox25" runat="server"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
+        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo5" runat="server"> </asp:TextBox>
+       
     </td>
 </tr>
                             </tbody>
@@ -595,20 +631,16 @@
                                 <tr>
 
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPermanentEmployerName" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox1" runat="server"> </asp:TextBox>                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox7" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" ID="TextBox7" runat="server"> </asp:TextBox>                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox8" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox8" runat="server"> </asp:TextBox>                                       
                                     </td>
                                     <td style="padding: 10px; padding-left: 30px !important;">
-                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox9" runat="server"> </asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control tabletextbox" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="TextBox9" runat="server"> </asp:TextBox>                                        
                                     </td>
                                 </tr>
                             </tbody>
