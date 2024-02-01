@@ -82,7 +82,7 @@ namespace CEIHaryana.Supervisor
                             if (lblApproval.Text.Trim() == "Reject")
                             {
                                 Session["LineID"] = id;
-                                Response.Redirect("~/Supervisor/LineTestReport.aspx", false);
+                                Response.Redirect("Supervisor/LineTestReport.aspx", false);
                             }
                             else
                             {
@@ -91,7 +91,7 @@ namespace CEIHaryana.Supervisor
                             }
                         }
                         else if (lblTypeOf.Text.Trim() == "Substation Transformer")
-                        {
+                        {   
 
                             if (lblApproval.Text.Trim() == "Reject")
                             {
@@ -110,7 +110,7 @@ namespace CEIHaryana.Supervisor
                             if (lblApproval.Text.Trim() == "Reject")
                             {
                                 Session["GeneratingSetId"] = id;
-                                Response.Redirect("~/Supervisor/GeneratingSetTestReport.aspx", false);
+                                Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
                             }
                             else
                             {
