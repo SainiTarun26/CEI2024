@@ -1329,7 +1329,7 @@
         <!-- End Header -->
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                x<main id="main">
+                <main id="main">
                     <section id="about" class="about section-bg" style="padding-top: 20px;">
                         <div class="container" data-aos="fade-up">
                             <div class="row">
@@ -1338,7 +1338,7 @@
                                         (Please read the instructions carefully as given in Instruction
                             Page before filling the form)                           
                                     </p>
-                                    <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
+                                    <img src="/Assets/capsules/CONTRACTOR_APPLICATION_CAPSULE.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                                 </div>
                             </div>
                             <div class="row">

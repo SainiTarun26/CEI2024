@@ -505,7 +505,8 @@ input#BtnFormC{
                                     (Please read the instructions carefully as given in Instruction
                             Page before filling the form)
                                 </p>
-                                <img src="/Assets/capsules/documents.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
+                                <img src="/Assets/capsules/CONTRACTOR_APPLICATION_DOCUMENT_CAPSULE.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
+                                
                                 <div class="card"
                                     style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                     <div class="card-body">

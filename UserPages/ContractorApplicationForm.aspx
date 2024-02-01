@@ -1217,6 +1217,7 @@
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                     ID="ddlAnnexureOrNot" runat="server">
+                                                                                    <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                                 </asp:DropDownList>
@@ -1541,10 +1542,11 @@
                                                                         <div class="forms-sample">
                                                                             <div class="form-group">
                                                                                 <label id="Label3" runat="server" visible="true">
-                                                                                    Is  Applicant a manufacturing firm or production unit<samp style="color: red">* </samp>
+                                                                                    Is Applicant a manufacturing firm or production unit<samp style="color: red">* </samp>
                                                                                 </label>
                                                                                 <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                     ID="ddlUnitOrNot" runat="server">
+                                                                                    <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
                                                                                     <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                     <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                                 </asp:DropDownList>

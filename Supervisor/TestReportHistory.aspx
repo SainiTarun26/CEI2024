@@ -198,19 +198,19 @@
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("Approval") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
+                         <%--   <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                    <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
+                                    <%--<asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>--%>
+                                    <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
                                     <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltagelevel") %>'></asp:Label>
-                                    <asp:Label ID="lblInstallationLine" runat="server" Text='<%#Eval("NoOfInstallation") %>'></asp:Label>
-                                    <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHIDs") %>'></asp:Label>
-                                    <asp:Label ID="lblApplicationForTestReport" runat="server" Text='<%#Eval("ApplicationForTestReport") %>'></asp:Label>
+                                    <asp:Label ID="lblInstallationLine" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
+                                    <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
+                                    <asp:Label ID="lblApplicationForTestReport" runat="server" Text='<%#Eval("Apllication") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
@@ -220,7 +220,7 @@
                                     Test Report Application
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Apllication") %> ' CommandName="Select"><%#Eval("Apllication") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                                 
@@ -232,10 +232,10 @@
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
+                    <%--        <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
