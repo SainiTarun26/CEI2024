@@ -785,7 +785,8 @@ namespace CEIHaryana.Contractor
                         }
                     }
                     catch (Exception)
-                    { }
+                    { 
+                    }
                     ddlWorkDetail.SelectedValue = "0";
 
                 }
