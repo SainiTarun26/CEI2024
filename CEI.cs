@@ -2266,7 +2266,12 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetRegistrationForm", LoginId);
 
         }
-        
+        public DataSet GetReportsHistory(string Type,string IntimationId, string Count)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportId", Type, IntimationId, Count);
+
+        }
+
     }
 }
     

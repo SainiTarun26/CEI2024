@@ -207,6 +207,7 @@
                                 <ItemTemplate>
                                     <%--<asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>--%>
                                     <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
+                                    <asp:Label ID="lblIntimations" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                     <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltagelevel") %>'></asp:Label>
                                     <asp:Label ID="lblInstallationLine" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                     <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
@@ -214,21 +215,29 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle Width="34%" CssClass="headercolor" />
-                                <ItemStyle Width="34%" />
+                                <HeaderStyle Width="24%" CssClass="headercolor" />
+                                <ItemStyle Width="24%" />
                                 <HeaderTemplate>
-                                    Test Report Application
+                                    Work Intimation Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Apllication") %> ' CommandName="Select"><%#Eval("Apllication") %></asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Intimations") %> ' CommandName="Select"><%#Eval("Intimations") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                                 
+                            <asp:BoundField DataField="Name" HeaderText="Site Owner Name">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="State" HeaderText="State">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Approval" HeaderText="Approval">
+                            <asp:BoundField DataField="Approval" HeaderText="Test Report Status">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>

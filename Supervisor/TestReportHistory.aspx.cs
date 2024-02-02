@@ -59,8 +59,6 @@ namespace CEIHaryana.Supervisor
                     Label lblApproval = (Label)row.FindControl("lblApproval");
                     Session["Approval1"] = lblApproval.Text;
                     Session["Approval"] = lblApproval.Text;
-                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                    Session["TestReportId"] = lblTestReportId.Text;
                     Label lblVoltage = (Label)row.FindControl("lblVoltage");
                     Session["Voltagelevel"] = lblVoltage.Text;
                     Session["TestReportHistory"] = "True";
@@ -70,13 +68,15 @@ namespace CEIHaryana.Supervisor
                     Session["ApplicationForTestReport"] = lblApplicationForTestReport.Text;
                     Label lblIHID = (Label)row.FindControl("lblIHID");
                     Session["IHIDs"] = lblIHID.Text;
+                    Label lblIntimations = (Label)row.FindControl("lblIntimations");
+                    
                     if (e.CommandName == "Select")
                     {
-                        Label lblID = (Label)row.FindControl("lblID");
-                        string id = lblID.Text;
-                        Session["ID"] = lblID.Text;
-                        Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
+                       Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
                         Session["TypeOf"] = lblTypeOf.Text;
+                        DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text);
+                        string id = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Session["ID"] = id.Trim();
                         if (lblTypeOf.Text.Trim() == "Line")
                         {
                             if (lblApproval.Text.Trim() == "Reject")
