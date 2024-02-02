@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Parser;
+using iText.Kernel.Pdf.Canvas.Parser.Listener;
 
 namespace CEIHaryana
 {
@@ -31,6 +34,7 @@ namespace CEIHaryana
             }
 
         }
+
         protected void GetUserQualification()
         {
             try
@@ -44,9 +48,10 @@ namespace CEIHaryana
                 //    REID = Session["SupervisorID"].ToString();
                 //}
                 // hdnId.Value = REID;
-                string REID = "WXYZ20020206";
+                string REID = "edfw19900508";
                 DataSet ds = new DataSet();
                 ds = CEI.QualificationData(REID);
+                image.ImageUrl = ds.Tables[0].Rows[0]["Photo"].ToString();
 
                 txtApplication.Text = ds.Tables[0].Rows[0]["ApplicationFor"].ToString();
                 txtFatherName.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
