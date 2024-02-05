@@ -42,6 +42,131 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        img {
+    margin-top: -7px;
+    width: 100%;
+    margin-bottom: 9px;
+    height: 40px;
+    margin-left: 6px;
+}
+
+        @media all and (max-width:700px) {
+            div.image_map {
+                width: 480px;
+                height: 360px;
+                overflow: hidden;
+                position: relative;
+                border: solid red;
+                box-shadow: 0 0 0.5em white, 0 0 0 2000px rgba(100, 50, 0, 0.5);
+                transition: 0.5s;
+            }
+
+            html {
+                transition: 0.5s;
+                font-size: 20px;
+            }
+
+            .image_map img,
+            map {
+                position: absolute;
+                transform: scale(0.75);
+                transform-origin: 0 0
+            }
+        }
+
+        @media all and (max-width:500px) {
+            div.image_map {
+                border: solid blue;
+                width: 320px;
+                height: 240px;
+                overflow: hidden;
+                position: relative;
+                border: solid;
+                box-shadow: 0 0 0.5em white, 0 0 0 2000px rgba(0, 100, 200, 0.5);
+                transition: 0.5s;
+            }
+
+            html {
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+            .image_map img,
+            map {
+                position: absolute;
+                transform: scale(0.5);
+                transform-origin: 0 0
+            }
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        h1,
+        p {
+            margin: 0;
+        }
+
+        /* chrome */
+        map,
+        area {  
+            position: absolute;
+            display: block;
+            text-align: center
+        }
+
+        map {
+            top: 177px;
+            left: 200px;
+            font-size: 2em;
+        }
+
+
+
+        area[title="Lien 1"] {
+           top: 8px;
+    left: 0;
+    width: 150px;
+    height: 35px;/*
+    background: rgba(0, 0, 0, 0.5);*/
+    line-height: 248px;
+    border-radius: 20px;
+        }
+
+        area[title="lien 2"] {
+            top: 8px;
+            left: 315px;
+            width: 150px;
+            height: 35px;
+           /* background: rgba(0, 0, 0, 0.5);*/
+            line-height: 248px;
+            border-radius: 54px;
+        }
+
+        area[title="lien 3"] {
+            top: 0px;
+            left: 365px;
+            width: 86px;
+            height: 50px;
+            /*background: rgba(0, 0, 0, 0.5);*/
+            line-height: 232px;
+            border-radius: 22px;
+        }
+
+        area[title="lien 4"] {
+            top: 0px;
+            left: 544px;
+            width: 87px;
+            height: 50px;
+           /* background: rgba(0, 0, 0, 0.5);*/
+            line-height: 232px;
+            border-radius: 20px;
+        }
+
+        area:hover {
+            background: none;
+        }
         ul#profile_drop {
             margin-left: -86px;
             width: 120px;
@@ -1013,7 +1138,7 @@
         }
 
         img {
-            margin-top: 10px;
+            margin-top: 0px;
             margin-bottom: 9px;
         }
 
@@ -1335,9 +1460,20 @@
                                         (Please read the instructions carefully as given in Instruction
                             Page before filling the form)                           
                                     </p>
-                                    <img src="/Assets/capsules/CONTRACTOR_APPLICATION_CAPSULE.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
+                                    <%--<img src="/Assets/capsules/CONTRACTOR_APPLICATION_CAPSULE.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />--%>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="image_map">
+        <img id="Image-Maps_6201305161140066" src="/Assets/capsules/CONTRACTOR_APPLICATION_CAPSULE.png"
+            usemap="#Image-Maps_6201305161140066" border="0" width="640" height="50" alt="No Img Found" />
+        <map id="_Image-Maps_6201305161140066" name="Image-Maps_6201305161140066">
+            <area shape="rect" coords="0,0,140,90" href="Registration.aspx" alt="" title="Lien 1" />
+            <area shape="rect" coords="100,1,150,250" href="Registration.aspx" alt="" title="lien 2" />
+          
+        </map>
+    </div>
+                                </div>
                             <div class="row">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-12">
