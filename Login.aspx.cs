@@ -1,5 +1,6 @@
 ﻿using CEI_PRoject;
 using System;
+using System.Data;
 
 namespace CEIHaryana
 {
@@ -44,7 +45,7 @@ namespace CEIHaryana
                 }
                 else if (check == 2)
                 {
-                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+                  //  ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
                     if (Status.Trim() == "1")
                     {
                         Session["ContractorID"] = txtUserID.Text;
@@ -53,7 +54,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Contractor";
                         Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                        //Response.Redirect("/OTPVerification.aspx");
+                        Response.Redirect("/OTPVerification.aspx");
                     }
                     else
                     {
@@ -65,7 +66,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                            // Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                             Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                         else
                         {
@@ -75,20 +76,8 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(1);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                            // Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                             Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
-                    }
-                    if (ApplicationStatus.Trim() == "New")
-                    {
-                        Response.Redirect("/UserPages/ContractorApplicationForm.aspx", false);
-                    }
-                    else if (ApplicationStatus.Trim() == "Mid")
-                    {
-                        Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
-                    }
-                    else
-                    {
-                        Response.Redirect("/Contractor/Work_Intimation.aspx", false);
                     }
 
                 }
@@ -166,8 +155,7 @@ namespace CEIHaryana
                 }
                 else if (check == 6)
                 {
-                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
-                    Session["InsertedCategory"] = "Supervisor";
+                    ;
                     if (chkSignedin.Checked == true)
                     {
                         Session["SupervisorID"] = txtUserID.Text;
@@ -176,6 +164,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Supervisor";
                         Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
+                        Response.Redirect("/Supervisor/IntimationData.aspx", false);
                     }
                     else
                     {
@@ -185,20 +174,9 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Supervisor";
                         Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                    }
-
-                    if (ApplicationStatus.Trim() == "New")
-                    {
-                        Response.Redirect("/UserPages/Qualification.aspx", false);
-                    }
-                    else if (ApplicationStatus.Trim() == "Mid")
-                    {
-                        Response.Redirect("/UserPages/Documents.aspx", false);
-                    }
-                    else
-                    {
                         Response.Redirect("/Supervisor/IntimationData.aspx", false);
                     }
+
                 }
                 else if (check == 7)
                 {
@@ -248,72 +226,80 @@ namespace CEIHaryana
                 }
                 else if (check == 9)
                 {
-                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
-                    Session["InsertedCategory"] = "Wireman";
                     if (chkSignedin.Checked == true)
                     {
-                        Session["WiremanId"] = txtUserID.Text;
-                        Session["logintype"] = "Wireman";
-                        Response.Cookies["WiremanId"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Wireman";
-                        Response.Cookies["WiremanId"].Expires = DateTime.Now.AddDays(15);
+                        Session["NewUserId"] = txtUserID.Text;
+                        Session["logintype"] = "NewUser";
+                        Response.Cookies["NewUserId"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "NewUser";
+                        Response.Cookies["NewUserId"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
                     }
                     else
                     {
-                        Session["WiremanId"] = txtUserID.Text;
-                        Session["logintype"] = "Wireman";
-                        Response.Cookies["WiremanId"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Wireman";
-                        Response.Cookies["WiremanId"].Expires = DateTime.Now.AddDays(1);
+                        Session["NewUserId"] = txtUserID.Text;
+                        Session["logintype"] = "NewUser";
+                        Response.Cookies["NewUserId"].Value = txtUserID.Text;
+                        Response.Cookies["logintype"].Value = "NewUser";
+                        Response.Cookies["NewUserId"].Expires = DateTime.Now.AddDays(1);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                     }
-                    if (ApplicationStatus.Trim() == "New")
+                    DataSet ds = new DataSet();
+                    ds = cei.checkApplicationStatus(txtUserID.Text);
+                    string Category = ds.Tables[0].Rows[0]["Category"].ToString();
+                    ApplicationStatus = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    if (Category.Trim() == "Contractor")
                     {
-                        Response.Redirect("/UserPages/Qualification.aspx", false);
+                        if (ApplicationStatus.Trim() == "New")
+                        {
+                            Response.Redirect("/UserPages/ContractorApplicationForm.aspx", false);
+                        }
+                        else if (ApplicationStatus.Trim() == "Mid")
+                        {
+                            Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Contractor/Work_Intimation.aspx", false);
+                        }
                     }
-                    else if (ApplicationStatus.Trim() == "Mid")
+                   else if (Category.Trim() == "lift")
                     {
-                        Response.Redirect("/UserPages/Documents.aspx", false);
-                    }
-                    else
-                    {
-                        Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
-                    }
-                }
-                else if (check == 10)
-                {
-                    ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
-                    if (chkSignedin.Checked == true)
-                    {
-                        Session["LiftId"] = txtUserID.Text;
-                        Session["logintype"] = "Lift";
-                        Response.Cookies["LiftId"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "Lift";
-                        Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(15);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                    }
-                    else
-                    {
-                        Session["LiftId"] = txtUserID.Text;
-                        Session["logintype"] = "LiftId";
-                        Response.Cookies["LiftId"].Value = txtUserID.Text;
-                        Response.Cookies["logintype"].Value = "LiftId";
-                        Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(1);
-                        Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                    }
-                    if (ApplicationStatus.Trim() == "New")
-                    {
-                        Response.Redirect("/UserPages/ApplicationForLiftEscalators.aspx", false);
-                    }
-                    else if (ApplicationStatus.Trim() == "Mid")
-                    {
-                        Response.Redirect("/UserPages/DocumentsForLift.aspx", false);
+                        if (ApplicationStatus.Trim() == "New")
+                        {
+                            Response.Redirect("/UserPages/ApplicationForLiftEscalators.aspx", false);
+                        }
+                        else if (ApplicationStatus.Trim() == "Mid")
+                        {
+                            Response.Redirect("/UserPages/DocumentsForLift.aspx", false);
+                        }
                     }
                     else
                     {
-                       
+                        if (ApplicationStatus.Trim() == "New")
+                        {
+                            Response.Redirect("/UserPages/Qualification.aspx", false);
+                        }
+                        else if (ApplicationStatus.Trim() == "Mid")
+                        {
+                            Response.Redirect("/UserPages/Documents.aspx", false);
+                        }
+                        else
+                        {
+                            if (Category.Trim() == "Supervisor")
+                            {
+                                Session["InsertedCategory"] = "Supervisor";
+                                Response.Redirect("/Supervisor/IntimationData.aspx", false);
+                            }
+                            else
+                            {
+
+                                Session["InsertedCategory"] = "Wireman";
+                                Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
+                            }
+                        }
                     }
+
                 }
 
                 else

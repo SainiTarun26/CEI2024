@@ -67,29 +67,28 @@ namespace CEI_PRoject
         }
         #endregion
         #region Check ApplicationStatus
-        public string checkApplicationStatus(string UserName)
+        public DataSet checkApplicationStatus(string UserName)
         {
-            SqlConnection con = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
-            string sqlProc = "sp_ApplicationStatus";
-
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = sqlProc;
-            cmd.Connection = con;
-            cmd.Parameters.Add("@UserId", SqlDbType.VarChar, 50).Value = UserName;
-           SqlParameter outputParam = new SqlParameter("@ApplicationStatus", SqlDbType.NVarChar, 50);
-            outputParam.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(outputParam);
-            cmd.ExecuteNonQuery();
-            string applicationStatus = outputParam.Value.ToString();
-            return applicationStatus;
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApplicationStatus", UserName);
         }
+        //public void checkApplicationStatus(string UserName)
+        //{
+        //    SqlConnection con = new SqlConnection();
+        //    SqlCommand cmd = new SqlCommand();
+        //    string sqlProc = "sp_ApplicationStatus";
+
+        //    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+        //    if (con.State == ConnectionState.Closed)
+        //    {
+        //        con.Open();
+        //    }
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.CommandText = sqlProc;
+        //    cmd.Connection = con;
+        //    cmd.Parameters.Add("@UserId", SqlDbType.VarChar, 50).Value = UserName;
+        //    cmd.ExecuteNonQuery();
+        //}
 
         #endregion
         #region UpdateInspection
