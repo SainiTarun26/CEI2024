@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="TestReportHistoryFromSupervisor.aspx.cs" Inherits="CEIHaryana.Admin.TestReportHistoryFromSupervisor" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="TestReportHistoryFromSupervisor.aspx.cs" Inherits="CEIHaryana.Admin.TestReportHistoryFromSupervisor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
