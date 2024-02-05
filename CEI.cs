@@ -1331,7 +1331,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             Random random = new Random();
             int otpInt = random.Next(100000, 999999);
 
-            string otp = otpInt.ToString("D6");
+            string otp = otpInt.ToString("D6"); 
             //Session["OTP"] = otp;
 
             MailMessage mailMessage = new MailMessage();
