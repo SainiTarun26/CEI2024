@@ -250,6 +250,7 @@ namespace CEIHaryana
                     ApplicationStatus = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Category.Trim() == "Contractor")
                     {
+                        Session["ContractorID"] = txtUserID.Text;
                         if (ApplicationStatus.Trim() == "New")
                         {
                             Response.Redirect("/UserPages/ContractorApplicationForm.aspx", false);
@@ -265,6 +266,7 @@ namespace CEIHaryana
                     }
                    else if (Category.Trim() == "lift")
                     {
+                        Session["LiftId"] = txtUserID.Text;
                         if (ApplicationStatus.Trim() == "New")
                         {
                             Response.Redirect("/UserPages/ApplicationForLiftEscalators.aspx", false);
@@ -288,12 +290,13 @@ namespace CEIHaryana
                         {
                             if (Category.Trim() == "Supervisor")
                             {
+                                Session["SupervisorID"] = txtUserID.Text;
                                 Session["InsertedCategory"] = "Supervisor";
                                 Response.Redirect("/Supervisor/IntimationData.aspx", false);
                             }
                             else
                             {
-
+                                Session["WiremanId"] = txtUserID.Text;
                                 Session["InsertedCategory"] = "Wireman";
                                 Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
                             }
