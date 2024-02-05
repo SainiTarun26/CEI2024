@@ -278,6 +278,18 @@ namespace CEIHaryana
                     }
                     else
                     {
+                        if (Category.Trim() == "Supervisor")
+                        {
+                            Session["SupervisorID"] = txtUserID.Text;
+                            Session["InsertedCategory"] = "Supervisor";
+                            Response.Redirect("/Supervisor/IntimationData.aspx", false);
+                        }
+                        else
+                        {
+                            Session["WiremanId"] = txtUserID.Text;
+                            Session["InsertedCategory"] = "Wireman";
+                            Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
+                        }
                         if (ApplicationStatus.Trim() == "New")
                         {
                             Response.Redirect("/UserPages/Qualification.aspx", false);
@@ -286,21 +298,7 @@ namespace CEIHaryana
                         {
                             Response.Redirect("/UserPages/Documents.aspx", false);
                         }
-                        else
-                        {
-                            if (Category.Trim() == "Supervisor")
-                            {
-                                Session["SupervisorID"] = txtUserID.Text;
-                                Session["InsertedCategory"] = "Supervisor";
-                                Response.Redirect("/Supervisor/IntimationData.aspx", false);
-                            }
-                            else
-                            {
-                                Session["WiremanId"] = txtUserID.Text;
-                                Session["InsertedCategory"] = "Wireman";
-                                Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
-                            }
-                        }
+                       
                     }
 
                 }
