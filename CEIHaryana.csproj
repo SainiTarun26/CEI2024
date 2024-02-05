@@ -233,6 +233,7 @@
     <Content Include="Admin\RequestPendingDays.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
+    <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="Application.aspx" />
@@ -2033,6 +2034,13 @@
     </Compile>
     <Compile Include="Admin\TestHistoryReport.aspx.designer.cs">
       <DependentUpon>TestHistoryReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TestReportHistoryFromSupervisor.aspx.cs">
+      <DependentUpon>TestReportHistoryFromSupervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TestReportHistoryFromSupervisor.aspx.designer.cs">
+      <DependentUpon>TestReportHistoryFromSupervisor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
