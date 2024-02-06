@@ -19,8 +19,7 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null || Session["WiremanId"] != null || Request.Cookies["WiremanId"] != null)
-                    {
+                    
                         //if (Session["CandidateAge"] != null)
                         //{
                         //    int candidateAge = (int)Session["CandidateAge"];
@@ -37,44 +36,44 @@ namespace CEIHaryana.UserPages
                         //Medicalfitness.Visible = false;
                         //Retired.Visible = false;
 
-                        if (Session["WiremanId"] != null)
-                        {
-                            userid = Session["WiremanId"].ToString();
-                        }
-                        else
-                        {
-                            userid = Session["SupervisorID"].ToString();
-                        }
+                        //if (Session["WiremanId"] != null)
+                        //{
+                        //    userid = Session["WiremanId"].ToString();
+                        //}
+                        //else
+                        //{
+                        //    userid = Session["SupervisorID"].ToString();
+                        //}
 
-                        DataSet result = CEI.ToCalculateAge(userid);
+                        //DataSet result = CEI.ToCalculateAge(userid);
 
-                        if (result != null && result.Tables.Count > 0 && result.Tables[0].Rows.Count > 0)
-                        {
-                            string DOB = result.Tables[0].Rows[0]["DOB"].ToString();
+                        //if (result != null && result.Tables.Count > 0 && result.Tables[0].Rows.Count > 0)
+                        //{
+                        //    string DOB = result.Tables[0].Rows[0]["DOB"].ToString();
 
-                            if (!string.IsNullOrEmpty(DOB) && DateTime.TryParse(DOB, out DateTime birthDate))
-                            {
-                                // Calculate the age
-                                TimeSpan ageTimeSpan = DateTime.Now - birthDate;
-                                int years = ageTimeSpan.Days / 365;
+                        //    if (!string.IsNullOrEmpty(DOB) && DateTime.TryParse(DOB, out DateTime birthDate))
+                        //    {
+                        //        // Calculate the age
+                        //        TimeSpan ageTimeSpan = DateTime.Now - birthDate;
+                        //        int years = ageTimeSpan.Days / 365;
 
-                                if (years > 55)
-                                {
-                                    Medicalfitness.Visible = true;
-                                    Retired.Visible = true;
-                                }
-                                else
-                                {
-                                    Medicalfitness.Visible = false;
-                                    Retired.Visible = false;
-                                }
-                            }
-                            else
-                            {
-                                Response.Redirect("/Login.aspx");
-                            }
-                        }
-                    }
+                        //        if (years > 55)
+                        //        {
+                        //            Medicalfitness.Visible = true;
+                        //            Retired.Visible = true;
+                        //        }
+                        //        else
+                        //        {
+                        //            Medicalfitness.Visible = false;
+                        //            Retired.Visible = false;
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        Response.Redirect("/Login.aspx");
+                        //    }
+                        //}
+                    
                 }
             }
             catch
