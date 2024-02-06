@@ -606,7 +606,7 @@
 
             select#ddlCompanyStyle:focus {
                 height: 31px;
-                width: 90%;
+                width: 100%;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                 background: #f3f3f3;
             }
