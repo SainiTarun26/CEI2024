@@ -600,7 +600,7 @@
 
             select#ddlCompanyStyle:hover {
                 height: 31px;
-                width: 90%;
+                width: 100%;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
 
@@ -1363,7 +1363,6 @@
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                                                 <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
-
                                                                                                         </Columns>
                                                                                                         <FooterStyle BackColor="White" ForeColor="#000066" />
                                                                                                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

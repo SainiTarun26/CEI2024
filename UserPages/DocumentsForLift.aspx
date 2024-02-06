@@ -104,7 +104,7 @@
         area {  
             position: absolute;
             display: block;
-            text-align: center
+            text-align: justify
         }
 
         map {
@@ -195,10 +195,14 @@ input#BtnFormC{
     color: white;
 }
                         #header .logo img {
-    max-height: 62px;
+       width: 280px;
+    max-height: 81px;
     margin-left: -175px;
-    margin-top: 18px;
-}
+    margin-top: 10px;
+    margin-right: 0px;
+    height: 70% !important;
+    margin-bottom: 0px !important;
+    }
        
    
         li#logout {
@@ -438,36 +442,36 @@ input#BtnFormC{
     <form id="form1" runat="server">
         <div>
             <section id="topbar" class="d-flex align-items-center">
-                <div class="container d-flex justify-content-center justify-content-md-between">
-                    <div class="contact-info d-flex align-items-center">
-                        <i class="bi bi-envelope d-flex align-items-center">
-                            <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-                        </i>
-                        <i class="bi bi-phone d-flex align-items-center ms-4">
-                            <span>0172 2704090</span>
-                        </i>
-                    </div>
-                    <div class="social-links d-none d-md-flex align-items-center">
-                        <a href="#" class="twitter">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" class="facebook">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="#" class="instagram">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="#" class="linkedin">
-                            <i class="bi bi-linkedin"></i>
+    <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope d-flex align-items-center">
+                <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
+            </i>
+            <i class="bi bi-phone d-flex align-items-center ms-4">
+                <span>0172 2704090</span>
+            </i>
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+            <a href="#" class="twitter">
+                <i class="bi bi-twitter"></i>
+            </a>
+            <a href="#" class="facebook">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="linkedin">
+                <i class="bi bi-linkedin"></i>
 
-                        </a>
-                    </div>
-                </div>
-            </section>
+            </a>
+        </div>
+    </div>
+</section>
             <!-- ======= Header ======= -->
-                                        <header id="header" class="d-flex align-items-center"
+                                        <header id="header" class="d-flex align-items-justify"
     style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-    <div class="container d-flex align-items-center justify-content-between">
+    <div class="container d-flex align-items-justify justify-content-between">
          <a href="index.html" class="logo">
             <img src="../Assets/Add a heading (1).png" />
         </a>
@@ -596,7 +600,7 @@ input#BtnFormC{
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
       User       <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                     <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
-                </svg>&nbsp;&nbsp;</span>
+                </svg>&nbsp;&nbsp;Profile</span>
           
         </a>
     </li>
@@ -627,7 +631,7 @@ input#BtnFormC{
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-12">
-                                <p style="text-align: center; margin-top: -40px; font-weight: 700;">
+                                <p style="text-align: justify; margin-top: -40px; font-weight: 700;">
                                     (Please read the instructions carefully as given in Instruction
                             Page before filling the form)
                                 </p>
@@ -659,7 +663,7 @@ input#BtnFormC{
 
                                                     <tbody>                                                        
                                                         <tr>
-                                                            <td style="text-align: center;">Cpoy of Anual Insurance Policy take by the Owner of the lift covering Insurance for the Person using the Lift.(<span
+                                                            <td style="text-align: justify;">Cpoy of Anual Insurance Policy take by the Owner of the lift covering Insurance for the Person using the Lift.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -690,7 +694,7 @@ input#BtnFormC{
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Copy of Challan of Treasury.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify;">Copy of Challan of Treasury.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
@@ -719,7 +723,7 @@ input#BtnFormC{
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Anual Maintenance Contract.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify;">Anual Maintenance Contract.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
@@ -749,7 +753,7 @@ input#BtnFormC{
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style="text-align: justify;">
                                                                 <p>
                                                                   Safety Certificate<span
                                                             style="color: red;">★</span>)
@@ -783,7 +787,7 @@ input#BtnFormC{
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Form A.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify;">Form A.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
@@ -813,7 +817,7 @@ input#BtnFormC{
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Form B(<span
+                                                            <td style="text-align: justify;">Form B(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -844,7 +848,7 @@ input#BtnFormC{
 
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Form C.(<span
+                                                            <td style="text-align: justify;">Form C.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -928,7 +932,7 @@ border-radius: 5px;">Back</button>--%>
     </footer>
     <!-- End Footer -->
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <a href="#" class="back-to-top d-flex align-items-justify justify-content-justify">
         <i class="bi bi-arrow-up-short"></i>
     </a>
     <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>

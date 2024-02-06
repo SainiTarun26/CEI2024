@@ -364,17 +364,17 @@
 
     <form id="form1" runat="server">
         <div>
-            <section id="topbar" class="d-flex align-items-center">
-                <div class="container d-flex justify-content-center justify-content-md-between">
-                    <div class="contact-info d-flex align-items-center">
-                        <i class="bi bi-envelope d-flex align-items-center">
+            <section id="topbar" class="d-flex align-items-justify">
+                <div class="container d-flex justify-content-justify justify-content-md-between">
+                    <div class="contact-info d-flex align-items-justify">
+                        <i class="bi bi-envelope d-flex align-items-justify">
                             <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
                         </i>
-                        <i class="bi bi-phone d-flex align-items-center ms-4">
+                        <i class="bi bi-phone d-flex align-items-justify ms-4">
                             <span>0172 2704090</span>
                         </i>
                     </div>
-                    <div class="social-links d-none d-md-flex align-items-center">
+                    <div class="social-links d-none d-md-flex align-items-justify">
                         <a href="#" class="twitter">
                             <i class="bi bi-twitter"></i>
                         </a>
@@ -392,9 +392,9 @@
                 </div>
             </section>
             <!-- ======= Header ======= -->
-                   <header id="header" class="d-flex align-items-center"
+                   <header id="header" class="d-flex align-items-justify"
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between">
+            <div class="container d-flex align-items-justify justify-content-between">
                 <a href="index.html" class="logo">
                     <img src="../Assets/Add a heading (1).png" />
                 </a>
@@ -556,7 +556,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-12">
-                                <p style="text-align: center; margin-top: -40px; font-weight: 700;">
+                                <p style="text-align: justify; margin-top: -40px; font-weight: 700;">
                                     (Please read the instructions carefully as given in Instruction
                             Page before filling the form)
                                 </p>
@@ -577,11 +577,13 @@
                                                 <table class="table table-bordered table-striped">
                                                     <tbody>
                                                         <tr>
-                                                            <td style="text-align: center;">Last Three Year Income Tax Returns and Balance Sheet.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify;">Last Three Year Income Tax Returns and Balance Sheet.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                    <%-- <label style="font-size: 9px;"> (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
@@ -599,11 +601,13 @@
                                                             <asp:HiddenField ID="hdnId" runat="server" />
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">PAN Card.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify;">PAN Card.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                    <%-- <label style="font-size: 9px;"> (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
@@ -620,11 +624,13 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Aadhaar No.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify;">Aadhaar No.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                   <%--  <label style="font-size: 9px;">
                                                                         (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
@@ -643,7 +649,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style="text-align: justify;">
                                                                 <p>
                                                                     Age Certificate(<span style="color: red;">★</span>)
                                                                 </p>
@@ -651,6 +657,8 @@
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                   <%--  <label style="font-size: 9px;">
                                                                         (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
@@ -669,13 +677,15 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style="text-align: justify;">
                                                                 <p>Calibration Certificate from NABL or Government testing laboratory </p>
                                                                 <p>respect of electrical equipment’s invoices(<span style="color: red;">★</span>)</p>
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                    <%-- <label style="font-size: 9px;">
                                                                         (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
@@ -694,12 +704,14 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Copy of Annexure 3 & 5(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify;">Copy of Annexure 3 & 5(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
                                                                     style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                  <%--   <label style="font-size: 9px;"> (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
@@ -717,12 +729,14 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">Attach documents to prove the status of the firm/company.
+                                                            <td style="text-align: justify;">Attach documents to prove the status of the firm/company.
                                                                 (<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                    <%-- <label style="font-size: 9px;">(PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
@@ -740,7 +754,7 @@
                                                             <asp:HiddenField ID="HiddenField2" runat="server" />
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style="text-align: justify;">
                                                                 <p>
                                                                     Major works carried out in Haryana ( Include details of installations,
                                                               scheme approval   obtained
@@ -753,6 +767,8 @@
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                               <%--      <label style="font-size: 9px;"> (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
@@ -770,7 +786,7 @@
                                                             <asp:HiddenField ID="HiddenField1" runat="server" />
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style="text-align: justify;">
                                                                 <p>
                                                                     Details of works permitted to be undertaken (<span style="color: red;">★</span>)
                                                                 </p>
@@ -778,6 +794,8 @@
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                   <%--  <label style="font-size: 9px;">
                                                                         (PLEASE UPLOAD PHOTO SIZE 20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
@@ -796,7 +814,7 @@
                                                             <asp:HiddenField ID="HiddenField3" runat="server" />
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style="text-align: justify;">
                                                                 <p>
                                                                     Copy of Elibrary/library asper ANNEXURE 2 (<span style="color: red;">★</span>)
                                                                 </p>
@@ -804,6 +822,8 @@
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                    <%-- <label style="font-size: 9px;">
                                                                         (PLEASE UPLOAD PHOTO SIZE20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
@@ -822,7 +842,7 @@
                                                             <asp:HiddenField ID="HiddenField4" runat="server" />
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: center;">
+                                                            <td style="text-align: justify;">
                                                                 <p>
                                                                     Copy of Previously Granted Contractor License(<span style="color: red;">★</span>)
                                                                 </p>
@@ -830,6 +850,8 @@
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default" style="display: none;" />
                                                                 <div class="form-group">
+                                                                      <label style="font-size: 9px;">
+      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
                                                                   <%--  <label style="font-size: 9px;">
                                                                         (PLEASE UPLOAD PHOTO SIZE20KB TO 50KB)</label>--%>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
@@ -896,7 +918,7 @@
     </footer>
     <!-- End Footer -->
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <a href="#" class="back-to-top d-flex align-items-justify justify-content-justify">
         <i class="bi bi-arrow-up-short"></i>
     </a>
     <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -1108,5 +1130,4 @@
 
 </body>
 </html>
-
 

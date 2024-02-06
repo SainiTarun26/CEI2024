@@ -183,9 +183,13 @@
         }
 
         #header .logo img {
-            max-height: 62px;
-            margin-left: -175px;
-            margin-top: 7px;
+            width: 280px;
+    max-height: 69px;
+    margin-left: -175px;
+    margin-top: 0px;
+    margin-right: 0px;
+    height: 60% !important;
+    margin-bottom: 0px !important;
         }
 
 
@@ -1264,8 +1268,8 @@
     <form id="form1" runat="server">
         <!-- ======= Top Bar ======= -->
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
-        <section id="topbar" class="d-flex align-items-center">
-            <div class="d-flex justify-content-center justify-content-md-between">
+                <section id="topbar" class="d-flex align-items-center">
+            <div class="container d-flex justify-content-center justify-content-md-between">
                 <div class="contact-info d-flex align-items-center">
                     <i class="bi bi-envelope d-flex align-items-center">
                         <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
@@ -1424,16 +1428,18 @@
                           User      
 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
-                                    </svg>&nbsp;&nbsp;</span>
+                                    </svg>&nbsp;&nbsp;Profile</span>
 
                                     </a>
                                 </li>
                                 <li id="ProfileLogout">
                                     <a href="#">
                                         <span>
-
-                                            <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
-
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+                                            </svg>&nbsp;&nbsp;
+                                         <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
                                         </span>
 
                                     </a>
@@ -1628,7 +1634,7 @@
                                                                     <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">LIFT INSTALLATION DETAILS</h7>
                                                                 </div>
                                                             </div>
-                                                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
+                                                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 20px; margin-left: -20px; margin-right: -20px;">
                                                                 <div class="row">
                                                                     <div class="col-4">
                                                                         <label for="Name" style="font-size: 12px;">
@@ -1709,7 +1715,7 @@
                                                                     <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">MAKER DETAILS</h7>
                                                                 </div>
                                                             </div>
-                                                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
+                                                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 20px; margin-left: -20px; margin-right: -20px;">
                                                                 <div class="row">
                                                                     <div class="col-4">
                                                                         <label for="Name" style="font-size: 12px;">
@@ -1787,7 +1793,7 @@
                                                                     <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">SUSPENSION ROPES DETAILS</h7>
                                                                 </div>
                                                             </div>
-                                                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-left: -20px; margin-right: -20px;">
+                                                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 20px; margin-left: -20px; margin-right: -20px;">
                                                                 <div class="row">
                                                                     <div class="col-4">
                                                                         <label for="Name" style="font-size: 12px;">
@@ -1881,9 +1887,7 @@
         <!-- End #main -->
         <!-- ======= Footer ======= -->
         <footer id="footer" style="background-color: #d1e6ff !important;">
-            <div class="container py-4">
-                <div class="copyright">
-                    All Rights Reserved @ 1e6ff !important;">
+         
             <div class="container py-4">
                 <div class="copyright">
                     All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
