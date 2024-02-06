@@ -831,7 +831,7 @@
                                             <div class="form-group" style="margin-top: -10px;">
                                                 <label for="Email">Email Id<samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" runat="server"  MaxLength="30" onkeyup="return ValidateEmail();" TabIndex="17" Style="width: 100%;"> </asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" runat="server"  MaxLength="50" onkeyup="return ValidateEmail();" TabIndex="17" Style="width: 100%;"> </asp:TextBox>
                                                 <span id="lblError" style="color: red"></span>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" CssClass="validation_required" runat="server" ControlToValidate="txtEmail"
                                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>

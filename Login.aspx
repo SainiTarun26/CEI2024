@@ -25,7 +25,7 @@
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
         #hero {
-            height: 60vh !important;
+            height: 390px !important;
         }
 
         .body {
@@ -255,8 +255,8 @@
             }
 
         a:hover {
-            text-decoration: underline;
-            font-weight: 700;
+/*            text-decoration: underline;
+*/            font-weight: 700;
             transition: all .02s ease;
         }
     </style>

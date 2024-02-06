@@ -2275,6 +2275,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportInstallationsHistoryFromSupervisor");
         }
 
+        public DataSet ToCalculateAge(string userid)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCalculatedAge", userid);
+        }
     }
 }
     
