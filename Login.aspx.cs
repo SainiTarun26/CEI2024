@@ -264,7 +264,7 @@ namespace CEIHaryana
                             Response.Redirect("/Contractor/Work_Intimation.aspx", false);
                         }
                     }
-                   else if (Category.Trim() == "lift")
+                   else if (Category.Trim() == "Lift")
                     {
                         Session["LiftId"] = txtUserID.Text;
                         if (ApplicationStatus.Trim() == "New")
@@ -274,6 +274,10 @@ namespace CEIHaryana
                         else if (ApplicationStatus.Trim() == "Mid")
                         {
                             Response.Redirect("/UserPages/DocumentsForLift.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Login.aspx", false);
                         }
                     }
                     else
