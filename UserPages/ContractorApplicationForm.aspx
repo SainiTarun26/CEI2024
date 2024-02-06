@@ -1105,7 +1105,7 @@
                             Page before filling the form)                           
                             </p>
                             <img src="/Assets/capsules/CONTRACTOR_APPLICATION_CAPSULE.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
-                            
+
                         </div>
                     </div>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -1814,25 +1814,14 @@
         </main>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
+
         <footer id="footer" style="background-color: #d1e6ff !important;">
             <div class="container py-4">
                 <div class="copyright">
-                    All Rights Reserved @ ol-md-1">
-                </div>
-            </div>
-
-            </section>
-            <!-- End About Section -->
-            </main>
-        <!-- End #main -->
-            <!-- ======= Footer ======= -->
-            <footer id="footer" style="background-color: #d1e6ff !important;">
-                <div class="container py-4">
-                    <div class="copyright">
-                        All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
+                    All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
                     SCO NO 117-118, Top Floor, Sector 17-B,Chandigarh-160017. </span>
-                    </div>
-                    <%--<div class="credits">
+                </div>
+                <%--<div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
@@ -1840,43 +1829,43 @@
                 Developed by
                 <a href="http://safedot.in/">Safedot E Solution Pvt. Ltd.</a>
             </div>--%>
-                </div>
-            </footer>
+            </div>
+        </footer>
 
-            <!-- End Footer -->
-            <div id="preloader"></div>
-            <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-                <i class="bi bi-arrow-up-short"></i>
-            </a>
-            <!-- Vendor JS Files -->
-            <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
-            <script src="/assetsnew/vendor/aos/aos.js"></script>
-            <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
-            <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-            <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
-            <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
-            <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
-            <!-- Template Main JS File -->
-            <script src="/assetsnew/js/main.js"></script>
-            <script src="/vendors/js/vendor.bundle.base.js"></script>
-            <!-- endinject -->
-            <!-- Plugin js for this page -->
-            <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-            <script src="/vendors/select2/select2.min.js"></script>
-            <!-- End plugin js for this page -->
-            <!-- inject:js -->
-            <script src="/js2/off-canvas.js"></script>
-            <script src="/js2/hoverable-collapse.js"></script>
-            <script src="/js2/template.js"></script>
-            <script src="/js2/settings.js"></script>
-            <script src="/js2/todolist.js"></script>
+        <!-- End Footer -->
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
+        <!-- Vendor JS Files -->
+        <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="/assetsnew/vendor/aos/aos.js"></script>
+        <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
+        <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
+        <!-- Template Main JS File -->
+        <script src="/assetsnew/js/main.js"></script>
+        <script src="/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+        <script src="/vendors/select2/select2.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="/js2/off-canvas.js"></script>
+        <script src="/js2/hoverable-collapse.js"></script>
+        <script src="/js2/template.js"></script>
+        <script src="/js2/settings.js"></script>
+        <script src="/js2/todolist.js"></script>
 
-            <!-- endinject -->
-            <!-- Custom js for this page-->
-            <script src="/js2/file-upload.js"></script>
-            <script src="/js2/typeahead.js"></script>
-            <script src="/js2/select2.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <script src="/js2/file-upload.js"></script>
+        <script src="/js2/typeahead.js"></script>
+        <script src="/js2/select2.js"></script>
     </form>
     <%--<script>
         var checkBox = document.getElementById("<%= CheckBox1.ClientID %>");
@@ -2501,15 +2490,14 @@
             }
         }
     </script>
-
     <script type="text/javascript">
         function validateDates1() {
             var issuingDate = document.getElementById('<%=txtIssueDate2.ClientID %>').value;
-             var validityDate = document.getElementById('<%=txtValidity2.ClientID %>').value;
+            var validityDate = document.getElementById('<%=txtValidity2.ClientID %>').value;
 
-             if (new Date(issuingDate) > new Date(validityDate)) {
-                 alert('Validity Date should be greater than Issuing Date');
-                 document.getElementById('<%=txtValidity2.ClientID %>').value = ''; // Clear the expiry date
+            if (new Date(issuingDate) > new Date(validityDate)) {
+                alert('Validity Date should be greater than Issuing Date');
+                document.getElementById('<%=txtValidity2.ClientID %>').value = ''; // Clear the expiry date
             }
         }
     </script>

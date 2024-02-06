@@ -110,16 +110,18 @@ namespace CEIHaryana.UserPages
                 int maxFileSize = 2 * 1024 * 1024;
                 if (Photo.PostedFile.FileName.Length > 0)
                 {
-                    if (Photo.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo document must be a PDF file with a maximum size of 2MB.')", true);
-                    return;
-                }
+                        if (Photo.PostedFile.ContentLength > maxFileSize)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo document must be a PDF file with a maximum size of 2MB.')", true);
+                            return;
+                        }
+                    
                 FileName = Path.GetFileName(Photo.PostedFile.FileName);
                 if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/")))
                 {
                     Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/"));
                 }
+
                 string ext = Path.GetExtension(Photo.PostedFile.FileName).ToLower();
                 if (ext != ".pdf")
                 {

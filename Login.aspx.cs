@@ -79,7 +79,6 @@ namespace CEIHaryana
                              Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                     }
-
                 }
                 else if (check == 3)
                 {
@@ -103,8 +102,6 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AddContractorDetails.aspx", false);
                     }
-
-
                 }
                 else if (check == 4)
                 {
@@ -176,7 +173,6 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("/Supervisor/IntimationData.aspx", false);
                     }
-
                 }
                 else if (check == 7)
                 {
@@ -302,25 +298,19 @@ namespace CEIHaryana
                         {
                             Response.Redirect("/UserPages/Documents.aspx", false);
                         }
-                       
-                    }
-
+                      }
                 }
-
                 else
                 {
-
                     txtUserID.Text = "";
                     txtPassword.Text = "";
                     WrongCredentials.Visible = true;
                     // string script = "alert(\"Your UserName or Password is Invalid.\");";
                     // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
-
             }
             catch (Exception)
             {
-                //
             }
         }
     }

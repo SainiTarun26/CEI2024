@@ -533,7 +533,7 @@
 
                                                                             <asp:Button ID="Button1" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="PhotoDialog(); return false;" />
                                                                             <input type="file" id="Photo" name="file
-                                                                                Input" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="PhotoDialogName()" />
+                                                                                Input" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="PhotoDialogName()" />
 
                                                                         </span>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="selectedFileName"
@@ -564,7 +564,7 @@
                                                                         <span class="input-group-append">
 
                                                                             <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MatriculationCertificateDialog(); return false;" />
-                                                                            <input type="file" id="fileInput" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="MatriculationCertificateName()" />
+                                                                            <input type="file" id="fileInput" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="MatriculationCertificateName()" />
 
                                                                         </span>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="selectedFileName"
@@ -594,7 +594,7 @@
                                                                         <span class="input-group-append">
 
                                                                             <asp:Button ID="btnResidence" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ResidenceDialog(); return false;" />
-                                                                            <input type="file" id="Residence" name="Residence" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onchange="ResidenceDialogName()" runat="server" />
+                                                                            <input type="file" id="Residence" name="Residence" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onchange="ResidenceDialogName()" runat="server" />
 
                                                                         </span>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtResidence"
@@ -622,7 +622,7 @@
                                                                         <span class="input-group-append">
 
                                                                             <asp:Button ID="btnIdentity" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="IdentityDialog(); return false;" />
-                                                                            <input type="file" id="Identit" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                            <input type="file" id="Identit" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
                                                                                 onchange="IdentityDialogName()" runat="server" />
 
                                                                         </span>
@@ -658,7 +658,7 @@
                                                                         <span class="input-group-append">
 
                                                                             <asp:Button ID="btnDegreeDiploma" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="DegreeDiplomaDialog(); return false;" />
-                                                                            <input type="file" id="DegreeDiploma" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                            <input type="file" id="DegreeDiploma" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
                                                                                 onchange="DegreeDiplomaName()" runat="server" />
 
                                                                         </span>
@@ -687,7 +687,7 @@
                                                                         <span class="input-group-append">
 
                                                                             <asp:Button ID="btnExperience" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ExperienceDialog(); return false;" />
-                                                                            <input type="file" id="Experience" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                            <input type="file" id="Experience" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
                                                                                 onchange="ExperienceDialogName()" runat="server" />
 
                                                                         </span>
@@ -717,7 +717,7 @@
                                                                         <span class="input-group-append">
 
                                                                             <asp:Button ID="btnSignature" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="SignatureDialog(); return false;" />
-                                                                            <input type="file" id="Signature" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                            <input type="file" id="Signature" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
                                                                                 onchange="SignatureName()" runat="server" />
 
                                                                         </span>
@@ -746,7 +746,7 @@
                                                                         <span class="input-group-append">
 
                                                                             <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="SignaturDialog(); return false;" />
-                                                                            <input type="file" id="Signatur" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="SignaturName()" />
+                                                                            <input type="file" id="Signatur" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="SignaturName()" />
 
                                                                         </span>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="selectedFileName"
@@ -779,7 +779,7 @@
                                                                                 Enabled="false" placeholder="Upload Medical Certificate" Style="width: 50%;"></asp:TextBox>
                                                                             <span class="input-group-append">
                                                                                 <asp:Button ID="btnMedicalCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MedicalCertificateDialog(); return false;" />
-                                                                                <input type="file" id="MedicalCertificate" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                <input type="file" id="MedicalCertificate" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
                                                                                     onchange="MedicalCertificateName()" runat="server" />
                                                                             </span>
                                                                         </div>
@@ -806,7 +806,7 @@
                                                                             <span class="input-group-append">
 
                                                                                 <asp:Button ID="btnRetired" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="RetiredDialog(); return false;" />
-                                                                                <input type="file" id="fileRetired" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                <input type="file" id="fileRetired" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
                                                                                     onchange="RetiredName()" runat="server" />
 
                                                                             </span>
