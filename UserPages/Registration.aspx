@@ -385,6 +385,14 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function AadharAlert() {
+            if (confirm('The  Aadhar number is already in use. Please Register with a different Aadhar number.')) {
+                window.location.href = "/UserPages/Registration.aspx";
+            } else {
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">

@@ -71,7 +71,9 @@ namespace CEIHaryana.UserPages
                 }
 
             }
-            catch { }
+            catch 
+            { 
+            }
         }
         private void ddlLoadBindState()
         {
@@ -243,8 +245,9 @@ namespace CEIHaryana.UserPages
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", "$('#myModal').modal('show');", true);
                 PartnersModalDirectorData();
                 Session["PartnerDirector"] = "Added";
-                DdlPartnerOrDirector.SelectedValue = "0";
-
+                ddlAuthority.SelectedValue = "0"; txtName.Text = "";
+                txtAddress.Text = ""; ddlState.SelectedValue = "0";
+                ddlDistrict.SelectedValue = "0"; txtPinCode.Text = "";
             }
             catch { }
         }
