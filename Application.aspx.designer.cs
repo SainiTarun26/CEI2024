@@ -42,13 +42,13 @@ namespace CEIHaryana
         protected global::System.Web.UI.WebControls.TextBox txtFatherName;
 
         /// <summary>
-        /// image control.
+        /// imgPhoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image;
+        protected global::System.Web.UI.WebControls.Image imgPhoto;
 
         /// <summary>
         /// txtGender control.
@@ -769,5 +769,14 @@ namespace CEIHaryana
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl label3;
+
+        /// <summary>
+        /// imgSignature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgSignature;
     }
 }

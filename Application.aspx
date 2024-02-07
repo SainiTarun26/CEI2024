@@ -223,7 +223,7 @@
                                 </td>
                                 <td rowspan="3" colspan="3" style="text-align: center; width: 1px;">
                                     <%--<img id="image" style="width: 150px;" />--%>
-                                    <asp:Image ID="image" Height="100px" Width="100px" runat="server" />
+                                    <asp:Image ID="imgPhoto" Height="100px" Width="100px" runat="server" />
                                 </td>
                             </tr>
                             <tr>
@@ -677,7 +677,8 @@ stage."
                         </div>
                     </div>
                     <div class="col-6" style="text-align: end;">
-                        <img src="Assets/depositphotos_59095205-stock-illustration-businessman-profile-icon.jpg" style="width: 200px; height: 100px;" /><br />
+                        <%--<img src="Assets/depositphotos_59095205-stock-illustration-businessman-profile-icon.jpg" style="width: 200px; height: 100px;" /><br />--%>
+                        <asp:Image ID="imgSignature" Height="100px" Width="100px" runat="server" />
                         Applicant Signature
                     </div>
                 </div>

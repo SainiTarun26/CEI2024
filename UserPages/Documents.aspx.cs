@@ -19,61 +19,61 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    
-                        //if (Session["CandidateAge"] != null)
-                        //{
-                        //    int candidateAge = (int)Session["CandidateAge"];
-                        //    string radioButtonSelection = Session["RadioButtonSelection"].ToString();
-                        //    if (candidateAge > 55)
-                        //    {
-                        //        Medicalfitness.Visible = true;
-                        //    }
-                        //    else if (radioButtonSelection == "Yes")
-                        //    {
-                        //        Retired.Visible = true;
-                        //    }
-                        //}
-                        //Medicalfitness.Visible = false;
-                        //Retired.Visible = false;
 
-                        //if (Session["WiremanId"] != null)
-                        //{
-                        //    userid = Session["WiremanId"].ToString();
-                        //}
-                        //else
-                        //{
-                        //    userid = Session["SupervisorID"].ToString();
-                        //}
+                    if (Session["CandidateAge"] != null)
+                    {
+                        int candidateAge = (int)Session["CandidateAge"];
+                        string radioButtonSelection = Session["RadioButtonSelection"].ToString();
+                        if (candidateAge > 55)
+                        {
+                            Medicalfitness.Visible = true;
+                        }
+                        else if (radioButtonSelection == "Yes")
+                        {
+                            Retired.Visible = true;
+                        }
+                    }
+                    Medicalfitness.Visible = false;
+                    Retired.Visible = false;
 
-                        //DataSet result = CEI.ToCalculateAge(userid);
+                    if (Session["WiremanId"] != null)
+                    {
+                        userid = Session["WiremanId"].ToString();
+                    }
+                    else
+                    {
+                        userid = Session["SupervisorID"].ToString();
+                    }
 
-                        //if (result != null && result.Tables.Count > 0 && result.Tables[0].Rows.Count > 0)
-                        //{
-                        //    string DOB = result.Tables[0].Rows[0]["DOB"].ToString();
+                    DataSet result = CEI.ToCalculateAge(userid);
 
-                        //    if (!string.IsNullOrEmpty(DOB) && DateTime.TryParse(DOB, out DateTime birthDate))
-                        //    {
-                        //        // Calculate the age
-                        //        TimeSpan ageTimeSpan = DateTime.Now - birthDate;
-                        //        int years = ageTimeSpan.Days / 365;
+                    if (result != null && result.Tables.Count > 0 && result.Tables[0].Rows.Count > 0)
+                    {
+                        string DOB = result.Tables[0].Rows[0]["DOB"].ToString();
 
-                        //        if (years > 55)
-                        //        {
-                        //            Medicalfitness.Visible = true;
-                        //            Retired.Visible = true;
-                        //        }
-                        //        else
-                        //        {
-                        //            Medicalfitness.Visible = false;
-                        //            Retired.Visible = false;
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        Response.Redirect("/Login.aspx");
-                        //    }
-                        //}
-                    
+                        if (!string.IsNullOrEmpty(DOB) && DateTime.TryParse(DOB, out DateTime birthDate))
+                        {
+                            // Calculate the age
+                            TimeSpan ageTimeSpan = DateTime.Now - birthDate;
+                            int years = ageTimeSpan.Days / 365;
+
+                            if (years > 55)
+                            {
+                                Medicalfitness.Visible = true;
+                                Retired.Visible = true;
+                            }
+                            else
+                            {
+                                Medicalfitness.Visible = false;
+                                Retired.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            Response.Redirect("/Login.aspx");
+                        }
+                    }
+
                 }
             }
             catch

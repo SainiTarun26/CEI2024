@@ -31,7 +31,7 @@ namespace CEIHaryana
             }
             catch
             {
-            }   
+            }
 
         }
 
@@ -48,17 +48,18 @@ namespace CEIHaryana
                 //    REID = Session["SupervisorID"].ToString();
                 //}
                 // hdnId.Value = REID;
-                string REID = "edfw19900508";
+                string REID = "wire20020228";
                 DataSet ds = new DataSet();
                 ds = CEI.QualificationData(REID);
-                image.ImageUrl = ds.Tables[0].Rows[0]["Photo"].ToString();
+                string imagepath = ds.Tables[0].Rows[0]["Photo"].ToString();
+                imgPhoto.ImageUrl = imagepath;
 
                 txtApplication.Text = ds.Tables[0].Rows[0]["ApplicationFor"].ToString();
                 txtFatherName.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
                 txtGender.Text = ds.Tables[0].Rows[0]["Gender"].ToString();
                 txtNationality.Text = "Indian";
                 txtAdhaar.Text = ds.Tables[0].Rows[0]["Aadhar"].ToString();
-                string Dob = ds.Tables[0].Rows[0]["Age"].ToString();
+                string Dob = ds.Tables[0].Rows[0]["DOB"].ToString();
                 txtDOB.Text = DateTime.Parse(Dob).ToString("yyyy-MM-dd");
                 txtCalculatedAge.Text = ds.Tables[0].Rows[0]["CalculatedAge"].ToString();
                 txtPermanentAddress.Text = ds.Tables[0].Rows[0]["PermanentAddress"].ToString();
@@ -184,14 +185,8 @@ namespace CEIHaryana
                     string dp_ExperinceTo5 = ds.Tables[0].Rows[0]["ExperienceToDate4"].ToString();
                     txtExperienceTo5.Text = DateTime.Parse(dp_ExperinceTo5).ToString("yyyy-MM-dd");
                 }
-                //txtTotalExperience.Text = ds.Tables[0].Rows[0]["TotalExperience"].ToString();
-                string value = ds.Tables[0].Rows[0]["RetiredEngineer"].ToString().Trim();
-                //RadioButtonList1.Items.FindByText(value).Selected = true;
-                string path = ds.Tables[0].Rows[0]["Photo"].ToString();
-                string fullImagePath = Server.MapPath(path);
-                //byte[] images = (byte[])ds.Tables[0].Rows[0]["Photo"];
-                //string strBase64 = Convert.ToBase64String(images);
-                image.ImageUrl = fullImagePath;//"data:Image/png;base64," + strBase64;
+                string Signaturepath = ds.Tables[0].Rows[0]["CandidateSignature"].ToString();
+                imgSignature.ImageUrl = Signaturepath;
             }
             catch (Exception ex)
             {
@@ -199,7 +194,6 @@ namespace CEIHaryana
             }
 
         }
-
 
     }
 }
