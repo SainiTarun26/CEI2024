@@ -410,6 +410,8 @@
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDateofIntialissue" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="18" runat="server" Style="margin-left: 18px">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtDateofIntialissue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Initial Issue </asp:RequiredFieldValidator>
+                             <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtDateofExpiry" ControlToValidate="txtDateofIntialissue" Operator="LessThan"
+                                 Display="Dynamic" ForeColor="Red" />
 
                         </div>
 
@@ -420,7 +422,9 @@
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDateofRenewal" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtDateofRenewal" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
-
+                             <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtDateofExpiry" ControlToValidate="txtDateofRenewal"  Operator="GreaterThan"
+                                     ErrorMessage="Renewal Date must be greater than Expiry Date"
+                                Display="Dynamic" ForeColor="Red" />
                         </div>
 
                     </div>
@@ -431,7 +435,9 @@
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDateofExpiry" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" TabIndex="20" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtDateofExpiry" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Expiry</asp:RequiredFieldValidator>
-
+                             <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtDateofIntialissue" ControlToValidate="txtDateofExpiry"  Operator="GreaterThan"
+                                 ErrorMessage="Expiry Date must be greater than Issue Date"
+                          Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
 
@@ -465,6 +471,30 @@
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
     </footer>
+    
+    <script type="text/javascript">
+        function validateDates() {
+            var renewalDate = document.getElementById('<%=txtDateofRenewal.ClientID %>').value;
+            var expiryDate = document.getElementById('<%=txtDateofExpiry.ClientID %>').value;
+
+            if (new Date(expiryDate) < new Date(renewalDate)) {
+                alert('Renewal Date should be greater than Expire Date');
+
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function validateDates1() {
+            var issueDate = document.getElementById('<%=txtDateofIntialissue.ClientID %>').value;
+            var expiryDate = document.getElementById('<%=txtDateofExpiry.ClientID %>').value;
+
+            if (new Date(issueDate) < new Date(expireDate)) {
+                alert(' Expire date should be greater than issue date');
+
+            }
+        }
+
     <script type="text/javascript">
         function validateBothEmpty(source, args) {
             var textBox1Value = document.getElementById('<%= txtLicenceOld.ClientID %>').value;
@@ -477,7 +507,7 @@
                 args.IsValid = true;
             }
         }
- </script>
+    </script>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
