@@ -2066,11 +2066,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #region Contractor Application Form Data
         public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
-             string CompanyPenalities,string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
-            string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring,string ContractorLicencePreviouslyGrantedWithSameName,
-            string LicenseNoIfYes,string DateoFIssue,  string TypeOfEmployee1, string LicenseNo1,
-            string IssueDate1, string ValidityDate1, string Qualification1, string TypeOfEmployee2, string LicenseNo2, string IssueDate2,
-            string ValidityDate2, string Qualification2, string CreatedBy)
+              string CompanyPenalities, string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
+             string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring, string ContractorLicencePreviouslyGrantedWithSameName,
+             string LicenseNoIfYes, string DateoFIssue, string TypeOfEmployee1, string LicenseNo1,
+             string IssueDate1, string ValidityDate1, string Qualification1, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -2097,16 +2096,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@ContractorLicencePreviouslyGrantedWithSameName", ContractorLicencePreviouslyGrantedWithSameName);
             cmd.Parameters.AddWithValue("@LicenseNoIfYes", LicenseNoIfYes);
             cmd.Parameters.AddWithValue("@DateoFIssue", DateoFIssue);
-            cmd.Parameters.AddWithValue("@TypeOfEmployee1", TypeOfEmployee1);
-            cmd.Parameters.AddWithValue("@LicenseNo1", LicenseNo1);
-            cmd.Parameters.AddWithValue("@IssueDate1", IssueDate1);
-            cmd.Parameters.AddWithValue("@ValidityDate1", ValidityDate1);
-            cmd.Parameters.AddWithValue("@Qualification1", Qualification1);
-            cmd.Parameters.AddWithValue("@TypeOfEmployee2", TypeOfEmployee2);
-            cmd.Parameters.AddWithValue("@LicenseNo2", LicenseNo2);
-            cmd.Parameters.AddWithValue("@IssueDate2", IssueDate2);
-            cmd.Parameters.AddWithValue("@ValidityDate2", ValidityDate2);
-            cmd.Parameters.AddWithValue("@Qualification2", Qualification2);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -2283,6 +2272,33 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckAadhar", Aadhar);
         }
+        #region insert ContractorTeam
+        public void InsertContractorTeam(string TypeofEmployee, string LicenseNo, string issueDate, string Validity, string Qualification, string CreatedBy)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("Sp_InsertContractorTeam");
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TypeOfEmployee", TypeofEmployee);
+            cmd.Parameters.AddWithValue("@LicenseNo", LicenseNo);
+            cmd.Parameters.AddWithValue("@LicenseIssueDate", issueDate);
+            cmd.Parameters.AddWithValue("@LicenseValidity", Validity);
+            cmd.Parameters.AddWithValue("@Qualification", Qualification);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public DataTable GetContractorTeam(string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorTeam", CreatedBy);
+        }
+        #endregion
     }
 }
     

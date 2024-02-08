@@ -903,6 +903,14 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function ContractorTeamAlert() {
+            if (confirm('Please Add Atleast One Wireman And Supervisor Information')) {
+                ddlEmployer1.style.border = '1px solid red';;
+            } else {
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -1346,7 +1354,6 @@
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                                                                                                 <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
                                                                                                             </asp:BoundField>
-
                                                                                                             <asp:BoundField DataField="State" HeaderText="State">
                                                                                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                                                                                 <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
@@ -1619,7 +1626,7 @@
                                                                                 <label id="Label14" runat="server" visible="true">
                                                                                     Enter License No.<samp style="color: red">* </samp>
                                                                                 </label>
-                                                                                <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" onKeyPress="return isNumberKey(event) || alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" MaxLength="10" onKeyPress="return isNumberKey(event) || alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                                 <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtIssusuingName"
                                                                                     CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -1679,29 +1686,29 @@
                                                                                         <asp:ListItem Text="Supervisor" Value="1"></asp:ListItem>
                                                                                         <asp:ListItem Text="Wiremen" Value="2"></asp:ListItem>
                                                                                     </asp:DropDownList>
-                                                                                    <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator11" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
-
+                                                                                   <%-- <asp:RequiredFieldValidator ID="RequiredFieldddlEmployer1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="BtnSubmit" ForeColor="Red" />--%>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtLicense1" runat="server"> </asp:TextBox>
-                                                                                    <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtLicense1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-
+                                                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtLicense1" onKeyPress="return isNumberKey(event);"  MaxLength="10" runat="server"> </asp:TextBox>
+                                                                                      <%--<asp:RequiredFieldValidator ID="RequiredFieldtxtLicense1" runat="server" ControlToValidate="txtLicense1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="BtnSubmit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 </td>
-                                                                                <td>
+                                                                                <td> 
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtIssueDate1" placeholder="dd/mm/yyyy" runat="server" MaxLength="10" min='0000-01-01' max='9999-01-01' onchange="validateDates()" AutoPostBack="true"> </asp:TextBox>
-                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtIssueDate1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                   <%-- <asp:RequiredFieldValidator ID="RequiredFieldtxtIssueDate1" runat="server" ControlToValidate="txtIssueDate1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="BtnSubmit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtValidity1" placeholder="dd/mm/yyyy" runat="server" MaxLength="10" min='0000-01-01' max='9999-01-01' onchange="validateDates()" AutoPostBack="true"> </asp:TextBox>
-                                                                                    <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtValidity1"  CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                     <%--<asp:RequiredFieldValidator ID="RequiredFieldtxtValidity1" runat="server" ControlToValidate="txtValidity1"  CssClass="validation_required" ErrorMessage="Required" ValidationGroup="BtnSubmit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                     <asp:CompareValidator ID="cmpDate" runat="server" ControlToCompare="txtIssueDate1" ControlToValidate="txtValidity1" Operator="GreaterThanEqual" Display="Dynamic" ForeColor="Red" />
                                                                                 </td>
                                                                                 <td>
-                                                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtQualification1" runat="server" Style="padding-left: 5px !important; padding-right: 1%; width: 100%;"> </asp:TextBox></td>
-                                                                                <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtQualification1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtQualification1" MaxLength="20" runat="server" Style="padding-left: 5px !important; padding-right: 1%; width: 100%;"> </asp:TextBox>
+                                                                               <%-- <asp:RequiredFieldValidator ID="RequiredFieldtxtQualification1" runat="server" ControlToValidate="txtQualification1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="BtnSubmit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                            </td>
+                                                                            <%--<input type="hidden" id="hdnIsClientSideValid" runat="server" />--%>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <%-- <td style="text-align: center; font-size: 13px;">1</td>--%>
+                                                                            <%--<tr>
+                                                                                 <td style="text-align: center; font-size: 13px;">1</td>
                                                                                 <td>
                                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                         ID="ddlEmployer2" runat="server">
@@ -1709,30 +1716,78 @@
                                                                                         <asp:ListItem Text="Supervisor" Value="1"></asp:ListItem>
                                                                                         <asp:ListItem Text="Wiremen" Value="2"></asp:ListItem>
                                                                                     </asp:DropDownList>
-                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
+                                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployer2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" autocomplete="off" ID="txtLicense2" runat="server"> </asp:TextBox>
-                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtLicense2" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtLicense2" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtIssueDate2" placeholder="dd/mm/yyyy" runat="server" MaxLength="10" min='0000-01-01' max='9999-01-01' onchange="validateDates1()" AutoPostBack="true"> </asp:TextBox>
-                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtIssueDate2" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                    <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtIssueDate2" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                                 </td>
                                                                                 <td>
                                                                                     <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtValidity2" placeholder="dd/mm/yyyy" runat="server" MaxLength="10" min='0000-01-01' max='9999-01-01' onchange="validateDates1()" AutoPostBack="true"> </asp:TextBox>
-                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtQualification1"  CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtQualification1"  CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                                     <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtIssueDate2" ControlToValidate="txtValidity2" Operator="GreaterThanEqual" Display="Dynamic" ForeColor="Red" />
                                                                                 </td>
                                                                                 <td>
-                                                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtQualification2" runat="server" Style="padding-left: 5px !important; padding-right: 1%; width: 100%;"> </asp:TextBox></td>
-                                                                                <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtQualification1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-                                                                            </tr>
+                                                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtQualification2" runat="server" Style="padding-left: 5px !important; padding-right: 1%; width: 100%;"> </asp:TextBox>
+
+                                                                                </td>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtQualification1" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            </tr> --%>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <asp:Button ID="btnAddEmployeeDetails" class="btn btn-primary" runat="server" OnClientClick="return validateAddTeam();" Text="Add Team"  OnClick="btnAddEmployeeDetails_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <div class="row" style="margin-top: 40px;">
+                                                                                    <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView3" runat="server" Width="100%"
+                                                                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                                                                        <PagerStyle CssClass="pagination-ys" />
+                                                                                        <Columns>
+                                                                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                                                                <ItemTemplate>                                                      
+                                                                                                    <asp:Label ID="lblTypeofEmployee" runat="server" Text='<%#Eval("TypeOfEmployee") %>'></asp:Label>
+                                                                                                </ItemTemplate>
+                                                                                            </asp:TemplateField>
+                                                                                            <asp:BoundField DataField="TypeOfEmployee" HeaderText="Type Of Employee">
+                                                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="tdpadding" />
+                                                                                            </asp:BoundField>
+                                                                                            <asp:BoundField DataField="LicenseNo" HeaderText="LicenseNo">
+                                                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                                                <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
+                                                                                            </asp:BoundField>
+                                                                                            <asp:BoundField DataField="LicenseIssueDate1" HeaderText="LicenseIssueDate">
+                                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                            </asp:BoundField>
+                                                                                            <asp:BoundField DataField="LicenseValidity1" HeaderText="LicenseValidity">
+                                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                            </asp:BoundField>
+                                                                                            <asp:BoundField DataField="Qualification" HeaderText="Qualification">
+                                                                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                            </asp:BoundField>
+                                                                                        </Columns>
+                                                                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                                                        <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
+                                                                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                                                    </asp:GridView>
+                                                                                </div>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
+                                                                 <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                                 <div class="col-md-12">
                                                                     <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">PENALTIES/PUNISHMENT
                                                                     </h3>
@@ -1797,6 +1852,8 @@
                                                                     <asp:Button type="BtnSubmit" ID="Button2" Text="Next" OnClientClick="return validateForm();" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                                 </div>
                                                             </div>
+                                                            </div>
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2368,6 +2425,41 @@
         });
     </script>
     <script type="text/javascript">
+
+</script>
+    <script type="text/javascript">
+        function validateAddTeam() {
+            var isValid = true;
+
+            function validatetxtField(element) {
+                if (element.value.trim() === '') {
+                    isValid = false;
+                    element.style.border = '1px solid red';
+                } else {
+                    element.style.border = '';
+                }
+            }
+            validatetxtField(document.getElementById('txtLicense1'));
+            validatetxtField(document.getElementById('txtValidity1'));
+            validatetxtField(document.getElementById('txtQualification1'));
+            validatetxtField(document.getElementById('txtIssueDate1'));
+
+            if (document.getElementById('ddlEmployer1').value === '0') {
+                isValid = false;
+                document.getElementById('ddlEmployer1').style.border = '1px solid red';
+            }
+            else {
+                document.getElementById('ddlEmployer1').style.border = '';
+            }
+
+            if (!isValid) {
+                alert('Please fill in all the required fields.');
+            }
+            //document.getElementById('hdnIsClientSideValid').value = isValid;
+            return isValid;
+        }
+    </script>
+    <script type="text/javascript">
         function validateFormodal() {
             var isValid = true;
 
@@ -2453,17 +2545,17 @@
             }
 
             // EmployeeDetails
-            validateDropdown(document.getElementById('ddlEmployer1'));
-            validateField(document.getElementById('txtLicense1'), 'License1');
-            validateField(document.getElementById('txtIssueDate1'), 'IssueDate1');
-            validateField(document.getElementById('txtValidity1'), 'Validity1');
-            validateField(document.getElementById('txtQualification1'), 'Qualification1');
+            //validateDropdown(document.getElementById('ddlEmployer1'));
+            //validateField(document.getElementById('txtLicense1'), 'License1');
+            //validateField(document.getElementById('txtIssueDate1'), 'IssueDate1');
+            //validateField(document.getElementById('txtValidity1'), 'Validity1');
+            //validateField(document.getElementById('txtQualification1'), 'Qualification1');
 
-            validateDropdown(document.getElementById('ddlEmployer2'));
-            validateField(document.getElementById('txtLicense2'), 'License2');
-            validateField(document.getElementById('txtIssueDate2'), 'IssueDate2');
-            validateField(document.getElementById('txtValidity2'), 'Validity2');
-            validateField(document.getElementById('txtQualification2'), 'Qualification2');
+            //validateDropdown(document.getElementById('ddlEmployer2'));
+            //validateField(document.getElementById('txtLicense2'), 'License2');
+            //validateField(document.getElementById('txtIssueDate2'), 'IssueDate2');
+            //validateField(document.getElementById('txtValidity2'), 'Validity2');
+            //validateField(document.getElementById('txtQualification2'), 'Qualification2');
 
             // PENALTIES/PUNISHMENT
             validateDropdown(document.getElementById('DropDownList2'));
@@ -2490,7 +2582,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+    <%-- <script type="text/javascript">
         function validateDates1() {
             var issuingDate = document.getElementById('<%=txtIssueDate2.ClientID %>').value;
             var validityDate = document.getElementById('<%=txtValidity2.ClientID %>').value;
@@ -2500,7 +2592,6 @@
                 document.getElementById('<%=txtValidity2.ClientID %>').value = ''; // Clear the expiry date
             }
         }
-    </script>
-
+    </script>--%>
 </body>
 </html>

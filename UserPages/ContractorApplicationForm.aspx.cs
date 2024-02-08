@@ -71,8 +71,8 @@ namespace CEIHaryana.UserPages
                 }
 
             }
-            catch 
-            { 
+            catch
+            {
             }
         }
         private void ddlLoadBindState()
@@ -180,9 +180,42 @@ namespace CEIHaryana.UserPages
                 LoginID = Session["ContractorID"].ToString();
                 DataTable ds = new DataTable();
                 ds = CEI.GetPartnersDirectorDate(LoginID);
+
+
+                bool atLeastOneSupervisorConnecrt = false;
+                bool atLeastOneWiremanConnect = false;
+                foreach (GridViewRow row in GridView3.Rows)
+                {
+                    Label lblTypeofEmployee = (Label)row.FindControl("lblTypeofEmployee");
+                    if (lblTypeofEmployee != null)
+                    {
+                        if (lblTypeofEmployee.Text == "Supervisor")
+                        {
+                            atLeastOneSupervisorConnecrt = true;
+                        }
+                        if (lblTypeofEmployee.Text == "Wiremen")
+                        {
+                            atLeastOneWiremanConnect = true;
+                        }
+                        if (atLeastOneSupervisorConnecrt && atLeastOneWiremanConnect)
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('Please Add at least one Supervisor And Wireman.');</script>");
+                        return;
+                    }
+                }
+
                 if (DdlPartnerOrDirector.SelectedValue == "1" && ds.Rows.Count < 0)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PartnerDirectorAlert();", true);
+                }
+                else if (!atLeastOneSupervisorConnecrt || !atLeastOneWiremanConnect)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "ContractorTeamAlert();", true);
                 }
                 else
                 {
@@ -193,23 +226,20 @@ namespace CEIHaryana.UserPages
                     bool isValidBoolean;
                     if (!bool.TryParse(validationResult, out isValidBoolean))
                     {
-
                         string Createdby = Session["ContractorID"].ToString();
                         string selectedValues = txtPenalities.Text.Trim();
                         CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
                             DdlPartnerOrDirector.SelectedItem.ToString(), ddlPenalities.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
                             txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text,
                             txtDOB.Text, txtLicenseExpiry.Text, ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text, ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text, txtIssueDate1.Text, txtValidity1.Text,
-                            txtQualification1.Text, ddlEmployer2.SelectedItem.ToString(), txtLicense2.Text, txtIssueDate2.Text, txtValidity2.Text,
-                            txtQualification2.Text, Createdby);
+                            txtQualification1.Text, Createdby);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
+                        Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                     }
 
                 }
                 //CEI.ContractorPartners()
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
 
-
-                Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
             }
             catch { }
         }
@@ -310,8 +340,8 @@ namespace CEIHaryana.UserPages
                 }
 
             }
-            catch 
-            { 
+            catch
+            {
 
             }
         }
@@ -321,6 +351,55 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
+        }
+
+        protected void btnAddEmployeeDetails_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string CreatedBy = Session["ContractorID"].ToString();
+                //bool isvaild = bool.Parse(hdnIsClientSideValid.Value);
+                //if (isvaild){}               
+
+                CEI.InsertContractorTeam(ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text.Trim(), txtIssueDate1.Text.Trim(), txtValidity1.Text.Trim(),
+                                   txtQualification1.Text.Trim(), CreatedBy);
+                ContractorTeamBind();
+                ddlEmployer1.SelectedValue = "0";
+                txtLicense1.Text = "";
+                txtIssueDate1.Text = ""; txtValidity1.Text = ""; txtQualification1.Text = "";
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('An Error occured');", true);
+            }
+        }
+
+        private void ContractorTeamBind()
+        {
+            try
+            {
+                LoginID = Session["ContractorID"].ToString();
+                DataTable ds = new DataTable();
+                ds = CEI.GetContractorTeam(LoginID);
+                if (ds.Rows.Count > 0)
+                {
+                    GridView3.DataSource = ds;
+                    GridView3.DataBind();
+                    GridView3.DataSource = ds;
+                    GridView3.DataBind();
+                }
+                else
+                {
+
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('An Error occured');", true);
+            }
+
+
         }
     }
 }
