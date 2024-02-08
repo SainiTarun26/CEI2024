@@ -275,7 +275,9 @@
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDateInitialIssue" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtDateInitialIssue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Initial issue</asp:RequiredFieldValidator>
-                        </div>
+                                 <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateInitialIssue" Operator="LessThan"
+                              Display  ="Dynamic" ForeColor="Red" />
+                            </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
                         <div class="col-4">
@@ -283,12 +285,18 @@
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDateRenewal" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="12"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtDateRenewal" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
-                        </div>
+                                      <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateRenewal"  Operator="GreaterThan"
+                          ErrorMessage="Renewal Date must be greater than Expiry Date"
+                          Display    ="Dynamic" ForeColor="Red" />
+                            </div>
                         <div class="col-4">
                             <label for="DateofRenewal">Date of Expiry<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" ID="txtDateExpiry" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="13"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtDateExpiry" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Expiry</asp:RequiredFieldValidator>
+                         <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtDateInitialIssue" ControlToValidate="txtDateExpiry"  Operator="GreaterThan"
+                            ErrorMessage="Expiry Date must be greater than Issue Date"
+                                Display       ="Dynamic" ForeColor="Red" />
                         </div>
 
                         <div class="col-4">
@@ -424,6 +432,30 @@
             }
         }
     </script>
+    
+     <script type="text/javascript">
+         function validateDates() {
+             var renewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;
+             var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
+
+             if (new Date(expiryDate) < new Date(renewalDate)) {
+                 alert('Renewal Date should be greater than Expire Date');
+
+             }
+         }
+     </script>
+
+ <script type="text/javascript">
+     function validateDates1() {
+         var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
+     var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
+
+         if (new Date(issueDate) < new Date(expireDate)) {
+             alert(' Expire date should be greater than issue date');
+
+         }
+     }
+ </script>
     <script type="text/javascript">
         function isvalidphoneno() {
 

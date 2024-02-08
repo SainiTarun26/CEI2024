@@ -65,9 +65,9 @@ namespace CEIHaryana.Contractor
             if (ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow row in ds.Tables[0].Rows)
-            {
+                {
 
-               
+
                     string dynamicData = row["IntimationId"].ToString();
 
                     // Create a new TextBox control for each data item
@@ -91,7 +91,7 @@ namespace CEIHaryana.Contractor
 
                     rowIndex++;
 
-            }
+                }
             }
 
             else
