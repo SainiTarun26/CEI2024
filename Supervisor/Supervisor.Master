@@ -369,6 +369,11 @@
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Test Report History</span>
                                 </a> </li>
+                                    <li class="nav-item">
+  <a class="nav-link" href="RenewalCertificateSupervisor.aspx">
+       <i class="icon-grid menu-icon"></i>
+       <span class="menu-title">Renew Certificate</span>
+   </a> </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

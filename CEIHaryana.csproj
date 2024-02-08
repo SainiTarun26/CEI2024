@@ -1873,6 +1873,7 @@
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\LineTestReport.aspx" />
+    <Content Include="Supervisor\RenewalCertificateSupervisor.aspx" />
     <Content Include="Supervisor\ReportsHistory.aspx" />
     <Content Include="Supervisor\SubstationTestReport.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
@@ -2328,6 +2329,13 @@
     </Compile>
     <Compile Include="Supervisor\LineTestReport.aspx.designer.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\RenewalCertificateSupervisor.aspx.cs">
+      <DependentUpon>RenewalCertificateSupervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\RenewalCertificateSupervisor.aspx.designer.cs">
+      <DependentUpon>RenewalCertificateSupervisor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\ReportsHistory.aspx.cs">
       <DependentUpon>ReportsHistory.aspx</DependentUpon>
