@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="RenewalCertificateSupervisor.aspx.cs" Inherits="CEIHaryana.Supervisor.RenewalCertificateSupervisor" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -65,22 +66,34 @@
      </script>--%>
 
     <style>
+        input#ContentPlaceHolder1_RadioButtonList2_1 {
+    margin-left: 10px;
+    margin-right: 3px;
+}
+                input#ContentPlaceHolder1_RadioButtonList2_0 {
+    margin-left: 10px;
+    margin-right: 3px;
+}
         input#ContentPlaceHolder1_txtplace {
-    border: 0px solid black;
-    box-shadow: none;
-}
-        input#ContentPlaceHolder1_txtplace:hover {
-    border: 0px solid black;
-    box-shadow: none;
-}
-        input#ContentPlaceHolder1_txtdeclarationdate{
             border: 0px solid black;
-box-shadow: none;
+            box-shadow: none;
         }
-        input#ContentPlaceHolder1_txtdeclarationdate:hover{
+
+            input#ContentPlaceHolder1_txtplace:hover {
+                border: 0px solid black;
+                box-shadow: none;
+            }
+
+        input#ContentPlaceHolder1_txtdeclarationdate {
             border: 0px solid black;
-box-shadow: none;
+            box-shadow: none;
         }
+
+            input#ContentPlaceHolder1_txtdeclarationdate:hover {
+                border: 0px solid black;
+                box-shadow: none;
+            }
+
         .col-4 {
             top: 0px;
             left: 0px;
@@ -288,7 +301,8 @@ box-shadow: none;
                             --%>
                         </div>
                         <div class="col-4" style="margin-top: 26px;">
-                            <label for="ContactNo">Contact No.<samp style="color: red"> * </samp>
+                            <label for="ContactNo">
+                                Contact No.<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtContactNo" runat="server" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);"
                                 TabIndex="5"
@@ -341,141 +355,157 @@ box-shadow: none;
 
                 </div>
                 <h7 class="card-title fw-semibold mb-4">Fee Details</h7>
-<div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-    <div class="row">
-        <div class="col-4">
-            <label for="Name">
-                Details of Fees Remitted<samp style="color: red"> * </samp>
-            </label>
-            <asp:TextBox class="form-control" ID="TextBox7" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                MaxLength="200" Style="margin-left: 18px;">
-            </asp:TextBox>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="Name">
+                                Details of Fees Remitted<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="TextBox7" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                MaxLength="200" Style="margin-left: 18px;">
+                            </asp:TextBox>
 
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
-        </div>
-        <div class="col-4">
-            <label for="DateofRenewal">
-                Name of Treasury<samp style="color: red"> * </samp>
-            </label>
-            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox8" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-4">
+                            <label for="DateofRenewal">
+                                Name of Treasury<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox8" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
 
-        </div>
-        <div class="col-4">
-    <label for="Name">
-        Challan GRN No.<samp style="color: red"> * </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="TextBox10" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-        MaxLength="200" Style="margin-left: 18px;">
-    </asp:TextBox>
+                        </div>
+                        <div class="col-4">
+                            <label for="Name">
+                                Challan GRN No.<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="TextBox10" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                MaxLength="200" Style="margin-left: 18px;">
+                            </asp:TextBox>
 
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
-</div>
-    </div>
-    <div class="row">
-    
-    <div class="col-4">
-        <label for="DateofRenewal">
-            Date of Challan<samp style="color: red"> * </samp>
-        </label>
-        <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox11" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="row">
 
-    </div>
-    <div class="col-4">
-        <label for="FirmName">
-            Amount Remitted<samp style="color: red"> * </samp>
-        </label>
-        <asp:TextBox class="form-control" ID="TextBox12" runat="server" placeholder="(in months and years)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtFirmName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Firm Name</asp:RequiredFieldValidator>
-    </div>
-</div>
-</div>
-                                <h7 class="card-title fw-semibold mb-4">Employer Details</h7>
-<div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-    <div class="row">
-        <div class="col-4">
-            <label for="Name">
-                Name of Employeer<samp style="color: red"> * </samp>
-            </label>
-            <asp:TextBox class="form-control" ID="TextBox9" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                MaxLength="200" Style="margin-left: 18px;">
-            </asp:TextBox>
+                        <div class="col-4">
+                            <label for="DateofRenewal">
+                                Date of Challan<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox11" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
 
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
-        </div>
-        <div class="col-8">
-    <label for="RegisteredOffice">
-        Address<samp style="color: red"> * </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="TextBox13" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="TextBox2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-4">
+                            <label for="FirmName">
+                                Amount Remitted<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="TextBox12" runat="server" placeholder="(in months and years)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtFirmName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Firm Name</asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
+                <h7 class="card-title fw-semibold mb-4">Employer Details</h7>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>
+                                Type of Employer
+                                <samp style="color: red">* </samp>
+                            </label>
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DropDownList5" TabIndex="8" runat="server" AutoPostBack="true">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                        <div class="col-4">
+                            <label for="DateofRenewal">
+                                License No.(if Contractor)<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox15" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
 
-</div>
-                       <div class="col-4">
-                <label>
-                    State/UT 
-<samp style="color: red">* </samp>
-                </label>
-                <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DropDownList3" TabIndex="8" runat="server" AutoPostBack="true">
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-            </div>
-            <div class="col-4">
-                <label>
-                    District
-<samp style="color: red">* </samp>
-                </label>
-                <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="DropDownList4" runat="server" TabIndex="9">
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                        <div class="col-4">
+                            <label for="Name">
+                                Name of Employer<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="TextBox9" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                MaxLength="200" Style="margin-left: 18px;">
+                            </asp:TextBox>
 
-            </div>
-            <div class="col-4">
-                <label for="PinCode">PinCode </label>
-                <asp:TextBox class="form-control" ID="TextBox14" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
-                <span id="lblPinError" style="color: red"></span>
-                <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
-                --%>
-            </div>
-    </div>
-    <div class="row">
-    
-    <div class="col-4" style="margin-top:26px;">
-        <label for="DateofRenewal">
-            License No.(if Contractor)<samp style="color: red"> * </samp>
-        </label>
-        <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox15" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                        </div>
 
-    </div>
-</div>
-</div>
-                <div class="row" style="margin-left:1%;">
+                        <div class="col-8">
+                            <label for="RegisteredOffice">
+                                Address<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="TextBox13" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="TextBox2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="col-4">
+                            <label>
+                                State/UT 
+                                <samp style="color: red">* </samp>
+                            </label>
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DropDownList3" TabIndex="8" runat="server" AutoPostBack="true">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                        <div class="col-4">
+                            <label>
+                                District
+                                <samp style="color: red">* </samp>
+                            </label>
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="DropDownList4" runat="server" TabIndex="9">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                        </div>
+                        <div class="col-4">
+                            <label for="PinCode">PinCode </label>
+                            <asp:TextBox class="form-control" ID="TextBox14" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
+                            <span id="lblPinError" style="color: red"></span>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
+                            --%>
+                        </div>
+                        <div class="row" style="margin-left: 1%; margin-top: 3%;">
+                            Whether there is any chnage of employer during the subsequent period to the last Renewal. &nbsp;&nbsp;
+                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+    <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem> 
+    <asp:ListItem Text="No" Value="1"></asp:ListItem>
+</asp:RadioButtonList>
+                            </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 1%;">
                     <asp:CheckBox ID="Check" runat="server" />&nbsp;
                     <text>
                         I hereby declare that the information furnished in the application is correct.
-                        </text>
-                    </div>
-                <div class="row" style="margin-top:15px; margin-bottom:15px;margin-left:1%;">
+                    </text>
+                </div>
+                <div class="row" style="margin-top: 15px; margin-bottom: 15px; margin-left: 1%;">
                     <div class="col-md-6">
                         <div class="form-group row">
-                      <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="padding:0px;">Place:</label>
-                      <div class="col-sm-9">
-                        <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtplace" min='0000-01-01' max='9999-01-01' Type="text" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                      </div>
-                    </div>
+                            <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="padding: 0px;">Place:</label>
+                            <div class="col-sm-9">
+                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtplace" min='0000-01-01' max='9999-01-01' Type="text" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            </div>
+                        </div>
                         <div class="form-group row">
-                      <label for="exampleInputUsername2" class="col-sm-2 col-form-label"  style="padding:0px;">Date:</label>
-                      <div class="col-sm-9">
-                        <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtdeclarationdate" min='0000-01-01' max='9999-01-01' Type="text" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                      </div>
-                    </div>
+                            <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="padding: 0px;">Date:</label>
+                            <div class="col-sm-9">
+                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtdeclarationdate" min='0000-01-01' max='9999-01-01' Type="text" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            </div>
                         </div>
-                    
+                    </div>
+
                     <div class="col-md-6">
-                        </div>
                     </div>
+                </div>
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
