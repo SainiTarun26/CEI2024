@@ -40,20 +40,25 @@
 
     <style>
         input#txtUan {
-    width: 170px;
-}
+            width: 170px;
+        }
+
         input#txtFatherName {
-    width: 170px;
-}
+            width: 170px;
+        }
+
         input#TextBox5 {
-    width: 170px;
-}
+            width: 170px;
+        }
+
         input#TextBox3 {
-    width: 170px;
-}
+            width: 170px;
+        }
+
         input#TextBox9 {
-    width: 170px;
-}
+            width: 170px;
+        }
+
         .card {
             padding: 0px !important;
         }
@@ -230,7 +235,7 @@
                         <table class="empDetail" style="width: 100%;">
                             <tr>
                                 <th>Applicant Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
-                                <td   style="width: 170px;">
+                                <td style="width: 170px;">
                                     <asp:TextBox Style="width: 305px;" runat="server" ID="txtApplication" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <td></td>
@@ -241,7 +246,7 @@
                                 </td>
                                 <td rowspan="3" colspan="3" style="text-align: center; width: 1px;">
                                     <img src="../Assets/images.png" style="width: 150px;" />
-                                   
+
                                 </td>
                             </tr>
                             <tr>
@@ -252,7 +257,7 @@
                                 <td></td>
                                 <td></td>
                                 <th>Nationality&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
-                                <td  style="width: 170px;">
+                                <td style="width: 170px;">
                                     <asp:TextBox runat="server" ID="txtNationality" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                             </tr>
@@ -264,7 +269,7 @@
                                 <td></td>
                                 <td></td>
                                 <th>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
-                                <td  style="width: 170px;">
+                                <td style="width: 170px;">
                                     <asp:TextBox runat="server" ID="txtUan" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
 
@@ -277,9 +282,9 @@
                                     <asp:TextBox Style="width: 280px;" runat="server" ID="TextBox4" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <td></td>
-                                <td ></td>
+                                <td></td>
                                 <th style="width: 150px;">Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
-                                <td   style="width: 170px;">
+                                <td style="width: 170px;">
                                     <asp:TextBox runat="server" ID="TextBox5" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <th>Aadhaar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
@@ -301,7 +306,7 @@
                                 <td></td>
                                 <td></td>
                                 <th style="width: 150px;">Expiry Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
-                                <td   style="width: 170px;">
+                                <td style="width: 170px;">
                                     <asp:TextBox runat="server" ID="TextBox3" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <th>Renewal Belated Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
@@ -317,7 +322,7 @@
                                 <td></td>
                                 <td></td>
                                 <th style="width: 150px;">License No. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
-                                <td   style="width: 170px;">
+                                <td style="width: 170px;">
                                     <asp:TextBox runat="server" ID="TextBox9" MaxLength="50" type="text" class="form-control DynamicData"></asp:TextBox>
                                 </td>
                                 <th>Employer Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</th>
@@ -340,11 +345,11 @@
                 <div class="row">
                     <%--  <div class="col-2"></div>--%>
                     <div class="col-12">
-                        <asp:CheckBox ID="CheckBox4" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that the particulars stated above are correct to the best of my knowledge. I am not a holder of
-Supervisor Competency Certificate issued by the State Licensing Board/Chief Electrical Inspector other than those
-indicated in the Column 10. I also agree to the cancellation of my Certificate of Competency to be issued in
-pursuance of this application, in case the particulars furnished in the application are found incorrect or false at any
-stage."
+                        <asp:CheckBox ID="CheckBox4" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that the particulars stated above are correct to the best of my knowledge. I am not a holder of 
+                            Supervisor Competency Certificate issued by the State Licensing Board/Chief Electrical Inspector other than those 
+                            indicated in the Column 10. I also agree to the cancellation of my Certificate of Competency to be issued in 
+                            pursuance of this application, in case the particulars furnished in the application are found incorrect or false at any 
+                            stage"
                             Font-Size="Medium" Font-Bold="True" />
                         <br />
                         <label id="label3" runat="server" visible="false" style="color: red; font-size: 1.125rem">
