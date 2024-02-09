@@ -285,6 +285,33 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
 
         /// <summary>
+        /// OtherPremises control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OtherPremises;
+
+        /// <summary>
+        /// txtOtherPremises control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOtherPremises;
+
+        /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
         /// ddlVoltageLevel control.
         /// </summary>
         /// <remarks>
@@ -670,33 +697,6 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete8;
-
-        /// <summary>
-        /// OtherPremises control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OtherPremises;
-
-        /// <summary>
-        /// txtOtherPremises control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOtherPremises;
-
-        /// <summary>
-        /// RequiredFieldValidator3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
         /// InstallationType control.

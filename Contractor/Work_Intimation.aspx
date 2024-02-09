@@ -423,6 +423,13 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
+                                           <div class="col-4" id="OtherPremises" runat="server">
+                                    <label for="OtherPremises">
+                                        Other Premises<samp style="color: red"> * </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtOtherPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
+                                </div>
                                         <div class="col-4">
                                             <label>
                                                 Highest Voltage Level of Work
@@ -606,31 +613,15 @@
 
 
 
-                            <div class="row">
-
-
-                             
-
-                            </div>
 
                             <div class="row" style="margin-top: -10px;">
-
-
-
-
-                                <div class="col-4" id="OtherPremises" runat="server">
-                                    <label for="OtherPremises">
-                                        Other Premises<samp style="color: red"> * </samp>
-                                    </label>
-                                    <asp:TextBox class="form-control" ID="txtOtherPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
-                                </div>
+                             
 
 
                                 <div class="col-4" id="InstallationType" runat="server" visible="false">
                                     <label>
                                         Select Installation Type
-        <samp style="color: red">* </samp>
+                                        <samp style="color: red">* </samp>
                                     </label>
                                     <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" TabIndex="12" ID="ddlWorkDetail" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                                     </asp:DropDownList>

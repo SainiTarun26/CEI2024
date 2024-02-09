@@ -54,7 +54,7 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Value = "Contractor";
                         Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                        Response.Redirect("/OTPVerification.aspx");
+                        Response.Redirect("/OTPVerification.aspx", false);
                     }
                     else
                     {
