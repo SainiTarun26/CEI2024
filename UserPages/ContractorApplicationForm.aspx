@@ -1787,13 +1787,14 @@
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
-                                                                 <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
-                                                                <div class="col-md-12">
-                                                                    <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">PENALTIES/PUNISHMENT
-                                                                    </h3>
                                                                 </div>
-                                                            </div>
-                                                            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 0px;">
+                                                                 <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
+                                                                   <div class="col-md-12">
+        <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">PENALTIES/PUNISHMENT
+        </h3>
+    </div>
+</div>
+                                                            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 20px;">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="forms-sample">
@@ -1852,9 +1853,9 @@
                                                                     <asp:Button type="BtnSubmit" ID="Button2" Text="Next" OnClientClick="return validateForm();" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                                 </div>
                                                             </div>
-                                                            </div>
-                                                           
-                                                        </div>
+                           
+
+                            </div>
                                                     </div>
                                                 </div>
                                             </div>

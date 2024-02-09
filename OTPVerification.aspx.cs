@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Net.Mail;
+using CEIHaryana.Contractor;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static System.Net.WebRequestMethods;
@@ -95,15 +97,20 @@ namespace CEIHaryana
             }
 
         }
+
         public void sendsms()
         {
             string id = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.GetContractorContact(id);
-            string Contact = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-            string mobilenumber = Contact.Trim();
-            Session["OTP"] = CEI.ValidateOTP(mobilenumber);
+            string Email = ds.Tables[0].Rows[0]["Email"].ToString();
+            string email = Email.Trim();
+            Session["OTP"] = CEI.OTPthroughEmail(email);
         }
 
+
     }
+
+
+
 }

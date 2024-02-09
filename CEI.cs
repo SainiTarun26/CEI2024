@@ -2299,6 +2299,34 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorTeam", CreatedBy);
         }
         #endregion
+
+
+        #region insert ContractotpEmail
+        public string OTPthroughEmail(string Email)
+        {
+            //string mobilenumber = Session["Contact"].ToString();
+            Random random = new Random();
+            int otpInt = random.Next(100000, 999999);
+
+            string otp = otpInt.ToString("D6");
+            //Session["OTP"] = otp;
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email); mailMessage.Subject = "Contractor ID and Password";
+            string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to the Contractor.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
+            mailMessage.Body = body;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
+            return otp;
+        }
+        #endregion
+
     }
 }
     
