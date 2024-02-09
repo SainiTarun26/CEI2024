@@ -2068,8 +2068,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
               string CompanyPenalities, string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
              string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring, string ContractorLicencePreviouslyGrantedWithSameName,
-             string LicenseNoIfYes, string DateoFIssue, string TypeOfEmployee1, string LicenseNo1,
-             string IssueDate1, string ValidityDate1, string Qualification1, string CreatedBy)
+             string LicenseNoIfYes, string DateoFIssue,
+              string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);

@@ -257,9 +257,11 @@ namespace CEI_PRoject.Admin
         {
             try
             {
+                if(Page.IsValid)
+                { 
                 if (btnSubmit.Text == "Update")
                 {
-                    if (txtLicenceNew.Text != "" || txtLicenceNew.Text != "NA")
+                    if (txtLicenceNew.Text != "" && txtLicenceNew.Text != "NA")
                     {
                         UserId = txtLicenceNew.Text;
                     }
@@ -301,7 +303,7 @@ namespace CEI_PRoject.Admin
                     }
                     else
                     {
-                        if (txtLicenceNew.Text != "" || txtLicenceNew.Text != "NA")
+                        if (txtLicenceNew.Text != "" && txtLicenceNew.Text != "NA")
                         {
                             UserId = txtLicenceNew.Text;
                         }
@@ -343,6 +345,11 @@ namespace CEI_PRoject.Admin
                         }
                     }
                 }
+                }
+                else
+                {
+
+                }
             }
             catch (Exception Ex)
             {
@@ -357,6 +364,12 @@ namespace CEI_PRoject.Admin
                     string sanitizedErrorMessage = Ex.Message.Replace("'", "\\'");
                     string alertScript = "alert('Error: License Number Incorrect\\n\\nLicense number old and new are the same. Please provide a different license number.');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                }
+                else
+                {
+                    string alertScript = "alert('Error: License Number Incorrect\\n\\nLicense number old and new are Blank. Please Provide Atleast One license number.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+
                 }
 
 
