@@ -500,7 +500,7 @@ namespace CEIHaryana.TestReportModal
         {
             if (Session["AdminID"] != null)
             {
-                Response.Redirect("/Admin/SubstationDataHistory.aspx");
+                Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
             }
             else
             {

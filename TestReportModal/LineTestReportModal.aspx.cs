@@ -636,7 +636,7 @@ namespace CEIHaryana.TestReportModal
         {
             if (Session["AdminID"] != null)
             {
-                Response.Redirect("/Admin/LineTestReportHistory.aspx");
+                Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
             }
             else
             {

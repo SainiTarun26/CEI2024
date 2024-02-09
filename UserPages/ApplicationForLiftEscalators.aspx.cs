@@ -92,7 +92,7 @@ namespace CEIHaryana.UserPages
                 ddlLiftState.Items.Insert(0, new ListItem("Select", "0"));
                 ds.Clear();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
@@ -164,7 +164,10 @@ namespace CEIHaryana.UserPages
             {
                 ddlLoadBindLiftDistrict(ddlLiftState.SelectedItem.ToString());
             }
-            catch { }
+            catch 
+            { 
+
+            }
         }
 
         private void ddlLoadBindLiftDistrict(string state)
@@ -203,13 +206,12 @@ namespace CEIHaryana.UserPages
                       txtLiftAddress.Text.Trim(), ddlLiftState.SelectedItem.ToString(), ddlLiftDistrict.SelectedItem.ToString(), txtLiftPincode.Text.Trim(), txtDateOfErection.Text.Trim(),
                       txtTypeOfLift.Text.Trim(), txtMakerName.Text.Trim(), txtMakerLocalAgent.Text.Trim(), txtMakerAddress.Text.Trim(), txtLiftSpeed.Text.Trim(), txtLiftLoad.Text.Trim(),
                       txtPersonLoad.Text.Trim(), txtLiftWeight.Text.Trim(), txtCounterWeight.Text.Trim(), txtNumberSuspension.Text.Trim(), txtDiscription.Text.Trim(), txtWeight.Text.Trim(),
-                      txtSize.Text.Trim(), txtPitDepth.Text.Trim(), txtTotalFloors.Text.Trim(), txtConstructionDetails.Text.Trim()
-                        );
+                      txtSize.Text.Trim(), txtPitDepth.Text.Trim(), txtTotalFloors.Text.Trim(), txtConstructionDetails.Text.Trim());
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Application for Lift and Escalators added successfully!! ')", true);
                     Response.Redirect("DocumentsForLift.aspx", false);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
