@@ -73,7 +73,8 @@ namespace CEIHaryana.Supervisor
                         txtapplication.Text = Session["Application"].ToString().Trim();
                         txtInstallation.Text = Session["Typs"].ToString().Trim();
                         txtid.Text = Session["Intimations"].ToString().Trim();
-                        txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim();
+                        txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+
                     }
                 }
                 else

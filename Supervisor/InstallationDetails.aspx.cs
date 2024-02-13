@@ -91,6 +91,8 @@ namespace CEIHaryana.Supervisor
                         Session["Intimations"] = lblIntimations.Text.Trim();
                         Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
                         Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
+                        Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
+                        Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
                         Label lblID = (Label)row.FindControl("lblID");
                         Session["IHID"] = lblID.Text.Trim();
                         Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");

@@ -98,7 +98,7 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 string value1 = Convert.ToString(Session["Approval"]);
-                if (value1.Trim() == "Accept")
+                if (value1.Trim() == "Approved")
                 {
                     ddlType.Attributes.Add("disabled", "disabled");
                     // ddlType.Attributes.Add("Readonly", "true");
@@ -640,7 +640,7 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
-                Response.Redirect("/Supervisor/SupervisorLineTestReport.aspx");
+                Response.Redirect("/Supervisor/TestReportHistory.aspx");
             }
         }
 

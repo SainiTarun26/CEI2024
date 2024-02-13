@@ -71,19 +71,20 @@ namespace CEIHaryana.Contractor
                     if (lblTypeOf.Text.Trim() == "Line")
                     {
 
-                        Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Session["LineID"] = "129";
+                            //ds.Tables[0].Rows[0]["ID"].ToString();
                         Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
                     }
                     else if (lblTypeOf.Text.Trim() == "Substation Transformer")
                     {
 
-                        Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Session["SubStationID"] = "10014";
                         Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                     }
-                    else if (lblTypeOf.Text.Trim() == "Generating Station")
+                    else if (lblTypeOf.Text.Trim() == "Generating Set")
                     {
 
-                        Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Session["GeneratingSetId"] = "100001";
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
 

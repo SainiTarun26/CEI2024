@@ -505,7 +505,7 @@ namespace CEIHaryana.TestReportModal
             else
             {
                 id = Session["SubStationID"].ToString(); 
-                Response.Redirect("/Supervisor/SupervisorSubstationTestReport.aspx");
+                Response.Redirect("/Supervisor/TestReportHistory.aspx");
             }
         }
         protected void btnNext_Click(object sender, EventArgs e)

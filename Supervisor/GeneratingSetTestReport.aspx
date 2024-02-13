@@ -243,7 +243,7 @@
          <div class="card-body">
              <div class="row">
                  <div class="col-12" style="text-align: center;">
-                     <h7 class="card-title fw-semibold mb-4" id="maincard">LINE TEST REPORT</h7>
+                     <h7 class="card-title fw-semibold mb-4" id="maincard">GENERATING SET TEST REPORT</h7>
                  </div>
              </div>
              <div class="row">
@@ -343,7 +343,7 @@
                                         Serial no. 
                                     <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator" placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator" placeholder="of Ac generator/ Alternator" Maxlength="50" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ControlToValidate="txtSerialNoOfGenerator" ValidationGroup="Submit" ErrorMessage="Please Enter Serial No Of Generator"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-2" id="Div172" runat="server" style="margin-top: -15px;">

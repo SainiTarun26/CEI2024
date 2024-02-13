@@ -409,7 +409,7 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
-                Response.Redirect("/Supervisor/SupervisorGeneraterSetTestReport.aspx");
+                Response.Redirect("/Supervisor/TestReportHistory.aspx");
             }
         }
         protected void btnVerify_Click(object sender, EventArgs e)

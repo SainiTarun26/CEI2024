@@ -147,6 +147,7 @@ table#ContentPlaceHolder1_GridView1 {
                                         <asp:Label ID="lblTyps" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
                                         <asp:Label ID="lblhistory" runat="server" Text='<%#Eval("history") %>'></asp:Label>
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
+                                        <asp:Label ID="lblTotalInstallation" runat="server" Text='<%#Eval("TotalNumberOfInstallation") %>'></asp:Label>
                                         <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
