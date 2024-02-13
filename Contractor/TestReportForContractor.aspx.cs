@@ -33,7 +33,7 @@ namespace CEIHaryana.Contractor
             string LoginId = string.Empty;
             LoginId = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.TestReportContractorHistory(LoginId);
+            ds = cei.TestReportContractorHistory(LoginId, "Pending");
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -56,52 +56,39 @@ namespace CEIHaryana.Contractor
                 {
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    string id = lblID.Text;
                     Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
                     Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
                     Label lblCounts = (Label)row.FindControl("lblCounts");
                     Session["Counts"] = lblCounts.Text.Trim();
                     Session["IntimationId"] = lblIntimationId.Text.Trim();
+                    Label lblApproval = (Label)row.FindControl("lblApproval");
+                    Session["Approval1"] = lblApproval.Text;
+                    Session["Approval"] = lblApproval.Text;
+                    Session["TestReportHistory"] = "True";
+                    DataSet ds = new DataSet();
+                    ds = cei.GetData(lblTypeOf.Text.Trim(), lblIntimationId.Text.Trim(), lblCounts.Text.Trim());
+
                     if (lblTypeOf.Text.Trim() == "Line")
                     {
 
-                        Session["LineID"] = id;
+                        Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
                     }
                     else if (lblTypeOf.Text.Trim() == "Substation Transformer")
                     {
 
-                        Session["SubStationID"] = id;
+                        Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                     }
                     else if (lblTypeOf.Text.Trim() == "Generating Station")
                     {
 
-                        Session["GeneratingSetId"] = id;
+                        Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
-                    Label lblApproval = (Label)row.FindControl("lblApproval");
-                    Session["Approval1"] = lblApproval.Text;
-                    Session["Approval"] = lblApproval.Text;
-                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                    Session["TestReportId"] = lblTestReportId.Text;
-                    Session["TestReportHistory"] = "True";
-                    Label lblReasionRejection = (Label)row.FindControl("LblReasionforRejection");
-                    Session["ReasionForRejection"] = lblReasionRejection.Text;
-                    if (e.CommandName == "Select")
-                    {
-                        if (lblTypeOf.Text.Trim() == "Line") 
-                        {
-                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                        }
-                        else if (lblTypeOf.Text.Trim() == "Substation Transformer")
-                        {
-                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                        }
-                        else if (lblTypeOf.Text.Trim() == "Generating Station")
-                        {
-                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                        }
-                 
-                    }
+
+                    Session["ReasionForRejection"] = ds.Tables[0].Rows[0]["RejectionReasion"].ToString();
+
                 }
             }
             catch { }

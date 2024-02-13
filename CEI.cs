@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf.parser;
 using Pipelines.Sockets.Unofficial.Arenas;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -1683,9 +1684,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryAdmin");
         }
-        public DataSet TestReportContractorHistory(string LoginId)
+        public DataSet TestReportContractorHistory(string LoginId,string Type)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportContractorHistory", LoginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReportsHistory", LoginId, Type);
         }
         public DataSet AllInspectionHistory()
         {
@@ -1811,41 +1812,46 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet ConsolidateSearchData(string SubmittedDate, string EndDate, string Division, string District, string Status, string Inspectiontype,
     string PendingWith, string OwnerApplication, string GSTNumber, string Assignto)
         {
-            try
-            {
-                DataSet ds = new DataSet();
-                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
-                SqlCommand cmd = new SqlCommand("sp_ConsolidatedSearch", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                // Add parameters with named parameters
-                cmd.Parameters.AddWithValue("@SubmittedDate", SubmittedDate);
-                cmd.Parameters.AddWithValue("@EndDate", EndDate);
-                cmd.Parameters.AddWithValue("@Division", Division);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@Status", Status);
-                cmd.Parameters.AddWithValue("@Inspectiontype", Inspectiontype);
-                cmd.Parameters.AddWithValue("@PendingWith", PendingWith);
-                cmd.Parameters.AddWithValue("@OwnerApplication", OwnerApplication);
-                cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
-                cmd.Parameters.AddWithValue("@AssignTo", Assignto);
-
-                connection.Open();
-
-                // Use a SqlDataAdapter to fill the DataSet
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                {
-                    adapter.Fill(ds);
-                }
-                return ds;
-
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ConsolidatedSearch", SubmittedDate, EndDate, Division,
+                District, Status, Inspectiontype, PendingWith, OwnerApplication, GSTNumber, Assignto);
         }
+    //    public void ConsolidateSearchData(string SubmittedDate, string EndDate, string Division, string District, string Status, string Inspectiontype,
+    //string PendingWith, string OwnerApplication, string GSTNumber, string Assignto)
+    //    {
+    //        try
+    //        {
+
+    //            SqlCommand cmd = new SqlCommand("sp_ConsolidatedSearch");
+    //            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+    //            cmd.Connection = con;
+    //            if (con.State == ConnectionState.Closed)
+    //            {
+    //                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+    //                con.Open();
+    //            }
+    //            cmd.Parameters.AddWithValue("@SubmittedDate", SubmittedDate);
+    //            cmd.Parameters.AddWithValue("@EndDate", EndDate);
+    //            cmd.Parameters.AddWithValue("@Division", Division);
+    //            cmd.Parameters.AddWithValue("@District", District);
+    //            cmd.Parameters.AddWithValue("@Status", Status);
+    //            cmd.Parameters.AddWithValue("@Inspectiontype", Inspectiontype);
+    //            cmd.Parameters.AddWithValue("@PendingWith", PendingWith);
+    //            cmd.Parameters.AddWithValue("@OwnerApplication", OwnerApplication);
+    //            cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
+    //            cmd.Parameters.AddWithValue("@AssignTo", Assignto);
+    //            cmd.ExecuteNonQuery();
+    //            //int generatedId = Convert.ToInt32(outputParam.Value);
+
+    //            con.Close();
+               
+
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            return null;
+    //        }
+
+    //    }
 
         public DataTable GetInstllationsforSupervisor(string IntimationId)
         {
@@ -1936,11 +1942,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspection", Inspectiontype, IntimationId, Count);
         }
-        public DataSet ActionTestReport(string LoginId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ActiontakenTestReport", LoginId);
-        }
-
+        
         public void InsertnewUseQualification(string UserId, string UniversityName10th, string PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
               string Name12ITIDiploma, string UniversityName12thorITI, string PassingYear12thorITI, string MarksObtained12thorITI, string MarksMax12thorITI, string Percentage12thorITI,
               string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, string PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
@@ -2068,8 +2070,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
               string CompanyPenalities, string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
              string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring, string ContractorLicencePreviouslyGrantedWithSameName,
-             string LicenseNoIfYes, string DateoFIssue,
-              string CreatedBy)
+             string LicenseNoIfYes, string DateoFIssue,string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);

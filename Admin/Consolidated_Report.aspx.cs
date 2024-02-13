@@ -93,7 +93,7 @@ namespace CEIHaryana.Admin
             catch { }
         }
             private void BindGrid()
-        {
+            { 
             try
             {
                 //Using Ternary operator In case value 0 then pass null
@@ -106,7 +106,7 @@ namespace CEIHaryana.Admin
                 string pendingWith = DdlStaffPendingWith.SelectedValue == "0" ? null : DdlStaffPendingWith.SelectedValue;
                 string ownerApplication = string.IsNullOrEmpty(txtownerApplication.Text.Trim()) ? null : txtownerApplication.Text.Trim();
                 string gstNumber = string.IsNullOrEmpty(txtGST.Text.Trim()) ? null : txtGST.Text.Trim();
-                string LoginId = Session["AdminID"].ToString();
+                string LoginId = Session["AdminID"].ToString().Trim();
                 // DataSet ds = new DataSet();
                 DataSet ds = CEI.ConsolidateSearchData(submittedDate, endDate, division, district, status, inspectionType, pendingWith,
                     ownerApplication, gstNumber, LoginId);
@@ -123,9 +123,11 @@ namespace CEIHaryana.Admin
                     string script = "alert(\"No Record Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
-                ds.Dispose();
+               // ds.Dispose();
             }
-            catch { }
+            catch 
+            {
+            }
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

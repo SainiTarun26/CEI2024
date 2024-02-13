@@ -36,7 +36,7 @@ namespace CEIHaryana.Contractor
             string LoginId = string.Empty;
             LoginId = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.ActionTestReport(LoginId);
+            ds = cei.TestReportContractorHistory(LoginId, "Not Pending");
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -59,49 +59,38 @@ namespace CEIHaryana.Contractor
                 {
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    string id = lblID.Text;
                     Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
-                    if (lblTypeOf.Text.Trim() == "Line")
-                    {
-
-                        Session["LineID"] = id;
-                    }
-                    else if (lblTypeOf.Text.Trim() == "Substation")
-                    {
-
-                        Session["SubStationID"] = id;
-                    }
-                    else if (lblTypeOf.Text.Trim() == "Generating")
-                    {
-
-                        Session["GeneratingSetId"] = id;
-                    }
+                    Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                    Label lblCounts = (Label)row.FindControl("lblCounts");
+                    Session["Counts"] = lblCounts.Text.Trim();
+                    Session["IntimationId"] = lblIntimationId.Text.Trim();
                     Label lblApproval = (Label)row.FindControl("lblApproval");
                     Session["Approval1"] = lblApproval.Text;
                     Session["Approval"] = lblApproval.Text;
-                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                    Session["TestReportId"] = lblTestReportId.Text;
                     Session["TestReportHistory"] = "True";
-                    Label lblReasionRejection = (Label)row.FindControl("LblReasionforRejection");
-                    Session["ReasionForRejection"] = lblReasionRejection.Text;
-                    if (e.CommandName == "Select")
+                    DataSet ds = new DataSet();
+                    ds = cei.GetData(lblTypeOf.Text.Trim(), lblIntimationId.Text.Trim(), lblCounts.Text.Trim());
+
+                    Session["ReasionForRejection"] = ds.Tables[0].Rows[0]["RejectionReasion"].ToString();
+                    if (lblTypeOf.Text.Trim() == "Line")
                     {
-                        if (lblTypeOf.Text.Trim() == "Line")
-                        {
-                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                        }
-                        else if (lblTypeOf.Text.Trim() == "Substation Transformer")
-                        {
-                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                        }
-                        else if (lblTypeOf.Text.Trim() == "Generating Station")
-                        {
-                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                        }
 
-
+                        Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
                     }
+                    else if (lblTypeOf.Text.Trim() == "Substation Transformer")
+                    {
+
+                        Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                    }
+                    else if (lblTypeOf.Text.Trim() == "Generating Station")
+                    {
+
+                        Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                    }
+
                 }
             }
             catch { }

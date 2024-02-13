@@ -211,11 +211,11 @@
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("Approval") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
+                           <%-- <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="LblReasionforRejection" runat="server" Text='<%#Eval("ReasonForRejection") %>'></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("Type") %>'></asp:Label>
@@ -223,12 +223,9 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
+                                    <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>--%>
+                                    <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                    <asp:Label ID="lblCounts" runat="server" Text='<%#Eval("Counts") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
@@ -239,14 +236,14 @@
                                     Intimation Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select" Style="text-align: left;"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("IntimationId") %> ' CommandName="Select" Style="text-align: left;"><%#Eval("IntimationId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
                             </asp:BoundField>
-                          <%--  <asp:BoundField DataField="Noofinstallation" HeaderText="No of Installations">
+<%--                            <asp:BoundField DataField="Noofinstallation" HeaderText="No of Installations">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
@@ -257,10 +254,6 @@
                               <asp:BoundField DataField="Approval" HeaderText="Approval">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
