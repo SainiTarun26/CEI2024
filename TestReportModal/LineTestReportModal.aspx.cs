@@ -98,7 +98,7 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 string value1 = Convert.ToString(Session["Approval"]);
-                if (value1.Trim() == "Approved")
+                if (value1.Trim() == "Accept")
                 {
                     ddlType.Attributes.Add("disabled", "disabled");
                     // ddlType.Attributes.Add("Readonly", "true");
@@ -278,7 +278,6 @@ namespace CEIHaryana.TestReportModal
                                     Insulation440vAbove.Visible = false;
                                     Insulation220vAbove.Visible = true;
                                 }
-                              
                                 else
                                 {
                                     Insulation440vAbove.Visible = true;
