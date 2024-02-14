@@ -22,6 +22,10 @@ namespace CEIHaryana.Contractor
                     {
                         GridData();
                     }
+                    else
+                    {
+
+                    }
                 }
             }
             catch
@@ -62,7 +66,7 @@ namespace CEIHaryana.Contractor
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Select")
+            if (e.CommandName == "Select")  
             {
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
@@ -76,6 +80,10 @@ namespace CEIHaryana.Contractor
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
 
                 }
+            }
+            else
+            {
+
             }
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
