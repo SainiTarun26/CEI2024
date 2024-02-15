@@ -456,13 +456,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
 
         /// <summary>
-        /// TextBox21 control.
+        /// TxtDateFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox21;
+        protected global::System.Web.UI.WebControls.TextBox TxtDateFrom;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -474,13 +474,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// TextBox5 control.
+        /// txtDateTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtDateTo;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -492,13 +492,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
-        /// TextBox6 control.
+        /// txtEmployercontractorLicence control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txtEmployercontractorLicence;
 
         /// <summary>
         /// RequiredFieldValidator6 control.
@@ -510,13 +510,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
 
         /// <summary>
-        /// TextBox20 control.
+        /// txtChangedEmployerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox20;
+        protected global::System.Web.UI.WebControls.TextBox txtChangedEmployerName;
 
         /// <summary>
         /// RequiredFieldValidator28 control.
@@ -528,13 +528,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator28;
 
         /// <summary>
-        /// TextBox7 control.
+        /// txtchangedEmployerAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtchangedEmployerAddress;
 
         /// <summary>
         /// RequiredFieldValidator25 control.
@@ -546,13 +546,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
 
         /// <summary>
-        /// DropDownList7 control.
+        /// txtchangedEmployerState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
+        protected global::System.Web.UI.WebControls.DropDownList txtchangedEmployerState;
 
         /// <summary>
         /// RequiredFieldValidator26 control.
@@ -564,13 +564,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator26;
 
         /// <summary>
-        /// DropDownList8 control.
+        /// ddlchangedemployerDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
+        protected global::System.Web.UI.WebControls.DropDownList ddlchangedemployerDistrict;
 
         /// <summary>
         /// RequiredFieldValidator27 control.
@@ -582,13 +582,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator27;
 
         /// <summary>
-        /// TextBox19 control.
+        /// txchangedEmployerPincode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.TextBox txchangedEmployerPincode;
 
         /// <summary>
         /// txtPhoto control.
