@@ -148,7 +148,10 @@ table#ContentPlaceHolder1_GridView1 {
                                         <asp:Label ID="lblhistory" runat="server" Text='<%#Eval("history") %>'></asp:Label>
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                         <asp:Label ID="lblTotalInstallation" runat="server" Text='<%#Eval("TotalNumberOfInstallation") %>'></asp:Label>
-                                        <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
+                                        <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>   
+                                      <%-- <asp:Label ID="Label1" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>--%>
+                                        <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
+                                    
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 
@@ -169,7 +172,11 @@ table#ContentPlaceHolder1_GridView1 {
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="history" HeaderText="Test Report">
+                                <asp:BoundField DataField="history" HeaderText="Test Report Status">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Status" HeaderText="Test Report Approval">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>

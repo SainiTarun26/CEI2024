@@ -42,7 +42,7 @@ namespace CEIHaryana.Supervisor
                         }
                         else
                         {
-                            SubStationID = Session["ValueId"].ToString().Trim();
+                            SubStationID = Session["SubStationID"].ToString().Trim();
                             GetHistoryDataById();
                         }
                         if (Convert.ToString(Session["Approval"]) == "Reject")
@@ -57,7 +57,6 @@ namespace CEIHaryana.Supervisor
                             Session["Intimations"] = Session["ID"].ToString().Trim();
                             Session["IHID"] = Session["IHIDs"].ToString().Trim();
                             Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();
-
 
                             GetHistoryDataById();
                             //BtnBack.Visible = true;
@@ -111,18 +110,19 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
-                if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
-                {
+                //if (Convert.ToString(Session["Value"]) == null || Convert.ToString(Session["Value"]) == "")
+                //{
 
-                }
-                else
-                {
-                    Type = Session["Value"].ToString();
-                }
-                if (Convert.ToString(Session["Approval"]) == "Reject")
-                {
-                    Type = "Substation Transformer";
-                }
+                //}
+                //else
+                //{
+                //    Type = Session["Value"].ToString();
+                //}
+                //if (Convert.ToString(Session["Approval"]) == "Reject")
+                //{
+                //    Type = "Substation Transformer";
+                //}
+                Type = "Substation Transformer";
                 DataSet ds = new DataSet();
                 ds = CEI.GetTestReportDataForUpdate(Type, SubStationID);
                 if (ds.Tables.Count > 0)

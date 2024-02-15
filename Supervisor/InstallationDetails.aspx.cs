@@ -33,7 +33,7 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch 
+            catch
             {
                 Response.Redirect("/login.aspx");
             }
@@ -73,10 +73,33 @@ namespace CEIHaryana.Supervisor
                 if (e.CommandName == "Select")
                 {
 
+
+
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblhistory = (Label)row.FindControl("lblhistory");
-                    if (lblhistory.Text.Trim() == "Generated")
+                    Label lblStatus = (Label)row.FindControl("lblStatus");
+                    Session["Approval"] = lblStatus.Text.Trim();
+
+                    if (Session["Approval"].ToString() != null)
+                    {
+                        Session["Typs"] = "";
+                        Session["TypeOf"] = "";
+                        Session["Application"] = "";
+                        Session["ApplicationForTestReport"] = "";
+                        Session["Intimations"] = "";
+                        Session["NoOfInstallations"] = "";
+                        Session["NoOfInstallation"] = "";
+                        Session["TotalInstallation"] = "";
+                        Session["IHID"] = "";
+                        Session["IHIDs"] = "";
+                        Session["LineId"] = "";
+                        Session["ValueId"] = "";
+                        Session["SubStationID"] = "";
+                        Session["GeneratingSetId"] = "";
+                    }
+
+                    if (lblhistory.Text.Trim() == "Generated" && lblStatus.Text.Trim() != "Reject")
                     {
                         string script = "alert(\"You already created a test report for this. It is now only visible under Test Report History.\");";
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
@@ -85,28 +108,49 @@ namespace CEIHaryana.Supervisor
                     {
                         Label lblTyps = (Label)row.FindControl("lblTyps");
                         Session["Typs"] = lblTyps.Text.Trim();
+                        Session["TypeOf"] = lblTyps.Text.Trim();                          ///////////////
                         Label lblApllication = (Label)row.FindControl("lblApllication");
                         Session["Application"] = lblApllication.Text.Trim();
+                        Session["ApplicationForTestReport"] = lblApllication.Text.Trim(); /////////
                         Label lblIntimations = (Label)row.FindControl("lblIntimations");
                         Session["Intimations"] = lblIntimations.Text.Trim();
                         Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
                         Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
+                        Session["NoOfInstallation"] = lblNoOfInstallations.Text.Trim();
                         Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
                         Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
                         Label lblID = (Label)row.FindControl("lblID");
                         Session["IHID"] = lblID.Text.Trim();
+                        Session["IHIDs"] = lblID.Text.Trim();                           //////////////
                         Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
                         Session["VoltageLevel"] = lblVoltageLevel.Text.Trim();
+                        DataSet ds = new DataSet();
+                        ds = CEI.GetData(lblTyps.Text.Trim(), lblIntimations.Text.Trim(), lblNoOfInstallations.Text.Trim());
                         if (lblTyps.Text.Trim() == "Line")
                         {
+                            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                            {
+                                Session["LineId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                                Session["ValueId"] = "True";
+                            }
                             Response.Redirect("/Supervisor/LineTestReport.aspx", false);
                         }
                         else if (lblTyps.Text.Trim() == "Substation Transformer")
                         {
+                            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                            {
+                                Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                                Session["ValueId"] = "True";
+                            }
                             Response.Redirect("/Supervisor/SubstationTestReport.aspx", false);
                         }
                         else if (lblTyps.Text.Trim() == "Generating Set")
                         {
+                            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                            {
+                                Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                                Session["ValueId"] = "True";
+                            }
                             Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
                         }
                     }

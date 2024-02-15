@@ -37,7 +37,7 @@ namespace CEIHaryana.Supervisor
                         }
                         else
                         {
-                            Generaterset_Id = Session["ValueId"].ToString().Trim();
+                            Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
                             GetHistoryDataById();
                         }
                         if (Convert.ToString(Session["Approval"]) == "Reject")
@@ -93,18 +93,20 @@ namespace CEIHaryana.Supervisor
             try
             {
 
-                if (Convert.ToString(Session["value"]) == null || Convert.ToString(Session["value"]) == "")
-                {
+                //if (Convert.ToString(Session["value"]) == null || Convert.ToString(Session["value"]) == "")
+                //{
 
-                }
-                else
-                {
-                    type = Session["value"].ToString();
-                }
-                if (Convert.ToString(Session["Approval"]) == "Reject")
-                {
-                    type = "Generating Station";
-                }
+                //}
+                //else
+                //{
+                //    type = Session["value"].ToString();
+                //}
+                Generaterset_Id = Session["GeneratingSetId"].ToString().Trim();
+                type = "Generating Station";
+                //if (Convert.ToString(Session["Approval"]) == "Reject")
+                //{
+                //    type = "Generating Station";
+                //}
 
                 DataSet ds = new DataSet();
                 ds = CEI.GetTestReportDataForUpdate(type, Generaterset_Id);
