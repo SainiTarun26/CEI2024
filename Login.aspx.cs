@@ -282,13 +282,11 @@ namespace CEIHaryana
                         {
                             Session["SupervisorID"] = txtUserID.Text;
                             Session["InsertedCategory"] = "Supervisor";
-                            Response.Redirect("/Supervisor/IntimationData.aspx", false);
                         }
                         else
                         {
                             Session["WiremanId"] = txtUserID.Text;
                             Session["InsertedCategory"] = "Wireman";
-                            Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
                         }
                         if (ApplicationStatus.Trim() == "New")
                         {
@@ -298,6 +296,7 @@ namespace CEIHaryana
                         {
                             Response.Redirect("/UserPages/Documents.aspx", false);
                         }
+                        
                       }
                 }
                 else

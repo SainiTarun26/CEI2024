@@ -92,7 +92,7 @@ table#ContentPlaceHolder1_GridView1 {
           <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
-            <div class="card-body">
+            <div class="card-body">+
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
@@ -176,13 +176,10 @@ table#ContentPlaceHolder1_GridView1 {
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="Status" HeaderText="Test Report Approval">
+                                <asp:BoundField DataField="Status" HeaderText="Approval Status">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                              
-                               
-
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
