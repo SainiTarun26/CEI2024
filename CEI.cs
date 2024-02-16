@@ -2327,7 +2327,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return otp;
         }
         #endregion
-
+        public DataTable checkvacantSupervisor(string LicenseNo)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckVacantSupervisor", LicenseNo);
+        }
     }
 }
     

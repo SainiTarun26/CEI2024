@@ -140,6 +140,8 @@ namespace CEIHaryana.TestReportModal
                 txtCapacity.Text = ds.Tables[0].Rows[0]["GeneratingSetCapacity"].ToString();
                 txtSerialNoOfGenerator.Text = ds.Tables[0].Rows[0]["SerialNumbrOfAcGenerator"].ToString();
                 txtGeneratingSetType.Text = ds.Tables[0].Rows[0]["GeneratingSetType"].ToString();
+                Textstatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
+                TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {
                     SolarPanelGeneratingSet.Visible = true;

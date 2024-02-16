@@ -2129,7 +2129,26 @@
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
+
+                                     <div class="col-4">
+                              <label for="Name">
+                            Status
+                             <samp style="color: red">* </samp>
+                           </label>
+     <asp:TextBox class="form-control" ReadOnly="true" ID="Textstatus" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+ </div>
                                 </div>
+
+                                <div>
+                               <div class="col-4">
+                             <label for="Name">
+                           Reason For Rejection
+                            <samp style="color: red">* </samp>
+                          </label>
+    <asp:TextBox class="form-control" ReadOnly="true" ID="TextReason" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
+                                </div>
+                               
                                 <div id="SolarPanelGeneratingSet" runat="server" visible="false">
                                     <div class="row">
                                         <div class="col-4">
@@ -2571,8 +2590,10 @@
                                                             <div class="col-12">
                                                                 <asp:TextBox class="form-control" ReadOnly="true" ID="TextBox15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                             </div>
+                                                            
                                                         </td>
                                                     </tr>
+
                                                 </tbody>
                                             </table>
                                         </div>

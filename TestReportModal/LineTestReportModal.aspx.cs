@@ -150,6 +150,8 @@ namespace CEIHaryana.TestReportModal
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
                 txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                 txtLineVoltage.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
+                TextStatus.Text = ds.Tables[0].Rows[0]["RejectOrApprovedFronContractor"].ToString();
+                TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 if (txtLineVoltage.Text == "Other")
                 {
                     divOtherVoltages.Visible = true;

@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using System.Runtime.ConstrainedExecution;
+using Org.BouncyCastle.Ocsp;
 
 
 namespace CEIHaryana.UserPages
@@ -360,13 +361,23 @@ namespace CEIHaryana.UserPages
                 string CreatedBy = Session["ContractorID"].ToString();
                 //bool isvaild = bool.Parse(hdnIsClientSideValid.Value);
                 //if (isvaild){}               
+                DataTable ds = new DataTable();
+                ds = CEI.checkvacantSupervisor(txtLicense1.Text.Trim());
+                if (ds.Rows.Count > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "CheckVacantSupervisor();", true);
 
-                CEI.InsertContractorTeam(ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text.Trim(), txtIssueDate1.Text.Trim(), txtValidity1.Text.Trim(),
-                                   txtQualification1.Text.Trim(), CreatedBy);
-                ContractorTeamBind();
-                ddlEmployer1.SelectedValue = "0";
-                txtLicense1.Text = "";
-                txtIssueDate1.Text = ""; txtValidity1.Text = ""; txtQualification1.Text = "";
+
+               }
+                else {
+                    CEI.InsertContractorTeam(ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text.Trim(), txtIssueDate1.Text.Trim(), txtValidity1.Text.Trim(),
+                                       txtQualification1.Text.Trim(), CreatedBy);
+                    ContractorTeamBind();
+                }
+                    ddlEmployer1.SelectedValue = "0";
+                    txtLicense1.Text = "";
+                    txtIssueDate1.Text = ""; txtValidity1.Text = ""; txtQualification1.Text = "";
+                
             }
             catch (Exception ex)
             {

@@ -903,14 +903,23 @@
             }
         }
     </script>
+ 
     <script type="text/javascript">
-        function ContractorTeamAlert() {
-            if (confirm('Please Add Atleast One Wireman And Supervisor Information')) {
+        function CheckVacantSupervisor() {
+            if (confirm('Please Add Different Supervisor this is already exits.')) {
                 ddlEmployer1.style.border = '1px solid red';;
             } else {
             }
         }
     </script>
+       <script type="text/javascript">
+           function ContractorTeamAlert() {
+               if (confirm('Please Add Atleast One Wireman And Supervisor Information')) {
+                   ddlEmployer1.style.border = '1px solid red';;
+               } else {
+               }
+           }
+       </script>
 </head>
 <body>
     <form id="form1" runat="server">

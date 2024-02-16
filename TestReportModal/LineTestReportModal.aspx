@@ -28,7 +28,7 @@ padding: 15px !important;
         .card .card-title {
             font-size: 22px !important;
             font-weight: 700;
-            margin-bottom: -10px;
+            margin-bottom: -5px;
         }
 
         li.tab-content.tab-content-last.typography {
@@ -2701,7 +2701,7 @@ margin-top: 20px;
                                         <div class="col-4">
                                             <label for="Name">
                                                 Form Status<samp style="color: red">* </samp>
-                                            </label>
+                                            </label
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                 <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
@@ -2759,6 +2759,23 @@ margin-top: 20px;
                             </div>
 
                         </div>
+                         <div class="card" id="earthing-card" style="background: #fcfcfc;margin-left:0px;margin-right:0px;margin-top:-50px;">
+                        <div class="row">
+    <div class="col-4">
+        <label>
+            Status<samp style="color: red"> * </samp>
+        </label>
+        <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="TextStatus" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    </div>
+    <div class="col-4">
+        <label>
+            Reason for Rejection
+  <samp style="color: red">* </samp>
+        </label>
+        <asp:TextBox class="form-control" ID="TextReject" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    </div>
+</div>
+                             </div>
                     </div>
                 </li>
             </ul>
