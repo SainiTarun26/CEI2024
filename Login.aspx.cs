@@ -152,7 +152,7 @@ namespace CEIHaryana
                 }
                 else if (check == 6)
                 {
-                    ;
+                    
                     if (chkSignedin.Checked == true)
                     {
                         Session["SupervisorID"] = txtUserID.Text;

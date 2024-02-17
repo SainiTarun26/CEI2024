@@ -41,17 +41,7 @@ namespace CEIHaryana.Supervisor
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
-
-                txtCertificate.Text = ds.Tables[0].Rows[0]["CertificateNo"].ToString();
-
-                //if(NewCertificate != null && NewCertificate !="")
-                //{
-                //    txtCertificate.Text = NewCertificate;
-                //}
-                //else
-                //{
-                //    txtCertificate.Text = oldCertificate;
-                //}
+                txtCertificate.Text = ds.Tables[0].Rows[0]["CertificateNo"].ToString();                
                 ddlLoadBindState();
                 string issueDate = ds.Tables[0].Rows[0]["DateofIntialissue"].ToString();
                 txtIssueDate.Text = DateTime.Parse(issueDate).ToString("yyyy-MM-dd");
@@ -59,6 +49,53 @@ namespace CEIHaryana.Supervisor
                 txtExpiryDate.Text = DateTime.Parse(ExpiryDate).ToString("yyyy-MM-dd");
                 txtAge.Text = ds.Tables[0].Rows[0]["CalculatedAge"].ToString();
                 string DOB = ds.Tables[0].Rows[0]["Age"].ToString();
+
+                if (txtDOB.Text != "")
+                {
+                    DateTime selectedDOB;
+                    if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
+                    {
+                        DateTime currentDate = DateTime.Now;
+                        int ageDiff = currentDate.Year - selectedDOB.Year;
+
+                        //if (ageDiff < 18)
+                        //{
+                        //    ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
+                        //    txtDOB.Text = "";
+
+                        //    txtAge.Text = "";
+                        //}
+                       //if (ageDiff > 65)
+                       // {
+                       //     ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You are not eligible to fill this form.');", true);
+                       //     txtDOB.Text = "";
+
+                       //     txtAge.Text = "";
+                       // }
+                       // else
+                       // {
+                            // Calculate age
+                            TimeSpan ageDifference = currentDate - selectedDOB;
+                            int ageYear = (int)(ageDifference.TotalDays / 365.25);
+                            int ageMonth = (int)((ageDifference.TotalDays % 365.25) / 30.44);
+                            int ageDay = (int)(ageDifference.TotalDays % 30.44);
+                            string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
+                            txtAge.Text = ageString;
+                        //}
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);
+                        txtDOB.Text = "";
+
+                        txtAge.Text = "";
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Please enter your date of birth.');", true);
+                }
+
                 txtDOB.Text = DateTime.Parse(DOB).ToString("yyyy-MM-dd");
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 txtContactNo.Text = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
@@ -70,6 +107,16 @@ namespace CEIHaryana.Supervisor
                 ddlLoadBindDistrict(state);
                 DdlDistrict.SelectedValue = District;
 
+                if (DateTime.TryParse(txtDOB.Text, out DateTime birthDate))
+                {
+                    DateTime today = DateTime.Now;
+                    int age = today.Year - birthDate.Year;
+                    if(age > 55)
+                    {
+                        MedicalCertificateRow.Visible = true;
+                    }
+                }
+
                 if (!string.IsNullOrEmpty(txtExpiryDate.Text))
                 {
                     DateTime selectedExpiryDate;
@@ -79,6 +126,8 @@ namespace CEIHaryana.Supervisor
 
                         if (selectedExpiryDate < currentDate)
                         {
+                            DivBelatedDate.Visible = true;
+                            CancelPeriodRow.Visible = true;
                             TimeSpan remainingDays = selectedExpiryDate - currentDate;
                             int daysRemaining = (int)remainingDays.TotalDays;
                             txtBilatedDate.Text = Math.Abs(daysRemaining).ToString() + " Days";
@@ -404,6 +453,57 @@ namespace CEIHaryana.Supervisor
             {
                 ddlLoadBindDistrictForEmployer(ddlEmployerState.SelectedItem.ToString());
             }
+        }
+
+        protected void txtDOB_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (txtDOB.Text != "")
+                {
+                    DateTime selectedDOB;
+                    if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
+                    {
+                        DateTime currentDate = DateTime.Now;
+                        int ageDiff = currentDate.Year - selectedDOB.Year;
+                        if (ageDiff < 18)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
+                            txtDOB.Text = "";
+                            txtAge.Text = "";
+                        }
+                        else if (ageDiff > 65)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You are not eligible to fill this form.');", true);
+                            txtDOB.Text = "";
+                            txtAge.Text = "";
+                        }
+                        else
+                        {
+                            // Calculate age
+                            TimeSpan ageDifference = currentDate - selectedDOB;
+                            int ageYear = (int)(ageDifference.TotalDays / 365.25);
+                            int ageMonth = (int)((ageDifference.TotalDays % 365.25) / 30.44);
+                            int ageDay = (int)(ageDifference.TotalDays % 30.44);
+                            string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
+                            txtAge.Text = ageString;
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);
+                        txtDOB.Text = "";
+                        txtAge.Text = "";
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Please enter your date of birth.');", true);
+                }
+
+            }
+            catch { }
         }
     }
 }

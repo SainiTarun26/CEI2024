@@ -1545,6 +1545,7 @@
     <Content Include="Assets\legend-background2.jpg" />
     <Content Include="Assets\style.css" />
     <Content Include="Contractor\Approved_Test_Reports.aspx" />
+    <Content Include="Contractor\ContractorRenewal.aspx" />
     <Content Include="Contractor\GeneratingSetHistory.aspx" />
     <Content Include="Contractor\PreviousProjects.aspx" />
     <Content Include="Contractor\SubstationTransformer.aspx" />
@@ -1879,6 +1880,7 @@
     <Content Include="Supervisor\SubstationTestReport.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
     <Content Include="Supervisor\SupervisorGeneraterSetTestReport.aspx" />
+    <Content Include="Supervisor\SupervisorLicenceUpgradation.aspx" />
     <Content Include="Supervisor\SupervisorLineTestReport.aspx" />
     <Content Include="Supervisor\SupervisorSubstationTestReport.aspx" />
     <Content Include="Supervisor\TestReportForm.aspx" />
@@ -1916,6 +1918,7 @@
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
     <Content Include="Wiremen\WiremenCompetencyCertificate.aspx" />
     <Content Include="Wiremen\WiremenDashboard.aspx" />
+    <Content Include="Wiremen\WiremenUpgradationLicence.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AddContractorDetails.aspx.cs">
@@ -2087,6 +2090,13 @@
     </Compile>
     <Compile Include="Contractor\Contractor.Master.designer.cs">
       <DependentUpon>Contractor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\ContractorRenewal.aspx.cs">
+      <DependentUpon>ContractorRenewal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\ContractorRenewal.aspx.designer.cs">
+      <DependentUpon>ContractorRenewal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\GeneratingSetHistory.aspx.cs">
       <DependentUpon>GeneratingSetHistory.aspx</DependentUpon>
@@ -2380,6 +2390,13 @@
     <Compile Include="Supervisor\SupervisorGeneraterSetTestReport.aspx.designer.cs">
       <DependentUpon>SupervisorGeneraterSetTestReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Supervisor\SupervisorLicenceUpgradation.aspx.cs">
+      <DependentUpon>SupervisorLicenceUpgradation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\SupervisorLicenceUpgradation.aspx.designer.cs">
+      <DependentUpon>SupervisorLicenceUpgradation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Supervisor\SupervisorLineTestReport.aspx.cs">
       <DependentUpon>SupervisorLineTestReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2652,6 +2669,13 @@
     </Compile>
     <Compile Include="Wiremen\WiremenDashboard.aspx.designer.cs">
       <DependentUpon>WiremenDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiremen\WiremenUpgradationLicence.aspx.cs">
+      <DependentUpon>WiremenUpgradationLicence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\WiremenUpgradationLicence.aspx.designer.cs">
+      <DependentUpon>WiremenUpgradationLicence.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
