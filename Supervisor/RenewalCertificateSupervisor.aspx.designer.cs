@@ -348,6 +348,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
 
         /// <summary>
+        /// DivLicense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivLicense;
+
+        /// <summary>
         /// txtEmployerLicenceNo control.
         /// </summary>
         /// <remarks>
@@ -364,6 +373,15 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
+
+        /// <summary>
+        /// DivNameofEmp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivNameofEmp;
 
         /// <summary>
         /// TxtEmployerName control.
@@ -384,6 +402,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
+        /// DivAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivAddress;
+
+        /// <summary>
         /// txtEmployerAddress control.
         /// </summary>
         /// <remarks>
@@ -400,6 +427,15 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
+
+        /// <summary>
+        /// DivState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivState;
 
         /// <summary>
         /// ddlEmployerState control.
@@ -420,6 +456,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
 
         /// <summary>
+        /// DivDistrict control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivDistrict;
+
+        /// <summary>
         /// ddlEmployerDistrict control.
         /// </summary>
         /// <remarks>
@@ -438,6 +483,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
 
         /// <summary>
+        /// DivPinCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPinCode;
+
+        /// <summary>
         /// TxtEmployerPincode control.
         /// </summary>
         /// <remarks>
@@ -454,6 +508,15 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
+
+        /// <summary>
+        /// divSubsequentPeriod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSubsequentPeriod;
 
         /// <summary>
         /// TxtDateFrom control.
@@ -591,31 +654,40 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.TextBox txchangedEmployerPincode;
 
         /// <summary>
-        /// txtPhoto control.
+        /// fileUpload3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhoto;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload3;
 
         /// <summary>
-        /// Button1 control.
+        /// TreasuryChallan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.FileUpload TreasuryChallan;
 
         /// <summary>
-        /// Photo control.
+        /// txtTreasuryChallan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Photo;
+        protected global::System.Web.UI.WebControls.TextBox txtTreasuryChallan;
+
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpload;
 
         /// <summary>
         /// RequiredFieldValidator29 control.
@@ -636,31 +708,40 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
 
         /// <summary>
-        /// selectedFileName control.
+        /// fileUpload4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox selectedFileName;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload4;
 
         /// <summary>
-        /// btnUpload control.
+        /// PresentWorkingStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpload;
+        protected global::System.Web.UI.WebControls.FileUpload PresentWorkingStatus;
 
         /// <summary>
-        /// fileInput control.
+        /// txtPresentWrkingStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile fileInput;
+        protected global::System.Web.UI.WebControls.TextBox txtPresentWrkingStatus;
+
+        /// <summary>
+        /// btnPresntWorkingStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPresntWorkingStatus;
 
         /// <summary>
         /// RequiredFieldValidator30 control.
@@ -681,31 +762,40 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.HiddenField HiddenField2;
 
         /// <summary>
-        /// txtResidence control.
+        /// fileUpload5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtResidence;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload5;
 
         /// <summary>
-        /// btnResidence control.
+        /// MedicalCertificate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnResidence;
+        protected global::System.Web.UI.WebControls.FileUpload MedicalCertificate;
 
         /// <summary>
-        /// Residence control.
+        /// txtMedicalCertificate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Residence;
+        protected global::System.Web.UI.WebControls.TextBox txtMedicalCertificate;
+
+        /// <summary>
+        /// btnMedical control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMedical;
 
         /// <summary>
         /// RequiredFieldValidator31 control.
@@ -717,31 +807,40 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator31;
 
         /// <summary>
-        /// txtIdentity control.
+        /// fileUpload7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdentity;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload7;
 
         /// <summary>
-        /// btnIdentity control.
+        /// CanelPeriod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIdentity;
+        protected global::System.Web.UI.WebControls.FileUpload CanelPeriod;
 
         /// <summary>
-        /// Identit control.
+        /// txtCanelPeriod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile Identit;
+        protected global::System.Web.UI.WebControls.TextBox txtCanelPeriod;
+
+        /// <summary>
+        /// btnCanelPeriod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCanelPeriod;
 
         /// <summary>
         /// RequiredFieldValidator32 control.

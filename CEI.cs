@@ -2331,6 +2331,83 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckVacantSupervisor", LicenseNo);
         }
+        #region CertificateRenewal
+        public DataSet GetSupervisorDataForRenewal(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSuperviserForRenewal", id);
+        }
+
+
+        public void InsertRenewalSupervisorData(string ApplicantName, string CertificateNo, string DateofIssue, string DateOfExpiry, string BilatedDate, string DOB,
+          string Age, string Email, string ContactNo, string Address, string State, string District, string Pincode, string NameofTressury, string ChallanGRNno,
+          string DateOfChallan, string AmountRemitted, string TypeOfEmployer, string ContractorLicenseNo, string NameOfEmployer, string OtherAddress, string OtherState, string OtherDistrict, string OtherPincode,
+          string SubsquentEmployer, string DateFrom, string DateTo, string ContractorLicenseNo1, string SubsquentNameEmployer, string SubsquentAddress, string SubsquentState, string SubsquentDistrict,
+          string SubsquentPincode, string DepositedTreasuryChallan, string PresentWorkingStatus, string MedicalCertificate, string duringcancelperiod,
+          string SubmisionPlace, string SubmisionDate, string CreatedBy
+          )
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                SqlCommand cmd = new SqlCommand("SP_GetRenewalData");
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
+                cmd.Parameters.AddWithValue("@CertificateNo", CertificateNo);
+                cmd.Parameters.AddWithValue("@DateOfIssue", DateofIssue);
+                cmd.Parameters.AddWithValue("@DateOfExpiry", DateOfExpiry);
+                cmd.Parameters.AddWithValue("@Belated", BilatedDate);
+                cmd.Parameters.AddWithValue("@DOB", DOB);
+                cmd.Parameters.AddWithValue("@Age", Age);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@PhoneNo", ContactNo);
+                cmd.Parameters.AddWithValue("@PersonAddress", Address);
+                cmd.Parameters.AddWithValue("@State", State);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@PinCode", Pincode);
+                cmd.Parameters.AddWithValue("@NameTreasury", NameofTressury);
+                cmd.Parameters.AddWithValue("@ChallanGrnNo", ChallanGRNno);
+                cmd.Parameters.AddWithValue("@ChallanDate", DateOfChallan);
+                cmd.Parameters.AddWithValue("@RemittedAmount", AmountRemitted);
+                cmd.Parameters.AddWithValue("@EmployerType", TypeOfEmployer);
+                cmd.Parameters.AddWithValue("@ContractorLicence", ContractorLicenseNo);
+                cmd.Parameters.AddWithValue("@EmployerName", NameOfEmployer);
+                cmd.Parameters.AddWithValue("@EmployerAddress", OtherAddress);
+                cmd.Parameters.AddWithValue("@EmployerState", OtherState);
+                cmd.Parameters.AddWithValue("@EmployerDistrict", OtherDistrict);
+                cmd.Parameters.AddWithValue("@EmployerPinCode", OtherPincode);
+                cmd.Parameters.AddWithValue("@ChangingEmployeer", SubsquentEmployer);
+                cmd.Parameters.AddWithValue("@ChangingDateFrom", DateFrom);
+                cmd.Parameters.AddWithValue("@ChangingDateTo", DateTo);
+                cmd.Parameters.AddWithValue("@ChangingContractorLicNo", ContractorLicenseNo1);
+                cmd.Parameters.AddWithValue("@ChangingEmployerName", SubsquentNameEmployer);
+                cmd.Parameters.AddWithValue("@ChangingEmployerAdress", SubsquentAddress);
+                cmd.Parameters.AddWithValue("@ChangingEmployerState", SubsquentState);
+                cmd.Parameters.AddWithValue("@ChangingEmployerDistrict", SubsquentDistrict);
+                cmd.Parameters.AddWithValue("@ChangingEmployerPinCode", SubsquentPincode);
+                cmd.Parameters.AddWithValue("@ChallanFees", DepositedTreasuryChallan);
+                cmd.Parameters.AddWithValue("@PresentWorkingStatus", PresentWorkingStatus);
+                cmd.Parameters.AddWithValue("@MedicalCertificate", MedicalCertificate);
+                cmd.Parameters.AddWithValue("@CancelPeriodCertificate", duringcancelperiod);
+                cmd.Parameters.AddWithValue("@SubmissionPlace", SubmisionPlace);
+                cmd.Parameters.AddWithValue("@SubmissionDate", SubmisionDate);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+
+        }
+        #endregion
     }
 }
     

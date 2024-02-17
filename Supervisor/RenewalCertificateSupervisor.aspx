@@ -209,7 +209,6 @@
 
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
@@ -240,7 +239,7 @@
                             <label for="Name">
                                 Applicant Name<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtName" runat="server" ReadOnly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
 
@@ -250,7 +249,7 @@
                             <label for="Name">
                                 Certificate No.<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtCertificate" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtCertificate" runat="server" ReadOnly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
@@ -259,7 +258,7 @@
                             <label for="DateofRenewal">
                                 Date of Issue<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtIssueDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true"  onkeydown="return preventEnterSubmit(event)" ID="txtIssueDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtIssueDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
@@ -267,28 +266,28 @@
                                 Date of Expiry
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtExpiryDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtExpiryDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExpiryDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
                             <label for="DateofRenewal">
                                 Bilated Date<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtBilatedDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtBilatedDate" min='0000-01-01' max='9999-01-01'  TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtBilatedDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
                             <label for="DateofRenewal">
                                 Date of Birth<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDOB" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off"  onkeydown="return preventEnterSubmit(event)" ID="txtDOB" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtDOB" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
                             <label for="FirmName">
                                 Age<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAge" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtAge" runat="server" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAge" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Firm Name</asp:RequiredFieldValidator>
                         </div>
                        
@@ -322,7 +321,7 @@
                                 State/UT 
             <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlState" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlState" OnSelectedIndexChanged="DdlState_SelectedIndexChanged" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
@@ -403,11 +402,14 @@
                                 Type of Employer
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlEmployerType" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlEmployerType" OnSelectedIndexChanged="DdlEmployerType_SelectedIndexChanged" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:ListItem Text="Select" Value="0"> </asp:ListItem>
+                            <asp:ListItem Text="Contractor" Value="1"> </asp:ListItem>
+                            <asp:ListItem Text="Other" Value="2"> </asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlEmployerType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" id="DivLicense" runat="server" visible="false">
                             <label for="DateofRenewal">
                                 License No.(if Contractor)<samp style="color: red"> * </samp>
                             </label>
@@ -415,7 +417,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtEmployerLicenceNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" id="DivNameofEmp" runat="server" visible="false" >
                             <label for="Name">
                                 Name of Employer<samp style="color: red"> * </samp>
                             </label>
@@ -426,7 +428,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                         </div>
 
-                        <div class="col-8">
+                        <div class="col-8" id="DivAddress" runat="server" visible="false">
                             <label for="RegisteredOffice">
                                 Address<samp style="color: red"> * </samp>
                             </label>
@@ -434,16 +436,16 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtEmployerAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" id="DivState" runat="server" visible="false">
                             <label>
                                 State/UT 
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlEmployerState" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlEmployerState" OnSelectedIndexChanged="ddlEmployerState_SelectedIndexChanged" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator18" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployerState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" id="DivDistrict" runat="server" visible="false">
                             <label>
                                 District
                                 <samp style="color: red">* </samp>
@@ -453,7 +455,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEmployerDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" id="DivPinCode" runat="server" visible="false">
                             <label for="PinCode">PinCode </label>
                             <asp:TextBox class="form-control" ID="TxtEmployerPincode" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
                             <span id="lblPinError" style="color: red"></span>
@@ -463,12 +465,12 @@
                     </div>
                     <div class="row" style="margin-left: 0%; margin-top: 2%;">
                         Whether there is any chnage of employer during the subsequent period to the last Renewal. &nbsp;&nbsp;
-     <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+     <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal" TabIndex="25">
          <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
          <asp:ListItem Text="No" Value="1"></asp:ListItem>
      </asp:RadioButtonList>
                     </div>
-                    <div class="row" style="margin-top:10px;">
+                    <div class="row" style="margin-top:10px;" id="divSubsequentPeriod" runat="server" visible="false">
                         <div class="col-4">
                             <label>
                                 Date From
@@ -519,7 +521,7 @@
                                 State/UT 
             <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="txtchangedEmployerState" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="txtchangedEmployerState" OnSelectedIndexChanged="txtchangedEmployerState_SelectedIndexChanged" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator26" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtchangedEmployerState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
@@ -554,24 +556,23 @@
                         style="color: red;">★</span>)
                     </td>
                     <td>
-                        <input type="file" name="img[]" class="file-upload-default"
-                            style="display: none;">
+                        <asp:FileUpload ID="fileUpload3" runat="server" CssClass="file-upload-default" Style="display: none;" />
                         <div class="form-group">
                             <label style="font-size: 9px;">
                                 (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
-                            <input type="file" name="img[]" class="file-upload-default">
+                            <asp:FileUpload ID="TreasuryChallan" runat="server" class="file-upload-default" onchange="TreasuryChallanFileInputChange();" />
+                           <%-- <input type="file" name="img[]" class="file-upload-default">--%>
                             <div class="input-group col-xs-12">
-                                <asp:TextBox ID="txtPhoto" runat="server" CssClass="form-control file-upload-info"
+                                <asp:TextBox ID="txtTreasuryChallan" runat="server" CssClass="form-control file-upload-info"
                                     Enabled="false" placeholder="Upload Matriculation certificate" Style="width: 85%;"></asp:TextBox>
 
                                 <span class="input-group-append">
 
-                                    <asp:Button ID="Button1" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="PhotoDialog(); return false;" />
-                                    <input type="file" id="Photo" name="file
-                                        Input" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="PhotoDialogName()" />
+                                    <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="return false;" />
+                                   <%-- <input type="file" id="TreasuryChallan" name="fileInput" accept=".jpg, .jpeg, .png, .pdf"  style="display: none;"  onchange="TreasuryChallanDialogName()" runat="server" />--%>
 
                                 </span>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="selectedFileName"
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtTreasuryChallan"
                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Photo</asp:RequiredFieldValidator>
 
                             </div>
@@ -586,23 +587,23 @@
                         style="color: red;">★</span>)
                     </td>
                     <td>
-                        <input type="file" name="img[]" class="file-upload-default"
-                            style="display: none;">
+                        <asp:FileUpload ID="fileUpload4" runat="server" CssClass="file-upload-default" Style="display: none;" />
                         <div class="form-group">
                             <label style="font-size: 9px;">
                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
-                            <input type="file" name="img[]" class="file-upload-default">
+                            <%--<input type="file" name="img[]" class="file-upload-default">--%>
+                            <asp:FileUpload ID="PresentWorkingStatus" runat="server" class="file-upload-default" onchange="PresentWorkingStatusDialog();" />
                             <div class="input-group col-xs-12">
-                                <asp:TextBox ID="selectedFileName" runat="server" CssClass="form-control file-upload-info"
+                                <asp:TextBox ID="txtPresentWrkingStatus" runat="server" CssClass="form-control file-upload-info"
                                     Enabled="false" placeholder="Upload Matriculation certificate" Style="width: 50%;"></asp:TextBox>
 
                                 <span class="input-group-append">
 
-                                    <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MatriculationCertificateDialog(); return false;" />
-                                    <input type="file" id="fileInput" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="MatriculationCertificateName()" />
+                                    <asp:Button ID="btnPresntWorkingStatus" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick=" return false;" />
+                                    <%--<input type="file" id="PresentWorkingStatus" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="PresentWorkingStatusDialogName()" />--%>
 
                                 </span>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="selectedFileName"
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtPresentWrkingStatus"
                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your  Matriculation certificate</asp:RequiredFieldValidator>
 
                             </div>
@@ -616,23 +617,23 @@
                     <td style="padding-top:45px;">Medical Certificate(<span style="color: red;">★</span>)
                     </td>
                     <td>
-                        <input type="file" name="img[]" class="file-upload-default"
-                            style="display: none;">
+                       <asp:FileUpload ID="fileUpload5" runat="server" CssClass="file-upload-default" Style="display: none;" />
                         <div class="form-group">
                             <label style="font-size: 9px;">
                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
-                            <input type="file" name="img[]" class="file-upload-default">
+                           <%-- <input type="file" name="img[]" class="file-upload-default">--%>
+                            <asp:FileUpload ID="MedicalCertificate" runat="server" class="file-upload-default" onchange="MedicalCertificateDialogName();" />
                             <div class="input-group col-xs-12">
-                                <asp:TextBox ID="txtResidence" runat="server" CssClass="form-control file-upload-info"
+                                <asp:TextBox ID="txtMedicalCertificate" runat="server" CssClass="form-control file-upload-info"
                                     Enabled="false" placeholder="Upload Residence Proof" Style="width: 85%;"></asp:TextBox>
 
                                 <span class="input-group-append">
 
-                                    <asp:Button ID="btnResidence" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ResidenceDialog(); return false;" />
-                                    <input type="file" id="Residence" name="Residence" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onchange="ResidenceDialogName()" runat="server" />
+                                    <asp:Button ID="btnMedical" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick=" return false;" />
+                                   <%-- <input type="file" id="MedicalCertificate" name="Residence" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" onchange="MedicalCertificateDialogName()" runat="server" />--%>
 
                                 </span>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtResidence"
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtMedicalCertificate"
                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Residence Proof.</asp:RequiredFieldValidator>
 
                             </div>
@@ -644,31 +645,30 @@
                     <td style="padding-top:45px;">Undertaking for Delay or non-working during cancel period.(<span style="color: red;">★</span>)
                     </td>
                     <td>
-                        <input type="file" name="img[]" class="file-upload-default"
-                            style="display: none;">
+                        <asp:FileUpload ID="fileUpload7" runat="server" CssClass="file-upload-default" Style="display: none;" />
                         <div class="form-group">
                             <label style="font-size: 9px;">
                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
-                            <input type="file" name="img[]" class="file-upload-default">
+                           <%-- <input type="file" name="img[]" class="file-upload-default">--%>
+                            <asp:FileUpload ID="CanelPeriod" runat="server" class="file-upload-default" onchange="CanelPeriodDialog();" />
                             <div class="input-group col-xs-12">
-                                <asp:TextBox ID="txtIdentity" runat="server" CssClass="form-control file-upload-info"
+                                <asp:TextBox ID="txtCanelPeriod" runat="server" CssClass="form-control file-upload-info"
                                     Enabled="false" placeholder="Upload Identity Proof" Style="width: 85%;"></asp:TextBox>
 
                                 <span class="input-group-append">
 
-                                    <asp:Button ID="btnIdentity" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="IdentityDialog(); return false;" />
-                                    <input type="file" id="Identit" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
-                                        onchange="IdentityDialogName()" runat="server" />
+                                    <asp:Button ID="btnCanelPeriod" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick=" return false;" />
+                                    <%--<input type="file" id="CanelPeriod" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                        onchange="CanelPeriodDialogName()" runat="server" />--%>
 
                                 </span>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="selectedFileName"
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="txtCanelPeriod"
                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Identity Proof</asp:RequiredFieldValidator>
-
                             </div>
                         </div>
                     </td>
 
-                </tr>
+                </tr>             
             </tbody>
         </table>
     </div>
@@ -704,7 +704,7 @@
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
 
-                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                        <asp:Button ID="btnSubmit" Text="Submit" runat="server"  OnClick="btnSubmit_Click" class="btn btn-primary mr-2" />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 17px; padding-right: 17px;" />
 
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
@@ -724,6 +724,33 @@
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
     </footer>
+  <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assetsnew/vendor/aos/aos.js"></script>
+    <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assetsnew/js/main.js"></script>
+    <script src="/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="/vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/js2/off-canvas.js"></script>
+    <script src="/js2/hoverable-collapse.js"></script>
+    <script src="/js2/template.js"></script>
+    <script src="/js2/settings.js"></script>
+    <script src="/js2/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="/js2/file-upload.js"></script>
+    <script src="/js2/typeahead.js"></script>
+    <script src="/js2/select2.js"></script>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
@@ -731,12 +758,67 @@
                 return false;
             }
         }
+
     </script>
+
     <!-- partial -->
     <script>
         $('.select2').select2();
     </script>
+     <!-- Template Main JS File -->
+    <script type="text/javascript">
+        function TreasuryChallanFileInputChange() {
+            var fileUploadVisible = document.getElementById('<%= TreasuryChallan.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtTreasuryChallan.ClientID %>');
 
+            if (fileUploadVisible.files.length > 0) {
+                // Update the TextBox value with the selected file name
+                txtTreasuryChallan.value = fileUploadVisible.files[0].name;
+            }
+        }
+
+        function PresentWorkingStatusDialog() {
+            var fileUploadVisible = document.getElementById('<%= PresentWorkingStatus.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtPresentWrkingStatus.ClientID %>');
+
+            if (fileUploadVisible.files.length > 0) {
+                //Update the TextBox value with the selected file name
+                txtMedicalCertificate.value = fileUploadVisible.files[0].name;
+            }
+        }
+
+        function MedicalCertificateDialogName() {
+            var fileUploadVisible = document.getElementById('<%= MedicalCertificate.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtMedicalCertificate.ClientID %>');
+
+            if (fileUploadVisible.files.length > 0) {
+                // Update the TextBox value with the selected file name for Aadhaar
+                selectedFileName.value = fileInput.files[0].name;
+            }
+        }
+
+        function CanelPeriodDialog() {
+            var fileUploadVisible = document.getElementById('<%= CanelPeriod.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtCanelPeriod.ClientID %>');
+
+            if (fileUploadVisible.files.length > 0) {
+                // Update the TextBox value with the selected file name for Aadhaar
+                selectedFileName.value = fileInput.files[0].name;
+            }
+        }
+
+    </script>
+    <%-- <script type="text/javascript">
+         function handleFileInputChange1() {
+             var fileUploadVisible = document.getElementById('<%= fileUpload2.ClientID %>');
+        var txtTreasuryChallan = document.getElementById('<%= TextBox2.ClientID %>');
+
+             if (fileUploadVisible.files.length > 0) {
+                 // Update the TextBox value with the selected file name
+                 txtTreasuryChallan.value = fileUploadVisible.files[0].name;
+             }
+         }
+     </script>--%>
 
     <script type="text/javascript">
         function ValidateEmail() {
@@ -792,6 +874,6 @@
             }
         }
     </script>
-    
+
 </asp:Content>
 
