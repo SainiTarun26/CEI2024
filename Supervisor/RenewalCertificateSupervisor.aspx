@@ -263,7 +263,7 @@
                             <asp:TextBox class="form-control" autocomplete="off"  onkeydown="return preventEnterSubmit(event)" ID="txtDOB" min='0000-01-01' max='9999-01-01' AutoPostBack="true" OnTextChanged="txtDOB_TextChanged" Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtDOB" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-4">
+                        <div runat="server" id="DivAge" visible="false" class="col-4">
                             <label for="FirmName">
                                 Age<samp style="color: red"> * </samp>
                             </label>
@@ -386,7 +386,7 @@
                             <asp:ListItem Text="Contractor" Value="1"> </asp:ListItem>
                             <asp:ListItem Text="Other" Value="2"> </asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" Text="Please Select State" ErrorMessage=" Please Select Type of Employer" ControlToValidate="DdlEmployerType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20"  ErrorMessage=" Please Select Type of Employer" ControlToValidate="DdlEmployerType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
                         <div class="col-4" id="DivLicense" runat="server" visible="false">
                             <label for="DateofRenewal">
@@ -549,11 +549,9 @@
 
                                     <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="return false;" />
                                    <%-- <input type="file" id="TreasuryChallan" name="fileInput" accept=".jpg, .jpeg, .png, .pdf"  style="display: none;"  onchange="TreasuryChallanDialogName()" runat="server" />--%>
-
                                 </span>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtTreasuryChallan"
                                     ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Deposited Treasury Challan</asp:RequiredFieldValidator>
-
                             </div>
                         </div>
                     </td>
@@ -629,7 +627,7 @@
                             <label style="font-size: 9px;">
                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                            <%-- <input type="file" name="img[]" class="file-upload-default">--%>
-                            <asp:FileUpload ID="CanelPeriod" runat="server" class="file-upload-default" onchange="CanelPeriodDialog();" />
+                            <asp:FileUpload ID="CancelPeriod" runat="server" class="file-upload-default" onchange="CanelPeriodDialog();" />
                             <div class="input-group col-xs-12">
                                 <asp:TextBox ID="txtCanelPeriod" runat="server" CssClass="form-control file-upload-info"
                                     Enabled="false" placeholder="Upload Identity Proof" Style="width: 85%;"></asp:TextBox>
@@ -777,7 +775,7 @@
         }
 
         function CanelPeriodDialog() {
-            var fileUploadVisible = document.getElementById('<%= CanelPeriod.ClientID %>');
+            var fileUploadVisible = document.getElementById('<%= CancelPeriod.ClientID %>');
             var selectedFileName = document.getElementById('<%= txtCanelPeriod.ClientID %>');
 
             if (fileUploadVisible.files.length > 0) {
@@ -821,8 +819,6 @@
             }
         }
     </script>
-
-
     <script type="text/javascript">
         function isvalidphoneno() {
 
@@ -847,8 +843,8 @@
     </script>
     <script type="text/javascript">
         function alertWithRedirect() {
-            if (confirm('Not able to find Your Information Please Login Again or Try Again later')) {
-                window.location.href = "/Login.aspx";
+            if (confirm('Pdf Size Must be Less than 2MB')) {
+                
             } else {
             }
         }

@@ -49,54 +49,43 @@ namespace CEIHaryana.Supervisor
                 txtExpiryDate.Text = DateTime.Parse(ExpiryDate).ToString("yyyy-MM-dd");
                 txtAge.Text = ds.Tables[0].Rows[0]["CalculatedAge"].ToString();
                 string DOB = ds.Tables[0].Rows[0]["Age"].ToString();
-
-                if (txtDOB.Text != "")
-                {
-                    DateTime selectedDOB;
-                    if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
-                    {
-                        DateTime currentDate = DateTime.Now;
-                        int ageDiff = currentDate.Year - selectedDOB.Year;
-
-                        //if (ageDiff < 18)
-                        //{
-                        //    ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
-                        //    txtDOB.Text = "";
-
-                        //    txtAge.Text = "";
-                        //}
-                       //if (ageDiff > 65)
-                       // {
-                       //     ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You are not eligible to fill this form.');", true);
-                       //     txtDOB.Text = "";
-
-                       //     txtAge.Text = "";
-                       // }
-                       // else
-                       // {
-                            // Calculate age
-                            TimeSpan ageDifference = currentDate - selectedDOB;
-                            int ageYear = (int)(ageDifference.TotalDays / 365.25);
-                            int ageMonth = (int)((ageDifference.TotalDays % 365.25) / 30.44);
-                            int ageDay = (int)(ageDifference.TotalDays % 30.44);
-                            string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
-                            txtAge.Text = ageString;
-                        //}
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);
-                        txtDOB.Text = "";
-
-                        txtAge.Text = "";
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Please enter your date of birth.');", true);
-                }
-
-                txtDOB.Text = DateTime.Parse(DOB).ToString("yyyy-MM-dd");
+                 txtDOB.Text = DateTime.Parse(DOB).ToString("yyyy-MM-dd");
+                //txtDOB.Text = "";
+                //if (txtDOB.Text != "")
+                //{
+                //    DateTime selectedDOB;
+                //    if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
+                //    {
+                //        DateTime currentDate = DateTime.Now;
+                //        int ageDiff = currentDate.Year - selectedDOB.Year;                        
+                //        if (ageDiff > 55)
+                //        {
+                            
+                //             txtDOB.Text = "";
+                //             txtAge.Text = "";
+                //        }
+                //       // else
+                //       // {
+                //            // Calculate age
+                //            TimeSpan ageDifference = currentDate - selectedDOB;
+                //            int ageYear = (int)(ageDifference.TotalDays / 365.25);
+                //            int ageMonth = (int)((ageDifference.TotalDays % 365.25) / 30.44);
+                //            int ageDay = (int)(ageDifference.TotalDays % 30.44);
+                //            string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
+                //            txtAge.Text = ageString;
+                //        //}
+                //    }
+                //    else
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);
+                //        txtDOB.Text = "";
+                //        txtAge.Text = "";
+                //    }
+                //}
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Please enter your date of birth.');", true);
+                //}
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 txtContactNo.Text = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
                 TextAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
@@ -106,38 +95,81 @@ namespace CEIHaryana.Supervisor
                 DdlState.SelectedIndex = DdlState.Items.IndexOf(DdlState.Items.FindByText(state));
                 ddlLoadBindDistrict(state);
                 DdlDistrict.SelectedValue = District;
-
                 if (DateTime.TryParse(txtDOB.Text, out DateTime birthDate))
                 {
-                    DateTime today = DateTime.Now;
-                    int age = today.Year - birthDate.Year;
-                    if(age > 55)
+                    DateTime currentDate = DateTime.Now;                    
+                    int year = currentDate.Year - birthDate.Year;
+                    if (year > 55)
                     {
                         MedicalCertificateRow.Visible = true;
                     }
+                    string CalculateDOB =CEI.CalculateRemainingDate(currentDate, birthDate);
+                    DivAge.Visible = true;
+                    txtAge.Text = CalculateDOB;                   
                 }
-
                 if (!string.IsNullOrEmpty(txtExpiryDate.Text))
                 {
                     DateTime selectedExpiryDate;
                     if (DateTime.TryParse(txtExpiryDate.Text, out selectedExpiryDate))
                     {
                         DateTime currentDate = DateTime.Now;
-
                         if (selectedExpiryDate < currentDate)
                         {
                             DivBelatedDate.Visible = true;
-                            CancelPeriodRow.Visible = true;
-                            TimeSpan remainingDays = selectedExpiryDate - currentDate;
-                            int daysRemaining = (int)remainingDays.TotalDays;
-                            txtBilatedDate.Text = Math.Abs(daysRemaining).ToString() + " Days";
-                        }
-                        else
-                        {
-                            txtBilatedDate.Text = ""; // Or handle differently if needed
-                        }
-                    }
+                            CancelPeriodRow.Visible = true;                            
+                            txtBilatedDate.Text=CEI.CalculateRemainingDate(currentDate, selectedExpiryDate);
+                            //int yearsRemaining = currentDate.Year - selectedExpiryDate.Year;
+                            //int monthsRemaining = currentDate.Month - selectedExpiryDate.Month;
+                            //int daysRemaining = currentDate.Day - selectedExpiryDate.Day;
+                            //if (daysRemaining < 0)
+                            //{
+                            //    monthsRemaining--;
+                            //    int daysInPreviousMonth = DateTime.DaysInMonth(currentDate.Year, (currentDate.Month == 1) ? 12 : currentDate.Month - 1);
+                            //    daysRemaining += daysInPreviousMonth;
+                            //    if (currentDate.Day < selectedExpiryDate.Day)
+                            //    {
+                            //        monthsRemaining++;
+                            //    }
+                            //}
+                            //if (monthsRemaining < 0)
+                            //{
+                            //    yearsRemaining--;
+                            //    monthsRemaining += 12;
+                            //}
+                            //daysRemaining = Math.Abs(daysRemaining);
 
+                            //if(yearsRemaining > 0)
+                            //{
+
+                            //}
+                            //if(monthsRemaining >0)
+                            //{
+
+                            //}
+                            //if(daysRemaining >0)
+                            //{
+
+                            //}
+                            //if(yearsRemaining >0 && monthsRemaining >0 && daysRemaining >0)
+                            //{
+                            //    txtBilatedDate.Text = $"{yearsRemaining} Years , {monthsRemaining} Months ,  {daysRemaining} Days";
+                            //}
+                            //else if(monthsRemaining > 0 && daysRemaining >0)
+                            //{
+                            //    txtBilatedDate.Text = $"{monthsRemaining} Months ,  {daysRemaining} Days";
+                            //}
+                            //else
+                            //{
+                            //    txtBilatedDate.Text = $"{daysRemaining} Days";
+                            //}
+
+                        }                        
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid date format');", true);
+                        Console.WriteLine(".");
+                    }                   
                 }
             }
         }
@@ -305,138 +337,166 @@ namespace CEIHaryana.Supervisor
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Check.Checked == true)
+            try
             {
-                if (Session["SupervisorID"] != null)
+                if (Check.Checked == true)
                 {
-                    string id = Session["SupervisorID"].ToString();
-                    CreatedBy = Session["SupervisorID"].ToString();
-                }
-                int maxFileSize = 2 * 1024 * 1024;
-                string FileName = string.Empty;
-                string flpPhotourl = string.Empty;
-                string flpPhotourl1 = string.Empty;
-                string flpPhotourl2 = string.Empty;
-                string flpPhotourl3 = string.Empty;
+                    if (Session["SupervisorID"] != null)
+                    {
+                        string id = Session["SupervisorID"].ToString();
+                        CreatedBy = Session["SupervisorID"].ToString();
+                    }
+                    int maxFileSize = 2 * 1024 * 1024;
+                    string FileName = string.Empty;
+                    string flpPhotourl = string.Empty;
+                    string flpPhotourl1 = string.Empty;
+                    string flpPhotourl2 = string.Empty;
+                    string flpPhotourl3 = string.Empty;
 
-                //Treasury Document
-                if (TreasuryChallan.PostedFile.FileName.Length > 0)
-                {
-                    if (TreasuryChallan.PostedFile.ContentLength > maxFileSize)
+                    //Treasury Document
+                    if (TreasuryChallan.PostedFile.FileName.Length > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Residence document must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
+                        if (TreasuryChallan.PostedFile.ContentLength > maxFileSize)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Treasury Challan document must be a PDF file with a maximum size of 2MB.')", true);
+                            return;
+                        }
+                        FileName = Path.GetFileName(TreasuryChallan.PostedFile.FileName);
+                        string ext = Path.GetExtension(TreasuryChallan.PostedFile.FileName).ToLower();
+                        if (ext != ".pdf")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('TreasuryChallan document Certifiacte must be a PDF file.')", true);
+                            return;
+                        }
+                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/")))
+                        {
+                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/"));
+                        }
+                        //string ext = Residence.PostedFile.FileName.Split('.')[1];                
+                        string path = "/Attachment/" + Id + "/TreasuryChallan/";
+                        string fileName = "TreasuryChallan " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                        string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/" + fileName);
+                        TreasuryChallan.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl = path + fileName;
                     }
-                    FileName = Path.GetFileName(TreasuryChallan.PostedFile.FileName);
-                    string ext = Path.GetExtension(TreasuryChallan.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
+                    //presentworkingstatus Document
+                    if (PresentWorkingStatus.PostedFile.FileName.Length > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Residence document Certifiacte must be a PDF file.')", true);
-                        return;
+                        if (PresentWorkingStatus.PostedFile.ContentLength > maxFileSize)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PresentWorkingStatus document must be a PDF file with a maximum size of 2MB.')", true);
+                            return;
+                        }
+                        FileName = Path.GetFileName(PresentWorkingStatus.PostedFile.FileName);
+                        string ext = Path.GetExtension(PresentWorkingStatus.PostedFile.FileName).ToLower();
+                        if (ext != ".pdf")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PresentWorkingStatus document Certifiacte must be a PDF file.')", true);
+                            return;
+                        }
+                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/")))
+                        {
+                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/"));
+                        }
+                        //string ext = Residence.PostedFile.FileName.Split('.')[1];                
+                        string path = "/Attachment/" + Id + "/PresentWorkingStatus/";
+                        string fileName = "PresentWorkingStatus " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                        string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/" + fileName);
+                        PresentWorkingStatus.PostedFile.SaveAs(filePathInfo2);
+                        flpPhotourl1 = path + fileName;
                     }
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/")))
+                    //Medical Certificate Document
+                    if (MedicalCertificateRow.Visible == true)
                     {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/"));
+                        if (MedicalCertificate.PostedFile.FileName.Length > 0)
+                        {
+                            if (MedicalCertificate.PostedFile.ContentLength > maxFileSize)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('MedicalCertificate document must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+                            FileName = Path.GetFileName(MedicalCertificate.PostedFile.FileName);
+                            string ext = Path.GetExtension(MedicalCertificate.PostedFile.FileName).ToLower();
+                            if (ext != ".pdf")
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('MedicalCertificate document Certifiacte must be a PDF file.')", true);
+                                return;
+                            }
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/"));
+                            }
+                            //string ext = Residence.PostedFile.FileName.Split('.')[1];                
+                            string path = "/Attachment/" + Id + "/MedicalCertificate/";
+                            string fileName = "MedicalCertificate " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                            string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/" + fileName);
+                            MedicalCertificate.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl2 = path + fileName;
+                        }
                     }
-                    //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                    string path = "/Attachment/" + Id + "/TreasuryChallan/";
-                    string fileName = "TreasuryChallan " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/" + fileName);
-                    TreasuryChallan.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl = path + fileName;
+                    // Canel Period Document
+                    if (CancelPeriodRow.Visible == true)
+                    {
+                        if (CancelPeriod.PostedFile.FileName.Length > 0)
+                        {
+                            if (CancelPeriod.PostedFile.ContentLength > maxFileSize)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('CanelPeriod document must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+                            FileName = Path.GetFileName(CancelPeriod.PostedFile.FileName);
+                            string ext = Path.GetExtension(CancelPeriod.PostedFile.FileName).ToLower();
+                            if (ext != ".pdf")
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('CancelPeriod document Certifiacte must be a PDF file.')", true);
+                                return;
+                            }
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CancelPeriod/")))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CancelPeriod/"));
+                            }
+                            //string ext = Residence.PostedFile.FileName.Split('.')[1];                
+                            string path = "/Attachment/" + Id + "/CancelPeriod/";
+                            string fileName = "CancelPeriod " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                            string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CancelPeriod/" + fileName);
+                            CancelPeriod.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl3 = path + fileName;
+                        }
+                    }
+                    CEI.InsertRenewalSupervisorData(
+                        txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(), txtBilatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
+                        txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(),
+                        txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), TxtAmount.Text.Trim(),
+                        DdlEmployerType.SelectedItem.ToString(), txtEmployerLicenceNo.Text.Trim(), TxtEmployerName.Text.Trim(), txtEmployerAddress.Text.Trim(),
+                        ddlEmployerState.SelectedValue == "0" ? null : ddlEmployerState.SelectedItem.ToString(), ddlEmployerDistrict.SelectedValue == "0" ? null : ddlEmployerDistrict.SelectedValue.ToString(),
+                        TxtEmployerPincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(),
+                        TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), txtEmployercontractorLicence.Text.Trim(), txtChangedEmployerName.Text.Trim(),
+                        txtchangedEmployerAddress.Text.Trim(), txtchangedEmployerState.SelectedValue == "0" ? null : txtchangedEmployerState.SelectedItem.ToString(),
+                        ddlchangedemployerDistrict.SelectedValue == "0" ? null : ddlchangedemployerDistrict.SelectedItem.ToString(),
+                        txchangedEmployerPincode.Text.Trim(), flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, txtplace.Text.Trim(), txtdeclarationdate.Text.Trim(), CreatedBy
+                        );
+                    Reset();
                 }
-                //presentworkingstatus Document
-                if (PresentWorkingStatus.PostedFile.FileName.Length > 0)
-                {
-                    if (PresentWorkingStatus.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PresentWorkingStatus document must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(PresentWorkingStatus.PostedFile.FileName);
-                    string ext = Path.GetExtension(PresentWorkingStatus.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PresentWorkingStatus document Certifiacte must be a PDF file.')", true);
-                        return;
-                    }
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/"));
-                    }
-                    //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                    string path = "/Attachment/" + Id + "/PresentWorkingStatus/";
-                    string fileName = "PresentWorkingStatus " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/" + fileName);
-                    PresentWorkingStatus.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl1 = path + fileName;
-                }
-                //Medical Certificate Document
-                if (MedicalCertificate.PostedFile.FileName.Length > 0)
-                {
-                    if (MedicalCertificate.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('MedicalCertificate document must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(MedicalCertificate.PostedFile.FileName);
-                    string ext = Path.GetExtension(MedicalCertificate.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('MedicalCertificate document Certifiacte must be a PDF file.')", true);
-                        return;
-                    }
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/"));
-                    }
-                    //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                    string path = "/Attachment/" + Id + "/MedicalCertificate/";
-                    string fileName = "MedicalCertificate " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/" + fileName);
-                    MedicalCertificate.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl2 = path + fileName;
-                }
-                // Canel Period Document
-                if (CanelPeriod.PostedFile.FileName.Length > 0)
-                {
-                    if (CanelPeriod.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('CanelPeriod document must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(CanelPeriod.PostedFile.FileName);
-                    string ext = Path.GetExtension(CanelPeriod.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('CanelPeriod document Certifiacte must be a PDF file.')", true);
-                        return;
-                    }
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CanelPeriod/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CanelPeriod/"));
-                    }
-                    //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                    string path = "/Attachment/" + Id + "/CanelPeriod/";
-                    string fileName = "CanelPeriod " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CanelPeriod/" + fileName);
-                    CanelPeriod.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl3 = path + fileName;
-                }
-
-                CEI.InsertRenewalSupervisorData(
-                    txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(), txtBilatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
-                    txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(),
-                    txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), TxtAmount.Text.Trim(),
-                    DdlEmployerType.SelectedItem.ToString(), txtEmployerLicenceNo.Text.Trim(), TxtEmployerName.Text.Trim(), txtEmployerAddress.Text.Trim(),
-                    ddlEmployerState.SelectedValue == "0" ? null : ddlEmployerState.SelectedItem.ToString(), ddlEmployerDistrict.SelectedValue == "0" ? null : ddlEmployerDistrict.SelectedValue.ToString(),
-                    TxtEmployerPincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(),
-                    TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), txtEmployercontractorLicence.Text.Trim(), txtChangedEmployerName.Text.Trim(),
-                    txtchangedEmployerAddress.Text.Trim(), txtchangedEmployerState.SelectedValue == "0" ? null : txtchangedEmployerState.SelectedItem.ToString(),
-                    ddlchangedemployerDistrict.SelectedValue == "0" ? null : ddlchangedemployerDistrict.SelectedItem.ToString(),
-                    txchangedEmployerPincode.Text.Trim(), flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, txtplace.Text.Trim(), txtdeclarationdate.Text.Trim(), CreatedBy
-                    );
             }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Some Error Occured,Please Login Again');",true);
+                Response.Redirect("/Login.aspx");
+            }          
+        }
+
+
+        private void Reset()
+        {
+            txtName.Text = ""; txtCertificate.Text = ""; txtIssueDate.Text = ""; txtExpiryDate.Text = ""; txtBilatedDate.Text = "";
+            txtDOB.Text = ""; txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = ""; TextAddress.Text = ""; DdlState.SelectedValue = "0";
+            DdlDistrict.SelectedValue = "0"; txtpincode.Text = ""; txtTreasuryName.Text = ""; txtchallanNo.Text = ""; txtChallanDate.Text = "";
+            TxtAmount.Text = ""; DdlEmployerType.SelectedValue = "0"; txtEmployerLicenceNo.Text = ""; TxtEmployerName.Text = "";
+            txtEmployerAddress.Text = ""; ddlEmployerState.SelectedValue = "0"; ddlEmployerDistrict.SelectedValue = "0"; TxtEmployerPincode.Text = ""; 
+            TxtDateFrom.Text = ""; txtDateTo.Text = ""; txtEmployercontractorLicence.Text = ""; txtChangedEmployerName.Text = ""; txtchangedEmployerAddress.Text = "";
+            txtchangedEmployerState.SelectedValue = "0"; ddlchangedemployerDistrict.SelectedValue = "0"; txchangedEmployerPincode.Text = "";            
+            txtTreasuryChallan.Text = "";txtPresentWrkingStatus.Text = ""; txtMedicalCertificate.Text = "";  txtCanelPeriod.Text = "";
+            txtplace.Text = ""; txtdeclarationdate.Text = "";
         }
 
         protected void txtchangedEmployerState_SelectedIndexChanged(object sender, EventArgs e)
@@ -461,17 +521,18 @@ namespace CEIHaryana.Supervisor
             {
 
                 if (txtDOB.Text != "")
-                {
+                {                   
                     DateTime selectedDOB;
                     if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
                     {
                         DateTime currentDate = DateTime.Now;
-                        int ageDiff = currentDate.Year - selectedDOB.Year;
+                        int ageDiff = currentDate.Year - selectedDOB.Year;                        
                         if (ageDiff < 18)
                         {
                             ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
                             txtDOB.Text = "";
                             txtAge.Text = "";
+                            MedicalCertificateRow.Visible = false;
                         }
                         else if (ageDiff > 65)
                         {
@@ -481,29 +542,29 @@ namespace CEIHaryana.Supervisor
                         }
                         else
                         {
-                            // Calculate age
-                            TimeSpan ageDifference = currentDate - selectedDOB;
-                            int ageYear = (int)(ageDifference.TotalDays / 365.25);
-                            int ageMonth = (int)((ageDifference.TotalDays % 365.25) / 30.44);
-                            int ageDay = (int)(ageDifference.TotalDays % 30.44);
-                            string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
-                            txtAge.Text = ageString;
+                           //Calculate age
+                            DivAge.Visible = true;                            
+                            txtAge.Text = CEI.CalculateRemainingDate(selectedDOB,currentDate);
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);
                         txtDOB.Text = "";
                         txtAge.Text = "";
+                        DivAge.Visible = false;
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);                        
                     }
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Please enter your date of birth.');", true);
+                    MedicalCertificate.Visible = false;
                 }
-
             }
-            catch { }
-        }
+            catch (Exception ex)
+            {
+                //exception
+            }
+        }           
     }
 }

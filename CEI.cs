@@ -2408,6 +2408,55 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         }
         #endregion
+        #region CalculateDate
+        public string CalculateRemainingDate(DateTime currentDate, DateTime selectedExpiryDate)
+        {
+            int yearsRemaining = currentDate.Year - selectedExpiryDate.Year;
+            int monthsRemaining = currentDate.Month - selectedExpiryDate.Month;
+            int daysRemaining = currentDate.Day - selectedExpiryDate.Day;
+
+            if (daysRemaining < 0)
+            {
+                monthsRemaining--;
+                int daysInPreviousMonth = DateTime.DaysInMonth(currentDate.Year, (currentDate.Month == 1) ? 12 : currentDate.Month - 1);
+                daysRemaining += daysInPreviousMonth;
+
+                if (currentDate.Day < selectedExpiryDate.Day)
+                {
+                    monthsRemaining++;
+                }
+            }
+            if (monthsRemaining < 0)
+            {
+                yearsRemaining--;
+                monthsRemaining += 12;
+            }
+            daysRemaining = Math.Abs(daysRemaining);
+            string Result = "";
+            if (yearsRemaining > 0)
+            {
+                Result += $"{yearsRemaining} years";
+            }
+            if (monthsRemaining > 0)
+            {
+                if (!string.IsNullOrEmpty(Result))
+                {
+                    Result += ", ";
+                }
+                Result += $"{monthsRemaining} months";
+            }
+            if (daysRemaining > 0)
+            {
+                if (!string.IsNullOrEmpty(Result))
+                {
+                    Result += ", ";
+                }
+                Result += $"{daysRemaining} days";
+            }
+            return Result;
+        }
+
+        #endregion
     }
 }
     
