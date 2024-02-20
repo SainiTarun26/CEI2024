@@ -241,8 +241,8 @@
                             <label for="Name">
                                 Applicant Name<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                MaxLength="200" Style="margin-left: 18px;">
+                            <asp:TextBox class="form-control" ID="txtName" runat="server" ReadOnly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                MaxLength="20" Style="margin-left: 18px;">
                             </asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
@@ -251,52 +251,54 @@
                             <label for="Name">
                                 Certificate No.<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtCertificate" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                MaxLength="200" Style="margin-left: 18px;">
+                            <asp:TextBox class="form-control" ID="txtCertificate" ReadOnly="true" runat="server" autocomplete="off"  TabIndex="1"
+                                MaxLength="20" Style="margin-left: 18px;">
                             </asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtCertificate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Certificate No</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
-                            <label for="DateofRenewal">
+                            <label for="DateofIssue">
                                 Date of Issue<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtIssueDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtIssueDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" ID="txtIssueDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtIssueDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Issue Date</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
-                            <label for="DateofRenewal">
+                            <label for="DateofExpiry">
                                 Date of Expiry
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtExpiryDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExpiryDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtExpiryDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExpiryDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Expiry Date</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
                             <label for="DateofRenewal">
                                 Current Authorized Voltage Level<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtBilatedDate" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtBilatedDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtVoltageLevel" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtVoltageLevel" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Current Voltage Level</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
-                            <label for="DateofRenewal">
+                            <label for="DateofBirth">
                                 Date of Birth<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtDOB" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtDOB" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtDOB" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtDOB" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Birth</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
-                            <label for="FirmName">
+                            <label for="Age">
                                 Age<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAge" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAge" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Firm Name</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" ID="txtAge" runat="server" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);"  autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAge" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Age</asp:RequiredFieldValidator>
                         </div>
 
                         <div class="col-4">
                             <label for="Email">Email</label>
                             <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" Style="margin-left: 18px" TabIndex="6" onkeyup="return ValidateEmail();"></asp:TextBox>
                             <span id="lblError" style="color: red"></span>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtContactNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email</asp:RequiredFieldValidator>
+                           
                         </div>
                         <div class="col-4">
                             <label for="ContactNo">
@@ -318,11 +320,11 @@
                             </asp:RadioButtonList>
                         </div>
                         <div class="col-8">
-                            <label for="RegisteredOffice">
+                            <label for="Address">
                                 Address<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="TextAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter  Address</asp:RequiredFieldValidator>
 
                         </div>
                         <div class="col-4">
@@ -330,7 +332,7 @@
                                 State/UT 
             <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlState" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" OnSelectedIndexChanged="DdlState_SelectedIndexChanged" ID="DdlState" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
@@ -376,11 +378,11 @@
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <label for="PinCode">Total Experience</label>
-                            <asp:TextBox class="form-control" ID="TextBox1" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
-                            <span id="lblPinError" style="color: red"></span>
-                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
-                            --%>
+                            <label for="TotalExperience">Total Experience</label>
+                            <asp:TextBox class="form-control" ID="textExp" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off"  TabIndex="10"></asp:TextBox>
+                            <span id="lbltotExp" style="color: red"></span>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator55" runat="server" ControlToValidate="textExp"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >Please Enter Total Experience</asp:RequiredFieldValidator>
+                            
                         </div>
                     </div>
                 </div>
@@ -395,18 +397,18 @@
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <label for="PinCode">Date of Interview</label>
-                            <asp:TextBox class="form-control" ID="TextBox2" onkeydown="return preventEnterSubmit(event)" min='0000-01-01' max='9999-01-01' Type="date" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
-                            <span id="lblPinError" style="color: red"></span>
-                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
-                            --%>
+                            <label for="InterviewDate">Date of Interview</label>
+                            <asp:TextBox class="form-control" ID="txtInterviewDate" onkeydown="return preventEnterSubmit(event)" min='0000-01-01' max='9999-01-01' Type="date" runat="server" autocomplete="off" MaxLength="6"  TabIndex="10"></asp:TextBox>
+                            <span id="lblInterview" style="color: red"></span>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator56" runat="server" ControlToValidate="txtInterviewDate"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >Please Enter Interview Date</asp:RequiredFieldValidator>
+                            
                         </div>
                         <div class="col-4">
-                            <label for="PinCode">Voltage Level Applied for</label>
-                            <asp:TextBox class="form-control" ID="TextBox3" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
-                            <span id="lblPinError" style="color: red"></span>
-                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
-                            --%>
+                            <label for="VoltageLevel">Voltage Level Applied for</label>
+                            <asp:TextBox class="form-control" ID="txtVoltage" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="20"   TabIndex="10"></asp:TextBox>
+                            <span id="lblVoltage" style="color: red"></span>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator57" runat="server" ControlToValidate="txtVoltage"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >Please Enter Voltage Level</asp:RequiredFieldValidator>
+                            
                         </div>
                     </div>
                 </div>
@@ -422,23 +424,21 @@
                                             style="color: red;">★</span>)
                                         </td>
                                         <td>
-                                            <input type="file" name="img[]" class="file-upload-default"
-                                                style="display: none;">
-                                            <div class="form-group">
-                                                <label style="font-size: 9px;">
-                                                    (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)
-                                                </label>
-                                                <input type="file" name="img[]" class="file-upload-default">
-                                                <div class="input-group col-xs-12">
-                                                    <asp:TextBox ID="txtPhoto" runat="server" CssClass="form-control file-upload-info"
-                                                        Enabled="false" placeholder="Upload Experience Certificate" Style="width: 85%;"></asp:TextBox>
+                                             <asp:FileUpload ID="fileUpload3" runat="server" CssClass="file-upload-default" Style="display: none;" />
+                                              <div class="form-group">
+                                                 <label style="font-size: 9px;">
+                                             (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB) </label>
+                                                 <asp:FileUpload ID="ExpCertificate" runat="server" class="file-upload-default" onchange="ExperienceCertificateFileInputChange();" />
+   
+                                             <div class="input-group col-xs-12">
+                                             <asp:TextBox ID="txtExpCertificate" runat="server" CssClass="form-control file-upload-info"
+                                               Enabled="false" placeholder="Upload Experience certificate" Style="width: 85%;"></asp:TextBox>
+                                             <span class="input-group-append">
 
-                                                    <span class="input-group-append">
 
-                                                        <asp:Button ID="Button1" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="PhotoDialog(); return false;" />
-                                                        <input type="file" id="Photo" name="file
-                                        Input"
-                                                            accept=".jpg, .jpeg, .png, .pdf" style="display: none;" runat="server" onchange="PhotoDialogName()" />
+                                                        
+                                                 <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick=" return false;" />
+                                                      
 
                                                     </span>
 
@@ -473,7 +473,7 @@
                         <div class="form-group row">
                             <label for="exampleInputUsername2" class="col-sm-1 col-form-label" style="padding: 0px;">Date:</label>
                             <div class="col-sm-4">
-                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtdeclarationdate" min='0000-01-01' max='9999-01-01' Type="text" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtdeclarationdate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -505,6 +505,35 @@
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
     </footer>
+    <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/assetsnew/vendor/aos/aos.js"></script>
+  <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
+  <!-- Template Main JS File -->
+  <script src="/assetsnew/js/main.js"></script>
+  <script src="/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="/vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="/js2/off-canvas.js"></script>
+  <script src="/js2/hoverable-collapse.js"></script>
+  <script src="/js2/template.js"></script>
+  <script src="/js2/settings.js"></script>
+  <script src="/js2/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="/js2/file-upload.js"></script>
+  <script src="/js2/typeahead.js"></script>
+  <script src="/js2/select2.js"></script>
+
+
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
@@ -542,6 +571,18 @@
         }
     </script>
 
+     <script type="text/javascript">
+         function ExperienceCertificateFileInputChange() {
+             var fileUploadVisible = document.getElementById('<%= ExpCertificate.ClientID %>');
+             var selectedFileName = document.getElementById('<%= txtExpCertificate.ClientID %>');
+
+         if (fileUploadVisible.files.length > 0) {
+             // Update the TextBox value with the selected file name
+             selectedFileName.value = fileUploadVisible.files[0].name;
+         }
+         }
+     </script>
+
 
     <script type="text/javascript">
         function isvalidphoneno() {
@@ -564,7 +605,7 @@
                 return false;
             }
         }
-    </script>
+     </script>
     <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('Not able to find Your Information Please Login Again or Try Again later')) {

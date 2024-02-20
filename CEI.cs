@@ -2337,6 +2337,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSuperviserForRenewal", id);
         }
 
+        public DataTable GetSupervisorRenewalData(string id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSuperviserRenewalData", id);
+        }
+
 
         public void InsertRenewalSupervisorData(string ApplicantName, string CertificateNo, string DateofIssue, string DateOfExpiry, string BilatedDate, string DOB,
           string Age, string Email, string ContactNo, string Address, string State, string District, string Pincode, string NameofTressury, string ChallanGRNno,
@@ -2349,7 +2354,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             try
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                SqlCommand cmd = new SqlCommand("SP_GetRenewalData");
+                SqlCommand cmd = new SqlCommand("SP_InsertRenewalData");
                 cmd.Connection = con;
                 if (con.State == ConnectionState.Closed)
                 {
@@ -2456,6 +2461,12 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return Result;
         }
 
+        #endregion
+        #region ContractorCertificateRenewal
+        public DataSet GetContractorDataForRenewal(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetContractorDataForRenewal", id);
+        }
         #endregion
     }
 }

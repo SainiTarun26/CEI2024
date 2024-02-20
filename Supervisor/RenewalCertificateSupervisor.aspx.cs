@@ -14,8 +14,8 @@ namespace CEIHaryana.Supervisor
     {
 
         CEI CEI = new CEI();
-        string Id = string.Empty;
-        string CreatedBy = string.Empty;
+        string SupervisorId = string.Empty;
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,9 +23,10 @@ namespace CEIHaryana.Supervisor
             {
                 if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                 {
-                    GetSupervisorDetails();
-                    ddlLoadBindStateForchangedEmployer();
+                    ddlLoadBindState();
                     ddlLoadBindStateForEmployer();
+                    ddlLoadBindStateForchangedEmployer();                    
+                    GetSupervisorDetails();                    
                 }
 
             }
@@ -34,10 +35,10 @@ namespace CEIHaryana.Supervisor
         public void GetSupervisorDetails()
         {
 
-            string id = Session["SupervisorID"].ToString();
+            string SupervisorId = Session["SupervisorID"].ToString();
 
             DataSet ds = new DataSet();
-            ds = CEI.GetSupervisorDataForRenewal(id);
+            ds = CEI.GetSupervisorDataForRenewal(SupervisorId);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
@@ -343,148 +344,181 @@ namespace CEIHaryana.Supervisor
                 {
                     if (Session["SupervisorID"] != null)
                     {
-                        string id = Session["SupervisorID"].ToString();
-                        CreatedBy = Session["SupervisorID"].ToString();
-                    }
-                    int maxFileSize = 2 * 1024 * 1024;
-                    string FileName = string.Empty;
-                    string flpPhotourl = string.Empty;
-                    string flpPhotourl1 = string.Empty;
-                    string flpPhotourl2 = string.Empty;
-                    string flpPhotourl3 = string.Empty;
+                        string SupervisorId = Session["SupervisorID"].ToString();
+                        DataTable dt = new DataTable();
+                        dt = CEI.GetSupervisorRenewalData(SupervisorId);
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('This User Already Applied For Renewal');", true);
+                            return;
+                        }
 
-                    //Treasury Document
-                    if (TreasuryChallan.PostedFile.FileName.Length > 0)
-                    {
-                        if (TreasuryChallan.PostedFile.ContentLength > maxFileSize)
+                        int maxFileSize = 2 * 1024 * 1024;
+                        string FileName = string.Empty;
+                        string flpPhotourl = string.Empty;
+                        string flpPhotourl1 = string.Empty;
+                        string flpPhotourl2 = string.Empty;
+                        string flpPhotourl3 = string.Empty;
+                        //Treasury Document
+                        if (TreasuryChallan.PostedFile.FileName.Length > 0)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Treasury Challan document must be a PDF file with a maximum size of 2MB.')", true);
-                            return;
-                        }
-                        FileName = Path.GetFileName(TreasuryChallan.PostedFile.FileName);
-                        string ext = Path.GetExtension(TreasuryChallan.PostedFile.FileName).ToLower();
-                        if (ext != ".pdf")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('TreasuryChallan document Certifiacte must be a PDF file.')", true);
-                            return;
-                        }
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/"));
-                        }
-                        //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                        string path = "/Attachment/" + Id + "/TreasuryChallan/";
-                        string fileName = "TreasuryChallan " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
-                        string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/TreasuryChallan/" + fileName);
-                        TreasuryChallan.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl = path + fileName;
-                    }
-                    //presentworkingstatus Document
-                    if (PresentWorkingStatus.PostedFile.FileName.Length > 0)
-                    {
-                        if (PresentWorkingStatus.PostedFile.ContentLength > maxFileSize)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PresentWorkingStatus document must be a PDF file with a maximum size of 2MB.')", true);
-                            return;
-                        }
-                        FileName = Path.GetFileName(PresentWorkingStatus.PostedFile.FileName);
-                        string ext = Path.GetExtension(PresentWorkingStatus.PostedFile.FileName).ToLower();
-                        if (ext != ".pdf")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PresentWorkingStatus document Certifiacte must be a PDF file.')", true);
-                            return;
-                        }
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/"));
-                        }
-                        //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                        string path = "/Attachment/" + Id + "/PresentWorkingStatus/";
-                        string fileName = "PresentWorkingStatus " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
-                        string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/PresentWorkingStatus/" + fileName);
-                        PresentWorkingStatus.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl1 = path + fileName;
-                    }
-                    //Medical Certificate Document
-                    if (MedicalCertificateRow.Visible == true)
-                    {
-                        if (MedicalCertificate.PostedFile.FileName.Length > 0)
-                        {
-                            if (MedicalCertificate.PostedFile.ContentLength > maxFileSize)
+                            if (TreasuryChallan.PostedFile.ContentLength > maxFileSize)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('MedicalCertificate document must be a PDF file with a maximum size of 2MB.')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PdfalertWithRedirect('txtTreasuryChallan');", true);
                                 return;
                             }
-                            FileName = Path.GetFileName(MedicalCertificate.PostedFile.FileName);
-                            string ext = Path.GetExtension(MedicalCertificate.PostedFile.FileName).ToLower();
+                            FileName = Path.GetFileName(TreasuryChallan.PostedFile.FileName);
+                            string ext = Path.GetExtension(TreasuryChallan.PostedFile.FileName).ToLower();
                             if (ext != ".pdf")
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('MedicalCertificate document Certifiacte must be a PDF file.')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('TreasuryChallan document Certifiacte must be a PDF file.')", true);
                                 return;
                             }
-                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/")))
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/TreasuryChallan/")))
                             {
-                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/"));
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/TreasuryChallan/"));
                             }
                             //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                            string path = "/Attachment/" + Id + "/MedicalCertificate/";
-                            string fileName = "MedicalCertificate " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
-                            string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/MedicalCertificate/" + fileName);
-                            MedicalCertificate.PostedFile.SaveAs(filePathInfo2);
-                            flpPhotourl2 = path + fileName;
+                            string path = "/Attachment/" + SupervisorId + "/TreasuryChallan/";
+                            string fileName = "TreasuryChallan " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                            string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/TreasuryChallan/" + fileName);
+                            TreasuryChallan.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl = path + fileName;
                         }
-                    }
-                    // Canel Period Document
-                    if (CancelPeriodRow.Visible == true)
-                    {
-                        if (CancelPeriod.PostedFile.FileName.Length > 0)
+                        //presentworkingstatus Document
+                        if (PresentWorkingStatus.PostedFile.FileName.Length > 0)
                         {
-                            if (CancelPeriod.PostedFile.ContentLength > maxFileSize)
+                            if (PresentWorkingStatus.PostedFile.ContentLength > maxFileSize)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('CanelPeriod document must be a PDF file with a maximum size of 2MB.')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PdfalertWithRedirect('txtPresentWrkingStatus');", true);
                                 return;
                             }
-                            FileName = Path.GetFileName(CancelPeriod.PostedFile.FileName);
-                            string ext = Path.GetExtension(CancelPeriod.PostedFile.FileName).ToLower();
+                            FileName = Path.GetFileName(PresentWorkingStatus.PostedFile.FileName);
+                            string ext = Path.GetExtension(PresentWorkingStatus.PostedFile.FileName).ToLower();
                             if (ext != ".pdf")
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('CancelPeriod document Certifiacte must be a PDF file.')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PresentWorkingStatus document Certifiacte must be a PDF file.')", true);
                                 return;
                             }
-                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CancelPeriod/")))
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/PresentWorkingStatus/")))
                             {
-                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CancelPeriod/"));
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/PresentWorkingStatus/"));
                             }
                             //string ext = Residence.PostedFile.FileName.Split('.')[1];                
-                            string path = "/Attachment/" + Id + "/CancelPeriod/";
-                            string fileName = "CancelPeriod " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
-                            string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + Id + "/CancelPeriod/" + fileName);
-                            CancelPeriod.PostedFile.SaveAs(filePathInfo2);
-                            flpPhotourl3 = path + fileName;
+                            string path = "/Attachment/" + SupervisorId + "/PresentWorkingStatus/";
+                            string fileName = "PresentWorkingStatus " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                            string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/PresentWorkingStatus/" + fileName);
+                            PresentWorkingStatus.PostedFile.SaveAs(filePathInfo2);
+                            flpPhotourl1 = path + fileName;
                         }
+                        //Medical Certificate Document
+                        if (MedicalCertificateRow.Visible == true)
+                        {
+                            if (MedicalCertificate.PostedFile.FileName.Length > 0)
+                            {
+                                if (MedicalCertificate.PostedFile.ContentLength > maxFileSize)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "PdfalertWithRedirect('txtMedicalCertificate');", true);
+                                    return;
+                                }
+                                FileName = Path.GetFileName(MedicalCertificate.PostedFile.FileName);
+                                string ext = Path.GetExtension(MedicalCertificate.PostedFile.FileName).ToLower();
+                                if (ext != ".pdf")
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('MedicalCertificate document Certifiacte must be a PDF file.')", true);
+                                    return;
+                                }
+                                if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/MedicalCertificate/")))
+                                {
+                                    Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/MedicalCertificate/"));
+                                }
+                                //string ext = Residence.PostedFile.FileName.Split('.')[1];                
+                                string path = "/Attachment/" + SupervisorId + "/MedicalCertificate/";
+                                string fileName = "MedicalCertificate " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                                string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/MedicalCertificate/" + fileName);
+                                MedicalCertificate.PostedFile.SaveAs(filePathInfo2);
+                                flpPhotourl2 = path + fileName;
+                            }
+                        }
+                        // Canel Period Document
+                        if (CancelPeriodRow.Visible == true)
+                        {
+                            if (CancelPeriod.PostedFile.FileName.Length > 0)
+                            {
+                                if (CancelPeriod.PostedFile.ContentLength > maxFileSize)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PdfalertWithRedirect('txtCanelPeriod');", true);
+                                    return;
+                                }
+                                FileName = Path.GetFileName(CancelPeriod.PostedFile.FileName);
+                                string ext = Path.GetExtension(CancelPeriod.PostedFile.FileName).ToLower();
+                                if (ext != ".pdf")
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect('')", true);
+                                    return;
+                                }
+                                if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/CancelPeriod/")))
+                                {
+                                    Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/CancelPeriod/"));
+                                }
+                                //string ext = Residence.PostedFile.FileName.Split('.')[1];                
+                                string path = "/Attachment/" + SupervisorId + "/CancelPeriod/";
+                                string fileName = "CancelPeriod " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + "pdf";
+                                string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + SupervisorId + "/CancelPeriod/" + fileName);
+                                CancelPeriod.PostedFile.SaveAs(filePathInfo2);
+                                flpPhotourl3 = path + fileName;
+                            }
+                        }
+
+                        string SelectedValue = ddlchangedemployerDistrict.SelectedValue.ToString();
+                        if (string.IsNullOrEmpty(SelectedValue) || SelectedValue == "0")
+                        {
+                            SelectedValue = null;
+                        }
+                        else
+                        {
+                            SelectedValue = ddlchangedemployerDistrict.SelectedItem.ToString();
+                        }
+
+                        string Selecteddistrict = ddlEmployerDistrict.SelectedValue.ToString();
+                        if (string.IsNullOrEmpty(Selecteddistrict) || Selecteddistrict == "0")
+                        {
+                            Selecteddistrict = null;
+                        }
+                        else
+                        {
+                            Selecteddistrict = ddlEmployerDistrict.SelectedItem.ToString();
+                        }
+
+                        CEI.InsertRenewalSupervisorData(
+                            txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(), txtBilatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
+                            txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(),
+                            txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), TxtAmount.Text.Trim(),
+                            DdlEmployerType.SelectedItem.ToString(), txtEmployerLicenceNo.Text.Trim(), TxtEmployerName.Text.Trim(), txtEmployerAddress.Text.Trim(),
+                            ddlEmployerState.SelectedValue == "0" ? null : ddlEmployerState.SelectedItem.ToString(), Selecteddistrict,
+                            TxtEmployerPincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(),
+                            TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), txtEmployercontractorLicence.Text.Trim(), txtChangedEmployerName.Text.Trim(),
+                            txtchangedEmployerAddress.Text.Trim(),
+                            txtchangedEmployerState.SelectedValue == "0" ? null : txtchangedEmployerState.SelectedItem.ToString(),
+                            SelectedValue,
+                            txchangedEmployerPincode.Text.Trim(), flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, txtplace.Text.Trim(), txtdeclarationdate.Text.Trim(), SupervisorId
+                            );
+                        Reset();
+                        DataSaved.Visible = true;
                     }
-                    CEI.InsertRenewalSupervisorData(
-                        txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(), txtBilatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
-                        txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(),
-                        txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), TxtAmount.Text.Trim(),
-                        DdlEmployerType.SelectedItem.ToString(), txtEmployerLicenceNo.Text.Trim(), TxtEmployerName.Text.Trim(), txtEmployerAddress.Text.Trim(),
-                        ddlEmployerState.SelectedValue == "0" ? null : ddlEmployerState.SelectedItem.ToString(), ddlEmployerDistrict.SelectedValue == "0" ? null : ddlEmployerDistrict.SelectedValue.ToString(),
-                        TxtEmployerPincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(),
-                        TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), txtEmployercontractorLicence.Text.Trim(), txtChangedEmployerName.Text.Trim(),
-                        txtchangedEmployerAddress.Text.Trim(), txtchangedEmployerState.SelectedValue == "0" ? null : txtchangedEmployerState.SelectedItem.ToString(),
-                        ddlchangedemployerDistrict.SelectedValue == "0" ? null : ddlchangedemployerDistrict.SelectedItem.ToString(),
-                        txchangedEmployerPincode.Text.Trim(), flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, txtplace.Text.Trim(), txtdeclarationdate.Text.Trim(), CreatedBy
-                        );
-                    Reset();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "CheckboXalertWithRedirect();", true);
                 }
             }
+
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Some Error Occured,Please Login Again');",true);
                 Response.Redirect("/Login.aspx");
             }          
         }
-
 
         private void Reset()
         {
@@ -497,6 +531,8 @@ namespace CEIHaryana.Supervisor
             txtchangedEmployerState.SelectedValue = "0"; ddlchangedemployerDistrict.SelectedValue = "0"; txchangedEmployerPincode.Text = "";            
             txtTreasuryChallan.Text = "";txtPresentWrkingStatus.Text = ""; txtMedicalCertificate.Text = "";  txtCanelPeriod.Text = "";
             txtplace.Text = ""; txtdeclarationdate.Text = "";
+            DivLicense.Visible = false; DivAddress.Visible = false; DivState.Visible = false; DivDistrict.Visible = false; divSubsequentPeriod.Visible = false;
+            Check.Checked = false;
         }
 
         protected void txtchangedEmployerState_SelectedIndexChanged(object sender, EventArgs e)
@@ -565,6 +601,8 @@ namespace CEIHaryana.Supervisor
             {
                 //exception
             }
-        }           
+        }
+
+        
     }
 }
