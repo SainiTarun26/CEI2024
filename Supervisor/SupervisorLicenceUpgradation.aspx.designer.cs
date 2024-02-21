@@ -24,6 +24,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
+        /// updatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatePanel;
+
+        /// <summary>
         /// DataUpdated control.
         /// </summary>
         /// <remarks>
@@ -148,6 +157,15 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
+
+        /// <summary>
+        /// DivAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivAge;
 
         /// <summary>
         /// txtAge control.
@@ -301,6 +319,15 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
+
+        /// <summary>
+        /// DivUpgradationEarlier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivUpgradationEarlier;
 
         /// <summary>
         /// txtInterviewDate control.

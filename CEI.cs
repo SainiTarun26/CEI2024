@@ -2413,8 +2413,60 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         }
         #endregion
+        #region UpgradationSupervisor
+        public DataTable GetSupervisorLiceceUpgradationData(string id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSupervisorLicenceUpgradationData", id);
+        }
+
+        public void InsertUpgradationSupervisorData(string ApplicantName, string CertificateNo, string DateOfIssue, string DateOfExpiry, string VolatgeLevel, string DOB,
+        string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string TotalExperience, string DateOfInterview,
+        string VoltageLevelFor, string ExperienceCertificate, string SubmisionPlace, string SubmisionDate, string CreatedBy
+        )
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                SqlCommand cmd = new SqlCommand("Sp_InsertLicenceUpgradationSupervisor");
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
+                cmd.Parameters.AddWithValue("@CertificateNo", CertificateNo);
+                cmd.Parameters.AddWithValue("@DateOfIssue", DateOfIssue);
+                cmd.Parameters.AddWithValue("@DateOfExpiry", DateOfExpiry);
+                cmd.Parameters.AddWithValue("@CurrentAutorizedVoltage", VolatgeLevel);
+                cmd.Parameters.AddWithValue("@DOB", DOB);
+                cmd.Parameters.AddWithValue("@Age", Age);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@PhoneNo", ContactNo);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@State", State);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Pincode", PinCode);
+                cmd.Parameters.AddWithValue("@ApplyUpgradationEarlier", TotalExperience);
+                cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DateOfInterview);
+                cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageLevelFor);
+                cmd.Parameters.AddWithValue("@ExperienceCertificate", ExperienceCertificate);
+                cmd.Parameters.AddWithValue("@SubmissionPlace", SubmisionPlace);
+                cmd.Parameters.AddWithValue("@SubmissionDate", SubmisionDate);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+
+        }
+        #endregion
         #region CalculateDate
-        public string CalculateRemainingDate(DateTime currentDate, DateTime selectedExpiryDate)
+        public string CalculateDate(DateTime currentDate, DateTime selectedExpiryDate)
         {
             int yearsRemaining = currentDate.Year - selectedExpiryDate.Year;
             int monthsRemaining = currentDate.Month - selectedExpiryDate.Month;
@@ -2467,6 +2519,65 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetContractorDataForRenewal", id);
         }
+        public void InsertContractorLicenceRenewalData(string ApplicantName, string LicenceNo, string DateOfIssue, string DateOfExpiry, string Belated,
+            string DOB, string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string NameTreasury,
+            string ChallanGrnNo, string ChallanDate, string RemittedAmount, string EquipmentTestedCertificate, string IncomeTaxCertificate,
+            string BalanceSheet, string CalibrationCertificate, string WorkDetails, string AnnexureIIICopy, string Form_ECopy, string TreasuryChallan,
+            string SubmissionPlace, string SubmissionDate, string CreatedBy)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                SqlCommand cmd = new SqlCommand("SP_InsertContractorLicenceRenewalData");
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
+                cmd.Parameters.AddWithValue("@LicenceNo", LicenceNo);
+                cmd.Parameters.AddWithValue("@DateOfIssue", DateOfIssue);
+                cmd.Parameters.AddWithValue("@DateOfExpiry", DateOfExpiry);
+                cmd.Parameters.AddWithValue("@Belated", Belated);
+                cmd.Parameters.AddWithValue("@DOB", DOB);
+                cmd.Parameters.AddWithValue("@Age", Age);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@State", State);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@PinCode", PinCode);
+                cmd.Parameters.AddWithValue("@NameTreasury", NameTreasury);
+                cmd.Parameters.AddWithValue("@ChallanGrnNo", ChallanGrnNo);
+                cmd.Parameters.AddWithValue("@ChallanDate", ChallanDate);
+                cmd.Parameters.AddWithValue("@RemittedAmount", RemittedAmount);
+                cmd.Parameters.AddWithValue("@EquipmentTestedCertificate", EquipmentTestedCertificate);
+                cmd.Parameters.AddWithValue("@IncomeTaxCertificate", IncomeTaxCertificate);
+                cmd.Parameters.AddWithValue("@BalanceSheet", BalanceSheet);
+                cmd.Parameters.AddWithValue("@CalibrationCertificate", CalibrationCertificate);
+                cmd.Parameters.AddWithValue("@WorkDetails", WorkDetails);
+                cmd.Parameters.AddWithValue("@AnnexureIIICopy", AnnexureIIICopy);
+                cmd.Parameters.AddWithValue("@Form_ECopy", Form_ECopy);
+                cmd.Parameters.AddWithValue("@TreasuryChallan", TreasuryChallan);
+                cmd.Parameters.AddWithValue("@SubmissionPlace", SubmissionPlace);
+                cmd.Parameters.AddWithValue("@SubmissionDate", SubmissionDate);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            { 
+            }
+        }
+        public DataTable GetContractorLicenceRenewalData(string id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetContractorLicenceRenewalData", id);
+        }
+
+
         #endregion
     }
 }

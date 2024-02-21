@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -75,7 +76,7 @@ namespace CEIHaryana.Contractor
                             if (selectedExpiryDate < currentDate)
                             {
                                 divBelated.Visible = true;
-                                txtBelatedDate.Text = CEI.CalculateRemainingDate(currentDate, selectedExpiryDate);
+                                txtBelatedDate.Text = CEI.CalculateDate(currentDate, selectedExpiryDate);
                             }
                         }
                     }
@@ -94,7 +95,7 @@ namespace CEIHaryana.Contractor
                             //int ageDay = (int)(ageDifference.TotalDays % 30.44);
                             //string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
                             //txtAge.Text = ageString;
-                            txtAge.Text = CEI.CalculateRemainingDate(currentDate, selectedDOB);
+                            txtAge.Text = CEI.CalculateDate(currentDate, selectedDOB);
                         }
                         else
                         {
@@ -124,7 +125,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
         private void ddlLoadBindState()
         {
             try
@@ -141,7 +141,6 @@ namespace CEIHaryana.Contractor
             catch (Exception ex)
             { }
         }
-
         private void ddlLoadBindDistrict(string state)
         {
             try
@@ -158,7 +157,6 @@ namespace CEIHaryana.Contractor
             catch (Exception ex)
             { }
         }
-
         protected void txtDOB_TextChanged(object sender, EventArgs e)
         {
             try
@@ -207,7 +205,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
         protected void DdlState_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (DdlState.SelectedValue != null)
@@ -215,7 +212,6 @@ namespace CEIHaryana.Contractor
                 ddlLoadBindDistrict(DdlState.SelectedItem.ToString());
             }
         }
-
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -223,22 +219,24 @@ namespace CEIHaryana.Contractor
                 if (RadioButtonList1.SelectedValue == "1")
                 {
                     txtAddress.ReadOnly = true;
-                    //DdlState.Enabled = false;
-                    DdlState.Attributes.Add("disabled", "disabled");
-                    DdlDistrict.Attributes.Add("disabled", "disabled");
+                    DdlState.Enabled = false;
+                    DdlDistrict.Enabled = false;
+                    //DdlState.Attributes.Add("disabled", "disabled");
+                    //DdlDistrict.Attributes.Add("disabled", "disabled");
                     txtpincode.ReadOnly = true;
                 }
                 else
                 {
                     txtAddress.ReadOnly = false;
-                    DdlState.Attributes.Remove("disabled");
-                    DdlDistrict.Attributes.Remove("disabled");
+                    DdlState.Enabled = true;
+                    DdlDistrict.Enabled = true;
+                    //DdlState.Attributes.Remove("disabled");
+                    //DdlDistrict.Attributes.Remove("disabled");
                     txtpincode.ReadOnly = false;
                 }
             }
             catch { }
         }
-
         protected void GetassigneddatatoContractor()
         {
             try
@@ -265,7 +263,6 @@ namespace CEIHaryana.Contractor
             {
             }
         }
-
         public void GetGridData()
         {
             try
@@ -284,6 +281,203 @@ namespace CEIHaryana.Contractor
                 }
             }
             catch { }
+        }
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Check.Checked == true)
+                {
+                    if (Session["ContractorID"] != null)
+                    {
+                        string ContractorId = Session["ContractorID"].ToString();
+                        DataTable dt = new DataTable();
+                        dt = CEI.GetContractorLicenceRenewalData(ContractorId);
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('This User Already Applied For Licence Renewal');", true);
+                            return;
+                        }
+
+                        int maxFileSize = 2 * 1024 * 1024;
+                        string FileName = string.Empty;
+                        string flpPhotourl = string.Empty;
+                        string flpPhotourl1 = string.Empty;
+                        string flpPhotourl2 = string.Empty;
+                        string flpPhotourl3 = string.Empty;
+                        string flpPhotourl4 = string.Empty;
+                        string flpPhotourl5 = string.Empty;
+                        string flpPhotourl6 = string.Empty;
+                        string flpPhotourl7 = string.Empty;
+                        if (EquipCertificate.PostedFile != null && EquipCertificate.PostedFile.ContentLength > 0)
+                        {
+                            if (EquipCertificate.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(EquipCertificate.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Equipment tested certificate must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "EquipCertificate" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/EquipCertificate/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            EquipCertificate.PostedFile.SaveAs(filePath);
+                            flpPhotourl = $"~/Attachment/{ContractorId}/EquipCertificate/{fileName}";
+                        }
+                        if (IncomeTax.PostedFile != null && IncomeTax.PostedFile.ContentLength > 0)
+                        {
+                            if (IncomeTax.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(IncomeTax.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Income Tax Returns certificate must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "IncomeTax" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/IncomeTax/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            IncomeTax.PostedFile.SaveAs(filePath);
+                            flpPhotourl1 = $"~/Attachment/{ContractorId}/IncomeTax/{fileName}";
+                        }
+                        if (BalanceSheet.PostedFile != null && BalanceSheet.PostedFile.ContentLength > 0)
+                        {
+                            if (BalanceSheet.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(BalanceSheet.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Balance Sheet must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "BalanceSheet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/BalanceSheet/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            BalanceSheet.PostedFile.SaveAs(filePath);
+                            flpPhotourl2 = $"~/Attachment/{ContractorId}/BalanceSheet/{fileName}";
+                        }
+                        if (CalibCertificate.PostedFile != null && CalibCertificate.PostedFile.ContentLength > 0)
+                        {
+                            if (CalibCertificate.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(CalibCertificate.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Calibration Certificate must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "CalibCertificate" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/CalibCertificate/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            CalibCertificate.PostedFile.SaveAs(filePath);
+                            flpPhotourl3 = $"~/Attachment/{ContractorId}/CalibCertificate/{fileName}";
+                        }
+                        if (WorkDetails.PostedFile != null && WorkDetails.PostedFile.ContentLength > 0)
+                        {
+                            if (WorkDetails.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(WorkDetails.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of work must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "WorkDetails" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/WorkDetails/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            WorkDetails.PostedFile.SaveAs(filePath);
+                            flpPhotourl4 = $"~/Attachment/{ContractorId}/WorkDetails/{fileName}";
+                        }
+                        if (AnnexureIII.PostedFile != null && AnnexureIII.PostedFile.ContentLength > 0)
+                        {
+                            if (AnnexureIII.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(AnnexureIII.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of AnnexureIII must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "AnnexureIII" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/AnnexureIII/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            AnnexureIII.PostedFile.SaveAs(filePath);
+                            flpPhotourl5 = $"~/Attachment/{ContractorId}/AnnexureIII/{fileName}";
+                        }
+                        if (Form_E.PostedFile != null && Form_E.PostedFile.ContentLength > 0)
+                        {
+                            if (Form_E.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(Form_E.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Form_E must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "Form_E" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/Form_E/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            Form_E.PostedFile.SaveAs(filePath);
+                            flpPhotourl6 = $"~/Attachment/{ContractorId}/Form_E/{fileName}";
+                        }
+                        if (TreasuryChallan.PostedFile != null && TreasuryChallan.PostedFile.ContentLength > 0)
+                        {
+                            if (TreasuryChallan.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(TreasuryChallan.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Treasury Challan must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+
+                            string fileName = "TreasuryChallan" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/TreasuryChallan/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            TreasuryChallan.PostedFile.SaveAs(filePath);
+                            flpPhotourl7 = $"~/Attachment/{ContractorId}/TreasuryChallan/{fileName}";
+                        }
+
+                        CEI.InsertContractorLicenceRenewalData(txtName.Text.Trim(), txtLicenceNo.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(),
+                            txtBelatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(), txtEmail.Text.Trim(), txtContactNo.Text.Trim(), txtAddress.Text.Trim(),
+                            DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(), txtTreasuryName.Text.Trim(),
+                            txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), txtRemittedAmount.Text.Trim(), flpPhotourl, flpPhotourl1,
+                            flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, txtplace.Text.Trim(),
+                            txtdeclarationdate.Text.Trim(), ContractorId);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
+                        Reset();
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
+                }
+            }
+            catch { }
+        }
+        private void Reset()
+        {
+            txtName.Text = ""; txtLicenceNo.Text = ""; txtIssueDate.Text = ""; txtExpiryDate.Text = ""; txtBelatedDate.Text = ""; txtDOB.Text = "";
+            txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = ""; txtAddress.Text = ""; DdlState.SelectedValue = "0"; DdlDistrict.SelectedValue = "0";
+            txtpincode.Text = ""; txtTreasuryName.Text = ""; txtTreasuryName.Text = ""; txtChallanDate.Text = ""; txtRemittedAmount.Text = "";
+            txtEquipCertificate.Text = ""; txtIncomeTax.Text = ""; txtBalanceSheet.Text = ""; txtCalibCertificate.Text = ""; txtWorkDetails.Text = "";
+            txtAnnexureIII.Text = ""; txtForm_E.Text = ""; txtTreasuryChallan.Text = ""; txtplace.Text = ""; txtdeclarationdate.Text = "";
         }
     }
 }

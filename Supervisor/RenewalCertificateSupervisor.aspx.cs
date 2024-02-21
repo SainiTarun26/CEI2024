@@ -50,7 +50,7 @@ namespace CEIHaryana.Supervisor
                 txtExpiryDate.Text = DateTime.Parse(ExpiryDate).ToString("yyyy-MM-dd");
                 txtAge.Text = ds.Tables[0].Rows[0]["CalculatedAge"].ToString();
                 string DOB = ds.Tables[0].Rows[0]["Age"].ToString();
-                 txtDOB.Text = DateTime.Parse(DOB).ToString("yyyy-MM-dd");
+                txtDOB.Text = DateTime.Parse(DOB).ToString("yyyy-MM-dd");
                 //txtDOB.Text = "";
                 //if (txtDOB.Text != "")
                 //{
@@ -104,7 +104,7 @@ namespace CEIHaryana.Supervisor
                     {
                         MedicalCertificateRow.Visible = true;
                     }
-                    string CalculateDOB =CEI.CalculateRemainingDate(currentDate, birthDate);
+                    string CalculateDOB =CEI.CalculateDate(currentDate, birthDate);
                     DivAge.Visible = true;
                     txtAge.Text = CalculateDOB;                   
                 }
@@ -118,7 +118,7 @@ namespace CEIHaryana.Supervisor
                         {
                             DivBelatedDate.Visible = true;
                             CancelPeriodRow.Visible = true;                            
-                            txtBilatedDate.Text=CEI.CalculateRemainingDate(currentDate, selectedExpiryDate);
+                            txtBilatedDate.Text=CEI.CalculateDate(currentDate, selectedExpiryDate);
                             //int yearsRemaining = currentDate.Year - selectedExpiryDate.Year;
                             //int monthsRemaining = currentDate.Month - selectedExpiryDate.Month;
                             //int daysRemaining = currentDate.Day - selectedExpiryDate.Day;
@@ -580,7 +580,7 @@ namespace CEIHaryana.Supervisor
                         {
                            //Calculate age
                             DivAge.Visible = true;                            
-                            txtAge.Text = CEI.CalculateRemainingDate(selectedDOB,currentDate);
+                            txtAge.Text = CEI.CalculateDate(selectedDOB,currentDate);
                         }
                     }
                     else

@@ -24,6 +24,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// DataUpdated control.
         /// </summary>
         /// <remarks>
@@ -51,15 +60,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
-        /// <summary>
         /// txtLicenceNo control.
         /// </summary>
         /// <remarks>
@@ -67,15 +67,6 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLicenceNo;
-
-        /// <summary>
-        /// RequiredFieldValidator3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
         /// txtIssueDate control.
@@ -87,15 +78,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtIssueDate;
 
         /// <summary>
-        /// RequiredFieldValidator9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
-
-        /// <summary>
         /// txtExpiryDate control.
         /// </summary>
         /// <remarks>
@@ -103,15 +85,6 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtExpiryDate;
-
-        /// <summary>
-        /// RequiredFieldValidator22 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator22;
 
         /// <summary>
         /// divBelated control.
@@ -130,15 +103,6 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBelatedDate;
-
-        /// <summary>
-        /// RequiredFieldValidator23 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator23;
 
         /// <summary>
         /// txtDOB control.
@@ -168,15 +132,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtAge;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-
-        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -184,6 +139,15 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
+
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// txtContactNo control.
@@ -276,6 +240,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtpincode;
 
         /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
         /// RadioButtonList3 control.
         /// </summary>
         /// <remarks>
@@ -339,13 +312,13 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
 
         /// <summary>
-        /// TxtAmount control.
+        /// txtRemittedAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtRemittedAmount;
 
         /// <summary>
         /// RequiredFieldValidator14 control.
@@ -654,13 +627,13 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.Button btnTreasuryChallan;
 
         /// <summary>
-        /// File4 control.
+        /// TreasuryChallan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile File4;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile TreasuryChallan;
 
         /// <summary>
         /// RequiredFieldValidator18 control.
@@ -690,6 +663,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtplace;
 
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
         /// txtdeclarationdate control.
         /// </summary>
         /// <remarks>
@@ -697,6 +679,15 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdeclarationdate;
+
+        /// <summary>
+        /// RequiredFieldValidator9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
         /// btnSubmit control.

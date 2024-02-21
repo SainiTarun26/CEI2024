@@ -210,7 +210,10 @@
 
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
+                <asp:UpdatePanel runat="server" ID="updatePanel">
+                    <ContentTemplate>
 
+                    
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
@@ -285,11 +288,11 @@
                             <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtDOB" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtDOB" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Birth</asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" runat="server" id="DivAge" visible="false">
                             <label for="Age">
                                 Age<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAge" runat="server" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);"  autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtAge" runat="server" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);"  autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="300"></asp:TextBox>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAge" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Age</asp:RequiredFieldValidator>
                         </div>
 
@@ -314,16 +317,19 @@
                         </div>
                         <div class="row" style="margin-left: 2%; margin-bottom: 1%;">
                             Whether there is any change of Address? &nbsp;&nbsp;
-                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                 <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="No" Value="1" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="No" Value="1" Selected="True" ></asp:ListItem>
                             </asp:RadioButtonList>
+                           <%-- <asp:CustomValidator ID="customvalidation1" OnServerValidate="customvalidation1_ServerValidate"  runat="server" ErrorMessage="Select An Option" Display="Dynamic" ControlToValidate="RadioButtonList1" 
+                                ValidationGroup="Submit"></asp:CustomValidator>--%>
+                                <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="RadioButtonList1" ErrorMessage="Please Enter  Address" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                         </div>
                         <div class="col-8">
                             <label for="Address">
                                 Address<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="TextAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="TextAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter  Address</asp:RequiredFieldValidator>
 
                         </div>
@@ -332,7 +338,7 @@
                                 State/UT 
             <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" OnSelectedIndexChanged="DdlState_SelectedIndexChanged" ID="DdlState" TabIndex="8" runat="server" AutoPostBack="true">
+                            <asp:DropDownList Style="width: 100% !important;"  class="form-control select-form select2" OnSelectedIndexChanged="DdlState_SelectedIndexChanged" ID="DdlState" TabIndex="8" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
@@ -341,14 +347,14 @@
                                 District
             <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="DdlDistrict" runat="server" TabIndex="9">
+                            <asp:DropDownList Style="width: 100% !important;"  class="form-control  select-form select2" ID="DdlDistrict" runat="server" TabIndex="9">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator17" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
                         <div class="col-4">
                             <label for="PinCode">PinCode </label>
-                            <asp:TextBox class="form-control" ID="txtpincode" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtpincode" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
                             <span id="lblPinError" style="color: red"></span>
                             <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
                             --%>
@@ -390,12 +396,12 @@
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-left: 1%; margin-bottom: 1%;">
                         Whether Applied fro Upgradation earlier? &nbsp;&nbsp;
-    <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+    <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal" TabIndex="25">
         <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
         <asp:ListItem Text="No" Value="1" Selected="True"></asp:ListItem>
     </asp:RadioButtonList>
                     </div>
-                    <div class="row">
+                    <div class="row" runat="server" id="DivUpgradationEarlier" visible="false" >
                         <div class="col-4">
                             <label for="InterviewDate">Date of Interview</label>
                             <asp:TextBox class="form-control" ID="txtInterviewDate" onkeydown="return preventEnterSubmit(event)" min='0000-01-01' max='9999-01-01' Type="date" runat="server" autocomplete="off" MaxLength="6"  TabIndex="10"></asp:TextBox>
@@ -412,7 +418,11 @@
                         </div>
                     </div>
                 </div>
+                        </ContentTemplate>
+
+                </asp:UpdatePanel>
                 <h7 class="card-title fw-semibold mb-4">Documents</h7>
+
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
                         <div class="table-responsive">
@@ -473,7 +483,7 @@
                         <div class="form-group row">
                             <label for="exampleInputUsername2" class="col-sm-1 col-form-label" style="padding: 0px;">Date:</label>
                             <div class="col-sm-4">
-                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtdeclarationdate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtdeclarationdate"  TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -484,8 +494,8 @@
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
-
-                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                        
+                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit"  class="btn btn-primary mr-2" />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 17px; padding-right: 17px;" />
 
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
