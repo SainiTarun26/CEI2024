@@ -19,13 +19,11 @@ namespace CEIHaryana.Contractor
             {
                 if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
                 {
-
                     GetContractorDetails();
                     GetGridData();
                 }
             }
         }
-
         private void GetContractorDetails()
         {
             try
@@ -46,27 +44,6 @@ namespace CEIHaryana.Contractor
 
                     string ExpiryDate = ds.Tables[0].Rows[0]["ExpiryDate"].ToString();
                     txtExpiryDate.Text = DateTime.Parse(ExpiryDate).ToString("yyyy-MM-dd");
-
-                    //if (!string.IsNullOrEmpty(txtExpiryDate.Text))
-                    //{
-                    //    DateTime selectedExpiryDate;
-                    //    if (DateTime.TryParse(txtExpiryDate.Text, out selectedExpiryDate))
-                    //    {
-                    //        DateTime currentDate = DateTime.Now;
-                    //        if (selectedExpiryDate < currentDate)
-                    //        {
-                    //            divBelated.Visible = true;
-                    //            TimeSpan remainingDays = currentDate - selectedExpiryDate;
-                    //            int ageYear = (int)(remainingDays.TotalDays / 365.25);
-                    //            int ageMonth = (int)((remainingDays.TotalDays % 365.25) / 30.44);
-                    //            int ageDay = (int)(remainingDays.TotalDays % 30.44);
-                    //            string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
-                    //            txtBelatedDate.Text = ageString;
-                    //        }
-                    //        else {
-                    //            divBelated.Visible = false;
-
-
                     if (!string.IsNullOrEmpty(txtExpiryDate.Text))
                     {
                         DateTime selectedExpiryDate;
@@ -75,8 +52,8 @@ namespace CEIHaryana.Contractor
                             DateTime currentDate = DateTime.Now;
                             if (selectedExpiryDate < currentDate)
                             {
-                                divBelated.Visible = true;
-                                txtBelatedDate.Text = CEI.CalculateDate(currentDate, selectedExpiryDate);
+                                divExtended.Visible = true;
+                                txtExtendedBy.Text = CEI.CalculateDate(currentDate, selectedExpiryDate);
                             }
                         }
                     }
@@ -87,27 +64,17 @@ namespace CEIHaryana.Contractor
                         if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
                         {
                             DateTime currentDate = DateTime.Now;
-                            //int ageDiff = currentDate.Year - selectedDOB.Year;
-
-                            //TimeSpan ageDifference = currentDate - selectedDOB;
-                            //int ageYear = (int)(ageDifference.TotalDays / 365.25);
-                            //int ageMonth = (int)((ageDifference.TotalDays % 365.25) / 30.44);
-                            //int ageDay = (int)(ageDifference.TotalDays % 30.44);
-                            //string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
-                            //txtAge.Text = ageString;
                             txtAge.Text = CEI.CalculateDate(currentDate, selectedDOB);
                         }
                         else
                         {
                             ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);
                             txtDOB.Text = "";
-
                             txtAge.Text = "";
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Please enter your date of birth.');", true);
                     }
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
@@ -221,8 +188,6 @@ namespace CEIHaryana.Contractor
                     txtAddress.ReadOnly = true;
                     DdlState.Enabled = false;
                     DdlDistrict.Enabled = false;
-                    //DdlState.Attributes.Add("disabled", "disabled");
-                    //DdlDistrict.Attributes.Add("disabled", "disabled");
                     txtpincode.ReadOnly = true;
                 }
                 else
@@ -231,7 +196,6 @@ namespace CEIHaryana.Contractor
                     DdlState.Enabled = true;
                     DdlDistrict.Enabled = true;
                     //DdlState.Attributes.Remove("disabled");
-                    //DdlDistrict.Attributes.Remove("disabled");
                     txtpincode.ReadOnly = false;
                 }
             }
@@ -272,7 +236,6 @@ namespace CEIHaryana.Contractor
                 hdnId.Value = LoginID;
 
                 DataSet ds = new DataSet();
-
                 ds = CEI.WorkIntimationGridData(LoginID);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -309,6 +272,7 @@ namespace CEIHaryana.Contractor
                         string flpPhotourl5 = string.Empty;
                         string flpPhotourl6 = string.Empty;
                         string flpPhotourl7 = string.Empty;
+                        string flpPhotourl8 = string.Empty;
                         if (EquipCertificate.PostedFile != null && EquipCertificate.PostedFile.ContentLength > 0)
                         {
                             if (EquipCertificate.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(EquipCertificate.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
@@ -316,7 +280,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Equipment tested certificate must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "EquipCertificate" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/EquipCertificate/"));
                             if (!Directory.Exists(directoryPath))
@@ -334,7 +297,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Income Tax Returns certificate must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "IncomeTax" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/IncomeTax/"));
                             if (!Directory.Exists(directoryPath))
@@ -352,7 +314,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Balance Sheet must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "BalanceSheet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/BalanceSheet/"));
                             if (!Directory.Exists(directoryPath))
@@ -370,7 +331,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Calibration Certificate must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "CalibCertificate" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/CalibCertificate/"));
                             if (!Directory.Exists(directoryPath))
@@ -388,7 +348,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of work must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "WorkDetails" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/WorkDetails/"));
                             if (!Directory.Exists(directoryPath))
@@ -406,7 +365,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of AnnexureIII must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "AnnexureIII" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/AnnexureIII/"));
                             if (!Directory.Exists(directoryPath))
@@ -424,7 +382,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Form_E must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "Form_E" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/Form_E/"));
                             if (!Directory.Exists(directoryPath))
@@ -442,7 +399,6 @@ namespace CEIHaryana.Contractor
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Treasury Challan must be a PDF file with a maximum size of 2MB.')", true);
                                 return;
                             }
-
                             string fileName = "TreasuryChallan" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                             string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/TreasuryChallan/"));
                             if (!Directory.Exists(directoryPath))
@@ -454,12 +410,31 @@ namespace CEIHaryana.Contractor
                             flpPhotourl7 = $"~/Attachment/{ContractorId}/TreasuryChallan/{fileName}";
                         }
 
-                        CEI.InsertContractorLicenceRenewalData(txtName.Text.Trim(), txtLicenceNo.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(),
-                            txtBelatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(), txtEmail.Text.Trim(), txtContactNo.Text.Trim(), txtAddress.Text.Trim(),
-                            DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(), txtTreasuryName.Text.Trim(),
-                            txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), txtRemittedAmount.Text.Trim(), flpPhotourl, flpPhotourl1,
-                            flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, ContractorId);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
+                        if (FeeReciept.PostedFile != null && FeeReciept.PostedFile.ContentLength > 0)
+                        {
+                            if (FeeReciept.PostedFile.ContentLength > maxFileSize || !Path.GetExtension(FeeReciept.PostedFile.FileName).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Payment receipt must be a PDF file with a maximum size of 2MB.')", true);
+                                return;
+                            }
+                            string fileName = "FeeReciept" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            string directoryPath = Path.Combine(HttpContext.Current.Server.MapPath($"~/Attachment/{ContractorId}/FeeReciept/"));
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePath = Path.Combine(directoryPath, fileName);
+                            FeeReciept.PostedFile.SaveAs(filePath);
+                            flpPhotourl8 = $"~/Attachment/{ContractorId}/FeeReciept/{fileName}";
+
+                        }
+
+                        CEI.InsertRenewalContractorRequestData(txtExpiryDate.Text.Trim(), txtExtendedBy.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
+                            txtEmail.Text.Trim(), txtContactNo.Text.Trim(), txtAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(),
+                            txtpincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(), txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(),
+                            txtRemittedAmount.Text.Trim(), flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7,
+                            flpPhotourl8, ContractorId);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Requested Successfully !!!')", true);
                         Reset();
                     }
                 }
@@ -472,11 +447,22 @@ namespace CEIHaryana.Contractor
         }
         private void Reset()
         {
-            txtName.Text = ""; txtLicenceNo.Text = ""; txtIssueDate.Text = ""; txtExpiryDate.Text = ""; txtBelatedDate.Text = ""; txtDOB.Text = "";
-            txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = ""; txtAddress.Text = ""; DdlState.SelectedValue = "0"; DdlDistrict.SelectedValue = "0";
-            txtpincode.Text = ""; txtTreasuryName.Text = ""; txtTreasuryName.Text = ""; txtChallanDate.Text = ""; txtRemittedAmount.Text = "";
-            txtEquipCertificate.Text = ""; txtIncomeTax.Text = ""; txtBalanceSheet.Text = ""; txtCalibCertificate.Text = ""; txtWorkDetails.Text = "";
-            txtAnnexureIII.Text = ""; txtForm_E.Text = ""; txtTreasuryChallan.Text = "";
+            txtExtendedBy.Text = ""; txtDOB.Text = ""; txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = ""; txtAddress.Text = "";
+            DdlState.SelectedValue = "0"; DdlDistrict.SelectedValue = "0"; txtpincode.Text = ""; txtTreasuryName.Text = ""; txtTreasuryName.Text = "";
+            txtChallanDate.Text = ""; txtRemittedAmount.Text = ""; txtEquipCertificate.Text = ""; txtIncomeTax.Text = ""; txtBalanceSheet.Text = "";
+            txtCalibCertificate.Text = ""; txtWorkDetails.Text = ""; txtAnnexureIII.Text = ""; txtForm_E.Text = ""; txtTreasuryChallan.Text = "";
+        }
+
+        protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonList2.SelectedValue == "1")
+            {
+                divPaymentMode.Visible = true;
+            }
+            else
+            {
+                divPaymentMode.Visible = false;
+            }
         }
     }
 }

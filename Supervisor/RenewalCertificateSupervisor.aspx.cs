@@ -15,7 +15,7 @@ namespace CEIHaryana.Supervisor
 
         CEI CEI = new CEI();
         string SupervisorId = string.Empty;
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,8 +25,8 @@ namespace CEIHaryana.Supervisor
                 {
                     ddlLoadBindState();
                     ddlLoadBindStateForEmployer();
-                   // ddlLoadBindStateForchangedEmployer();                    
-                    GetSupervisorDetails();                    
+                    // ddlLoadBindStateForchangedEmployer();                    
+                    GetSupervisorDetails();
                 }
 
             }
@@ -42,7 +42,7 @@ namespace CEIHaryana.Supervisor
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
-                txtCertificate.Text = ds.Tables[0].Rows[0]["CertificateNo"].ToString();                
+                txtCertificate.Text = ds.Tables[0].Rows[0]["CertificateNo"].ToString();
                 ddlLoadBindState();
                 string issueDate = ds.Tables[0].Rows[0]["DateofIntialissue"].ToString();
                 txtIssueDate.Text = DateTime.Parse(issueDate).ToString("yyyy-MM-dd");
@@ -61,7 +61,7 @@ namespace CEIHaryana.Supervisor
                 //        int ageDiff = currentDate.Year - selectedDOB.Year;                        
                 //        if (ageDiff > 55)
                 //        {
-                            
+
                 //             txtDOB.Text = "";
                 //             txtAge.Text = "";
                 //        }
@@ -98,15 +98,15 @@ namespace CEIHaryana.Supervisor
                 DdlDistrict.SelectedValue = District;
                 if (DateTime.TryParse(txtDOB.Text, out DateTime birthDate))
                 {
-                    DateTime currentDate = DateTime.Now;                    
+                    DateTime currentDate = DateTime.Now;
                     int year = currentDate.Year - birthDate.Year;
                     if (year > 55)
                     {
                         MedicalCertificateRow.Visible = true;
                     }
-                    string CalculateDOB =CEI.CalculateDate(currentDate, birthDate);
+                    string CalculateDOB = CEI.CalculateDate(currentDate, birthDate);
                     DivAge.Visible = true;
-                    txtAge.Text = CalculateDOB;                   
+                    txtAge.Text = CalculateDOB;
                 }
                 if (!string.IsNullOrEmpty(txtExpiryDate.Text))
                 {
@@ -117,8 +117,8 @@ namespace CEIHaryana.Supervisor
                         if (selectedExpiryDate < currentDate)
                         {
                             DivBelatedDate.Visible = true;
-                            CancelPeriodRow.Visible = true;                            
-                            txtBilatedDate.Text=CEI.CalculateDate(currentDate, selectedExpiryDate);
+                            CancelPeriodRow.Visible = true;
+                            txtBilatedDate.Text = CEI.CalculateDate(currentDate, selectedExpiryDate);
                             //int yearsRemaining = currentDate.Year - selectedExpiryDate.Year;
                             //int monthsRemaining = currentDate.Month - selectedExpiryDate.Month;
                             //int daysRemaining = currentDate.Day - selectedExpiryDate.Day;
@@ -164,13 +164,13 @@ namespace CEIHaryana.Supervisor
                             //    txtBilatedDate.Text = $"{daysRemaining} Days";
                             //}
 
-                        }                        
+                        }
                     }
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid date format');", true);
                         Console.WriteLine(".");
-                    }                   
+                    }
                 }
             }
         }
@@ -297,13 +297,14 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
+                DivEmployerName.Visible = false;
                 DivLicense.Visible = false;
                 DivNameofEmp.Visible = false;
                 DivPinCode.Visible = false;
                 DivState.Visible = false;
                 DivAddress.Visible = false;
                 DivDistrict.Visible = false;
-                DivEmployerName.Visible = true;
+                DivEmployerName.Visible = false;
                 if (DdlEmployerType.SelectedValue == "1")
                 {
                     DivLicense.Visible = true;
@@ -311,7 +312,8 @@ namespace CEIHaryana.Supervisor
                 }
                 else if (DdlEmployerType.SelectedValue == "2")
                 {
-                    DivLicense.Visible = false;
+
+                    
                     DivNameofEmp.Visible = true;
                     DivPinCode.Visible = true;
                     DivState.Visible = true;
@@ -333,7 +335,8 @@ namespace CEIHaryana.Supervisor
             if (RadioButtonList2.SelectedValue == "0")
             {
                 divSubsequentPeriod.Visible = true;
-               // ddlLoadBindStateForchangedEmployer();
+                // ddlLoadBindStateForchangedEmployer();
+                GetContractorDetails();
             }
 
         }
@@ -493,16 +496,19 @@ namespace CEIHaryana.Supervisor
                         }
 
                         CEI.InsertRenewalSupervisorData(
-                            txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
-                            txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(),
-                            txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), TxtAmount.Text.Trim(),
-                            DdlEmployerType.SelectedItem.ToString(), txtEmployerLicenceNo.Text.Trim(), TxtEmployerName.Text.Trim(), txtEmployerAddress.Text.Trim(),
-                            ddlEmployerState.SelectedValue == "0" ? null : ddlEmployerState.SelectedItem.ToString(), Selecteddistrict,
-                            TxtEmployerPincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(),
-                            TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), txtChangedEmployerName.Text.Trim(),
-                            txtchangedEmployerAddress.Text.Trim(),                            
-                             flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, SupervisorId
-                            );
+                         txtBilatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
+                         txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(),
+                         DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(),
+                         txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(),
+                         TxtAmount.Text.Trim(), DdlEmployerType.SelectedItem.ToString(), txtEmployerLicenceNo.Text.Trim(),
+                         txtContractorName.Text.Trim(), TxtEmployerName.Text.Trim(),
+                          txtEmployerAddress.Text.Trim(),
+                         ddlEmployerState.SelectedValue == "0" ? null : ddlEmployerState.SelectedItem.ToString(), Selecteddistrict,
+                         TxtEmployerPincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(),
+                         TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), ddlContractorLicence.SelectedValue.ToString(), txtChangedEmployerName.Text.Trim(),
+                         txtchangedEmployerAddress.Text.Trim(),
+                         flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, SupervisorId
+                         );
                         Reset();
                         DataSaved.Visible = true;
                     }
@@ -515,9 +521,9 @@ namespace CEIHaryana.Supervisor
 
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Some Error Occured,Please Login Again');",true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Some Error Occured,Please Login Again');", true);
                 Response.Redirect("/Login.aspx");
-            }          
+            }
         }
 
         private void Reset()
@@ -526,9 +532,9 @@ namespace CEIHaryana.Supervisor
             txtDOB.Text = ""; txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = ""; TextAddress.Text = ""; DdlState.SelectedValue = "0";
             DdlDistrict.SelectedValue = "0"; txtpincode.Text = ""; txtTreasuryName.Text = ""; txtchallanNo.Text = ""; txtChallanDate.Text = "";
             TxtAmount.Text = ""; DdlEmployerType.SelectedValue = "0"; txtEmployerLicenceNo.Text = ""; TxtEmployerName.Text = "";
-            txtEmployerAddress.Text = ""; ddlEmployerState.SelectedValue = "0"; ddlEmployerDistrict.SelectedValue = "0"; TxtEmployerPincode.Text = ""; 
-            TxtDateFrom.Text = ""; txtDateTo.Text = ""; txtChangedEmployerName.Text = ""; txtchangedEmployerAddress.Text = "";                        
-            txtTreasuryChallan.Text = "";txtPresentWrkingStatus.Text = ""; txtMedicalCertificate.Text = "";  txtCanelPeriod.Text = "";            
+            txtEmployerAddress.Text = ""; ddlEmployerState.SelectedValue = "0"; ddlEmployerDistrict.SelectedValue = "0"; TxtEmployerPincode.Text = "";
+            TxtDateFrom.Text = ""; txtDateTo.Text = ""; txtChangedEmployerName.Text = ""; txtchangedEmployerAddress.Text = "";
+            txtTreasuryChallan.Text = ""; txtPresentWrkingStatus.Text = ""; txtMedicalCertificate.Text = ""; txtCanelPeriod.Text = "";
             DivLicense.Visible = false; DivAddress.Visible = false; DivState.Visible = false; DivDistrict.Visible = false; divSubsequentPeriod.Visible = false;
             Check.Checked = false;
         }
@@ -540,6 +546,19 @@ namespace CEIHaryana.Supervisor
         //        ddlLoadBindDistrictForChangedEmployeer(txtchangedEmployerState.SelectedItem.ToString());
         //    }
         //}
+        private void GetContractorDetails()
+        {
+
+            DataSet dsContractor = new DataSet();
+            dsContractor = CEI.GetContractorData();
+            ddlContractorLicence.DataSource = dsContractor;
+            ddlContractorLicence.DataTextField = "ContractorData";
+            ddlContractorLicence.DataValueField = "ContractorID";
+            ddlContractorLicence.DataBind();
+            ddlContractorLicence.Items.Insert(0, new ListItem("Select", "0"));
+            dsContractor.Clear();
+
+        }
 
         protected void ddlEmployerState_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -555,12 +574,12 @@ namespace CEIHaryana.Supervisor
             {
 
                 if (txtDOB.Text != "")
-                {                   
+                {
                     DateTime selectedDOB;
                     if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
                     {
                         DateTime currentDate = DateTime.Now;
-                        int ageDiff = currentDate.Year - selectedDOB.Year;                        
+                        int ageDiff = currentDate.Year - selectedDOB.Year;
                         if (ageDiff < 18)
                         {
                             ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
@@ -576,9 +595,9 @@ namespace CEIHaryana.Supervisor
                         }
                         else
                         {
-                           //Calculate age
-                            DivAge.Visible = true;                            
-                            txtAge.Text = CEI.CalculateDate(selectedDOB,currentDate);
+                            //Calculate age
+                            DivAge.Visible = true;
+                            txtAge.Text = CEI.CalculateDate(selectedDOB, currentDate);
                         }
                     }
                     else
@@ -586,7 +605,7 @@ namespace CEIHaryana.Supervisor
                         txtDOB.Text = "";
                         txtAge.Text = "";
                         DivAge.Visible = false;
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);                        
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Invalid Date format. Please enter a valid date.');", true);
                     }
                 }
                 else

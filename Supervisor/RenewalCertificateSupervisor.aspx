@@ -405,7 +405,7 @@
                                     <label for="DateofRenewal">
                                         Name of Contractor<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="TextBox1" min='0000-01-01' max='9999-01-01' MaxLength="10" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtContractorName" min='0000-01-01' max='9999-01-01' MaxLength="10" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmployerLicenceNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter License No. </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4" id="DivNameofEmp" runat="server" visible="false">
@@ -418,16 +418,7 @@
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TxtEmployerName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-4" id="Div2" runat="server" visible="false">
-                                    <label for="Name">
-                                        Licence No.<samp style="color: red"> * </samp>
-                                    </label>
-                                    <asp:TextBox class="form-control" ID="TextBox2" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                        MaxLength="50" Style="margin-left: 18px;">
-                                    </asp:TextBox>
-
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="TxtEmployerName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
-                                </div>
+                                
                                 <div class="col-8" id="DivAddress" runat="server" visible="false">
                                     <label for="RegisteredOffice">
                                         Address<samp style="color: red"> * </samp>
