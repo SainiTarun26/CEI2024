@@ -17,7 +17,6 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
 
-
     <%--<script type="text/javascript">
         $(document).ready(function () {
             $("#<%=txtDateofIntialissue.ClientID%>").datepicker({

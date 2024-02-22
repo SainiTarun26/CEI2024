@@ -368,32 +368,19 @@
 </div>--%>
                     </div>
                 </div>
-
-                <h7 class="card-title fw-semibold mb-4">Experience Details</h7>
+                        <h7 class="card-title fw-semibold mb-4"> Upgradation Details</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <div class="row">
-
-
-                        <%-- Add Grid View Here --%>
-
-
-
-
-
-                        <%-- End Before This Tag --%>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="TotalExperience">Total Experience</label>
-                            <asp:TextBox class="form-control" ID="textExp" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off"  TabIndex="10"></asp:TextBox>
-                            <span id="lbltotExp" style="color: red"></span>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator55" runat="server" ControlToValidate="textExp"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >Please Enter Total Experience</asp:RequiredFieldValidator>
-                            
+            <div class="row" style="margin-bottom:20px;">
+                <div class="col-4">
+                            <label>
+                               Requested Voltage for Upgradation 
+            <samp style="color: red">* </samp>
+                            </label>
+                            <asp:DropDownList Style="width: 100% !important;"  class="form-control select-form select2" OnSelectedIndexChanged="DdlState_SelectedIndexChanged" ID="DropDownList1" TabIndex="8" runat="server" AutoPostBack="true">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
-                    </div>
-                </div>
-                <h7 class="card-title fw-semibold mb-4">Upgradation Details</h7>
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+            </div>
                     <div class="row" style="margin-left: 1%; margin-bottom: 1%;">
                         Whether Applied fro Upgradation earlier? &nbsp;&nbsp;
     <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal" TabIndex="25">
@@ -418,6 +405,30 @@
                         </div>
                     </div>
                 </div>
+                <h7 class="card-title fw-semibold mb-4">Experience Details</h7>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row">
+
+
+                        <%-- Add Grid View Here --%>
+
+
+
+
+
+                        <%-- End Before This Tag --%>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="TotalExperience">Total Experience</label>
+                            <asp:TextBox class="form-control" ID="textExp" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off"  TabIndex="10"></asp:TextBox>
+                            <span id="lbltotExp" style="color: red"></span>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator55" runat="server" ControlToValidate="textExp"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >Please Enter Total Experience</asp:RequiredFieldValidator>
+                            
+                        </div>
+                    </div>
+                </div>
+                
                         </ContentTemplate>
 
                 </asp:UpdatePanel>
@@ -466,13 +477,13 @@
 
                     </div>
                 </div>
-                <div class="row" style="margin-left: 1%;">
+                <div class="row" style="margin-left: 1%;margin-bottom:20px;">
                     <asp:CheckBox ID="Check" runat="server" />&nbsp;
                     <text>
                         I hereby declare that the information furnished in the application is correct.
                     </text>
                 </div>
-                <div class="row" style="margin-top: 15px; margin-bottom: 15px; margin-left: 1%;">
+                <%--<div class="row" style="margin-top: 15px; margin-bottom: 15px; margin-left: 1%;">
                     <div class="col-md-6">
                         <div class="form-group row">
                             <label for="exampleInputUsername2" class="col-sm-1 col-form-label" style="padding: 0px;">Place:</label>
@@ -490,7 +501,7 @@
 
                     <div class="col-md-6">
                     </div>
-                </div>
+                </div>--%>
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">

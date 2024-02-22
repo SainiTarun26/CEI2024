@@ -25,7 +25,7 @@ namespace CEIHaryana.Supervisor
                 {
                     ddlLoadBindState();
                     ddlLoadBindStateForEmployer();
-                    ddlLoadBindStateForchangedEmployer();                    
+                   // ddlLoadBindStateForchangedEmployer();                    
                     GetSupervisorDetails();                    
                 }
 
@@ -211,24 +211,24 @@ namespace CEIHaryana.Supervisor
                 //msg.Text = ex.Message;
             }
         }
-        private void ddlLoadBindStateForchangedEmployer()
-        {
-            try
-            {
-                DataSet dsState = new DataSet();
-                dsState = CEI.GetddlDrawState();
-                txtchangedEmployerState.DataSource = dsState;
-                txtchangedEmployerState.DataTextField = "StateName";
-                txtchangedEmployerState.DataValueField = "StateID";
-                txtchangedEmployerState.DataBind();
-                txtchangedEmployerState.Items.Insert(0, new ListItem("Select", "0"));
-                dsState.Clear();
-            }
-            catch (Exception ex)
-            {
-                //msg.Text = ex.Message;
-            }
-        }
+        //private void ddlLoadBindStateForchangedEmployer()
+        //{
+        //    try
+        //    {
+        //        DataSet dsState = new DataSet();
+        //        dsState = CEI.GetddlDrawState();
+        //        txtchangedEmployerState.DataSource = dsState;
+        //        txtchangedEmployerState.DataTextField = "StateName";
+        //        txtchangedEmployerState.DataValueField = "StateID";
+        //        txtchangedEmployerState.DataBind();
+        //        txtchangedEmployerState.Items.Insert(0, new ListItem("Select", "0"));
+        //        dsState.Clear();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //msg.Text = ex.Message;
+        //    }
+        //}
         private void ddlLoadBindDistrict(string state)
         {
             try
@@ -247,24 +247,24 @@ namespace CEIHaryana.Supervisor
                 //msg.Text = ex.Message;
             }
         }
-        private void ddlLoadBindDistrictForChangedEmployeer(string state)
-        {
-            try
-            {
-                DataSet dsDistrict = new DataSet();
-                dsDistrict = CEI.GetddlDrawDistrict(state);
-                ddlchangedemployerDistrict.DataSource = dsDistrict;
-                ddlchangedemployerDistrict.DataTextField = "District";
-                ddlchangedemployerDistrict.DataValueField = "District";
-                ddlchangedemployerDistrict.DataBind();
-                ddlchangedemployerDistrict.Items.Insert(0, new ListItem("Select", "0"));
-                dsDistrict.Clear();
-            }
-            catch (Exception ex)
-            {
-                //msg.Text = ex.Message;
-            }
-        }
+        //private void ddlLoadBindDistrictForChangedEmployeer(string state)
+        //{
+        //    try
+        //    {
+        //        DataSet dsDistrict = new DataSet();
+        //        dsDistrict = CEI.GetddlDrawDistrict(state);
+        //        ddlchangedemployerDistrict.DataSource = dsDistrict;
+        //        ddlchangedemployerDistrict.DataTextField = "District";
+        //        ddlchangedemployerDistrict.DataValueField = "District";
+        //        ddlchangedemployerDistrict.DataBind();
+        //        ddlchangedemployerDistrict.Items.Insert(0, new ListItem("Select", "0"));
+        //        dsDistrict.Clear();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //msg.Text = ex.Message;
+        //    }
+        //}
         private void ddlLoadBindDistrictForEmployer(string state)
         {
             try
@@ -303,9 +303,11 @@ namespace CEIHaryana.Supervisor
                 DivState.Visible = false;
                 DivAddress.Visible = false;
                 DivDistrict.Visible = false;
+                DivEmployerName.Visible = true;
                 if (DdlEmployerType.SelectedValue == "1")
                 {
                     DivLicense.Visible = true;
+                    DivEmployerName.Visible = true;
                 }
                 else if (DdlEmployerType.SelectedValue == "2")
                 {
@@ -331,7 +333,7 @@ namespace CEIHaryana.Supervisor
             if (RadioButtonList2.SelectedValue == "0")
             {
                 divSubsequentPeriod.Visible = true;
-                ddlLoadBindStateForchangedEmployer();
+               // ddlLoadBindStateForchangedEmployer();
             }
 
         }
@@ -470,15 +472,15 @@ namespace CEIHaryana.Supervisor
                             }
                         }
 
-                        string SelectedValue = ddlchangedemployerDistrict.SelectedValue.ToString();
-                        if (string.IsNullOrEmpty(SelectedValue) || SelectedValue == "0")
-                        {
-                            SelectedValue = null;
-                        }
-                        else
-                        {
-                            SelectedValue = ddlchangedemployerDistrict.SelectedItem.ToString();
-                        }
+                        //string SelectedValue = ddlchangedemployerDistrict.SelectedValue.ToString();
+                        //if (string.IsNullOrEmpty(SelectedValue) || SelectedValue == "0")
+                        //{
+                        //    SelectedValue = null;
+                        //}
+                        //else
+                        //{
+                        //    SelectedValue = ddlchangedemployerDistrict.SelectedItem.ToString();
+                        //}
 
                         string Selecteddistrict = ddlEmployerDistrict.SelectedValue.ToString();
                         if (string.IsNullOrEmpty(Selecteddistrict) || Selecteddistrict == "0")
@@ -491,17 +493,15 @@ namespace CEIHaryana.Supervisor
                         }
 
                         CEI.InsertRenewalSupervisorData(
-                            txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(), txtBilatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
+                            txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
                             txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(),
                             txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), TxtAmount.Text.Trim(),
                             DdlEmployerType.SelectedItem.ToString(), txtEmployerLicenceNo.Text.Trim(), TxtEmployerName.Text.Trim(), txtEmployerAddress.Text.Trim(),
                             ddlEmployerState.SelectedValue == "0" ? null : ddlEmployerState.SelectedItem.ToString(), Selecteddistrict,
                             TxtEmployerPincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(),
-                            TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), txtEmployercontractorLicence.Text.Trim(), txtChangedEmployerName.Text.Trim(),
-                            txtchangedEmployerAddress.Text.Trim(),
-                            txtchangedEmployerState.SelectedValue == "0" ? null : txtchangedEmployerState.SelectedItem.ToString(),
-                            SelectedValue,
-                            txchangedEmployerPincode.Text.Trim(), flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, txtplace.Text.Trim(), txtdeclarationdate.Text.Trim(), SupervisorId
+                            TxtDateFrom.Text.Trim(), txtDateTo.Text.Trim(), txtChangedEmployerName.Text.Trim(),
+                            txtchangedEmployerAddress.Text.Trim(),                            
+                             flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, SupervisorId
                             );
                         Reset();
                         DataSaved.Visible = true;
@@ -527,21 +527,19 @@ namespace CEIHaryana.Supervisor
             DdlDistrict.SelectedValue = "0"; txtpincode.Text = ""; txtTreasuryName.Text = ""; txtchallanNo.Text = ""; txtChallanDate.Text = "";
             TxtAmount.Text = ""; DdlEmployerType.SelectedValue = "0"; txtEmployerLicenceNo.Text = ""; TxtEmployerName.Text = "";
             txtEmployerAddress.Text = ""; ddlEmployerState.SelectedValue = "0"; ddlEmployerDistrict.SelectedValue = "0"; TxtEmployerPincode.Text = ""; 
-            TxtDateFrom.Text = ""; txtDateTo.Text = ""; txtEmployercontractorLicence.Text = ""; txtChangedEmployerName.Text = ""; txtchangedEmployerAddress.Text = "";
-            txtchangedEmployerState.SelectedValue = "0"; ddlchangedemployerDistrict.SelectedValue = "0"; txchangedEmployerPincode.Text = "";            
-            txtTreasuryChallan.Text = "";txtPresentWrkingStatus.Text = ""; txtMedicalCertificate.Text = "";  txtCanelPeriod.Text = "";
-            txtplace.Text = ""; txtdeclarationdate.Text = "";
+            TxtDateFrom.Text = ""; txtDateTo.Text = ""; txtChangedEmployerName.Text = ""; txtchangedEmployerAddress.Text = "";                        
+            txtTreasuryChallan.Text = "";txtPresentWrkingStatus.Text = ""; txtMedicalCertificate.Text = "";  txtCanelPeriod.Text = "";            
             DivLicense.Visible = false; DivAddress.Visible = false; DivState.Visible = false; DivDistrict.Visible = false; divSubsequentPeriod.Visible = false;
             Check.Checked = false;
         }
 
-        protected void txtchangedEmployerState_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (txtchangedEmployerState.SelectedValue != null && txtchangedEmployerState.SelectedValue != "0")
-            {
-                ddlLoadBindDistrictForChangedEmployeer(txtchangedEmployerState.SelectedItem.ToString());
-            }
-        }
+        //protected void txtchangedEmployerState_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (/txtchangedEmployerState.SelectedValue != null && txtchangedEmployerState.SelectedValue != "0")
+        //    {
+        //        ddlLoadBindDistrictForChangedEmployeer(txtchangedEmployerState.SelectedItem.ToString());
+        //    }
+        //}
 
         protected void ddlEmployerState_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -572,7 +570,7 @@ namespace CEIHaryana.Supervisor
                         }
                         else if (ageDiff > 65)
                         {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You are not eligible to fill this form.');", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You are not eligible to fill this form,You age is above 65.');", true);
                             txtDOB.Text = "";
                             txtAge.Text = "";
                         }
@@ -603,6 +601,9 @@ namespace CEIHaryana.Supervisor
             }
         }
 
-        
+        protected void BtnReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
     }
 }

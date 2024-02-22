@@ -46,6 +46,102 @@
         }
     </script>
     <style>
+        input#ContentPlaceHolder1_BtnEquipCertificate {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+        input#ContentPlaceHolder1_btnIncomeTax {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+        input#ContentPlaceHolder1_btnBalanceSheet {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+        input#ContentPlaceHolder1_btnCalibCertificate {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+        input#ContentPlaceHolder1_btnWorkDetails {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+        input#ContentPlaceHolder1_btnAnnexureIII {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+        input#ContentPlaceHolder1_btnForm_E {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+        input#ContentPlaceHolder1_btnTreasuryChallan {
+    padding: 0px;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+       select#ContentPlaceHolder1_DdlState {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-left: 0px !important;
+    height: 30px;
+    font-size: 12px !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 100% !important;
+    background: #e7e7e7;
+    color: black;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+       select#ContentPlaceHolder1_DdlDistrict {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-left: 0px !important;
+    height: 30px;
+    font-size: 12px !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 100% !important;
+    background: #e7e7e7;
+    color: black;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
         input#ContentPlaceHolder1_RadioButtonList1_0 {
             margin-right: 5px;
         }
