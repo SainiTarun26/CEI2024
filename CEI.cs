@@ -2519,7 +2519,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             string DOB, string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string NameTreasury,
             string ChallanGrnNo, string ChallanDate, string RemittedAmount, string EquipmentTestedCertificate, string IncomeTaxCertificate,
             string BalanceSheet, string CalibrationCertificate, string WorkDetails, string AnnexureIIICopy, string Form_ECopy, string TreasuryChallan,
-            string SubmissionPlace, string SubmissionDate, string CreatedBy)
+            string CreatedBy)
         {
             try
             {

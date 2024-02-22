@@ -267,10 +267,13 @@
             padding-right: 50px;
         }
 
-        input#ContentPlaceHolder1_Button1 {
+        input#ContentPlaceHolder1_btnUploadFeeReciept {
             border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-            height: 30px;
+    border-bottom-right-radius: 10px;
+    height: 30px;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
         }
     </style>
 </asp:Content>
@@ -324,20 +327,20 @@
                                     </label>
                                     <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtIssueDate" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4" style="margin-top:23px;">
                                     <label>
                                         Date of Expiry
                                     </label>
                                     <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" ID="txtExpiryDate" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-4" id="divBelated" visible="false" runat="server">
+                                <div class="col-4" id="divBelated" visible="false" runat="server" style="margin-top:23px;">
                                     <label>
                                         Belated Date
                                     </label>
                                     <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtBelatedDate" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtBelatedDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4" style="margin-top:23px;">
                                     <label>
                                         Date of Birth<samp style="color: red"> * </samp>
                                     </label>
@@ -369,7 +372,7 @@
                                     <span style="color: red"></span>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtContactNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Contact No</asp:RequiredFieldValidator>
                                 </div>
-                                <div class="row" style="margin-left: 2%; margin-bottom: 1%;">
+                                <div class="row" style="margin-left: 2%; margin-bottom: 1%;font-size:13px;">
                                     Whether there is any change of Address? &nbsp;&nbsp;
                             <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="5">
                                 <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
@@ -408,7 +411,7 @@
                                     <span id="lblPinError" style="color: red"></span>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtpincode" runat="server" ValidationGroup="Submit" ForeColor="Red">Please enter Pin Code </asp:RequiredFieldValidator>
                                 </div>
-                                <div class="row" style="margin-left: 2%; margin-top: 2%;">
+                                <div class="row" style="margin-left: 2%; margin-top: 2%; font-size:13px;">
                                     Whether there Address has to be changed in the Licence also as same as the new Address? &nbsp;&nbsp;
                         <asp:RadioButtonList ID="RadioButtonList3" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="10">
                             <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
@@ -419,6 +422,12 @@
                         </div>
                         <h7 class="card-title fw-semibold mb-4">Fee Details</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                  <div class="row" style="margin-left: 0px; /* margin-top: 2%; */ font-size: 13px; margin-bottom: 10px;"> Mode of Payment &nbsp;&nbsp;
+<asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="10">
+    <asp:ListItem Text="Online" Value="0"></asp:ListItem>
+    <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
+</asp:RadioButtonList>
+        </div>
                             <div class="row">
                                 <div class="col-4">
                                     <label>
@@ -449,6 +458,18 @@
                                     <asp:TextBox class="form-control" ID="txtRemittedAmount" runat="server" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" autocomplete="off" Style="margin-left: 18px" TabIndex="14" MaxLength="4"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtRemittedAmount" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Amount Remitted</asp:RequiredFieldValidator>
                                 </div>
+                                <div class="col-4" style="margin-top:auto;">
+                                    <div class="input-group col-xs-12">
+    <asp:TextBox ID="UploadFeeReciept" runat="server" CssClass="form-control file-upload-info" TabIndex="18" Enabled="false" placeholder="Upload Payment Reciept" Style="width: 50%;"></asp:TextBox>
+    <span class="input-group-append">
+        <asp:Button ID="btnUploadFeeReciept" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="CalibCertificateDialog(); return false;" />
+        <input type="file" id="File1" name="CalibCertificateInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+            onchange="CalibCertificateDialogName()" runat="server" />
+    </span>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtCalibCertificate"
+        ValidationGroup="Submit" ForeColor="Red">Please Upload Calibration Certificate</asp:RequiredFieldValidator>
+</div>
+                                    </div>
                             </div>
                         </div>
                         <h7 class="card-title fw-semibold mb-4">Staff Details</h7>
@@ -695,32 +716,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-left: 1%;">
+                <div class="row" style="margin-left: 1%;margin-bottom:20px;">
                     <asp:CheckBox ID="Check" runat="server" TabIndex="23" />&nbsp;
                     <text>
                         I hereby declare that the information furnished in the application is correct.
                     </text>
                 </div>
-                <div class="row" style="margin-top: 15px; margin-bottom: 15px; margin-left: 1%;">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-1 col-form-label" style="padding: 0px;">Place:</label>
-                            <div class="col-sm-4">
-                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtplace" min='0000-01-01' max='9999-01-01' Type="text" TabIndex="24" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtplace" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Place</asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-1 col-form-label" style="padding: 0px;">Date:</label>
-                            <div class="col-sm-4">
-                                <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtdeclarationdate" onkeypress="return allowOnlyNumbersAndHyphen(event)" Type="text" TabIndex="25" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtdeclarationdate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Date</asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">

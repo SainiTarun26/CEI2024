@@ -458,8 +458,7 @@ namespace CEIHaryana.Contractor
                             txtBelatedDate.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(), txtEmail.Text.Trim(), txtContactNo.Text.Trim(), txtAddress.Text.Trim(),
                             DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), txtpincode.Text.Trim(), txtTreasuryName.Text.Trim(),
                             txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(), txtRemittedAmount.Text.Trim(), flpPhotourl, flpPhotourl1,
-                            flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, txtplace.Text.Trim(),
-                            txtdeclarationdate.Text.Trim(), ContractorId);
+                            flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, ContractorId);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
                         Reset();
                     }
@@ -477,7 +476,7 @@ namespace CEIHaryana.Contractor
             txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = ""; txtAddress.Text = ""; DdlState.SelectedValue = "0"; DdlDistrict.SelectedValue = "0";
             txtpincode.Text = ""; txtTreasuryName.Text = ""; txtTreasuryName.Text = ""; txtChallanDate.Text = ""; txtRemittedAmount.Text = "";
             txtEquipCertificate.Text = ""; txtIncomeTax.Text = ""; txtBalanceSheet.Text = ""; txtCalibCertificate.Text = ""; txtWorkDetails.Text = "";
-            txtAnnexureIII.Text = ""; txtForm_E.Text = ""; txtTreasuryChallan.Text = ""; txtplace.Text = ""; txtdeclarationdate.Text = "";
+            txtAnnexureIII.Text = ""; txtForm_E.Text = ""; txtTreasuryChallan.Text = "";
         }
     }
 }
