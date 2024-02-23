@@ -254,13 +254,13 @@ namespace CEIHaryana.Contractor
                     if (Session["ContractorID"] != null)
                     {
                         string ContractorId = Session["ContractorID"].ToString();
-                        DataTable dt = new DataTable();
-                        dt = CEI.GetContractorLicenceRenewalData(ContractorId);
-                        if (dt != null && dt.Rows.Count > 0)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('This User Already Applied For Licence Renewal');", true);
-                            return;
-                        }
+                        //DataTable dt = new DataTable();
+                        //dt = CEI.GetContractorLicenceRenewalData(ContractorId);
+                        //if (dt != null && dt.Rows.Count > 0)
+                        //{
+                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('This User Already Applied For Licence Renewal');", true);
+                        //    return;
+                        //}
 
                         int maxFileSize = 2 * 1024 * 1024;
                         string FileName = string.Empty;
@@ -429,13 +429,20 @@ namespace CEIHaryana.Contractor
 
                         }
 
-                        CEI.InsertRenewalContractorRequestData(txtExpiryDate.Text.Trim(), txtExtendedBy.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
+                        int x = CEI.InsertRenewalContractorRequestData(txtLicenceNo.Text.Trim(), txtExpiryDate.Text.Trim(), txtExtendedBy.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
                             txtEmail.Text.Trim(), txtContactNo.Text.Trim(), txtAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(),
                             txtpincode.Text.Trim(), RadioButtonList2.SelectedItem.ToString(), txtTreasuryName.Text.Trim(), txtchallanNo.Text.Trim(), txtChallanDate.Text.Trim(),
                             txtRemittedAmount.Text.Trim(), flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7,
                             flpPhotourl8, ContractorId);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Requested Successfully !!!')", true);
-                        Reset();
+                        if (x > 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Requested Successfully !!!')", true);
+                            Reset();
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Renewal Request for this Contractor is already submitted !!!')", true);
+                        }
                     }
                 }
                 else

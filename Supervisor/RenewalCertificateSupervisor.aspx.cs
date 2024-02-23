@@ -116,7 +116,7 @@ namespace CEIHaryana.Supervisor
                         DateTime currentDate = DateTime.Now;
                         if (selectedExpiryDate < currentDate)
                         {
-                            DivBelatedDate.Visible = true;
+                            DivExtendedDate.Visible = true;
                             CancelPeriodRow.Visible = true;
                             txtBilatedDate.Text = CEI.CalculateDate(currentDate, selectedExpiryDate);
                             //int yearsRemaining = currentDate.Year - selectedExpiryDate.Year;
@@ -624,5 +624,35 @@ namespace CEIHaryana.Supervisor
         {
             Reset();
         }
+
+        protected void ddlContractorLicence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlContractorLicence.SelectedValue != "0")
+            {
+                string ContractorId = ddlContractorLicence.SelectedValue;
+                getContractorDetails(ContractorId);
+            }
+        }
+        public void getContractorDetails(string ContractorID)
+        {
+
+            DataSet ds = new DataSet();
+            ds = CEI.GetContractorSupData(ContractorID);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                txtChangedEmployerName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
+                txtContractorLicenceNo.Text = ds.Tables[0].Rows[0]["LicenceNo"].ToString();
+                string RegisteredOffice = ds.Tables[0].Rows[0]["RegisteredOffice"].ToString();
+                string State = ds.Tables[0].Rows[0]["State"].ToString();
+                string Districtoffirm = ds.Tables[0].Rows[0]["Districtoffirm"].ToString();
+                string PinCode = ds.Tables[0].Rows[0]["PinCode"].ToString();
+                string adresss = $"{RegisteredOffice} , {State}, {Districtoffirm}, {PinCode}";
+                txtchangedEmployerAddress.Text = adresss;
+
+            }
+
+
+        }
+
     }
 }
