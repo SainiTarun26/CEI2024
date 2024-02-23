@@ -253,14 +253,7 @@ namespace CEIHaryana.Contractor
                 {
                     if (Session["ContractorID"] != null)
                     {
-                        string ContractorId = Session["ContractorID"].ToString();
-                        //DataTable dt = new DataTable();
-                        //dt = CEI.GetContractorLicenceRenewalData(ContractorId);
-                        //if (dt != null && dt.Rows.Count > 0)
-                        //{
-                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('This User Already Applied For Licence Renewal');", true);
-                        //    return;
-                        //}
+                        string ContractorId = Session["ContractorID"].ToString();                        
 
                         int maxFileSize = 2 * 1024 * 1024;
                         string FileName = string.Empty;

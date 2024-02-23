@@ -1545,6 +1545,7 @@
     <Content Include="Assets\legend-background2.jpg" />
     <Content Include="Assets\style.css" />
     <Content Include="Contractor\Approved_Test_Reports.aspx" />
+    <Content Include="Contractor\Attach_DeAttach_Staff.aspx" />
     <Content Include="Contractor\ContractorRenewal.aspx" />
     <Content Include="Contractor\GeneratingSetHistory.aspx" />
     <Content Include="Contractor\PreviousProjects.aspx" />
@@ -2083,6 +2084,13 @@
     </Compile>
     <Compile Include="Contractor\Approved_Test_Reports.aspx.designer.cs">
       <DependentUpon>Approved_Test_Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\Attach_DeAttach_Staff.aspx.cs">
+      <DependentUpon>Attach_DeAttach_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\Attach_DeAttach_Staff.aspx.designer.cs">
+      <DependentUpon>Attach_DeAttach_Staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\Contractor.Master.cs">
       <DependentUpon>Contractor.Master</DependentUpon>
