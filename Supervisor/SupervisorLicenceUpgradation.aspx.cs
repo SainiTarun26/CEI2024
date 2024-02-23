@@ -169,7 +169,7 @@ namespace CEIHaryana.Supervisor
                         txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(),txtVoltageLevel.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
                         txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), 
                         txtpincode.Text.Trim(),
-                        textExp.Text.Trim(), txtInterviewDate.Text, txtVoltage.Text.Trim(),                        
+                         txtInterviewDate.Text, txtVoltage.Text.Trim(),                        
                         flpPhotourl,SupervisorId
                         );
                         DataSaved.Visible = true;
@@ -192,7 +192,7 @@ namespace CEIHaryana.Supervisor
             txtName.Text = ""; txtCertificate.Text = ""; txtIssueDate.Text = ""; txtExpiryDate.Text = "";
             txtVoltageLevel.Text = ""; txtDOB.Text = ""; txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = "";
             TextAddress.Text = ""; DdlState.SelectedValue = "0"; DdlDistrict.SelectedValue = "0"; txtpincode.Text = "";
-            textExp.Text = ""; txtInterviewDate.Text = ""; txtVoltage.Text = ""; txtExpCertificate.Text = "";            
+             txtInterviewDate.Text = ""; txtVoltage.Text = ""; txtExpCertificate.Text = "";            
         }
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {

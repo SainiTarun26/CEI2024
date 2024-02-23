@@ -2426,7 +2426,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         public void InsertUpgradationSupervisorData(string ApplicantName, string CertificateNo, string DateOfIssue, string DateOfExpiry, string VolatgeLevel, string DOB,
         string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string TotalExperience, string DateOfInterview,
-        string VoltageLevelFor, string ExperienceCertificate, string CreatedBy
+        string VoltageLevelFor, string CreatedBy
         )
         {
             try
@@ -2456,7 +2456,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@ApplyUpgradationEarlier", TotalExperience);
                 cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DateOfInterview);
                 cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageLevelFor);
-                cmd.Parameters.AddWithValue("@ExperienceCertificate", ExperienceCertificate);
+                //cmd.Parameters.AddWithValue("@ExperienceCertificate", ExperienceCertificate);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                 cmd.ExecuteNonQuery();
                 con.Close();

@@ -579,9 +579,9 @@ namespace CEIHaryana.Supervisor
 
         protected void ddlContractorLicence_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DivContractorName.Visible = true;
-            DivContractorLicenceNo.Visible = true;
-            DivContractorAddress.Visible = true;
+            DivContractorName.Visible = false;
+            DivContractorLicenceNo.Visible = false;
+            DivContractorAddress.Visible = false;
             if (ddlContractorLicence.SelectedValue != "0")
             {
                 string ContractorId = ddlContractorLicence.SelectedValue;
@@ -609,13 +609,18 @@ namespace CEIHaryana.Supervisor
                 string adresss = $"{RegisteredOffice} , {State}, {Districtoffirm}, {PinCode}";
                 txtchangedEmployerAddress.Text = adresss;
             }
-
-
         }
 
         protected void RadioButtonChangedAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(RadioButtonChangedAddress.SelectedValue == "0")
+            {
+                TextAddress.ReadOnly = false;
+                DdlState.Enabled = false;
+                DdlDistrict.Enabled = false;
+                txtpincode.ReadOnly = false;
+            }
+            else
             {
                 TextAddress.ReadOnly = true;
                 DdlState.Enabled = true;
@@ -626,7 +631,12 @@ namespace CEIHaryana.Supervisor
 
         protected void RadioButtonPayment_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DivOfflinePayment.Visible = true;
+            if (RadioButtonPayment.SelectedValue=="0")
+            {
+                DivOfflinePayment.Visible = false;
+            }
+            
         }
     }
 }

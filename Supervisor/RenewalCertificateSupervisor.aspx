@@ -305,7 +305,7 @@
                                     <label for="RegisteredOffice">
                                         Address<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="TextAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
 
                                 </div>
@@ -314,7 +314,7 @@
                                         State/UT 
             <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlState" OnSelectedIndexChanged="DdlState_SelectedIndexChanged" TabIndex="8" runat="server" AutoPostBack="true">
+                                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Enabled="false" ID="DdlState" OnSelectedIndexChanged="DdlState_SelectedIndexChanged" TabIndex="8" runat="server" AutoPostBack="true">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
@@ -323,14 +323,14 @@
                                         District
             <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="DdlDistrict" runat="server" TabIndex="9">
+                                    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" Enabled="false" ID="DdlDistrict" runat="server" TabIndex="9">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                 </div>
                                 <div class="col-4">
                                     <label for="PinCode">PinCode </label>
-                                    <asp:TextBox class="form-control" ID="txtpincode" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtpincode" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
                                     <span id="lblPinError" style="color: red"></span>
                                     <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
                                     --%>
@@ -348,7 +348,7 @@
                                     <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
                                 </asp:RadioButtonList>
                             </div>
-                            <div class="row" id="DivOfflinePayment" runat="server" visible="false">
+                            <div class="row" id="DivOfflinePayment" runat="server">
 
                                 <div class="col-4">
                                     <label for="DateofRenewal">
@@ -512,7 +512,7 @@
                                     <label for="Name">
                                         Name of Contractor<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtChangedEmployerName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                    <asp:TextBox class="form-control" ID="txtChangedEmployerName" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                         MaxLength="200" Style="margin-left: 18px;">
                                     </asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtEmployerName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
@@ -522,7 +522,7 @@
                                     <label for="RegisteredOffice">
                                         LicenceNo<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtContractorLicenceNo" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" autocomplete="off" runat="server" TabIndex="7" MaxLength="200" Style="margin-left: 18px;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtContractorLicenceNo"  onkeydown="return preventEnterSubmit(event)" ReadOnly="true" autocomplete="off" runat="server" TabIndex="7" MaxLength="200" Style="margin-left: 18px;"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtContractorLicenceNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
 
                                 </div>
@@ -530,7 +530,7 @@
                                     <label for="RegisteredOffice">
                                         Address<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtchangedEmployerAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtchangedEmployerAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtchangedEmployerAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
 
                                 </div>
