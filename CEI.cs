@@ -2331,7 +2331,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckVacantSupervisor", LicenseNo);
         }
-        #region CertificateRenewal
+        #region SupervisorCertificateRenewal
         public DataSet GetSupervisorDataForRenewal(string id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSuperviserForRenewal", id);
@@ -2340,25 +2340,26 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetContractorSupRenewalData", ContractorId);
         }
-        public DataTable GetSupervisorRenewalData(string id)
+        public DataSet GetCurrentContractorforSupervisor(string SupervisorID)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSuperviserRenewalData", id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCurrentContractorForSupervisor", SupervisorID);
         }
-
-        public void InsertRenewalSupervisorData(string Category, string ExtendedBy,string CurrentCertificateNo,string ExpiryDate,string DOB,
+        public int InsertRenewalSupervisorData(string Category, string ExtendedBy,string CurrentCertificateNo,string ExpiryDate,string DOB,
            string Age, string Email, string ContactNo, string Address, string State, string District, string Pincode,
-           string ModeOfPayment,string NameofTressury, string ChallanGRNno, string DateOfChallan, string Amount, string TypeOfEmployer,
-           string ContractorName,  string OtherEmployerName, string OtherAddress, string OtherState,
-           string OtherDistrict, string OtherPincode, string DateFrom, string DateTo, string SubsquentContractor,
-           string SubsquentNameEmployer, string SubsquentAddress, string DepositedTreasuryChallan, string PresentWorkingStatus,
+           string ModeOfPayment,string NameofTressury, string ChallanGRNno, string DateOfChallan, string Amount,string PaymentChallan,
+           string TypeOfEmployer,string CurrentContractorName, string CurrentContractorLicence,  string OtherEmployerName, string OtherAddress, string OtherState,
+           string OtherDistrict, string OtherPincode,
+           string AnyChangedContractor,
+           string DateFrom,string DateTo, string ChangedContractorName, string ChangedContractorLicence, string ChangedContractorAddress,
+           //string DepositedTreasuryChallan
+           string PresentWorkingStatus,
            string MedicalCertificate, string duringcancelperiod, 
-            string CreatedBy
+           string CreatedBy
            )
-        {
-            try
-            {
+          {
+            
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                SqlCommand cmd = new SqlCommand("SP_InsertRenewalData");
+                SqlCommand cmd = new SqlCommand("SP_InsertSupervisorRenewalData");
                 cmd.Connection = con;
                 if (con.State == ConnectionState.Closed)
                 {
@@ -2366,10 +2367,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                     con.Open();
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 cmd.Parameters.AddWithValue("@Category", Category);
                 cmd.Parameters.AddWithValue("@ExtendedBy", ExtendedBy);
-                cmd.Parameters.AddWithValue("@CurrentCertificateNo",CurrentCertificateNo);
+                cmd.Parameters.AddWithValue("@CurrentCertificate", CurrentCertificateNo);
                 cmd.Parameters.AddWithValue("@ExpiryDate", ExpiryDate);
                 cmd.Parameters.AddWithValue("@DOB", DOB);
                 cmd.Parameters.AddWithValue("@Age", Age);
@@ -2383,36 +2383,32 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@NameTreasury", NameofTressury);
                 cmd.Parameters.AddWithValue("@TransactionId",ChallanGRNno);
                 cmd.Parameters.AddWithValue("@TransactionDate", DateOfChallan);
-                //cmd.Parameters.AddWithValue("@RenewalFee", );
-               // cmd.Parameters.AddWithValue("@RenewalLateFee", );
                 cmd.Parameters.AddWithValue("@Amount", Amount);
-                cmd.Parameters.AddWithValue("@EmployerType", TypeOfEmployer);
-               // cmd.Parameters.AddWithValue("@ContractorLicence",);
-                cmd.Parameters.AddWithValue("@ContractorName",ContractorName );
+                //cmd.Parameters.AddWithValue("@RenewalFee", );
+                //cmd.Parameters.AddWithValue("@RenewalLateFee", );
+               // cmd.Parameters.AddWithValue("@PaymentChallan", PaymentChallan);
+                cmd.Parameters.AddWithValue("@EmployerType", TypeOfEmployer);               
+                cmd.Parameters.AddWithValue("@ContractorLicence", CurrentContractorLicence);
+                cmd.Parameters.AddWithValue("@ContractorName", CurrentContractorName);
                 cmd.Parameters.AddWithValue("@OtherEmployerName",OtherEmployerName );
                 cmd.Parameters.AddWithValue("@OtherEmployerAddress",OtherAddress);
                 cmd.Parameters.AddWithValue("@OtherEmployerState", OtherState);
                 cmd.Parameters.AddWithValue("@OtherEmployerDistrict", OtherDistrict);
                 cmd.Parameters.AddWithValue("@OtherEmployerPinCode", OtherPincode);
+                cmd.Parameters.AddWithValue("@AnyChangedContractor",AnyChangedContractor);
                 cmd.Parameters.AddWithValue("@ChangingDateFrom", DateFrom);
                 cmd.Parameters.AddWithValue("@ChangingDateTo",DateTo );
-                //cmd.Parameters.AddWithValue("@ChangingContractorName", );
-                //cmd.Parameters.AddWithValue("@ChangingContractorLicence", );
-                //cmd.Parameters.AddWithValue("@ChangingEmployerAdress", );
+                cmd.Parameters.AddWithValue("@ChangingContractorName", ChangedContractorName);
+                cmd.Parameters.AddWithValue("@ChangingContractorLicence",ChangedContractorLicence);
+                cmd.Parameters.AddWithValue("@ChangingEmployerAdress", ChangedContractorAddress);
                 cmd.Parameters.AddWithValue("@MedicalCertificate", MedicalCertificate);
-                cmd.Parameters.AddWithValue("@ChallanFees", DepositedTreasuryChallan);
+                cmd.Parameters.AddWithValue("@ChallanFees", PaymentChallan);
                 cmd.Parameters.AddWithValue("@CanceledCertificate", duringcancelperiod);
                 cmd.Parameters.AddWithValue("@PresentWorkingStatus", PresentWorkingStatus);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-                cmd.ExecuteNonQuery();        
+                 int x=cmd.ExecuteNonQuery();        
                 con.Close();
-            }
-            catch (Exception ex)
-            {
-
-                //throw;
-            }
-
+                return x;            
         }
 
 

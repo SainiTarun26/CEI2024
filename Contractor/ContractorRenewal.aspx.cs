@@ -443,7 +443,10 @@ namespace CEIHaryana.Contractor
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            { 
+                //
+            }
         }
         private void Reset()
         {

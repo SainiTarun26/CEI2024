@@ -415,14 +415,14 @@
                                     <label for="DateofRenewal">
                                         License No.(if Contractor)<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtEmployerLicenceNo" min='0000-01-01' max='9999-01-01' MaxLength="10" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtEmployerLicenceNo" ReadOnly="true" MaxLength="10" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtEmployerLicenceNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter License No. </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4" id="DivEmployerName" runat="server" visible="false">
                                     <label for="DateofRenewal">
                                         Name of Contractor<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtContractorName" onKeyPress="return alphabetKey(event);"  MaxLength="50" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtContractorName" ReadOnly="true" onKeyPress="return alphabetKey(event);"  MaxLength="50" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmployerLicenceNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter License No. </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4" id="DivNameofEmp" runat="server" visible="false">
@@ -474,8 +474,8 @@
                             <div class="row" style="margin-left: 0%; margin-top: 2%;">
                                 Whether there is any chnage of employer during the subsequent period to the last Renewal. &nbsp;&nbsp;
      <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal" TabIndex="25">
-         <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
-         <asp:ListItem Text="No" Value="1"></asp:ListItem>
+         <asp:ListItem Text="Yes" Value="0" ></asp:ListItem>
+         <asp:ListItem Text="No" Value="1" Selected="True"></asp:ListItem>
      </asp:RadioButtonList>
                             </div>
                             <div class="row" style="margin-top: 10px;" id="divSubsequentPeriod" runat="server" visible="false">
@@ -547,7 +547,7 @@
                             <table class="table table-bordered table-striped">
 
                                 <tbody>
-                                    <tr>
+                                   <%-- <tr>
                                         <td style="padding-top: 45px;">Deposited Treasury Challan of Fees.(<span
                                             style="color: red;">★</span>)
                                         </td>
@@ -558,15 +558,13 @@
                                                     (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)
                                                 </label>
                                                 <asp:FileUpload ID="TreasuryChallan" runat="server" class="file-upload-default" onchange="TreasuryChallanFileInputChange();" />
-                                                <%-- <input type="file" name="img[]" class="file-upload-default">--%>
+                                               
                                                 <div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtTreasuryChallan" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload TreasuryChallan  certificate" Style="width: 85%;"></asp:TextBox>
 
                                                     <span class="input-group-append">
-
-                                                        <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="return false;" />
-                                                        <%-- <input type="file" id="TreasuryChallan" name="fileInput" accept=".jpg, .jpeg, .png, .pdf"  style="display: none;"  onchange="TreasuryChallanDialogName()" runat="server" />--%>
+                                                        <asp:Button ID="btnUpload" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="return false;" />                                                       
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtTreasuryChallan" Display="Dynamic"
                                                         ValidationGroup="Submit" ForeColor="Red">Please Select Your Deposited Treasury Challan</asp:RequiredFieldValidator>
@@ -576,7 +574,7 @@
 
                                         <asp:HiddenField ID="HiddenField1" runat="server" />
 
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td style="padding-top: 45px;">Present Working Status(<span
                                             style="color: red;">★</span>)
@@ -670,12 +668,18 @@
 
                     </div>
                 </div>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+
+                   
                 <div class="row" style="margin-left: 1%; margin-bottom: 20px;">
                     <asp:CheckBox ID="Check" runat="server" AutoPostBack="true" />&nbsp;
                     <text>
                         I hereby declare that the information furnished in the application is correct.
                     </text>
                 </div>
+                         </ContentTemplate>
+                </asp:UpdatePanel>
                 <%--<div class="row" style="margin-top: 15px; margin-bottom: 15px; margin-left: 1%;">
                     <div class="col-md-6">
                         <div class="form-group row">
@@ -763,7 +767,7 @@
     </script>
     <!-- Template Main JS File -->
     <script type="text/javascript">
-        function TreasuryChallanFileInputChange() {
+       <%-- function TreasuryChallanFileInputChange() {
             var fileUploadVisible = document.getElementById('<%= TreasuryChallan.ClientID %>');
             var selectedFileName = document.getElementById('<%= txtTreasuryChallan.ClientID %>');
 
@@ -771,7 +775,7 @@
                 // Update the TextBox value with the selected file name
                 txtTreasuryChallan.value = fileUploadVisible.files[0].name;
             }
-        }
+        }--%>
         function PresentWorkingStatusDialog() {
             var fileUploadVisible = document.getElementById('<%= PresentWorkingStatus.ClientID %>');
             var selectedFileName = document.getElementById('<%= txtPresentWrkingStatus.ClientID %>');
