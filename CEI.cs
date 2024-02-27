@@ -2429,49 +2429,85 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LineVoltageAppliedBefore", VoltageID);
         }
 
-        public void InsertUpgradationSupervisorData(string CurrentCertificateNo,string DateOfExpiry, string VolatgeLevel,
-         string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode,string RequestVoltageForUpgradation,
-         string UpgradationEarlier,string DateOfInterview,string VoltageBeforeUpgradation,string ExperienceCertificate,
-         string CreatedBy
+        public int InsertUpgradationSupervisorData(string CurrentCertificateNo, string DateOfExpiry, string CurrentVolatgeLevel,
+          string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string RequestVoltageForUpgradation,
+          string UpgradationEarlier, string DateOfInterview, string VoltageBeforeUpgradation, string ExperienceCertificate,
+          string CreatedBy
+         )
+        {
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("Sp_InsertLicenceUpgradationSupervisor");
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            // cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
+            cmd.Parameters.AddWithValue("@CertificateNo", CurrentCertificateNo);
+            cmd.Parameters.AddWithValue("@DateOfExpiry", DateOfExpiry);
+            cmd.Parameters.AddWithValue("@CurrentAutorizedVoltage", CurrentVolatgeLevel);
+            //cmd.Parameters.AddWithValue("@DOB", DOB);
+            cmd.Parameters.AddWithValue("@Age", Age);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@PhoneNo", ContactNo);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Pincode", PinCode);
+            cmd.Parameters.AddWithValue("@RequestVoltageForUpgradation", RequestVoltageForUpgradation);
+            cmd.Parameters.AddWithValue("@ApplyUpgradationEarlier", UpgradationEarlier);
+            cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DateOfInterview);
+            cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageBeforeUpgradation);
+            cmd.Parameters.AddWithValue("@ExperienceCertificate", ExperienceCertificate);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            int x = cmd.ExecuteNonQuery();
+            con.Close();
+            return x;
+        
+        }
+
+        public void InsertSupervisorExperience(string Experience1, string TraningUnder1, string EmployerName1, string PostDescription1, string ExperienceFrom1, string ExperienceTo1,
+          string Experience2, string TraningUnder2, string EmployerName2, string PostDescription2, string ExperienceFrom2, string ExperienceTo2,
+          string Experience3, string TraningUnder3, string EmployerName3, string PostDescription3, string ExperienceFrom3, string ExperienceTo3,
+          string TotalExperience, string CreatedBy
         )
         {
-            try
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            if (con.State != ConnectionState.Closed)
             {
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                SqlCommand cmd = new SqlCommand("Sp_InsertLicenceUpgradationSupervisor");
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-                cmd.CommandType = CommandType.StoredProcedure;
-               // cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
-                cmd.Parameters.AddWithValue("@CertificateNo", CurrentCertificateNo);               
-                cmd.Parameters.AddWithValue("@DateOfExpiry", DateOfExpiry);
-                cmd.Parameters.AddWithValue("@CurrentAutorizedVoltage", VolatgeLevel);
-                //cmd.Parameters.AddWithValue("@DOB", DOB);
-                cmd.Parameters.AddWithValue("@Age", Age);
-                cmd.Parameters.AddWithValue("@Email", Email);
-                cmd.Parameters.AddWithValue("@PhoneNo", ContactNo);
-                cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.Parameters.AddWithValue("@State", State);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@Pincode", PinCode);
-                //cmd.Parameters.AddWithValue("@ApplyUpgradationEarlier", TotalExperience);
-                cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DateOfInterview);
-                //cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageLevelFor);
-                //cmd.Parameters.AddWithValue("@ExperienceCertificate", ExperienceCertificate);
-                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
             }
-            catch (Exception ex)
-            {
-                //throw;
-            }
-
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Experience1", Experience1);
+            cmd.Parameters.AddWithValue("@TraningUnder1", TraningUnder1);
+            cmd.Parameters.AddWithValue("@EmployerName1", EmployerName1);
+            cmd.Parameters.AddWithValue("@PostDescription", PostDescription1);
+            cmd.Parameters.AddWithValue("@From1", ExperienceFrom1);
+            cmd.Parameters.AddWithValue("@To1", ExperienceTo1);
+            cmd.Parameters.AddWithValue("@Experience2", Experience2);
+            cmd.Parameters.AddWithValue("@TraningUnder2", TraningUnder2);
+            cmd.Parameters.AddWithValue("@EmployerName2", EmployerName2);
+            cmd.Parameters.AddWithValue("@PostDescription", PostDescription2);
+            cmd.Parameters.AddWithValue("@From2", ExperienceFrom2);
+            cmd.Parameters.AddWithValue("@To2", ExperienceTo2);
+            cmd.Parameters.AddWithValue("@Experience3", Experience3);
+            cmd.Parameters.AddWithValue("@TraningUnder3", TraningUnder3);
+            cmd.Parameters.AddWithValue("@EmployerName3", EmployerName3);
+            cmd.Parameters.AddWithValue("@PostDescription", PostDescription3);
+            cmd.Parameters.AddWithValue("@From3", ExperienceFrom3);
+            cmd.Parameters.AddWithValue("@To3", ExperienceTo3);
+            cmd.Parameters.AddWithValue("@TotalExperience", TotalExperience);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
+
         #endregion
         #region CalculateDate
         public string CalculateDate(DateTime currentDate, DateTime selectedExpiryDate)
@@ -2572,7 +2608,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             int x = cmd.ExecuteNonQuery();
             con.Close();
             return x;
-        }       
+        }
+        #endregion
+        #region deattached/Attached
+        public DataSet WorkIntimationGridDataForDeAttach(string LicenceNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ContractorRequestToDeattachStaff", LicenceNo);
+        }
         #endregion
     }
 }

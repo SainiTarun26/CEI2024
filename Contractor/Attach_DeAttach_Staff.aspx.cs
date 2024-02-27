@@ -19,10 +19,27 @@ namespace CEIHaryana.Contractor
                 if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
                 {
                     GetGridDataToDeattachStaff();
+                    GetGridDataForAttachStaff();
                 }
             }
         }
+        public void GetGridDataForAttachStaff()
+        {
+            try
+            {
+                string LoginID = string.Empty;
+                LoginID = Session["ContractorID"].ToString();
 
+                DataSet ds = new DataSet();
+                ds = CEI.WorkIntimationGridDataForDeAttach(LoginID);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+            }
+            catch { }
+        }
         public void GetGridDataToDeattachStaff()
         {
             try

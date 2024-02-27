@@ -158,15 +158,32 @@ namespace CEIHaryana.Supervisor
                             ExpCertificate.PostedFile.SaveAs(filePathInfo2);
                             flpPhotourl = path + fileName;
                         }
-                        CEI.InsertUpgradationSupervisorData(
-                        txtCertificate.Text.Trim(),txtExpiryDate.Text.Trim(),txtVoltageLevel.Text.Trim(), txtAge.Text.Trim(),
-                        txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), 
-                        txtpincode.Text.Trim(),ddlRequestVoltageUpgradation.SelectedItem.ToString(),RadioButtonList2.SelectedItem.ToString(),
-                        txtInterviewDate.Text,  ddlVoltageBeforeUpgradation.SelectedItem.ToString(),                      
-                        flpPhotourl,SupervisorId
-                        );
-                        DataSaved.Visible = true;
-                        Reset();
+
+                        CEI.InsertSupervisorExperience(ddlExperiene1.SelectedItem.ToString(), ddlTraningUnder1.SelectedItem.ToString(), txtExperienceEmployer1.Text.Trim(),
+                           txtPostDescription1.Text.Trim(), txtExperienceFrom1.Text.Trim(), txtExperienceTo1.Text.Trim(),
+                           ddlExperiene2.SelectedValue == "0" ? null : ddlExperiene2.SelectedItem.ToString(), ddlTraningUnder2.SelectedValue == "0" ? null : ddlTraningUnder2.SelectedItem.ToString(),
+                           txtExperienceEmployer2.Text.Trim(), txtPostDescription2.Text.Trim(), txtExperienceFrom2.Text.Trim(), txtExperienceTo2.Text.Trim(),
+                           ddlExperiene3.SelectedValue == "0" ? null : ddlExperiene3.SelectedItem.ToString(), ddlTraningUnder3.SelectedValue == "0" ? null : ddlTraningUnder3.SelectedItem.ToString(),
+                           txtExperienceEmployer3.Text.Trim(), txtPostDescription3.Text.Trim(), txtExperienceFrom3.Text.Trim(), txtExperienceTo3.Text.Trim(), txtTotalExperience.Text.Trim(), SupervisorId
+                           );
+
+
+                        int x = CEI.InsertUpgradationSupervisorData(
+                         txtCertificate.Text.Trim(), txtExpiryDate.Text.Trim(), txtVoltageLevel.Text.Trim(), txtAge.Text.Trim(),
+                         txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(),
+                         txtpincode.Text.Trim(), ddlRequestVoltageUpgradation.SelectedItem.ToString(), RadioButtonList2.SelectedItem.ToString(),
+                         txtInterviewDate.Text, ddlVoltageBeforeUpgradation.SelectedItem.ToString(),
+                         flpPhotourl, SupervisorId
+                         );
+                        if (x > 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Requested for Upgradation Successfully !!!')", true);
+                            Reset();
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Upgradation Request for this Supervisor is already submitted !!!')", true);
+                        }
                     }
                 }
                 else
@@ -206,7 +223,11 @@ namespace CEIHaryana.Supervisor
             txtName.Text = ""; txtCertificate.Text = ""; txtIssueDate.Text = ""; txtExpiryDate.Text = "";
             txtVoltageLevel.Text = ""; txtDOB.Text = ""; txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = "";
             TextAddress.Text = ""; DdlState.SelectedValue = "0"; DdlDistrict.SelectedValue = "0"; txtpincode.Text = "";
-             txtInterviewDate.Text = ""; txtExpCertificate.Text = "";            
+            txtInterviewDate.Text = ""; txtExpCertificate.Text = ""; ddlExperiene2.SelectedValue = "0"; ddlExperiene1.SelectedValue = "0";
+            ddlExperiene1.SelectedValue = "0"; ddlTraningUnder1.SelectedValue = "0"; ddlTraningUnder2.SelectedValue = "0";
+            ddlTraningUnder3.SelectedValue = "0"; txtExperienceTo3.Text = ""; txtExperienceTo2.Text = ""; txtExperienceTo1.Text = "";
+            txtTotalExperience.Text = ""; txtExperienceFrom3.Text = ""; txtExperienceFrom2.Text = ""; txtExperienceFrom1.Text = "";
+            txtExperienceEmployer1.Text = ""; txtExperienceEmployer2.Text = ""; txtExperienceEmployer3.Text = "";
         }
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {

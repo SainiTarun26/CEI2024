@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -19,6 +20,21 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
     <style>
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            -webkit-font-smoothing: antialiased;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1
+        }
+
+        .glyphicon-search:before {
+            content: "\e003"
+        }
+
         .table {
             width: 100%;
             max-width: 100%;
@@ -187,10 +203,14 @@
             font-size: 13px;
         }
 
-        input#ContentPlaceHolder1_Button1 {
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-            height: 30px;
+        label {
+            float: left;
+        }
+
+        span {
+            display: block;
+            overflow: hidden;
+            padding: 0px 4px 0px 6px;
         }
     </style>
 </asp:Content>
@@ -223,8 +243,22 @@
                         <br />
                         <h7 class="card-title fw-semibold mb-4">Attach Staff</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <div class="row" style="margin-bottom: 15px;">
+                                <div class="col-4">
+                                    <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;" placeholder="Auto Search">
+                                    </asp:TextBox>
+                                </div>
+                            </div>
                             <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                 <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkSelect" runat="server" />
+                                        </ItemTemplate>
+                                        <HeaderStyle HorizontalAlign="center" Width="5%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="5%" />
+                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
@@ -271,16 +305,24 @@
                                 <SortedDescendingHeaderStyle BackColor="#00547E" />
                             </asp:GridView>
                         </div>
-                        <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-4" style="text-align: center;">
-                                <asp:Button ID="Button1" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
-                            </div>
-                        </div>
                         <h7 class="card-title fw-semibold mb-4">De-Attach Staff</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <div class="row" style="margin-bottom: 15px;">
+                                <div class="col-4">
+                                    <asp:TextBox class="form-control" ID="TextBox1" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;" placeholder="Auto Search">
+                                    </asp:TextBox>
+                                </div>
+                            </div>
                             <asp:GridView ID="GridView2" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                 <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkSelect" runat="server" />
+                                        </ItemTemplate>
+                                        <HeaderStyle HorizontalAlign="center" Width="5%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="5%" />
+                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
@@ -315,11 +357,6 @@
                                         <HeaderStyle HorizontalAlign="left" Width="17%" CssClass="headercolor textalignleft" />
                                         <ItemStyle HorizontalAlign="left" Width="17%" CssClass="textalignleft" />
                                     </asp:BoundField>
-                                    <asp:TemplateField HeaderText="Actions">
-                                        <ItemTemplate>
-                                            <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" runat="server" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
                                 </Columns>
                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -337,7 +374,7 @@
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                        <asp:Button ID="btnToDeattach" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                     </div>
                 </div>
             </div>
@@ -382,6 +419,15 @@
         }
     </script>
     <!-- partial -->
+    <script type="text/javascript">
+        function SelectAllCheckboxes(chk) {
+            var gridView = document.getElementById('<%= GridView2.ClientID %>');
+            var inputs = gridView.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type == "checkbox" && inputs[i] != chk) {
+                    inputs[i].checked = chk.checked;
+                }
+            }
+        }
+    </script>
 </asp:Content>
-
-
