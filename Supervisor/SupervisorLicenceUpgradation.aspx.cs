@@ -101,6 +101,8 @@ namespace CEIHaryana.Supervisor
                     TextAddress.ReadOnly = true;
                     txtpincode.Text = ds.Tables[0].Rows[0]["PinCode"].ToString();
                     txtpincode.ReadOnly = true;
+                    ddlBindRequestVoltageUpgradation();
+                    ddlLoadVoltageLevelBefore();
                 }
             }
             catch (Exception ex)
@@ -109,7 +111,6 @@ namespace CEIHaryana.Supervisor
             }
                        
         }
-
         protected void DdlState_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(DdlState.SelectedValue != null && DdlState.SelectedValue !="0")
@@ -118,7 +119,6 @@ namespace CEIHaryana.Supervisor
                 ddlLoadBindDistrict(DdlState.SelectedItem.ToString());
             }
         }
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -128,14 +128,7 @@ namespace CEIHaryana.Supervisor
                     if (Session["SupervisorID"] != null)
                     {
                         string SupervisorId = Session["SupervisorID"].ToString();
-                        DataTable dt = new DataTable();
-
-                        dt = CEI.GetSupervisorLiceceUpgradationData(SupervisorId);
-                        if (dt.Rows.Count > 0 && dt != null)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('You Already Applied for Licence Upgradation ');", true);
-                            return;
-                        } 
+                       
                         //forDocument pdf                        
                         int maxFileSize = 2 * 1024 * 1024;
                         string FileName = string.Empty;
@@ -166,10 +159,10 @@ namespace CEIHaryana.Supervisor
                             flpPhotourl = path + fileName;
                         }
                         CEI.InsertUpgradationSupervisorData(
-                        txtName.Text.Trim(), txtCertificate.Text.Trim(), txtIssueDate.Text.Trim(), txtExpiryDate.Text.Trim(),txtVoltageLevel.Text.Trim(), txtDOB.Text.Trim(), txtAge.Text.Trim(),
+                        txtCertificate.Text.Trim(),txtExpiryDate.Text.Trim(),txtVoltageLevel.Text.Trim(), txtAge.Text.Trim(),
                         txtEmail.Text.Trim(), txtContactNo.Text.Trim(), TextAddress.Text.Trim(), DdlState.SelectedItem.ToString(), DdlDistrict.SelectedItem.ToString(), 
-                        txtpincode.Text.Trim(),
-                         txtInterviewDate.Text, txtVoltage.Text.Trim(),                        
+                        txtpincode.Text.Trim(),ddlRequestVoltageUpgradation.SelectedItem.ToString(),RadioButtonList2.SelectedItem.ToString(),
+                        txtInterviewDate.Text,  ddlVoltageBeforeUpgradation.SelectedItem.ToString(),                      
                         flpPhotourl,SupervisorId
                         );
                         DataSaved.Visible = true;
@@ -187,12 +180,33 @@ namespace CEIHaryana.Supervisor
                 //throw;
             }            
         }
+        private void ddlBindRequestVoltageUpgradation()
+        {
+            string voltage = txtVoltageLevel.Text;
+            DataSet dsVoltage = CEI.GetddlVoltageLevelForUpgradation(voltage);
+            ddlRequestVoltageUpgradation.DataSource = dsVoltage;
+            ddlRequestVoltageUpgradation.DataTextField = "VoltageID";
+            ddlRequestVoltageUpgradation.DataValueField = "Voltagelevel";
+            ddlRequestVoltageUpgradation.DataBind();
+            ddlRequestVoltageUpgradation.Items.Insert(0, new ListItem("Select", "0"));
+
+        }
+        private void ddlLoadVoltageLevelBefore()
+        {
+            string voltage = txtVoltageLevel.Text;
+            DataSet dsVoltage = CEI.GetddlVoltageLevelBeforeUpgradation(voltage);
+            ddlVoltageBeforeUpgradation.DataSource = dsVoltage;
+            ddlVoltageBeforeUpgradation.DataTextField = "VoltageID";
+            ddlVoltageBeforeUpgradation.DataValueField = "Voltagelevel";
+            ddlVoltageBeforeUpgradation.DataBind();
+            ddlVoltageBeforeUpgradation.Items.Insert(0, new ListItem("Select", "0"));
+        }
         private void Reset()
         {
             txtName.Text = ""; txtCertificate.Text = ""; txtIssueDate.Text = ""; txtExpiryDate.Text = "";
             txtVoltageLevel.Text = ""; txtDOB.Text = ""; txtAge.Text = ""; txtEmail.Text = ""; txtContactNo.Text = "";
             TextAddress.Text = ""; DdlState.SelectedValue = "0"; DdlDistrict.SelectedValue = "0"; txtpincode.Text = "";
-             txtInterviewDate.Text = ""; txtVoltage.Text = ""; txtExpCertificate.Text = "";            
+             txtInterviewDate.Text = ""; txtExpCertificate.Text = "";            
         }
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -211,7 +225,6 @@ namespace CEIHaryana.Supervisor
                 TextAddress.ReadOnly = true;
             }
         }
-
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(RadioButtonList2.SelectedValue=="0")
@@ -222,6 +235,19 @@ namespace CEIHaryana.Supervisor
             {
                 DivUpgradationEarlier.Visible = false;
             }
+        }
+        protected void btnAddMore_Click(object sender, EventArgs e)
+        {
+            if(trExperience2.Visible==false)
+            {
+                trExperience2.Visible = true;
+            }
+            else if(trExperience3.Visible==false)
+            {
+                trExperience2.Visible = true;
+                trExperience3.Visible = true;
+            }
+
         }
     }
 }

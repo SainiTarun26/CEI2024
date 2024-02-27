@@ -379,7 +379,7 @@
                                     <label for="FirmName">
                                         Amount<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="TxtAmount" runat="server" onkeypress="return isNumberKey(event);" MaxLength="20" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TxtAmount" runat="server" onkeypress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="TxtAmount" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Amount Remitted</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4" style="margin-top: auto;">

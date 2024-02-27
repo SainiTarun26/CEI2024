@@ -2420,9 +2420,19 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSupervisorLicenceUpgradationData", id);
         }
 
-        public void InsertUpgradationSupervisorData(string ApplicantName, string CertificateNo, string DateOfIssue, string DateOfExpiry, string VolatgeLevel, string DOB,
-        string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string TotalExperience, string DateOfInterview,
-        string VoltageLevelFor, string CreatedBy
+        public DataSet GetddlVoltageLevelForUpgradation(string Voltage)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_VoltageForUpdradation", Voltage);
+        }
+        public DataSet GetddlVoltageLevelBeforeUpgradation(string VoltageID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LineVoltageAppliedBefore", VoltageID);
+        }
+
+        public void InsertUpgradationSupervisorData(string CurrentCertificateNo,string DateOfExpiry, string VolatgeLevel,
+         string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode,string RequestVoltageForUpgradation,
+         string UpgradationEarlier,string DateOfInterview,string VoltageBeforeUpgradation,string ExperienceCertificate,
+         string CreatedBy
         )
         {
             try
@@ -2436,12 +2446,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                     con.Open();
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
-                cmd.Parameters.AddWithValue("@CertificateNo", CertificateNo);
-                cmd.Parameters.AddWithValue("@DateOfIssue", DateOfIssue);
+               // cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
+                cmd.Parameters.AddWithValue("@CertificateNo", CurrentCertificateNo);               
                 cmd.Parameters.AddWithValue("@DateOfExpiry", DateOfExpiry);
                 cmd.Parameters.AddWithValue("@CurrentAutorizedVoltage", VolatgeLevel);
-                cmd.Parameters.AddWithValue("@DOB", DOB);
+                //cmd.Parameters.AddWithValue("@DOB", DOB);
                 cmd.Parameters.AddWithValue("@Age", Age);
                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@PhoneNo", ContactNo);
@@ -2449,9 +2458,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@State", State);
                 cmd.Parameters.AddWithValue("@District", District);
                 cmd.Parameters.AddWithValue("@Pincode", PinCode);
-                cmd.Parameters.AddWithValue("@ApplyUpgradationEarlier", TotalExperience);
+                //cmd.Parameters.AddWithValue("@ApplyUpgradationEarlier", TotalExperience);
                 cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DateOfInterview);
-                cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageLevelFor);
+                //cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageLevelFor);
                 //cmd.Parameters.AddWithValue("@ExperienceCertificate", ExperienceCertificate);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                 cmd.ExecuteNonQuery();

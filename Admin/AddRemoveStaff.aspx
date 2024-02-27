@@ -1,14 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="Attach_DeAttach_Staff.aspx.cs" Inherits="CEIHaryana.Contractor.Attach_DeAttach_Staff" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="AddRemoveStaff.aspx.cs" Inherits="CEIHaryana.Admin.AddRemoveStaff" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
     <!---------------------   Dropdown With Search Option   ---------------------->
     <%-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -17,6 +18,53 @@
     <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+        //Allow Only Aplhabet, Delete and Backspace
+
+        function isAlpha(keyCode) {
+
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+
+        }
+
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+    </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('Data Added Successfully')) {
+                window.location.href = "/Admin/AddContractorDetails.aspx";
+            } else {
+            }
+        }
+    </script>
+    <%--     <script>
+        
+         function printDiv(printableDiv) {
+             var printContents = document.getElementById(printableDiv).innerHTML;
+             var originalContents = document.body.innerHTML;
+
+             document.body.innerHTML = printContents;
+
+             window.print();
+
+             document.body.innerHTML = originalContents;
+         }
+     </script>--%>
+
     <style>
         .table {
             width: 100%;
@@ -58,9 +106,10 @@
         }
 
         .table td, .jsgrid .jsgrid-table td {
-            font-size: 10px;
+            font-size: 1px;
             padding: 10px 15px 10px 15px;
         }
+
 
         input#ContentPlaceHolder1_RadioButtonList1_0 {
             margin-right: 5px;
@@ -89,6 +138,10 @@
             margin-left: 10px;
             margin-right: 3px;
         }
+
+
+
+
 
         .col-4 {
             top: 0px;
@@ -200,17 +253,22 @@
             <div class="card-body">
                 <asp:UpdatePanel runat="server" ID="updatePanel">
                     <ContentTemplate>
+
+
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
                                 <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">ATTACH / DE-ATTACH STAFF</h6>
                             </div>
                             <br />
+
                             <div class="col-md-4"></div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-sm-4" style="text-align: center;">
+
                                 <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                                     Data Updated Successfully !!!.
                                 </label>
@@ -220,111 +278,29 @@
                             </div>
                         </div>
                         <br />
+                        <h7 class="card-title fw-semibold mb-4">Contractor Requests</h7>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+
+                        </div>
                         <h7 class="card-title fw-semibold mb-4">Attach Staff</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Id" Visible="False">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="REID" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblREID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:BoundField DataField="REID" HeaderText="ID" Visible="False">
-                                        <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="10%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                        <HeaderStyle HorizontalAlign="left" Width="20%" CssClass="headercolor textalignleft" />
-                                        <ItemStyle HorizontalAlign="left" Width="20%" CssClass="textalignleft" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="Name" HeaderText="Name">
-                                        <HeaderStyle HorizontalAlign="Left" Width="34%" CssClass="headercolor textalignleft" />
-                                        <ItemStyle HorizontalAlign="Left" Width="34%" CssClass="textalignleft" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                        <HeaderStyle HorizontalAlign="center" Width="19%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="19%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
-                                        <HeaderStyle HorizontalAlign="center" Width="18%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="18%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="Category" HeaderText="Category">
-                                        <HeaderStyle HorizontalAlign="left" Width="17%" CssClass="headercolor textalignleft" />
-                                        <ItemStyle HorizontalAlign="left" Width="17%" CssClass="textalignleft" />
-                                    </asp:BoundField>
-                                </Columns>
-                                <FooterStyle BackColor="White" ForeColor="#000066" />
-                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                <RowStyle ForeColor="#000066" />
-                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                <SortedDescendingHeaderStyle BackColor="#00547E" />
-                            </asp:GridView>
+                            <asp:GridView ID="GridView2" runat="server"></asp:GridView>
+
                         </div>
                         <div class="row">
                             <div class="col-4"></div>
                             <div class="col-4" style="text-align: center;">
-                                <asp:Button ID="Button1" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                                <asp:Button ID="Button2" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                            </div>
+                            <div class="col-4">
+                                <asp:HiddenField ID="HiddenField2" runat="server" />
                             </div>
                         </div>
                         <h7 class="card-title fw-semibold mb-4">De-Attach Staff</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <asp:GridView ID="GridView2" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Id" Visible="False">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="REID" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblREID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:BoundField DataField="REID" HeaderText="ID" Visible="False">
-                                        <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="10%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                        <HeaderStyle HorizontalAlign="left" Width="20%" CssClass="headercolor textalignleft" />
-                                        <ItemStyle HorizontalAlign="left" Width="20%" CssClass="textalignleft" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="Name" HeaderText="Name">
-                                        <HeaderStyle HorizontalAlign="Left" Width="34%" CssClass="headercolor textalignleft" />
-                                        <ItemStyle HorizontalAlign="Left" Width="34%" CssClass="textalignleft" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                        <HeaderStyle HorizontalAlign="center" Width="19%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="19%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
-                                        <HeaderStyle HorizontalAlign="center" Width="18%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="18%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="Category" HeaderText="Category">
-                                        <HeaderStyle HorizontalAlign="left" Width="17%" CssClass="headercolor textalignleft" />
-                                        <ItemStyle HorizontalAlign="left" Width="17%" CssClass="textalignleft" />
-                                    </asp:BoundField>
-                                </Columns>
-                                <FooterStyle BackColor="White" ForeColor="#000066" />
-                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                <RowStyle ForeColor="#000066" />
-                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                <SortedDescendingHeaderStyle BackColor="#00547E" />
-                            </asp:GridView>
+                            <asp:GridView ID="GridView3" runat="server"></asp:GridView>
+
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -333,10 +309,15 @@
                     <div class="col-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                     </div>
+                    <div class="col-4">
+                        <asp:HiddenField ID="hdnId" runat="server" />
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
+
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
     </footer>
@@ -367,6 +348,8 @@
     <script src="/js2/file-upload.js"></script>
     <script src="/js2/typeahead.js"></script>
     <script src="/js2/select2.js"></script>
+
+
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
@@ -376,6 +359,7 @@
         }
     </script>
     <!-- partial -->
+
+
+
 </asp:Content>
-
-
