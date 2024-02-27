@@ -180,7 +180,7 @@
                             <label for="age">
                                 Date Of Birth<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAge" TabIndex="2" onkeydown="return preventEnterSubmit(event)" min='0000-01-01' max='9999-01-01' Type="Date" autocomplete="off" runat="server" MaxLength="30" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtAge" TabIndex="2" onkeydown="return preventEnterSubmit(event)" ontextchanged="txtAge_TextChanged" min='0000-01-01' max='9999-01-01' Type="Date" autocomplete="off" runat="server" MaxLength="30" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAge" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date Of Birth</asp:RequiredFieldValidator>
 
                         </div>

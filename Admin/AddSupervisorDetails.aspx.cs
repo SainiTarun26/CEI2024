@@ -361,5 +361,48 @@ namespace CEI_PRoject.Admin
                 txtQualification.Visible = false;
             }
         }
+
+        protected void txtAge_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAge.Text != "")
+            {
+                DateTime selectedDOB;
+                if (DateTime.TryParse(txtAge.Text, out selectedDOB))
+                {
+
+                    DateTime currentDate = DateTime.Now;
+                    int ageDiff = currentDate.Year - selectedDOB.Year;
+
+                    if (DateTime.TryParseExact(txtAge.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime dobDate))
+                    {
+
+                        if (dobDate > currentDate)
+                        {
+
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Invalid Date !!!')", true);
+                            txtAge.Text = "";
+                        }
+
+                        else if (ageDiff < 18)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
+
+                            txtAge.Text = "";
+
+                        }                        
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+
+
+            }
+
+        }
     }
-}
+    }
