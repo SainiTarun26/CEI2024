@@ -77,11 +77,12 @@
         .dropdown-menu.dropdown-menu-right.navbar-dropdown.show {
             margin-top: -10px;
         }
-           button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
-    background: red;
-    padding: 1px 5px 4px 5px;
-    border-radius: 5px;
-}
+
+        button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
+            background: red;
+            padding: 1px 5px 4px 5px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -415,8 +416,8 @@
                                     <span class="menu-title">Consolidated Report</span>
                                 </a>
                             </li>
-                        <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/AddRemoveStaff.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Add/Remove Staff</span>
                                 </a>

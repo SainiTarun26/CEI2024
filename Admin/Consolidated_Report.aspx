@@ -96,6 +96,67 @@
   </script>--%>
 
     <style>
+        .pagination-ys {
+            /*display: inline-block;*/
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+            text-align: -webkit-center;
+        }
+
+            .pagination-ys table > tbody > tr > td {
+                display: inline;
+            }
+
+                .pagination-ys table > tbody > tr > td > a,
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    color: #dd4814;
+                    background-color: #ffffff;
+                    border: 1px solid #dddddd;
+                    margin-left: -1px;
+                }
+
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    margin-left: -1px;
+                    z-index: 2;
+                    color: #aea79f;
+                    background-color: #f5f5f5;
+                    border-color: #dddddd;
+                    cursor: default;
+                }
+
+                .pagination-ys table > tbody > tr > td:first-child > a,
+                .pagination-ys table > tbody > tr > td:first-child > span {
+                    margin-left: 0;
+                    border-bottom-left-radius: 4px;
+                    border-top-left-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td:last-child > a,
+                .pagination-ys table > tbody > tr > td:last-child > span {
+                    border-bottom-right-radius: 4px;
+                    border-top-right-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td > a:hover,
+                .pagination-ys table > tbody > tr > td > span:hover,
+                .pagination-ys table > tbody > tr > td > a:focus,
+                .pagination-ys table > tbody > tr > td > span:focus {
+                    color: #97310e;
+                    background-color: #eeeeee;
+                    border-color: #dddddd;
+                }
+
         .example {
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
@@ -181,7 +242,7 @@
             text-decoration: underline;
         }
     </style>
-     <script>
+    <script>
          function printDiv(printableDiv) {
              var printContents = document.getElementById(printableDiv).innerHTML;
              var originalContents = document.body.innerHTML;
@@ -194,7 +255,7 @@
              document.body.innerHTML = originalContents;
          }
 
-     </script>
+    </script>
     <%--<script type="text/javascript">
         $(document).ready(function () {
             // Attach the change event to the dropdown
@@ -261,8 +322,8 @@
                                 District:
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlDistrict" TabIndex="8" runat="server" AutoPostBack="true">
-                               <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
@@ -309,8 +370,8 @@
                                 Pending With:
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlStaffPendingWith" TabIndex="8" runat="server" AutoPostBack="true">
-                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
                 </div>
@@ -318,9 +379,9 @@
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Show" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
-                        <asp:Button ID="BtnExport"  Text="Export" OnClientClick="printDiv('printableDiv');" runat="server" class="btn btn-primary mr-2"
-                            Style="padding-left: 17px; padding-right: 17px;" /> 
-                        <asp:Button ID="BtnReset"  Text="Reset" runat="server" class="btn btn-primary mr-2"
+                        <asp:Button ID="BtnExport" Text="Export" OnClientClick="printDiv('printableDiv');" runat="server" class="btn btn-primary mr-2"
+                            Style="padding-left: 17px; padding-right: 17px;" />
+                        <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;" OnClick="BtnReset_Click" />
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
@@ -342,19 +403,19 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                    <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>  
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                        <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField>
                                     <HeaderStyle Width="10%" CssClass="headercolor" />
                                     <ItemStyle Width="10%" />
@@ -392,7 +453,13 @@
 
                             </Columns>
                         </asp:GridView>
-                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Download in Excel</asp:LinkButton>
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4" style="text-align: center;">
+                                <asp:LinkButton ID="LinkButton2" class="btn btn-primary" runat="server" OnClick="LinkButton2_Click" Style="margin-top: 10px; margin-bottom: 10px;">Download in Excel</asp:LinkButton>
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
                         <%-- <table class="table table-responsive table-striped table-hover table-bordered example">
                             <thead style="background: #604db8; color: white;">
                                 <tr>
@@ -420,5 +487,5 @@
             </div>
         </div>
     </div>
-    
+
 </asp:Content>

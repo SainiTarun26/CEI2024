@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="Attach_DeAttach_Staff.aspx.cs" Inherits="CEIHaryana.Contractor.Attach_DeAttach_Staff" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -58,8 +59,8 @@
         }
 
         .table td, .jsgrid .jsgrid-table td {
-            font-size: 10px;
-            padding: 10px 15px 10px 15px;
+            font-size: 13px;
+            padding: 14px 15px 0px 15px;
         }
 
         input#ContentPlaceHolder1_RadioButtonList1_0 {
@@ -222,7 +223,7 @@
                         <br />
                         <h7 class="card-title fw-semibold mb-4">Attach Staff</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                            <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
@@ -314,6 +315,11 @@
                                         <HeaderStyle HorizontalAlign="left" Width="17%" CssClass="headercolor textalignleft" />
                                         <ItemStyle HorizontalAlign="left" Width="17%" CssClass="textalignleft" />
                                     </asp:BoundField>
+                                    <asp:TemplateField HeaderText="Actions">
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
