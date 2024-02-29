@@ -132,8 +132,8 @@ namespace CEIHaryana.TestReportModal
                 txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
                 txtTransformerCapacityType.Text = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
-                TextStatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
-                TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                //TextStatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
+                //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 if (txtTransformerType.Text.Trim() == "Oil")
                 {
                     InCaseOfOil.Visible = true;

@@ -160,12 +160,17 @@ namespace CEIHaryana.Supervisor
                         }
 
                         CEI.InsertSupervisorExperience(ddlExperiene1.SelectedItem.ToString(), ddlTraningUnder1.SelectedItem.ToString(), txtExperienceEmployer1.Text.Trim(),
-                           txtPostDescription1.Text.Trim(), txtExperienceFrom1.Text.Trim(), txtExperienceTo1.Text.Trim(),
-                           ddlExperiene2.SelectedValue == "0" ? null : ddlExperiene2.SelectedItem.ToString(), ddlTraningUnder2.SelectedValue == "0" ? null : ddlTraningUnder2.SelectedItem.ToString(),
-                           txtExperienceEmployer2.Text.Trim(), txtPostDescription2.Text.Trim(), txtExperienceFrom2.Text.Trim(), txtExperienceTo2.Text.Trim(),
-                           ddlExperiene3.SelectedValue == "0" ? null : ddlExperiene3.SelectedItem.ToString(), ddlTraningUnder3.SelectedValue == "0" ? null : ddlTraningUnder3.SelectedItem.ToString(),
-                           txtExperienceEmployer3.Text.Trim(), txtPostDescription3.Text.Trim(), txtExperienceFrom3.Text.Trim(), txtExperienceTo3.Text.Trim(), txtTotalExperience.Text.Trim(), SupervisorId
-                           );
+                            txtPostDescription1.Text.Trim(), txtExperienceFrom1.Text.Trim(), txtExperienceTo1.Text.Trim(),
+                            ddlExperiene2.SelectedValue == "0" ? null : ddlExperiene2.SelectedItem.ToString(), ddlTraningUnder2.SelectedValue == "0" ? null : ddlTraningUnder2.SelectedItem.ToString(),
+                            txtExperienceEmployer2.Text.Trim(), txtPostDescription2.Text.Trim(), txtExperienceFrom2.Text.Trim(), txtExperienceTo2.Text.Trim(),
+                            ddlExperiene3.SelectedValue == "0" ? null : ddlExperiene3.SelectedItem.ToString(), ddlTraningUnder3.SelectedValue == "0" ? null : ddlTraningUnder3.SelectedItem.ToString(),
+                            txtExperienceEmployer3.Text.Trim(), txtPostDescription3.Text.Trim(), txtExperienceFrom3.Text.Trim(), txtExperienceTo3.Text.Trim(),
+                            ddlExperience4.SelectedValue == "0" ? null : ddlExperience4.SelectedItem.ToString(), ddlUnderTraning4.SelectedValue == "0" ? null : ddlUnderTraning4.SelectedItem.ToString(),
+                           txtExperienceEmployer4.Text.Trim(), txtPostDescription4.Text.Trim(), txtExperienceFrom4.Text.Trim(), txtExperienceTo4.Text.Trim(),
+                            ddlExperience5.SelectedValue == "0" ? null : ddlExperience5.SelectedItem.ToString(), ddlUnderTraning5.SelectedValue == "0" ? null : ddlUnderTraning5.SelectedItem.ToString(),
+                           txtExperienceEmployer5.Text.Trim(), txtPostDescription5.Text.Trim(), txtExperienceFrom5.Text.Trim(), txtExperienceTo5.Text.Trim(),
+                            txtTotalExperience.Text.Trim(), SupervisorId
+                            );
 
 
                         int x = CEI.InsertUpgradationSupervisorData(
@@ -259,16 +264,28 @@ namespace CEIHaryana.Supervisor
         }
         protected void btnAddMore_Click(object sender, EventArgs e)
         {
-            if(trExperience2.Visible==false)
+            if (trExperience2.Visible == false)
             {
                 trExperience2.Visible = true;
             }
-            else if(trExperience3.Visible==false)
+            else if (trExperience3.Visible == false)
             {
                 trExperience2.Visible = true;
                 trExperience3.Visible = true;
             }
-
+            else if (trExperience4.Visible == false)
+            {
+                trExperience2.Visible = true;
+                trExperience3.Visible = true;
+                trExperience4.Visible = true;
+            }
+            else if (trExperience5.Visible == false)
+            {
+                trExperience2.Visible = true;
+                trExperience3.Visible = true;
+                trExperience4.Visible = true;
+                trExperience5.Visible = true;
+            }
         }
     }
 }

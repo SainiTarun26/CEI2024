@@ -70,15 +70,15 @@ namespace CEIHaryana.UserPages
                         }
                         else
                         {
-                            Response.Redirect("/Login.aspx");
+                            //Response.Redirect("/Login.aspx");
                         }
                     }
 
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+               // Response.Redirect("/Login.aspx");
             }
         }
 

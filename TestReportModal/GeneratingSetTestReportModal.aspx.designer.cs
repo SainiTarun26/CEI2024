@@ -285,24 +285,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtBreakingCapacity;
 
         /// <summary>
-        /// Textstatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Textstatus;
-
-        /// <summary>
-        /// TextReason control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextReason;
-
-        /// <summary>
         /// SolarPanelGeneratingSet control.
         /// </summary>
         /// <remarks>

@@ -616,8 +616,103 @@
 
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <tr id="trExperience4" runat="server" visible="false">
+                                                <%--  <td style="text-align: center; font-size: 13px;">1
+</td>--%>
+                                                <td>
+                                                    <asp:DropDownList class="select-form select2" ID="ddlExperience4" runat="server" TabIndex="36" AutoPostBack="true">
+                                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="Erection" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="Operation" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="Maintenance of Electrical Installation" Value="3"></asp:ListItem>
 
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="ddlExperience4" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select ExperienceIn"></asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList class="select-form select2" ID="ddlUnderTraning4" runat="server" TabIndex="37" AutoPostBack="true">
+                                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="A class licensed electrical contractor" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="State government" Value="3"></asp:ListItem>
+                                                        <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ControlToValidate="DropDownList1" InitialValue="0" ForeColor="Red" 
+        ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer4" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtExperienceEmployer4"
+                                                        ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription4" MaxLength="35" TabIndex="39" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtPostDescription4"
+                                                        ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="txtExperienceFrom4"
+                                                        ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtExperienceTo4"
+                                                        ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="CompareValidator4" runat="server" ControlToCompare="txtExperienceFrom4" ControlToValidate="txtExperienceTo4" Operator="GreaterThan"
+                                                        ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
+
+                                                </td>
+                                            </tr>
+                                            <tr id="trExperience5" runat="server" visible="false">
+                                                <%--  <td style="text-align: center; font-size: 13px;">1
+</td>--%>
+                                                <td>
+                                                    <asp:DropDownList class="select-form select2" ID="ddlExperience5" runat="server" TabIndex="36" AutoPostBack="true">
+                                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="Erection" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="Operation" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="Maintenance of Electrical Installation" Value="3"></asp:ListItem>
+
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="ddlExperience5" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select ExperienceIn"></asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList class="select-form select2" ID="ddlUnderTraning5" runat="server" TabIndex="37" AutoPostBack="true">
+                                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="A class licensed electrical contractor" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="State government" Value="3"></asp:ListItem>
+                                                        <asp:ListItem Text="Semigovernment department/organisation" Value="4"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ControlToValidate="DropDownList1" InitialValue="0" ForeColor="Red" 
+        ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer5" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="txtExperienceEmployer5"
+                                                        ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription5" MaxLength="35" TabIndex="39" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="txtPostDescription5"
+                                                        ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom5" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ControlToValidate="txtExperienceFrom5"
+                                                        ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo5" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ControlToValidate="txtExperienceTo5"
+                                                        ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="CompareValidator5" runat="server" ControlToCompare="txtExperienceFrom5" ControlToValidate="txtExperienceTo5" Operator="GreaterThan"
+                                                        ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
+
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td colspan="4" style="font-size: 12px;">
                                                     <asp:Button ID="btnAddMore" runat="server" OnClick="btnAddMore_Click" Text="Add More" class="btn btn-primary"
                                                         Style="padding: 5px 10px 5px 10px; border-radius: 5px;"></asp:Button>

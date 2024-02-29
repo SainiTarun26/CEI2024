@@ -53,7 +53,7 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                       
                     }
                 }
             }

@@ -84,7 +84,7 @@ namespace CEIHaryana.Contractor
                         Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
                         Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                     }
-                    else if (lblTypeOf.Text.Trim() == "Generating Station")
+                    else if (lblTypeOf.Text.Trim() == "Generating Set")
                     {
 
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
@@ -93,7 +93,8 @@ namespace CEIHaryana.Contractor
 
                 }
             }
-            catch { }
+            catch(Exception ex) 
+            { }
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

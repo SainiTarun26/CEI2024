@@ -82,7 +82,7 @@ namespace CEIHaryana.Supervisor
                             if (lblApproval.Text.Trim() == "Reject")
                             {
                                 Session["LineID"] = id;
-                                Response.Redirect("Supervisor/LineTestReport.aspx", false);
+                                Response.Redirect("~/Supervisor/LineTestReport.aspx", false);
                             }
                             else
                             {

@@ -28,9 +28,6 @@ namespace CEIHaryana.Contractor
                     {
                         ScriptManager scriptManager = ScriptManager.GetCurrent(this);
 
-
-
-
                         ddlLoadBindPremises();
                         worktypevisiblity();
                         ddlLoadBindVoltage();
@@ -42,20 +39,17 @@ namespace CEIHaryana.Contractor
 
                         if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
                         {
-
                             GetGridData();
                             GridView1.Columns[0].Visible = true;
                             customFile.Visible = true;
                         }
                         else
                         {
-
                             GetDetails();
                             GetassigneddatatoContractor();
-                            Session["UpdationId"] =  Session["id"] ;
+                            Session["UpdationId"] = Session["id"];
                             Session["id"] = "";
                         }
-
                     }
                     else
                     {
@@ -72,7 +66,6 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                // DivInstallationType.Visible = false;
                 REID = Session["id"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetWorkIntimationDataForAdmin(REID);
@@ -86,7 +79,6 @@ namespace CEIHaryana.Contractor
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
-
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
                 //ddlPremises.SelectedValue = dp_Id1;
                 txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
@@ -112,16 +104,16 @@ namespace CEIHaryana.Contractor
                 string dp_Id11 = ds.Tables[0].Rows[0]["NumberOfInstallation2"].ToString();
                 string dp_Id12 = ds.Tables[0].Rows[0]["TypeOfInstallation3"].ToString();
                 string dp_Id13 = ds.Tables[0].Rows[0]["NumberOfInstallation3"].ToString();
-                string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
-                string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
-                string dp_Id16 = ds.Tables[0].Rows[0]["TypeOfInstallation5"].ToString();
-                string dp_Id17 = ds.Tables[0].Rows[0]["NumberOfInstallation5"].ToString();
-                string dp_Id18 = ds.Tables[0].Rows[0]["TypeOfInstallation6"].ToString();
-                string dp_Id19 = ds.Tables[0].Rows[0]["NumberOfInstallation6"].ToString();
-                string dp_Id20 = ds.Tables[0].Rows[0]["TypeOfInstallation7"].ToString();
-                string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
-                string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
-                string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
+                //string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
+                //string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
+                //string dp_Id16 = ds.Tables[0].Rows[0]["TypeOfInstallation5"].ToString();
+                //string dp_Id17 = ds.Tables[0].Rows[0]["NumberOfInstallation5"].ToString();
+                //string dp_Id18 = ds.Tables[0].Rows[0]["TypeOfInstallation6"].ToString();
+                //string dp_Id19 = ds.Tables[0].Rows[0]["NumberOfInstallation6"].ToString();
+                //string dp_Id20 = ds.Tables[0].Rows[0]["TypeOfInstallation7"].ToString();
+                //string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
+                //string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
+                //string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
                 string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
 
                 if (dp_Id8 != "")
@@ -133,7 +125,6 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
-                   // Installation.Visible = false;
                     installationType1.Visible = false;
                 }
                 if (dp_Id10 != "")
@@ -146,7 +137,6 @@ namespace CEIHaryana.Contractor
                 else
                 {
 
-                   // Installation.Visible = false;
                     installationType2.Visible = false;
                 }
                 if (dp_Id12 != "")
@@ -158,45 +148,43 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
-
-                  //  Installation.Visible = false;
                     installationType3.Visible = false;
                 }
-                if (dp_Id14 != "")
-                {
-                    Installation.Visible = true;
-                    installationType4.Visible = true;
-                    txtinstallationType4.Text = dp_Id14;
-                    txtinstallationNo4.Text = dp_Id15;
-                }
-                if (dp_Id16 != "")
-                {
-                    Installation.Visible = true;
-                    installationType5.Visible = true;
-                    txtinstallationType5.Text = dp_Id16;
-                    txtinstallationNo5.Text = dp_Id17;
-                }
-                if (dp_Id18 != "")
-                {
-                    Installation.Visible = true;
-                    installationType6.Visible = true;
-                    txtinstallationType6.Text = dp_Id18;
-                    txtinstallationNo6.Text = dp_Id19;
-                }
-                if (dp_Id20 != "")
-                {
-                    Installation.Visible = true;
-                    installationType7.Visible = true;
-                    txtinstallationType7.Text = dp_Id20;
-                    txtinstallationNo7.Text = dp_Id21;
-                }
-                if (dp_Id22 != "")
-                {
-                    Installation.Visible = true;
-                    installationType8.Visible = true;
-                    txtinstallationType8.Text = dp_Id22;
-                    txtinstallationNo8.Text = dp_Id23;
-                }
+                //if (dp_Id14 != "")
+                //{
+                //    Installation.Visible = true;
+                //    installationType4.Visible = true;
+                //    txtinstallationType4.Text = dp_Id14;
+                //    txtinstallationNo4.Text = dp_Id15;
+                //}
+                //if (dp_Id16 != "")
+                //{
+                //    Installation.Visible = true;
+                //    installationType5.Visible = true;
+                //    txtinstallationType5.Text = dp_Id16;
+                //    txtinstallationNo5.Text = dp_Id17;
+                //}
+                //if (dp_Id18 != "")
+                //{
+                //    Installation.Visible = true;
+                //    installationType6.Visible = true;
+                //    txtinstallationType6.Text = dp_Id18;
+                //    txtinstallationNo6.Text = dp_Id19;
+                //}
+                //if (dp_Id20 != "")
+                //{
+                //    Installation.Visible = true;
+                //    installationType7.Visible = true;
+                //    txtinstallationType7.Text = dp_Id20;
+                //    txtinstallationNo7.Text = dp_Id21;
+                //}
+                //if (dp_Id22 != "")
+                //{
+                //    Installation.Visible = true;
+                //    installationType8.Visible = true;
+                //    txtinstallationType8.Text = dp_Id22;
+                //    txtinstallationNo8.Text = dp_Id23;
+                //}
 
                 ddlAnyWork.SelectedIndex = ddlAnyWork.Items.IndexOf(ddlAnyWork.Items.FindByText(dp_Id7));
                 if (dp_Id7 == "Yes")
@@ -210,7 +198,8 @@ namespace CEIHaryana.Contractor
                 }
                 //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
-                if (TestReportGenerated.Trim() == "Yes") {
+                if (TestReportGenerated.Trim() == "Yes")
+                {
                     txtPAN.Attributes.Add("readonly", "readonly");
                     ddlworktype.Attributes.Add("disabled", "disabled");
                     txtName.Attributes.Add("readonly", "readonly");
@@ -249,7 +238,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
         protected void txtPAN_TextChanged(object sender, EventArgs e)
         {
             try
@@ -286,7 +274,7 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
-                   // Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
+                    // Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
                 }
 
             }
@@ -321,7 +309,6 @@ namespace CEIHaryana.Contractor
             catch { }
 
         }
-
         protected void ddlworktype_SelectedIndexChanged(object sender, EventArgs e)
         {
             worktypevisiblity();
@@ -437,13 +424,8 @@ namespace CEIHaryana.Contractor
                 txtinstallationNo2.Text = "";
                 txtinstallationType3.Text = "";
                 txtinstallationNo3.Text = "";
-                txtinstallationType4.Text = "";
-                txtinstallationNo4.Text = "";
-                txtinstallationType5.Text = "";
-                txtinstallationNo5.Text = "";
-                txtinstallationType6.Text = "";
-                txtinstallationNo6.Text = "";
-                txtinstallationType7.Text = ""; txtinstallationNo7.Text = ""; txtinstallationType8.Text = ""; txtinstallationNo8.Text = "";
+                //txtinstallationType4.Text = "";txtinstallationNo4.Text = "";txtinstallationType5.Text = "";txtinstallationNo5.Text = "";txtinstallationType6.Text = "";
+                //txtinstallationNo6.Text = "";txtinstallationType7.Text = ""; txtinstallationNo7.Text = ""; txtinstallationType8.Text = ""; txtinstallationNo8.Text = "";
                 txtCompletitionDate.Text = "";
                 ddlAnyWork.SelectedValue = "0";
                 txtCompletionDateAPWO.Text = "";
@@ -466,19 +448,18 @@ namespace CEIHaryana.Contractor
                 string UpdationId = string.Empty;
                 if (Session["UpdationId"] != null)
                 {
-                     UpdationId = Session["UpdationId"].ToString();
+                    UpdationId = Session["UpdationId"].ToString();
                 }
                 else
                 {
                     UpdationId = null;
-
                 }
                 bool atLeastOneSupervisorChecked = false;
 
                 foreach (GridViewRow row in GridView1.Rows)
                 {
-                    
-                    Label lblCategory = (Label)row.FindControl("lblCategory"); 
+
+                    Label lblCategory = (Label)row.FindControl("lblCategory");
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
                     if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
@@ -488,7 +469,7 @@ namespace CEIHaryana.Contractor
                     }
                 }
 
-                if (!atLeastOneSupervisorChecked && btnSubmit.Text !="Update")
+                if (!atLeastOneSupervisorChecked && btnSubmit.Text != "Update")
                 {
                     // No Supervisor checkbox is selected
                     // Add your logic or show a message here
@@ -500,7 +481,6 @@ namespace CEIHaryana.Contractor
                     string mobilenumber = txtPhone.Text.Trim();
                     if (Session["ContractorID"] != null)
                     {
-
                         ContractorID = Session["ContractorID"].ToString();
 
                         string filePathInfo = "";
@@ -509,8 +489,10 @@ namespace CEIHaryana.Contractor
                             try
                             {
                                 string FilName = string.Empty;
+
                                 //if (customFile.PostedFile.FileName.Length > 0)
                                 //{
+
                                 FilName = Path.GetFileName(customFile.PostedFile.FileName);
                                 if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
                                 {
@@ -525,7 +507,6 @@ namespace CEIHaryana.Contractor
                                 filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
                                 customFile.PostedFile.SaveAs(filePathInfo2);
                                 filePathInfo = path + fileName;
-                                // }
                             }
                             catch (Exception ex)
                             {
@@ -534,15 +515,14 @@ namespace CEIHaryana.Contractor
                             }
                         }
 
-                       
                         hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(UpdationId,ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text, 
-                            txtAddress.Text,ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text, 
-                            ddlVoltageLevel.SelectedItem.ToString(),txtPAN.Text,txtinstallationType1.Text,txtinstallationNo1.Text, txtinstallationType2.Text,
-                            txtinstallationNo2.Text, txtinstallationType3.Text,txtinstallationNo3.Text,txtinstallationType4.Text, txtinstallationNo4.Text,
-                            txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,txtinstallationNo6.Text, txtinstallationType7.Text, 
-                            txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,txtEmail.Text, txtStartDate.Text,
-                            txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
+                        CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
+                            txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
+                            ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
+                            txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
+                            //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
+                            //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
+                            txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
                           ddlApplicantType.SelectedItem.ToString(), ContractorID);
 
                         string projectId = CEI.projectId();
@@ -553,13 +533,11 @@ namespace CEIHaryana.Contractor
 
                             foreach (GridViewRow row in GridView1.Rows)
                             {
-
                                 if ((row.FindControl("CheckBox1") as CheckBox).Checked)
                                 {
                                     Label lblREID = (Label)row.FindControl("lblREID");
                                     string Reid = lblREID.Text;
                                     CEI.SetDataInStaffAssined(Reid, projectId, AssignBy);
-
                                 }
                             }
                         }
@@ -583,18 +561,15 @@ namespace CEIHaryana.Contractor
                             }
                         }
                         CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
-                        if (btnSubmit.Text.Trim() =="Submit") {
+                        if (btnSubmit.Text.Trim() == "Submit")
+                        {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }
                         else
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
                         }
-
-
-
                     }
-
                     else
                     {
                         Response.Redirect("/Login.aspx", false);
@@ -607,7 +582,6 @@ namespace CEIHaryana.Contractor
                 string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
             }
-
         }
         public void GetGridData()
         {
@@ -628,15 +602,12 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
-
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
             {
                 if (e.Row.RowType == DataControlRowType.Header)
                 {
-
                     CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                     chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
                 }
@@ -662,8 +633,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
-
         protected void GetassigneddatatoContractor()
         {
             try
@@ -697,22 +666,18 @@ namespace CEIHaryana.Contractor
                 if (ddlPremises.SelectedValue == "10")
                 {
                     OtherPremises.Visible = true;
-
                 }
                 else
                 {
-
                     OtherPremises.Visible = false;
                 }
             }
             catch { }
         }
-
         protected void Unnamed2_Click(object sender, EventArgs e)
         {
             Reset();
         }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             try
@@ -722,7 +687,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
             string Value = ddlWorkDetail.SelectedItem.ToString();
@@ -734,7 +698,6 @@ namespace CEIHaryana.Contractor
                 {
                     txtinstallationType1.Text = Value;
                 }
-
                 else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
                 {
                     installationType2.Visible = true;
@@ -745,38 +708,36 @@ namespace CEIHaryana.Contractor
                     installationType3.Visible = true;
                     txtinstallationType3.Text = Value;
                 }
-                else if (string.IsNullOrEmpty(txtinstallationType4.Text))
-                {
-                    installationType4.Visible = true;
-                    txtinstallationType4.Text = Value;
-                }
-                else if (string.IsNullOrEmpty(txtinstallationType5.Text))
-                {
-                    installationType5.Visible = true;
-                    txtinstallationType5.Text = Value;
-                }
-                else if (string.IsNullOrEmpty(txtinstallationType6.Text))
-                {
+                //else if (string.IsNullOrEmpty(txtinstallationType4.Text))
+                //{
+                //    installationType4.Visible = true;
+                //    txtinstallationType4.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType5.Text))
+                //{
+                //    installationType5.Visible = true;
+                //    txtinstallationType5.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType6.Text))
+                //{
 
-                    installationType6.Visible = true;
-                    txtinstallationType6.Text = Value;
-                }
-                else if (string.IsNullOrEmpty(txtinstallationType7.Text))
-                {
-                    installationType7.Visible = true;
-                    txtinstallationType7.Text = Value;
-                }
-                else if (string.IsNullOrEmpty(txtinstallationType8.Text))
-                {
-                    installationType8.Visible = true;
-                    txtinstallationType8.Text = Value;
-                }
+                //    installationType6.Visible = true;
+                //    txtinstallationType6.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType7.Text))
+                //{
+                //    installationType7.Visible = true;
+                //    txtinstallationType7.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType8.Text))
+                //{
+                //    installationType8.Visible = true;
+                //    txtinstallationType8.Text = Value;
+                //}
                 if (ddlWorkDetail.SelectedValue != "0")
                 {
-
                     try
                     {
-                        
                         string selectedValue = ddlWorkDetail.SelectedValue;
                         ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
                         if (itemToRemove != null)
@@ -785,10 +746,9 @@ namespace CEIHaryana.Contractor
                         }
                     }
                     catch (Exception)
-                    { 
+                    {
                     }
                     ddlWorkDetail.SelectedValue = "0";
-
                 }
             }
         }
@@ -811,7 +771,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
         protected void btnDelete2_Click(object sender, EventArgs e)
         {
             string valueToAddBack = txtinstallationType2.Text;
@@ -826,7 +785,6 @@ namespace CEIHaryana.Contractor
             txtinstallationType2.Text = string.Empty;
             txtinstallationNo2.Text = string.Empty;
         }
-
         protected void btnDelete3_Click(object sender, EventArgs e)
         {
             string valueToAddBack = txtinstallationType3.Text;
@@ -835,100 +793,91 @@ namespace CEIHaryana.Contractor
             {
                 ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
                 ddlWorkDetail.Items.Add(newItem);
-
             }
             installationType3.Visible = false;
             txtinstallationType3.Text = string.Empty;
             txtinstallationNo3.Text = string.Empty;
         }
+        //protected void btnDelete4_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType4.Text;
 
-        protected void btnDelete4_Click(object sender, EventArgs e)
-        {
-            string valueToAddBack = txtinstallationType4.Text;
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
 
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
+        //    }
+        //    installationType4.Visible = false;
+        //    txtinstallationType4.Text = string.Empty;
+        //    txtinstallationNo4.Text = string.Empty;
+        //}
+        //protected void btnDelete5_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType5.Text;
 
-            }
-            installationType4.Visible = false;
-            txtinstallationType4.Text = string.Empty;
-            txtinstallationNo4.Text = string.Empty;
-        }
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
 
-        protected void btnDelete5_Click(object sender, EventArgs e)
-        {
-            string valueToAddBack = txtinstallationType5.Text;
+        //    }
+        //    installationType5.Visible = false;
+        //    txtinstallationType5.Text = string.Empty;
+        //    txtinstallationNo5.Text = string.Empty;
+        //}
+        //protected void btnDelete6_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType6.Text;
 
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
 
-            }
-            installationType5.Visible = false;
-            txtinstallationType5.Text = string.Empty;
-            txtinstallationNo5.Text = string.Empty;
-        }
+        //    }
+        //    installationType6.Visible = false;
+        //    txtinstallationType6.Text = string.Empty;
+        //    txtinstallationNo6.Text = string.Empty;
+        //}
+        //protected void btnDelete7_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType7.Text;
 
-        protected void btnDelete6_Click(object sender, EventArgs e)
-        {
-            string valueToAddBack = txtinstallationType6.Text;
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
 
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
+        //    }
+        //    installationType7.Visible = false;
+        //    txtinstallationType7.Text = string.Empty;
+        //    txtinstallationNo7.Text = string.Empty;
+        //}
+        //protected void btnDelete8_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType8.Text;
 
-            }
-            installationType6.Visible = false;
-            txtinstallationType6.Text = string.Empty;
-            txtinstallationNo6.Text = string.Empty;
-        }
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
 
-        protected void btnDelete7_Click(object sender, EventArgs e)
-        {
-            string valueToAddBack = txtinstallationType7.Text;
-
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
-
-            }
-            installationType7.Visible = false;
-            txtinstallationType7.Text = string.Empty;
-            txtinstallationNo7.Text = string.Empty;
-        }
-
-        protected void btnDelete8_Click(object sender, EventArgs e)
-        {
-            string valueToAddBack = txtinstallationType8.Text;
-
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
-
-            }
-            installationType8.Visible = false;
-            txtinstallationType8.Text = string.Empty;
-            txtinstallationNo8.Text = string.Empty;
-        }
-
+        //    }
+        //    installationType8.Visible = false;
+        //    txtinstallationType8.Text = string.Empty;
+        //    txtinstallationNo8.Text = string.Empty;
+        //}
         protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
         {
             try
             {
                 string valueToAddBack = txtinstallationType1.Text;
-
                 if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
                 {
                     ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
                     ddlWorkDetail.Items.Add(newItem);
                 }
-
                 installationType1.Visible = false;
                 txtinstallationType1.Text = string.Empty;
                 txtinstallationNo1.Text = string.Empty;
@@ -938,7 +887,6 @@ namespace CEIHaryana.Contractor
                 // Handle exceptions appropriately
             }
         }
-
         protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -949,7 +897,6 @@ namespace CEIHaryana.Contractor
                 {
                     ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
                     ddlWorkDetail.Items.Add(newItem);
-
                 }
                 installationType2.Visible = false;
                 txtinstallationType2.Text = string.Empty;
@@ -965,12 +912,10 @@ namespace CEIHaryana.Contractor
             try
             {
                 string valueToAddBack = txtinstallationType3.Text;
-
                 if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
                 {
                     ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
                     ddlWorkDetail.Items.Add(newItem);
-
                 }
                 installationType3.Visible = false;
                 txtinstallationType3.Text = string.Empty;
@@ -978,8 +923,5 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
-
-       
     }
 }

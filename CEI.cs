@@ -140,8 +140,9 @@ namespace CEI_PRoject
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
 string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+string TypeOfInstallation3, string NumberOfInstallation3,
+//string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+//string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
 string Email, string WorkStartDate, string CompletionDate,
 string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy)
         {
@@ -176,16 +177,16 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             cmd.Parameters.AddWithValue("@NumberOfInstallation2", NumberOfInstallation2);
             cmd.Parameters.AddWithValue("@TypeOfInstallation3", TypeOfInstallation3);
             cmd.Parameters.AddWithValue("@NumberOfInstallation3", NumberOfInstallation3);
-            cmd.Parameters.AddWithValue("@TypeOfInstallation4", TypeOfInstallation4);
-            cmd.Parameters.AddWithValue("@NumberOfInstallation4", NumberOfInstallation4);
-            cmd.Parameters.AddWithValue("@TypeOfInstallation5", TypeOfInstallation5);
-            cmd.Parameters.AddWithValue("@NumberOfInstallation5", NumberOfInstallation5);
-            cmd.Parameters.AddWithValue("@TypeOfInstallation6", TypeOfInstallation6);
-            cmd.Parameters.AddWithValue("@NumberOfInstallation6", NumberOfInstallation6);
-            cmd.Parameters.AddWithValue("@TypeOfInstallation7", TypeOfInstallation7);
-            cmd.Parameters.AddWithValue("@NumberOfInstallation7", NumberOfInstallation7);
-            cmd.Parameters.AddWithValue("@TypeOfInstallation8", TypeOfInstallation8);
-            cmd.Parameters.AddWithValue("@NumberOfInstallation8", NumberOfInstallation8);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation4", TypeOfInstallation4);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation4", NumberOfInstallation4);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation5", TypeOfInstallation5);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation5", NumberOfInstallation5);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation6", TypeOfInstallation6);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation6", NumberOfInstallation6);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation7", TypeOfInstallation7);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation7", NumberOfInstallation7);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation8", TypeOfInstallation8);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation8", NumberOfInstallation8);
             cmd.Parameters.AddWithValue("@Email", Email);
             cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
             cmd.Parameters.AddWithValue("@CompletionDate", CompletionDate);
@@ -2472,40 +2473,63 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public void InsertSupervisorExperience(string Experience1, string TraningUnder1, string EmployerName1, string PostDescription1, string ExperienceFrom1, string ExperienceTo1,
           string Experience2, string TraningUnder2, string EmployerName2, string PostDescription2, string ExperienceFrom2, string ExperienceTo2,
           string Experience3, string TraningUnder3, string EmployerName3, string PostDescription3, string ExperienceFrom3, string ExperienceTo3,
+           string Experience4, string TraningUnder4, string EmployerName4, string PostDescription4, string ExperienceFrom4, string ExperienceTo4,
+            string Experience5, string TraningUnder5, string EmployerName5, string PostDescription5, string ExperienceFrom5, string ExperienceTo5,
           string TotalExperience, string CreatedBy
         )
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            if (con.State != ConnectionState.Closed)
+            try
             {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                SqlCommand cmd = new SqlCommand("sp_InsertSupervisiorExperience");
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Experience1", Experience1);
+                cmd.Parameters.AddWithValue("@TraningUnder1", TraningUnder1);
+                cmd.Parameters.AddWithValue("@EmployerName1", EmployerName1);
+                cmd.Parameters.AddWithValue("@PostDescription1", PostDescription1);
+                cmd.Parameters.AddWithValue("@From1", ExperienceFrom1);
+                cmd.Parameters.AddWithValue("@To1", ExperienceTo1);
+                cmd.Parameters.AddWithValue("@Experience2", Experience2);
+                cmd.Parameters.AddWithValue("@TraningUnder2", TraningUnder2);
+                cmd.Parameters.AddWithValue("@EmployerName2", EmployerName2);
+                cmd.Parameters.AddWithValue("@PostDescription2", PostDescription2);
+                cmd.Parameters.AddWithValue("@From2", ExperienceFrom2);
+                cmd.Parameters.AddWithValue("@To2", ExperienceTo2);
+                cmd.Parameters.AddWithValue("@Experience3", Experience3);
+                cmd.Parameters.AddWithValue("@TraningUnder3", TraningUnder3);
+                cmd.Parameters.AddWithValue("@EmployerName3", EmployerName3);
+                cmd.Parameters.AddWithValue("@PostDescription3", PostDescription3);
+                cmd.Parameters.AddWithValue("@From3", ExperienceFrom3);
+                cmd.Parameters.AddWithValue("@To3", ExperienceTo3);
+                cmd.Parameters.AddWithValue("@Experience4", Experience4);
+                cmd.Parameters.AddWithValue("@TraningUnder4", TraningUnder4);
+                cmd.Parameters.AddWithValue("@EmployerName4", EmployerName4);
+                cmd.Parameters.AddWithValue("@PostDescription4", PostDescription4);
+                cmd.Parameters.AddWithValue("@From4", ExperienceFrom4);
+                cmd.Parameters.AddWithValue("@To4", ExperienceTo4);
+                cmd.Parameters.AddWithValue("@Experience5", Experience5);
+                cmd.Parameters.AddWithValue("@TraningUnder5", TraningUnder5);
+                cmd.Parameters.AddWithValue("@EmployerName5", EmployerName5);
+                cmd.Parameters.AddWithValue("@PostDescription5", PostDescription5);
+                cmd.Parameters.AddWithValue("@From5 ", ExperienceFrom5);
+                cmd.Parameters.AddWithValue("@To5", ExperienceTo5);
+                cmd.Parameters.AddWithValue("@TotalExperience", TotalExperience);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Experience1", Experience1);
-            cmd.Parameters.AddWithValue("@TraningUnder1", TraningUnder1);
-            cmd.Parameters.AddWithValue("@EmployerName1", EmployerName1);
-            cmd.Parameters.AddWithValue("@PostDescription", PostDescription1);
-            cmd.Parameters.AddWithValue("@From1", ExperienceFrom1);
-            cmd.Parameters.AddWithValue("@To1", ExperienceTo1);
-            cmd.Parameters.AddWithValue("@Experience2", Experience2);
-            cmd.Parameters.AddWithValue("@TraningUnder2", TraningUnder2);
-            cmd.Parameters.AddWithValue("@EmployerName2", EmployerName2);
-            cmd.Parameters.AddWithValue("@PostDescription", PostDescription2);
-            cmd.Parameters.AddWithValue("@From2", ExperienceFrom2);
-            cmd.Parameters.AddWithValue("@To2", ExperienceTo2);
-            cmd.Parameters.AddWithValue("@Experience3", Experience3);
-            cmd.Parameters.AddWithValue("@TraningUnder3", TraningUnder3);
-            cmd.Parameters.AddWithValue("@EmployerName3", EmployerName3);
-            cmd.Parameters.AddWithValue("@PostDescription", PostDescription3);
-            cmd.Parameters.AddWithValue("@From3", ExperienceFrom3);
-            cmd.Parameters.AddWithValue("@To3", ExperienceTo3);
-            cmd.Parameters.AddWithValue("@TotalExperience", TotalExperience);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            catch (Exception ex)
+            {
+
+            }
+
+
         }
 
         #endregion
