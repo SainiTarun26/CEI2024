@@ -111,6 +111,10 @@ namespace CEIHaryana.TestReportModal
                     BtnSubmitGeneratingSet.Text = "Back";
 
                 }
+                if(value1.Trim() == "Submit")
+                {
+                    BtnSubmitGeneratingSet.Text = "Back";
+                }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")

@@ -2698,7 +2698,7 @@ margin-top: 20px;
                             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px;">
                                 <div id="Contractor" runat="server" visible="false">
                                     <div class="row" style="padding-left: 20px; padding-bottom: 20px;">
-                                        <div class="col-4">
+                     <%--                   <div class="col-4">
                                             <label for="Name">
                                                 Form Status<samp style="color: red">* </samp>
                                             </label
@@ -2718,7 +2718,7 @@ margin-top: 20px;
                                             <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Reason For Rejection</asp:RequiredFieldValidator>
 
-                                        </div>
+                                        </div>--%>
                                         <div class="col-4" id="OTP" runat="server" visible="false">
                                             <label for="Name">
                                                 Enter OTP

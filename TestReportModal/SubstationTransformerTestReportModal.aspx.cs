@@ -88,21 +88,24 @@ namespace CEIHaryana.TestReportModal
                 if (value1.Trim() == "Accept")
                 {
                     // ddlType.Attributes["onfocus"] = "this.size=3";
-                    ddlType.Attributes.Add("disabled", "disabled");
+                    //ddlType.Attributes.Add("disabled", "disabled");
                     //ddlType.Attributes.Add("Readonly", "true");                 
-                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     BtnSubmit.Text = "Back";
                 }
                 else if (value1.Trim() == "Reject")
                 {
                     //ddlType.Attributes.Add("Readonly", "true");                  
-                    ddlType.Attributes.Add("disabled", "disabled");
-                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                    Rejection.Visible = true;
-                    txtRejection.Attributes.Add("Readonly", "true");
+                   // ddlType.Attributes.Add("disabled", "disabled");
+                    //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    //Rejection.Visible = true;
+                    //txtRejection.Attributes.Add("Readonly", "true");
                     BtnSubmit.Text = "Back";
                 }
-
+                if (value1.Trim() == "Submit")
+                {
+                    BtnSubmit.Text = "Back";
+                }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")
@@ -457,7 +460,7 @@ namespace CEIHaryana.TestReportModal
                 txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
                 //txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["RiverCanalCrossingNoForOC"].ToString();
                 txtSealLevelPlinth.Text = ds.Tables[0].Rows[0]["SeaLevelOfTransformerInMeters"].ToString();
-                txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
             }
@@ -468,14 +471,14 @@ namespace CEIHaryana.TestReportModal
         }
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlType.SelectedValue == "2")
-            {
-                Rejection.Visible = true;
-            }
-            else
-            {
-                Rejection.Visible = false;
-            }
+            //if (ddlType.SelectedValue == "2")
+            //{
+            //    Rejection.Visible = true;
+            //}
+            //else
+            //{
+            //    Rejection.Visible = false;
+            //}
         }
 
         protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
@@ -493,7 +496,8 @@ namespace CEIHaryana.TestReportModal
             {
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
-                CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                //CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                CEI.UpdateSubstationData(id, Counts);
                 Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
 
             }

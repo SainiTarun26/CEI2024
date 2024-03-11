@@ -519,7 +519,7 @@ namespace CEIHaryana.Contractor
 
                         hdnId.Value = ContractorID;
                         CEI.IntimationDataInsertion(UpdationId, ContractorID,ddlPoweUtility.SelectedItem.ToString(),
-                            ddlPowerUtilityWing.SelectedItem.ToString(),txtOtherDepartment.Text.Trim(),
+                            ddlPowerUtilityWing.SelectedItem.ToString(),txtTanNumber.Text.Trim(),
                             ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
                             txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
                             ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
