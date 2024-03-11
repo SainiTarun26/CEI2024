@@ -497,12 +497,12 @@
         ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer1" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer1" onKeyPress="return alphabetKey(event);" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtExperienceEmployer1"
                                                         ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription1" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription1" onKeyPress="return alphabetKey(event);" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPostDescription1"
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
@@ -545,12 +545,12 @@
         ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer2" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer2" onKeyPress="return alphabetKey(event);" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtExperienceEmployer2"
                                                         ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription2" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription2" onKeyPress="return alphabetKey(event);" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPostDescription2"
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
@@ -593,12 +593,12 @@
         ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer3" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer3" onKeyPress="return alphabetKey(event);" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtExperienceEmployer3"
                                                         ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription3" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription3" onKeyPress="return alphabetKey(event);" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtPostDescription3"
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
@@ -641,12 +641,12 @@
         ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer4" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer4" onKeyPress="return alphabetKey(event);" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtExperienceEmployer4"
                                                         ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription4" MaxLength="35" TabIndex="39" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription4" onKeyPress="return alphabetKey(event);" MaxLength="35" TabIndex="39" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtPostDescription4"
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
@@ -689,12 +689,12 @@
         ValidationGroup="Submit" Display="Dynamic"  ErrorMessage="Please Select Traning Under"></asp:RequiredFieldValidator>--%>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer5" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer5" onKeyPress="return alphabetKey(event);" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="txtExperienceEmployer5"
                                                         ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription5" MaxLength="35" TabIndex="39" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" ID="txtPostDescription5" onKeyPress="return alphabetKey(event);" MaxLength="35" TabIndex="39" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="txtPostDescription5"
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>

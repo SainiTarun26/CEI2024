@@ -1113,7 +1113,7 @@ namespace CEIHaryana.Supervisor
                     Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 DataSaved.Visible = false;

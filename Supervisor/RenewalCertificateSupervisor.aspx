@@ -254,7 +254,7 @@
                                     <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" ID="txtExpiryDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExpiryDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
                                 </div>
-                                <div id="DivExtendedDate" runat="server" visible="True" class="col-4">
+                                <div id="DivExtendedDate" runat="server" visible="false" class="col-4">
                                     <label for="DateofRenewal">
                                         Extended By (From Date of Expiry)<samp style="color: red"> * </samp>
                                     </label>

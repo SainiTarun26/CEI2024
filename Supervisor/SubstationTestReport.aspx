@@ -300,7 +300,7 @@
                                     Serial number of transformer  
                                         <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber"  MaxLength="12" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="1" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber"  MaxLength="20" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="1" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rvftransformerSerialnumber" ForeColor="Red" ControlToValidate="txtTransformerSerialNumber" runat="server" ErrorMessage="Please Enter Serial Number" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-3">

@@ -281,7 +281,24 @@
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                     <div class="row">
-                                        <div class="col-4" runat="server">
+
+                                           <div class="col-4">
+                                            <label>
+                                                Applicant Type
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
+                                                <asp:ListItem Text="Private/Personal Installation" Value="2"></asp:ListItem>
+                                                <asp:ListItem Text="Power Utility" Value="1"></asp:ListItem>                                                 
+                                                <asp:ListItem Text="Other Department/Organization" Value="3"></asp:ListItem> 
+
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+
+                                        <div class="col-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
                                                 PAN Card
                                             <samp style="color: red">* </samp>
@@ -291,6 +308,47 @@
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
+
+                                        <div class="col-4" runat="server" id="DivOtherDepartment" visible="false">
+                                            <label for="PanNumber">
+                                                Other Department
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtOtherDepartment" TabIndex="1" MaxLength="40" AutoPostBack="true"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                           <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtOtherDepartment" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
+                                                ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />--%>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                        </div>
+
+                                        <div class="col-4" runat="server" id="DivPoweUtility" visible="false" >
+                                            <label>
+                                                Name Of Power Utility
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server" >
+                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
+                                                <asp:ListItem Text="UHBVN" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="DHBVN" Value="2"></asp:ListItem>                                                 
+                                                <asp:ListItem Text="HVPNL" Value="3"></asp:ListItem> 
+                                                <asp:ListItem Text="HPGST" Value="4"></asp:ListItem> 
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" Text="Please Select Power Utility Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPoweUtility" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+
+                                          <div class="col-4" runat="server" id="DivPoweUtilityWing" visible="false">
+                                            <label>
+                                                Type of Wing <samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:DropDownList ID="ddlPowerUtilityWing" TabIndex="3" runat="server" AutoPostBack="true" class="form-control  select-form select2"  Style="width: 100% !important;">
+                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                <asp:ListItem Value="1" Text="Construction Wing"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text="Operation Wing"></asp:ListItem> 
+
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Please Select Wing Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPowerUtilityWing" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+
                                         <%-- <div class="col-1" style="padding: 0px; margin-top: 31px;">
                                             <span>
                                                 <svg id="search1" xmlns="http://www.w3.org/2000/svg" height="19" width="19" viewBox="0 0 512 512">
@@ -299,18 +357,7 @@
                                                 </svg>
                                             </span>
                                         </div>--%>
-                                        <div class="col-4">
-                                            <label>
-                                                Applicant Type
-                                                <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
-                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                <asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>
-                                                <asp:ListItem Text="Private/Personal Installation" Value="2"></asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                      
                                         <div class="col-4">
                                             <label>
                                                 Electrical Installation For<samp style="color: red"> * </samp>
@@ -344,7 +391,7 @@
                                         </div>
                                         <div class="col-8">
                                             <label for="Address">
-                                                Address of Site(As Per Demand Notice of Utility or Electricity Bill)
+                                                Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)
                                                 <samp style="color: red">* </samp>
                                             </label>
                                               <%-- <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
@@ -614,7 +661,7 @@
                     <div class="row">
                         <div class="col-4">
                             <label for="StartDate">
-                                Work Start Date<samp style="color: red"> * </samp>
+                               Tentative Work Start Date<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtStartDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtStartDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Start Date</asp:RequiredFieldValidator>
@@ -661,10 +708,11 @@
                     </div>
                 </div>
                 <div>
-                    <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Assign Supervisor/Wireman Details For Above Work</h7>
+                    <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Assign Supervisor Details For Above Work</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <div class="row">
                             <div class="col-12">
+                                <div class="table">
                                 <asp:UpdatePanel ID="UpdatePanel" runat="server">
                                     <ContentTemplate>
                                         <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
@@ -688,29 +736,29 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="REID" HeaderText="ID" Visible="False">
-                                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="center" Width="10%" />
+                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center"  />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                                    <HeaderStyle HorizontalAlign="left" Width="20%" CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="left" Width="20%" CssClass="textalignleft" />
+                                                    <HeaderStyle HorizontalAlign="left"  CssClass="headercolor textalignleft" />
+                                                    <ItemStyle HorizontalAlign="left"  CssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="34%" CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="34%" CssClass="textalignleft" />
+                                                    <HeaderStyle HorizontalAlign="Left"  CssClass="headercolor textalignleft" />
+                                                    <ItemStyle HorizontalAlign="Left" CssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                                    <HeaderStyle HorizontalAlign="center" Width="19%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="center" Width="19%" />
+                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center"  />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
+                                                <%--<asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
                                                     <HeaderStyle HorizontalAlign="center" Width="18%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="center" Width="18%" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Category" HeaderText="Category">
+                                                </asp:BoundField>--%>
+                                               <%-- <asp:BoundField DataField="Category" HeaderText="Category">
                                                     <HeaderStyle HorizontalAlign="left" Width="17%" CssClass="headercolor textalignleft" />
                                                     <ItemStyle HorizontalAlign="left" Width="17%" CssClass="textalignleft" />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                             </Columns>
                                             <FooterStyle BackColor="White" ForeColor="#000066" />
                                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -725,6 +773,7 @@
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>
+                                </div>
                         </div>
                     </div>
                     <div class="row">

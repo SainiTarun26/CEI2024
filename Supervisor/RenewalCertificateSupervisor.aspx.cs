@@ -596,15 +596,15 @@ namespace CEIHaryana.Supervisor
             if(RadioButtonChangedAddress.SelectedValue == "0")
             {
                 TextAddress.ReadOnly = false;
-                DdlState.Enabled = false;
-                DdlDistrict.Enabled = false;
+                DdlState.Enabled = true;
+                DdlDistrict.Enabled = true;
                 txtpincode.ReadOnly = false;
             }
             else
             {
                 TextAddress.ReadOnly = true;
-                DdlState.Enabled = true;
-                DdlDistrict.Enabled = true;
+                DdlState.Enabled = false;
+                DdlDistrict.Enabled = false;
                 txtpincode.ReadOnly = true;
             }
         }

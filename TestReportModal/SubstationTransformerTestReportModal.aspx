@@ -2878,6 +2878,10 @@ margin-top: 20px;
                                     </div>
                               </div>
                                                                                 </div>
+                        <asp:UpdatePanel ID="updatePanel1" runat="server">
+                            <ContentTemplate>
+
+                           
                         <div class="row card" id="Contractor" runat="server" visible="false">
                           
                             <div class="col-4">
@@ -2913,6 +2917,7 @@ margin-top: 20px;
 
                             </div>
                         </div>
+                                 
                         <div class="row" id="Contractor3" runat="server" visible="false">
                             <div class="col-4"></div>
                           <div class="col-4" style="text-align: Center;" >
@@ -2940,6 +2945,8 @@ margin-top: 20px;
                                     <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
                                 </div>
                         </div>
+                                </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                                             <%-- <div class="card" id="earthing-card" style="background: #fcfcfc;margin-left:0px;margin-right:0px;margin-top:-50px;">
                         <div class="row">

@@ -24,7 +24,8 @@ namespace CEIHaryana.TestReportModal
                 if (Session["ContractorID"] != null)
                 {
                     ID = Session["GeneratingSetId"].ToString();
-                    GetDetailswithId(); if (Convert.ToString(Session["Approval"]) == "Pending")
+                    GetDetailswithId();
+                    if (Convert.ToString(Session["Approval"]) == "Pending")
                     {
                         Contractor.Visible = true;
                         Contractor3.Visible = true;
@@ -93,20 +94,20 @@ namespace CEIHaryana.TestReportModal
                     //ddlType.Attributes.Add("disabled", "disabled");
                     //ddlType.Attributes["onfocus"] = "this.size=3";                   
                     // ddlType.Attributes.Add("ReadOnly", "true");
-                    ddlType.Attributes.Add("disabled", "disabled");
-                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                    BtnSubmitGeneratingSet.Text = "Back";
+                   // ddlType.Attributes.Add("disabled", "disabled");
+                    //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    //BtnSubmitGeneratingSet.Text = "Back";
 
 
                 }
                 else if (value1.Trim() == "Reject")
                 {
 
-                    ddlType.Attributes.Add("disabled", "disabled");
+                    //ddlType.Attributes.Add("disabled", "disabled");
                     // ddlType.Attributes.Add("ReadOnly", "true");                   
-                    ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                    Rejection.Visible = true;
-                    txtRejection.Attributes.Add("Readonly", "true");
+                   // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                   // Rejection.Visible = true;
+                   // txtRejection.Attributes.Add("Readonly", "true");
                     BtnSubmitGeneratingSet.Text = "Back";
 
                 }
@@ -351,7 +352,7 @@ namespace CEIHaryana.TestReportModal
                     txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
                     txtGeneratingEarthing15.Text = ds.Tables[0].Rows[0]["EarthingValue15"].ToString();
                     txtEarthingUsed15.Text = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
-                    txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                   // txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                     Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
 
 
@@ -371,21 +372,22 @@ namespace CEIHaryana.TestReportModal
             {
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
-                CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                // CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                CEI.UpdateGeneratingSetData(id, Counts);
                 Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
         }
-        protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlType.SelectedValue == "2")
-            {
-                Rejection.Visible = true;
-            }
-            else
-            {
-                Rejection.Visible = false;
-            }
-        }
+        //protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (ddlType.SelectedValue == "2")
+        //    {
+        //        Rejection.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        Rejection.Visible = false;
+        //    }
+        //}
         protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/IntimationForHistory.aspx", false);

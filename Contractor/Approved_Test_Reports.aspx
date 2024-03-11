@@ -239,14 +239,14 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("IntimationId") %> ' CommandName="Select" Style="text-align: left;"><%#Eval("IntimationId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="NameofSiteOwner" HeaderText="SiteOwner">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
-                            </asp:BoundField>
-<%--                            <asp:BoundField DataField="Noofinstallation" HeaderText="No of Installations">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>--%>
+                            </asp:BoundField>                           
                             <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />

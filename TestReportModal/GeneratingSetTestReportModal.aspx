@@ -2000,7 +2000,8 @@
             <ul style="margin: 40px 20px 20px 15px!important;">
                 <li class="tab-content tab-content-3 typography">
                     <div class="card-body" id="divGeneratingSet" runat="server" style="margin-top: -30px;">
-
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                       
                         <div class="card-body" style="margin-top: -30px;">
                             <div class="card" id="IntimationData" runat="server" visible="true" style="background: #fcfcfc;">
                                 <div class="card-title" style="margin-bottom: 1px;">Work Intimation Details</div>
@@ -2215,7 +2216,12 @@
                                                 Minimum Limit is 4     
                                             </label>
                                         </div>
-                                        <div class="table-responsive pt-3" id="GeneratingEarthing" runat="server" visible="false">
+                                       
+
+                                    </div>
+                                </div>
+
+                                 <div class="table-responsive pt-3" id="GeneratingEarthing" runat="server" visible="false">
                                             <table class="table table-bordered table-striped">
                                                 <thead class="table-dark">
                                                     <tr>
@@ -2598,12 +2604,13 @@
                                             </table>
                                         </div>
 
-                                    </div>
-                                </div>
                             </div>
                             <div id="Contractor" runat="server" visible="false">
+                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">                           
+                             <ContentTemplate>
+                               
                                 <div class="row">
-                                    <div class="col-4">
+                                   <%-- <div class="col-4">
                                         <label for="Name">
                                             Form status
                                             <samp style="color: red">* </samp>
@@ -2626,7 +2633,7 @@
                                         <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Reason For Rejection</asp:RequiredFieldValidator>
 
-                                    </div>
+                                    </div>--%>
                                     <div class="col-4" id="OTP" runat="server" visible="false">
                                         <label for="Name">
                                             Enter OTP
@@ -2636,6 +2643,7 @@
 
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-12">
                                     </div>
@@ -2644,6 +2652,8 @@
                                         <asp:HiddenField ID="hdn" Value="0" runat="server" />
                                     </div>
                                 </div>
+                                   </ContentTemplate>
+                        </asp:UpdatePanel>
                             </div>
                             <div class="row" runat="server" id="Contractor3" visible="false">
                                 <div class="col-4"></div>
@@ -2680,7 +2690,6 @@
                             </div>
                         </div>
                     </div>
-
                 </li>
             </ul>
             <script src="/Assets/js/js/vendor.bundle.base.js"></script>

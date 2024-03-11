@@ -138,7 +138,8 @@ namespace CEI_PRoject
         }
         #endregion
         #region Insert Intimtion Data
-        public void IntimationDataInsertion(string Id, string ContractorId, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+        public void IntimationDataInsertion(string Id, string ContractorId,string PowerUtility,string PowerUtilityWing,
+            string otherDepartment, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
 string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
 string TypeOfInstallation3, string NumberOfInstallation3,
 //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
@@ -708,7 +709,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Update GeneratingSet Data
-        public void UpdateGeneratingSetData(string ID, string Count, string RejectOrApprovedFronContractor, string ReasonForRejection)
+        public void UpdateGeneratingSetData(string ID, string Count /*string RejectOrApprovedFronContractor string ReasonForRejection*/)
         {
             SqlCommand cmd = new SqlCommand("sp_GeneratingTestReportApproval");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -722,8 +723,8 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", ID);
             cmd.Parameters.AddWithValue("@Count", Count);
-            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", RejectOrApprovedFronContractor);
-            cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", "Submit");
+           //cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -2447,7 +2448,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
             cmd.CommandType = CommandType.StoredProcedure;
             // cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
-            cmd.Parameters.AddWithValue("@CertificateNo", CurrentCertificateNo);
+            cmd.Parameters.AddWithValue("@CurrentCertificate", CurrentCertificateNo);
             cmd.Parameters.AddWithValue("@DateOfExpiry", DateOfExpiry);
             cmd.Parameters.AddWithValue("@CurrentAutorizedVoltage", CurrentVolatgeLevel);
             //cmd.Parameters.AddWithValue("@DOB", DOB);

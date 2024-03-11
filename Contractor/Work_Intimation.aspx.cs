@@ -459,10 +459,12 @@ namespace CEIHaryana.Contractor
                 foreach (GridViewRow row in GridView1.Rows)
                 {
 
-                    Label lblCategory = (Label)row.FindControl("lblCategory");
+                    //Label lblCategory = (Label)row.FindControl("lblCategory");
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
-                    if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
+                    //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
+                    //{
+                    if (chk != null && chk.Checked)
                     {
                         atLeastOneSupervisorChecked = true;
                         break;
@@ -516,7 +518,9 @@ namespace CEIHaryana.Contractor
                         }
 
                         hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
+                        CEI.IntimationDataInsertion(UpdationId, ContractorID,ddlPoweUtility.SelectedItem.ToString(),
+                            ddlPowerUtilityWing.SelectedItem.ToString(),txtOtherDepartment.Text.Trim(),
+                            ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
                             txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
                             ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
                             txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
@@ -689,6 +693,10 @@ namespace CEIHaryana.Contractor
         }
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DivOtherDepartment.Visible = false;
+            DivPancard_TanNo.Visible = false;
+            DivPoweUtility.Visible = false;
+            DivPoweUtilityWing.Visible = false;
             string Value = ddlWorkDetail.SelectedItem.ToString();
             if (ddlWorkDetail.SelectedValue != "0")
             {
@@ -750,6 +758,21 @@ namespace CEIHaryana.Contractor
                     }
                     ddlWorkDetail.SelectedValue = "0";
                 }
+
+                
+            }
+            if (ddlApplicantType.SelectedValue == "2")
+            {
+                DivPancard_TanNo.Visible = true;
+            }
+            else if(ddlApplicantType.SelectedValue == "1")
+            {
+                DivPoweUtility.Visible = true;
+                DivPoweUtilityWing.Visible = true;
+            }
+            else if (ddlApplicantType.SelectedValue == "3")
+            {
+                DivOtherDepartment.Visible = true;
             }
         }
 
@@ -923,5 +946,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
+
     }
 }

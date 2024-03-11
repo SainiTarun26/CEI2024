@@ -64,6 +64,7 @@ namespace CEIHaryana.Supervisor
                     Session["TestReportHistory"] = "True";
                     Label lblInstallationLine = (Label)row.FindControl("lblInstallationLine");
                     Session["NoOfInstallation"] = lblInstallationLine.Text;
+                    Session["NoOfInstallations"] = lblInstallationLine.Text;
                     Label lblApplicationForTestReport = (Label)row.FindControl("lblApplicationForTestReport");
                     Session["ApplicationForTestReport"] = lblApplicationForTestReport.Text;
                     Label lblIHID = (Label)row.FindControl("lblIHID");
