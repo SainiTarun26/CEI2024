@@ -83,6 +83,7 @@ namespace CEIHaryana.Contractor
                 //ddlPremises.SelectedValue = dp_Id1;
                 txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
@@ -115,7 +116,10 @@ namespace CEIHaryana.Contractor
                 //string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
                 //string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
                 string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
-
+                if (dp_Id2 != "")
+                {
+                    OtherPremises.Visible = true;
+                }
                 if (dp_Id8 != "")
                 {
                     Installation.Visible = true;

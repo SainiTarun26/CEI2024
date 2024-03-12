@@ -162,6 +162,9 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
             cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
+            cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility);        //***
+            cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing);//***
+            cmd.Parameters.AddWithValue("@TanNumber", TanNumber);              //***
             cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", ContactNo);

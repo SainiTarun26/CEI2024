@@ -264,8 +264,8 @@
                                 </div>
                             <div class="col-6" style="text-align: end;">
                                 <asp:Button type="submit" ID="btnFinalSubmit" ValidationGroup="Submit" Visible="false" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnFinalSubmit_Click" />  
-                                <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit"  disabled="true" Text="Make Payment" runat="server" class="btn btn-primary mr-2" />
-                                <asp:Button type="submit" ID="ChallanUpload" ValidationGroup="Submit" Text="Upload Challan" runat="server" class="btn btn-primary mr-2" OnClick="ChallanUpload_Click" />
+                                <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit"  disabled="true" Text="Online Payment" runat="server" class="btn btn-primary mr-2" />
+                                <asp:Button type="submit" ID="ChallanUpload" ValidationGroup="Submit" Text="Offline" runat="server" class="btn btn-primary mr-2" OnClick="ChallanUpload_Click" />
                             </div>
                         </div>
                    

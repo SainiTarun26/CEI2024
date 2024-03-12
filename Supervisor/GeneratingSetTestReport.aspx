@@ -436,13 +436,15 @@
                                                     <div class="col-12">
                                                         <asp:DropDownList class="form-control  select-form select2" TabIndex="6" OnSelectedIndexChanged="ddlGeneratingEarthingUsed1_SelectedIndexChanged" runat="server" AutoPostBack="true" ID="ddlGeneratingEarthingUsed1" selectionmode="Multiple" Style="width: 100% !important">
                                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                            <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>
+                                                            <asp:ListItem Value="1" Text="Neutral Transformer"></asp:ListItem>                                                             
                                                             <asp:ListItem Value="2" Text="Body Of Transformer"></asp:ListItem>
                                                             <asp:ListItem Value="3" Text="LA's"></asp:ListItem>
                                                             <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed1" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                     </div>
@@ -481,7 +483,9 @@
                                                             <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator43" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed2" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                     </div>
@@ -520,7 +524,9 @@
                                                             <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator42" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed3" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                     </div>
@@ -560,7 +566,9 @@
                                                             <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                             <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                            <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                            <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator41" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed4" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                     </div>
@@ -600,7 +608,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                        <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                        <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator40" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed5" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -639,7 +649,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator39" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed6" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -678,7 +690,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed7" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -717,7 +731,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed8" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -756,7 +772,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed9" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -795,7 +813,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                        <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                        <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed10" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -834,7 +854,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed11" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -873,7 +895,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed12" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -912,7 +936,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed13" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -951,7 +977,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed14" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -990,7 +1018,9 @@
                                                         <asp:ListItem Value="4" Text="HT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="5" Text="LT Panels"></asp:ListItem>
                                                         <asp:ListItem Value="6" Text="Fencing"></asp:ListItem>
-                                                        <asp:ListItem Value="7" Text="Other"></asp:ListItem>
+                                                        <asp:ListItem Value="7" Text="Neutral Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="8" Text="Body Of Generator"></asp:ListItem> 
+                                                            <asp:ListItem Value="9" Text="Other"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed15" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                 </div>
@@ -1116,6 +1146,14 @@
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
                          </div>
                      </div>
+
+                     <div class="row" style="margin-left: 1%; margin-bottom: 20px;">
+                     <asp:CheckBox ID="Check" runat="server" TabIndex="24" />&nbsp;
+                         <text>
+                              I hereby declare that the information furnished in the application is correct.
+                        </text>
+                    </div>
+
                      <div class="row">
                          <div class="col-4">
                          </div>
@@ -1159,4 +1197,12 @@
          }
      }
  </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('Test Report Submitted Successfully')) {
+                window.location.href = "/Supervisor/InstallationDetails.aspx";
+            } else {
+            }
+        }
+     </script>
 </asp:Content>
