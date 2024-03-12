@@ -2016,6 +2016,13 @@ margin-top: 20px;
     margin: 5px 0px 10px 20px;
     width: 97%;
 }
+                 div#SubmitDetails {
+       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+       margin-left: -25px;
+       margin-right: -25px;
+       margin-top: 20px;
+       padding: 15px;
+   }
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {

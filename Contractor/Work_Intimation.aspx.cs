@@ -82,6 +82,10 @@ namespace CEIHaryana.Contractor
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
                 //ddlPremises.SelectedValue = dp_Id1;
                 txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                if(txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                {
+                    DivPancard_TanNo.Visible = true;
+                }
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();

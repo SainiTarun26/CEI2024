@@ -96,7 +96,7 @@ table#ContentPlaceHolder1_GridView1 {
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label>WORK INTIMATION HISTORY</h6>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>REQUEST FOR INSPECTION TO CEI DEPARTMENT</h6>
                     </div>
                     <%--  <div class="col-sm-6 col-md-6"></div>
                     <div class="col-sm-2 col-md-2">

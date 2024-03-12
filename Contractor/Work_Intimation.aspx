@@ -247,6 +247,9 @@
             text-align: justify;
             padding: 9px !important;
         }
+        th.headercolor {
+    width: 32% !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

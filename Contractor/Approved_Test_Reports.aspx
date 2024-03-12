@@ -167,9 +167,9 @@
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
-                    <div class="col-sm-4 col-md-4">
+                    <div class="col-sm-6 col-md-6">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="Label1" runat="server"></asp:Label>WORK INTIMATION HISTORY</h6>
+                            <asp:Label ID="Label1" runat="server"></asp:Label>WORK COMPLETETION AND TEST REPORT DETAILS</h6>
                     </div>
                     <%--  <div class="col-sm-6 col-md-6"></div>
     <div class="col-sm-2 col-md-2">

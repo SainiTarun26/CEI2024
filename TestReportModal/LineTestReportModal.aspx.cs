@@ -141,8 +141,8 @@ namespace CEIHaryana.TestReportModal
                     OtherCable.Visible = true;                                           
                     txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();   
                 }
-                txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SbmittedtedDate"].ToString();
-                txtSubmittedBy.Text = ds.Tables[0].Rows[0]["CreatedBy"].ToString();
+                txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();
+                txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
@@ -328,7 +328,7 @@ namespace CEIHaryana.TestReportModal
                 txtCircuit.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
                 txtReportNo.Text = ds.Tables[0].Rows[0]["LineId"].ToString();
-                txtPreparedby.Text = ds.Tables[0].Rows[0]["CreatedBy"].ToString();
+                txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 if (txtConductorType.Text.Trim() == "Bare")
                 {
 

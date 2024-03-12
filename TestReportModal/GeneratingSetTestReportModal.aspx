@@ -1984,6 +1984,13 @@
             margin-top: 20px;
             padding: 15px;
         }
+         div#SubmitDetails {
+       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+       margin-left: -25px;
+       margin-right: -25px;
+       margin-top: 20px;
+       padding: 15px;
+   }
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {

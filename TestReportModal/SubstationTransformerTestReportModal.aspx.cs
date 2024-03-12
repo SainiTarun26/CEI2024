@@ -124,6 +124,8 @@ namespace CEIHaryana.TestReportModal
                     agency.Visible = false;
                 }
 
+                txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();
+                txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
@@ -469,7 +471,7 @@ namespace CEIHaryana.TestReportModal
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString();
-                txtPreparedby.Text = ds.Tables[0].Rows[0]["CreatedBy"].ToString();
+                txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
             }
             catch
             {
