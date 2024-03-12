@@ -64,11 +64,16 @@ namespace CEIHaryana.TestReportModal
                 else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
-                    ID = Session["SubStationID"].ToString();
+                        
+                        ID = Session["SubStationID"].ToString();
                     GetDetailswithId();
                     Supervisor.Visible = true;
                     IntimationData.Visible = true;
-                }
+                        if (Session["SupervisorID"] != null)
+                        {
+                            SubmitDetails.Visible = true;
+                        }
+                    }
             }
             }
             catch
@@ -463,6 +468,8 @@ namespace CEIHaryana.TestReportModal
                 //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString();
+                txtPreparedby.Text = ds.Tables[0].Rows[0]["CreatedBy"].ToString();
             }
             catch
             {

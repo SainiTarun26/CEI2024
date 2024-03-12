@@ -651,8 +651,6 @@ namespace CEIHaryana.Supervisor
 
         }
 
-
-
         private void ddlEarthingSubstation()
         {
 
@@ -1069,49 +1067,56 @@ namespace CEIHaryana.Supervisor
 
                 else
                 {
-                    string SubstationId = string.Empty;
-                    if (Convert.ToString(Session["SubstationId"]) == null || Convert.ToString(Session["SubstationId"]) == "")
+                    if (Check.Checked == true)
                     {
-                        SubstationId = CEI.GenerateUniqueSubstation();
-                        Session["SubstationId"] = SubstationId;
+                        string SubstationId = string.Empty;
+                        if (Convert.ToString(Session["SubstationId"]) == null || Convert.ToString(Session["SubstationId"]) == "")
+                        {
+                            SubstationId = CEI.GenerateUniqueSubstation();
+                            Session["SubstationId"] = SubstationId;
 
+                        }
+                        else
+                        {
+
+                            SubstationId = Session["SubstationId"].ToString();
+                        }
+                        string TestReportId = Session["id"].ToString();
+                        string IntimationId = Session["id"].ToString();
+                        string CreatedBy = Session["SupervisorID"].ToString();
+                        string installationNo = Session["IHID"].ToString();
+                        string count = Session["NoOfInstallations"].ToString();
+                        CEI.InsertSubstationData(IdUpdate, count, SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
+                          PrimaryVoltage.SelectedItem.ToString(), ddlSecondaryVoltage.SelectedValue, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
+                           txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(), txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
+                           ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),
+                           txtSubstationEarthing2.Text, ddlUsedFor2.SelectedItem.ToString(), txtOtherEarthing2.Text, ddlSubstationEarthing3.SelectedItem.ToString(), txtSubstationEarthing3.Text, ddlUsedFor3.SelectedItem.ToString(), txtOtherEarthing3.Text,
+                           ddlSubstationEarthing4.SelectedItem.ToString(), txtSubstationEarthing4.Text, ddlUsedFor4.SelectedItem.ToString(), txtOtherEarthing4.Text, ddlSubstationEarthing5.SelectedItem.ToString(), txtSubstationEarthing5.Text,
+                           ddlUsedFor5.SelectedItem.ToString(), txtOtherEarthing5.Text, ddlSubstationEarthing6.SelectedItem.ToString(), txtSubstationEarthing6.Text, ddlUsedFor6.SelectedItem.ToString(), txtOtherEarthing6.Text,
+                           ddlSubstationEarthing7.SelectedItem.ToString(), txtSubstationEarthing7.Text, ddlUsedFor7.SelectedItem.ToString(), txtOtherEarthing7.Text, ddlSubstationEarthing8.SelectedItem.ToString(),
+                           txtSubstationEarthing8.Text, ddlUsedFor8.SelectedItem.ToString(), txtOtherEarthing8.Text, ddlSubstationEarthing9.SelectedItem.ToString(), txtSubstationEarthing9.Text, ddlUsedFor9.SelectedItem.ToString(), txtOtherEarthing9.Text,
+                           ddlSubstationEarthing10.SelectedItem.ToString(), txtSubstationEarthing10.Text, ddlUsedFor10.SelectedItem.ToString(), txtOtherEarthing10.Text, ddlSubstationEarthing11.SelectedItem.ToString(),
+                           txtSubstationEarthing11.Text, ddlUsedFor11.SelectedItem.ToString(), txtOtherEarthing11.Text, ddlSubstationEarthing12.SelectedItem.ToString(), txtSubstationEarthing12.Text,
+                           ddlUsedFor12.SelectedItem.ToString(), txtOtherEarthing12.Text, ddlSubstationEarthing13.SelectedItem.ToString(), txtSubstationEarthing13.Text, ddlUsedFor13.SelectedItem.ToString(), txtOtherEarthing13.Text,
+                           ddlSubstationEarthing14.SelectedItem.ToString(), txtSubstationEarthing14.Text, ddlUsedFor14.SelectedItem.ToString(), txtOtherEarthing14.Text, ddlSubstationEarthing15.SelectedItem.ToString(),
+                           txtSubstationEarthing15.Text, ddlUsedFor15.SelectedItem.ToString(), txtOtherEarthing15.Text, ddlSubstationEarthing16.SelectedItem.ToString(), txtSubstationEarthing16.Text, ddlUsedFor16.SelectedItem.ToString(), txtOtherEarthing16.Text,
+                           ddlSubstationEarthing17.SelectedItem.ToString(), txtSubstationEarthing17.Text, ddlUsedFor17.SelectedItem.ToString(), txtOtherEarthing17.Text, ddlSubstationEarthing18.SelectedItem.ToString(), txtSubstationEarthing18.Text,
+                           ddlUsedFor18.SelectedItem.ToString(), txtOtherEarthing18.Text, ddlSubstationEarthing19.SelectedItem.ToString(),
+                           txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), txtOtherEarthing19.Text, ddlSubstationEarthing20.SelectedItem.ToString(),
+                           txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtOtherEarthing20.Text, txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
+                           txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
+                        CEI.UpdateInstallations(installationNo, IntimationId);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+
+                        //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        //Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
                     }
                     else
                     {
-
-                        SubstationId = Session["SubstationId"].ToString();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
                     }
-                    string TestReportId = Session["id"].ToString();
-                    string IntimationId = Session["id"].ToString();
-                    string CreatedBy = Session["SupervisorID"].ToString();
-                    string installationNo = Session["IHID"].ToString();
-                    string count = Session["NoOfInstallations"].ToString();
-                    CEI.InsertSubstationData(IdUpdate, count, SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
-                      PrimaryVoltage.SelectedItem.ToString(), ddlSecondaryVoltage.SelectedValue, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
-                       txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(), txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
-                       ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),
-                       txtSubstationEarthing2.Text, ddlUsedFor2.SelectedItem.ToString(), txtOtherEarthing2.Text, ddlSubstationEarthing3.SelectedItem.ToString(), txtSubstationEarthing3.Text, ddlUsedFor3.SelectedItem.ToString(), txtOtherEarthing3.Text,
-                       ddlSubstationEarthing4.SelectedItem.ToString(), txtSubstationEarthing4.Text, ddlUsedFor4.SelectedItem.ToString(), txtOtherEarthing4.Text, ddlSubstationEarthing5.SelectedItem.ToString(), txtSubstationEarthing5.Text,
-                       ddlUsedFor5.SelectedItem.ToString(), txtOtherEarthing5.Text, ddlSubstationEarthing6.SelectedItem.ToString(), txtSubstationEarthing6.Text, ddlUsedFor6.SelectedItem.ToString(), txtOtherEarthing6.Text,
-                       ddlSubstationEarthing7.SelectedItem.ToString(), txtSubstationEarthing7.Text, ddlUsedFor7.SelectedItem.ToString(), txtOtherEarthing7.Text, ddlSubstationEarthing8.SelectedItem.ToString(),
-                       txtSubstationEarthing8.Text, ddlUsedFor8.SelectedItem.ToString(), txtOtherEarthing8.Text, ddlSubstationEarthing9.SelectedItem.ToString(), txtSubstationEarthing9.Text, ddlUsedFor9.SelectedItem.ToString(), txtOtherEarthing9.Text,
-                       ddlSubstationEarthing10.SelectedItem.ToString(), txtSubstationEarthing10.Text, ddlUsedFor10.SelectedItem.ToString(), txtOtherEarthing10.Text, ddlSubstationEarthing11.SelectedItem.ToString(),
-                       txtSubstationEarthing11.Text, ddlUsedFor11.SelectedItem.ToString(), txtOtherEarthing11.Text, ddlSubstationEarthing12.SelectedItem.ToString(), txtSubstationEarthing12.Text,
-                       ddlUsedFor12.SelectedItem.ToString(), txtOtherEarthing12.Text, ddlSubstationEarthing13.SelectedItem.ToString(), txtSubstationEarthing13.Text, ddlUsedFor13.SelectedItem.ToString(), txtOtherEarthing13.Text,
-                       ddlSubstationEarthing14.SelectedItem.ToString(), txtSubstationEarthing14.Text, ddlUsedFor14.SelectedItem.ToString(), txtOtherEarthing14.Text, ddlSubstationEarthing15.SelectedItem.ToString(),
-                       txtSubstationEarthing15.Text, ddlUsedFor15.SelectedItem.ToString(), txtOtherEarthing15.Text, ddlSubstationEarthing16.SelectedItem.ToString(), txtSubstationEarthing16.Text, ddlUsedFor16.SelectedItem.ToString(), txtOtherEarthing16.Text,
-                       ddlSubstationEarthing17.SelectedItem.ToString(), txtSubstationEarthing17.Text, ddlUsedFor17.SelectedItem.ToString(), txtOtherEarthing17.Text, ddlSubstationEarthing18.SelectedItem.ToString(), txtSubstationEarthing18.Text,
-                       ddlUsedFor18.SelectedItem.ToString(), txtOtherEarthing18.Text, ddlSubstationEarthing19.SelectedItem.ToString(),
-                       txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), txtOtherEarthing19.Text, ddlSubstationEarthing20.SelectedItem.ToString(),
-                       txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtOtherEarthing20.Text, txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
-                       txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
-                    CEI.UpdateInstallations(installationNo, IntimationId);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
-
-
-                    //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                    Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
-                }
+                } 
             }
             catch (Exception ex)
             {

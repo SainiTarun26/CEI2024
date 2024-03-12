@@ -67,7 +67,11 @@ namespace CEIHaryana.TestReportModal
                 else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                 {
-                    ID = Session["GeneratingSetId"].ToString();
+                        if (Session["SupervisorID"] != null)
+                        {
+                            SubmitDetails.Visible = true;
+                        }
+                        ID = Session["GeneratingSetId"].ToString();
                     GetDetailswithId();
                     Supervisor.Visible = true;
                     IntimationData.Visible = true;
@@ -137,6 +141,7 @@ namespace CEIHaryana.TestReportModal
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
+
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
@@ -147,6 +152,8 @@ namespace CEIHaryana.TestReportModal
                 txtGeneratingSetType.Text = ds.Tables[0].Rows[0]["GeneratingSetType"].ToString();
                 //Textstatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
+                txtPreparedby.Text = ds.Tables[0].Rows[0]["CreatedBy"].ToString();
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {
                     SolarPanelGeneratingSet.Visible = true;

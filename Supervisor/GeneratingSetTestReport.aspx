@@ -268,7 +268,7 @@
                          <div class="row">
                                 <div class="col-3" id="Div8" runat="server">
                                     <label for="Name">
-                                        Application
+                                        Applicant
             <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;width:100%"></asp:TextBox>

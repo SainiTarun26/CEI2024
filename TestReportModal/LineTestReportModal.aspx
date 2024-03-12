@@ -2019,10 +2019,18 @@ margin-right: -25px;
 margin-top: 20px;
     padding: 15px;
 }
+                div#SubmitDetails {
+       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+       margin-left: -25px;
+       margin-right: -25px;
+       margin-top: 20px;
+       padding: 15px;
+   }
                 div#LineEarthingdiv {
     margin: 5px 0px 10px 20px;
     width: 97%;
 }
+
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -2693,11 +2701,43 @@ margin-top: 20px;
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="card" id="SubmitDetails"  runat="server" visible="false" style="background: #fcfcfc;">
+        <div class="row">
+            <div class="col-4">
+                <label>
+                    Submitted Date
+                </label>
+                <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            </div>
+            <div class="col-4">
+                <label>
+                    Submitted By
+                </label>
+                <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            </div>
+        </div>
+    </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px;">
                                 <div id="Contractor" runat="server" visible="false">
                                     <div class="row" style="padding-left: 20px; padding-bottom: 20px;">
+
+                                        <div class="col-4">
+                                    <label for="Name">
+                                        TestReport No<samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                </div>
+
+                                <div class="col-4" id="Rejection" runat="server">
+                                    <label for="Name">
+                                        Prepared By
+                                 <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
                      <%--                   <div class="col-4">
                                             <label for="Name">
                                                 Form Status<samp style="color: red">* </samp>

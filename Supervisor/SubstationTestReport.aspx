@@ -238,7 +238,7 @@
                          <div class="row">
                                 <div class="col-3" id="Div8" runat="server">
                                     <label for="Name">
-                                        Application
+                                        Applicant
             <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;width:100%"></asp:TextBox>
@@ -1401,6 +1401,13 @@
                                         </table>
                                     </div>
     </div>
+
+                      <div class="row" style="margin-left: 1%; margin-bottom: 20px;">
+                     <asp:CheckBox ID="Check" runat="server" TabIndex="24" />&nbsp;
+                         <text>
+                              I hereby declare that the information furnished in the application is correct.
+                        </text>
+                    </div>
                      <div class="row">
     <div class="col-4"></div>
     <div class="col-4" style="text-align: center;">
@@ -1445,4 +1452,12 @@
          }
      }
  </script>
+     <script type="text/javascript">
+         function alertWithRedirectdata() {
+             if (confirm('Test Report Submitted Successfully')) {
+                 window.location.href = "/Supervisor/InstallationDetails.aspx";
+             } else {
+             }
+         }
+     </script>
 </asp:Content>
