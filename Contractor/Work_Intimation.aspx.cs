@@ -69,8 +69,29 @@ namespace CEIHaryana.Contractor
                 REID = Session["id"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetWorkIntimationDataForAdmin(REID);
+
+                string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
+                //if (ddlApplicantType.Text.Trim() == "1")
+                //{}
+                if (ddlApplicantType.SelectedIndex == 2)
+                {
+                    DivPoweUtility.Visible = true;
+                    DivPoweUtilityWing.Visible = true;
+                }
+                string dp_Id14 = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
+                ddlPoweUtility.SelectedIndex = ddlPoweUtility.Items.IndexOf(ddlPoweUtility.Items.FindByText(dp_Id14));
+                string dp_Id15 = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
+                ddlPowerUtilityWing.SelectedIndex = ddlPowerUtilityWing.Items.IndexOf(ddlPowerUtilityWing.Items.FindByText(dp_Id15));
+
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
+                if (ddlworktype.Text.Trim() == "2")
+                {
+                    agency.Visible = true;
+                    individual.Visible = false;
+                }
+
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
@@ -86,14 +107,19 @@ namespace CEIHaryana.Contractor
                 {
                     DivPancard_TanNo.Visible = true;
                 }
+                txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
+                if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
+                {
+                    DivOtherDepartment.Visible = true;
+                }
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();                
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
                 ddlVoltageLevel.SelectedIndex = ddlVoltageLevel.Items.IndexOf(ddlVoltageLevel.Items.FindByText(dp_Id3));
-                string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+      //          string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
-                ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
+         //       ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");

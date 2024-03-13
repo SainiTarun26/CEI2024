@@ -227,7 +227,10 @@
             width: 67px;
         }
 
-      
+       td {
+            padding-top: 12px !important;
+            padding-bottom: 0px !important;
+        }
 
         svg#search1:hover {
             height: 22px;
@@ -243,10 +246,8 @@
             padding: 9px !important;
         }
         th.headercolor {
-    width: 1% !important;
-}
-        th {
-    width: 1%;
+    width: 32% !important;
+
 }
     </style>
 </asp:Content>
@@ -311,13 +312,13 @@
                                         </div>
 
                                         <div class="col-4" runat="server" id="DivOtherDepartment" visible="false">
-                                            <label for="PanNumber">
+                                            <label for="TanNumber">
                                                 Tan Number
                                             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="40" AutoPostBack="true"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtOtherDepartment" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
-                                                ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />--%>
+                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" AutoPostBack="true"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Z]{4}[0-9]{5}[A-Z]"  ValidationGroup="Submit"
+                                                ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
 
@@ -1046,4 +1047,25 @@
             }
         }
     </script>
+     <script>
+         function validateTANNumber() {
+             var tanNumber = document.getElementById('<%= txtTanNumber.ClientID %>').value;
+        var regex = /^[A-Z]{4}[0-9]{5}[A-Z]$/;
+        var isValid = regex.test(tanNumber);
+
+        if (!isValid) {
+            alert("Enter a valid TAN number");
+            return false;
+        }
+        return true;
+    }
+
+    // Hook into ASP.NET form submission
+    var form = document.getElementById('<%= this.Page.Form.ClientID %>');
+         if (form) {
+             form.onsubmit = function () {
+                 return validateTANNumber();
+             };
+         }
+     </script>
 </asp:Content>

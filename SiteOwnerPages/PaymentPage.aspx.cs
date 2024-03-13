@@ -87,9 +87,10 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                Response.Redirect("/SiteOwnerPages/ChallanReport.aspx");
+                Response.Redirect("/SiteOwnerPages/ChallanReport.aspx",false);
+                return;
             }
-            catch { }
+            catch(Exception ex) { }
         }
 
         protected void btnFinalSubmit_Click(object sender, EventArgs e)
