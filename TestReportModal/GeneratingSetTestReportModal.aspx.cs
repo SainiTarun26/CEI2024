@@ -154,7 +154,7 @@ namespace CEIHaryana.TestReportModal
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
-                txtSubmitteddate.Text= ds.Tables[0].Rows[0]["SubmittedtedDate"].ToString();       ///////////////
+                txtSubmitteddate.Text= ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
                 txtSubmittedBy.Text= ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {

@@ -206,9 +206,7 @@
             font-weight: 700;
         }
 
-        div#row2 {
-            margin-top: -20px;
-        }
+       
 
         div#row3 {
             margin-top: -20px;
@@ -229,10 +227,7 @@
             width: 67px;
         }
 
-        td {
-            padding-top: 12px !important;
-            padding-bottom: 0px !important;
-        }
+      
 
         svg#search1:hover {
             height: 22px;
@@ -248,7 +243,10 @@
             padding: 9px !important;
         }
         th.headercolor {
-    width: 32% !important;
+    width: 1% !important;
+}
+        th {
+    width: 1%;
 }
     </style>
 </asp:Content>
@@ -722,7 +720,7 @@
                                             <Columns>
                                                 <asp:TemplateField Visible="False">
                                                     <HeaderTemplate>
-                                                        <asp:CheckBox ID="chkSelectAll" runat="server" />
+                                                        <asp:CheckBox ID="chkSelectAll" runat="server" CssClass="textalignleft" />
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
                                                         <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
@@ -739,7 +737,7 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="REID" HeaderText="ID" Visible="False">
-                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
+                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor1" />
                                                     <ItemStyle HorizontalAlign="center"  />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="License">
@@ -751,7 +749,7 @@
                                                     <ItemStyle HorizontalAlign="Left" CssClass="textalignleft" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
+                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor2x" />
                                                     <ItemStyle HorizontalAlign="center"  />
                                                 </asp:BoundField>
                                                 <%--<asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">

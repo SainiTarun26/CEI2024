@@ -86,8 +86,7 @@ namespace CEIHaryana.Contractor
                 {
                     DivPancard_TanNo.Visible = true;
                 }
-                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
-                
+                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();                
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
