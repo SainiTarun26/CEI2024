@@ -46,9 +46,9 @@ namespace CEIHaryana.TestReportModal
                         SiteOwner.Visible = false;
                         SiteOwner2.Visible = true;
                         IntimationData.Visible = true;
-                   
+                        SubmitDetails.Visible = true; //Added
 
-                }
+                    }
                 else if (Session["InspectionTestReportId"] != null)
                 {
                     ID = Session["InspectionTestReportId"].ToString();

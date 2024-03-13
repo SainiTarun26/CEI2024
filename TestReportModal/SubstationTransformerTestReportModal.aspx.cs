@@ -19,62 +19,62 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 if (!Page.IsPostBack)
-            {
-                if (Session["ContractorID"] != null)
                 {
-                    ID = Session["SubStationID"].ToString();
-                    GetDetailswithId();
-                    if (Convert.ToString(Session["Approval"]) == "Pending")
+                    if (Session["ContractorID"] != null)
                     {
-                        Contractor.Visible = true;
-                        Contractor3.Visible = true;
+                        ID = Session["SubStationID"].ToString();
+                        GetDetailswithId();
+                        if (Convert.ToString(Session["Approval"]) == "Pending")
+                        {
+                            Contractor.Visible = true;
+                            Contractor3.Visible = true;
+                        }
+                        else
+                        {
+                            Contractor.Visible = true;
+                            Contractor2.Visible = true;
+                        }
                     }
-                    else
+                    else if (Session["SiteOwnerId"] != null)
                     {
-                        Contractor.Visible = true;
-                        Contractor2.Visible = true;
-                    }
-                }
-                else if (Session["SiteOwnerId"] != null)
-                {
-                    ID = Session["SubStationID"].ToString();
-                    GetDetailswithId();
-                    
+                        ID = Session["SubStationID"].ToString();
+                        GetDetailswithId();
+
                         SiteOwner.Visible = false;
                         SiteOwner2.Visible = true;
                         IntimationData.Visible = true;
-                  
-                }
-                else if (Session["InspectionTestReportId"] != null)
-                {
-                    ID = Session["InspectionTestReportId"].ToString();
-                    GetDetailswithId();
-                    SiteOwner.Visible = true;
-                    IntimationData.Visible = true;
-                    btnNext.Text = "Back";
+                        SubmitDetails.Visible = true; //Added
+                    }
+                    else if (Session["InspectionTestReportId"] != null)
+                    {
+                        ID = Session["InspectionTestReportId"].ToString();
+                        GetDetailswithId();
+                        SiteOwner.Visible = true;
+                        IntimationData.Visible = true;
+                        btnNext.Text = "Back";
 
-                }
-                else if (Session["IntimationForHistoryId"] != null)
-                {
-                    ID = Session["IntimationForHistoryId"].ToString();
-                    GetDetailswithId();
-                    IntimationForHistory.Visible = true;
-                    IntimationData.Visible = true;
-                }
-                else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
+                    }
+                    else if (Session["IntimationForHistoryId"] != null)
+                    {
+                        ID = Session["IntimationForHistoryId"].ToString();
+                        GetDetailswithId();
+                        IntimationForHistory.Visible = true;
+                        IntimationData.Visible = true;
+                    }
+                    else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
-                {
-                        
+                    {
+
                         ID = Session["SubStationID"].ToString();
-                    GetDetailswithId();
-                    Supervisor.Visible = true;
-                    IntimationData.Visible = true;
+                        GetDetailswithId();
+                        Supervisor.Visible = true;
+                        IntimationData.Visible = true;
                         if (Session["SupervisorID"] != null)
                         {
                             SubmitDetails.Visible = true;
                         }
                     }
-            }
+                }
             }
             catch
             {
@@ -101,7 +101,7 @@ namespace CEIHaryana.TestReportModal
                 else if (value1.Trim() == "Reject")
                 {
                     //ddlType.Attributes.Add("Readonly", "true");                  
-                   // ddlType.Attributes.Add("disabled", "disabled");
+                    // ddlType.Attributes.Add("disabled", "disabled");
                     //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     //Rejection.Visible = true;
                     //txtRejection.Attributes.Add("Readonly", "true");
@@ -510,8 +510,8 @@ namespace CEIHaryana.TestReportModal
                 Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
 
             }
-            }
-            protected void btnBack_Click(object sender, EventArgs e)
+        }
+        protected void btnBack_Click(object sender, EventArgs e)
         {
             if (Session["AdminID"] != null)
             {
@@ -519,7 +519,7 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
-                id = Session["SubStationID"].ToString(); 
+                id = Session["SubStationID"].ToString();
                 Response.Redirect("/Supervisor/TestReportHistory.aspx");
             }
         }
@@ -576,9 +576,9 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnBack2_Click(object sender, EventArgs e)
         {
-          
-                Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
-            
+
+            Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
+
         }
     }
 }

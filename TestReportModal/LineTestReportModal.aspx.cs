@@ -49,7 +49,7 @@ namespace CEIHaryana.TestReportModal
                             SiteOwner.Visible = false;
                            SiteOwner2.Visible = true;
                             IntimationData.Visible = true;
-                       
+                        SubmitDetails.Visible = true; //Added
 
 
                     }
