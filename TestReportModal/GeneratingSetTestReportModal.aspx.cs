@@ -469,9 +469,23 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnBack2_Click(object sender, EventArgs e)
         {
-           
-                Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
-            
+
+            // Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
+            try
+            {
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+                    Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
+
+                }
+                else
+                {
+                    Response.Redirect("/SiteOwnerPages/Inspection.aspx", false);
+                }
+            }
+            catch { }
         }
+    }
     }
 }

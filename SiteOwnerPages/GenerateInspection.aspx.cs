@@ -31,6 +31,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
                         getWorkIntimationData();
+                        Session["PreviousPage"] = Request.Url.ToString();
                     }
                 }
             }

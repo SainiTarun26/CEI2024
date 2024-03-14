@@ -42,7 +42,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     GetDetailsWithId();
 
-
+                    Session["PreviousPage"] = "";
                     if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
                     {
                         if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Station")
