@@ -80,6 +80,10 @@
         }
     </script>
     <style>
+         .headercolor1{
+            text-align:initial !important;
+        }
+
         td {
             padding: 10px !important;
         }
@@ -227,10 +231,7 @@
             width: 67px;
         }
 
-       td {
-            padding-top: 12px !important;
-            padding-bottom: 0px !important;
-        }
+       
 
         svg#search1:hover {
             height: 22px;
@@ -242,12 +243,13 @@
         }
 
         th.textalignleft {
-            text-align: justify;
+            text-align: justify !important;
             padding: 9px !important;
         }
         th.headercolor {
-    width: 32% !important;
-
+            width: 32% !important;
+        } th {
+    width: 1%;
 }
     </style>
 </asp:Content>
@@ -719,9 +721,9 @@
                                     <ContentTemplate>
                                         <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
                                             <Columns>
-                                                <asp:TemplateField Visible="False">
+                                                <asp:TemplateField Visible="False" ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
                                                     <HeaderTemplate>
-                                                        <asp:CheckBox ID="chkSelectAll" runat="server" CssClass="textalignleft" />
+                                                        <asp:CheckBox ID="chkSelectAll" runat="server" style="text-align:left !important;" />
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
                                                         <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
@@ -738,7 +740,7 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="REID" HeaderText="ID" Visible="False">
-                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor1" />
+                                                    <HeaderStyle  HorizontalAlign="Left"  CssClass="headercolor textalignleft colwidth" />
                                                     <ItemStyle HorizontalAlign="center"  />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="License">

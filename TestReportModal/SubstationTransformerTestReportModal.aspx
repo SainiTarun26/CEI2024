@@ -2905,7 +2905,7 @@ margin-top: 20px;
                             <ContentTemplate>
 
                            
-                        <div class="row card" id="Contractor" runat="server" visible="false">
+                        <div class="row" id="Contractor" runat="server" visible="false" style="border-radius:20px;">
                           
 
                             <div class="col-4">

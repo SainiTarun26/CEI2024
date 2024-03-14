@@ -1983,7 +1983,17 @@
             margin-right: -25px;
             margin-top: 20px;
             padding: 15px;
+              padding-bottom:45px;    
         }
+        div#IntimationData{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+margin-left: -25px;
+margin-right: -25px;
+margin-top: 20px;
+padding: 15px;
+padding-bottom:45px;
+        }
+
          div#SubmitDetails {
        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
        margin-left: -25px;
@@ -2006,7 +2016,7 @@
         <div>
             <ul style="margin: 40px 20px 20px 15px!important;">
                 <li class="tab-content tab-content-3 typography">
-                    <div class="card-body" id="divGeneratingSet" runat="server" style="margin-top: -30px;">
+                    <div class="card-body" id="divGeneratingSet" runat="server" style="margin-top:-30px;margin-bottom: -60px;">
                         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                        
                         <div class="card-body" style="margin-top: -30px;">
@@ -2629,6 +2639,7 @@
             </div>
         </div>
     </div>
+                              <div class="card" id="inspection-card" style="background: #fcfcfc;">
                             <div id="Contractor" runat="server" visible="false">
                                  <asp:UpdatePanel ID="UpdatePanel1" runat="server">                           
                              <ContentTemplate>
@@ -2697,6 +2708,7 @@
                                    </ContentTemplate>
                         </asp:UpdatePanel>
                             </div>
+                                  </div>
                             <div class="row" runat="server" id="Contractor3" visible="false">
                                 <div class="col-4"></div>
                                 <div class="col-4" style="margin-top: 40px; text-align: Center;">

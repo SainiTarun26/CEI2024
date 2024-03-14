@@ -88,7 +88,7 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 Response.Redirect("/SiteOwnerPages/ChallanReport.aspx",false);
-                return;
+               // return;
             }
             catch(Exception ex) { }
         }
