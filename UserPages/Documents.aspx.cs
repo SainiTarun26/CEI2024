@@ -107,60 +107,128 @@ namespace CEIHaryana.UserPages
                 string flpPhotourl8 = string.Empty;
                 string flpPhotourl9 = string.Empty;
                 int maxFileSize = 2 * 1024 * 1024;
+                int maxImageSize = 102400;
+                //if (Photo.PostedFile.FileName.Length > 0)
+                //{
+                //        if (Photo.PostedFile.ContentLength > maxFileSize)
+                //        {
+                //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo document must be a PDF file with a maximum size of 2MB.')", true);
+                //            return;
+                //        }
+
+                //FileName = Path.GetFileName(Photo.PostedFile.FileName);
+                //if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/")))
+                //{
+                //    Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/"));
+                //}
+
+                //string ext = Path.GetExtension(Photo.PostedFile.FileName).ToLower();
+                //if (ext != ".pdf")
+                //{
+                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo document must be a PDF file.')", true);
+                //    return;
+                //}
+
+                //string path = "/Attachment/" + REID + "/Photo/";
+
+                //string fileName = "Photo" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                //string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/" + fileName);
+                //Photo.PostedFile.SaveAs(filePathInfo2);
+                //flpPhotourl = path + fileName;
+                //}
                 if (Photo.PostedFile.FileName.Length > 0)
                 {
-                        if (Photo.PostedFile.ContentLength > maxFileSize)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo document must be a PDF file with a maximum size of 2MB.')", true);
-                            return;
-                        }
-                    
-                FileName = Path.GetFileName(Photo.PostedFile.FileName);
-                if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/")))
-                {
-                    Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/"));
+                    if (Photo.PostedFile.ContentLength > maxImageSize)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo size must be 100kb')", true);
+                        return;
+                    }
+
+
+                    FileName = Path.GetFileName(Photo.PostedFile.FileName);
+                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/")))
+                    {
+                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/"));
+                    }
+
+                    string ext = Path.GetExtension(Photo.PostedFile.FileName).ToLower();
+                    if (ext != ".jpg" && ext != ".jpeg" && ext != ".png")
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo document must be a jpg, png, or jpeg file.')", true);
+                        return;
+                    }
+                    string path = "~/Attachment/" + REID + "/Photo/";
+                    string directoryPath = Server.MapPath(path);
+
+
+                    if (!Directory.Exists(directoryPath))
+                    {
+                        Directory.CreateDirectory(directoryPath);
+                    }
+
+                    string fileName = "PhotoImage" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                    string filePath = Path.Combine(directoryPath, fileName);
+
+
+                    Photo.PostedFile.SaveAs(filePath);
+
+                    flpPhotourl = path + fileName;
+
+
                 }
 
-                string ext = Path.GetExtension(Photo.PostedFile.FileName).ToLower();
-                if (ext != ".pdf")
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Photo document must be a PDF file.')", true);
-                    return;
-                }
-
-                string path = "/Attachment/" + REID + "/Photo/";
-
-                string fileName = "Photo" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Photo/" + fileName);
-                Photo.PostedFile.SaveAs(filePathInfo2);
-                flpPhotourl = path + fileName;
-                }
                 if (Signatur.PostedFile.FileName.Length > 0)
                 {
-                    if (Signatur.PostedFile.ContentLength > maxFileSize)
+                    if (Signatur.PostedFile.ContentLength > maxImageSize)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Signatur document must be a PDF file with a maximum size of 2MB.')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Signatur photo must be 100kb')", true);
+                        return;
+                    }
+                    string ext = Path.GetExtension(Signatur.PostedFile.FileName).ToLower();
+                    if (ext != ".png" && ext != ".jpg" && ext != ".jpeg")
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Signatur photo must be in jpg, jpeg, or png file.')", true);
                         return;
                     }
                     FileName = Path.GetFileName(Signatur.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Signature/")))
+                    string REID = "";
+                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CandidateSignature/")))
                     {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Signature/"));
+                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CandidateSignature/"));
                     }
-
-                    string ext = Path.GetExtension(Signatur.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Signatur document must be a PDF file.')", true);
-                        return;
-                    }
-                    string path = "/Attachment/" + REID + "/Signatur/";
-                    string fileName = "Signatur" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";                  
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Signature/" + fileName);
+                    string fileName = "file2" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext; // Corrected file extension
+                    string path = "/Attachment/" + REID + "/CandidateSignature/";
+                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CandidateSignature/" + fileName);
                     Signatur.PostedFile.SaveAs(filePathInfo2);
                     flpPhotourl9 = path + fileName;
-
                 }
+
+                //if (Signatur.PostedFile.FileName.Length > 0)
+                //{
+                //    if (Signatur.PostedFile.ContentLength > maxFileSize)
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Signatur document must be a PDF file with a maximum size of 2MB.')", true);
+                //        return;
+                //    }
+                //    FileName = Path.GetFileName(Signatur.PostedFile.FileName);
+                //    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Signature/")))
+                //    {
+                //        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Signature/"));
+                //    }
+
+                //    string ext = Path.GetExtension(Signatur.PostedFile.FileName).ToLower();
+                //    if (ext != ".pdf")
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Signatur document must be a PDF file.')", true);
+                //        return;
+                //    }
+                //    string path = "/Attachment/" + REID + "/Signatur/";
+                //    string fileName = "Signatur" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";                  
+                //    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Signature/" + fileName);
+                //    Signatur.PostedFile.SaveAs(filePathInfo2);
+                //    flpPhotourl9 = path + fileName;
+
+                //}
                 if (fileInput.PostedFile.FileName.Length > 0)
                 {
                     if (fileInput.PostedFile.ContentLength > maxFileSize)

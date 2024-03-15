@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <meta content=" " name="keywords" /> 
+    <meta content=" " name="keywords" />
     <!-- Favicons -->
     <link href="assetsnew/img/favicon.png" rel="icon" />
     <link href="assetsnew/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -30,41 +30,49 @@
     <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <style>
-        .table-bordered>:not(caption)>* {
-    border-width: none !important;
-}
+        .table-bordered > :not(caption) > * {
+            border-width: none !important;
+        }
+
         input#txtSignatur {
-    width: 70% !important;
-}
+            width: 70% !important;
+        }
+
         input#txtPhoto {
-    width: 70% !important;
-}
+            width: 70% !important;
+        }
+
         input#txtIdentity {
-    width: 70% !important;
-}
-                    ul#profile_drop {
-    margin-left: -86px;
-    width: 120px;
-    border-radius: 8px;
-}
+            width: 70% !important;
+        }
+
+        ul#profile_drop {
+            margin-left: -86px;
+            width: 120px;
+            border-radius: 8px;
+        }
+
         span#user {
-    color: white;
-    font-size: 15px;
-}
+            color: white;
+            font-size: 15px;
+        }
+
         svg.bi.bi-person-circle {
-    color: white;
-}
-                        #header .logo img {
-    max-height: 62px;
-    margin-left: -175px;
-    margin-top: 18px;
-}
-      
+            color: white;
+        }
+
         #header .logo img {
-    max-height: 62px;
-    margin-left: -175px;
-    margin-top: 18px;
-}
+            max-height: 62px;
+            margin-left: -175px;
+            margin-top: 18px;
+        }
+
+        #header .logo img {
+            max-height: 62px;
+            margin-left: -175px;
+            margin-top: 18px;
+        }
+
         li#logout {
             padding-left: 10px !important;
             background: #4B49AC !important;
@@ -73,14 +81,17 @@
             padding-top: 10px !important;
             padding-bottom: 10px !important;
         }
+
         input#btnMedicalCertificate {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
         input#btnRetired {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -288,18 +299,21 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
-          span#RequiredFieldValidator6 {
-      margin-top: 15px;
-      margin-bottom: 15px;
-  }
-            span#RequiredFieldValidator8 {
-      margin-top: 15px;
-      margin-bottom: 15px;
-  }
-            img {
-    margin-top: 13px;
-    margin-bottom: 21px;
-}
+
+        span#RequiredFieldValidator6 {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        span#RequiredFieldValidator8 {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        img {
+            margin-top: 13px;
+            margin-bottom: 21px;
+        }
     </style>
 </head>
 <body>
@@ -334,26 +348,26 @@
                 </div>
             </section>
             <!-- ======= Header ======= -->
-                   <header id="header" class="d-flex align-items-center"
-    style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-    <div class="container d-flex align-items-center justify-content-between">
-         <a href="index.html" class="logo">
-            <img src="../Assets/Add a heading (1).png" />
-        </a>
-        <%--<h1 class="logo">
+            <header id="header" class="d-flex align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a href="index.html" class="logo">
+                        <img src="../Assets/Add a heading (1).png" />
+                    </a>
+                    <%--<h1 class="logo">
             <a href="index.html">
                 <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
             </a>
         </h1>--%>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
-            <ul>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Home</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
+                        <ul>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Home</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <%--<ul>
                     <li>
                         <a href="#">About CEI</a>
                     </li>
@@ -364,13 +378,13 @@
                         <a href="#">Functions</a>
                     </li>
                 </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Lift & Esclator</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Lift & Esclator</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <%--<ul>
                     <li>
                         <a href="#">Procedure For Registration/
                         <br>
@@ -388,13 +402,13 @@
                     </li>
                 </ul>--%>
 
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Licensing</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Licensing</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <%--<ul>
                     <li>
                         <a href="#">Procedure/ Condition
                         <br>
@@ -411,13 +425,13 @@
                         <a href="#">Forms(Licence)</a>
                     </li>
                 </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Inspection</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Inspection</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <%--<ul>
                     <li>
                         <a href="#">Checklist for Online Service(Inspection)</a>
                     </li>
@@ -433,60 +447,60 @@
                         </a>
                     </li>
                 </ul>--%>
-                </li>
-                <li class="dropdown">
-                    <a href="#">
-                        <span>Services</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </a>
-                    <%--<ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Services</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <%--<ul>
                     <li>
                         <a href="#">Our Services</a>
                     </li>
                 </ul>--%>
-                </li>
-                <li>
-                    <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                </li>
+                            </li>
+                            <li>
+                                <a class="nav-link scrollto" href="#contact">Contact Us</a>
+                            </li>
 
-                <li class="dropdown" id="logout" style="margin-left: 300px;">
-                    <a href="#">
-                        <span id="user">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                            </svg></span>
+                            <li class="dropdown" id="logout" style="margin-left: 300px;">
+                                <a href="#">
+                                    <span id="user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                        </svg></span>
 
-                    </a>
-                    <ul id="profile_drop">
-                        <li id="ProfileUser">
-                            <a href="#">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                                </a>
+                                <ul id="profile_drop">
+                                    <li id="ProfileUser">
+                                        <a href="#">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
                           User      
 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
                                     </svg>&nbsp;&nbsp;Profile</span>
 
-                            </a>
-                        </li>
-                        <li id="ProfileLogout">
-                            <a href="#">
-                              
-                                <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                        </a>
+                                    </li>
+                                    <li id="ProfileLogout">
+                                        <a href="#">
 
-                            </a>
-                        </li>
+                                            <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
 
-                    </ul>
-                </li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
-    </div>
+                                        </a>
+                                    </li>
 
-</header>
+                                </ul>
+                            </li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+                    <!-- .navbar -->
+                </div>
+
+            </header>
             <!-- End Header -->
             <main id="main">
                 <section id="about" class="about section-bg">
@@ -494,11 +508,11 @@
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-12">
-                                <p style=" margin-top: -40px; font-weight: 700;">
+                                <p style="margin-top: -40px; font-weight: 700;">
                                     (Please read the instructions carefully as given in Instruction
                             Page before filling the form)
                                 </p>
-                                <img src="/Assets/capsules/documents.png" alt="NO IMAGE FOUND" style="width: 90%;margin-left:5%;" />
+                                <img src="/Assets/capsules/documents.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                                 <div class="card"
                                     style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                     <div class="card-body">
@@ -514,7 +528,7 @@
                                                 <table class="table table-bordered table-striped">
 
                                                     <tbody>
-                                                        <tr>
+                                                        <%--  <tr>
                                                             <td style=" ">Candidate Photo.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
@@ -545,9 +559,28 @@
 
                                                             <asp:HiddenField ID="HiddenField1" runat="server" />
 
+                                                        </tr>--%>
+                                                        <tr>
+                                                            <td style="">Candidate photo. (<span style="color: red;">★</span>)</td>
+                                                            <td>
+                                                                <input type="file" name="img[]" class="file-upload-default" style="display: none;">
+                                                                <div class="form-group">
+                                                                    <label style="font-size: 9px;">(PLEASE UPLOAD PHOTO)</label>
+                                                                    <input type="file" name="img[]" class="file-upload-default" accept=".jpg, .jpeg, .png">
+                                                                    <div class="input-group col-xs-12">
+                                                                        <asp:TextBox ID="TextPhoto" runat="server" CssClass="form-control file-upload-info" Enabled="false" placeholder="Upload Picture" Style="width: 50%;"></asp:TextBox>
+                                                                        <span class="input-group-append">
+                                                                            <asp:Button ID="Button1" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="PhotoDialog(); return false;" />
+                                                                            <input type="file" id="Photo" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="PhotoDialogName()" />
+                                                                        </span>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextPhoto" ErrorMessage="Please Upload a Photo" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <asp:HiddenField ID="HiddenField1" runat="server" />
                                                         </tr>
                                                         <tr>
-                                                            <td style=" ">Matriculation certificate indicating date of birth.(<span
+                                                            <td style="">Matriculation certificate indicating date of birth.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -555,7 +588,7 @@
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                       (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="selectedFileName" runat="server" CssClass="form-control file-upload-info"
@@ -578,14 +611,14 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style=" ">Residence Proof.(<span style="color: red;">★</span>)
+                                                            <td style="">Residence Proof.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                       (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtResidence" runat="server" CssClass="form-control file-upload-info"
@@ -606,14 +639,14 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style=" ">Identity Proof.(<span style="color: red;">★</span>)
+                                                            <td style="">Identity Proof.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                       (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtIdentity" runat="server" CssClass="form-control file-upload-info"
@@ -635,7 +668,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style=" ">
+                                                            <td style="">
                                                                 <p>
                                                                     Degree/Diploma in Electrical Engineering.
                                                                 /Electrical<br />
@@ -649,7 +682,7 @@
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                       (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtDegreeDiploma" runat="server" CssClass="form-control file-upload-info"
@@ -671,14 +704,14 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style=" ">Experience Certificate.(<span style="color: red;">★</span>)
+                                                            <td style="">Experience Certificate.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                       (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtExperience" runat="server" CssClass="form-control file-upload-info"
@@ -700,7 +733,7 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td style=" ">Number of three Specimen signatures of the applicant(<span
+                                                            <td style="">Number of three Specimen signatures of the applicant(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
                                                             <td>
@@ -708,7 +741,7 @@
                                                                     style="display: none;" />
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                     (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default" />
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtSignature" runat="server" CssClass="form-control file-upload-info"
@@ -728,16 +761,17 @@
                                                                 </div>
                                                             </td>
 
-                                                        </tr>                                                                                                                <tr>
-                                                        <td style=" ">Candidate Signature.(<span
+                                                        </tr>
+                                                       <%-- <tr>
+                                                            <td style="">Candidate Signature.(<span
                                                                 style="color: red;">★</span>)
                                                             </td>
-                                                        <td>
+                                                            <td>
                                                                 <input type="file" name="img[]" class="file-upload-default"
                                                                     style="display: none;">
                                                                 <div class="form-group">
                                                                     <label style="font-size: 9px;">
-                                                                      (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
                                                                     <input type="file" name="img[]" class="file-upload-default">
                                                                     <div class="input-group col-xs-12">
                                                                         <asp:TextBox ID="txtSignatur" runat="server" CssClass="form-control file-upload-info"
@@ -754,71 +788,100 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                        <asp:HiddenField ID="HiddenField2" runat="server" />
+                                                            <asp:HiddenField ID="HiddenField2" runat="server" />
+                                                        </tr>--%>
+                                                        <tr>
+                                                            <td style=""> Candidate Signature.(<span
+                                                                style="color: red;">★</span>)
+                                                            </td>
+                                                            <td>
+                                                                <input type="file" name="img[]" class="file-upload-default"
+                                                                    style="display: none;">
+                                                                <div class="form-group">
+                                                                    <label style="font-size: 9px;">
+                                                                        (PLEASE UPLOAD CANDIDATE SIGNATURE PHOTO)</label>
+                                                                    <input type="file" name="img[]" class="file-upload-default">
+                                                                    <div class="input-group col-xs-12">
+                                                                        <asp:TextBox ID="txtSignatur" runat="server" CssClass="form-control file-upload-info"
+                                                                            Enabled="false" placeholder="Upload Signature" Style="width: 50%;"></asp:TextBox>
+
+                                                                        <span class="input-group-append">
+
+                                                                            <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="SignaturDialog(); return false;" />
+                                                                            <input type="file" id="Signatur" name="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" runat="server" onchange="SignaturDialogName()" />
+
+                                                                        </span>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtSignatr"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your  Matriculation certificate</asp:RequiredFieldValidator>
+
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+
+                                                            <asp:HiddenField ID="HiddenField2" runat="server" />
+
                                                         </tr>
                                                         <tr id="Medicalfitness" runat="server" visible="false">
                                                             <%--<text runat="server" id="Medicalfitness">--%>
-                                                                <td style=" ">
-                                                                    <p>
-                                                                        Medical fitness certificate from Government/Government
+                                                            <td style="">
+                                                                <p>
+                                                                    Medical fitness certificate from Government/Government
                                                                     approved Hospital,<br />
-                                                                        in case he is above 55 years
-                                                                    </p>
-                                                                    of age on the date of submission of application.(<span
-                                                                        style="color: red;">★</span>)
-                                                                </td>
-                                                                <td>
-                                                                    <input type="file" name="img[]" class="file-upload-default"
-                                                                        style="display: none;" />
-                                                                    <div class="form-group">
-                                                                        <label style="font-size: 9px;">
-                                                                       (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
-                                                                        <input type="file" name="img[]" class="file-upload-default" />
-                                                                        <div class="input-group col-xs-12">
-                                                                            <asp:TextBox ID="txtMedicalCertificate" runat="server" CssClass="form-control file-upload-info"
-                                                                                Enabled="false" placeholder="Upload Medical Certificate" Style="width: 50%;"></asp:TextBox>
-                                                                            <span class="input-group-append">
-                                                                                <asp:Button ID="btnMedicalCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MedicalCertificateDialog(); return false;" />
-                                                                                <input type="file" id="MedicalCertificate" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
-                                                                                    onchange="MedicalCertificateName()" runat="server" />
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                          <%--  </text>--%>
-                                                        </tr>
-                                                        <tr  id="Retired" runat="server" visible="false">
-                                                            <%--<text runat="server" id="Retired">--%>
-                                                                <td style=" ">Copy of retirement orders in case of retired engineers(<span
+                                                                    in case he is above 55 years
+                                                                </p>
+                                                                of age on the date of submission of application.(<span
                                                                     style="color: red;">★</span>)
-                                                                </td>
-                                                                <td>
-                                                                    <input type="file" name="img[]" class="file-upload-default"
-                                                                        style="display: none;" />
-                                                                    <div class="form-group">
-                                                                        <label style="font-size: 9px;">
-                                                                           (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
-                                                                        <input type="file" name="img[]" class="file-upload-default" />
-                                                                        <div class="input-group col-xs-12">
-                                                                            <asp:TextBox ID="txtRetired" runat="server" CssClass="form-control file-upload-info"
-                                                                                Enabled="false" placeholder="Upload Copy of retirement" Style="width: 50%;"></asp:TextBox>
-
-                                                                            <span class="input-group-append">
-
-                                                                                <asp:Button ID="btnRetired" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="RetiredDialog(); return false;" />
-                                                                                <input type="file" id="fileRetired" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
-                                                                                    onchange="RetiredName()" runat="server" />
-
-                                                                            </span>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="selectedFileName"
-                                                                                ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Signature</asp:RequiredFieldValidator>
-
-                                                                        </div>
+                                                            </td>
+                                                            <td>
+                                                                <input type="file" name="img[]" class="file-upload-default"
+                                                                    style="display: none;" />
+                                                                <div class="form-group">
+                                                                    <label style="font-size: 9px;">
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                    <input type="file" name="img[]" class="file-upload-default" />
+                                                                    <div class="input-group col-xs-12">
+                                                                        <asp:TextBox ID="txtMedicalCertificate" runat="server" CssClass="form-control file-upload-info"
+                                                                            Enabled="false" placeholder="Upload Medical Certificate" Style="width: 50%;"></asp:TextBox>
+                                                                        <span class="input-group-append">
+                                                                            <asp:Button ID="btnMedicalCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MedicalCertificateDialog(); return false;" />
+                                                                            <input type="file" id="MedicalCertificate" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                onchange="MedicalCertificateName()" runat="server" />
+                                                                        </span>
                                                                     </div>
-                                                                </td>
-                                                           <%-- </text>--%>
+                                                                </div>
+                                                            </td>
+                                                            <%--  </text>--%>
+                                                        </tr>
+                                                        <tr id="Retired" runat="server" visible="false">
+                                                            <%--<text runat="server" id="Retired">--%>
+                                                            <td style="">Copy of retirement orders in case of retired engineers(<span
+                                                                style="color: red;">★</span>)
+                                                            </td>
+                                                            <td>
+                                                                <input type="file" name="img[]" class="file-upload-default"
+                                                                    style="display: none;" />
+                                                                <div class="form-group">
+                                                                    <label style="font-size: 9px;">
+                                                                        (PLEASE UPLOAD PDF ONLY NO MORE THAN 2MB)</label>
+                                                                    <input type="file" name="img[]" class="file-upload-default" />
+                                                                    <div class="input-group col-xs-12">
+                                                                        <asp:TextBox ID="txtRetired" runat="server" CssClass="form-control file-upload-info"
+                                                                            Enabled="false" placeholder="Upload Copy of retirement" Style="width: 50%;"></asp:TextBox>
 
+                                                                        <span class="input-group-append">
 
+                                                                            <asp:Button ID="btnRetired" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="RetiredDialog(); return false;" />
+                                                                            <input type="file" id="fileRetired" name="fileInput" accept=".jpg, .jpeg, .png, .pdf" style="display: none; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+                                                                                onchange="RetiredName()" runat="server" />
+
+                                                                        </span>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="selectedFileName"
+                                                                            ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Select Your Signature</asp:RequiredFieldValidator>
+
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <%-- </text>--%>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -1011,7 +1074,7 @@ border-radius: 5px;">Back</button>--%>
                 txtSignature.value = fileInput.files[0].name;
             }
         }
-        
+
         function SignaturDialog() {
             document.getElementById('Signatur').click();
         }
@@ -1054,8 +1117,57 @@ border-radius: 5px;">Back</button>--%>
                 txtRetired.value = fileInput.files[0].name;
             }
         }
+        
+    </script> 
+    <%--/////////////////////////////////////////--%>
+    <script type="text/javascript">
+        function PhotoDialog() {
+            var fileInput = document.getElementById('Photo');
+            fileInput.click();
+            return false;
+        }
+        function PhotoDialogName() {
+            var fileInput = document.getElementById('Photo');
+            if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                var fileName = fileInput.files[0].name; // Get the name of the selected file
+                var selectedFileName = document.getElementById('<%= TextPhoto.ClientID %>');
+                if (selectedFileName) {
+                    selectedFileName.value = fileName;
+                    // Alert for debugging purposes
+                    // alert('Selected file: ' + fileName);
+                } else {
+                    console.error('Could not find TextPhoto element.');
+                }
+            } else {
+                console.error('No file selected.');
+            }
+        }
 
     </script>
+    <script type="text/javascript">
+        function SignaturDialog() {
+            var fileInput = document.getElementById('Signatur');
+            fileInput.click();
+            return false;
+        }
+
+        function SignaturDialogName() {
+            var fileInput = document.getElementById('Signatur');
+            if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                var fileName = fileInput.files[0].name;
+                var txtSignatr = document.getElementById('<%= txtSignatur.ClientID %>');
+                if (txtSignatr) {
+                    txtSignatr.value = fileName;
+                } else {
+                    console.error('txtSignatr element not found.');
+                }
+            } else {
+                console.error('No file selected.');
+            }
+        }
+
+
+     </script>
 
 </body>
 </html>

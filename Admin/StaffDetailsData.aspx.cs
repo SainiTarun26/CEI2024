@@ -235,8 +235,24 @@ namespace CEIHaryana.Admin
             {
                 Response.Redirect("AddWiremanDetails.aspx");
             }
+            string Category= Request.Params["category"].ToString();
         }
-
-
+        public void SearchSupervisororWiremen(string searchterm,string categary)
+        {
+            DataTable dt = new DataTable();
+            dt = cei.SearchSupervisororWiremen(searchterm, categary);
+            if (dt.Rows.Count > 0)
+            {
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
     }
 }
