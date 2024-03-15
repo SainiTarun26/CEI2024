@@ -491,7 +491,6 @@ namespace CEIHaryana.Contractor
 
                 foreach (GridViewRow row in GridView1.Rows)
                 {
-
                     //Label lblCategory = (Label)row.FindControl("lblCategory");
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 

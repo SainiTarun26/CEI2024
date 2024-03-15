@@ -807,12 +807,23 @@ namespace CEIHaryana.SiteOwnerPages
                 //}
                 //else
                 //{
-                    string lblCategory = Session["SelectedCategory"].ToString().Trim();
-                    string lblApplicant = Session["SelectedApplicant"].ToString().Trim();
-                    string lblVoltageLevel = Session["SelectedVoltageLevel"].ToString().Trim();
-                    string lblDivision = Session["SelectedDivision"].ToString().Trim();
-                    string lblDistrict = Session["SelectedDistrict"].ToString().Trim();
-                    string lblNoOfInstallations = Session["SelectedNoOfInstallations"].ToString().Trim();
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+
+                    //Label lblCategory = (Label)row.FindControl("lblCategory");
+                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+
+                    //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
+                    //{
+                    if (chk.Checked == true)
+                    {
+
+                        string lblCategory = Session["SelectedCategory"].ToString().Trim();
+                        string lblApplicant = Session["SelectedApplicant"].ToString().Trim();
+                        string lblVoltageLevel = Session["SelectedVoltageLevel"].ToString().Trim();
+                        string lblDivision = Session["SelectedDivision"].ToString().Trim();
+                        string lblDistrict = Session["SelectedDistrict"].ToString().Trim();
+                        string lblNoOfInstallations = Session["SelectedNoOfInstallations"].ToString().Trim();
                         string District = lblDistrict.Trim();
                         string Assign = string.Empty;
                         string To = lblDivision.Trim();
@@ -1010,37 +1021,37 @@ namespace CEIHaryana.SiteOwnerPages
                             {
                                 if (FileUpload12.PostedFile.FileName.Length > 0)
                                 {
-                            //FileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
-                            //if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/")))
-                            //{
-                            //    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/"));
-                            //}
+                                    //FileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
+                                    //if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/")))
+                                    //{
+                                    //    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/"));
+                                    //}
 
-                            //string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
-                            //string path = "";
-                            //path = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/";
-                            //string fileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                            //string filePathInfo2 = "";
-                            //filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/" + fileName);
-                            //FileUpload12.PostedFile.SaveAs(filePathInfo2);
-                            //flpPhotourl3 = path + fileName;
+                                    //string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
+                                    //string path = "";
+                                    //path = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/";
+                                    //string fileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                                    //string filePathInfo2 = "";
+                                    //filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/" + fileName);
+                                    //FileUpload12.PostedFile.SaveAs(filePathInfo2);
+                                    //flpPhotourl3 = path + fileName;
 
-                            string fileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
-                            string directoryPath = Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/");
-                            if (!Directory.Exists(directoryPath))
-                            {
-                                Directory.CreateDirectory(directoryPath);
-                            }
+                                    string fileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
+                                    string directoryPath = Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/");
+                                    if (!Directory.Exists(directoryPath))
+                                    {
+                                        Directory.CreateDirectory(directoryPath);
+                                    }
 
-                            string ext = fileName.Split('.')[1];
-                            string uniqueFileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                            string filePath = Path.Combine(directoryPath, uniqueFileName);
+                                    string ext = fileName.Split('.')[1];
+                                    string uniqueFileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                                    string filePath = Path.Combine(directoryPath, uniqueFileName);
 
-                            FileUpload12.PostedFile.SaveAs(filePath);
-                            flpPhotourl3 = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/" + uniqueFileName;
+                                    FileUpload12.PostedFile.SaveAs(filePath);
+                                    flpPhotourl3 = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/" + uniqueFileName;
 
 
-                        }
+                                }
                             }
                             else
                             {
@@ -1305,13 +1316,17 @@ namespace CEIHaryana.SiteOwnerPages
                         // DataSaved.Visible = true;
                         Session["PendingPaymentId"] = generatedId;
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-
-                    
-                    
-                //}
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
+                    }
+                    //}
+                }
             }
-            catch
-            { 
+            catch (Exception ex)
+            {
+                ////
             }
         }
 

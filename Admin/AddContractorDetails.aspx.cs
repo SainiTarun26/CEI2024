@@ -257,51 +257,9 @@ namespace CEI_PRoject.Admin
         {
             try
             {
-                if(Page.IsValid)
-                { 
-                if (btnSubmit.Text == "Update")
+                if (Page.IsValid)
                 {
-                    if (txtLicenceNew.Text != "" && txtLicenceNew.Text != "NA")
-                    {
-                        UserId = txtLicenceNew.Text;
-                    }
-                    else
-                    {
-                        UserId = txtLicenceOld.Text;
-                    }
-                    REID = hdnId.Value;
-                    Createdby = Session["AdminID"].ToString();
-                    if (Createdby == null || Createdby == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                    }
-                    else
-                    {
-                        GetIP();
-                        CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
-                        ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-                        ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
-                        txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-                        txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
-                        Session["ID"] = "";
-                        Reset();
-                        regexValidatorGST.Visible = false;
-                        RequiredFieldValidator3.Visible = false;
-                        DataUpdated.Visible = true;
-                        //  Response.Redirect("AddContractorDetails.aspx");
-                    }
-                }
-                else
-                {
-                    DataSet ds = new DataSet();
-                    ds = CEI.checkGSTexist(txtGST.Text);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        string alertScript = "alert('The  GST number is already in use. Please provide a different GST number.');";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-
-                    }
-                    else
+                    if (btnSubmit.Text == "Update")
                     {
                         if (txtLicenceNew.Text != "" && txtLicenceNew.Text != "NA")
                         {
@@ -311,40 +269,81 @@ namespace CEI_PRoject.Admin
                         {
                             UserId = txtLicenceOld.Text;
                         }
-
-                        DataSet ds1 = new DataSet();
-                        ds1 = CEI.checkLicenceexist(txtLicenceNew.Text, txtLicenceOld.Text);
-                        if (ds1.Tables[0].Rows.Count > 0 )
+                        REID = hdnId.Value;
+                        Createdby = Session["AdminID"].ToString();
+                        if (Createdby == null || Createdby == "")
                         {
-                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-
-
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
                         }
                         else
                         {
-                            REID = hdnId.Value;
-                            Createdby = Session["AdminID"].ToString();
-                            if (Createdby == null || Createdby == "")
+                            GetIP();
+                            CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
+                            ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                            ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
+                            txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                            txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
+                            Session["ID"] = "";
+                            Reset();
+                            regexValidatorGST.Visible = false;
+                            RequiredFieldValidator3.Visible = false;
+                            DataUpdated.Visible = true;
+                            //Response.Redirect("AddContractorDetails.aspx");
+                        }
+                    }
+                    else
+                    {
+                        DataSet ds = new DataSet();
+                        ds = CEI.checkGSTexist(txtGST.Text);
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            string alertScript = "alert('The  GST number is already in use. Please provide a different GST number.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
+                        else
+                        {
+                            if (txtLicenceNew.Text != "" && txtLicenceNew.Text != "NA")
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                UserId = txtLicenceNew.Text;
                             }
                             else
                             {
-                                GetIP();
-                                CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
-                                ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
-                               ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text, txtDateofIntialissue.Text,
-                               txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-                               txtLicenceOld.Text, txtLicenceNew.Text, ipaddress, Createdby);
-                                Reset();
-                                //DataSaved.Visible = true;
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                UserId = txtLicenceOld.Text;
+                            }
 
+                            DataSet ds1 = new DataSet();
+                            ds1 = CEI.checkLicenceexist(txtLicenceNew.Text, txtLicenceOld.Text);
+                            if (ds1.Tables[0].Rows.Count > 0)
+                            {
+                                string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                return;
+                            }
+                            else
+                            {
+                                REID = hdnId.Value;
+                                Createdby = Session["AdminID"].ToString();
+                                if (Createdby == null || Createdby == "")
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                }
+                                else
+                                {
+                                    GetIP();
+                                    CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
+                                    ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                                   ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text, txtDateofIntialissue.Text,
+                                   txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
+                                   txtLicenceOld.Text, txtLicenceNew.Text, ipaddress, Createdby);
+                                    Reset();
+                                    //DataSaved.Visible = true;
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+                                }
                             }
                         }
                     }
-                }
                 }
                 else
                 {
@@ -371,7 +370,6 @@ namespace CEI_PRoject.Admin
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
 
                 }
-
 
             }
 

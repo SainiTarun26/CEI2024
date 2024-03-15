@@ -278,6 +278,28 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                     }
                 }
+                else // If searchText is blank
+                {
+                    if (Request.Cookies["AdminID"] != null && Request.Cookies["logintype"] != null)
+                    {
+                        loginType = Request.Cookies["logintype"].Value;
+                        ID = Request.Cookies["AdminID"].Value;
+                    }
+                    else
+                    {
+                        loginType = Convert.ToString(Session["logintype"]);
+                        ID = Convert.ToString(Session["AdminID"]);
+                    }
+                    if (Category == "Contractor")
+                    {
+                        getContractorData(loginType, ID);
+
+                    }
+                    else if (Category == "Supervisor" || Category == "Wireman")
+                    {
+                        getWiremanorSuperwiserData(category, loginType, ID);
+                    }
+                }
 
 
             }
