@@ -168,7 +168,8 @@
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" OnTextChanged="txtSearch_TextChanged" AutoPostBack="true" Font-Size="12px" ></asp:TextBox><br />
+                                    <%--onkeydown="return SearchOnEnter(event);"  onkeyup="Search_Gridview(this)"--%>
                                 </div>
                             </div>
                         </div>

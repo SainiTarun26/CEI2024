@@ -105,7 +105,6 @@ namespace CEIHaryana.Admin
             ds.Dispose();
         }
 
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
@@ -254,5 +253,39 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchText = txtSearch.Text.Trim(); // Assuming txtSearch is the ID of your TextBox
+                string Category = Request.Params["category"].ToString();
+
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    DataTable searchResult = cei.SearchContractorData(searchText, Category);
+
+                    if (searchResult.Rows.Count > 0)
+                    {
+                        GridView1.DataSource = searchResult;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                        string script = "alert(\"No Record Found\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = "An error occurred: " + ex.Message;
+            }
+
+        }
+
     }
 }
