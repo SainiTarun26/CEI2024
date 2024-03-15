@@ -64,7 +64,6 @@ namespace CEI_PRoject.Admin
 
             catch (Exception)
             {
-
                 Response.Redirect("/Login.aspx");
             }
         }
@@ -260,35 +259,39 @@ namespace CEI_PRoject.Admin
                         {
                             string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
                         }
 
                     }
                 }
-               
-                    GetIP();
-                    REID = hdnId.Value; 
+
+                GetIP();
+                REID = hdnId.Value;
+                if (Session["AdminID"] != null)
+                {
                     string Createdby = Convert.ToString(Session["AdminID"]);
                     CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text, FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(),
                      ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,
                      DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text,
                      ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, Createdby, CertificateOld.Text, ipaddress);
-
                     if (btnSubmit.Text == "Update")
                     {
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
                         Session["ID"] = "";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
+                    }
+                    else
+                    {
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                    }
 
                 }
                 else
-                    {
-
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                }
-                    Reset();
-                
+                {
+                    Response.Redirect("/Login.aspx", false);
+                }                
+                Reset();
             }
             catch (Exception Ex)
             {
@@ -389,7 +392,7 @@ namespace CEI_PRoject.Admin
 
                             txtAge.Text = "";
 
-                        }                        
+                        }
                         else
                         {
 
@@ -405,4 +408,4 @@ namespace CEI_PRoject.Admin
 
         }
     }
-    }
+}

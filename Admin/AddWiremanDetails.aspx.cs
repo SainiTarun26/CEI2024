@@ -267,8 +267,8 @@ namespace CEI_PRoject.Admin
                         {
                             string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
                         }
-
                     }
                 }
                 

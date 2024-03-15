@@ -33,18 +33,24 @@ namespace CEIHaryana.Officers
 
         public void GridBind()
         {
-
-            string LoginID = string.Empty;
-            LoginID = Session["StaffID"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.StaffLogin(LoginID);
-           
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-         
-            ds.Dispose();
+            try
+            {
+                string LoginID = string.Empty;
+                LoginID = Session["StaffID"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.StaffLogin(LoginID);
+                if(ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+             // throw;
+            }                       
         }
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
@@ -70,9 +76,10 @@ namespace CEIHaryana.Officers
                 GridView1.PageIndex = e.NewPageIndex;
                 GridBind();
             }
-            catch { }
+            catch(Exception ex) 
+            { 
+            //
+            }
         }
     }
-
-
 }

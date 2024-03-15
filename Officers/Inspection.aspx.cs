@@ -354,7 +354,7 @@ namespace CEIHaryana.Officers
         {
             try
             {
-                string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
+            string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
 
@@ -422,9 +422,7 @@ namespace CEIHaryana.Officers
                 }
                 else
                 {
-
                     Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
-
                 }
 
             }
