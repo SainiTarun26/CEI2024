@@ -82,7 +82,6 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblID = (Label)row.FindControl("lblID");
                     Session["id"] = lblID.Text;
                     Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
-
                 }
                 else
                 {

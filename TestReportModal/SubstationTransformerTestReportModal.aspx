@@ -2885,15 +2885,21 @@ margin-top: 20px;
                                     </div>
                               </div>
                                                                                 </div>
-                       <div class="card" id="SubmitDetails"  runat="server" visible="false" style="background: #fcfcfc;">
+                       <div class="card"  style="background: #fcfcfc;">
         <div class="row">
-            <div class="col-4">
+            <div class="col-4" id="CreatedDate" visible="false" runat="server">
+                <label>
+                    Created Date
+                </label>
+                <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            </div>
+            <div class="col-4" id="SubmitDate" visible="false" runat="server">
                 <label>
                     Submitted Date
                 </label>
                 <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
-            <div class="col-4">
+            <div class="col-4" id="SubmitBy" visible="false" runat="server">
                 <label>
                     Submitted By
                 </label>

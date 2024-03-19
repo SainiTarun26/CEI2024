@@ -20,64 +20,76 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 if (!Page.IsPostBack)
-            {
-                if (Session["ContractorID"] != null)
                 {
-                    ID = Session["GeneratingSetId"].ToString();
-                    GetDetailswithId();
-                    if (Convert.ToString(Session["Approval"]) == "Pending")
+                    if (Session["ContractorID"] != null)
                     {
-                        Contractor.Visible = true;
-                        Contractor3.Visible = true;
-                    }
-                    else
-                    {
-                        Contractor.Visible = true;
-                        Contractor2.Visible = true;
-                    }
+                        ID = Session["GeneratingSetId"].ToString();
+                        GetDetailswithId();
+                        if (Convert.ToString(Session["Approval"]) == "Pending")
+                        {
+                            Contractor.Visible = true;
+                            Contractor3.Visible = true;
+                            CreatedDate.Visible = true;
+                        }
+                        else
+                        {
+                            Contractor.Visible = true;
+                            Contractor2.Visible = true;
+                            CreatedDate.Visible = true;
+                        }
 
 
-                }
-                else if (Session["SiteOwnerId"] != null)
-                {
-                    ID = Session["GeneratingSetId"].ToString();
-                    GetDetailswithId();
-                    
+                    }
+                    else if (Session["SiteOwnerId"] != null)
+                    {
+                        ID = Session["GeneratingSetId"].ToString();
+                        GetDetailswithId();
+
                         SiteOwner.Visible = false;
                         SiteOwner2.Visible = true;
                         IntimationData.Visible = true;
-                        SubmitDetails.Visible = true; //Added
+                        CreatedDate.Visible = true; //Added
+                        SubmitDate.Visible = true;
+                        SubmitBy.Visible = true;
 
                     }
-                else if (Session["InspectionTestReportId"] != null)
-                {
-                    ID = Session["InspectionTestReportId"].ToString();
-                    GetDetailswithId();
-                    SiteOwner.Visible = true;
-                    IntimationData.Visible = true;
-                    btnNext.Text = "Back";
-                   
-                }
-                else if (Session["IntimationForHistoryId"] != null)
-                {
-                    ID = Session["IntimationForHistoryId"].ToString();
-                    GetDetailswithId();
-                    IntimationForHistory.Visible = true;
-                }
-                else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
+                    else if (Session["InspectionTestReportId"] != null)
+                    {
+                        ID = Session["InspectionTestReportId"].ToString();
+                        GetDetailswithId();
+                        SiteOwner.Visible = true;
+                        IntimationData.Visible = true;
+                        btnNext.Text = "Back";
 
-                {
+                    }
+                    else if (Session["IntimationForHistoryId"] != null)
+                    {
+                        ID = Session["IntimationForHistoryId"].ToString();
+                        GetDetailswithId();
+                        IntimationForHistory.Visible = true;
+                    }
+                    else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
+
+                    {
                         if (Session["SupervisorID"] != null)
                         {
-                            SubmitDetails.Visible = true;
+                            SubmitDate.Visible = true;
+                            SubmitBy.Visible = true;
+                        }
+                        if (Session["AdminID"] != null)
+                        {
+                            Contractor.Visible = true;
+                            SubmitBy.Visible = true;
+                            SubmitDate.Visible = true;
+                            CreatedDate.Visible = true;
                         }
                         ID = Session["GeneratingSetId"].ToString();
-                    GetDetailswithId();
-                    Supervisor.Visible = true;
-                    IntimationData.Visible = true;
+                        GetDetailswithId();
+                        Supervisor.Visible = true;
+                        IntimationData.Visible = true;
 
+                    }
                 }
-            }
             }
             catch (Exception ex)
             {
@@ -98,7 +110,7 @@ namespace CEIHaryana.TestReportModal
                     //ddlType.Attributes.Add("disabled", "disabled");
                     //ddlType.Attributes["onfocus"] = "this.size=3";                   
                     // ddlType.Attributes.Add("ReadOnly", "true");
-                   // ddlType.Attributes.Add("disabled", "disabled");
+                    // ddlType.Attributes.Add("disabled", "disabled");
                     //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     //BtnSubmitGeneratingSet.Text = "Back";
 
@@ -109,13 +121,13 @@ namespace CEIHaryana.TestReportModal
 
                     //ddlType.Attributes.Add("disabled", "disabled");
                     // ddlType.Attributes.Add("ReadOnly", "true");                   
-                   // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                   // Rejection.Visible = true;
-                   // txtRejection.Attributes.Add("Readonly", "true");
+                    // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    // Rejection.Visible = true;
+                    // txtRejection.Attributes.Add("Readonly", "true");
                     BtnSubmitGeneratingSet.Text = "Back";
 
                 }
-                if(value1.Trim() == "Submit")
+                if (value1.Trim() == "Submit")
                 {
                     BtnSubmitGeneratingSet.Text = "Back";
                 }
@@ -154,8 +166,10 @@ namespace CEIHaryana.TestReportModal
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
-                txtSubmitteddate.Text= ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
-                txtSubmittedBy.Text= ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
+                txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
+                txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
+                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
+                txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {
                     SolarPanelGeneratingSet.Visible = true;
@@ -320,53 +334,53 @@ namespace CEIHaryana.TestReportModal
                     GeneratingEarthing15.Visible = false;
                     Limit.Visible = false;
                 }
-                    txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
-                    txtGeneratingEarthing1.Text = ds.Tables[0].Rows[0]["EarthingValue1"].ToString();
-                    txtEarthingUsed1.Text = ds.Tables[0].Rows[0]["UsedFor1"].ToString();
-                    txtEarthingType2.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
-                    txtGeneratingEarthing2.Text = ds.Tables[0].Rows[0]["EarthingValue2"].ToString();
-                    txtEarthingUsed2.Text = ds.Tables[0].Rows[0]["UsedFor2"].ToString();
-                    txtEarthingType3.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
-                    txtGeneratingEarthing3.Text = ds.Tables[0].Rows[0]["EarthingValue3"].ToString();
-                    txtEarthingUsed3.Text = ds.Tables[0].Rows[0]["UsedFor3"].ToString();
-                    txtEarthingType4.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
-                    txtGeneratingEarthing4.Text = ds.Tables[0].Rows[0]["EarthingValue4"].ToString();
-                    txtEarthingUsed4.Text = ds.Tables[0].Rows[0]["UsedFor4"].ToString();
-                    txtEarthingType5.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
-                    txtGeneratingEarthing5.Text = ds.Tables[0].Rows[0]["EarthingValue5"].ToString();
-                    txtEarthingUsed5.Text = ds.Tables[0].Rows[0]["UsedFor5"].ToString();
-                    txtEarthingType6.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
-                    txtGeneratingEarthing6.Text = ds.Tables[0].Rows[0]["EarthingValue6"].ToString();
-                    txtEarthingUsed6.Text = ds.Tables[0].Rows[0]["UsedFor6"].ToString();
-                    txtEarthingType7.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
-                    txtGeneratingEarthing7.Text = ds.Tables[0].Rows[0]["EarthingValue7"].ToString();
-                    txtEarthingUsed7.Text = ds.Tables[0].Rows[0]["UsedFor7"].ToString();
-                    txtEarthingType8.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
-                    txtGeneratingEarthing8.Text = ds.Tables[0].Rows[0]["EarthingValue8"].ToString();
-                    txtEarthingUsed8.Text = ds.Tables[0].Rows[0]["UsedFor8"].ToString();
-                    txtEarthingType9.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
-                    txtGeneratingEarthing9.Text = ds.Tables[0].Rows[0]["EarthingValue9"].ToString();
-                    txtEarthingUsed9.Text = ds.Tables[0].Rows[0]["UsedFor9"].ToString();
-                    txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
-                    txtGeneratingEarthing10.Text = ds.Tables[0].Rows[0]["EarthingValue10"].ToString();
-                    txtEarthingUsed10.Text = ds.Tables[0].Rows[0]["UsedFor10"].ToString();
-                    txtEarthingType11.Text = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
-                    txtGeneratingEarthing11.Text = ds.Tables[0].Rows[0]["EarthingValue11"].ToString();
-                    txtEarthingUsed11.Text = ds.Tables[0].Rows[0]["UsedFor11"].ToString();
-                    txtEarthingType12.Text = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
-                    txtGeneratingEarthing12.Text = ds.Tables[0].Rows[0]["EarthingValue12"].ToString();
-                    txtEarthingUsed12.Text = ds.Tables[0].Rows[0]["UsedFor12"].ToString();
-                    txtEarthingType13.Text = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
-                    txtGeneratingEarthing13.Text = ds.Tables[0].Rows[0]["EarthingValue13"].ToString();
-                    txtEarthingUsed13.Text = ds.Tables[0].Rows[0]["UsedFor13"].ToString();
-                    txtEarthingType14.Text = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
-                    txtGeneratingEarthing14.Text = ds.Tables[0].Rows[0]["EarthingValue14"].ToString();
-                    txtEarthingUsed14.Text = ds.Tables[0].Rows[0]["UsedFor14"].ToString();
-                    txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
-                    txtGeneratingEarthing15.Text = ds.Tables[0].Rows[0]["EarthingValue15"].ToString();
-                    txtEarthingUsed15.Text = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
-                   // txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                    Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                txtGeneratingEarthing1.Text = ds.Tables[0].Rows[0]["EarthingValue1"].ToString();
+                txtEarthingUsed1.Text = ds.Tables[0].Rows[0]["UsedFor1"].ToString();
+                txtEarthingType2.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
+                txtGeneratingEarthing2.Text = ds.Tables[0].Rows[0]["EarthingValue2"].ToString();
+                txtEarthingUsed2.Text = ds.Tables[0].Rows[0]["UsedFor2"].ToString();
+                txtEarthingType3.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
+                txtGeneratingEarthing3.Text = ds.Tables[0].Rows[0]["EarthingValue3"].ToString();
+                txtEarthingUsed3.Text = ds.Tables[0].Rows[0]["UsedFor3"].ToString();
+                txtEarthingType4.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
+                txtGeneratingEarthing4.Text = ds.Tables[0].Rows[0]["EarthingValue4"].ToString();
+                txtEarthingUsed4.Text = ds.Tables[0].Rows[0]["UsedFor4"].ToString();
+                txtEarthingType5.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
+                txtGeneratingEarthing5.Text = ds.Tables[0].Rows[0]["EarthingValue5"].ToString();
+                txtEarthingUsed5.Text = ds.Tables[0].Rows[0]["UsedFor5"].ToString();
+                txtEarthingType6.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
+                txtGeneratingEarthing6.Text = ds.Tables[0].Rows[0]["EarthingValue6"].ToString();
+                txtEarthingUsed6.Text = ds.Tables[0].Rows[0]["UsedFor6"].ToString();
+                txtEarthingType7.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
+                txtGeneratingEarthing7.Text = ds.Tables[0].Rows[0]["EarthingValue7"].ToString();
+                txtEarthingUsed7.Text = ds.Tables[0].Rows[0]["UsedFor7"].ToString();
+                txtEarthingType8.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
+                txtGeneratingEarthing8.Text = ds.Tables[0].Rows[0]["EarthingValue8"].ToString();
+                txtEarthingUsed8.Text = ds.Tables[0].Rows[0]["UsedFor8"].ToString();
+                txtEarthingType9.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
+                txtGeneratingEarthing9.Text = ds.Tables[0].Rows[0]["EarthingValue9"].ToString();
+                txtEarthingUsed9.Text = ds.Tables[0].Rows[0]["UsedFor9"].ToString();
+                txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
+                txtGeneratingEarthing10.Text = ds.Tables[0].Rows[0]["EarthingValue10"].ToString();
+                txtEarthingUsed10.Text = ds.Tables[0].Rows[0]["UsedFor10"].ToString();
+                txtEarthingType11.Text = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
+                txtGeneratingEarthing11.Text = ds.Tables[0].Rows[0]["EarthingValue11"].ToString();
+                txtEarthingUsed11.Text = ds.Tables[0].Rows[0]["UsedFor11"].ToString();
+                txtEarthingType12.Text = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
+                txtGeneratingEarthing12.Text = ds.Tables[0].Rows[0]["EarthingValue12"].ToString();
+                txtEarthingUsed12.Text = ds.Tables[0].Rows[0]["UsedFor12"].ToString();
+                txtEarthingType13.Text = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
+                txtGeneratingEarthing13.Text = ds.Tables[0].Rows[0]["EarthingValue13"].ToString();
+                txtEarthingUsed13.Text = ds.Tables[0].Rows[0]["UsedFor13"].ToString();
+                txtEarthingType14.Text = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
+                txtGeneratingEarthing14.Text = ds.Tables[0].Rows[0]["EarthingValue14"].ToString();
+                txtEarthingUsed14.Text = ds.Tables[0].Rows[0]["UsedFor14"].ToString();
+                txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
+                txtGeneratingEarthing15.Text = ds.Tables[0].Rows[0]["EarthingValue15"].ToString();
+                txtEarthingUsed15.Text = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
+                // txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
 
 
             }
@@ -417,7 +431,7 @@ namespace CEIHaryana.TestReportModal
                 id = Session["GeneratingSetId"].ToString();
                 Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
             }
-        } 
+        }
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (Session["AdminID"] != null)
@@ -457,6 +471,10 @@ namespace CEIHaryana.TestReportModal
                         Contractor2.Visible = true;
                         Contractor3.Visible = false;
                     }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
+                    }
                 }
             }
             catch
@@ -487,4 +505,4 @@ namespace CEIHaryana.TestReportModal
             catch { }
         }
     }
-    }
+}

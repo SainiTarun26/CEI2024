@@ -91,12 +91,11 @@ namespace CEIHaryana.Officers
                 txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                txtAdditionalNotes.Text = ds.Tables[0].Rows[0]["AdditionalNotes"].ToString();
+                //txtAdditionalNotes.Text = ds.Tables[0].Rows[0]["AdditionalNotes"].ToString();
                 Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
                 Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
 
                 Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
-
 
                 string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
                 Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
@@ -107,7 +106,6 @@ namespace CEIHaryana.Officers
                 Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
                 Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
                 Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
-
 
                 Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
                 Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
@@ -147,6 +145,7 @@ namespace CEIHaryana.Officers
             }
 
         }
+        #region OpenDocument
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             Session["InspectionTestReportId"] = txtTestReportId.Text;
@@ -175,7 +174,6 @@ namespace CEIHaryana.Officers
             {
                 string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-
             }
             else
             {
@@ -186,7 +184,6 @@ namespace CEIHaryana.Officers
         {
             try
             {
-
                 string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
                 string folderPath = Server.MapPath(fileName);
                 string filePath = Path.Combine(folderPath);
@@ -409,20 +406,28 @@ namespace CEIHaryana.Officers
                 Rejection.Visible = false;
             }
         }
+        #endregion
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
-                CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, txtAdditionalNotes.Text);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                if (Session["Area"] != null)
+                if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "")
                 {
-                    Response.Redirect("/Officers/OfficerDashboard.aspx",false);
+                    ID = Session["InspectionId"].ToString();
+                    CEI.updateInspection(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, txtAdditionalNotes.Text);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    if (Session["Area"] != null)
+                    {
+                        Response.Redirect("/Officers/OfficerDashboard.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
+                    }
                 }
                 else
                 {
-                    Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
+                    Response.Redirect("/Login.aspx");
                 }
 
             }

@@ -15,6 +15,15 @@ namespace CEIHaryana.Officers
     {
 
         /// <summary>
+        /// txtInspectionReportID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInspectionReportID;
+
+        /// <summary>
         /// txtPremises control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,76 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtVoltage;
 
         /// <summary>
-        /// txtAdditionalNotes control.
+        /// txtSiteOwnerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdditionalNotes;
+        protected global::System.Web.UI.WebControls.TextBox txtSiteOwnerName;
+
+        /// <summary>
+        /// txtAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+
+        /// <summary>
+        /// txtSiteOwnerContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSiteOwnerContact;
+
+        /// <summary>
+        /// txtContractorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContractorName;
+
+        /// <summary>
+        /// txtContractorPhoneNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContractorPhoneNo;
+
+        /// <summary>
+        /// txtContractorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContractorEmail;
+
+        /// <summary>
+        /// txtSupervisorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupervisorName;
+
+        /// <summary>
+        /// txtSupervisorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupervisorEmail;
 
         /// <summary>
         /// Uploads control.
@@ -366,6 +438,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
 
         /// <summary>
+        /// RadioButtonList2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
+
+        /// <summary>
         /// ApprovalRequired control.
         /// </summary>
         /// <remarks>
@@ -418,6 +499,15 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator60;
+
+        /// <summary>
+        /// txtAdditionalNotes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAdditionalNotes;
 
         /// <summary>
         /// btnSubmit control.

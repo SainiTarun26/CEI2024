@@ -290,6 +290,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+        #region for open document
         protected void lnkInvoice_Click(object sender, EventArgs e)
         {
             string fileName = Session["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
@@ -479,7 +480,6 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
-
         protected void lnkDiag_Click(object sender, EventArgs e)
         {
 
@@ -498,6 +498,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+        #endregion
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
@@ -615,6 +616,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
 
             }
+            #region Upload documents
             if (LineSubstationSupplier.Visible == true)
             {
                 if (FileUpload1.PostedFile.FileName.Length > 0)
@@ -851,6 +853,7 @@ namespace CEIHaryana.SiteOwnerPages
                     flpPhotourl12 = path + fileName;
                 }
             }
+            #endregion
 
             ID = Session["InspectionId"].ToString();
             CEI.UpdateInspectionData(ID, id, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text, flpPhotourl, flpPhotourl,

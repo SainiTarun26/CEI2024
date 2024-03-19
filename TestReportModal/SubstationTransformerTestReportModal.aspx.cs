@@ -28,11 +28,13 @@ namespace CEIHaryana.TestReportModal
                         {
                             Contractor.Visible = true;
                             Contractor3.Visible = true;
+                            CreatedDate.Visible = true;
                         }
                         else
                         {
                             Contractor.Visible = true;
                             Contractor2.Visible = true;
+                            CreatedDate.Visible = true;
                         }
                     }
                     else if (Session["SiteOwnerId"] != null)
@@ -43,7 +45,9 @@ namespace CEIHaryana.TestReportModal
                         SiteOwner.Visible = false;
                         SiteOwner2.Visible = true;
                         IntimationData.Visible = true;
-                        SubmitDetails.Visible = true; //Added
+                        CreatedDate.Visible = true; //Added
+                        SubmitDate.Visible = true;
+                        SubmitBy.Visible = true;
                     }
                     else if (Session["InspectionTestReportId"] != null)
                     {
@@ -64,15 +68,23 @@ namespace CEIHaryana.TestReportModal
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                     {
-
+                        if (Session["SupervisorID"] != null)
+                        {
+                            SubmitDate.Visible = true;
+                            SubmitBy.Visible = true;
+                        }
+                        if (Session["AdminID"] != null)
+                        {
+                            Contractor.Visible = true;
+                            SubmitBy.Visible = true;
+                            SubmitDate.Visible = true;
+                            CreatedDate.Visible = true;
+                        }
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
                         Supervisor.Visible = true;
                         IntimationData.Visible = true;
-                        if (Session["SupervisorID"] != null)
-                        {
-                            SubmitDetails.Visible = true;
-                        }
+                       
                     }
                 }
             }
@@ -144,6 +156,8 @@ namespace CEIHaryana.TestReportModal
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
                 //TextStatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
                 //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
+                txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
                 if (txtTransformerType.Text.Trim() == "Oil")
                 {
                     InCaseOfOil.Visible = true;
@@ -563,6 +577,10 @@ namespace CEIHaryana.TestReportModal
                     {
                         Contractor2.Visible = true;
                         Contractor3.Visible = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
                     }
                 }
             }

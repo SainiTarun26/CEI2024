@@ -21,7 +21,7 @@ namespace CEIHaryana.SiteOwnerPages
         string fileExtension3 = string.Empty;
         string fileExtension4 = string.Empty;
         string IntimationId = string.Empty;
-        string Count= string.Empty;
+        string Count = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -147,7 +147,7 @@ namespace CEIHaryana.SiteOwnerPages
                             ddlDocumentFor.Items.Add(new ListItem("Select All", "1"));
                         }
                         // Show the Documents div if at least one CheckBox is checked
-                      //  Documents.Visible = ddlDocumentFor.Items.Count > 0;
+                        //  Documents.Visible = ddlDocumentFor.Items.Count > 0;
                     }
                     Uploads.Visible = GridView1.Rows.Cast<GridViewRow>().Any(r => ((CheckBox)r.FindControl("CheckBox1")).Checked);
 
@@ -175,7 +175,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         else if (lblCategory.Text == "Substation Transformer")
                         {
-                            txtApplicantType.Text = Session["SelectedApplicant"].ToString();///////////////////
+                            txtApplicantType.Text = Session["SelectedApplicant"].ToString();     ///////////////////
                             if (txtApplicantType.Text.Trim() == "Supplier Installation")
                             {
                                 LineSubstationSupplier.Visible = true;
@@ -187,7 +187,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         else if (lblCategory.Text == "Generating Set")
                         {
-                            txtApplicantType.Text = Session["SelectedApplicant"].ToString();//////////////////
+                            txtApplicantType.Text = Session["SelectedApplicant"].ToString();      //////////////////
                             if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                             {
                                 PersonalGenerating.Visible = true;
@@ -209,7 +209,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Handle the exception appropriately
             }
@@ -242,8 +242,8 @@ namespace CEIHaryana.SiteOwnerPages
                             Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
                             Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                         }
-                        else if (lblCategory.Text.Trim() == "Generating Set") 
-                        { 
+                        else if (lblCategory.Text.Trim() == "Generating Set")
+                        {
                             Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
                             Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
@@ -260,7 +260,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-
+        #region visibilty
         // protected void Visibility()
         //{
         //    Uploads.Visible = true;
@@ -307,11 +307,13 @@ namespace CEIHaryana.SiteOwnerPages
         //    }
 
         //}
+        #endregion
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
+                #region comments code for documents uploaded
                 //if (ddlDocumentFor.SelectedValue == "1" || ddlDocumentFor.SelectedItem.Text.Trim() == "Select All")
                 //{
                 //    foreach (GridViewRow row in GridView1.Rows)
@@ -807,6 +809,17 @@ namespace CEIHaryana.SiteOwnerPages
                 //}
                 //else
                 //{
+                //foreach (GridViewRow row in GridView1.Rows)
+                //{
+
+                //    //Label lblCategory = (Label)row.FindControl("lblCategory");
+                //    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+
+                //    //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
+                //    //{
+                //    if (chk.Checked == true)
+                //    {
+                #endregion
                 foreach (GridViewRow row in GridView1.Rows)
                 {
 
@@ -845,6 +858,7 @@ namespace CEIHaryana.SiteOwnerPages
                         string flpPhotourl12 = string.Empty;
                         string LineLength = string.Empty;
                         string FeesLeft = string.Empty;
+                        int maxFileSize = 1048576;
                         IntimationId = Session["id"].ToString();
                         Count = lblNoOfInstallations.Trim();
                         DataSet ds = new DataSet();
@@ -932,7 +946,8 @@ namespace CEIHaryana.SiteOwnerPages
 
                             if (fileExtension.ToLower() == ".pdf")
                             {
-                                if (FileUpload1.PostedFile.FileName.Length > 0)
+                                if (FileUpload1.PostedFile.ContentLength <= maxFileSize)
+
                                 {
                                     FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/")))
@@ -954,12 +969,13 @@ namespace CEIHaryana.SiteOwnerPages
                             {
 
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+
                             }
                             fileExtension2 = Path.GetExtension(FileUpload2.FileName);
 
                             if (fileExtension2.ToLower() == ".pdf")
                             {
-                                if (FileUpload2.PostedFile.FileName.Length > 0)
+                                if (FileUpload2.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload2.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/")))
@@ -981,6 +997,7 @@ namespace CEIHaryana.SiteOwnerPages
                             {
 
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+
                             }
                         }
                         if (SupplierSub.Visible == true)
@@ -989,7 +1006,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                             if (fileExtension.ToLower() == ".pdf")
                             {
-                                if (FileUpload3.PostedFile.FileName.Length > 0)
+                                if (FileUpload3.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload3.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/")))
@@ -1006,11 +1023,13 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload3.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl2 = path + fileName;
                                 }
-                            }
-                            else
-                            {
 
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+
+                                }
                             }
                         }
                         if (LinePersonal.Visible == true)
@@ -1019,7 +1038,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                             if (fileExtension.ToLower() == ".pdf")
                             {
-                                if (FileUpload12.PostedFile.FileName.Length > 0)
+                                if (FileUpload12.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     //FileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
                                     //if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/")))
@@ -1052,11 +1071,13 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                                 }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+
+                                }
                             }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                            }
+
                         }
                         if (PersonalSub.Visible == true)
                         {
@@ -1064,7 +1085,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                             if (fileExtension.ToLower() == ".pdf")
                             {
-                                if (FileUpload4.PostedFile.FileName.Length > 0)
+                                if (FileUpload4.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload4.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/")))
@@ -1091,7 +1112,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                             if (fileExtension2.ToLower() == ".pdf")
                             {
-                                if (FileUpload5.PostedFile.FileName.Length > 0)
+                                if (FileUpload5.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload5.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/")))
@@ -1108,17 +1129,18 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload5.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl5 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                             fileExtension3 = Path.GetExtension(FileUpload6.FileName);
 
                             if (fileExtension3.ToLower() == ".pdf")
                             {
-                                if (FileUpload6.PostedFile.FileName.Length > 0)
+                                if (FileUpload6.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload6.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/")))
@@ -1135,44 +1157,46 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload6.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl6 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                             fileExtension4 = Path.GetExtension(FileUpload7.FileName);
 
                             if (fileExtension4.ToLower() == ".pdf")
                             {
-                                if (FileUpload7.PostedFile.FileName.Length > 0)
+                                if (FileUpload7.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload7.PostedFile.FileName);
-                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/")))
+                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/")))
                                     {
-                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/"));
+                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/"));
                                     }
 
                                     string ext = FileUpload7.PostedFile.FileName.Split('.')[1];
                                     string path = "";
-                                    path = "/Attachment/" + id + "/SingleLineDiagramofTransformer/";
+                                    path = "/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/";
                                     string fileName = "SingleLineDiagramofTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                                     string filePathInfo2 = "";
-                                    filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/" + fileName);
+                                    filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/" + fileName);
                                     FileUpload7.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl7 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                             fileExtension3 = Path.GetExtension(FileUpload8.FileName);
 
                             if (fileExtension3.ToLower() == ".pdf")
                             {
-                                if (FileUpload8.PostedFile.FileName.Length > 0)
+                                if (FileUpload8.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload8.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/")))
@@ -1189,12 +1213,13 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload8.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl8 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                         }
                         if (PersonalGenerating.Visible == true)
                         {
@@ -1202,7 +1227,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                             if (fileExtension.ToLower() == ".pdf")
                             {
-                                if (FileUpload9.PostedFile.FileName.Length > 0)
+                                if (FileUpload9.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload9.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/")))
@@ -1219,17 +1244,18 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload9.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl9 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                             fileExtension2 = Path.GetExtension(FileUpload10.FileName);
 
                             if (fileExtension2.ToLower() == ".pdf")
                             {
-                                if (FileUpload10.PostedFile.FileName.Length > 0)
+                                if (FileUpload10.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload10.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/")))
@@ -1246,17 +1272,18 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload10.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl10 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                             fileExtension3 = Path.GetExtension(FileUpload13.FileName);
 
                             if (fileExtension3.ToLower() == ".pdf")
                             {
-                                if (FileUpload13.PostedFile.FileName.Length > 0)
+                                if (FileUpload13.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload13.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/")))
@@ -1273,17 +1300,18 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload13.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl11 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                             fileExtension4 = Path.GetExtension(FileUpload11.FileName);
 
                             if (fileExtension4.ToLower() == ".pdf")
                             {
-                                if (FileUpload11.PostedFile.FileName.Length > 0)
+                                if (FileUpload11.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     FileName = Path.GetFileName(FileUpload11.PostedFile.FileName);
                                     if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/")))
@@ -1299,12 +1327,13 @@ namespace CEIHaryana.SiteOwnerPages
                                     FileUpload11.PostedFile.SaveAs(filePathInfo2);
                                     flpPhotourl12 = path + fileName;
                                 }
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
+                                }
                             }
+
                         }
                         // DateTime myDate = Convert.ToDateTime(txtDate.Text);
 
@@ -1314,22 +1343,25 @@ namespace CEIHaryana.SiteOwnerPages
 
                         string generatedId = CEI.InspectionId();
                         // DataSaved.Visible = true;
-                        Session["PendingPaymentId"] = generatedId;
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        Session["PendingPaymentId"] = generatedId;                        
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
+                        //Response.Redirect("/SiteOwnerPages/PaymentPage.aspx", false);
                     }
+
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
                     }
-                    //}
+                    
                 }
             }
             catch (Exception ex)
             {
                 ////
             }
+        
+            
         }
-
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
         {
 

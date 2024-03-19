@@ -172,7 +172,7 @@ namespace CEIHaryana.UserPages
 
                     Photo.PostedFile.SaveAs(filePath);
 
-                    flpPhotourl = path + fileName;
+                    flpPhotourl8 = path + fileName;
 
 
                 }

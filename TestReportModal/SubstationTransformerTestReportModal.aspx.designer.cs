@@ -1383,13 +1383,31 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor20;
 
         /// <summary>
-        /// SubmitDetails control.
+        /// CreatedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubmitDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CreatedDate;
+
+        /// <summary>
+        /// txtCreatedDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreatedDate;
+
+        /// <summary>
+        /// SubmitDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubmitDate;
 
         /// <summary>
         /// txtSubmitteddate control.
@@ -1399,6 +1417,15 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSubmitteddate;
+
+        /// <summary>
+        /// SubmitBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubmitBy;
 
         /// <summary>
         /// txtSubmittedBy control.

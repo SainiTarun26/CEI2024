@@ -1214,7 +1214,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Inspection Data
-        public void updateInspection(string ID, string AcceptedOrRejected, string ReasonForRejection, string AdditonalNotes)
+        public void updateInspection(string ID, string AcceptedOrRejected, string ReasonForRejection ,string AdditonalNotes)
         {
             SqlCommand cmd = new SqlCommand("sp_InspectionReview");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
