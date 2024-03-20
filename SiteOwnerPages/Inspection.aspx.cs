@@ -26,16 +26,16 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LineID"] != null)
+                    if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
                     {
                         id = Session["LineID"].ToString();
 
                     }
-                    else if (Session["SubStationID"] != null)
+                    else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
                     {
                         id = Session["SubStationID"].ToString();
                     }
-                    else if (Session["GeneratingSetId"] != null)
+                    else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) !="")
                     {
                         id = Session["GeneratingSetId"].ToString();
                     }
@@ -106,18 +106,18 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-                        if (Session["LineID"] != null)
+                        if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
                         {
                             txtWorkType.Text = "Line";
 
                         }
-                        else if (Session["SubStationID"] != null)
+                        else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
                         {
 
                             txtWorkType.Text = "Substation Transformer";
 
                         }
-                        else if (Session["GeneratingSetId"] != null)
+                        else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
                         {
                             txtWorkType.Text = "Generating Station";
 
@@ -538,7 +538,7 @@ namespace CEIHaryana.SiteOwnerPages
             string To = string.Empty;
             string input = txtVoltage.Text;
             string id = Session["LineID"].ToString();
-            // string IntimationId = Session["IntimationId"].ToString();
+            //string IntimationId = Session["IntimationId"].ToString();
             string CreatedBy = Session["SiteOwnerId"].ToString();
             string FileName = string.Empty;
             string flpPhotourl = string.Empty;

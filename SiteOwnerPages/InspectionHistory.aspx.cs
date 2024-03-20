@@ -47,6 +47,9 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Session["LineID"] = "";
+            Session["SubStationID"] = "";
+            Session["GeneratingSetId"] = ""; 
             Control ctrl = e.CommandSource as Control;
             GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
             Label lblID = (Label)row.FindControl("lblID");
@@ -63,12 +66,11 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Session["SubStationID"] = lblTestRportId.Text.Trim();
             }
-            else if (lblType.Text.Trim() == "Generating Station")
+            else if (lblType.Text.Trim() == "Generating Set")
             {
                 Session["GeneratingSetId"] = lblTestRportId.Text.Trim();
             }
             if (e.CommandName == "Select")
-
             {
                 Response.Redirect("/SiteOwnerPages/Inspection.aspx");
 
