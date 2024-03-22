@@ -114,6 +114,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblDivision = (Label)row.FindControl("lblDivision");
                     Label lblDistrict = (Label)row.FindControl("lblDistrict");
                     Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
+                    Label lblPremises = (Label)row.FindControl("lblPermises");
 
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
@@ -1000,9 +1001,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
                     }
                 }
                 if (SupplierSub.Visible == true)

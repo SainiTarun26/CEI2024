@@ -386,6 +386,30 @@
                                     <span class="menu-title">Consolidated Report</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                 <a class="nav-link" href="/Officers/NewApplications.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">New Applications</span>
+                                </a>
+                            </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="/Officers/InProcessRequest.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">In Process Request</span>
+                                </a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/Officers/TotalRequest.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">TotalRequest</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Officers/AcceptedOrReject.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">AcceptedOrReject Request</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

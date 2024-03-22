@@ -272,7 +272,7 @@ namespace CEI_PRoject.Admin
                     string Createdby = Convert.ToString(Session["AdminID"]);
                     CEI.InserSupervisorData(REID, txtName.Text, txtAge.Text, FatherName.Text, Address.Text, ddlDistrict.SelectedItem.ToString(),
                      ddlState.SelectedItem.ToString(), txtPincode.Text, ContactNo.Text, Qualification, Email.Text, CertificateOld.Text, CertificateNew.Text,
-                     DateofIntialissue.Text, DateofExpiry.Text, DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text,
+                     DateofIntialissue.Text, DateofExpiry.Text,string.IsNullOrEmpty(DateofRenewal.Text) ?null :DateofRenewal.Text, ddlVoltageLevel.Text, voltageWithEffect.Text,
                      ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue, Createdby, CertificateOld.Text, ipaddress);
                     if (btnSubmit.Text == "Update")
                     {

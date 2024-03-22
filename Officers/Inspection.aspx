@@ -437,15 +437,15 @@
                   <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
             </div>--%>
             </div>
-                      <div class="row">
+                     <%-- <div class="row">
                 <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
                     Documnets are as per the requirements
                <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                    <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
                    <asp:ListItem Text="No" Value="1"></asp:ListItem>
                </asp:RadioButtonList>
-                </div>
-                <div class="col-4" id="ApprovalRequired" runat="server">
+                </div>--%>
+                <div class="col-4" id="ApprovalRequired" runat="server" visible="false">
                     <br />
                     <br />
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
@@ -454,20 +454,30 @@
                         <asp:ListItem Text="Return" Value="2"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                </div> 
+             <div class="col-4" id="ApprovedReject" runat="server" visible="false">
+                    <br />
+                    <br />
+                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlApprovedReject" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
+                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlApprovedReject" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
-                        Reason For Rejection<samp style="color: red"> * </samp>
+                        Reason<samp style="color: red"> * </samp>
                     </label>
                     <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
-                          <div class="col-4" style="text-align: center" >
+                         <%-- <div class="col-4" style="text-align: center" >
                     <label>
                         Additional Notes<samp style="color: red"> * </samp>
                     </label>
                     <asp:TextBox class="form-control" ID="txtAdditionalNotes" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    
+                    --%>
                 </div>
             </div>
             <div class="row">
@@ -481,7 +491,7 @@
     </div>
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            if (confirm('Data Added Successfully')) {
+            if (confirm('Your Inspection will be in progress')) {
             } else {
             }
         }

@@ -570,6 +570,7 @@
                      <div class="col-sm-6 col-lg-3">
                          <div class="overview-item overview-item--c1">
                              <div class="overview__inner">
+                                 <a href="TotalRequest.aspx">
                                  <div class="overview-box clearfix">
                                      <div class="icon">
                                          <i class="bi bi-file-earmark-plus"></i>
@@ -590,8 +591,9 @@
                          </div>
                      </div>
                      <div class="col-sm-6 col-lg-3">
-                         <div class="overview-item overview-item--c2">
+                         <div class="overview-item overview-item--c2">                              
                              <div class="overview__inner">
+                                 <a href="AcceptedOrReject.aspx">
                                  <div class="overview-box clearfix">
                                      <div class="icon">
                                          <i class="bi bi-file-earmark-check"></i>
@@ -609,6 +611,7 @@
                          </div>
                      </div>
                      <div class="col-sm-6 col-lg-3">
+                          <a href="InProcessRequest.aspx">
                          <div class="overview-item overview-item--c3">
                              <div class="overview__inner">
                                  <div class="overview-box clearfix">
@@ -633,6 +636,7 @@
                      <div class="col-sm-6 col-lg-3">
                          <div class="overview-item overview-item--c4">
                              <div class="overview__inner">
+                                  <a href="NewApplications.aspx">
                                  <div class="overview-box clearfix">
                                      <div class="icon">
                                          <i class="bi bi-folder-symlink-fill"></i>
@@ -640,7 +644,7 @@
                                      <div class="text">
                                       <h2><asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
                                      
-                                      <span id="INITIATED">Initiated</span>
+                                      <span id="INITIATED">New Application</span>
                   
                                      </div>
                                  </div>

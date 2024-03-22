@@ -1849,12 +1849,16 @@
     <Content Include="MultiSelect_Css\mobiscroll.javascript.min.js" />
     <Content Include="MultiSelect_Css\modal.css" />
     <Content Include="MultiSelect_Css\modal.js" />
+    <Content Include="Officers\AcceptedOrReject.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
+    <Content Include="Officers\InProcessRequest.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
+    <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
+    <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
@@ -2174,6 +2178,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\AcceptedOrReject.aspx.cs">
+      <DependentUpon>AcceptedOrReject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\AcceptedOrReject.aspx.designer.cs">
+      <DependentUpon>AcceptedOrReject.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\ActionTakenInspections.aspx.cs">
       <DependentUpon>ActionTakenInspections.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2195,6 +2206,13 @@
     <Compile Include="Officers\DistrictData.aspx.designer.cs">
       <DependentUpon>DistrictData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\InProcessRequest.aspx.cs">
+      <DependentUpon>InProcessRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\InProcessRequest.aspx.designer.cs">
+      <DependentUpon>InProcessRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\Inspection.aspx.cs">
       <DependentUpon>Inspection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2209,6 +2227,13 @@
     <Compile Include="Officers\InstallationIntimationDetails.aspx.designer.cs">
       <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\NewApplications.aspx.cs">
+      <DependentUpon>NewApplications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\NewApplications.aspx.designer.cs">
+      <DependentUpon>NewApplications.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\OfficerDashboard.aspx.cs">
       <DependentUpon>OfficerDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2222,6 +2247,13 @@
     </Compile>
     <Compile Include="Officers\Officers.Master.designer.cs">
       <DependentUpon>Officers.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\TotalRequest.aspx.cs">
+      <DependentUpon>TotalRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\TotalRequest.aspx.designer.cs">
+      <DependentUpon>TotalRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="OTPVerification.aspx.cs">
       <DependentUpon>OTPVerification.aspx</DependentUpon>

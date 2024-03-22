@@ -1214,7 +1214,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Inspection Data
-        public void updateInspection(string ID, string AcceptedOrRejected, string ReasonForRejection ,string AdditonalNotes)
+        public void updateInspection(string ID,string IntimatiomnId, string Installationtype, string count, string AcceptedOrRejected, string ReasonForRejection ,string AdditonalNotes)
         {
             SqlCommand cmd = new SqlCommand("sp_InspectionReview");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1226,6 +1226,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ID ", ID);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
+            cmd.Parameters.AddWithValue("@count", count);
+            cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
             cmd.Parameters.AddWithValue("@AcceptedOrRejected ", AcceptedOrRejected);
             cmd.Parameters.AddWithValue("@ReasonForRejection ", ReasonForRejection);
             cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
@@ -2666,6 +2669,25 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             return result;
         }
+
+        #region Officer
+        public DataSet InProcessRequest(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInProcessRequest", Id);
+        }
+        public DataSet NewRequestRecieved(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id);
+        }
+        public DataSet AcceptOrReject(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspection", Id);
+        }
+        public DataSet TotalRequest(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", Id);
+        }
+        #endregion
     }
 }
 
