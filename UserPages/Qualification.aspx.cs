@@ -40,7 +40,7 @@ namespace CEIHaryana.UserPages
                                 //ddlQualification2.Attributes.Remove("disabled");
                             }
 
-                        }
+                        
                         if (Session["Back"] != null && !string.IsNullOrEmpty(Session["Back"].ToString()))
                         {
                             GetUserQualification();
@@ -50,11 +50,8 @@ namespace CEIHaryana.UserPages
 
 
                         }
-                    }
-                    else
-                    {
-                       
-                    }
+                    
+                   
                 }
             }
             catch

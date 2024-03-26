@@ -61,29 +61,29 @@ namespace CEIHaryana.Officers
             { }
         }
 
-        private void GridViewDivisionBind()
-        {
-            LoginId = Session["StaffID"].ToString();
-            DataSet ds = new DataSet();
-            ds = cei.DivisionInspectionHistory(LoginId);
-            TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["RecordCount"].ToString();
-            TextBox30.Text = ds.Tables[0].Rows[0]["ActionTaken"].ToString();
-            In_process.Text = ds.Tables[0].Rows[0]["InProgress"].ToString();
-            Initiated.Text = ds.Tables[0].Rows[0]["Initiated"].ToString();
-            if (ds.Tables.Count > 0)
-            {
-                GridView2.DataSource = ds;
-                GridView2.DataBind();
+        //private void GridViewDivisionBind()
+        //{
+        //    LoginId = Session["StaffID"].ToString();
+        //    DataSet ds = new DataSet();
+        //    ds = cei.DivisionInspectionHistory(LoginId);
+        //    TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["RecordCount"].ToString();
+        //    //TextBox30.Text = ds.Tables[0].Rows[0]["ActionTaken"].ToString();
+        //    In_process.Text = ds.Tables[0].Rows[0]["InProgress"].ToString();
+        //    Initiated.Text = ds.Tables[0].Rows[0]["Initiated"].ToString();
+        //    if (ds.Tables.Count > 0)
+        //    {
+        //        GridView2.DataSource = ds;
+        //        GridView2.DataBind();
 
-            }
-            else
-            {
-                GridView2.DataSource = null;
-                GridView2.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        GridView2.DataSource = null;
+        //        GridView2.DataBind();
+        //        string script = "alert(\"No Record Found\");";
+        //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //    }
+        //}
         private void GridViewBind()
         {
             if (Convert.ToString(Session["Area"]) != null && Convert.ToString(Session["Area"]) != "")
