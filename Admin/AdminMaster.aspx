@@ -469,7 +469,7 @@
             line-height: 1;
         }
 
-        input#ContentPlaceHolder1_TextBox30 {
+        input#ContentPlaceHolder1_txtApprovalAndReject  {
             TEXT-ALIGN: END;
             border: none;
             background: transparent;
@@ -718,7 +718,7 @@ text-decoration: underline;
                                                 </div>
                                                 <div class="text">
                                                     <h2>
-                                                        <asp:TextBox class="form-control" ID="TextBox30" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
+                                                        <asp:TextBox class="form-control" ID="txtApprovalAndReject" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
 
                                                     <span id="APPROVED">Approved/Rejected</span>
                                                 </div>
@@ -762,7 +762,7 @@ text-decoration: underline;
                                                     <h2>
                                                         <asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
 
-                                                    <span id="INITIATED">Initiated</span>
+                                                    <span id="INITIATED">New Application</span>
 
                                                 </div>
                                             </div>

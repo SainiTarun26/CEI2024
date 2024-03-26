@@ -73,7 +73,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     string dynamicData = row["InspectionGeneratedId"].ToString();
                     string dynamicData2 = row["ReasonForRejection"].ToString();
-                    string dynamicData3 = row["AcceptedOrRejected"].ToString();
+                    string dynamicData3 = row["ApplicationStatus"].ToString();
 
                     // Create a new TextBox control for each data item
                     TextBox textBox = new TextBox

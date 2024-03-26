@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
@@ -122,6 +123,33 @@ namespace CEIHaryana.SiteOwnerPages
 
                     DropDownList ddlDocumentFor = Documents.FindControl("ddlDocumentFor") as DropDownList;
 
+
+                    // for excute 
+                    DataTable documentData = new DataTable();
+                    documentData = CEI.GetDocumanetName(id);
+                    foreach (DataRow rows in documentData.Rows)
+                    {
+                        // Create a new table row
+                        HtmlTableRow tr = new HtmlTableRow();
+
+                        // Create a cell for the document name
+                        HtmlTableCell nameCell = new HtmlTableCell();
+                        nameCell.InnerHtml = rows["DocumentName"].ToString() + "<span style='color: red;'>*</ span >";
+                        tr.Cells.Add(nameCell);
+
+                        // Create a cell for the FileUpload control
+                        HtmlTableCell fileUploadCell = new HtmlTableCell();
+                        FileUpload fileUpload = new FileUpload();
+                        fileUpload.ID = "FileUpload_" + rows["DocumentID"].ToString(); // Assign a unique ID to each FileUpload control
+                        fileUploadCell.Controls.Add(fileUpload);
+                        tr.Cells.Add(fileUploadCell);
+
+                        // Add the table row to the existing table
+                        DocumentsTable.Rows.Add(tr); // Assuming DocumentsTable is the ID of your existing table in the ASP.NET markup
+                    }
+
+
+
                     if (ddlDocumentFor != null)
                     {
                         ddlDocumentFor.Items.Clear();
@@ -212,6 +240,7 @@ namespace CEIHaryana.SiteOwnerPages
                         PersonalGenerating.Visible = false;
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -317,6 +346,57 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                
+
+
+
+
+                //foreach (Control controls in DocumentsTable.Rows)
+                //{
+                //    foreach (Control control in row.Controls)
+                //    {
+                //        if (control is HtmlTableRow)
+                //        {
+                //            HtmlTableRow htmlRow = (HtmlTableRow)control;
+
+                //            foreach (Control cellControl in htmlRow.Cells[1].Controls) // Assuming the FileUpload control is in the second cell (index 1)
+                //            {
+                //                if (cellControl is FileUpload)
+                //                { }
+                //            }
+                //        }
+                //    }
+
+
+
+
+
+
+
+
+                foreach (Control control in Div1.Controls) // Assuming Div1 is the container holding the table
+                {
+                    if (control is HtmlTableRow)
+                    {
+                        HtmlTableRow rows = (HtmlTableRow)control;
+                        foreach (Control cellControl in rows.Cells[1].Controls) // Assuming the FileUpload control is in the second cell (index 1)
+                        {
+                            if (cellControl is FileUpload)
+                            {
+                                FileUpload fileUpload = (FileUpload)cellControl;
+
+                                if (fileUpload.HasFile)
+                                {
+                                    // Get the document ID from the FileUpload control's ID
+                                    string documentId = fileUpload.ID.Replace("FileUpload_", "");
+
+                                    // Save the uploaded document to the database
+                                    // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
+                                }
+                            }
+                        }
+                    }
+                }
 
                 #region comments code for documents uploaded
                 //if (ddlDocumentFor.SelectedValue == "1" || ddlDocumentFor.SelectedItem.Text.Trim() == "Select All")
@@ -1353,12 +1433,11 @@ namespace CEIHaryana.SiteOwnerPages
                     string[] DocumentPath = {flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
                     flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12};
 
-                    //CEI.InsertInspectionData(txtContact.Text, id, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                    //    LineLength, Count, /*flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    //flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,*/ Assign, District, To, txtDate.Text, CreatedBy);
-
                     CEI.InsertInspectionData(txtContact.Text, id, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                        LineLength, Count, Assign, District, To, txtDate.Text, CreatedBy);
+                        LineLength, Count, /*flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,*/ Assign, District, To, txtDate.Text, CreatedBy);
+
+
                     string generatedId = CEI.InspectionId();
                     for (int i = 0; i < DocumentName.Length; i++)
                     {
@@ -1375,6 +1454,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please First tick the any one installation for inspection')", true);
                 }
+
             }
             catch (Exception ex)
             {
@@ -1385,6 +1465,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
 
         }
-        
+
+
     }
-}
+} 

@@ -26,7 +26,7 @@ namespace CEIHaryana.Admin
                     GridViewBind();
                     OfficersGridBind();
                 }
-                catch             
+                catch (Exception ex)
                 { 
 
                 }
@@ -99,43 +99,89 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             DataSet ds = new DataSet();
             ds = cei.DasboardPieChartCalculations();
             TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["TotalCount"].ToString();
-            TextBox30.Text = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
+            txtApprovalAndReject.Text = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
+            //TextBox30.Text = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
             In_process.Text = ds.Tables[0].Rows[0]["InprogressCount"].ToString();
             Initiated.Text = ds.Tables[0].Rows[0]["InitiatedCount"].ToString();
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
 
-                var labelsValues = new[] { "Initiated", "Inprogress", "Accepted", "Rejected" };
+                var labelsValues = new[] { "New Applications", "In Process", "Accepted", "Rejected" };
+
                 var labels = new[] { "Percentage_Initiated", "Percentage_Inprogress", "Percentage_Accepted", "Percentage_Rejected" };
 
                 // Extract values from the DataTable
                 var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
-
+                #region comment
                 // Render the JavaScript code to create the Chart.js chart
-                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');var myDoughnutChart = new Chart(ctx, {{
-    type: 'doughnut',
-    data: {{
-        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
-        datasets: [
-            {{
-                data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
-                backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
-                borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
-                borderWidth: 1
-            }}
-        ]
-    }},
-    options: {{
-        responsive: false, // Set to false to prevent automatic resizing
-        maintainAspectRatio: true, // Set to true to keep the aspect ratio of the chart
-        title: {{
-            display: true,
-        }}
-    }}
+                //                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');var myDoughnutChart = new Chart(ctx, {{
+                //    type: 'doughnut',
+                //    data: {{
+                //        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
+                //        datasets: [
+                //            {{
+                //                data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
+                //                backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
+                //                borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
+                //                borderWidth: 1
+                //            }}
+                //        ]
+                //    }},
+                //    options: {{
+                //        responsive: false, // Set to false to prevent automatic resizing
+                //        maintainAspectRatio: true, // Set to true to keep the aspect ratio of the chart
+                //        title: {{
+                //            display: true,
+                //        }}
+                //    }}
 
-}});
-";
+                //}});
+                //";
+
+                #endregion
+
+                string[] backgroundColors = { "#fc7c56", "#eb1386", "#3d9c5c", "#f71d05" }; // Customize colors here
+                // Build the JavaScript code
+                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');
+    var myDoughnutChart = new Chart(ctx, {{
+        type: 'doughnut',
+        data: {{
+            labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
+            datasets: [
+                {{
+                    data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
+                    backgroundColor: {Newtonsoft.Json.JsonConvert.SerializeObject(backgroundColors)},
+                    borderColor: {Newtonsoft.Json.JsonConvert.SerializeObject(backgroundColors)},
+                    borderWidth: 1
+                }}
+            ]
+        }},
+        options: {{
+            responsive: false,
+            maintainAspectRatio: true,
+            title: {{
+                display: true,
+                text: ''
+            }},
+            plugins: {{
+                datalabels: {{
+                    formatter: function(value, context) {{
+                        var label = context.chart.data.labels[context.dataIndex];
+                        var sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                        var percentage = ((value / sum) * 100).toFixed(2) + '%';
+                        return label + ': ' + percentage;
+                    }},
+                    color: '#fff',
+                    anchor: 'end',
+                    align: 'start',
+                    offset: 10,
+                    borderWidth: 2,
+                    borderRadius: 4
+                }}
+            }}
+        }}
+    }});";
 
                 // Register the JavaScript code on the page
                 ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);

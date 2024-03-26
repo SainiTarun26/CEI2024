@@ -293,6 +293,28 @@
                              
                         </div>
                        </div>
+                            
+
+
+                            <div class="row">
+                                <div class="table-responsive pt-3" id="Div1" runat="server" >
+                                    <table class="table table-bordered table-striped" id="DocumentsTable" runat="server">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>Name of Documents
+                                                </th>
+                                                <th>Upload Documents
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+
+
                             <div class="row">
                                 <div class="table-responsive pt-3" id="Uploads" runat="server" visible="false">
                                     <table class="table table-bordered table-striped">
@@ -523,7 +545,7 @@
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
-                            <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
+                            <asp:Button ID="btnSubmit" Text="Submit" runat="server"  class="btn btn-primary mr-2"
                                 OnClick="btnSubmit_Click" />
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />

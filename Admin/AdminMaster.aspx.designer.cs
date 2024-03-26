@@ -42,13 +42,13 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox TotalRequestRecieved;
 
         /// <summary>
-        /// TextBox30 control.
+        /// txtApprovalAndReject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox30;
+        protected global::System.Web.UI.WebControls.TextBox txtApprovalAndReject;
 
         /// <summary>
         /// In_process control.
