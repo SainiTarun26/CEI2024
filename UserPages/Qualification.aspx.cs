@@ -21,10 +21,10 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack) 
                 {
-                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null || Session["WiremanId"] != null || Request.Cookies["WiremanId"] != null)
-                    {
-                        if (Session["InsertedCategory"] != null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
-                        {
+                    //if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null || Session["WiremanId"] != null || Request.Cookies["WiremanId"] != null)
+                    //{
+                    //    if (Session["InsertedCategory"] != null && !string.IsNullOrEmpty(Session["InsertedCategory"].ToString()))
+                    //    {
                             InsertedCategory = Session["InsertedCategory"].ToString();
                             if (InsertedCategory == "Wireman")
                             {
@@ -59,7 +59,7 @@ namespace CEIHaryana.UserPages
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                //Response.Redirect("/Login.aspx");
             }
 
         }

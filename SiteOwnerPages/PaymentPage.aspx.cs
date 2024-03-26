@@ -27,7 +27,6 @@ namespace CEIHaryana.SiteOwnerPages
                         btnFinalSubmit.Visible = true;
                         btnSubmit.Visible = false;
                         ChallanUpload.Visible = false;
-
                     }
                     else
                     {

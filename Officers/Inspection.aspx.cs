@@ -103,7 +103,7 @@ namespace CEIHaryana.Officers
                 txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                 txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();               
-                //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
 
                 count = ds.Tables[0].Rows[0]["TestReportCount"].ToString();           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString(); 

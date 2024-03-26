@@ -21,15 +21,46 @@ namespace CEIHaryana.Officers
             {
                 if (!IsPostBack)
                 {
-                    GridViewDivisionBind();
+                    //GridViewDivisionBind();
                     BindBarChart();
                     BindDoughnutChart();
                     OfficersGridBind();
+                    GetDataforOfficer();
                 }
             }
             catch { }
 
         }
+
+        private void GetDataforOfficer()
+        {
+            try
+            {
+                LoginId = Session["StaffID"].ToString();
+                DataSet ds = new DataSet();
+                ds = cei.Getdataforofficerdashboard(LoginId);
+                TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["TotalRequest"].ToString();
+                txtApprovalAndReject.Text = ds.Tables[0].Rows[0]["ActionTaken"].ToString();
+                In_process.Text = ds.Tables[0].Rows[0]["InProcess"].ToString();
+                Initiated.Text = ds.Tables[0].Rows[0]["NewApplication"].ToString();
+                if (ds.Tables.Count > 0)
+                {
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+
         private void GridViewDivisionBind()
         {
             LoginId = Session["StaffID"].ToString();
@@ -190,54 +221,110 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
 
         private void BindDoughnutChart()
         {
-
+            string LoginId = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.DasboardPieChartCalculations();
-          
+            ds = cei.OfficerDashboardDaughnutChart(LoginId);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
-
                 var labelsValues = new[] { "Initiated", "Inprogress", "Accepted", "Rejected" };
-                var labels = new[] { "Percentage_Initiated", "Percentage_Inprogress", "Percentage_Accepted", "Percentage_Rejected" };
+                var labels = new[] { "NewApplicationCount", "InprocessCount", "AcceptedCount", "RejectedCount" };
 
-                // Extract values from the DataTable
                 var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
 
-                // Render the JavaScript code to create the Chart.js chart
-                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');var myDoughnutChart = new Chart(ctx, {{
-    type: 'doughnut',
-    data: {{
-        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
-        datasets: [
-            {{
-                data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
-                backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
-                borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
-                borderWidth: 1
-            }}
-        ]
-    }},
-    options: {{
-        responsive: false, // Set to false to prevent automatic resizing
-        maintainAspectRatio: true, // Set to true to keep the aspect ratio of the chart
-        title: {{
-            display: true,
-        }}
-    }}
+                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');
+          var myDoughnutChart = new Chart(ctx, {{
+              type: 'doughnut',
+              data: {{
+                  labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
+                  datasets: [
+                      {{
+                          data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
+                          backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
+                          borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
+                          borderWidth: 1
+                      }}
+                  ]
+              }},
+              options: {{
+                  responsive: false,
+                  maintainAspectRatio: true,
+                  title: {{
+                      display: true,
+                      text: 'Doughnut Chart'
+                  }},
+                  plugins: {{
+                      datalabels: {{
+                          formatter: function(value, context) {{
+                              var sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                              var percentage = (value * 100 / sum).toFixed(2) + '%';
+                              return percentage;
+                          }},
+                          color: '#fff',
+                          anchor: 'end',
+                          align: 'start',
+                          offset: 10,
+                          borderWidth: 2,
+                          borderRadius: 4,
+                      }}
+                  }}
+              }}
+          }});";
 
-}});
-";
 
                 // Register the JavaScript code on the page
                 ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);
-
             }
             else
             {
-                // Handle the case when there is no data
-                // Display a message or take appropriate action
             }
+            //            DataSet ds = new DataSet();
+            //            ds = cei.DasboardPieChartCalculations();
+
+            //            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            //            {
+            //                DataTable dt = ds.Tables[0];
+
+            //                var labelsValues = new[] { "Initiated", "Inprogress", "Accepted", "Rejected" };
+            //                var labels = new[] { "Percentage_Initiated", "Percentage_Inprogress", "Percentage_Accepted", "Percentage_Rejected" };
+
+            //                // Extract values from the DataTable
+            //                var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
+
+            //                // Render the JavaScript code to create the Chart.js chart
+            //                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');var myDoughnutChart = new Chart(ctx, {{
+            //    type: 'doughnut',
+            //    data: {{
+            //        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
+            //        datasets: [
+            //            {{
+            //                data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
+            //                backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
+            //                borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
+            //                borderWidth: 1
+            //            }}
+            //        ]
+            //    }},
+            //    options: {{
+            //        responsive: false, // Set to false to prevent automatic resizing
+            //        maintainAspectRatio: true, // Set to true to keep the aspect ratio of the chart
+            //        title: {{
+            //            display: true,
+            //        }}
+            //    }}
+
+            //}});
+            //";
+
+            //                // Register the JavaScript code on the page
+            //                ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);
+
+            //            }
+            //            else
+            //            {
+            //                // Handle the case when there is no data
+            //                // Display a message or take appropriate action
+            //            }
 
         }
 

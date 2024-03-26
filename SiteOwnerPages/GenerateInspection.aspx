@@ -511,10 +511,10 @@
                                         </tbody>
                                     </table>
                                      <asp:PlaceHolder runat="server" ID="divContainer"></asp:PlaceHolder>
-                                    <div class="col-4" runat="server">
+                                    <%--<div class="col-4" runat="server">
                                         <label for="Pin">Request Details</label>
                                         <asp:TextBox class="form-control" ID="txtRequestDetails" TextMode="MultiLine" Rows="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    </div>
+                                    </div>--%>
                                 </div>
                             </div>
                         </div>
