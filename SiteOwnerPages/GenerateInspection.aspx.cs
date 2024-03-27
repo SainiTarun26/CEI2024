@@ -341,12 +341,71 @@ namespace CEIHaryana.SiteOwnerPages
 
         //}
         #endregion
-
+        private string GetDocumentIDFromFileUploadID(string fileUploadID)
+        {
+            string[] parts = fileUploadID.Split('_');
+            if (parts.Length > 1)
+            {
+                return parts[1];
+            }
+            return null;
+        }        
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
-                
+                //foreach (HttpPostedFile uploadedFile in Request.Files)
+                //{
+                //    if (uploadedFile.ContentLength > 0)
+                //    {
+                //        string fileName = uploadedFile.FileName;
+                //        string documentID = GetDocumentIDFromFileUploadID(fileName);
+                //        string documentDescription = ""; // Access from description TextBox if applicable
+
+                //        // Get user-provided description (optional)
+                //        if (Request.Form["DocumentDescription_" + documentID] != null)
+                //        {
+                //            documentDescription = Request.Form["DocumentDescription_" + documentID];
+                //        }
+
+                //        // Save the file (implement your logic for saving)
+                //        uploadedFile.SaveAs(Server.MapPath("~/Uploads/" + documentID + "_" + fileName));
+
+                //        // Save document metadata (implement your logic for database interaction)
+                //        //SaveDocumentMetadata(documentID, documentDescription); // Replace with your logic
+                //    }
+                //}
+
+
+
+
+
+
+
+
+
+
+                //foreach (HttpPostedFile uploadedFile in Request.Files)
+                //    {
+                //        if (uploadedFile.ContentLength > 0)
+                //        {
+                //            string fileName = uploadedFile.FileName;
+                //            string documentID = GetDocumentIDFromFileUploadID(uploadedFile.FileName);
+                //            string documentDescription = ""; // Access from description TextBox if applicable
+
+                //            // Get user-provided description (optional)
+                //            if (Request.Form["DocumentDescription_" + documentID] != null)
+                //            {
+                //                documentDescription = Request.Form["DocumentDescription_" + documentID];
+                //            }
+
+                //            // Save the file (implement your logic for saving)
+                //            uploadedFile.SaveAs(Server.MapPath("~/Uploads/" + documentID + "_" + fileName));
+
+                //            // Save document metadata (implement your logic for database interaction)
+                //            // SaveDocumentMetadata(documentID, documentDescription); // Replace with your logic
+                //        }
+                //    }
 
 
 
@@ -374,29 +433,64 @@ namespace CEIHaryana.SiteOwnerPages
 
 
 
-                foreach (Control control in Div1.Controls) // Assuming Div1 is the container holding the table
+                //foreach (Control control in Div1.Controls) // Assuming Div1 is the container holding the table
+                //    {
+                //        if (control is HtmlTableRow)
+                //        {
+                //            HtmlTableRow rows = (HtmlTableRow)control;
+                //            foreach (Control cellControl in rows.Cells[1].Controls) // Assuming the FileUpload control is in the second cell (index 1)
+                //            {
+                //                if (cellControl is FileUpload)
+                //                {
+                //                    FileUpload fileUpload = (FileUpload)cellControl;
+
+                //                    if (fileUpload.HasFile)
+                //                    {
+                //                        // Get the document ID from the FileUpload control's ID
+                //                        string documentId = fileUpload.ID.Replace("FileUpload_", "");
+
+                //                        // Save the uploaded document to the database
+                //                        // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
+                //                    }
+                //                }
+                //            }
+                //    }
+                //}
+
+                //asdasd
+
+
+                foreach (Control control in DocumentsTable.Controls)
                 {
                     if (control is HtmlTableRow)
                     {
-                        HtmlTableRow rows = (HtmlTableRow)control;
-                        foreach (Control cellControl in rows.Cells[1].Controls) // Assuming the FileUpload control is in the second cell (index 1)
+                        HtmlTableRow row = (HtmlTableRow)control;
+
+                        // Assuming the FileUpload control is in the second cell (index 1)
+                        if (row.Cells.Count > 1) // Ensure the row has at least two cells
                         {
-                            if (cellControl is FileUpload)
-                            {
-                                FileUpload fileUpload = (FileUpload)cellControl;
+                            //TableCell secondCell = row.Cells[1];
 
-                                if (fileUpload.HasFile)
-                                {
-                                    // Get the document ID from the FileUpload control's ID
-                                    string documentId = fileUpload.ID.Replace("FileUpload_", "");
+                            //foreach (Control cellControl in secondCell.Controls)
+                            //{
+                            //    if (cellControl is FileUpload)
+                            //    {
+                            //        FileUpload fileUpload = (FileUpload)cellControl;
 
-                                    // Save the uploaded document to the database
-                                    // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
-                                }
-                            }
+                            //        if (fileUpload.HasFile)
+                            //        {
+                            //            // Get the document ID from the FileUpload control's ID
+                            //            string documentId = fileUpload.ID.Replace("FileUpload_", "");
+
+                            //            // Save the uploaded document to the database
+                            //            // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
+                            //        }
+                            //    }
+                            //}
                         }
                     }
                 }
+
 
                 #region comments code for documents uploaded
                 //if (ddlDocumentFor.SelectedValue == "1" || ddlDocumentFor.SelectedItem.Text.Trim() == "Select All")

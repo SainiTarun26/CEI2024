@@ -544,7 +544,7 @@
         }
 
         span#INITIATED {
-            margin-left: 74%;
+            margin-left: 49%;
         }
         table#ContentPlaceHolder1_GridView2 {
     width: 775px !important;

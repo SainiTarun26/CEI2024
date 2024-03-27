@@ -294,10 +294,10 @@
                         </div>
                        </div>
                             
+                            
 
-
-                            <div class="row">
-                                <div class="table-responsive pt-3" id="Div1" runat="server" >
+                           <%-- <div class="row">
+                                <div class="table-responsive pt-3" id="Div1" runat="server" >--%>
                                     <table class="table table-bordered table-striped" id="DocumentsTable" runat="server">
                                         <thead class="table-dark">
                                             <tr>
@@ -308,10 +308,10 @@
                                             </tr>
                                         </thead>
                                         </table>
-                                    </div>
-                                </div>
+                                <%--    </div>
+                                </div>--%>
 
-
+                               
 
 
 

@@ -29,9 +29,7 @@ namespace CEIHaryana.Officers
                 }
             }
             catch { }
-
         }
-
         private void GetDataforOfficer()
         {
             try
@@ -47,7 +45,6 @@ namespace CEIHaryana.Officers
                 {
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
-
                 }
                 else
                 {
@@ -60,7 +57,6 @@ namespace CEIHaryana.Officers
             catch (Exception ex)
             { }
         }
-
         //private void GridViewDivisionBind()
         //{
         //    LoginId = Session["StaffID"].ToString();
@@ -106,13 +102,11 @@ namespace CEIHaryana.Officers
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             GridViewBind();
         }
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -155,13 +149,12 @@ namespace CEIHaryana.Officers
             }
 
         }
-
         private void BindBarChart()
         {
             LoginId = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
             ds = cei.RecordsDivisionDistrict(LoginId);
-           
+
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
@@ -218,7 +211,6 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                 // Display a message or take appropriate action
             }
         }
-
         private void BindDoughnutChart()
         {
             string LoginId = Session["StaffID"].ToString();
@@ -232,46 +224,46 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
 
                 var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
 
+                string[] backgroundColors = { "#fc7c56", "#eb1386", "#3d9c5c", "#f71d05" }; // Customize colors here
                 string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');
-          var myDoughnutChart = new Chart(ctx, {{
-              type: 'doughnut',
-              data: {{
-                  labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
-                  datasets: [
-                      {{
-                          data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
-                          backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
-                          borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
-                          borderWidth: 1
-                      }}
-                  ]
-              }},
-              options: {{
-                  responsive: false,
-                  maintainAspectRatio: true,
-                  title: {{
-                      display: true,
-                      text: 'Doughnut Chart'
-                  }},
-                  plugins: {{
-                      datalabels: {{
-                          formatter: function(value, context) {{
-                              var sum = context.dataset.data.reduce((a, b) => a + b, 0);
-                              var percentage = (value * 100 / sum).toFixed(2) + '%';
-                              return percentage;
-                          }},
-                          color: '#fff',
-                          anchor: 'end',
-                          align: 'start',
-                          offset: 10,
-                          borderWidth: 2,
-                          borderRadius: 4,
-                      }}
-                  }}
-              }}
-          }});";
-
-
+var myDoughnutChart = new Chart(ctx, {{
+    type: 'doughnut',
+    data: {{
+        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
+        datasets: [
+            {{
+                data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
+                backgroundColor: {Newtonsoft.Json.JsonConvert.SerializeObject(backgroundColors)},
+                borderColor: {Newtonsoft.Json.JsonConvert.SerializeObject(backgroundColors)},
+                borderWidth: 1
+            }}
+        ]
+    }},
+    options: {{
+        responsive: false,
+        maintainAspectRatio: true,
+        title: {{
+            display: true,
+            text: ''
+        }},
+        plugins: {{
+            datalabels: {{
+                formatter: function(value, context) {{
+                    var label = context.chart.data.labels[context.dataIndex];
+                    var sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                    var percentage = ((value / sum) * 100).toFixed(2) + '%';
+                    return label + ': ' + percentage;
+                }},
+                color: '#fff',
+                anchor: 'end',
+                align: 'start',
+                offset: 10,
+                borderWidth: 2,
+                borderRadius: 4
+            }}
+        }}
+    }}
+}});";
                 // Register the JavaScript code on the page
                 ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);
             }
@@ -280,17 +272,13 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             }
             //            DataSet ds = new DataSet();
             //            ds = cei.DasboardPieChartCalculations();
-
             //            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             //            {
             //                DataTable dt = ds.Tables[0];
-
             //                var labelsValues = new[] { "Initiated", "Inprogress", "Accepted", "Rejected" };
             //                var labels = new[] { "Percentage_Initiated", "Percentage_Inprogress", "Percentage_Accepted", "Percentage_Rejected" };
-
             //                // Extract values from the DataTable
             //                var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
-
             //                // Render the JavaScript code to create the Chart.js chart
             //                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');var myDoughnutChart = new Chart(ctx, {{
             //    type: 'doughnut',
@@ -312,22 +300,17 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             //            display: true,
             //        }}
             //    }}
-
             //}});
             //";
-
             //                // Register the JavaScript code on the page
             //                ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);
-
             //            }
             //            else
             //            {
             //                // Handle the case when there is no data
             //                // Display a message or take appropriate action
             //            }
-
         }
-
         private void OfficersGridBind()
         {
             LoginId = Session["StaffID"].ToString();
@@ -360,11 +343,10 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
                     {
                         GridView1.Visible = true;
                         GridView2.Visible = false;
-
                     }
                     BindBarChart();
                     Back.Visible = true;
-                    PrintDistrict.Visible  = true;
+                    PrintDistrict.Visible = true;
                     PrintDivision.Visible = false;
                     BindDoughnutChart();
                     GridViewBind();

@@ -217,6 +217,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AcceptedOrRejectedRequest.aspx" />
     <Content Include="Admin\AddContractorDetails.aspx" />
     <Content Include="Admin\AddRemoveStaff.aspx" />
     <Content Include="Admin\AddSupervisorDetails.aspx" />
@@ -226,8 +227,10 @@
     <Content Include="Admin\AllTestReports.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\DistrictData.aspx" />
+    <Content Include="Admin\InProcessRequest.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
+    <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
@@ -235,6 +238,7 @@
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
+    <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="Application.aspx" />
@@ -1927,6 +1931,13 @@
     <Content Include="Wiremen\WiremenUpgradationLicence.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AcceptedOrRejectedRequest.aspx.cs">
+      <DependentUpon>AcceptedOrRejectedRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AcceptedOrRejectedRequest.aspx.designer.cs">
+      <DependentUpon>AcceptedOrRejectedRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddContractorDetails.aspx.cs">
       <DependentUpon>AddContractorDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1997,6 +2008,13 @@
     <Compile Include="Admin\DistrictData.aspx.designer.cs">
       <DependentUpon>DistrictData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\InProcessRequest.aspx.cs">
+      <DependentUpon>InProcessRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\InProcessRequest.aspx.designer.cs">
+      <DependentUpon>InProcessRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\IntimationForHistory.aspx.cs">
       <DependentUpon>IntimationForHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2010,6 +2028,13 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.cs">
+      <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.designer.cs">
+      <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Projects.aspx.cs">
       <DependentUpon>Projects.aspx</DependentUpon>
@@ -2059,6 +2084,13 @@
     </Compile>
     <Compile Include="Admin\TestReportHistoryFromSupervisor.aspx.designer.cs">
       <DependentUpon>TestReportHistoryFromSupervisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TotalRequestInspectionForAdmin.aspx.cs">
+      <DependentUpon>TotalRequestInspectionForAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TotalRequestInspectionForAdmin.aspx.designer.cs">
+      <DependentUpon>TotalRequestInspectionForAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

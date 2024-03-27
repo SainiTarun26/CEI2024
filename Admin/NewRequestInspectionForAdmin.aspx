@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="TotalRequest.aspx.cs" Inherits="CEIHaryana.Officers.TotalRequest" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="NewRequestInspectionForAdmin.aspx.cs" Inherits="CEIHaryana.Admin.NewRequestInspectionForAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
  <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
  <link rel="stylesheet" href="/css2/style.css" />
@@ -111,7 +111,22 @@
                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" onrowcommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" >
                              <Columns>
-                                
+                              
+                                  <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                     </asp:TemplateField>
+                                  <%-- <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField> --%>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                  <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor"/>
                                 <ItemStyle Width="5%" /> 
@@ -119,12 +134,22 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                                  <asp:TemplateField>
+                                    <HeaderStyle Width="35%" CssClass="headercolor"/>
+                                    <ItemStyle Width="35%" />
+                                    <HeaderTemplate>
+                                       Inspection Id
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                
-                                 <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
+                                 <%--<asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
 
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                               
                                 <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
@@ -151,7 +176,7 @@
                                      
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                 <asp:BoundField DataField="RequestStatus" HeaderText="Status">
+                                 <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                      
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -207,4 +232,3 @@
      }
  </script>--%>
 </asp:Content>
-
