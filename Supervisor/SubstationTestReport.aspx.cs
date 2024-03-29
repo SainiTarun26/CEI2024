@@ -21,6 +21,7 @@ namespace CEIHaryana.Supervisor
         string currentSessionName = string.Empty;
         string Type = string.Empty;
         string SubStationID = string.Empty;
+        private static string _PrimaryVoltage, _SecondaryVoltage;
 
         string IdUpdate = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -650,7 +651,6 @@ namespace CEIHaryana.Supervisor
             }
 
         }
-
         private void ddlEarthingSubstation()
         {
 
@@ -1086,8 +1086,17 @@ namespace CEIHaryana.Supervisor
                         string CreatedBy = Session["SupervisorID"].ToString();
                         string installationNo = Session["IHID"].ToString();
                         string count = Session["NoOfInstallations"].ToString();
+                        //Modiefied this for storing only voltage(11000) digit
+                        string Primaryvoltage, SecondaryVoltage;
+                         Primaryvoltage = PrimaryVoltage.SelectedItem.ToString().Trim();
+                        _PrimaryVoltage = Primaryvoltage.Substring(0, Primaryvoltage.Length - 6);
+                        
+                         SecondaryVoltage = ddlSecondaryVoltage.SelectedValue.ToString().Trim();
+                        _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);                      
+                        //
+
                         CEI.InsertSubstationData(IdUpdate, count, SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
-                          PrimaryVoltage.SelectedItem.ToString(), ddlSecondaryVoltage.SelectedValue, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
+                          _PrimaryVoltage,_SecondaryVoltage, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                            txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(), txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
                            ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),
                            txtSubstationEarthing2.Text, ddlUsedFor2.SelectedItem.ToString(), txtOtherEarthing2.Text, ddlSubstationEarthing3.SelectedItem.ToString(), txtSubstationEarthing3.Text, ddlUsedFor3.SelectedItem.ToString(), txtOtherEarthing3.Text,

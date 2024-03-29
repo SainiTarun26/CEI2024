@@ -347,7 +347,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>  
                             <asp:TemplateField HeaderText="Id" Visible="False">

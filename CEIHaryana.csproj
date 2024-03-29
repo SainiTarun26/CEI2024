@@ -1857,6 +1857,7 @@
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
+    <Content Include="Officers\InProcessInspection.aspx" />
     <Content Include="Officers\InProcessRequest.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
@@ -1897,6 +1898,7 @@
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="Supervisor\TestReportHistory.aspx" />
     <Content Include="Supervisor\TestReportIntimationHistory.aspx" />
+    <Content Include="testing.aspx" />
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
     <Content Include="TestReportModal\LineTestReportModal.aspx" />
     <Content Include="TestReportModal\SubstationTransformerTestReportModal.aspx" />
@@ -2238,6 +2240,13 @@
     <Compile Include="Officers\DistrictData.aspx.designer.cs">
       <DependentUpon>DistrictData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\InProcessInspection.aspx.cs">
+      <DependentUpon>InProcessInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\InProcessInspection.aspx.designer.cs">
+      <DependentUpon>InProcessInspection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\InProcessRequest.aspx.cs">
       <DependentUpon>InProcessRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2518,6 +2527,13 @@
     </Compile>
     <Compile Include="Supervisor\TestReportIntimationHistory.aspx.designer.cs">
       <DependentUpon>TestReportIntimationHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testing.aspx.cs">
+      <DependentUpon>testing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testing.aspx.designer.cs">
+      <DependentUpon>testing.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportModal\GeneratingSetTestReportModal.aspx.cs">
       <DependentUpon>GeneratingSetTestReportModal.aspx</DependentUpon>

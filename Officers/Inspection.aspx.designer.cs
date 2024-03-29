@@ -438,58 +438,22 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
 
         /// <summary>
-        /// ApprovalRequired control.
+        /// RadioButtonList2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApprovalRequired;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
 
         /// <summary>
-        /// ddlReview control.
+        /// rfvRbList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlReview;
-
-        /// <summary>
-        /// RequiredFieldValidator57 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator57;
-
-        /// <summary>
-        /// ApprovedReject control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApprovedReject;
-
-        /// <summary>
-        /// ddlApprovedReject control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlApprovedReject;
-
-        /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRbList;
 
         /// <summary>
         /// Rejection control.

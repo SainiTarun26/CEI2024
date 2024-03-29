@@ -1132,12 +1132,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #endregion
         #region Insert Inspection Data
         public void InsertInspectionData(string ContactNo, string TestRportId, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-      string VoltageLevel, string LineLength, string TestReportCount,/* string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
+      string VoltageLevel, string LineLength, string TestReportCount, string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
       string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
       string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
       string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
       string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite,
-      string StructureStabilityResolvedByAuthorizedEngineer, */string Staff, string District, string Division, string DateOfSubmission, string CreatedBy)
+      string StructureStabilityResolvedByAuthorizedEngineer, /*string Staff,*/ string District, string Division, string DateOfSubmission, string CreatedBy,
+      string TotalAmount,string transcationId, string TranscationDate, string ChallanAttachment
+      )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -1157,32 +1159,37 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@VoltageLevel ", VoltageLevel);
             cmd.Parameters.AddWithValue("@LineLength ", LineLength);
             cmd.Parameters.AddWithValue("@TestReportCount ", TestReportCount);
-            //cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", RequestLetterFromConcernedOfficer);
-            //cmd.Parameters.AddWithValue("@ManufacturingTestReportOfEqipment ", ManufacturingTestReportOfEqipment);
-            //cmd.Parameters.AddWithValue("@SingleLineDiagramOfLine ", SingleLineDiagramOfLine);
-            //cmd.Parameters.AddWithValue("@DemandNoticeOfLine ", DemandNoticeOfLine);
-            //cmd.Parameters.AddWithValue("@CopyOfNoticeIssuedByUHBVNorDHBVN ", CopyOfNoticeIssuedByUHBVNorDHBVN);
-            //cmd.Parameters.AddWithValue("@InvoiceOfTransferOfPersonalSubstation ", InvoiceOfTransferOfPersonalSubstation);
-            //cmd.Parameters.AddWithValue("@ManufacturingTestCertificateOfTransformer ", ManufacturingTestCertificateOfTransformer);
-            //cmd.Parameters.AddWithValue("@SingleLineDiagramofTransformer ", SingleLineDiagramofTransformer);
-            //cmd.Parameters.AddWithValue("@InvoiceoffireExtinguisheratSite ", InvoiceoffireExtinguisheratSite);
-            //cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", InvoiceOfDGSetOfGeneratingSet);
-            //cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", ManufacturingCerificateOfDGSet);
-            //cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
-            //cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
-            cmd.Parameters.AddWithValue("@Staff ", Staff);
+            cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", RequestLetterFromConcernedOfficer);
+            cmd.Parameters.AddWithValue("@ManufacturingTestReportOfEqipment ", ManufacturingTestReportOfEqipment);
+            cmd.Parameters.AddWithValue("@SingleLineDiagramOfLine ", SingleLineDiagramOfLine);
+            cmd.Parameters.AddWithValue("@DemandNoticeOfLine ", DemandNoticeOfLine);
+            cmd.Parameters.AddWithValue("@CopyOfNoticeIssuedByUHBVNorDHBVN ", CopyOfNoticeIssuedByUHBVNorDHBVN);
+            cmd.Parameters.AddWithValue("@InvoiceOfTransferOfPersonalSubstation ", InvoiceOfTransferOfPersonalSubstation);
+            cmd.Parameters.AddWithValue("@ManufacturingTestCertificateOfTransformer ", ManufacturingTestCertificateOfTransformer);
+            cmd.Parameters.AddWithValue("@SingleLineDiagramofTransformer ", SingleLineDiagramofTransformer);
+            cmd.Parameters.AddWithValue("@InvoiceoffireExtinguisheratSite ", InvoiceoffireExtinguisheratSite);
+            cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", InvoiceOfDGSetOfGeneratingSet);
+            cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", ManufacturingCerificateOfDGSet);
+            cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
+            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
+            //cmd.Parameters.AddWithValue("@Staff ", Staff);
             cmd.Parameters.AddWithValue("@District ", District);
             cmd.Parameters.AddWithValue("@Division ", Division);
             //cmd.Parameters.AddWithValue("@RequestDetails ", RequestDetails);
             cmd.Parameters.AddWithValue("@DateOfSubmission ", DateOfSubmission);
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+            cmd.Parameters.AddWithValue("@TransctionDate ", TranscationDate);
+            cmd.Parameters.AddWithValue("@ChallanAttachment ", ChallanAttachment);
+
             outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
             //int generatedId = Convert.ToInt32(outputParam.Value);
 
-            //con.Close();
+            con.Close();
         }
 
         public void InsertInspectionDocument(string InspectionId, string IntimationId, string installationtype,
@@ -1248,27 +1255,71 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Inspection Data
-        public void updateInspection(string ID, string IntimatiomnId, string Installationtype, string count, string AcceptedOrRejected, string ReasonForRejection, string AdditonalNotes)
+        public void updateInspection(string InspectionID,string StaffId ,string IntimatiomnId,string count, string Installationtype,
+            string AcceptedOrReReturn, string Reason)
         {
-            SqlCommand cmd = new SqlCommand("sp_InspectionReview");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
+            try
             {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
+                SqlCommand cmd = new SqlCommand("sp_InspectionReview");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
+                cmd.Parameters.AddWithValue("@count", count);
+                cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
+                cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID ", ID);
-            cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
-            cmd.Parameters.AddWithValue("@count", count);
-            cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
-            cmd.Parameters.AddWithValue("@AcceptedOrRejected ", AcceptedOrRejected);
-            cmd.Parameters.AddWithValue("@ReasonForRejection ", ReasonForRejection);
-            cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+           
         }
+
+        public void InspectionFinalAction(string InspectionID, string StaffId,string AcceptedOrReReturn, string Reason)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);               
+                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
+                //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+
+        }
+
+
+
+
         #endregion  
         #region Update Inspection PendingPayment Data
         public void updateInspectionPending(string ID, string TransactionId, string TransctionDate, string ChallanAttachment)

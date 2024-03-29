@@ -28,7 +28,7 @@ namespace CEIHaryana.Officers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -36,16 +36,25 @@ namespace CEIHaryana.Officers
         }
         public void GridBind()
         {
+            try
+            {
+                string LoginID = string.Empty;
+                LoginID = Session["StaffID"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.AcceptOrReject(LoginID);
 
-            string LoginID = string.Empty;
-            LoginID = Session["StaffID"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.AcceptOrReject(LoginID);
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
 
-            GridView1.DataSource = ds;
-            GridView1.DataBind();
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
 
-            ds.Dispose();
+               // throw;
+            }
+
+           
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

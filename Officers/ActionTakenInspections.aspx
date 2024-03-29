@@ -134,7 +134,7 @@
                                 </asp:TemplateField> 
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                  <asp:TemplateField HeaderText="SNo">
@@ -167,7 +167,7 @@
 
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status">
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                     <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor"/>
 
                                     <ItemStyle HorizontalAlign="center" Width="32%" />

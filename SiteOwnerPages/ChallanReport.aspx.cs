@@ -21,8 +21,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Session["SiteOwnerId"] != null)
                     {
-                        string Text = Session["SiteOwnerId"].ToString() + "-" + Session["Data1"].ToString() + "-" + Session["Data2"].ToString();
-                        txtInspectionDetails.Text = Text;
+                     //  string Text = Session["SiteOwnerId"].ToString() + "-" + Session["Data1"].ToString() + "-" + Session["Data2"].ToString();
+                     //   txtInspectionDetails.Text = Text;
                     }
                     else
                     {

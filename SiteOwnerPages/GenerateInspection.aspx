@@ -292,12 +292,10 @@
                                <asp:RequiredFieldValidator ID="Req_state" Text="Required" ErrorMessage="Required" ControlToValidate="ddlDocumentFor" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                              
                         </div>
-                       </div>
-                            
-                            
+                       </div>                            
 
-                           <%-- <div class="row">
-                                <div class="table-responsive pt-3" id="Div1" runat="server" >--%>
+                          <%--  <div class="row">
+                                <div class="table-responsive pt-3" id="Div1" runat="server" >
                                     <table class="table table-bordered table-striped" id="DocumentsTable" runat="server">
                                         <thead class="table-dark">
                                             <tr>
@@ -308,12 +306,8 @@
                                             </tr>
                                         </thead>
                                         </table>
-                                <%--    </div>
+                                  </div>
                                 </div>--%>
-
-                               
-
-
 
                             <div class="row">
                                 <div class="table-responsive pt-3" id="Uploads" runat="server" visible="false">
@@ -540,12 +534,125 @@
                                 </div>
                             </div>
                         </div>
+                <div class="card" style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important; margin-bottom:20px;">
+                        <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridView2" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                            AutoGenerateColumns="false">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblId" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="ApplicantName" HeaderText="Name">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                              <%--  <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
+                                    <HeaderStyle HorizontalAlign="center" Width="12%" />
+                                    <ItemStyle HorizontalAlign="center" Width="12%" />
+                                </asp:BoundField>--%>
+                                <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Payment" HeaderText="Payment">
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
+                                    <HeaderStyle HorizontalAlign="center" Width="13%" />
+                                    <ItemStyle HorizontalAlign="center" Width="13%" />
+                                </asp:BoundField>
 
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                         </div>
+                        <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-left: 30px;">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="search" class="col-sm-3 col-form-label">Total payment:</label>
+                                     <div class="col-sm-8" style="margin-left:-35px;">
+                                    <div class="col-sm-8">
+<%--                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 64C0 46.3 14.3 32 32 32H96h16H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H231.8c9.6 14.4 16.7 30.6 20.7 48H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H252.4c-13.2 58.3-61.9 103.2-122.2 110.9L274.6 422c14.4 10.3 17.7 30.3 7.4 44.6s-30.3 17.7-44.6 7.4L13.4 314C2.1 306-2.7 291.5 1.5 278.2S18.1 256 32 256h80c32.8 0 61-19.7 73.3-48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H185.3C173 115.7 144.8 96 112 96H96 32C14.3 96 0 81.7 0 64z"/></svg>--%>
+                                        <asp:TextBox ID="txtPayment" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="margin-top: 4px"></asp:TextBox><br />
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            <div class="col-6" style="margin-bottom: auto;">
+                            <asp:Button type="submit" ID="btnOnline" ValidationGroup="Submit"  disabled="true" Text="Online Payment" runat="server" class="btn btn-primary mr-2" />
+                   
+                <asp:Button type="submit" ID="ChallanUpload"  Text="Offline" runat="server" class="btn btn-primary mr-2" onclick="ChallanUpload_Click" />
+                           <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>     
+                        </div>
+                            </div>
+                
+
+                    <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
+                    <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
+                        <div class="col-6">
+                            <label>
+                                Inspection Request details   <samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox ID="txtInspectionDetails" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                        </div>
+
+                        <div class="col-6">
+                            <label>Transaction Id<samp style="color: red"> * </samp></label>
+                            <asp:TextBox ID="txttransactionId" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -40px !important;">
+                        <div class="col-6">
+                            <label>Transaction Date<samp style="color: red"> * </samp></label>
+                            <asp:TextBox ID="txttransactionDate" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                        </div>
+
+                        <div class="col-6">
+                            <label>
+                                Upload Challan (Only PDF Allowed, Size not more than 1 Mb)<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:FileUpload ID="FileUpload14" runat="server" class="form-control" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="FileUpload14" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                        </div>
+                        
+                    </div>
+                </div>
                 <div>
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
-                            <asp:Button ID="btnSubmit" Text="Submit" runat="server"  class="btn btn-primary mr-2"
+                            <asp:Button ID="btnSubmit" Text="Submit" runat="server"  ValidationGroup="Submit"  class="btn btn-primary mr-2"
                                 OnClick="btnSubmit_Click" />
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />

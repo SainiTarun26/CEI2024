@@ -522,17 +522,12 @@ namespace CEIHaryana.Contractor
                         {
                             try
                             {
-                                string FilName = string.Empty;
-
-                                //if (customFile.PostedFile.FileName.Length > 0)
-                                //{
-
+                                string FilName = string.Empty;                                
                                 FilName = Path.GetFileName(customFile.PostedFile.FileName);
                                 if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
                                 {
                                     Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
                                 }
-
                                 string ext = customFile.PostedFile.FileName.Split('.')[1];
                                 string path = "";
                                 path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
@@ -546,12 +541,15 @@ namespace CEIHaryana.Contractor
                             {
                                 string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                                return;
                             }
                         }
+                        string PowerUtilityType= ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString();
+                        string PowerUtilityWing = ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString();
 
                         hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(UpdationId, ContractorID,ddlPoweUtility.SelectedItem.ToString(),
-                            ddlPowerUtilityWing.SelectedItem.ToString(),txtTanNumber.Text.Trim(),
+                        CEI.IntimationDataInsertion(UpdationId, ContractorID, PowerUtilityType,
+                            PowerUtilityWing, txtTanNumber.Text.Trim(),
                             ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
                             txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
                             ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
@@ -613,7 +611,7 @@ namespace CEIHaryana.Contractor
                     Reset();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
@@ -979,5 +977,24 @@ namespace CEIHaryana.Contractor
             catch { }
         }
 
+        protected void ddlVoltageLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                installationType2.Visible = true;
+                if (ddlVoltageLevel.SelectedValue == "650V")
+                {
+                    installationType2.Visible = false;
+                }
+                else
+                {
+                    installationType2.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            { 
+            //
+            }
+        }
     }
 }

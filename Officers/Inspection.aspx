@@ -437,15 +437,16 @@
                   <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
             </div>--%>
             </div>
-                     <%-- <div class="row">
+                    <div class="row">
                 <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
                     Documnets are as per the requirements
-               <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                   <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
-                   <asp:ListItem Text="No" Value="1"></asp:ListItem>
+               <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server"  RepeatDirection="Horizontal" TabIndex="25">
+                   <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
+                   <asp:ListItem Text="No(Return)" Value="1"></asp:ListItem>
                </asp:RadioButtonList>
-                </div>--%>
-                <div class="col-4" id="ApprovalRequired" runat="server" visible="false">
+                    <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
+                </div>
+                <%--<div class="col-4" id="ApprovalRequired" runat="server" visible="false">
                     <br />
                     <br />
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
@@ -464,7 +465,7 @@
                         <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlApprovedReject" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
+                </div>--%>
                 <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
                         Reason<samp style="color: red"> * </samp>
@@ -491,7 +492,7 @@
     </div>
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            if (confirm('Your Inspection will be in progress')) {
+            if (confirm('Your Inspection will be in process')) {
             } else {
             }
         }

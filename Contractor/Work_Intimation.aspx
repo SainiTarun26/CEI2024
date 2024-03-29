@@ -474,7 +474,7 @@
                                                 Highest Voltage Level of Work
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" ID="ddlVoltageLevel" TabIndex="12" runat="server">
+                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>

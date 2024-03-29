@@ -24,6 +24,9 @@ namespace CEIHaryana.SiteOwnerPages
         string IntimationId = string.Empty;
         string Count = string.Empty;
         private static string PremisesType = "";
+        string LoginId = string.Empty;
+        string IntimationIds = string.Empty;
+        //string id = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -123,31 +126,57 @@ namespace CEIHaryana.SiteOwnerPages
 
                     DropDownList ddlDocumentFor = Documents.FindControl("ddlDocumentFor") as DropDownList;
 
+                    #region
+                    // for  dynamically generation table row 
+                    //DataTable documentData = new DataTable();
+                    //documentData = CEI.GetDocumanetName(id);                   
+                    //foreach (DataRow rows in documentData.Rows)
+                    //{
+                    //    // Create a new table row
+                    //    HtmlTableRow tr = new HtmlTableRow();
 
-                    // for excute 
-                    DataTable documentData = new DataTable();
-                    documentData = CEI.GetDocumanetName(id);
-                    foreach (DataRow rows in documentData.Rows)
-                    {
-                        // Create a new table row
-                        HtmlTableRow tr = new HtmlTableRow();
+                    //    // Create a cell for the document name
+                    //    HtmlTableCell nameCell = new HtmlTableCell();
+                    //    //nameCell.Controls.Add(new LiteralControl(rows["DocumentName"].ToString()));                       
+                    //    nameCell.InnerText = rows["DocumentName"].ToString();
 
-                        // Create a cell for the document name
-                        HtmlTableCell nameCell = new HtmlTableCell();
-                        nameCell.InnerHtml = rows["DocumentName"].ToString() + "<span style='color: red;'>*</ span >";
-                        tr.Cells.Add(nameCell);
 
-                        // Create a cell for the FileUpload control
-                        HtmlTableCell fileUploadCell = new HtmlTableCell();
-                        FileUpload fileUpload = new FileUpload();
-                        fileUpload.ID = "FileUpload_" + rows["DocumentID"].ToString(); // Assign a unique ID to each FileUpload control
-                        fileUploadCell.Controls.Add(fileUpload);
-                        tr.Cells.Add(fileUploadCell);
+                    //    // Create a cell for the FileUpload control
+                    //    HtmlTableCell fileUploadCell = new HtmlTableCell();
+                    //    FileUpload fileUpload = new FileUpload();
+                    //    fileUpload.ID = "FileUpload_" + rows["DocumentID"].ToString(); // Assign a unique ID to each FileUpload control
+                    //    //fileUploadCell.Controls.Clear();
+                    //    fileUploadCell.Controls.Add(fileUpload);
 
-                        // Add the table row to the existing table
-                        DocumentsTable.Rows.Add(tr); // Assuming DocumentsTable is the ID of your existing table in the ASP.NET markup
-                    }
+                    //    tr.Cells.Add(nameCell);
+                    //    tr.Cells.Add(fileUploadCell);
 
+                    //    // Add the table row to the existing table
+                    //    DocumentsTable.Rows.Add(tr); // Assuming DocumentsTable is the ID of your existing table in the ASP.NET markup
+                    //}
+
+
+                    //Table dynamicTable = new Table();
+
+                    //// Add headers
+                    //TableRow headerRow = new TableRow();
+                    //headerRow.Cells.Add(new TableCell { Text = "Column 1" });
+                    //headerRow.Cells.Add(new TableCell { Text = "Column 2" });
+                    //dynamicTable.Rows.Add(headerRow);
+
+                    //// Add data rows
+                    //foreach (DataRow row in dataTable.Rows)
+                    //{
+                    //    TableRow dataRow = new TableRow();
+                    //    dataRow.Cells.Add(new TableCell { Text = row["Column1"].ToString() });
+                    //    dataRow.Cells.Add(new TableCell { Text = row["Column2"].ToString() });
+                    //    dynamicTable.Rows.Add(dataRow);
+                    //}
+
+                    //// Add the dynamic table to a placeholder or panel in the ASP.NET markup
+                    //TablePlaceholder.Controls.Add(dynamicTable);
+
+                    #endregion
 
 
                     if (ddlDocumentFor != null)
@@ -185,6 +214,9 @@ namespace CEIHaryana.SiteOwnerPages
                     // Show fields based on the category and applicant type
                     if (chk.Checked)
                     {
+                        TotalPayment.Visible = true;
+                        //GridViewBind();
+                        txtPayment.Text = "1000";
                         Session["SelectedCategory"] = lblCategory.Text;
                         Session["SelectedApplicant"] = lblApplicant.Text;
                         Session["SelectedVoltageLevel"] = lblVoltageLevel.Text;
@@ -192,12 +224,22 @@ namespace CEIHaryana.SiteOwnerPages
                         Session["SelectedDistrict"] = lblDistrict.Text;
                         Session["SelectedNoOfInstallations"] = lblNoOfInstallations.Text;
                         PremisesType = lblPremises.Text;
+
+                        LineSubstationSupplier.Visible = false;
+                        SupplierSub.Visible = false;
+                        LinePersonal.Visible = false;
+                        SupplierSub.Visible = false;
+                        LineSubstationSupplier.Visible = false;
+                        PersonalSub.Visible = false;
+                        PersonalGenerating.Visible = false;
+                        PersonalGenerating.Visible = false;
+
                         if (lblCategory.Text == "Line")
                         {
-                            if (lblApplicant.Text.Trim() == "Supplier Installation")
+                            if (lblApplicant.Text.Trim() == "Power Utility")
                             {
-                                LineSubstationSupplier.Visible = true;
-                                SupplierSub.Visible = true;
+                              LineSubstationSupplier.Visible = true;
+                              SupplierSub.Visible = true;
                             }
                             else if (lblApplicant.Text.Trim() == "Private/Personal Installation")
                             {
@@ -208,7 +250,7 @@ namespace CEIHaryana.SiteOwnerPages
                         else if (lblCategory.Text == "Substation Transformer")
                         {
                             txtApplicantType.Text = Session["SelectedApplicant"].ToString();     ///////////////////
-                            if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                            if (txtApplicantType.Text.Trim() == "Power Utility")
                             {
                                 LineSubstationSupplier.Visible = true;
                             }
@@ -222,7 +264,7 @@ namespace CEIHaryana.SiteOwnerPages
                             txtApplicantType.Text = Session["SelectedApplicant"].ToString();      //////////////////
                             if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                             {
-                                PersonalGenerating.Visible = true;
+                              PersonalGenerating.Visible = true;
                             }
                             else
                             {
@@ -349,11 +391,31 @@ namespace CEIHaryana.SiteOwnerPages
                 return parts[1];
             }
             return null;
-        }        
+        }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
+                #region document dynamically controls
+                //foreach (HtmlTableRow row in DocumentsTable.Rows)
+                //{
+                //    // Get document name
+                //    string documentName = ((HtmlTableCell)row.Cells[0]).InnerText;
+
+                //    // Get FileUpload control
+                //    FileUpload fileUpload = (FileUpload)((HtmlTableCell)row.Cells[1]).Controls[0];
+
+                //    if (fileUpload.HasFile)
+                //    {
+                //        // Save the file to the server
+                //        string fileName = Path.GetFileName(fileUpload.FileName);
+                //        string filePath = Server.MapPath("~/Uploads/") + fileName;
+                //        fileUpload.SaveAs(filePath);
+
+                //        // Save data to the database
+                //        // SaveToDatabase(documentName, fileName);
+                //    }
+                //}
                 //foreach (HttpPostedFile uploadedFile in Request.Files)
                 //{
                 //    if (uploadedFile.ContentLength > 0)
@@ -375,12 +437,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        //SaveDocumentMetadata(documentID, documentDescription); // Replace with your logic
                 //    }
                 //}
-
-
-
-
-
-
 
 
 
@@ -460,37 +516,39 @@ namespace CEIHaryana.SiteOwnerPages
                 //asdasd
 
 
-                foreach (Control control in DocumentsTable.Controls)
-                {
-                    if (control is HtmlTableRow)
-                    {
-                        HtmlTableRow row = (HtmlTableRow)control;
+                //foreach (Control control in DocumentsTable.Controls)
+                //    {
+                //        if (control is HtmlTableRow)
+                //        {
+                //            HtmlTableRow row = (HtmlTableRow)control;
 
-                        // Assuming the FileUpload control is in the second cell (index 1)
-                        if (row.Cells.Count > 1) // Ensure the row has at least two cells
-                        {
-                            //TableCell secondCell = row.Cells[1];
+                //            // Assuming the FileUpload control is in the second cell (index 1)
+                //            if (row.Cells.Count > 1) // Ensure the row has at least two cells
+                //            {
+                //                HtmlTableCell secondCell = row.Cells[0];
 
-                            //foreach (Control cellControl in secondCell.Controls)
-                            //{
-                            //    if (cellControl is FileUpload)
-                            //    {
-                            //        FileUpload fileUpload = (FileUpload)cellControl;
+                //                foreach (Control cellControl in secondCell.Controls)
+                //                {
+                //                    string logMessage = "Control Type: " + cellControl.GetType().ToString() + "\n";
+                //                    if (cellControl is FileUpload)
+                //                    {
+                //                        FileUpload fileUpload = (FileUpload)cellControl;
 
-                            //        if (fileUpload.HasFile)
-                            //        {
-                            //            // Get the document ID from the FileUpload control's ID
-                            //            string documentId = fileUpload.ID.Replace("FileUpload_", "");
+                //                        if (fileUpload.HasFile)
+                //                        {
+                //                            // Get the document ID from the FileUpload control's ID
+                //                            string documentId = fileUpload.ID.Replace("FileUpload_", "");
 
-                            //            // Save the uploaded document to the database
-                            //            // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
-                            //        }
-                            //    }
-                            //}
-                        }
-                    }
-                }
+                //                            // Save the uploaded document to the database
+                //                            // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
+                //                        }
+                //                    }
+                //                }
+                //            }
+                //        }
+                //    }
 
+                #endregion
 
                 #region comments code for documents uploaded
                 //if (ddlDocumentFor.SelectedValue == "1" || ddlDocumentFor.SelectedItem.Text.Trim() == "Select All")
@@ -1038,11 +1096,15 @@ namespace CEIHaryana.SiteOwnerPages
                     string flpPhotourl8 = string.Empty;
                     string flpPhotourl9 = string.Empty;
                     string flpPhotourl10 = string.Empty;
-                    string flpPhotourl11 = string.Empty;
+                    string flpPhotourl11 = string.Empty; 
                     string flpPhotourl12 = string.Empty;
+                    string ChallanAttachment = string.Empty;
                     string LineLength = string.Empty;
-                    string FeesLeft = string.Empty;
+                    string FeesLeft = string.Empty; 
+                    string transcationId = string.Empty;
+                    string TranscationDate = string.Empty;
                     int maxFileSize = 1048576;
+                    
                     IntimationId = Session["id"].ToString();
                     Count = lblNoOfInstallations.Trim();
                     DataSet ds = new DataSet();
@@ -1059,71 +1121,75 @@ namespace CEIHaryana.SiteOwnerPages
                             id = ds.Tables[0].Rows[0]["ID"].ToString();
                         }
                     }
-                    if (lblCategory.Trim() == "Line")
-                    {
-                        if (input.EndsWith("kv", StringComparison.OrdinalIgnoreCase))
-                        {
-                            string voltagePart = input.Substring(0, input.Length - 2);
-                            if (int.TryParse(voltagePart, out int voltageLevel))
-                            {
-                                if (voltageLevel >= 11 && voltageLevel <= 33)
-                                {
-                                    Assign = "SDO";
-                                }
-                                else if (voltageLevel >= 33)
+                    #region asign code
+                    //if (lblCategory.Trim() == "Line")
+                    //{
+                    //    if (input.EndsWith("kv", StringComparison.OrdinalIgnoreCase))
+                    //    {
+                    //        string voltagePart = input.Substring(0, input.Length - 2);
+                    //        if (int.TryParse(voltagePart, out int voltageLevel))
+                    //        {
+                    //            if (voltageLevel >= 11 && voltageLevel <= 33)
+                    //            {
+                    //                Assign = "SDO";
+                    //            }
+                    //            else if (voltageLevel >= 33)
 
-                                {
-                                    Assign = "Admin@123";
-                                }
-                                else if (voltageLevel <= 11)
+                    //            {
+                    //                Assign = "Admin@123";
+                    //            }
+                    //            else if (voltageLevel <= 11)
 
-                                {
-                                    Assign = "JE";
-                                }
+                    //            {
+                    //                Assign = "JE";
+                    //            }
 
-                            }
-                        }
+                    //        }
+                    //    }
 
-                        else if (input.EndsWith("v", StringComparison.OrdinalIgnoreCase))
-                        {
-                            Assign = "JE";
+                    //    else if (input.EndsWith("v", StringComparison.OrdinalIgnoreCase))
+                    //    {
+                    //        Assign = "JE";
 
-                        }
-                    }
-                    else
-                    {
-                        if (input.EndsWith("KVA", StringComparison.OrdinalIgnoreCase))
-                        {
-                            string voltagePart = input.Substring(0, input.Length - 3);
-                            if (int.TryParse(voltagePart, out int voltageLevel))
-                            {
-                                if (voltageLevel >= 250 && voltageLevel <= 500)
-                                {
-                                    Assign = "XEN";
-                                }
-                                else if (voltageLevel >= 500)
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (input.EndsWith("KVA", StringComparison.OrdinalIgnoreCase))
+                    //    {
+                    //        string voltagePart = input.Substring(0, input.Length - 3);
+                    //        if (int.TryParse(voltagePart, out int voltageLevel))
+                    //        {
+                    //            if (voltageLevel >= 250 && voltageLevel <= 500)
+                    //            {
+                    //                Assign = "XEN";
+                    //            }
+                    //            else if (voltageLevel >= 500)
 
-                                {
-                                    Assign = "Admin@123";
-                                }
-                                else if (voltageLevel >= 50 && voltageLevel <= 250)
-                                {
-                                    Assign = "SDO";
-                                }
-                                else
-                                {
-                                    Assign = "JE";
-                                }
-                            }
+                    //            {
+                    //                Assign = "Admin@123";
+                    //            }
+                    //            else if (voltageLevel >= 50 && voltageLevel <= 250)
+                    //            {
+                    //                Assign = "SDO";
+                    //            }
+                    //            else
+                    //            {
+                    //                Assign = "JE";
+                    //            }
+                    //        }
 
-                        }
-                        else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
-                        {
-                            Assign = "Admin@123";
+                    //    }
+                    //    else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
+                    //    {
+                    //        Assign = "Admin@123";
 
-                        }
+                    //    }
 
-                    }
+                    //}
+                    #endregion
+
+
                     if (LineSubstationSupplier.Visible == true)
                     {
                         fileExtension = Path.GetExtension(FileUpload1.FileName);
@@ -1519,30 +1585,61 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     //DateTime myDate = Convert.ToDateTime(txtDate.Text);
 
-                    string[] DocumentName = { "RequestLetterFromConcernedOfficer", "ManufacturingTestReportOfEqipment", "SingleLineDiagramOfLine",
-                        "DemandNoticeOfLine","CopyOfNoticeIssuedByUHBVNorDHBVN","InvoiceOfTransferOfPersonalSubstation","ManufacturingTestCertificateOfTransformer",
-                        "SingleLineDiagramofTransformer","InvoiceoffireExtinguisheratSite","InvoiceOfDGSetOfGeneratingSet","ManufacturingCerificateOfDGSet",
-                       "InvoiceOfExptinguisherOrApparatusAtsite","StructureStabilityResolvedByAuthorizedEngineer"
-                    };
-                    string[] DocumentPath = {flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12};
-
-                    CEI.InsertInspectionData(txtContact.Text, id, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                        LineLength, Count, /*flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,*/ Assign, District, To, txtDate.Text, CreatedBy);
-
-
-                    string generatedId = CEI.InspectionId();
-                    for (int i = 0; i < DocumentName.Length; i++)
+                    if (ChallanDetail.Visible == true)
                     {
-                        // InsertInspectionDocument(generatedId,IntimationId,installationtype,);
-                        //InsertInspectionDocument(ins,IntimationId,);
-                    }
+                        if (FileUpload14.HasFile && FileUpload14.PostedFile.ContentLength <= 500 * 1024) 
+                        {
+                            string ext = Path.GetExtension(FileUpload14.PostedFile.FileName).ToLower();
 
-                    // DataSaved.Visible = true;
+                            if (ext == ".pdf") // Check if the file extension is PDF
+                            {
+                                FileName = "ChallanReport" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/")))
+                                {
+                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/"));
+                                }
+                                string path = "/Attachment/" + CreatedBy + "/ChallanReport/";
+                                string filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/" + FileName);
+
+                                FileUpload14.SaveAs(filePathInfo2);
+                                ChallanAttachment = path + FileName;
+                            }
+                            else
+                            {
+                                string alert = "alert('File Format Not Supported. Only PDF files are allowed.');";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            string alert = "alert('File exceeds maximum size limit (500 KB) or no file uploaded.');";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
+                            return;
+                        }
+
+                        if (txttransactionId.Text != "")
+                        {
+                            transcationId = txttransactionId.Text.Trim();
+                            TranscationDate = string.IsNullOrEmpty(txttransactionDate.Text) ? null : txttransactionDate.Text;
+                        }
+                        else
+                        {
+                            txttransactionDate.Focus();
+                            txttransactionId.Focus();                            
+                            return;
+                        }
+                    }  
+                    
+                    CEI.InsertInspectionData(txtContact.Text, id, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                        LineLength, Count, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,/* Assign,*/ District, To, txtDate.Text, CreatedBy,txtPayment.Text.Trim(), transcationId, TranscationDate,ChallanAttachment);
+
+
+                    string generatedId = CEI.InspectionId();                    
                     Session["PendingPaymentId"] = generatedId;
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
-                    Response.Redirect("/SiteOwnerPages/PaymentPage.aspx", false);
+                    Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
                 }
                 else
                 {
@@ -1552,7 +1649,9 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-                ////
+                //
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
@@ -1560,6 +1659,42 @@ namespace CEIHaryana.SiteOwnerPages
 
         }
 
+        protected void GridViewBind()
+        {
+            try
+            {
+                LoginId = Session["SiteOwnerId"].ToString();
+                IntimationIds = Session["PendingIntimations"].ToString();  // modeified IntimationId to IntimationIds
+                DataSet ds = new DataSet();
+                ds = CEI.GetPaymentInformation(LoginId, IntimationIds);
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    //GridView1.DataSource = null;
+                    //string script = "alert(\"Please Fill the Form first for knowing Payment History\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
+                }
+                ds.Dispose();
+                string TotalPayment = CEI.GetTotalPaymentInformation(LoginId, IntimationId);
+                txtPayment.Text = TotalPayment;
+                
+                
+            }
+            catch (Exception ex )
+            {
+            //
+            }
+        }
 
+        protected void ChallanUpload_Click(object sender, EventArgs e)
+        {
+            //btnSubmit.Visible = true;
+            ChallanDetail.Visible = true;
+            txtInspectionDetails.Text = Session["SiteOwnerId"].ToString() + "-" + Session["SelectedCategory"].ToString() + "-" + Session["SelectedVoltageLevel"].ToString();
+        }
     }
 } 
