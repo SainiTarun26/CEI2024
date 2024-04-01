@@ -37,39 +37,39 @@ namespace CEIHaryana.Officers
             Uploads.Visible = true;
             if (txtWorkType.Text == "Line")
             {
-                //if (txtApplicantType.Text.Trim() == "Supplier Installation")
-                //{
+                if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                {
                 LineSubstationSupplier.Visible = true;
                 SupplierSub.Visible = true;
-                //}
-                //else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                //{
+                }
+                else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                {
                 LinePersonal.Visible = true;
                 SupplierSub.Visible = true;
-                //}
+                }
             }
             else if (txtWorkType.Text == "Substation Transformer")
             {
-                //if (txtApplicantType.Text.Trim() == "Supplier Installation")
-                //{
+                if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                {
                 LineSubstationSupplier.Visible = true;
-                ////}
-                ////else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                ////{
-                //    PersonalSub.Visible = true;
+                }
+                else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                {
+                    PersonalSub.Visible = true;
 
-                //}
+                }
             }
             else if (txtWorkType.Text == "Generating Set")
             {
-                //if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                //{
+                if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                {
                 PersonalGenerating.Visible = true;
-                //}
-                //else
-                //{
-                //    PersonalGenerating.Visible = false;
-                //}
+                }
+                else
+                {
+                    PersonalGenerating.Visible = false;
+                }
             }
             else
             {

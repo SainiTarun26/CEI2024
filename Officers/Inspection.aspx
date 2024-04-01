@@ -445,8 +445,8 @@
             </div>--%>
             </div>
                     <div class="row">
-                <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
-                    Documnets are as per the requirements
+                <div class="col-6" style="margin-top: auto; margin-bottom: auto;">
+                   <p> Documnets are as per the requirements</p>
                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server"  RepeatDirection="Horizontal" TabIndex="25">
                    <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
                    <asp:ListItem Text="No(Return)" Value="1"></asp:ListItem>

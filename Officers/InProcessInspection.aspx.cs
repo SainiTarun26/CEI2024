@@ -14,7 +14,7 @@ namespace CEIHaryana.Officers
     {
         CEI CEI = new CEI();
       
-        private static string ApprovedorReject, Reason, StaffId;
+        private static string ApprovedorReject, Reason, StaffId,Suggestions;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -39,47 +39,47 @@ namespace CEIHaryana.Officers
             try
             {
                 Uploads.Visible = true;
-                if (txtWorkType.Text == "Line")
-                {
-                    //if (txtApplicantType.Text.Trim() == "Supplier Installation")
-                    //{
-                        LineSubstationSupplier.Visible = true;
-                        SupplierSub.Visible = true;
-                    //}
-                    //else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                    //{
-                    //    LinePersonal.Visible = true;
-                    //    SupplierSub.Visible = true;
-                    //}
-                }
-                else if (txtWorkType.Text == "Substation Transformer")
-                {
-                    //if (txtApplicantType.Text.Trim() == "Supplier Installation")
-                    //{
-                        LineSubstationSupplier.Visible = true;
-                    //}
-                    //else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                    //{
-                    //    PersonalSub.Visible = true;
-                    //}
-                }
-                else if (txtWorkType.Text == "Generating Set")
-                {
-                    //if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                    //{
-                        PersonalGenerating.Visible = true;
-                    //}
-                    //else
-                    //{
-                        PersonalGenerating.Visible = false;
-                   // }
-                }
-                else
-                {
-                    LineSubstationSupplier.Visible = false;
-                    SupplierSub.Visible = false;
-                    PersonalGenerating.Visible = false;
-                }
+                //if (txtWorkType.Text == "Line")
+                //{
+                //    if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                //    {
+                //      LineSubstationSupplier.Visible = true;
+                //      SupplierSub.Visible = true;
+                //    }
+                //    else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                //    {
+                //        LinePersonal.Visible = true;
+                //        SupplierSub.Visible = true;
+                //    }
+                //}
+                //else if (txtWorkType.Text == "Substation Transformer")
+                //{
+                //    if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                //    {
+                //      LineSubstationSupplier.Visible = true;
+                //    }
+                //    else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                //    {
+                //        PersonalSub.Visible = true;
+                //    }
+                //}
+                //else if (txtWorkType.Text == "Generating Set")
+                //{
+                //   if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                //   {
+                //     PersonalGenerating.Visible = true;
+                //   }
+                //   else
+                //   {
+                //     PersonalGenerating.Visible = false;
+                //   }
+                //}
+                //else
+                //{
+                //    LineSubstationSupplier.Visible = false;
+                //    SupplierSub.Visible = false;
+                //    PersonalGenerating.Visible = false;
+                //}
             }
             catch (Exception ex) 
             {
@@ -395,9 +395,15 @@ namespace CEIHaryana.Officers
                     if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue !="0")
                     {
                         ApprovedorReject = ddlReview.SelectedItem.ToString();
-                        Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
+                        Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
 
-                        CEI.InspectionFinalAction(ID,StaffId,ApprovedorReject, Reason);
+                        if(Suggestion.Visible==true)
+                        {
+                            Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
+                        }
+
+
+                        CEI.InspectionFinalAction(ID,StaffId,ApprovedorReject, Reason, Suggestions);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         //if (Session["Area"] != null)
                         //{
@@ -434,12 +440,15 @@ namespace CEIHaryana.Officers
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
             Rejection.Visible = false;
+            Suggestion.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
+                Suggestion.Visible = false;
                 Rejection.Visible = true;
             }
-            else
+            else if(ddlReview.SelectedValue =="1")
             {
+                Suggestion.Visible = true;
                 Rejection.Visible = false;
             }
         }

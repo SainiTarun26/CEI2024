@@ -659,8 +659,8 @@
                 <div>
                     <div class="row">
                         <div class="col-4"></div>
-                        <div class="col-4" style="text-align: center;"><%--ValidationGroup="Submit" --%>
-                            <asp:Button ID="btnSubmit" Text="Submit" runat="server"   class="btn btn-primary mr-2"
+                        <div class="col-4" style="text-align: center;">
+                            <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit"  class="btn btn-primary mr-2"
                                 OnClick="btnSubmit_Click" />
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />

@@ -93,7 +93,7 @@ namespace CEIHaryana.Admin
                     PersonalSub.Visible = true;
                 }
             }
-            else if (txtWorkType.Text == "Generating Station")
+            else if (txtWorkType.Text == "Generating Set")
             {
                 if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
                 {
@@ -230,7 +230,17 @@ namespace CEIHaryana.Admin
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-
+            string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
         }
 
         protected void lnkSingleDiag_Click(object sender, EventArgs e)
@@ -265,7 +275,7 @@ namespace CEIHaryana.Admin
 
         protected void lnkDGSetInvoice_Click(object sender, EventArgs e)
         {
-            string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
+            string fileName = Session["InvoiceOfDGSetOfGeneratingSet"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
             if (File.Exists(filePath))
@@ -281,7 +291,7 @@ namespace CEIHaryana.Admin
 
         protected void lnkManufacturingCertificate_Click(object sender, EventArgs e)
         {
-            string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
+            string fileName = Session["ManufacturingCerificateOfDGSet"].ToString();
             string folderPath = Server.MapPath(fileName);
             string filePath = Path.Combine(folderPath);
             if (File.Exists(filePath))
@@ -354,7 +364,7 @@ namespace CEIHaryana.Admin
             {
                 Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
             }
-            else if (txtWorkType.Text.Trim() == "Generating Station")
+            else if (txtWorkType.Text.Trim() == "Generating Set")
             {
                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
             }
@@ -712,6 +722,7 @@ namespace CEIHaryana.Admin
 
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Rejection.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
@@ -726,17 +737,20 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
-                CEI.UpdateInspectionDataOnAction(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, ddlToAssign.SelectedItem.ToString(), txtAdditionalNote.Text);
+                if(Session["InspectionId"] != null && Convert.ToString(Session["InspectionId"]) != "")
+                {
+                    ID = Session["InspectionId"].ToString();
+                    CEI.UpdateInspectionDataOnAction(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, ddlToAssign.SelectedItem.ToString(), txtAdditionalNote.Text);
 
 
-                ddlReview.SelectedIndex = 0;
-                txtRejected.Text = string.Empty;
-                ddlToAssign.SelectedIndex = 0;
-                txtAdditionalNote.Text = string.Empty;
+                    ddlReview.SelectedIndex = 0;
+                    txtRejected.Text = string.Empty;
+                    ddlToAssign.SelectedIndex = 0;
+                    txtAdditionalNote.Text = string.Empty;
 
-                string script = "alert('Data updated successfully.');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                    string script = "alert('Data updated successfully.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                }                
             }
             catch (Exception ex)
             {
@@ -758,7 +772,7 @@ namespace CEIHaryana.Admin
                 Rejection.Visible = ddlReview.SelectedValue == "2";
                 dsAssign.Clear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //msg.Text = ex.Message;
             }

@@ -303,6 +303,7 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             //cmd.Parameters.AddWithValue("@UserId", UserId);
             // cmd.Parameters.AddWithValue("@IPAddress", IPAddress);
             #endregion
+
             cmd.Parameters.AddWithValue("@REID", REID);
             cmd.Parameters.AddWithValue("@Name", string.IsNullOrEmpty(Name) ? DBNull.Value : (object)Name);
             cmd.Parameters.AddWithValue("@Age", string.IsNullOrEmpty(Age) ? DBNull.Value : (object)Age);
@@ -362,9 +363,9 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             cmd.Parameters.AddWithValue("@Category", "Supervisor");
             cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
             cmd.Parameters.AddWithValue("@UserId", UserId);
+
             cmd.Parameters.AddWithValue("@IPAddress", string.IsNullOrEmpty(IPAddress) ? DBNull.Value : (object)IPAddress);
 
-           
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -1750,7 +1751,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
            
         }
 
-        public void InspectionFinalAction(string InspectionID, string StaffId,string AcceptedOrReReturn, string Reason)
+        public void InspectionFinalAction(string InspectionID, string StaffId,string AcceptedOrReReturn, string Reason,string suggestions)
         {
             try
             {
@@ -1767,7 +1768,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@StaffId", StaffId);               
                 cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
                 cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
-                //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
+                cmd.Parameters.AddWithValue("@Suggestion", suggestions);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }

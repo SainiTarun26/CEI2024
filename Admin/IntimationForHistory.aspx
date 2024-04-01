@@ -383,7 +383,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="Open Document"></asp:LinkButton>
+                                        <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report"></asp:LinkButton>
                                     </div>
                                 </td>
                             </tr>
@@ -443,7 +443,7 @@
                     <asp:Button ID="btnAction" Text="Take Action" runat="server" class="btn btn-primary mr-2" OnClick="btnAction_Click" />
                 </div>
                 <div class="col-2" style="text-align: center;">
-                    <asp:Button ID="btnUpdate" Text="Save" runat="server" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
+                    <asp:Button ID="btnUpdate" Text="Save" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
                 </div>
                 <div class="col-5" style="text-align: left;">
                     <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />

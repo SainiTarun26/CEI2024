@@ -794,16 +794,16 @@ namespace CEIHaryana.Contractor
 
                 
             }
-            if (ddlApplicantType.SelectedValue == "2")
+            if (ddlApplicantType.SelectedValue == "AT001")
             {
                 DivPancard_TanNo.Visible = true;
             }
-            else if(ddlApplicantType.SelectedValue == "1")
+            else if(ddlApplicantType.SelectedValue == "AT002")
             {
                 DivPoweUtility.Visible = true;
                 DivPoweUtilityWing.Visible = true;
             }
-            else if (ddlApplicantType.SelectedValue == "3")
+            else if (ddlApplicantType.SelectedValue == "AT003")
             {
                 DivOtherDepartment.Visible = true;
             }

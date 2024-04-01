@@ -1482,14 +1482,14 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
 
-                    //CEI.InsertInspectionData(txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                    //    LineLength, Count, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    //flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,/* Assign,*/ District, To, txtDate.Text, CreatedBy,txtPayment.Text.Trim(), transcationId, TranscationDate,ChallanAttachment);
+                    CEI.InsertInspectionData(txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                        LineLength, Count, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,/* Assign,*/ District, To, txtDate.Text, CreatedBy,txtPayment.Text.Trim(), transcationId, TranscationDate,ChallanAttachment);
 
 
-                    // string generatedId = CEI.InspectionId();                    
-                    //  Session["PendingPaymentId"] = generatedId;
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
+                     string generatedId = CEI.InspectionId();                    
+                      Session["PendingPaymentId"] = generatedId;
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
                 }
