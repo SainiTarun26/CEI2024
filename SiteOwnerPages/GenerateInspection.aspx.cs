@@ -23,7 +23,7 @@ namespace CEIHaryana.SiteOwnerPages
         string fileExtension4 = string.Empty;
         string IntimationId = string.Empty;
         string Count = string.Empty;
-        private static string PremisesType = "";
+        private static string PremisesType , ApplicantTypeCode;
         string LoginId = string.Empty;
         string IntimationIds = string.Empty;
         //string id = string.Empty;
@@ -121,6 +121,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblDistrict = (Label)row.FindControl("lblDistrict");
                     Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
                     Label lblPremises = (Label)row.FindControl("lblPermises");
+                    Label lblApplicantTypeCode = (Label)row.FindControl("lblApplicantTypeCode");
 
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
@@ -215,6 +216,8 @@ namespace CEIHaryana.SiteOwnerPages
                     if (chk.Checked)
                     {
                         TotalPayment.Visible = true;
+                        ChallanDetail.Visible = true;
+                        txtInspectionDetails.Text = Session["SiteOwnerId"].ToString() + "-" + lblCategory.Text + "-" + lblVoltageLevel.Text;
                         //GridViewBind();
                         txtPayment.Text = "1000";
                         Session["SelectedCategory"] = lblCategory.Text;
@@ -224,6 +227,7 @@ namespace CEIHaryana.SiteOwnerPages
                         Session["SelectedDistrict"] = lblDistrict.Text;
                         Session["SelectedNoOfInstallations"] = lblNoOfInstallations.Text;
                         PremisesType = lblPremises.Text;
+                        ApplicantTypeCode = lblApplicantTypeCode.Text;
 
                         LineSubstationSupplier.Visible = false;
                         SupplierSub.Visible = false;
@@ -396,159 +400,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                #region document dynamically controls
-                //foreach (HtmlTableRow row in DocumentsTable.Rows)
-                //{
-                //    // Get document name
-                //    string documentName = ((HtmlTableCell)row.Cells[0]).InnerText;
-
-                //    // Get FileUpload control
-                //    FileUpload fileUpload = (FileUpload)((HtmlTableCell)row.Cells[1]).Controls[0];
-
-                //    if (fileUpload.HasFile)
-                //    {
-                //        // Save the file to the server
-                //        string fileName = Path.GetFileName(fileUpload.FileName);
-                //        string filePath = Server.MapPath("~/Uploads/") + fileName;
-                //        fileUpload.SaveAs(filePath);
-
-                //        // Save data to the database
-                //        // SaveToDatabase(documentName, fileName);
-                //    }
-                //}
-                //foreach (HttpPostedFile uploadedFile in Request.Files)
-                //{
-                //    if (uploadedFile.ContentLength > 0)
-                //    {
-                //        string fileName = uploadedFile.FileName;
-                //        string documentID = GetDocumentIDFromFileUploadID(fileName);
-                //        string documentDescription = ""; // Access from description TextBox if applicable
-
-                //        // Get user-provided description (optional)
-                //        if (Request.Form["DocumentDescription_" + documentID] != null)
-                //        {
-                //            documentDescription = Request.Form["DocumentDescription_" + documentID];
-                //        }
-
-                //        // Save the file (implement your logic for saving)
-                //        uploadedFile.SaveAs(Server.MapPath("~/Uploads/" + documentID + "_" + fileName));
-
-                //        // Save document metadata (implement your logic for database interaction)
-                //        //SaveDocumentMetadata(documentID, documentDescription); // Replace with your logic
-                //    }
-                //}
-
-
-
-
-                //foreach (HttpPostedFile uploadedFile in Request.Files)
-                //    {
-                //        if (uploadedFile.ContentLength > 0)
-                //        {
-                //            string fileName = uploadedFile.FileName;
-                //            string documentID = GetDocumentIDFromFileUploadID(uploadedFile.FileName);
-                //            string documentDescription = ""; // Access from description TextBox if applicable
-
-                //            // Get user-provided description (optional)
-                //            if (Request.Form["DocumentDescription_" + documentID] != null)
-                //            {
-                //                documentDescription = Request.Form["DocumentDescription_" + documentID];
-                //            }
-
-                //            // Save the file (implement your logic for saving)
-                //            uploadedFile.SaveAs(Server.MapPath("~/Uploads/" + documentID + "_" + fileName));
-
-                //            // Save document metadata (implement your logic for database interaction)
-                //            // SaveDocumentMetadata(documentID, documentDescription); // Replace with your logic
-                //        }
-                //    }
-
-
-
-
-                //foreach (Control controls in DocumentsTable.Rows)
-                //{
-                //    foreach (Control control in row.Controls)
-                //    {
-                //        if (control is HtmlTableRow)
-                //        {
-                //            HtmlTableRow htmlRow = (HtmlTableRow)control;
-
-                //            foreach (Control cellControl in htmlRow.Cells[1].Controls) // Assuming the FileUpload control is in the second cell (index 1)
-                //            {
-                //                if (cellControl is FileUpload)
-                //                { }
-                //            }
-                //        }
-                //    }
-
-
-
-
-
-
-
-
-                //foreach (Control control in Div1.Controls) // Assuming Div1 is the container holding the table
-                //    {
-                //        if (control is HtmlTableRow)
-                //        {
-                //            HtmlTableRow rows = (HtmlTableRow)control;
-                //            foreach (Control cellControl in rows.Cells[1].Controls) // Assuming the FileUpload control is in the second cell (index 1)
-                //            {
-                //                if (cellControl is FileUpload)
-                //                {
-                //                    FileUpload fileUpload = (FileUpload)cellControl;
-
-                //                    if (fileUpload.HasFile)
-                //                    {
-                //                        // Get the document ID from the FileUpload control's ID
-                //                        string documentId = fileUpload.ID.Replace("FileUpload_", "");
-
-                //                        // Save the uploaded document to the database
-                //                        // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
-                //                    }
-                //                }
-                //            }
-                //    }
-                //}
-
-                //asdasd
-
-
-                //foreach (Control control in DocumentsTable.Controls)
-                //    {
-                //        if (control is HtmlTableRow)
-                //        {
-                //            HtmlTableRow row = (HtmlTableRow)control;
-
-                //            // Assuming the FileUpload control is in the second cell (index 1)
-                //            if (row.Cells.Count > 1) // Ensure the row has at least two cells
-                //            {
-                //                HtmlTableCell secondCell = row.Cells[0];
-
-                //                foreach (Control cellControl in secondCell.Controls)
-                //                {
-                //                    string logMessage = "Control Type: " + cellControl.GetType().ToString() + "\n";
-                //                    if (cellControl is FileUpload)
-                //                    {
-                //                        FileUpload fileUpload = (FileUpload)cellControl;
-
-                //                        if (fileUpload.HasFile)
-                //                        {
-                //                            // Get the document ID from the FileUpload control's ID
-                //                            string documentId = fileUpload.ID.Replace("FileUpload_", "");
-
-                //                            // Save the uploaded document to the database
-                //                            // SaveDocumentToDatabase(documentId, fileUpload.FileBytes);
-                //                        }
-                //                    }
-                //                }
-                //            }
-                //        }
-                //    }
-
-                #endregion
+               
 
                 #region comments code for documents uploaded
                 //if (ddlDocumentFor.SelectedValue == "1" || ddlDocumentFor.SelectedItem.Text.Trim() == "Select All")
@@ -1058,8 +910,8 @@ namespace CEIHaryana.SiteOwnerPages
                 //    {
                 #endregion
 
+                //check is one checkbox is selected?
                 bool atLeastOneInspectionChecked = false;
-
                 foreach (GridViewRow rows in GridView1.Rows)
                 {
 
@@ -1264,7 +1116,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                                 string ext = FileUpload3.PostedFile.FileName.Split('.')[1];
                                 string path = "";
-                                path = "/Attachment/" + id + "/SingleLineDiagramOfLine/";
+                                path = "/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/";
                                 string fileName = "SingleLineDiagramOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                                 string filePathInfo2 = "";
                                 filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/" + fileName);
@@ -1274,9 +1126,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                             else
                             {
-
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
                             }
                         }
                     }
@@ -1363,17 +1213,17 @@ namespace CEIHaryana.SiteOwnerPages
                             if (FileUpload5.PostedFile.ContentLength <= maxFileSize)
                             {
                                 FileName = Path.GetFileName(FileUpload5.PostedFile.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/")))
+                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/")))
                                 {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/"));
+                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/"));
                                 }
 
                                 string ext = FileUpload5.PostedFile.FileName.Split('.')[1];
                                 string path = "";
-                                path = "/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/";
+                                path = "/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/";
                                 string fileName = "InvoiceOfTransferOfPersonalSubstation" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                                 string filePathInfo2 = "";
-                                filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/" + fileName);
+                                filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/" + fileName);
                                 FileUpload5.PostedFile.SaveAs(filePathInfo2);
                                 flpPhotourl5 = path + fileName;
                             }
@@ -1391,24 +1241,23 @@ namespace CEIHaryana.SiteOwnerPages
                             if (FileUpload6.PostedFile.ContentLength <= maxFileSize)
                             {
                                 FileName = Path.GetFileName(FileUpload6.PostedFile.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/")))
+                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/")))
                                 {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/"));
+                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/"));
                                 }
 
                                 string ext = FileUpload6.PostedFile.FileName.Split('.')[1];
                                 string path = "";
-                                path = "/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/";
+                                path = "/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/";
                                 string fileName = "ManufacturingTestCertificateOfTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                                 string filePathInfo2 = "";
-                                filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/" + fileName);
+                                filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/" + fileName);
                                 FileUpload6.PostedFile.SaveAs(filePathInfo2);
                                 flpPhotourl6 = path + fileName;
                             }
                             else
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
                             }
                         }
 
@@ -1436,7 +1285,6 @@ namespace CEIHaryana.SiteOwnerPages
                             else
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
                             }
                         }
 
@@ -1447,17 +1295,17 @@ namespace CEIHaryana.SiteOwnerPages
                             if (FileUpload8.PostedFile.ContentLength <= maxFileSize)
                             {
                                 FileName = Path.GetFileName(FileUpload8.PostedFile.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/")))
+                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/")))
                                 {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/"));
+                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/"));
                                 }
 
                                 string ext = FileUpload8.PostedFile.FileName.Split('.')[1];
                                 string path = "";
-                                path = "/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/";
+                                path = "/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/";
                                 string fileName = "InvoiceoffireExtinguisheratSite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                                 string filePathInfo2 = "";
-                                filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/" + fileName);
+                                filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/" + fileName);
                                 FileUpload8.PostedFile.SaveAs(filePathInfo2);
                                 flpPhotourl8 = path + fileName;
                             }
@@ -1482,7 +1330,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 {
                                     Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/"));
                                 }
-
                                 string ext = FileUpload9.PostedFile.FileName.Split('.')[1];
                                 string path = "";
                                 path = "/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/";
@@ -1497,6 +1344,10 @@ namespace CEIHaryana.SiteOwnerPages
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
 
                             }
+                        }
+                        else
+                        {
+
                         }
 
                         fileExtension2 = Path.GetExtension(FileUpload10.FileName);
@@ -1629,27 +1480,27 @@ namespace CEIHaryana.SiteOwnerPages
                             txttransactionId.Focus();                            
                             return;
                         }
-                    }  
-                    
-                    CEI.InsertInspectionData(txtContact.Text, id, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                        LineLength, Count, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,/* Assign,*/ District, To, txtDate.Text, CreatedBy,txtPayment.Text.Trim(), transcationId, TranscationDate,ChallanAttachment);
+                    }
+
+                    //CEI.InsertInspectionData(txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                    //    LineLength, Count, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
+                    //flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12,/* Assign,*/ District, To, txtDate.Text, CreatedBy,txtPayment.Text.Trim(), transcationId, TranscationDate,ChallanAttachment);
 
 
-                    string generatedId = CEI.InspectionId();                    
-                    Session["PendingPaymentId"] = generatedId;
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
-                    Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+                    // string generatedId = CEI.InspectionId();                    
+                    //  Session["PendingPaymentId"] = generatedId;
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectData();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    //Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please First tick the any one installation for inspection')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please First tick the any one installation for inspection')", true);
                 }
 
             }
             catch (Exception ex)
-            {
-                //
+            {                
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
                 return;
             }
@@ -1690,11 +1541,17 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        protected void ChallanUpload_Click(object sender, EventArgs e)
+        protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //btnSubmit.Visible = true;
             ChallanDetail.Visible = true;
-            txtInspectionDetails.Text = Session["SiteOwnerId"].ToString() + "-" + Session["SelectedCategory"].ToString() + "-" + Session["SelectedVoltageLevel"].ToString();
-        }
+            if (RadioButtonList2.SelectedValue == "0")
+            {
+                ChallanDetail.Visible = false;
+            }
+            else if (RadioButtonList2.SelectedValue == "1")
+            {
+                ChallanDetail.Visible = true;
+            }
+        }       
     }
 } 

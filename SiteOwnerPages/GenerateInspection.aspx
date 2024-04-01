@@ -238,6 +238,7 @@
                                         <asp:Label ID="lblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label> 
                                         <asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>
+                                        <asp:Label ID="lblApplicantTypeCode" runat="server" Text='<%#Eval("ApplicantTypeCode") %>'></asp:Label>
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -603,11 +604,18 @@
                             </div>
                                 </div>
                             <div class="col-6" style="margin-bottom: auto;">
-                            <asp:Button type="submit" ID="btnOnline" ValidationGroup="Submit"  disabled="true" Text="Online Payment" runat="server" class="btn btn-primary mr-2" />
-                   
+
+                                 Paymant Mode
+               <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                   <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
+                   <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
+               </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
+                        </div>
+                           <%-- <asp:Button type="submit" ID="btnOnline" ValidationGroup="Submit"  disabled="true" Text="Online Payment" runat="server" class="btn btn-primary mr-2" />                   
                 <asp:Button type="submit" ID="ChallanUpload"  Text="Offline" runat="server" class="btn btn-primary mr-2" onclick="ChallanUpload_Click" />
                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>     
-                        </div>
+                        </div>--%>
                             </div>
                 
 
@@ -651,8 +659,8 @@
                 <div>
                     <div class="row">
                         <div class="col-4"></div>
-                        <div class="col-4" style="text-align: center;">
-                            <asp:Button ID="btnSubmit" Text="Submit" runat="server"  ValidationGroup="Submit"  class="btn btn-primary mr-2"
+                        <div class="col-4" style="text-align: center;"><%--ValidationGroup="Submit" --%>
+                            <asp:Button ID="btnSubmit" Text="Submit" runat="server"   class="btn btn-primary mr-2"
                                 OnClick="btnSubmit_Click" />
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
@@ -673,7 +681,7 @@
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Inspection Added Successfully')) {
-                window.location.href = "/SiteOwnerPages/PaymentPage.aspx";
+                window.location.href = "/SiteOwnerPages/InspectionHistory.aspx";
             } else {
             }
         }

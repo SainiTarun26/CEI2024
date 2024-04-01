@@ -15,13 +15,13 @@ namespace CEIHaryana.SiteOwnerPages
     {
 
         /// <summary>
-        /// Inspection control.
+        /// Inspections control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-       // protected global::System.Web.UI.HtmlControls.HtmlGenericControl Inspection;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Inspections;
 
         /// <summary>
         /// txtPremises control.
@@ -96,13 +96,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr1;
 
         /// <summary>
-        /// lnkLetter control.
+        /// lnkRequestLetterFromConcernedOfficer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkLetter;
+        protected global::System.Web.UI.WebControls.LinkButton lnkRequestLetterFromConcernedOfficer;
 
         /// <summary>
         /// RejectedColumnData1 control.
@@ -132,13 +132,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr2;
 
         /// <summary>
-        /// lnktest control.
+        /// lnkManufacturingReportEquipment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnktest;
+        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturingReportEquipment;
 
         /// <summary>
         /// RejectedColumnData2 control.
@@ -177,13 +177,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr3;
 
         /// <summary>
-        /// lnkDiag control.
+        /// lnkSingleLineDiagramLine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDiag;
+        protected global::System.Web.UI.WebControls.LinkButton lnkSingleLineDiagramLine;
 
         /// <summary>
         /// RejectedColumnData3 control.
@@ -222,13 +222,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr4;
 
         /// <summary>
-        /// lnkCopy control.
+        /// lnkCopyDemandNoticeIssuedByUHDVN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCopy;
+        protected global::System.Web.UI.WebControls.LinkButton lnkCopyDemandNoticeIssuedByUHDVN;
 
         /// <summary>
         /// RejectedColumnData4 control.
@@ -294,13 +294,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr6;
 
         /// <summary>
-        /// lnkManufacturing control.
+        /// lnkManufacturingCertificateTransformer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturing;
+        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturingCertificateTransformer;
 
         /// <summary>
         /// RejectedColumnData6 control.
@@ -330,13 +330,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr7;
 
         /// <summary>
-        /// lnkSingleDiag control.
+        /// lnkSingleDiagTransformer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSingleDiag;
+        protected global::System.Web.UI.WebControls.LinkButton lnkSingleDiagTransformer;
 
         /// <summary>
         /// RejectedColumnData7 control.
@@ -366,13 +366,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr8;
 
         /// <summary>
-        /// lnkInvoiceFire control.
+        /// lnkInvoiceFireExtinguisher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceFire;
+        protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceFireExtinguisher;
 
         /// <summary>
         /// RejectedColumnData8 control.
@@ -411,13 +411,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr9;
 
         /// <summary>
-        /// lnkDGSetInvoice control.
+        /// lnkInvoiceDGSet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDGSetInvoice;
+        protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceDGSet;
 
         /// <summary>
         /// RejectedColumnData9 control.
@@ -447,13 +447,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr10;
 
         /// <summary>
-        /// lnkManufacturingCertificate control.
+        /// lnkManufacturingCertificateDGSet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturingCertificate;
+        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturingCertificateDGSet;
 
         /// <summary>
         /// RejectedColumnData10 control.
@@ -483,13 +483,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr13;
 
         /// <summary>
-        /// lnkInvoice control.
+        /// lnkInvoicefireExtinguisherInstallOnsite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkInvoice;
+        protected global::System.Web.UI.WebControls.LinkButton lnkInvoicefireExtinguisherInstallOnsite;
 
         /// <summary>
         /// RejectedColumnData11 control.
@@ -519,13 +519,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr11;
 
         /// <summary>
-        /// lnkStructure control.
+        /// lnkStructureStabilityReportAutorizeEngineer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkStructure;
+        protected global::System.Web.UI.WebControls.LinkButton lnkStructureStabilityReportAutorizeEngineer;
 
         /// <summary>
         /// RejectedColumnData12 control.
@@ -555,13 +555,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow LinePersonal;
 
         /// <summary>
-        /// lnkDocument control.
+        /// lnkDemandNotice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDocument;
+        protected global::System.Web.UI.WebControls.LinkButton lnkDemandNotice;
 
         /// <summary>
         /// RejectedColumnData13 control.
@@ -582,15 +582,6 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.FileUpload FileUpload12;
 
         /// <summary>
-        /// txtTestReportId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
-
-        /// <summary>
         /// lnkRedirect control.
         /// </summary>
         /// <remarks>
@@ -598,6 +589,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkRedirect;
+
+        /// <summary>
+        /// txtTestReportId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
 
         /// <summary>
         /// ApprovalRequired control.

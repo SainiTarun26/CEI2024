@@ -174,7 +174,7 @@ namespace CEIHaryana.Officers
             {
                 Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
             }
-            else if (txtWorkType.Text.Trim() == "Generating Station")
+            else if (txtWorkType.Text.Trim() == "Generating Set")
             {
                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
             }
@@ -402,6 +402,7 @@ namespace CEIHaryana.Officers
                         //if (Session["Area"] != null)
                         //{
                             Response.Redirect("/Officers/InProcessRequest.aspx", false);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alertWithRedirectdata;", true);
                         //}
                         //else
                         //{
@@ -425,10 +426,9 @@ namespace CEIHaryana.Officers
             //
             }
         }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
+            Response.Redirect("/Officers/InProcessRequest.aspx", false);
         }
 
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)

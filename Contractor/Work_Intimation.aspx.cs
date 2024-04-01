@@ -544,12 +544,15 @@ namespace CEIHaryana.Contractor
                                 return;
                             }
                         }
-                        string PowerUtilityType= ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString();
-                        string PowerUtilityWing = ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString();
+                        if (ddlApplicantType.SelectedValue == "0" && ddlApplicantType.SelectedValue == "")
+                        {
+                            Response.Write("<script>alert('Please select Applicant Type');</script>");
+                            return;
+                        }
 
                         hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(UpdationId, ContractorID, PowerUtilityType,
-                            PowerUtilityWing, txtTanNumber.Text.Trim(),
+                        CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlApplicantType.SelectedValue, ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
+                            ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(), txtTanNumber.Text.Trim(),
                             ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
                             txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
                             ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,

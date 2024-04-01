@@ -275,8 +275,8 @@ namespace CEI_PRoject.Admin
                     GetIP();
                     REID = hdnId.Value;
                     string Createdby = Convert.ToString(Session["AdminID"]);
-                    CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text, txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
-                    ddlState.SelectedItem.ToString(), txtPincode.Text, txtContect.Text, Qualification, txtEmail.Text, txtCertifacateOld.Text, txtCertificateNew.Text,
+                    CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                    ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
                     txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
                     Createdby, UserId, ipaddress);
 
@@ -291,7 +291,6 @@ namespace CEI_PRoject.Admin
                     {
                         DataSaved.Visible = true;
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-
 
                     }
                     Reset();

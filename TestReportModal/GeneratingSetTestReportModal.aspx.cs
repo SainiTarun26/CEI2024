@@ -424,7 +424,9 @@ namespace CEIHaryana.TestReportModal
         {
             if (btnNext.Text.Trim() == "Back")
             {
+               
                 Response.Redirect("/Officers/Inspection.aspx", false);
+
             }
             else
             {

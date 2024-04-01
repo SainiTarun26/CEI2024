@@ -156,7 +156,7 @@
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="row">
-                <div class="col-4" id="Inspection" runat="server" visible="false">
+                <div class="col-4" id="Inspections" runat="server" visible="false">
                     <label>
                         Type of Inspection
                     <samp style="color: red">* </samp>
@@ -201,6 +201,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         <div id="LineSubstationSupplier" runat="server" visible="false" >
                             <tr id="Tr1" runat="server">
                                 <td>
@@ -211,7 +212,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <asp:LinkButton ID="lnkLetter" runat="server" AutoPostBack="true" OnClick="lnkLetter_Click" Text="Open Document" />
+                                    <asp:LinkButton ID="lnkRequestLetterFromConcernedOfficer" runat="server" AutoPostBack="true" OnClick="lnkRequestLetterFromConcernedOfficer_Click" Text="Click here to view document" />
 
                                 </td>
                                 <td id="RejectedColumnData1" runat="server" visible="false"> 
@@ -227,7 +228,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnktest_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkManufacturingReportEquipment" runat="server" AutoPostBack="true" OnClick="lnkManufacturingReportEquipment_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                 <td id="RejectedColumnData2" runat="server" visible="false">
@@ -245,7 +246,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkDiag" runat="server" AutoPostBack="true" OnClick="lnkDiag_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkSingleLineDiagramLine" runat="server" AutoPostBack="true" OnClick="lnkSingleLineDiagramLine_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData3" runat="server" visible="false">
@@ -263,7 +264,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkCopy" runat="server" AutoPostBack="true" OnClick="lnkCopy_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkCopyDemandNoticeIssuedByUHDVN" runat="server" AutoPostBack="true" OnClick="lnkCopyDemandNoticeIssuedByUHDVN_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData4" runat="server" visible="false"> 
@@ -279,7 +280,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoice_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceTransformer_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData5" runat="server" visible="false">
@@ -295,7 +296,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                           <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkManufacturing_Click" Text="Open Document" />
+                                           <asp:LinkButton ID="lnkManufacturingCertificateTransformer" runat="server" AutoPostBack="true" OnClick="lnkManufacturingCertificateTransformer_Click" Text="Click here to view document" />
                                    
                                                       </div>
                                 </td>
@@ -312,7 +313,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkSingleDiag" runat="server" AutoPostBack="true" OnClick="lnkSingleDiag_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkSingleDiagTransformer" runat="server" AutoPostBack="true" OnClick="lnkSingleDiagTransformer_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData7" runat="server" visible="false">
@@ -328,7 +329,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoiceFire" runat="server" AutoPostBack="true" OnClick="lnkInvoiceFire_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkInvoiceFireExtinguisher" runat="server" AutoPostBack="true" OnClick="lnkInvoiceFireExtinguisher_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData8" runat="server" visible="false">
@@ -346,7 +347,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkDGSetInvoice" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkInvoiceDGSet" runat="server" AutoPostBack="true" OnClick="lnkInvoiceDGSet_Click" Text="Click here to view document" />
 
                                     </div>
                                 </td>
@@ -363,7 +364,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkManufacturingCertificate" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkManufacturingCertificateDGSet" runat="server" AutoPostBack="true" OnClick="lnkManufacturingCertificateDGSet_Click" Text="Click here to view document" />
 
                                     </div>
                                 </td>
@@ -380,7 +381,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoice" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkInvoicefireExtinguisherInstallOnsite" runat="server" AutoPostBack="true" OnClick="lnkInvoicefireExtinguisherInstallOnsite_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData11" runat="server" visible="false">
@@ -396,7 +397,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkStructure" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkStructureStabilityReportAutorizeEngineer" runat="server" AutoPostBack="true" OnClick="lnkStructureStabilityReportAutorizeEngineer_Click" Text="Click here to view document" />
                                     </div>
                                 </td>
                                  <td id="RejectedColumnData12" runat="server" visible="false">
@@ -414,7 +415,7 @@
                             </td>
                             <td>
                                 <div class="col-12">
-                                    <asp:LinkButton ID="lnkDocument" runat="server" AutoPostBack="true" onclick="lnkDocument_Click" Text="Open Document" />
+                                    <asp:LinkButton ID="lnkDemandNotice" runat="server" AutoPostBack="true" onclick="lnkDemandNotice_Click" Text="Click here to view document" />
 
                                 </div>
                             </td>
@@ -422,7 +423,18 @@
                                     <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px;" />
                                 </td>
                         </tr>
-
+                        <tr>
+                            <td>
+                            <div class="col-12">
+                                    Demand Notice 
+                            </div>
+                                </td>
+                            <td>
+                                 <div class="col-12">
+                                 <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+                                 </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -432,10 +444,10 @@
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
-                <div class="col-4" style="text-align: center">
+               <%-- <div class="col-4" style="text-align: center">
 
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
-                </div>
+                </div>--%>
             </div>
 
             <div class="row">

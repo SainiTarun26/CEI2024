@@ -348,13 +348,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr10;
 
         /// <summary>
-        /// lnkManufacturingCertificate control.
+        /// lnkManufacturingCertificateDGSet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturingCertificate;
+        protected global::System.Web.UI.WebControls.LinkButton lnkManufacturingCertificateDGSet;
 
         /// <summary>
         /// Tr13 control.
@@ -366,13 +366,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr13;
 
         /// <summary>
-        /// lnkInvoice control.
+        /// lnkInvoiceFireExtinguisherAppartusinstalsite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkInvoice;
+        protected global::System.Web.UI.WebControls.LinkButton lnkInvoiceFireExtinguisherAppartusinstalsite;
 
         /// <summary>
         /// Tr11 control.
@@ -384,13 +384,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr11;
 
         /// <summary>
-        /// lnkStructure control.
+        /// lnkStructureStability control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkStructure;
+        protected global::System.Web.UI.WebControls.LinkButton lnkStructureStability;
 
         /// <summary>
         /// LinePersonal control.
@@ -402,13 +402,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlTableRow LinePersonal;
 
         /// <summary>
-        /// lnkDocument control.
+        /// lnkDemandNotice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDocument;
+        protected global::System.Web.UI.WebControls.LinkButton lnkDemandNotice;
 
         /// <summary>
         /// Tr12 control.

@@ -153,7 +153,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+          <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                 
+
+                </asp:UpdatePanel>--%>
             <div class="row">
+                
+                    
                 <div class="col-4" runat="server">
                     <label>Inspection Report Id</label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -367,7 +374,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkManufacturingCertificate" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                            <asp:LinkButton ID="lnkManufacturingCertificateDGSet" runat="server" AutoPostBack="true" OnClick="lnkManufacturingCertificateDGSet_Click" Text="Open Document" />
 
                                         </div>
                                     </td>
@@ -381,7 +388,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkInvoice" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                            <asp:LinkButton ID="lnkInvoiceFireExtinguisherAppartusinstalsite" runat="server" AutoPostBack="true" OnClick="lnkInvoiceFireExtinguisherAppartusinstalsite_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -394,7 +401,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkStructure" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                            <asp:LinkButton ID="lnkStructureStability" runat="server" AutoPostBack="true" OnClick="lnkStructureStability_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -408,7 +415,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkDocument" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkDemandNotice" runat="server" AutoPostBack="true" OnClick="lnkDemandNotice_Click" Text="Open Document" />
                                     </div>
                                 </td>
                             </tr>
@@ -480,7 +487,10 @@
                     <asp:TextBox class="form-control" ID="txtAdditionalNotes" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     --%>
                 </div>
+               <%--<ContentTemplate>
+ </ContentTemplate>--%>
             </div>
+       
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">

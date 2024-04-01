@@ -294,9 +294,10 @@
                                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                 <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
-                                                <asp:ListItem Text="Private/Personal Installation" Value="2"></asp:ListItem>
-                                                <asp:ListItem Text="Power Utility" Value="1"></asp:ListItem>                                                 
-                                                <asp:ListItem Text="Other Department/Organization" Value="3"></asp:ListItem> 
+                                                <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
+                                                <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>                                                 
+                                                <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem> 
+                                                <asp:ListItem Text="Industry" Value="AT004"></asp:ListItem>                                                  
 
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />

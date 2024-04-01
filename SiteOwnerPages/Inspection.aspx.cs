@@ -295,22 +295,22 @@ namespace CEIHaryana.SiteOwnerPages
                 //
             }
         }
-        #region for open document
-        protected void lnkInvoice_Click(object sender, EventArgs e)
-        {
-            string fileName = Session["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-            }
-            else
-            {
-            }
+       // #region for open document
+        //protected void lnkInvoice_Click(object sender, EventArgs e)
+        //{
+        //    string fileName = Session["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    }
+        //    else
+        //    {
+        //    }
 
-        }
+        //}
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             Session["InspectionTestReportId"] = txtTestReportId.Text;
@@ -328,181 +328,182 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
-        protected void lnkDocument_Click(object sender, EventArgs e)
-        {
+        #region
+        //protected void lnkDocument_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["DemandNoticeOfLine"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["DemandNoticeOfLine"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-            }
-        }
-        protected void lnkInvoiceFire_Click(object sender, EventArgs e)
-        {
+        //    }
+        //}
+        //protected void lnkInvoiceFire_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
-            }
-        }
-        protected void lnkSingleDiag_Click(object sender, EventArgs e)
-        {
+        //    }
+        //    else
+        //    {
+        //    }
+        //}
+        //protected void lnkSingleDiag_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["SingleLineDiagramofTransformer"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["SingleLineDiagramofTransformer"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
-            }
-        }
-        protected void lnkManufacturing_Click(object sender, EventArgs e)
-        {
+        //    }
+        //    else
+        //    {
+        //    }
+        //}
+        //protected void lnkManufacturing_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
-            }
-        }
-        protected void lnkInvoiceTransformer_Click(object sender, EventArgs e)
-        {
+        //    }
+        //    else
+        //    {
+        //    }
+        //}
+        //protected void lnkInvoiceTransformer_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["InvoiceOfTransferOfPersonalSubstation"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["InvoiceOfTransferOfPersonalSubstation"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
-            }
-        }
-        protected void lnkCopy_Click(object sender, EventArgs e)
-        {
+        //    }
+        //    else
+        //    {
+        //    }
+        //}
+        //protected void lnkCopy_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
-            }
-        }
-        protected void lnkStructure_Click(object sender, EventArgs e)
-        {
+        //    }
+        //    else
+        //    {
+        //    }
+        //}
+        //protected void lnkStructure_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-            }
-        }
-        protected void lnkLetter_Click(object sender, EventArgs e)
-        {
+        //    }
+        //}
+        //protected void lnkLetter_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["RequestLetterFromConcernedOfficer"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["RequestLetterFromConcernedOfficer"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-            }
-        }
-        protected void lnktest_Click(object sender, EventArgs e)
-        {
+        //    }
+        //}
+        //protected void lnktest_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-            }
-        }
-        protected void lnkDiag_Click(object sender, EventArgs e)
-        {
+        //    }
+        //}
+        //protected void lnkDiag_Click(object sender, EventArgs e)
+        //{
 
-            string fileName = Session["SingleLineDiagramOfLine"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
+        //    string fileName = Session["SingleLineDiagramOfLine"].ToString();
+        //    string folderPath = Server.MapPath(fileName);
+        //    string filePath = Path.Combine(folderPath);
 
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //    if (File.Exists(filePath))
+        //    {
+        //        string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+        //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-            }
-        }
+        //    }
+        //}
         #endregion
         protected void btnBack_Click(object sender, EventArgs e)
         {
@@ -870,6 +871,231 @@ namespace CEIHaryana.SiteOwnerPages
             else
             {
                 Response.Redirect("/login.aspx");
+            }
+        }
+
+        protected void lnkRequestLetterFromConcernedOfficer_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["RequestLetterFromConcernedOfficer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkManufacturingReportEquipment_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["ManufacturingTestReportOfEqipment"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkSingleLineDiagramLine_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["SingleLineDiagramOfLine"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('File Path Does Not Exist');", true);
+            }
+        }
+
+        protected void lnkCopyDemandNoticeIssuedByUHDVN_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkInvoiceTransformer_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["InvoiceOfTransferOfPersonalSubstation"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkManufacturingCertificateTransformer_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["ManufacturingTestCertificateOfTransformer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+            }
+        }
+
+        protected void lnkSingleDiagTransformer_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["SingleLineDiagramofTransformer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkInvoiceFireExtinguisher_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkInvoiceDGSet_Click(object sender, EventArgs e)
+        {
+
+            string fileName = Session["InvoiceOfDGSetOfGeneratingSet"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkManufacturingCertificateDGSet_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["ManufacturingCerificateOfDGSet"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkInvoicefireExtinguisherInstallOnsite_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkStructureStabilityReportAutorizeEngineer_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void lnkDemandNotice_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["DemandNoticeOfLine"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
             }
         }
     }

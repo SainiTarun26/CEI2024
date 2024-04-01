@@ -15,9 +15,8 @@ namespace CEIHaryana.Officers
     {
 
         CEI CEI = new CEI();
-        private static string count = "";
-        private static string IntimationId = "";
-        private static string AcceptorReturn, Reason, StaffId, ApprovedorReject;
+        private static int count;       
+        private static string IntimationId, AcceptorReturn, Reason, StaffId;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -105,7 +104,7 @@ namespace CEIHaryana.Officers
                 txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
 
-                count = ds.Tables[0].Rows[0]["TestReportCount"].ToString();           //Added     
+                count = Convert.ToInt32( ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 
                 //txtAdditionalNotes.Text = ds.Tables[0].Rows[0]["AdditionalNotes"].ToString();
@@ -184,23 +183,8 @@ namespace CEIHaryana.Officers
             }
 
         }
-        protected void lnkDocument_Click(object sender, EventArgs e)
-        {
 
-            string fileName = Session["DemandNoticeOfLine"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-            }
-            else
-            {
-
-            }
-        }
+        //transformer
         protected void lnkInvoiceFire_Click(object sender, EventArgs e)
         {
             try
@@ -320,29 +304,7 @@ namespace CEIHaryana.Officers
 
             }
         }
-        protected void lnkStructure_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
-                string folderPath = Server.MapPath(fileName);
-                string filePath = Path.Combine(folderPath);
-
-                if (File.Exists(filePath))
-                {
-                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-
-                }
-                else
-                {
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
+        //End transformer
         protected void lnkLetter_Click(object sender, EventArgs e)
         {
             try
@@ -392,6 +354,7 @@ namespace CEIHaryana.Officers
 
             }
         }
+        //Line
         protected void lnkDiag_Click(object sender, EventArgs e)
         {
             try
@@ -416,7 +379,121 @@ namespace CEIHaryana.Officers
 
             }
         }
+        protected void lnkDemandNotice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Session["DemandNoticeOfLine"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
 
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        
+
+        //GeneratorSet document
+        protected void lnkDocument_Click(object sender, EventArgs e)
+        {
+
+            string fileName =  Session["InvoiceOfDGSetOfGeneratingSet"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+
+            }
+        }
+        protected void lnkManufacturingCertificateDGSet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Session["ManufacturingCerificateOfDGSet"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        protected void lnkStructureStability_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Session["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        protected void lnkInvoiceFireExtinguisherAppartusinstalsite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Session["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+
+                if (File.Exists(filePath))
+                {
+                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        //End generatorset document
+        #endregion
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -438,7 +515,6 @@ namespace CEIHaryana.Officers
             }
 
         }
-
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if (ddlReview.SelectedValue == "2")
@@ -450,7 +526,7 @@ namespace CEIHaryana.Officers
             //    Rejection.Visible = false;
             //}
         }
-        #endregion
+       
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -460,22 +536,26 @@ namespace CEIHaryana.Officers
                 {
                     StaffId = Session["StaffID"].ToString();
                     ID = Session["InspectionId"].ToString();
-                    
+
                     if (RadioButtonList2.SelectedValue != "" && RadioButtonList2.SelectedValue != null)
                     {
                         AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
-                    }
-                    
-                    Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
-                    CEI.updateInspection(ID,StaffId,IntimationId,count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);                    
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    if (Session["Area"] != null)
-                    {
-                        Response.Redirect("/Officers/OfficerDashboard.aspx", false);
+                        Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
+
+                        CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        if (Session["Area"] != null)
+                        {
+                          Response.Redirect("/Officers/OfficerDashboard.aspx", false);
+                        }
+                        else
+                        {
+                          Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
+                        }
                     }
                     else
                     {
-                        Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the yes or no');",true);
                     }
                 }
                 else

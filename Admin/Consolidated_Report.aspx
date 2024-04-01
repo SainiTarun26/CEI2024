@@ -359,7 +359,7 @@
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlStatus" TabIndex="8" runat="server" AutoPostBack="true">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                <asp:ListItem Value="1" Text="Initiated"></asp:ListItem>
+                                <asp:ListItem Value="1" Text="Submit"></asp:ListItem>
                                 <asp:ListItem Value="2" Text="Accepted"></asp:ListItem>
                                 <asp:ListItem Value="3" Text="Rejected"></asp:ListItem>
                                 <asp:ListItem Value="4" Text="Pending"></asp:ListItem>
@@ -408,7 +408,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("AcceptedOrRejected") %>'></asp:Label>
+                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -442,7 +442,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status">
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>

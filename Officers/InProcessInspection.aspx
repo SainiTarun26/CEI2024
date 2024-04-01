@@ -127,6 +127,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+
+               
             <div class="row">
                 <div class="col-4" runat="server">
                     <label>Inspection Report Id</label>
@@ -394,6 +399,8 @@
             </div>
         </div>
     </div>
+     </ContentTemplate>
+            </asp:UpdatePanel>
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4" style="text-align: center;">
@@ -403,7 +410,8 @@
     </div>
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            if (confirm('Your Inspection will be in progress')) {
+            if (confirm('Your Inspection will be in sucessful')) {
+                window.location.href = "/SiteOwnerPages/InProcessRequest.aspx";
             } else {
             }
         }
