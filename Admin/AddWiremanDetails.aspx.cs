@@ -249,7 +249,7 @@ namespace CEI_PRoject.Admin
                     Qualification = ddlQualification.SelectedValue;
 
                 }
-                if (txtCertificateNew.Text != "")
+                if (txtCertificateNew.Text != "" && txtCertificateNew.Text != "NA")
                 {
                     UserId = txtCertificateNew.Text;
                 }

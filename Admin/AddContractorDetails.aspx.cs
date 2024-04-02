@@ -28,8 +28,7 @@ namespace CEI_PRoject.Admin
                     {
                         ddlLoadBindVoltage();
                         ddlLoadBindState();
-                        //ddlLoadBindDistrict();
-                        ddlLoadBindDistrictddl();
+                        ddlLoadBindBranchState();                       
                         if (Convert.ToString(Session["ID"]) == null || Convert.ToString(Session["ID"]) == "")
                         {
 
@@ -53,9 +52,8 @@ namespace CEI_PRoject.Admin
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 Response.Redirect("/Login.aspx");
             }
         }
@@ -89,17 +87,17 @@ namespace CEI_PRoject.Admin
                 ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
                 dsDistrict.Clear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //msg.Text = ex.Message;
             }
         }
-
-        private void ddlLoadBindDistrictddl()
+        
+        private void ddlLoadBindDistrictddl(string state)
         {
             try
             {
-                string state = "Haryana";
+                //string state = "Haryana";
                 DataSet dsDistrict = new DataSet();
                 dsDistrict = CEI.GetddlDrawDistrict(state);
                 ddlDistrict1.DataSource = dsDistrict;
@@ -109,7 +107,7 @@ namespace CEI_PRoject.Admin
                 ddlDistrict1.Items.Insert(0, new ListItem("Select", "0"));
                 dsDistrict.Clear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //msg.Text = ex.Message;
             }
@@ -136,9 +134,28 @@ namespace CEI_PRoject.Admin
                 ddlState.Items.Insert(0, new ListItem("Select", "0"));
                 dsState.Clear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //msg.Text = ex.Message;
+            }
+        }
+
+        private void ddlLoadBindBranchState()
+        {
+            try
+            {
+                DataSet dsState = new DataSet();
+                dsState = CEI.GetddlDrawState();
+                ddlBranchState.DataSource = dsState;
+                ddlBranchState.DataTextField = "StateName";
+                ddlBranchState.DataValueField = "StateID";
+                ddlBranchState.DataBind();
+                ddlBranchState.Items.Insert(0, new ListItem("Select", "0"));
+                dsState.Clear();
+            }
+            catch (Exception ex)
+            { 
+                // msg.Text = ex.Message;
             }
         }
 
@@ -167,7 +184,7 @@ namespace CEI_PRoject.Admin
             string dp_Id15 = ds.Tables[0].Rows[0]["LicenceNew"].ToString();
             string dp_Id16 = ds.Tables[0].Rows[0]["BranchDistrictoffirm"].ToString();
             string dp_Id17 = ds.Tables[0].Rows[0]["BranchPinCode"].ToString();
-
+            string BranchState = ds.Tables[0].Rows[0]["BranchState"].ToString();
             txtName.Text = dp_Id;
             txtFatherName.Text = dp_Id1;
             txtRegisteredOffice.Text = dp_Id18;
@@ -175,7 +192,12 @@ namespace CEI_PRoject.Admin
             txtFirmName.Text = dp_Id2;
             txtGST.Text = dp_Id3;
             ddlLoadBindState();
-            ddlLoadBindDistrictddl();
+            // ddlLoadBindDistrictddl();
+
+            ddlLoadBindBranchState();
+            ddlBranchState.SelectedIndex = ddlBranchState.Items.IndexOf(ddlBranchState.Items.FindByText(BranchState));
+            ddlLoadBindDistrictddl(BranchState);
+
             ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id4));
             ddlLoadBindDistrict(dp_Id4);
             ddlDistrict.SelectedValue = dp_Id5;
@@ -199,38 +221,38 @@ namespace CEI_PRoject.Admin
                 txtBranchOffice.Text = txtRegisteredOffice.Text;
                 ddlDistrict1.SelectedValue = ddlDistrict.SelectedValue;
                 txtPinCode1.Text = txtPinCode.Text;
-                txtBranchOffice.Enabled = false;
+                txtBranchOffice.Enabled = true;
                 txtBranchOffice.Style.Add("width", "inherit");
                 txtBranchOffice.Style.Add("height", "30px");
                 txtBranchOffice.Style.Add("border-radius", ".25rem");
 
 
-                ddlDistrict1.Enabled = false;
+                ddlDistrict1.Enabled = true;
                 ddlDistrict1.Style.Add("width", "inherit");
                 ddlDistrict1.Style.Add("height", "30px");
                 ddlDistrict1.Style.Add("border-radius", ".25rem");
 
-                txtPinCode1.Enabled = false;
+                txtPinCode1.Enabled = true;
                 txtPinCode1.Style.Add("width", "inherit");
                 txtPinCode1.Style.Add("height", "30px");
                 txtPinCode1.Style.Add("border-radius", ".25rem");
 
-                txtRegisteredOffice.Enabled = false;
+                txtRegisteredOffice.Enabled = true;
                 txtRegisteredOffice.Style.Add("width", "inherit");
                 txtRegisteredOffice.Style.Add("height", "30px");
                 txtRegisteredOffice.Style.Add("border-radius", ".25rem");
 
-                ddlState.Enabled = false;
+                ddlState.Enabled = true;
                 ddlState.Style.Add("width", "inherit");
                 ddlState.Style.Add("height", "30px");
                 ddlState.Style.Add("border-radius", ".25rem");
 
-                ddlDistrict.Enabled = false;
+                ddlDistrict.Enabled = true;
                 ddlDistrict.Style.Add("width", "inherit");
                 ddlDistrict.Style.Add("height", "30px");
                 ddlDistrict.Style.Add("border-radius", ".25rem");
 
-                txtPinCode.Enabled = false;
+                txtPinCode.Enabled = true;
                 txtPinCode.Style.Add("width", "inherit");
                 txtPinCode.Style.Add("height", "30px");
                 txtPinCode.Style.Add("border-radius", ".25rem");
@@ -274,15 +296,16 @@ namespace CEI_PRoject.Admin
                         if (Createdby == null || Createdby == "")
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+                            return;
                         }
                         else
                         {
                             GetIP();
                             CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
-                            ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                            ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, ddlBranchState.SelectedItem.ToString(),
                             ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
                             txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-                            txtLicenceOld.Text, txtLicenceNew.Text, Createdby, ipaddress);
+                            txtLicenceOld.Text, txtLicenceNew.Text, ipaddress, Createdby);
                             Session["ID"] = "";
                             Reset();
                             regexValidatorGST.Visible = false;
@@ -332,7 +355,7 @@ namespace CEI_PRoject.Admin
                                 {
                                     GetIP();
                                     CEI.InsertContractorData(REID, UserId, txtName.Text.ToUpper(), txtFatherName.Text.ToUpper(), txtFirmName.Text, txtGST.Text, txtRegisteredOffice.Text,
-                                    ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, txtState1.Text,
+                                    ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, ddlBranchState.SelectedItem.ToString(),
                                    ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text, txtDateofIntialissue.Text,
                                    txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
                                    txtLicenceOld.Text, txtLicenceNew.Text, ipaddress, Createdby);
@@ -392,6 +415,7 @@ namespace CEI_PRoject.Admin
             txtBranchOffice.Text = "";
             ddlState.SelectedIndex = 0;
             ddlDistrict.SelectedIndex = 0;
+            ddlBranchState.SelectedIndex = 0;
             ddlDistrict1.SelectedIndex = 0;
             txtPinCode.Text = "";
             txtContactNo.Text = "";
@@ -403,7 +427,6 @@ namespace CEI_PRoject.Admin
             txtVoltageLevelWithEffect.Text = "";
             txtLicenceOld.Text = "";
             txtLicenceNew.Text = "";
-
         }
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -411,19 +434,21 @@ namespace CEI_PRoject.Admin
 
             if (CheckBox1.Checked == true)
             {
-                if (txtRegisteredOffice.Text != "" && ddlDistrict.SelectedValue != "" && ddlDistrict.SelectedValue != "0")
+                if (txtRegisteredOffice.Text != "" && ddlDistrict.SelectedValue != "" && ddlDistrict.SelectedValue != "0" && txtPinCode.Text != "")
                 {
-                    if (ddlState.SelectedValue == "11")
-                    {
+                    //if (ddlState.SelectedValue == "11")
+                    //{
 
                         txtBranchOffice.Text = txtRegisteredOffice.Text;
+                        ddlBranchState.SelectedValue = ddlState.SelectedValue;                       //Added
+                        ddlLoadBindDistrictddl(ddlBranchState.SelectedItem.ToString());              //Added
                         ddlDistrict1.SelectedValue = ddlDistrict.SelectedValue;
                         txtPinCode1.Text = txtPinCode.Text;
+
                         txtBranchOffice.Enabled = false;
                         txtBranchOffice.Style.Add("width", "inherit");
                         txtBranchOffice.Style.Add("height", "30px");
                         txtBranchOffice.Style.Add("border-radius", ".25rem");
-
 
                         ddlDistrict1.Enabled = false;
                         ddlDistrict1.Style.Add("width", "inherit");
@@ -447,21 +472,24 @@ namespace CEI_PRoject.Admin
 
                         ddlDistrict.Enabled = false;
                         ddlDistrict.Style.Add("width", "inherit");
-                        ddlDistrict.Style.Add("height", "30px")
-                            ;
+                        ddlDistrict.Style.Add("height", "30px");
                         ddlDistrict.Style.Add("border-radius", ".25rem");
+                    ddlBranchState.Enabled = false;
+                    ddlBranchState.Style.Add("width", "inherit");
+                    ddlBranchState.Style.Add("height", "30px");
+                    ddlBranchState.Style.Add("border-radius", ".25rem");
 
-                        txtPinCode.Enabled = false;
+                    txtPinCode.Enabled = false;
                         txtPinCode.Style.Add("width", "inherit");
                         txtPinCode.Style.Add("height", "30px");
                         txtPinCode.Style.Add("border-radius", ".25rem");
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Your Registered Office Address is not Haryana !!!')", true);
-                        ddlState.Focus();
-                        CheckBox1.Checked = false;
-                    }
+                    //}
+                    //else
+                    //{
+                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Your Registered Office Address is not Haryana !!!')", true);
+                    //    ddlState.Focus();
+                    //    CheckBox1.Checked = false;
+                    //}
                 }
                 else
                 {
@@ -474,23 +502,36 @@ namespace CEI_PRoject.Admin
             else
             {
 
-                txtBranchOffice.Enabled = true;
-                ddlDistrict1.Enabled = true;
-                txtPinCode1.Enabled = true;
                 txtRegisteredOffice.Enabled = true;
                 ddlState.Enabled = true;
                 ddlDistrict.Enabled = true;
                 txtPinCode.Enabled = true;
+
+                txtBranchOffice.Enabled = true;
+                ddlBranchState.Enabled = true;
+                ddlDistrict1.Enabled = true;
+                txtPinCode1.Enabled = true;
+              
+                //ddlState.Enabled = true;
+                //ddlDistrict.Enabled = true;
+                //txtPinCode.Enabled = true;
                 txtBranchOffice.Text = "";
+                ddlBranchState.SelectedValue = "0";
                 ddlDistrict1.SelectedValue = "0";
                 txtPinCode1.Text = "";
-                txtRegisteredOffice.Text = "";
-                ddlState.SelectedValue = "0";
-                ddlDistrict.SelectedValue = "0";
-                txtPinCode.Text = "";
+                //txtRegisteredOffice.Text = "";
+                //ddlState.SelectedValue = "0";
+                //ddlDistrict.SelectedValue = "0";
+                //txtPinCode.Text = "";
             }
         }
 
-
+        protected void ddlBranchState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlBranchState.SelectedValue != "0")
+            {
+                ddlLoadBindDistrictddl(ddlBranchState.SelectedItem.ToString());
+            }
+        }
     }
 }

@@ -20,17 +20,17 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LineID"] != null)
+                    if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
                     {
                         txtWorkType.Text = "Line";
                         Id = Session["LineID"].ToString();
                     }
-                    else if (Session["SubStationID"] != null)
+                    else if (Session["SubStationID"] != null && Convert.ToString(Session["LineID"]) != "" )
                     {
                         txtWorkType.Text = "Substation Transformer";
                         Id = Session["SubStationID"].ToString();
                     }
-                    else if (Session["GeneratingSetId"] != null)
+                    else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["LineID"]) != "")
                     {
                         txtWorkType.Text = "Generating Station";
                         Id = Session["GeneratingSetId"].ToString();
@@ -71,7 +71,7 @@ namespace CEIHaryana.Admin
             Uploads.Visible = true;
             if (txtWorkType.Text == "Line")
             {
-                if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                if (txtApplicantType.Text.Trim() == "Power Utility")
                 {
                     LineSubstationSupplier.Visible = true;
                     SupplierSub.Visible = true;
@@ -84,7 +84,7 @@ namespace CEIHaryana.Admin
             }
             else if (txtWorkType.Text == "Substation Transformer")
             {
-                if (txtApplicantType.Text.Trim() == "Supplier Installation")
+                if (txtApplicantType.Text.Trim() == "Power Utility")
                 {
                     LineSubstationSupplier.Visible = true;
                 }

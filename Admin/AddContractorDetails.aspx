@@ -310,8 +310,7 @@
                                 </div>
 
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                        
                     <h7 class="card-title fw-semibold mb-4">Branch (Haryana) Office Address</h7>
                     <samp>
                         &nbsp;&nbsp;<asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" Text="&nbsp;&nbsp;(Same as Registered Office)" OnCheckedChanged="CheckBox1_CheckedChanged" Font-Size="Medium" Font-Bold="True" />
@@ -331,7 +330,15 @@
                             <label>
                                 State/UT<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtState1" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Text="Haryana" ReadOnly="true"></asp:TextBox>
+                           <%-- <asp:TextBox class="form-control" ID="txtState1" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Text="Haryana" ReadOnly="true"></asp:TextBox>--%>
+                                <%--Added--%>
+
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlBranchState" TabIndex="8" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlBranchState_SelectedIndexChanged">
+
+                            </asp:DropDownList>
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlBranchState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            <%--Added--%>
 
                         </div>
 
@@ -357,7 +364,8 @@
                         </div>
 
                     </div>
-
+</ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
                 <h7 class="card-title fw-semibold mb-4">LICENCE DETAILS</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -387,7 +395,6 @@
                                     <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlVoltageLevel" runat="server" TabIndex="16">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" Text="Please Select Voltage level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -494,7 +501,7 @@
 
             }
         }
-
+        </script>
     <script type="text/javascript">
         function validateBothEmpty(source, args) {
             var textBox1Value = document.getElementById('<%= txtLicenceOld.ClientID %>').value;

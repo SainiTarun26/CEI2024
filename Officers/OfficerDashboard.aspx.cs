@@ -28,7 +28,10 @@ namespace CEIHaryana.Officers
                     GetDataforOfficer();
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+            //
+            }
         }
         private void GetDataforOfficer()
         {
@@ -219,7 +222,7 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
-                var labelsValues = new[] { "Initiated", "Inprogress", "Accepted", "Rejected" };
+                var labelsValues = new[] { "Submit", "Inprocess", "Accepted", "Rejected" };
                 var labels = new[] { "NewApplicationCount", "InprocessCount", "AcceptedCount", "RejectedCount" };
 
                 var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();

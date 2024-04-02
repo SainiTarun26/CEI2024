@@ -51,6 +51,9 @@ namespace CEIHaryana.Admin
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Session["LineID"] = "";
+            Session["SubStationID"] = "";
+            Session["GeneratingSetId"] = "";
 
             Control ctrl = e.CommandSource as Control;
             GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
@@ -70,7 +73,7 @@ namespace CEIHaryana.Admin
             {
                 Session["SubStationID"] = TestRportId;
             }
-            else if (installationType.Trim() == "Generating Station")
+            else if (installationType.Trim() == "Generating Set")
             {
                 Session["GeneratingSetId"] = TestRportId;
             }

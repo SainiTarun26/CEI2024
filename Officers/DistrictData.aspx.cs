@@ -40,7 +40,7 @@ namespace CEIHaryana.Officers
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
