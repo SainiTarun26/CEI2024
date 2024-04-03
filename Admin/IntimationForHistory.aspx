@@ -40,14 +40,14 @@
     </script>
     <script type="text/javascript">
         function validateDropdowns(sender, args) {
-            var ddlReview = document.getElementById('<%= ddlReview.ClientID %>');
+            <%--var ddlReview = document.getElementById('<%= ddlReview.ClientID %>');--%>
       var ddlToAssign = document.getElementById('<%= ddlToAssign.ClientID %>');
 
-            var selectedValueReview = ddlReview.options[ddlReview.selectedIndex].value;
+           // var selectedValueReview = ddlReview.options[ddlReview.selectedIndex].value;
             var selectedValueToAssign = ddlToAssign.options[ddlToAssign.selectedIndex].value;
 
             // Check if either dropdown has a selected value
-            args.IsValid = selectedValueReview !== "0" || selectedValueToAssign !== "0";
+            args.IsValid = selectedValueToAssign !== "0";
         }
 </script>
     <style>
@@ -159,8 +159,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="row">
+
+                 <div class="col-4">
+                    <label>
+                        Inspection ReportId
+                 <samp style="color: red">* </samp>
+                    </label>
+                    <asp:TextBox class="form-control" ID="txtInspectionReportId" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+
                 <div class="col-4">
                     <label>
                         Type of Inspection
@@ -183,6 +193,10 @@
                 <div class="col-4" runat="server">
                     <label for="Pin">Voltage Level</label>
                     <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+                  <div class="col-4" runat="server">
+                    <label>District</label>
+                    <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
             </div>
             <div class="row">
@@ -403,26 +417,30 @@
                 <div class="col-3" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -45px;">
                     <br />
                     <br />
+                   <%-- <asp:UpdatePanel ID="UpdatePanel" runat="server" >
+                        <ContentTemplate>--%>
                     <label>
-                        Approval
+                        Division <%--// Approval--%>
                         <samp style="color: red">* </samp>
                     </label>
-                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
-                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDivisions"  Style="width: 100% !important;" OnSelectedIndexChanged="ddlDivisions_SelectedIndexChanged">
+                        <%--<asp:ListItem Text="Select" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Accepted" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>--%>
                     </asp:DropDownList>
-                   <asp:CustomValidator runat="server" ID="cvAtLeastOneSelected" ForeColor="Red" ClientValidationFunction="validateDropdowns"  ErrorMessage="Please select at least one option from the dropdowns." 
-     Display="Dynamic" ValidationGroup="Update"></asp:CustomValidator>
+
+                   <%--<asp:CustomValidator runat="server" ID="cvAtLeastOneSelected" ForeColor="Red" ClientValidationFunction="validateDropdowns"  ErrorMessage="Please select at least one option from the dropdowns." 
+     Display="Dynamic" ValidationGroup="Update"></asp:CustomValidator>--%>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlDivisions" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
   </div>
                
-                <div class="col-3" style="text-align: center" id="Rejection" runat="server" visible="false">
+                <%--<div class="col-3" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
                         Reason For Rejection<samp style="color: red"> * </samp>
                     </label>
                     <asp:TextBox ID="txtRejected" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
+                </div>--%>
           
            
                 <div class="col-3" id="DivToAssign" runat="server" visible="false" style="margin-top:-45px;">
@@ -433,12 +451,15 @@
                     </asp:DropDownList>
                 </div>
                
-                <div class="col-6" id="DivAdditionalNote" runat="server" visible="false" >
+               <%-- <div class="col-6" id="DivAdditionalNote" runat="server" visible="false" >
                     <label>Additional Note</label>
                     <asp:TextBox ID="txtAdditionalNote" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
+                </div>--%>
+                <%--</ContentTemplate>
+                    </asp:UpdatePanel>--%>
+                  
             </div>
-            <div class="row" style="margin-top: 25px;">
+               <div class="row" style="margin-top: 25px;">
                 <div class="col-5" style="text-align: end;">
                     <asp:Button ID="btnAction" Text="Take Action" runat="server" class="btn btn-primary mr-2" OnClick="btnAction_Click" />
                 </div>

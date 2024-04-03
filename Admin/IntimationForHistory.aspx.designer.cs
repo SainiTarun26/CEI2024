@@ -15,6 +15,24 @@ namespace CEIHaryana.Admin
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
+        /// txtInspectionReportId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInspectionReportId;
+
+        /// <summary>
         /// txtPremises control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtVoltage;
+
+        /// <summary>
+        /// txtDistrict control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDistrict;
 
         /// <summary>
         /// Uploads control.
@@ -366,49 +393,22 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApprovalRequired;
 
         /// <summary>
-        /// ddlReview control.
+        /// ddlDivisions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlReview;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDivisions;
 
         /// <summary>
-        /// cvAtLeastOneSelected control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvAtLeastOneSelected;
-
-        /// <summary>
-        /// Rejection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Rejection;
-
-        /// <summary>
-        /// txtRejected control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRejected;
-
-        /// <summary>
-        /// RequiredFieldValidator60 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator60;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// DivToAssign control.
@@ -427,24 +427,6 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlToAssign;
-
-        /// <summary>
-        /// DivAdditionalNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivAdditionalNote;
-
-        /// <summary>
-        /// txtAdditionalNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdditionalNote;
 
         /// <summary>
         /// btnAction control.

@@ -690,6 +690,7 @@ text-decoration: underline;
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="overview-item overview-item--c1">
                                         <div class="overview__inner">
+                                             <a href="TotalRequestInspectionForAdmin.aspx">
                                             <div class="overview-box clearfix">
                                                 <div class="icon">
                                                     <i class="bi bi-file-earmark-plus"></i>
@@ -703,6 +704,7 @@ text-decoration: underline;
                                                     <span>Total Requests Recieved</span>
                                                 </div>
                                             </div>
+                                                 </a>
                                             <%--<div class="overview-chart">
                                         <canvas id="widgetChart1"></canvas>
                                     </div>--%>
@@ -712,6 +714,7 @@ text-decoration: underline;
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="overview-item overview-item--c2">
                                         <div class="overview__inner">
+                                             <a href="AcceptedOrRejectedRequest.aspx">
                                             <div class="overview-box clearfix">
                                                 <div class="icon">
                                                     <i class="bi bi-file-earmark-check"></i>
@@ -723,6 +726,7 @@ text-decoration: underline;
                                                     <span id="APPROVED">Approved/Rejected</span>
                                                 </div>
                                             </div>
+                                                 </a>
                                             <%--<div class="overview-chart">
                                         <canvas id="widgetChart2"></canvas>
                                     </div>--%>
@@ -732,6 +736,7 @@ text-decoration: underline;
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="overview-item overview-item--c3">
                                         <div class="overview__inner">
+                                            <a href="InProcessRequest.aspx">
                                             <div class="overview-box clearfix">
                                                 <div class="icon">
                                                     <i class="bi bi-journal-medical"></i>
@@ -745,6 +750,7 @@ text-decoration: underline;
 
                                                 </div>
                                             </div>
+                                                </a>
                                             <%--<div class="overview-chart">
                                         <canvas id="widgetChart3"></canvas>
                                     </div>--%>
@@ -754,6 +760,7 @@ text-decoration: underline;
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="overview-item overview-item--c4">
                                         <div class="overview__inner">
+                                             <a href="NewRequestInspectionForAdmin.aspx">
                                             <div class="overview-box clearfix">
                                                 <div class="icon">
                                                     <i class="bi bi-folder-symlink-fill"></i>
@@ -766,6 +773,7 @@ text-decoration: underline;
 
                                                 </div>
                                             </div>
+                                                 </a>
                                             <%--<div class="overview-chart">
                                         <canvas id="widgetChart4"></canvas>
                                     </div>--%>

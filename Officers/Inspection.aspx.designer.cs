@@ -15,6 +15,15 @@ namespace CEIHaryana.Officers
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// txtInspectionReportID control.
         /// </summary>
         /// <remarks>
@@ -427,6 +436,15 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkRedirect;
+
+        /// <summary>
+        /// Updatepanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel Updatepanel1;
 
         /// <summary>
         /// txtTestReportId control.

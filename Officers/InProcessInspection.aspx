@@ -204,7 +204,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <asp:LinkButton ID="lnkLetter" runat="server" AutoPostBack="true" OnClick="lnkLetter_Click" Text="Open Document" />
+                                       <asp:LinkButton ID="lnkRequestLetterFromConcernedOfficer" runat="server" AutoPostBack="true" OnClick="lnkRequestLetterFromConcernedOfficer_Click" Text="Open Document" />
                                     </td>
                                 </tr>
                                 <tr id="Tr2" runat="server" visible="true">
@@ -215,7 +215,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnktest" runat="server" AutoPostBack="true" OnClick="lnktest_Click" Text="Open Document" />
+                                            <asp:LinkButton ID="lnkManufacturingTestReportEquipment" runat="server" AutoPostBack="true" OnClick="lnkManufacturingTestReportEquipment_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -229,7 +229,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkDiag" runat="server" AutoPostBack="true" OnClick="lnkDiag_Click" Text="Open Document" />
+                                         <asp:LinkButton ID="lnkSingleLineDiagramOfLine" runat="server" AutoPostBack="true" OnClick="lnkSingleLineDiagramOfLine_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -243,7 +243,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkCopy" runat="server" AutoPostBack="true" OnClick="lnkCopy_Click" Text="Open Document" />
+                                            <asp:LinkButton ID="lnkDemandNoticeUHDVN" runat="server" AutoPostBack="true" OnClick="lnkDemandNoticeUHDVN_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -255,7 +255,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceTransformer_Click" Text="Open Document" />
+                                            <asp:LinkButton ID="lnkInvoiceOfTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfTransformer_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -267,7 +267,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkManufacturing" runat="server" AutoPostBack="true" OnClick="lnkManufacturing_Click" Text="Open Document" />
+                                          <asp:LinkButton ID="lnkManufacturingTestCertificateOfTransformer" runat="server" AutoPostBack="true" OnClick="lnkManufacturingTestCertificateOfTransformer_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -279,7 +279,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkSingleDiag" runat="server" AutoPostBack="true" OnClick="lnkSingleDiag_Click" Text="Open Document" />
+                                             <asp:LinkButton ID="lnkSingleLineDiagram" runat="server" AutoPostBack="true" OnClick="lnkSingleLineDiagram_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -291,7 +291,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkInvoiceFire" runat="server" AutoPostBack="true" OnClick="lnkInvoiceFire_Click" Text="Open Document" />
+                                        <asp:LinkButton ID="lnkInvoiceOfFireExtingusisherSystem" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfFireExtingusisherSystem_Click1" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -305,7 +305,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkDGSetInvoice" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                          <asp:LinkButton ID="lnkInvoiceOfDGSet" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfDGSet_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -317,7 +317,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkManufacturingCertificate" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                             <asp:LinkButton ID="lnkManufacturingTestCertificateOfDGset" runat="server" AutoPostBack="true" OnClick="lnkManufacturingTestCertificateOfDGset_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -329,7 +329,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkInvoice" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                          <asp:LinkButton ID="lnkInvoiceOfFireExtinguisherApparatus" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfFireExtinguisherApparatus_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -341,7 +341,7 @@
                                     </td>
                                     <td>
                                         <div class="col-12">
-                                            <asp:LinkButton ID="lnkStructure" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                           <asp:LinkButton ID="lnkStructureStabilityReport" runat="server" AutoPostBack="true" OnClick="lnkStructureStabilityReport_Click" Text="Open Document" />
                                         </div>
                                     </td>
                                 </tr>
@@ -354,7 +354,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkDocument" runat="server" AutoPostBack="true" OnClick="lnkDocument_Click" Text="Open Document" />
+                                         <asp:LinkButton ID="lnkDemandNotice" runat="server" AutoPostBack="true" OnClick="lnkDemandNotice_Click" Text="Open Document" />
                                     </div>
                                 </td>
                             </tr>
@@ -366,7 +366,7 @@
                                 </td>
                                 <td>
                                     <div class="col-12">
-                                        <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+                                          <asp:LinkButton ID="lnkViewTestReport" runat="server" AutoPostBack="true" OnClick="lnkViewTestReport_Click"  Text="View Test Report" />
                                     </div>
                                 </td>
                             </tr>

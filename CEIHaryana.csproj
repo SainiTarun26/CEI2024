@@ -1549,6 +1549,7 @@
     <Content Include="Assets\legend-background1.jpg" />
     <Content Include="Assets\legend-background2.jpg" />
     <Content Include="Assets\style.css" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="Contractor\Approved_Test_Reports.aspx" />
     <Content Include="Contractor\Attach_DeAttach_Staff.aspx" />
     <Content Include="Contractor\ContractorRenewal.aspx" />
@@ -1898,7 +1899,6 @@
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="Supervisor\TestReportHistory.aspx" />
     <Content Include="Supervisor\TestReportIntimationHistory.aspx" />
-    <Content Include="testing.aspx" />
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
     <Content Include="TestReportModal\LineTestReportModal.aspx" />
     <Content Include="TestReportModal\SubstationTransformerTestReportModal.aspx" />
@@ -2125,6 +2125,13 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CEI.cs" />
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contractor\Approved_Test_Reports.aspx.cs">
       <DependentUpon>Approved_Test_Reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2528,13 +2535,6 @@
     </Compile>
     <Compile Include="Supervisor\TestReportIntimationHistory.aspx.designer.cs">
       <DependentUpon>TestReportIntimationHistory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="testing.aspx.cs">
-      <DependentUpon>testing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="testing.aspx.designer.cs">
-      <DependentUpon>testing.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportModal\GeneratingSetTestReportModal.aspx.cs">
       <DependentUpon>GeneratingSetTestReportModal.aspx</DependentUpon>

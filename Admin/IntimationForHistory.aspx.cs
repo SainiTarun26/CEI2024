@@ -38,21 +38,22 @@ namespace CEIHaryana.Admin
 
                     GetDetailsWithId();
                     Visibilty();
-                    BindDropDownToAssign();
-                    string Approval = Session["Approval"].ToString();
-                    if (Approval.Trim() == "Accepted" || Approval.Trim() == "Rejected")
-                    {
-                        ApprovalRequired.Visible = true;
-                        btnAction.Visible = false;
-                        ddlReview.Attributes.Add("disabled", "true");
-                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Approval));
-                        DivToAssign.Visible = false;
-                        btnUpdate.Visible = false;
-                    }
-                    else
-                    {
+                    
+                    // BindDropDownToAssign();
+                    //string Approval = Session["Approval"].ToString();
+                    //if (Approval.Trim() == "Accepted" || Approval.Trim() == "Rejected")
+                    //{
+                    //    ApprovalRequired.Visible = true;
+                    //    btnAction.Visible = false;
+                    //    ddlReview.Attributes.Add("disabled", "true");
+                    //    ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Approval));
+                    //    DivToAssign.Visible = false;
+                    //    btnUpdate.Visible = false;
+                    //}
+                    //else
+                    //{
 
-                    }
+                    //}
                 }
             }
             catch
@@ -116,14 +117,27 @@ namespace CEIHaryana.Admin
             }
            
         }
-
+        private void BindDivisions()
+        {
+            DataSet ds = new DataSet();
+            ds = CEI.GetDdlDivisionData();
+            ddlDivisions.DataSource = ds;
+            ddlDivisions.DataTextField = "HeadOffice";
+            ddlDivisions.DataValueField = "HeadOffice";
+            ddlDivisions.DataBind();
+            ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));           
+            ds.Clear();
+        }
+       
         private void GetDetailsWithId()
         {
             try
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.InspectionData(ID);
+                ds = CEI.InspectionData(ID);  
+                txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
@@ -149,6 +163,8 @@ namespace CEIHaryana.Admin
 
             }
         }
+
+        #region document
 
         protected void lnkLetter_Click(object sender, EventArgs e)
         {
@@ -369,6 +385,7 @@ namespace CEIHaryana.Admin
                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
             }
         }
+        #endregion
 
         //protected void btnSubmit_Click(object sender, EventArgs e)
         //{
@@ -706,10 +723,11 @@ namespace CEIHaryana.Admin
         {
             try
             {
+
+                BindDivisions();
                 ApprovalRequired.Visible = true;
                 DivToAssign.Visible = true;
-                DivAdditionalNote.Visible = true;
-                btnUpdate.Visible = true;
+                btnUpdate.Visible = true;               
                 btnAction.Visible = false;
 
             }
@@ -720,18 +738,18 @@ namespace CEIHaryana.Admin
             }
         }
 
-        protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Rejection.Visible = false;
-            if (ddlReview.SelectedValue == "2")
-            {
-                Rejection.Visible = true;
-            }
-            else
-            {
-                Rejection.Visible = false;
-            }
-        }
+        //protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Rejection.Visible = false;
+        //    if (ddlReview.SelectedValue == "2")
+        //    {
+        //        Rejection.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        Rejection.Visible = false;
+        //    }
+        //}
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -740,13 +758,13 @@ namespace CEIHaryana.Admin
                 if(Session["InspectionId"] != null && Convert.ToString(Session["InspectionId"]) != "")
                 {
                     ID = Session["InspectionId"].ToString();
-                    CEI.UpdateInspectionDataOnAction(ID, ddlReview.SelectedItem.ToString(), txtRejected.Text, ddlToAssign.SelectedItem.ToString(), txtAdditionalNote.Text);
+                   // CEI.UpdateInspectionDataOnAction(ID, ddlToAssign.SelectedValue,);
 
 
-                    ddlReview.SelectedIndex = 0;
-                    txtRejected.Text = string.Empty;
+                    ddlDivisions.SelectedIndex = 0;
+                    //txtRejected.Text = string.Empty;
                     ddlToAssign.SelectedIndex = 0;
-                    txtAdditionalNote.Text = string.Empty;
+                    //txtAdditionalNote.Text = string.Empty;
 
                     string script = "alert('Data updated successfully.');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
@@ -757,24 +775,30 @@ namespace CEIHaryana.Admin
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
-        private void BindDropDownToAssign()
+        private void BindDropDownToAssign(string Division)
         {
             try
             {
                 DataSet dsAssign = new DataSet();
-                dsAssign = CEI.DdlToAssign();
+                dsAssign = CEI.DdlToStaffAssign(Division);
                 ddlToAssign.DataSource = dsAssign;
-                ddlToAssign.DataTextField = "StaffUserId";
-                ddlToAssign.DataValueField = "Id";
+                ddlToAssign.DataTextField = "Staff";
+                ddlToAssign.DataValueField = "StaffUserId";
                 ddlToAssign.DataBind();
-                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
-
-                Rejection.Visible = ddlReview.SelectedValue == "2";
+                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));                
                 dsAssign.Clear();
             }
             catch (Exception ex)
             {
                 //msg.Text = ex.Message;
+            }
+        }
+
+        protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
+            {
+                BindDropDownToAssign(ddlDivisions.SelectedValue);
             }
         }
     }

@@ -139,13 +139,13 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing,
-            string TanNumber, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-string TypeOfInstallation3, string NumberOfInstallation3,
-//string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-//string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-string Email, string WorkStartDate, string CompletionDate,
-string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy)
+                    string TanNumber, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+        string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+        string TypeOfInstallation3, string NumberOfInstallation3,
+        //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+        //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+        string Email, string WorkStartDate, string CompletionDate,
+        string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -163,41 +163,50 @@ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, s
             cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
             cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantTypeCode);     //
             cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
-            cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility);        //***
-            cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing);//***
-            cmd.Parameters.AddWithValue("@TanNumber", TanNumber);              //***
-            cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
-            cmd.Parameters.AddWithValue("@NameOfAgency", NameOfAgency);
+            cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility == "Select" ? DBNull.Value : (object)PowerUtility);        //*
+            cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing == "Select" ? DBNull.Value : (object)PowerUtilityWing);//*
+            cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? DBNull.Value : (object)TanNumber);              //*
+            cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? DBNull.Value : (object)NameOfOwner);
+            cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? DBNull.Value : (object)NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@District", District);
             cmd.Parameters.AddWithValue("@Pincode", Pincode);
             cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
-            cmd.Parameters.AddWithValue("@OtherPremises", OtherPremises);
+            cmd.Parameters.AddWithValue("@OtherPremises", String.IsNullOrEmpty(OtherPremises) ? DBNull.Value : (object)OtherPremises);
             cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
-            cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
+            cmd.Parameters.AddWithValue("@PANNumber", String.IsNullOrEmpty(PANNumber) ? DBNull.Value : (object)PANNumber);
             cmd.Parameters.AddWithValue("@TypeOfInstallation1", TypeOfInstallation1);
             cmd.Parameters.AddWithValue("@NumberOfInstallation1", NumberOfInstallation1);
             cmd.Parameters.AddWithValue("@TypeOfInstallation2", TypeOfInstallation2);
             cmd.Parameters.AddWithValue("@NumberOfInstallation2", NumberOfInstallation2);
             cmd.Parameters.AddWithValue("@TypeOfInstallation3", TypeOfInstallation3);
             cmd.Parameters.AddWithValue("@NumberOfInstallation3", NumberOfInstallation3);
-            //cmd.Parameters.AddWithValue("@TypeOfInstallation4", TypeOfInstallation4);
-            //cmd.Parameters.AddWithValue("@NumberOfInstallation4", NumberOfInstallation4);
-            //cmd.Parameters.AddWithValue("@TypeOfInstallation5", TypeOfInstallation5);
-            //cmd.Parameters.AddWithValue("@NumberOfInstallation5", NumberOfInstallation5);
-            //cmd.Parameters.AddWithValue("@TypeOfInstallation6", TypeOfInstallation6);
-            //cmd.Parameters.AddWithValue("@NumberOfInstallation6", NumberOfInstallation6);
-            //cmd.Parameters.AddWithValue("@TypeOfInstallation7", TypeOfInstallation7);
-            //cmd.Parameters.AddWithValue("@NumberOfInstallation7", NumberOfInstallation7);
-            //cmd.Parameters.AddWithValue("@TypeOfInstallation8", TypeOfInstallation8);
-            //cmd.Parameters.AddWithValue("@NumberOfInstallation8", NumberOfInstallation8);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation4", String.IsNullOrEmpty(TypeOfInstallation4) ? DBNull.Value : (object)TypeOfInstallation4);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation4", String.IsNullOrEmpty(NumberOfInstallation4) ? DBNull.Value : (object)NumberOfInstallation4);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation5", String.IsNullOrEmpty(TypeOfInstallation5) ? DBNull.Value : (object)TypeOfInstallation5);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation5", String.IsNullOrEmpty(NumberOfInstallation5) ? DBNull.Value : (object)NumberOfInstallation5);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation6", String.IsNullOrEmpty(TypeOfInstallation6) ? DBNull.Value : (object)TypeOfInstallation6);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation6", String.IsNullOrEmpty(NumberOfInstallation6) ? DBNull.Value : (object)NumberOfInstallation6);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation7", String.IsNullOrEmpty (TypeOfInstallation7) ? DBNull.Value : (object)TypeOfInstallation7);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation7", String.IsNullOrEmpty(NumberOfInstallation7) ? DBNull.Value : (object)NumberOfInstallation7);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation8", String.IsNullOrEmpty(TypeOfInstallation8) ? DBNull.Value : (object)TypeOfInstallation8);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation8", String.IsNullOrEmpty(NumberOfInstallation8) ? DBNull.Value : (object)NumberOfInstallation8);
             cmd.Parameters.AddWithValue("@Email", Email);
             cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
             cmd.Parameters.AddWithValue("@CompletionDate", CompletionDate);
             cmd.Parameters.AddWithValue("@AnyWorkIssued", AnyWorkIssued);
-            cmd.Parameters.AddWithValue("@CopyOfWorkOrder", CopyOfWorkOrder);
-            cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateasPerOrder);
+            cmd.Parameters.AddWithValue("@CopyOfWorkOrder", String.IsNullOrEmpty(CopyOfWorkOrder) ? DBNull.Value : (object)CopyOfWorkOrder);
+            //cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateasPerOrder);
+            DateTime CompletionDateForOrder;
+            if (DateTime.TryParse(CompletionDateasPerOrder, out CompletionDateForOrder) && CompletionDateForOrder != DateTime.MinValue)
+            {
+                cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateForOrder);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", DBNull.Value);
+            }
             cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
@@ -1600,7 +1609,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
       string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
       string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite,
       string StructureStabilityResolvedByAuthorizedEngineer, /*string Staff,*/ string District, string Division, string DateOfSubmission, string CreatedBy,
-      string TotalAmount,string transcationId, string TranscationDate, string ChallanAttachment
+      string TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment
       )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData");
@@ -1612,7 +1621,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 con.Open();
             }
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ContactNo ", ContactNo);
+            //cmd.Parameters.AddWithValue("@ContactNo ", ContactNo);
+
+            cmd.Parameters.AddWithValue("@ContactNo ", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
             cmd.Parameters.AddWithValue("@TestRportId ", TestRportId);
             cmd.Parameters.AddWithValue("@ApplicantTypeCode ", ApplicantTypeCode);
             cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
@@ -1620,32 +1631,43 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@ApplicantType ", ApplicantType);
             cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
             cmd.Parameters.AddWithValue("@VoltageLevel ", VoltageLevel);
-            cmd.Parameters.AddWithValue("@LineLength ", LineLength);
+            //cmd.Parameters.AddWithValue("@LineLength ", LineLength);
+            cmd.Parameters.AddWithValue("@LineLength ", String.IsNullOrEmpty(LineLength) ? DBNull.Value : (object)LineLength);
             cmd.Parameters.AddWithValue("@TestReportCount ", TestReportCount);
-            cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", RequestLetterFromConcernedOfficer);
-            cmd.Parameters.AddWithValue("@ManufacturingTestReportOfEqipment ", ManufacturingTestReportOfEqipment);
-            cmd.Parameters.AddWithValue("@SingleLineDiagramOfLine ", SingleLineDiagramOfLine);
-            cmd.Parameters.AddWithValue("@DemandNoticeOfLine ", DemandNoticeOfLine);
-            cmd.Parameters.AddWithValue("@CopyOfNoticeIssuedByUHBVNorDHBVN ", CopyOfNoticeIssuedByUHBVNorDHBVN);
-            cmd.Parameters.AddWithValue("@InvoiceOfTransferOfPersonalSubstation ", InvoiceOfTransferOfPersonalSubstation);
-            cmd.Parameters.AddWithValue("@ManufacturingTestCertificateOfTransformer ", ManufacturingTestCertificateOfTransformer);
-            cmd.Parameters.AddWithValue("@SingleLineDiagramofTransformer ", SingleLineDiagramofTransformer);
-            cmd.Parameters.AddWithValue("@InvoiceoffireExtinguisheratSite ", InvoiceoffireExtinguisheratSite);
-            cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", InvoiceOfDGSetOfGeneratingSet);
-            cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", ManufacturingCerificateOfDGSet);
-            cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
-            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
-            //cmd.Parameters.AddWithValue("@Staff ", Staff);
+
+            cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", String.IsNullOrEmpty(RequestLetterFromConcernedOfficer) ? DBNull.Value : (object)RequestLetterFromConcernedOfficer);
+            cmd.Parameters.AddWithValue("@ManufacturingTestReportOfEqipment ", String.IsNullOrEmpty(ManufacturingTestReportOfEqipment) ? DBNull.Value : (object)ManufacturingTestReportOfEqipment);
+            cmd.Parameters.AddWithValue("@SingleLineDiagramOfLine ", String.IsNullOrEmpty(SingleLineDiagramOfLine) ? DBNull.Value : (object)SingleLineDiagramOfLine);
+            cmd.Parameters.AddWithValue("@DemandNoticeOfLine ", String.IsNullOrEmpty(DemandNoticeOfLine) ? DBNull.Value : (object)DemandNoticeOfLine);
+            cmd.Parameters.AddWithValue("@CopyOfNoticeIssuedByUHBVNorDHBVN ", String.IsNullOrEmpty(CopyOfNoticeIssuedByUHBVNorDHBVN) ? DBNull.Value : (object)CopyOfNoticeIssuedByUHBVNorDHBVN);
+            cmd.Parameters.AddWithValue("@InvoiceOfTransferOfPersonalSubstation ", String.IsNullOrEmpty(InvoiceOfTransferOfPersonalSubstation) ? DBNull.Value : (object)InvoiceOfTransferOfPersonalSubstation);
+            cmd.Parameters.AddWithValue("@ManufacturingTestCertificateOfTransformer ", String.IsNullOrEmpty(ManufacturingTestCertificateOfTransformer) ? DBNull.Value : (object)ManufacturingTestCertificateOfTransformer);
+            cmd.Parameters.AddWithValue("@SingleLineDiagramofTransformer ", String.IsNullOrEmpty(SingleLineDiagramofTransformer) ? DBNull.Value : (object)SingleLineDiagramofTransformer);
+            cmd.Parameters.AddWithValue("@InvoiceoffireExtinguisheratSite ", String.IsNullOrEmpty(InvoiceoffireExtinguisheratSite) ? DBNull.Value : (object)InvoiceoffireExtinguisheratSite);
+            cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", String.IsNullOrEmpty(InvoiceOfDGSetOfGeneratingSet) ? DBNull.Value : (object)InvoiceOfDGSetOfGeneratingSet);
+            cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", String.IsNullOrEmpty(ManufacturingCerificateOfDGSet) ? DBNull.Value : (object)ManufacturingCerificateOfDGSet);
+            cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", String.IsNullOrEmpty(InvoiceOfExptinguisherOrApparatusAtsite) ? DBNull.Value : (object)InvoiceOfExptinguisherOrApparatusAtsite);
+            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", String.IsNullOrEmpty(StructureStabilityResolvedByAuthorizedEngineer) ? DBNull.Value : (object)StructureStabilityResolvedByAuthorizedEngineer);
+            // cmd.Parameters.AddWithValue("@Staff ", Staff);
             cmd.Parameters.AddWithValue("@District ", District);
             cmd.Parameters.AddWithValue("@Division ", Division);
             //cmd.Parameters.AddWithValue("@RequestDetails ", RequestDetails);
-            cmd.Parameters.AddWithValue("@DateOfSubmission ", DateOfSubmission);
+            DateTime SubmitionDate;
+            if (DateTime.TryParse(DateOfSubmission, out SubmitionDate) && SubmitionDate != DateTime.MinValue)
+            {
+                cmd.Parameters.AddWithValue("@DateOfSubmission", SubmitionDate);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@DateOfSubmission", DBNull.Value);
+            }
+            //cmd.Parameters.AddWithValue("@DateOfSubmission ", DateOfSubmission);
+
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
             cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
             cmd.Parameters.AddWithValue("@TransctionDate ", TranscationDate);
             cmd.Parameters.AddWithValue("@ChallanAttachment ", ChallanAttachment);
-
             outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
@@ -1718,7 +1740,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Inspection Data
-        public void updateInspection(string InspectionID,string StaffId ,string IntimatiomnId,int count, string Installationtype,
+        public void updateInspection(string InspectionID, string StaffId, string IntimatiomnId, int count, string Installationtype,
             string AcceptedOrReReturn, string Reason)
         {
             try
@@ -1748,10 +1770,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
                 //throw;
             }
-           
+
         }
 
-        public void InspectionFinalAction(string InspectionID, string StaffId,string AcceptedOrReReturn, string Reason,string suggestions)
+        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions)
         {
             try
             {
@@ -1765,7 +1787,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);               
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
                 cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
                 cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
                 cmd.Parameters.AddWithValue("@Suggestion", suggestions);
@@ -2300,7 +2322,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToAssign");
         }
         #region Update Inspection Data For Action
-        public void UpdateInspectionDataOnAction(string ID, string AcceptedOrRejected, string ReasonForRejection, string AssignTo, string AdditionalNotes)
+        public void UpdateInspectionDataOnAction(string ID, string AcceptedOrRejected, string ReasonForRejection, string AssignTo/*, string AdditionalNotes*/)
         {
             SqlCommand cmd = new SqlCommand("sp_UpdateAction");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -2314,10 +2336,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", ID);
             cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrRejected);
-
             cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
             cmd.Parameters.AddWithValue("@Staff", AssignTo);
-            cmd.Parameters.AddWithValue("@AdditionalNotes", AdditionalNotes);
+            //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditionalNotes);
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -3245,6 +3266,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region forAdmin
+        public DataSet FilterAcceptOrRejectRequestforAdmin(string ApplicationStatus)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_FilterAcceptOrRejectRequestforAdmin", ApplicationStatus);
+        }
         public DataSet TotalRequestInspectionForAdmin()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin");
@@ -3267,6 +3292,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDocumentNameForInspection", Categary);
 
+        }
+        public DataSet DdlToStaffAssign(string Division)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetStaffAssign", Division);
         }
     }
 }

@@ -88,7 +88,7 @@ namespace CEIHaryana.Officers
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
 
-                txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();  
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();

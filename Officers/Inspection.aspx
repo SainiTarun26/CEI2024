@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" ></script>
+
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -148,10 +149,19 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+        input#ContentPlaceHolder1_RadioButtonList2_0 {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RadioButtonList2_1 {
+    margin-left: 10px;
+    margin-right: 5px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
           <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -436,6 +446,10 @@
                     </table>
                 </div>
             </div>
+            <asp:UpdatePanel ID="Updatepanel1" runat="server">
+                <ContentTemplate>
+
+               
             <div class="row">
                 <div class="col-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -445,14 +459,14 @@
             </div>--%>
             </div>
                     <div class="row">
-                <div class="col-6" style="margin-top: auto; margin-bottom: auto;">
-                   <p> Documnets are as per the requirements</p>
+             
+                   <p style="margin-top:auto;margin-bottom:auto;"> Documnets are as per the requirements</p>
                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server"  RepeatDirection="Horizontal" TabIndex="25">
                    <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
-                   <asp:ListItem Text="No(Return)" Value="1"></asp:ListItem>
+                   <asp:ListItem Text="No(Return)" Value="1" style="margin-top:auto;margin-bottom:auto;"></asp:ListItem>
                </asp:RadioButtonList>
                     <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
-                </div>
+              
                 <%--<div class="col-4" id="ApprovalRequired" runat="server" visible="false">
                     <br />
                     <br />
@@ -490,7 +504,8 @@
                <%--<ContentTemplate>
  </ContentTemplate>--%>
             </div>
-       
+        </ContentTemplate>
+            </asp:UpdatePanel>
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">

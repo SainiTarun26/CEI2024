@@ -255,11 +255,12 @@
 
                         </div>
                         <div class="col-4">
-                            <label for="Email">Email</label>
+                            <label for="Email">Email<samp style="color: red"> * </samp></label>
 
                             <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" Style="margin-left: 18px" TabIndex="6" onkeyup="return ValidateEmail();"></asp:TextBox>
 
                             <span id="lblError" style="color: red"></span>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                         </div>
                     </div>
@@ -290,7 +291,7 @@
                                 </div>
 
                             </div>
-                            <div class="row">
+                            <d class="row" style="margin-bottom:10px;">
                                 <div class="col-4">
                                     <label>
                                         District
@@ -309,9 +310,9 @@
                                     --%>
                                 </div>
 
-                            </div>
+                            </d iv>
                         
-                    <h7 class="card-title fw-semibold mb-4">Branch (Haryana) Office Address</h7>
+                    <h7 class="card-title fw-semibold mb-4 mt-2">Branch Office Address</h7>
                     <samp>
                         &nbsp;&nbsp;<asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" Text="&nbsp;&nbsp;(Same as Registered Office)" OnCheckedChanged="CheckBox1_CheckedChanged" Font-Size="Medium" Font-Bold="True" />
                         &nbsp;</samp>
