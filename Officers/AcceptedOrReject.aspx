@@ -121,7 +121,11 @@
                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" >
                              <Columns>
-                                
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                                  <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor"/>
                                 <ItemStyle Width="5%" /> 
@@ -129,10 +133,16 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                               
-                                    <%--<ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("ApplicationForInspection") %></asp:LinkButton>
-                                    </ItemTemplate>--%>
+                                <asp:TemplateField>
+                                <HeaderStyle Width="35%" CssClass="headercolor" />
+                                <ItemStyle Width="35%" />
+                                <HeaderTemplate>
+                                    Inspection Id    
+                                </HeaderTemplate>
+                                   <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                    </asp:TemplateField>
                                 
                                  <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>

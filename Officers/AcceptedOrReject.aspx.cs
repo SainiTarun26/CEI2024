@@ -60,6 +60,29 @@ namespace CEIHaryana.Officers
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    string id = lblID.Text;
+                    Session["InProcessInspectionId"] = id;
+                    //Label lblApproval = (Label)row.FindControl("lblApproval");
+                    //Session["Approval"] = lblApproval.Text.Trim();
+                    if (e.CommandName == "Select")
+                    {
+                        Response.Redirect("/Officers/InProcessInspection.aspx", false);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //
+            }
+
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

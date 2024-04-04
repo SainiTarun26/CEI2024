@@ -644,6 +644,10 @@ namespace CEIHaryana.Contractor
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
+                else
+                {
+                    Helpline.Visible = true;
+                }
             }
             catch { }
         }

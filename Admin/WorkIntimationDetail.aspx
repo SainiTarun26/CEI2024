@@ -427,31 +427,36 @@
                                             <asp:Label ID="lblREID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="REID" HeaderText="ID">
+                                  <%--  <asp:BoundField DataField="REID" HeaderText="ID">
                                         <HeaderStyle HorizontalAlign="center" Width="10%" />
                                         <ItemStyle HorizontalAlign="center" Width="10%" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Category" HeaderText="Category">
                                         <HeaderStyle HorizontalAlign="center" Width="10%" />
                                         <ItemStyle HorizontalAlign="center" Width="10%" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>--%>
                                     <asp:BoundField DataField="Name" HeaderText="Name">
-                                        <HeaderStyle HorizontalAlign="Left" Width="16%" />
-                                        <ItemStyle HorizontalAlign="Left" Width="16%" />
+                                        <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+                                        <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+                                          </asp:BoundField>
+
+                                    <asp:BoundField DataField="LicenseNo" HeaderText="Competency Certificate Number">
+                                        <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+                                        <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                                     </asp:BoundField>
 
-                                    <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
+                                    <%--<asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
                                         <HeaderStyle HorizontalAlign="right" Width="24%" />
                                         <ItemStyle HorizontalAlign="right" Width="24%" />
+                                    </asp:BoundField>--%>
+                                       <asp:BoundField DataField="DateOfExpiry" HeaderText="Valid Upto">
+                                        <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter"/>
+                                        <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
-                                        <HeaderStyle HorizontalAlign="right" Width="22%" />
-                                        <ItemStyle HorizontalAlign="right" Width="22%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="LicenseNo" HeaderText="License">
+                                   <%-- <asp:BoundField DataField="LicenseNo" HeaderText="License">
                                         <HeaderStyle HorizontalAlign="right" Width="20%" />
                                         <ItemStyle HorizontalAlign="right" Width="20%" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>--%>
                                 </Columns>
                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

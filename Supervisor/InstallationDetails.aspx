@@ -92,11 +92,11 @@ table#ContentPlaceHolder1_GridView1 {
           <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
-            <div class="card-body">+
+            <div class="card-body">
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label>WORK INTIMATION HISTORY</h6>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>WORK INTIMATION DETAILS</h6>
                     </div>
                     <%--  <div class="col-sm-6 col-md-6"></div>
                     <div class="col-sm-2 col-md-2">

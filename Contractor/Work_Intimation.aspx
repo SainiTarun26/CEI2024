@@ -547,6 +547,7 @@
                                                                     <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete3_Click" runat="server" /></td>
                                                             </tr>
                                                         </div>
+                                                        
                                                         <%--    <div id="installationType4" runat="server" visible="False">
                                                             <tr>
                                                                 <td>
@@ -742,18 +743,36 @@
                                                     <HeaderStyle  HorizontalAlign="Left"  CssClass="headercolor textalignleft colwidth" />
                                                     <ItemStyle HorizontalAlign="center"  />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                                    <HeaderStyle HorizontalAlign="left"  CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="left"  CssClass="textalignleft" />
-                                                </asp:BoundField>
+
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
+                                                    <HeaderStyle HorizontalAlign="Center"  CssClass="headercolor textalignCenter" />
+                                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="LicenseNo" HeaderText="Competency Certificate Number">
+                                                    <HeaderStyle HorizontalAlign="Center"  CssClass="headercolor textalignCenter" />
+                                                    <ItemStyle HorizontalAlign="Center"  CssClass="textalignCenter" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="DateOfExpiry" HeaderText="Valid Upto">
+                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor textalignCenter" />
+                                                    <ItemStyle HorizontalAlign="center"  />
+                                                </asp:BoundField>
+
+
+
+                                                <%-- <asp:BoundField DataField="Name" HeaderText="Name">
                                                     <HeaderStyle HorizontalAlign="Left"  CssClass="headercolor textalignleft" />
                                                     <ItemStyle HorizontalAlign="Left" CssClass="textalignleft" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
+
+                                                -<asp:BoundField DataField="LicenseNo" HeaderText="License">
+                                                    <HeaderStyle HorizontalAlign="left"  CssClass="headercolor textalignleft" />
+                                                    <ItemStyle HorizontalAlign="left"  CssClass="textalignleft" />
+                                                </asp:BoundField>
+                                               
+                                                <asp:BoundField DataField="DateOfExpiry" HeaderText="Valid Upto">
                                                     <HeaderStyle HorizontalAlign="center"  CssClass="headercolor2x" />
                                                     <ItemStyle HorizontalAlign="center"  />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                                 <%--<asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
                                                     <HeaderStyle HorizontalAlign="center" Width="18%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="center" Width="18%" />
@@ -773,6 +792,13 @@
                                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                                         </asp:GridView>
+                                        <div class="row" id="Helpline" runat="server" visible="false">
+                                            <h4>HELPLINE:</h4>
+                                            <span style="margin-right: 12px;"></span>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="false">cei_goh@yahoo.com</asp:LinkButton>
+                                     <span style="margin-right: 12px;"></span>
+                                   <h5>0172-2704090</h5>
+                                            </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>

@@ -139,13 +139,13 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing,
-                    string TanNumber, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-        string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-        string TypeOfInstallation3, string NumberOfInstallation3,
-        //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-        //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-        string Email, string WorkStartDate, string CompletionDate,
-        string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy)
+                     string TanNumber, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+         string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+         string TypeOfInstallation3, string NumberOfInstallation3,
+         //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+         //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+         string Email, string WorkStartDate, string CompletionDate,
+         string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -168,20 +168,20 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? DBNull.Value : (object)TanNumber);              //*
             cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? DBNull.Value : (object)NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? DBNull.Value : (object)NameOfAgency);
-            cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
-            cmd.Parameters.AddWithValue("@Address", Address);
-            cmd.Parameters.AddWithValue("@District", District);
-            cmd.Parameters.AddWithValue("@Pincode", Pincode);
+            cmd.Parameters.AddWithValue("@ContactNo", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
+            cmd.Parameters.AddWithValue("@Address", String.IsNullOrEmpty(Address) ? DBNull.Value : (object)Address);
+            cmd.Parameters.AddWithValue("@District", String.IsNullOrEmpty(District) ? DBNull.Value : (object)District);
+            cmd.Parameters.AddWithValue("@Pincode", String.IsNullOrEmpty(Pincode) ? DBNull.Value : (object)Pincode);
             cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
             cmd.Parameters.AddWithValue("@OtherPremises", String.IsNullOrEmpty(OtherPremises) ? DBNull.Value : (object)OtherPremises);
             cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
             cmd.Parameters.AddWithValue("@PANNumber", String.IsNullOrEmpty(PANNumber) ? DBNull.Value : (object)PANNumber);
             cmd.Parameters.AddWithValue("@TypeOfInstallation1", TypeOfInstallation1);
             cmd.Parameters.AddWithValue("@NumberOfInstallation1", NumberOfInstallation1);
-            cmd.Parameters.AddWithValue("@TypeOfInstallation2", TypeOfInstallation2);
-            cmd.Parameters.AddWithValue("@NumberOfInstallation2", NumberOfInstallation2);
-            cmd.Parameters.AddWithValue("@TypeOfInstallation3", TypeOfInstallation3);
-            cmd.Parameters.AddWithValue("@NumberOfInstallation3", NumberOfInstallation3);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation2", String.IsNullOrEmpty(TypeOfInstallation2) ? DBNull.Value : (object)TypeOfInstallation2);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation2", String.IsNullOrEmpty(NumberOfInstallation2) ? DBNull.Value : (object)NumberOfInstallation2);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
             //cmd.Parameters.AddWithValue("@TypeOfInstallation4", String.IsNullOrEmpty(TypeOfInstallation4) ? DBNull.Value : (object)TypeOfInstallation4);
             //cmd.Parameters.AddWithValue("@NumberOfInstallation4", String.IsNullOrEmpty(NumberOfInstallation4) ? DBNull.Value : (object)NumberOfInstallation4);
             //cmd.Parameters.AddWithValue("@TypeOfInstallation5", String.IsNullOrEmpty(TypeOfInstallation5) ? DBNull.Value : (object)TypeOfInstallation5);
@@ -704,27 +704,27 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             //cmd.Parameters.AddWithValue("@NeutralwireEarth220OrAbove", NeutralwireEarth220OrAbove);
             //cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             #endregion
-            cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
-            cmd.Parameters.AddWithValue("@Count", Count);
-            cmd.Parameters.AddWithValue("@Id", LineId);
-            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
-            cmd.Parameters.AddWithValue("@LineVoltage", LineVoltage);
-            cmd.Parameters.AddWithValue("@LineLength", LineLength);
+            cmd.Parameters.AddWithValue("@IdUpdate", String.IsNullOrEmpty(IdUpdate) ? null : IdUpdate);
+            cmd.Parameters.AddWithValue("@Count", String.IsNullOrEmpty(Count) ? null : Count);
+            cmd.Parameters.AddWithValue("@Id", String.IsNullOrEmpty(LineId) ? null : LineId);
+            cmd.Parameters.AddWithValue("@IntimationId", String.IsNullOrEmpty(IntimationId) ? null : IntimationId);
+            cmd.Parameters.AddWithValue("@LineVoltage", String.IsNullOrEmpty(LineVoltage) ? null : LineVoltage);
+            cmd.Parameters.AddWithValue("@LineLength", String.IsNullOrEmpty(LineLength) ? null : LineLength);
             cmd.Parameters.AddWithValue("@OtherVoltageType", OtherVoltageType == "Select" ? null : OtherVoltageType);
             //cmd.Parameters.AddWithValue("@OtherVoltage", OtherVoltage);
-            cmd.Parameters.AddWithValue("@LineType", LineType);
+            cmd.Parameters.AddWithValue("@LineType", String.IsNullOrEmpty(LineType) ? null : LineType);
             cmd.Parameters.AddWithValue("@NoOfCircuit", NoOfCircuit == "Select" ? null : NoOfCircuit);
             cmd.Parameters.AddWithValue("@Conductortype", Conductortype == "Select" ? null : Conductortype);
-            cmd.Parameters.AddWithValue("@NumberofPoleTower", NumberofPoleTower);
-            cmd.Parameters.AddWithValue("@ConductorSize", ConductorSize);
-            cmd.Parameters.AddWithValue("@GroundWireSize", GroundWireSize);
-            cmd.Parameters.AddWithValue("@NmbrofRailwayCrossing", NmbrofRailwayCrossing);
-            cmd.Parameters.AddWithValue("@NmbrofRoadCrossing", NmbrofRoadCrossing);
-            cmd.Parameters.AddWithValue("@NmbrofRiverCanalCrossing", NmbrofRiverCanalCrossing);
-            cmd.Parameters.AddWithValue("@NmbrofPowerLineCrossing", NmbrofPowerLineCrossing);
-            cmd.Parameters.AddWithValue("@NmbrofEarthing", NmbrofEarthing);
+            cmd.Parameters.AddWithValue("@NumberofPoleTower", String.IsNullOrEmpty(NumberofPoleTower) ? null : NumberofPoleTower);
+            cmd.Parameters.AddWithValue("@ConductorSize", String.IsNullOrEmpty(ConductorSize) ? null : ConductorSize);
+            cmd.Parameters.AddWithValue("@GroundWireSize", String.IsNullOrEmpty(GroundWireSize) ? null : GroundWireSize);
+            cmd.Parameters.AddWithValue("@NmbrofRailwayCrossing", String.IsNullOrEmpty(NmbrofRailwayCrossing) ? null : NmbrofRailwayCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofRoadCrossing", String.IsNullOrEmpty(NmbrofRoadCrossing) ? null : NmbrofRoadCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofRiverCanalCrossing", String.IsNullOrEmpty(NmbrofRiverCanalCrossing) ? null : NmbrofRiverCanalCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofPowerLineCrossing", String.IsNullOrEmpty(NmbrofPowerLineCrossing) ? null : NmbrofPowerLineCrossing);
+            cmd.Parameters.AddWithValue("@NmbrofEarthing", NmbrofEarthing == "Select" ? null : NmbrofEarthing);
             cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1 == "Select" ? null : EarthingType1);
-            cmd.Parameters.AddWithValue("@Valueinohms1", Valueinohms1);
+            cmd.Parameters.AddWithValue("@Valueinohms1", String.IsNullOrEmpty(Valueinohms1) ? null : Valueinohms1);
             cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2 == "Select" ? null : EarthingType2);
             cmd.Parameters.AddWithValue("@Valueinohms2", String.IsNullOrEmpty(Valueinohms2) ? null : Valueinohms2);
             cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3 == "Select" ? null : EarthingType3);
@@ -754,38 +754,39 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15 == "Select" ? null : EarthingType15);
             cmd.Parameters.AddWithValue("@Valueinohms15", String.IsNullOrEmpty(Valueinohms15) ? null : Valueinohms15);
             cmd.Parameters.AddWithValue("@NoofPoleTowerForOverheadCable", String.IsNullOrEmpty(NoofPoleTowerForOverheadCable) ? null : NoofPoleTowerForOverheadCable);
-            cmd.Parameters.AddWithValue("@CableSize", CableSize);
-            cmd.Parameters.AddWithValue("@RailwayCrossingNoForOC", RailwayCrossingNoForOC);
-            cmd.Parameters.AddWithValue("@RoadCrossingNoForOC", RoadCrossingNoForOC);
-            cmd.Parameters.AddWithValue("@RiverCanalCrossingNoForOC", RiverCanalCrossingNoForOC);
-            cmd.Parameters.AddWithValue("@PowerLineCrossingNoForOc", PowerLineCrossingNoForOc);
-            cmd.Parameters.AddWithValue("@RedPhaseEarthWire", RedPhaseEarthWire);
-            cmd.Parameters.AddWithValue("@YellowPhaseEarth", YellowPhaseEarth);
-            cmd.Parameters.AddWithValue("@BluePhaseEarthWire", BluePhaseEarthWire);
-            cmd.Parameters.AddWithValue("@RedPhaseYellowPhase", RedPhaseYellowPhase);
-            cmd.Parameters.AddWithValue("@RedPhaseBluePhase", RedPhaseBluePhase);
-            cmd.Parameters.AddWithValue("@BluePhaseYellowPhase", BluePhaseYellowPhase);
-            cmd.Parameters.AddWithValue("@PhasewireNeutralwire", PhasewireNeutralwire);
-            cmd.Parameters.AddWithValue("@PhasewireEarth", PhasewireEarth);
-            cmd.Parameters.AddWithValue("@NeutralwireEarth", NeutralwireEarth);
+            cmd.Parameters.AddWithValue("@CableSize", String.IsNullOrEmpty(CableSize) ? null : CableSize);
+            cmd.Parameters.AddWithValue("@RailwayCrossingNoForOC", String.IsNullOrEmpty(RailwayCrossingNoForOC) ? null : RailwayCrossingNoForOC);
+            cmd.Parameters.AddWithValue("@RoadCrossingNoForOC", String.IsNullOrEmpty(RoadCrossingNoForOC) ? null : RoadCrossingNoForOC);
+            cmd.Parameters.AddWithValue("@RiverCanalCrossingNoForOC", String.IsNullOrEmpty(RiverCanalCrossingNoForOC) ? null : RiverCanalCrossingNoForOC);
+            cmd.Parameters.AddWithValue("@PowerLineCrossingNoForOc", String.IsNullOrEmpty(PowerLineCrossingNoForOc) ? null : PowerLineCrossingNoForOc);
+            cmd.Parameters.AddWithValue("@RedPhaseEarthWire", String.IsNullOrEmpty(RedPhaseEarthWire) ? null : RedPhaseEarthWire);
+            cmd.Parameters.AddWithValue("@YellowPhaseEarth", String.IsNullOrEmpty(YellowPhaseEarth) ? null : YellowPhaseEarth);
+            cmd.Parameters.AddWithValue("@BluePhaseEarthWire", String.IsNullOrEmpty(BluePhaseEarthWire) ? null : BluePhaseEarthWire);
+            cmd.Parameters.AddWithValue("@RedPhaseYellowPhase", String.IsNullOrEmpty(RedPhaseYellowPhase) ? null : RedPhaseYellowPhase);
+            cmd.Parameters.AddWithValue("@RedPhaseBluePhase", String.IsNullOrEmpty(RedPhaseBluePhase) ? null : RedPhaseBluePhase);
+            cmd.Parameters.AddWithValue("@BluePhaseYellowPhase", String.IsNullOrEmpty(BluePhaseYellowPhase) ? null : BluePhaseYellowPhase);
+            cmd.Parameters.AddWithValue("@PhasewireNeutralwire", String.IsNullOrEmpty(PhasewireNeutralwire) ? null : PhasewireNeutralwire);
+            cmd.Parameters.AddWithValue("@PhasewireEarth", String.IsNullOrEmpty(PhasewireEarth) ? null : PhasewireEarth);
+            cmd.Parameters.AddWithValue("@NeutralwireEarth", String.IsNullOrEmpty(NeutralwireEarth) ? null : NeutralwireEarth);
             cmd.Parameters.AddWithValue("@TypeofCable", TypeofCable == "Select" ? null : TypeofCable);
             cmd.Parameters.AddWithValue("@OtherCable", String.IsNullOrEmpty(OtherCable) ? null : OtherCable);
-            cmd.Parameters.AddWithValue("@SizeofCable", SizeofCable);
+            cmd.Parameters.AddWithValue("@SizeofCable", String.IsNullOrEmpty(SizeofCable) ? null : SizeofCable);
             cmd.Parameters.AddWithValue("@Cablelaidin", Cablelaidin == "Select" ? null : Cablelaidin);
-            cmd.Parameters.AddWithValue("@RedPhaseEarthWirefor440orAbove", RedPhaseEarthWirefor440orAbove);
-            cmd.Parameters.AddWithValue("@YellowPhaseEarthWire440orAbove", YellowPhaseEarthWire440orAbove);
-            cmd.Parameters.AddWithValue("@BluePhaseEarthWire440orAbove", BluePhaseEarthWire440orAbove);
-            cmd.Parameters.AddWithValue("@RedPhaseYellowPhase440orAbove", RedPhaseYellowPhase440orAbove);
-            cmd.Parameters.AddWithValue("@RedPhaseBluePhase440orAbove", RedPhaseBluePhase440orAbove);
-            cmd.Parameters.AddWithValue("@BluePhaseYellowPhase440orAbove", BluePhaseYellowPhase440orAbove);
-            cmd.Parameters.AddWithValue("@PhasewireNeutralwire220OrAbove", PhasewireNeutralwire220OrAbove);
-            cmd.Parameters.AddWithValue("@PhasewireEarth220OrAbove", PhasewireEarth220OrAbove);
-            cmd.Parameters.AddWithValue("@NeutralwireEarth220OrAbove", NeutralwireEarth220OrAbove);
+            cmd.Parameters.AddWithValue("@RedPhaseEarthWirefor440orAbove", String.IsNullOrEmpty(RedPhaseEarthWirefor440orAbove) ? null : RedPhaseEarthWirefor440orAbove);
+            cmd.Parameters.AddWithValue("@YellowPhaseEarthWire440orAbove", String.IsNullOrEmpty(YellowPhaseEarthWire440orAbove) ? null : YellowPhaseEarthWire440orAbove);
+            cmd.Parameters.AddWithValue("@BluePhaseEarthWire440orAbove", String.IsNullOrEmpty(BluePhaseEarthWire440orAbove) ? null : BluePhaseEarthWire440orAbove);
+            cmd.Parameters.AddWithValue("@RedPhaseYellowPhase440orAbove", String.IsNullOrEmpty(RedPhaseYellowPhase440orAbove) ? null : RedPhaseYellowPhase440orAbove);
+            cmd.Parameters.AddWithValue("@RedPhaseBluePhase440orAbove", String.IsNullOrEmpty(RedPhaseBluePhase440orAbove) ? null : RedPhaseBluePhase440orAbove);
+            cmd.Parameters.AddWithValue("@BluePhaseYellowPhase440orAbove", String.IsNullOrEmpty(BluePhaseYellowPhase440orAbove) ? null : BluePhaseYellowPhase440orAbove);
+            cmd.Parameters.AddWithValue("@PhasewireNeutralwire220OrAbove", String.IsNullOrEmpty(PhasewireNeutralwire220OrAbove) ? null : PhasewireNeutralwire220OrAbove);
+            cmd.Parameters.AddWithValue("@PhasewireEarth220OrAbove", String.IsNullOrEmpty(PhasewireEarth220OrAbove) ? null : PhasewireEarth220OrAbove);
+            cmd.Parameters.AddWithValue("@NeutralwireEarth220OrAbove", String.IsNullOrEmpty(NeutralwireEarth220OrAbove) ? null : NeutralwireEarth220OrAbove);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
         }
         #endregion
+
         #region Insert Substation Data
         public void InsertSubstationData(string IdUpdate, string Count, string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
@@ -922,114 +923,133 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             //cmd.Parameters.AddWithValue("@SeaLevelOfTransformerInMeters", SeaLevelOfTransformerInMeters);
             //cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             #endregion
-            cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
-            cmd.Parameters.AddWithValue("@Count", Count);
-            cmd.Parameters.AddWithValue("@Id", Id);
-            cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
-            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
-            cmd.Parameters.AddWithValue("@TransformerSerialNumber", TransformerSerialNumber);
-            cmd.Parameters.AddWithValue("@TransformerCapacityType", TransformerCapacityType);
-            cmd.Parameters.AddWithValue("@TransformerCapacity", TransformerCapacity);
-            cmd.Parameters.AddWithValue("@TranformerType", TranformerType);
-            cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage);
-            cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage);
-            cmd.Parameters.AddWithValue("@OilCapacity", OilCapacity);
-            cmd.Parameters.AddWithValue("@BreakDownVoltageofOil", BreakDownVoltageofOil);
-            cmd.Parameters.AddWithValue("@HtInsulationHVEarth", HtInsulationHVEarth);
-            cmd.Parameters.AddWithValue("@LtInsulationLVEarth", LtInsulationLVEarth);
-            cmd.Parameters.AddWithValue("@LowestvaluebetweenHTLTSide", LowestvaluebetweenHTLTSide);
-            cmd.Parameters.AddWithValue("@LightningArrestorLocation", LightningArrestorLocation);
+            cmd.Parameters.AddWithValue("@IdUpdate", String.IsNullOrEmpty(IdUpdate) ? null : IdUpdate);
+            cmd.Parameters.AddWithValue("@Count", String.IsNullOrEmpty(Count) ? null : Count);
+            cmd.Parameters.AddWithValue("@Id", String.IsNullOrEmpty(Id) ? null : Id);
+            cmd.Parameters.AddWithValue("@TestReportId", String.IsNullOrEmpty(TestReportId) ? null : TestReportId);
+            cmd.Parameters.AddWithValue("@IntimationId", String.IsNullOrEmpty(IntimationId) ? null : IntimationId);
+            cmd.Parameters.AddWithValue("@TransformerSerialNumber", String.IsNullOrEmpty(TransformerSerialNumber) ? null : TransformerSerialNumber);
+            cmd.Parameters.AddWithValue("@TransformerCapacityType", String.IsNullOrEmpty(TransformerCapacityType) ? null : TransformerCapacityType);
+            cmd.Parameters.AddWithValue("@TransformerCapacity", String.IsNullOrEmpty(TransformerCapacity) ? null : TransformerCapacity);
+            cmd.Parameters.AddWithValue("@TranformerType", TranformerType == "Select" ? null : TranformerType);
+            cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage == "Select" ? null : PrimaryVoltage);
+            cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage == "Select" ? null : SecondoryVoltage);
+            cmd.Parameters.AddWithValue("@OilCapacity", String.IsNullOrEmpty(OilCapacity) ? null : OilCapacity);
+            cmd.Parameters.AddWithValue("@BreakDownVoltageofOil", String.IsNullOrEmpty(BreakDownVoltageofOil) ? null : BreakDownVoltageofOil);
+            cmd.Parameters.AddWithValue("@HtInsulationHVEarth", String.IsNullOrEmpty(HtInsulationHVEarth) ? null : HtInsulationHVEarth);
+            cmd.Parameters.AddWithValue("@LtInsulationLVEarth", String.IsNullOrEmpty(LtInsulationLVEarth) ? null : LtInsulationLVEarth);
+            cmd.Parameters.AddWithValue("@LowestvaluebetweenHTLTSide", String.IsNullOrEmpty(LowestvaluebetweenHTLTSide) ? null : LowestvaluebetweenHTLTSide);
+            cmd.Parameters.AddWithValue("@LightningArrestorLocation", LightningArrestorLocation == "Select" ? null : LightningArrestorLocation);
             cmd.Parameters.AddWithValue("@OtherLALocation", String.IsNullOrEmpty(OtherLALocation) ? null : OtherLALocation);
-            cmd.Parameters.AddWithValue("@TypeofHTPrimarySideSwitch", TypeofHTPrimarySideSwitch);
-            cmd.Parameters.AddWithValue("@NumberOfEarthing", NumberOfEarthing);
-            cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1);
-            cmd.Parameters.AddWithValue("@Valueinohms1", Valueinohms1);
-            cmd.Parameters.AddWithValue("@UsedFor1", UsedFor1);
+            cmd.Parameters.AddWithValue("@TypeofHTPrimarySideSwitch", TypeofHTPrimarySideSwitch == "Select" ? null : TypeofHTPrimarySideSwitch);
+            cmd.Parameters.AddWithValue("@NumberOfEarthing", NumberOfEarthing == "Select" ? null : NumberOfEarthing);
+            cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1 == "Select" ? null : EarthingType1);
+            cmd.Parameters.AddWithValue("@Valueinohms1", String.IsNullOrEmpty(Valueinohms1) ? null : Valueinohms1);
+            cmd.Parameters.AddWithValue("@UsedFor1", UsedFor1 == "Select" ? null : UsedFor1);
             cmd.Parameters.AddWithValue("@OtherEarthing1", String.IsNullOrEmpty(OtherEarthing1) ? null : OtherEarthing1);
-            cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2);
-            cmd.Parameters.AddWithValue("@Valueinohms2", Valueinohms2);
-            cmd.Parameters.AddWithValue("@UsedFor2", UsedFor2);
+
+            cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2 == "Select" ? null : EarthingType2);
+            cmd.Parameters.AddWithValue("@Valueinohms2", String.IsNullOrEmpty(Valueinohms2) ? null : Valueinohms2);
+            cmd.Parameters.AddWithValue("@UsedFor2", UsedFor2 == "Select" ? null : UsedFor2);
             cmd.Parameters.AddWithValue("@OtherEarthing2", String.IsNullOrEmpty(OtherEarthing2) ? null : OtherEarthing2);
-            cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3);
-            cmd.Parameters.AddWithValue("@Valueinohms3", Valueinohms3);
-            cmd.Parameters.AddWithValue("@UsedFor3", UsedFor3);
+
+            cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3 == "Select" ? null : EarthingType3);
+            cmd.Parameters.AddWithValue("@Valueinohms3", String.IsNullOrEmpty(Valueinohms3) ? null : Valueinohms3);
+            cmd.Parameters.AddWithValue("@UsedFor3", UsedFor3 == "Select" ? null : UsedFor3);
             cmd.Parameters.AddWithValue("@OtherEarthing3", String.IsNullOrEmpty(OtherEarthing3) ? null : OtherEarthing3);
-            cmd.Parameters.AddWithValue("@EarthingType4", EarthingType4);
-            cmd.Parameters.AddWithValue("@Valueinohms4", Valueinohms4);
-            cmd.Parameters.AddWithValue("@UsedFor4", UsedFor4);
+
+            cmd.Parameters.AddWithValue("@EarthingType4", EarthingType4 == "Select" ? null : EarthingType4);
+            cmd.Parameters.AddWithValue("@Valueinohms4", String.IsNullOrEmpty(Valueinohms4) ? null : Valueinohms4);
+            cmd.Parameters.AddWithValue("@UsedFor4", UsedFor4 == "Select" ? null : UsedFor4);
             cmd.Parameters.AddWithValue("@OtherEarthing4", String.IsNullOrEmpty(OtherEarthing4) ? null : OtherEarthing4);
+
             cmd.Parameters.AddWithValue("@EarthingType5", EarthingType5 == "Select" ? null : EarthingType5);
-            cmd.Parameters.AddWithValue("@Valueinohms5", Valueinohms5);
-            //cmd.Parameters.AddWithValue("@UsedFor5", UsedFor5 == "Select" ? null : UsedFor5);
+            cmd.Parameters.AddWithValue("@Valueinohms5", String.IsNullOrEmpty(Valueinohms5) ? null : Valueinohms5);
             cmd.Parameters.AddWithValue("@UsedFor5", UsedFor5 == "Select" ? null : UsedFor5);
-            //cmd.Parameters.AddWithValue("@UsedFor5","sddsf");
             cmd.Parameters.AddWithValue("@OtherEarthing5", String.IsNullOrEmpty(OtherEarthing5) ? null : OtherEarthing5);
+
+
             cmd.Parameters.AddWithValue("@EarthingType6", EarthingType6 == "Select" ? null : EarthingType6);
-            cmd.Parameters.AddWithValue("@Valueinohms6", Valueinohms6);
+            cmd.Parameters.AddWithValue("@Valueinohms6", String.IsNullOrEmpty(Valueinohms6) ? null : Valueinohms6);
             cmd.Parameters.AddWithValue("@UsedFor6", UsedFor6 == "Select" ? null : UsedFor6);
             cmd.Parameters.AddWithValue("@OtherEarthing6", String.IsNullOrEmpty(OtherEarthing6) ? null : OtherEarthing6);
+
             cmd.Parameters.AddWithValue("@EarthingType7", EarthingType7 == "Select" ? null : EarthingType7);
-            cmd.Parameters.AddWithValue("@Valueinohms7", Valueinohms7);
+            cmd.Parameters.AddWithValue("@Valueinohms7", String.IsNullOrEmpty(Valueinohms7) ? null : Valueinohms7);
             cmd.Parameters.AddWithValue("@UsedFor7", UsedFor7 == "Select" ? null : UsedFor7);
             cmd.Parameters.AddWithValue("@OtherEarthing7", String.IsNullOrEmpty(OtherEarthing7) ? null : OtherEarthing7);
+
             cmd.Parameters.AddWithValue("@EarthingType8", EarthingType8 == "Select" ? null : EarthingType8);
-            cmd.Parameters.AddWithValue("@Valueinohms8", Valueinohms8);
+            cmd.Parameters.AddWithValue("@Valueinohms8", String.IsNullOrEmpty(Valueinohms8) ? null : Valueinohms8);
             cmd.Parameters.AddWithValue("@UsedFor8", UsedFor8 == "Select" ? null : UsedFor8);
             cmd.Parameters.AddWithValue("@OtherEarthing8", String.IsNullOrEmpty(OtherEarthing8) ? null : OtherEarthing8);
+
             cmd.Parameters.AddWithValue("@EarthingType9", EarthingType9 == "Select" ? null : EarthingType9);
-            cmd.Parameters.AddWithValue("@Valueinohms9", Valueinohms9);
+            cmd.Parameters.AddWithValue("@Valueinohms9", String.IsNullOrEmpty(Valueinohms9) ? null : Valueinohms9);
             cmd.Parameters.AddWithValue("@UsedFor9", UsedFor9 == "Select" ? null : UsedFor9);
             cmd.Parameters.AddWithValue("@OtherEarthing9", String.IsNullOrEmpty(OtherEarthing9) ? null : OtherEarthing9);
+
             cmd.Parameters.AddWithValue("@EarthingType10", EarthingType10 == "Select" ? null : EarthingType10);
-            cmd.Parameters.AddWithValue("@Valueinohms10", Valueinohms10);
+            cmd.Parameters.AddWithValue("@Valueinohms10", String.IsNullOrEmpty(Valueinohms10) ? null : Valueinohms10);
             cmd.Parameters.AddWithValue("@UsedFor10", UsedFor10 == "Select" ? null : UsedFor10);
             cmd.Parameters.AddWithValue("@OtherEarthing10", String.IsNullOrEmpty(OtherEarthing10) ? null : OtherEarthing10);
+
             cmd.Parameters.AddWithValue("@EarthingType11", EarthingType11 == "Select" ? null : EarthingType11);
-            cmd.Parameters.AddWithValue("@Valueinohms11", Valueinohms11);
+            cmd.Parameters.AddWithValue("@Valueinohms11", String.IsNullOrEmpty(Valueinohms11) ? null : Valueinohms11);
             cmd.Parameters.AddWithValue("@UsedFor11", UsedFor11 == "Select" ? null : UsedFor11);
             cmd.Parameters.AddWithValue("@OtherEarthing11", String.IsNullOrEmpty(OtherEarthing11) ? null : OtherEarthing11);
+
             cmd.Parameters.AddWithValue("@EarthingType12", EarthingType12 == "Select" ? null : EarthingType12);
-            cmd.Parameters.AddWithValue("@Valueinohms12", Valueinohms12);
+            cmd.Parameters.AddWithValue("@Valueinohms12", String.IsNullOrEmpty(Valueinohms12) ? null : Valueinohms12);
             cmd.Parameters.AddWithValue("@UsedFor12", UsedFor12 == "Select" ? null : UsedFor12);
             cmd.Parameters.AddWithValue("@OtherEarthing12", String.IsNullOrEmpty(OtherEarthing12) ? null : OtherEarthing12);
+
             cmd.Parameters.AddWithValue("@EarthingType13", EarthingType13 == "Select" ? null : EarthingType13);
-            cmd.Parameters.AddWithValue("@Valueinohms13", Valueinohms13);
+            cmd.Parameters.AddWithValue("@Valueinohms13", String.IsNullOrEmpty(Valueinohms13) ? null : Valueinohms13);
             cmd.Parameters.AddWithValue("@UsedFor13", UsedFor13 == "Select" ? null : UsedFor13);
             cmd.Parameters.AddWithValue("@OtherEarthing13", String.IsNullOrEmpty(OtherEarthing13) ? null : OtherEarthing13);
+
             cmd.Parameters.AddWithValue("@EarthingType14", EarthingType14 == "Select" ? null : EarthingType14);
-            cmd.Parameters.AddWithValue("@Valueinohms14", Valueinohms14);
+            cmd.Parameters.AddWithValue("@Valueinohms14", String.IsNullOrEmpty(Valueinohms14) ? null : Valueinohms14);
             cmd.Parameters.AddWithValue("@UsedFor14", UsedFor14 == "Select" ? null : UsedFor14);
             cmd.Parameters.AddWithValue("@OtherEarthing14", String.IsNullOrEmpty(OtherEarthing14) ? null : OtherEarthing14);
+
             cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15 == "Select" ? null : EarthingType15);
-            cmd.Parameters.AddWithValue("@Valueinohms15", Valueinohms15);
+            cmd.Parameters.AddWithValue("@Valueinohms15", String.IsNullOrEmpty(Valueinohms15) ? null : Valueinohms15);
             cmd.Parameters.AddWithValue("@UsedFor15", UsedFor15 == "Select" ? null : UsedFor15);
             cmd.Parameters.AddWithValue("@OtherEarthing15", String.IsNullOrEmpty(OtherEarthing15) ? null : OtherEarthing15);
+
             cmd.Parameters.AddWithValue("@EarthingType16", EarthingType16 == "Select" ? null : EarthingType16);
-            cmd.Parameters.AddWithValue("@Valueinohms16", Valueinohms16);
+            cmd.Parameters.AddWithValue("@Valueinohms16", String.IsNullOrEmpty(Valueinohms16) ? null : Valueinohms16);
             cmd.Parameters.AddWithValue("@UsedFor16", UsedFor16 == "Select" ? null : UsedFor16);
             cmd.Parameters.AddWithValue("@OtherEarthing16", String.IsNullOrEmpty(OtherEarthing16) ? null : OtherEarthing16);
+
             cmd.Parameters.AddWithValue("@EarthingType17", EarthingType17 == "Select" ? null : EarthingType17);
-            cmd.Parameters.AddWithValue("@Valueinohms17", Valueinohms17);
+            cmd.Parameters.AddWithValue("@Valueinohms17", String.IsNullOrEmpty(Valueinohms17) ? null : Valueinohms17);
             cmd.Parameters.AddWithValue("@UsedFor17", UsedFor17 == "Select" ? null : UsedFor17);
             cmd.Parameters.AddWithValue("@OtherEarthing17", String.IsNullOrEmpty(OtherEarthing17) ? null : OtherEarthing17);
+
             cmd.Parameters.AddWithValue("@EarthingType18", EarthingType18 == "Select" ? null : EarthingType18);
-            cmd.Parameters.AddWithValue("@Valueinohms18", Valueinohms18);
+            cmd.Parameters.AddWithValue("@Valueinohms18", String.IsNullOrEmpty(Valueinohms18) ? null : Valueinohms18);
             cmd.Parameters.AddWithValue("@UsedFor18", UsedFor18 == "Select" ? null : UsedFor18);
             cmd.Parameters.AddWithValue("@OtherEarthing18", String.IsNullOrEmpty(OtherEarthing18) ? null : OtherEarthing18);
+
             cmd.Parameters.AddWithValue("@EarthingType19", EarthingType19 == "Select" ? null : EarthingType19);
-            cmd.Parameters.AddWithValue("@Valueinohms19", Valueinohms19);
+            cmd.Parameters.AddWithValue("@Valueinohms19", String.IsNullOrEmpty(Valueinohms19) ? null : Valueinohms19);
             cmd.Parameters.AddWithValue("@UsedFor19", UsedFor19 == "Select" ? null : UsedFor19);
             cmd.Parameters.AddWithValue("@OtherEarthing19", String.IsNullOrEmpty(OtherEarthing19) ? null : OtherEarthing19);
+
             cmd.Parameters.AddWithValue("@EarthingType20", EarthingType20 == "Select" ? null : EarthingType20);
-            cmd.Parameters.AddWithValue("@Valueinohms20", Valueinohms20);
+            cmd.Parameters.AddWithValue("@Valueinohms20", String.IsNullOrEmpty(Valueinohms20) ? null : Valueinohms20);
             cmd.Parameters.AddWithValue("@UsedFor20", UsedFor20 == "Select" ? null : UsedFor20);
             cmd.Parameters.AddWithValue("@OtherEarthing20", String.IsNullOrEmpty(OtherEarthing20) ? null : OtherEarthing20);
-            cmd.Parameters.AddWithValue("@LoadBreakingCapacityOfBreakerInKA", LoadBreakingCapacityOfBreakerInKA);
+
+            cmd.Parameters.AddWithValue("@LoadBreakingCapacityOfBreakerInKA", String.IsNullOrEmpty(LoadBreakingCapacityOfBreakerInKA) ? null : LoadBreakingCapacityOfBreakerInKA);
             cmd.Parameters.AddWithValue("@TypeOfLTProtection", TypeOfLTProtection == "Select" ? null : TypeOfLTProtection);
-            cmd.Parameters.AddWithValue("@CapacityOfIndividualFuseInAMPS", CapacityOfIndividualFuseInAMPS);
-            cmd.Parameters.AddWithValue("@CapacityOfLTBreakerInAMPS", CapacityOfLTBreakerInAMPS);
-            cmd.Parameters.AddWithValue("@LoadBreakingCapacityOfBreakerInAMPS", LoadBreakingCapacityOfBreakerInAMPS);
-            cmd.Parameters.AddWithValue("@SeaLevelOfTransformerInMeters", SeaLevelOfTransformerInMeters);
+            cmd.Parameters.AddWithValue("@CapacityOfIndividualFuseInAMPS", String.IsNullOrEmpty(CapacityOfIndividualFuseInAMPS) ? null : CapacityOfIndividualFuseInAMPS);
+            cmd.Parameters.AddWithValue("@CapacityOfLTBreakerInAMPS", String.IsNullOrEmpty(CapacityOfLTBreakerInAMPS) ? null : CapacityOfLTBreakerInAMPS);
+            cmd.Parameters.AddWithValue("@LoadBreakingCapacityOfBreakerInAMPS", String.IsNullOrEmpty(LoadBreakingCapacityOfBreakerInAMPS) ? null : LoadBreakingCapacityOfBreakerInAMPS);
+            cmd.Parameters.AddWithValue("@SeaLevelOfTransformerInMeters", String.IsNullOrEmpty(SeaLevelOfTransformerInMeters) ? null : SeaLevelOfTransformerInMeters);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -1243,97 +1263,98 @@ string EarthingValue14, string UsedFor14, string OtherEarthing14, string Earthin
             //cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             #endregion
             cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
-            cmd.Parameters.AddWithValue("@Count", Count);
-            cmd.Parameters.AddWithValue("@Id", Id);
-            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
-            cmd.Parameters.AddWithValue("@GeneratingSetCapacityType", GeneratingSetCapacityType);
-            cmd.Parameters.AddWithValue("@GeneratingSetCapacity", GeneratingSetCapacity);
-            cmd.Parameters.AddWithValue("@SerialNumbrOfAcGenerator", SerialNumbrOfAcGenerator);
-            cmd.Parameters.AddWithValue("@GeneratingSetType", GeneratingSetType);
-            cmd.Parameters.AddWithValue("@GeneratorVoltageLevel", GeneratorVoltageLevel);
-            cmd.Parameters.AddWithValue("@CurrenntCapacityOfBreaker", CurrenntCapacityOfBreaker);
-            cmd.Parameters.AddWithValue("@BreakingCapacityofBreaker", BreakingCapacityofBreaker);
+            cmd.Parameters.AddWithValue("@Count", string.IsNullOrEmpty(Count) ? DBNull.Value : (object)Count);
+            cmd.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(Id) ? DBNull.Value : (object)Id);
+            cmd.Parameters.AddWithValue("@IntimationId", string.IsNullOrEmpty(IntimationId) ? DBNull.Value : (object)IntimationId);
+            cmd.Parameters.AddWithValue("@GeneratingSetCapacityType", string.IsNullOrEmpty(GeneratingSetCapacityType) ? DBNull.Value : (object)GeneratingSetCapacityType);
+            cmd.Parameters.AddWithValue("@GeneratingSetCapacity", string.IsNullOrEmpty(GeneratingSetCapacity) ? DBNull.Value : (object)GeneratingSetCapacity);
+            cmd.Parameters.AddWithValue("@SerialNumbrOfAcGenerator", string.IsNullOrEmpty(SerialNumbrOfAcGenerator) ? DBNull.Value : (object)SerialNumbrOfAcGenerator);
+            cmd.Parameters.AddWithValue("@GeneratingSetType", GeneratingSetType == "Select" ? DBNull.Value : (object)GeneratingSetType);
+            cmd.Parameters.AddWithValue("@GeneratorVoltageLevel", string.IsNullOrEmpty(GeneratorVoltageLevel) ? DBNull.Value : (object)GeneratorVoltageLevel);
+            cmd.Parameters.AddWithValue("@CurrenntCapacityOfBreaker", string.IsNullOrEmpty(CurrenntCapacityOfBreaker) ? DBNull.Value : (object)CurrenntCapacityOfBreaker);
+            cmd.Parameters.AddWithValue("@BreakingCapacityofBreaker", string.IsNullOrEmpty(BreakingCapacityofBreaker) ? DBNull.Value : (object)BreakingCapacityofBreaker);
             cmd.Parameters.AddWithValue("@TypeOfPlant", TypeOfPlant == "Select" ? DBNull.Value : (object)TypeOfPlant);
             cmd.Parameters.AddWithValue("@CapacityOfPlantType", CapacityOfPlantType == "Select" ? DBNull.Value : (object)CapacityOfPlantType);
             cmd.Parameters.AddWithValue("@CapacityOfPlant", string.IsNullOrEmpty(CapacityOfPlant) ? DBNull.Value : (object)CapacityOfPlant);
             cmd.Parameters.AddWithValue("@HighestVoltageLevelOfDCString", string.IsNullOrEmpty(HighestVoltageLevelOfDCString) ? DBNull.Value : (object)HighestVoltageLevelOfDCString);
-            cmd.Parameters.AddWithValue("@LowestInsulationBetweenDCWireToEarth", LowestInsulationBetweenDCWireToEarth);
-            cmd.Parameters.AddWithValue("@NoOfPowerPCV", NoOfPowerPCV);
-            cmd.Parameters.AddWithValue("@LTACBreakerCapacity", LTACBreakerCapacity);
+            cmd.Parameters.AddWithValue("@LowestInsulationBetweenDCWireToEarth", string.IsNullOrEmpty(LowestInsulationBetweenDCWireToEarth) ? DBNull.Value : (object)LowestInsulationBetweenDCWireToEarth);
+            cmd.Parameters.AddWithValue("@NoOfPowerPCV", string.IsNullOrEmpty(NoOfPowerPCV) ? DBNull.Value : (object)NoOfPowerPCV);
+            cmd.Parameters.AddWithValue("@LTACBreakerCapacity", string.IsNullOrEmpty(LTACBreakerCapacity) ? DBNull.Value : (object)LTACBreakerCapacity);
             cmd.Parameters.AddWithValue("@ACCablesLowestInsulation", string.IsNullOrEmpty(ACCablesLowestInsulation) ? DBNull.Value : (object)ACCablesLowestInsulation);
-            cmd.Parameters.AddWithValue("@NumberOfEarthing", NumberOfEarthing);
-            cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1);
-            cmd.Parameters.AddWithValue("@EarthingValue1", EarthingValue1);
-            cmd.Parameters.AddWithValue("@UsedFor1", UsedFor1);
+            cmd.Parameters.AddWithValue("@NumberOfEarthing", string.IsNullOrEmpty(NumberOfEarthing) ? DBNull.Value : (object)NumberOfEarthing);
+
+            cmd.Parameters.AddWithValue("@EarthingType1", EarthingType1 == "Select" ? DBNull.Value : (object)EarthingType1);
+            cmd.Parameters.AddWithValue("@EarthingValue1", string.IsNullOrEmpty(EarthingValue1) ? DBNull.Value : (object)EarthingValue1);
+            cmd.Parameters.AddWithValue("@UsedFor1", UsedFor1 == "Select" ? DBNull.Value : (object)UsedFor1);
             cmd.Parameters.AddWithValue("@OtherEarthing1", string.IsNullOrEmpty(OtherEarthing1) ? DBNull.Value : (object)OtherEarthing1);
 
-            cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2);
-            cmd.Parameters.AddWithValue("@EarthingValue2", EarthingValue2);
-            cmd.Parameters.AddWithValue("@UsedFor2", UsedFor2);
+            cmd.Parameters.AddWithValue("@EarthingType2", EarthingType2 == "Select" ? DBNull.Value : (object)EarthingType2);
+            cmd.Parameters.AddWithValue("@EarthingValue2", string.IsNullOrEmpty(EarthingValue2) ? DBNull.Value : (object)EarthingValue2);
+            cmd.Parameters.AddWithValue("@UsedFor2", UsedFor2 == "Select" ? DBNull.Value : (object)UsedFor2);
             cmd.Parameters.AddWithValue("@OtherEarthing2", string.IsNullOrEmpty(OtherEarthing2) ? DBNull.Value : (object)OtherEarthing2);
 
-            cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3);
-            cmd.Parameters.AddWithValue("@EarthingValue3", EarthingValue3);
-            cmd.Parameters.AddWithValue("@UsedFor3", UsedFor3);
+            cmd.Parameters.AddWithValue("@EarthingType3", EarthingType3 == "Select" ? DBNull.Value : (object)EarthingType3);
+            cmd.Parameters.AddWithValue("@EarthingValue3", string.IsNullOrEmpty(EarthingValue3) ? DBNull.Value : (object)EarthingValue3);
+            cmd.Parameters.AddWithValue("@UsedFor3", UsedFor3 == "Select" ? DBNull.Value : (object)UsedFor3);
             cmd.Parameters.AddWithValue("@OtherEarthing3", string.IsNullOrEmpty(OtherEarthing3) ? DBNull.Value : (object)OtherEarthing3);
 
-            cmd.Parameters.AddWithValue("@EarthingType4", EarthingType4);
-            cmd.Parameters.AddWithValue("@EarthingValue4", EarthingValue4);
-            cmd.Parameters.AddWithValue("@UsedFor4", UsedFor4);
+            cmd.Parameters.AddWithValue("@EarthingType4", EarthingType4 == "Select" ? DBNull.Value : (object)EarthingType4);
+            cmd.Parameters.AddWithValue("@EarthingValue4", string.IsNullOrEmpty(EarthingValue4) ? DBNull.Value : (object)EarthingValue4);
+            cmd.Parameters.AddWithValue("@UsedFor4", UsedFor4 == "Select" ? DBNull.Value : (object)UsedFor4);
             cmd.Parameters.AddWithValue("@OtherEarthing4", string.IsNullOrEmpty(OtherEarthing4) ? DBNull.Value : (object)OtherEarthing4);
 
             cmd.Parameters.AddWithValue("@EarthingType5", EarthingType5 == "Select" ? DBNull.Value : (object)EarthingType5);
-            cmd.Parameters.AddWithValue("@EarthingValue5", EarthingValue5);
+            cmd.Parameters.AddWithValue("@EarthingValue5", string.IsNullOrEmpty(EarthingValue5) ? DBNull.Value : (object)EarthingValue5);
             cmd.Parameters.AddWithValue("@UsedFor5", UsedFor5 == "Select" ? DBNull.Value : (object)UsedFor5);
             cmd.Parameters.AddWithValue("@OtherEarthing5", string.IsNullOrEmpty(OtherEarthing5) ? DBNull.Value : (object)OtherEarthing5);
 
             cmd.Parameters.AddWithValue("@EarthingType6", EarthingType6 == "Select" ? DBNull.Value : (object)EarthingType6);
-            cmd.Parameters.AddWithValue("@EarthingValue6", EarthingValue6);
+            cmd.Parameters.AddWithValue("@EarthingValue6", string.IsNullOrEmpty(EarthingValue6) ? DBNull.Value : (object)EarthingValue6);
             cmd.Parameters.AddWithValue("@UsedFor6", UsedFor6 == "Select" ? DBNull.Value : (object)UsedFor6);
             cmd.Parameters.AddWithValue("@OtherEarthing6", string.IsNullOrEmpty(OtherEarthing6) ? DBNull.Value : (object)OtherEarthing6);
 
             cmd.Parameters.AddWithValue("@EarthingType7", EarthingType7 == "Select" ? DBNull.Value : (object)EarthingType7);
-            cmd.Parameters.AddWithValue("@EarthingValue7", EarthingValue7);
+            cmd.Parameters.AddWithValue("@EarthingValue7", string.IsNullOrEmpty(EarthingValue7) ? DBNull.Value : (object)EarthingValue7);
             cmd.Parameters.AddWithValue("@UsedFor7", UsedFor7 == "Select" ? DBNull.Value : (object)UsedFor7);
             cmd.Parameters.AddWithValue("@OtherEarthing7", string.IsNullOrEmpty(OtherEarthing7) ? DBNull.Value : (object)OtherEarthing7);
 
             cmd.Parameters.AddWithValue("@EarthingType8", EarthingType8 == "Select" ? DBNull.Value : (object)EarthingType8);
-            cmd.Parameters.AddWithValue("@EarthingValue8", EarthingValue8);
+            cmd.Parameters.AddWithValue("@EarthingValue8", string.IsNullOrEmpty(EarthingValue8) ? DBNull.Value : (object)EarthingValue8);
             cmd.Parameters.AddWithValue("@UsedFor8", UsedFor8 == "Select" ? DBNull.Value : (object)UsedFor8);
             cmd.Parameters.AddWithValue("@OtherEarthing8", string.IsNullOrEmpty(OtherEarthing8) ? DBNull.Value : (object)OtherEarthing8);
 
             cmd.Parameters.AddWithValue("@EarthingType9", EarthingType9 == "Select" ? DBNull.Value : (object)EarthingType9);
-            cmd.Parameters.AddWithValue("@EarthingValue9", EarthingValue9);
+            cmd.Parameters.AddWithValue("@EarthingValue9", string.IsNullOrEmpty(EarthingValue9) ? DBNull.Value : (object)EarthingValue9);
             cmd.Parameters.AddWithValue("@UsedFor9", UsedFor9 == "Select" ? DBNull.Value : (object)EarthingType9);
             cmd.Parameters.AddWithValue("@OtherEarthing9", string.IsNullOrEmpty(OtherEarthing9) ? DBNull.Value : (object)OtherEarthing9);
 
             cmd.Parameters.AddWithValue("@EarthingType10", EarthingType10 == "Select" ? DBNull.Value : (object)EarthingType10);
-            cmd.Parameters.AddWithValue("@EarthingValue10", EarthingValue10);
+            cmd.Parameters.AddWithValue("@EarthingValue10", string.IsNullOrEmpty(EarthingValue10) ? DBNull.Value : (object)EarthingValue10);
             cmd.Parameters.AddWithValue("@UsedFor10", UsedFor10 == "Select" ? DBNull.Value : (object)UsedFor10);
             cmd.Parameters.AddWithValue("@OtherEarthing10", string.IsNullOrEmpty(OtherEarthing10) ? DBNull.Value : (object)OtherEarthing10);
 
             cmd.Parameters.AddWithValue("@EarthingType11", EarthingType11 == "Select" ? DBNull.Value : (object)EarthingType11);
-            cmd.Parameters.AddWithValue("@EarthingValue11", EarthingValue11);
+            cmd.Parameters.AddWithValue("@EarthingValue11", string.IsNullOrEmpty(EarthingValue11) ? DBNull.Value : (object)EarthingValue11);
             cmd.Parameters.AddWithValue("@UsedFor11", UsedFor11 == "Select" ? DBNull.Value : (object)UsedFor11);
             cmd.Parameters.AddWithValue("@OtherEarthing11", string.IsNullOrEmpty(OtherEarthing11) ? DBNull.Value : (object)OtherEarthing11);
 
             cmd.Parameters.AddWithValue("@EarthingType12", EarthingType12 == "Select" ? DBNull.Value : (object)EarthingType12);
-            cmd.Parameters.AddWithValue("@EarthingValue12", EarthingValue12);
+            cmd.Parameters.AddWithValue("@EarthingValue12", string.IsNullOrEmpty(EarthingValue12) ? DBNull.Value : (object)EarthingValue12);
             cmd.Parameters.AddWithValue("@UsedFor12", UsedFor12 == "Select" ? DBNull.Value : (object)UsedFor12);
             cmd.Parameters.AddWithValue("@OtherEarthing12", string.IsNullOrEmpty(OtherEarthing12) ? DBNull.Value : (object)OtherEarthing12);
 
             cmd.Parameters.AddWithValue("@EarthingType13", EarthingType13 == "Select" ? DBNull.Value : (object)EarthingType9);
-            cmd.Parameters.AddWithValue("@EarthingValue13", EarthingValue13);
+            cmd.Parameters.AddWithValue("@EarthingValue13", string.IsNullOrEmpty(EarthingValue13) ? DBNull.Value : (object)EarthingValue13);
             cmd.Parameters.AddWithValue("@UsedFor13", UsedFor13 == "Select" ? DBNull.Value : (object)EarthingType9);
             cmd.Parameters.AddWithValue("@OtherEarthing13", string.IsNullOrEmpty(OtherEarthing13) ? DBNull.Value : (object)OtherEarthing13);
 
             cmd.Parameters.AddWithValue("@EarthingType14", EarthingType14 == "Select" ? DBNull.Value : (object)EarthingType14);
-            cmd.Parameters.AddWithValue("@EarthingValue14", EarthingValue14);
+            cmd.Parameters.AddWithValue("@EarthingValue14", string.IsNullOrEmpty(EarthingValue14) ? DBNull.Value : (object)EarthingValue14);
             cmd.Parameters.AddWithValue("@UsedFor14", UsedFor14 == "Select" ? DBNull.Value : (object)UsedFor14);
             cmd.Parameters.AddWithValue("@OtherEarthing14", string.IsNullOrEmpty(OtherEarthing14) ? DBNull.Value : (object)OtherEarthing14);
 
             cmd.Parameters.AddWithValue("@EarthingType15", EarthingType15 == "Select" ? DBNull.Value : (object)EarthingType15);
-            cmd.Parameters.AddWithValue("@EarthingValue15", EarthingValue15);
+            cmd.Parameters.AddWithValue("@EarthingValue15", string.IsNullOrEmpty(EarthingValue15) ? DBNull.Value : (object)EarthingValue15);
             cmd.Parameters.AddWithValue("@UsedFor15", UsedFor15 == "Select" ? DBNull.Value : (object)UsedFor15);
             cmd.Parameters.AddWithValue("@OtherEarthing15", string.IsNullOrEmpty(OtherEarthing15) ? DBNull.Value : (object)OtherEarthing15);
 
