@@ -198,6 +198,28 @@
                     <label>District</label>
                     <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
+                 <div class="col-4" runat="server">
+                    <label>SiteOwner Name</label>
+                    <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+                 <div class="col-4" runat="server">
+                    <label>Contractor Name</label>
+                    <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+                 <div class="col-4" runat="server">
+                    <label>Supervisor Name</label>
+                    <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+                 
+                 <div class="col-4" runat="server">
+                    <label>TransctionId</label>
+                    <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+                 <div class="col-4" runat="server">
+                    <label>Transcation Date</label>
+                    <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
+
             </div>
             <div class="row">
                 <div class="table-responsive pt-3" id="Uploads" runat="server">

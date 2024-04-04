@@ -129,7 +129,7 @@ namespace CEIHaryana.Admin
                     }
                     else
                     {
-                        // Installation.Visible = false;
+                        //Installation.Visible = false;
                         installationType1.Visible = false;
                     }
                     if (dp_Id10 != "")
@@ -205,6 +205,15 @@ namespace CEIHaryana.Admin
                     {
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
+                    }
+
+                    if (dp_Id3 == "upto 650 V")
+                    {
+                        installationType2.Visible = false;
+                    }
+                    else
+                    {
+                        installationType2.Visible = true;
                     }
                     //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                     //ddWorkDetail.Text = dp_Id8;
@@ -341,9 +350,6 @@ namespace CEIHaryana.Admin
         //    }
 
         //}
-
-
-
 
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

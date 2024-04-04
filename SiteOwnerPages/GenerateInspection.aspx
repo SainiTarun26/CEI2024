@@ -648,7 +648,7 @@
 
                         <div class="col-6">
                             <label>
-                                Upload Challan (Only PDF Allowed, Size not more than 1 Mb)<samp style="color: red"> * </samp>
+                                Upload Challan (Only PDF Allowed)<samp style="color: red"> * </samp>
                             </label>
                             <asp:FileUpload ID="FileUpload14" runat="server" class="form-control" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="FileUpload14" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>

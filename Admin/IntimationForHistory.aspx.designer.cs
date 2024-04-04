@@ -78,6 +78,51 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtDistrict;
 
         /// <summary>
+        /// txtSiteOwnerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSiteOwnerName;
+
+        /// <summary>
+        /// txtContractorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContractorName;
+
+        /// <summary>
+        /// txtSupervisorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupervisorName;
+
+        /// <summary>
+        /// txtTransactionId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTransactionId;
+
+        /// <summary>
+        /// txtTranscationDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTranscationDate;
+
+        /// <summary>
         /// Uploads control.
         /// </summary>
         /// <remarks>

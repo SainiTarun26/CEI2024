@@ -104,6 +104,10 @@ namespace CEIHaryana.Officers
                 txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
 
+                txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+
+
                 count = Convert.ToInt32( ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 

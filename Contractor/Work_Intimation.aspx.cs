@@ -160,7 +160,7 @@ namespace CEIHaryana.Contractor
                 {
                     installationType1.Visible = false;
                 }
-                if (dp_Id10 != "")
+                if (dp_Id10 != "" && dp_Id11 != "")
                 {
                     Installation.Visible = true;
                     installationType2.Visible = true;
@@ -228,6 +228,14 @@ namespace CEIHaryana.Contractor
                     customFile.Visible = false;
                     customFileLocation.Visible = false;
                     txtCompletionDateAPWO.Text = DateTime.Parse(dp_Id6).ToString("yyyy-MM-dd");
+                }
+                if (ddlVoltageLevel.SelectedValue == "650V")
+                {
+                    installationType2.Visible = false;
+                }
+                else
+                {
+                    installationType2.Visible = true;
                 }
                 //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();

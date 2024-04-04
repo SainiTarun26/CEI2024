@@ -39,47 +39,47 @@ namespace CEIHaryana.Officers
             try
             {
                 Uploads.Visible = true;
-                //if (txtWorkType.Text == "Line")
-                //{
-                //    if (txtApplicantType.Text.Trim() == "Supplier Installation")
-                //    {
-                //      LineSubstationSupplier.Visible = true;
-                //      SupplierSub.Visible = true;
-                //    }
-                //    else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                //    {
-                //        LinePersonal.Visible = true;
-                //        SupplierSub.Visible = true;
-                //    }
-                //}
-                //else if (txtWorkType.Text == "Substation Transformer")
-                //{
-                //    if (txtApplicantType.Text.Trim() == "Supplier Installation")
-                //    {
-                //      LineSubstationSupplier.Visible = true;
-                //    }
-                //    else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                //    {
-                //        PersonalSub.Visible = true;
-                //    }
-                //}
-                //else if (txtWorkType.Text == "Generating Set")
-                //{
-                //   if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                //   {
-                //     PersonalGenerating.Visible = true;
-                //   }
-                //   else
-                //   {
-                //     PersonalGenerating.Visible = false;
-                //   }
-                //}
-                //else
-                //{
-                //    LineSubstationSupplier.Visible = false;
-                //    SupplierSub.Visible = false;
-                //    PersonalGenerating.Visible = false;
-                //}
+                if (txtWorkType.Text == "Line")
+                {
+                    if (txtApplicantType.Text.Trim() == "Power Utility")
+                    {
+                      LineSubstationSupplier.Visible = true;
+                      SupplierSub.Visible = true;
+                    }
+                    else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                    {
+                        LinePersonal.Visible = true;
+                        SupplierSub.Visible = true;
+                    }
+                }
+                else if (txtWorkType.Text == "Substation Transformer")
+                {
+                    if (txtApplicantType.Text.Trim() == "Power Utility")
+                    {
+                      LineSubstationSupplier.Visible = true;
+                    }
+                    else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                    {
+                        PersonalSub.Visible = true;
+                    }
+                }
+                else if (txtWorkType.Text == "Generating Set")
+                {
+                   if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+                   {
+                     PersonalGenerating.Visible = true;
+                   }
+                   else
+                   {
+                     PersonalGenerating.Visible = false;
+                   }
+                }
+                else
+                {
+                    LineSubstationSupplier.Visible = false;
+                    SupplierSub.Visible = false;
+                    PersonalGenerating.Visible = false;
+                }
             }
             catch (Exception ex) 
             {
@@ -529,24 +529,7 @@ namespace CEIHaryana.Officers
 
             }
         }
-
-        protected void lnkInvoiceOfFireExtingusisherSystem_Click(object sender, EventArgs e)
-        {
-            string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-
-            if (File.Exists(filePath))
-            {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-            }
-            else
-            {
-
-            }
-        }
-
+       
         protected void lnkInvoiceOfFireExtingusisherSystem_Click1(object sender, EventArgs e)
         {
             string fileName = Session["InvoiceoffireExtinguisheratSite"].ToString();

@@ -62,7 +62,7 @@ namespace CEI_PRoject.Admin
                 }
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -186,8 +186,8 @@ namespace CEI_PRoject.Admin
             ddlLoadBindDistrict(dp_Id4);
             ddlDistrict.SelectedValue = dp_Id5;
             DateofIntialissue.Text = DateTime.Parse(dp_Id9).ToString("yyyy-MM-dd");
-            DateofRenewal.Text = DateTime.Parse(dp_Id10).ToString("yyyy-MM-dd");
-            DateofExpiry.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
+            DateofRenewal.Text = DateTime.Parse(dp_Id11).ToString("yyyy-MM-dd");
+            DateofExpiry.Text = DateTime.Parse(dp_Id10).ToString("yyyy-MM-dd");
             voltageWithEffect.Text = DateTime.Parse(dp_Id13).ToString("yyyy-MM-dd");
             txtAge.Text = DateTime.Parse(dp_Id19).ToString("yyyy-MM-dd");
             if (Regex.IsMatch(dp_Id16, @"^\d+$"))

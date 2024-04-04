@@ -13,7 +13,7 @@ namespace CEIHaryana.Admin
     public partial class IntimationForHistory : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string Id = string.Empty;
+        string Id ,StaffTo, AssignFrom;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -37,26 +37,10 @@ namespace CEIHaryana.Admin
                     }
 
                     GetDetailsWithId();
-                    Visibilty();
-                    
-                    // BindDropDownToAssign();
-                    //string Approval = Session["Approval"].ToString();
-                    //if (Approval.Trim() == "Accepted" || Approval.Trim() == "Rejected")
-                    //{
-                    //    ApprovalRequired.Visible = true;
-                    //    btnAction.Visible = false;
-                    //    ddlReview.Attributes.Add("disabled", "true");
-                    //    ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Approval));
-                    //    DivToAssign.Visible = false;
-                    //    btnUpdate.Visible = false;
-                    //}
-                    //else
-                    //{
-
-                    //}
+                    Visibilty();                                       
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -157,10 +141,17 @@ namespace CEIHaryana.Admin
                 Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
                 Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
                 Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
-            }
-            catch
-            {
 
+                txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();                
+                txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+
+                txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
 
@@ -755,19 +746,26 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                if(Session["InspectionId"] != null && Convert.ToString(Session["InspectionId"]) != "")
+                if(Session["InspectionId"] != null && Convert.ToString(Session["InspectionId"]) != "" && Session["AdminID"] != null)
                 {
                     ID = Session["InspectionId"].ToString();
-                   // CEI.UpdateInspectionDataOnAction(ID, ddlToAssign.SelectedValue,);
+                    AssignFrom= Session["AdminID"].ToString();
+                    if(ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
+                    {
+                        StaffTo = ddlToAssign.SelectedValue;
+                        CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
 
+                        ddlDivisions.SelectedIndex = 0;                        
+                        ddlToAssign.SelectedIndex = 0;                       
 
-                    ddlDivisions.SelectedIndex = 0;
-                    //txtRejected.Text = string.Empty;
-                    ddlToAssign.SelectedIndex = 0;
-                    //txtAdditionalNote.Text = string.Empty;
-
-                    string script = "alert('Data updated successfully.');";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                        string script =  $"alert('Inspection sent to {StaffTo} successfully.');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                    }
+                    else
+                    {
+                        ddlToAssign.Focus();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
+                    }  
                 }                
             }
             catch (Exception ex)

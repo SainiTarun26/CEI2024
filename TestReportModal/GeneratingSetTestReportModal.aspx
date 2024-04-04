@@ -2089,6 +2089,12 @@ padding-bottom:45px;
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
+                                          <div class="col-6" id="Div1" runat="server">
+                                            <label for="Name">
+                                                Tentative Work Completition Date
+                                            </label>
+                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtDistrict" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
