@@ -621,7 +621,7 @@
 
                                                         </h2>
 
-                                                        <span>Total Requests Recieved</span>
+                                                        <span>All Requests Recieved</span>
                                                     </div>
                                                 </div>
                                             </a>

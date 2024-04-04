@@ -146,7 +146,6 @@
 
         span {
             font-weight: 400;
-            color: red;
             font-size: 12px;
         }
     </style>

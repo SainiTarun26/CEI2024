@@ -2885,7 +2885,7 @@ margin-top: 20px;
                                     </div>
                               </div>
                                                                                 </div>
-                       <div class="card"  style="background: #fcfcfc;">
+                       <div class="card" style="background: #fcfcfc;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px;">
         <div class="row">
             <div class="col-4" id="CreatedDate" visible="false" runat="server">
                 <label>

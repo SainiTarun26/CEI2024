@@ -712,7 +712,7 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                if (ddlPremises.SelectedValue == "10")
+                if (ddlPremises.SelectedValue == "11")
                 {
                     OtherPremises.Visible = true;
                 }
@@ -721,7 +721,10 @@ namespace CEIHaryana.Contractor
                     OtherPremises.Visible = false;
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+            //
+            }
         }
         protected void Unnamed2_Click(object sender, EventArgs e)
         {

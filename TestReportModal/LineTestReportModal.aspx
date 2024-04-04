@@ -2701,7 +2701,7 @@ margin-top: 20px;
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card"  style="background: #fcfcfc;">
+                                    <div class="card"  style="background: #fcfcfc;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px;padding: 20px; padding-top: 1px;">
         <div class="row">
             
             <div class="col-4" id="CreatedDate" visible="false" runat="server">
@@ -2798,7 +2798,7 @@ margin-top: 20px;
                                 <div class="col-6" id="SiteOwner2" runat="server" visible="false">
                                     <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack2_Click" />
                                 </div>
-                                <div class="col-6" id="Supervisor" runat="server" visible="false">
+                                <div class="col-6" id="Supervisor" runat="server" visible="false" style="margin-top:3%;">
                                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                                 </div>
                                 <div class="col-6" id="IntimationForHistory" runat="server" visible="false">
