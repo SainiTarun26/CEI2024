@@ -36,14 +36,14 @@ namespace CEIHaryana.Contractor
                     Response.Redirect("/Login.aspx");
                 }
                 GetContractorNotifications();
-                GetContractorName();
+               // GetContractorName();
                 //if(TextBoxPlaceholder.Controls.Count > 0)
                 //{
                 //    string alert = "alert('');";
                 //    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alert, true);
                 //}
             }
-            catch
+            catch (Exception ex)
             {
                 Session["ContractorID"] = "";
                 Response.Redirect("/Login.aspx");
@@ -116,14 +116,14 @@ namespace CEIHaryana.Contractor
             }
 
         }
-        public void GetContractorName()
-        {
-            REID = Session["ContractorID"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.GetContractorName(REID);
-            textName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+        //public void GetContractorName()
+        //{
+        //    REID = Session["ContractorID"].ToString();
+        //    DataSet ds = new DataSet();
+        //    ds = CEI.GetContractorName(REID);
+        //    textName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
 
-        }
+        //}
 
 
     }

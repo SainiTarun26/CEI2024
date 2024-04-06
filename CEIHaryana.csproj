@@ -1867,6 +1867,7 @@
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
+    <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
@@ -2318,6 +2319,13 @@
     </Compile>
     <Compile Include="PaymentPage.aspx.designer.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\InspectionRequestPrint.aspx.cs">
+      <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\InspectionRequestPrint.aspx.designer.cs">
+      <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteOwnerPages\ChallanReport.aspx.cs">
