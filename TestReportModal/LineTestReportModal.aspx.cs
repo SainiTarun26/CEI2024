@@ -72,6 +72,7 @@ namespace CEIHaryana.TestReportModal
                         ID = Session["IntimationForHistoryId"].ToString();
                         GetDetailswithId();
                         IntimationForHistory.Visible = true;
+                        Session["IntimationForHistoryId"] = null;   //added
                     }
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
                     {
@@ -341,7 +342,7 @@ namespace CEIHaryana.TestReportModal
                 }
                 txtCircuit.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
-                txtReportNo.Text = ds.Tables[0].Rows[0]["LineId"].ToString();
+                txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 if (txtConductorType.Text.Trim() == "Bare")
                 {

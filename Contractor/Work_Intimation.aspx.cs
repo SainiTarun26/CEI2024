@@ -103,7 +103,7 @@ namespace CEIHaryana.Contractor
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
                 //ddlPremises.SelectedValue = dp_Id1;
                 txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                if(txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
                 {
                     DivPancard_TanNo.Visible = true;
                 }
@@ -112,14 +112,14 @@ namespace CEIHaryana.Contractor
                 {
                     DivOtherDepartment.Visible = true;
                 }
-                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();                
+                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
                 ddlVoltageLevel.SelectedIndex = ddlVoltageLevel.Items.IndexOf(ddlVoltageLevel.Items.FindByText(dp_Id3));
-      //          string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                //          string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
-         //       ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
+                //       ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
@@ -501,7 +501,6 @@ namespace CEIHaryana.Contractor
                 {
                     //Label lblCategory = (Label)row.FindControl("lblCategory");
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-
                     //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
                     //{
                     if (chk != null && chk.Checked)
@@ -530,7 +529,7 @@ namespace CEIHaryana.Contractor
                         {
                             try
                             {
-                                string FilName = string.Empty;                                
+                                string FilName = string.Empty;
                                 FilName = Path.GetFileName(customFile.PostedFile.FileName);
                                 if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
                                 {
@@ -663,7 +662,6 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-
         protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -723,7 +721,7 @@ namespace CEIHaryana.Contractor
             }
             catch (Exception ex)
             {
-            //
+                //
             }
         }
         protected void Unnamed2_Click(object sender, EventArgs e)
@@ -807,13 +805,13 @@ namespace CEIHaryana.Contractor
                     ddlWorkDetail.SelectedValue = "0";
                 }
 
-                
+
             }
             if (ddlApplicantType.SelectedValue == "AT001")
             {
                 DivPancard_TanNo.Visible = true;
             }
-            else if(ddlApplicantType.SelectedValue == "AT002")
+            else if (ddlApplicantType.SelectedValue == "AT002")
             {
                 DivPoweUtility.Visible = true;
                 DivPoweUtilityWing.Visible = true;
@@ -823,7 +821,6 @@ namespace CEIHaryana.Contractor
                 DivOtherDepartment.Visible = true;
             }
         }
-
         protected void btnDelete1_Click(object sender, EventArgs e)
         {
             try
@@ -1010,9 +1007,59 @@ namespace CEIHaryana.Contractor
                 }
             }
             catch (Exception ex)
-            { 
-            //
+            {
+                //
             }
+        }
+
+        protected void txtCompletitionDate_TextChanged(object sender, EventArgs e)
+        {
+            {
+                if (!string.IsNullOrWhiteSpace(txtCompletitionDate.Text))
+                {
+                    if (DateTime.TryParse(txtCompletitionDate.Text, out DateTime selectedCompletionDate))
+                    {
+                        DateTime currentDate = DateTime.Now;
+
+                        if (selectedCompletionDate < currentDate)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Completion date must be greater than the current date.')", true);
+                            txtCompletitionDate.Text = string.Empty;
+                        }
+                    }
+                    else
+                    {
+                        // Handle invalid date format
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Invalid date format.')", true);
+                        txtCompletitionDate.Text = string.Empty;
+                    }
+                }
+
+            }
+        }
+
+        protected void txtCompletionDateAPWO_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtCompletionDateAPWO.Text))
+            {
+                if (DateTime.TryParse(txtCompletionDateAPWO.Text, out DateTime selectedCompletionDateAPWO))
+                {
+                    DateTime currentDate = DateTime.Now;
+
+                    if (selectedCompletionDateAPWO < currentDate)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Completion date as per order must be greater than the current date.')", true);
+                        txtCompletitionDate.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    // Handle invalid date format
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Invalid date format.')", true);
+                    txtCompletionDateAPWO.Text = string.Empty;
+                }
+            }
+
         }
     }
 }

@@ -695,10 +695,11 @@
     </footer>
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            if (confirm('Inspection Added Successfully')) {
+            /*   if (confirm('Inspection Request Submit Successfully, and forword to concern officer')) {*/
+            alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
                 window.location.href = "/SiteOwnerPages/InspectionHistory.aspx";
-            } else {
-            }
+            //} else {
+            //}
         }
     </script>
     <script type="text/javascript">

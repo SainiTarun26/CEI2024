@@ -435,14 +435,15 @@
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report"></asp:LinkButton>
                 </div>--%>
             </div>
+            <asp:UpdatePanel ID="UpdatePanel" runat="server" >
+                        <ContentTemplate>
            <div class="row" style="margin-top: -30px;">
                 <div class="col-3" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -45px;">
                     <br />
                     <br />
-                   <%-- <asp:UpdatePanel ID="UpdatePanel" runat="server" >
-                        <ContentTemplate>--%>
+                    
                     <label>
-                        Division <%--// Approval--%>
+                        Division 
                         <samp style="color: red">* </samp>
                     </label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDivisions"  Style="width: 100% !important;" OnSelectedIndexChanged="ddlDivisions_SelectedIndexChanged">
@@ -477,8 +478,8 @@
                     <label>Additional Note</label>
                     <asp:TextBox ID="txtAdditionalNote" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>--%>
-                <%--</ContentTemplate>
-                    </asp:UpdatePanel>--%>
+               </ContentTemplate>
+                    </asp:UpdatePanel>
                   
             </div>
                <div class="row" style="margin-top: 25px;">

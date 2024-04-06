@@ -375,6 +375,8 @@ namespace CEIHaryana.Admin
             {
                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
             }
+
+            Session["IntimationForHistoryId"] = null;
         }
         #endregion
 
@@ -705,11 +707,7 @@ namespace CEIHaryana.Admin
         {
             Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx");
         }
-        //protected void btnBack_Click(object sender, EventArgs e)
-        //{
-        //    Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx");
-        //}
-
+       
         protected void btnAction_Click(object sender, EventArgs e)
         {
             try
@@ -728,20 +726,7 @@ namespace CEIHaryana.Admin
 
             }
         }
-
-        //protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    Rejection.Visible = false;
-        //    if (ddlReview.SelectedValue == "2")
-        //    {
-        //        Rejection.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        Rejection.Visible = false;
-        //    }
-        //}
-
+        
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -753,13 +738,14 @@ namespace CEIHaryana.Admin
                     if(ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
                     {
                         StaffTo = ddlToAssign.SelectedValue;
-                        CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
+                       // CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
 
                         ddlDivisions.SelectedIndex = 0;                        
                         ddlToAssign.SelectedIndex = 0;                       
 
                         string script =  $"alert('Inspection sent to {StaffTo} successfully.');";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                        Response.Redirect("IntimationHistoryForAdmin.aspx",true);
                     }
                     else
                     {

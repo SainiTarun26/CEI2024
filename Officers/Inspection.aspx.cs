@@ -546,16 +546,16 @@ namespace CEIHaryana.Officers
                         AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
-                        CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);
+                       // CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        if (Session["Area"] != null)
-                        {
-                          Response.Redirect("/Officers/OfficerDashboard.aspx", false);
-                        }
-                        else
-                        {
-                          Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
-                        }
+                        //if (Session["Area"] != null)
+                        //{
+                        //  Response.Redirect("/Officers/OfficerDashboard.aspx", false);
+                        //}
+                        //else
+                        //{
+                        //  Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
+                        //}
                     }
                     else
                     {

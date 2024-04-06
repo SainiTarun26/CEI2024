@@ -89,6 +89,14 @@
                                 </div>
                             </li>
                         </ul>--%>
+                        <div class="row">
+                            <label id="nameandid" for="test">Name:</label>
+                            <span>
+                                <asp:TextBox class="form-control" ID="textName" TabIndex="7" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                            </span>
+                        </div>
+
                         <ul class="navbar-nav navbar-nav-right">
                             <li class="nav-item dropdown">
                                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -369,7 +377,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/TestReportForContractor.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Approval Pending Test <br/> Reports</span>
+                                    <span class="menu-title">Approval Pending Test
+                                        <br />
+                                        Reports</span>
                                 </a>
                             </li>
                             <li class="nav-item">

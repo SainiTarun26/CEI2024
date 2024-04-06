@@ -674,10 +674,10 @@
                             <label for="CompletitionDate">
                                 Tentative Work Completition Date<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtCompletitionDate" TabIndex="17" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtCompletitionDate" TabIndex="17" OnTextChanged="txtCompletitionDate_TextChanged" AutoPostBack="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtCompletitionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Completition Date</asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="cmpDate" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletitionDate" Operator="GreaterThanEqual"
-                                ErrorMessage="Tentative Completion Date must be greater than Start Date" Display="Dynamic" ForeColor="Red" />
+                            <%--<asp:CompareValidator ID="cmpDate" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletitionDate" Operator="GreaterThanEqual"
+                                ErrorMessage="Tentative Completion Date must be greater than Start Date" Display="Dynamic" ForeColor="Red" />--%>
                         </div>
                         <div class="col-4">
                             <label>
@@ -706,8 +706,8 @@
                             <label for="CompletionDateasperWorkOrder">
                                 Completion Date as per Work Order
                             </label>
-                            <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" TabIndex="20" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletionDateAPWO" Operator="GreaterThanEqual" ErrorMessage="Work Completion Date must be greater than  Start Date" Display="Dynamic" ForeColor="Red" />
+                            <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" AutoPostBack="true" OnTextChanged="txtCompletionDateAPWO_TextChanged" TabIndex="20" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletionDateAPWO" Operator="GreaterThanEqual" ErrorMessage="Work Completion Date must be greater than  Start Date" Display="Dynamic" ForeColor="Red" />--%>
                         </div>
                     </div>
                 </div>

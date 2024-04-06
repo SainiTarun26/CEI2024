@@ -36,6 +36,7 @@ namespace CEIHaryana.Contractor
                     Response.Redirect("/Login.aspx");
                 }
                 GetContractorNotifications();
+                GetContractorName();
                 //if(TextBoxPlaceholder.Controls.Count > 0)
                 //{
                 //    string alert = "alert('');";
@@ -115,5 +116,15 @@ namespace CEIHaryana.Contractor
             }
 
         }
+        public void GetContractorName()
+        {
+            REID = Session["ContractorID"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetContractorName(REID);
+            textName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+
+        }
+
+
     }
 }

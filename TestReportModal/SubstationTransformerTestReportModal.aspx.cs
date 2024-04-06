@@ -484,7 +484,7 @@ namespace CEIHaryana.TestReportModal
                 //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
-                txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString();
+                txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
             }
             catch

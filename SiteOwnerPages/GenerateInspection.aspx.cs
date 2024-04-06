@@ -1044,7 +1044,6 @@ namespace CEIHaryana.SiteOwnerPages
                         //}
                         #endregion
 
-
                         if (LineSubstationSupplier.Visible == true)
                         {
                             fileExtension = Path.GetExtension(FileUpload1.FileName);
