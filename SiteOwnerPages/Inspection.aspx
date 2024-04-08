@@ -186,6 +186,42 @@
             </div>
 
             <div class="row">
+                <div class="row">
+                  <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                            AutoGenerateColumns="false"  AllowPaging="true" OnRowCommand="GridView1_RowCommand"
+                        PageSize="20" >
+                            <PagerStyle CssClass="pagination-ys" />
+                           <Columns>
+                                <asp:TemplateField HeaderText=" Document Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                               <asp:TemplateField HeaderText=" Document Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID1" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                               <asp:TemplateField>
+                                    <HeaderStyle Width="10%"  CssClass="headercolor"/>
+                                    <ItemStyle Width="10%" />
+                                    <HeaderTemplate>
+                                        View Documents
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                          <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
+                                         <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"  CommandArgument='<%#Eval("DocumentPath") %>' CommandName="Select">
+                                       Click here to view document
+                                   </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                               </Columns>
+                      </asp:GridView>
+            </div>
                 <div class="table-responsive pt-3" id="Uploads" runat="server">
                     <table class="table table-bordered table-striped">
                         <thead class="table-dark">

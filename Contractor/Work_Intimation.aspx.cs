@@ -525,30 +525,62 @@ namespace CEIHaryana.Contractor
                         ContractorID = Session["ContractorID"].ToString();
 
                         string filePathInfo = "";
+                        //if (ddlAnyWork.SelectedValue == "Yes")
+                        //{
+                        //    try
+                        //    {
+                        //        string FilName = string.Empty;
+                        //        FilName = Path.GetFileName(customFile.PostedFile.FileName);
+                        //        if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                        //        {
+                        //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                        //        }
+                        //        string ext = customFile.PostedFile.FileName.Split('.')[1];
+                        //        string path = "";
+                        //        path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
+                        //        string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                        //        string filePathInfo2 = "";
+                        //        filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
+                        //        customFile.PostedFile.SaveAs(filePathInfo2);
+                        //        filePathInfo = path + fileName;
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
+                        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                        //        return;
+                        //    }
+                        //}
+
                         if (ddlAnyWork.SelectedValue == "Yes")
                         {
-                            try
+                            if (customFile.HasFile && customFile.PostedFile != null)
                             {
-                                string FilName = string.Empty;
-                                FilName = Path.GetFileName(customFile.PostedFile.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                                try
                                 {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                                    string FilName = string.Empty;
+                                    FilName = Path.GetFileName(customFile.PostedFile.FileName);
+
+                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                                    {
+                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                                    }
+
+                                    string ext = Path.GetExtension(customFile.FileName);
+                                    string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                                    string filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
+                                    customFile.SaveAs(filePathInfo2);
+
+                                    // Now, use filePathInfo as needed...
                                 }
-                                string ext = customFile.PostedFile.FileName.Split('.')[1];
-                                string path = "";
-                                path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                                string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                                string filePathInfo2 = "";
-                                filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                                customFile.PostedFile.SaveAs(filePathInfo2);
-                                filePathInfo = path + fileName;
+                                catch (Exception ex)
+                                {
+                                    // Handle exceptions
+                                }
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                                return;
+                                // Handle the case where no file is uploaded
                             }
                         }
                         if (ddlApplicantType.SelectedValue == "0" && ddlApplicantType.SelectedValue == "")
