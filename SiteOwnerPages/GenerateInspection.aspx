@@ -261,6 +261,7 @@
                                     <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                     <asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>
                                     <asp:Label ID="lblApplicantTypeCode" runat="server" Text='<%#Eval("ApplicantTypeCode") %>'></asp:Label>
+                                     <asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
@@ -326,6 +327,7 @@
                                   </div>
                                 </div>--%>
                     <div class="row">
+                        
                         <div class="table-responsive pt-3" id="Uploads" runat="server" visible="false">
                             <table class="table table-bordered table-striped">
                                 <thead class="table-dark">
@@ -537,61 +539,70 @@
                                         <asp:TextBox class="form-control" ID="txtRequestDetails" TextMode="MultiLine" Rows="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>--%>
                         </div>
-                    </div>
-                </div>
-                <div class="card" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important; margin-bottom: 20px;">
-                    <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridView2" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        AutoGenerateColumns="false">
+
+                        
+                         <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" Width="100%" AutoGenerateColumns="false">
+
+                        <PagerStyle CssClass="pagination-ys" />
+
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblId" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
+                                    <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
+                                    <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("DocumentShortName") %>'></asp:Label>
+                                    
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="ApplicantName" HeaderText="Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" />
+
+                             <asp:BoundField DataField="DocumentName" HeaderText="Document Name">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <%--  <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
-                                    <HeaderStyle HorizontalAlign="center" Width="12%" />
-                                    <ItemStyle HorizontalAlign="center" Width="12%" />
-                                </asp:BoundField>--%>
-                            <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Payment" HeaderText="Payment">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
-                            </asp:BoundField>
+
+                            <asp:TemplateField HeaderText="Upload Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:FileUpload ID="fileupload"  runat="server" />
+                                </ItemTemplate>
+
+                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                            </asp:TemplateField>
+                          
+
+
+                           
                         </Columns>
+
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+
+                        <RowStyle ForeColor="#000066" />
+
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+
+                    </asp:GridView>
+
+                    </div>
+                </div>
+                <div class="card" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important; margin-bottom: 20px;">
+                    <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridViewPayment" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                        AutoGenerateColumns="true">
+                        
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
                         <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />                       
                     </asp:GridView>
                 </div>
                 <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-left: 30px;">

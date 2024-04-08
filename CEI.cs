@@ -1629,8 +1629,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
       string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
       string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
       string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite,
-      string StructureStabilityResolvedByAuthorizedEngineer, /*string Staff,*/ string District, string Division, string DateOfSubmission, string CreatedBy,
-      string TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment
+      string StructureStabilityResolvedByAuthorizedEngineer, string District, string Division,string PaymentMode, string DateOfSubmission, string CreatedBy,
+      int TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment
       )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData");
@@ -1668,11 +1668,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", String.IsNullOrEmpty(InvoiceOfDGSetOfGeneratingSet) ? DBNull.Value : (object)InvoiceOfDGSetOfGeneratingSet);
             cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", String.IsNullOrEmpty(ManufacturingCerificateOfDGSet) ? DBNull.Value : (object)ManufacturingCerificateOfDGSet);
             cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", String.IsNullOrEmpty(InvoiceOfExptinguisherOrApparatusAtsite) ? DBNull.Value : (object)InvoiceOfExptinguisherOrApparatusAtsite);
-            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", String.IsNullOrEmpty(StructureStabilityResolvedByAuthorizedEngineer) ? DBNull.Value : (object)StructureStabilityResolvedByAuthorizedEngineer);
-            // cmd.Parameters.AddWithValue("@Staff ", Staff);
+            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", String.IsNullOrEmpty(StructureStabilityResolvedByAuthorizedEngineer) ? DBNull.Value : (object)StructureStabilityResolvedByAuthorizedEngineer);           
             cmd.Parameters.AddWithValue("@District ", District);
             cmd.Parameters.AddWithValue("@Division ", Division);
-            //cmd.Parameters.AddWithValue("@RequestDetails ", RequestDetails);
+            cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);//
             DateTime SubmitionDate;
             if (DateTime.TryParse(DateOfSubmission, out SubmitionDate) && SubmitionDate != DateTime.MinValue)
             {
@@ -2237,7 +2236,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerNotifiction", ID);
         }
-        public DataSet GetPaymentInformation(string Id, string IntimationId)
+        public DataSet GetPaymentInformation(string Id, string IntimationId) //not in use
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_paymentCalculation", Id, IntimationId);
         }
@@ -3323,6 +3322,51 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetContractorName", UserId);
         }
+
+        public DataTable Payment(string intimationId, string count, string installationtypeId)
+        {
+            DataTable result = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Sp_Calculate_InspectionPayment_Amount", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@IntimationId", intimationId);
+                command.Parameters.AddWithValue("@Count", count);
+                command.Parameters.AddWithValue("@InspectionType", "New");
+                command.Parameters.AddWithValue("@InstallationTypeID", installationtypeId);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(result);
+            }
+
+            return result;
+        }
+        public DataSet GetSiteOwnerDetails(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerDetails", LoginId);
+        }
+        public DataTable GetDocumentlist(string ApplicantType, string InstallationType, string InspectionType, string DesignatedOfficer, string PlantLocation)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentCheckList", ApplicantType, InstallationType, InspectionType, DesignatedOfficer, PlantLocation);
+        }
+
+        #region printing test report code line substation generating set printing   
+        public DataSet LineDataWithIdForPrintTestReport(int ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineDataWithId_ForPrintTestReport", ID);
+        }
+        public DataSet SubstationTestReportDataForPrintTestReport(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SubstationDataWithId_ForPrintTestReport", Id);
+        }
+        public DataSet GeneratingTestReportDataWithIdForPrintTestReport(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GeneratingDataWithId_ForPrintTestReport", Id);
+        }
+        #endregion
+
     }
 }
 

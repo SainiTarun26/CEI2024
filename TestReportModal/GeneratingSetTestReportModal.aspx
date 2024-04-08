@@ -2010,6 +2010,12 @@
             } else {
             }
         }
+
+        function openNewWindow() {
+            var newWindow = window.open('../UserPages/PrintGeneratingSetTestReport.aspx', '_blank');
+            newWindow.focus();
+            console.log(newWindow);
+        }
     </script>
 </head>
 <body>
@@ -2770,6 +2776,11 @@
                                     </div>
                                     <div class="col-6" id="IntimationForHistory" runat="server" visible="false">
                                         <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
+                                    </div>
+                                      <div class="col-6" id="Div81" runat="server" visible="true">
+
+                                    <asp:Button ID="btnOpenWindow" runat="server" Text="Open New Window" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
+
                                     </div>
                                 </div>
                             </div>

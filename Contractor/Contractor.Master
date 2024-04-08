@@ -89,7 +89,7 @@
                                 </div>
                             </li>
                         </ul>--%>
-                       <%-- <div class="row">
+                        <%-- <div class="row">
                             <label id="nameandid" for="test">Name:</label>
                             <span>
                                 <asp:TextBox class="form-control" ID="textName" TabIndex="7" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

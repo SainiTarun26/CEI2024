@@ -369,17 +369,18 @@
                                     <span class="menu-title">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <%-- <li class="nav-item">
                                  <a class="nav-link" href="/Officers/InstallationIntimationDetails.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Pending Inspections</span>
                                 </a>
-                            </li><li class="nav-item">
+                            </li>
+                           <li class="nav-item">
                                  <a class="nav-link" href="/Officers/ActionTakenInspections.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Action Taken Inspections</span>
                                 </a>
-                            </li>
+                            </li>--%>
                                             <li class="nav-item">
                                 <a class="nav-link" href="/Officers/ConsolidatedReport.aspx">
                                     <i class="icon-grid menu-icon"></i>

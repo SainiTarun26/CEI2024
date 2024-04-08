@@ -1925,6 +1925,7 @@
     <Content Include="UserPages\FormPrintWiremen.aspx" />
     <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
+    <Content Include="UserPages\PrintGeneratingSetTestReport.aspx" />
     <Content Include="UserPages\PrintLineTestReport.aspx" />
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
@@ -2733,6 +2734,13 @@
     </Compile>
     <Compile Include="UserPages\Instructions.aspx.designer.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\PrintGeneratingSetTestReport.aspx.cs">
+      <DependentUpon>PrintGeneratingSetTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\PrintGeneratingSetTestReport.aspx.designer.cs">
+      <DependentUpon>PrintGeneratingSetTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\PrintLineTestReport.aspx.cs">
       <DependentUpon>PrintLineTestReport.aspx</DependentUpon>
