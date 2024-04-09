@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -37,7 +38,7 @@ namespace CEIHaryana.Admin
                     }
 
                     GetDetailsWithId();
-                    Visibilty();                                       
+                    //Visibilty();                                       
                 }
             }
             catch (Exception ex)
@@ -46,61 +47,61 @@ namespace CEIHaryana.Admin
             }
         }
 
-        private void Visibilty()
-        {
-            btnUpdate.Visible = false;
-            btnAction.Visible = true;
-            Uploads.Visible = true;
-            Uploads.Visible = true;
-            Uploads.Visible = true;
-            Uploads.Visible = true;
-            if (txtWorkType.Text == "Line")
-            {
-                if (txtApplicantType.Text.Trim() == "Power Utility")
-                {
-                    LineSubstationSupplier.Visible = true;
-                    SupplierSub.Visible = true;
-                }
-                else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                {
-                    LinePersonal.Visible = true;
-                    SupplierSub.Visible = true;
-                }
-            }
-            else if (txtWorkType.Text == "Substation Transformer")
-            {
-                if (txtApplicantType.Text.Trim() == "Power Utility")
-                {
-                    LineSubstationSupplier.Visible = true;
-                }
-                else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                {
-                    PersonalSub.Visible = true;
-                }
-            }
-            else if (txtWorkType.Text == "Generating Set")
-            {
-                if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                {
-                    PersonalGenerating.Visible = true;
-                }
-                else
-                {
-                    PersonalGenerating.Visible = false;
-                }
-            }
-            else
-            {
-                LineSubstationSupplier.Visible = false;
-                SupplierSub.Visible = false;
-                PersonalGenerating.Visible = false;
-            }
-            if (Session["Approval"].ToString().Trim() == "Rejected")
-            {
-                btnBack.Visible = true;
-            }
+        //private void Visibilty()
+        //{
+        //    btnUpdate.Visible = false;
+        //    btnAction.Visible = true;
+        //    Uploads.Visible = true;
+        //    Uploads.Visible = true;
+        //    Uploads.Visible = true;
+        //    Uploads.Visible = true;
+        //    if (txtWorkType.Text == "Line")
+        //    {
+        //        if (txtApplicantType.Text.Trim() == "Power Utility")
+        //        {
+        //            LineSubstationSupplier.Visible = true;
+        //            SupplierSub.Visible = true;
+        //        }
+        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+        //        {
+        //            LinePersonal.Visible = true;
+        //            SupplierSub.Visible = true;
+        //        }
+        //    }
+        //    else if (txtWorkType.Text == "Substation Transformer")
+        //    {
+        //        if (txtApplicantType.Text.Trim() == "Power Utility")
+        //        {
+        //            LineSubstationSupplier.Visible = true;
+        //        }
+        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+        //        {
+        //            PersonalSub.Visible = true;
+        //        }
+        //    }
+        //    else if (txtWorkType.Text == "Generating Set")
+        //    {
+        //        if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+        //        {
+        //            PersonalGenerating.Visible = true;
+        //        }
+        //        else
+        //        {
+        //            PersonalGenerating.Visible = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        LineSubstationSupplier.Visible = false;
+        //        SupplierSub.Visible = false;
+        //        PersonalGenerating.Visible = false;
+        //    }
+        //    if (Session["Approval"].ToString().Trim() == "Rejected")
+        //    {
+        //        btnBack.Visible = true;
+        //    }
            
-        }
+        //}
         private void BindDivisions()
         {
             DataSet ds = new DataSet();
@@ -111,8 +112,7 @@ namespace CEIHaryana.Admin
             ddlDivisions.DataBind();
             ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));           
             ds.Clear();
-        }
-       
+        }       
         private void GetDetailsWithId()
         {
             try
@@ -127,27 +127,30 @@ namespace CEIHaryana.Admin
                 txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
-                Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
-                Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
-                string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
-                Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
-                Session["CopyOfNoticeIssuedByUHBVNorDHBVN"] = ds.Tables[0].Rows[0]["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
-                Session["InvoiceOfTransferOfPersonalSubstation"] = ds.Tables[0].Rows[0]["InvoiceOfTransferOfPersonalSubstation"].ToString();
-                Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
-                Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
-                Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
-                Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
-                Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
-                Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
-                Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
 
                 txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();                
+                txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                 txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
 
                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                //Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
+                //Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
+                //Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
+                //string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
+                //Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
+                //Session["CopyOfNoticeIssuedByUHBVNorDHBVN"] = ds.Tables[0].Rows[0]["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
+                //Session["InvoiceOfTransferOfPersonalSubstation"] = ds.Tables[0].Rows[0]["InvoiceOfTransferOfPersonalSubstation"].ToString();
+                //Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
+                //Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
+                //Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
+                //Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
+                //Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
+                //Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
+                //Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+
+
+                GridBindDocument();
             }
             catch (Exception ex)
             {
@@ -759,6 +762,26 @@ namespace CEIHaryana.Admin
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
+
+        protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    string fileName = Server.MapPath(e.CommandArgument.ToString());
+                    Process process = new Process();
+                    process.StartInfo.UseShellExecute = true;
+                    process.StartInfo.FileName = fileName;
+                    process.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+        }
+
         private void BindDropDownToAssign(string Division)
         {
             try
@@ -783,6 +806,34 @@ namespace CEIHaryana.Admin
             if(ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
             {
                 BindDropDownToAssign(ddlDivisions.SelectedValue);
+            }
+        }
+
+        protected void GridBindDocument()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.ViewDocuments(ID);
+                if (ds.Tables.Count > 0)
+                {
+                    grd_Documemnts.DataSource = ds;
+                    grd_Documemnts.DataBind();
+                }
+                else
+                {
+                    grd_Documemnts.DataSource = null;
+                    grd_Documemnts.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
             }
         }
     }

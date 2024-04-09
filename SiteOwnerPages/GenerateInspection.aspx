@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="GenerateInspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.GenerateInspection" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -261,7 +262,7 @@
                                     <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                     <asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>
                                     <asp:Label ID="lblApplicantTypeCode" runat="server" Text='<%#Eval("ApplicantTypeCode") %>'></asp:Label>
-                                     <asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
+                                    <asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
@@ -312,297 +313,59 @@
                             <asp:RequiredFieldValidator ID="Req_state" Text="Required" ErrorMessage="Required" ControlToValidate="ddlDocumentFor" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
                     </div>
-                    <%--  <div class="row">
-                                <div class="table-responsive pt-3" id="Div1" runat="server" >
-                                    <table class="table table-bordered table-striped" id="DocumentsTable" runat="server">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Name of Documents
-                                                </th>
-                                                <th>Upload Documents
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        </table>
-                                  </div>
-                                </div>--%>
                     <div class="row">
-                        
-                        <div class="table-responsive pt-3" id="Uploads" runat="server" visible="false">
-                            <table class="table table-bordered table-striped">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Name of Documents
-                                        </th>
-                                        <th>Upload Documents
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <div id="LineSubstationSupplier" runat="server" visible="false">
-                                        <tr id="Tr1" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Request letter from concerned Officer<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                                        ControlToValidate="FileUpload1" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr2" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Manufacturing test report of equipment<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                                        ControlToValidate="FileUpload2" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </div>
-                                    <div id="SupplierSub" runat="server" visible="false">
-                                        <tr id="Tr3" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Single line diagram of Line<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                                                        ControlToValidate="FileUpload3" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </div>
-                                    <div id="PersonalSub" runat="server" visible="false">
-                                        <tr id="Tr4" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Copy of demand notice issued by UHDVN/ DHBVN<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                                                        ControlToValidate="FileUpload4" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr5" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Invoice of transformer<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                                                        ControlToValidate="FileUpload5" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr6" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Manufacturing test certificate of transformer<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
-                                                        ControlToValidate="FileUpload6" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr7" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Single line diagram
-                                                        <samp style="color: red">* </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload7" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
-                                                        ControlToValidate="FileUpload7" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr8" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Invoice of fire extinguisher system, apparatus installed at the site<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
-                                                        ControlToValidate="FileUpload8" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </div>
-                                    <div id="PersonalGenerating" runat="server" visible="false">
-                                        <tr id="Tr9" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Invoice of DG set<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server"
-                                                        ControlToValidate="FileUpload9" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr10" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Manufacturing test certificate of DG set
-                                                        <samp style="color: red">* </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload10" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server"
-                                                        ControlToValidate="FileUpload10" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr13" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Invoice Of fire Extinguisher/apparatus installed at the site<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server"
-                                                        ControlToValidate="FileUpload13" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr id="Tr11" runat="server" visible="true">
-                                            <td>
-                                                <div class="col-12">
-                                                    Structure stability report issued by authorized engineer<samp style="color: red"> * </samp>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <asp:FileUpload ID="FileUpload11" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server"
-                                                        ControlToValidate="FileUpload11" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </div>
-                                    <tr id="LinePersonal" runat="server" visible="false">
-                                        <td>
-                                            <div class="col-12">
-                                                Demand Notice<samp style="color: red"> * </samp>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="col-12">
-                                                <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server"
-                                                    ControlToValidate="FileUpload12" ErrorMessage="Please select a file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <asp:PlaceHolder runat="server" ID="divContainer"></asp:PlaceHolder>
-                            <%--<div class="col-4" runat="server">
-                                        <label for="Pin">Request Details</label>
-                                        <asp:TextBox class="form-control" ID="txtRequestDetails" TextMode="MultiLine" Rows="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    </div>--%>
-                        </div>
 
-                        
-                         <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" Width="100%" AutoGenerateColumns="false">
+                        <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" Width="100%" AutoGenerateColumns="false">
 
-                        <PagerStyle CssClass="pagination-ys" />
+                            <PagerStyle CssClass="pagination-ys" />
 
-                        <Columns>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
-                                    <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("DocumentShortName") %>'></asp:Label>
-                                    
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <Columns>
+                                <asp:BoundField DataField="SNo" HeaderText="SNo" />
+                              <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
+                                <asp:BoundField DataField="DocumentName" HeaderText="DocumentName" />
 
-                             <asp:BoundField DataField="DocumentName" HeaderText="Document Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                                <asp:TemplateField HeaderText="File Upload">
+                                    <ItemTemplate>
+                                        <input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />
+                                        <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
+                                        <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
+                                        <asp:FileUpload ID="FileUpload1" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Upload Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                <ItemTemplate>
-                                    <asp:FileUpload ID="fileupload"  runat="server" />
-                                </ItemTemplate>
+                            </Columns>
 
-                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                            </asp:TemplateField>
-                          
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
 
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
 
-                           
-                        </Columns>
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
 
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <RowStyle ForeColor="#000066" />
 
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
 
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
 
-                        <RowStyle ForeColor="#000066" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
 
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
 
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
 
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-
-                    </asp:GridView>
+                        </asp:GridView>
 
                     </div>
                 </div>
                 <div class="card" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important; margin-bottom: 20px;">
                     <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridViewPayment" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="true">
-                        
+
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
                         <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />                       
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                     </asp:GridView>
                 </div>
                 <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-left: 30px;">
@@ -674,7 +437,7 @@
                     </div>
                 </div>
                 <div>
-                   <%-- <div class="row" style="margin-top: 50px;" id="Declaration" runat="server">
+                    <%-- <div class="row" style="margin-top: 50px;" id="Declaration" runat="server">
                         <div class="col-12" style="text-align: center;">
                             <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true"
                                 Text="&nbsp;I hereby declare that the information given above and in the enclosed documents is true to the best of my knowledge and belief and nothing has been concealed therein." Font-Size="Medium" Font-Bold="True" />
@@ -708,7 +471,7 @@
         function alertWithRedirectdata() {
             /*   if (confirm('Inspection Request Submit Successfully, and forword to concern officer')) {*/
             alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
-                window.location.href = "/SiteOwnerPages/InspectionHistory.aspx";
+            window.location.href = "/SiteOwnerPages/InspectionHistory.aspx";
             //} else {
             //}
         }

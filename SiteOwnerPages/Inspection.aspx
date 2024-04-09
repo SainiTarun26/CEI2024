@@ -148,6 +148,10 @@
             font-weight: 400;
             font-size: 12px;
         }
+           th.headercolor {
+    background: #9292cc;
+    color:white;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -184,9 +188,8 @@
 
                 </div>
             </div>
-
-            <div class="row">
                 <div class="row">
+                    <div class="col-12">
                   <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false"  AllowPaging="true" OnRowCommand="GridView1_RowCommand"
                         PageSize="20" >
@@ -222,267 +225,16 @@
                                </Columns>
                       </asp:GridView>
             </div>
-                <div class="table-responsive pt-3" id="Uploads" runat="server">
-                    <table class="table table-bordered table-striped">
-                        <thead class="table-dark">
-                        <tr>
-                            <th>Name of Documents
-                            </th>
-                            <th>Uploaded Documents
-                            </th>
-                            <th id="RejectedColumn" runat="server" visible="false">
-                                Change Document
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <div id="LineSubstationSupplier" runat="server" visible="false" >
-                            <tr id="Tr1" runat="server">
-                                <td>
-                                     
-                                    <div class="col-12">
-                                        Request letter from concerned Officer &nbsp;
-                                      
-                                    </div>
-                                </td>
-                                <td>
-                                    <asp:LinkButton ID="lnkRequestLetterFromConcernedOfficer" runat="server" AutoPostBack="true" OnClick="lnkRequestLetterFromConcernedOfficer_Click" Text="Click here to view document" />
-
-                                </td>
-                                <td id="RejectedColumnData1" runat="server" visible="false"> 
-                                   <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="padding: 0px; " />
-                                                   
-                                </td>
-                            </tr>
-                            <tr id="Tr2" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Manufacturing test report of equipment
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkManufacturingReportEquipment" runat="server" AutoPostBack="true" OnClick="lnkManufacturingReportEquipment_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                <td id="RejectedColumnData2" runat="server" visible="false">
-                                    <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                  
-                                </td>
-                            </tr>
-                        </div>
-                        <div id="SupplierSub" runat="server" visible="false">
-                            <tr id="Tr3" runat="server">
-                                <td>
-                                    <div class="col-12">
-                                        Single line diagram of Line
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkSingleLineDiagramLine" runat="server" AutoPostBack="true" OnClick="lnkSingleLineDiagramLine_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData3" runat="server" visible="false">
-                                      <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                              
-                                </td>
-                            </tr>
-                        </div>
-                        <div id="PersonalSub" runat="server" visible="false">
-                            <tr id="Tr4" runat="server">
-                                <td>
-                                    <div class="col-12">
-                                        Copy of demand notice issued by UHDVN/ DHBVN&nbsp;
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkCopyDemandNoticeIssuedByUHDVN" runat="server" AutoPostBack="true" OnClick="lnkCopyDemandNoticeIssuedByUHDVN_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData4" runat="server" visible="false"> 
-                                     <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                   
-                                </td>
-                            </tr>
-                            <tr id="Tr5" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Invoice of transformer &nbsp;
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoiceTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceTransformer_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData5" runat="server" visible="false">
-                                      <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                   
-                                </td>
-                            </tr>
-                            <tr id="Tr6" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Manufacturing test certificate of transformer &nbsp;
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                           <asp:LinkButton ID="lnkManufacturingCertificateTransformer" runat="server" AutoPostBack="true" OnClick="lnkManufacturingCertificateTransformer_Click" Text="Click here to view document" />
-                                   
-                                                      </div>
-                                </td>
-                                 <td id="RejectedColumnData6" runat="server" visible="false">
-                                       <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                  
-                                </td>
-                            </tr>
-                            <tr id="Tr7" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Single line diagram
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkSingleDiagTransformer" runat="server" AutoPostBack="true" OnClick="lnkSingleDiagTransformer_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData7" runat="server" visible="false">
-                                     <asp:FileUpload ID="FileUpload7" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                   
-                                </td>
-                            </tr>
-                            <tr id="Tr8" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Invoice of fire extinguisher system, apparatus installed at the site
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoiceFireExtinguisher" runat="server" AutoPostBack="true" OnClick="lnkInvoiceFireExtinguisher_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData8" runat="server" visible="false">
-                                      <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="padding: 0px;;" />
-                                                
-                                </td>
-                            </tr>
-                        </div>
-                        <div id="PersonalGenerating" runat="server" visible="false">
-                            <tr id="Tr9" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Invoice of DG set 
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoiceDGSet" runat="server" AutoPostBack="true" OnClick="lnkInvoiceDGSet_Click" Text="Click here to view document" />
-
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData9" runat="server" visible="false">
-                                     <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                 
-                                </td>
-                            </tr>
-                            <tr id="Tr10" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Manufacturing test certificate of DG set 
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkManufacturingCertificateDGSet" runat="server" AutoPostBack="true" OnClick="lnkManufacturingCertificateDGSet_Click" Text="Click here to view document" />
-
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData10" runat="server" visible="false">
-                                     <asp:FileUpload ID="FileUpload10" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                                   
-                                </td>
-                            </tr>
-                            <tr id="Tr13" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Invoice Of fire Extinguisher/apparatus installed at the site 
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoicefireExtinguisherInstallOnsite" runat="server" AutoPostBack="true" OnClick="lnkInvoicefireExtinguisherInstallOnsite_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData11" runat="server" visible="false">
-                                   <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                  
-                                </td>
-                            </tr>
-                            <tr id="Tr11" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        Structure stability report issued by authorized engineer
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                        <asp:LinkButton ID="lnkStructureStabilityReportAutorizeEngineer" runat="server" AutoPostBack="true" OnClick="lnkStructureStabilityReportAutorizeEngineer_Click" Text="Click here to view document" />
-                                    </div>
-                                </td>
-                                 <td id="RejectedColumnData12" runat="server" visible="false">
-                                      <asp:FileUpload ID="FileUpload11" runat="server" CssClass="form-control" Style="padding: 0px; height: 31px;" />
-                                                   
-                                </td>
-                            </tr>
-                        </div>
-
-                        <tr id="LinePersonal" runat="server" visible="false">
-                            <td>
-                                <div class="col-12">
-                                    Demand Notice 
-                                </div>
-                            </td>
-                            <td>
-                                <div class="col-12">
-                                    <asp:LinkButton ID="lnkDemandNotice" runat="server" AutoPostBack="true" onclick="lnkDemandNotice_Click" Text="Click here to view document" />
-
-                                </div>
-                            </td>
-                                <td id="RejectedColumnData13" runat="server" visible="false">
-                                    <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px;" />
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <div class="col-12">
-                                    Test Report
-                            </div>
-                                </td>
-                            <td>
-                                 <div class="col-12">
-                                 <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
-                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                    </div>
             <div class="row">
                 <div class="col-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
-               <%-- <div class="col-4" style="text-align: center">
+               <div class="col-12" style="text-align: center;margin-bottom:30px;">
 
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
-                </div>--%>
+                </div>
             </div>
 
             <div class="row">

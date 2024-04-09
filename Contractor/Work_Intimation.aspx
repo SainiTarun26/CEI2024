@@ -247,7 +247,7 @@
             padding: 9px !important;
         }
         th.headercolor {
-            width: 32% !important;
+            width: 28% !important;
         } th {
     width: 1%;
 }
@@ -696,6 +696,7 @@
                             <label class="form-label" for="customFile">
                                 Attached Copy of Work Order<samp style="color: red"> * </samp>
                             </label>
+                            <br/>
                             <asp:FileUpload ID="customFile"  TabIndex="19" runat="server" CssClass="form-control" Visible="false" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
                             <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
                             <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>

@@ -2812,9 +2812,7 @@ margin-top: 20px;
                                 </div>
                             </div>
                               <div class="col-6" id="Div81" runat="server" visible="true">
-
-                                <asp:Button ID="btnOpenWindow" runat="server" Text="Open New Window" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
-
+                                <asp:Button ID="btnOpenWindow" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
                             </div>
 
                         </div>

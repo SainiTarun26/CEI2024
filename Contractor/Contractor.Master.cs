@@ -22,6 +22,7 @@ namespace CEIHaryana.Contractor
                 {
 
                     lblName.Text = Convert.ToString(Session["ContractorID"]);
+                    //txtLoginType.Text = "Contractor";
                 }
                 else if (Session["ContractorID"] == null)
                 {
@@ -116,15 +117,14 @@ namespace CEIHaryana.Contractor
             }
 
         }
-        //public void GetContractorName()
-        //{
-        //    REID = Session["ContractorID"].ToString();
-        //    DataSet ds = new DataSet();
-        //    ds = CEI.GetContractorName(REID);
-        //    textName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+        public void GetContractorName()
+        {
+            REID = Session["ContractorID"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetContractorName(REID);
+            //textName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
 
-        //}
-
+        }
 
     }
 }

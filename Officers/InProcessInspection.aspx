@@ -2,20 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
 
     <style>
         .submit {
@@ -122,6 +119,10 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+          th.headercolor {
+    background: #9292cc;
+    color:white;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -187,197 +188,43 @@
                 </div>
             </div>
             <div class="row">
-                <div class="table-responsive pt-3" id="Uploads" runat="server" visible="false">
-                    <table class="table table-bordered table-striped">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Name of Documents</th>
-                                <th>Upload Documents</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <div id="LineSubstationSupplier" runat="server" visible="false">
-                                <tr id="Tr1" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Request letter from concerned Officer
-                                        </div>
-                                    </td>
-                                    <td>
-                                       <asp:LinkButton ID="lnkRequestLetterFromConcernedOfficer" runat="server" AutoPostBack="true" OnClick="lnkRequestLetterFromConcernedOfficer_Click" Text="Open Document" />
-                                    </td>
-                                </tr>
-                                <tr id="Tr2" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Manufacturing test report of equipment
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                            <asp:LinkButton ID="lnkManufacturingTestReportEquipment" runat="server" AutoPostBack="true" OnClick="lnkManufacturingTestReportEquipment_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </div>
-                            <div id="SupplierSub" runat="server" visible="false">
-                                <tr id="Tr3" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Single line diagram of Line
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                         <asp:LinkButton ID="lnkSingleLineDiagramOfLine" runat="server" AutoPostBack="true" OnClick="lnkSingleLineDiagramOfLine_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </div>
-                            <div id="PersonalSub" runat="server" visible="false">
-                                <tr id="Tr4" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Copy of demand notice issued by UHDVN/ DHBVN
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                            <asp:LinkButton ID="lnkDemandNoticeUHDVN" runat="server" AutoPostBack="true" OnClick="lnkDemandNoticeUHDVN_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="Tr5" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Invoice of transformer
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                            <asp:LinkButton ID="lnkInvoiceOfTransformer" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfTransformer_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="Tr6" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Manufacturing test certificate of transformer
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                          <asp:LinkButton ID="lnkManufacturingTestCertificateOfTransformer" runat="server" AutoPostBack="true" OnClick="lnkManufacturingTestCertificateOfTransformer_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="Tr7" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Single line diagram
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                             <asp:LinkButton ID="lnkSingleLineDiagram" runat="server" AutoPostBack="true" OnClick="lnkSingleLineDiagram_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="Tr8" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Invoice of fire extinguisher system, apparatus installed at the site
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                        <asp:LinkButton ID="lnkInvoiceOfFireExtingusisherSystem" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfFireExtingusisherSystem_Click1" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </div>
-                            <div id="PersonalGenerating" runat="server" visible="false">
-                                <tr id="Tr9" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Invoice of DG set
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                          <asp:LinkButton ID="lnkInvoiceOfDGSet" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfDGSet_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="Tr10" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Manufacturing test certificate of DG set
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                             <asp:LinkButton ID="lnkManufacturingTestCertificateOfDGset" runat="server" AutoPostBack="true" OnClick="lnkManufacturingTestCertificateOfDGset_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="Tr13" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Invoice Of fire Extinguisher/apparatus installed at the site
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                          <asp:LinkButton ID="lnkInvoiceOfFireExtinguisherApparatus" runat="server" AutoPostBack="true" OnClick="lnkInvoiceOfFireExtinguisherApparatus_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr id="Tr11" runat="server" visible="true">
-                                    <td>
-                                        <div class="col-12">
-                                            Structure stability report issued by authorized engineer
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="col-12">
-                                           <asp:LinkButton ID="lnkStructureStabilityReport" runat="server" AutoPostBack="true" OnClick="lnkStructureStabilityReport_Click" Text="Open Document" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </div>
-                            <tr id="LinePersonal" runat="server" visible="false">
-                                <td>
-                                    <div class="col-12">
-                                        Demand Notice
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                         <asp:LinkButton ID="lnkDemandNotice" runat="server" AutoPostBack="true" OnClick="lnkDemandNotice_Click" Text="Open Document" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr id="Tr12" runat="server" visible="true">
-                                <td>
-                                    <div class="col-12">
-                                        View Test Report
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="col-12">
-                                          <asp:LinkButton ID="lnkViewTestReport" runat="server" AutoPostBack="true" OnClick="lnkViewTestReport_Click"  Text="View Test Report" />
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-12">
+                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <HeaderStyle BackColor="#B7E2F0" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
+                        </Columns>
+                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                    </asp:GridView>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4">
+                     <div class="row" style="margin-bottom:30px;">
+                            <div class="col-12" style="text-align: center">
+                  <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+            </div>
+                        </div>
+                    <div class="col-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
+            <div class="row">
+                
                 <div class="col-4" id="ApprovalRequired" runat="server" visible="true">
                     <label>
                         Approval<samp style="color: red"> * </samp>
@@ -406,6 +253,7 @@
             </div>
         </div>
     </div>
+                   
      </ContentTemplate>
             </asp:UpdatePanel>
     <div class="row">

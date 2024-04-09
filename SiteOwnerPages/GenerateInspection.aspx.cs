@@ -2,14 +2,18 @@
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Windows.Input;
 using System.Xml.Linq;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -28,6 +32,7 @@ namespace CEIHaryana.SiteOwnerPages
         private static int TotalAmount;
         string LoginId = string.Empty;
         //string id = string.Empty;
+        List<(string Installtypes, string DocumentID, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string)>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -99,7 +104,6 @@ namespace CEIHaryana.SiteOwnerPages
                     if (rows.RowType == DataControlRowType.DataRow)
                     {
                         CheckBox chk = rows.FindControl("CheckBox1") as CheckBox;
-
 
                         if (chk != null && chk.ClientID == ((CheckBox)sender).ClientID)
                         {
@@ -209,11 +213,8 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             ddlDocumentFor.Items.Add(new ListItem("Select All", "1"));
                         }
-                        // Show the Documents div if at least one CheckBox is checked
-                        //  Documents.Visible = ddlDocumentFor.Items.Count > 0;
                     }
-                   // Uploads.Visible = GridView1.Rows.Cast<GridViewRow>().Any(r => ((CheckBox)r.FindControl("CheckBox1")).Checked);
-                    // Show fields based on the category and applicant type
+
                     if (chk.Checked)
                     {
                         TotalPayment.Visible = true;
@@ -236,74 +237,16 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             ApplicantType = "Private And Personal";
                         }
-                        //InstallationType = lblCategory.Text;                        
                         InspectionType = "New";
                         AssigDesignation = lblDesignation.Text;
                         PlantLocation = "";
 
                         GetDocumentUploadData(ApplicantType, Category, InspectionType, AssigDesignation, PlantLocation);
                         PaymentGridViewBind();
-                        #region documnt visibilty
-                        //document visiblity
-                        //LineSubstationSupplier.Visible = false;
-                        //SupplierSub.Visible = false;
-                        //LinePersonal.Visible = false;
-                        //SupplierSub.Visible = false;
-                        //LineSubstationSupplier.Visible = false;
-                        //PersonalSub.Visible = false;
-                        //PersonalGenerating.Visible = false;
-                        //PersonalGenerating.Visible = false;
-
-
-
-                        //if (lblCategory.Text == "Line")
-                        //{
-                        //    if (lblApplicant.Text.Trim() == "Power Utility")
-                        //    {
-                        //        LineSubstationSupplier.Visible = true;
-                        //        SupplierSub.Visible = true;
-                        //    }
-                        //    else if (lblApplicant.Text.Trim() == "Private/Personal Installation")
-                        //    {
-                        //        LinePersonal.Visible = true;
-                        //        SupplierSub.Visible = true;
-                        //    }
-                        //}
-                        //else if (lblCategory.Text == "Substation Transformer")
-                        //{
-                        //    txtApplicantType.Text = Session["SelectedApplicant"].ToString();     ///////////////////
-                        //    if (txtApplicantType.Text.Trim() == "Power Utility")
-                        //    {
-                        //        LineSubstationSupplier.Visible = true;
-                        //    }
-                        //    else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                        //    {
-                        //        PersonalSub.Visible = true;
-                        //    }
-                        //}
-                        //else if (lblCategory.Text == "Generating Set")
-                        //{
-                        //    txtApplicantType.Text = Session["SelectedApplicant"].ToString();      //////////////////
-                        //    if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-                        //    {
-                        //        PersonalGenerating.Visible = true;
-                        //    }
-                        //    else
-                        //    {
-                        //        PersonalGenerating.Visible = false;
-                        //    }
-                        //}
-                        #endregion
-
                     }
                     else
                     {
-                        // Hide the fields if the checkbox is unchecked
-                        LineSubstationSupplier.Visible = false;
-                        SupplierSub.Visible = false;
-                        LinePersonal.Visible = false;
-                        PersonalSub.Visible = false;
-                        PersonalGenerating.Visible = false;
+
                     }
                 }
             }
@@ -358,54 +301,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        #region visibilty
-        // protected void Visibility()
-        //{
-        //    Uploads.Visible = true;
-        //    if (txtWorkType.Text == "Line")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Supplier Installation")
-        //        {
-        //            LineSubstationSupplier.Visible = true;
-        //            SupplierSub.Visible = true;
-        //        }
-        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //            LinePersonal.Visible = true;
-        //            SupplierSub.Visible = true;
-        //        }
-        //    }
-        //    else if (txtWorkType.Text == "Substation Transformer")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Supplier Installation")
-        //        {
-        //            LineSubstationSupplier.Visible = true;
-        //        }
-        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //            PersonalSub.Visible = true;
-        //        }
-        //    }
-        //    else if (txtWorkType.Text == "Generating Set")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //            PersonalGenerating.Visible = true;
-        //        }
-        //        else
-        //        {
-        //            PersonalGenerating.Visible = false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        LineSubstationSupplier.Visible = false;
-        //        SupplierSub.Visible = false;
-        //        PersonalGenerating.Visible = false;
-        //    }
-
-        //}
-        #endregion
+       
         private string GetDocumentIDFromFileUploadID(string fileUploadID)
         {
             string[] parts = fileUploadID.Split('_');
@@ -419,521 +315,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                #region comments code for documents uploaded
-                //if (ddlDocumentFor.SelectedValue == "1" || ddlDocumentFor.SelectedItem.Text.Trim() == "Select All")
-                //{
-                //    foreach (GridViewRow row in GridView1.Rows)
-                //    {
-
-                //        if ((row.FindControl("CheckBox1") as CheckBox).Checked)
-                //        {
-                //            Label lblCategory = (Label)row.FindControl("lblCategory");
-                //            Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
-                //            Label lblDivision = (Label)row.FindControl("lblDivision");
-                //            Label lblDistrict = (Label)row.FindControl("lblDistrict");
-                //            Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
-                //            string District = lblDistrict.Text.Trim();
-                //            string Assign = string.Empty;
-                //            string To = lblDivision.Text.Trim();
-                //            string input = lblVoltageLevel.Text.Trim();
-                //            string CreatedBy = Session["SiteOwnerId"].ToString();
-                //            string FileName = string.Empty;
-                //            string flpPhotourl = string.Empty;
-                //            string flpPhotourl1 = string.Empty;
-                //            string flpPhotourl2 = string.Empty;
-                //            string flpPhotourl3 = string.Empty;
-                //            string flpPhotourl4 = string.Empty;
-                //            string flpPhotourl5 = string.Empty;
-                //            string flpPhotourl6 = string.Empty;
-                //            string flpPhotourl7 = string.Empty;
-                //            string flpPhotourl8 = string.Empty;
-                //            string flpPhotourl9 = string.Empty;
-                //            string flpPhotourl10 = string.Empty;
-                //            string flpPhotourl11 = string.Empty;
-                //            string flpPhotourl12 = string.Empty;
-                //            string LineLength = string.Empty;
-                //            string FeesLeft = string.Empty;
-                //            IntimationId = Session["id"].ToString();
-                //            Count = lblNoOfInstallations.Text.Trim();
-                //            DataSet ds = new DataSet();
-                //            ds = CEI.GetData(lblCategory.Text.Trim(), IntimationId, Count);
-                //            if (ds.Tables[0].Rows.Count > 0)
-                //            {
-                //                if (lblCategory.Text.Trim() == "Line")
-                //                {
-                //                    id = ds.Tables[0].Rows[0]["ID"].ToString();
-                //                    LineLength = ds.Tables[0].Rows[0]["LineLength"].ToString();
-                //                }
-                //                else
-                //                {
-                //                    id = ds.Tables[0].Rows[0]["ID"].ToString();
-                //                }
-                //            }
-                //            if (lblCategory.Text.Trim() == "Line")
-                //            {
-                //                if (input.EndsWith("kv", StringComparison.OrdinalIgnoreCase))
-                //                {
-                //                    string voltagePart = input.Substring(0, input.Length - 2);
-                //                    if (int.TryParse(voltagePart, out int voltageLevel))
-                //                    {
-                //                        if (voltageLevel >= 11 && voltageLevel <= 33)
-                //                        {
-                //                            Assign = "SDO";
-                //                        }
-                //                        else if (voltageLevel >= 33)
-
-                //                        {
-                //                            Assign = "Admin@123";
-                //                        }
-                //                        else if (voltageLevel <= 11)
-
-                //                        {
-                //                            Assign = "JE";
-                //                        }
-
-                //                    }
-                //                }
-
-                //                else if (input.EndsWith("v", StringComparison.OrdinalIgnoreCase))
-                //                {
-                //                    Assign = "JE";
-
-                //                }
-                //            }
-                //            else
-                //            {
-                //                if (input.EndsWith("KVA", StringComparison.OrdinalIgnoreCase))
-                //                {
-                //                    string voltagePart = input.Substring(0, input.Length - 3);
-                //                    if (int.TryParse(voltagePart, out int voltageLevel))
-                //                    {
-                //                        if (voltageLevel >= 250 && voltageLevel <= 500)
-                //                        {
-                //                            Assign = "XEN";
-                //                        }
-                //                        else if (voltageLevel >= 500)
-
-                //                        {
-                //                            Assign = "Admin@123";
-                //                        }
-                //                        else if (voltageLevel >= 50 && voltageLevel <= 250)
-                //                        {
-                //                            Assign = "SDO";
-                //                        }
-                //                        else
-                //                        {
-                //                            Assign = "JE";
-                //                        }
-                //                    }
-
-                //                }
-                //                else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
-                //                {
-                //                    Assign = "Admin@123";
-
-                //                }
-
-                //            }
-                //            if (LineSubstationSupplier.Visible == true)
-                //            {
-                //                fileExtension = Path.GetExtension(FileUpload1.FileName);
-
-                //                if (fileExtension.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload1.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/"));
-                //                        }
-
-                //                        string ext = FileUpload1.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/";
-                //                        string fileName = "RequestLetterFromConcernedOfficer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/" + fileName);
-                //                        FileUpload1.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                //                }
-                //                fileExtension2 = Path.GetExtension(FileUpload2.FileName);
-
-                //                if (fileExtension2.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload2.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload2.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/"));
-                //                        }
-
-                //                        string ext = FileUpload2.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/";
-                //                        string fileName = "ManufacturingTestReportOfEqipment" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/" + fileName);
-                //                        FileUpload2.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl1 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                //                }
-                //            }
-                //            if (SupplierSub.Visible == true)
-                //            {
-                //                fileExtension = Path.GetExtension(FileUpload3.FileName);
-
-                //                if (fileExtension.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload3.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload3.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/"));
-                //                        }
-
-                //                        string ext = FileUpload3.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + id + "/SingleLineDiagramOfLine/";
-                //                        string fileName = "SingleLineDiagramOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/" + fileName);
-                //                        FileUpload3.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl2 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                //                }
-                //            }
-                //            if (LinePersonal.Visible == true)
-                //            {
-                //                fileExtension = Path.GetExtension(FileUpload12.FileName);
-
-                //                if (fileExtension.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload12.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/"));
-                //                        }
-
-                //                        string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/";
-                //                        string fileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/" + fileName);
-                //                        FileUpload12.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl3 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                //                }
-                //            }
-                //            if (PersonalSub.Visible == true)
-                //            {
-                //                fileExtension = Path.GetExtension(FileUpload4.FileName);
-
-                //                if (fileExtension.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload4.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload4.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/"));
-                //                        }
-
-                //                        string ext = FileUpload4.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/";
-                //                        string fileName = "CopyOfNoticeIssuedByUHBVNorDHBVN" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/" + fileName);
-                //                        FileUpload4.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl4 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //                fileExtension2 = Path.GetExtension(FileUpload5.FileName);
-
-                //                if (fileExtension2.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload5.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload5.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/"));
-                //                        }
-
-                //                        string ext = FileUpload5.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/";
-                //                        string fileName = "InvoiceOfTransferOfPersonalSubstation" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/" + fileName);
-                //                        FileUpload5.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl5 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //                fileExtension3 = Path.GetExtension(FileUpload6.FileName);
-
-                //                if (fileExtension3.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload6.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload6.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/"));
-                //                        }
-
-                //                        string ext = FileUpload6.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/";
-                //                        string fileName = "ManufacturingTestCertificateOfTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/" + fileName);
-                //                        FileUpload6.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl6 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //                fileExtension4 = Path.GetExtension(FileUpload7.FileName);
-
-                //                if (fileExtension4.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload7.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload7.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/"));
-                //                        }
-
-                //                        string ext = FileUpload7.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + id + "/SingleLineDiagramofTransformer/";
-                //                        string fileName = "SingleLineDiagramofTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/" + fileName);
-                //                        FileUpload7.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl7 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //                fileExtension3 = Path.GetExtension(FileUpload8.FileName);
-
-                //                if (fileExtension3.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload8.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload8.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/"));
-                //                        }
-
-                //                        string ext = FileUpload8.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/";
-                //                        string fileName = "InvoiceoffireExtinguisheratSite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/" + fileName);
-                //                        FileUpload8.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl8 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //            }
-                //            if (PersonalGenerating.Visible == true)
-                //            {
-                //                fileExtension = Path.GetExtension(FileUpload9.FileName);
-
-                //                if (fileExtension.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload9.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload9.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/"));
-                //                        }
-
-                //                        string ext = FileUpload9.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/";
-                //                        string fileName = "InvoiceOfDGSetOfGeneratingSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/" + fileName);
-                //                        FileUpload9.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl9 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //                fileExtension2 = Path.GetExtension(FileUpload10.FileName);
-
-                //                if (fileExtension2.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload10.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload10.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/"));
-                //                        }
-
-                //                        string ext = FileUpload10.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/";
-                //                        string fileName = "ManufacturingCerificateOfDGSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/" + fileName);
-                //                        FileUpload10.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl10 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //                fileExtension3 = Path.GetExtension(FileUpload13.FileName);
-
-                //                if (fileExtension3.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload13.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload13.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/"));
-                //                        }
-
-                //                        string ext = FileUpload13.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/";
-                //                        string fileName = "InvoiceOfExptinguisherOrApparatusAtsite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/" + fileName);
-                //                        FileUpload13.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl11 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //                fileExtension4 = Path.GetExtension(FileUpload11.FileName);
-
-                //                if (fileExtension4.ToLower() == ".pdf")
-                //                {
-                //                    if (FileUpload11.PostedFile.FileName.Length > 0)
-                //                    {
-                //                        FileName = Path.GetFileName(FileUpload11.PostedFile.FileName);
-                //                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/")))
-                //                        {
-                //                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/"));
-                //                        }
-                //                        string ext = FileUpload11.PostedFile.FileName.Split('.')[1];
-                //                        string path = "";
-                //                        path = "/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/";
-                //                        string fileName = "StructureStabilityResolvedByAuthorizedEngineer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                //                        string filePathInfo2 = "";
-                //                        filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/" + fileName);
-                //                        FileUpload11.PostedFile.SaveAs(filePathInfo2);
-                //                        flpPhotourl12 = path + fileName;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                //                }
-                //            }
-                //            // DateTime myDate = Convert.ToDateTime(txtDate.Text);
-
-                //            CEI.InsertInspectionData(txtContact.Text, id, IntimationId, txtPremises.Text, lblCategory.Text.Trim(), lblCategory.Text.Trim(), lblVoltageLevel.Text.Trim(),
-                //                LineLength, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                //                flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, District, To, txtRequestDetails.Text, txtDate.Text, CreatedBy);
-
-                //            string generatedId = CEI.InspectionId();
-                //            // DataSaved.Visible = true;
-                //            Session["PendingPaymentId"] = generatedId;
-                //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-
-
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //foreach (GridViewRow row in GridView1.Rows)
-                //{
-
-                //    //Label lblCategory = (Label)row.FindControl("lblCategory");
-                //    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-
-                //    //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
-                //    //{
-                //    if (chk.Checked == true)
-                //    {
-                #endregion
-                //if (CheckBox1.Checked == true)
-                //{
-
-                //check is one checkbox is selected?
                 bool atLeastOneInspectionChecked = false;
                 foreach (GridViewRow rows in GridView1.Rows)
                 {
-
                     CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
 
                     if (chk != null && chk.Checked)
@@ -956,19 +340,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string input = lblVoltageLevel.Trim();
                     string CreatedBy = Session["SiteOwnerId"].ToString();
                     string FileName = string.Empty;
-                    string flpPhotourl = string.Empty;
-                    string flpPhotourl1 = string.Empty;
-                    string flpPhotourl2 = string.Empty;
-                    string flpPhotourl3 = string.Empty;
-                    string flpPhotourl4 = string.Empty;
-                    string flpPhotourl5 = string.Empty;
-                    string flpPhotourl6 = string.Empty;
-                    string flpPhotourl7 = string.Empty;
-                    string flpPhotourl8 = string.Empty;
-                    string flpPhotourl9 = string.Empty;
-                    string flpPhotourl10 = string.Empty;
-                    string flpPhotourl11 = string.Empty;
-                    string flpPhotourl12 = string.Empty;
+
                     string ChallanAttachment = string.Empty;
                     string LineLength = string.Empty;
                     string FeesLeft = string.Empty;
@@ -992,469 +364,6 @@ namespace CEIHaryana.SiteOwnerPages
                             id = ds.Tables[0].Rows[0]["ID"].ToString();
                         }
                     }
-                    #region asign code
-                    //if (lblCategory.Trim() == "Line")
-                    //{
-                    //    if (input.EndsWith("kv", StringComparison.OrdinalIgnoreCase))
-                    //    {
-                    //        string voltagePart = input.Substring(0, input.Length - 2);
-                    //        if (int.TryParse(voltagePart, out int voltageLevel))
-                    //        {
-                    //            if (voltageLevel >= 11 && voltageLevel <= 33)
-                    //            {
-                    //                Assign = "SDO";
-                    //            }
-                    //            else if (voltageLevel >= 33)
-
-                    //            {
-                    //                Assign = "Admin@123";
-                    //            }
-                    //            else if (voltageLevel <= 11)
-
-                    //            {
-                    //                Assign = "JE";
-                    //            }
-
-                    //        }
-                    //    }
-
-                    //    else if (input.EndsWith("v", StringComparison.OrdinalIgnoreCase))
-                    //    {
-                    //        Assign = "JE";
-
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (input.EndsWith("KVA", StringComparison.OrdinalIgnoreCase))
-                    //    {
-                    //        string voltagePart = input.Substring(0, input.Length - 3);
-                    //        if (int.TryParse(voltagePart, out int voltageLevel))
-                    //        {
-                    //            if (voltageLevel >= 250 && voltageLevel <= 500)
-                    //            {
-                    //                Assign = "XEN";
-                    //            }
-                    //            else if (voltageLevel >= 500)
-
-                    //            {
-                    //                Assign = "Admin@123";
-                    //            }
-                    //            else if (voltageLevel >= 50 && voltageLevel <= 250)
-                    //            {
-                    //                Assign = "SDO";
-                    //            }
-                    //            else
-                    //            {
-                    //                Assign = "JE";
-                    //            }
-                    //        }
-
-                    //    }
-                    //    else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
-                    //    {
-                    //        Assign = "Admin@123";
-
-                    //    }
-
-                    //}
-                    #endregion
-
-                    #region static Document save
-                    //if (LineSubstationSupplier.Visible == true)
-                    //{
-                    //    fileExtension = Path.GetExtension(FileUpload1.FileName);
-
-                    //    if (fileExtension.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload1.PostedFile.ContentLength <= maxFileSize)
-
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/"));
-                    //            }
-
-                    //            string ext = FileUpload1.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/";
-                    //            string fileName = "RequestLetterFromConcernedOfficer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/RequestLetterFromConcernedOfficer/" + fileName);
-                    //            FileUpload1.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl = path + fileName;
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-
-                    //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //    }
-                    //    fileExtension2 = Path.GetExtension(FileUpload2.FileName);
-
-                    //    if (fileExtension2.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload2.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload2.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/"));
-                    //            }
-
-                    //            string ext = FileUpload2.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/";
-                    //            string fileName = "ManufacturingTestReportOfEqipment" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestReportOfEqipment/" + fileName);
-                    //            FileUpload2.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl1 = path + fileName;
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                    //    }
-                    //}
-                    //if (SupplierSub.Visible == true)
-                    //{
-                    //    fileExtension = Path.GetExtension(FileUpload3.FileName);
-
-                    //    if (fileExtension.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload3.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload3.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/"));
-                    //            }
-
-                    //            string ext = FileUpload3.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/";
-                    //            string fileName = "SingleLineDiagramOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramOfLine/" + fileName);
-                    //            FileUpload3.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl2 = path + fileName;
-                    //        }
-
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                    //        }
-                    //    }
-                    //}
-                    //if (LinePersonal.Visible == true)
-                    //{
-                    //    fileExtension = Path.GetExtension(FileUpload12.FileName);
-
-                    //    if (fileExtension.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload12.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            //FileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
-                    //            //if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/")))
-                    //            //{
-                    //            //    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/"));
-                    //            //}
-
-                    //            //string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
-                    //            //string path = "";
-                    //            //path = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/";
-                    //            //string fileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            //string filePathInfo2 = "";
-                    //            //filePathInfo2 = Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/" + fileName);
-                    //            //FileUpload12.PostedFile.SaveAs(filePathInfo2);
-                    //            //flpPhotourl3 = path + fileName;
-
-                    //            string fileName = Path.GetFileName(FileUpload12.PostedFile.FileName);
-                    //            string directoryPath = Server.MapPath("~/Attachment/" + CreatedBy + "/DemandNoticeOfLine/");
-                    //            if (!Directory.Exists(directoryPath))
-                    //            {
-                    //                Directory.CreateDirectory(directoryPath);
-                    //            }
-
-                    //            string ext = fileName.Split('.')[1];
-                    //            string uniqueFileName = "DemandNoticeOfLine" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePath = Path.Combine(directoryPath, uniqueFileName);
-
-                    //            FileUpload12.PostedFile.SaveAs(filePath);
-                    //            flpPhotourl3 = "/Attachment/" + CreatedBy + "/DemandNoticeOfLine/" + uniqueFileName;
-
-
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //        }
-                    //    }
-
-                    //}
-                    //if (PersonalSub.Visible == true)
-                    //{
-                    //    fileExtension = Path.GetExtension(FileUpload4.FileName);
-
-                    //    if (fileExtension.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload4.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload4.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/"));
-                    //            }
-
-                    //            string ext = FileUpload4.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/";
-                    //            string fileName = "CopyOfNoticeIssuedByUHBVNorDHBVN" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/CopyOfNoticeIssuedByUHBVNorDHBVN/" + fileName);
-                    //            FileUpload4.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl4 = path + fileName;
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //    }
-                    //    fileExtension2 = Path.GetExtension(FileUpload5.FileName);
-
-                    //    if (fileExtension2.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload5.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload5.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/"));
-                    //            }
-
-                    //            string ext = FileUpload5.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/";
-                    //            string fileName = "InvoiceOfTransferOfPersonalSubstation" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfTransferOfPersonalSubstation/" + fileName);
-                    //            FileUpload5.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl5 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //        }
-                    //    }
-
-                    //    fileExtension3 = Path.GetExtension(FileUpload6.FileName);
-
-                    //    if (fileExtension3.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload6.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload6.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/"));
-                    //            }
-
-                    //            string ext = FileUpload6.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/";
-                    //            string fileName = "ManufacturingTestCertificateOfTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingTestCertificateOfTransformer/" + fileName);
-                    //            FileUpload6.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl6 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                    //        }
-                    //    }
-
-                    //    fileExtension4 = Path.GetExtension(FileUpload7.FileName);
-
-                    //    if (fileExtension4.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload7.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload7.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/"));
-                    //            }
-
-                    //            string ext = FileUpload7.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/";
-                    //            string fileName = "SingleLineDiagramofTransformer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/SingleLineDiagramofTransformer/" + fileName);
-                    //            FileUpload7.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl7 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-                    //        }
-                    //    }
-
-                    //    fileExtension3 = Path.GetExtension(FileUpload8.FileName);
-
-                    //    if (fileExtension3.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload8.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload8.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/"));
-                    //            }
-
-                    //            string ext = FileUpload8.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/";
-                    //            string fileName = "InvoiceoffireExtinguisheratSite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceoffireExtinguisheratSite/" + fileName);
-                    //            FileUpload8.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl8 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //        }
-                    //    }
-
-                    //}
-                    //if (PersonalGenerating.Visible == true)
-                    //{
-                    //    fileExtension = Path.GetExtension(FileUpload9.FileName);
-
-                    //    if (fileExtension.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload9.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload9.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/"));
-                    //            }
-                    //            string ext = FileUpload9.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/";
-                    //            string fileName = "InvoiceOfDGSetOfGeneratingSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfDGSetOfGeneratingSet/" + fileName);
-                    //            FileUpload9.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl9 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-
-                    //    }
-
-                    //    fileExtension2 = Path.GetExtension(FileUpload10.FileName);
-
-                    //    if (fileExtension2.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload10.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload10.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/"));
-                    //            }
-
-                    //            string ext = FileUpload10.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/";
-                    //            string fileName = "ManufacturingCerificateOfDGSet" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ManufacturingCerificateOfDGSet/" + fileName);
-                    //            FileUpload10.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl10 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //        }
-                    //    }
-
-                    //    fileExtension3 = Path.GetExtension(FileUpload13.FileName);
-
-                    //    if (fileExtension3.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload13.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload13.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/"));
-                    //            }
-
-                    //            string ext = FileUpload13.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/";
-                    //            string fileName = "InvoiceOfExptinguisherOrApparatusAtsite" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/InvoiceOfExptinguisherOrApparatusAtsite/" + fileName);
-                    //            FileUpload13.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl11 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //        }
-                    //    }
-
-                    //    fileExtension4 = Path.GetExtension(FileUpload11.FileName);
-
-                    //    if (fileExtension4.ToLower() == ".pdf")
-                    //    {
-                    //        if (FileUpload11.PostedFile.ContentLength <= maxFileSize)
-                    //        {
-                    //            FileName = Path.GetFileName(FileUpload11.PostedFile.FileName);
-                    //            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/")))
-                    //            {
-                    //                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/"));
-                    //            }
-                    //            string ext = FileUpload11.PostedFile.FileName.Split('.')[1];
-                    //            string path = "";
-                    //            path = "/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/";
-                    //            string fileName = "StructureStabilityResolvedByAuthorizedEngineer" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                    //            string filePathInfo2 = "";
-                    //            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/StructureStabilityResolvedByAuthorizedEngineer/" + fileName);
-                    //            FileUpload11.PostedFile.SaveAs(filePathInfo2);
-                    //            flpPhotourl12 = path + fileName;
-                    //        }
-                    //        else
-                    //        {
-                    //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
-
-                    //        }
-                    //    }
-
-                    //}
-                    ////DateTime myDate = Convert.ToDateTime(txtDate.Text);
-                    #endregion
 
                     if (ChallanDetail.Visible == true)
                     {
@@ -1507,26 +416,24 @@ namespace CEIHaryana.SiteOwnerPages
                         PaymentMode = RadioButtonList2.SelectedItem.ToString();
                     }
 
+                    UploadCheckListDocInCollection(lblCategory.Trim());
 
-                    CEI.InsertInspectionData(txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                        LineLength, Count, flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
-                    flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, District, To,PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
+                    //CEI.InsertInspectionDataNewCode(txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                    //LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
-                    string generatedId = CEI.InspectionId();
-                    Session["PendingPaymentId"] = generatedId;
+                    //string generatedId = CEI.InspectionId();
+                    //Session["PendingPaymentId"] = generatedId;
+
+                    //InsertFilesIntoDatabase(generatedId, CreatedBy);
+                    InsertFilesIntoDatabase( CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                    LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    //Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please First tick the any one installation for inspection')", true);
                 }
-                //}
-                //else
-                //{
-                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
-                //}
             }
             catch (Exception ex)
             {
@@ -1534,6 +441,110 @@ namespace CEIHaryana.SiteOwnerPages
                 return;
             }
         }
+
+        public void UploadCheckListDocInCollection(string Category)
+        {
+            foreach (GridViewRow row in Grd_Document.Rows)
+            {
+                FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                string Req = ((HtmlInputHidden)row.FindControl("Req")).Value.Replace("\r\n", "");
+                string DocSaveName = ((HtmlInputHidden)row.FindControl("DocumentShortName")).Value.Replace("\r\n", "");
+                string DocumentID = ((HtmlInputHidden)row.FindControl("DocumentID")).Value.Replace("\r\n", "");
+
+                string DocName = row.Cells[1].Text.Replace("\r\n", "");
+
+                if (Req == "1")
+                {
+                    if (!fileUpload.HasFile && Req == "1")
+                    {
+                        //string message = "alert('is mandatory to upload');";
+                        string encodedDocName = HttpUtility.JavaScriptStringEncode(DocName);
+                        string message = "alert('" + encodedDocName + " is mandatory to upload.');";
+                        // ScriptManager.RegisterClientScriptBlock(sender as Control, this.GetType(), "alert", message, true);
+                        ScriptManager.RegisterClientScriptBlock(null, this.GetType(), "alert", message, true);
+                        return;
+                    }
+                }
+
+                if (fileUpload.HasFile)
+                {
+
+                    string CreatedBy = "Abcdefgh";
+
+                    if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
+                    {
+                        if (fileUpload.PostedFile.ContentLength <= 2000000)
+                        {
+                            string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
+                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + DocSaveName + "/")))
+                            {
+                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + DocSaveName + "/"));
+                            }
+                            string ext = fileUpload.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + CreatedBy + "/" + DocSaveName + "/";
+                            string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                            string filePathInfo2 = "";
+                            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/" + DocSaveName + "/" + fileName);
+                            fileUpload.PostedFile.SaveAs(filePathInfo2);
+                            //flpPhotourl1 = path + fileName;
+                            uploadedFiles.Add((Category, DocumentID, DocName, fileName, path + fileName));
+                        }
+                    }
+                }
+            }
+        }
+
+        public void InsertFilesIntoDatabase( string para_CreatedBy, string para_txtContact, string para_id, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
+            string para_LineLength, string para_Count, string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_CreatedByy, int para_TotalAmount, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment)
+        {
+            // Insert the uploaded files into the database
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+
+                    CEI.InsertInspectionDataNewCode(para_txtContact, para_id, para_ApplicantTypeCode, para_IntimationId, para_PremisesType, para_lblApplicant, para_lblCategory, para_lblVoltageLevel,
+                    para_LineLength, para_Count, para_District, para_To, para_PaymentMode, para_txtDate, para_CreatedByy, para_TotalAmount, para_transcationId, para_TranscationDate, para_ChallanAttachment, transaction);
+
+                    string generatedId = CEI.InspectionId();
+                    Session["PendingPaymentId"] = generatedId;
+
+                    foreach (var file in uploadedFiles)
+                    {
+                        string query = "INSERT INTO tbl_InspectionAttachment (InspectionId,InstallationType,DocumentID,DocumentName,fileName, DocumentPath,CreatedDate,CreatedBy,Status) VALUES (@InspectionId,@InstallationType,@DocumentID,@DocSaveName,@FileName, @FilePath,getdate(),@CreatedBy,1)";
+                        using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("@InspectionId", generatedId);
+                            command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+                            command.Parameters.AddWithValue("@DocumentID", file.DocumentID);
+                            command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
+                            command.Parameters.AddWithValue("@FileName", file.FileName);
+                            command.Parameters.AddWithValue("@FilePath", file.FilePath);
+                            command.Parameters.AddWithValue("@CreatedBy", para_CreatedBy);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
         {
 

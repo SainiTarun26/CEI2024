@@ -41,6 +41,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                     GetDetailsWithId();
+                    GridBind();
 
                     Session["PreviousPage"] = "";
                     if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
