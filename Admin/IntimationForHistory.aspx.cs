@@ -47,61 +47,7 @@ namespace CEIHaryana.Admin
             }
         }
 
-        //private void Visibilty()
-        //{
-        //    btnUpdate.Visible = false;
-        //    btnAction.Visible = true;
-        //    Uploads.Visible = true;
-        //    Uploads.Visible = true;
-        //    Uploads.Visible = true;
-        //    Uploads.Visible = true;
-        //    if (txtWorkType.Text == "Line")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Power Utility")
-        //        {
-        //            LineSubstationSupplier.Visible = true;
-        //            SupplierSub.Visible = true;
-        //        }
-        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //            LinePersonal.Visible = true;
-        //            SupplierSub.Visible = true;
-        //        }
-        //    }
-        //    else if (txtWorkType.Text == "Substation Transformer")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Power Utility")
-        //        {
-        //            LineSubstationSupplier.Visible = true;
-        //        }
-        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //            PersonalSub.Visible = true;
-        //        }
-        //    }
-        //    else if (txtWorkType.Text == "Generating Set")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //            PersonalGenerating.Visible = true;
-        //        }
-        //        else
-        //        {
-        //            PersonalGenerating.Visible = false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        LineSubstationSupplier.Visible = false;
-        //        SupplierSub.Visible = false;
-        //        PersonalGenerating.Visible = false;
-        //    }
-        //    if (Session["Approval"].ToString().Trim() == "Rejected")
-        //    {
-        //        btnBack.Visible = true;
-        //    }
-           
-        //}
+      
         private void BindDivisions()
         {
             DataSet ds = new DataSet();
@@ -134,22 +80,7 @@ namespace CEIHaryana.Admin
 
                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                //Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
-                //Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
-                //Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
-                //string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
-                //Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
-                //Session["CopyOfNoticeIssuedByUHBVNorDHBVN"] = ds.Tables[0].Rows[0]["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
-                //Session["InvoiceOfTransferOfPersonalSubstation"] = ds.Tables[0].Rows[0]["InvoiceOfTransferOfPersonalSubstation"].ToString();
-                //Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
-                //Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
-                //Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
-                //Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
-                //Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
-                //Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
-                //Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
-
-
+               
                 GridBindDocument();
             }
             catch (Exception ex)
@@ -741,7 +672,7 @@ namespace CEIHaryana.Admin
                     if(ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
                     {
                         StaffTo = ddlToAssign.SelectedValue;
-                       // CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
+                        CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
 
                         ddlDivisions.SelectedIndex = 0;                        
                         ddlToAssign.SelectedIndex = 0;                       

@@ -39,6 +39,7 @@ namespace CEIHaryana.Contractor
 
                         if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
                         {
+                            Session["UpdationId"] = null;
                             GetGridData();
                             GridView1.Columns[0].Visible = true;
                             customFile.Visible = true;
@@ -48,7 +49,7 @@ namespace CEIHaryana.Contractor
                             GetDetails();
                             GetassigneddatatoContractor();
                             Session["UpdationId"] = Session["id"];
-                            Session["id"] = "";
+                            Session["id"] = null;
                         }
                     }
                     else
@@ -645,6 +646,7 @@ namespace CEIHaryana.Contractor
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
                         }
+                        Session["UpdationId"] = null; 
                     }
                     else
                     {

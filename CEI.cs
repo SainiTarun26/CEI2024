@@ -1697,39 +1697,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
 
-        public void InsertInspectionDocument(string InspectionId, string IntimationId, string installationtype,
-          string RequestLetterFromConcernedOfficer, string ManufacturingTestReportOfEqipment,
-      string SingleLineDiagramOfLine, string DemandNoticeOfLine, string CopyOfNoticeIssuedByUHBVNorDHBVN,
-      string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
-      string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
-      string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite,
-      string StructureStabilityResolvedByAuthorizedEngineer
-            )
-        {
-            SqlCommand cmd = new SqlCommand("sp_InsertInspectionAttachment");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@RequestLetterFromConcernedOfficer ", RequestLetterFromConcernedOfficer);
-            cmd.Parameters.AddWithValue("@ManufacturingTestReportOfEqipment ", ManufacturingTestReportOfEqipment);
-            cmd.Parameters.AddWithValue("@SingleLineDiagramOfLine ", SingleLineDiagramOfLine);
-            cmd.Parameters.AddWithValue("@DemandNoticeOfLine ", DemandNoticeOfLine);
-            cmd.Parameters.AddWithValue("@CopyOfNoticeIssuedByUHBVNorDHBVN ", CopyOfNoticeIssuedByUHBVNorDHBVN);
-            cmd.Parameters.AddWithValue("@InvoiceOfTransferOfPersonalSubstation ", InvoiceOfTransferOfPersonalSubstation);
-            cmd.Parameters.AddWithValue("@ManufacturingTestCertificateOfTransformer ", ManufacturingTestCertificateOfTransformer);
-            cmd.Parameters.AddWithValue("@SingleLineDiagramofTransformer ", SingleLineDiagramofTransformer);
-            cmd.Parameters.AddWithValue("@InvoiceoffireExtinguisheratSite ", InvoiceoffireExtinguisheratSite);
-            cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", InvoiceOfDGSetOfGeneratingSet);
-            cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", ManufacturingCerificateOfDGSet);
-            cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", InvoiceOfExptinguisherOrApparatusAtsite);
-            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", StructureStabilityResolvedByAuthorizedEngineer);
 
-        }
+       
         public string InspectionId()
         {
             if (outputParam != null)
@@ -1742,6 +1711,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
         }
         #endregion
+
+
+
         #region Update Work Intimation Contractor Data
         public void updateWorkIntimation(string Id)
         {
@@ -3406,8 +3378,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
             cmd.Parameters.AddWithValue("@TransctionDate ", TranscationDate);
-            cmd.Parameters.AddWithValue("@ChallanAttachment ", ChallanAttachment);
-            outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
+            cmd.Parameters.AddWithValue("@ChallanAttachment ", null);
+            //outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
+            outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();

@@ -301,10 +301,7 @@
                         </asp:DropDownList>
                     </div>
 
-                    <%-- <div class="col-6" id="DivAdditionalNote" runat="server" visible="false" >
-                    <label>Additional Note</label>
-                    <asp:TextBox ID="txtAdditionalNote" class="form-control" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>--%>
+                  
             </ContentTemplate>
         </asp:UpdatePanel>
 

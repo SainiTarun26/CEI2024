@@ -26,7 +26,7 @@
         }
 
         img {
-            height: 60px !important;
+            height: 55px !important;
             width: 222px;
             margin-left: 8px !important;
             max-width: 126% !important;
@@ -59,7 +59,7 @@
                 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                         <a class="navbar-brand brand-logo mr-5" href="#">
-                            <img src="/Assets/ceilogo.png" alt="logo" /></a>
+                            <img src="../Assets/Add%20a%20heading%20(1).png" /></a>
                     </div>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 

@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using System.IO;
-
+using System.Diagnostics;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -157,30 +157,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                     DateTime.TryParse(createdDate, out inspectionCreatedDate);
 
-
-                    //Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
-                    //Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
-
-                    //Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
-
-
-                    //string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
-                    //Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
-
-
-                    //Session["CopyOfNoticeIssuedByUHBVNorDHBVN"] = ds.Tables[0].Rows[0]["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
-                    //Session["InvoiceOfTransferOfPersonalSubstation"] = ds.Tables[0].Rows[0]["InvoiceOfTransferOfPersonalSubstation"].ToString();
-                    //Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
-                    //Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
-                    //Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
-
-
-                    Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
-                    Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
-
-                    Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
-                    Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
-
+                  
                 }
             }
             catch (Exception ex)
@@ -1033,14 +1010,18 @@ namespace CEIHaryana.SiteOwnerPages
                     if (e.CommandName == "Select")
                     {
 
+                        ////string documentPath = e.CommandArgument.ToString();
+                        ////Response.Redirect(documentPath, false);
                         //string documentPath = e.CommandArgument.ToString();
-                        //Response.Redirect(documentPath, false);
-                        string documentPath = e.CommandArgument.ToString();
-                        string folderPath = Server.MapPath(documentPath);
-                        string filePath = Path.Combine(folderPath);
-                        string script = "window.open('" + filePath + "', '_blank');";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "NewTab", script, true);
-
+                        //string folderPath = Server.MapPath(documentPath);
+                        //string filePath = Path.Combine(folderPath);
+                        //string script = "window.open('" + filePath + "', '_blank');";
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "NewTab", script, true);
+                        string fileName = Server.MapPath(e.CommandArgument.ToString());
+                        Process process = new Process();
+                        process.StartInfo.UseShellExecute = true;
+                        process.StartInfo.FileName = fileName;
+                        process.Start();
                     }
                     else
                     {

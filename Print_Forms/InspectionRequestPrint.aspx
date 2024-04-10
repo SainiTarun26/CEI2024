@@ -21,38 +21,15 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
 
-    <script type="text/javascript">
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            }
-            return true;
-        }
-
-        //Allow Only Aplhabet, Delete and Backspace
-
-        function isAlpha(keyCode) {
-
-            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-
-        }
-
-        function alphabetKey(e) {
-            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-            var k;
-            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-            return (allow.indexOf(String.fromCharCode(k)) != -1);
-        }
-    </script>
     <style>
         body {
-    box-sizing: border-box;
-    min-height: 100vh;
-    margin: 0px;
-    border: solid 1px black;
-    PADDING: 10PX;
-}
+            box-sizing: border-box;
+            min-height: 100vh;
+            margin: 0px;
+            border: solid 1px black;
+            PADDING: 10PX;
+        }
+
         input#txtInstallationType {
             font-size: 25px !important;
             font-weight: 700;
@@ -122,22 +99,16 @@
     <form id="form1" runat="server">
         <div>
             <div class="content-wrapper">
-                <%--        <div class="card-header" style="background: linear-gradient(341deg, rgba(0,255,103,1) 0%, rgba(70,85,252,1) 100%); color: white; margin-bottom: 15px; border-radius: 5px;">
-        <h4 style="font-weight: 600; text-align: center;">CONTRACTOR DETAILS</h4>
-    </div>--%>
-
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
-                        <%--    <asp:Button ID="btnPrint" runat="server" Text="Print" OnClientClick="printDiv('printableDiv');" />--%>
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
                             <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Application For Inspection Request</h6>
-
                                 </div>
                             </div>
                             <div class="row">
@@ -156,7 +127,6 @@
                                     <asp:TextBox class="form-control" ID="txtReqNumber" runat="server" autocomplete="off" TabIndex="1" MaxLength="30" Style="margin-left: 18px; border-bottom: 0px solid black !important;" Text="1234/tarun-2024"></asp:TextBox>
                                 </div>
                             </div>
-
                             <br />
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Site Owner Details</u></h6>
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -168,19 +138,15 @@
                                         <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
-
-                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  ErrorMessage="RequiredFieldValidator" ForeColor="Red" >(*)</asp:RequiredFieldValidator>--%>
                                     </div>
                                     <div class="col-4">
                                         <label for="FatherName">Intimation Id:</label>
-
                                         <asp:TextBox class="form-control" ID="txtIntimationId" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label for="FatherName">Type 0f Permises</label>
-
                                         <asp:TextBox class="form-control" ID="txtPermisestype" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
@@ -194,8 +160,6 @@
                                         <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
-
-                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  ErrorMessage="RequiredFieldValidator" ForeColor="Red" >(*)</asp:RequiredFieldValidator>--%>
                                     </div>
                                     <div class="col-4">
                                         <label for="FatherName">Applicant Type:</label>
@@ -204,7 +168,9 @@
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
+                                </div>
+                                <div class="row" style="margin-top: 35px;">
+                                    <div class="col-12">
                                         <label for="FatherName">Address</label>
 
                                         <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
@@ -226,8 +192,6 @@
                                         <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
-
-                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  ErrorMessage="RequiredFieldValidator" ForeColor="Red" >(*)</asp:RequiredFieldValidator>--%>
                                     </div>
                                     <div class="col-4">
                                         <label for="FatherName">Transaction Date:</label>
@@ -252,7 +216,6 @@
                                         <asp:TextBox class="form-control" ID="txtChallan" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
-                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  ErrorMessage="RequiredFieldValidator" ForeColor="Red" >(*)</asp:RequiredFieldValidator>--%>
                                     </div>
                                 </div>
                             </div>

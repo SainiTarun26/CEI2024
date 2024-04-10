@@ -128,6 +128,8 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblPremises = (Label)row.FindControl("lblPermises");
                     Label lblApplicantTypeCode = (Label)row.FindControl("lblApplicantTypeCode");
                     Label lblDesignation = (Label)row.FindControl("lblDesignation");
+                    Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");
+
 
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
@@ -239,7 +241,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         InspectionType = "New";
                         AssigDesignation = lblDesignation.Text;
-                        PlantLocation = "";
+                        PlantLocation = lblTypeOfPlant.Text;
 
                         GetDocumentUploadData(ApplicantType, Category, InspectionType, AssigDesignation, PlantLocation);
                         PaymentGridViewBind();
@@ -301,7 +303,54 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-       
+        #region visibilty
+        // protected void Visibility()
+        //{
+        //    Uploads.Visible = true;
+        //    if (txtWorkType.Text == "Line")
+        //    {
+        //        if (txtApplicantType.Text.Trim() == "Supplier Installation")
+        //        {
+        //            LineSubstationSupplier.Visible = true;
+        //            SupplierSub.Visible = true;
+        //        }
+        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+        //        {
+        //            LinePersonal.Visible = true;
+        //            SupplierSub.Visible = true;
+        //        }
+        //    }
+        //    else if (txtWorkType.Text == "Substation Transformer")
+        //    {
+        //        if (txtApplicantType.Text.Trim() == "Supplier Installation")
+        //        {
+        //            LineSubstationSupplier.Visible = true;
+        //        }
+        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+        //        {
+        //            PersonalSub.Visible = true;
+        //        }
+        //    }
+        //    else if (txtWorkType.Text == "Generating Set")
+        //    {
+        //        if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
+        //        {
+        //            PersonalGenerating.Visible = true;
+        //        }
+        //        else
+        //        {
+        //            PersonalGenerating.Visible = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        LineSubstationSupplier.Visible = false;
+        //        SupplierSub.Visible = false;
+        //        PersonalGenerating.Visible = false;
+        //    }
+
+        //}
+        #endregion
         private string GetDocumentIDFromFileUploadID(string fileUploadID)
         {
             string[] parts = fileUploadID.Split('_');
@@ -367,36 +416,36 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (ChallanDetail.Visible == true)
                     {
-                        if (FileUpload14.HasFile && FileUpload14.PostedFile.ContentLength <= 500 * 1024)
-                        {
-                            string ext = Path.GetExtension(FileUpload14.PostedFile.FileName).ToLower();
+                        //if (FileUpload14.HasFile && FileUpload14.PostedFile.ContentLength <= 500 * 1024)
+                        //{
+                        //    string ext = Path.GetExtension(FileUpload14.PostedFile.FileName).ToLower();
 
-                            if (ext == ".pdf") // Check if the file extension is PDF
-                            {
-                                FileName = "ChallanReport" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/")))
-                                {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/"));
-                                }
-                                string path = "/Attachment/" + CreatedBy + "/ChallanReport/";
-                                string filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/" + FileName);
+                        //    if (ext == ".pdf") // Check if the file extension is PDF
+                        //    {
+                        //        FileName = "ChallanReport" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                        //        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/")))
+                        //        {
+                        //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/"));
+                        //        }
+                        //        string path = "/Attachment/" + CreatedBy + "/ChallanReport/";
+                        //        string filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/" + FileName);
 
-                                FileUpload14.SaveAs(filePathInfo2);
-                                ChallanAttachment = path + FileName;
-                            }
-                            else
-                            {
-                                string alert = "alert('File Format Not Supported. Only PDF files are allowed.');";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            string alert = "alert('File exceeds maximum size limit (500 KB) or no file uploaded.');";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
-                            return;
-                        }
+                        //        FileUpload14.SaveAs(filePathInfo2);
+                        //        ChallanAttachment = path + FileName;
+                        //    }
+                        //    else
+                        //    {
+                        //        string alert = "alert('File Format Not Supported. Only PDF files are allowed.');";
+                        //        ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
+                        //        return;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    string alert = "alert('File exceeds maximum size limit (500 KB) or no file uploaded.');";
+                        //    ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
+                        //    return;
+                        //}
 
                         if (txttransactionId.Text != "")
                         {
@@ -416,16 +465,9 @@ namespace CEIHaryana.SiteOwnerPages
                         PaymentMode = RadioButtonList2.SelectedItem.ToString();
                     }
 
-                    UploadCheckListDocInCollection(lblCategory.Trim());
 
-                    //CEI.InsertInspectionDataNewCode(txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                    //LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
-                    //string generatedId = CEI.InspectionId();
-                    //Session["PendingPaymentId"] = generatedId;
-
-                    //InsertFilesIntoDatabase(generatedId, CreatedBy);
-                    InsertFilesIntoDatabase( CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                    InsertFilesIntoDatabase(CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
                     LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
@@ -442,107 +484,211 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        public void UploadCheckListDocInCollection(string Category)
+        public void UploadCheckListDocInCollection(string Category, string CreatedByy, string intimationids, string InstallTypes, string InstallTypeCount)
+
         {
+
             foreach (GridViewRow row in Grd_Document.Rows)
+
             {
+
                 FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+
                 string Req = ((HtmlInputHidden)row.FindControl("Req")).Value.Replace("\r\n", "");
+
                 string DocSaveName = ((HtmlInputHidden)row.FindControl("DocumentShortName")).Value.Replace("\r\n", "");
+
                 string DocumentID = ((HtmlInputHidden)row.FindControl("DocumentID")).Value.Replace("\r\n", "");
+
+
 
                 string DocName = row.Cells[1].Text.Replace("\r\n", "");
 
+
+
                 if (Req == "1")
+
                 {
+
                     if (!fileUpload.HasFile && Req == "1")
+
                     {
+
                         //string message = "alert('is mandatory to upload');";
+
                         string encodedDocName = HttpUtility.JavaScriptStringEncode(DocName);
+
                         string message = "alert('" + encodedDocName + " is mandatory to upload.');";
+
                         // ScriptManager.RegisterClientScriptBlock(sender as Control, this.GetType(), "alert", message, true);
+
                         ScriptManager.RegisterClientScriptBlock(null, this.GetType(), "alert", message, true);
+
                         return;
+
                     }
+
                 }
+
+
 
                 if (fileUpload.HasFile)
+
                 {
 
-                    string CreatedBy = "Abcdefgh";
+                    string CreatedBy = CreatedByy;
+
+
 
                     if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
+
                     {
+
                         if (fileUpload.PostedFile.ContentLength <= 2000000)
+
                         {
+
                             string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
-                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + DocSaveName + "/")))
+
+                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/")))
+
                             {
-                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + DocSaveName + "/"));
+
+                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/"));
+
                             }
+
                             string ext = fileUpload.PostedFile.FileName.Split('.')[1];
+
                             string path = "";
-                            path = "/Attachment/" + CreatedBy + "/" + DocSaveName + "/";
-                            string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+
+                            path = "/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/";
+
+                            //string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+
+                            string fileName = DocSaveName + "." + ext;
+
                             string filePathInfo2 = "";
-                            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/" + DocSaveName + "/" + fileName);
+
+                            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/" + fileName);
+
                             fileUpload.PostedFile.SaveAs(filePathInfo2);
-                            //flpPhotourl1 = path + fileName;
+
                             uploadedFiles.Add((Category, DocumentID, DocName, fileName, path + fileName));
+
                         }
+
                     }
+
                 }
+
             }
+
         }
 
-        public void InsertFilesIntoDatabase( string para_CreatedBy, string para_txtContact, string para_id, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
-            string para_LineLength, string para_Count, string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_CreatedByy, int para_TotalAmount, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment)
+        public void InsertFilesIntoDatabase(string para_CreatedBy, string para_txtContact, string para_id, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
+
+                  string para_LineLength, string para_Count, string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_CreatedByy, int para_TotalAmount, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment)
+
         {
+
             // Insert the uploaded files into the database
+
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
             using (SqlConnection connection = new SqlConnection(connectionString))
+
             {
+
                 connection.Open();
+
                 SqlTransaction transaction = connection.BeginTransaction();
 
+
+
                 try
+
                 {
+
+
 
                     CEI.InsertInspectionDataNewCode(para_txtContact, para_id, para_ApplicantTypeCode, para_IntimationId, para_PremisesType, para_lblApplicant, para_lblCategory, para_lblVoltageLevel,
+
                     para_LineLength, para_Count, para_District, para_To, para_PaymentMode, para_txtDate, para_CreatedByy, para_TotalAmount, para_transcationId, para_TranscationDate, para_ChallanAttachment, transaction);
 
-                    string generatedId = CEI.InspectionId();
-                    Session["PendingPaymentId"] = generatedId;
+
+
+                    string generatedIdCombinedDetails = CEI.InspectionId();
+
+                    string[] SplitResultPartsArray = generatedIdCombinedDetails.Split('|');
+
+
+
+                    Session["PendingPaymentId"] = SplitResultPartsArray[0];
+
+
+
+                    UploadCheckListDocInCollection(SplitResultPartsArray[2], para_CreatedByy, SplitResultPartsArray[1], SplitResultPartsArray[2], SplitResultPartsArray[3]);
+
+
+
+
 
                     foreach (var file in uploadedFiles)
+
                     {
+
                         string query = "INSERT INTO tbl_InspectionAttachment (InspectionId,InstallationType,DocumentID,DocumentName,fileName, DocumentPath,CreatedDate,CreatedBy,Status) VALUES (@InspectionId,@InstallationType,@DocumentID,@DocSaveName,@FileName, @FilePath,getdate(),@CreatedBy,1)";
+
                         using (SqlCommand command = new SqlCommand(query, connection, transaction))
+
                         {
-                            command.Parameters.AddWithValue("@InspectionId", generatedId);
+
+                            command.Parameters.AddWithValue("@InspectionId", SplitResultPartsArray[0]);
+
                             command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+
                             command.Parameters.AddWithValue("@DocumentID", file.DocumentID);
+
                             command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
+
                             command.Parameters.AddWithValue("@FileName", file.FileName);
+
                             command.Parameters.AddWithValue("@FilePath", file.FilePath);
+
                             command.Parameters.AddWithValue("@CreatedBy", para_CreatedBy);
+
                             command.ExecuteNonQuery();
+
                         }
+
                     }
 
-                    transaction.Commit();
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
 
+
+                    transaction.Commit();
+
+                }
+
+                catch (Exception ex)
+
+                {
+
+                    transaction.Rollback();
+
+                }
+
+                finally
+
+                {
+
+                    connection.Close();
+
+                }
+
+            }
+
+        }
 
 
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
@@ -574,7 +720,7 @@ namespace CEIHaryana.SiteOwnerPages
                     GridViewPayment.DataSource = ds;
                     GridViewPayment.DataBind();
                     TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[3].Text);
-                    txtPayment.Text = Convert.ToString(TotalAmount);
+                    //      txtPayment.Text = Convert.ToString(TotalAmount);
                 }
                 else
                 {

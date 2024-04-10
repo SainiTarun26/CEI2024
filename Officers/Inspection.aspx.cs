@@ -24,8 +24,7 @@ namespace CEIHaryana.Officers
             {
                 if (!IsPostBack)
                 {
-                    GetData();
-                    // Visibility();
+                    GetData();                   
                 }
             }
             catch
@@ -33,53 +32,7 @@ namespace CEIHaryana.Officers
                 Response.Redirect("/Login.aspx");
             }
         }
-        //protected void Visibility()
-        //{
-        //    Uploads.Visible = true;
-        //    if (txtWorkType.Text == "Line")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Supplier Installation")
-        //        {
-        //        LineSubstationSupplier.Visible = true;
-        //        SupplierSub.Visible = true;
-        //        }
-        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //        LinePersonal.Visible = true;
-        //        SupplierSub.Visible = true;
-        //        }
-        //    }
-        //    else if (txtWorkType.Text == "Substation Transformer")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Supplier Installation")
-        //        {
-        //        LineSubstationSupplier.Visible = true;
-        //        }
-        //        else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //            PersonalSub.Visible = true;
-
-        //        }
-        //    }
-        //    else if (txtWorkType.Text == "Generating Set")
-        //    {
-        //        if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //        {
-        //        PersonalGenerating.Visible = true;
-        //        }
-        //        else
-        //        {
-        //            PersonalGenerating.Visible = false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        LineSubstationSupplier.Visible = false;
-        //        SupplierSub.Visible = false;
-        //        PersonalGenerating.Visible = false;
-        //    }
-
-        //}
+       
         public void GetData()
         {
             try
@@ -112,26 +65,7 @@ namespace CEIHaryana.Officers
                 count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 
-                //txtAdditionalNotes.Text = ds.Tables[0].Rows[0]["AdditionalNotes"].ToString();
-                //Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
-                //Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
-
-                //Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
-
-                //string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
-                //Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
-
-                //Session["CopyOfNoticeIssuedByUHBVNorDHBVN"] = ds.Tables[0].Rows[0]["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
-                //Session["InvoiceOfTransferOfPersonalSubstation"] = ds.Tables[0].Rows[0]["InvoiceOfTransferOfPersonalSubstation"].ToString();
-                //Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
-                //Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
-                //Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
-
-                //Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
-                //Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
-
-                //Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
-                //Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
+               
 
                 GridBindDocument();
                 string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
@@ -577,7 +511,15 @@ namespace CEIHaryana.Officers
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
                         CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+                        if(AcceptorReturn == "Accepted")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        }                        
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataReturn();", true);
+                        }
                         //if (Session["Area"] != null)
                         //{
                         //  Response.Redirect("/Officers/OfficerDashboard.aspx", false);

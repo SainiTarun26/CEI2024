@@ -47,7 +47,9 @@
         }
 
         table#ContentPlaceHolder1_RadioButtonList2 {
-            margin-top: -35px;
+          margin-top: -28px;
+
+            margin-left: 22%;
         }
 
         input#ContentPlaceHolder1_FileUpload14 {
@@ -140,7 +142,7 @@
             }
 
         .card .card-title {
-            font-size: 1rem !important;
+            font-size: 22px !important;
         }
 
         .btn-primary:hover {
@@ -173,6 +175,41 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+         th.headercolor {
+
+            background: #9292cc;
+
+            color: white;
+
+        }
+
+
+
+        td {
+
+            padding: 5px;
+
+            padding-left: 10px;
+
+        }
+
+
+
+        th.leftalign {
+
+            text-align: justify;
+
+        }
+
+
+
+        th {
+
+            text-align: justify !important;
+
+            padding: 10px;
+
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -180,7 +217,8 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <h7 class="card-title fw-semibold mb-4">Raise Request For Inspections</h7>
+                <div class="card-title" style="text-align:center;font-size:23px !important;">Raise Request for Inspection</div>
+                <h7 class="card-title fw-semibold mb-4">Inspections Request</h7>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-sm-4" style="text-align: center;">
@@ -263,6 +301,7 @@
                                     <asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>
                                     <asp:Label ID="lblApplicantTypeCode" runat="server" Text='<%#Eval("ApplicantTypeCode") %>'></asp:Label>
                                     <asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
+                                      <asp:Label ID="LblTypeofPlant" runat="server" Text='<%#Eval("TypeOfPlant") %>'></asp:Label> 
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
@@ -313,82 +352,73 @@
                             <asp:RequiredFieldValidator ID="Req_state" Text="Required" ErrorMessage="Required" ControlToValidate="ddlDocumentFor" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
                     </div>
+
+                </div>
+                <h7 class="card-title fw-semibold mb-4">Document Checklist</h7>
+
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
                     <div class="row">
-
-                        <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" Width="100%" AutoGenerateColumns="false">
-
-                            <PagerStyle CssClass="pagination-ys" />
-
-                            <Columns>
-                                <asp:BoundField DataField="SNo" HeaderText="SNo" />
-                              <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
-                                <asp:BoundField DataField="DocumentName" HeaderText="DocumentName" />
-
-                                <asp:TemplateField HeaderText="File Upload">
-                                    <ItemTemplate>
-                                        <input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />
-                                        <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
-                                        <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
-                                        <asp:FileUpload ID="FileUpload1" runat="server" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-
-                            </Columns>
-
-                            <FooterStyle BackColor="White" ForeColor="#000066" />
-
-                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-
-                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-
-                            <RowStyle ForeColor="#000066" />
-
-                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-
-                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-
-                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-
-                        </asp:GridView>
-
+                        <div class="col-12">
+                            <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" AutoGenerateColumns="false">
+                                <PagerStyle CssClass="pagination-ys" />
+                                <Columns>
+                                    <asp:BoundField DataField="SNo" HeaderText="SNo" />
+                                    <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
+                                    <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
+                                        <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
+                                        <ItemStyle HorizontalAlign="Left" Width="70%" />
+                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="File Upload">
+                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+                                        <ItemTemplate>
+                                            <input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />
+                                            <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
+                                            <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
+                                            <asp:FileUpload ID="FileUpload1" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                <RowStyle ForeColor="#000066" />
+                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                            </asp:GridView>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important; margin-bottom: 20px;">
+                <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
+
+                <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
                     <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridViewPayment" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="true">
 
                         <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" CssClass="headercolor leftalign" />
                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
                         <RowStyle ForeColor="#000066" />
                         <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                     </asp:GridView>
-                </div>
-                <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-left: 30px;">
-                    <div class="col-6">
+                    <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-top: 30px;">
+                        <%-- <div class="col-6">
                         <div class="form-group row">
                             <label for="search" class="col-sm-3 col-form-label">Total payment:</label>
                             <div class="col-sm-8" style="margin-left: -35px;">
                                 <div class="col-sm-8">
-                                    <%-- <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 64C0 46.3 14.3 32 32 32H96h16H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H231.8c9.6 14.4 16.7 30.6 20.7 48H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H252.4c-13.2 58.3-61.9 103.2-122.2 110.9L274.6 422c14.4 10.3 17.7 30.3 7.4 44.6s-30.3 17.7-44.6 7.4L13.4 314C2.1 306-2.7 291.5 1.5 278.2S18.1 256 32 256h80c32.8 0 61-19.7 73.3-48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H185.3C173 115.7 144.8 96 112 96H96 32C14.3 96 0 81.7 0 64z"/></svg>--%>
                                     <asp:TextBox ID="txtPayment" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="margin-top: 4px"></asp:TextBox><br />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-left: 0%; margin-top: 6px;">
-                        Payment Mode: &nbsp;&nbsp;
-                        <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                            <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
-                            <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
-                        </asp:RadioButtonList>
-                        <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
-                    </div>
-                    <%--<div class="col-6" style="margin-bottom: auto;">
+                    </div>--%>
+                        <div class="row" style="margin-left: 0%; margin-top: 6px;">
+                        </div>
+                        <%--<div class="col-6" style="margin-bottom: auto;">
                                  Paymant Mode
                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                    <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
@@ -400,8 +430,12 @@
                 <asp:Button type="submit" ID="ChallanUpload"  Text="Offline" runat="server" class="btn btn-primary mr-2" onclick="ChallanUpload_Click" />
                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>     
                         </div>--%>
+                    </div>
                 </div>
-                <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
+                <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
+
+                <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
+
                     <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
                         <div class="col-6">
                             <label>
@@ -427,12 +461,13 @@
                             <asp:TextBox ID="txttransactionDate" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-6">
-                            <label>
-                                Upload Challan (Only PDF Allowed, Size not more than 1 Mb)<samp style="color: red"> * </samp>
-                            </label>
-                            <asp:FileUpload ID="FileUpload14" runat="server" class="form-control" />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="FileUpload14" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                        <div class="col-6" style="margin-top: auto; margin-bottom: auto;">
+                            Payment Mode: &nbsp;&nbsp;
+                            <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
+                                <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
+                            </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
                         </div>
                     </div>
                 </div>
