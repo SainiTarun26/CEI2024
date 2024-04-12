@@ -42,6 +42,7 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
+
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Intimation Created Successfully')) {
@@ -378,7 +379,7 @@
                                             <label for="Name">
                                                 Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return allowAlphabets(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-4" id="agency" runat="server">
@@ -1060,6 +1061,7 @@
             }
             return true;
         }
+
     </script>
     <%-- <script type="text/javascript">
         function validateCheckBoxes() {

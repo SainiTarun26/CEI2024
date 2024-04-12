@@ -9,11 +9,12 @@ namespace CEIHaryana.Supervisor
 {
     public partial class Supervisor : System.Web.UI.MasterPage
     {
-       
+        CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                GetSupervisorName();
                 if (Convert.ToString(Session["SupervisorID"]) != null || Convert.ToString(Session["SupervisorID"]) != string.Empty || Request.Cookies["SupervisorID"] != null)
                 {
                     if (Request.Cookies["SupervisorID"] != null)
@@ -54,6 +55,12 @@ namespace CEIHaryana.Supervisor
             Response.Redirect("/Login.aspx");
         }
 
-  
+        public void GetSupervisorName()
+        {
+            string SupervisorId = Session["SupervisorID"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetsupervisorName(SupervisorId);            
+            PersonDetails.Text = ds.Tables[0].Rows[0]["SupervisorProfile"].ToString();
+        }
     }
 }

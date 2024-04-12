@@ -3294,6 +3294,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetContractorName", UserId);
         }
+        public DataSet GetsupervisorName(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetSupervisorName", UserId);
+        }
 
         public DataTable Payment(string intimationId, string count, string installationtypeId)
         {

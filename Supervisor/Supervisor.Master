@@ -17,6 +17,30 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
+                span#Slash {
+    margin-left: 7px;
+    margin-right: 5px;
+    font-size: 20px;
+}
+        span#LoginType {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+        div#PageDetails {
+            margin: 15px 35px 15px 35px;
+            padding: 5px;
+            padding-left:20px;
+            padding-right:20px;
+            margin-bottom: -25px;
+            background: #639fc2;
+            color: white;
+            font-weight: 600;
+        }
+
+        .main-panel {
+            background: #f9f9f9;
+        }
+
         span.menu-title {
             COLOR: #F9F9F9 !IMPORTANT;
         }
@@ -382,6 +406,17 @@
                         </ul>
                     </nav>
                     <div class="main-panel">
+                        <div class="card" id="PageDetails" style="border-radius: 0.25rem !important;border: 1px solid #5f8fad;padding:5px !important;padding-left: 20px !important; padding-right: 20px !important;">
+    <div class="row">
+        <div class="col-sm-6">
+            <asp:Label ID="LoginType" runat="server" Text="Supervisor"></asp:Label><%--<span id="Slash">></span>--%>
+            <%--<asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
+        </div>
+        <div class="col-sm-6" style="text-align:end;">
+            <asp:Label ID="PersonDetails" runat="server" ></asp:Label>
+        </div>
+    </div>
+</div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>

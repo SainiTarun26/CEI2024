@@ -146,6 +146,11 @@ namespace CEIHaryana.UserPages
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
+
+                //new
+                txtTestReportId.Text = ds.Tables[0].Rows[0]["HeaderText"].ToString();
+                txtinstalltype.Text = ds.Tables[0].Rows[0]["InstallType"].ToString();
+
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {
                     SolarPanelGeneratingSet.Visible = true;

@@ -89,7 +89,12 @@
         .col-9 {
             margin-top: 3%;
         }
-
+        .col-6 {
+            margin-top: 3%;
+        }
+        .col-8 {
+            margin-top: 5%;
+        }
         .form-control {
             margin-left: 0px !important;
             font-size: 18px !important;
@@ -147,16 +152,7 @@
             document.body.innerHTML = originalContents;
 
         }
-
-
-
-
-
-
-
-
-
-    </script>
+</script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -175,17 +171,11 @@
                                 <div class="row" style="margin-bottom: 15PX;">
                                     <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report Details</h6>
-                                        <div class="col-3" style="margin-top: 0px;"></div>
-
-                                        <div class="col-6" style="margin-top: 0px; padding-left: 0px; text-align: center;">
-
-                                            <asp:TextBox class="form-control"  Text=" GeneratingSet 123455/2023/W0002  T004/GS" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">
+                                            <asp:TextBox class="form-control"  ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                                 MaxLength="30" Style="margin-left: 18px;">
-
                                             </asp:TextBox>
-
                                         </div>
-
                                         <div class="col-3" style="margin-top: 0px;"></div>
                                     </div>
                                 </div>
@@ -813,17 +803,17 @@
 
                                             </label>
 
-                                            <asp:TextBox class="form-control" ID="TxtInstallationType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtinstalltype" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                         </div>
 
-                                        <div class="col-4" id="SubmitDate" visible="false" runat="server">
+                                        <div class="col-6" id="SubmitDate" visible="false" runat="server">
                                             <label>
                                                 Submitted Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-                                        <div class="col-4" id="SubmitBy" visible="false" runat="server">
+                                        <div class="col-6" id="SubmitBy" visible="false" runat="server">
                                             <label>
                                                 Submitted By
                                             </label>

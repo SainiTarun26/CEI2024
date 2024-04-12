@@ -401,7 +401,7 @@
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-top:25px;">
                         <div class="col-4">
                             <label for="VoltageLevelWithEffect">
                                 Current Authorised Voltage Level(with effect from)<samp style="color: red"> * </samp>

@@ -38,7 +38,6 @@ namespace CEIHaryana.TestReportModal
                             CreatedDate.Visible = true;
                         }
 
-
                     }
                     else if (Session["SiteOwnerId"] != null)
                     {

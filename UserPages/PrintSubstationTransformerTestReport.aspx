@@ -181,19 +181,10 @@
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report Details</h6>
                                     <div class="row">
-                                        <div class="col-3" style="margin-top: 0px;"></div>
-                                        <div class="col-3" style="margin-top: 0px;">
-                                            <asp:TextBox class="form-control" ID="txtInstallationType" runat="server" ReadOnly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                                MaxLength="30" Style="margin-left: 18px;" Text="Substation Transformer">
-                                            </asp:TextBox>
-
-                                        </div>
-                                        <div class="col-6" style="margin-top: 0px; padding-left: 0px;">
+                                        <div class="col-12" style="margin-top: 0px; padding-left: 0px;text-align">
                                             <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                                MaxLength="30" Style="margin-left: 18px;" Text="123455/2023/W0002  T038/S">
+                                                MaxLength="30" Style="margin-left: 18px;text-align:center;" Text="123455/2023/W0002  T038/S">
                                             </asp:TextBox>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -438,7 +429,7 @@
                             </div>
                                 </div>
                             <div class="page2">
-                                <div class="card" id="earthing-card" style="background: #fcfcfc; margin-top: 5%;">
+                                <div class="card" id="earthing-card" style="background: #fcfcfc; margin-top:1%;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Earthing Details</u></h6>
                                     <div id="Earthing" runat="server" visible="true">
                                         <div class="card">
@@ -1002,20 +993,25 @@
                                 <div class="card" style="background: #fcfcfc;">
                                     <div class="row">
 
-                                        <div class="col-4" id="CreatedDate" visible="false" runat="server">
+                                        <div class="col-6" id="CreatedDate" visible="false" runat="server">
                                             <label>
                                                 Created Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-
-                                        <div class="col-4" id="SubmitDate" visible="false" runat="server">
+                                        <div class="col-6" id="Div1" visible="false" runat="server">
+                                            <label>
+                                                Installation Type
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="TextBox1" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-6" id="SubmitDate" visible="true" runat="server">
                                             <label>
                                                 Submitted Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-                                        <div class="col-4" id="SubmitBy" visible="false" runat="server">
+                                        <div class="col-6" id="SubmitBy" visible="false" runat="server">
                                             <label>
                                                 Submitted By
                                             </label>

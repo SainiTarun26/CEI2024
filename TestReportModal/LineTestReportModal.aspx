@@ -2030,7 +2030,12 @@ margin-top: 20px;
     margin: 5px 0px 10px 20px;
     width: 97%;
 }
-
+div#divOtherVoltages {
+    margin-top: 5%;
+}
+div#OtherVoltage {
+    margin-top: 5%;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -2139,14 +2144,14 @@ margin-top: 20px;
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtLineVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-2" id="divOtherVoltages" runat="server" visible="false">
+                                                    <div class="col-2" id="divOtherVoltages" runat="server" visible="false" style="margin-top:auto !important;">
                                                         <label for="Voltage">
                                                             Other Voltage 
                                                      <samp style="color: red">* </samp>
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtVotalgeType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-2" id="OtherVoltage" runat="server" visible="false">
+                                                    <div class="col-2" id="OtherVoltage" runat="server" visible="false" style="margin-top:64px !important;">
                                                         <label for="Voltage">
                                                             Other Voltage 
                                                      <samp style="color: red">* </samp>

@@ -191,7 +191,8 @@ namespace CEIHaryana.TestReportModal
                 txtHTType.Text = ds.Tables[0].Rows[0]["TypeofHTPrimarySideSwitch"].ToString();
                 if (txtHTType.Text == "Breaker")
                 {
-                    TypeOfHTBreaker.Visible = true;
+                    TypeOfHTBreaker.Visible = true;                  
+                    Breaker.Visible = true;
                 }
                 txtTransformerCapacity.Text = ds.Tables[0].Rows[0]["TransformerCapacity"].ToString();
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
@@ -499,19 +500,24 @@ namespace CEIHaryana.TestReportModal
 
                 txtBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInKA"].ToString();
                 txtLTProtection.Text = ds.Tables[0].Rows[0]["TypeOfLTProtection"].ToString();
-                if(txtLTProtection.Text== "Breaker")
+                if (txtLTProtection.Text == "Fuse Unit")
                 {
-                    Breaker.Visible = true;
+
+                    TypeOfHTBreaker.Visible = true;
+                    FuseUnit.Visible = true;
+                    Breaker.Visible = false;
+
                 }
                 txtIndividualCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfIndividualFuseInAMPS"].ToString();
-                txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
-                //txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["RiverCanalCrossingNoForOC"].ToString();
+                txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfLTBreakerInAMPS"].ToString();
+                txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
                 txtSealLevelPlinth.Text = ds.Tables[0].Rows[0]["SeaLevelOfTransformerInMeters"].ToString();
                 //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
+            
             }
             catch
             {

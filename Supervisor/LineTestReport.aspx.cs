@@ -884,6 +884,7 @@ namespace CEIHaryana.Supervisor
                 Earthingtype10.Visible = true;
                 Earthingtype11.Visible = true;
                 Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
                 Earthingtype14.Visible = true;
 
             }
@@ -901,10 +902,13 @@ namespace CEIHaryana.Supervisor
                 Earthingtype10.Visible = true;
                 Earthingtype11.Visible = true;
                 Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
                 Earthingtype15.Visible = true;
 
             }
-        }
+        
+    }
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckBox1.Checked == false)

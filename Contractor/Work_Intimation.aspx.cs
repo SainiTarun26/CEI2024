@@ -405,22 +405,21 @@ namespace CEIHaryana.Contractor
         }
         protected void lnkFile_Click(object sender, EventArgs e)
         {
-
-            string fileName = Session["File"].ToString();
-            string folderPath = Server.MapPath(fileName);
-            string filePath = Path.Combine(folderPath);
-
-            if (System.IO.File.Exists(filePath))
+            if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
-                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                string fileName = Session["File"].ToString();
+                string filePath = "https://uat.ceiharyana.com" + fileName;
+
+                //if (System.IO.File.Exists(filePath))
+                //{                
+                string script = $@"<script>window.open('{filePath}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-
-            }
-            else
-            {
-                string errorMessage = "An error occurred: " + "file not exist";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-
+                //}
+                //else
+                //{
+                //string errorMessage = "An error occurred: " + "file not exist";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                //}
             }
         }
         private void ddlLoadBindVoltage()
