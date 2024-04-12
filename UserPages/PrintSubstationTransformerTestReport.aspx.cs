@@ -309,97 +309,7 @@ namespace CEIHaryana.UserPages
                     EathingSubstation13.Visible = true;
                     EathingSubstation14.Visible = true;
                     EathingSubstation15.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "16")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "17")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "18")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                    EathingSubstation18.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "19")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                    EathingSubstation18.Visible = true;
-                    EathingSubstation19.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "20")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                    EathingSubstation18.Visible = true;
-                    EathingSubstation19.Visible = true;
-                    EathingSubstation20.Visible = true;
-                }
+                }               
                 else
                 {
                     EarthingSubstation4.Visible = false;
@@ -414,11 +324,7 @@ namespace CEIHaryana.UserPages
                     EathingSubstation13.Visible = false;
                     EathingSubstation14.Visible = false;
                     EathingSubstation15.Visible = false;
-                    EathingSubstation16.Visible = false;
-                    EathingSubstation17.Visible = false;
-                    EathingSubstation18.Visible = false;
-                    EathingSubstation19.Visible = false;
-                    EathingSubstation20.Visible = false;
+                   
                 }
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 txtSubstationEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();

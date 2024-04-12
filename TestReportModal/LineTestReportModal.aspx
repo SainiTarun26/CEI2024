@@ -74,12 +74,6 @@ padding: 15px !important;
         .col-4 {
             left: 0px;
         }
-
-        .col-2 {
-            top: 15px;
-            left: 0px;
-        }
-
         .form-control {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
@@ -2030,12 +2024,7 @@ margin-top: 20px;
     margin: 5px 0px 10px 20px;
     width: 97%;
 }
-div#divOtherVoltages {
-    margin-top: 5%;
-}
-div#OtherVoltage {
-    margin-top: 5%;
-}
+
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -2144,14 +2133,14 @@ div#OtherVoltage {
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtLineVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-2" id="divOtherVoltages" runat="server" visible="false" style="margin-top:auto !important;">
+                                                    <div class="col-2" id="divOtherVoltages" runat="server" visible="false">
                                                         <label for="Voltage">
                                                             Other Voltage 
                                                      <samp style="color: red">* </samp>
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtVotalgeType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-2" id="OtherVoltage" runat="server" visible="false" style="margin-top:64px !important;">
+                                                    <div class="col-2" id="OtherVoltage" runat="server" visible="false">
                                                         <label for="Voltage">
                                                             Other Voltage 
                                                      <samp style="color: red">* </samp>

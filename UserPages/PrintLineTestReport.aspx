@@ -272,14 +272,14 @@
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" AutoPostBack="true" ID="txtLineVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
-                                                <div class="col-2" id="divOtherVoltages" runat="server" visible="false">
+                                                <div class="col-2" id="divOtherVoltages" runat="server" visible="false" style="margin-top:5%;">
                                                     <label for="Voltage">
                                                         Other Voltage 
                                                  
                                                     </label>
                                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtVotalgeType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
-                                                <div class="col-2" id="OtherVoltage" runat="server" visible="false">
+                                                <div class="col-2" id="OtherVoltage" runat="server" visible="false" style="margin-top:5%;">
                                                     <label for="Voltage">
                                                         Other Voltage 
                                                  
