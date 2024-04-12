@@ -37,7 +37,7 @@ namespace CEIHaryana.Contractor
                     Response.Redirect("/Login.aspx");
                 }
                 GetContractorNotifications();
-               // GetContractorName();
+                GetContractorName();
                 //if(TextBoxPlaceholder.Controls.Count > 0)
                 //{
                 //    string alert = "alert('');";
@@ -123,7 +123,7 @@ namespace CEIHaryana.Contractor
             DataSet ds = new DataSet();
             ds = CEI.GetContractorName(REID);
             //textName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
-
+            PersonDetails.Text= ds.Tables[0].Rows[0]["ContractorName"].ToString();
         }
 
     }

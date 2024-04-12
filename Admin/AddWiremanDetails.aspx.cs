@@ -271,31 +271,31 @@ namespace CEI_PRoject.Admin
                         }
                     }
                 }
-                
-                    GetIP();
-                    REID = hdnId.Value;
-                    string Createdby = Convert.ToString(Session["AdminID"]);
-                    CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
-                    ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
-                    txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
-                    Createdby, UserId, ipaddress);
+
+                GetIP();
+                REID = hdnId.Value;
+                string Createdby = Convert.ToString(Session["AdminID"]);
+                CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
+                txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
+                Createdby, UserId, ipaddress);
 
 
-                    if (btnSubmit.Text == "Update")
-                    {
-                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
-                        Session["ID"] = "";
-                        DataUpdated.Visible = true;
-                    }
-                    else
-                    {
-                        DataSaved.Visible = true;
-                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-
-                    }
-                    Reset();
-                
+                if (btnSubmit.Text == "Update")
+                {
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                    Session["ID"] = "";
+                    DataUpdated.Visible = true;
                 }
+                else
+                {
+                    DataSaved.Visible = true;
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+
+                }
+                Reset();
+
+            }
             catch (Exception Ex)
             {
             }
@@ -339,6 +339,42 @@ namespace CEI_PRoject.Admin
             else
             {
                 txtQualification.Visible = false;
+            }
+        }
+
+        protected void txtAge_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAge.Text != "")
+            {
+                DateTime selectedDOB;
+                if (DateTime.TryParse(txtAge.Text, out selectedDOB))
+                {
+
+                    DateTime currentDate = DateTime.Now;
+                    int ageDiff = currentDate.Year - selectedDOB.Year;
+
+                    if (DateTime.TryParseExact(txtAge.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime dobDate))
+                    {
+
+                        if (dobDate > currentDate)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Invalid Date !!!')", true);
+                            txtAge.Text = "";
+                        }
+                        else if (ageDiff < 18)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
+                            txtAge.Text = "";
+
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+            }
+            else
+            {
             }
         }
     }

@@ -711,7 +711,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             cmd.Parameters.AddWithValue("@LineVoltage", String.IsNullOrEmpty(LineVoltage) ? null : LineVoltage);
             cmd.Parameters.AddWithValue("@LineLength", String.IsNullOrEmpty(LineLength) ? null : LineLength);
             cmd.Parameters.AddWithValue("@OtherVoltageType", OtherVoltageType == "Select" ? null : OtherVoltageType);
-            //cmd.Parameters.AddWithValue("@OtherVoltage", OtherVoltage);
+            cmd.Parameters.AddWithValue("@OtherVoltage", OtherVoltage);
             cmd.Parameters.AddWithValue("@LineType", String.IsNullOrEmpty(LineType) ? null : LineType);
             cmd.Parameters.AddWithValue("@NoOfCircuit", NoOfCircuit == "Select" ? null : NoOfCircuit);
             cmd.Parameters.AddWithValue("@Conductortype", Conductortype == "Select" ? null : Conductortype);

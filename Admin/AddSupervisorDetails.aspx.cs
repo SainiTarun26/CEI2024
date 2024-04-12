@@ -45,7 +45,6 @@ namespace CEI_PRoject.Admin
                         }
                         else
                         {
-
                             string REID = Session["ID"].ToString();
                             hdnId.Value = REID;
                             btnSubmit.Text = "Update";
@@ -53,7 +52,6 @@ namespace CEI_PRoject.Admin
                             GetDetails();
                             Session["ID"] = "";
                         }
-
                     }
                     else
                     {
@@ -211,9 +209,7 @@ namespace CEI_PRoject.Admin
             {
                 ddlAttachedContractor.SelectedValue = "No";
                 rowContractorDetails.Visible = false;
-
             }
-
 
         }
 
@@ -228,7 +224,6 @@ namespace CEI_PRoject.Admin
         #endregion
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (txtQualification.Visible == true)
@@ -239,7 +234,6 @@ namespace CEI_PRoject.Admin
                 else
                 {
                     Qualification = ddlQualification.SelectedValue;
-
                 }
                 if (CertificateNew.Text != "" && CertificateNew.Text != "NA")
                 {

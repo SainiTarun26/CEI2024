@@ -205,7 +205,7 @@
                 </div>--%>
                 <div id="VerifyOPTdiv" class="otp" runat="server">
                     <p class="sub-title">
-                        Enter the OTP you received to Your Phone Number
+                        Enter the OTP you received in your email
                    <%--     <input id="PhoneNumber" style="border:none" runat="server" />--%>
                     </p>
                     <div class="wrapper">

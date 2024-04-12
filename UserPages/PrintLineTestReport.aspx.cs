@@ -1,4 +1,8 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Admin;
+using CEIHaryana.Contractor;
+using CEIHaryana.SiteOwnerPages;
+using CEIHaryana.Supervisor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -155,6 +159,8 @@ namespace CEIHaryana.UserPages
                 txtLineLength.Text = ds.Tables[0].Rows[0]["LineLength"].ToString();
                 txtLineType.Text = ds.Tables[0].Rows[0]["LineType"].ToString();
 
+                txtTestReportId.Text = ds.Tables[0].Rows[0]["HeaderText"].ToString();
+                txtinstalltype.Text = ds.Tables[0].Rows[0]["InstallType"].ToString();
                 if (txtVotalgeType.Text == "V")
                 {
                     if (int.TryParse(TxtOthervoltage.Text, out int value))
@@ -314,7 +320,7 @@ namespace CEIHaryana.UserPages
                 }
                 txtCircuit.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
-                txtReportNo.Text = ds.Tables[0].Rows[0]["LineId"].ToString();
+                txtReportNo.Text = ds.Tables[0].Rows[0]["LineIdOther"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 if (txtConductorType.Text.Trim() == "Bare")
                 {
@@ -581,7 +587,7 @@ namespace CEIHaryana.UserPages
                 //ClientScript.RegisterStartupScript(this.GetType(), "print", script);
 
 
-
+  
 
                 //string script1 = "<script type=\"text/javascript\">window.onload = function() { printDiv1(); }</script>";
                 //ClientScript.RegisterStartupScript(this.GetType(), "print", script1);
@@ -593,5 +599,4 @@ namespace CEIHaryana.UserPages
         }
 
     }
-
 }

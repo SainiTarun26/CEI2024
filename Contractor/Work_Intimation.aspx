@@ -667,14 +667,14 @@
                             <label for="StartDate">
                                Tentative Work Start Date<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtStartDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtStartDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtStartDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Start Date</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-4">
                             <label for="CompletitionDate">
                                 Tentative Work Completition Date<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtCompletitionDate" TabIndex="17" OnTextChanged="txtCompletitionDate_TextChanged" AutoPostBack="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtCompletitionDate" TabIndex="17"  onChange="CompletionDates()"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtCompletitionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Completition Date</asp:RequiredFieldValidator>
                             <%--<asp:CompareValidator ID="cmpDate" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletitionDate" Operator="GreaterThanEqual"
                                 ErrorMessage="Tentative Completion Date must be greater than Start Date" Display="Dynamic" ForeColor="Red" />--%>
@@ -707,7 +707,7 @@
                             <label for="CompletionDateasperWorkOrder">
                                 Completion Date as per Work Order
                             </label>
-                            <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" AutoPostBack="true" OnTextChanged="txtCompletionDateAPWO_TextChanged" TabIndex="20" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" onchange="CompletionDates1()"  TabIndex="20" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletionDateAPWO" Operator="GreaterThanEqual" ErrorMessage="Work Completion Date must be greater than  Start Date" Display="Dynamic" ForeColor="Red" />--%>
                         </div>
                     </div>
@@ -758,30 +758,7 @@
                                                     <ItemStyle HorizontalAlign="center"  />
                                                 </asp:BoundField>
 
-
-
-                                                <%-- <asp:BoundField DataField="Name" HeaderText="Name">
-                                                    <HeaderStyle HorizontalAlign="Left"  CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="Left" CssClass="textalignleft" />
-                                                </asp:BoundField>
-
-                                                -<asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                                    <HeaderStyle HorizontalAlign="left"  CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="left"  CssClass="textalignleft" />
-                                                </asp:BoundField>
-                                               
-                                                <asp:BoundField DataField="DateOfExpiry" HeaderText="Valid Upto">
-                                                    <HeaderStyle HorizontalAlign="center"  CssClass="headercolor2x" />
-                                                    <ItemStyle HorizontalAlign="center"  />
-                                                </asp:BoundField>--%>
-                                                <%--<asp:BoundField DataField="DateofRenewal" HeaderText="Valid Upto">
-                                                    <HeaderStyle HorizontalAlign="center" Width="18%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="center" Width="18%" />
-                                                </asp:BoundField>--%>
-                                               <%-- <asp:BoundField DataField="Category" HeaderText="Category">
-                                                    <HeaderStyle HorizontalAlign="left" Width="17%" CssClass="headercolor textalignleft" />
-                                                    <ItemStyle HorizontalAlign="left" Width="17%" CssClass="textalignleft" />
-                                                </asp:BoundField>--%>
+                                              
                                             </Columns>
                                             <FooterStyle BackColor="White" ForeColor="#000066" />
                                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -849,6 +826,44 @@
             }
         }
     </script>
+
+    
+    <script type="text/javascript">
+        function CompletionDates() {
+            var CompletionStartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
+             var TentativeCompletionDate = document.getElementById('<%=txtCompletitionDate.ClientID %>').value;
+
+             if (new Date(TentativeCompletionDate) < new Date(CompletionStartDate))
+             {
+                 alert('Tentative Work Completition Date should be greater than Tentative Work Start Date');
+                 document.getElementById('<%=txtCompletitionDate.ClientID %>').value = "";
+            }
+        }
+     </script>
+    <script>
+        function disableFutureDates() {
+            // Get today's date in yyyy-mm-dd format
+            var today = new Date().toISOString().split('T')[0];
+            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+            document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', today);
+        }
+     </script>
+
+
+
+    <script type="text/javascript">
+        function CompletionDates1() {
+            var CompletionStartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
+             var TentativeWAWODate = document.getElementById('<%=txtCompletionDateAPWO.ClientID %>').value;
+
+             if (new Date(TentativeWAWODate) < new Date(CompletionStartDate))
+             {
+                 alert(' Completion Date as per Work Order should be greater than Tentative Work Start Date');
+                 document.getElementById('<%=txtCompletionDateAPWO.ClientID %>').value = "";
+            }
+        }
+     </script>
+
     <script type="text/javascript">
         function ValidatePincode() {
             var Pin1 = document.getElementById("<%=txtPin.ClientID %>");

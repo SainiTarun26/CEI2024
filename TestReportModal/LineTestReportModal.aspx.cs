@@ -119,8 +119,6 @@ namespace CEIHaryana.TestReportModal
                     // ddlType.Attributes.Add("Readonly", "true");
                    // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     btnSubmit.Text = "Back";
-
-
                 }
                 else if (value1.Trim() == "Reject")
                 {
@@ -160,9 +158,9 @@ namespace CEIHaryana.TestReportModal
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                string dp_Id1 = ds.Tables[0].Rows[0]["Permises"].ToString();
                 TxtPremises.Text = dp_Id1;
-                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                //string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();

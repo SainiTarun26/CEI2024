@@ -142,9 +142,9 @@ namespace CEIHaryana.TestReportModal
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                string dp_Id1 = ds.Tables[0].Rows[0]["Permises"].ToString();
                 TxtPremises.Text = dp_Id1;
-                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                //string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
@@ -188,6 +188,7 @@ namespace CEIHaryana.TestReportModal
                         }
                     }
                 }
+                txtHTType.Text = ds.Tables[0].Rows[0]["TypeofHTPrimarySideSwitch"].ToString();
                 if (txtHTType.Text == "Breaker")
                 {
                     TypeOfHTBreaker.Visible = true;
@@ -201,8 +202,8 @@ namespace CEIHaryana.TestReportModal
                 txtHTsideInsulation.Text = ds.Tables[0].Rows[0]["HtInsulationHVEarth"].ToString();
                 txtLTSideInsulation.Text = ds.Tables[0].Rows[0]["LtInsulationLVEarth"].ToString();
                 txtLowestValue.Text = ds.Tables[0].Rows[0]["LowestvaluebetweenHTLTSide"].ToString();
-                txtLightningArrestor.Text = ds.Tables[0].Rows[0]["LightningArrestorLocation"].ToString();
-                txtHTType.Text = ds.Tables[0].Rows[0]["TypeofHTPrimarySideSwitch"].ToString();
+                txtLightningArrestor.Text = ds.Tables[0].Rows[0]["LightningArrestorLocationOther"].ToString();
+                
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberOfEarthing"].ToString();
                 SubstationEarthingDiv.Visible = true;
                 if (txtEarthing.Text.Trim() == "4")
@@ -318,97 +319,7 @@ namespace CEIHaryana.TestReportModal
                     EathingSubstation13.Visible = true;
                     EathingSubstation14.Visible = true;
                     EathingSubstation15.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "16")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "17")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "18")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                    EathingSubstation18.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "19")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                    EathingSubstation18.Visible = true;
-                    EathingSubstation19.Visible = true;
-                }
-                else if (txtEarthing.Text.Trim() == "20")
-                {
-                    EarthingSubstation4.Visible = true;
-                    EathingSubstation5.Visible = true;
-                    EathingSubstation6.Visible = true;
-                    EathingSubstation7.Visible = true;
-                    EathingSubstation8.Visible = true;
-                    EathingSubstation9.Visible = true;
-                    EathingSubstation10.Visible = true;
-                    EathingSubstation11.Visible = true;
-                    EathingSubstation12.Visible = true;
-                    EathingSubstation13.Visible = true;
-                    EathingSubstation14.Visible = true;
-                    EathingSubstation15.Visible = true;
-                    EathingSubstation16.Visible = true;
-                    EathingSubstation17.Visible = true;
-                    EathingSubstation18.Visible = true;
-                    EathingSubstation19.Visible = true;
-                    EathingSubstation20.Visible = true;
-                }
+                }                
                 else
                 {
                     EarthingSubstation4.Visible = false;
@@ -423,60 +334,175 @@ namespace CEIHaryana.TestReportModal
                     EathingSubstation13.Visible = false;
                     EathingSubstation14.Visible = false;
                     EathingSubstation15.Visible = false;
-                    EathingSubstation16.Visible = false;
-                    EathingSubstation17.Visible = false;
-                    EathingSubstation18.Visible = false;
-                    EathingSubstation19.Visible = false;
-                    EathingSubstation20.Visible = false;
+                   
                 }
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 txtSubstationEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
                 txtUsedFor1.Text = ds.Tables[0].Rows[0]["UsedFor1"].ToString();
+                if (txtUsedFor1.Text == "Other")
+                {
+                    txtOtherUsage1.Text = ds.Tables[0].Rows[0]["OtherEarthing1"].ToString();
+                    txtOtherUsage1.Visible = true;
+                    txtUsedFor1.Visible = false;
+
+                }
                 txtEarthingType2.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
                 txtSubstationEarthing2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
                 txtUsedFor2.Text = ds.Tables[0].Rows[0]["UsedFor2"].ToString();
+                if (txtUsedFor2.Text == "Other")
+                {
+                    txtOtherUsage2.Text = ds.Tables[0].Rows[0]["OtherEarthing2"].ToString();
+                    txtOtherUsage2.Visible = true;
+                    txtUsedFor2.Visible = false;
+
+                }
+
                 txtEarthingType3.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
                 txtSubstationEarthing3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
                 txtUsedFor3.Text = ds.Tables[0].Rows[0]["UsedFor3"].ToString();
+                if (txtUsedFor3.Text == "Other")
+                {
+                    txtOtherUsage3.Text = ds.Tables[0].Rows[0]["OtherEarthing3"].ToString();
+                    txtOtherUsage3.Visible = true;
+                    txtUsedFor3.Visible = false;
+
+                }
                 txtEarthingType4.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
                 txtSubstationEarthing4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
                 txtUsedFor4.Text = ds.Tables[0].Rows[0]["UsedFor4"].ToString();
+                if (txtUsedFor4.Text == "Other")
+                {
+                    txtOtherUsage4.Text = ds.Tables[0].Rows[0]["OtherEarthing4"].ToString();
+                    txtOtherUsage4.Visible = true;
+                    txtUsedFor4.Visible = false;
+
+                }
                 txtEarthingType5.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
                 txtSubstationEarthing5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
                 txtUsedFor5.Text = ds.Tables[0].Rows[0]["UsedFor5"].ToString();
+                if (txtUsedFor5.Text == "Other")
+                {
+                    txtOtherUsage5.Text = ds.Tables[0].Rows[0]["OtherEarthing5"].ToString();
+                    txtOtherUsage5.Visible = true;
+                    txtUsedFor5.Visible = false;
+
+                }
                 txtEarthingType6.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
                 txtSubstationEarthing6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
                 txtUsedFor6.Text = ds.Tables[0].Rows[0]["UsedFor6"].ToString();
+                if (txtUsedFor6.Text == "Other")
+                {
+                    txtOtherUsage6.Text = ds.Tables[0].Rows[0]["OtherEarthing6"].ToString();
+                    txtOtherUsage6.Visible = true;
+                    txtUsedFor6.Visible = false;
+
+                }
+
                 txtEarthingType7.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
                 txtSubstationEarthing7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
                 txtUsedFor7.Text = ds.Tables[0].Rows[0]["UsedFor7"].ToString();
+                if (txtUsedFor7.Text == "Other")
+                {
+                    txtOtherUsage7.Text = ds.Tables[0].Rows[0]["OtherEarthing7"].ToString();
+                    txtOtherUsage7.Visible = true;
+                    txtUsedFor7.Visible = false;
+
+                }
+
                 txtEarthingType8.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
                 txtSubstationEarthing8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
                 txtUsedFor8.Text = ds.Tables[0].Rows[0]["UsedFor8"].ToString();
+                if (txtUsedFor8.Text == "Other")
+                {
+                    txtOtherUsage8.Text = ds.Tables[0].Rows[0]["OtherEarthing8"].ToString();
+                    txtOtherUsage8.Visible = true;
+                    txtUsedFor8.Visible = false;
+
+                }
+
                 txtEarthingType9.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
                 txtSubstationEarthing9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
                 txtUsedFor9.Text = ds.Tables[0].Rows[0]["UsedFor9"].ToString();
+                if (txtUsedFor9.Text == "Other")
+                {
+                    txtOtherUsage9.Text = ds.Tables[0].Rows[0]["OtherEarthing9"].ToString();
+                    txtOtherUsage9.Visible = true;
+                    txtUsedFor9.Visible = false;
+
+                }
+
                 txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
                 txtSubstationEarthing10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
                 txtUsedFor10.Text = ds.Tables[0].Rows[0]["UsedFor10"].ToString();
+                if (txtUsedFor10.Text == "Other")
+                {
+                    txtOtherUsage10.Text = ds.Tables[0].Rows[0]["OtherEarthing10"].ToString();
+                    txtOtherUsage10.Visible = true;
+                    txtUsedFor10.Visible = false;
+
+                }
+
                 txtEarthingType11.Text = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
                 txtSubstationEarthing11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
                 txtUsedFor11.Text = ds.Tables[0].Rows[0]["UsedFor11"].ToString();
+                if (txtUsedFor11.Text == "Other")
+                {
+                    txtOtherUsage11.Text = ds.Tables[0].Rows[0]["OtherEarthing11"].ToString();
+                    txtOtherUsage11.Visible = true;
+                    txtUsedFor11.Visible = false;
+
+                }
+
                 txtEarthingType12.Text = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
                 txtSubstationEarthing12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
                 txtUsedFor12.Text = ds.Tables[0].Rows[0]["UsedFor12"].ToString();
+                if (txtUsedFor12.Text == "Other")
+                {
+                    txtOtherUsage12.Text = ds.Tables[0].Rows[0]["OtherEarthing12"].ToString();
+                    txtOtherUsage12.Visible = true;
+                    txtUsedFor12.Visible = false;
+
+                }
+
                 txtEarthingType13.Text = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
                 txtSubstationEarthing13.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
                 txtUsedFor13.Text = ds.Tables[0].Rows[0]["UsedFor13"].ToString();
+                if (txtUsedFor13.Text == "Other")
+                {
+                    txtOtherUsage13.Text = ds.Tables[0].Rows[0]["OtherEarthing13"].ToString();
+                    txtOtherUsage13.Visible = true;
+                    txtUsedFor13.Visible = false;
+
+                }
+
                 txtEarthingType14.Text = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
                 txtSubstationEarthing14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
                 txtUsedFor14.Text = ds.Tables[0].Rows[0]["UsedFor14"].ToString();
+                if (txtUsedFor14.Text == "Other")
+                {
+                    txtOtherUsage14.Text = ds.Tables[0].Rows[0]["OtherEarthing14"].ToString();
+                    txtOtherUsage14.Visible = true;
+                    txtUsedFor14.Visible = false;
+
+                }
+
                 txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
                 txtSubstationEarthing15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
                 txtUsedFor15.Text = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
+                if (txtUsedFor15.Text == "Other")
+                {
+                    txtOtherUsage15.Text = ds.Tables[0].Rows[0]["OtherEarthing15"].ToString();
+                    txtOtherUsage15.Visible = true;
+                    txtUsedFor15.Visible = false;
+
+                }
 
                 txtBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInKA"].ToString();
                 txtLTProtection.Text = ds.Tables[0].Rows[0]["TypeOfLTProtection"].ToString();
+                if(txtLTProtection.Text== "Breaker")
+                {
+                    Breaker.Visible = true;
+                }
                 txtIndividualCapacity.Text = ds.Tables[0].Rows[0]["CapacityOfIndividualFuseInAMPS"].ToString();
                 txtLTBreakerCapacity.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityOfBreakerInAMPS"].ToString();
                 //txtLoadBreakingCapacity.Text = ds.Tables[0].Rows[0]["RiverCanalCrossingNoForOC"].ToString();

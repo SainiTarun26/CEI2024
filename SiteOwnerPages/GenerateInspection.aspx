@@ -47,8 +47,7 @@
         }
 
         table#ContentPlaceHolder1_RadioButtonList2 {
-          margin-top: -28px;
-
+            margin-top: -28px;
             margin-left: 22%;
         }
 
@@ -175,40 +174,30 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
-         th.headercolor {
 
+        th.headercolor {
             background: #9292cc;
-
             color: white;
-
         }
 
 
 
         td {
-
             padding: 5px;
-
             padding-left: 10px;
-
         }
 
 
 
         th.leftalign {
-
             text-align: justify;
-
         }
 
 
 
         th {
-
             text-align: justify !important;
-
             padding: 10px;
-
         }
     </style>
 </asp:Content>
@@ -217,7 +206,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <div class="card-title" style="text-align:center;font-size:23px !important;">Raise Request for Inspection</div>
+                <div class="card-title" style="text-align: center; font-size: 23px !important;">Raise Request for Inspection</div>
                 <h7 class="card-title fw-semibold mb-4">Inspections Request</h7>
                 <div class="row">
                     <div class="col-md-4"></div>
@@ -301,7 +290,7 @@
                                     <asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>
                                     <asp:Label ID="lblApplicantTypeCode" runat="server" Text='<%#Eval("ApplicantTypeCode") %>'></asp:Label>
                                     <asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
-                                      <asp:Label ID="LblTypeofPlant" runat="server" Text='<%#Eval("TypeOfPlant") %>'></asp:Label> 
+                                    <asp:Label ID="LblTypeofPlant" runat="server" Text='<%#Eval("TypeOfPlant") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">

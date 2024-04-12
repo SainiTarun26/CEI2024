@@ -156,6 +156,9 @@
                 <br />
                 <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                   <asp:UpdatePanel ID="UpdatePanel7" runat="server">
+                       <ContentTemplate>
+                    
                     <div class="row">
                         <div class="col-4">
                             <label for="Name">
@@ -166,7 +169,6 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
                         </div>
-
                         <div class="col-4">
                             <label for="FatherName">
                                 Father's Name<samp style="color: red"> * </samp>
@@ -180,7 +182,7 @@
                             <label for="age">
                                 Date Of Birth<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAge" TabIndex="2" onkeydown="return preventEnterSubmit(event)" OnTextChanged="txtAge_TextChanged" min='0000-01-01' max='9999-01-01' Type="Date" AutoPostBack="true" autocomplete="off" runat="server" MaxLength="30" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtAge" TabIndex="2" onkeydown="return preventEnterSubmit(event)" OnTextChanged="txtAge_TextChanged" onfocus="disableFutureDatesForDOB()" min='0000-01-01' max='9999-01-01' Type="Date" AutoPostBack="true" autocomplete="off" runat="server" MaxLength="30" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAge" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date Of Birth</asp:RequiredFieldValidator>
 
                         </div>
@@ -262,7 +264,8 @@
                             </asp:UpdatePanel>
                         </div>
                     </div>
-
+                           </ContentTemplate>                 
+                   </asp:UpdatePanel>
                     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                         <ContentTemplate>
                             <div class="row" style="margin-top: 10px;">
@@ -310,10 +313,10 @@
                             <label for="DateofIntialissue">
                                 Date of Initial issue<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="DateofIntialissue" onkeydown="return preventEnterSubmit(event)" autocomplete="off" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="DateofIntialissue" onfocus="disableFutureDates()" onkeydown="return preventEnterSubmit(event)" autocomplete="off" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="DateofIntialissue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Initial issue</asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="DateofExpiry" ControlToValidate="DateofIntialissue" Operator="LessThan"
-                                Display="Dynamic" ForeColor="Red" />
+                           <%-- <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="DateofExpiry" ControlToValidate="DateofIntialissue" Operator="LessThan"
+                                Display="Dynamic" ForeColor="Red" />--%>
 
                         </div>
                     </div>
@@ -322,22 +325,22 @@
                             <label for="DateofExpiry">
                                 Date of Expiry<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="DateofExpiry" onkeydown="return preventEnterSubmit(event)" autocomplete="off" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="12"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="DateofExpiry" onChange="validateDates()" onkeydown="return preventEnterSubmit(event)" autocomplete="off" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="12"></asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="DateofExpiry" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Expiry</asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="DateofIntialissue" ControlToValidate="DateofExpiry" Operator="GreaterThan"
+                            <%--<asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="DateofIntialissue" ControlToValidate="DateofExpiry" Operator="GreaterThan"
                                 ErrorMessage="Expiry Date must be greater than Issue Date"
-                                Display="Dynamic" ForeColor="Red" />
+                                Display="Dynamic" ForeColor="Red" />--%>
                         </div>
                         <div class="col-4">
                             <label for="DateofRenewal">
                                 Date of Renewal<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="DateofRenewal" onkeydown="return preventEnterSubmit(event)" autocomplete="off" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="13"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="DateofRenewal" onChange="validateDates1()" onkeydown="return preventEnterSubmit(event)" autocomplete="off" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="13"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="DateofRenewal" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="DateofRenewal" ControlToValidate="DateofExpiry" Operator="GreaterThan"
+                            <%--<asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="DateofRenewal" ControlToValidate="DateofExpiry" Operator="GreaterThan"
                                 ErrorMessage="Renewal Date should be smaller than Expire Date"
-                                Display="Dynamic" ForeColor="Red" />
+                                Display="Dynamic" ForeColor="Red" />--%>
                         </div>
                         <div class="col-4">
                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
@@ -413,7 +416,6 @@
 
         </div>
     </div>
-
     <%--<script type="text/javascript">
         function validateDates() {
             var renewalDate = document.getElementById('<%=DateofRenewal.ClientID %>').value;
@@ -425,7 +427,6 @@
             }
         }
     </script>--%>
-
     <script type="text/javascript">
         function validateDates() {
             var renewalDate = document.getElementById('<%=DateofRenewal.ClientID %>').value;
@@ -436,7 +437,6 @@
             }
         }
  </script>
-
     <script type="text/javascript">
         function validateDates1() {
             var issueDate = document.getElementById('<%=DateofIntialissue.ClientID %>').value;
@@ -560,6 +560,48 @@
             else {
                 lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
                 return false;
+            }
+        }
+    </script>
+
+    <script>
+        function disableFutureDates() {
+            // Get today's date in yyyy-mm-dd format
+            var today = new Date().toISOString().split('T')[0];
+            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+            document.getElementById('<%=DateofIntialissue.ClientID %>').setAttribute('max', today);
+        }
+      </script>
+     <script>
+         function disableFutureDatesForDOB() {
+             // Get today's date in yyyy-mm-dd format
+             var today = new Date().toISOString().split('T')[0];
+             // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+             document.getElementById('<%=txtAge.ClientID %>').setAttribute('max', today);
+         }
+     </script>
+
+    <script type="text/javascript">
+        function validateDates() {
+            var issueDate = document.getElementById('<%=DateofIntialissue.ClientID %>').value;
+            var expiryDate = document.getElementById('<%=DateofExpiry.ClientID %>').value;
+
+            if (new Date(expiryDate) < new Date(issueDate)) {
+                alert('Expire Date should be greater than Issue Date');
+                document.getElementById('<%=DateofExpiry.ClientID %>').value = "";
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function validateDates1() {
+            var issueDate = document.getElementById('<%=DateofIntialissue.ClientID %>').value;
+        var renewalDate = document.getElementById('<%=DateofRenewal.ClientID %>').value;
+
+            if (new Date(renewalDate) < new Date(issueDate)) {
+                alert(' Renewal date should be greater than Issue date');
+                document.getElementById('<%=DateofRenewal.ClientID %>').value = "";
+
             }
         }
     </script>

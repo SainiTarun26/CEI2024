@@ -418,7 +418,7 @@ namespace CEIHaryana.Contractor
             }
             else
             {
-                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                string errorMessage = "An error occurred: " + "file not exist";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
 
             }
@@ -568,10 +568,11 @@ namespace CEIHaryana.Contractor
                                     }
 
                                     string ext = Path.GetExtension(customFile.FileName);
+                                    string path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
                                     string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
                                     string filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
                                     customFile.SaveAs(filePathInfo2);
-
+                                    filePathInfo = path + fileName;
                                     // Now, use filePathInfo as needed...
                                 }
                                 catch (Exception ex)
@@ -1046,54 +1047,5 @@ namespace CEIHaryana.Contractor
             }
         }
 
-        protected void txtCompletitionDate_TextChanged(object sender, EventArgs e)
-        {
-            {
-                if (!string.IsNullOrWhiteSpace(txtCompletitionDate.Text))
-                {
-                    if (DateTime.TryParse(txtCompletitionDate.Text, out DateTime selectedCompletionDate))
-                    {
-                        DateTime currentDate = DateTime.Now;
-
-                        if (selectedCompletionDate < currentDate)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Completion date must be greater than the current date.')", true);
-                            txtCompletitionDate.Text = string.Empty;
-                        }
-                    }
-                    else
-                    {
-                        // Handle invalid date format
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Invalid date format.')", true);
-                        txtCompletitionDate.Text = string.Empty;
-                    }
-                }
-
-            }
-        }
-
-        protected void txtCompletionDateAPWO_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtCompletionDateAPWO.Text))
-            {
-                if (DateTime.TryParse(txtCompletionDateAPWO.Text, out DateTime selectedCompletionDateAPWO))
-                {
-                    DateTime currentDate = DateTime.Now;
-
-                    if (selectedCompletionDateAPWO < currentDate)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Completion date as per order must be greater than the current date.')", true);
-                        txtCompletitionDate.Text = string.Empty;
-                    }
-                }
-                else
-                {
-                    // Handle invalid date format
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Invalid date format.')", true);
-                    txtCompletionDateAPWO.Text = string.Empty;
-                }
-            }
-
-        }
     }
 }

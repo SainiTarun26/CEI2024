@@ -855,7 +855,7 @@
                                             <label>
                                                 Installation Type
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox1" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtinstalltype" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" id="SubmitDate" visible="false" runat="server">
                                             <label>

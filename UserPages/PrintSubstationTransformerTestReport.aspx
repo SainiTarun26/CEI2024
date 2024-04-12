@@ -65,7 +65,7 @@
         }
 
         input#txtInstallationType {
-            font-size: 25px !important;
+            font-size: 20px !important;
             font-weight: 700;
             text-align: end;
         }
@@ -184,18 +184,17 @@
                                         <div class="col-3" style="margin-top: 0px;"></div>
                                         <div class="col-3" style="margin-top: 0px;">
                                             <asp:TextBox class="form-control" ID="txtInstallationType" runat="server" ReadOnly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                                MaxLength="30" Style="margin-left: 18px;" Text="Line1">
+                                                MaxLength="30" Style="margin-left: 18px;" Text="Substation Transformer">
                                             </asp:TextBox>
 
                                         </div>
-                                        <div class="col-3" style="margin-top: 0px; padding-left: 0px;">
+                                        <div class="col-6" style="margin-top: 0px; padding-left: 0px;">
                                             <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                                MaxLength="30" Style="margin-left: 18px;" Text="12341/tarun-2024">
+                                                MaxLength="30" Style="margin-left: 18px;" Text="123455/2023/W0002  T038/S">
                                             </asp:TextBox>
 
 
                                         </div>
-                                        <div class="col-3" style="margin-top: 0px;"></div>
                                     </div>
                                 </div>
                             </div>

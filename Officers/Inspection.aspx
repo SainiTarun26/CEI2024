@@ -243,10 +243,7 @@
                 <label for="Date">Current Date</label>
                 <asp:TextBox class="form-control" runat="server" ID="txtDate" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
             </div>--%>
-               <%-- <div class="col-md-4" runat="server">
-                    <label for="AdditionalDate">Additonal Notes </label>
-                    <asp:TextBox ID="txtAdditionalNotes" MaxLength="200" TextMode="MultiLine" runat="server" Class="form-control" Style="margin-left: 18px"></asp:TextBox>
-                </div>--%>
+            
             </div>
             <div class="row">
                 <div class="col-12">

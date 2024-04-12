@@ -148,9 +148,9 @@ namespace CEIHaryana.TestReportModal
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                string dp_Id1 = ds.Tables[0].Rows[0]["Permises"].ToString();
                 TxtPremises.Text = dp_Id1;
-                string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+               // string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
 
@@ -511,17 +511,7 @@ namespace CEIHaryana.TestReportModal
                 Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
         }
-        //protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (ddlType.SelectedValue == "2")
-        //    {
-        //        Rejection.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        Rejection.Visible = false;
-        //    }
-        //}
+       
         protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/IntimationForHistory.aspx", false);

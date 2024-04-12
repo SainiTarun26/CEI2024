@@ -256,15 +256,12 @@ namespace CEI_PRoject.Admin
                 txtPinCode.Style.Add("width", "inherit");
                 txtPinCode.Style.Add("height", "30px");
                 txtPinCode.Style.Add("border-radius", ".25rem");
-
             }
             else
             {
                 CheckBox1.Checked = false;
             }
             ds.Clear();
-
-
         }
         #region GetIP
         protected void GetIP()
@@ -436,8 +433,7 @@ namespace CEI_PRoject.Admin
             {
                 if (txtRegisteredOffice.Text != "" && ddlDistrict.SelectedValue != "" && ddlDistrict.SelectedValue != "0" && txtPinCode.Text != "")
                 {
-                    //if (ddlState.SelectedValue == "11")
-                    //{
+                    
 
                         txtBranchOffice.Text = txtRegisteredOffice.Text;
                         ddlBranchState.SelectedValue = ddlState.SelectedValue;                       //Added
@@ -482,14 +478,7 @@ namespace CEI_PRoject.Admin
                     txtPinCode.Enabled = false;
                         txtPinCode.Style.Add("width", "inherit");
                         txtPinCode.Style.Add("height", "30px");
-                        txtPinCode.Style.Add("border-radius", ".25rem");
-                    //}
-                    //else
-                    //{
-                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Your Registered Office Address is not Haryana !!!')", true);
-                    //    ddlState.Focus();
-                    //    CheckBox1.Checked = false;
-                    //}
+                        txtPinCode.Style.Add("border-radius", ".25rem");                  
                 }
                 else
                 {
