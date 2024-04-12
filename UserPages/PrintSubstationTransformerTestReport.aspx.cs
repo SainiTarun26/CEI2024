@@ -149,6 +149,10 @@ namespace CEIHaryana.UserPages
                 //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
+
+                txtTestReportId.Text = ds.Tables[0].Rows[0]["HeaderText"].ToString();
+                txtinstalltype.Text = ds.Tables[0].Rows[0]["InstallType"].ToString();
+
                 if (txtTransformerType.Text.Trim() == "Oil")
                 {
                     InCaseOfOil.Visible = true;

@@ -340,7 +340,7 @@
                                 </div>
                             </div>
 
-                            <div id="LineTypeOverhead" runat="server" visible="false">
+                            <div id="LineTypeOverhead" runat="server" visible="false" style="margin-bottom:22px;">
                                 <div class="row">
                                     <div class="col-3">
                                         <label>

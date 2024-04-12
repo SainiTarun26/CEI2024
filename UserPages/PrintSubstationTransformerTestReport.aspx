@@ -183,7 +183,7 @@
                                     <div class="row">
                                         <div class="col-12" style="margin-top: 0px; padding-left: 0px;text-align">
                                             <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                                MaxLength="30" Style="margin-left: 18px;text-align:center;" Text="123455/2023/W0002  T038/S">
+                                                MaxLength="30" Style="margin-left: 18px;text-align:center;" >
                                             </asp:TextBox>
                                         </div>
                                     </div>
@@ -834,11 +834,11 @@
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-                                        <div class="col-6" id="Div1" visible="false" runat="server">
+                                        <div class="col-6" id="Div1" visible="true" runat="server">
                                             <label>
                                                 Installation Type
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox1" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtinstalltype" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-6" id="SubmitDate" visible="true" runat="server">
                                             <label>
