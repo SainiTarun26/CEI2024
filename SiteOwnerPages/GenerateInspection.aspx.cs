@@ -243,6 +243,14 @@ namespace CEIHaryana.SiteOwnerPages
                         AssigDesignation = lblDesignation.Text;
                         PlantLocation = lblTypeOfPlant.Text;
 
+                        UploadDocuments.Visible = true;
+                        FeesDetails.Visible = true;
+                        PaymentDetails.Visible = true;
+                        btnSubmit.Visible = true;
+                        btnReset.Visible = true;
+
+
+
                         GetDocumentUploadData(ApplicantType, Category, InspectionType, AssigDesignation, PlantLocation);
                         PaymentGridViewBind();
                     }
@@ -466,7 +474,7 @@ namespace CEIHaryana.SiteOwnerPages
                     InsertFilesIntoDatabase(CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
                     LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
-                   
+
                 }
                 else
                 {
@@ -509,7 +517,8 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                 if (fileUpload.HasFile)
-                {   string CreatedBy = CreatedByy;
+                {
+                    string CreatedBy = CreatedByy;
                     if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
 
                     {

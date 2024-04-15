@@ -343,6 +343,7 @@
                     </div>
 
                 </div>
+                  <div id="UploadDocuments" runat="server" visible="false">
                 <h7 class="card-title fw-semibold mb-4">Document Checklist</h7>
 
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -380,7 +381,9 @@
                             </asp:GridView>
                         </div>
                     </div>
+                    </div>
                 </div>
+                 <div id="FeesDetails" runat="server" visible="false">
                 <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
 
                 <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -421,6 +424,9 @@
                         </div>--%>
                     </div>
                 </div>
+                      </div>
+
+                <div id="PaymentDetails" runat="server" visible="false">
                 <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
 
                 <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
@@ -460,6 +466,7 @@
                         </div>
                     </div>
                 </div>
+                      </div>
                 <div>
                     <%-- <div class="row" style="margin-top: 50px;" id="Declaration" runat="server">
                         <div class="col-12" style="text-align: center;">
@@ -476,7 +483,7 @@
                         <div class="col-4" style="text-align: center;">
                             <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                 OnClick="btnSubmit_Click" />
-                            <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" />
+                            <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false"  class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                         </div>
                         <div class="col-4"></div>
