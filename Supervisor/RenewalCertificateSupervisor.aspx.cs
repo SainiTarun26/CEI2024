@@ -179,13 +179,13 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
-                DivEmployerName.Visible = false;
-                DivLicense.Visible = false;
-                DivNameofEmp.Visible = false;
-                DivPinCode.Visible = false;
-                DivState.Visible = false;
-                DivAddress.Visible = false;
-                DivDistrict.Visible = false;               
+                //DivEmployerName.Visible = false;
+                //DivLicense.Visible = false;
+                //DivNameofEmp.Visible = false;
+                //DivPinCode.Visible = false;
+                //DivState.Visible = false;
+                //DivAddress.Visible = false;
+                //DivDistrict.Visible = false;               
                 if (DdlEmployerType.SelectedValue == "1")
                 {
                     DivLicense.Visible = true;
@@ -195,6 +195,8 @@ namespace CEIHaryana.Supervisor
                 }
                 else if (DdlEmployerType.SelectedValue == "2")
                 {
+                    DivLicense.Visible = false;
+                    DivEmployerName.Visible = false;
                     DivNameofEmp.Visible = true;
                     DivPinCode.Visible = true;
                     DivState.Visible = true;
@@ -211,7 +213,7 @@ namespace CEIHaryana.Supervisor
         }
         private void GetCurrentlyContractor()
         {
-            
+            string SupervisorId = Session["SupervisorID"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.GetCurrentContractorforSupervisor(SupervisorId);
             if(ds.Tables.Count>0)

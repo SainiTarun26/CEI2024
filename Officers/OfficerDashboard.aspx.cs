@@ -83,14 +83,34 @@ namespace CEIHaryana.Officers
         //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
         //    }
         //}
+        //private void GridViewBind()
+        //{
+        //    if (Convert.ToString(Session["Area"]) != null && Convert.ToString(Session["Area"]) != "")
+        //    {
+        //        Division = Convert.ToString(Session["Area"]);
+        //    }
+        //    DataTable ds = new DataTable();
+        //    ds = cei.RequestPendingDivision(Division);
+        //    if (ds.Rows.Count > 0)
+        //    {
+        //        GridView1.DataSource = ds;
+        //        GridView1.DataBind();
+
+        //    }
+        //    else
+        //    {
+        //        GridView1.DataSource = null;
+        //        GridView1.DataBind();
+        //        string script = "alert(\"No Record Found\");";
+        //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //    }
+        //}
         private void GridViewBind()
         {
-            if (Convert.ToString(Session["Area"]) != null && Convert.ToString(Session["Area"]) != "")
-            {
-                Division = Convert.ToString(Session["Area"]);
-            }
+           
+            LoginId = Session["StaffID"].ToString();
             DataTable ds = new DataTable();
-            ds = cei.RequestPendingDivision(Division);
+            ds = cei.RequestPendingDivision(LoginId);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -357,5 +377,9 @@ var myDoughnutChart = new Chart(ctx, {{
             }
             catch { }
         }
+
+      
+
+      
     }
 }

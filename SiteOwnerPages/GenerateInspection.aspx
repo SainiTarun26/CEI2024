@@ -359,7 +359,7 @@
                                         <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
                                         <ItemStyle HorizontalAlign="Left" Width="70%" />
                                     </asp:BoundField>
-                                    <asp:TemplateField HeaderText="File Upload">
+                                    <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
                                         <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                                         <ItemTemplate>
                                             <input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />

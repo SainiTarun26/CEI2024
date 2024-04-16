@@ -287,5 +287,59 @@ namespace CEIHaryana.Supervisor
                 trExperience5.Visible = true;
             }
         }
+
+        protected void txtExperienceFrom1_TextChanged(object sender, EventArgs e)
+        {
+           
+                try
+                {
+                    // Check the condition to determine if txtExperienceFrom and txtExperienceTo are visible
+                    bool isExperienceVisible = true;
+
+                    TextBox[] fromArray = isExperienceVisible ? new TextBox[] { txtExperienceFrom1, txtExperienceFrom2, txtExperienceFrom3, txtExperienceFrom4, txtExperienceFrom5 } : new TextBox[] { txtExperienceFrom1 };
+                    TextBox[] toArray = isExperienceVisible ? new TextBox[] { txtExperienceTo1, txtExperienceTo2, txtExperienceTo3, txtExperienceTo4, txtExperienceTo5 } : new TextBox[] { txtExperienceTo1 };
+
+                    int totalYears = 0, totalMonths = 0, totalDays = 0;
+
+                    for (int i = 0; i < fromArray.Length; i++)
+                    {
+                        // Check if the TextBox controls are visible
+                        if (fromArray[i].Visible && toArray[i].Visible)
+                        {
+                            DateTime fromDate, toDate;
+
+                            try
+                            {
+                                // Parse the 'From' and 'To' values
+                                if (DateTime.TryParse(fromArray[i].Text, out fromDate) && DateTime.TryParse(toArray[i].Text, out toDate))
+                                {
+                                    // Calculate the difference between the two dates
+                                    TimeSpan difference = toDate - fromDate;
+
+                                    // Extract years, months, and days
+                                    int years = difference.Days / 365;
+                                    int months = (difference.Days % 365) / 30;
+                                    int days = (difference.Days % 365) % 30;
+
+                                    totalYears += years;
+                                    totalMonths += months;
+                                    totalDays += days;
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                // Handle the exception if needed
+                            }
+                        }
+                    }
+
+                    txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
+                }
+                catch
+                {
+                    // Handle the exception if needed
+                }
+           
+        }
     }
 }

@@ -21,15 +21,39 @@ namespace CEIHaryana.Officers
                 BindDaysGridView();
             }
         }
+        //private void BindDaysGridView()
+        //{
+        //    try
+        //    {
+        //        dated = Session["Days"].ToString();
+        //        Division = Session["StaffID"].ToString();
+        //        string District = Session["DistrictOfData"].ToString();
+        //        DataTable ds = new DataTable();
+        //        ds = cei.ShowPendingDivisionDaysData(dated, Division, District);
+        //        if (ds.Rows.Count > 0)
+        //        {
+        //            GridView3.DataSource = ds;
+        //            GridView3.DataBind();
+        //        }
+        //        else
+        //        {
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirect();", true);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //}
+
         private void BindDaysGridView()
         {
             try
             {
                 dated = Session["Days"].ToString();
                 Division = Session["StaffID"].ToString();
-                string District = Session["DistrictOfData"].ToString();
+                //string District = Session["DistrictOfData"].ToString();
                 DataTable ds = new DataTable();
-                ds = cei.ShowPendingDivisionDaysData(dated, Division, District);
+                ds = cei.ShowPendingDivisionDaysData(dated, Division);
                 if (ds.Rows.Count > 0)
                 {
                     GridView3.DataSource = ds;

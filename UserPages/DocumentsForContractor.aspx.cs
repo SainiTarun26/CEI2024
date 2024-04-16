@@ -19,14 +19,14 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    if (Session["ContractorID"] != null)
-                    {
+                    //if (Session["ContractorID"] != null)
+                    //{
 
-                    }
-                    else
-                    {
-                        Response.Redirect("/Login.aspx");
-                    }
+                    //}
+                    //else
+                    //{
+                    //    Response.Redirect("/Login.aspx");
+                    //}
 
                 }
             }

@@ -475,6 +475,8 @@ namespace CEIHaryana.SiteOwnerPages
                     LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
 
+                    //Session["ID"] = id.ToString();
+                    //Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx", false);
                 }
                 else
                 {

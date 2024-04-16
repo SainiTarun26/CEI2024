@@ -18,16 +18,16 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (Session["LiftId"] != null)
-                {
+                //if (Session["LiftId"] != null && Session["LiftId"].ToString() != "")
+                //{
 
-                }
-                else
-                {
-                    Response.Redirect("/Login.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("/Login.aspx");
+                //}
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -254,7 +254,7 @@ namespace CEIHaryana.UserPages
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured, please login again')", true);
                 Response.Redirect("/Login.aspx");
@@ -269,6 +269,11 @@ namespace CEIHaryana.UserPages
             Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

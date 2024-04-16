@@ -51,6 +51,7 @@
     </script>
     <script type="text/javascript">
         function validateVoltageInput() {
+            debugger;
             var txtGeneratorVoltage = document.getElementById('<%=txtGeneratorVoltage.ClientID%>');
             var voltageLevel = '<%= Session["VoltageLevel"] %>';
 
@@ -390,8 +391,8 @@
                                                 Value
                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtCapacity" AutoPostBack="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" autocomplete="off"
-                                                placeholder="" TabIndex="2" MaxLength="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtCapacity"  onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" autocomplete="off"
+                                                placeholder="" TabIndex="2" MaxLength="4" runat="server"  Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rvfCapacity" runat="server" ForeColor="Red" ControlToValidate="txtCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Capacity"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-2" runat="server">
@@ -421,7 +422,7 @@
                                                 Generator voltage level(IN VOLTS)
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtGeneratorVoltage" onkeydown="return preventEnterSubmit(event)" oninput="validateVoltageInput()" onkeypress="return isNumberKey(event);" MaxLength="5" placeholder="" AutoPostBack="true" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtGeneratorVoltage"  onkeydown="return preventEnterSubmit(event)" oninput="validateVoltageInput()" onkeypress="return isNumberKey(event);" MaxLength="5" placeholder=""  autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ControlToValidate="txtGeneratorVoltage" ValidationGroup="Submit" ErrorMessage="Please Enter Generator Voltage"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-4">

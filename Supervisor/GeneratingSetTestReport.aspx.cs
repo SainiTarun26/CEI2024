@@ -697,7 +697,7 @@ namespace CEIHaryana.Supervisor
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
                     }
-                }           
+                }
             }
             catch (Exception)
             {
@@ -1043,5 +1043,6 @@ namespace CEIHaryana.Supervisor
 
 
         }
+      
     }
 }

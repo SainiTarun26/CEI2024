@@ -2287,10 +2287,15 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
 
-        public DataTable RequestPendingDivision(string Division)
+        //public DataTable RequestPendingDivision(string Division)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRecordsAccordingToDays", Division);
+        //}
+        public DataTable RequestPendingDivision(string UserID)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRecordsAccordingToDays", Division);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRecordsAccordingToDays", UserID);
         }
+
 
         public DataTable RequestPendingDaysData(string dated, string Division, string District)
         {
@@ -2708,9 +2713,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             string AgentDistt, string AgentPincode, string OwnerName, string OwnerAddres, string OwnerState, string OwnerDistrict, string OwnerPincode,
             string ErectionDate, string TypeOfLift, string MakersName, string MakersLocalAgent, string MakersAddress, string ContractSpeedLift, string ContractLoadLift,
             string LiftCapcityMaxNoOfPerson, string TotalWeightLiftCar, string WeightCounterWeight, string NoOfSuspensionRoops, string Description, string Weight,
-            string Size, string PitDepth, string TravelAndNoOfFloors, string ConstructionDetailsOverheadArrangement//, string CopyOfAnnualInsurancePolicy, string CopyOfChallanTreasury,
-                                                                                                                   // string AnnualMaintenanceContract, string SaftyCertificate, string FormA, string FormB, string FormC
-            )
+            string Size, string PitDepth, string TravelAndNoOfFloors, string ConstructionDetailsOverheadArrangement )
         {
             SqlCommand cmd = new SqlCommand("Sp_InsertLiftEscalators");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -2757,14 +2760,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@Size", Size);
             cmd.Parameters.AddWithValue("@PitDepth", PitDepth);
             cmd.Parameters.AddWithValue("@TravelAndNoOfFloors", TravelAndNoOfFloors);
-            cmd.Parameters.AddWithValue("@ConstructionDetailsOverheadArrangement", ConstructionDetailsOverheadArrangement);
-            //cmd.Parameters.AddWithValue("@CopyOfAnnualInsurancePolicy ", CopyOfAnnualInsurancePolicy);
-            //cmd.Parameters.AddWithValue("@CopyOfChallanTreasury", CopyOfChallanTreasury);
-            //cmd.Parameters.AddWithValue("@AnnualMaintenanceContract", AnnualMaintenanceContract);
-            //cmd.Parameters.AddWithValue("@SaftyCertificate", SaftyCertificate);
-            //cmd.Parameters.AddWithValue("@FormA", FormA);
-            //cmd.Parameters.AddWithValue("@FormB	", FormB);
-            //cmd.Parameters.AddWithValue("@FormC	 ", FormC);
+            cmd.Parameters.AddWithValue("@ConstructionDetailsOverheadArrangement", ConstructionDetailsOverheadArrangement);            
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -3003,10 +2999,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public int InsertUpgradationSupervisorData(string CurrentCertificateNo, string DateOfExpiry, string CurrentVolatgeLevel,
-          string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string RequestVoltageForUpgradation,
-          string UpgradationEarlier, string DateOfInterview, string VoltageBeforeUpgradation, string ExperienceCertificate,
-          string CreatedBy
-         )
+           string Age, string Email, string ContactNo, string Address, string State, string District, string PinCode, string RequestVoltageForUpgradation,
+           string UpgradationEarlier, string DateOfInterview, string VoltageBeforeUpgradation, string ExperienceCertificate,
+           string CreatedBy
+          )
         {
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -3032,8 +3028,17 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@Pincode", PinCode);
             cmd.Parameters.AddWithValue("@RequestVoltageForUpgradation", RequestVoltageForUpgradation);
             cmd.Parameters.AddWithValue("@ApplyUpgradationEarlier", UpgradationEarlier);
-            cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DateOfInterview);
-            cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageBeforeUpgradation);
+            //cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DateOfInterview);
+            DateTime UpgradationDate;
+            if (DateTime.TryParse(DateOfInterview, out UpgradationDate) && UpgradationDate != DateTime.MinValue)
+            {
+                cmd.Parameters.AddWithValue("@UpgradationEarlierDate", UpgradationDate);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@UpgradationEarlierDate", DBNull.Value);
+            }
+            cmd.Parameters.AddWithValue("@ScopeVoltageLevelApplied", VoltageBeforeUpgradation == "Select" ? null : VoltageBeforeUpgradation);
             cmd.Parameters.AddWithValue("@ExperienceCertificate", ExperienceCertificate);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             int x = cmd.ExecuteNonQuery();
@@ -3043,12 +3048,12 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public void InsertSupervisorExperience(string Experience1, string TraningUnder1, string EmployerName1, string PostDescription1, string ExperienceFrom1, string ExperienceTo1,
-          string Experience2, string TraningUnder2, string EmployerName2, string PostDescription2, string ExperienceFrom2, string ExperienceTo2,
-          string Experience3, string TraningUnder3, string EmployerName3, string PostDescription3, string ExperienceFrom3, string ExperienceTo3,
-           string Experience4, string TraningUnder4, string EmployerName4, string PostDescription4, string ExperienceFrom4, string ExperienceTo4,
-            string Experience5, string TraningUnder5, string EmployerName5, string PostDescription5, string ExperienceFrom5, string ExperienceTo5,
-          string TotalExperience, string CreatedBy
-        )
+           string Experience2, string TraningUnder2, string EmployerName2, string PostDescription2, string ExperienceFrom2, string ExperienceTo2,
+           string Experience3, string TraningUnder3, string EmployerName3, string PostDescription3, string ExperienceFrom3, string ExperienceTo3,
+            string Experience4, string TraningUnder4, string EmployerName4, string PostDescription4, string ExperienceFrom4, string ExperienceTo4,
+             string Experience5, string TraningUnder5, string EmployerName5, string PostDescription5, string ExperienceFrom5, string ExperienceTo5,
+           string TotalExperience, string CreatedBy
+         )
         {
             try
             {
@@ -3065,32 +3070,122 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@TraningUnder1", TraningUnder1);
                 cmd.Parameters.AddWithValue("@EmployerName1", EmployerName1);
                 cmd.Parameters.AddWithValue("@PostDescription1", PostDescription1);
-                cmd.Parameters.AddWithValue("@From1", ExperienceFrom1);
-                cmd.Parameters.AddWithValue("@To1", ExperienceTo1);
+                DateTime DateTo;
+                if (DateTime.TryParse(ExperienceFrom1, out DateTo) && DateTo != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@From1", DateTo);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@From1", DBNull.Value);
+                }
+                //cmd.Parameters.AddWithValue("@From1", ExperienceFrom1);
+                //cmd.Parameters.AddWithValue("@To1", ExperienceTo1);
+                DateTime DateFrom;
+                if (DateTime.TryParse(ExperienceTo1, out DateFrom) && DateFrom != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@To1", DateFrom);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@To1", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@Experience2", Experience2);
                 cmd.Parameters.AddWithValue("@TraningUnder2", TraningUnder2);
-                cmd.Parameters.AddWithValue("@EmployerName2", EmployerName2);
-                cmd.Parameters.AddWithValue("@PostDescription2", PostDescription2);
-                cmd.Parameters.AddWithValue("@From2", ExperienceFrom2);
-                cmd.Parameters.AddWithValue("@To2", ExperienceTo2);
+                cmd.Parameters.AddWithValue("@EmployerName2", String.IsNullOrEmpty(EmployerName2) ? null : EmployerName2);
+                cmd.Parameters.AddWithValue("@PostDescription2", String.IsNullOrEmpty(PostDescription2) ? null : PostDescription2);
+                //cmd.Parameters.AddWithValue("@From2", ExperienceFrom2);
+                //cmd.Parameters.AddWithValue("@To2", ExperienceTo2);
+                DateTime DateFrom1;
+                if (DateTime.TryParse(ExperienceFrom2, out DateFrom1) && DateFrom1 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@From2", DateFrom1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@From2", DBNull.Value);
+                }
+                DateTime DateTo1;
+                if (DateTime.TryParse(ExperienceTo2, out DateTo1) && DateTo1 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@To2", DateTo1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@To2", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@Experience3", Experience3);
                 cmd.Parameters.AddWithValue("@TraningUnder3", TraningUnder3);
-                cmd.Parameters.AddWithValue("@EmployerName3", EmployerName3);
-                cmd.Parameters.AddWithValue("@PostDescription3", PostDescription3);
-                cmd.Parameters.AddWithValue("@From3", ExperienceFrom3);
-                cmd.Parameters.AddWithValue("@To3", ExperienceTo3);
+                cmd.Parameters.AddWithValue("@EmployerName3", String.IsNullOrEmpty(EmployerName3) ? null : EmployerName3);
+                cmd.Parameters.AddWithValue("@PostDescription3", String.IsNullOrEmpty(PostDescription3) ? null : PostDescription3);
+                //cmd.Parameters.AddWithValue("@From3", ExperienceFrom3);
+                //cmd.Parameters.AddWithValue("@To3", ExperienceTo3);
+                DateTime DateFrom2;
+                if (DateTime.TryParse(ExperienceFrom2, out DateFrom2) && DateFrom2 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@From3", DateFrom2);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@From3", DBNull.Value);
+                }
+                DateTime DateTo2;
+                if (DateTime.TryParse(ExperienceTo2, out DateTo2) && DateTo2 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@To3", DateTo2);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@To3", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@Experience4", Experience4);
                 cmd.Parameters.AddWithValue("@TraningUnder4", TraningUnder4);
-                cmd.Parameters.AddWithValue("@EmployerName4", EmployerName4);
-                cmd.Parameters.AddWithValue("@PostDescription4", PostDescription4);
-                cmd.Parameters.AddWithValue("@From4", ExperienceFrom4);
-                cmd.Parameters.AddWithValue("@To4", ExperienceTo4);
+                cmd.Parameters.AddWithValue("@EmployerName4", String.IsNullOrEmpty(EmployerName4) ? null : EmployerName4);
+                cmd.Parameters.AddWithValue("@PostDescription4", String.IsNullOrEmpty(PostDescription4) ? null : PostDescription4);
+                //cmd.Parameters.AddWithValue("@From4", ExperienceFrom4);
+                //cmd.Parameters.AddWithValue("@To4", ExperienceTo4);
+                DateTime DateFrom3;
+                if (DateTime.TryParse(ExperienceFrom4, out DateFrom3) && DateFrom3 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@From4", DateFrom3);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@From4", DBNull.Value);
+                }
+                DateTime DateTo3;
+                if (DateTime.TryParse(ExperienceTo4, out DateTo3) && DateTo3 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@To4", DateTo3);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@To4", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@Experience5", Experience5);
                 cmd.Parameters.AddWithValue("@TraningUnder5", TraningUnder5);
-                cmd.Parameters.AddWithValue("@EmployerName5", EmployerName5);
-                cmd.Parameters.AddWithValue("@PostDescription5", PostDescription5);
-                cmd.Parameters.AddWithValue("@From5 ", ExperienceFrom5);
-                cmd.Parameters.AddWithValue("@To5", ExperienceTo5);
+                cmd.Parameters.AddWithValue("@EmployerName5", String.IsNullOrEmpty(EmployerName5) ? null : EmployerName5);
+                cmd.Parameters.AddWithValue("@PostDescription5", String.IsNullOrEmpty(PostDescription5) ? null : PostDescription5);
+                //cmd.Parameters.AddWithValue("@From5 ", ExperienceFrom5);
+                //cmd.Parameters.AddWithValue("@To5", ExperienceTo5);
+                DateTime DateFrom4;
+                if (DateTime.TryParse(ExperienceFrom5, out DateFrom4) && DateFrom4 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@From5", DateFrom4);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@From5", DBNull.Value);
+                }
+                DateTime DateTo4;
+                if (DateTime.TryParse(ExperienceTo5, out DateTo4) && DateTo4 != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@To5", DateTo4);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@To5", DBNull.Value);
+                }
                 cmd.Parameters.AddWithValue("@TotalExperience", TotalExperience);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                 cmd.ExecuteNonQuery();
@@ -3391,6 +3486,20 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         #endregion
+
+        public DataTable ShowPendingDivisionDaysData(string dated, string Division)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowPendingDivisionDaysData", dated, Division);
+        }
+
+        public DataSet DetailstoPrintFormInspectionDetails(int ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDetailsforPrintForm", ID);
+        }
+        public DataTable GetAttachmentsDatainInspectionForm(string InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachmentsinInspectionForm", InspectionId);
+        }
     }
 }
 

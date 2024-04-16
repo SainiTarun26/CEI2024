@@ -182,7 +182,6 @@ namespace CEIHaryana.Officers
                 //
             }
         }
-
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -190,7 +189,7 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                    ID = Session["InspectionId"].ToString();
+                    //ID = Session["InspectionId"].ToString();
                    
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //lblerror.Text = fileName;

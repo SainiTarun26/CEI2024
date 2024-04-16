@@ -885,7 +885,7 @@ input#BtnFormC{
                                             <div class="col-md-6">
                                                 <%--  <button type="button" class="btn btn-primary" style="padding: 10px 20px 10px 20px;
 border-radius: 5px;">Back</button>--%>
-                                                <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" OnClick="btnBack_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
 

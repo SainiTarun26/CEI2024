@@ -507,12 +507,12 @@
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" TabIndex="40" ontextchanged="txtExperienceFrom1_TextChanged" AutoPostBack="true" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtExperienceFrom1"
                                                         ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo1" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo1" ontextchanged="txtExperienceFrom1_TextChanged"  TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtExperienceTo1"
                                                         ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                     <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtExperienceFrom1" ControlToValidate="txtExperienceTo1" Operator="GreaterThan"
@@ -555,12 +555,12 @@
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" TabIndex="40" ontextchanged="txtExperienceFrom1_TextChanged" AutoPostBack="true" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtExperienceFrom2"
                                                         ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" ontextchanged="txtExperienceFrom1_TextChanged"  TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtExperienceTo2"
                                                         ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                     <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtExperienceFrom2" ControlToValidate="txtExperienceTo2" Operator="GreaterThan"
@@ -603,12 +603,12 @@
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" TabIndex="40" ontextchanged="txtExperienceFrom1_TextChanged" AutoPostBack="true" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtExperienceFrom3"
                                                         ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo3" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo3" ontextchanged="txtExperienceFrom1_TextChanged"  TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtExperienceTo3"
                                                         ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                     <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtExperienceFrom3" ControlToValidate="txtExperienceTo3" Operator="GreaterThan"
@@ -651,12 +651,12 @@
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" ontextchanged="txtExperienceFrom1_TextChanged" AutoPostBack="true" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="txtExperienceFrom4"
                                                         ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" ontextchanged="txtExperienceFrom1_TextChanged"  TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtExperienceTo4"
                                                         ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                     <asp:CompareValidator ID="CompareValidator4" runat="server" ControlToCompare="txtExperienceFrom4" ControlToValidate="txtExperienceTo4" Operator="GreaterThan"
@@ -699,12 +699,12 @@
                                                         ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom5" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom5" TabIndex="40" ontextchanged="txtExperienceFrom1_TextChanged" AutoPostBack="true" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ControlToValidate="txtExperienceFrom5"
                                                         ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo5" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                    <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo5" ontextchanged="txtExperienceFrom1_TextChanged"  TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ControlToValidate="txtExperienceTo5"
                                                         ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                     <asp:CompareValidator ID="CompareValidator5" runat="server" ControlToCompare="txtExperienceFrom5" ControlToValidate="txtExperienceTo5" Operator="GreaterThan"
