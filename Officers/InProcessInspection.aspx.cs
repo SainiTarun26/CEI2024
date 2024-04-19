@@ -223,19 +223,9 @@ namespace CEIHaryana.Officers
                             Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                         }
 
-
-                        CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        //if (Session["Area"] != null)
-                        //{
-                        Response.Redirect("/Officers/InProcessRequest.aspx", false);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alertWithRedirectdata;", true);
-                        //}
-                        //else
-                        //{
-                        //    Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
-                        //}
-
+                        CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions);                      
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('"+ ApprovedorReject+"');", true);
+                          
                     }
                     else
                     {

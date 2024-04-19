@@ -199,6 +199,14 @@
             text-align: justify !important;
             padding: 10px;
         }
+       .asterisk-1 {
+            color: red;
+            display: inline;
+        }
+
+        .asterisk-0 {
+            display: none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -366,6 +374,7 @@
                                             <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
                                             <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
                                             <asp:FileUpload ID="FileUpload1" runat="server" />
+                                             <%--   <span id="asterisk" class='<%# "asterisk-" + Eval("Req") %>'>*</span>--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -502,7 +511,7 @@
         function alertWithRedirectdata() {
             /*   if (confirm('Inspection Request Submit Successfully, and forword to concern officer')) {*/
             alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
-            window.location.href = "/SiteOwnerPages/InspectionHistory.aspx";
+           // window.location.href = "/SiteOwnerPages/InspectionHistory.aspx";
             //} else {
             //}
         }

@@ -70,36 +70,31 @@ namespace CEIHaryana.Officers
 
                 if (Status.Trim() == "InProcess")
                 {
-                    //ApprovalRequired.Visible = true;
-
+                    RadioButtonList2.SelectedIndex = RadioButtonList2.Items.IndexOf(RadioButtonList2.Items.FindByValue("0"));
+                    RadioButtonList2.Attributes.Add("disabled", "true");
+                    RadioButtonList2.Enabled = false;
+                    btnBack.Visible = true;
+                    btnSubmit.Visible = false;
                 }
                 else if (Status.Trim() == "Return")
                 {
                     RadioButtonList2.SelectedIndex = RadioButtonList2.Items.IndexOf(RadioButtonList2.Items.FindByValue("1"));
                     RadioButtonList2.Attributes.Add("disabled", "true");
-                    // ApprovedReject.Visible = true;
-                    //ApprovalRequired.Visible = false;
-                    //string dp_1 = ds.Tables[0].Rows[0]["AcceptedOrRejected"].ToString();
-                    //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(dp_1));
-                    //ddlReview.Attributes.Add("disabled", "true");
+                    RadioButtonList2.Enabled = false;
+                    Rejection.Visible = true;
+                    txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                    txtRejected.Attributes.Add("disabled", "true");
+
                     btnBack.Visible = true;
                     btnSubmit.Visible = false;
                 }
-                //else if (Approval.Trim() == "Rejected")
-                //{
-                //    //ApprovalRequired.Visible = true;
-                //    // ApprovedReject.Visible = true;
-                //    Rejection.Visible = true;
-
-                //    string dp_1 = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                //    txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                //    //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(dp_1));
-                //    // ddlApprovedReject.SelectedIndex = ddlApprovedReject.Items.IndexOf(ddlApprovedReject.Items.FindByText(dp_1));
-                //    //ddlApprovedReject.Attributes.Add("disabled", "true");
-                //    txtRejected.Attributes.Add("disabled", "true");
-                //    btnBack.Visible = true;
-                //    btnSubmit.Visible = false;
-                //}
+                else if (Status.Trim() == "Approved" || Status.Trim() == "Rejected")
+                {
+                    RadioButtonList2.Enabled = false;
+                    txtRejected.Attributes.Add("disabled", "true");
+                    btnBack.Visible = true;
+                    btnSubmit.Visible = false;
+                }
             }
             catch (Exception ex)
             {
@@ -127,7 +122,6 @@ namespace CEIHaryana.Officers
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             try
             {
                 Rejection.Visible = false;

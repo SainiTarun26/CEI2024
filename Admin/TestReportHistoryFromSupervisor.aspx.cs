@@ -86,63 +86,63 @@ namespace CEIHaryana.Admin
 
                     Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
                     Session["TypeOf"] = lblTypeOf.Text;
-                    
+
                     DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text);
-                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 && lblApproval.Text != "Pending")
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
                         string id = ds.Tables[0].Rows[0]["ID"].ToString();
                         Session["ID"] = id.Trim();
                         if (lblTypeOf.Text.Trim() == "Line")
+                        {
+                            if (lblApproval.Text.Trim() == "Reject")
                             {
-                                if (lblApproval.Text.Trim() == "Reject")
-                                {
-                                    Session["LineID"] = id;
-                                    Response.Redirect("Supervisor/LineTestReport.aspx", false);
-                                }
-                                else
-                                {
-                                    Session["LineID"] = id;
-                                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                                }
+                                Session["LineID"] = id;
+                                Response.Redirect("Supervisor/LineTestReport.aspx", false);
                             }
+                            else
+                            {
+                                Session["LineID"] = id;
+                                Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                            }
+                        }
                         else if (lblTypeOf.Text.Trim() == "Substation Transformer")
-                            {
+                        {
 
-                                if (lblApproval.Text.Trim() == "Reject")
-                                {
-                                    Session["SubStationID"] = id;
-                                    Response.Redirect("~/Supervisor/SubstationTestReport.aspx", false);
-                                }
-                                else
-                                {
-                                    Session["SubStationID"] = id;
-                                    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                                }
+                            if (lblApproval.Text.Trim() == "Reject")
+                            {
+                                Session["SubStationID"] = id;
+                                Response.Redirect("~/Supervisor/SubstationTestReport.aspx", false);
                             }
+                            else
+                            {
+                                Session["SubStationID"] = id;
+                                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                            }
+                        }
                         else if (lblTypeOf.Text.Trim() == "Generating Set")
-                            {
+                        {
 
-                                if (lblApproval.Text.Trim() == "Reject")
-                                {
-                                    Session["GeneratingSetId"] = id;
-                                    Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
-                                }
-                                else
-                                {
-                                    Session["GeneratingSetId"] = id;
-                                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                                }
+                            if (lblApproval.Text.Trim() == "Reject")
+                            {
+                                Session["GeneratingSetId"] = id;
+                                Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
                             }
-                    }         
-                    else if(lblApproval.Text =="Pending")
-                    {                       
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\'Test Report not generated \');", true);
+                            else
+                            {
+                                Session["GeneratingSetId"] = id;
+                                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
                     }
                 }
             }
             catch (Exception ex)
             {
-            
+                Console.WriteLine(ex.Message);
             }
         }
     }

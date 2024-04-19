@@ -797,7 +797,7 @@
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator39" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthingUsed6" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Used For"></asp:RequiredFieldValidator>
                                                             </div>
                                                             <div class="col-12">
-                                                                <asp:TextBox class="form-control" ID="txtOtherEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtOtherEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="50" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator66" Visible="false" runat="server" ForeColor="Red" ControlToValidate="txtOtherEarthing6" ValidationGroup="Submit" ErrorMessage="Please Enter Other Earthing"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>

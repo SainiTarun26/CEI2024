@@ -603,7 +603,7 @@ namespace CEIHaryana.Contractor
                           ddlApplicantType.SelectedItem.ToString(), ContractorID);
 
                         string projectId = CEI.projectId();
-                        if (projectId != "" && projectId != null)
+                        if (projectId != "" && projectId != null && UpdationId == null || UpdationId == "")
                         {
                             ContractorID = Session["ContractorID"].ToString();
                             string AssignBy = ContractorID;
@@ -617,27 +617,28 @@ namespace CEIHaryana.Contractor
                                     CEI.SetDataInStaffAssined(Reid, projectId, AssignBy);
                                 }
                             }
-                        }
-                        TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
-                        TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
 
-                        for (int i = 0; i < typeTextBoxes.Length; i++)
-                        {
-                            string installationType = typeTextBoxes[i].Text;
-                            string installationNoText = noTextBoxes[i].Text;
+                            TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
+                            TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
 
-                            int installationNo;
-
-                            if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
+                            for (int i = 0; i < typeTextBoxes.Length; i++)
                             {
-                                // Save data according to the number of installations
-                                for (int j = 0; j < installationNo; j++)
+                                string installationType = typeTextBoxes[i].Text;
+                                string installationNoText = noTextBoxes[i].Text;
+
+                                int installationNo;
+
+                                if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
                                 {
-                                    CEI.AddInstallations(projectId, installationType, installationNo);
+                                    // Save data according to the number of installations
+                                    for (int j = 0; j < installationNo; j++)
+                                    {
+                                        CEI.AddInstallations(projectId, installationType, installationNo);
+                                    }
                                 }
                             }
+                            CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
                         }
-                        CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
                         if (btnSubmit.Text.Trim() == "Submit")
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
@@ -646,7 +647,7 @@ namespace CEIHaryana.Contractor
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
                         }
-                        Session["UpdationId"] = null; 
+                        
                     }
                     else
                     {

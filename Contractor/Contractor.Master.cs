@@ -121,8 +121,7 @@ namespace CEIHaryana.Contractor
         {
             REID = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetContractorName(REID);
-            //textName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+            ds = CEI.GetContractorName(REID);            
             PersonDetails.Text= ds.Tables[0].Rows[0]["ContractorName"].ToString();
         }
 

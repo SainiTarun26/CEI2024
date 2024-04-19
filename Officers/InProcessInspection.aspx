@@ -264,11 +264,11 @@
         </div>
     </div>
     <script type="text/javascript">
-        function alertWithRedirectdata() {
-            if (confirm('Your Inspection will be in sucessful')) {
-                window.location.href = "/SiteOwnerPages/InProcessRequest.aspx";
+        function alertWithRedirectdata(Message) {
+            if (confirm('Your Inspection ' +  Message  + ' Successfully')) {
+                window.location.href = "/Officers/InProcessRequest.aspx";
             } else {
             }
-        }
+        }        
     </script>
 </asp:Content>

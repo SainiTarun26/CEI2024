@@ -263,8 +263,8 @@ namespace CEIHaryana.TestReportModal
                     else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||   
                         txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")        
                     {                                                                                         
-                        Insulation220vAbove.Visible = true;                                             
-                        Insulation440vAbove.Visible = false;                                             
+                        Insulation220vAbove.Visible = false;                                             
+                        Insulation440vAbove.Visible = true;                                             
                     }
 
                 }

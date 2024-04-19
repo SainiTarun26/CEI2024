@@ -89,12 +89,15 @@
         .col-9 {
             margin-top: 3%;
         }
+
         .col-6 {
             margin-top: 3%;
         }
+
         .col-8 {
             margin-top: 5%;
         }
+
         .form-control {
             margin-left: 0px !important;
             font-size: 18px !important;
@@ -152,7 +155,7 @@
             document.body.innerHTML = originalContents;
 
         }
-</script>
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -172,7 +175,7 @@
                                     <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report Details</h6>
                                         <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">
-                                            <asp:TextBox class="form-control"  ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                            <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                                 MaxLength="30" Style="margin-left: 18px;">
                                             </asp:TextBox>
                                         </div>
@@ -312,6 +315,14 @@
                                                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
 
+                                            <div class="col-4">
+                                                <label>
+                                                    Type of plant
+                                                </label>
+                                                <asp:TextBox class="form-control" ReadOnly="true" ID="txtPlantType" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                            </div>
+
                                         </div>
 
 
@@ -319,13 +330,13 @@
 
                                         <div id="SolarPanelGeneratingSet" runat="server" visible="false">
                                             <div class="row">
-                                                <div class="col-4">
+                                              <%--  <div class="col-4">
                                                     <label>
                                                         Type of plant
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtPlantType" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                                </div>
+                                                </div>--%>
                                                 <div class="col-4">
                                                     <label>
                                                         capacity of plant

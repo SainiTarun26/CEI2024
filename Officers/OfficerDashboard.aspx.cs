@@ -135,7 +135,8 @@ namespace CEIHaryana.Officers
             try
             {
                 //Session["Id"] = string.Empty;
-                string CreatedDate = string.Empty; Control ctrl = e.CommandSource as Control;
+                string CreatedDate = string.Empty;
+                Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblDistrictofData = (Label)row.FindControl("lblDistrictofData");
                 Session["DistrictOfData"] = lblDistrictofData.Text.Trim();
@@ -375,7 +376,10 @@ var myDoughnutChart = new Chart(ctx, {{
                     GridViewBind();
                 }
             }
-            catch { }
+            catch (Exception ex) 
+            {
+            
+            }
         }
 
       

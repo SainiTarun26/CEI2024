@@ -1325,7 +1325,7 @@ string EarthingValue14, string UsedFor14, string OtherEarthing14, string Earthin
 
             cmd.Parameters.AddWithValue("@EarthingType9", EarthingType9 == "Select" ? DBNull.Value : (object)EarthingType9);
             cmd.Parameters.AddWithValue("@EarthingValue9", string.IsNullOrEmpty(EarthingValue9) ? DBNull.Value : (object)EarthingValue9);
-            cmd.Parameters.AddWithValue("@UsedFor9", UsedFor9 == "Select" ? DBNull.Value : (object)EarthingType9);
+            cmd.Parameters.AddWithValue("@UsedFor9", UsedFor9 == "Select" ? DBNull.Value : (object)UsedFor9);
             cmd.Parameters.AddWithValue("@OtherEarthing9", string.IsNullOrEmpty(OtherEarthing9) ? DBNull.Value : (object)OtherEarthing9);
 
             cmd.Parameters.AddWithValue("@EarthingType10", EarthingType10 == "Select" ? DBNull.Value : (object)EarthingType10);

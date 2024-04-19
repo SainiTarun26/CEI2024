@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -475,8 +476,6 @@ namespace CEIHaryana.SiteOwnerPages
                     LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
 
-                    //Session["ID"] = id.ToString();
-                    //Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx", false);
                 }
                 else
                 {
@@ -505,13 +504,8 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (!fileUpload.HasFile && Req == "1")
                     {
-                        //string message = "alert('is mandatory to upload');";
-                        string encodedDocName = HttpUtility.JavaScriptStringEncode(DocName);
-                        string message = "alert('" + encodedDocName + " is mandatory to upload.');";
-                        // ScriptManager.RegisterClientScriptBlock(sender as Control, this.GetType(), "alert", message, true);
-                        ScriptManager.RegisterClientScriptBlock(null, this.GetType(), "alert", message, true);
-
-                        return;
+                        string message = DocName + " is mandatory to upload.";
+                        throw new Exception(message);
 
                     }
 
@@ -525,7 +519,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     {
 
-                        if (fileUpload.PostedFile.ContentLength <= 2000000)
+                        if (fileUpload.PostedFile.ContentLength <= 2097152)
                         {
                             string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
 
@@ -549,7 +543,14 @@ namespace CEIHaryana.SiteOwnerPages
                             uploadedFiles.Add((Category, DocumentID, DocName, fileName, path + fileName));
 
                         }
-
+                        else
+                        {
+                            throw new Exception("Please Upload Pdf Files Less Than 2 Mb Only");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Please Upload Pdf Files Only");
                     }
                 }
 
@@ -577,37 +578,55 @@ namespace CEIHaryana.SiteOwnerPages
                     UploadCheckListDocInCollection(SplitResultPartsArray[2], para_CreatedByy, SplitResultPartsArray[1], SplitResultPartsArray[2], SplitResultPartsArray[3]);
 
                     foreach (var file in uploadedFiles)
-
                     {
-
                         string query = "INSERT INTO tbl_InspectionAttachment (InspectionId,InstallationType,DocumentID,DocumentName,fileName, DocumentPath,CreatedDate,CreatedBy,Status) VALUES (@InspectionId,@InstallationType,@DocumentID,@DocSaveName,@FileName, @FilePath,getdate(),@CreatedBy,1)";
 
                         using (SqlCommand command = new SqlCommand(query, connection, transaction))
-
                         {
-
                             command.Parameters.AddWithValue("@InspectionId", SplitResultPartsArray[0]);
-
                             command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
-
                             command.Parameters.AddWithValue("@DocumentID", file.DocumentID);
-
                             command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
-
                             command.Parameters.AddWithValue("@FileName", file.FileName);
-
                             command.Parameters.AddWithValue("@FilePath", file.FilePath);
                             command.Parameters.AddWithValue("@CreatedBy", para_CreatedBy);
                             command.ExecuteNonQuery();
                         }
                     }
                     transaction.Commit();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
+                    //Session["ID"] = id.ToString();
+                    //Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx", false);
+                    
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill All details carefully')", true);
+                    if (ex.Message == "Please Upload Pdf Files Only")
+                    {
+                        transaction.Rollback();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                        return;
+                    }
+                    else if (ex.Message == "Please Upload Pdf Files Less Than 2 Mb Only")
+                    {
+                        transaction.Rollback();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                    }
+                    else if (ex.Message.Contains(" is mandatory to upload."))
+                    {
+                        transaction.Rollback();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                        //Commented below to raise errors as per backend
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill All details carefully')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+
+                    }
                 }
                 finally
                 {

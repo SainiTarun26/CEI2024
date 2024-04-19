@@ -106,7 +106,7 @@
                                 <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
                             </div>
                             <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-                                <asp:ListItem Text="Accepted" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="Approved" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="1"></asp:ListItem>
                             </asp:RadioButtonList>
                         </div>

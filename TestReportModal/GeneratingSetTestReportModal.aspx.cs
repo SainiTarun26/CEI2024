@@ -480,8 +480,8 @@ namespace CEIHaryana.TestReportModal
                 txtEarthingUsed15.Text = ds.Tables[0].Rows[0]["UsedFor15"].ToString();
                 if (txtEarthingUsed15.Text == "Other")
                 {
-                    txtEarthingUsed15.Text = ds.Tables[0].Rows[0]["OtherEarthing15"].ToString();
-                    txtEarthingUsed15.Visible = true;
+                    txtOther15.Text = ds.Tables[0].Rows[0]["OtherEarthing15"].ToString();
+                    txtOther15.Visible = true;
                     txtEarthingUsed15.Visible = false;
 
                 }

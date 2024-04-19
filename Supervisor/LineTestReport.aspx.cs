@@ -1037,6 +1037,9 @@ namespace CEIHaryana.Supervisor
 
         protected void ddlLineVoltage_SelectedIndexChanged(object sender, EventArgs e)
         {
+            divOtherVoltages.Visible = false;
+            OtherVoltage.Visible = false;
+
             if (ddlLineVoltage.SelectedItem.ToString().Trim() == "220V")
             {
                 Insulation220vAbove.Visible = true;

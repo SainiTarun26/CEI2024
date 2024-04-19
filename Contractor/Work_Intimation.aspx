@@ -466,7 +466,7 @@
                                             <label for="OtherPremises">
                                                 Other Premises<samp style="color: red"> * </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" maxlength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-4">
