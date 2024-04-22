@@ -2153,10 +2153,20 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkLicence", LicenceNew, LicenceOld);
         }
+        public DataSet checkLicenceexistUpdated(string LicenceNew, string LicenceOld,string ContractorId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkLicenceUpdated", LicenceNew, LicenceOld, ContractorId);
+        }
         public DataSet checkCertificateexist(string CertificateOld, string CertificateNew)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificate", CertificateOld, CertificateNew);
         }
+        public DataSet checkCertificateexistupdated(string CertificateOld, string CertificateNew, string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificateupdated", CertificateOld, CertificateNew, Id);
+        }
+
+
 
         public DataSet SearchingOnGeneraterSet(string searchterm, string LoginId)
         {

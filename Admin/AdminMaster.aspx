@@ -405,7 +405,7 @@
 }
    
      div#officers_table {
-    height: 300px;
+    height: 335px;
 }
     <%-- ::-webkit-scrollbar {
     display: none;
@@ -536,7 +536,7 @@
         }
 
         span#APPROVED {
-            MARGIN-LEFT: 95PX;
+            MARGIN-LEFT: 9%;
         }
 
         span#PROCESS {
@@ -723,7 +723,7 @@ text-decoration: underline;
                                                     <h2>
                                                         <asp:TextBox class="form-control" ID="txtApprovalAndReject" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
 
-                                                    <span id="APPROVED">Approved/Rejected</span>
+                                                    <span id="APPROVED">Approved/Rejected/Returned</span>
                                                 </div>
                                             </div>
                                                  </a>
@@ -837,15 +837,15 @@ text-decoration: underline;
                                                                 <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area") %>'></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
-                                                        <asp:BoundField DataField="RecordCount" HeaderText="Total Requests Received till date">
+                                                        <asp:BoundField DataField="RecordCount" HeaderText="Total Request">
                                                             <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
                                                             <ItemStyle HorizontalAlign="Center" Width="15%" />
                                                         </asp:BoundField>
-                                                        <asp:BoundField DataField="Initiated" HeaderText="Initiated">
+                                                        <asp:BoundField DataField="Initiated" HeaderText="New Application">
                                                             <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                                             <ItemStyle HorizontalAlign="center" Width="13%" />
                                                         </asp:BoundField>
-                                                        <asp:BoundField DataField="InProgress" HeaderText="In Progress">
+                                                        <asp:BoundField DataField="InProgress" HeaderText="In Process">
                                                             <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                                             <ItemStyle HorizontalAlign="center" Width="13%" />
                                                         </asp:BoundField>

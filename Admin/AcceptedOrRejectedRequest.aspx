@@ -103,7 +103,7 @@
                         <div class="form-group row">
                             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                             <div class="col-sm-9" style="margin-left: -35px;">
-                                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)" Font-Size="12px"></asp:TextBox><br />
                             </div>
                             <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                                 <asp:ListItem Text="Approved" Value="0"></asp:ListItem>
@@ -199,4 +199,31 @@
     <script>
         new DataTable('#example');
     </script>
+    <script type="text/javascript">
+        function Search_Gridview(strKey) {
+            var strData = strKey.value.toLowerCase().split(" ");
+            var tblData = document.getElementById("<%=GridView1.ClientID %>");
+            var rowData;
+            for (var i = 1; i < tblData.rows.length; i++) {
+                rowData = tblData.rows[i].innerHTML;
+                var styleDisplay = 'none';
+                for (var j = 0; j < strData.length; j++) {
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                        styleDisplay = '';
+                    else {
+                        styleDisplay = 'none';
+                        break;
+                    }
+                }
+                tblData.rows[i].style.display = styleDisplay;
+            }
+
+        }
+        function SearchOnEnter(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission
+                Search_Gridview(document.getElementById('txtSearch'));
+            }
+        }
+</script>
 </asp:Content>

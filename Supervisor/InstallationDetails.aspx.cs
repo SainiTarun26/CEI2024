@@ -72,9 +72,6 @@ namespace CEIHaryana.Supervisor
             {
                 if (e.CommandName == "Select")
                 {
-
-
-
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblhistory = (Label)row.FindControl("lblhistory");

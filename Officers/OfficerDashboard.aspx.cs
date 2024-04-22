@@ -225,14 +225,10 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
     }}
 }});
 ";
-
-                // Register the JavaScript code on the page
                 ScriptManager.RegisterStartupScript(this, GetType(), "ChartScript", script, true);
             }
             else
             {
-                // Handle the case when there is no data
-                // Display a message or take appropriate action
             }
         }
         private void BindDoughnutChart()
@@ -243,12 +239,16 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
-                var labelsValues = new[] { "Submit", "Inprocess", "Accepted", "Rejected" };
-                var labels = new[] { "NewApplicationCount", "InprocessCount", "AcceptedCount", "RejectedCount" };
 
+                var labelsValues = new[] { "New Applications", "In Process", "Accepted", "Rejected" };
+                var labels = new[] { "Percentage_NewApplication", "Percentage_Inprocess", "Percentage_Accepted", "Percentage_Rejected" };
+
+                // Extract values from the DataTable
                 var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
 
                 string[] backgroundColors = { "#fc7c56", "#eb1386", "#3d9c5c", "#f71d05" }; // Customize colors here
+                var percentages = labels.Select(label => Convert.ToDouble(dt.Rows[0][label])).ToArray();
+                // Build the JavaScript code
                 string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');
 var myDoughnutChart = new Chart(ctx, {{
     type: 'doughnut',
@@ -256,7 +256,7 @@ var myDoughnutChart = new Chart(ctx, {{
         labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
         datasets: [
             {{
-                data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
+                data: {Newtonsoft.Json.JsonConvert.SerializeObject(percentages)}, // Use percentages here
                 backgroundColor: {Newtonsoft.Json.JsonConvert.SerializeObject(backgroundColors)},
                 borderColor: {Newtonsoft.Json.JsonConvert.SerializeObject(backgroundColors)},
                 borderWidth: 1
@@ -270,13 +270,23 @@ var myDoughnutChart = new Chart(ctx, {{
             display: true,
             text: ''
         }},
+        tooltips: {{
+            callbacks: {{
+                label: function(tooltipItem, data) {{
+                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                    var currentValue = dataset.data[tooltipItem.index];
+                    return data.labels[tooltipItem.index] + ': ' + currentValue + '%'; // Display percentage
+                }}
+            }}
+        }},
+        legend: {{
+            display: true,
+            position: 'bottom'
+        }},
         plugins: {{
             datalabels: {{
                 formatter: function(value, context) {{
-                    var label = context.chart.data.labels[context.dataIndex];
-                    var sum = context.dataset.data.reduce((a, b) => a + b, 0);
-                    var percentage = ((value / sum) * 100).toFixed(2) + '%';
-                    return label + ': ' + percentage;
+                    return value > 0 ? value + '%' : '';
                 }},
                 color: '#fff',
                 anchor: 'end',
@@ -287,53 +297,14 @@ var myDoughnutChart = new Chart(ctx, {{
             }}
         }}
     }}
-}});";
+}});
+";
                 // Register the JavaScript code on the page
                 ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);
             }
             else
             {
             }
-            //            DataSet ds = new DataSet();
-            //            ds = cei.DasboardPieChartCalculations();
-            //            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            //            {
-            //                DataTable dt = ds.Tables[0];
-            //                var labelsValues = new[] { "Initiated", "Inprogress", "Accepted", "Rejected" };
-            //                var labels = new[] { "Percentage_Initiated", "Percentage_Inprogress", "Percentage_Accepted", "Percentage_Rejected" };
-            //                // Extract values from the DataTable
-            //                var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
-            //                // Render the JavaScript code to create the Chart.js chart
-            //                string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');var myDoughnutChart = new Chart(ctx, {{
-            //    type: 'doughnut',
-            //    data: {{
-            //        labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
-            //        datasets: [
-            //            {{
-            //                data: {Newtonsoft.Json.JsonConvert.SerializeObject(values)},
-            //                backgroundColor: ['rgba(238, 9, 121,0.8)', 'rgba(60,179,113,0.8)', 'rgba(255, 99, 71, 0.8)', 'rgba(29, 75, 227, 0.8)'],
-            //                borderColor: ['rgba(238, 9, 121,1)', 'rgba(60,179,113,1)', 'rgba(255, 99, 71, 1)', 'rgba(29, 75, 227, 1)'],
-            //                borderWidth: 1
-            //            }}
-            //        ]
-            //    }},
-            //    options: {{
-            //        responsive: false, // Set to false to prevent automatic resizing
-            //        maintainAspectRatio: true, // Set to true to keep the aspect ratio of the chart
-            //        title: {{
-            //            display: true,
-            //        }}
-            //    }}
-            //}});
-            //";
-            //                // Register the JavaScript code on the page
-            //                ScriptManager.RegisterStartupScript(this, GetType(), "DoughnutChartScript", script, true);
-            //            }
-            //            else
-            //            {
-            //                // Handle the case when there is no data
-            //                // Display a message or take appropriate action
-            //            }
         }
         private void OfficersGridBind()
         {

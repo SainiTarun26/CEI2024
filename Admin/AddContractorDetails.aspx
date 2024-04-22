@@ -276,7 +276,7 @@
                                     <label for="RegisteredOffice">
                                         Address<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtRegisteredOffice" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="7" ></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtRegisteredOffice" onkeydown="return preventEnterSubmit(event)"  oninput="clearFields()"  autocomplete="off" runat="server" TabIndex="7" ></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtRegisteredOffice" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Registered Office Address</asp:RequiredFieldValidator>
 
                                 </div>
@@ -285,7 +285,7 @@
                                         State/UT 
                                         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlState" TabIndex="8" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
+                                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlState" onchange="clearFields()" TabIndex="8" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="Req" Text="Please Select State" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
@@ -297,14 +297,14 @@
                                         District
                                         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlDistrict" runat="server" TabIndex="9">
+                                    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" onchange="clearFields()"  ID="ddlDistrict" runat="server" TabIndex="9">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             
                                 </div>
                                 <div class="col-4">
                                     <label for="PinCode">PinCode </label>
-                                    <asp:TextBox class="form-control" ID="txtPinCode" onkeydown="return preventEnterSubmit(event)" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtPinCode" onkeydown="return preventEnterSubmit(event)" oninput="clearFields()" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" TabIndex="10"></asp:TextBox>
                                     <span id="lblPinError" style="color: red"></span>
                                     <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>
                                     --%>
@@ -522,7 +522,9 @@
                 event.preventDefault(); // Prevent form submission
                 return false;
             }
+
         }
+
     </script>
     <!-- partial -->
     <script>
@@ -684,6 +686,22 @@
                document.getElementById('<%=txtDateofRenewal.ClientID %>').value = "";
             }
         }
+        
    </script>
+    <script>
+        function clearFields() {
+            // Get references to the textboxes and dropdown
+            var txtBranchOffice = document.getElementById('<%= txtBranchOffice.ClientID %>');
+                var ddlBranchState = document.getElementById('<%= ddlBranchState.ClientID %>');
+          var txtPinCode1 = document.getElementById('<%= txtPinCode1.ClientID %>');
+          var checkBox1 = document.getElementById('<%= CheckBox1.ClientID %>');
+
+            // Clear the values of textboxes and dropdown
+            txtBranchOffice.value = '';
+            ddlBranchState.selectedIndex = 0; // Set the dropdown to its default value
+            txtPinCode1.value = '';
+            checkBox1.checked = false;
+        }
+  </script>
     </asp:Content>
 

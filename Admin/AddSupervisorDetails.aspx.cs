@@ -226,6 +226,8 @@ namespace CEI_PRoject.Admin
         {
             try
             {
+                REID = hdnId.Value;
+
                 if (txtQualification.Visible == true)
                 {
 
@@ -249,7 +251,7 @@ namespace CEI_PRoject.Admin
                     ds1 = CEI.checkCertificateexist(CertificateOld.Text, CertificateNew.Text);
                     if (ds1 != null && ds1.Tables.Count > 0)
                     {
-                        if (ds1.Tables[0].Rows.Count > 0)
+                        if (ds1.Tables[0].Rows.Count > 0 || ds1.Tables[1].Rows.Count > 0)
                         {
                             string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
@@ -258,9 +260,23 @@ namespace CEI_PRoject.Admin
 
                     }
                 }
+                else if(btnSubmit.Text.Trim() == "Update")
+                {
+                    DataSet ds1 = new DataSet();
+                    ds1 = CEI.checkCertificateexistupdated(CertificateOld.Text, CertificateNew.Text, REID);
+                    if (ds1 != null && ds1.Tables.Count > 0 || ds1.Tables[1].Rows.Count > 0)
+                    {
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
+                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
+                    }
+                }
 
                 GetIP();
-                REID = hdnId.Value;
+               
                 if (Session["AdminID"] != null)
                 {
                     string Createdby = Convert.ToString(Session["AdminID"]);

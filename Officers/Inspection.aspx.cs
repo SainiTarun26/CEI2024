@@ -63,8 +63,6 @@ namespace CEIHaryana.Officers
                 count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 
-
-
                 GridBindDocument();
                 string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
@@ -150,7 +148,7 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                    ID = Session["InspectionId"].ToString();
+                    //ID = Session["InspectionId"].ToString();
                    
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";

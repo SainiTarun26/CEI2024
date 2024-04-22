@@ -320,10 +320,10 @@
         </div>
     </div>
     <script type="text/javascript">
-        function alertWithRedirectdata(Message) {
+        function alertWithRedirectdata() {
             
             alert('Your Inspection will be in process');
-            window.location.href = "/Officers/InProcessRequest.aspx";
+            window.location.href = "/Officers/NewApplications.aspx";
         }
         function alertWithRedirectdataReturn() {
             alert('Your Inspection will be return to site Owner');           

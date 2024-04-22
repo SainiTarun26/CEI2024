@@ -263,6 +263,8 @@
             <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
         </div>
     </div>
+            </div>
+        </div>
     <script type="text/javascript">
         function alertWithRedirectdata(Message) {
             if (confirm('Your Inspection ' +  Message  + ' Successfully')) {

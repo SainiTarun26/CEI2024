@@ -24,8 +24,7 @@ namespace CEIHaryana.Officers
                 {
                     if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
                     {
-                        GetData();
-                        //Visibility();
+                        GetData();                        
                     }
                 }
             }
@@ -35,59 +34,7 @@ namespace CEIHaryana.Officers
             }
         }
 
-        //private void Visibility()
-        //{
-        //    try
-        //    {
-        //        Uploads.Visible = true;
-        //        if (txtWorkType.Text == "Line")
-        //        {
-        //            if (txtApplicantType.Text.Trim() == "Power Utility")
-        //            {
-        //                LineSubstationSupplier.Visible = true;
-        //                SupplierSub.Visible = true;
-        //            }
-        //            else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //            {
-        //                LinePersonal.Visible = true;
-        //                SupplierSub.Visible = true;
-        //            }
-        //        }
-        //        else if (txtWorkType.Text == "Substation Transformer")
-        //        {
-        //            if (txtApplicantType.Text.Trim() == "Power Utility")
-        //            {
-        //                LineSubstationSupplier.Visible = true;
-        //            }
-        //            else if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //            {
-        //                PersonalSub.Visible = true;
-        //            }
-        //        }
-        //        else if (txtWorkType.Text == "Generating Set")
-        //        {
-        //            if (txtApplicantType.Text.Trim() == "Private/Personal Installation")
-        //            {
-        //                PersonalGenerating.Visible = true;
-        //            }
-        //            else
-        //            {
-        //                PersonalGenerating.Visible = false;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            LineSubstationSupplier.Visible = false;
-        //            SupplierSub.Visible = false;
-        //            PersonalGenerating.Visible = false;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //
-
-        //    }
-        //}
+        
 
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
@@ -109,8 +56,8 @@ namespace CEIHaryana.Officers
         {
             try
             {
-                ID = Session["InProcessInspectionId"].ToString();
 
+                ID = Session["InProcessInspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
 
@@ -130,24 +77,7 @@ namespace CEIHaryana.Officers
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
 
                 GridBindDocument();
-                #region
-                //count = ds.Tables[0].Rows[0]["TestReportCount"].ToString();
-                //IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-                //Session["RequestLetterFromConcernedOfficer"] = ds.Tables[0].Rows[0]["RequestLetterFromConcernedOfficer"].ToString();
-                //Session["ManufacturingTestReportOfEqipment"] = ds.Tables[0].Rows[0]["ManufacturingTestReportOfEqipment"].ToString();
-                //Session["SingleLineDiagramOfLine"] = ds.Tables[0].Rows[0]["SingleLineDiagramOfLine"].ToString();
-                //string DemandNoticeOfLine = ds.Tables[0].Rows[0]["DemandNoticeOfLine"].ToString();
-                //Session["DemandNoticeOfLine"] = DemandNoticeOfLine;
-                //Session["CopyOfNoticeIssuedByUHBVNorDHBVN"] = ds.Tables[0].Rows[0]["CopyOfNoticeIssuedByUHBVNorDHBVN"].ToString();
-                //Session["InvoiceOfTransferOfPersonalSubstation"] = ds.Tables[0].Rows[0]["InvoiceOfTransferOfPersonalSubstation"].ToString();
-                //Session["ManufacturingTestCertificateOfTransformer"] = ds.Tables[0].Rows[0]["ManufacturingTestCertificateOfTransformer"].ToString();
-                //Session["SingleLineDiagramofTransformer"] = ds.Tables[0].Rows[0]["SingleLineDiagramofTransformer"].ToString();
-                //Session["InvoiceoffireExtinguisheratSite"] = ds.Tables[0].Rows[0]["InvoiceoffireExtinguisheratSite"].ToString();
-                //Session["InvoiceOfDGSetOfGeneratingSet"] = ds.Tables[0].Rows[0]["InvoiceOfDGSetOfGeneratingSet"].ToString();
-                //Session["ManufacturingCerificateOfDGSet"] = ds.Tables[0].Rows[0]["ManufacturingCerificateOfDGSet"].ToString();
-                //Session["InvoiceOfExptinguisherOrApparatusAtsite"] = ds.Tables[0].Rows[0]["InvoiceOfExptinguisherOrApparatusAtsite"].ToString();
-                //Session["StructureStabilityResolvedByAuthorizedEngineer"] = ds.Tables[0].Rows[0]["StructureStabilityResolvedByAuthorizedEngineer"].ToString();
-                #endregion
+               
                 string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                 if (Status == "Approved")
                 {
@@ -175,6 +105,11 @@ namespace CEIHaryana.Officers
                     btnBack.Visible = true;
                     btnSubmit.Visible = false;
                 }
+                if(Status =="Return")
+                {
+                    ApprovalRequired.Visible = false;
+                    btnSubmit.Visible = false;
+                }
 
             }
             catch (Exception ex)
@@ -190,12 +125,12 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
-                   
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        //lblerror.Text = fileName;
-                        string script = $@"<script>window.open('{fileName}','_blank');</script>";
-                        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);                       
-                    
+
+                    //lblerror.Text = fileName;
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                     
                 }
 
             }
