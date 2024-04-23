@@ -405,7 +405,7 @@
 }
    
      div#officers_table {
-    height: 335px;
+    height: 300px;
 }
     <%-- ::-webkit-scrollbar {
     display: none;
@@ -536,7 +536,7 @@
         }
 
         span#APPROVED {
-            MARGIN-LEFT: 9%;
+            MARGIN-LEFT: 8%;
         }
 
         span#PROCESS {
@@ -669,7 +669,7 @@ text-decoration: underline;
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="margin-top:30px;">
         <%--<div class="main-content">--%>
         <div class="section__content section__content--p30">
             <div class="container-fluid">

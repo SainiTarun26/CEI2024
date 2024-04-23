@@ -139,8 +139,6 @@ namespace CEIHaryana.Officers
 
         }
 
-
-
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -148,8 +146,7 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                    //ID = Session["InspectionId"].ToString();
-                   
+                    //ID = Session["InspectionId"].ToString();                   
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -175,7 +172,6 @@ namespace CEIHaryana.Officers
             //}
         }
 
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -190,7 +186,7 @@ namespace CEIHaryana.Officers
                         AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
-                        CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);
+                       CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);
 
                         if (AcceptorReturn == "Accepted")
                         {

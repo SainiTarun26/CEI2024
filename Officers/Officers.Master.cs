@@ -16,8 +16,8 @@ namespace CEIHaryana.Officers
             {
                 if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                 {
-
                     lblName.Text = Convert.ToString(Session["StaffID"]);
+                    PersonDetails.Text = lblName.Text.Trim();
                 }
                 else if (Session["StaffID"] == null)
                 {

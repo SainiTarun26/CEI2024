@@ -568,7 +568,7 @@
         }
 
         span#APPROVED {
-       MARGIN-LEFT: 0%;
+ MARGIN-LEFT:-10px;       
    }
 
         span#PROCESS {
@@ -589,7 +589,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="margin-top:30px;">
         <%--<div class="main-content">--%>
         <div class="section__content section__content--p30">
             <div class="container-fluid">

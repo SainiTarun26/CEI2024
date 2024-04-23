@@ -110,7 +110,8 @@ namespace CEIHaryana.Officers
            
             LoginId = Session["StaffID"].ToString();
             DataTable ds = new DataTable();
-            ds = cei.RequestPendingDivision(LoginId);
+            //ds = cei.RequestPendingDivision(LoginId);
+            ds = cei.RequestPendingDivisionForOfficers(LoginId);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;

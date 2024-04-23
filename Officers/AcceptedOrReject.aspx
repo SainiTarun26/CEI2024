@@ -144,11 +144,11 @@
                                     </ItemTemplate>
                                     </asp:TemplateField>
                                 
-                                 <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
+                               <%--  <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
 
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                               
                                 <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>

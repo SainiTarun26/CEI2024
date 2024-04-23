@@ -484,515 +484,409 @@ namespace CEIHaryana.Contractor
         }
         protected void Submit_Click(object sender, EventArgs e)
         {
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
-                string UpdationId = string.Empty;
-                if (Session["UpdationId"] != null)
-                {
-                    UpdationId = Session["UpdationId"].ToString();
-                }
-                else
-                {
-                    UpdationId = null;
-                }
-                bool atLeastOneSupervisorChecked = false;
+                SqlTransaction transaction = null;
 
-                foreach (GridViewRow row in GridView1.Rows)
+                try
                 {
-                    //Label lblCategory = (Label)row.FindControl("lblCategory");
-                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-                    //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
-                    //{
-                    if (chk != null && chk.Checked)
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+
+                    string UpdationId = string.Empty;
+                    if (Session["UpdationId"] != null)
                     {
-                        atLeastOneSupervisorChecked = true;
-                        break;
-                    }
-                }
-
-                if (!atLeastOneSupervisorChecked && btnSubmit.Text != "Update")
-                {
-                    // No Supervisor checkbox is selected
-                    // Add your logic or show a message here
-                    Response.Write("<script>alert('Please select at least one Supervisor.');</script>");
-                    return;
-                }
-                else
-                {
-                    string mobilenumber = txtPhone.Text.Trim();
-                    if (Session["ContractorID"] != null)
-                    {
-                        ContractorID = Session["ContractorID"].ToString();
-
-                        string filePathInfo = "";
-                        //if (ddlAnyWork.SelectedValue == "Yes")
-                        //{
-                        //    try
-                        //    {
-                        //        string FilName = string.Empty;
-                        //        FilName = Path.GetFileName(customFile.PostedFile.FileName);
-                        //        if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
-                        //        {
-                        //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
-                        //        }
-                        //        string ext = customFile.PostedFile.FileName.Split('.')[1];
-                        //        string path = "";
-                        //        path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                        //        string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                        //        string filePathInfo2 = "";
-                        //        filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                        //        customFile.PostedFile.SaveAs(filePathInfo2);
-                        //        filePathInfo = path + fileName;
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
-                        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                        //        return;
-                        //    }
-                        //}
-
-                        if (ddlAnyWork.SelectedValue == "Yes")
-                        {
-                            if (customFile.HasFile && customFile.PostedFile != null)
-                            {
-                                try
-                                {
-                                    string FilName = string.Empty;
-                                    FilName = Path.GetFileName(customFile.PostedFile.FileName);
-
-                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
-                                    {
-                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
-                                    }
-
-                                    string ext = Path.GetExtension(customFile.FileName);
-                                    string path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                                    string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                                    string filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                                    customFile.SaveAs(filePathInfo2);
-                                    filePathInfo = path + fileName;
-                                    // Now, use filePathInfo as needed...
-                                }
-                                catch (Exception ex)
-                                {
-                                    // Handle exceptions
-                                }
-                            }
-                            else
-                            {
-                                // Handle the case where no file is uploaded
-                            }
-                        }
-                        if (ddlApplicantType.SelectedValue == "0" && ddlApplicantType.SelectedValue == "")
-                        {
-                            Response.Write("<script>alert('Please select Applicant Type');</script>");
-                            return;
-                        }
-
-                        hdnId.Value = ContractorID;
-                        CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlApplicantType.SelectedValue, ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
-                            ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(), txtTanNumber.Text.Trim(),
-                            ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
-                            txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
-                            ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
-                            txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
-                            //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
-                            //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
-                            txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
-                          ddlApplicantType.SelectedItem.ToString(), ContractorID);
-
-                        string projectId = CEI.projectId();
-                        if (projectId != "" && projectId != null && UpdationId == null || UpdationId == "")
-                        {
-                            ContractorID = Session["ContractorID"].ToString();
-                            string AssignBy = ContractorID;
-
-                            foreach (GridViewRow row in GridView1.Rows)
-                            {
-                                if ((row.FindControl("CheckBox1") as CheckBox).Checked)
-                                {
-                                    Label lblREID = (Label)row.FindControl("lblREID");
-                                    string Reid = lblREID.Text;
-                                    CEI.SetDataInStaffAssined(Reid, projectId, AssignBy);
-                                }
-                            }
-
-                            TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
-                            TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
-
-                            for (int i = 0; i < typeTextBoxes.Length; i++)
-                            {
-                                string installationType = typeTextBoxes[i].Text;
-                                string installationNoText = noTextBoxes[i].Text;
-
-                                int installationNo;
-
-                                if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
-                                {
-                                    // Save data according to the number of installations
-                                    for (int j = 0; j < installationNo; j++)
-                                    {
-                                        CEI.AddInstallations(projectId, installationType, installationNo);
-                                    }
-                                }
-                            }
-                            CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
-                        }
-                        if (btnSubmit.Text.Trim() == "Submit")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
-                        }
-                        
+                        UpdationId = Session["UpdationId"].ToString();
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx", false);
+                        UpdationId = null;
                     }
-                    Reset();
-                }
-            }
-            catch (Exception ex)
-            {
-                string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-            }
-        }
-        public void GetGridData()
-        {
-            try
-            {
-                string LoginID = string.Empty;
-                LoginID = Session["ContractorID"].ToString();
-                hdnId.Value = LoginID;
+                    bool atLeastOneSupervisorChecked = false;
 
-                DataSet ds = new DataSet();
-
-                ds = CEI.WorkIntimationGridData(LoginID);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
-                }
-                else
-                {
-                    Helpline.Visible = true;
-                }
-            }
-            catch { }
-        }
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-                if (e.Row.RowType == DataControlRowType.Header)
-                {
-                    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
-                    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
-                }
-            }
-            catch { }
-        }
-        protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ddlAnyWork.SelectedValue == "Yes")
-                {
-
-                    hiddenfield.Visible = true;
-                    hiddenfield1.Visible = true;
-                }
-                else
-                {
-                    hiddenfield.Visible = false;
-                    hiddenfield1.Visible = false;
-                }
-            }
-            catch { }
-        }
-        protected void GetassigneddatatoContractor()
-        {
-            try
-            {
-                string ID = string.Empty;
-                ID = Session["id"].ToString();
-                DataTable ds = new DataTable();
-                ds = CEI.GetStaffAssignedToContractor(ID);
-                if (ds.Rows.Count > 0)
-                {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
-                }
-                else
-                {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
-                ds.Dispose();
-            }
-            catch
-            {
-            }
-        }
-        protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ddlPremises.SelectedValue == "11")
-                {
-                    OtherPremises.Visible = true;
-                }
-                else
-                {
-                    OtherPremises.Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                //
-            }
-        }
-        protected void Unnamed2_Click(object sender, EventArgs e)
-        {
-            Reset();
-        }
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Session["id"] = "";
-                Response.Redirect("PreviousProjects.aspx");
-            }
-            catch { }
-        }
-        protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DivOtherDepartment.Visible = false;
-            DivPancard_TanNo.Visible = false;
-            DivPoweUtility.Visible = false;
-            DivPoweUtilityWing.Visible = false;
-            string Value = ddlWorkDetail.SelectedItem.ToString();
-            if (ddlWorkDetail.SelectedValue != "0")
-            {
-                Installation.Visible = true;
-                installationType1.Visible = true;
-                if (string.IsNullOrEmpty(txtinstallationType1.Text))
-                {
-                    txtinstallationType1.Text = Value;
-                }
-                else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
-                {
-                    installationType2.Visible = true;
-                    txtinstallationType2.Text = Value;
-                }
-                else if (string.IsNullOrEmpty(txtinstallationType3.Text))
-                {
-                    installationType3.Visible = true;
-                    txtinstallationType3.Text = Value;
-                }
-                //else if (string.IsNullOrEmpty(txtinstallationType4.Text))
-                //{
-                //    installationType4.Visible = true;
-                //    txtinstallationType4.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType5.Text))
-                //{
-                //    installationType5.Visible = true;
-                //    txtinstallationType5.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType6.Text))
-                //{
-
-                //    installationType6.Visible = true;
-                //    txtinstallationType6.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType7.Text))
-                //{
-                //    installationType7.Visible = true;
-                //    txtinstallationType7.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType8.Text))
-                //{
-                //    installationType8.Visible = true;
-                //    txtinstallationType8.Text = Value;
-                //}
-                if (ddlWorkDetail.SelectedValue != "0")
-                {
-                    try
+                    foreach (GridViewRow row in GridView1.Rows)
                     {
-                        string selectedValue = ddlWorkDetail.SelectedValue;
-                        ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
-                        if (itemToRemove != null)
+                        //Label lblCategory = (Label)row.FindControl("lblCategory");
+                        CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                        //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
+                        //{
+                        if (chk != null && chk.Checked)
                         {
-                            ddlWorkDetail.Items.Remove(itemToRemove);
+                            atLeastOneSupervisorChecked = true;
+                            break;
                         }
                     }
-                    catch (Exception)
+
+                    if (!atLeastOneSupervisorChecked && btnSubmit.Text != "Update")
                     {
+                        // No Supervisor checkbox is selected
+                        // Add your logic or show a message here
+                        Response.Write("<script>alert('Please select at least one Supervisor.');</script>");
+                        return;
                     }
-                    ddlWorkDetail.SelectedValue = "0";
+                    else
+                    {
+                        string mobilenumber = txtPhone.Text.Trim();
+                        if (Session["ContractorID"] != null)
+                        {
+                            ContractorID = Session["ContractorID"].ToString();
+
+                            string filePathInfo = "";
+                            //if (ddlAnyWork.SelectedValue == "Yes")
+                            //{
+                            //    try
+                            //    {
+                            //        string FilName = string.Empty;
+                            //        FilName = Path.GetFileName(customFile.PostedFile.FileName);
+                            //        if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                            //        {
+                            //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                            //        }
+                            //        string ext = customFile.PostedFile.FileName.Split('.')[1];
+                            //        string path = "";
+                            //        path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
+                            //        string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                            //        string filePathInfo2 = "";
+                            //        filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
+                            //        customFile.PostedFile.SaveAs(filePathInfo2);
+                            //        filePathInfo = path + fileName;
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+                            //        string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
+                            //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                            //        return;
+                            //    }
+                            //}
+
+                            if (ddlAnyWork.SelectedValue == "Yes")
+                            {
+                                if (customFile.HasFile && customFile.PostedFile != null)
+                                {
+                                    try
+                                    {
+                                        string FilName = string.Empty;
+                                        FilName = Path.GetFileName(customFile.PostedFile.FileName);
+
+                                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
+                                        {
+                                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
+                                        }
+
+                                        string ext = Path.GetExtension(customFile.FileName);
+                                        string path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
+                                        string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                                        string filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
+                                        customFile.SaveAs(filePathInfo2);
+                                        filePathInfo = path + fileName;
+                                        // Now, use filePathInfo as needed...
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        // Handle exceptions
+                                    }
+                                }
+                                else
+                                {
+                                    // Handle the case where no file is uploaded
+                                }
+                            }
+                            if (ddlApplicantType.SelectedValue == "0" && ddlApplicantType.SelectedValue == "")
+                            {
+                                Response.Write("<script>alert('Please select Applicant Type');</script>");
+                                return;
+                            }
+
+                            hdnId.Value = ContractorID;
+                            CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlApplicantType.SelectedValue, ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
+                                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(), txtTanNumber.Text.Trim(),
+                                ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
+                                txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
+                                ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
+                                txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
+                                //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
+                                //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
+                                txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
+                              ddlApplicantType.SelectedItem.ToString(), ContractorID);
+
+                            string projectId = CEI.projectId();
+                            if (projectId != "" && projectId != null )
+                            {
+                                ContractorID = Session["ContractorID"].ToString();
+                                string AssignBy = ContractorID;                               
+                                foreach (GridViewRow row in GridView1.Rows)
+                                {
+                                    if ((row.FindControl("CheckBox1") as CheckBox).Checked)
+                                    {
+                                        Label lblREID = (Label)row.FindControl("lblREID");
+                                        string Reid = lblREID.Text;
+                                        CEI.SetDataInStaffAssined(Reid, projectId, AssignBy);
+                                    }
+                                }
+
+                                TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
+                                TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
+
+                                for (int i = 0; i < typeTextBoxes.Length; i++)
+                                {
+                                    string installationType = typeTextBoxes[i].Text;
+                                    string installationNoText = noTextBoxes[i].Text;
+
+                                    int installationNo;
+
+                                    if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
+                                    {
+                                        // Save data according to the number of installations
+                                        for (int j = 0; j < installationNo; j++)
+                                        {
+                                            CEI.AddInstallations(projectId, installationType, installationNo);
+                                        }
+                                    }
+                                }
+                                CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
+                            }
+
+                            transaction.Commit();
+                            Reset();
+
+                            if (btnSubmit.Text.Trim() == "Submit")
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
+                            }
+
+                        }
+                        else
+                        {
+                            Response.Redirect("/Login.aspx", false);
+                        }
+                        //Reset();
+                    }
                 }
-
-
-            }
-            if (ddlApplicantType.SelectedValue == "AT001")
-            {
-                DivPancard_TanNo.Visible = true;
-            }
-            else if (ddlApplicantType.SelectedValue == "AT002")
-            {
-                DivPoweUtility.Visible = true;
-                DivPoweUtilityWing.Visible = true;
-            }
-            else if (ddlApplicantType.SelectedValue == "AT003")
-            {
-                DivOtherDepartment.Visible = true;
-            }
-        }
-        protected void btnDelete1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string valueToAddBack = txtinstallationType1.Text;
-
-                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                catch (Exception ex)
                 {
-                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                    ddlWorkDetail.Items.Add(newItem);
-
+                    transaction?.Rollback();
+                    string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                 }
-                installationType1.Visible = false;
-                txtinstallationType1.Text = string.Empty;
-                txtinstallationNo1.Text = string.Empty;
             }
-            catch { }
+
         }
-        protected void btnDelete2_Click(object sender, EventArgs e)
-        {
-            string valueToAddBack = txtinstallationType2.Text;
-
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        public void GetGridData()
             {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
-
-            }
-            installationType2.Visible = false;
-            txtinstallationType2.Text = string.Empty;
-            txtinstallationNo2.Text = string.Empty;
-        }
-        protected void btnDelete3_Click(object sender, EventArgs e)
-        {
-            string valueToAddBack = txtinstallationType3.Text;
-
-            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            {
-                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                ddlWorkDetail.Items.Add(newItem);
-            }
-            installationType3.Visible = false;
-            txtinstallationType3.Text = string.Empty;
-            txtinstallationNo3.Text = string.Empty;
-        }
-        //protected void btnDelete4_Click(object sender, EventArgs e)
-        //{
-        //    string valueToAddBack = txtinstallationType4.Text;
-
-        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-        //    {
-        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-        //        ddlWorkDetail.Items.Add(newItem);
-
-        //    }
-        //    installationType4.Visible = false;
-        //    txtinstallationType4.Text = string.Empty;
-        //    txtinstallationNo4.Text = string.Empty;
-        //}
-        //protected void btnDelete5_Click(object sender, EventArgs e)
-        //{
-        //    string valueToAddBack = txtinstallationType5.Text;
-
-        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-        //    {
-        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-        //        ddlWorkDetail.Items.Add(newItem);
-
-        //    }
-        //    installationType5.Visible = false;
-        //    txtinstallationType5.Text = string.Empty;
-        //    txtinstallationNo5.Text = string.Empty;
-        //}
-        //protected void btnDelete6_Click(object sender, EventArgs e)
-        //{
-        //    string valueToAddBack = txtinstallationType6.Text;
-
-        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-        //    {
-        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-        //        ddlWorkDetail.Items.Add(newItem);
-
-        //    }
-        //    installationType6.Visible = false;
-        //    txtinstallationType6.Text = string.Empty;
-        //    txtinstallationNo6.Text = string.Empty;
-        //}
-        //protected void btnDelete7_Click(object sender, EventArgs e)
-        //{
-        //    string valueToAddBack = txtinstallationType7.Text;
-
-        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-        //    {
-        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-        //        ddlWorkDetail.Items.Add(newItem);
-
-        //    }
-        //    installationType7.Visible = false;
-        //    txtinstallationType7.Text = string.Empty;
-        //    txtinstallationNo7.Text = string.Empty;
-        //}
-        //protected void btnDelete8_Click(object sender, EventArgs e)
-        //{
-        //    string valueToAddBack = txtinstallationType8.Text;
-
-        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-        //    {
-        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-        //        ddlWorkDetail.Items.Add(newItem);
-
-        //    }
-        //    installationType8.Visible = false;
-        //    txtinstallationType8.Text = string.Empty;
-        //    txtinstallationNo8.Text = string.Empty;
-        //}
-        protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                string valueToAddBack = txtinstallationType1.Text;
-                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                try
                 {
-                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                    ddlWorkDetail.Items.Add(newItem);
+                    string LoginID = string.Empty;
+                    LoginID = Session["ContractorID"].ToString();
+                    hdnId.Value = LoginID;
+
+                    DataSet ds = new DataSet();
+
+                    ds = CEI.WorkIntimationGridData(LoginID);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        Helpline.Visible = true;
+                    }
                 }
-                installationType1.Visible = false;
-                txtinstallationType1.Text = string.Empty;
-                txtinstallationNo1.Text = string.Empty;
+                catch { }
             }
-            catch
+            protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
             {
-                // Handle exceptions appropriately
+                try
+                {
+                    if (e.Row.RowType == DataControlRowType.Header)
+                    {
+                        CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
+                        chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                    }
+                }
+                catch { }
             }
-        }
-        protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
-        {
-            try
+            protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
+            {
+                try
+                {               
+                    if (ddlAnyWork.SelectedValue == "Yes")
+                    {                  
+                        hiddenfield.Visible = true;
+                        hiddenfield1.Visible = true;
+                    }
+                    else
+                    {
+                        hiddenfield.Visible = false;
+                        hiddenfield1.Visible = false;
+                    }
+                }
+                catch { }
+            }
+            protected void GetassigneddatatoContractor()
+            {
+                try
+                {
+                    string ID = string.Empty;
+                    ID = Session["id"].ToString();
+                    DataTable ds = new DataTable();
+                    ds = CEI.GetStaffAssignedToContractor(ID);
+                    if (ds.Rows.Count > 0)
+                    {
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                        string script = "alert(\"No Record Found\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    }
+                    ds.Dispose();
+                }
+                catch
+                {
+                }
+            }
+            protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
+            {
+                try
+                {
+                    if (ddlPremises.SelectedValue == "11")
+                    {
+                        OtherPremises.Visible = true;
+                    }
+                    else
+                    {
+                        OtherPremises.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //
+                }
+            }
+            protected void Unnamed2_Click(object sender, EventArgs e)
+            {
+                Reset();
+            }
+            protected void btnBack_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    Session["id"] = "";
+                    Response.Redirect("PreviousProjects.aspx");
+                }
+                catch { }
+            }
+            protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
+            {
+                DivOtherDepartment.Visible = false;
+                DivPancard_TanNo.Visible = false;
+                DivPoweUtility.Visible = false;
+                DivPoweUtilityWing.Visible = false;
+                string Value = ddlWorkDetail.SelectedItem.ToString();
+                if (ddlWorkDetail.SelectedValue != "0")
+                {
+                    Installation.Visible = true;
+                    installationType1.Visible = true;
+                    if (string.IsNullOrEmpty(txtinstallationType1.Text))
+                    {
+                        txtinstallationType1.Text = Value;
+                    }
+                    else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
+                    {
+                        installationType2.Visible = true;
+                        txtinstallationType2.Text = Value;
+                    }
+                    else if (string.IsNullOrEmpty(txtinstallationType3.Text))
+                    {
+                        installationType3.Visible = true;
+                        txtinstallationType3.Text = Value;
+                    }
+                    //else if (string.IsNullOrEmpty(txtinstallationType4.Text))
+                    //{
+                    //    installationType4.Visible = true;
+                    //    txtinstallationType4.Text = Value;
+                    //}
+                    //else if (string.IsNullOrEmpty(txtinstallationType5.Text))
+                    //{
+                    //    installationType5.Visible = true;
+                    //    txtinstallationType5.Text = Value;
+                    //}
+                    //else if (string.IsNullOrEmpty(txtinstallationType6.Text))
+                    //{
+
+                    //    installationType6.Visible = true;
+                    //    txtinstallationType6.Text = Value;
+                    //}
+                    //else if (string.IsNullOrEmpty(txtinstallationType7.Text))
+                    //{
+                    //    installationType7.Visible = true;
+                    //    txtinstallationType7.Text = Value;
+                    //}
+                    //else if (string.IsNullOrEmpty(txtinstallationType8.Text))
+                    //{
+                    //    installationType8.Visible = true;
+                    //    txtinstallationType8.Text = Value;
+                    //}
+                    if (ddlWorkDetail.SelectedValue != "0")
+                    {
+                        try
+                        {
+                            string selectedValue = ddlWorkDetail.SelectedValue;
+                            ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
+                            if (itemToRemove != null)
+                            {
+                                ddlWorkDetail.Items.Remove(itemToRemove);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
+                        ddlWorkDetail.SelectedValue = "0";
+                    }
+
+
+                }
+                if (ddlApplicantType.SelectedValue == "AT001")
+                {
+                    DivPancard_TanNo.Visible = true;
+                }
+                else if (ddlApplicantType.SelectedValue == "AT002")
+                {
+                    DivPoweUtility.Visible = true;
+                    DivPoweUtilityWing.Visible = true;
+                }
+                else if (ddlApplicantType.SelectedValue == "AT003")
+                {
+                    DivOtherDepartment.Visible = true;
+                }
+            }
+            protected void btnDelete1_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    string valueToAddBack = txtinstallationType1.Text;
+
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+
+                    }
+                    installationType1.Visible = false;
+                    txtinstallationType1.Text = string.Empty;
+                    txtinstallationNo1.Text = string.Empty;
+                }
+                catch { }
+            }
+            protected void btnDelete2_Click(object sender, EventArgs e)
             {
                 string valueToAddBack = txtinstallationType2.Text;
 
@@ -1000,21 +894,16 @@ namespace CEIHaryana.Contractor
                 {
                     ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
                     ddlWorkDetail.Items.Add(newItem);
+
                 }
                 installationType2.Visible = false;
                 txtinstallationType2.Text = string.Empty;
                 txtinstallationNo2.Text = string.Empty;
             }
-            catch
-            {
-                // Handle exceptions appropriately
-            }
-        }
-        protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
-        {
-            try
+            protected void btnDelete3_Click(object sender, EventArgs e)
             {
                 string valueToAddBack = txtinstallationType3.Text;
+
                 if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
                 {
                     ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
@@ -1024,28 +913,153 @@ namespace CEIHaryana.Contractor
                 txtinstallationType3.Text = string.Empty;
                 txtinstallationNo3.Text = string.Empty;
             }
-            catch { }
-        }
+            #region installationtype comment
+            //protected void btnDelete4_Click(object sender, EventArgs e)
+            //{
+            //    string valueToAddBack = txtinstallationType4.Text;
 
-        protected void ddlVoltageLevel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
+            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            //    {
+            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+            //        ddlWorkDetail.Items.Add(newItem);
+
+            //    }
+            //    installationType4.Visible = false;
+            //    txtinstallationType4.Text = string.Empty;
+            //    txtinstallationNo4.Text = string.Empty;
+            //}
+            //protected void btnDelete5_Click(object sender, EventArgs e)
+            //{
+            //    string valueToAddBack = txtinstallationType5.Text;
+
+            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            //    {
+            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+            //        ddlWorkDetail.Items.Add(newItem);
+
+            //    }
+            //    installationType5.Visible = false;
+            //    txtinstallationType5.Text = string.Empty;
+            //    txtinstallationNo5.Text = string.Empty;
+            //}
+            //protected void btnDelete6_Click(object sender, EventArgs e)
+            //{
+            //    string valueToAddBack = txtinstallationType6.Text;
+
+            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            //    {
+            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+            //        ddlWorkDetail.Items.Add(newItem);
+
+            //    }
+            //    installationType6.Visible = false;
+            //    txtinstallationType6.Text = string.Empty;
+            //    txtinstallationNo6.Text = string.Empty;
+            //}
+            //protected void btnDelete7_Click(object sender, EventArgs e)
+            //{
+            //    string valueToAddBack = txtinstallationType7.Text;
+
+            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            //    {
+            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+            //        ddlWorkDetail.Items.Add(newItem);
+
+            //    }
+            //    installationType7.Visible = false;
+            //    txtinstallationType7.Text = string.Empty;
+            //    txtinstallationNo7.Text = string.Empty;
+            //}
+            //protected void btnDelete8_Click(object sender, EventArgs e)
+            //{
+            //    string valueToAddBack = txtinstallationType8.Text;
+
+            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            //    {
+            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+            //        ddlWorkDetail.Items.Add(newItem);
+
+            //    }
+            //    installationType8.Visible = false;
+            //    txtinstallationType8.Text = string.Empty;
+            //    txtinstallationNo8.Text = string.Empty;
+            //}
+            #endregion
+            protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
             {
-                installationType2.Visible = true;
-                if (ddlVoltageLevel.SelectedValue == "650V")
+                try
                 {
-                    installationType2.Visible = false;
+                    string valueToAddBack = txtinstallationType1.Text;
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType1.Visible = false;
+                    txtinstallationType1.Text = string.Empty;
+                    txtinstallationNo1.Text = string.Empty;
                 }
-                else
+                catch
+                {
+                    // Handle exceptions appropriately
+                }
+            }
+            protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
+            {
+                try
+                {
+                    string valueToAddBack = txtinstallationType2.Text;
+
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType2.Visible = false;
+                    txtinstallationType2.Text = string.Empty;
+                    txtinstallationNo2.Text = string.Empty;
+                }
+                catch
+                {
+                    // Handle exceptions appropriately
+                }
+            }
+            protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
+            {
+                try
+                {
+                    string valueToAddBack = txtinstallationType3.Text;
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType3.Visible = false;
+                    txtinstallationType3.Text = string.Empty;
+                    txtinstallationNo3.Text = string.Empty;
+                }
+                catch { }
+            }
+
+            protected void ddlVoltageLevel_SelectedIndexChanged(object sender, EventArgs e)
+            {
+                try
                 {
                     installationType2.Visible = true;
+                    if (ddlVoltageLevel.SelectedValue == "650V")
+                    {
+                        installationType2.Visible = false;
+                    }
+                    else
+                    {
+                        installationType2.Visible = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //
                 }
             }
-            catch (Exception ex)
-            {
-                //
-            }
-        }
 
+        }
     }
-}

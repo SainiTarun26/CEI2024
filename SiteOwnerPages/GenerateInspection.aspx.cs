@@ -577,6 +577,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Session["PendingPaymentId"] = SplitResultPartsArray[0];
                     UploadCheckListDocInCollection(SplitResultPartsArray[2], para_CreatedByy, SplitResultPartsArray[1], SplitResultPartsArray[2], SplitResultPartsArray[3]);
 
+                    
                     foreach (var file in uploadedFiles)
                     {
                         string query = "INSERT INTO tbl_InspectionAttachment (InspectionId,InstallationType,DocumentID,DocumentName,fileName, DocumentPath,CreatedDate,CreatedBy,Status) VALUES (@InspectionId,@InstallationType,@DocumentID,@DocSaveName,@FileName, @FilePath,getdate(),@CreatedBy,1)";
@@ -584,7 +585,7 @@ namespace CEIHaryana.SiteOwnerPages
                         using (SqlCommand command = new SqlCommand(query, connection, transaction))
                         {
                             command.Parameters.AddWithValue("@InspectionId", SplitResultPartsArray[0]);
-                            command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+                            command.Parameters.AddWithValue("@InstallationType", null); //file.Installtypes
                             command.Parameters.AddWithValue("@DocumentID", file.DocumentID);
                             command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
                             command.Parameters.AddWithValue("@FileName", file.FileName);
@@ -596,7 +597,7 @@ namespace CEIHaryana.SiteOwnerPages
                     transaction.Commit();
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
-                    //Session["ID"] = id.ToString();
+                    Session["PrintInspectionID"] = id.ToString();
                     //Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx", false);
                     
                 }
@@ -625,7 +626,6 @@ namespace CEIHaryana.SiteOwnerPages
                         //Commented below to raise errors as per backend
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill All details carefully')", true);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-
                     }
                 }
                 finally

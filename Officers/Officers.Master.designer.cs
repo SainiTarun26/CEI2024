@@ -51,6 +51,24 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// LoginType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LoginType;
+
+        /// <summary>
+        /// PersonDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PersonDetails;
+
+        /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>

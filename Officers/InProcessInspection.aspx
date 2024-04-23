@@ -129,8 +129,7 @@
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+           
 
                
             <div class="row">
@@ -223,6 +222,8 @@
                     <div class="col-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
+             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
             <div class="row">
                 
                 <div class="col-4" id="ApprovalRequired" runat="server" visible="true">

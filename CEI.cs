@@ -158,7 +158,7 @@ namespace CEI_PRoject
             //AdvNo = (string)ViewState["AdvNo"];
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = sqlProc;
-            cmd.Connection = con;
+            cmd.Connection = con;             
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
             cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantTypeCode);     //
@@ -1906,7 +1906,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("haryanacei@gmail.com");
-            mailMessage.To.Add(Email); mailMessage.Subject = "Your Site Owner ID and Password";
+            mailMessage.To.Add(Email); mailMessage.Subject = "OTP For Test Report";
             string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to CEI Department, HRY.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
             mailMessage.Body = body;
 
@@ -2893,7 +2893,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("haryanacei@gmail.com");
-            mailMessage.To.Add(Email); mailMessage.Subject = "Contractor ID and Password";
+            mailMessage.To.Add(Email); mailMessage.Subject = "Contractor Login OTP";
             string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to the Contractor.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
             mailMessage.Body = body;
 
@@ -3510,6 +3510,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachmentsinInspectionForm", InspectionId);
         }
+        public DataTable RequestPendingDivisionForOfficers(string UserID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetRecordsAccordingToDaysForOfficers", UserID);
+        }
+
     }
 }
 

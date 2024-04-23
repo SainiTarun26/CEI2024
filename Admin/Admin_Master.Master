@@ -17,6 +17,17 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
+        div#PageDetails {
+            margin: 15px 18px 15px 18px;
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-bottom: -25px;
+            background: #639fc2;
+            color: white;
+            font-weight: 600;
+        }
+
         svg {
             margin-right: 10px;
         }
@@ -425,6 +436,17 @@
                         </ul>
                     </nav>
                     <div class="main-panel">
+                        <div class="card" id="PageDetails">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <asp:Label ID="LoginType" runat="server" Text="Admin"></asp:Label><%--<span id="Slash">></span>--%>
+                                    <%--  <asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
+                                </div>
+                                <div class="col-sm-6" style="text-align: end;">
+                                    <asp:Label ID="PersonDetails" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                        </div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
