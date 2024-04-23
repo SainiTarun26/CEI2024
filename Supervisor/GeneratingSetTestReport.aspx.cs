@@ -699,10 +699,11 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 DataSaved.Visible = false;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
         public void Reset()
@@ -1043,6 +1044,6 @@ namespace CEIHaryana.Supervisor
 
 
         }
-      
+
     }
 }

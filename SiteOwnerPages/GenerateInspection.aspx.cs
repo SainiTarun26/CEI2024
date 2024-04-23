@@ -519,7 +519,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     {
 
-                        if (fileUpload.PostedFile.ContentLength <= 2097152)
+                        if (fileUpload.PostedFile.ContentLength <= 1048576)
                         {
                             string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
 
@@ -585,7 +585,7 @@ namespace CEIHaryana.SiteOwnerPages
                         using (SqlCommand command = new SqlCommand(query, connection, transaction))
                         {
                             command.Parameters.AddWithValue("@InspectionId", SplitResultPartsArray[0]);
-                            command.Parameters.AddWithValue("@InstallationType", null); //file.Installtypes
+                            command.Parameters.AddWithValue("@InstallationType", file.Installtypes); 
                             command.Parameters.AddWithValue("@DocumentID", file.DocumentID);
                             command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
                             command.Parameters.AddWithValue("@FileName", file.FileName);

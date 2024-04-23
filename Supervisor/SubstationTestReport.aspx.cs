@@ -1131,6 +1131,8 @@ namespace CEIHaryana.Supervisor
             {
 
                 DataSaved.Visible = false;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
 
         }

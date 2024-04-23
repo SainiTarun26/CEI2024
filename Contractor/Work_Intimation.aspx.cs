@@ -1,6 +1,7 @@
 ﻿using CEI_PRoject;
 using iTextSharp.text.pdf;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,6 +19,7 @@ namespace CEIHaryana.Contractor
         CEI CEI = new CEI();
         string ContractorID = string.Empty;
         string REID = string.Empty;
+        List<string> SelectedSupervisor = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -47,7 +49,10 @@ namespace CEIHaryana.Contractor
                         else
                         {
                             GetDetails();
+                            GetGridData();
                             GetassigneddatatoContractor();
+                            CheckedPriviousSupervisor();
+                            GridView1.Columns[0].Visible = true;
                             Session["UpdationId"] = Session["id"];
                             Session["id"] = null;
                         }
@@ -487,7 +492,6 @@ namespace CEIHaryana.Contractor
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
                 SqlTransaction transaction = null;
-
                 try
                 {
                     connection.Open();
@@ -610,10 +614,10 @@ namespace CEIHaryana.Contractor
                               ddlApplicantType.SelectedItem.ToString(), ContractorID);
 
                             string projectId = CEI.projectId();
-                            if (projectId != "" && projectId != null )
+                            if (projectId != "" && projectId != null)
                             {
                                 ContractorID = Session["ContractorID"].ToString();
-                                string AssignBy = ContractorID;                               
+                                string AssignBy = ContractorID;
                                 foreach (GridViewRow row in GridView1.Rows)
                                 {
                                     if ((row.FindControl("CheckBox1") as CheckBox).Checked)
@@ -676,219 +680,207 @@ namespace CEIHaryana.Contractor
 
         }
         public void GetGridData()
+        {
+            try
             {
-                try
-                {
-                    string LoginID = string.Empty;
-                    LoginID = Session["ContractorID"].ToString();
-                    hdnId.Value = LoginID;
+                string LoginID = string.Empty;
+                LoginID = Session["ContractorID"].ToString();
+                hdnId.Value = LoginID;
 
-                    DataSet ds = new DataSet();
+                DataSet ds = new DataSet();
 
-                    ds = CEI.WorkIntimationGridData(LoginID);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        GridView1.DataSource = ds;
-                        GridView1.DataBind();
-                    }
-                    else
-                    {
-                        Helpline.Visible = true;
-                    }
-                }
-                catch { }
-            }
-            protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-            {
-                try
+                ds = CEI.WorkIntimationGridData(LoginID);
+                if (ds.Tables[0].Rows.Count > 0)
                 {
-                    if (e.Row.RowType == DataControlRowType.Header)
-                    {
-                        CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
-                        chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
-                    }
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
                 }
-                catch { }
-            }
-            protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                try
-                {               
-                    if (ddlAnyWork.SelectedValue == "Yes")
-                    {                  
-                        hiddenfield.Visible = true;
-                        hiddenfield1.Visible = true;
-                    }
-                    else
-                    {
-                        hiddenfield.Visible = false;
-                        hiddenfield1.Visible = false;
-                    }
-                }
-                catch { }
-            }
-            protected void GetassigneddatatoContractor()
-            {
-                try
+                else
                 {
-                    string ID = string.Empty;
-                    ID = Session["id"].ToString();
-                    DataTable ds = new DataTable();
-                    ds = CEI.GetStaffAssignedToContractor(ID);
-                    if (ds.Rows.Count > 0)
-                    {
-                        GridView1.DataSource = ds;
-                        GridView1.DataBind();
-                    }
-                    else
-                    {
-                        GridView1.DataSource = null;
-                        GridView1.DataBind();
-                        string script = "alert(\"No Record Found\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    }
-                    ds.Dispose();
-                }
-                catch
-                {
+                    Helpline.Visible = true;
                 }
             }
-            protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
+            catch { }
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
             {
-                try
+                if (e.Row.RowType == DataControlRowType.Header)
                 {
-                    if (ddlPremises.SelectedValue == "11")
+                    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
+                    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                }
+            }
+            catch { }
+        }
+        protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlAnyWork.SelectedValue == "Yes")
+                {
+                    hiddenfield.Visible = true;
+                    hiddenfield1.Visible = true;
+                }
+                else
+                {
+                    hiddenfield.Visible = false;
+                    hiddenfield1.Visible = false;
+                }
+            }
+            catch { }
+        }
+        protected void GetassigneddatatoContractor()
+        {
+            try
+            {
+                string ID = string.Empty;
+                ID = Session["id"].ToString();
+                DataTable ds = new DataTable();
+                ds = CEI.GetStaffAssignedToContractor(ID);
+                if (ds.Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Rows)
                     {
-                        OtherPremises.Visible = true;
-                    }
-                    else
-                    {
-                        OtherPremises.Visible = false;
+                        string SupervisorREID = row["StaffAssined"].ToString();
+                        SelectedSupervisor.Add(SupervisorREID);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    //
+                    //GridView1.DataSource = null;
+                    //GridView1.DataBind();
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlPremises.SelectedValue == "11")
+                {
+                    OtherPremises.Visible = true;
+                }
+                else
+                {
+                    OtherPremises.Visible = false;
                 }
             }
-            protected void Unnamed2_Click(object sender, EventArgs e)
+            catch (Exception ex)
             {
-                Reset();
+                //
             }
-            protected void btnBack_Click(object sender, EventArgs e)
+        }
+        protected void Unnamed2_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
+                Session["id"] = "";
+                Response.Redirect("PreviousProjects.aspx");
+            }
+            catch { }
+        }
+        protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DivOtherDepartment.Visible = false;
+            DivPancard_TanNo.Visible = false;
+            DivPoweUtility.Visible = false;
+            DivPoweUtilityWing.Visible = false;
+            string Value = ddlWorkDetail.SelectedItem.ToString();
+            if (ddlWorkDetail.SelectedValue != "0")
+            {
+                Installation.Visible = true;
+                installationType1.Visible = true;
+                if (string.IsNullOrEmpty(txtinstallationType1.Text))
                 {
-                    Session["id"] = "";
-                    Response.Redirect("PreviousProjects.aspx");
+                    txtinstallationType1.Text = Value;
                 }
-                catch { }
-            }
-            protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                DivOtherDepartment.Visible = false;
-                DivPancard_TanNo.Visible = false;
-                DivPoweUtility.Visible = false;
-                DivPoweUtilityWing.Visible = false;
-                string Value = ddlWorkDetail.SelectedItem.ToString();
+                else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
+                {
+                    installationType2.Visible = true;
+                    txtinstallationType2.Text = Value;
+                }
+                else if (string.IsNullOrEmpty(txtinstallationType3.Text))
+                {
+                    installationType3.Visible = true;
+                    txtinstallationType3.Text = Value;
+                }
+                //else if (string.IsNullOrEmpty(txtinstallationType4.Text))
+                //{
+                //    installationType4.Visible = true;
+                //    txtinstallationType4.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType5.Text))
+                //{
+                //    installationType5.Visible = true;
+                //    txtinstallationType5.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType6.Text))
+                //{
+
+                //    installationType6.Visible = true;
+                //    txtinstallationType6.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType7.Text))
+                //{
+                //    installationType7.Visible = true;
+                //    txtinstallationType7.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType8.Text))
+                //{
+                //    installationType8.Visible = true;
+                //    txtinstallationType8.Text = Value;
+                //}
                 if (ddlWorkDetail.SelectedValue != "0")
                 {
-                    Installation.Visible = true;
-                    installationType1.Visible = true;
-                    if (string.IsNullOrEmpty(txtinstallationType1.Text))
+                    try
                     {
-                        txtinstallationType1.Text = Value;
-                    }
-                    else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
-                    {
-                        installationType2.Visible = true;
-                        txtinstallationType2.Text = Value;
-                    }
-                    else if (string.IsNullOrEmpty(txtinstallationType3.Text))
-                    {
-                        installationType3.Visible = true;
-                        txtinstallationType3.Text = Value;
-                    }
-                    //else if (string.IsNullOrEmpty(txtinstallationType4.Text))
-                    //{
-                    //    installationType4.Visible = true;
-                    //    txtinstallationType4.Text = Value;
-                    //}
-                    //else if (string.IsNullOrEmpty(txtinstallationType5.Text))
-                    //{
-                    //    installationType5.Visible = true;
-                    //    txtinstallationType5.Text = Value;
-                    //}
-                    //else if (string.IsNullOrEmpty(txtinstallationType6.Text))
-                    //{
-
-                    //    installationType6.Visible = true;
-                    //    txtinstallationType6.Text = Value;
-                    //}
-                    //else if (string.IsNullOrEmpty(txtinstallationType7.Text))
-                    //{
-                    //    installationType7.Visible = true;
-                    //    txtinstallationType7.Text = Value;
-                    //}
-                    //else if (string.IsNullOrEmpty(txtinstallationType8.Text))
-                    //{
-                    //    installationType8.Visible = true;
-                    //    txtinstallationType8.Text = Value;
-                    //}
-                    if (ddlWorkDetail.SelectedValue != "0")
-                    {
-                        try
+                        string selectedValue = ddlWorkDetail.SelectedValue;
+                        ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
+                        if (itemToRemove != null)
                         {
-                            string selectedValue = ddlWorkDetail.SelectedValue;
-                            ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
-                            if (itemToRemove != null)
-                            {
-                                ddlWorkDetail.Items.Remove(itemToRemove);
-                            }
+                            ddlWorkDetail.Items.Remove(itemToRemove);
                         }
-                        catch (Exception)
-                        {
-                        }
-                        ddlWorkDetail.SelectedValue = "0";
                     }
-
-
-                }
-                if (ddlApplicantType.SelectedValue == "AT001")
-                {
-                    DivPancard_TanNo.Visible = true;
-                }
-                else if (ddlApplicantType.SelectedValue == "AT002")
-                {
-                    DivPoweUtility.Visible = true;
-                    DivPoweUtilityWing.Visible = true;
-                }
-                else if (ddlApplicantType.SelectedValue == "AT003")
-                {
-                    DivOtherDepartment.Visible = true;
-                }
-            }
-            protected void btnDelete1_Click(object sender, EventArgs e)
-            {
-                try
-                {
-                    string valueToAddBack = txtinstallationType1.Text;
-
-                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    catch (Exception)
                     {
-                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                        ddlWorkDetail.Items.Add(newItem);
-
                     }
-                    installationType1.Visible = false;
-                    txtinstallationType1.Text = string.Empty;
-                    txtinstallationNo1.Text = string.Empty;
+                    ddlWorkDetail.SelectedValue = "0";
                 }
-                catch { }
+
+
             }
-            protected void btnDelete2_Click(object sender, EventArgs e)
+            if (ddlApplicantType.SelectedValue == "AT001")
             {
-                string valueToAddBack = txtinstallationType2.Text;
+                DivPancard_TanNo.Visible = true;
+            }
+            else if (ddlApplicantType.SelectedValue == "AT002")
+            {
+                DivPoweUtility.Visible = true;
+                DivPoweUtilityWing.Visible = true;
+            }
+            else if (ddlApplicantType.SelectedValue == "AT003")
+            {
+                DivOtherDepartment.Visible = true;
+            }
+        }
+        protected void btnDelete1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType1.Text;
 
                 if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
                 {
@@ -896,14 +888,155 @@ namespace CEIHaryana.Contractor
                     ddlWorkDetail.Items.Add(newItem);
 
                 }
+                installationType1.Visible = false;
+                txtinstallationType1.Text = string.Empty;
+                txtinstallationNo1.Text = string.Empty;
+            }
+            catch { }
+        }
+        protected void btnDelete2_Click(object sender, EventArgs e)
+        {
+            string valueToAddBack = txtinstallationType2.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+
+            }
+            installationType2.Visible = false;
+            txtinstallationType2.Text = string.Empty;
+            txtinstallationNo2.Text = string.Empty;
+        }
+        protected void btnDelete3_Click(object sender, EventArgs e)
+        {
+            string valueToAddBack = txtinstallationType3.Text;
+
+            if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+            {
+                ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                ddlWorkDetail.Items.Add(newItem);
+            }
+            installationType3.Visible = false;
+            txtinstallationType3.Text = string.Empty;
+            txtinstallationNo3.Text = string.Empty;
+        }
+        #region installationtype comment
+        //protected void btnDelete4_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType4.Text;
+
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
+
+        //    }
+        //    installationType4.Visible = false;
+        //    txtinstallationType4.Text = string.Empty;
+        //    txtinstallationNo4.Text = string.Empty;
+        //}
+        //protected void btnDelete5_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType5.Text;
+
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
+
+        //    }
+        //    installationType5.Visible = false;
+        //    txtinstallationType5.Text = string.Empty;
+        //    txtinstallationNo5.Text = string.Empty;
+        //}
+        //protected void btnDelete6_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType6.Text;
+
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
+
+        //    }
+        //    installationType6.Visible = false;
+        //    txtinstallationType6.Text = string.Empty;
+        //    txtinstallationNo6.Text = string.Empty;
+        //}
+        //protected void btnDelete7_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType7.Text;
+
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
+
+        //    }
+        //    installationType7.Visible = false;
+        //    txtinstallationType7.Text = string.Empty;
+        //    txtinstallationNo7.Text = string.Empty;
+        //}
+        //protected void btnDelete8_Click(object sender, EventArgs e)
+        //{
+        //    string valueToAddBack = txtinstallationType8.Text;
+
+        //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+        //    {
+        //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+        //        ddlWorkDetail.Items.Add(newItem);
+
+        //    }
+        //    installationType8.Visible = false;
+        //    txtinstallationType8.Text = string.Empty;
+        //    txtinstallationNo8.Text = string.Empty;
+        //}
+        #endregion
+        protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType1.Text;
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+                installationType1.Visible = false;
+                txtinstallationType1.Text = string.Empty;
+                txtinstallationNo1.Text = string.Empty;
+            }
+            catch
+            {
+                // Handle exceptions appropriately
+            }
+        }
+        protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType2.Text;
+
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
                 installationType2.Visible = false;
                 txtinstallationType2.Text = string.Empty;
                 txtinstallationNo2.Text = string.Empty;
             }
-            protected void btnDelete3_Click(object sender, EventArgs e)
+            catch
+            {
+                // Handle exceptions appropriately
+            }
+        }
+        protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
+        {
+            try
             {
                 string valueToAddBack = txtinstallationType3.Text;
-
                 if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
                 {
                     ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
@@ -913,153 +1046,46 @@ namespace CEIHaryana.Contractor
                 txtinstallationType3.Text = string.Empty;
                 txtinstallationNo3.Text = string.Empty;
             }
-            #region installationtype comment
-            //protected void btnDelete4_Click(object sender, EventArgs e)
-            //{
-            //    string valueToAddBack = txtinstallationType4.Text;
-
-            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            //    {
-            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-            //        ddlWorkDetail.Items.Add(newItem);
-
-            //    }
-            //    installationType4.Visible = false;
-            //    txtinstallationType4.Text = string.Empty;
-            //    txtinstallationNo4.Text = string.Empty;
-            //}
-            //protected void btnDelete5_Click(object sender, EventArgs e)
-            //{
-            //    string valueToAddBack = txtinstallationType5.Text;
-
-            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            //    {
-            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-            //        ddlWorkDetail.Items.Add(newItem);
-
-            //    }
-            //    installationType5.Visible = false;
-            //    txtinstallationType5.Text = string.Empty;
-            //    txtinstallationNo5.Text = string.Empty;
-            //}
-            //protected void btnDelete6_Click(object sender, EventArgs e)
-            //{
-            //    string valueToAddBack = txtinstallationType6.Text;
-
-            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            //    {
-            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-            //        ddlWorkDetail.Items.Add(newItem);
-
-            //    }
-            //    installationType6.Visible = false;
-            //    txtinstallationType6.Text = string.Empty;
-            //    txtinstallationNo6.Text = string.Empty;
-            //}
-            //protected void btnDelete7_Click(object sender, EventArgs e)
-            //{
-            //    string valueToAddBack = txtinstallationType7.Text;
-
-            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            //    {
-            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-            //        ddlWorkDetail.Items.Add(newItem);
-
-            //    }
-            //    installationType7.Visible = false;
-            //    txtinstallationType7.Text = string.Empty;
-            //    txtinstallationNo7.Text = string.Empty;
-            //}
-            //protected void btnDelete8_Click(object sender, EventArgs e)
-            //{
-            //    string valueToAddBack = txtinstallationType8.Text;
-
-            //    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-            //    {
-            //        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-            //        ddlWorkDetail.Items.Add(newItem);
-
-            //    }
-            //    installationType8.Visible = false;
-            //    txtinstallationType8.Text = string.Empty;
-            //    txtinstallationNo8.Text = string.Empty;
-            //}
-            #endregion
-            protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
+            catch { }
+        }
+        protected void ddlVoltageLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
             {
-                try
+                installationType2.Visible = true;
+                if (ddlVoltageLevel.SelectedValue == "650V")
                 {
-                    string valueToAddBack = txtinstallationType1.Text;
-                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-                    {
-                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                        ddlWorkDetail.Items.Add(newItem);
-                    }
-                    installationType1.Visible = false;
-                    txtinstallationType1.Text = string.Empty;
-                    txtinstallationNo1.Text = string.Empty;
-                }
-                catch
-                {
-                    // Handle exceptions appropriately
-                }
-            }
-            protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
-            {
-                try
-                {
-                    string valueToAddBack = txtinstallationType2.Text;
-
-                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-                    {
-                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                        ddlWorkDetail.Items.Add(newItem);
-                    }
                     installationType2.Visible = false;
-                    txtinstallationType2.Text = string.Empty;
-                    txtinstallationNo2.Text = string.Empty;
                 }
-                catch
-                {
-                    // Handle exceptions appropriately
-                }
-            }
-            protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
-            {
-                try
-                {
-                    string valueToAddBack = txtinstallationType3.Text;
-                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-                    {
-                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                        ddlWorkDetail.Items.Add(newItem);
-                    }
-                    installationType3.Visible = false;
-                    txtinstallationType3.Text = string.Empty;
-                    txtinstallationNo3.Text = string.Empty;
-                }
-                catch { }
-            }
-
-            protected void ddlVoltageLevel_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                try
+                else
                 {
                     installationType2.Visible = true;
-                    if (ddlVoltageLevel.SelectedValue == "650V")
-                    {
-                        installationType2.Visible = false;
-                    }
-                    else
-                    {
-                        installationType2.Visible = true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //
                 }
             }
-
+            catch (Exception ex)
+            {
+                //
+            }
         }
+        private void CheckedPriviousSupervisor()
+        {
+            if (SelectedSupervisor != null)
+            {
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    CheckBox checkSelect = (CheckBox)row.FindControl("CheckBox1");
+                    Label lblREID = (Label)row.FindControl("lblREID");
+                    if(lblREID != null)
+                    {
+                        string REID = lblREID.Text;
+                        if(SelectedSupervisor.Contains(REID))
+                        {
+                            checkSelect.Checked = true;
+                        }
+                    }
+                }
+            }
+        }
+
     }
+}
