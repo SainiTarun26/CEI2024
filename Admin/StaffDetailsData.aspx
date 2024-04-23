@@ -175,7 +175,7 @@
                         </div>
                     </div>
                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
-     OnRowCommand="GridView1_RowCommand" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+     OnRowCommand="GridView1_RowCommand" PageSize="50" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
      <PagerStyle CssClass="pagination-ys" />
      <Columns>
          <asp:TemplateField HeaderText="Id" Visible="False">

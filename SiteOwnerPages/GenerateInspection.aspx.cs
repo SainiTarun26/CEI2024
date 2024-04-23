@@ -595,9 +595,10 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                     transaction.Commit();
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
                     Session["PrintInspectionID"] = id.ToString();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
+                   
                     //Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx", false);
                     
                 }

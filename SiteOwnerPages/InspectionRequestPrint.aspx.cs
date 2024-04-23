@@ -58,11 +58,11 @@ namespace CEIHaryana.SiteOwnerPages
 
         private void GetDetailstoPrint()
         {
-            ID = Session["ID"].ToString();
+            ID = Session["PrintInspectionID"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.DetailstoPrintFormInspectionDetails(int.Parse(ID));
             txtInstallationType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-            //txtReqNumber.Text = ds.Tables[0].Rows[0][""].ToString();
+            txtReqNumber.Text = Session["PrintInspectionID"].ToString();
             txtName.Text = ds.Tables[0].Rows[0]["CreatedBy"].ToString();
             txtIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
             txtPermisestype.Text = ds.Tables[0].Rows[0]["PremisesTypes"].ToString();
