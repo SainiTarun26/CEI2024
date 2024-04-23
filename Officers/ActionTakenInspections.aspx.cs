@@ -27,7 +27,8 @@ namespace CEIHaryana.Officers
 
                     }
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -41,9 +42,18 @@ namespace CEIHaryana.Officers
             LoginID = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.ActionTaken(LoginID);
-
-            GridView1.DataSource = ds;
-            GridView1.DataBind();
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
 
             ds.Dispose();
         }

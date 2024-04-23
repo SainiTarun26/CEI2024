@@ -611,7 +611,7 @@ namespace CEIHaryana.Contractor
                                 //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
                                 //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
                                 txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
-                              ddlApplicantType.SelectedItem.ToString(), ContractorID);
+                              ddlApplicantType.SelectedItem.ToString(), ContractorID, transaction);
 
                             string projectId = CEI.projectId();
                             if (projectId != "" && projectId != null)
@@ -673,10 +673,17 @@ namespace CEIHaryana.Contractor
                 catch (Exception ex)
                 {
                     transaction?.Rollback();
+
                     string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                 }
+                finally
+                {
+                    transaction?.Dispose();
+                    connection.Close();
+                }
             }
+        
 
         }
         public void GetGridData()

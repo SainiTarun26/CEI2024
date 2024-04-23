@@ -39,10 +39,17 @@ namespace CEIHaryana.Officers
                 LoginID = Session["StaffID"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.StaffLogin(LoginID);
-                if(ds.Tables.Count > 0)
+                if(ds.Tables.Count > 0 && ds != null)
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }
@@ -78,7 +85,7 @@ namespace CEIHaryana.Officers
             }
             catch(Exception ex) 
             { 
-            //
+            //throw
             }
         }
     }

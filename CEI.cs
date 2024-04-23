@@ -139,26 +139,17 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing,
-                     string TanNumber, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-         string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-         string TypeOfInstallation3, string NumberOfInstallation3,
-         //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-         //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-         string Email, string WorkStartDate, string CompletionDate,
-         string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy)
-        {
-            SqlConnection con = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
-            string sqlProc = "sp_WorkIntimationRegistration";
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            //AdvNo = (string)ViewState["AdvNo"];
+                string TanNumber, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+    string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+    string TypeOfInstallation3, string NumberOfInstallation3,
+    //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+    //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+    string Email, string WorkStartDate, string CompletionDate,
+    string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy,
+       SqlTransaction transaction)
+        {               
+            SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = sqlProc;
-            cmd.Connection = con;             
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
             cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantTypeCode);     //
@@ -1629,7 +1620,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
       string InvoiceOfTransferOfPersonalSubstation, string ManufacturingTestCertificateOfTransformer,
       string SingleLineDiagramofTransformer, string InvoiceoffireExtinguisheratSite, string InvoiceOfDGSetOfGeneratingSet,
       string ManufacturingCerificateOfDGSet, string InvoiceOfExptinguisherOrApparatusAtsite,
-      string StructureStabilityResolvedByAuthorizedEngineer, string District, string Division,string PaymentMode, string DateOfSubmission, string CreatedBy,
+      string StructureStabilityResolvedByAuthorizedEngineer, string District, string Division, string PaymentMode, string DateOfSubmission, string CreatedBy,
       int TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment
       )
         {
@@ -1668,7 +1659,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@InvoiceOfDGSetOfGeneratingSet ", String.IsNullOrEmpty(InvoiceOfDGSetOfGeneratingSet) ? DBNull.Value : (object)InvoiceOfDGSetOfGeneratingSet);
             cmd.Parameters.AddWithValue("@ManufacturingCerificateOfDGSet ", String.IsNullOrEmpty(ManufacturingCerificateOfDGSet) ? DBNull.Value : (object)ManufacturingCerificateOfDGSet);
             cmd.Parameters.AddWithValue("@InvoiceOfExptinguisherOrApparatusAtsite ", String.IsNullOrEmpty(InvoiceOfExptinguisherOrApparatusAtsite) ? DBNull.Value : (object)InvoiceOfExptinguisherOrApparatusAtsite);
-            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", String.IsNullOrEmpty(StructureStabilityResolvedByAuthorizedEngineer) ? DBNull.Value : (object)StructureStabilityResolvedByAuthorizedEngineer);           
+            cmd.Parameters.AddWithValue("@StructureStabilityResolvedByAuthorizedEngineer ", String.IsNullOrEmpty(StructureStabilityResolvedByAuthorizedEngineer) ? DBNull.Value : (object)StructureStabilityResolvedByAuthorizedEngineer);
             cmd.Parameters.AddWithValue("@District ", District);
             cmd.Parameters.AddWithValue("@Division ", Division);
             cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);//
@@ -1698,7 +1689,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
 
-       
+
         public string InspectionId()
         {
             if (outputParam != null)
@@ -2153,7 +2144,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkLicence", LicenceNew, LicenceOld);
         }
-        public DataSet checkLicenceexistUpdated(string LicenceNew, string LicenceOld,string ContractorId)
+        public DataSet checkLicenceexistUpdated(string LicenceNew, string LicenceOld, string ContractorId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkLicenceUpdated", LicenceNew, LicenceOld, ContractorId);
         }
@@ -2329,7 +2320,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToAssign");
         }
         #region Update Inspection Data For Action
-        public void UpdateInspectionDataOnAction(string ID,string AssignTo,string AssignFrom)
+        public void UpdateInspectionDataOnAction(string ID, string AssignTo, string AssignFrom)
         {
             SqlCommand cmd = new SqlCommand("sp_UpdateAction");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -2341,7 +2332,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Id", ID);            
+            cmd.Parameters.AddWithValue("@Id", ID);
             cmd.Parameters.AddWithValue("@Staff", AssignTo);
             cmd.Parameters.AddWithValue("@AssignFrom", AssignFrom);
             //cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrRejected);
@@ -2723,7 +2714,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             string AgentDistt, string AgentPincode, string OwnerName, string OwnerAddres, string OwnerState, string OwnerDistrict, string OwnerPincode,
             string ErectionDate, string TypeOfLift, string MakersName, string MakersLocalAgent, string MakersAddress, string ContractSpeedLift, string ContractLoadLift,
             string LiftCapcityMaxNoOfPerson, string TotalWeightLiftCar, string WeightCounterWeight, string NoOfSuspensionRoops, string Description, string Weight,
-            string Size, string PitDepth, string TravelAndNoOfFloors, string ConstructionDetailsOverheadArrangement )
+            string Size, string PitDepth, string TravelAndNoOfFloors, string ConstructionDetailsOverheadArrangement)
         {
             SqlCommand cmd = new SqlCommand("Sp_InsertLiftEscalators");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -2770,7 +2761,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@Size", Size);
             cmd.Parameters.AddWithValue("@PitDepth", PitDepth);
             cmd.Parameters.AddWithValue("@TravelAndNoOfFloors", TravelAndNoOfFloors);
-            cmd.Parameters.AddWithValue("@ConstructionDetailsOverheadArrangement", ConstructionDetailsOverheadArrangement);            
+            cmd.Parameters.AddWithValue("@ConstructionDetailsOverheadArrangement", ConstructionDetailsOverheadArrangement);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -3447,7 +3438,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GeneratingDataWithId_ForPrintTestReport", Id);
         }
         #endregion
-       
+
         public DataSet ViewDocuments(string InspectionId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments", InspectionId);
