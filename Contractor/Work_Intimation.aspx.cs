@@ -661,7 +661,6 @@ namespace CEIHaryana.Contractor
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
                             }
-
                         }
                         else
                         {
@@ -673,7 +672,6 @@ namespace CEIHaryana.Contractor
                 catch (Exception ex)
                 {
                     transaction?.Rollback();
-
                     string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                 }

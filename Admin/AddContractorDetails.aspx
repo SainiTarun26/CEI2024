@@ -17,7 +17,6 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
 
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#<%=txtDateofIntialissue.ClientID%>").datepicker({
@@ -694,11 +693,14 @@
             var txtBranchOffice = document.getElementById('<%= txtBranchOffice.ClientID %>');
                 var ddlBranchState = document.getElementById('<%= ddlBranchState.ClientID %>');
           var txtPinCode1 = document.getElementById('<%= txtPinCode1.ClientID %>');
-          var checkBox1 = document.getElementById('<%= CheckBox1.ClientID %>');
+            var checkBox1 = document.getElementById('<%= CheckBox1.ClientID %>');
+           // var ddlDistrict = document.getElementById('<%= ddlDistrict1.ClientID %>');
+
 
             // Clear the values of textboxes and dropdown
             txtBranchOffice.value = '';
             ddlBranchState.selectedIndex = 0; // Set the dropdown to its default value
+           // ddlDistrict1.selectedIndex = 0;
             txtPinCode1.value = '';
             checkBox1.checked = false;
         }
