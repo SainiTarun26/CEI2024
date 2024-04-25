@@ -135,58 +135,7 @@ namespace CEIHaryana.SiteOwnerPages
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
                     DropDownList ddlDocumentFor = Documents.FindControl("ddlDocumentFor") as DropDownList;
-
-                    #region
-                    // for  dynamically generation table row 
-                    //DataTable documentData = new DataTable();
-                    //documentData = CEI.GetDocumanetName(id);                   
-                    //foreach (DataRow rows in documentData.Rows)
-                    //{
-                    //    // Create a new table row
-                    //    HtmlTableRow tr = new HtmlTableRow();
-
-                    //    // Create a cell for the document name
-                    //    HtmlTableCell nameCell = new HtmlTableCell();
-                    //    //nameCell.Controls.Add(new LiteralControl(rows["DocumentName"].ToString()));                       
-                    //    nameCell.InnerText = rows["DocumentName"].ToString();
-
-
-                    //    // Create a cell for the FileUpload control
-                    //    HtmlTableCell fileUploadCell = new HtmlTableCell();
-                    //    FileUpload fileUpload = new FileUpload();
-                    //    fileUpload.ID = "FileUpload_" + rows["DocumentID"].ToString(); // Assign a unique ID to each FileUpload control
-                    //    //fileUploadCell.Controls.Clear();
-                    //    fileUploadCell.Controls.Add(fileUpload);
-
-                    //    tr.Cells.Add(nameCell);
-                    //    tr.Cells.Add(fileUploadCell);
-
-                    //    // Add the table row to the existing table
-                    //    DocumentsTable.Rows.Add(tr); // Assuming DocumentsTable is the ID of your existing table in the ASP.NET markup
-                    //}
-
-
-                    //Table dynamicTable = new Table();
-
-                    //// Add headers
-                    //TableRow headerRow = new TableRow();
-                    //headerRow.Cells.Add(new TableCell { Text = "Column 1" });
-                    //headerRow.Cells.Add(new TableCell { Text = "Column 2" });
-                    //dynamicTable.Rows.Add(headerRow);
-
-                    //// Add data rows
-                    //foreach (DataRow row in dataTable.Rows)
-                    //{
-                    //    TableRow dataRow = new TableRow();
-                    //    dataRow.Cells.Add(new TableCell { Text = row["Column1"].ToString() });
-                    //    dataRow.Cells.Add(new TableCell { Text = row["Column2"].ToString() });
-                    //    dynamicTable.Rows.Add(dataRow);
-                    //}
-
-                    //// Add the dynamic table to a placeholder or panel in the ASP.NET markup
-                    //TablePlaceholder.Controls.Add(dynamicTable);
-
-                    #endregion
+                  
 
 
                     if (ddlDocumentFor != null)
@@ -475,7 +424,7 @@ namespace CEIHaryana.SiteOwnerPages
                     InsertFilesIntoDatabase(CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
                     LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
-
+                    Session["PrintInspectionID"] = id.ToString();
                 }
                 else
                 {
@@ -595,7 +544,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                     transaction.Commit();
-                    Session["PrintInspectionID"] = id.ToString();
+                  // Session["PrintInspectionID"] = id.ToString();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
                    

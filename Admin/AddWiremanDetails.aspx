@@ -370,8 +370,7 @@
         function validateForm() {
            
             var CertifacateOld = document.getElementById('<%= txtCertifacateOld.ClientID %>').value
-            var CertificateNew = document.getElementById('<%= txtCertificateNew.ClientID %>').value;
-           
+            var CertificateNew = document.getElementById('<%= txtCertificateNew.ClientID %>').value;           
             if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
                 emptyFields.push('Certificate No.(Old or New)');
 

@@ -21,7 +21,6 @@ namespace CEIHaryana.Contractor
                     }
                     else
                     {
-
                     }
                 }
             }
@@ -65,8 +64,7 @@ namespace CEIHaryana.Contractor
                     if (e.CommandName == "Select")
                     {
                         //Session["id"] = ID;
-                        Response.Redirect("/Contractor/Work_Intimation.aspx");
-
+                        Response.Redirect("/Contractor/Upgratation_WorkIntimation.aspx");
                     }
                     else
                     {

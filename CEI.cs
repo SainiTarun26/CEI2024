@@ -3506,6 +3506,177 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetRecordsAccordingToDaysForOfficers", UserID);
         }
 
+        #region upgradation Intimation
+        public void IntimationDataInsertionForSiteOwner(string Id, string ContractorID, string ContractorType, string ApplicantTypeCode, string ApplicantType, string PowerUtility, string PowerUtilityWing,
+                    string TanNumber, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+        string PANNumber, string Email, string CreatedBy)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "sp_UpdateSiteOwnerDetailsInWorkIntimation";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            //AdvNo = (string)ViewState["AdvNo"];
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@Id", Id);
+            cmd.Parameters.AddWithValue("@ContractorID", ContractorID);
+            cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
+            cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantTypeCode);
+            cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+            cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility);
+            cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing);
+            cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? null : TanNumber);
+            cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? null : NameOfOwner);
+            cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? null : NameOfAgency);
+            cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Pincode", Pincode);
+            cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public void InsertionForApplicationDetails(string Id, string ContractorId, string PremisesType, string OtherPremises, string VoltageLevel,
+          string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+         string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "sp_UpdateApplicationDetailsInWorkIntimation";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            //AdvNo = (string)ViewState["AdvNo"];
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@Id", Id);
+            cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
+            cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
+            cmd.Parameters.AddWithValue("@OtherPremises", String.IsNullOrEmpty(OtherPremises) ? DBNull.Value : (object)OtherPremises);
+            cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation1", TypeOfInstallation1);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation1", NumberOfInstallation1);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation2", String.IsNullOrEmpty(TypeOfInstallation2) ? DBNull.Value : (object)TypeOfInstallation2);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation2", String.IsNullOrEmpty(NumberOfInstallation2) ? DBNull.Value : (object)NumberOfInstallation2);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public void InsertionForWorkScheduleInWoIntimation(string Id, string ContractorId, string WorkStartDate, string CompletionDate,
+         string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string CreatedBy)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "sp_UpdateWorkScheduleInWorkIntimation";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            //AdvNo = (string)ViewState["AdvNo"];
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@Id", Id);
+            cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
+            cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
+            cmd.Parameters.AddWithValue("@CompletionDate", CompletionDate);
+            cmd.Parameters.AddWithValue("@AnyWorkIssued", AnyWorkIssued);
+            cmd.Parameters.AddWithValue("@CopyOfWorkOrder", String.IsNullOrEmpty(CopyOfWorkOrder) ? DBNull.Value : (object)CopyOfWorkOrder);
+            //cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateasPerOrder);
+            DateTime CompletionDateForOrder;
+            if (DateTime.TryParse(CompletionDateasPerOrder, out CompletionDateForOrder) && CompletionDateForOrder != DateTime.MinValue)
+            {
+                cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateForOrder);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", DBNull.Value);
+            }
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public int RemovePrivousSupervisiorToContractor(string IntimationId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_RemovePrivousSupervisiorToContractor");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@WorkIntimationId ", IntimationId);
+            int x = cmd.ExecuteNonQuery();
+            con.Close();
+            return x;
+
+        }
+
+        public void AssignSupervisiorToContractor(string IntimationId, String StaffAssined, string AssignBy)
+        {
+            SqlCommand cmd = new SqlCommand("sp_AssignSupervisorToContractor");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@WorkIntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@StaffAssined", StaffAssined);
+            //cmd.Parameters.AddWithValue("@AssingDate", AssignDate);
+            cmd.Parameters.AddWithValue("@AssignBy", AssignBy);
+            //cmd.Parameters.AddWithValue("@Status", Status);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public void AddInstallations2(string IntimationId, string Typeofinstallation, int Noofinstallation, string loginId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdateInstallationsCountNew");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
+            cmd.Parameters.AddWithValue("@Noofinstallation", Noofinstallation);
+            cmd.Parameters.AddWithValue("@CreatedBy", loginId);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+        #endregion
     }
 }
 

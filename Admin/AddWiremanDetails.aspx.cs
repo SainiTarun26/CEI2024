@@ -258,24 +258,38 @@ namespace CEI_PRoject.Admin
                 {
                     DataSet ds1 = new DataSet();
                     ds1 = CEI.checkCertificateexist(txtCertifacateOld.Text, txtCertificateNew.Text);
-                    if (ds1 != null && ds1.Tables[0].Rows.Count > 0 || ds1.Tables[1].Rows.Count > 0)
+                    if ( ds1.Tables.Count > 0)
                     {
-
-                          string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                        string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                             return;
-                       
+                        }
+                        else if(ds1.Tables.Count >1 && ds1.Tables[1].Rows.Count>0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }                      
                     }
                 }
                 else if (btnSubmit.Text.Trim() == "Update")
                 {
                     DataSet ds1 = new DataSet();
                     ds1 = CEI.checkCertificateexistupdated(txtCertifacateOld.Text, txtCertificateNew.Text, REID);
-                    if (ds1 != null && ds1.Tables[0].Rows.Count > 0 || ds1.Tables[1].Rows.Count > 0)
+                    if (ds1.Tables.Count>0)
                     {                        
-                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                        string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
+                        if (ds1.Tables[0].Rows.Count > 0)
+                        {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            return;                        
+                            return;
+                        }
+                        else if (ds1.Tables.Count > 1 && ds1.Tables[1].Rows.Count > 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
                     }
                 }
 

@@ -34,16 +34,16 @@ namespace CEIHaryana.Admin
                         if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
                         {
 
-
-
                         }
                         else
                         {
                             GetDetails();
                             GetassigneddatatoContractor();
-
+                            Session["id"] = null; // added by gurmeet to resolve redirection problem 24 Aprail
                         }
                         //ddlLoadBindPremises();
+
+
                         worktypevisiblity();
                         // ddlLoadBindVoltage();
 
