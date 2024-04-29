@@ -17,14 +17,15 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
-            div#IntimationData{
-       background: #ffffff !important;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
-margin-left: -25px !important;
-margin-right: -25px !important;
-margin-top: 20px !important;
-padding: 15px !important;
-    }
+        div#IntimationData {
+            background: #ffffff !important;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+            margin-left: -25px !important;
+            margin-right: -25px !important;
+            margin-top: 20px !important;
+            padding: 15px !important;
+        }
+
         .card .card-title {
             font-size: 22px !important;
             font-weight: 700;
@@ -74,6 +75,7 @@ padding: 15px !important;
         .col-4 {
             left: 0px;
         }
+
         .form-control {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
@@ -1999,32 +2001,35 @@ padding: 15px !important;
             margin-top: 10px;
             padding: 15px;
         }
-        div#inspection-card-child3 {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 10px;
-    padding: 15px;
-}
-                div#earthing-card {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-left: -25px;
-margin-right: -25px;
-margin-top: 20px;
-    padding: 15px;
-}
-                div#SubmitDetails {
-       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-       margin-left: -25px;
-       margin-right: -25px;
-       margin-top: 20px;
-       padding: 15px;
-   }
-                div#LineEarthingdiv {
-    margin: 5px 0px 10px 20px;
-    width: 97%;
-}
 
+        div#inspection-card-child3 {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 10px;
+            padding: 15px;
+        }
+
+        div#earthing-card {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-left: -25px;
+            margin-right: -25px;
+            margin-top: 20px;
+            padding: 15px;
+        }
+
+        div#SubmitDetails {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-left: -25px;
+            margin-right: -25px;
+            margin-top: 20px;
+            padding: 15px;
+        }
+
+        div#LineEarthingdiv {
+            margin: 5px 0px 10px 20px;
+            width: 97%;
+        }
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -2048,6 +2053,12 @@ margin-top: 20px;
             <ul style="margin: 20px 20px 20px 15px;">
                 <li class="tab-content tab-content-last typography">
                     <div id="IfInstallationIsLine" runat="server">
+                        <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
+
+                            <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
+                                Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+
+                        </div>
                         <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
@@ -2701,30 +2712,33 @@ margin-top: 20px;
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card"  style="background: #fcfcfc;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px;padding: 20px; padding-top: 1px;">
-        <div class="row">
-            
-            <div class="col-4" id="CreatedDate" visible="false" runat="server">
-                <label>
-                    Created Date
-                </label>
-                <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
+                                    <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px; padding: 20px; padding-top: 1px;">
+                                        <div class="row">
 
-            <div class="col-4" id="SubmitDate" visible="false" runat="server" >
-                <label>
-                    Submitted Date
-                </label>
-                <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-4" id="SubmitBy" visible="false" runat="server">
-                <label>
-                    Submitted By
-                </label>
-                <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </div>
-    </div>
+                                            <div class="col-4" id="CreatedDate" visible="false" runat="server">
+                                                <label>
+                                                    Created Date
+               
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-4" id="SubmitDate" visible="false" runat="server">
+                                                <label>
+                                                    Submitted Date
+               
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                            <div class="col-4" id="SubmitBy" visible="false" runat="server">
+                                                <label>
+                                                    Submitted By
+               
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px;">
@@ -2732,21 +2746,22 @@ margin-top: 20px;
                                     <div class="row" style="padding-left: 20px; padding-bottom: 20px;">
 
                                         <div class="col-4">
-                                    <label for="Name">
-                                        TestReport No<samp style="color: red">* </samp>
-                                    </label>
-                                    <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <label for="Name">
+                                                TestReport No<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                </div>
+                                        </div>
 
-                                <div class="col-4" id="Rejection" runat="server">
-                                    <label for="Name">
-                                        Prepared By
-                                 <samp style="color: red">* </samp>
-                                    </label>
-                                    <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    </div>
-                     <%--                   <div class="col-4">
+                                        <div class="col-4" id="Rejection" runat="server">
+                                            <label for="Name">
+                                                Prepared By
+                                
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <%--                   <div class="col-4">
                                             <label for="Name">
                                                 Form Status<samp style="color: red">* </samp>
                                             </label
@@ -2798,16 +2813,16 @@ margin-top: 20px;
                                 <div class="col-6" id="SiteOwner2" runat="server" visible="false">
                                     <asp:Button ID="btnBack2" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack2_Click" />
                                 </div>
-                                <div class="col-6" id="Supervisor" runat="server" visible="false" style="margin-top:3%;">
+                                <div class="col-6" id="Supervisor" runat="server" visible="false" style="margin-top: 3%;">
                                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                                 </div>
                                 <div class="col-6" id="IntimationForHistory" runat="server" visible="false">
                                     <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
                                 </div>
                             </div>
-                              <div class="col-6" id="Div81" runat="server" visible="true">
+                           <%-- <div class="col-6" id="Div81" runat="server" visible="true">
                                 <asp:Button ID="btnOpenWindow" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
-                            </div>
+                            </div>--%>
 
                         </div>
                         <%-- <div class="card" id="earthing-card" style="background: #fcfcfc;margin-left:0px;margin-right:0px;margin-top:-50px;">

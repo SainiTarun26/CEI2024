@@ -3353,11 +3353,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", Id);
         }
         #endregion
-        #region forAdmin
-        public DataSet FilterAcceptOrRejectRequestforAdmin(string ApplicationStatus)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_FilterAcceptOrRejectRequestforAdmin", ApplicationStatus);
-        }
+        #region forAdmin        
         public DataSet TotalRequestInspectionForAdmin()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin");
@@ -3497,9 +3493,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDetailsforPrintForm", ID);
         }
-        public DataTable GetAttachmentsDatainInspectionForm(string InspectionId)
+        public DataSet GetAttachmentsDatainInspectionForm(string InspectionId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachmentsinInspectionForm", InspectionId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachmentsinInspectionForm", InspectionId);
         }
         public DataTable RequestPendingDivisionForOfficers(string UserID)
         {

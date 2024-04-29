@@ -75,6 +75,11 @@ namespace CEIHaryana.SiteOwnerPages
                 Response.Redirect("/SiteOwnerPages/Inspection.aspx");
 
             }
+            else if (e.CommandName == "Print")
+            {
+                Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx");
+
+            }
         }
     }
 }

@@ -424,7 +424,7 @@ namespace CEIHaryana.SiteOwnerPages
                     InsertFilesIntoDatabase(CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
                     LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
 
-                    Session["PrintInspectionID"] = id.ToString();
+                    //Session["PrintInspectionID"] = id.ToString();
                 }
                 else
                 {
@@ -524,6 +524,8 @@ namespace CEIHaryana.SiteOwnerPages
                     string generatedIdCombinedDetails = CEI.InspectionId();
                     string[] SplitResultPartsArray = generatedIdCombinedDetails.Split('|');
                     Session["PendingPaymentId"] = SplitResultPartsArray[0];
+                    string firstValue = SplitResultPartsArray[0]; // Extract the first value
+                    Session["PrintInspectionID"] = firstValue;
                     UploadCheckListDocInCollection(SplitResultPartsArray[2], para_CreatedByy, SplitResultPartsArray[1], SplitResultPartsArray[2], SplitResultPartsArray[3]);
 
                     

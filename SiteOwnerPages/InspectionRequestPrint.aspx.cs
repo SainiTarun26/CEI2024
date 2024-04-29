@@ -23,13 +23,12 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
-
                         GetDetailstoPrint();
                         BindAttachmentGrid();
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 Response.Redirect("/login.aspx");
             }
@@ -37,11 +36,10 @@ namespace CEIHaryana.SiteOwnerPages
 
         private void BindAttachmentGrid()
         {
-            string InspectionId = string.Empty;
-            InspectionId = Session["InspectionId"].ToString();
-            DataTable ds = new DataTable();
-            ds = CEI.GetAttachmentsDatainInspectionForm(InspectionId);
-            if (ds.Rows.Count > 0)
+            string GetAttachedDocuments = ID.ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetAttachmentsDatainInspectionForm(GetAttachedDocuments);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
@@ -58,22 +56,40 @@ namespace CEIHaryana.SiteOwnerPages
 
         private void GetDetailstoPrint()
         {
-            ID = Session["PrintInspectionID"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.DetailstoPrintFormInspectionDetails(int.Parse(ID));
-            txtInstallationType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-            txtReqNumber.Text = Session["PrintInspectionID"].ToString();
-            txtName.Text = ds.Tables[0].Rows[0]["CreatedBy"].ToString();
-            txtIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-            txtPermisestype.Text = ds.Tables[0].Rows[0]["PremisesTypes"].ToString();
-            txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-            txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-            txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-            txtUTRN.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-            txtTransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
-            txtPaymentMode.Text = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
-            Inspection = (int)ds.Tables[0].Rows[0]["Id"];
-            Session["InspectionId"] = Inspection;
+            if (Session["InspectionId"] != null && !string.IsNullOrEmpty(Session["InspectionId"].ToString()))
+            {
+                ID = Session["InspectionId"].ToString();
+               
+            }
+            else if (Session["PrintInspectionID"] != null && !string.IsNullOrEmpty(Session["PrintInspectionID"].ToString()))
+            {
+                ID = Session["PrintInspectionID"].ToString();
+            }
+
+            if (!string.IsNullOrEmpty(ID))
+            {
+                DataSet ds = new DataSet();
+                ds = CEI.DetailstoPrintFormInspectionDetails(int.Parse(ID));
+                txtInstallationType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                txtReqNumber.Text = ID.ToString();
+                txtTestReportNo.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                txtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
+                txtIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                txtPermisestype.Text = ds.Tables[0].Rows[0]["PremisesTypes"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                txtUTRN.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                txtTransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
+                txtPaymentMode.Text = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+                txtPaymentAmount.Text = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
+             }
+            Session["PrintInspectionID"] = "";
+            Session["InspectionId"] = "";
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);           
         }
     }
 }

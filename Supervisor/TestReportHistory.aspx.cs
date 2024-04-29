@@ -47,7 +47,6 @@ namespace CEIHaryana.Supervisor
         }
 
 
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -123,7 +122,10 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch { }
+            catch (Exception ex) 
+            {
+                //
+            }
         }
 
         //protected void txtSearch_TextChanged(object sender, EventArgs e)
@@ -153,9 +155,9 @@ namespace CEIHaryana.Supervisor
                 GridView1.PageIndex = e.NewPageIndex;
                 GridViewBind();
             }
-            catch
+            catch (Exception ex)
             {
-
+                //
             }
         }
     }

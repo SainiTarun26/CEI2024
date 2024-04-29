@@ -64,7 +64,7 @@ namespace CEI_PRoject.Admin
             catch (Exception ex)
             {
 
-               // Response.Redirect("/Login.aspx");
+                // Response.Redirect("/Login.aspx");
             }
         }
         private void ddlQualificationBind()
@@ -235,88 +235,72 @@ namespace CEI_PRoject.Admin
 
             try
             {
-                REID = hdnId.Value;
-                if (txtQualification.Visible == true)
+                if (Page.IsValid)
                 {
-
-                    Qualification = txtQualifications.Text;
-                }
-                else
-                {
-                    Qualification = ddlQualification.SelectedValue;
-
-                }
-                if (txtCertificateNew.Text != "" && txtCertificateNew.Text != "NA")
-                {
-                    UserId = txtCertificateNew.Text;
-                }
-                else
-                {
-                    UserId = txtCertifacateOld.Text;
-                }
-                if (btnSubmit.Text.Trim() == "Submit")
-                {
-                    DataSet ds1 = new DataSet();
-                    ds1 = CEI.checkCertificateexist(txtCertifacateOld.Text, txtCertificateNew.Text);
-                    if ( ds1.Tables.Count > 0)
+                    REID = hdnId.Value;
+                    if (txtQualification.Visible == true)
                     {
-                        string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
-                        if (ds1.Tables[0].Rows.Count > 0)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            return;
-                        }
-                        else if(ds1.Tables.Count >1 && ds1.Tables[1].Rows.Count>0)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            return;
-                        }                      
+
+                        Qualification = txtQualifications.Text;
                     }
-                }
-                else if (btnSubmit.Text.Trim() == "Update")
-                {
-                    DataSet ds1 = new DataSet();
-                    ds1 = CEI.checkCertificateexistupdated(txtCertifacateOld.Text, txtCertificateNew.Text, REID);
-                    if (ds1.Tables.Count>0)
-                    {                        
-                        string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
-                        if (ds1.Tables[0].Rows.Count > 0)
+                    else
+                    {
+                        Qualification = ddlQualification.SelectedValue;
+
+                    }
+                    if (txtCertificateNew.Text.Trim() != "" && txtCertificateNew.Text.Trim() != "NA")
+                    {
+                        UserId = txtCertificateNew.Text.Trim();
+                    }
+                    else
+                    {
+                        UserId = txtCertifacateOld.Text;
+                    }
+                    if (btnSubmit.Text.Trim() == "Submit")
+                    {
+                        DataSet ds1 = new DataSet();
+                        ds1 = CEI.checkCertificateexist(txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim());
+                        if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            return;
-                        }
-                        else if (ds1.Tables.Count > 1 && ds1.Tables[1].Rows.Count > 0)
-                        {
+
+                            string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                             return;
                         }
                     }
+                    else if (btnSubmit.Text.Trim() == "Update")
+                    {
+                        DataSet ds1 = new DataSet();
+                        ds1 = CEI.checkCertificateexistupdated(txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(), REID);
+                        if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        {
+                            string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
+                    }
+
+                    GetIP();
+                    string Createdby = Convert.ToString(Session["AdminID"]);
+                    CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                    ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
+                    txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
+                    Createdby, UserId, ipaddress);
+
+                    if (btnSubmit.Text == "Update")
+                    {
+                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                        Session["ID"] = "";
+                        DataUpdated.Visible = true;
+                    }
+                    else
+                    {
+                        DataSaved.Visible = true;
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
+
+                    }
+                    Reset();
                 }
-
-
-                GetIP();
-                
-                string Createdby = Convert.ToString(Session["AdminID"]);
-                CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
-                ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
-                txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
-                Createdby, UserId, ipaddress);
-
-
-                if (btnSubmit.Text == "Update")
-                {
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
-                    Session["ID"] = "";
-                    DataUpdated.Visible = true;
-                }
-                else
-                {
-                    DataSaved.Visible = true;
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-
-                }
-                Reset();
-
             }
             catch (Exception Ex)
             {

@@ -268,8 +268,8 @@
                         <div class="col-4">
                             <label for="CertificateNew">Ceritifcate No.(New)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
-                           </div>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>                          
+                            </div>
                         <div class="col-4">
                             <label for="DateofIntialissue">Date of Initial Issue<samp style="color: red"> * </samp>
                             </label>
@@ -430,8 +430,8 @@
                 return false;
             }
         }
-    </script>
-    
+    </script>    
+
      <script type="text/javascript">
          function validateDates() {
              var renewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;

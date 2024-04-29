@@ -86,25 +86,25 @@ namespace CEIHaryana.Admin
             catch { }
         }
 
-        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridBindForSorting();
-        }
+        //protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    GridBindForSorting();
+        //}
 
-        private void GridBindForSorting()
-        {
-            try
-            {
-                string ApplicationStatus = RadioButtonList1.SelectedItem.Text;
-                DataSet ds = CEI.FilterAcceptOrRejectRequestforAdmin(ApplicationStatus);
+        //private void GridBindForSorting()
+        //{
+        //    try
+        //    {
+        //        string ApplicationStatus = RadioButtonList1.SelectedItem.Text;
+        //        DataSet ds = CEI.FilterAcceptOrRejectRequestforAdmin(ApplicationStatus);
 
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions here
-            }
-        }
+        //        GridView1.DataSource = ds;
+        //        GridView1.DataBind();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Handle exceptions here
+        //    }
+        //}
     }
 }

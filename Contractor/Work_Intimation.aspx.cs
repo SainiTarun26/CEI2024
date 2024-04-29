@@ -291,18 +291,13 @@ namespace CEIHaryana.Contractor
             {
 
                 string PANNumber = txtPAN.Text.Trim();
-
                 System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
                 if (!regex.IsMatch(PANNumber))
                 {
-
+                    txtPAN.Focus();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
-
                     return;
                 }
-
-
-
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(PANNumber);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -680,9 +675,7 @@ namespace CEIHaryana.Contractor
                     transaction?.Dispose();
                     connection.Close();
                 }
-            }
-        
-
+            }      
         }
         public void GetGridData()
         {
@@ -1092,5 +1085,45 @@ namespace CEIHaryana.Contractor
             }
         }
 
+        protected void txtTanNumber_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string TANNumber = txtTanNumber.Text.Trim();
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+                if (!regex.IsMatch(TANNumber))
+                {
+                    txtTanNumber.Focus();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
+                    return;
+                }
+                DataSet ds = new DataSet();
+                ds = CEI.GetDetailsByPanNumberId(TANNumber);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
+                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    string District = ds.Tables[0].Rows[0]["District"].ToString();
+                    ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
+                    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    // txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                }
+                else
+                {
+                    // Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or provide a more detailed error message
+                Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
+            }
+        }
     }
 }

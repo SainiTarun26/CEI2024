@@ -1065,7 +1065,6 @@ namespace CEIHaryana.Contractor
             IntimationID = Session["UpdationId"].ToString();
             ContractorID = Session["ContractorID"].ToString();
             string AssignBy = ContractorID;
-
             int x = CEI.RemovePrivousSupervisiorToContractor(IntimationID);
             if (x > 0)
             {

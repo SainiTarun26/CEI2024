@@ -280,39 +280,25 @@ namespace CEI_PRoject.Admin
                 {
                     if (btnSubmit.Text == "Update")
                     {
-                        if (txtLicenceNew.Text != "" && txtLicenceNew.Text != "NA")
+                        if (txtLicenceNew.Text.Trim() != "" && txtLicenceNew.Text.Trim() != "NA")
                         {
-                            UserId = txtLicenceNew.Text;
+                            UserId = txtLicenceNew.Text.Trim();
                         }
                         else
                         {
-                            UserId = txtLicenceOld.Text;
+                            UserId = txtLicenceOld.Text.Trim();
                         }
                         REID = hdnId.Value;
 
 
                         DataSet ds1 = new DataSet();
-                        ds1 = CEI.checkLicenceexistUpdated(txtLicenceNew.Text, txtLicenceOld.Text,REID);
-                        if (ds1.Tables.Count > 0)
+                        ds1 = CEI.checkLicenceexistUpdated(txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(),REID);
+                        if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                         {
                             string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                            if (ds1.Tables[0].Rows.Count > 0)
-                            {                               
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                                return;
-                            }
-                            else if (ds1.Tables.Count > 1 && ds1.Tables[1].Rows.Count > 0)
-                            {                                
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                                return;
-                            }
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
                         }
-                        //    if (ds1.Tables[0].Rows.Count > 0 || ds1.Tables[1].Rows.Count > 0)
-                        //{
-                        //    string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                        //    return;
-                        //}
 
                         Createdby = Session["AdminID"].ToString();
                         if (Createdby == null || Createdby == "")
@@ -327,7 +313,7 @@ namespace CEI_PRoject.Admin
                             ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, ddlBranchState.SelectedItem.ToString(),
                             ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text,
                             txtDateofIntialissue.Text, txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-                            txtLicenceOld.Text, txtLicenceNew.Text, ipaddress, Createdby);
+                            txtLicenceOld.Text.Trim(), txtLicenceNew.Text.Trim(), ipaddress, Createdby);
                             Session["ID"] = "";
                             Reset();
                             regexValidatorGST.Visible = false;
@@ -339,7 +325,7 @@ namespace CEI_PRoject.Admin
                     else
                     {
                         DataSet ds = new DataSet();
-                        ds = CEI.checkGSTexist(txtGST.Text);
+                        ds = CEI.checkGSTexist(txtGST.Text.Trim());
                         if (ds.Tables[0].Rows.Count > 0)
                         {
                             string alertScript = "alert('The  GST number is already in use. Please provide a different GST number.');";
@@ -348,38 +334,23 @@ namespace CEI_PRoject.Admin
                         }
                         else
                         {
-                            if (txtLicenceNew.Text != "" && txtLicenceNew.Text != "NA")
+                            if (txtLicenceNew.Text.Trim() != "" && txtLicenceNew.Text.Trim() != "NA")
                             {
-                                UserId = txtLicenceNew.Text;
+                                UserId = txtLicenceNew.Text.Trim();
                             }
                             else
                             {
-                                UserId = txtLicenceOld.Text;
+                                UserId = txtLicenceOld.Text.Trim();
                             }
 
                             DataSet ds1 = new DataSet();
-                            ds1 = CEI.checkLicenceexist(txtLicenceNew.Text, txtLicenceOld.Text);
-                            if (ds1.Tables.Count > 0)
-                            {
-                                string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                                if (ds1.Tables[0].Rows.Count > 0)
-                                {                                    
+                            ds1 = CEI.checkLicenceexist(txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim());
+                            if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                            {                                                               
+                                    string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                                    return;
-                                }
-                                else if(ds1.Tables.Count > 1 && ds1.Tables[1].Rows.Count >0)
-                                {                                    
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                                    return;
-                                }
-                            }
-                            
-                            //if (ds1.Tables[0].Rows.Count > 0 || ds1.Tables[1].Rows.Count >0)
-                            //{
-                            //    string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            //    return;
-                            //}
+                                    return;                              
+                            }                                                                              
                            // else
                             //{
                                 REID = hdnId.Value;
@@ -395,7 +366,7 @@ namespace CEI_PRoject.Admin
                                     ddlState.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtPinCode.Text, txtBranchOffice.Text, ddlBranchState.SelectedItem.ToString(),
                                    ddlDistrict1.SelectedItem.ToString(), txtPinCode1.Text, txtContactNo.Text, txtEmail.Text, txtDateofIntialissue.Text,
                                    txtDateofRenewal.Text, txtDateofExpiry.Text, ddlVoltageLevel.SelectedValue, txtVoltageLevelWithEffect.Text,
-                                   txtLicenceOld.Text, txtLicenceNew.Text, ipaddress, Createdby);
+                                   txtLicenceOld.Text.Trim(), txtLicenceNew.Text.Trim(), ipaddress, Createdby);
                                     Reset();
                                     //DataSaved.Visible = true;
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);

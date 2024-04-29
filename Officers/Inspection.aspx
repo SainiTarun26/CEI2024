@@ -171,7 +171,7 @@
                 
                     
                 <div class="col-4" runat="server">
-                    <label>Inspection Report Id</label>
+                    <label>Inspection Report No</label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4">
@@ -290,7 +290,7 @@
                         </div>
                     <div class="row">
              
-                   <p style="margin-top:auto;margin-bottom:auto;"> Documnets are as per the requirements</p>
+                   <p style="margin-top:auto;margin-bottom:auto;"> Documents are as per the requirements</p>
                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server"  RepeatDirection="Horizontal" TabIndex="25">
                    <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
                    <asp:ListItem Text="No(Return)" Value="1" style="margin-top:auto;margin-bottom:auto;"></asp:ListItem>

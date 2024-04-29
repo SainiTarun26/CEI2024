@@ -16,11 +16,9 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
     <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
-
     <style>
         body {
             box-sizing: border-box;
@@ -55,6 +53,7 @@
             border: 0px solid black;
             border-radius: 0px;
             margin-top: 5px;
+            border-style: dashed !important;
         }
 
         label {
@@ -80,7 +79,6 @@
         }
     </style>
     <script>
-
         function
             printDiv(printableDiv) {
             var printContents = document.getElementById(printableDiv).innerHTML;
@@ -103,6 +101,10 @@
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
+                    <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
+                        <asp:Button ID="Button1" Text="Back" runat="server" class="btn btn-primary mr-2"
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" OnClick="Button1_Click" />
+                    </div>
                     <div class="card-body">
                         <div id="printableDiv">
                             <div class="row" style="margin-bottom: 15PX;">
@@ -115,7 +117,7 @@
                                     <label for="Name">Installation Type : </label>
                                 </div>
                                 <div class="col-3" style="padding-left: 0px;">
-                                    <asp:TextBox class="form-control" ID="txtInstallationType" runat="server" autocomplete="off" TabIndex="1" MaxLength="30" Style="margin-left: 18px; border-bottom: 0px solid black !important;" ></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtInstallationType" runat="server" autocomplete="off" ReadOnly="true" Style="margin-left: 18px; border-bottom: 0px solid black !important;"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row">
@@ -123,9 +125,17 @@
                                     <label for="Name">Installation Request No. : </label>
                                 </div>
                                 <div class="col-3" style="padding-left: 0px;">
-                                    <asp:TextBox class="form-control" ID="txtReqNumber" runat="server" autocomplete="off" TabIndex="1" MaxLength="30" Style="margin-left: 18px; border-bottom: 0px solid black !important;" Text="1234/tarun-2024"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtReqNumber" runat="server" autocomplete="off" ReadOnly="true" Style="margin-left: 18px; border-bottom: 0px solid black !important;"></asp:TextBox>
                                 </div>
                             </div>
+                            <div class="row">
+    <div class="col-6" style="text-align: end; padding-right: 0px;">
+        <label for="Name">Test Report No.    : </label>
+    </div>
+    <div class="col-3" style="padding-left: 0px;">
+        <asp:TextBox class="form-control" ID="txtTestReportNo" runat="server" autocomplete="off" ReadOnly="true" Style="margin-left: 18px; border-bottom: 0px solid black !important;"></asp:TextBox>
+    </div>
+</div>
                             <br />
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Site Owner Details</u></h6>
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -134,20 +144,17 @@
                                         <label for="Name">
                                             Site Owner Name:
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                            MaxLength="30" Style="margin-left: 18px;">
+                                        <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label>Intimation Id:</label>
-                                        <asp:TextBox class="form-control" ID="txtIntimationId" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
-                                            MaxLength="30" Style="margin-left: 18px">
+                                        <asp:TextBox class="form-control" ID="txtIntimationId" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label>Type 0f Permises</label>
-                                        <asp:TextBox class="form-control" ID="txtPermisestype" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
-                                            MaxLength="30" Style="margin-left: 18px">
+                                        <asp:TextBox class="form-control" ID="txtPermisestype" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                 </div>
@@ -156,67 +163,56 @@
                                         <label>
                                             District:
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                            MaxLength="30" Style="margin-left: 18px;">
+                                        <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label>Applicant Type:</label>
-
-                                        <asp:TextBox class="form-control" ID="txtApplicant" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
-                                            MaxLength="30" Style="margin-left: 18px">
+                                        <asp:TextBox class="form-control" ID="txtApplicant" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 35px;">
                                     <div class="col-12">
                                         <label>Address</label>
-
-                                        <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
-                                            MaxLength="30" Style="margin-left: 18px">
+                                        <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Attachments</u></h6>
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped"  runat="server"  Width="100%"
-                         AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                               
-                        <PagerStyle CssClass="pagination-ys" />  
-                        <Columns>
-                             <asp:TemplateField HeaderText="DocumentID" Visible="False">
-                                 <ItemTemplate>
-                                     <asp:Label ID="lblDocumentID" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
-                                 </ItemTemplate>
-                             </asp:TemplateField>
-                           
-                          
-                         <asp:TemplateField HeaderText="SNo">
-      <HeaderStyle Width="5%" CssClass="headercolor" />
-      <ItemStyle HorizontalAlign="center" Width="5%" />
-      <ItemTemplate>
-          <%#Container.DataItemIndex+1 %>
-      </ItemTemplate>
-  </asp:TemplateField>
-                              <asp:BoundField DataField="DocumentName" HeaderText="Document Attached">
-          <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
-          <ItemStyle HorizontalAlign="center" Width="15%" />
-      </asp:BoundField>  
-                       
-
-                         </Columns>
-                         <FooterStyle BackColor="White" ForeColor="#000066" />
-                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                         <RowStyle ForeColor="#000066" />
-                         <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                         <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                         <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                         <SortedDescendingHeaderStyle BackColor="#00547E" />
-                     </asp:GridView>
-
+                                <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%"
+                                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                    <PagerStyle CssClass="pagination-ys" />
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="DocumentID" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblDocumentID" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="SNo">
+                                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="center" Width="5%" />
+                                            <ItemTemplate>
+                                                <%#Container.DataItemIndex+1 %>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="DocumentName" HeaderText="Document Attached">
+                                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="center" Width="15%" />
+                                        </asp:BoundField>
+                                    </Columns>
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                    <RowStyle ForeColor="#000066" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                </asp:GridView>
                             </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Payment Details</u></h6>
                             <div id="Earthing" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -225,22 +221,22 @@
                                         <label for="Name">
                                             Transaction ID(UTRN):
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                            MaxLength="30" Style="margin-left: 18px;">
+                                        <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label for="FatherName">Transaction Date:</label>
-
-                                        <asp:TextBox class="form-control" ID="txtTransactionDate" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
-                                            MaxLength="30" Style="margin-left: 18px">
+                                        <asp:TextBox class="form-control" ID="txtTransactionDate" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
-                                        <label for="FatherName">Payment Mode</label>
-
-                                        <asp:TextBox class="form-control" ID="txtPaymentMode" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
-                                            MaxLength="30" Style="margin-left: 18px">
+                                        <label>Payment Mode</label>
+                                        <asp:TextBox class="form-control" ID="txtPaymentMode" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                    </div>
+                                    <div class="col-4" style="margin-top:35px;">
+                                        <label>Payment Amount</label>
+                                        <asp:TextBox class="form-control" ID="txtPaymentAmount" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                 </div>

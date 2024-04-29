@@ -382,8 +382,7 @@
                                 Licence No. (New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
-                         <asp:CustomValidator ID="cvBothEmpty" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage=" Add Atleast one License" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
-                            
+                         <asp:CustomValidator ID="cvBothEmpty" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage=" Add Atleast one License" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>                            
                         </div>
 
                         <div class="col-4">

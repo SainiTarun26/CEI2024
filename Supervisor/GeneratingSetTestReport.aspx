@@ -344,7 +344,7 @@
                                 </div>
                                 <div class="col-3" id="Div9" runat="server">
                                     <label for="Name">
-                                        Intimation ID
+                                        WorkIntimation ID
             <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtid" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>

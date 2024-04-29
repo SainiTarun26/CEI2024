@@ -199,7 +199,7 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="State" HeaderText="State">
+                              <asp:BoundField DataField="District" HeaderText="District">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="left" CssClass="GridViewRowItems itemstylecss" />
                                 </asp:BoundField>
