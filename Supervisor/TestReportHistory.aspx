@@ -218,7 +218,7 @@
                                 <HeaderStyle Width="24%" CssClass="headercolor" />
                                 <ItemStyle Width="24%" />
                                 <HeaderTemplate>
-                                    Work Intimation Id
+                                   Test Report Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Intimations") %> ' CommandName="Select"><%#Eval("Intimations") %></asp:LinkButton>

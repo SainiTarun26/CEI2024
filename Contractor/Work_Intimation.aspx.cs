@@ -19,7 +19,7 @@ namespace CEIHaryana.Contractor
         CEI CEI = new CEI();
         string ContractorID = string.Empty;
         string REID = string.Empty;
-        List<string> SelectedSupervisor = new List<string>();
+        //List<string> SelectedSupervisor = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -50,8 +50,8 @@ namespace CEIHaryana.Contractor
                         {
                             GetDetails();
                             GetGridData();
-                            GetassigneddatatoContractor();
-                            CheckedPriviousSupervisor();
+                           // GetassigneddatatoContractor();
+                           // CheckedPriviousSupervisor();
                             GridView1.Columns[0].Visible = true;
                             Session["UpdationId"] = Session["id"];
                             Session["id"] = null;
@@ -742,36 +742,36 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-        protected void GetassigneddatatoContractor()
-        {
-            try
-            {
-                string ID = string.Empty;
-                ID = Session["id"].ToString();
-                DataTable ds = new DataTable();
-                ds = CEI.GetStaffAssignedToContractor(ID);
-                if (ds.Rows.Count > 0)
-                {
-                    foreach (DataRow row in ds.Rows)
-                    {
-                        string SupervisorREID = row["StaffAssined"].ToString();
-                        SelectedSupervisor.Add(SupervisorREID);
-                    }
-                }
-                else
-                {
-                    //GridView1.DataSource = null;
-                    //GridView1.DataBind();
-                    //string script = "alert(\"No Record Found\");";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
-                ds.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+        //protected void GetassigneddatatoContractor()
+        //{
+        //    try
+        //    {
+        //        string ID = string.Empty;
+        //        ID = Session["id"].ToString();
+        //        DataTable ds = new DataTable();
+        //        ds = CEI.GetStaffAssignedToContractor(ID);
+        //        if (ds.Rows.Count > 0)
+        //        {
+        //            foreach (DataRow row in ds.Rows)
+        //            {
+        //                string SupervisorREID = row["StaffAssined"].ToString();
+        //                SelectedSupervisor.Add(SupervisorREID);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //GridView1.DataSource = null;
+        //            //GridView1.DataBind();
+        //            //string script = "alert(\"No Record Found\");";
+        //            //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //        ds.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -1082,25 +1082,25 @@ namespace CEIHaryana.Contractor
                 //
             }
         }
-        private void CheckedPriviousSupervisor()
-        {
-            if (SelectedSupervisor != null)
-            {
-                foreach (GridViewRow row in GridView1.Rows)
-                {
-                    CheckBox checkSelect = (CheckBox)row.FindControl("CheckBox1");
-                    Label lblREID = (Label)row.FindControl("lblREID");
-                    if(lblREID != null)
-                    {
-                        string REID = lblREID.Text;
-                        if(SelectedSupervisor.Contains(REID))
-                        {
-                            checkSelect.Checked = true;
-                        }
-                    }
-                }
-            }
-        }
+        //private void CheckedPriviousSupervisor()
+        //{
+        //    if (SelectedSupervisor != null)
+        //    {
+        //        foreach (GridViewRow row in GridView1.Rows)
+        //        {
+        //            CheckBox checkSelect = (CheckBox)row.FindControl("CheckBox1");
+        //            Label lblREID = (Label)row.FindControl("lblREID");
+        //            if(lblREID != null)
+        //            {
+        //                string REID = lblREID.Text;
+        //                if(SelectedSupervisor.Contains(REID))
+        //                {
+        //                    checkSelect.Checked = true;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
         protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1126,7 +1126,7 @@ namespace CEIHaryana.Contractor
                     ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                     txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
-                    // txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                    txtTanNumber.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 }
                 else

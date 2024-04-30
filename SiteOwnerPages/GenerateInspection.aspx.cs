@@ -622,7 +622,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     GridViewPayment.DataSource = ds;
                     GridViewPayment.DataBind();
-                    TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[3].Text);
+                    TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
                     //      txtPayment.Text = Convert.ToString(TotalAmount);
                 }
                 else

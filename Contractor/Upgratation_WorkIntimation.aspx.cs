@@ -954,19 +954,10 @@ namespace CEIHaryana.Contractor
                         string installationType = typeTextBoxes[i].Text;
                         string installationNoText = noTextBoxes[i].Text;
 
-                        int installationNo;
-
+                        int installationNo;                       
                         if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
                         {
-                            // Save data according to the number of installations
-                            for (int j = 0; j < installationNo; j++)
-                            {
-                                CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);
-
-                            }
-
-
-
+                            CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);                           
                         }
                     }
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);

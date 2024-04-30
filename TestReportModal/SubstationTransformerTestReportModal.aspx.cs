@@ -612,11 +612,10 @@ namespace CEIHaryana.TestReportModal
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-
             }
         }
 

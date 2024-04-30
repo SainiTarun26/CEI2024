@@ -17,8 +17,7 @@ namespace CEIHaryana
         {
             try
             {
-                // int check = Convert.ToInt32(cei.checkLogin(txtUserID.Text, txtPassword.Text));
-                int check = Convert.ToInt32(cei.checkUserLogin(txtUserID.Text, txtPassword.Text));
+                int check = Convert.ToInt32(cei.checkLogin(txtUserID.Text, txtPassword.Text));
                 string Status = cei.Status();
                 if (check == 1)
                 {
@@ -46,7 +45,7 @@ namespace CEIHaryana
                 }
                 else if (check == 2)
                 {
-                  //  ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
+                    //  ApplicationStatus = cei.checkApplicationStatus(txtUserID.Text);
                     if (Status.Trim() == "1")
                     {
                         Session["ContractorID"] = txtUserID.Text;
@@ -67,7 +66,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(15);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                             Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                         else
                         {
@@ -77,7 +76,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "Contractor";
                             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(1);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                             Response.Redirect("Contractor/Work_Intimation.aspx", false);
+                            Response.Redirect("Contractor/Work_Intimation.aspx", false);
                         }
                     }
                 }
@@ -153,7 +152,7 @@ namespace CEIHaryana
                 }
                 else if (check == 6)
                 {
-                    
+
                     if (chkSignedin.Checked == true)
                     {
                         Session["SupervisorID"] = txtUserID.Text;
@@ -226,8 +225,7 @@ namespace CEIHaryana
                     if (chkSignedin.Checked == true)
                     {
                         Session["NewUserId"] = txtUserID.Text;
-                        //Session["logintype"] = "NewUser";
-                        Session["logintype"] = "Registered User";
+                        Session["logintype"] = "NewUser";
                         Response.Cookies["NewUserId"].Value = txtUserID.Text;
                         Response.Cookies["logintype"].Value = "NewUser";
                         Response.Cookies["NewUserId"].Expires = DateTime.Now.AddDays(15);
@@ -236,8 +234,7 @@ namespace CEIHaryana
                     else
                     {
                         Session["NewUserId"] = txtUserID.Text;
-                        //Session["logintype"] = "NewUser";
-                        Session["logintype"] = "Registered User";
+                        Session["logintype"] = "NewUser";
                         Response.Cookies["NewUserId"].Value = txtUserID.Text;
                         Response.Cookies["logintype"].Value = "NewUser";
                         Response.Cookies["NewUserId"].Expires = DateTime.Now.AddDays(1);
@@ -263,7 +260,7 @@ namespace CEIHaryana
                             Response.Redirect("/Contractor/Work_Intimation.aspx", false);
                         }
                     }
-                   else if (Category.Trim() == "Lift")
+                    else if (Category.Trim() == "Lift")
                     {
                         Session["LiftId"] = txtUserID.Text;
                         if (ApplicationStatus.Trim() == "New")
@@ -299,8 +296,8 @@ namespace CEIHaryana
                         {
                             Response.Redirect("/UserPages/Documents.aspx", false);
                         }
-                        
-                      }
+
+                    }
                 }
                 else
                 {

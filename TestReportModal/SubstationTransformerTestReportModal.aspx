@@ -2215,7 +2215,7 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <label for="Voltage">
-                                            Primary voltage(in kva)  
+                                            Primary voltage(in volte)  
                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>

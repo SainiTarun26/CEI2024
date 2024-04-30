@@ -25,7 +25,8 @@ namespace CEIHaryana.TestReportModal
                 {
                     if (Session["ContractorID"] != null)
                     {
-                        HiddenField1.Value = "0";
+                        //HiddenField1.Value = "0";
+                        Session["ad"] = "0";
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
@@ -666,6 +667,8 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 HiddenField1.Value = Convert.ToString(Convert.ToInt32(HiddenField1.Value) + 1);
+
+                Session["ad"] = Convert.ToString(Convert.ToInt32(Session["ad"]) + 1);
 
                 if (btnVerify.Text == "SendOTP" && HiddenField1.Value == "1")
                 {
