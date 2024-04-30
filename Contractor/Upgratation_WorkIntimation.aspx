@@ -855,6 +855,7 @@
                             <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" Style="padding-left: 18px; padding-right: 18px;" />
                             <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                            <%-- <asp:Button type="Update" ID="btnUpdate" TabIndex="25" Text="Update" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" />--%>
+                          <asp:Button ID="btnOpenWindow"  Visible ="false" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
                         </div>
                         <div class="col-4"></div>
                     </div>
@@ -1174,5 +1175,12 @@
                  return validateTANNumber();
              };
          }
+
+         function openNewWindow() {
+             var newWindow = window.open('../UserPages/PrintWorkIntimationNew.aspx', '_blank');
+             newWindow.focus();
+         }
+
      </script>
-</asp:Content>
+
+       </asp:Content>

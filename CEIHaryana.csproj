@@ -1929,6 +1929,7 @@
     <Content Include="UserPages\PrintGeneratingSetTestReport.aspx" />
     <Content Include="UserPages\PrintLineTestReport.aspx" />
     <Content Include="UserPages\PrintSubstationTransformerTestReport.aspx" />
+    <Content Include="UserPages\PrintWorkIntimationNew.aspx" />
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
     <Content Include="Web.config" />
@@ -2764,6 +2765,13 @@
     </Compile>
     <Compile Include="UserPages\PrintSubstationTransformerTestReport.aspx.designer.cs">
       <DependentUpon>PrintSubstationTransformerTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\PrintWorkIntimationNew.aspx.cs">
+      <DependentUpon>PrintWorkIntimationNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\PrintWorkIntimationNew.aspx.designer.cs">
+      <DependentUpon>PrintWorkIntimationNew.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Qualification.aspx.cs">
       <DependentUpon>Qualification.aspx</DependentUpon>

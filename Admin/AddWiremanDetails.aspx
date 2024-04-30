@@ -132,16 +132,16 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4"></div>
-                     <div class="col-sm-4" style="text-align: center;">
-                        
-                  <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size:1.125rem">
-                                                Data Updated Successfully !!!.
-                                            </label>
-                         <label id="DataSaved" runat="server" visible="false" style="color: red; font-size:1.125rem">
-                                                Data Saved Successfully !!!.
-                                            </label>
-                         </div>
+                    <div class="col-sm-4" style="text-align: center;">
+
+                        <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Updated Successfully !!!.
+                        </label>
+                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Saved Successfully !!!.
+                        </label>
                     </div>
+                </div>
                 <br />
                 <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
 
@@ -149,7 +149,8 @@
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
                         <div class="col-4">
-                            <label for="Name">Full Name
+                            <label for="Name">
+                                Full Name
                                 <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onkeydown="return preventEnterSubmit(event)" TabIndex="1" runat="server" onKeyPress="return alphabetKey(event);" MaxLength="30" Style="margin-left: 18px;"></asp:TextBox>
@@ -158,14 +159,16 @@
                         </div>
 
                         <div class="col-4">
-                            <label for="FatherName">Father's Name<samp style="color: red"> * </samp>
+                            <label for="FatherName">
+                                Father's Name<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtFatherName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" onKeyPress="return alphabetKey(event);" MaxLength="30" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFatherName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Father Name</asp:RequiredFieldValidator>
 
                         </div>
                         <div class="col-4">
-                            <label for="age">Date Of Birth
+                            <label for="age">
+                                Date Of Birth
                                 <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtAge" TabIndex="3" OnTextChanged="txtAge_TextChanged" onfocus="disableFutureDatesForDOB()" AutoPostBack="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" MaxLength="30" Style="margin-left: 18px"></asp:TextBox>
@@ -180,10 +183,13 @@
                             <label for="Contect">Contact No.</label>
                             <asp:TextBox class="form-control" ID="txtContect" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="3" MaxLength="10" onkeypress="return isNumberKey(event)" onkeyup="isvalidphoneno();" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect" style="color: red"></span>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtContect" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact Number</asp:RequiredFieldValidator>
                         </div>
 
+
                         <div class="col-4">
-                            <label for="Address">Address<samp style="color: red"> * </samp>
+                            <label for="Address">
+                                Address<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtAddress" runat="server" TabIndex="4" MaxLength="60" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
@@ -192,7 +198,8 @@
                         <div class="col-4">
                             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                                 <ContentTemplate>
-                                    <label>State<samp style="color: red"> * </samp>
+                                    <label>
+                                        State<samp style="color: red"> * </samp>
                                     </label>
                                     <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlState" runat="server" TabIndex="5" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                     </asp:DropDownList>
@@ -206,7 +213,8 @@
                         <div class="col-4">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
-                                    <label>District<samp style="color: red"> * </samp>
+                                    <label>
+                                        District<samp style="color: red"> * </samp>
                                     </label>
                                     <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlDistrict" runat="server" TabIndex="5">
                                     </asp:DropDownList>
@@ -224,7 +232,8 @@
 
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
-                                    <label for="Qualification">Qualification<samp style="color: red"> * </samp>
+                                    <label for="Qualification">
+                                        Qualification<samp style="color: red"> * </samp>
                                     </label>
                                     <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlQualification" runat="server" AutoPostBack="true" TabIndex="7" OnSelectedIndexChanged="ddlQualification_SelectedIndexChanged">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -240,7 +249,8 @@
                             <div class="row" style="margin-top: 15px;">
                                 <div class="col-4" id="txtQualification" runat="server" visible="false">
 
-                                    <label for="Qualification">Other Qualification<samp style="color: red"> * </samp>
+                                    <label for="Qualification">
+                                        Other Qualification<samp style="color: red"> * </samp>
                                     </label>
                                     <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtQualifications" runat="server" Style="margin-left: 18px" TabIndex="8"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtQualifications" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Qualification</asp:RequiredFieldValidator>
@@ -250,6 +260,7 @@
                                     <label for="Email">Email</label>
                                     <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtEmail" runat="server" Style="margin-left: 18px" TabIndex="8" onkeyup="ValidateEmail();"></asp:TextBox>
                                     <span id="lblError" style="color: red"></span>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Valid EmailID</asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </ContentTemplate>
@@ -261,40 +272,46 @@
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
                         <div class="col-4">
-                            <label for="CertificateOld">Certificate no (Old)<samp style="color: red"> * </samp>
+                            <label for="CertificateOld">
+                                Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertifacateOld" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
-                               </div>
+                        </div>
                         <div class="col-4">
-                            <label for="CertificateNew">Ceritifcate No.(New)<samp style="color: red"> * </samp>
+                            <label for="CertificateNew">
+                                Ceritifcate No.(New)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>                          
-                            </div>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
+                            <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
+                        </div>
                         <div class="col-4">
-                            <label for="DateofIntialissue">Date of Initial Issue<samp style="color: red"> * </samp>
+                            <label for="DateofIntialissue">
+                                Date of Initial Issue<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" ID="txtDateInitialIssue" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtDateInitialIssue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Initial issue</asp:RequiredFieldValidator>
-                                 <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateInitialIssue" Operator="LessThan"
+                            <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateInitialIssue" Operator="LessThan"
                               Display  ="Dynamic" ForeColor="Red" />--%>
-                            </div>
+                        </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
                         <div class="col-4">
-                            <label for="DateofRenewal">Date of Renewal<samp style="color: red"> * </samp>
+                            <label for="DateofRenewal">
+                                Date of Renewal<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onChange="validateDates1()" onkeydown="return preventEnterSubmit(event)" ID="txtDateRenewal" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="12"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtDateRenewal" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
-                                    <%--  <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateRenewal"  Operator="GreaterThan"
+                            <%--  <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateRenewal"  Operator="GreaterThan"
                           ErrorMessage="Renewal Date must be greater than Expiry Date"
                           Display    ="Dynamic" ForeColor="Red" />--%>
-                            </div>
+                        </div>
                         <div class="col-4">
-                            <label for="DateofRenewal">Date of Expiry<samp style="color: red"> * </samp>
+                            <label for="DateofRenewal">
+                                Date of Expiry<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" ID="txtDateExpiry" min='0000-01-01' max='9999-01-01' onChange="validateDates()" Type="Date" runat="server" Style="margin-left: 18px" TabIndex="13"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtDateExpiry" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Expiry</asp:RequiredFieldValidator>
-                         <%--<asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtDateInitialIssue" ControlToValidate="txtDateExpiry"  Operator="GreaterThan"
+                            <%--<asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtDateInitialIssue" ControlToValidate="txtDateExpiry"  Operator="GreaterThan"
                             ErrorMessage="Expiry Date must be greater than Issue Date"
                                 Display       ="Dynamic" ForeColor="Red" />--%>
                         </div>
@@ -302,7 +319,8 @@
                         <div class="col-4">
                             <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                 <ContentTemplate>
-                                    <label style="width: 100% !important;">Attached with any other Contractor(YES/NO)<samp style="color: red"> * </samp>
+                                    <label style="width: 100% !important;">
+                                        Attached with any other Contractor(YES/NO)<samp style="color: red"> * </samp>
                                     </label>
                                     <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlAttachedContractor" runat="server" TabIndex="14" AutoPostBack="true" OnSelectedIndexChanged="ddlAttachedContractor_SelectedIndexChanged">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -320,7 +338,8 @@
                         <ContentTemplate>
                             <div class="row" id="rowContractorDetails" runat="server">
                                 <div class="col-4">
-                                    <label>Attached Contractor Detail's<samp style="color: red"> * </samp>
+                                    <label>
+                                        Attached Contractor Detail's<samp style="color: red"> * </samp>
                                     </label>
                                     <asp:DropDownList class="form-control  select-form select2" ID="ddlContractorDetails" runat="server" TabIndex="15">
                                     </asp:DropDownList>
@@ -338,7 +357,7 @@
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" TabIndex="16"
-                               ValidationGroup="Submit" OnClientClick="validateForm()" OnClick="btnSubmit_Click" />
+                            ValidationGroup="Submit"  OnClick="btnSubmit_Click" /> <%--OnClientClick="validateForm()"--%>
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" TabIndex="17"
                             Style="padding-left: 17px; padding-right: 17px;"
                             OnClick="BtnReset_Click" />
@@ -354,6 +373,7 @@
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
     </footer>
+
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
@@ -365,17 +385,32 @@
     <script>
         $('.select2').select2();
     </script>
+    <script type="text/javascript">
+        function validateBothEmpty(source, args) {
+            var CertifacateOld = document.getElementById('<%= txtCertifacateOld.ClientID %>').value;
+             var CertificateNew = document.getElementById('<%= txtCertificateNew.ClientID %>').value;
+            if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
+                args.IsValid = false;
+
+            } else {
+                args.IsValid = true;
+            }
+        }
+    </script>
+
+
+
 
     <script type="text/javascript">
         function validateForm() {
-           
+
             var CertifacateOld = document.getElementById('<%= txtCertifacateOld.ClientID %>').value
-            var CertificateNew = document.getElementById('<%= txtCertificateNew.ClientID %>').value;           
+            var CertificateNew = document.getElementById('<%= txtCertificateNew.ClientID %>').value;
             if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
                 emptyFields.push('Certificate No.(Old or New)');
 
             }
-            
+
             if (emptyFields.length > 0) {
                 var message = 'Please enter values for the following fields Correctly:\n\n';
                 message += emptyFields.join('\n');
@@ -411,7 +446,7 @@
     </script>
     <script type="text/javascript">
         function ValidatePincode() {
-            debugger
+           
             var Pin1 = document.getElementById("<%=txtPincode.ClientID %>");
             Pincode = Pin1.value;
             var lblPinError = document.getElementById("lblPinError");
@@ -430,31 +465,31 @@
                 return false;
             }
         }
-    </script>    
+    </script>
 
-     <script type="text/javascript">
-         function validateDates() {
-             var renewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;
+    <script type="text/javascript">
+        function validateDates() {
+            var renewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;
              var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
 
-             if (new Date(expiryDate) < new Date(renewalDate)) {
-                 alert('Renewal Date should be greater than Expire Date');
+            if (new Date(expiryDate) < new Date(renewalDate)) {
+                alert('Renewal Date should be greater than Expire Date');
 
-             }
-         }
-     </script>
+            }
+        }
+    </script>
 
- <script type="text/javascript">
-     function validateDates1() {
-         var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
-     var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
+    <script type="text/javascript">
+        function validateDates1() {
+            var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
+         var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
 
-         if (new Date(issueDate) < new Date(expireDate)) {
-             alert(' Expire date should be greater than issue date');
+            if (new Date(issueDate) < new Date(expireDate)) {
+                alert(' Expire date should be greater than issue date');
 
-         }
-     }
- </script>
+            }
+        }
+    </script>
     <script type="text/javascript">
         function isvalidphoneno() {
 
@@ -498,11 +533,11 @@
     <script type="text/javascript">
         function validateDates() {
             var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
-             var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
+            var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
 
-             if (new Date(expiryDate) < new Date(issueDate)) {
-                 alert('Expiry Date should be greater than Issue Date');
-                 document.getElementById('<%=txtDateExpiry.ClientID %>').value = "";
+            if (new Date(expiryDate) < new Date(issueDate)) {
+                alert('Expiry Date should be greater than Issue Date');
+                document.getElementById('<%=txtDateExpiry.ClientID %>').value = "";
             }
         }
      </script>
@@ -512,11 +547,11 @@
 
 
             var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
-         var RenewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;
+            var RenewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;
 
-         if (new Date(RenewalDate) < new Date(issueDate)) {
-             alert(' Renewal date should be greater than Issue date');
-             document.getElementById('<%=txtDateRenewal.ClientID %>').value = "";
+            if (new Date(RenewalDate) < new Date(issueDate)) {
+                alert(' Renewal date should be greater than Issue date');
+                document.getElementById('<%=txtDateRenewal.ClientID %>').value = "";
             }
         }
 

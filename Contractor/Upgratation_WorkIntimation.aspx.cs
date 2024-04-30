@@ -15,7 +15,7 @@ namespace CEIHaryana.Contractor
         CEI CEI = new CEI();
         string ContractorID = string.Empty;
         string REID = string.Empty;
-       
+
         List<string> SelectedSupervisor = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,6 +36,7 @@ namespace CEIHaryana.Contractor
                         hiddenfield1.Visible = false;
                         OtherPremises.Visible = false;
                         //FileUpdate.Visible=false;   
+                        btnOpenWindow.Visible = false;
 
                         if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
                         {
@@ -49,8 +50,11 @@ namespace CEIHaryana.Contractor
                             GetDetails();
                             GetGridData();
                             GetassigneddatatoContractor();
+                            Session["PrintIntimationId"] = null;
+                            btnOpenWindow.Visible = true;
                             CheckedPriviousSupervisor();
                             Session["UpdationId"] = Session["id"];
+                            Session["PrintIntimationId"] = Session["id"];
                             Session["id"] = "";
                         }
                     }
@@ -129,7 +133,7 @@ namespace CEIHaryana.Contractor
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
                 Session["File"] = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
 
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("yyyy-MM-dd");
                 string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
                 string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
                 string dp_Id8 = ds.Tables[0].Rows[0]["TypeOfInstallation1"].ToString();
@@ -476,14 +480,14 @@ namespace CEIHaryana.Contractor
                 txtinstallationNo2.Text = "";
                 txtinstallationType3.Text = "";
                 txtinstallationNo3.Text = "";
-              
+
                 ddlAnyWork.SelectedValue = "0";
                 txtCompletionDateAPWO.Text = "";
                 foreach (ListItem item in ddlWorkDetail.Items)
                 {
                     item.Selected = false;
                 }
-               
+
                 OtherPremises.Visible = false;
                 hiddenfield.Visible = false;
                 hiddenfield1.Visible = false;
@@ -491,7 +495,7 @@ namespace CEIHaryana.Contractor
             }
             catch (Exception) { }
         }
-        
+
         public void GetGridData()
         {
             try
@@ -507,8 +511,8 @@ namespace CEIHaryana.Contractor
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
-                    
-                    
+
+
                 }
                 else
                 {
@@ -560,7 +564,7 @@ namespace CEIHaryana.Contractor
         //    }
         //}
 
-        
+
 
 
 
@@ -722,7 +726,7 @@ namespace CEIHaryana.Contractor
                     installationType3.Visible = true;
                     txtinstallationType3.Text = Value;
                 }
-               
+
                 if (ddlWorkDetail.SelectedValue != "0")
                 {
                     try
@@ -801,7 +805,7 @@ namespace CEIHaryana.Contractor
             txtinstallationType3.Text = string.Empty;
             txtinstallationNo3.Text = string.Empty;
         }
-       
+
         protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -838,7 +842,7 @@ namespace CEIHaryana.Contractor
             }
             catch
             {
-                
+
             }
         }
         protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
@@ -878,7 +882,7 @@ namespace CEIHaryana.Contractor
             }
         }
 
-             
+
         protected void ddlFileUpdated_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -960,9 +964,9 @@ namespace CEIHaryana.Contractor
                                 CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);
 
                             }
-                            
-                        
-                        
+
+
+
                         }
                     }
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);

@@ -453,6 +453,7 @@ namespace CEIHaryana.Contractor
                 txtPhone.Text = "";
                 txtAddress.Text = "";
                 txtPin.Text = "";
+                txtTanNumber.Text = "";
                 ddlPremises.SelectedValue = "0";
                 ddlVoltageLevel.SelectedValue = "0";
                 //txtOtherWorkDetail.Text = "";
@@ -480,7 +481,9 @@ namespace CEIHaryana.Contractor
                 hiddenfield1.Visible = false;
                 txtEmail.Text = "";
             }
-            catch (Exception) { }
+            catch (Exception ex) 
+            {
+            }
         }
         protected void Submit_Click(object sender, EventArgs e)
         {
@@ -596,12 +599,22 @@ namespace CEIHaryana.Contractor
                                 return;
                             }
 
+                            string Pan_TanNumber="";
+                            if(DivPancard_TanNo.Visible == true && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
+                            {
+                                Pan_TanNumber = txtPAN.Text.Trim();
+                            }
+                            else if(DivOtherDepartment.Visible == true && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                            {
+                                Pan_TanNumber = txtTanNumber.Text.Trim();
+                            }
+
                             hdnId.Value = ContractorID;
                             CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlApplicantType.SelectedValue, ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
-                                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(), txtTanNumber.Text.Trim(),
+                                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(), 
                                 ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
                                 txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
-                                ddlVoltageLevel.SelectedItem.ToString(), txtPAN.Text, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
+                                ddlVoltageLevel.SelectedItem.ToString(), Pan_TanNumber, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
                                 txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
                                 //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
                                 //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
@@ -644,7 +657,6 @@ namespace CEIHaryana.Contractor
                                 }
                                 CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
                             }
-
                             transaction.Commit();
                             Reset();
 
@@ -667,7 +679,8 @@ namespace CEIHaryana.Contractor
                 catch (Exception ex)
                 {
                     transaction?.Rollback();
-                    string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
+                    // string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
+                    string errorMessage = ex.Message.ToString();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                 }
                 finally
@@ -863,15 +876,19 @@ namespace CEIHaryana.Contractor
             if (ddlApplicantType.SelectedValue == "AT001")
             {
                 DivPancard_TanNo.Visible = true;
+                txtTanNumber.Text = "";
             }
             else if (ddlApplicantType.SelectedValue == "AT002")
             {
                 DivPoweUtility.Visible = true;
                 DivPoweUtilityWing.Visible = true;
+                txtTanNumber.Text = "";
+                txtPAN.Text = "";
             }
             else if (ddlApplicantType.SelectedValue == "AT003")
             {
                 DivOtherDepartment.Visible = true;
+                txtPAN.Text = "";
             }
         }
         protected void btnDelete1_Click(object sender, EventArgs e)
@@ -1084,7 +1101,6 @@ namespace CEIHaryana.Contractor
                 }
             }
         }
-
         protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         {
             try

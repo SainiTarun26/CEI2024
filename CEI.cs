@@ -67,6 +67,33 @@ namespace CEI_PRoject
             }
         }
         #endregion
+
+        public int checkUserLogin(string UserName, string Password)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "sp_LoginMaster";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            //AdvNo = (string)ViewState["AdvNo"];
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.Add("@userid", SqlDbType.VarChar, 20).Value = UserName;
+            cmd.Parameters.Add("@pwd", SqlDbType.VarChar, 20).Value = Password;
+            cmd.Parameters.Add(new SqlParameter("@ret", SqlDbType.NVarChar, 50));
+            cmd.Parameters["@ret"].Direction = ParameterDirection.ReturnValue;
+            outputParam = new SqlParameter("@Status", SqlDbType.Int);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+            int k = Convert.ToInt32(cmd.Parameters["@ret"].Value);
+            return k;
+        }
+
         #region Check ApplicationStatus
         public DataSet checkApplicationStatus(string UserName)
         {
@@ -139,7 +166,7 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing,
-                string TanNumber, string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+                 string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
     string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
     string TypeOfInstallation3, string NumberOfInstallation3,
     //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
@@ -156,7 +183,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
             cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility == "Select" ? DBNull.Value : (object)PowerUtility);        //*
             cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing == "Select" ? DBNull.Value : (object)PowerUtilityWing);//*
-            cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? DBNull.Value : (object)TanNumber);              //*
+            //cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? DBNull.Value : (object)TanNumber);              //*
             cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? DBNull.Value : (object)NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? DBNull.Value : (object)NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
@@ -2772,6 +2799,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PartnersDirectorData", CreatedBy);
         }
+        public DataSet GetWorkIntimationDataForPrint(string REID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationData_ForPrint", REID);
+        }
+
 
         public int DocumentsForContactor(string Last3YearsITRAndBalanceSheet, string PanCard, string AdhaarNo, string AgeCertificate, string CalbrationFromNABLOrTestingLaboratoryofequipment, string CopyOfAnnexure3And5, string StatusOfCompanyProof, string MajorWorkesCarried, string DetailsofWorkPermited, string ElibraryasperANNEXURE2, string PreviouslyGrantedLicense, string CreatedBy)
         {

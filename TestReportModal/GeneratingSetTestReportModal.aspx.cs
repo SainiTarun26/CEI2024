@@ -126,7 +126,7 @@ namespace CEIHaryana.TestReportModal
                     BtnSubmitGeneratingSet.Text = "Back";
 
                 }
-                if (value1.Trim() == "Submit")
+                if (value1.Trim() == "Submitted")
                 {
                     BtnSubmitGeneratingSet.Text = "Back";
                 }

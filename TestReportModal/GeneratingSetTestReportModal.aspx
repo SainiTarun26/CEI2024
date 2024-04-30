@@ -2681,8 +2681,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card" id="inspection-card1" visible="false" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px; padding-bottom: 45px;">
-                                <div id="Contractor" runat="server" visible="false">
+                            <div class="card" id="Contractor" runat="server" visible="false" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px; padding-bottom: 45px;">
+                                <div > 
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
 
@@ -2784,9 +2784,7 @@
                                         <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
                                     </div>
                                    <%-- <div class="col-6" id="Div81" runat="server" visible="true">
-
                                         <asp:Button ID="btnOpenWindow" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
-
                                     </div>--%>
                                 </div>
                             </div>

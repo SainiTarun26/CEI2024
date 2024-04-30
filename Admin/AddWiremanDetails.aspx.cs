@@ -246,7 +246,6 @@ namespace CEI_PRoject.Admin
                     else
                     {
                         Qualification = ddlQualification.SelectedValue;
-
                     }
                     if (txtCertificateNew.Text.Trim() != "" && txtCertificateNew.Text.Trim() != "NA")
                     {
@@ -254,7 +253,7 @@ namespace CEI_PRoject.Admin
                     }
                     else
                     {
-                        UserId = txtCertifacateOld.Text;
+                        UserId = txtCertifacateOld.Text.Trim();
                     }
                     if (btnSubmit.Text.Trim() == "Submit")
                     {

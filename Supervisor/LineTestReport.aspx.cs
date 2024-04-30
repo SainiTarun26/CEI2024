@@ -53,9 +53,8 @@ namespace CEIHaryana.Supervisor
                             Session["Intimations"] = Session["ID"].ToString().Trim();
                             Session["IHID"] = Session["IHIDs"].ToString().Trim();   //
                             Session["NoOfInstallations"] = Session["NoOfInstallation"].ToString().Trim();  //
-                            //  BtnBack.Visible = true;
+                            //BtnBack.Visible = true;
                             GetHistoryDataById();
-
                         }
 
                         txtapplication.Text = Session["Application"].ToString().Trim();
@@ -76,7 +75,6 @@ namespace CEIHaryana.Supervisor
                 Response.Redirect("/Login.aspx");
             }
         }
-
         private void GetHistoryDataById()
         {
             try

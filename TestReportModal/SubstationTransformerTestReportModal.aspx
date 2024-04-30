@@ -2853,10 +2853,9 @@
                                         <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
                                     </div>
 
+                                    <asp:HiddenField ID="HiddenFieldOtp" runat="server" />
                                    <%-- <div class="col-6" id="Div81" runat="server" visible="true">
-
                                         <asp:Button ID="btnOpenWindow" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
-
                                     </div>--%>
                                 </div>
                             </ContentTemplate>

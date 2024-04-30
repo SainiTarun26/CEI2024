@@ -25,7 +25,7 @@ namespace CEIHaryana.TestReportModal
                 {
                     if (Session["ContractorID"] != null)
                     {
-
+                        HiddenField1.Value = "0";
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
@@ -40,39 +40,33 @@ namespace CEIHaryana.TestReportModal
                             Contractor2.Visible = true;
                             CreatedDate.Visible = true;
                         }
-
-
                     }
                     else if (Session["SiteOwnerId"] != null)
                     {
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
-                        
-                            SiteOwner.Visible = false;
-                           SiteOwner2.Visible = true;
-                            IntimationData.Visible = true;
+
+                        SiteOwner.Visible = false;
+                        SiteOwner2.Visible = true;
+                        IntimationData.Visible = true;
                         CreatedDate.Visible = true; //Added
                         SubmitDate.Visible = true;
                         SubmitBy.Visible = true;//Added
-
-
                     }
                     else if (Session["InspectionTestReportId"] != null)
-
                     {
                         ID = Session["InspectionTestReportId"].ToString();
                         GetDetailswithId();
                         SiteOwner.Visible = true;
                         IntimationData.Visible = true;
                         btnNext.Text = "Back";
-
                     }
                     else if (Session["IntimationForHistoryId"] != null)
                     {
                         ID = Session["IntimationForHistoryId"].ToString();
                         GetDetailswithId();
                         IntimationForHistory.Visible = true;
-                        Session["IntimationForHistoryId"] = null;   //added
+                        Session["IntimationForHistoryId"] = null;   
                     }
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
                     {
@@ -117,19 +111,19 @@ namespace CEIHaryana.TestReportModal
                 {
                     //ddlType.Attributes.Add("disabled", "disabled");
                     // ddlType.Attributes.Add("Readonly", "true");
-                   // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     btnSubmit.Text = "Back";
                 }
                 else if (value1.Trim() == "Reject")
                 {
                     // ddlType.Attributes.Add("Readonly", "true");
-                   // txtRejection.Attributes.Add("Readonly", "true");
+                    // txtRejection.Attributes.Add("Readonly", "true");
                     btnSubmit.Text = "Back";
-                   // ddlType.Attributes.Add("disabled", "disabled");
-                   // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                   // Rejection.Visible = true;
+                    // ddlType.Attributes.Add("disabled", "disabled");
+                    // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                    // Rejection.Visible = true;
                 }
-                if (value1.Trim() == "Submit")
+                if (value1.Trim() == "Submitted")
                 {
                     btnSubmit.Text = "Back";
                 }
@@ -147,10 +141,10 @@ namespace CEIHaryana.TestReportModal
                     individual.Visible = true;
                     agency.Visible = false;
                 }
-                if (txtCableType.Text == "Other")                                          
-                {                                                                        
-                    OtherCable.Visible = true;                                           
-                    txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();   
+                if (txtCableType.Text == "Other")
+                {
+                    OtherCable.Visible = true;
+                    txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
                 }
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
@@ -181,8 +175,9 @@ namespace CEIHaryana.TestReportModal
                 TxtOthervoltage.Text = ds.Tables[0].Rows[0]["OtherVoltage"].ToString();
                 txtLineLength.Text = ds.Tables[0].Rows[0]["LineLength"].ToString();
                 txtLineType.Text = ds.Tables[0].Rows[0]["LineType"].ToString();
-               
-                if (txtVotalgeType.Text =="V") {
+
+                if (txtVotalgeType.Text == "V")
+                {
                     if (int.TryParse(TxtOthervoltage.Text, out int value))
                     {
                         if (value > 440)
@@ -245,7 +240,7 @@ namespace CEIHaryana.TestReportModal
                                     Insulation440vAbove.Visible = false;
                                     Insulation220vAbove.Visible = true;
                                 }
-                                
+
 
                             }
                         }
@@ -260,18 +255,18 @@ namespace CEIHaryana.TestReportModal
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||   
-                        txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")        
-                    {                                                                                         
-                        Insulation220vAbove.Visible = false;                                             
-                        Insulation440vAbove.Visible = true;                                             
+                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||
+                        txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")
+                    {
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true;
                     }
 
                 }
                 else if (txtLineType.Text.Trim() == "Underground")
                 {
 
-                  
+
                     if (txtVotalgeType.Text == "Other")
                     {
                         if (TxtOthervoltage.Text.Trim() == "KV")
@@ -590,11 +585,10 @@ namespace CEIHaryana.TestReportModal
                 txtEarthWire.Text = ds.Tables[0].Rows[0]["PhasewireEarth"].ToString();
                 txtNeutralWireEarth.Text = ds.Tables[0].Rows[0]["NeutralwireEarth"].ToString();
                 txtCableType.Text = ds.Tables[0].Rows[0]["TypeofCable"].ToString();
-
-                if (txtCableType.Text == "Other")                                        
-                {                                                                          
-                    OtherCable.Visible = true;                                           
-                    txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();   
+                if (txtCableType.Text == "Other")
+                {
+                    OtherCable.Visible = true;
+                    txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
                 }
                 txtCableType.Text = ds.Tables[0].Rows[0]["TypeofCable"].ToString();
                 txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
@@ -609,7 +603,6 @@ namespace CEIHaryana.TestReportModal
 
             }
         }
-
         protected void btnReject_Click(object sender, EventArgs e)
         {
             //Rejection.Visible = true;
@@ -623,7 +616,6 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
-
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
                 //CEI.UpdateLineData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
@@ -647,7 +639,7 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-        
+
             if (btnNext.Text.Trim() == "Back")
             {
                 Response.Redirect("/Officers/Inspection.aspx", false);
@@ -673,34 +665,37 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                if (btnVerify.Text == "SendOTP")
+                HiddenField1.Value = Convert.ToString(Convert.ToInt32(HiddenField1.Value) + 1);
+
+                if (btnVerify.Text == "SendOTP" && HiddenField1.Value == "1")
                 {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
                     {
-
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-
-
                     }
                     else
                     {
                         Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP Sent Successfully.Please Check You Email');", true);
                         btnVerify.Text = "Verify";
                     }
                 }
                 else
                 {
-                    if (Session["OTP"].ToString() == txtOtp.Text)
-                    {
-                        Contractor2.Visible = true;
-                        Contractor3.Visible = false;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
-                    }
+                    //if (txtOtp.Text == "")
+                    //{
+                        if (Session["OTP"].ToString() == txtOtp.Text)
+                        {
+                            Contractor2.Visible = true;
+                            Contractor3.Visible = false;
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
+                        }
+                    //}
                 }
             }
             catch
@@ -731,4 +726,4 @@ namespace CEIHaryana.TestReportModal
         }
 
     }
-    }
+}

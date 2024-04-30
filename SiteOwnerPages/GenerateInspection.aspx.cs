@@ -189,6 +189,11 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             ApplicantType = "Private And Personal";
                         }
+
+                        if (ApplicantType == "Other Department/Organization") 
+                        {
+                            ApplicantType = "Other Department";
+                        } 
                         InspectionType = "New";
                         AssigDesignation = lblDesignation.Text;
                         PlantLocation = lblTypeOfPlant.Text;

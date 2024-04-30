@@ -22,6 +22,7 @@ namespace CEIHaryana.TestReportModal
                 {
                     if (Session["ContractorID"] != null)
                     {
+                        HiddenFieldOtp.Value = "0";
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
@@ -119,7 +120,7 @@ namespace CEIHaryana.TestReportModal
                     //txtRejection.Attributes.Add("Readonly", "true");
                     BtnSubmit.Text = "Back";
                 }
-                if (value1.Trim() == "Submit")
+                if (value1.Trim() == "Submitted")
                 {
                     BtnSubmit.Text = "Back";
                 }
@@ -535,12 +536,10 @@ namespace CEIHaryana.TestReportModal
             //    Rejection.Visible = false;
             //}
         }
-
         protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/IntimationForHistory.aspx", false);
         }
-
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             if (BtnSubmit.Text.Trim() == "Back")
@@ -554,7 +553,6 @@ namespace CEIHaryana.TestReportModal
                 //CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
                 CEI.UpdateSubstationData(id, Counts);
                 Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
-
             }
         }
         protected void btnBack_Click(object sender, EventArgs e)
@@ -585,22 +583,20 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                if (btnVerify.Text == "SendOTP")
+                HiddenFieldOtp.Value = Convert.ToString(Convert.ToInt32(HiddenFieldOtp.Value) + 1);
+                if (btnVerify.Text == "SendOTP" && HiddenFieldOtp.Value == "1")
                 {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
                     {
-
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-
-
                     }
                     else
                     {
                         Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP Sent Successfully.Please Check You Email');", true);
                         btnVerify.Text = "Verify";
-
                     }
                 }
                 else
