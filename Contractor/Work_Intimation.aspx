@@ -299,8 +299,9 @@
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                 <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
                                                 <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
-                                                <%-- <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>--%>
                                                 <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
+                                                <%-- <asp:ListItem Text="Power Utility" Value="AT003"></asp:ListItem>--%>
+                                                
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>

@@ -427,7 +427,7 @@
             }
         }
     </script>--%>
-    <script type="text/javascript">
+  <%--  <script type="text/javascript">
         function validateDates() {
             var renewalDate = document.getElementById('<%=DateofRenewal.ClientID %>').value;
             var expiryDate = document.getElementById('<%=DateofExpiry.ClientID %>').value;
@@ -447,7 +447,7 @@
 
             }
         }
-    </script>
+    </script>--%>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
@@ -586,7 +586,7 @@
             var issueDate = document.getElementById('<%=DateofIntialissue.ClientID %>').value;
             var expiryDate = document.getElementById('<%=DateofExpiry.ClientID %>').value;
 
-            if (new Date(expiryDate) < new Date(issueDate)) {
+            if (new Date(expiryDate) <= new Date(issueDate)) {
                 alert('Expire Date should be greater than Issue Date');
                 document.getElementById('<%=DateofExpiry.ClientID %>').value = "";
             }
@@ -598,7 +598,7 @@
             var issueDate = document.getElementById('<%=DateofIntialissue.ClientID %>').value;
         var renewalDate = document.getElementById('<%=DateofRenewal.ClientID %>').value;
 
-            if (new Date(renewalDate) < new Date(issueDate)) {
+            if (new Date(renewalDate) <= new Date(issueDate)) {
                 alert(' Renewal date should be greater than Issue date');
                 document.getElementById('<%=DateofRenewal.ClientID %>').value = "";
 

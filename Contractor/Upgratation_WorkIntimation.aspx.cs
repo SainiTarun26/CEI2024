@@ -109,16 +109,30 @@ namespace CEIHaryana.Contractor
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
                 //ddlPremises.SelectedValue = dp_Id1;
-                txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                string PanTanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                if (dp_Id24 == "Private/Personal Installation")
                 {
                     DivPancard_TanNo.Visible = true;
+                    txtPAN.Text = PanTanNumber;
                 }
-                txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
-                if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
+                else if (dp_Id24 == "Other Department/Organization")
                 {
                     DivOtherDepartment.Visible = true;
+                    txtTanNumber.Text = PanTanNumber;
                 }
+                else if (dp_Id24 == "Power Utility")
+                {
+
+                }
+                //if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                //{
+                //    DivPancard_TanNo.Visible = true;
+                //}
+                //txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
+                //if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
+                //{
+                //    DivOtherDepartment.Visible = true;
+                //}
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
@@ -234,6 +248,7 @@ namespace CEIHaryana.Contractor
                     hiddenfield.Visible = true;
                     hiddenfield1.Visible = true;
                     customFile.Visible = false;
+                    FileUpdate.Visible = true;
                     customFileLocation.Visible = false;
                     txtCompletionDateAPWO.Text = DateTime.Parse(dp_Id6).ToString("yyyy-MM-dd");
                 }
@@ -954,10 +969,10 @@ namespace CEIHaryana.Contractor
                         string installationType = typeTextBoxes[i].Text;
                         string installationNoText = noTextBoxes[i].Text;
 
-                        int installationNo;                       
+                        int installationNo;
                         if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
                         {
-                            CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);                           
+                            CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);
                         }
                     }
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
@@ -1056,25 +1071,47 @@ namespace CEIHaryana.Contractor
         protected void btnUpdate4_Click(object sender, EventArgs e)
         {
 
-            String IntimationID = string.Empty;
-            IntimationID = Session["UpdationId"].ToString();
-            ContractorID = Session["ContractorID"].ToString();
+            String IntimationID = Session["UpdationId"]?.ToString(); // Ensure safe access
+            ContractorID = Session["ContractorID"]?.ToString(); // Ensure safe access
+
             string AssignBy = ContractorID;
-            int x = CEI.RemovePrivousSupervisiorToContractor(IntimationID);
-            if (x > 0)
+
+            bool atLeastOneChecked = false;
+
+            foreach (GridViewRow row in GridView1.Rows)
             {
-                foreach (GridViewRow row in GridView1.Rows)
+                CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                if (chk.Checked)
                 {
-                    if ((row.FindControl("CheckBox1") as CheckBox).Checked)
-                    {
-                        Label lblREID = (Label)row.FindControl("lblREID");
-                        string Reid = lblREID.Text;
-                        CEI.AssignSupervisiorToContractor(IntimationID, Reid, AssignBy);
-                    }
+                    atLeastOneChecked = true;
+                    break;
                 }
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
 
+            if (atLeastOneChecked)
+            {
+
+                int x = CEI.RemovePrivousSupervisiorToContractor(IntimationID);
+                if (x >= 0)
+                {
+                    foreach (GridViewRow row in GridView1.Rows)
+                    {
+                        CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                        if (chk.Checked)
+                        {
+                            Label lblREID = (Label)row.FindControl("lblREID");
+                            string Reid = lblREID.Text;
+                            CEI.AssignSupervisiorToContractor(IntimationID, Reid, AssignBy);
+                        }
+                    }
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
+                }
+
+            }
+            else
+            {
+                Response.Write("<script>alert('Please select at least one supervisor.');</script>");
+            }
 
         }
     }

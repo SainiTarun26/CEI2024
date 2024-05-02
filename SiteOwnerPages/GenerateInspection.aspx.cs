@@ -184,16 +184,16 @@ namespace CEIHaryana.SiteOwnerPages
                         Category = lblCategory.Text;
                         Count = lblNoOfInstallations.Text;
 
-                        ApplicantType = lblApplicant.Text;
-                        if (ApplicantType == "Private/Personal Installation")
-                        {
-                            ApplicantType = "Private And Personal";
-                        }
+                        //ApplicantType = lblApplicant.Text;
+                        //if (ApplicantType == "Private/Personal Installation")
+                        //{
+                        //    ApplicantType = "Private And Personal";
+                        //}
+                        //if (ApplicantType == "Other Department/Organization") 
+                        //{
+                        //    ApplicantType = "Other Department";
+                        //} 
 
-                        if (ApplicantType == "Other Department/Organization") 
-                        {
-                            ApplicantType = "Other Department";
-                        } 
                         InspectionType = "New";
                         AssigDesignation = lblDesignation.Text;
                         PlantLocation = lblTypeOfPlant.Text;
@@ -204,9 +204,7 @@ namespace CEIHaryana.SiteOwnerPages
                         btnSubmit.Visible = true;
                         btnReset.Visible = true;
 
-
-
-                        GetDocumentUploadData(ApplicantType, Category, InspectionType, AssigDesignation, PlantLocation);
+                        GetDocumentUploadData(ApplicantTypeCode, Category, InspectionType, AssigDesignation, PlantLocation);
                         PaymentGridViewBind();
                     }
                     else

@@ -405,7 +405,7 @@
                             <div class="row">
                                 <div class="col-3" id="PrimaryVoltageLevel" runat="server" Visible="false">
                                     <label for="Voltage">
-                                        Primary voltage(in kva)  
+                                        Primary voltage(in volte)  
                             <samp style="color: red">* </samp>
                                     </label>
                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server"  AutoPostBack="true" ID="PrimaryVoltage" selectionmode="Multiple" Style="width: 100% !important">

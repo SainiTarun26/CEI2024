@@ -311,7 +311,7 @@ namespace CEIHaryana
                     // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
