@@ -111,30 +111,32 @@ namespace CEIHaryana.Contractor
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
                 //ddlPremises.SelectedValue = dp_Id1;
-                //string PanTanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                //if (dp_Id24 == "Private/Personal Installation")
-                //{
-                //    DivPancard_TanNo.Visible = true;
-                //    txtPAN.Text = PanTanNumber;
-                //}
-                //else if (dp_Id24 == "Other Department/Organization")
-                //{
-                //    DivOtherDepartment.Visible = true;
-                //    txtTanNumber.Text = PanTanNumber;
-                //}
-                //else if (dp_Id24 == "Power Utility")
-                //{
-                //}
-                txtPAN.Text= ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                string PanTanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                if (dp_Id24 == "Private/Personal Installation")
                 {
                     DivPancard_TanNo.Visible = true;
+                    txtPAN.Text = PanTanNumber;
                 }
-                txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
-                if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
+                else if (dp_Id24 == "Other Department/Organization")
                 {
                     DivOtherDepartment.Visible = true;
+                    txtTanNumber.Text = PanTanNumber;
                 }
+                else if (dp_Id24 == "Power Utility")
+                {
+                }
+
+                //txtPAN.Text= ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                //if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                //{
+                //    DivPancard_TanNo.Visible = true;
+                //}
+                //txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
+                //if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
+                //{
+                //    DivOtherDepartment.Visible = true;
+                //}
+
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
@@ -262,7 +264,7 @@ namespace CEIHaryana.Contractor
                 {
                     installationType2.Visible = true;
                 }
-                //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
+                //WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 if (TestReportGenerated.Trim() == "Yes")
                 {
@@ -305,7 +307,6 @@ namespace CEIHaryana.Contractor
                     //btnUpdate2.Visible = true;
                     //btnUpdate3.Visible = true;
                     FileUpdate.Visible = true;
-
 
                 }
             }
@@ -498,17 +499,16 @@ namespace CEIHaryana.Contractor
 
                 ddlAnyWork.SelectedValue = "0";
                 txtCompletionDateAPWO.Text = "";
-                foreach (ListItem item in ddlWorkDetail.Items)
+                foreach(ListItem item in ddlWorkDetail.Items)
                 {
                     item.Selected = false;
                 }
-
                 OtherPremises.Visible = false;
                 hiddenfield.Visible = false;
                 hiddenfield1.Visible = false;
                 txtEmail.Text = "";
             }
-            catch (Exception) { }
+            catch (Exception ex) { }
         }
 
         public void GetGridData()
@@ -965,27 +965,21 @@ namespace CEIHaryana.Contractor
                             LoginID = Session["UpdationId"].ToString();
                             TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
                             TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
-                            //int x = CEI.RemovePrivousInstallationCount(LoginID);
-                            //int x = CEI.RemovePrivousInstallationCount(LoginID, installationType, Convert.ToInt32(installationNoText));
+
                             for (int i = 0; i < typeTextBoxes.Length; i++)
                             {
 
                                 string installationType = typeTextBoxes[i].Text;
                                 string installationNoText = noTextBoxes[i].Text;
 
+
                                 int installationNo;
-                                //int x = CEI.RemovePrivousInstallationCount(LoginID, installationType,Convert.ToInt32(installationNoText));
+
                                 if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
                                 {
-                                    //LoginID = null;
-                                    //if (x > 0)
-                                    //{
-                                    //for (int j = 0; j < installationNo; j++)
-                                    //{
-                                    //LoginID = "Null";//Added
+
                                     CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);
-                                    //}
-                                    //}
+
                                 }
                             }
                             transaction.Commit();
@@ -994,15 +988,17 @@ namespace CEIHaryana.Contractor
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            string errorMessage = ex.Message.ToString();
+
+                            string errorMessage = ex.Message;
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                           //throw ex;
+
                         }
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
+
             }
         }
 
