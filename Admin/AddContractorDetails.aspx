@@ -476,31 +476,8 @@
 
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
-    </footer>
-    
-    <script type="text/javascript">
-        function validateDates() {
-            var renewalDate = document.getElementById('<%=txtDateofRenewal.ClientID %>').value;
-            var expiryDate = document.getElementById('<%=txtDateofExpiry.ClientID %>').value;
-
-            if (new Date(expiryDate) < new Date(renewalDate)) {
-                alert('Renewal Date should be greater than Expire Date');
-
-            }
-        }
-    </script>
-
-    <script type="text/javascript">
-        function validateDates1() {
-            var issueDate = document.getElementById('<%=txtDateofIntialissue.ClientID %>').value;
-            var expiryDate = document.getElementById('<%=txtDateofExpiry.ClientID %>').value;
-
-            if (new Date(issueDate) < new Date(expireDate)) {
-                alert(' Expire date should be greater than issue date');
-
-            }
-        }
-        </script>
+    </footer>    
+  
     <script type="text/javascript">
         function validateBothEmpty(source, args) {
             var textBox1Value = document.getElementById('<%= txtLicenceOld.ClientID %>').value;
@@ -665,7 +642,7 @@
             var issueDate = document.getElementById('<%=txtDateofIntialissue.ClientID %>').value;
             var expiryDate = document.getElementById('<%=txtDateofExpiry.ClientID %>').value;
 
-            if (new Date(expiryDate) < new Date(issueDate)) {
+            if (new Date(expiryDate) <= new Date(issueDate)) {
                 alert('Renewal Date should be greater than Issue Date');
                 
                 document.getElementById('<%=txtDateofExpiry.ClientID %>').value = "";
@@ -679,7 +656,7 @@
             var issueDate = new Date(document.getElementById('<%=txtDateofIntialissue.ClientID %>').value);
            var renewalDate = new Date(document.getElementById('<%=txtDateofRenewal.ClientID %>').value);
 
-           if (new Date(renewalDate) < new Date(issueDate)) {
+           if (new Date(renewalDate) <= new Date(issueDate)) {
                alert('Renewal date should be greater than Issue Date');
                document.getElementById('<%=txtDateofRenewal.ClientID %>').value = "";
             }

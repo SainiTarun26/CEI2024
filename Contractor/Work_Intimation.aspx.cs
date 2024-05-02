@@ -1117,7 +1117,7 @@ namespace CEIHaryana.Contractor
                 ds = CEI.GetDetailsByPanNumberId(TANNumber);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();                    
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
                     txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                     txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
@@ -1128,6 +1128,7 @@ namespace CEIHaryana.Contractor
                     txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                     txtTanNumber.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+
                 }
                 else
                 {

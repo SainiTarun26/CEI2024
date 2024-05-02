@@ -398,9 +398,6 @@
         }
     </script>
 
-
-
-
     <script type="text/javascript">
         function validateForm() {
 
@@ -467,29 +464,7 @@
         }
     </script>
 
-    <script type="text/javascript">
-        function validateDates() {
-            var renewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;
-             var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
-
-            if (new Date(expiryDate) < new Date(renewalDate)) {
-                alert('Renewal Date should be greater than Expire Date');
-
-            }
-        }
-    </script>
-
-    <script type="text/javascript">
-        function validateDates1() {
-            var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
-         var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
-
-            if (new Date(issueDate) < new Date(expireDate)) {
-                alert(' Expire date should be greater than issue date');
-
-            }
-        }
-    </script>
+   
     <script type="text/javascript">
         function isvalidphoneno() {
 
@@ -535,7 +510,7 @@
             var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
             var expiryDate = document.getElementById('<%=txtDateExpiry.ClientID %>').value;
 
-            if (new Date(expiryDate) < new Date(issueDate)) {
+            if (new Date(expiryDate) <= new Date(issueDate)) {
                 alert('Expiry Date should be greater than Issue Date');
                 document.getElementById('<%=txtDateExpiry.ClientID %>').value = "";
             }
@@ -549,7 +524,7 @@
             var issueDate = document.getElementById('<%=txtDateInitialIssue.ClientID %>').value;
             var RenewalDate = document.getElementById('<%=txtDateRenewal.ClientID %>').value;
 
-            if (new Date(RenewalDate) < new Date(issueDate)) {
+            if (new Date(RenewalDate) <= new Date(issueDate)) {
                 alert(' Renewal date should be greater than Issue date');
                 document.getElementById('<%=txtDateRenewal.ClientID %>').value = "";
             }

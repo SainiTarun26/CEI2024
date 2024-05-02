@@ -1,7 +1,9 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -109,30 +111,30 @@ namespace CEIHaryana.Contractor
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
                 //ddlPremises.SelectedValue = dp_Id1;
-                string PanTanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                if (dp_Id24 == "Private/Personal Installation")
-                {
-                    DivPancard_TanNo.Visible = true;
-                    txtPAN.Text = PanTanNumber;
-                }
-                else if (dp_Id24 == "Other Department/Organization")
-                {
-                    DivOtherDepartment.Visible = true;
-                    txtTanNumber.Text = PanTanNumber;
-                }
-                else if (dp_Id24 == "Power Utility")
-                {
-
-                }
-                //if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                //string PanTanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                //if (dp_Id24 == "Private/Personal Installation")
                 //{
                 //    DivPancard_TanNo.Visible = true;
+                //    txtPAN.Text = PanTanNumber;
                 //}
-                //txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
-                //if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
+                //else if (dp_Id24 == "Other Department/Organization")
                 //{
                 //    DivOtherDepartment.Visible = true;
+                //    txtTanNumber.Text = PanTanNumber;
                 //}
+                //else if (dp_Id24 == "Power Utility")
+                //{
+                //}
+                txtPAN.Text= ds.Tables[0].Rows[0]["PanNumber"].ToString();
+                if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
+                {
+                    DivPancard_TanNo.Visible = true;
+                }
+                txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
+                if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
+                {
+                    DivOtherDepartment.Visible = true;
+                }
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
@@ -324,8 +326,6 @@ namespace CEIHaryana.Contractor
 
                     return;
                 }
-
-
 
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(PANNumber);
@@ -536,6 +536,7 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
+        #region comment code
         //protected void HighlightGridViewRows(DataTable dataTable)
         //{
         //    // Assuming the column name is "Name"
@@ -578,11 +579,7 @@ namespace CEIHaryana.Contractor
         //        // This could indicate a data mismatch between the GridView and the DataTable
         //    }
         //}
-
-
-
-
-
+        #endregion
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -683,7 +680,6 @@ namespace CEIHaryana.Contractor
                 Console.WriteLine(ex.Message);
             }
         }
-
 
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -951,36 +947,63 @@ namespace CEIHaryana.Contractor
             try
             {
                 ContractorID = Session["ContractorID"].ToString();
-
                 string UpdationId = string.Empty;
                 if (Session["UpdationId"] != null)
                 {
-                    UpdationId = Session["UpdationId"].ToString();
-                    hdnId.Value = ContractorID;
-                    CEI.InsertionForApplicationDetails(UpdationId, ContractorID, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
-                            ddlVoltageLevel.SelectedItem.ToString(), txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
-                            txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text, ContractorID);
-                    string LoginID = string.Empty;
-                    LoginID = Session["UpdationId"].ToString();
-                    TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
-                    TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
-                    for (int i = 0; i < typeTextBoxes.Length; i++)
+                    using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                     {
-                        string installationType = typeTextBoxes[i].Text;
-                        string installationNoText = noTextBoxes[i].Text;
-
-                        int installationNo;
-                        if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
+                        connection.Open();
+                        SqlTransaction transaction = connection.BeginTransaction();
+                        try
                         {
-                            CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);
+                            UpdationId = Session["UpdationId"].ToString();
+                            hdnId.Value = ContractorID;
+                            CEI.InsertionForApplicationDetails(UpdationId, ContractorID, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
+                                    ddlVoltageLevel.SelectedItem.ToString(), txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
+                                    txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text, ContractorID, transaction);
+                            string LoginID = string.Empty;
+                            LoginID = Session["UpdationId"].ToString();
+                            TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
+                            TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
+                            //int x = CEI.RemovePrivousInstallationCount(LoginID);
+                            //int x = CEI.RemovePrivousInstallationCount(LoginID, installationType, Convert.ToInt32(installationNoText));
+                            for (int i = 0; i < typeTextBoxes.Length; i++)
+                            {
+
+                                string installationType = typeTextBoxes[i].Text;
+                                string installationNoText = noTextBoxes[i].Text;
+
+                                int installationNo;
+                                //int x = CEI.RemovePrivousInstallationCount(LoginID, installationType,Convert.ToInt32(installationNoText));
+                                if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
+                                {
+                                    //LoginID = null;
+                                    //if (x > 0)
+                                    //{
+                                    //for (int j = 0; j < installationNo; j++)
+                                    //{
+                                    //LoginID = "Null";//Added
+                                    CEI.AddInstallations2(LoginID, installationType, installationNo, ContractorID);
+                                    //}
+                                    //}
+                                }
+                            }
+                            transaction.Commit();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            string errorMessage = ex.Message.ToString();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                           //throw ex;
                         }
                     }
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
                 }
             }
-            catch
-            { }
-
+            catch (Exception ex)
+            {
+            }
         }
 
         protected void btnUpdate3_Click(object sender, EventArgs e)

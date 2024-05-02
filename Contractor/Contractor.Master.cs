@@ -16,7 +16,6 @@ namespace CEIHaryana.Contractor
         protected void Page_Load(object sender, EventArgs e)
         {
             try
-
             {
                 if (Convert.ToString(Session["ContractorID"]) != null || Convert.ToString(Session["ContractorID"]) != string.Empty)
                 {

@@ -327,7 +327,7 @@
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" AutoPostBack="true"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Z]{4}[0-9]{5}[A-Z]"  ValidationGroup="Submit"
+                                            <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]"  ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
@@ -558,8 +558,7 @@
                                                                 <td style="text-align: center !important;">
                                                                     <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete3_Click" runat="server" /></td>
                                                             </tr>
-                                                        </div>
-                                                        
+                                                        </div>                                                        
                                                         <%--    <div id="installationType4" runat="server" visible="False">
                                                             <tr>
                                                                 <td>

@@ -3575,21 +3575,22 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public void InsertionForApplicationDetails(string Id, string ContractorId, string PremisesType, string OtherPremises, string VoltageLevel,
-          string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-         string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy)
+     string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+    string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy, SqlTransaction transaction)
         {
-            SqlConnection con = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
-            string sqlProc = "sp_UpdateApplicationDetailsInWorkIntimation";
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            //AdvNo = (string)ViewState["AdvNo"];
+            //SqlConnection con = new SqlConnection();
+            //SqlCommand cmd = new SqlCommand();
+            //string sqlProc = "sp_UpdateApplicationDetailsInWorkIntimation";
+            //con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //if (con.State == ConnectionState.Closed)
+            //{
+            //    con.Open();
+            //}
+            SqlCommand cmd = new SqlCommand("sp_UpdateApplicationDetailsInWorkIntimation", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = sqlProc;
-            cmd.Connection = con;
+
+            //cmd.CommandText = sqlProc;
+            //cmd.Connection = con;
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
             cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
@@ -3602,8 +3603,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
             cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            //outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+            //outputParam.Direction = ParameterDirection.Output;
+            //cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
-            con.Close();
+            //con.Close();
 
         }
 
