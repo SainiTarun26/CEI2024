@@ -301,7 +301,6 @@
                                                 <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
                                                 <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
                                                 <%-- <asp:ListItem Text="Power Utility" Value="AT003"></asp:ListItem>--%>
-                                                
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
@@ -711,9 +710,10 @@
                         </div>
                         <div class="col-4" id="hiddenfield1" runat="server">
                             <label for="CompletionDateasperWorkOrder">
-                                Completion Date as per Work Order
+                                Completion Date as per Work Order<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" onchange="CompletionDates1()" TabIndex="20" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtCompletionDateAPWO" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter  Completion Date as per Work Order</asp:RequiredFieldValidator>
                             <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletionDateAPWO" Operator="GreaterThanEqual" ErrorMessage="Work Completion Date must be greater than  Start Date" Display="Dynamic" ForeColor="Red" />--%>
                         </div>
                     </div>
@@ -834,11 +834,11 @@
     <script type="text/javascript">
         function CompletionDates() {
             var CompletionStartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
-        var TentativeCompletionDate = document.getElementById('<%=txtCompletitionDate.ClientID %>').value;
+            var TentativeCompletionDate = document.getElementById('<%=txtCompletitionDate.ClientID %>').value;
 
-        if (new Date(TentativeCompletionDate) <= new Date(CompletionStartDate)) {
-            alert('Tentative Work Completition Date should be greater than Tentative Work Start Date');
-            document.getElementById('<%=txtCompletitionDate.ClientID %>').value = "";
+            if (new Date(TentativeCompletionDate) <= new Date(CompletionStartDate)) {
+                alert('Tentative Work Completition Date should be greater than Tentative Work Start Date');
+                document.getElementById('<%=txtCompletitionDate.ClientID %>').value = "";
             }
         }
     </script>
@@ -850,11 +850,11 @@
             document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', today);--%>
 
 
-            var today = new Date();            
+            var today = new Date();
             var futureDate = new Date(today.getTime() + (15 * 24 * 60 * 60 * 1000));
             var maxDate = futureDate.toISOString().split('T')[0];
-           document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', maxDate);
-        
+            document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', maxDate);
+
         }
      </script>
 

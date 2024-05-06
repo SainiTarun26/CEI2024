@@ -992,9 +992,8 @@ namespace CEIHaryana.Contractor
                         }
                         catch (Exception ex)
                         {
-                            transaction.Rollback();
-                            string errorMessage = ex.Message;
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                            transaction.Rollback();                            
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "UpdationErrorMessage();", true);
                         }
                     }
                 }
@@ -1144,8 +1143,8 @@ namespace CEIHaryana.Contractor
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    string errorMessage = ex.Message;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                    //string errorMessage = ex.Message;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "UpdationErrorMessage();", true);
                 }
             }
         }

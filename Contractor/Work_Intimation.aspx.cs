@@ -620,19 +620,19 @@ namespace CEIHaryana.Contractor
                                 return;
                             }
 
-                            string Pan_TanNumber="";
-                            if(DivPancard_TanNo.Visible == true && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
+                            string Pan_TanNumber = "";
+                            if (DivPancard_TanNo.Visible == true && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                             {
                                 Pan_TanNumber = txtPAN.Text.Trim();
                             }
-                            else if(DivOtherDepartment.Visible == true && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                            else if (DivOtherDepartment.Visible == true && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
                             {
                                 Pan_TanNumber = txtTanNumber.Text.Trim();
                             }
 
                             hdnId.Value = ContractorID;
                             CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlApplicantType.SelectedValue, ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
-                                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(), 
+                                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),
                                 ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
                                 txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
                                 ddlVoltageLevel.SelectedItem.ToString(), Pan_TanNumber, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
@@ -653,7 +653,8 @@ namespace CEIHaryana.Contractor
                                     {
                                         Label lblREID = (Label)row.FindControl("lblREID");
                                         string Reid = lblREID.Text;
-                                        CEI.SetDataInStaffAssined(Reid, projectId, AssignBy);
+
+                                        CEI.SetDataInStaffAssined(Reid, projectId, AssignBy, transaction);
                                     }
                                 }
 
@@ -672,7 +673,7 @@ namespace CEIHaryana.Contractor
                                         // Save data according to the number of installations
                                         for (int j = 0; j < installationNo; j++)
                                         {
-                                            CEI.AddInstallations(projectId, installationType, installationNo);
+                                            CEI.AddInstallations(projectId, installationType, installationNo, transaction);
                                         }
                                     }
                                 }
@@ -709,7 +710,7 @@ namespace CEIHaryana.Contractor
                     transaction?.Dispose();
                     connection.Close();
                 }
-            }      
+            }
         }
         public void GetGridData()
         {

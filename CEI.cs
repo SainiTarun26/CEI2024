@@ -244,25 +244,26 @@ namespace CEI_PRoject
                 return null;
             }
         }
-        public void AddInstallations(string IntimationId, string Typeofinstallation, int Noofinstallation)
+        public void AddInstallations(string IntimationId, string Typeofinstallation, int Noofinstallation, SqlTransaction transaction)
         {
-            SqlCommand cmd = new SqlCommand("sp_InstallationsCount");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
+            SqlCommand cmd = new SqlCommand("sp_InstallationsCount", transaction.Connection, transaction);
+            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            //cmd.Connection = con;
+            //if (con.State == ConnectionState.Closed)
+            //{
+            //    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //    con.Open();
+            //}
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
             cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
             cmd.Parameters.AddWithValue("@Noofinstallation", Noofinstallation);
             cmd.ExecuteNonQuery();
-            con.Close();
+            //con.Close();
 
         }
+
 
         public void UpdateInstallations(string Id, string IntimationId)
         {
@@ -2137,9 +2138,20 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSupervisor", Id);
         }
-        public int SetDataInStaffAssined(string REID, string projectId, string AssignBy)
+        public int SetDataInStaffAssined(string REID, string projectId, string AssignBy, SqlTransaction transaction)
         {
-            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_setDataInStaffAssined", REID, projectId, AssignBy);
+            SqlCommand cmd = new SqlCommand("sp_setDataInStaffAssined", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@REID ", REID);
+            cmd.Parameters.AddWithValue("@projectId", projectId);
+            cmd.Parameters.AddWithValue("@AssignBy", AssignBy);
+            int rowsAffected = cmd.ExecuteNonQuery();
+
+            cmd.Dispose();
+
+            return rowsAffected;
+            //return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_setDataInStaffAssined", REID, projectId, AssignBy, transaction);            
+
         }
         public int updateUserRegistration(int registrationId)
         {

@@ -88,6 +88,14 @@
               );
           });
       </script>
+    <script type="text/javascript">
+        function UpdationErrorMessage() {
+            if (confirm('Provided Intimation data is Incorrect')) {
+                7
+            } else {
+            }
+        }
+ </script>
     <style>
          .headercolor1{
             text-align:initial !important;
