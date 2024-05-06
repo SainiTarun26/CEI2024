@@ -239,6 +239,13 @@
                                         <asp:TextBox class="form-control" ID="txtPaymentAmount" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
+                                    <div class="col-4">
+                                        <label for="SubmissionDate">Submission Date:</label>
+
+                                        <asp:TextBox class="form-control" ID="txtSubmissionDate" ReadOnly="true" autocomplete="off" runat="server"  TabIndex="2"
+                                             Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                    </div>
                                 </div>
                             </div>
                         </div>

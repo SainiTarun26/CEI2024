@@ -196,6 +196,10 @@
                     <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4" runat="server">
+                <label for="Capacity">Capacity</label>
+                <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
+            </div>
+                <div class="col-4" runat="server">
                     <label>Voltage Level</label>
                     <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -239,11 +243,7 @@
                     <label>Transcation Date</label>
                     <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <%--  <div class="col-4" runat="server">
-                <label for="Date">Current Date</label>
-                <asp:TextBox class="form-control" runat="server" ID="txtDate" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
-            </div>--%>
-            
+                             
             </div>
             <div class="row">
                 <div class="col-12">
@@ -322,11 +322,11 @@
     <script type="text/javascript">
         function alertWithRedirectdata() {
             
-            alert('Your Inspection will be in process');
+            alert('Inspection Request is successfully in process');
             window.location.href = "/Officers/NewApplications.aspx";
         }
         function alertWithRedirectdataReturn() {
-            alert('Your Inspection will be return to site Owner');           
+            alert('Inspection Request is successfully return to site Owner');           
             window.location.href = "/Officers/NewApplications.aspx";
         } 
     </script>

@@ -2068,7 +2068,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID);
         }
-        public DataSet LineDataWithId(int ID)
+        // public DataSet LineDataWithId(int ID) gurmeet
+        public DataSet LineDataWithId(string ID)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineDataWithId", ID);
         }
@@ -3536,7 +3537,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         #region upgradation Intimation
         public void IntimationDataInsertionForSiteOwner(string Id, string ContractorID, string ContractorType, string ApplicantTypeCode, string ApplicantType, string PowerUtility, string PowerUtilityWing,
-                    string TanNumber, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+                    /*string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
         string PANNumber, string Email, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
@@ -3558,7 +3559,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
             cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility);
             cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing);
-            cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? null : TanNumber);
+            //cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? null : TanNumber);
             cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? null : NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? null : NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
@@ -3575,8 +3576,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public void InsertionForApplicationDetails(string Id, string ContractorId, string PremisesType, string OtherPremises, string VoltageLevel,
-     string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-    string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy, SqlTransaction transaction)
+  string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+ string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy, SqlTransaction transaction)
         {
             //SqlConnection con = new SqlConnection();
             //SqlCommand cmd = new SqlCommand();
@@ -3648,37 +3649,37 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         }
 
-        public int RemovePrivousSupervisiorToContractor(string IntimationId)
+        public int RemovePrivousSupervisiorToContractor(string IntimationId, SqlTransaction transaction)
         {
-            SqlCommand cmd = new SqlCommand("sp_RemovePrivousSupervisiorToContractor");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
+            SqlCommand cmd = new SqlCommand("sp_RemovePrivousSupervisiorToContractor", transaction.Connection, transaction);
+            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            //cmd.Connection = con;
+            //if (con.State == ConnectionState.Closed)
 
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
+            //{
+            //    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //    con.Open();
+            //}
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@WorkIntimationId ", IntimationId);
             int x = cmd.ExecuteNonQuery();
-            con.Close();
+            //con.Close();
             return x;
 
         }
 
-        public void AssignSupervisiorToContractor(string IntimationId, String StaffAssined, string AssignBy)
+        public void AssignSupervisiorToContractor(string IntimationId, String StaffAssined, string AssignBy, SqlTransaction transaction)
         {
-            SqlCommand cmd = new SqlCommand("sp_AssignSupervisorToContractor");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
+            SqlCommand cmd = new SqlCommand("sp_AssignSupervisorToContractor", transaction.Connection, transaction);
+            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            //cmd.Connection = con;
+            //if (con.State == ConnectionState.Closed)
 
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
+            //{
+            //    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //    con.Open();
+            //}
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@WorkIntimationId ", IntimationId);
             cmd.Parameters.AddWithValue("@StaffAssined", StaffAssined);
@@ -3686,26 +3687,26 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@AssignBy", AssignBy);
             //cmd.Parameters.AddWithValue("@Status", Status);
             cmd.ExecuteNonQuery();
-            con.Close();
+            //con.Close();
         }
 
-        public void AddInstallations2(string IntimationId, string Typeofinstallation, int Noofinstallation, string loginId)
+        public void AddInstallations2(string IntimationId, string Typeofinstallation, int Noofinstallation, string loginId, SqlTransaction transaction)
         {
-            SqlCommand cmd = new SqlCommand("sp_UpdateInstallationsCountNew");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
+            SqlCommand cmd = new SqlCommand("sp_UpdateInstallationsCountNew", transaction.Connection, transaction);
+            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            //cmd.Connection = con;
+            //if (con.State == ConnectionState.Closed)
+            //{
+            //    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //    con.Open();
+            //}
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
             cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
             cmd.Parameters.AddWithValue("@Noofinstallation", Noofinstallation);
             cmd.Parameters.AddWithValue("@CreatedBy", loginId);
             cmd.ExecuteNonQuery();
-            con.Close();
+            //con.Close();
 
         }
         #endregion

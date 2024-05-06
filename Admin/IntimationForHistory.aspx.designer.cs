@@ -123,6 +123,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtTranscationDate;
 
         /// <summary>
+        /// txtCapacity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCapacity;
+
+        /// <summary>
         /// grd_Documemnts control.
         /// </summary>
         /// <remarks>

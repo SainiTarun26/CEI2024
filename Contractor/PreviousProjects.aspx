@@ -17,76 +17,79 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-            .pagination-ys {
-    /*display: inline-block;*/
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px;
-}
- 
-.pagination-ys table > tbody > tr > td {
-    display: contents;
-}
- 
-.pagination-ys table > tbody > tr > td > a,
-.pagination-ys table > tbody > tr > td > span {
-    position: relative;
-    float: left;
-    padding: 8px 12px;
-    line-height: 1.42857143;
-    text-decoration: none;
-    color: #dd4814;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    margin-left: -1px;
-}
- 
-.pagination-ys table > tbody > tr > td > span {
-    position: relative;
-    float: left;
-    padding: 8px 12px;
-    line-height: 1.42857143;
-    text-decoration: none;    
-    margin-left: -1px;
-    z-index: 2;
-    color: #aea79f;
-    background-color: #f5f5f5;
-    border-color: #dddddd;
-    cursor: default;
-}
- 
-.pagination-ys table > tbody > tr > td:first-child > a,
-.pagination-ys table > tbody > tr > td:first-child > span {
-    margin-left: 0;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-}
- 
-.pagination-ys table > tbody > tr > td:last-child > a,
-.pagination-ys table > tbody > tr > td:last-child > span {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-}
- 
-.pagination-ys table > tbody > tr > td > a:hover,
-.pagination-ys table > tbody > tr > td > span:hover,
-.pagination-ys table > tbody > tr > td > a:focus,
-.pagination-ys table > tbody > tr > td > span:focus {
-    color: #97310e;
-    background-color: #eeeeee;
-    border-color: #dddddd;
-}
-.headercolor{
-    background-color: #9292cc;
-}
-h6.card-title.fw-semibold.mb-4 {
-    font-size: 1rem;
-    margin-bottom: 16px !important;
-}
-table#ContentPlaceHolder1_GridView1 {
-    margin-top: -6px !important;
-}
-        </style>
+        .pagination-ys {
+            /*display: inline-block;*/
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+            .pagination-ys table > tbody > tr > td {
+                display: contents;
+            }
+
+                .pagination-ys table > tbody > tr > td > a,
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    color: #dd4814;
+                    background-color: #ffffff;
+                    border: 1px solid #dddddd;
+                    margin-left: -1px;
+                }
+
+                .pagination-ys table > tbody > tr > td > span {
+                    position: relative;
+                    float: left;
+                    padding: 8px 12px;
+                    line-height: 1.42857143;
+                    text-decoration: none;
+                    margin-left: -1px;
+                    z-index: 2;
+                    color: #aea79f;
+                    background-color: #f5f5f5;
+                    border-color: #dddddd;
+                    cursor: default;
+                }
+
+                .pagination-ys table > tbody > tr > td:first-child > a,
+                .pagination-ys table > tbody > tr > td:first-child > span {
+                    margin-left: 0;
+                    border-bottom-left-radius: 4px;
+                    border-top-left-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td:last-child > a,
+                .pagination-ys table > tbody > tr > td:last-child > span {
+                    border-bottom-right-radius: 4px;
+                    border-top-right-radius: 4px;
+                }
+
+                .pagination-ys table > tbody > tr > td > a:hover,
+                .pagination-ys table > tbody > tr > td > span:hover,
+                .pagination-ys table > tbody > tr > td > a:focus,
+                .pagination-ys table > tbody > tr > td > span:focus {
+                    color: #97310e;
+                    background-color: #eeeeee;
+                    border-color: #dddddd;
+                }
+
+        .headercolor {
+            background-color: #9292cc;
+        }
+
+        h6.card-title.fw-semibold.mb-4 {
+            font-size: 1rem;
+            margin-bottom: 16px !important;
+        }
+
+        table#ContentPlaceHolder1_GridView1 {
+            margin-top: -6px !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -103,7 +106,7 @@ table#ContentPlaceHolder1_GridView1 {
                     </div>--%>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
-                   <div class="row" style="margin-bottom: -30px;">
+                    <div class="row" style="margin-bottom: -30px;">
                         <div class="col-4">
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
@@ -114,8 +117,8 @@ table#ContentPlaceHolder1_GridView1 {
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10" 
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"  BorderWidth="1px" BorderColor="#dbddff">
+                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10"
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -125,38 +128,54 @@ table#ContentPlaceHolder1_GridView1 {
                                 </asp:TemplateField>
 
                                 <asp:TemplateField>
-                                    <HeaderStyle Width="10%"  CssClass="headercolor"/>
+                                    <HeaderStyle Width="10%" CssClass="headercolor" />
                                     <ItemStyle Width="10%" />
                                     <HeaderTemplate>
                                         IntimationId
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                          <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Name" HeaderText="Site Owner Name">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ContactNo" HeaderText="Site Owner Contact">
-                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor"/>
+                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                 </asp:BoundField>
-                              
+
                                 <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
 
-                               <%-- <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+                                <%-- <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
                                     <HeaderStyle HorizotalAlign="center" Width="13%" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>--%>
-                               
+                                <asp:TemplateField>
+
+                                    <HeaderStyle Width="10%" CssClass="headercolor" />
+
+                                    <ItemStyle Width="10%" />
+
+                                    <ItemTemplate>
+
+                                        <asp:LinkButton runat="server" ID="LnkBtn4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                                            Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="update" CommandArgument="<%# Container.DataItemIndex %>" />
+
+                                        <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+
+                     Text="<i class='fa fa-duotone fa-trash'></i>" CommandName="Drop" CommandArgument="<%# Container.DataItemIndex %>" CssClass='redButton btn-danger' />--%>
+                                    </ItemTemplate>
+
+                                </asp:TemplateField>
 
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />

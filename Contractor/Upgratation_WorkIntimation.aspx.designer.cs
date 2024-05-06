@@ -294,6 +294,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
+        /// Div1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+
+        /// <summary>
         /// txtState control.
         /// </summary>
         /// <remarks>
@@ -321,6 +330,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
 
         /// <summary>
+        /// Div2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
+
+        /// <summary>
         /// txtPin control.
         /// </summary>
         /// <remarks>
@@ -346,6 +364,15 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+
+        /// <summary>
+        /// Div3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
 
         /// <summary>
         /// txtEmail control.
@@ -852,15 +879,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.Button btnUpdate4;
 
         /// <summary>
-        /// btnReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
-
-        /// <summary>
         /// btnBack control.
         /// </summary>
         /// <remarks>
@@ -868,15 +886,6 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
-
-        /// <summary>
-        /// btnOpenWindow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOpenWindow;
 
         /// <summary>
         /// hdnId control.

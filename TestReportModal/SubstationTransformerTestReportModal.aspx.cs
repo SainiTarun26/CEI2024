@@ -22,7 +22,7 @@ namespace CEIHaryana.TestReportModal
                 {
                     if (Session["ContractorID"] != null)
                     {
-                        HiddenFieldOtp.Value = "0";
+                        Session["SubstationOtp"] = "0";
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
@@ -516,7 +516,9 @@ namespace CEIHaryana.TestReportModal
                 //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
-                txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString();
+                //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
+                txtReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString(); 
+
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
             
             }
@@ -583,8 +585,9 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                HiddenFieldOtp.Value = Convert.ToString(Convert.ToInt32(HiddenFieldOtp.Value) + 1);
-                if (btnVerify.Text == "SendOTP" && HiddenFieldOtp.Value == "1")
+                Session["SubstationOtp"] = Convert.ToString(Convert.ToInt32(Session["SubstationOtp"]) + 1);
+
+                if (btnVerify.Text == "SendOTP" && Session["SubstationOtp"].ToString() == "1")
                 {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();

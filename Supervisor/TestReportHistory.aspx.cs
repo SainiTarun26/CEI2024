@@ -75,7 +75,9 @@ namespace CEIHaryana.Supervisor
                        Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
                         Session["TypeOf"] = lblTypeOf.Text;
                         DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text);
-                        string id = ds.Tables[0].Rows[0]["ID"].ToString();
+                        //string id = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to resolve the testreportid
+                        string id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
                         Session["ID"] = id.Trim();
                         if (lblTypeOf.Text.Trim() == "Line")
                         {

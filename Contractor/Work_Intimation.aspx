@@ -845,9 +845,16 @@
     <script>
         function disableFutureDates() {
             // Get today's date in yyyy-mm-dd format
-            var today = new Date().toISOString().split('T')[0];
+           <%-- var today = new Date().toISOString().split('T')[0];
             // Set the max attribute of the txtDateofIntialissue TextBox to today's date
-            document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', today);
+            document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', today);--%>
+
+
+            var today = new Date();            
+            var futureDate = new Date(today.getTime() + (15 * 24 * 60 * 60 * 1000));
+            var maxDate = futureDate.toISOString().split('T')[0];
+           document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', maxDate);
+        
         }
      </script>
 

@@ -1560,6 +1560,7 @@
     <Content Include="Contractor\TestReportHistory.aspx" />
     <Content Include="Contractor\TestReportsWithIntimation.aspx" />
     <Content Include="Contractor\Upgratation_WorkIntimation.aspx" />
+    <Content Include="Contractor\WorkIntimationDetails.aspx" />
     <Content Include="Contractor\Work_Intimation.aspx" />
     <Content Include="css2\icons\tabler-icons\fonts\tabler-icons.svg" />
     <Content Include="css2\icons\tabler-icons\tabler-icons.css" />
@@ -2214,6 +2215,13 @@
     </Compile>
     <Compile Include="Contractor\Upgratation_WorkIntimation.aspx.designer.cs">
       <DependentUpon>Upgratation_WorkIntimation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\WorkIntimationDetails.aspx.cs">
+      <DependentUpon>WorkIntimationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\WorkIntimationDetails.aspx.designer.cs">
+      <DependentUpon>WorkIntimationDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\Work_Intimation.aspx.cs">
       <DependentUpon>Work_Intimation.aspx</DependentUpon>

@@ -642,7 +642,7 @@
                                                             <div class="col-12">
                                                                 <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing1" selectionmode="Multiple" Style="width: 100% !important">
                                                                     <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                    <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                     <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                     <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                                 </asp:DropDownList>
@@ -683,7 +683,7 @@
                                                             <div class="col-12">
                                                                 <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing2" selectionmode="Multiple" Style="width: 100% !important">
                                                                     <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                    <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                     <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                     <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                                 </asp:DropDownList>
@@ -724,7 +724,7 @@
                                                             <div class="col-12">
                                                                 <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing3" selectionmode="Multiple" Style="width: 100% !important">
                                                                     <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                    <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                     <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                     <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                                 </asp:DropDownList>
@@ -765,7 +765,7 @@
                                                             <div class="col-12" id="Div52" runat="server">
                                                                 <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing4" selectionmode="Multiple" Style="width: 100% !important">
                                                                     <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                    <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                    <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                     <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                     <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                                 </asp:DropDownList>
@@ -807,7 +807,7 @@
                                                         <div class="col-12" id="Div54" runat="server">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing5" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -848,7 +848,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing6" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -889,7 +889,7 @@
                                                         <div class="col-12" id="Div68" runat="server">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing7" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -930,7 +930,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing8" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -971,7 +971,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing9" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1012,7 +1012,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing10" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1053,7 +1053,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing11" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1094,7 +1094,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing12" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1135,7 +1135,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing13" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1176,7 +1176,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing14" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1217,7 +1217,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing15" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1258,7 +1258,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing16" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1300,7 +1300,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing17" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1341,7 +1341,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing18" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1382,7 +1382,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing19" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>
@@ -1423,7 +1423,7 @@
                                                         <div class="col-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlSubstationEarthing20" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                                <asp:ListItem Value="1" Text="Rode"></asp:ListItem>
+                                                                <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
                                                                 <asp:ListItem Value="2" Text="Pipe"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Plate"></asp:ListItem>
                                                             </asp:DropDownList>

@@ -135,10 +135,6 @@ namespace CEIHaryana.SiteOwnerPages
 
 
         }
-
-
-
-
         public void GetDetailsWithId()
         {
             try
@@ -774,11 +770,6 @@ namespace CEIHaryana.SiteOwnerPages
                         //lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-
-                        //Process process = new Process();
-                        //process.StartInfo.UseShellExecute = true;
-                        //process.StartInfo.FileName = fileName;
-                        //process.Start();
                     }
                     else
                     {

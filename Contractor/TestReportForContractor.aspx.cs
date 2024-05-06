@@ -71,20 +71,25 @@ namespace CEIHaryana.Contractor
                     if (lblTypeOf.Text.Trim() == "Line")
                     {
 
-                        Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                       // Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();    gurmeeet
+                        Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
                         //ds.Tables[0].Rows[0]["ID"].ToString();
                         Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
                     }
                     else if (lblTypeOf.Text.Trim() == "Substation Transformer")
                     {
 
-                        Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        //Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                     }
                     else if (lblTypeOf.Text.Trim() == "Generating Set")
                     {
 
-                        Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
 

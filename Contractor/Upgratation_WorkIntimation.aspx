@@ -412,7 +412,7 @@
                                         </div>
                                     </div>
                                     <div class="row" id="row3">
-                                        <div class="col-4" runat="server">
+                                        <div id="Div1" class="col-4" runat="server">
                                             <label for="Pin">State</label>
                                             <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -425,7 +425,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                        <div class="col-4" runat="server">
+                                        <div id="Div2" class="col-4" runat="server">
                                             <label for="Pin">PinCode</label>
                                             <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <span id="lblPinError" style="color: red"></span>
@@ -441,7 +441,7 @@
                                             <span id="lblErrorContect" style="color: red"></span>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-4" runat="server">
+                                        <div id="Div3" class="col-4" runat="server">
                                             <label for="Email">
                                                 Email
                                                     <samp style="color: red">* </samp>
@@ -851,10 +851,10 @@
                         <div class="col-4" style="text-align: center;">
                            <%-- <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                            <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                            <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" Style="padding-left: 18px; padding-right: 18px;" />
+                            <%--<asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" Style="padding-left: 18px; padding-right: 18px;" />--%>
                             <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                            <%-- <asp:Button type="Update" ID="btnUpdate" TabIndex="25" Text="Update" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" />--%>
-                          <asp:Button ID="btnOpenWindow"  Visible ="false" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
+                         <%-- <asp:Button ID="btnOpenWindow"  Visible ="false" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />--%>
                         </div>
                         <div class="col-4"></div>
                     </div>
@@ -905,22 +905,20 @@
     <script type="text/javascript">
         function CompletionDates1() {
             var CompletionStartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
-             var TentativeWAWODate = document.getElementById('<%=txtCompletionDateAPWO.ClientID %>').value;
+            var TentativeWAWODate = document.getElementById('<%=txtCompletionDateAPWO.ClientID %>').value;
 
-             if (new Date(TentativeWAWODate) < new Date(CompletionStartDate))
-             {
-                 alert(' Completion Date as per Work Order should be greater than Tentative Work Start Date');
-                 document.getElementById('<%=txtCompletionDateAPWO.ClientID %>').value = "";
+            if (new Date(TentativeWAWODate) < new Date(CompletionStartDate)) {
+                alert(' Completion Date as per Work Order should be greater than Tentative Work Start Date');
+                document.getElementById('<%=txtCompletionDateAPWO.ClientID %>').value = "";
             }
         }
     </script>
      <script type="text/javascript">
          function CompletionDates() {
              var CompletionStartDate = document.getElementById('<%=txtStartDate.ClientID %>').value;
-            var TentativeCompletionDate = document.getElementById('<%=txtCompletitionDate.ClientID %>').value;
+             var TentativeCompletionDate = document.getElementById('<%=txtCompletitionDate.ClientID %>').value;
 
-             if (new Date(TentativeCompletionDate) < new Date(CompletionStartDate))
-             {
+             if (new Date(TentativeCompletionDate) < new Date(CompletionStartDate)) {
                  alert('Tentative Work Completition Date should be greater than Tentative Work Start Date');
                  document.getElementById('<%=txtCompletitionDate.ClientID %>').value = "";
              }
@@ -934,7 +932,7 @@
             Pincode = Pin1.value;
             var lblPinError = document.getElementById("lblPinError");
             lblPinError.innerHTML = "";
-            var expr = /\d{6}/;;
+            var expr = /\d{6}/; ;
             if (Pincode == "") {
                 //lblPinError.innerHTML = "Please Enter Pincode" + "\n";
                 return false;
@@ -1157,18 +1155,18 @@
      <script>
          function validateTANNumber() {
              var tanNumber = document.getElementById('<%= txtTanNumber.ClientID %>').value;
-        var regex = /^[A-Za-z]{4}[0-9]{5}[A-Za-z]$/;
-        var isValid = regex.test(tanNumber);
+             var regex = /^[A-Za-z]{4}[0-9]{5}[A-Za-z]$/;
+             var isValid = regex.test(tanNumber);
 
-        if (!isValid) {
-            alert("Enter a valid TAN number");
-            return false;
-        }
-        return true;
-    }
+             if (!isValid) {
+                 alert("Enter a valid TAN number");
+                 return false;
+             }
+             return true;
+         }
 
-    // Hook into ASP.NET form submission
-    var form = document.getElementById('<%= this.Page.Form.ClientID %>');
+         // Hook into ASP.NET form submission
+         var form = document.getElementById('<%= this.Page.Form.ClientID %>');
          if (form) {
              form.onsubmit = function () {
                  return validateTANNumber();

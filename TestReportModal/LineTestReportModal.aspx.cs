@@ -25,8 +25,8 @@ namespace CEIHaryana.TestReportModal
                 {
                     if (Session["ContractorID"] != null)
                     {
-                        HiddenField1.Value = "0";
-                        //Session["ad"] = "0";
+                        //HiddenField1.Value = "0";
+                        Session["LineOtp"] = "0";
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
@@ -94,7 +94,6 @@ namespace CEIHaryana.TestReportModal
             catch
             {
                 Response.Redirect("/Login.aspx", false);
-
             }
 
 
@@ -129,7 +128,8 @@ namespace CEIHaryana.TestReportModal
                     btnSubmit.Text = "Back";
                 }
                 DataSet ds = new DataSet();
-                ds = CEI.LineDataWithId(int.Parse(ID));
+                //ds = CEI.LineDataWithId(int.Parse(ID)); gurmeet 
+                ds = CEI.LineDataWithId(ID);
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")
@@ -256,7 +256,7 @@ namespace CEIHaryana.TestReportModal
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||
+                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "33kV" || txtLineVoltage.Text.Trim() == "66kV" ||
                         txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")
                     {
                         Insulation220vAbove.Visible = false;
@@ -336,7 +336,9 @@ namespace CEIHaryana.TestReportModal
                 }
                 txtCircuit.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
-                txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString();
+                //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
+                txtReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 if (txtConductorType.Text.Trim() == "Bare")
                 {
@@ -599,7 +601,7 @@ namespace CEIHaryana.TestReportModal
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
             }
-            catch
+            catch(Exception ex)
             {
 
             }
@@ -666,12 +668,13 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                HiddenField1.Value = Convert.ToString(Convert.ToInt32(HiddenField1.Value) + 1);
+                //HiddenField1.Value = Convert.ToString(Convert.ToInt32(HiddenField1.Value) + 1);
 
-                //Session["ad"] = Convert.ToString(Convert.ToInt32(Session["ad"]) + 1);
-
-                if (btnVerify.Text == "SendOTP" && HiddenField1.Value == "1")
-                {
+                Session["LineOtp"] = Convert.ToString(Convert.ToInt32(Session["LineOtp"]) + 1);
+                //if (btnVerify.Text == "SendOTP" && HiddenField1.Value == "1")
+                //{
+                  if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() == "1")
+                  {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
@@ -687,8 +690,8 @@ namespace CEIHaryana.TestReportModal
                 }
                 else
                 {
-                    //if (txtOtp.Text == "")
-                    //{
+                    if (txtOtp.Text != "")
+                    {
                         if (Session["OTP"].ToString() == txtOtp.Text)
                         {
                             Contractor2.Visible = true;
@@ -698,13 +701,14 @@ namespace CEIHaryana.TestReportModal
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
                         }
-                    //}
+                    }
+                    Session["LineOtp"] = "0";
                 }
+                
             }
-            catch
+            catch(Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
-
             }
         }
 

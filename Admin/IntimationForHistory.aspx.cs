@@ -82,6 +82,7 @@ namespace CEIHaryana.Admin
 
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
 
                     GridBindDocument();
 

@@ -23,6 +23,8 @@ namespace CEIHaryana.TestReportModal
                 {
                     if (Session["ContractorID"] != null)
                     {
+                        
+                        Session["GeneratorSetOtp"] = "0";
                         ID = Session["GeneratingSetId"].ToString();
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
@@ -163,7 +165,10 @@ namespace CEIHaryana.TestReportModal
                 txtGeneratingSetType.Text = ds.Tables[0].Rows[0]["GeneratingSetType"].ToString();
                 //Textstatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString();
+                
+                  //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
+                txtReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
@@ -490,7 +495,7 @@ namespace CEIHaryana.TestReportModal
 
 
             }
-            catch
+            catch(Exception ex)
             {
 
             }
@@ -545,16 +550,15 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                if (btnVerify.Text == "SendOTP")
+                Session["GeneratorSetOtp"] = Convert.ToString(Convert.ToInt32(Session["GeneratorSetOtp"]) + 1);
+
+                if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() == "1")                    
                 {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
                     {
-
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-
-
                     }
                     else
                     {

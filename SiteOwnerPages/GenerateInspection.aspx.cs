@@ -237,18 +237,21 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         if (lblCategory.Text.Trim() == "Line")
                         {
-                            Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            //Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();// gurmeet 4 may, to testreportid instead of id 
+                            Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
 
                             Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
                         }
                         else if (lblCategory.Text.Trim() == "Substation Transformer")
                         {
-                            Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            //Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                             Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                         }
                         else if (lblCategory.Text.Trim() == "Generating Set")
                         {
-                            Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                             Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
                         }
@@ -365,12 +368,12 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         if (lblCategory.Trim() == "Line")
                         {
-                            id = ds.Tables[0].Rows[0]["ID"].ToString();
+                            id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                             LineLength = ds.Tables[0].Rows[0]["LineLength"].ToString();
                         }
                         else
                         {
-                            id = ds.Tables[0].Rows[0]["ID"].ToString();
+                            id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         }
                     }
 

@@ -64,15 +64,25 @@ namespace CEIHaryana.Contractor
                     if (e.CommandName == "Select")
                     {
                         //Session["id"] = ID;
-                        Response.Redirect("/Contractor/Upgratation_WorkIntimation.aspx");
+                        Response.Redirect("/Contractor/WorkIntimationDetails.aspx");
                     }
                     else
                     {
 
                     }
+
+                }
+                if (e.CommandName == "update")
+                {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    string id = lblID.Text;
+                    Session["id"] = id;
+                    Response.Redirect("/Contractor/Upgratation_WorkIntimation.aspx");
                 }
             }
-            catch { }
+            catch(Exception ex) { }
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

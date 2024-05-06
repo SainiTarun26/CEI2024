@@ -364,8 +364,8 @@
                 <h7 class="card-title fw-semibold mb-4">Work Schedule</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                    <asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                        <ContentTemplate>
+                    <%--<asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                        <ContentTemplate>--%>
                             <div class="row">
                                 <div class="col-4">
                                     <label for="StartDate">Work Start Date</label>
@@ -404,8 +404,8 @@
 
                                 </div>
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                       <%-- </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                 </div>
                 <div>
                     <h7 class="card-title fw-semibold mb-4">Attached Supervisor/Wireman Details</h7>
@@ -475,8 +475,6 @@
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
                             <asp:Button type="submit" ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-
-
                         </div>
                         <div class="col-4"></div>
                     </div>

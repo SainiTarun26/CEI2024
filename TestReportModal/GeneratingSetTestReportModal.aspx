@@ -2154,14 +2154,14 @@
                                     </div>
                                     <div class="col-4">
                                         <label for="Name">
-                                            Current capacity of breaker( IN AMPS)
+                                            Current capacity of main breaker( IN AMPS)
                                                 <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtCurrentCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label for="Name">
-                                            Breaking capacity of breaker (IN KA)
+                                            Breaking capacity of main breaker (IN KA)
                                                 <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>

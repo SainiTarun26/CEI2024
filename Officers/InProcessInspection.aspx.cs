@@ -75,13 +75,12 @@ namespace CEIHaryana.Officers
                 txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                 txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-
+                txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                 GridBindDocument();
                
                 string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                 if (Status == "Approved")
                 {
-
                     txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
                     if (!string.IsNullOrEmpty(txtSuggestion.Text))
                     {

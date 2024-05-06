@@ -90,8 +90,10 @@ namespace CEIHaryana.Admin
                     DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        string id = ds.Tables[0].Rows[0]["ID"].ToString();
-                        // Session["ID"] = id.Trim();   20Aprail 2024 gurmeet to resolve issue in add staff details
+                        //string id = ds.Tables[0].Rows[0]["ID"].ToString();
+                        string id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
+                        // Session["ID"] = id.Trim();   20Aprail 2024 gurmeet to resolve issue in add staff details(Redirection login)
                         if (lblTypeOf.Text.Trim() == "Line")
                         {
                             if (lblApproval.Text.Trim() == "Reject")
