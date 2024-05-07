@@ -614,10 +614,11 @@ namespace CEIHaryana.Contractor
 
                 if (ddlAnyWork.SelectedValue == "Yes")
                 {
-
+                    FileUpdate.Visible = true;
                     hiddenfield.Visible = true;
                     hiddenfield1.Visible = true;
-                    customFile.Visible = true;
+                    customFile.Visible = false;
+                    
                 }
                 else
                 {

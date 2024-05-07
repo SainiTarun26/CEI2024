@@ -673,7 +673,7 @@ namespace CEIHaryana.Contractor
                                         // Save data according to the number of installations
                                         for (int j = 0; j < installationNo; j++)
                                         {
-                                            CEI.AddInstallations(projectId, installationType, installationNo, transaction);
+                                            CEI.AddInstallations(projectId, installationType, installationNo,AssignBy,transaction);
                                         }
                                     }
                                 }

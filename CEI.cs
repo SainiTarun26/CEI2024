@@ -244,7 +244,7 @@ namespace CEI_PRoject
                 return null;
             }
         }
-        public void AddInstallations(string IntimationId, string Typeofinstallation, int Noofinstallation, SqlTransaction transaction)
+        public void AddInstallations(string IntimationId, string Typeofinstallation, int Noofinstallation, string CreatedBy,SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InstallationsCount", transaction.Connection, transaction);
             //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -259,6 +259,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
             cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
             cmd.Parameters.AddWithValue("@Noofinstallation", Noofinstallation);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
             //con.Close();
 

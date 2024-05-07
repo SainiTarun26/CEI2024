@@ -730,18 +730,22 @@
                                 If you want to update the file<samp style="color: red"> * </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" ID="ddlFileUpdated" TabIndex="18" Style="width: 100% !important;" OnSelectedIndexChanged="ddlFileUpdated_SelectedIndexChanged" runat="server" AutoPostBack="true">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                <%--<asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
+                                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                 <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
-                                <asp:ListItem Text="No" Value="No"></asp:ListItem>
+                               
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="Please Select any work issued" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnyWork" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                           <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="Please Select any work issued" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnyWork" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="You want to update the file" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlFileUpdated" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
                         <div class="col-4" id="hiddenfield2" runat="server" visible="false">
                              <label class="form-label" for="customFile2">
                                 You want to update the file<samp style="color: red"> * </samp>
                                  <asp:FileUpload ID="InCaseUploadFile"  TabIndex="19" runat="server" CssClass="form-control" Visible="false" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
                                  <asp:TextBox class="form-control" ID="TextFile" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
-                            </label>
+                           <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server"
+                                ControlToValidate="InCaseUploadFile" ErrorMessage="Please Select any file" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                 </label>
                         </div>
                         <div class="col-4" id="hiddenfield1" runat="server">
                             <label for="CompletionDateasperWorkOrder">
@@ -752,7 +756,7 @@
                         </div>
                     </div>
                     <div>
-                        <asp:Button type="Update" ID="btnUpdate3" TabIndex="25" Text="Update"  runat="server"  OnClick="btnUpdate3_Click" class="btn btn-primary mr-2"  />
+                        <asp:Button type="Update" ID="btnUpdate3" TabIndex="25" Text="Update" ValidationGroup="Submit" runat="server"  OnClick="btnUpdate3_Click" class="btn btn-primary mr-2"  />
                     </div>
                                         
                 </div>
