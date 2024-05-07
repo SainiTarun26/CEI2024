@@ -183,7 +183,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
             cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility == "Select" ? DBNull.Value : (object)PowerUtility);        //*
             cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing == "Select" ? DBNull.Value : (object)PowerUtilityWing);//*
-            //cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? DBNull.Value : (object)TanNumber);              //*
+            //cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? DBNull.Value : (object)TanNumber);          //*
             cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? DBNull.Value : (object)NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? DBNull.Value : (object)NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
@@ -3466,7 +3466,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         #region printing test report code line substation generating set printing   
-        public DataSet LineDataWithIdForPrintTestReport(int ID)
+        public DataSet LineDataWithIdForPrintTestReport(string ID)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLineDataWithId_ForPrintTestReport", ID);
         }

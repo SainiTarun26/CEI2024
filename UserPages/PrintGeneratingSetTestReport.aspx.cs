@@ -95,6 +95,7 @@ namespace CEIHaryana.UserPages
             try
             {
                 DataSet ds = new DataSet();
+                //ds = CEI.GeneratingTestReportDataWithIdForPrintTestReport(ID);
                 ds = CEI.GeneratingTestReportDataWithIdForPrintTestReport(ID);
                 string value1 = Convert.ToString(Session["Approval"]);
                 if (value1.Trim() == "Accept")

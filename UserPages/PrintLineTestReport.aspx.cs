@@ -49,8 +49,6 @@ namespace CEIHaryana.UserPages
                         CreatedDate.Visible = true; //Added
                         SubmitDate.Visible = true;
                         SubmitBy.Visible = true;//Added
-
-
                     }
                     else if (Session["InspectionTestReportId"] != null)
 
@@ -113,7 +111,9 @@ namespace CEIHaryana.UserPages
                 //    btnSubmit.Text = "Back";
                 //}
                 DataSet ds = new DataSet();
-                ds = CEI.LineDataWithIdForPrintTestReport(int.Parse(ID));
+                //ds = CEI.LineDataWithIdForPrintTestReport(int.Parse(ID));
+                ds = CEI.LineDataWithIdForPrintTestReport(ID);
+
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")

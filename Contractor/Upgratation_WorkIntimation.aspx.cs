@@ -336,21 +336,31 @@ namespace CEIHaryana.Contractor
                 ds = CEI.GetDetailsByPanNumberId(PANNumber);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
-                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                    txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-                    string District = ds.Tables[0].Rows[0]["District"].ToString();
-                    ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
-                    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
-                    txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+
+                    string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
+                    string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
+                    ddlworktype.Enabled = false;
+                    if (contractorType == "Firm/Organization/Company/Department")
+                    {
+                        txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                        txtagency.ReadOnly = true;
+                    }
+                    else if (contractorType == "Individual Person")
+                    {
+                        txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                        txtName.ReadOnly = true;
+                    }
+
                 }
                 else
                 {
-                    // Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
+                    ddlworktype.SelectedValue = "0";
+                    ddlworktype.Enabled = true;
+                    txtagency.Text = "";
+                    txtName.Text = "";
+                    txtagency.ReadOnly = false;
+                    txtName.ReadOnly = false;
                 }
 
             }
@@ -359,6 +369,7 @@ namespace CEIHaryana.Contractor
                 // Log the exception or provide a more detailed error message
                 Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
             }
+        
         }
         protected void worktypevisiblity()
         {
@@ -992,8 +1003,9 @@ namespace CEIHaryana.Contractor
                         }
                         catch (Exception ex)
                         {
-                            transaction.Rollback();                            
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "UpdationErrorMessage();", true);
+                            transaction.Rollback();
+                            string errorMessage = ex.Message;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                         }
                     }
                 }
@@ -1146,6 +1158,56 @@ namespace CEIHaryana.Contractor
                     //string errorMessage = ex.Message;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "UpdationErrorMessage();", true);
                 }
+            }
+        }
+
+        protected void txtTanNumber_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string TANNumber = txtTanNumber.Text.Trim();
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+                if (!regex.IsMatch(TANNumber))
+                {
+                    txtTanNumber.Focus();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
+                    return;
+                }
+                DataSet ds = new DataSet();
+                ds = CEI.GetDetailsByPanNumberId(TANNumber);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
+                    string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
+                    ddlworktype.Enabled = false;
+                    if (contractorType == "Firm/Organization/Company/Department")
+                    {
+                        txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                        txtagency.ReadOnly = true;
+                    }
+                    else if (contractorType == "Individual Person")
+                    {
+                        txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                        txtName.ReadOnly = true;
+                    }
+                    
+                }
+                else
+                {
+                    ddlworktype.SelectedValue = "0";
+                    ddlworktype.Enabled = true;
+                    txtagency.ReadOnly = false;
+                    txtName.ReadOnly = false;
+                    txtagency.Text = "";
+                    txtName.Text = "";                  
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or provide a more detailed error message
+                Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
             }
         }
     }

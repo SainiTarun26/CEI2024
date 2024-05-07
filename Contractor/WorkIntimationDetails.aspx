@@ -203,7 +203,7 @@
                         </div>
                            <div class="col-4">
                                     <label>
-                                        Select Applicant Type
+                                        Applicant Type
         <samp style="color: red">* </samp>
                                     </label>
                                    <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

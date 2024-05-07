@@ -604,15 +604,19 @@ namespace CEIHaryana.TestReportModal
                 }
                 else
                 {
-                    if (Session["OTP"].ToString() == txtOtp.Text)
+                    if (txtOtp.Text != "")
                     {
-                        Contractor2.Visible = true;
-                        Contractor3.Visible = false;
+                        if (Session["OTP"].ToString() == txtOtp.Text)
+                        {
+                            Contractor2.Visible = true;
+                            Contractor3.Visible = false;
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
+                        }
                     }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
-                    }
+                    Session["SubstationOtp"] = null;
                 }
             }
             catch (Exception ex)

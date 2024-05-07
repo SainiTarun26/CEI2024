@@ -675,6 +675,7 @@ namespace CEIHaryana.TestReportModal
                 //{
                   if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() == "1")
                   {
+                    
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
@@ -696,13 +697,14 @@ namespace CEIHaryana.TestReportModal
                         {
                             Contractor2.Visible = true;
                             Contractor3.Visible = false;
+                            //Session["LineOtp"] = null;
                         }
                         else
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
                         }
                     }
-                    Session["LineOtp"] = "0";
+                    Session["LineOtp"] = null;
                 }
                 
             }

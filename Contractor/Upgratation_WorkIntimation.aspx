@@ -334,7 +334,7 @@
                                                 Tan Number
                                             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" AutoPostBack="true"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" AutoPostBack="true" OnTextChanged="txtTanNumber_TextChanged"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]"  ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -395,7 +395,7 @@
                                             <label for="Name">
                                                 Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return allowAlphabets(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-4" id="agency" runat="server">
@@ -902,9 +902,14 @@
      <script>
          function disableFutureDates() {
              // Get today's date in yyyy-mm-dd format
-             var today = new Date().toISOString().split('T')[0];
+            /* var today = new Date().toISOString().split('T')[0];*/
              // Set the max attribute of the txtDateofIntialissue TextBox to today's date
-             document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', today);
+            <%-- document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', today);--%>
+
+             var today = new Date();
+             var futureDate = new Date(today.getTime() + (15 * 24 * 60 * 60 * 1000));
+             var maxDate = futureDate.toISOString().split('T')[0];
+             document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', maxDate);
          }
      </script>
 
