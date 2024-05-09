@@ -149,16 +149,16 @@ namespace CEIHaryana.TestReportModal
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
                 txtTransformerCapacityType.Text = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
                 //TextStatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
                 //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
-                txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
+                txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 if (txtTransformerType.Text.Trim() == "Oil")
                 {
                     InCaseOfOil.Visible = true;
@@ -517,7 +517,7 @@ namespace CEIHaryana.TestReportModal
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-                txtReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString(); 
+                txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString(); 
 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
             

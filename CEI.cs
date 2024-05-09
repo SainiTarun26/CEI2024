@@ -294,7 +294,7 @@ namespace CEI_PRoject
         public void InserSupervisorData(string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
       string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
       string DateofRenewal, string votagelevel, string voltageWithEffect, string AnyContractor, string AttachedContractorld,
-    string CreatedBy, string UserId, string IPAddress)
+    string CreatedBy, string UserId, string NewUserId, string IPAddress)
         {
 
             SqlCommand cmd = new SqlCommand("sp_SetWiremanandSuperwiserDetails");
@@ -392,6 +392,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@Category", "Supervisor");
             cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
             cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.Parameters.AddWithValue("@NewUserId", NewUserId);
 
             cmd.Parameters.AddWithValue("@IPAddress", string.IsNullOrEmpty(IPAddress) ? DBNull.Value : (object)IPAddress);
 
@@ -403,7 +404,7 @@ namespace CEI_PRoject
         public void InserWireManData(string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
       string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
       string DateofRenewal, string AnyContractor, string AttachedContractorld,
-    string CreatedBy, string UserId, string IPAddress)
+    string CreatedBy, string UserId, string NewUserId, string IPAddress)
         {
 
             SqlCommand cmd = new SqlCommand("sp_SetWiremanandSuperwiserDetails");
@@ -484,13 +485,14 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@Category", "Wireman");
             cmd.Parameters.AddWithValue("@Createdby", string.IsNullOrEmpty(CreatedBy) ? DBNull.Value : (object)CreatedBy);
             cmd.Parameters.AddWithValue("@UserId", string.IsNullOrEmpty(UserId) ? DBNull.Value : (object)UserId);
+            cmd.Parameters.AddWithValue("@NewUserId", string.IsNullOrEmpty(NewUserId) ? DBNull.Value : (object)NewUserId);
             cmd.Parameters.AddWithValue("@IPAddress", string.IsNullOrEmpty(IPAddress) ? DBNull.Value : (object)IPAddress);
             cmd.ExecuteNonQuery();
             con.Close();
         }
         #endregion
         #region Insert Contractor Data
-        public void InsertContractorData(string ContractorID, string UserId, string Name, string FatherName, string FirmName, string GSTNumber, string RegisteredOffice,
+        public void InsertContractorData(string ContractorID, string UserId, string NewUserId, string Name, string FatherName, string FirmName, string GSTNumber, string RegisteredOffice,
       string State, string Districtoffirm, string PinCode, string BranchOffice, string BranchState, string BranchDistrictoffirm,
       string BranchPinCode, string PhoneNo, string Email, string DateofIntialissue, string DateofRenewal, string DateofExpiry,
       string votagelevel, string voltageWithEffect, string LicenceOld, string LicenceNew, string IPAddress, string Createdby)
@@ -534,6 +536,7 @@ namespace CEI_PRoject
             #endregion
             cmd.Parameters.AddWithValue("@ContractorID", string.IsNullOrEmpty(ContractorID) ? DBNull.Value : (object)ContractorID);
             cmd.Parameters.AddWithValue("@UserId", string.IsNullOrEmpty(UserId) ? DBNull.Value : (object)UserId);
+            cmd.Parameters.AddWithValue("@NewUserId", string.IsNullOrEmpty(NewUserId) ? DBNull.Value : (object)NewUserId);
             cmd.Parameters.AddWithValue("@Name", string.IsNullOrEmpty(Name) ? DBNull.Value : (object)Name);
             cmd.Parameters.AddWithValue("@FatherName", string.IsNullOrEmpty(FatherName) ? DBNull.Value : (object)FatherName);
             cmd.Parameters.AddWithValue("@FirmName", string.IsNullOrEmpty(FirmName) ? DBNull.Value : (object)FirmName);
@@ -2421,6 +2424,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetDdlDivisionData()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDivision");
+        }
+        public DataSet GetDivisionData(string District)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDivisionForDistrict", District);
         }
         #region Bind DropDown To Bind District by Division
         public DataSet GetddldistrictfromDivision(string Area)

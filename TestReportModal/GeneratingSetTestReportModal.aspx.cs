@@ -156,9 +156,9 @@ namespace CEIHaryana.TestReportModal
                 txtVoltagelevel.Text = dp_Id3;
 
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 txtCapacityType.Text = ds.Tables[0].Rows[0]["GeneratingSetCapacityType"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["GeneratingSetCapacity"].ToString();
                 txtSerialNoOfGenerator.Text = ds.Tables[0].Rows[0]["SerialNumbrOfAcGenerator"].ToString();
@@ -167,13 +167,13 @@ namespace CEIHaryana.TestReportModal
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 
                   //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-                txtReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
-                txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
+                txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {
                     SolarPanelGeneratingSet.Visible = true;

@@ -680,7 +680,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtEarthingType5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtEarthingType5" onKeyPress="return isNumberKey(event);" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -847,7 +847,7 @@
 
                                         <div class="col-6" id="CreatedDate" visible="false" runat="server">
                                             <label>
-                                                Created Date
+                                               TestReport Created Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -859,13 +859,13 @@
                                         </div>
                                         <div class="col-4" id="SubmitDate" visible="false" runat="server">
                                             <label>
-                                                Submitted Date
+                                               Work Intimation Submitted Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" id="SubmitBy" visible="false" runat="server">
                                             <label>
-                                                Submitted By
+                                               Work Intimation Submitted By
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>

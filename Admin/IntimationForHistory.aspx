@@ -298,16 +298,13 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>--%>
 
-
                     <div class="col-3" id="DivToAssign" runat="server" visible="false" style="margin-top: -45px;">
                         <br />
                         <br />
                         <label>To Assign Staff</label>
                         <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlToAssign" selectionmode="Multiple" Style="width: 100% !important;">
                         </asp:DropDownList>
-                    </div>
-
-                  
+                    </div>                  
             </ContentTemplate>
         </asp:UpdatePanel>
 
@@ -317,7 +314,7 @@
             <asp:Button ID="btnAction" Text="Take Action" runat="server" class="btn btn-primary mr-2" OnClick="btnAction_Click" />
         </div>
         <div class="col-2" style="text-align: center;">
-            <asp:Button ID="btnUpdate" Text="Save" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
+            <asp:Button ID="btnUpdate" Text="Save" Visible="false" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
         </div>
         <div class="col-5" style="text-align: left;">
             <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />

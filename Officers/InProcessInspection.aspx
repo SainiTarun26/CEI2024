@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="InProcessInspection.aspx.cs" Inherits="CEIHaryana.Officers.InProcessInspection" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -13,8 +14,52 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
+        .multiselect {
+            width: 100%;
+        }
+
+        .selectBox {
+            position: relative;
+        }
+
+            .selectBox select {
+                width: 100%;
+            }
+
+        .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        #mySelectOptions {
+            display: none;
+            border: 0.5px #7c7c7c solid;
+            background-color: #ffffff;
+            max-height: 150px;
+            overflow-y: scroll;
+        }
+
+            #mySelectOptions label {
+                display: block;
+                font-weight: normal;
+                display: block;
+                white-space: nowrap;
+                min-height: 1.2em;
+                background-color: #ffffff00;
+                padding: 0 2.25rem 0 .75rem;
+                /* padding: .375rem 2.25rem .375rem .75rem; */
+            }
+
+                #mySelectOptions label:hover {
+                    background-color: #1e90ff;
+                }
+
         .submit {
             border: 1px solid #563d7c;
             border-radius: 5px;
@@ -119,19 +164,20 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
-          th.headercolor {
-    background: #9292cc;
-    color:white;
-}
+
+        th.headercolor {
+            background: #9292cc;
+            color: white;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-           
 
-               
+
+
             <div class="row">
                 <div class="col-4" runat="server">
                     <label>Inspection Report No</label>
@@ -150,9 +196,9 @@
                     <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4" runat="server">
-                <label for="Capacity">Capacity</label>
-                <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
-            </div>
+                    <label for="Capacity">Capacity</label>
+                    <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
+                </div>
                 <div class="col-4" runat="server">
                     <label>Voltage Level</label>
                     <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -218,64 +264,175 @@
                     </asp:GridView>
                 </div>
             </div>
-                     <div class="row" style="margin-bottom:30px;">
-                            <div class="col-12" style="text-align: center">
-                  <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
-            </div>
-                        </div>
-                    <div class="col-4">
-                    <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            <div class="row" style="margin-bottom: 30px;">
+                <div class="col-12" style="text-align: center">
+                    <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                 </div>
-             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            </div>
+            <div class="col-4">
+                <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            </div>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-            <div class="row">
-                
-                <div class="col-4" id="ApprovalRequired" runat="server" visible="true">
-                    <label>
-                        Approval<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
-                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
-                <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
-                    <label>
-                        Reason of Rejection<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
-                <div class="col-4" style="text-align: center" id="Suggestion" runat="server" visible="false">
-                    <label>
-                        Suggestions<%--<samp style="color: red"> * </samp>--%>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                   <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>--%>
-                </div>
-            </div>
-        </div>
+                    <div class="row">
+
+                        <div class="col-4" id="ApprovalRequired" runat="server" visible="true">
+                            <label>
+                                Approval<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
+                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                            <label>
+                                Reason of Rejection<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-4" style="text-align: center" id="Suggestion" runat="server" visible="false">
+                            <label>
+                                Suggestions<%--<samp style="color: red"> * </samp>--%>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>--%>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label for="myMultiselect">BS custom multiselect</label>
+                            <div id="myMultiselect" class="multiselect">
+                                <div id="mySelectLabel" class="selectBox" onclick="toggleCheckboxArea()">
+                                    <asp:DropDownList runat="server" ID="multiselect" class="form-select">
+                                        <asp:ListItem>somevalue</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="mySelectOptions">
+                                    <label for="one">
+                                        <input type="checkbox" id="one" onchange="checkboxStatusChange()" value="one" />
+                                        First checkbox</label>
+                                    <label for="two">
+                                        <input type="checkbox" id="two" onchange="checkboxStatusChange()" value="two" />
+                                        Second checkbox</label>
+                                    <label for="three">
+                                        <input type="checkbox" id="three" onchange="checkboxStatusChange()" value="three" />
+                                        Third checkbox</label>
+                                    <label for="four">
+                                        <input type="checkbox" id="four" onchange="checkboxStatusChange()" value="four" />
+                                        Third checkbox</label>
+                                    <label for="five">
+                                        <input type="checkbox" id="five" onchange="checkboxStatusChange()" value="five" />
+                                        First checkbox</label>
+                                    <label for="six">
+                                        <input type="checkbox" id="six" onchange="checkboxStatusChange()" value="six" />
+                                        Second checkbox</label>
+                                    <label for="seven">
+                                        <input type="checkbox" id="seven" onchange="checkboxStatusChange()" value="seven" />
+                                        Third checkbox</label>
+                                    <label for="eight">
+                                        <input type="checkbox" id="eight" onchange="checkboxStatusChange()" value="eight" />
+                                        First checkbox</label>
+                                    <label for="nine">
+                                        <input type="checkbox" id="nine" onchange="checkboxStatusChange()" value="nine" />
+                                        Second checkbox</label>
+                                    <label for="ten">
+                                        <input type="checkbox" id="ten" onchange="checkboxStatusChange()" value="ten" />
+                                        Third checkbox</label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
     </div>
                    
-     </ContentTemplate>
+                </ContentTemplate>
             </asp:UpdatePanel>
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4" style="text-align: center;">
-            <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
-            <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4" style="text-align: center;">
+                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                </div>
             </div>
         </div>
+    </div>
     <script type="text/javascript">
         function alertWithRedirectdata(Message) {
-            if (confirm('Your Inspection ' +  Message  + ' Successfully')) {
+            if (confirm('Your Inspection ' + Message + ' Successfully')) {
                 window.location.href = "/Officers/InProcessRequest.aspx";
             } else {
             }
-        }        
+        }
     </script>
+     <script type="text/javascript">
+         window.onload = (event) => {
+             initMultiselect();
+         };
+
+         function initMultiselect() {
+             checkboxStatusChange();
+
+             document.addEventListener("click", function (evt) {
+                 var flyoutElement = document.getElementById('myMultiselect'),
+                     targetElement = evt.target; // clicked element
+
+                 do {
+                     if (targetElement == flyoutElement) {
+                         // This is a click inside. Do nothing, just return.
+                         //console.log('click inside');
+                         return;
+                     }
+
+                     // Go up the DOM
+                     targetElement = targetElement.parentNode;
+                 } while (targetElement);
+
+                 // This is a click outside.
+                 toggleCheckboxArea(true);
+                 //console.log('click outside');
+             });
+         }
+
+         function checkboxStatusChange() {
+             var multiselect = document.getElementById("mySelectLabel");
+             var multiselectOption = multiselect.getElementsByTagName('option')[0];
+
+             var values = [];
+             var checkboxes = document.getElementById("mySelectOptions");
+             var checkedCheckboxes = checkboxes.querySelectorAll('input[type=checkbox]:checked');
+
+             for (const item of checkedCheckboxes) {
+                 var checkboxValue = item.getAttribute('value');
+                 values.push(checkboxValue);
+             }
+
+             var dropdownValue = "Nothing is selected";
+             if (values.length > 0) {
+                 dropdownValue = values.join(', ');
+             }
+
+             multiselectOption.innerText = dropdownValue;
+         }
+
+         function toggleCheckboxArea(onlyHide = false) {
+             var checkboxes = document.getElementById("mySelectOptions");
+             var displayValue = checkboxes.style.display;
+
+             if (displayValue != "block") {
+                 if (onlyHide == false) {
+                     checkboxes.style.display = "block";
+                 }
+             } else {
+                 checkboxes.style.display = "none";
+             }
+         }
+     </script>
 </asp:Content>

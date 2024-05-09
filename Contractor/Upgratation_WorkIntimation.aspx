@@ -508,7 +508,7 @@
                                                             </th>
                                                             <th style="width: 20%;">No of Installations
                                                             </th>
-                                                            <th style="width: 10%;"></th>
+                                                            <%--<th style="width: 10%;"></th>--%>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -526,10 +526,10 @@
 
                                                                     </div>
                                                                 </td>
-                                                                <td style="text-align: center !important;">
+                                                                <%--<td style="text-align: center !important;">
                                                                     <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete1_Click"
                                                                         runat="server" />
-                                                                </td>
+                                                                </td>--%>
                                                             </tr>
                                                         </div>
                                                         <div id="installationType2" runat="server">
@@ -544,10 +544,10 @@
                                                                         <asp:TextBox class="form-control" ID="txtinstallationNo2" TabIndex="14" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                                     </div>
-                                                                </td>
+                                                                <%--</td>
                                                                 <td style="text-align: center !important;">
                                                                     <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete2_Click" runat="server" />
-                                                                </td>
+                                                                </td>--%>
                                                             </tr>
                                                         </div>
                                                         <div id="installationType3" runat="server">
@@ -563,8 +563,8 @@
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                                     </div>
                                                                 </td>
-                                                                <td style="text-align: center !important;">
-                                                                    <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete3_Click" runat="server" /></td>
+                                                                <%--<td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete3_Click" runat="server" /></td>--%>
                                                             </tr>
                                                         </div>                                                        
                                                         <%--    <div id="installationType4" runat="server" visible="False">

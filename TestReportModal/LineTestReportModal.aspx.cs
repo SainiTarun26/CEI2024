@@ -159,9 +159,9 @@ namespace CEIHaryana.TestReportModal
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 txtLineVoltage.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
@@ -337,7 +337,7 @@ namespace CEIHaryana.TestReportModal
                 txtCircuit.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-                txtReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                txtReportNo.Text = ds.Tables[0].Rows[0]["LineIdOther"].ToString();
 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 if (txtConductorType.Text.Trim() == "Bare")

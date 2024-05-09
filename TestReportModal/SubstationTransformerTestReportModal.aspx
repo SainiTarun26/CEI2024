@@ -2748,21 +2748,21 @@
                             <div class="row">
                                 <div class="col-4" id="CreatedDate" visible="false" runat="server">
                                     <label>
-                                        Created Date
+                                       TestReport Created Date
                
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4" id="SubmitDate" visible="false" runat="server">
                                     <label>
-                                        Submitted Date
+                                       Work Intimation Submitted Date
                
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4" id="SubmitBy" visible="false" runat="server">
                                     <label>
-                                        Submitted By
+                                       Work Intimation Submitted By
                
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

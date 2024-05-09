@@ -17,6 +17,7 @@ namespace CEI_PRoject.Admin
         public string Qualification;
         string REID = string.Empty;
         string ipaddress;
+        string NewUserID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -125,6 +126,15 @@ namespace CEI_PRoject.Admin
             string dp_Id13 = ds.Tables[0].Rows[0]["voltageWithEffect"].ToString();
             txtCertifacateOld.Text = ds.Tables[0].Rows[0]["CertificateOld"].ToString();
             txtCertificateNew.Text = ds.Tables[0].Rows[0]["CertificateNew"].ToString();
+            if (txtCertificateNew.Text.Length > 0)
+
+                Page.Session["OldWiremanUserID"] = txtCertificateNew.Text + "|New";
+
+            else
+
+                Page.Session["OldWiremanUserID"] = txtCertifacateOld.Text + "|Old";
+
+
             string dp_Id16 = ds.Tables[0].Rows[0]["Qualification"].ToString();
 
             string dp_Id17 = ds.Tables[0].Rows[0]["AnyContractor"].ToString();
@@ -269,6 +279,44 @@ namespace CEI_PRoject.Admin
                     }
                     else if (btnSubmit.Text.Trim() == "Update")
                     {
+                        if (Convert.ToString(Session["OldWiremanUserID"]) != "" && Convert.ToString(Session["OldWiremanUserID"]) != null)
+
+                        {
+
+                            string MySession = Session["OldWiremanUserID"].ToString();
+                            string[] str = MySession.Split('|');
+                            UserId = str[0];
+                            if (str[1] == "New")
+                            {
+                                if (UserId == txtCertificateNew.Text)
+                                {
+                                    NewUserID = "";
+                                }
+                                else
+                                {
+                                    NewUserID = txtCertificateNew.Text;
+                                }
+                            }
+                            else
+                            {
+                                if (txtCertificateNew.Text.Length > 0)
+                                {
+                                    NewUserID = txtCertificateNew.Text;
+                                }
+                                else
+                                {
+                                    if (UserId == txtCertifacateOld.Text)
+                                    {
+                                        NewUserID = "";
+                                    }
+                                    else
+                                    {
+                                        NewUserID = txtCertifacateOld.Text;
+                                    }
+                                }
+                            }
+                        }
+
                         DataSet ds1 = new DataSet();
                         ds1 = CEI.checkCertificateexistupdated(txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(), REID);
                         if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
@@ -284,7 +332,7 @@ namespace CEI_PRoject.Admin
                     CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
                     ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
                     txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
-                    Createdby, UserId, ipaddress);
+                    Createdby, UserId, NewUserID, ipaddress);
 
                     if (btnSubmit.Text == "Update")
                     {

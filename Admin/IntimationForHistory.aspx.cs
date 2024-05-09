@@ -48,10 +48,10 @@ namespace CEIHaryana.Admin
         }
 
       
-        private void BindDivisions()
+        private void BindDivisions(string District)
         {
             DataSet ds = new DataSet();
-            ds = CEI.GetDdlDivisionData();
+            ds = CEI.GetDivisionData(District);
             ddlDivisions.DataSource = ds;
             ddlDivisions.DataTextField = "HeadOffice";
             ddlDivisions.DataValueField = "HeadOffice";
@@ -85,6 +85,7 @@ namespace CEIHaryana.Admin
                     txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
 
                     GridBindDocument();
+                    BindDivisions(txtDistrict.Text.Trim());
 
                 }
                 else
@@ -431,7 +432,7 @@ namespace CEIHaryana.Admin
             try
             {
 
-                BindDivisions();
+               // BindDivisions();
                 ApprovalRequired.Visible = true;
                 DivToAssign.Visible = true;
                 btnUpdate.Visible = true;               

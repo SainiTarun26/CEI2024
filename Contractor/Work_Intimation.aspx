@@ -255,6 +255,37 @@
         th {
             width: 1%;
         }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+            max-width: 300px;
+            background: #fff;
+            border: 1px solid #a0a0a0;
+            border-radius: 4px;
+            padding-left: 0.5rem;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+            .input-box .prefix {
+                font-weight: 300;
+                font-size: 14px;
+                color: black;
+            }
+
+            .input-box input {
+                flex-grow: 1;
+                font-size: 14px;
+                background: #fff;
+                border: none;
+                outline: none;
+                padding: 0.5rem;
+            }
+
+            .input-box:focus-within {
+                border-color: #777;
+            }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -383,7 +414,12 @@
                                             <label for="Name">
                                                 Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <div class="input-box">
+                                                <span class="prefix">M/s.</span>
+
+
+                                                <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
+                                            </div>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-4" id="agency" runat="server">
@@ -391,10 +427,13 @@
                                                 Name of Firm/ Org./ Company/ Department
                                             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                                            <%-- <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtagency"
-                                                ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
+                                            <div class="input-box">
+                                                <span class="prefix">M/s.</span>
+                                                <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                <%-- <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
+                                            </div>
+                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtagency"
+                                                ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>--%>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtagency" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-8">
@@ -699,10 +738,11 @@
                     <div class="row">
                         <div class="col-4" id="hiddenfield" runat="server">
                             <label class="form-label" for="customFile">
-                                Attached Copy of Work Order<samp style="color: red"> * </samp>
+                                Attached Copy of Work Order(1MB PDF ONLY)<samp style="color: red"> * </samp>
                             </label>
                             <br />
-                            <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control" Visible="false" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
+                            <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control" Visible="false"
+                                Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                             <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
                             <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
@@ -781,6 +821,12 @@
                                             <span style="margin-right: 12px;"></span>
                                             <h5>0172-2704090</h5>
                                         </div>
+                                        <div class="row" id="statement" runat="server" visible="false">
+                                            <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+                                                Submit Button is disable due to supervisior attachment.Please attatch any Supervisior
+                                              
+                                            </label>
+                                        </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>
@@ -844,7 +890,7 @@
     </script>
     <script>
         function disableFutureDates() {
-            // Get today's date in yyyy-mm-dd format
+        // Get today's date in yyyy-mm-dd format
            <%-- var today = new Date().toISOString().split('T')[0];
             // Set the max attribute of the txtDateofIntialissue TextBox to today's date
             document.getElementById('<%=txtStartDate.ClientID %>').setAttribute('max', today);--%>

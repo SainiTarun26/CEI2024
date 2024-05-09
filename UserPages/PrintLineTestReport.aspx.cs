@@ -31,6 +31,7 @@ namespace CEIHaryana.UserPages
                         if (Convert.ToString(Session["Approval"]) == "Pending")
                         {
                             Contractor.Visible = true;
+                            Contractor.Visible = true;
                             CreatedDate.Visible = true;
                         }
                         else
@@ -240,29 +241,24 @@ namespace CEIHaryana.UserPages
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||
+                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "33kV" || txtLineVoltage.Text.Trim() == "66kV" ||
                         txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")
                     {
-                        Insulation220vAbove.Visible = true;
-                        Insulation440vAbove.Visible = false;
+                        Insulation220vAbove.Visible = false;
+                        Insulation440vAbove.Visible = true ;
                     }
 
                 }
                 else if (txtLineType.Text.Trim() == "Underground")
                 {
-
-
                     if (txtVotalgeType.Text == "Other")
                     {
                         if (TxtOthervoltage.Text.Trim() == "KV")
                         {
-
                             if (int.TryParse(TxtOthervoltage.Text, out int value))
                             {
-
                                 Insulation440vAbove.Visible = true;
                                 Insulation220vAbove.Visible = false;
-
                             }
                         }
 

@@ -93,12 +93,27 @@ namespace CEIHaryana.Admin
                     ddVoltageLevel.Text = dp_Id3;
                     txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                    txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                    //txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
                     string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                    txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
-                    txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString().Trim();
+                    txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+                    //txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString().Trim();
+                    string ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString().Trim();
+                    txtApplicant.Text = ApplicantType;                    
+                    if (ApplicantType == "Private/Personal Installation")
+                    {
+                        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                        PanNo.Visible = true;
+                        txtPAN.Text = PanTanNumber;
+                    }
+                    else if (ApplicantType == "Other Department/Organization")
+                    {
+                        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                        TanNo.Visible = true;
+                        txtTanNo.Text = PanTanNumber;
+                    }
+
                     string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                    txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                    txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
                     string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
                     string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
                     Session["File"] = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();

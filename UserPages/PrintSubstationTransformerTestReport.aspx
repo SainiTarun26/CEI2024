@@ -475,7 +475,7 @@
 
                                                                     </div>
                                                                     <div class="col-12">
-                                                                        <asp:TextBox class="form-control" ID="txtOtherUsage" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtOtherUsage1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -499,7 +499,7 @@
 
                                                                     </div>
                                                                     <div class="col-12">
-                                                                        <asp:TextBox class="form-control" ID="TextBox2" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtOtherUsage2" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -523,7 +523,7 @@
 
                                                                     </div>
                                                                     <div class="col-12">
-                                                                        <asp:TextBox class="form-control" ID="TextBox3" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtOtherUsage3" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -547,7 +547,7 @@
 
                                                                     </div>
                                                                     <div class="col-12">
-                                                                        <asp:TextBox class="form-control" ID="TextBox4" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtOtherUsage4" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -574,7 +574,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox5" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage5" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -598,7 +598,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox6" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage6" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -622,7 +622,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox7" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage7" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -646,7 +646,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox8" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage8" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -670,7 +670,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox9" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage9" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -694,7 +694,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox10" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage10" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -718,7 +718,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox11" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off"  TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage11" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off"  TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -742,7 +742,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox12" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage12" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -766,7 +766,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox13" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage13" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -790,7 +790,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox14" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage14" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -814,7 +814,7 @@
 
                                                                 </div>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="TextBox15" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtOtherUsage15" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -830,7 +830,7 @@
 
                                         <div class="col-6" id="CreatedDate" visible="false" runat="server">
                                             <label>
-                                                Created Date
+                                                Test Report Created Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -842,13 +842,13 @@
                                         </div>
                                         <div class="col-6" id="SubmitDate" visible="true" runat="server">
                                             <label>
-                                                Submitted Date
+                                               Work Intimation Submitted Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-6" id="SubmitBy" visible="false" runat="server">
                                             <label>
-                                                Submitted By
+                                                Work Intimation Submitted By
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>

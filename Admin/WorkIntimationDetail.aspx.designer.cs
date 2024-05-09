@@ -177,6 +177,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox ddVoltageLevel;
 
         /// <summary>
+        /// PanNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PanNo;
+
+        /// <summary>
         /// txtPAN control.
         /// </summary>
         /// <remarks>
@@ -184,6 +193,24 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPAN;
+
+        /// <summary>
+        /// TanNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TanNo;
+
+        /// <summary>
+        /// txtTanNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTanNo;
 
         /// <summary>
         /// txtApplicant control.

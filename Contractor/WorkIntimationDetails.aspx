@@ -194,11 +194,18 @@
                           <%--  <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" ID="ddlVoltageLevel" runat="server" TabIndex="14">
                             </asp:DropDownList>--%>
                         </div>
-                       <div class="col-4" runat="server">
+                      <div class="col-4" id="PanNo" runat="server" visible="false">
                              <label for="PanNumber">PAN Number of Site Owner
                                         <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" readOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                  
+                        </div>
+                        <div class="col-4" id="TanNo" runat="server" visible="false">
+                             <label for="PanNumber">Tan Number of Site Owner
+                                        <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtTanNo" MaxLength="10" readOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                   
                         </div>
                            <div class="col-4">

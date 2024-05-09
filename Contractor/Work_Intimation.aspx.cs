@@ -550,6 +550,7 @@ namespace CEIHaryana.Contractor
                     else
                     {
                         string mobilenumber = txtPhone.Text.Trim();
+                        int maxFileSize = 1048576;
                         if (Session["ContractorID"] != null)
                         {
                             ContractorID = Session["ContractorID"].ToString();
@@ -584,7 +585,7 @@ namespace CEIHaryana.Contractor
 
                             if (ddlAnyWork.SelectedValue == "Yes")
                             {
-                                if (customFile.HasFile && customFile.PostedFile != null)
+                                if (customFile.HasFile && customFile.PostedFile != null && customFile.PostedFile.ContentLength <= maxFileSize)
                                 {
                                     try
                                     {
@@ -606,12 +607,12 @@ namespace CEIHaryana.Contractor
                                     }
                                     catch (Exception ex)
                                     {
-                                        // Handle exceptions
+                                        //throw new Exception("Please Upload Pdf Files 1 Mb Only");
                                     }
                                 }
                                 else
                                 {
-                                    // Handle the case where no file is uploaded
+                                    throw new Exception("Please Upload Pdf Files 1 Mb Only");
                                 }
                             }
                             if (ddlApplicantType.SelectedValue == "0" && ddlApplicantType.SelectedValue == "")
@@ -731,6 +732,9 @@ namespace CEIHaryana.Contractor
                 else
                 {
                     Helpline.Visible = true;
+                    btnSubmit.Enabled = false;  
+                    statement.Visible = true;
+
                 }
             }
             catch { }

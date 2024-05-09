@@ -528,13 +528,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor1;
 
         /// <summary>
-        /// txtOtherUsage control.
+        /// txtOtherUsage1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage1;
 
         /// <summary>
         /// txtEarthingType2 control.
@@ -564,13 +564,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor2;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtOtherUsage2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage2;
 
         /// <summary>
         /// txtEarthingType3 control.
@@ -600,13 +600,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor3;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtOtherUsage3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage3;
 
         /// <summary>
         /// Div52 control.
@@ -654,13 +654,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor4;
 
         /// <summary>
-        /// TextBox4 control.
+        /// txtOtherUsage4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage4;
 
         /// <summary>
         /// EathingSubstation5 control.
@@ -708,13 +708,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor5;
 
         /// <summary>
-        /// TextBox5 control.
+        /// txtOtherUsage5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage5;
 
         /// <summary>
         /// EathingSubstation6 control.
@@ -753,13 +753,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor6;
 
         /// <summary>
-        /// TextBox6 control.
+        /// txtOtherUsage6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage6;
 
         /// <summary>
         /// EathingSubstation7 control.
@@ -807,13 +807,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor7;
 
         /// <summary>
-        /// TextBox7 control.
+        /// txtOtherUsage7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage7;
 
         /// <summary>
         /// EathingSubstation8 control.
@@ -852,13 +852,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor8;
 
         /// <summary>
-        /// TextBox8 control.
+        /// txtOtherUsage8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage8;
 
         /// <summary>
         /// EathingSubstation9 control.
@@ -897,13 +897,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor9;
 
         /// <summary>
-        /// TextBox9 control.
+        /// txtOtherUsage9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage9;
 
         /// <summary>
         /// EathingSubstation10 control.
@@ -942,13 +942,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor10;
 
         /// <summary>
-        /// TextBox10 control.
+        /// txtOtherUsage10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage10;
 
         /// <summary>
         /// EathingSubstation11 control.
@@ -987,13 +987,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor11;
 
         /// <summary>
-        /// TextBox11 control.
+        /// txtOtherUsage11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage11;
 
         /// <summary>
         /// EathingSubstation12 control.
@@ -1032,13 +1032,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor12;
 
         /// <summary>
-        /// TextBox12 control.
+        /// txtOtherUsage12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage12;
 
         /// <summary>
         /// EathingSubstation13 control.
@@ -1077,13 +1077,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor13;
 
         /// <summary>
-        /// TextBox13 control.
+        /// txtOtherUsage13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage13;
 
         /// <summary>
         /// EathingSubstation14 control.
@@ -1122,13 +1122,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor14;
 
         /// <summary>
-        /// TextBox14 control.
+        /// txtOtherUsage14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage14;
 
         /// <summary>
         /// EathingSubstation15 control.
@@ -1167,13 +1167,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtUsedFor15;
 
         /// <summary>
-        /// TextBox15 control.
+        /// txtOtherUsage15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox15;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage15;
 
         /// <summary>
         /// CreatedDate control.
