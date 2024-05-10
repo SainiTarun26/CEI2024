@@ -668,6 +668,7 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
+                OTP.Visible = true;
                 //HiddenField1.Value = Convert.ToString(Convert.ToInt32(HiddenField1.Value) + 1);
 
                 Session["LineOtp"] = Convert.ToString(Convert.ToInt32(Session["LineOtp"]) + 1);
@@ -676,7 +677,7 @@ namespace CEIHaryana.TestReportModal
                   if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() == "1")
                   {
                     
-                    OTP.Visible = true;
+                    //OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
                     {

@@ -306,6 +306,15 @@
                             <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>--%>
                         </div>
 
+                        <div class="row">
+                         <div class="col-4" id="InspectionDate" runat="server" visible="false">
+                            <label for="StartDate">
+                                Inspection Date
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>                          
+                        </div>
+                        </div>
+    </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">

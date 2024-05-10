@@ -104,6 +104,7 @@
 
         input {
             border: none;
+            font-size:20px;
         }
 
         hr {
@@ -165,8 +166,9 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="multilineTextBox" runat="server" TextMode="MultiLine" Rows="1" Columns="30" Text="tarunpreet singh"></asp:TextBox>
-                                    <asp:TextBox ID="multilineTextBox1" runat="server" TextMode="MultiLine" Rows="3" Columns="30" Text="#26 Himshikha Colony, Pinjore, dist- Panchkula, Haryana"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" TextMode="MultiLine" Rows="1" Columns="30" ></asp:TextBox>
+                                     <asp:TextBox ID="TextAdress" runat="server" TextMode="MultiLine" Rows="1" Columns="30" ></asp:TextBox>
+                                    <asp:TextBox ID="TextLocation" runat="server" TextMode="MultiLine" Rows="1" Columns="30" ></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row">
@@ -174,14 +176,14 @@
                                 </div>
                                 <div class="col-8">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No." AssociatedControlID="textBox" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="textBox" runat="server" Text="1234"></asp:TextBox>
+                                        <asp:Label ID="label" runat="server" Text="Memo No."  Style="font-size: 20px;"></asp:Label>
+                                        <asp:TextBox ID="TxtMemo" runat="server" ></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-2" style="text-align: end; padding-right: 0px;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label2" runat="server" Text="Dated:" AssociatedControlID="textBox" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="textBox3" runat="server" Text="07-05-2024" Style="width: 66%;"></asp:TextBox>
+                                        <asp:Label ID="label2" runat="server" Text="Dated:"  Style="font-size: 20px;"></asp:Label>
+                                        <asp:TextBox ID="TxtDate" runat="server" Text="07-05-2024" Style="width: 66%;"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -189,8 +191,12 @@
                                 <div class="col-2">
                                     <p>Sub:-</p>
                                 </div>
-                                <div class="col-8">
-                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Rows="3" Columns="65" Text="Inspection of HT Installations comprising of 1x250 KVA Transformer under Central Electricity Authority (Measures Relating to safety & Electric Supply) Regulations, 2023.)"></asp:TextBox>
+                                <div class="col-10" style="text-align:justify;">
+<%--                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Rows="3" Columns="65" Text="Inspection of HT Installations comprising of 1x250 KVA Transformer under Central Electricity Authority (Measures Relating to safety & Electric Supply) Regulations, 2023.)"></asp:TextBox>--%>
+                                <span style="font-weight: bold; font-size: 22px; border: none !important;">
+                                    Inspection of <asp:Label ID="lblCapacity" runat="server" ></asp:Label><asp:Label ID="lblType" runat="server" ></asp:Label>
+                                under Central Electricity Authority (Measures Relating to safety & Electric Supply) Regulations, 2023.)
+                                </span>
                                 </div>
                             </div>
                             <div class="row">
@@ -198,18 +204,18 @@
                                 </div>
                                 <div class="col-2">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label1" runat="server" Text="Reference your application No. " AssociatedControlID="textBox" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="textBox2" Text="20240220-3872-4743" runat="server"></asp:TextBox>
+                                        <asp:Label ID="label1" runat="server" Text="Reference your application No. "  Style="font-size: 20px;"></asp:Label>
+                                        <asp:TextBox ID="TxtReferenceNo" Text="20240220-3872-4743" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        The subject cited installation was inspected by this department and the same was found generally
+                                        The subject cited installation was inspected by this department <asp:Label ID="LblDate" runat="server" Text="Label" Visible="false"></asp:Label> and the same was found generally
                                         complying with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply)
                                         Regulations, 2023 and amendments thereon. Howwvwe, it is advised that: -
-                                        <ul class="list-group" style="margin-left: 20%;">
+                                       <%-- <ul class="list-group" style="margin-left: 20%;">
                                             <li>Item 1<br />
                                                 Item 1<br />
                                                 Item 1</li>
@@ -219,7 +225,8 @@
                                             <li>Item 3<br />
                                                 Item 3<br />
                                                 Item 3</li>
-                                        </ul>
+                                        </ul>--%>
+                                         <asp:TextBox ID="txtSuggestion" runat="server" TextMode="MultiLine" Rows="3" Columns="30" ></asp:TextBox>
                                         <p>
                                             Approval for energization of the subject cited installation is herby accorded subject to consistent
                                         compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
@@ -227,7 +234,7 @@
                                         of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
                                         by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
                                         <br />
-                                            Your next inspection shall fall due in the month of <span>MARCH</span> every year. you are therefore requested
+                                            Your next inspection shall fall due in the month of <asp:Label ID="LblMonth" runat="server" Text="Label"></asp:Label> every year. you are therefore requested
                                         to deposit inspection fees as per schedule under the Head of A/c "0043--Taxes and Duties on Electricity Fess payable and apply online to this officeone month before the due date."
                                         </p>
                                     </p>

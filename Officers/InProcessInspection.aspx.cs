@@ -168,9 +168,10 @@ namespace CEIHaryana.Officers
                             Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                         }
 
-                        CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions);                      
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('"+ ApprovedorReject+"');", true);
-                          
+
+                        CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+
                     }
                     else
                     {

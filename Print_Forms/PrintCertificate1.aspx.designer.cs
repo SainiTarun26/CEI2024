@@ -33,22 +33,31 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Button btnPrint;
 
         /// <summary>
-        /// multilineTextBox control.
+        /// TxtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox multilineTextBox;
+        protected global::System.Web.UI.WebControls.TextBox TxtName;
 
         /// <summary>
-        /// multilineTextBox1 control.
+        /// TextAdress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox multilineTextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextAdress;
+
+        /// <summary>
+        /// TextLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextLocation;
 
         /// <summary>
         /// label control.
@@ -60,13 +69,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label label;
 
         /// <summary>
-        /// textBox control.
+        /// TxtMemo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBox;
+        protected global::System.Web.UI.WebControls.TextBox TxtMemo;
 
         /// <summary>
         /// label2 control.
@@ -78,22 +87,31 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label label2;
 
         /// <summary>
-        /// textBox3 control.
+        /// TxtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBox3;
+        protected global::System.Web.UI.WebControls.TextBox TxtDate;
 
         /// <summary>
-        /// TextBox1 control.
+        /// lblCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label lblCapacity;
+
+        /// <summary>
+        /// lblType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblType;
 
         /// <summary>
         /// label1 control.
@@ -105,12 +123,39 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label label1;
 
         /// <summary>
-        /// textBox2 control.
+        /// TxtReferenceNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBox2;
+        protected global::System.Web.UI.WebControls.TextBox TxtReferenceNo;
+
+        /// <summary>
+        /// LblDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblDate;
+
+        /// <summary>
+        /// txtSuggestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSuggestion;
+
+        /// <summary>
+        /// LblMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblMonth;
     }
 }

@@ -17,6 +17,7 @@ namespace CEIHaryana.Contractor
         CEI CEI = new CEI();
         string ContractorID = string.Empty;
         string REID = string.Empty;
+        string NewUserID = string.Empty;
 
         List<string> SelectedSupervisor = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
@@ -892,6 +893,16 @@ namespace CEIHaryana.Contractor
                 }
                 if (Session["UpdationId"] != null)
                 {
+
+                    if (Pan_TanNumber.Length > 0)
+                    {
+                        NewUserID = Pan_TanNumber;
+                    }
+                    else
+                    {
+                        NewUserID = string.Empty;
+                    }
+
                     UpdationId = Session["UpdationId"].ToString();
                     hdnId.Value = ContractorID;
                     CEI.IntimationDataInsertionForSiteOwner(UpdationId, ContractorID, ddlworktype.SelectedItem.ToString(),

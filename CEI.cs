@@ -1937,7 +1937,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             smtpClient.Port = 587;
             smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
             smtpClient.EnableSsl = true;
-
             smtpClient.Send(mailMessage);
             return otp;
         }
@@ -3730,6 +3729,50 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         }
         #endregion
+
+        public DataSet PrintSubstrationTransformer(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PrintForSubstrationTransformer", LoginId);
+        }
+
+        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
+                cmd.Parameters.AddWithValue("@Suggestion", suggestions);
+                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                DateTime InsDate;
+                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                }
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+
+        }
     }
 }
 
