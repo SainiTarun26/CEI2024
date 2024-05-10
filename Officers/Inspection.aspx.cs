@@ -46,6 +46,18 @@ namespace CEIHaryana.Officers
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                if(txtWorkType.Text == "Line")
+                {
+                    Capacity.Visible = false;
+                    LineVoltage.Visible = true;
+                    txtLineVoltage.Text= ds.Tables[0].Rows[0]["Capacity"].ToString();
+                }
+                else
+                {
+                    LineVoltage.Visible = false;
+                    Capacity.Visible = true;
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                }                
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
@@ -59,7 +71,7 @@ namespace CEIHaryana.Officers
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                txtCapacity.Text= ds.Tables[0].Rows[0]["Capacity"].ToString();
+                
                 
                 count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();

@@ -164,7 +164,7 @@
                                 
                         </div>
                     <div class="row">
-                        <div class="col-4" runat="server">
+                         <div class="col-4" id="pin" runat="server" visible="false">
                                     <label for="Pin">PinCode</label>
                                     <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" readOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                    <%-- <span id="lblPinError" style="color: red"></span>--%>
@@ -376,11 +376,11 @@
                             <div class="row">
                                 <div class="col-4">
                                     <label for="StartDate">Work Start Date</label>
-                                    <asp:TextBox class="form-control" ID="txtStartDate" readOnly="true" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtStartDate" readOnly="true" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4">
                                     <label for="CompletitionDate">Tentative Work Completition Date</label>
-                                    <asp:TextBox class="form-control" ID="txtCompletitionDate" readOnly="true" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtCompletitionDate" readOnly="true" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4">
                                     <label>If any work issued by any Agency/ Dept. / Owner</label>

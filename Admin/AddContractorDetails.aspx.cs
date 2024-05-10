@@ -300,7 +300,11 @@ namespace CEI_PRoject.Admin
                                 }
                                 else
                                 {
-                                    NewUserID = txtLicenceNew.Text;
+                                   // NewUserID = txtLicenceNew.Text;
+                                    if (txtLicenceNew.Text != null && txtLicenceNew.Text != "")
+                                        NewUserID = txtLicenceNew.Text;
+                                    else
+                                        NewUserID = txtLicenceOld.Text;
                                 }
                             }
                             else

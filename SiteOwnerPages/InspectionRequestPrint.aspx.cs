@@ -71,8 +71,9 @@ namespace CEIHaryana.SiteOwnerPages
                 DataSet ds = new DataSet();
                 ds = CEI.DetailstoPrintFormInspectionDetails(int.Parse(ID));
                 txtInstallationType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                txtReqNumber.Text = ID.ToString();
-                txtTestReportNo.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                txtReqNumber.Text = ID.ToString(); 
+                //txtTestReportNo.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                txtTestReportNo.Text = ds.Tables[0].Rows[0]["TestReportNo"].ToString();
                 txtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
                 txtIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                 txtPermisestype.Text = ds.Tables[0].Rows[0]["PremisesTypes"].ToString();

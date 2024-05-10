@@ -65,6 +65,18 @@ namespace CEIHaryana.Officers
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                if (txtWorkType.Text == "Line")
+                {
+                    Capacity.Visible = false;
+                    LineVoltage.Visible = true;
+                    txtLineVoltage.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                }
+                else
+                {
+                    LineVoltage.Visible = false;
+                    Capacity.Visible = true;
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                }
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
@@ -75,7 +87,7 @@ namespace CEIHaryana.Officers
                 txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                 txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+               
                 GridBindDocument();
                
                 string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();

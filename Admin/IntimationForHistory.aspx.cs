@@ -73,6 +73,18 @@ namespace CEIHaryana.Admin
                     txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    if (txtWorkType.Text == "Line")
+                    {
+                        Capacity.Visible = false;
+                        LineVoltage.Visible = true;
+                        txtLineVoltage.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    }
+                    else
+                    {
+                        LineVoltage.Visible = false;
+                        Capacity.Visible = true;
+                        txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    }
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
 
@@ -82,7 +94,7 @@ namespace CEIHaryana.Admin
 
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                   
 
                     GridBindDocument();
                     BindDivisions(txtDistrict.Text.Trim());

@@ -114,6 +114,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtDistrict;
 
         /// <summary>
+        /// pin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pin;
+
+        /// <summary>
         /// txtPin control.
         /// </summary>
         /// <remarks>

@@ -277,7 +277,11 @@ namespace CEI_PRoject.Admin
                             }
                             else
                             {
-                                NewUserID = CertificateNew.Text;
+                                //NewUserID = CertificateNew.Text;
+                                if (CertificateNew.Text != null && CertificateNew.Text != "")
+                                    NewUserID = CertificateNew.Text;
+                                else
+                                    NewUserID = CertificateOld.Text;
                             }
                         }
                         else

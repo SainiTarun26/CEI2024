@@ -155,15 +155,14 @@
                         </div>
                          <div class="col-4">
                                     <label>
-                                        District
-                                <samp style="color: red">* </samp>
+                                        District                               
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtDistrict" readOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                      </div>
                                 
                         </div>
                     <div class="row">
-                        <div class="col-4" runat="server">
+                        <div class="col-4" id="pin" runat="server" visible="false">
                                     <label for="Pin">PinCode</label>
                                     <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" readOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <span id="lblPinError" style="color: red"></span>
@@ -195,23 +194,20 @@
                             </asp:DropDownList>--%>
                         </div>
                       <div class="col-4" id="PanNo" runat="server" visible="false">
-                             <label for="PanNumber">PAN Number of Site Owner
-                                        <samp style="color: red">* </samp>
+                             <label for="PanNumber">PAN Number of Site Owner                                       
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtPAN" MaxLength="10" readOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                   
                         </div>
                         <div class="col-4" id="TanNo" runat="server" visible="false">
-                             <label for="PanNumber">Tan Number of Site Owner
-                                        <samp style="color: red">* </samp>
+                             <label for="PanNumber">Tan Number of Site Owner                                        
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtTanNo" MaxLength="10" readOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                   
                         </div>
                            <div class="col-4">
                                     <label>
-                                        Applicant Type
-        <samp style="color: red">* </samp>
+                                        Applicant Type        
                                     </label>
                                    <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                   

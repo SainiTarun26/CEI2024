@@ -87,7 +87,16 @@ namespace CEIHaryana.Contractor
                     txtPremises.Text = dp_Id1;
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    //txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Pincode"].ToString()))
+                    {
+                        pin.Visible = false;
+                    }
+                    else
+                    {
+                        txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                        pin.Visible = true;
+                    }
                     string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                     txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                     string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();

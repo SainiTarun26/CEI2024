@@ -144,12 +144,12 @@ namespace CEIHaryana.UserPages
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
                 txtLineVoltage.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
-                txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
+                txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 if (txtLineVoltage.Text == "Other")
                 {
                     divOtherVoltages.Visible = true;
