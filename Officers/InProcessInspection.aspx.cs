@@ -14,6 +14,7 @@ namespace CEIHaryana.Officers
     public partial class InProcessInspection : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        private static int lineNumber = 0;
 
         private static string ApprovedorReject, Reason, StaffId, Suggestions;
         protected void Page_Load(object sender, EventArgs e)
@@ -21,9 +22,10 @@ namespace CEIHaryana.Officers
             try
             {
                 if (!IsPostBack)
-                {
+                {                    
                     if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
                     {
+                        lineNumber = 0;
                         GetData();                        
                     }
                 }
@@ -101,6 +103,7 @@ namespace CEIHaryana.Officers
                     ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                     ddlReview.Attributes.Add("disabled", "true");
                     txtSuggestion.Attributes.Add("disabled", "true");
+                    txtInspectionDate.Attributes.Add("disabled", "true");
                     btnBack.Visible = true;
                     btnSubmit.Visible = false;
                 }
@@ -189,6 +192,24 @@ namespace CEIHaryana.Officers
                 //
             }
         }
+
+                
+        protected void ddlSuggestion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lineNumber == 0)
+            {
+                lineNumber = 1;
+            }
+            else
+            {
+                lineNumber++;
+            }
+            string selectedItemText = ddlSuggestion.SelectedItem.Text;
+            txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
+            ddlSuggestion.Items.Remove(ddlSuggestion.SelectedItem);
+            //lineNumber++;
+        }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/InProcessRequest.aspx", false);
@@ -198,15 +219,19 @@ namespace CEIHaryana.Officers
         {
             Rejection.Visible = false;
             Suggestion.Visible = false;
+            ddlSuggestions.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
                 Suggestion.Visible = false;
-                Rejection.Visible = true;
+                Rejection.Visible = true;                
+                ddlSuggestions.Visible = false;
             }
             else if (ddlReview.SelectedValue == "1")
             {
+                ddlSuggestions.Visible = true;
                 Suggestion.Visible = true;
                 Rejection.Visible = false;
+                InspectionDate.Visible = true;
             }
         }
 

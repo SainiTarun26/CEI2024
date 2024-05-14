@@ -116,7 +116,7 @@
             border-style: none;
         }
     </style>
-    <script>
+    <%--<script>
 
         function
             printDiv(printableDiv) {
@@ -129,7 +129,47 @@
 
             document.body.innerHTML = originalContents;
         }
+    </script>--%>
+    <script type="text/javascript">
+        function printDiv(printableDiv) {
+            var printContents = document.getElementById(printableDiv).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            //window.onafterprint = function () {
+            //    // Restore original content after printing
+            //    document.body.innerHTML = originalContents;
+
+            //    // Redirect to the desired page
+            //    window.location.href = '/Officers/AcceptedOrReject.aspx'; // Change the URL as needed
+            //};
+
+            window.print();
+        }
     </script>
+
+    <script type="text/javascript">
+        function countLines(textbox) {
+            // Split the text into lines
+            var lines = textbox.value.split('\n');
+
+            // Initialize counter
+            var counter = 1;
+
+            // Loop through each line and add the counter if the line is not empty
+            for (var i = 0; i < lines.length; i++) {
+                if (lines[i].trim() !== '') {
+                    lines[i] = counter + ". " + lines[i];
+                    counter += 2; // Increase counter by 2 for the next line
+                }
+            }
+
+            // Set the textbox value with the updated lines
+            textbox.value = lines.join('\n');
+        }
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -161,7 +201,7 @@
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-1">
                                     <p>To</p>
                                 </div>
                                 <div class="col-2">
@@ -171,24 +211,26 @@
                                     <asp:TextBox ID="TextLocation" runat="server" TextMode="MultiLine" Rows="1" Columns="30" ></asp:TextBox>
                                 </div>
                             </div>
+                            <br/>
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-1">
                                 </div>
-                                <div class="col-8">
+                                <div class="col-7">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label" runat="server" Text="Memo No."  Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server" ></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-2" style="text-align: end; padding-right: 0px;">
+                                <div class="col-2" style="text-align: end; padding-right: 0px;margin-left:12%;">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label2" runat="server" Text="Dated:"  Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="TxtDate" runat="server" Text="07-05-2024" Style="width: 66%;"></asp:TextBox>
+                                        <asp:TextBox ID="TxtDate" runat="server" Text="07-05-2024" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
+                            <br/>
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-1">
                                     <p>Sub:-</p>
                                 </div>
                                 <div class="col-10" style="text-align:justify;">
@@ -199,8 +241,9 @@
                                 </span>
                                 </div>
                             </div>
+                            <br/>
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-1">
                                 </div>
                                 <div class="col-2">
                                     <div style="white-space: nowrap;">
@@ -209,6 +252,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <br/>
                             <div class="row">
                                 <div class="col-12">
                                     <p>
@@ -226,7 +270,9 @@
                                                 Item 3<br />
                                                 Item 3</li>
                                         </ul>--%>
-                                         <asp:TextBox ID="txtSuggestion" runat="server" TextMode="MultiLine" Rows="3" Columns="30" ></asp:TextBox>
+                                        <div class="row">
+                                         <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="3" onkeyup="countLines(this)" Columns="30" style="font-weight: 400 !important; font-size: 20px;"></asp:TextBox>
+                                         </div>
                                         <p>
                                             Approval for energization of the subject cited installation is herby accorded subject to consistent
                                         compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,

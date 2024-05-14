@@ -68,7 +68,6 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     Response.Redirect("/Officers/Inspection.aspx", false);
-
                 }
             }
         }       

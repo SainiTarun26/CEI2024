@@ -161,7 +161,7 @@ namespace CEIHaryana.TestReportModal
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
                 txtLineVoltage.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
@@ -668,7 +668,7 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                OTP.Visible = true;
+                //OTP.Visible = true;
                 //HiddenField1.Value = Convert.ToString(Convert.ToInt32(HiddenField1.Value) + 1);
 
                 Session["LineOtp"] = Convert.ToString(Convert.ToInt32(Session["LineOtp"]) + 1);
@@ -677,7 +677,7 @@ namespace CEIHaryana.TestReportModal
                   if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() == "1")
                   {
                     
-                    //OTP.Visible = true;
+                    OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
                     {

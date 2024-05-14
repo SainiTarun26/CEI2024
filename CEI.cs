@@ -3557,7 +3557,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region upgradation Intimation
         public void IntimationDataInsertionForSiteOwner(string Id, string ContractorID, string ContractorType, string ApplicantTypeCode, string ApplicantType, string PowerUtility, string PowerUtilityWing,
                     /*string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-        string PANNumber, string Email, string CreatedBy)
+        string PANNumber,string NewUserId, string Email, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -3588,10 +3588,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
             cmd.Parameters.AddWithValue("@Email", Email);
             cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
-
+            cmd.Parameters.AddWithValue("@NewUserId", NewUserId);
             cmd.ExecuteNonQuery();
             con.Close();
-
         }
 
         public void InsertionForApplicationDetails(string Id, string ContractorId, string PremisesType, string OtherPremises, string VoltageLevel,
@@ -3732,7 +3731,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         public DataSet PrintSubstrationTransformer(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PrintForSubstrationTransformer", LoginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApproveCertificate", LoginId);
         }
 
         public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate)

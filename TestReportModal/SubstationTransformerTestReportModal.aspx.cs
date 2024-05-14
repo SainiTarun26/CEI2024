@@ -586,7 +586,7 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 Session["SubstationOtp"] = Convert.ToString(Convert.ToInt32(Session["SubstationOtp"]) + 1);
-
+                //OTP.Visible = true;
                 if (btnVerify.Text == "SendOTP" && Session["SubstationOtp"].ToString() == "1")
                 {
                     OTP.Visible = true;

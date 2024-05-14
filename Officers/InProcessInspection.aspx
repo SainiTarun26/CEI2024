@@ -14,8 +14,8 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         .multiselect {
             width: 100%;
@@ -169,6 +169,42 @@
             background: #9292cc;
             color: white;
         }
+        select#ContentPlaceHolder1_ddlSuggestion {
+    display: block;
+    width: 100%;
+    padding-left: 12px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    height: 30px !important;
+}
+        textarea#ContentPlaceHolder1_txtSuggestion{
+            display: block;
+    width: 100%;
+    padding-left: 12px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    height:100px !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -176,71 +212,77 @@
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-
-
-            <div class="row">
-                <div class="col-4" runat="server">
-                    <label>Inspection Report No</label>
-                    <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4">
-                    <label>Type of Inspection</label>
-                    <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4">
-                    <label>Type of Applicant</label>
-                    <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4">
-                    <label>Type of Installation</label>
-                    <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                 <div class="col-4" id="Capacity" runat="server">
-                    <label for="Capacity">Capacity</label>
-                    <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
-                </div>
-                 <div class="col-4"  id="LineVoltage" runat="server">
-                <label for="Capacity">Voltage</label>
-                <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox> 
+            <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+                Inspection Details
             </div>
-                <div class="col-4" runat="server">
-                    <label>Voltage Level</label>
-                    <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Owner Name</label>
-                    <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-8" runat="server">
-                    <label>Address</label>
-                    <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contact Details</label>
-                    <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contractor Name</label>
-                    <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contractor Phone No.</label>
-                    <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contractor Email</label>
-                    <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Supervisor Name</label>
-                    <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Supervisor Email</label>
-                    <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-4" runat="server">
+                        <label>Inspection Report No</label>
+                        <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4">
+                        <label>Type of Inspection</label>
+                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4">
+                        <label>Type of Applicant</label>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4">
+                        <label>Type of Installation</label>
+                        <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" id="Capacity" runat="server">
+                        <label for="Capacity">Capacity</label>
+                        <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
+                    </div>
+                    <div class="col-4" id="LineVoltage" runat="server">
+                        <label for="Capacity">Voltage</label>
+                        <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Voltage Level</label>
+                        <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Owner Name</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-8" runat="server">
+                        <label>Address</label>
+                        <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contact Details</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contractor Name</label>
+                        <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contractor Phone No.</label>
+                        <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contractor Email</label>
+                        <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Supervisor Name</label>
+                        <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Supervisor Email</label>
+                        <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+                Documents Attached
+            </div>
+            <div class="row card" style="padding-top: 10px;">
                 <div class="col-12">
                     <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -268,6 +310,45 @@
                     </asp:GridView>
                 </div>
             </div>
+            <div class="row">
+                <div class="card-title" style="margin-bottom:5px;margin-top:15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+                    Test Report Attached
+                </div>
+                <div class="row card" style="padding-top: 10px;">
+                    <div class="col-12">
+                       
+                         <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <HeaderStyle BackColor="#B7E2F0" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="" HeaderText="Installation Type">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                             <asp:BoundField DataField="" HeaderText="Status">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandName="Select"> View Test Report </asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
+                        </Columns>
+                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                    </asp:GridView>
+
+                    </div>
+                </div>
+            </div>
             <div class="row" style="margin-bottom: 30px;">
                 <div class="col-12" style="text-align: center">
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
@@ -276,6 +357,9 @@
             <div class="col-4">
                 <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
+
+
+
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <div class="row">
@@ -291,90 +375,60 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                          <div class="col-4" id="InspectionDate" runat="server" >
+                                <label for="StartDate">
+                                    Inspection Date
+                           
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            </div>
+                        
+                        <div class="row">
+                        <div class="col-12" id="Rejection" runat="server" visible="false">
                             <label>
                                 Reason of Rejection<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtRejected" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-4" style="text-align: center" id="Suggestion" runat="server" visible="false">
+                            </div>
+                       <div class="col-12" id="ddlSuggestions" visible="false" runat="server" style="width:98% !important;">
+                                  <label>Select Suggestion</label>
+                    <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
+                        <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
+                        <asp:ListItem Text="your first suggestion" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="your 2nd suggestion" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="your 3rd suggestion" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="your 4rth suggestion" Value="4"></asp:ListItem>
+                    </asp:DropDownList>
+                        </div>
+                       
+
+                        <div class="row">
+                           
+                             <div class="col-12" id="Suggestion" runat="server" visible="false">
                             <label>
                                 Suggestions<%--<samp style="color: red"> * </samp>--%>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>--%>
+                            <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>                          
                         </div>
-
-                        <div class="row">
-                         <div class="col-4" id="InspectionDate" runat="server" visible="false">
-                            <label for="StartDate">
-                                Inspection Date
-                            </label>
-                            <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>                          
-                        </div>
-                        </div>
-    </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-12">
-                            <label for="myMultiselect">BS custom multiselect</label>
-                            <div id="myMultiselect" class="multiselect">
-                                <div id="mySelectLabel" class="selectBox" onclick="toggleCheckboxArea()">
-                                    <asp:DropDownList runat="server" ID="multiselect" class="form-select">
-                                        <asp:ListItem>somevalue</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <div class="overSelect"></div>
-                                </div>
-                                <div id="mySelectOptions">
-                                    <label for="one">
-                                        <input type="checkbox" id="one" onchange="checkboxStatusChange()" value="one" />
-                                        First checkbox</label>
-                                    <label for="two">
-                                        <input type="checkbox" id="two" onchange="checkboxStatusChange()" value="two" />
-                                        Second checkbox</label>
-                                    <label for="three">
-                                        <input type="checkbox" id="three" onchange="checkboxStatusChange()" value="three" />
-                                        Third checkbox</label>
-                                    <label for="four">
-                                        <input type="checkbox" id="four" onchange="checkboxStatusChange()" value="four" />
-                                        Third checkbox</label>
-                                    <label for="five">
-                                        <input type="checkbox" id="five" onchange="checkboxStatusChange()" value="five" />
-                                        First checkbox</label>
-                                    <label for="six">
-                                        <input type="checkbox" id="six" onchange="checkboxStatusChange()" value="six" />
-                                        Second checkbox</label>
-                                    <label for="seven">
-                                        <input type="checkbox" id="seven" onchange="checkboxStatusChange()" value="seven" />
-                                        Third checkbox</label>
-                                    <label for="eight">
-                                        <input type="checkbox" id="eight" onchange="checkboxStatusChange()" value="eight" />
-                                        First checkbox</label>
-                                    <label for="nine">
-                                        <input type="checkbox" id="nine" onchange="checkboxStatusChange()" value="nine" />
-                                        Second checkbox</label>
-                                    <label for="ten">
-                                        <input type="checkbox" id="ten" onchange="checkboxStatusChange()" value="ten" />
-                                        Third checkbox</label>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
-
+                    </div>                                   
                     </div>
-    </div>
-                   
+                    
+                    <%-- </div>--%>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <div class="row">
+             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
+                     <asp:Button ID="Button1" Text="Preview" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>
             </div>
+           
         </div>
     </div>
     <script type="text/javascript">
@@ -385,67 +439,67 @@
             }
         }
     </script>
-     <script type="text/javascript">
-         window.onload = (event) => {
-             initMultiselect();
-         };
+    <script type="text/javascript">
+        window.onload = (event) => {
+            initMultiselect();
+        };
 
-         function initMultiselect() {
-             checkboxStatusChange();
+        function initMultiselect() {
+            checkboxStatusChange();
 
-             document.addEventListener("click", function (evt) {
-                 var flyoutElement = document.getElementById('myMultiselect'),
-                     targetElement = evt.target; // clicked element
+            document.addEventListener("click", function (evt) {
+                var flyoutElement = document.getElementById('myMultiselect'),
+                    targetElement = evt.target; // clicked element
 
-                 do {
-                     if (targetElement == flyoutElement) {
-                         // This is a click inside. Do nothing, just return.
-                         //console.log('click inside');
-                         return;
-                     }
+                do {
+                    if (targetElement == flyoutElement) {
+                        // This is a click inside. Do nothing, just return.
+                        //console.log('click inside');
+                        return;
+                    }
 
-                     // Go up the DOM
-                     targetElement = targetElement.parentNode;
-                 } while (targetElement);
+                    // Go up the DOM
+                    targetElement = targetElement.parentNode;
+                } while (targetElement);
 
-                 // This is a click outside.
-                 toggleCheckboxArea(true);
-                 //console.log('click outside');
-             });
-         }
+                // This is a click outside.
+                toggleCheckboxArea(true);
+                //console.log('click outside');
+            });
+        }
 
-         function checkboxStatusChange() {
-             var multiselect = document.getElementById("mySelectLabel");
-             var multiselectOption = multiselect.getElementsByTagName('option')[0];
+        //function checkboxStatusChange() {
+        //    var multiselect = document.getElementById("mySelectLabel");
+        //    var multiselectOption = multiselect.getElementsByTagName('option')[0];
 
-             var values = [];
-             var checkboxes = document.getElementById("mySelectOptions");
-             var checkedCheckboxes = checkboxes.querySelectorAll('input[type=checkbox]:checked');
+        //    var values = [];
+        //    var checkboxes = document.getElementById("mySelectOptions");
+        //    var checkedCheckboxes = checkboxes.querySelectorAll('input[type=checkbox]:checked');
 
-             for (const item of checkedCheckboxes) {
-                 var checkboxValue = item.getAttribute('value');
-                 values.push(checkboxValue);
-             }
+        //    for (const item of checkedCheckboxes) {
+        //        var checkboxValue = item.getAttribute('value');
+        //        values.push(checkboxValue);
+        //    }
 
-             var dropdownValue = "Nothing is selected";
-             if (values.length > 0) {
-                 dropdownValue = values.join(', ');
-             }
+        //    var dropdownValue = "Nothing is selected";
+        //    if (values.length > 0) {
+        //        dropdownValue = values.join(', ');
+        //    }
 
-             multiselectOption.innerText = dropdownValue;
-         }
+        //    multiselectOption.innerText = dropdownValue;
+        //}
 
-         function toggleCheckboxArea(onlyHide = false) {
-             var checkboxes = document.getElementById("mySelectOptions");
-             var displayValue = checkboxes.style.display;
+        function toggleCheckboxArea(onlyHide = false) {
+            var checkboxes = document.getElementById("mySelectOptions");
+            var displayValue = checkboxes.style.display;
 
-             if (displayValue != "block") {
-                 if (onlyHide == false) {
-                     checkboxes.style.display = "block";
-                 }
-             } else {
-                 checkboxes.style.display = "none";
-             }
-         }
-     </script>
+            if (displayValue != "block") {
+                if (onlyHide == false) {
+                    checkboxes.style.display = "block";
+                }
+            } else {
+                checkboxes.style.display = "none";
+            }
+        }
+    </script>
 </asp:Content>

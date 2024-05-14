@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace CEIHaryana.Print_Forms
 {
@@ -22,7 +23,7 @@ namespace CEIHaryana.Print_Forms
                     {
                         if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                         {
-                            GridBind();
+                            GetData();                                
                         }
                         else
                         {
@@ -38,7 +39,7 @@ namespace CEIHaryana.Print_Forms
 
         }
 
-        public void GridBind()
+        public void GetData()
         {
             try
             {
@@ -46,21 +47,17 @@ namespace CEIHaryana.Print_Forms
                 DataSet ds = new DataSet();
                 ds = CEI.PrintSubstrationTransformer(ID);
                 TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
-                TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                //TextLocation.Text = "dist - " + ds.Tables[0].Rows[0]["location"].ToString();
+                TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();               
                 string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
-                string Location = "dist - " + locationValue ;
+                string Location = "dist - " + locationValue;
                 TextLocation.Text = Location;
-                TxtMemo.Text= ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                //TxtDate.Text= ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();               
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
                 TxtDate.Text = createdDate.ToString("dd/MM/yyyy");
                 lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-              
+
                 lblType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
-                //LblDate.Text= ds.Tables[0].Rows[0]["InspectionDate"].ToString();
-                //LblDate.Text = finaldate.ToString("dd/MM/yyyy");
+                TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();              
                 if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
                 {
                     LblDate.Visible = false;
@@ -72,10 +69,32 @@ namespace CEIHaryana.Print_Forms
                     LblDate.Visible = true;
                 }
                 txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
+                // string SuggestionssColumValue = 
+                //string[] suggestion = SuggestionssColumValue.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                //for(int i=0; i<suggestion.Length; i++)
+                //{
+                //    string [] parts= suggestion[i].Split(new[] { '.' }, 2);
+                //    if (parts.Length > 1)
+                //    {
+
+                //        suggestion[i] = parts[1].Trim();
+                //    }
+                //    else
+                //    {
+                //        suggestion[i] = ""; 
+                //    }
+                //}
+
+
+
                 LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
+                string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
             }
-            catch 
-            { }
+            catch(Exception ex)
+            { 
+            
+            }
         }
     }
 }

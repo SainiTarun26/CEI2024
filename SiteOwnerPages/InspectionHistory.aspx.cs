@@ -21,7 +21,8 @@ namespace CEIHaryana.SiteOwnerPages
                     BindGrid();
                 }
             }
-            catch {
+            catch
+            {
             }
         }
 
@@ -49,7 +50,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             Session["LineID"] = "";
             Session["SubStationID"] = "";
-            Session["GeneratingSetId"] = ""; 
+            Session["GeneratingSetId"] = "";
             Control ctrl = e.CommandSource as Control;
             GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
             Label lblID = (Label)row.FindControl("lblID");
@@ -79,6 +80,31 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx");
 
+            }
+            else if (e.CommandName == "Print1")
+            {
+                Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
+
+            }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                LinkButton linkButton = (LinkButton)e.Row.FindControl("lnkPrint");
+                string applicationStatus = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus").ToString();
+                if (applicationStatus == "Approved")
+                {
+
+                    linkButton.Visible = true;
+                }
+                else
+                {
+
+                    linkButton.Visible = false;
+                }
             }
         }
     }

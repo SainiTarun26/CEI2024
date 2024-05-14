@@ -127,6 +127,8 @@ namespace CEIHaryana.Contractor
                 {
                 }
 
+                Page.Session["OldUserID"] = PanTanNumber;
+
                 //txtPAN.Text= ds.Tables[0].Rows[0]["PanNumber"].ToString();
                 //if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
                 //{
@@ -881,7 +883,7 @@ namespace CEIHaryana.Contractor
                 ContractorID = Session["ContractorID"].ToString();
                 //String CreatedBy = ContractorID;
                 string UpdationId = string.Empty;
-
+                string OldUserID = string.Empty;
                 string Pan_TanNumber = "";
                 if (DivPancard_TanNo.Visible == true && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                 {
@@ -893,15 +895,21 @@ namespace CEIHaryana.Contractor
                 }
                 if (Session["UpdationId"] != null)
                 {
+                    if (Convert.ToString(Page.Session["OldUserID"]) != null && Convert.ToString(Page.Session["OldUserID"]) !="")
+                    {
+                        OldUserID = Convert.ToString(Page.Session["OldUserID"]);
+                        if(OldUserID == Pan_TanNumber)
+                        {
+                            NewUserID = "";
+                        }
+                        else
+                        {
+                            NewUserID = Pan_TanNumber;
+                        }
+                       
+                    }
 
-                    if (Pan_TanNumber.Length > 0)
-                    {
-                        NewUserID = Pan_TanNumber;
-                    }
-                    else
-                    {
-                        NewUserID = string.Empty;
-                    }
+                    
 
                     UpdationId = Session["UpdationId"].ToString();
                     hdnId.Value = ContractorID;
@@ -911,13 +919,16 @@ namespace CEIHaryana.Contractor
                     ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),// txtTanNumber.Text.Trim(),
                     txtName.Text.Trim(), txtagency.Text.Trim(), txtPhone.Text.Trim(),
                     txtAddress.Text.Trim(), ddlDistrict.SelectedItem.ToString(), txtPin.Text.Trim(),
-                    Pan_TanNumber, txtEmail.Text.Trim(), ContractorID);
+                    OldUserID,NewUserID, txtEmail.Text.Trim(), ContractorID);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
                 }
             }
-            catch
-            { }
+            catch(Exception ex)
+            {
+                string errorMessage = ex.Message.ToString();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+            }
         }
 
         protected void btnUpdate2_Click(object sender, EventArgs e)
@@ -1141,11 +1152,15 @@ namespace CEIHaryana.Contractor
                     ddlworktype.Enabled = false;
                     if (contractorType == "Firm/Organization/Company/Department")
                     {
+                        agency.Visible = true;
+                        individual.Visible = false;
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                         txtagency.ReadOnly = true;
                     }
                     else if (contractorType == "Individual Person")
                     {
+                        individual.Visible = true;
+                        agency.Visible = false;
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
                     }
