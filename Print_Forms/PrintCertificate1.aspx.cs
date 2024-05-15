@@ -23,11 +23,11 @@ namespace CEIHaryana.Print_Forms
                     {
                         if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                         {
-                            GetData();                                
+                            GetData();
                         }
-                        else
+                        else if (Session["SiteOwnerId"] != null)
                         {
-
+                            GetData();
                         }
                     }
                 }
@@ -43,58 +43,87 @@ namespace CEIHaryana.Print_Forms
         {
             try
             {
-                ID = Session["InProcessInspectionId"].ToString();
-                DataSet ds = new DataSet();
-                ds = CEI.PrintSubstrationTransformer(ID);
-                TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
-                TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();               
-                string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
-                string Location = "dist - " + locationValue;
-                TextLocation.Text = Location;
-                TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();               
-                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
-                TxtDate.Text = createdDate.ToString("dd/MM/yyyy");
-                lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-
-                lblType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();              
-                if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                if (Session["InProcessInspectionId"] != null)
                 {
-                    LblDate.Visible = false;
+                    ID = Session["InProcessInspectionId"].ToString();
+
+                    DataSet ds = new DataSet();
+                    ds = CEI.PrintSubstrationTransformer(ID);
+                    TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
+                    TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+
+                    string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
+                    string Location = "dist - " + locationValue;
+                    TextLocation.Text = Location;
+                    TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                    //TxtDate.Text= ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                    DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
+                    TxtDate.Text = createdDate.ToString("dd/MM/yyyy");
+                    lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+
+                    lblType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
+                    //LblDate.Text= ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                    //LblDate.Text = finaldate.ToString("dd/MM/yyyy");
+                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                    {
+                        LblDate.Visible = false;
+                    }
+                    else
+                    {
+                        DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["InspectionDate"]);
+                        LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
+                        LblDate.Visible = true;
+                    }
+                    txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
+                    LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
+                    string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
+
                 }
-                else
+                else if (Session["InspectionId"] != null)
                 {
-                    DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["InspectionDate"]);
-                    LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
-                    LblDate.Visible = true;
+                    ID = Session["InspectionId"].ToString();
+                    DataSet ds = new DataSet();
+                    ds = CEI.PrintSubstrationTransformer(ID);
+                    TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
+                    TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+
+                    string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
+                    string Location = "dist - " + locationValue;
+                    TextLocation.Text = Location;
+                    TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+
+                    DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
+                    TxtDate.Text = createdDate.ToString("dd/MM/yyyy");
+                    lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+
+                    lblType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
+
+                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                    {
+                        LblDate.Visible = false;
+                    }
+                    else
+                    {
+                        DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["InspectionDate"]);
+                        LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
+                        LblDate.Visible = true;
+                    }
+                    txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
+                    LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
+                    string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
                 }
-                txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
-                // string SuggestionssColumValue = 
-                //string[] suggestion = SuggestionssColumValue.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                //for(int i=0; i<suggestion.Length; i++)
-                //{
-                //    string [] parts= suggestion[i].Split(new[] { '.' }, 2);
-                //    if (parts.Length > 1)
-                //    {
-
-                //        suggestion[i] = parts[1].Trim();
-                //    }
-                //    else
-                //    {
-                //        suggestion[i] = ""; 
-                //    }
-                //}
-
-
-
-                LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
-                string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
             }
-            catch(Exception ex)
-            { 
-            
+            catch (Exception ex)
+            {
+
+                throw;
             }
+
+
         }
     }
 }

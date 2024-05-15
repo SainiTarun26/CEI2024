@@ -3772,6 +3772,15 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
 
         }
+
+        public DataSet checkPreviewInspection(int InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkPreviewInspection", InspectionId);
+        }
+        public DataSet GetTestReport(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport", Id);
+        }
     }
 }
 

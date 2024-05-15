@@ -67,7 +67,6 @@ namespace CEIHaryana.Officers
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
             try
             {
                 //if (e.CommandName == "Select")
@@ -95,7 +94,6 @@ namespace CEIHaryana.Officers
             {
                 //
             }
-
         }
 
     

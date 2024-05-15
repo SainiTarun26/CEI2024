@@ -1,7 +1,9 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -26,7 +28,9 @@ namespace CEIHaryana.Officers
                     if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
                     {
                         lineNumber = 0;
-                        GetData();                        
+                        GetData();
+                        GetTestReportData();
+                        btnSubmit.Enabled = false;                      
                     }
                 }
             }
@@ -210,6 +214,64 @@ namespace CEIHaryana.Officers
             //lineNumber++;
         }
 
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "")
+                {
+                    ID = Session["InProcessInspectionId"].ToString();
+
+                    DataSet ds = new DataSet();
+                    ds = CEI.checkPreviewInspection(Convert.ToInt32(ID));
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx",false);
+                    }
+                    else
+                    {
+                        SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
+                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                        cmd.Connection = con;
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                            con.Open();
+                        }
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@inspectionId", ID);
+                        cmd.Parameters.AddWithValue("@suggestion", txtSuggestion.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ReasionRejection", txtRejected.Text == null ? null : txtRejected.Text);
+                        // cmd.Parameters.AddWithValue("@inspectionDate", txtInspectionDate.Text == null ? " " : txtInspectionDate.Text);
+                        DateTime initialIssueDate;
+                        if (DateTime.TryParse(txtInspectionDate.Text, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
+                        {
+                            cmd.Parameters.AddWithValue("@inspectionDate", initialIssueDate);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
+                        }
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        if (x > 0)
+                        {
+                            btnSubmit.Enabled = true;
+                            btnPreview.Enabled = false;
+                          
+                        }
+                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx",false);
+                    }
+                }                                 
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+           
+        }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/InProcessRequest.aspx", false);
@@ -217,17 +279,21 @@ namespace CEIHaryana.Officers
 
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
             Rejection.Visible = false;
             Suggestion.Visible = false;
             ddlSuggestions.Visible = false;
+           
             if (ddlReview.SelectedValue == "2")
             {
+               
                 Suggestion.Visible = false;
                 Rejection.Visible = true;                
                 ddlSuggestions.Visible = false;
             }
             else if (ddlReview.SelectedValue == "1")
             {
+               
                 ddlSuggestions.Visible = true;
                 Suggestion.Visible = true;
                 Rejection.Visible = false;
@@ -261,6 +327,29 @@ namespace CEIHaryana.Officers
 
                 //throw;
             }
+        }
+        private void GetTestReportData()
+        {
+            try
+            {
+                ID = Session["InProcessInspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReport(ID);
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch { }
         }
     }
 }

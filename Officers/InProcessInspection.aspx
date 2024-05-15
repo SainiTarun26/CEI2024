@@ -327,17 +327,17 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="" HeaderText="Installation Type">
+                            <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                             <asp:BoundField DataField="" HeaderText="Status">
+                             <%--<asp:BoundField DataField="" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                             <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandName="Select"> View Test Report </asp:LinkButton>
+                                <ItemTemplate>                                
+                                    <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
@@ -380,7 +380,7 @@
                                     Inspection Date
                            
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" Type="Date"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                         
                         <div class="row">
@@ -423,7 +423,7 @@
              <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
-                     <asp:Button ID="Button1" Text="Preview" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                     <asp:Button ID="btnPreview" Text="Preview" runat="server" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>
