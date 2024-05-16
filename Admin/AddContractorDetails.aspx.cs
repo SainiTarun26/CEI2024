@@ -286,6 +286,16 @@ namespace CEI_PRoject.Admin
                 {
                     if (btnSubmit.Text == "Update")
                     {
+                        REID = hdnId.Value;
+                        DataSet ds1 = new DataSet();
+                        ds1 = CEI.checkLicenceexistUpdated(txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), REID);
+                        if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        {
+                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
+
 
                         if (Convert.ToString(Session["OldUserID"]) != "" && Convert.ToString(Session["OldUserID"]) != null)
                         {
@@ -327,17 +337,10 @@ namespace CEI_PRoject.Admin
                             }
                         }
 
-                        REID = hdnId.Value;
+                        
 
 
-                        DataSet ds1 = new DataSet();
-                        ds1 = CEI.checkLicenceexistUpdated(txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(),REID);
-                        if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
-                        {
-                            string alertScript = "alert('The  licence number is already in use. Please provide a different licence number.');";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            return;
-                        }
+                        
 
                         Createdby = Session["AdminID"].ToString();
                         if (Createdby == null || Createdby == "")

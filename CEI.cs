@@ -3781,6 +3781,19 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport", Id);
         }
+
+        public DataSet getDivisionName()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Get_DivisionName");
+        }
+        public DataSet getStaffName(string DivisionName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Get_StaffName", DivisionName);
+        }
+        public DataSet UploadSignature(string DivisionName, string Staff, byte[] Signature)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Upload_Signature", DivisionName, Staff, Signature);
+        }
     }
 }
 

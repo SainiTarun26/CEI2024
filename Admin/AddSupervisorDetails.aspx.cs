@@ -264,6 +264,16 @@ namespace CEI_PRoject.Admin
                 }
                 else if (btnSubmit.Text.Trim() == "Update")
                 {
+                    DataSet ds1 = new DataSet();
+                    ds1 = CEI.checkCertificateexistupdated(CertificateOld.Text.Trim(), CertificateNew.Text.Trim(), REID);
+                    if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                    {
+                        string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                        return;
+                    }
+
+
                     if (Convert.ToString(Session["PreviousUserID"]) != "" && Convert.ToString(Session["PreviousUserID"]) != null)
                     {
                         string MySession = Session["PreviousUserID"].ToString();
@@ -304,14 +314,7 @@ namespace CEI_PRoject.Admin
                         }
                     }
 
-                    DataSet ds1 = new DataSet();
-                    ds1 = CEI.checkCertificateexistupdated(CertificateOld.Text.Trim(), CertificateNew.Text.Trim(), REID);
-                    if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
-                    {
-                        string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                        return;
-                    }
+                    
                 }
 
                 GetIP();

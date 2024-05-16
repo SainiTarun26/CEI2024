@@ -42,40 +42,40 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Button btnBack;
 
         /// <summary>
-        /// Heading1 control.
+        /// lblAddress1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Heading1;
+        protected global::System.Web.UI.WebControls.Label lblAddress1;
 
         /// <summary>
-        /// Heading2 control.
+        /// lblAdress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Heading2;
+        protected global::System.Web.UI.WebControls.Label lblAdress2;
 
         /// <summary>
-        /// Heading3 control.
+        /// lblAdress3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Heading3;
+        protected global::System.Web.UI.WebControls.Label lblAdress3;
 
         /// <summary>
-        /// Heading4 control.
+        /// lblEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Heading4;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
         /// TxtName control.
@@ -204,30 +204,39 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label LblMonth;
 
         /// <summary>
-        /// signature1 control.
+        /// myImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label signature1;
+        protected global::System.Web.UI.WebControls.Image myImage;
 
         /// <summary>
-        /// signature2 control.
+        /// lblstamp1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label signature2;
+        protected global::System.Web.UI.WebControls.Label lblstamp1;
 
         /// <summary>
-        /// signature3 control.
+        /// lblstamp2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label signature3;
+        protected global::System.Web.UI.WebControls.Label lblstamp2;
+
+        /// <summary>
+        /// lblstamp3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblstamp3;
     }
 }

@@ -433,6 +433,12 @@
                                     <span class="menu-title">Add/Remove Staff</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/UploadSignature.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Upload Signature</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

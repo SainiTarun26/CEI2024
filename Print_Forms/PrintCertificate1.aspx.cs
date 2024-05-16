@@ -46,78 +46,76 @@ namespace CEIHaryana.Print_Forms
                 if (Session["InProcessInspectionId"] != null)
                 {
                     ID = Session["InProcessInspectionId"].ToString();
-
-                    DataSet ds = new DataSet();
-                    ds = CEI.PrintSubstrationTransformer(ID);
-                    TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
-                    TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-
-                    string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
-                    string Location = "dist - " + locationValue;
-                    TextLocation.Text = Location;
-                    TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                    //TxtDate.Text= ds.Tables[0].Rows[0]["CreatedDate"].ToString();
-                    DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
-                    TxtDate.Text = createdDate.ToString("dd/MM/yyyy");
-                    lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-
-                    lblType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                    TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
-                    //LblDate.Text= ds.Tables[0].Rows[0]["InspectionDate"].ToString();
-                    //LblDate.Text = finaldate.ToString("dd/MM/yyyy");
-                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
-                    {
-                        LblDate.Visible = false;
-                    }
-                    else
-                    {
-                        DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["InspectionDate"]);
-                        LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
-                        LblDate.Visible = true;
-                    }
-                    txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
-                    LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
-                    string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
-
                 }
                 else if (Session["InspectionId"] != null)
                 {
                     ID = Session["InspectionId"].ToString();
-                    DataSet ds = new DataSet();
-                    ds = CEI.PrintSubstrationTransformer(ID);
-                    TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
-                    TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
 
-                    string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
-                    string Location = "dist - " + locationValue;
-                    TextLocation.Text = Location;
-                    TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-
-                    DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
-                    TxtDate.Text = createdDate.ToString("dd/MM/yyyy");
-                    lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-
-                    lblType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                    TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
-
-                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
-                    {
-                        LblDate.Visible = false;
-                    }
-                    else
-                    {
-                        DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["InspectionDate"]);
-                        LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
-                        LblDate.Visible = true;
-                    }
-                    //txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
-                    txtSuggestion.Text= ds.Tables[0].Rows[0]["Suggestion"].ToString();
-                    LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
-                    string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
                 }
+
+                DataSet ds = new DataSet();
+                ds = CEI.PrintSubstrationTransformer(ID);
+                lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
+                lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
+                lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
+                //lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
+                if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Header4"].ToString()))
+                {
+                    lblEmail.Visible = false;
+                }
+                else
+                {
+                    lblEmail.Visible = true;
+                    lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
+                }
+
+                TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
+                TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+
+                string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
+                string Location = "dist - " + locationValue;
+                TextLocation.Text = Location;
+                TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                //TxtDate.Text= ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
+                TxtDate.Text = createdDate.ToString("dd/MM/yyyy");
+                lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+
+                lblType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                TxtReferenceNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
+                //LblDate.Text= ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                //LblDate.Text = finaldate.ToString("dd/MM/yyyy");
+                if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                {
+                    LblDate.Visible = false;
+                }
+                else
+                {
+                    DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["InspectionDate"]);
+                    LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
+                    LblDate.Visible = true;
+                }
+                txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
+                LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
+                myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
+                lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
+                lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
+                //lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
+                if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Stamp3"].ToString()))
+                {
+                    lblstamp3.Visible = false;
+                }
+                else
+                {
+                    lblstamp3.Visible = true;
+                    lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
+                }
+
+                string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
+
             }
+
             catch (Exception ex)
             {
                 throw;
@@ -125,9 +123,9 @@ namespace CEIHaryana.Print_Forms
 
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Officers/InProcessInspection.aspx", false);
-        }
+        //protected void btnBack_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("/Officers/InProcessInspection.aspx", false);
+        //}
     }
 }

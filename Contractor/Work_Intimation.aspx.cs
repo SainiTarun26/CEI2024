@@ -355,13 +355,13 @@ namespace CEIHaryana.Contractor
                 {
                     individual.Visible = true;
                     agency.Visible = false;
-
+                    txtagency.Text = "";
                 }
                 else if (ddlworktype.SelectedValue == "2")
                 {
                     individual.Visible = false;
                     agency.Visible = true;
-
+                    txtName.Text = "";
                 }
                 else
                 {

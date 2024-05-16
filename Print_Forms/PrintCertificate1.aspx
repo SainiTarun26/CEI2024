@@ -201,7 +201,7 @@
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                      <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click"
+                        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" 
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;"  />
                     </div>
                    
@@ -216,10 +216,10 @@
                                 <div class="col-sm-11" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX;">Office of the                                        
                                     </h6>
-                                    <asp:Label ID="Heading1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="Heading2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="Heading3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="Heading4" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAddress1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblEmail" runat="server" Visible="false" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                 </div>
                             </div>
                             <hr />
@@ -318,7 +318,8 @@
 
                             <div class="row">
                                 <div class="col-12" style="text-align: end;">
-                                    <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />
+                                   <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
+                                 <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="position: fixed; bottom: 140px; margin-left: -300px;" />
                                 </div>
                             </div>
                             <div class="row">
@@ -326,9 +327,9 @@
                                 </div>
                                 <div class="col-4">
                                     <p style="text-align: center; font-weight: bold; position: fixed; bottom: 0; margin-left: 75px;">
-                                        <asp:Label ID="signature1" runat="server" Text="Label"></asp:Label><br />
-                                        <asp:Label ID="signature2" runat="server" Text="Label"></asp:Label><br />
-                                        <asp:Label ID="signature3" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
                                     </p>
                                 </div>
                             </div>

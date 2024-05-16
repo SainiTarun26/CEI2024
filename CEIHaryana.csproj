@@ -239,6 +239,7 @@
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
     <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
+    <Content Include="Admin\UploadSignature.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="Application.aspx" />
@@ -2105,6 +2106,13 @@
     </Compile>
     <Compile Include="Admin\TotalRequestInspectionForAdmin.aspx.designer.cs">
       <DependentUpon>TotalRequestInspectionForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UploadSignature.aspx.cs">
+      <DependentUpon>UploadSignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UploadSignature.aspx.designer.cs">
+      <DependentUpon>UploadSignature.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
