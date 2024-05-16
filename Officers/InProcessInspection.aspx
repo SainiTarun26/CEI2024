@@ -82,7 +82,7 @@
             background-color: #9292cc !important;
         }
 
-        .col-4 {
+        .col-md-4 {
             margin-bottom: 15px;
         }
 
@@ -217,63 +217,63 @@
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Inspection Report No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label>Type of Inspection</label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label>Type of Applicant</label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label>Type of Installation</label>
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" id="Capacity" runat="server">
+                    <div class="col-md-4" id="Capacity" runat="server">
                         <label for="Capacity">Capacity</label>
                         <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
                     </div>
-                    <div class="col-4" id="LineVoltage" runat="server">
+                    <div class="col-md-4" id="LineVoltage" runat="server">
                         <label for="Capacity">Voltage</label>
                         <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Voltage Level</label>
                         <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Owner Name</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-8" runat="server">
+                    <div class="col-md-8" runat="server">
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contact Details</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contractor Name</label>
                         <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contractor Phone No.</label>
                         <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Supervisor Name</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -349,22 +349,22 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 30px;">
+           <%-- <div class="row" style="margin-bottom: 30px;">
                 <div class="col-12" style="text-align: center">
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                 </div>
-            </div>
-            <div class="col-4">
+            </div>--%>
+            <div class="col-md-4">
                 <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
 
 
 
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+            <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>--%>
                     <div class="row">
 
-                        <div class="col-4" id="ApprovalRequired" runat="server" visible="true">
+                        <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                             <label>
                                 Approval<samp style="color: red"> * </samp>
                             </label>
@@ -375,7 +375,7 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
-                          <div class="col-4" id="InspectionDate" runat="server" >
+                          <div class="col-md-4" id="InspectionDate" runat="server" >
                                 <label for="StartDate">
                                     Inspection Date
                            
@@ -396,10 +396,12 @@
                                   <label>Select Suggestion</label>
                     <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
                         <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
-                        <asp:ListItem Text="your first suggestion" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="your 2nd suggestion" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="your 3rd suggestion" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="your 4rth suggestion" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="Danger Plate And Barbed wire to be provided on each pole of 11KV line." Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Danger notice in hindi or english & the local langauge of the district with a sign of skull & bones be provided on electrical installations." Value="2"></asp:ListItem>
+                        <asp:ListItem Text="safty equiments,earthing arrangements should be maintained in proper working condition." Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Insulating floors or mats confirming to IS 15652:2006 should be provided & maintained in proper working conditions." Value="4"></asp:ListItem>
+                        <asp:ListItem Text="Proper Earthing fencing ,if metallic,of at least 1.8-meter height be provided in front of the transformer room with gate opening outwards." Value="5"></asp:ListItem>
+                        <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
                     </asp:DropDownList>
                         </div>
                        
@@ -417,13 +419,13 @@
                     </div>                                   
                     </div>
                     
-                    <%-- </div>--%>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+                  
+             <%--   </ContentTemplate>
+            </asp:UpdatePanel>--%>
              <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4" style="text-align: center;">
-                     <asp:Button ID="btnPreview" Text="Preview" runat="server" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align: center;">
+                     <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>

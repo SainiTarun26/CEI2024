@@ -111,7 +111,8 @@ namespace CEIHaryana.Print_Forms
                         LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
                         LblDate.Visible = true;
                     }
-                    txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
+                    //txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
+                    txtSuggestion.Text= ds.Tables[0].Rows[0]["Suggestion"].ToString();
                     LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
                     string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
@@ -119,11 +120,14 @@ namespace CEIHaryana.Print_Forms
             }
             catch (Exception ex)
             {
-
                 throw;
             }
 
+        }
 
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Officers/InProcessInspection.aspx", false);
         }
     }
 }

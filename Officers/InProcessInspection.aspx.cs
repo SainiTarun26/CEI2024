@@ -30,7 +30,7 @@ namespace CEIHaryana.Officers
                         lineNumber = 0;
                         GetData();
                         GetTestReportData();
-                        btnSubmit.Enabled = false;                      
+                        btnPreview.Visible = false;
                     }
                 }
             }
@@ -47,15 +47,15 @@ namespace CEIHaryana.Officers
             Session["InspectionTestReportId"] = txtTestReportId.Text;
             if (txtWorkType.Text.Trim() == "Line")
             {
-                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
-                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
+                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
             }
             else if (txtWorkType.Text.Trim() == "Generating Set")
             {
-                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
         }
         private void GetData()
@@ -175,7 +175,6 @@ namespace CEIHaryana.Officers
                             Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                         }
 
-
                         CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
@@ -218,51 +217,54 @@ namespace CEIHaryana.Officers
         {
             try
             {
-                if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "")
+                if (ddlReview.SelectedValue == "1")
                 {
-                    ID = Session["InProcessInspectionId"].ToString();
+                    if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "")
+                    {
+                        ID = Session["InProcessInspectionId"].ToString();
 
-                    DataSet ds = new DataSet();
-                    ds = CEI.checkPreviewInspection(Convert.ToInt32(ID));
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx",false);
-                    }
-                    else
-                    {
-                        SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
-                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                        cmd.Connection = con;
-                        if (con.State == ConnectionState.Closed)
-                        {
-                            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                            con.Open();
+                        //DataSet ds = new DataSet();
+                        //ds = CEI.checkPreviewInspection(Convert.ToInt32(ID));
+                        //if (ds.Tables[0].Rows.Count > 0)
+                        //{
+                        //    btnPreview.Visible = false;
+                        //    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        //}
+                        //else
+                        //{
+                            SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
+                            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                            cmd.Connection = con;
+                            if (con.State == ConnectionState.Closed)
+                            {
+                                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                                con.Open();
+                            }
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@inspectionId", ID);
+                            cmd.Parameters.AddWithValue("@suggestion", txtSuggestion.Text.Trim());
+                            cmd.Parameters.AddWithValue("@ReasionRejection", txtRejected.Text == null ? null : txtRejected.Text);
+                            DateTime initialIssueDate;
+                            if (DateTime.TryParse(txtInspectionDate.Text, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
+                            {
+                                cmd.Parameters.AddWithValue("@inspectionDate", initialIssueDate);
+                            }
+                            else
+                            {
+                                cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
+                            }
+                            int x = cmd.ExecuteNonQuery();
+                            con.Close();
+                            if (x > 0)
+                            {
+
+
+                            }
+                            btnPreview.Visible = false;
+                            Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
                         }
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@inspectionId", ID);
-                        cmd.Parameters.AddWithValue("@suggestion", txtSuggestion.Text.Trim());
-                        cmd.Parameters.AddWithValue("@ReasionRejection", txtRejected.Text == null ? null : txtRejected.Text);
-                        // cmd.Parameters.AddWithValue("@inspectionDate", txtInspectionDate.Text == null ? " " : txtInspectionDate.Text);
-                        DateTime initialIssueDate;
-                        if (DateTime.TryParse(txtInspectionDate.Text, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
-                        {
-                            cmd.Parameters.AddWithValue("@inspectionDate", initialIssueDate);
-                        }
-                        else
-                        {
-                            cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
-                        }
-                        int x = cmd.ExecuteNonQuery();
-                        con.Close();
-                        if (x > 0)
-                        {
-                            btnSubmit.Enabled = true;
-                            btnPreview.Enabled = false;
-                          
-                        }
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx",false);
-                    }
-                }                                 
+                   // }
+                }                            
             }
             catch (Exception ex)
             {
@@ -278,26 +280,20 @@ namespace CEIHaryana.Officers
         }
 
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
+        {           
             Rejection.Visible = false;
             Suggestion.Visible = false;
             ddlSuggestions.Visible = false;
-           
+            btnPreview.Visible = false;
             if (ddlReview.SelectedValue == "2")
-            {
-               
-                Suggestion.Visible = false;
-                Rejection.Visible = true;                
-                ddlSuggestions.Visible = false;
+            {                              
+                Rejection.Visible = true;                                         
             }
             else if (ddlReview.SelectedValue == "1")
             {
-               
+                btnPreview.Visible = true;
                 ddlSuggestions.Visible = true;
-                Suggestion.Visible = true;
-                Rejection.Visible = false;
-                InspectionDate.Visible = true;
+                Suggestion.Visible = true;                      
             }
         }
 

@@ -138,7 +138,7 @@
 
             document.body.innerHTML = printContents;
             window.print();
-            window.onafterprint = function () {
+           <%-- window.onafterprint = function () {
                 // Restore original content after printing
                 document.body.innerHTML = originalContents;
                 // Redirect based on session
@@ -152,8 +152,7 @@
                 } else if (siteOwnerId !== '') {
                     window.location.href = '/SiteOwnerPages/InspectionHistory.aspx';
                 }
-            };
-
+            };--%>
         }
 
     </script>
@@ -177,6 +176,19 @@
             textbox.value = lines.join('\n');
         }
     </script>
+  <script>
+       // Detect when the print dialog is closed (whether by printing or canceling)
+       window.onafterprint = function () {
+           // Delay execution to ensure the print dialog is fully closed
+           setTimeout(function () {
+               // Check if the print dialog is still open
+               if (!document.hidden) {
+                   // User canceled printing, navigate back to the previous page
+                   window.history.back();
+               }
+           }, 100);
+       };
+</script>
 
 </head>
 <body>
@@ -188,14 +200,15 @@
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
-
-                    <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="Button1" Text="Back" runat="server" class="btn btn-primary mr-2"
+                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
+                        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;"  />
                     </div>
+                   
 
                     <div class="card-body">
                         <div id="printableDiv">
+                            
                             <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-1" style="margin-top: auto; margin-bottom: auto;">
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
@@ -225,13 +238,13 @@
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-8">
+                                <div class="col-7">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label" runat="server" Text="Memo No." Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-1" style="text-align: end; padding-right: 0px; margin-left: 0%;">
+                                <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtDate" runat="server" Style="width: 100%;"></asp:TextBox>
@@ -282,8 +295,8 @@
                                                 Item 3<br />
                                                 Item 3</li>
                                         </ul>--%>
-
-                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="3" onkeyup="countLines(this)" Columns="30"></asp:TextBox>
+                                        <br/>
+                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="4" onkeyup="countLines(this)" Columns="30" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>
 
                                         <p>
                                             Approval for energization of the subject cited installation is herby accorded subject to consistent
