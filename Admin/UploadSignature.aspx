@@ -321,7 +321,7 @@
                                         <div class="col-md-6" style="margin-top: 15px;">
                                             <label for="formFile" class="form-label">Upload Signature<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:FileUpload class="form-control"  ID="Signature" runat="server" Style="padding: 2px;"  accept=".jpg " />
+                                            <asp:FileUpload class="form-control"  ID="Signature" runat="server" Style="padding: 2px;"  accept=".jpg ,.png  " />
                                         </div>
 
                                     </div>

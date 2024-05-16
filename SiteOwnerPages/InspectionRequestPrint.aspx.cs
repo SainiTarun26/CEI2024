@@ -86,11 +86,13 @@ namespace CEIHaryana.SiteOwnerPages
                 txtPaymentAmount.Text = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
                 txtSubmissionDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
             }
-            Session["PrintInspectionID"] = "";
-            Session["InspectionId"] = "";
+            //Session["PrintInspectionID"] = "";
+            //Session["InspectionId"] = "";
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
+            Session["PrintInspectionID"] = "";
+            Session["InspectionId"] = "";
             Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);           
         }
     }

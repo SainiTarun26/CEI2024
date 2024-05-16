@@ -97,7 +97,7 @@ namespace CEIHaryana.Admin
             ddlDivisionName.SelectedIndex = 0;
             ddlstaffname.SelectedIndex = 0;
 
-            string script = $"alert('Signature for {StaffName} updated successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
+            string script = $"alert('Signature for {StaffName} updated successfully.'); window.location='AdminMaster.aspx';";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
 
 

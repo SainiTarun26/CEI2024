@@ -40,7 +40,7 @@ namespace CEIHaryana.Contractor
                             GetDetails();
                             GetassigneddatatoContractor();
                             //btnOpenWindow.Visible = true;
-                            Session["id"] = null; // added by gurmeet to resolve redirection problem 24 Aprail
+                           // Session["id"] = null; // added by gurmeet to resolve redirection problem 24 Aprail
                         }
                        
 
@@ -350,6 +350,7 @@ namespace CEIHaryana.Contractor
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Session["id"] = "";
+            Session["id"] = null;
             Response.Redirect("PreviousProjects.aspx");
         }
     }

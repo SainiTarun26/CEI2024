@@ -107,7 +107,7 @@
             margin-right: 3px;
         }
 
-        .col-4 {
+        .col-md-4 {
             top: 0px;
             left: 0px;
         }
@@ -223,7 +223,7 @@
                     <ContentTemplate>
                         <div class="row">
                             <div class="col-md-4"></div>
-                            <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
+                            <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
                                 <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">ATTACH / DE-ATTACH STAFF</h6>
                             </div>
                             <br />
@@ -231,7 +231,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4"></div>
-                            <div class="col-sm-4" style="text-align: center;">
+                            <div class="col-md-4" style="text-align: center;">
                                 <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                                     Data Updated Successfully !!!.
                                 </label>
@@ -244,7 +244,7 @@
                         <h7 class="card-title fw-semibold mb-4">Attach Staff</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div class="row" style="margin-bottom: 15px;">
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                         MaxLength="200" Style="margin-left: 18px;" placeholder="Auto Search">
                                     </asp:TextBox>
@@ -308,7 +308,7 @@
                         <h7 class="card-title fw-semibold mb-4">De-Attach Staff</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div class="row" style="margin-bottom: 15px;">
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <asp:TextBox class="form-control" ID="TextBox1" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                         MaxLength="200" Style="margin-left: 18px;" placeholder="Auto Search">
                                     </asp:TextBox>
@@ -372,8 +372,8 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
                         <asp:Button ID="btnToDeattach" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                     </div>
                 </div>

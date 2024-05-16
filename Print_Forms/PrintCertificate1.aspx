@@ -176,7 +176,7 @@
             textbox.value = lines.join('\n');
         }
     </script>
-  <script>
+ <script>
        // Detect when the print dialog is closed (whether by printing or canceling)
        window.onafterprint = function () {
            // Delay execution to ensure the print dialog is fully closed
@@ -296,7 +296,7 @@
                                                 Item 3</li>
                                         </ul>--%>
                                         <br/>
-                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="4" onkeyup="countLines(this)" Columns="30" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>
+                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="7" onkeyup="countLines(this)" Columns="87" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>
 
                                         <p>
                                             Approval for energization of the subject cited installation is herby accorded subject to consistent
