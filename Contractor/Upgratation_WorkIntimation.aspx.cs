@@ -527,7 +527,6 @@ namespace CEIHaryana.Contractor
             }
             catch (Exception ex) { }
         }
-
         public void GetGridData()
         {
             try

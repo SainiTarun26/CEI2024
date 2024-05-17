@@ -42,13 +42,8 @@ namespace CEIHaryana.Contractor
                             //btnOpenWindow.Visible = true;
                            // Session["id"] = null; // added by gurmeet to resolve redirection problem 24 Aprail
                         }
-                       
-
-
-                        worktypevisiblity();
-                      
-
-
+                     
+                        worktypevisiblity();                    
 
                     }
                     else
@@ -102,7 +97,7 @@ namespace CEIHaryana.Contractor
                     txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                     string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                     ddVoltageLevel.Text = dp_Id3;
-                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     //txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
                     string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();

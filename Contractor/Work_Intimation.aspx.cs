@@ -48,13 +48,14 @@ namespace CEIHaryana.Contractor
                         }
                         else
                         {
-                           // GetDetails();
-                            //GetGridData();
+                            //GetDetails();
+                            GetGridData();
                            // GetassigneddatatoContractor();
                            // CheckedPriviousSupervisor();
-                           // GridView1.Columns[0].Visible = true;
-                           // Session["UpdationId"] = Session["id"];
-                           // Session["id"] = null;
+                            GridView1.Columns[0].Visible = true;
+                            customFile.Visible = true;
+                            //Session["UpdationId"] = Session["id"];
+                            Session["id"] = null;
                         }
                     }
                     else
@@ -508,7 +509,7 @@ namespace CEIHaryana.Contractor
                     string UpdationId = string.Empty;
                     if (Session["UpdationId"] != null)
                     {
-                        UpdationId = Session["UpdationId"].ToString();
+                        //UpdationId = Session["UpdationId"].ToString();
                     }
                     else
                     {
