@@ -99,20 +99,24 @@ namespace CEIHaryana.Officers
                 string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                 if (Status == "Approved")
                 {
+                    InspectionDate.Visible = false;
                     txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
                     if (!string.IsNullOrEmpty(txtSuggestion.Text))
                     {
                         Suggestion.Visible = true;
+                        txtSuggestion.ReadOnly = true;
                     }
                     ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                     ddlReview.Attributes.Add("disabled", "true");
                     txtSuggestion.Attributes.Add("disabled", "true");
-                    txtInspectionDate.Attributes.Add("disabled", "true");
+                    //txtInspectionDate.Attributes.Add("disabled", "true");
                     btnBack.Visible = true;
                     btnSubmit.Visible = false;
                 }
                 if (Status == "Rejected")
                 {
+                  
+                    InspectionDate.Visible = false;
                     Rejection.Visible = true;
                     txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                     ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
@@ -125,6 +129,7 @@ namespace CEIHaryana.Officers
                 }
                 if(Status =="Return")
                 {
+                    InspectionDate.Visible = false;
                     ApprovalRequired.Visible = false;
                     btnSubmit.Visible = false;
                 }

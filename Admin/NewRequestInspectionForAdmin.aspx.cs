@@ -18,7 +18,7 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         GridBind();
                     }
@@ -73,7 +73,7 @@ namespace CEIHaryana.Admin
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/Officers/Inspection.aspx", false);
+                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
 
                 }
             }

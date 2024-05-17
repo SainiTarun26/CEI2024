@@ -136,11 +136,21 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                               <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
+                                 <asp:TemplateField>
+                                    <HeaderStyle Width="35%" CssClass="headercolor"/>
+                                    <ItemStyle Width="35%" />
+                                    <HeaderTemplate>
+                                       Inspection Id
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                              <%-- <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
 
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                               
                                 <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>

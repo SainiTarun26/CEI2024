@@ -18,7 +18,7 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         GridBind();
                     }
@@ -69,10 +69,13 @@ namespace CEIHaryana.Admin
                 Session["Approval"] = lblApproval.Text.Trim();
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
-                if (e.CommandName == "Select")
-                {
-                    Response.Redirect("/Officers/Inspection.aspx", false);
-                }
+
+                Response.Redirect("/Admin/InspectionDetails.aspx", false);
+
+            }
+            else if (e.CommandName == "Print")
+            {
+                Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
             }
         }
 
@@ -86,25 +89,24 @@ namespace CEIHaryana.Admin
             catch { }
         }
 
-        //protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    GridBindForSorting();
-        //}
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
 
-        //private void GridBindForSorting()
-        //{
-        //    try
-        //    {
-        //        string ApplicationStatus = RadioButtonList1.SelectedItem.Text;
-        //        DataSet ds = CEI.FilterAcceptOrRejectRequestforAdmin(ApplicationStatus);
+                LinkButton linkButton = (LinkButton)e.Row.FindControl("LinkButton1");
+                string applicationStatus = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus").ToString();
+                if (applicationStatus == "Approved")
+                {
 
-        //        GridView1.DataSource = ds;
-        //        GridView1.DataBind();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle exceptions here
-        //    }
-        //}
+                    linkButton.Visible = true;
+                }
+                else
+                {
+
+                    linkButton.Visible = false;
+                }
+            }
+        }
     }
 }

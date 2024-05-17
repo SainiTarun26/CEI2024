@@ -228,6 +228,7 @@
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\DistrictData.aspx" />
     <Content Include="Admin\InProcessRequest.aspx" />
+    <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
@@ -2029,6 +2030,13 @@
     </Compile>
     <Compile Include="Admin\InProcessRequest.aspx.designer.cs">
       <DependentUpon>InProcessRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\InspectionDetails.aspx.cs">
+      <DependentUpon>InspectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\InspectionDetails.aspx.designer.cs">
+      <DependentUpon>InspectionDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\IntimationForHistory.aspx.cs">
       <DependentUpon>IntimationForHistory.aspx</DependentUpon>

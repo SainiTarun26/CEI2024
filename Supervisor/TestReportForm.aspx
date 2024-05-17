@@ -140,11 +140,11 @@
             background-color: #9292cc !important;
         }
 
-        .col-4 {
+        .col-md-4 {
             left: 0px;
         }
 
-        .col-2 {
+        .col-md-2 {
             top: 15px;
             left: 0px;
         }
@@ -365,11 +365,11 @@
                 text-align: center;
             }
 
-        .pcss3t .grid-col-1 {
+        .pcss3t .grid-col-md-1 {
             width: 15%;
         }
 
-        .pcss3t .grid-col-2 {
+        .pcss3t .grid-col-md-2 {
             width: 32%;
         }
 
@@ -377,11 +377,11 @@
             width: 49%;
         }
 
-        .pcss3t .grid-col-4 {
+        .pcss3t .grid-col-md-4 {
             width: 66%;
         }
 
-        .pcss3t .grid-col-5 {
+        .pcss3t .grid-col-md-5 {
             width: 83%;
         }
 
@@ -2028,17 +2028,17 @@
                 <div class="card-body">
                          <div class="col-md-12">
                             <div class="row row-modal">
-                                <div class="col-6" runat="server">
+                                <div class="col-md-6" runat="server">
                                     <label for="Name">
                                         Electrical Installation For
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtInstallation" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="agency" runat="server" visible="false">
+                                <div class="col-md-6" id="agency" runat="server" visible="false">
                                     <label for="agency">Name of Firm/ Org./ Company/ Department</label>
                                     <asp:TextBox class="form-control" ID="txtagency" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual" runat="server">
+                                <div class="col-md-6" id="individual" runat="server">
                                     <label for="Name">
                                         Name of Owner/ Consumer
                                     </label>
@@ -2047,13 +2047,13 @@
                             </div>
                             <div class="row row-modal">
                               
-                                <div class="col-6" id="individual10" runat="server">
+                                <div class="col-md-6" id="individual10" runat="server">
                                     <label for="Name">
                                         Address
                                     </label>
                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual5" runat="server">
+                                <div class="col-md-6" id="individual5" runat="server">
                                     <label for="Name">
                                         Contact Details (Site Owner)
                                     </label>
@@ -2061,13 +2061,13 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                                <div class="col-6" id="individual2" runat="server">
+                                <div class="col-md-6" id="individual2" runat="server">
                                     <label for="Name">
                                         Type of Premises
                                     </label>
                                     <asp:TextBox class="form-control" ReadOnly="true" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual3" runat="server">
+                                <div class="col-md-6" id="individual3" runat="server">
                                     <label for="Name">
                                         Highest Voltage Level of Work
                                     </label>
@@ -2076,13 +2076,13 @@
                             </div>
                           
                             <div class="row row-modal">
-                                <div class="col-6" id="individual6" runat="server">
+                                <div class="col-md-6" id="individual6" runat="server">
                                     <label for="Name">
                                         Work Start Date
                                     </label>
                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual11" runat="server">
+                                <div class="col-md-6" id="individual11" runat="server">
                                     <label for="Name">
                                         Tentative Work Completition Date
                                     </label>
@@ -2091,7 +2091,7 @@
                             </div>
                         </div>
                 <div class="row" style="margin-left:0px;margin-right:0px;">
-                    <%-- <div class="col-4" runat="server">
+                    <%-- <div class="col-md-4" runat="server">
                             <label for="SiteContact">Contact Details of Site Owner</label>
                             <asp:TextBox class="form-control" ID="txtSiteContact" MaxLength="10" onkeydown="return preventEnterSubmit(event)" onkeyup="return isvalidphoneno2();" onKeyPress="return isNumberKey(event);" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect2" style="color: red"></span>
@@ -2101,7 +2101,7 @@
                      </div>
                 </div>
             <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 10px !important; margin: 10px 15px 15px 15px;">
-                    <div class="col-6" id="Load" runat="server" visible="false">
+                    <div class="col-md-6" id="Load" runat="server" visible="false">
                         <label>
                            Sanction load/ Contract demand(in KVA)  <samp style="color: red">* </samp>
                         </label>
@@ -2109,7 +2109,7 @@
                        <asp:TextBox class="form-control" ID="txtSanctionLoad" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="As per demand notice of utility OR electricity bill" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     
                          </div>  
-                    <%--<div class="col-6">
+                    <%--<div class="col-md-6">
                         <label>
                             Select Installation Type
         <samp style="color: red">* </samp>
@@ -2120,7 +2120,7 @@
                          </div>--%>
                
                 <div class="row">
-                    <div class="col-12" style="margin-bottom:20px;">
+                    <div class="col-md-12" style="margin-bottom:20px;">
                         <div class="table-responsive pt-3" id="Installation" runat="server" visible="false">
                             <table class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                                 <thead class="table-dark">
@@ -2136,12 +2136,12 @@
                                     <div id="installationType1" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationNo1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                   </div>
                                             </td>
@@ -2151,12 +2151,12 @@
                                     <div id="installationType2" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationNo2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                       </div>
                                             </td>
@@ -2166,7 +2166,7 @@
                                     <div id="installationType3" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>
                                                 </div>
                                             </td>
@@ -2181,12 +2181,12 @@
                                     <div id="installationType4" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationNo4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                    </div>
                                             </td>
@@ -2196,12 +2196,12 @@
                                     <div id="installationType5" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType5" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationNo5" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                       </div>
                                             </td>
@@ -2211,12 +2211,12 @@
                                     <div id="installationType6" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType6" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationNo6" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                             </td>
@@ -2226,12 +2226,12 @@
                                     <div id="installationType7" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType7" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationNo7" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                       </div>
                                             </td>
@@ -2241,12 +2241,12 @@
                                     <div id="installationType8" runat="server" visible="False">
                                         <tr>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationType8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="col-12">
+                                                <div class="col-md-12">
                                                     <asp:TextBox class="form-control" ID="txtinstallationNo8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                       </div>
                                             </td>
@@ -2260,8 +2260,8 @@
                 </div>
                 </div>
                 <div class="row" style="margin-top:20px; margin-bottom:20px;">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
                         <asp:Button type="submit" ID="btnNext" ValidationGroup="Submit" Text="Next" runat="server" class="btn btn-primary" OnClick="btnNext_Click" />
                     </div>
                 </div>

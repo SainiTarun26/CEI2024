@@ -39,6 +39,7 @@ namespace CEIHaryana.UserPages
                             GetGridData();
                             GridView1.Columns[0].Visible = true;
                             customFile.Visible = true;
+                            GetDetails();
                         }
                         else
                         {

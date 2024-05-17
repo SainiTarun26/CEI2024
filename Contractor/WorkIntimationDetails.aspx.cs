@@ -68,6 +68,7 @@ namespace CEIHaryana.Contractor
             try
             {
                 REID = Session["id"].ToString();
+                Session["PrintIntimationId"] = Session["id"].ToString(); 
                 SqlCommand cmd = new SqlCommand("sp_WorkIntimationData");
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
                 cmd.CommandType = CommandType.StoredProcedure;

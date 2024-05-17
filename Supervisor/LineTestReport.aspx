@@ -88,7 +88,7 @@
             background-color: #9292cc !important;
         }
 
-        .col-4 {
+        .col-md-4 {
             margin-bottom: 15px;
         }
 
@@ -232,13 +232,13 @@
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12" style="text-align: center;">
+                    <div class="col-md-12" style="text-align: center;">
                         <h7 class="card-title fw-semibold mb-4" id="maincard">LINE TEST REPORT</h7>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-sm-4" style="text-align: center;">
+                    <div class="col-md-4" style="text-align: center;">
                         <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Data Updated Successfully !!!.
                         </label>
@@ -250,13 +250,13 @@
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="row" style="margin-top: 10px;">
-                            <div class="col-12" style="text-align: left;">
+                            <div class="col-md-12" style="text-align: left;">
                                 <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Intimation/Installation Details</h7>
                             </div>
                         </div>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
                             <div class="row">
-                                <div class="col-3" id="Div8" runat="server">
+                                <div class="col-md-3" id="Div8" runat="server">
                                     <label for="Name">
                                         Applicant
             <samp style="color: red">* </samp>
@@ -265,7 +265,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                                 </div>
-                                <div class="col-3" id="Div9" runat="server">
+                                <div class="col-md-3" id="Div9" runat="server">
                                     <label for="Name">
                                         WorkIntimation ID
             <samp style="color: red">* </samp>
@@ -274,7 +274,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ControlToValidate="txtid" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                                 </div>
-                                <div class="col-3" id="Div10" runat="server">
+                                <div class="col-md-3" id="Div10" runat="server">
                                     <label for="Name">
                                         Type of Installation
             <samp style="color: red">* </samp>
@@ -283,7 +283,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                                 </div>
-                                <div class="col-3" id="Div12" runat="server">
+                                <div class="col-md-3" id="Div12" runat="server">
                                     <label for="Name">
                                         No of Installations
             <samp style="color: red">* </samp>
@@ -295,14 +295,14 @@
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
-                            <div class="col-12" style="text-align: left;">
+                            <div class="col-md-12" style="text-align: left;">
                                 <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Installation Details</h7>
                             </div>
                         </div>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div>
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Voltage of Line<samp style="color: red"> * </samp>
                                         </label>
@@ -310,7 +310,7 @@
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Voltage of Line" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLineVoltage" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                     </div>
-                                    <div class="col-3" id="divOtherVoltages" runat="server" visible="false" style="top: 0px !important;">
+                                    <div class="col-md-3" id="divOtherVoltages" runat="server" visible="false" style="top: 0px !important;">
                                         <label for="Voltage">
                                             Other Voltage 
                                                      <samp style="color: red">* </samp>
@@ -323,7 +323,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select Other Voltage" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOtherVoltage" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                     </div>
-                                    <div class="col-3" id="OtherVoltage" runat="server" visible="false" style="top: 0px !important;">
+                                    <div class="col-md-3" id="OtherVoltage" runat="server" visible="false" style="top: 0px !important;">
                                         <label for="Voltage">
                                             Other Voltage 
                                                      <samp style="color: red">* </samp>
@@ -332,7 +332,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtOthervoltage" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Voltage</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
-                                    <div class="col-3" id="Div1" runat="server">
+                                    <div class="col-md-3" id="Div1" runat="server">
                                         <label for="Name">
                                             Length of Line (in KM)
                                                     <samp style="color: red">* </samp>
@@ -341,7 +341,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtLineLength" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
 
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Line Type
                                                   <samp style="color: red">* </samp>
@@ -358,7 +358,7 @@
 
                             <div id="LineTypeOverhead" runat="server" visible="false" style="margin-bottom: 22px;">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             No of Circuit
                                             <samp style="color: red">* </samp>
@@ -371,7 +371,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" Text="Please Select No of Circuit" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlNmbrOfCircuit" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Conductor Type
                                             <samp style="color: red">* </samp>
@@ -388,14 +388,14 @@
                             </div>
                             <div id="OverheadBare" visible="false" runat="server">
                                 <div class="row" style="margin-top: 20px;">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Number of Pole/Tower<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtPoleTower" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="6" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtPoleTower" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number of Pole/Tower</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div2" runat="server">
+                                    <div class="col-md-3" id="Div2" runat="server">
                                         <label for="Name">
                                             Size of Conductor( IN SQ.MM)
                                                         <samp style="color: red">* </samp>
@@ -403,7 +403,7 @@
                                         <asp:TextBox class="form-control" ID="txtConductorSize" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtConductorSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Size of Conductor</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div3" runat="server">
+                                    <div class="col-md-3" id="Div3" runat="server">
                                         <label for="Name">
                                             Size of Ground Wire( IN SQ.MM)	
                             <samp style="color: red">* </samp>
@@ -411,7 +411,7 @@
                                         <asp:TextBox class="form-control" ID="txtGroundWireSize" onKeyPress="return isNumberKey(event) && preventZero(event);"  onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtGroundWireSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Size of Ground Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div4" runat="server">
+                                    <div class="col-md-3" id="Div4" runat="server">
                                         <label for="Name">
                                             Number of Railway Crossing
                             <samp style="color: red">* </samp>
@@ -419,7 +419,7 @@
                                         <asp:TextBox class="form-control" ID="txtRailwayCrossingNo" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtRailwayCrossingNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter No. of Railway Crossings</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div5" runat="server" style="margin-top: -25px;">
+                                    <div class="col-md-3" id="Div5" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of Road Crossing
                             <samp style="color: red">* </samp>
@@ -427,7 +427,7 @@
                                         <asp:TextBox class="form-control" ID="txtRoadCrossingNo" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="9" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtRoadCrossingNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Size of Ground Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div6" runat="server" style="margin-top: -25px;">
+                                    <div class="col-md-3" id="Div6" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of River/Canal Crossing
                             <samp style="color: red">* </samp>
@@ -436,7 +436,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtRiverCanalCrossing" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number of River/Canal Crossing
                                         </asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div7" runat="server" style="margin-top: -25px;">
+                                    <div class="col-md-3" id="Div7" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of Power Line Crossing:	
                             <samp style="color: red">* </samp>
@@ -449,14 +449,14 @@
                             <div id="OverheadCable" runat="server" visible="false">
                                 <div
                                     class="row" style="margin-top: 20px !important;">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Number of Pole/Tower<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtPoleTowerNo" MaxLength="3" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtPoleTowerNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter No. of Pole/Tower</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div11" runat="server">
+                                    <div class="col-md-3" id="Div11" runat="server">
                                         <label for="Name">
                                             Size of cable: (in MM sq.)
                             <samp style="color: red">* </samp>
@@ -464,7 +464,7 @@
                                         <asp:TextBox class="form-control" ID="txtCableSize1" MaxLength="3" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtCableSize1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Size of Cable</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div19" runat="server">
+                                    <div class="col-md-3" id="Div19" runat="server">
                                         <label for="Name">
                                             Number of Railway Crossing
                             <samp style="color: red">* </samp>
@@ -472,7 +472,7 @@
                                         <asp:TextBox class="form-control" ID="txtRailwayCrossingNmbr" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtRailwayCrossingNmbr" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter No. of Railway Crossings</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div20" runat="server">
+                                    <div class="col-md-3" id="Div20" runat="server">
                                         <label for="Name">
                                             Number of Road Crossing
                             <samp style="color: red">* </samp>
@@ -480,7 +480,7 @@
                                         <asp:TextBox class="form-control" ID="txtRoadCrossingNmbr" MaxLength="2" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtRoadCrossingNmbr" ErrorMessage="txtRoadCrossingNmbr" ValidationGroup="Submit" ForeColor="Red">Please Enter NO. of Road Crossing</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div21" runat="server" style="margin-top: -25px;">
+                                    <div class="col-md-3" id="Div21" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of River/Canal Crossing
                             <samp style="color: red">* </samp>
@@ -488,7 +488,7 @@
                                         <asp:TextBox class="form-control" ID="txtRiverCanalCrossingNmber" MaxLength="2" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtRiverCanalCrossingNmber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter No. of River/Canal Crossing</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div22" runat="server" style="margin-top: -25px;">
+                                    <div class="col-md-3" id="Div22" runat="server" style="margin-top: -25px;">
                                         <label for="Name">
                                             Number of Power Line Crossing:	
                             <samp style="color: red">* </samp>
@@ -500,14 +500,14 @@
                             </div>
                             <div id="Insulation440vAbove" runat="server" visible="true">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtRedEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtRedEarthWire" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Red Phase – Earth Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div32" runat="server">
+                                    <div class="col-md-3" id="Div32" runat="server">
                                         <label for="Name">
                                             Yellow Phase – Earth Wire (in Mohm)	
                                             <samp style="color: red">* </samp>
@@ -515,7 +515,7 @@
                                         <asp:TextBox class="form-control" ID="txtYellowEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtYellowEarthWire" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Yellow Phase – Earth Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div33" runat="server">
+                                    <div class="col-md-3" id="Div33" runat="server">
                                         <label for="Name">
                                             Blue Phase – Earth Wire (in Mohm)	
                                             <samp style="color: red">* </samp>
@@ -523,7 +523,7 @@
                                         <asp:TextBox class="form-control" ID="txtBlueEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtBlueEarthWire" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Blue Phase – Earth Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div34" runat="server">
+                                    <div class="col-md-3" id="Div34" runat="server">
                                         <label for="Name">
                                             Red Phase – Yellow Phase(in Mohm)
                                             <samp style="color: red">* </samp>
@@ -531,7 +531,7 @@
                                         <asp:TextBox class="form-control" ID="txtRedYellowPhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="17" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtRedYellowPhase" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Red Phase – Yellow Phase</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div35" runat="server">
+                                    <div class="col-md-3" id="Div35" runat="server">
                                         <label for="Name">
                                             Blue Phase – Yellow Phase(in Mohm)
                                             <samp style="color: red">* </samp>
@@ -539,7 +539,7 @@
                                         <asp:TextBox class="form-control" ID="txtBlueYellowPhase" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="18" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtBlueYellowPhase" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Blue Phase – Yellow Phase</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div36" runat="server">
+                                    <div class="col-md-3" id="Div36" runat="server">
                                         <label for="Name">
                                             Red Phase – Blue Phase(in Mohm)
                                             <samp style="color: red">* </samp>
@@ -551,14 +551,14 @@
                             </div>
                             <div id="Insulation220vAbove" runat="server" visible="false">
                                 <div class="row" style="margin-top: 10px !important;">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtNeutralWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtNeutralWire" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Red Phase – Earth Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div37" runat="server">
+                                    <div class="col-md-3" id="Div37" runat="server">
                                         <label for="Name">
                                             Phase wire - Earth (in Mohm)
                                             <samp style="color: red">* </samp>
@@ -566,7 +566,7 @@
                                         <asp:TextBox class="form-control" ID="txtEarthWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event) && preventZero(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtEarthWire" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Red Phase – Earth Wire</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div39" runat="server">
+                                    <div class="col-md-3" id="Div39" runat="server">
                                         <label for="Name">
                                             Neutral wire - Earth (in Mohm)
                                             <samp style="color: red">* </samp>
@@ -578,7 +578,7 @@
                             </div>
                             <div id="LineTypeUnderground" runat="server" visible="false">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Type of Cable
                                             <samp style="color: red">* </samp>
@@ -590,21 +590,21 @@
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator33" Text="Please Select Type of Cable" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlCableType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                     </div>
-                                    <div class="col-3" id="OtherCable" runat="server" visible="false">
+                                    <div class="col-md-3" id="OtherCable" runat="server" visible="false">
                                         <label>
                                             Type of Cable(Other)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtOtherCable" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="txtOtherCable" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Type of Cable</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Size of Cable: In(MM Sq.)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtCableSize" MaxLength="3" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtCableSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Cable Laid in
                                             <samp style="color: red">* </samp>
@@ -621,14 +621,14 @@
                             </div>
                             <div id="UndergroundInsulation440vAbove" runat="server" visible="false">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtRedWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator35" ControlToValidate="txtRedWire" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Red Wire"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div38" runat="server">
+                                    <div class="col-md-3" id="Div38" runat="server">
                                         <label for="Name">
                                             Yellow Phase – Earth Wire (in Mohm)	
                                             <samp style="color: red">* </samp>
@@ -636,7 +636,7 @@
                                         <asp:TextBox class="form-control" ID="txtYellowWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator36" ControlToValidate="txtYellowWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Yellow Wire"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div40" runat="server">
+                                    <div class="col-md-3" id="Div40" runat="server">
                                         <label for="Name">
                                             Blue Phase – Earth Wire (in Mohm)	
                                             <samp style="color: red">* </samp>
@@ -644,7 +644,7 @@
                                         <asp:TextBox class="form-control" ID="txtBlueWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator37" ControlToValidate="txtBlueWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Ente Blue Wire"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div41" runat="server">
+                                    <div class="col-md-3" id="Div41" runat="server">
                                         <label for="Name">
                                             Red Phase – Yellow Phase(in Mohm)
                                             <samp style="color: red">* </samp>
@@ -652,7 +652,7 @@
                                         <asp:TextBox class="form-control" ID="txtRedYellowWire" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator38" ControlToValidate="txtRedYellowWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Red Yellow Wire"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div42" runat="server">
+                                    <div class="col-md-3" id="Div42" runat="server">
                                         <label for="Name">
                                             Blue Phase – Yellow Phase(in Mohm)
                                             <samp style="color: red">* </samp>
@@ -660,7 +660,7 @@
                                         <asp:TextBox class="form-control" ID="txtBlueYellowWire" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator39" ControlToValidate="txtBlueYellowWire" ForeColor="Red" runat="server" ErrorMessage="Please Enter Blue Yellow Wire"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div43" runat="server">
+                                    <div class="col-md-3" id="Div43" runat="server">
                                         <label for="Name">
                                             Red Phase – Blue Phase(in Mohm)
                                                         <samp style="color: red">* </samp>
@@ -672,14 +672,14 @@
                             </div>
                             <div id="UndergroundInsulation220vAbove" runat="server" visible="false">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator41" ControlToValidate="txtNeutralPhaseWire" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Neutral Phase wire"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div44" runat="server">
+                                    <div class="col-md-3" id="Div44" runat="server">
                                         <label for="Name">
                                             Phase wire - Earth (in Mohm)
                                             <samp style="color: red">* </samp>
@@ -687,7 +687,7 @@
                                         <asp:TextBox class="form-control" ID="txtPhaseWireEarth" MaxLength="4" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator42" ControlToValidate="txtPhaseWireEarth" ForeColor="Red" runat="server" ValidationGroup="Submit" ErrorMessage="Please Enter Phase Wire Earth"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-3" id="Div45" runat="server">
+                                    <div class="col-md-3" id="Div45" runat="server">
                                         <label for="Name">
                                             Neutral wire - Earth (in Mohm)
                                                         <samp style="color: red">* </samp>
@@ -700,14 +700,14 @@
                         </div>
                         <div id="Earthing" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div class="row" style="margin-top: 10px;">
-                                <div class="col-12" style="text-align: left;">
+                                <div class="col-md-12" style="text-align: left;">
                                     <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Earthing Details</h7>
                                 </div>
                             </div>
 
                             <div>
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-md-3">
                                         <label>
                                             Number of Earthing:
                                             <samp style="color: red">* </samp>
@@ -732,7 +732,7 @@
                                                 <tr id="Earthingtype1" visible="false" runat="server" style="display: table-row;">
                                                     <td>1</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype1" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -743,7 +743,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtearthingValue1" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator73" ControlToValidate="txtearthingValue1" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -752,7 +752,7 @@
                                                 <tr id="Earthingtype2" visible="false" runat="server">
                                                     <td>2</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype2" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -763,7 +763,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue2" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator72" ControlToValidate="txtEarthingValue2" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -772,7 +772,7 @@
                                                 <tr id="Earthingtype3" runat="server" visible="false">
                                                     <td>3</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype3" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -783,7 +783,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue3" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator71" ControlToValidate="txtEarthingValue3" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -792,7 +792,7 @@
                                                 <tr id="Earthingtype4" runat="server" visible="false">
                                                     <td>4</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype4" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -803,7 +803,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12" id="Div15" runat="server">
+                                                        <div class="col-md-12" id="Div15" runat="server">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue4" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator70" ControlToValidate="txtEarthingValue4" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -812,7 +812,7 @@
                                                 <tr id="Earthingtype5" runat="server" visible="false">
                                                     <td>5</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype5" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -823,7 +823,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue5" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator69" ControlToValidate="txtEarthingValue5" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -832,7 +832,7 @@
                                                 <tr id="Earthingtype6" runat="server" visible="false">
                                                     <td>6</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" onKeyPress="return isNumberKey(event);" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype6" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -843,7 +843,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue6" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator68" ControlToValidate="txtEarthingValue6" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -852,7 +852,7 @@
                                                 <tr id="Earthingtype7" runat="server" visible="false">
                                                     <td>7</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype7" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -863,7 +863,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue7" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator67" ControlToValidate="txtEarthingValue7" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -872,7 +872,7 @@
                                                 <tr id="Earthingtype8" runat="server" visible="false">
                                                     <td>8</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype8" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -883,7 +883,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue8" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator66" ControlToValidate="txtEarthingValue8" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -892,7 +892,7 @@
                                                 <tr id="Earthingtype9" runat="server" visible="false">
                                                     <td>9</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype9" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -903,7 +903,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue9" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator65" ControlToValidate="txtEarthingValue9" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -912,7 +912,7 @@
                                                 <tr id="Earthingtype10" runat="server" visible="false">
                                                     <td>10</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype10" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -923,7 +923,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue10" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator64" ControlToValidate="txtEarthingValue10" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -932,7 +932,7 @@
                                                 <tr id="Earthingtype11" runat="server" visible="false">
                                                     <td>11</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype11" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -943,7 +943,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue11" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator63" ControlToValidate="txtEarthingValue11" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -952,7 +952,7 @@
                                                 <tr id="Earthingtype12" runat="server" visible="false">
                                                     <td>12</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype12" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -963,7 +963,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue12" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator62" ControlToValidate="txtEarthingValue12" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -972,7 +972,7 @@
                                                 <tr id="Earthingtype13" runat="server" visible="false">
                                                     <td>13</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype13" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -983,7 +983,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue13" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator61" ControlToValidate="txtEarthingValue13" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -992,7 +992,7 @@
                                                 <tr id="Earthingtype14" runat="server" visible="false">
                                                     <td>14</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype14" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -1003,7 +1003,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue14" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtEarthingValue14" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -1012,7 +1012,7 @@
                                                 <tr id="Earthingtype15" runat="server" visible="false">
                                                     <td>15</td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlEarthingtype15" selectionmode="Multiple" Style="width: 100% !important">
                                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Rod"></asp:ListItem>
@@ -1023,7 +1023,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col-12">
+                                                        <div class="col-md-12">
                                                             <asp:TextBox class="form-control" ID="txtEarthingValue15" MaxLength="2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator59" ControlToValidate="txtEarthingValue15" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                         </div>
@@ -1038,7 +1038,7 @@
 
                         <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
                             <%--  <div class="col-2"></div>--%>
-                            <div class="col-12" style="text-align: center;">
+                            <div class="col-md-12" style="text-align: center;">
                                 <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
                                 <br />
                                 <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
@@ -1047,8 +1047,8 @@
                             </div>
                         </div>
                         <div class="row" id="OTP" runat="server" visible="false">
-                            <div class="col-4"></div>
-                            <div class="col-4">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
                                 <label>
                                     Enter the OTP you received to Your Phone Number
                                     <samp style="color: red">* </samp>
@@ -1068,15 +1068,15 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-md-4">
                             </div>
-                            <div class="col-4" style="text-align: center;">
+                            <div class="col-md-4" style="text-align: center;">
                                 <%--    <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                                 <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
                                 <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
                                 <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
                             </div>
-                            <div class="col-4">
+                            <div class="col-md-4">
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             </div>
                         </div>

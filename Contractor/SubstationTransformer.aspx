@@ -16,7 +16,7 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .col-4 {
+        .col-md-4 {
             margin-bottom: 8px;
         }
 
@@ -167,10 +167,10 @@
             </div>--%>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: -30px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <div class="form-group row">
-                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                                <div class="col-sm-9" style="margin-left: -35px;">
+                                <label for="search" class="col-md-3 col-form-label" style="margin-top: -6px;">Search:</label>
+                                <div class="col-md-9" style="margin-left: -35px;">
                                     <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
                                     <asp:TextBox ID="txtapproval" runat="server" class="form-control" Font-Size="12px" Visible="false"></asp:TextBox><br />
                                 </div>

@@ -79,6 +79,9 @@
         input#txtInstallationType {
             border-bottom: 0px solid !important;
         }
+        th {
+    width: 1%;
+}
     </style>
     <script>
 
@@ -395,7 +398,7 @@
                             </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Assign Supervisor Details For Above Work</u></h6>
                             <div id="Div1" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                <div class="row">
+                               
                                     <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                         <Columns>
                                             <asp:TemplateField Visible="False" ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
@@ -417,7 +420,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="REID" HeaderText="ID" Visible="False">
-                                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
+                                                <HeaderStyle HorizontalAlign="Left" Width="30%" CssClass="headercolor textalignleft colwidth" />
                                                 <ItemStyle HorizontalAlign="center" />
                                             </asp:BoundField>
 
@@ -453,7 +456,7 @@
                                         <span style="margin-right: 12px;"></span>
                                         <h5>0172-2704090</h5>
                                     </div>
-                                </div>
+                              
                             </div>
 
                         </div>

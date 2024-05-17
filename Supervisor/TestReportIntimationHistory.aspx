@@ -15,7 +15,7 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .col-4 {
+        .col-md-4 {
             margin-bottom: 8px;
         }
          
@@ -167,7 +167,7 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: -30px;">
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <div class="form-group row" style="margin-bottom: 0px !important;">
                                 <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-10" style="margin-left: -130px; margin-top: auto; margin-bottom: auto;">
@@ -229,17 +229,17 @@
                         <div class="modal-header" style="font-size: 22px;"><b>Work Intimation Details</b></div>
                         <div class="col-md-12">
                             <div class="row row-modal">
-                                <div class="col-6" runat="server">
+                                <div class="col-md-6" runat="server">
                                     <label for="Name">
                                         Electrical Installation For
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="agency" runat="server" visible="false">
+                                <div class="col-md-6" id="agency" runat="server" visible="false">
                                     <label for="agency">Name of Firm/ Org./ Company/ Department</label>
                                     <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual" runat="server">
+                                <div class="col-md-6" id="individual" runat="server">
                                     <label for="Name">
                                         Name of Owner/ Consumer
                                     </label>
@@ -247,19 +247,19 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                              <%--  <div class="col-6" id="individual9" runat="server">
+                              <%--  <div class="col-md-6" id="individual9" runat="server">
                                     <label for="Name">
                                         Contact No.(Contractor)
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>--%>
-                                <div class="col-6" id="individual10" runat="server">
+                                <div class="col-md-6" id="individual10" runat="server">
                                     <label for="Name">
                                         Address 
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual5" runat="server">
+                                <div class="col-md-6" id="individual5" runat="server">
                                     <label for="Name">
                                         Contact Details 
                                     </label>
@@ -267,13 +267,13 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                                <div class="col-6" id="individual2" runat="server">
+                                <div class="col-md-6" id="individual2" runat="server">
                                     <label for="Name">
                                         Type of Premises
                                     </label>
                                     <asp:TextBox class="form-control" ID="TxtPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual3" runat="server">
+                                <div class="col-md-6" id="individual3" runat="server">
                                     <label for="Name">
                                         Highest Voltage Level of Work
                                     </label>
@@ -281,7 +281,7 @@
                                 </div>
                             </div>
                             <div class="row row-modal">
-                              <%--  <div class="col-6" id="individual4" runat="server">
+                              <%--  <div class="col-md-6" id="individual4" runat="server">
                                     <label for="Name">
                                         Work Details
                                     </label>
@@ -290,13 +290,13 @@
                                 
                             </div>
                             <div class="row row-modal">
-                                <div class="col-6" id="individual6" runat="server">
+                                <div class="col-md-6" id="individual6" runat="server">
                                     <label for="Name">
                                         Work Start Date
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-6" id="individual11" runat="server">
+                                <div class="col-md-6" id="individual11" runat="server">
                                     <label for="Name">
                                         Tentative Work Completition Date
                                     </label>

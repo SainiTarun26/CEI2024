@@ -55,7 +55,7 @@
       }
   </script>--%>
     <style>
-        .col-4 {
+        .col-md-4 {
             top: 0px;
             left: 0px;
         }
@@ -162,7 +162,7 @@
                 <br />
                <%-- <h7 class="card-title fw-semibold mb-4">Personal Details</h7>--%>
              <%--               <div class="row" style="margin-bottom:20px;">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label>
                         Assigned Work details<samp style="color: red">* </samp>
                     </label>
@@ -174,7 +174,7 @@
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>Electrical Installation For<samp style="color: red"> * </samp>
                             </label>
                             <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;">
@@ -185,21 +185,21 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
-                        <div class="col-4" id="individual" runat="server">
+                        <div class="col-md-4" id="individual" runat="server">
                             <label for="Name">Name of Owner/ Consumer<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtName" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4" id="agency" runat="server" visible="false">
+                        <div class="col-md-4" id="agency" runat="server" visible="false">
                             <label for="agency">Name of Firm/ Org./ Company/ Department</label>
                             <asp:TextBox class="form-control" ID="txtagency" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtagency"
                                 ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Phone">Contact No.(Contractor)
                                 <samp style="color: red">* </samp>
                             </label>
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-md-8">
                             <label for="Address">Address of Site(As Per Demand Notice of Utility or Electricity Bill)
                                 <samp style="color: red">* </samp>
                             </label>
@@ -220,7 +220,7 @@
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-4" runat="server">
+                        <div class="col-md-4" runat="server">
                             <label for="Pin">PinCode</label>
                             <asp:TextBox class="form-control" ID="txtPin" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblPinError" style="color: red"></span>
@@ -230,7 +230,7 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>Type of Premises
                                 <samp style="color: red">* </samp>
                             </label>
@@ -239,7 +239,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="TxtPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
-                        <div class="col-4" id="OtherPremises" runat="server" visible="false">
+                        <div class="col-md-4" id="OtherPremises" runat="server" visible="false">
                             <label for="OtherPremises">Other Premises<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtOtherPremises" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -247,7 +247,7 @@
 
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>Highest Voltage Level of Work
                                 <samp style="color: red">* </samp>
                             </label>
@@ -257,7 +257,7 @@
 
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4">
 
                             <label>Work Details
                                 <samp style="color: red">* </samp>
@@ -274,13 +274,13 @@
                     </div>
                     <div class="row">
                         
-                        <div class="col-4" runat="server">
+                        <div class="col-md-4" runat="server">
                             <label for="SiteContact">Contact Details of Site Owner</label>
                             <asp:TextBox class="form-control" ID="txtSiteContact" MaxLength="10" onkeydown="return preventEnterSubmit(event)" onkeyup="return isvalidphoneno2();" onKeyPress="return isNumberKey(event);" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect2" style="color: red"></span>
 
                         </div>
-                        <div class="col-4" runat="server">
+                        <div class="col-md-4" runat="server">
                             <label for="Email">Email</label>
                             <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblError" style="color: red"></span>
@@ -289,21 +289,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="StartDate">Work Start Date<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtStartDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" TabIndex="11" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtStartDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Start Date</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="CompletitionDate">Tentative Work Completition Date<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" TabIndex="12" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtCompletitionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Completition Date</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>If any work issued by any Agency/ Dept. / Owner<samp style="color: red"> * </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" Style="width: 100% !important;" runat="server" TabIndex="13" AutoPostBack="true">
@@ -319,7 +319,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-4" id="hiddenfield" runat="server">
+                        <div class="col-md-4" id="hiddenfield" runat="server">
                             <label class="form-label" for="customFile">
                                 Attached Copy of Work Order<samp style="color: red"> * </samp>
                                 <%--                            <asp:TextBox class="form-control" ID="txtcustomFile" Type="file" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
@@ -328,7 +328,7 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select File</asp:RequiredFieldValidator>
                         </div>
 
-                        <div class="col-4" id="hiddenfield1" runat="server">
+                        <div class="col-md-4" id="hiddenfield1" runat="server">
                             <label for="CompletionDateasperWorkOrder">Completion Date as per Work Order<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" onkeydown="return preventEnterSubmit(event)" TabIndex="15" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -340,15 +340,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
 
                         <asp:Button ID="btnSubmit" Text="Generate Test Report" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" 
                             Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;"  OnClick="btnSubmit_Click" />
                         
                           </div>
 
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <asp:HiddenField ID="hdnId" runat="server" />
 
                     </div>

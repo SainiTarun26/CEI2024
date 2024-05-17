@@ -344,7 +344,7 @@
                 </div>
                 <div class="row">
                     <%--  <div class="col-2"></div>--%>
-                    <div class="col-12">
+                    <div class="col-md-12">
                         <asp:CheckBox ID="CheckBox4" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that the particulars stated above are correct to the best of my knowledge. I am not a holder of 
                             Supervisor Competency Certificate issued by the State Licensing Board/Chief Electrical Inspector other than those 
                             indicated in the Column 10. I also agree to the cancellation of my Certificate of Competency to be issued in 
@@ -358,11 +358,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" style="font-size: 15px; font-weight: 600;">
+                                    <label class="col-md-3 col-form-label" style="font-size: 15px; font-weight: 600;">
                                         Place:</label>
                                     <div class="col-sm-9" style="margin-top: -58px !important; margin-left: 90px; padding-left: 0px;">
                                         <input type="text" class="form-control" />
@@ -371,7 +371,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6" style="text-align: end;">
+                    <div class="col-md-6" style="text-align: end;">
                         <img src="Assets/depositphotos_59095205-stock-illustration-businessman-profile-icon.jpg" style="width: 200px; height: 100px;" /><br />
                         Applicant Signature
                     </div>
@@ -379,7 +379,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" style="margin-top: -75px; font-size: 15px; font-weight: 600;">
+                            <label class="col-md-3 col-form-label" style="margin-top: -75px; font-size: 15px; font-weight: 600;">
                                 Dated:</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" style="margin-top: -72px !important; margin-left: 73px; padding-left: 0px;" />

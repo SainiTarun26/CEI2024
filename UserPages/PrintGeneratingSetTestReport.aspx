@@ -802,7 +802,7 @@
 
                                         <div class="col-6" id="CreatedDate" visible="false" runat="server">
                                             <label>
-                                                Created Date
+                                               TestReport Created Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -820,13 +820,13 @@
 
                                         <div class="col-6" id="SubmitDate" visible="false" runat="server">
                                             <label>
-                                                Submitted Date
+                                               WorkIntimation Submitted Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-6" id="SubmitBy" visible="false" runat="server">
                                             <label>
-                                                Submitted By
+                                              WorkIntimation Submitted By
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -835,18 +835,16 @@
                                 <div class="card" style="background: #fcfcfc;">
                                     <div id="Contractor" runat="server" visible="false">
                                         <div class="row">
-
                                             <div class="col-6" runat="server">
                                                 <label for="Name">
-                                                    TestReport No<samp style="color: red">* </samp>
+                                                    TestReport No
                                                 </label>
                                                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
 
                                             <div class="col-6" id="Rejection" runat="server">
                                                 <label for="Name">
-                                                    Prepared By
-                                                <samp style="color: red">* </samp>
+                                                    Prepared By                                               
                                                 </label>
                                                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
