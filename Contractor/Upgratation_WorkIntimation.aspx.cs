@@ -273,49 +273,48 @@ namespace CEIHaryana.Contractor
                 }
                 //WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
-                if (TestReportGenerated.Trim() == "Yes")
-                {
-                    txtPAN.Attributes.Add("readonly", "readonly");
-                    txtTanNumber.Attributes.Add("readonly", "readonly");
-                    ddlworktype.Attributes.Add("disabled", "disabled");
-                    txtName.Attributes.Add("readonly", "readonly");
-                    txtagency.Attributes.Add("readonly", "readonly");
-                    txtPhone.Attributes.Add("readonly", "readonly");
-                    txtAddress.Attributes.Add("readonly", "readonly");
-                    ddlDistrict.Attributes.Add("disabled", "disabled");
-                    txtPin.Attributes.Add("readonly", "readonly");
-                    txtOtherPremises.Attributes.Add("readonly", "readonly");
-                    txtEmail.Attributes.Add("readonly", "readonly");
-                    ddlPremises.Attributes.Add("disabled", "disabled");
-                    ddlVoltageLevel.Attributes.Add("disabled", "disabled");
-                    ddlApplicantType.Attributes.Add("disabled", "disabled");
-                    txtinstallationNo1.Attributes.Add("disabled", "disabled");
-                    txtinstallationNo2.Attributes.Add("disabled", "disabled");
-                    txtinstallationNo3.Attributes.Add("disabled", "disabled");
-                    txtStartDate.Attributes.Add("readonly", "readonly");
-                    txtCompletitionDate.Attributes.Add("readonly", "readonly");
-                    ddlAnyWork.Attributes.Add("disabled", "disabled");
-                    txtCompletionDateAPWO.Attributes.Add("disabled", "disabled");
+                //if (TestReportGenerated.Trim() == "Yes")
+                //{
+                //    txtPAN.Attributes.Add("readonly", "readonly");
+                //    txtTanNumber.Attributes.Add("readonly", "readonly");
+                //    ddlworktype.Attributes.Add("disabled", "disabled");
+                //    txtName.Attributes.Add("readonly", "readonly");
+                //    txtagency.Attributes.Add("readonly", "readonly");
+                //    txtPhone.Attributes.Add("readonly", "readonly");
+                //    txtAddress.Attributes.Add("readonly", "readonly");
+                //    ddlDistrict.Attributes.Add("disabled", "disabled");
+                //    txtPin.Attributes.Add("readonly", "readonly");
+                //    txtOtherPremises.Attributes.Add("readonly", "readonly");
+                //    txtEmail.Attributes.Add("readonly", "readonly");
+                //    ddlPremises.Attributes.Add("disabled", "disabled");
+                //    ddlVoltageLevel.Attributes.Add("disabled", "disabled");
+                //    ddlApplicantType.Attributes.Add("disabled", "disabled");
+                //    txtinstallationNo1.Attributes.Add("disabled", "disabled");
+                //    txtinstallationNo2.Attributes.Add("disabled", "disabled");
+                //    txtinstallationNo3.Attributes.Add("disabled", "disabled");
+                //    txtStartDate.Attributes.Add("readonly", "readonly");
+                //    txtCompletitionDate.Attributes.Add("readonly", "readonly");
+                //    ddlAnyWork.Attributes.Add("disabled", "disabled");
+                //    txtCompletionDateAPWO.Attributes.Add("disabled", "disabled");
 
-                    //btnReset.Visible = false;
-                    //btnSubmit.Visible = false;
-                    btnBack.Visible = true;
-                    lnkFile.Visible = true;
-                }
-                else
-                {
-
-                    // btnReset.Visible = false;
-                    //btnSubmit.Visible = false;
-                    //btnSubmit.Text = "Update";
-                    btnBack.Visible = true;
-                    //InCaseUploadFile.Visible= true;
-                    lnkFile.Visible = true;
-                    //BtnUpdate1.Visible = true;
-                    //btnUpdate2.Visible = true;
-                    //btnUpdate3.Visible = true;
-                    //FileUpdate.Visible = true;
-                }
+                //    //btnReset.Visible = false;
+                //    //btnSubmit.Visible = false;
+                //    btnBack.Visible = true;
+                //    lnkFile.Visible = true;
+                //}
+                //else
+                //{
+                //    // btnReset.Visible = false;
+                //    //btnSubmit.Visible = false;
+                //    //btnSubmit.Text = "Update";
+                //    btnBack.Visible = true;
+                //    //InCaseUploadFile.Visible= true;
+                //    lnkFile.Visible = true;
+                //    //BtnUpdate1.Visible = true;
+                //    //btnUpdate2.Visible = true;
+                //    //btnUpdate3.Visible = true;
+                //    //FileUpdate.Visible = true;
+                //}
             }
             catch { }
         }

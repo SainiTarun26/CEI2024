@@ -109,7 +109,6 @@ namespace CEIHaryana.Admin
                         }
                         else if (lblTypeOf.Text.Trim() == "Substation Transformer")
                         {
-
                             if (lblApproval.Text.Trim() == "Reject")
                             {
                                 Session["SubStationID"] = id;

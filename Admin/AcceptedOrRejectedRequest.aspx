@@ -164,7 +164,6 @@
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>--%>
-
                             <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />

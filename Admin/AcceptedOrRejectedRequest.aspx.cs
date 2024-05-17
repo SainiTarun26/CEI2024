@@ -60,7 +60,7 @@ namespace CEIHaryana.Admin
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            if (e.CommandName == "Select")
+            if (e.CommandName == "Select" || e.CommandName == "Print")
             {
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
@@ -69,13 +69,14 @@ namespace CEIHaryana.Admin
                 Session["Approval"] = lblApproval.Text.Trim();
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
-
-                Response.Redirect("/Admin/InspectionDetails.aspx", false);
-
-            }
-            else if (e.CommandName == "Print")
-            {
-                Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
+                if (e.CommandName == "Select")
+                {
+                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
+                }
+                else if (e.CommandName == "Print")
+                {
+                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
+                }
             }
         }
 

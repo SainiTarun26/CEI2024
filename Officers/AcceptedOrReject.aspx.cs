@@ -69,25 +69,23 @@ namespace CEIHaryana.Officers
         {
             try
             {
-                //if (e.CommandName == "Select")
-                //{
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                string id = lblID.Text;
-                Session["InProcessInspectionId"] = id;
-
-                if (e.CommandName == "Select")
+                if (e.CommandName == "Select" || e.CommandName == "Print")
                 {
-                    Response.Redirect("/Officers/InProcessInspection.aspx", false);
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    string id = lblID.Text;
+                    Session["InProcessInspectionId"] = id;
 
+                    if (e.CommandName == "Select")
+                    {
+                        Response.Redirect("/Officers/InProcessInspection.aspx", false);
+                    }
+                    else if (e.CommandName == "Print")
+                    {
+                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
+                    }
                 }
-                else if (e.CommandName == "Print")
-                {
-                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
-
-                }
-
             }
 
             catch (Exception ex)

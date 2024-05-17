@@ -51,13 +51,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.DropDownList ddlApplicantType;
 
         /// <summary>
-        /// DivPancard_TanNo control.
+        /// DivPancard_PanNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPancard_TanNo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPancard_PanNo;
 
         /// <summary>
         /// txtPAN control.
@@ -69,13 +69,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtPAN;
 
         /// <summary>
-        /// DivOtherDepartment control.
+        /// TanNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivOtherDepartment;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TanNumber;
 
         /// <summary>
         /// txtTanNumber control.
@@ -193,6 +193,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
+
+        /// <summary>
+        /// pin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pin;
 
         /// <summary>
         /// txtPin control.
@@ -400,42 +409,6 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlAnyWork;
-
-        /// <summary>
-        /// hiddenfield control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiddenfield;
-
-        /// <summary>
-        /// customFile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload customFile;
-
-        /// <summary>
-        /// lnkFile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkFile;
-
-        /// <summary>
-        /// customFileLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox customFileLocation;
 
         /// <summary>
         /// hiddenfield1 control.

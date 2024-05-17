@@ -518,7 +518,6 @@ namespace CEIHaryana.TestReportModal
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
                 txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString(); 
-
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
             
             }

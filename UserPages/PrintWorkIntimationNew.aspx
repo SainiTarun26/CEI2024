@@ -51,7 +51,7 @@
         .form-control {
             margin-left: 0px !important;
             font-size: 16px !important;
-            height: 30px;
+            height: 37px;
             border-bottom: 1px solid !important;
             border: 0px solid black;
             border-radius: 0px;
@@ -117,7 +117,7 @@
                                         <div class="col-3" style="margin-top: 0px;"></div>
                                         <div class="col-6" style="margin-top: 0px; padding-left: 0px; text-align: center;">
                                             <asp:TextBox class="form-control" ID="txtwIpID" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                                MaxLength="30" Style="margin-left: 18px;" Text="12341/tarun-2024">
+                                                MaxLength="30" Style="margin-left: 18px;text-align:center;border-bottom: 0px solid !important;" Text="12341/tarun-2024">
                                             </asp:TextBox>
                                         </div>
                                         <div class="col-3" style="margin-top: 0px;"></div>
@@ -137,18 +137,18 @@
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                             <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
                                             <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
-                                            <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>
+                                           <%-- <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>--%>
                                             <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
-                                    <div class="col-4" runat="server" id="DivPancard_TanNo" visible="false">
+                                    <div class="col-4" runat="server" id="DivPancard_PanNo" visible="false">
                                         <label for="FatherName">Pan Card:</label>
                                         <asp:TextBox class="form-control" ID="txtPAN" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
 
-                                    <div class="col-4" runat="server" id="DivOtherDepartment" visible="false">
+                                    <div class="col-4" runat="server" id="TanNumber" visible="false">
                                         <label>Tan Number:</label>
                                         <asp:TextBox class="form-control" ID="txtTanNumber" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
@@ -227,7 +227,7 @@
                                         </asp:DropDownList>
                                     </div>
 
-                                    <div class="col-4" runat="server">
+                                    <div class="col-4" id="pin" visible="false" runat="server">
                                         <label>PinCode</label>
                                         <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
@@ -279,7 +279,7 @@
                                                         </th>
                                                         <th style="width: 20%;">No of Installations
                                                         </th>
-                                                        <th style="width: 10%;"></th>
+                                                       
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -294,8 +294,7 @@
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtinstallationNo1" TabIndex="13" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
-                                                            </td>
-                                                            <td style="text-align: center !important;"></td>
+                                                            </td>                                                           
                                                         </tr>
                                                     </div>
                                                     <div id="installationType2" runat="server">
@@ -309,8 +308,7 @@
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtinstallationNo2" TabIndex="14" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
-                                                            </td>
-                                                            <td style="text-align: center !important;"></td>
+                                                            </td>                                                        
                                                         </tr>
                                                     </div>
                                                     <div id="installationType3" runat="server">
@@ -324,8 +322,7 @@
                                                                 <div style="margin-left: 15px !important; margin-right: 15px !important;">
                                                                     <asp:TextBox class="form-control" ID="txtinstallationNo3" TabIndex="15" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
-                                                            </td>
-                                                            <td style="text-align: center !important;"></td>
+                                                            </td>                                                        
                                                         </tr>
                                                     </div>
 
@@ -378,14 +375,14 @@
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 35px;">
-                                    <div class="col-4" id="hiddenfield" runat="server">
+                                  <%--  <div class="col-4" id="hiddenfield" runat="server">
                                         <label>
                                             Attached Copy of Work Order:
                                         </label>
                                         <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control" Visible="false" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />
                                         <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
                                         <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
-                                    </div>
+                                    </div>--%>
                                     <div class="col-4" id="hiddenfield1" runat="server">
                                         <label for="Name">
                                             Completion Date as per Work Order:

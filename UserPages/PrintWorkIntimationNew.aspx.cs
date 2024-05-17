@@ -29,7 +29,7 @@ namespace CEIHaryana.UserPages
                         ddlLoadBindVoltage();
                         BindDistrict();
                         BindListBoxInstallationType();
-                        hiddenfield.Visible = false;
+                        //hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
                         OtherPremises.Visible = false;
 
@@ -38,7 +38,7 @@ namespace CEIHaryana.UserPages
                             Session["UpdationId"] = null;
                             GetGridData();
                             GridView1.Columns[0].Visible = true;
-                            customFile.Visible = true;
+                            //customFile.Visible = true;
                             GetDetails();
                         }
                         else
@@ -63,8 +63,8 @@ namespace CEIHaryana.UserPages
 
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DivOtherDepartment.Visible = false;
-            DivPancard_TanNo.Visible = false;
+            TanNumber.Visible = false;
+            DivPancard_PanNo.Visible = false;
             DivPoweUtility.Visible = false;
             DivPoweUtilityWing.Visible = false;
             string Value = ddlWorkDetail.SelectedItem.ToString();
@@ -133,7 +133,7 @@ namespace CEIHaryana.UserPages
             }
             if (ddlApplicantType.SelectedValue == "AT001")
             {
-                DivPancard_TanNo.Visible = true;
+                DivPancard_PanNo.Visible = true;
             }
             else if (ddlApplicantType.SelectedValue == "AT002")
             {
@@ -142,7 +142,7 @@ namespace CEIHaryana.UserPages
             }
             else if (ddlApplicantType.SelectedValue == "AT003")
             {
-                DivOtherDepartment.Visible = true;
+                TanNumber.Visible = true;
             }
         }
 
@@ -224,18 +224,27 @@ namespace CEIHaryana.UserPages
                 string District = ds.Tables[0].Rows[0]["District"].ToString();
                 ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Pincode"].ToString()))
+                {
+                    pin.Visible = false;
+                }
+                else
+                {
+                    pin.Visible = true;
+                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                }                
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
-                txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
-                {
-                    DivPancard_TanNo.Visible = true;
+                string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                if (dp_Id24 == "Private/Personal Installation")
+                {                    
+                    DivPancard_PanNo.Visible = true;
+                    txtPAN.Text = PanTanNumber;
                 }
-                txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
-                if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
-                {
-                    DivOtherDepartment.Visible = true;
+                else if (dp_Id24 == "Other Department/Organization")
+                {                   
+                    TanNumber.Visible = true;
+                    txtTanNumber.Text = PanTanNumber;
                 }
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
@@ -249,7 +258,7 @@ namespace CEIHaryana.UserPages
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
                 Session["File"] = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 //txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+                txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
                 string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
                 string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
                 string dp_Id8 = ds.Tables[0].Rows[0]["TypeOfInstallation1"].ToString();
@@ -305,10 +314,10 @@ namespace CEIHaryana.UserPages
                 if (dp_Id7 == "Yes")
                 {
 
-                    hiddenfield.Visible = true;
+                   // hiddenfield.Visible = true;
                     hiddenfield1.Visible = true;
-                    customFile.Visible = false;
-                    customFileLocation.Visible = false;
+                    //customFile.Visible = false;
+                    //customFileLocation.Visible = false;
                     txtCompletionDateAPWO.Text = DateTime.Parse(dp_Id6).ToString("dd-MM-yyyy");
                 }
                 if (ddlVoltageLevel.SelectedValue == "650V")
@@ -320,7 +329,7 @@ namespace CEIHaryana.UserPages
                     installationType2.Visible = true;
                 }
 
-                customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
+                //customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 if (TestReportGenerated.Trim() == "Yes")
                 {
                     txtPAN.Attributes.Add("readonly", "readonly");
@@ -346,13 +355,13 @@ namespace CEIHaryana.UserPages
                     txtState.Attributes.Add("disabled", "disabled");
 
 
-                    lnkFile.Visible = true;
+                    //lnkFile.Visible = true;
                 }
                 else
                 {
 
                  
-                    lnkFile.Visible = true;
+                   //lnkFile.Visible = true;
                 }
             }
             catch { }

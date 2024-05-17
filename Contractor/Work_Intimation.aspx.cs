@@ -48,13 +48,13 @@ namespace CEIHaryana.Contractor
                         }
                         else
                         {
-                            GetDetails();
-                            GetGridData();
+                           // GetDetails();
+                            //GetGridData();
                            // GetassigneddatatoContractor();
                            // CheckedPriviousSupervisor();
-                            GridView1.Columns[0].Visible = true;
-                            Session["UpdationId"] = Session["id"];
-                            Session["id"] = null;
+                           // GridView1.Columns[0].Visible = true;
+                           // Session["UpdationId"] = Session["id"];
+                           // Session["id"] = null;
                         }
                     }
                     else
@@ -316,18 +316,7 @@ namespace CEIHaryana.Contractor
                     {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                    }
-                    //string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    //ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
-                    //txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                    //txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                    //txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-                    //string District = ds.Tables[0].Rows[0]["District"].ToString();
-                    //ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
-                    //txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                    //txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
-                    //txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                    //txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                    }                   
                 }
                 else
                 {
@@ -1107,26 +1096,7 @@ namespace CEIHaryana.Contractor
             {
                 //
             }
-        }
-        //private void CheckedPriviousSupervisor()
-        //{
-        //    if (SelectedSupervisor != null)
-        //    {
-        //        foreach (GridViewRow row in GridView1.Rows)
-        //        {
-        //            CheckBox checkSelect = (CheckBox)row.FindControl("CheckBox1");
-        //            Label lblREID = (Label)row.FindControl("lblREID");
-        //            if(lblREID != null)
-        //            {
-        //                string REID = lblREID.Text;
-        //                if(SelectedSupervisor.Contains(REID))
-        //                {
-        //                    checkSelect.Checked = true;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        }        
         protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1156,19 +1126,7 @@ namespace CEIHaryana.Contractor
                     {                        
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                    }
-                    //string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();                    
-                    //ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
-                    //txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                    //txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                    //txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-                    //string District = ds.Tables[0].Rows[0]["District"].ToString();
-                    //ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
-                    //txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                    //txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
-                    //txtTanNumber.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                    //txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-
+                    }                   
                 }
                 else
                 {

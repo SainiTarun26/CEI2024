@@ -21,7 +21,7 @@ namespace CEIHaryana.Print_Forms
                 {
                     if (!IsPostBack)
                     {
-                        if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
+                        if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty)
                         {
                             GetData();
                         }

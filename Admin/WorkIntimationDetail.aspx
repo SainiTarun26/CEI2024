@@ -396,7 +396,7 @@
 
                             <div class="row">
                                 <div class="col-4" id="hiddenfield" runat="server">
-                                    <label class="form-label" for="customFile">Attached Copy of Work Order</label>
+                                    <label class="form-label" for="customFile">Attached Copy of Work Order</label><br/>
                                  <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Open Document" />
                                   <%--  <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px;" />--%>
 
