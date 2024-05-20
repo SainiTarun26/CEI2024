@@ -2117,7 +2117,7 @@
                                     <div class="col-2" id="Div170" runat="server" style="margin-top: -15px;">
                                         <label for="Name">
                                             Capacity
-                                <samp style="color: red">* </samp>
+                               <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtCapacityType" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2125,14 +2125,14 @@
                                     <div class="col-2" id="Div171" runat="server" style="margin-top: -15px;">
                                         <label for="Name">
                                             Value
-                                <samp style="color: red">* </samp>
+                               <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-2" runat="server" style="margin-top: -15px;">
                                         <label for="Name">
                                             Serial no. 
-                                                <samp style="color: red">* </samp>
+                                               <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2140,7 +2140,7 @@
                                     <div class="col-2" id="Div172" runat="server" style="margin-top: -15px;">
                                         <label for="Name">
                                             Type of Generating Set
-                                                <samp style="color: red">* </samp>
+                                               <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtGeneratingSetType" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2148,21 +2148,21 @@
                                     <div class="col-4">
                                         <label for="Name">
                                             Generator voltage level(IN VOLTS)
-                                                <samp style="color: red">* </samp>
+                                               <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtGeneratorVoltage" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label for="Name">
                                             Current capacity of main breaker( IN AMPS)
-                                                <samp style="color: red">* </samp>
+                                               <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtCurrentCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label for="Name">
                                             Breaking capacity of main breaker (IN KA)
-                                                <samp style="color: red">* </samp>
+                                              <%--  <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
@@ -2172,7 +2172,7 @@
                                         <label for="Name">
                                             Location
 
-            <samp style="color: red">* </samp>
+            <%--<samp style="color: red">* </samp>--%>
 
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtPlantType" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -2212,7 +2212,7 @@
                                         <div class="col-2" style="margin-top: -15px;">
                                             <label for="Name">
                                                 capacity of plant
-                                                    <samp style="color: red">* </samp>
+                                                    <%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtPlantCapacityType" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2257,7 +2257,7 @@
                                         <div class="col-4" id="Div189" runat="server">
                                             <label for="Name">
                                                 Number of Earthing:
-                    <samp style="color: red">* </samp>
+                    <%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtEarthing" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2265,8 +2265,6 @@
                                                 Minimum Limit is 4     
                                             </label>
                                         </div>
-
-
                                     </div>
                                 </div>
 
@@ -2629,7 +2627,6 @@
                                                 <td>
                                                     <div class="col-12">
                                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtEarthingType15" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                     </div>
                                                 </td>
                                                 <td>
@@ -2640,15 +2637,12 @@
                                                 <td>
                                                     <div class="col-12">
                                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtEarthingUsed15" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                     </div>
                                                     <div class="col-12">
                                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtOther15" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
-
                                                 </td>
                                             </tr>
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -2659,23 +2653,19 @@
                                 <div class="row">
                                     <div class="col-4" id="CreatedDate" visible="false" runat="server">
                                         <label>
-                                           TestReport Created Date
-               
+                                           TestReport Created 
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-
                                     <div class="col-4" id="SubmitDate" visible="false" runat="server">
                                         <label>
-                                           Work Intimation Submitted Date
-               
+                                           Work Intimation Submitted Date           
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-4" id="SubmitBy" visible="false" runat="server">
                                         <label>
-                                           Work Intimation Submitted By
-               
+                                           Work Intimation Submitted By               
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
@@ -2685,40 +2675,31 @@
                                 <div > 
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
-
                                             <div class="row">
-
                                                 <div class="col-4">
                                                     <label for="Name">
                                                         TestReport No<samp style="color: red">* </samp>
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                 </div>
-
                                                 <div class="col-4" id="Rejection" runat="server">
                                                     <label for="Name">
-                                                        Prepared By
-                           
+                                                        Prepared By                           
                                                         <samp style="color: red">* </samp>
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                 </div>
-
                                                 <%-- <div class="col-4">
                                         <label for="Name">
                                             Form status
                                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
-
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                             <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
                                             <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-
                                     </div>
                                     <div class="col-4"></div>
                                     <div class="col-4" id="Rejection" runat="server" visible="false">
@@ -2728,7 +2709,6 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Reason For Rejection</asp:RequiredFieldValidator>
-
                                     </div>--%>
                                                 <div class="col-4" id="OTP" runat="server" visible="false">
                                                     <label for="Name">
@@ -2739,11 +2719,9 @@
 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtOtp" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" SetFocusOnError="true">Please Enter OTP</asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
-
                                             <div class="row">
                                                 <div class="col-12">
                                                 </div>
-
                                                 <div class="col-4">
                                                     <asp:HiddenField ID="hdn" Value="0" runat="server" />
                                                 </div>

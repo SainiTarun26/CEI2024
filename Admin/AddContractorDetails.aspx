@@ -290,7 +290,7 @@
                                 </div>
 
                             </div>
-                            <d class="row" style="margin-bottom:10px;">
+                            <div class="row" style="margin-bottom:10px;">
                                 <div class="col-4">
                                     <label>
                                         District
@@ -309,7 +309,7 @@
                                     --%>
                                 </div>
 
-                            </d iv>
+                            </div>
                         
                     <h7 class="card-title fw-semibold mb-4 mt-2">Branch Office Address</h7>
                     <samp>

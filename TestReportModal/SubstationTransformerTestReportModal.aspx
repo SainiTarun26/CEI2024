@@ -2176,14 +2176,14 @@
                                 <div class="col-4" id="Div121" runat="server">
                                     <label for="Voltage">
                                         Serial number of transformer  
-                                        <samp style="color: red">* </samp>
+                                       <%-- <samp style="color: red">* </samp>--%>
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtTransformerSerialNumber" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-2" style="margin-top: -15px;">
                                     <label>
                                         Capacity of transformer
-                                        <samp style="color: red">* </samp>
+                                       <%-- <samp style="color: red">* </samp>--%>
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtTransformerCapacityType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2194,7 +2194,7 @@
                                 <div class="col-2" style="margin-top: -15px;">
                                     <label>
                                         Capacity of transformer 
-                                        <samp style="color: red">* </samp>
+                                        <%--<samp style="color: red">* </samp>--%>
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtTransformerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2204,7 +2204,7 @@
                                 <div class="col-4">
                                     <label>
                                         Type of transformer
-                                        <samp style="color: red">* </samp>
+                                       <%-- <samp style="color: red">* </samp>--%>
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerType" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2216,7 +2216,7 @@
                                     <div class="col-4">
                                         <label for="Voltage">
                                             Primary voltage(in volte)  
-                            <samp style="color: red">* </samp>
+                          <%--  <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2224,21 +2224,21 @@
                                     <div class="col-4">
                                         <label for="Voltage">
                                             Secondary Voltage(in volte)  
-                                        <samp style="color: red">* </samp>
+                                      <%--  <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div id="Capacity" class="col-4" runat="server" visible="false">
                                         <label for="Voltage">
                                             Capacity of oil(in liters)  
-                                        <samp style="color: red">* </samp>
+                                       <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div id="BDV" class="col-4" runat="server" visible="false">
                                         <label for="Voltage">
                                             BDV level of oil (in kv) Break down voltage  
-                <samp style="color: red">* </samp>
+                <%--<samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
@@ -2250,7 +2250,7 @@
                                         <div class="col-4" id="Div124" runat="server">
                                             <label for="Voltage" style="margin-top: 30px;">
                                                 HT side Insulation Resistance— HV/Earth
-                                                        <samp style="color: red">* </samp>
+                                                        <%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" onKeyPress="return isNumberKey(event);" ID="txtHTsideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -2260,18 +2260,16 @@
 
                                             <label for="Voltage" style="margin-top: -15px;">
                                                 LT side Insulation Resistance—LV/Earth
-                                            <samp style="color: red">* </samp>
+                                           <%-- <samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLTSideInsulation" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
 
                                         <div class="col-4" style="margin-top: -20px;">
                                             <%--<label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">Lowest value between HT LT Side</label>--%>
-
-
                                             <label for="Voltage" style="margin-top: 50px;">
                                                 Insulation Resistance between HT LT Side 
-            <samp style="color: red">* </samp>
+           <%-- <samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLowestValue" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -2280,7 +2278,7 @@
                                         <div class="col-4">
                                             <label for="Voltage">
                                                 Lightning Arrestor (LA) Location  
- <samp style="color: red">* </samp>
+ <%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLightningArrestor" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -2302,14 +2300,14 @@
                                         <div class="col-4">
                                             <label for="Voltage">
                                                 Load breaking capacity of breaker (IN KA)  
-                                                    <samp style="color: red">* </samp>
+                                                    <%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerCapacity" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4">
                                             <label>
                                                 Type of LT protection
-                                                    <samp style="color: red">* </samp>
+                                                   <%-- <samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTProtection" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2317,7 +2315,7 @@
                                         <div class="col-4" id="FuseUnit" runat="server" visible="false">
                                             <label for="Voltage">
                                                 Capacity of individual fuse(IN AMPS)  
-                                                    <samp style="color: red">* </samp>
+                                                    <%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtIndividualCapacity" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -2328,21 +2326,21 @@
                                         <div class="col-4" id="Div167" runat="server">
                                             <label for="Voltage">
                                                 Capacity of LT Breaker(IN AMPS)  
-                                                    <samp style="color: red">* </samp>
+                                                   <%-- <samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLTBreakerCapacity" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" id="Div168" runat="server">
                                             <label for="Voltage">
                                                 Load Breaking Capacity of Breaker (IN AMPS)  
-                                                    <samp style="color: red">* </samp>
+                                                   <%-- <samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtLoadBreakingCapacity" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" id="Div169" runat="server">
                                             <label for="Voltage">
                                                 Mean Sea Level of transformer plinth (IN METRES)  
-                                                    <samp style="color: red">* </samp>
+                                                    <%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSealLevelPlinth" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -2356,7 +2354,7 @@
                                 <div class="col-4">
                                     <label for="Name">
                                         Number of Earthing:
-                                        <samp style="color: red">* </samp>
+                                       <%-- <samp style="color: red">* </samp>--%>
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthing" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2748,22 +2746,19 @@
                             <div class="row">
                                 <div class="col-4" id="CreatedDate" visible="false" runat="server">
                                     <label>
-                                       TestReport Created Date
-               
+                                       TestReport Created Date               
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4" id="SubmitDate" visible="false" runat="server">
                                     <label>
-                                       Work Intimation Submitted Date
-               
+                                       Work Intimation Submitted Date              
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4" id="SubmitBy" visible="false" runat="server">
                                     <label>
-                                       Work Intimation Submitted By
-               
+                                       Work Intimation Submitted By               
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
@@ -2771,24 +2766,17 @@
                         </div>
                         <asp:UpdatePanel ID="updatePanel1" runat="server">
                             <ContentTemplate>
-
-
                                 <div class="row" id="Contractor" runat="server" visible="false" style="border-radius: 20px;">
-
-
                                     <div class="col-4">
                                         <label for="Name">
-                                            TestReport No<samp style="color: red">* </samp>
+                                            TestReport No<%--<samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                     </div>
-
                                     <div class="col-4" id="Rejection" runat="server">
                                         <label for="Name">
-                                            Prepared By
-                                
-                                            <samp style="color: red">* </samp>
+                                            Prepared By                                
+                                           <%-- <samp style="color: red">* </samp>--%>
                                         </label>
                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>

@@ -240,11 +240,11 @@
                     <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                  <div class="col-4" runat="server">
-                    <label>TransctionId</label>
+                    <label>TransactionId</label>
                     <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                  <div class="col-4" runat="server">
-                    <label>Transcation Date</label>
+                    <label>Transaction Date</label>
                     <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                              

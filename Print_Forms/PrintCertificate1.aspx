@@ -229,9 +229,9 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="TxtName" runat="server" TextMode="MultiLine" Rows="1" Columns="30"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" runat="server" TextMode="MultiLine" Rows="1" Columns="30"></asp:TextBox>
-                                    <asp:TextBox ID="TextLocation" runat="server" TextMode="MultiLine" Rows="1" Columns="30"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" Columns="70"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70"></asp:TextBox>
+                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
@@ -283,7 +283,7 @@
                                         <asp:Label ID="LblDate" runat="server" Text="Label" Visible="false"></asp:Label>
                                         and the same was found generally
                                         complying with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply)
-                                        Regulations, 2023 and amendments thereon. Howwvwe, it is advised that: -
+                                        Regulations, 2023 and amendments thereon. However, it is advised that: -
                                        <%-- <ul class="list-group" style="margin-left: 20%;">
                                             <li>Item 1<br />
                                                 Item 1<br />
@@ -296,7 +296,7 @@
                                                 Item 3</li>
                                         </ul>--%>
                                         <br/>
-                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="7" onkeyup="countLines(this)" Columns="87" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>
+                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="9" onkeyup="countLines(this)" Columns="89" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>
 
                                         <p>
                                             Approval for energization of the subject cited installation is herby accorded subject to consistent
@@ -326,7 +326,7 @@
                                 <div class="col-8">
                                 </div>
                                 <div class="col-4">
-                                    <p style="text-align: center; font-weight: bold; position: fixed; bottom: 0; margin-left: 75px;">
+                                    <p style="text-align: center; font-weight: bold; position: fixed; bottom: 10PX; margin-left:30px;">
                                         <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
                                         <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
                                         <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />

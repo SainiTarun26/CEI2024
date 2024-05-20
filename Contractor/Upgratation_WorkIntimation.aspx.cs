@@ -256,6 +256,7 @@ namespace CEIHaryana.Contractor
                     hiddenfield1.Visible = true;
                     customFile.Visible = false;
                     FileUpdate.Visible = true;
+                    lnkFile.Visible = true;   //////added gurmeet 18 may
                     customFileLocation.Visible = false;
                     txtCompletionDateAPWO.Text = DateTime.Parse(dp_Id6).ToString("yyyy-MM-dd");
                 }
@@ -271,6 +272,7 @@ namespace CEIHaryana.Contractor
                 {
                     installationType2.Visible = true;
                 }
+                
                 //WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 //if (TestReportGenerated.Trim() == "Yes")

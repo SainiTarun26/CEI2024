@@ -29,6 +29,10 @@ namespace CEIHaryana.Print_Forms
                         {
                             GetData();
                         }
+                        else if (Session["AdminId"] != null)
+                        {
+                            GetData();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -73,7 +77,7 @@ namespace CEIHaryana.Print_Forms
                 TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
 
                 string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
-                string Location = "dist - " + locationValue;
+                string Location = "Dist - " + locationValue;
                 TextLocation.Text = Location;
                 TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                 //TxtDate.Text= ds.Tables[0].Rows[0]["CreatedDate"].ToString();
@@ -92,7 +96,7 @@ namespace CEIHaryana.Print_Forms
                 else
                 {
                     DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["InspectionDate"]);
-                    LblDate.Text = createdDate1.ToString("dd/MM/yyyy");
+                    LblDate.Text = "on "+ createdDate1.ToString("dd/MM/yyyy");
                     LblDate.Visible = true;
                 }
                 txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();

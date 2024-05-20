@@ -403,9 +403,7 @@
                         <asp:ListItem Text="Proper Earthing fencing ,if metallic,of at least 1.8-meter height be provided in front of the transformer room with gate opening outwards." Value="5"></asp:ListItem>
                         <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
                     </asp:DropDownList>
-                        </div>
-                       
-
+                        </div>                       
                         <div class="row">
                            
                              <div class="col-12" id="Suggestion" runat="server" visible="false">
@@ -429,13 +427,10 @@
                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>
-            </div>
-           
-        </div>
-    </div>
+            </div>         
     <script type="text/javascript">
         function alertWithRedirectdata(Message) {
-            if (confirm('Your Inspection ' + Message + ' Successfully')) {
+            if (confirm('Inspection Request has been Successfully ' + Message )) {
                 window.location.href = "/Officers/InProcessRequest.aspx";
             } else {
             }

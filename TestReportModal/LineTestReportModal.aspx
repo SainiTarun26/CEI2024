@@ -2141,21 +2141,21 @@
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <label>
-                                                            Voltage of Line<samp style="color: red"> * </samp>
+                                                            Voltage of Line<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtLineVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-2" id="divOtherVoltages" runat="server" visible="false">
                                                         <label for="Voltage">
                                                             Other Voltage 
-                                                     <samp style="color: red">* </samp>
+                                                    <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtVotalgeType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-2" id="OtherVoltage" runat="server" visible="false">
                                                         <label for="Voltage">
                                                             Other Voltage 
-                                                     <samp style="color: red">* </samp>
+                                                     <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="TxtOthervoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2163,14 +2163,14 @@
                                                     <div class="col-4" id="Div1" runat="server">
                                                         <label for="Name">
                                                             Length of Line (in KM)
-                                                    <samp style="color: red">* </samp>
+                                                   <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtLineLength" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
                                                             Line Type
-                                                  <samp style="color: red">* </samp>
+                                                <%--  <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtLineType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2181,20 +2181,20 @@
                                                     <div class="col-4">
                                                         <label>
                                                             No of Circuit
-                                                          <samp style="color: red">* </samp>
+                                                         <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtCircuit" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
                                                             Conductor Type
-                                                          <samp style="color: red">* </samp>
+                                                        <%--  <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtConductorType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
-                                                            Number of Pole/Tower<samp style="color: red"> * </samp>
+                                                            Number of Pole/Tower<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtPoleTower" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2207,42 +2207,42 @@
                                                     <div class="col-4" id="Div2" runat="server">
                                                         <label for="Name">
                                                             Size of Conductor( IN SQ.MM)
-                                                        <samp style="color: red">* </samp>
+                                                        <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtConductorSize" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div3" runat="server">
                                                         <label for="Name">
                                                             Size of Ground Wire( IN SQ.MM)	
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtGroundWireSize" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div4" runat="server">
                                                         <label for="Name">
                                                             Number of Railway Crossing
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRailwayCrossingNo" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div5" runat="server">
                                                         <label for="Name">
                                                             Number of Road Crossing
-                            <samp style="color: red">* </samp>
+                            <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRoadCrossingNo" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div6" runat="server">
                                                         <label for="Name">
                                                             Number of River/Canal Crossing
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRiverCanalCrossing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div7" runat="server">
                                                         <label for="Name">
                                                             Number of Power Line Crossing:	
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtPowerLineCrossing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2253,21 +2253,21 @@
                                                     class="row">
                                                     <div class="col-4">
                                                         <label>
-                                                            Number of Pole/Tower<samp style="color: red"> * </samp>
+                                                            Number of Pole/Tower<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtPoleTowerNo" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div11" runat="server">
                                                         <label for="Name">
                                                             Size of cable: (in MM sq.)
-                            <samp style="color: red">* </samp>
+                            <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtCableSize1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div19" runat="server">
                                                         <label for="Name">
                                                             Number of Railway Crossing
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRailwayCrossingNmbr" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2281,14 +2281,14 @@
                                                     <div class="col-4" id="Div21" runat="server">
                                                         <label for="Name">
                                                             Number of River/Canal Crossing
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRiverCanalCrossingNmber" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div22" runat="server">
                                                         <label for="Name">
                                                             Number of Power Line Crossing:	
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtPowerLineCrossingNmbr" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2299,26 +2299,26 @@
                                                     <div class="col-4">
                                                         <label>
                                                             Type of Cable
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtCableType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="OtherCable" runat="server" visible="false">
                                                         <label>
-                                                            Type of Cable(Other)<samp style="color: red"> * </samp>
+                                                            Type of Cable(Other)<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtOtherCable" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
-                                                            Size of Cable: In(MM Sq.)<samp style="color: red"> * </samp>
+                                                            Size of Cable: In(MM Sq.)<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtCableSize" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
                                                             Cable Laid in
-                            <samp style="color: red">* </samp>
+                          <%--  <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtCableLaid" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2330,42 +2330,42 @@
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <label>
-                                                            Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                                            Red Phase – Earth Wire (in Mohm)<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRedEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div32" runat="server">
                                                         <label for="Name">
                                                             Yellow Phase – Earth Wire (in Mohm)	
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtYellowEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div33" runat="server">
                                                         <label for="Name">
                                                             Blue Phase – Earth Wire (in Mohm)	
-                    <samp style="color: red">* </samp>
+                   <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtBlueEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div34" runat="server">
                                                         <label for="Name">
                                                             Red Phase – Yellow Phase(in Mohm)
-                    <samp style="color: red">* </samp>
+                    <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRedYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div35" runat="server">
                                                         <label for="Name">
                                                             Blue Phase – Yellow Phase(in Mohm)
-                    <samp style="color: red">* </samp>
+                   <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtBlueYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div36" runat="server">
                                                         <label for="Name">
                                                             Red Phase – Blue Phase(in Mohm)
-                    <samp style="color: red">* </samp>
+                   <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRedBluePhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2382,14 +2382,14 @@
                                                     <div class="col-4" id="Div37" runat="server">
                                                         <label for="Name">
                                                             Phase wire - Earth (in Mohm)
-                            <samp style="color: red">* </samp>
+                           <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div39" runat="server">
                                                         <label for="Name">
                                                             Neutral wire - Earth (in Mohm)
-                    <samp style="color: red">* </samp>
+                   <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtNeutralWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2399,42 +2399,42 @@
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <label>
-                                                            Red Phase – Earth Wire (in Mohm)<samp style="color: red"> * </samp>
+                                                            Red Phase – Earth Wire (in Mohm)<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRedWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div38" runat="server">
                                                         <label for="Name">
                                                             Yellow Phase – Earth Wire (in Mohm)	
-        <samp style="color: red">* </samp>
+       <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div40" runat="server">
                                                         <label for="Name">
                                                             Blue Phase – Earth Wire (in Mohm)	
-                                                        <samp style="color: red">* </samp>
+                                                      <%--  <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div41" runat="server">
                                                         <label for="Name">
                                                             Red Phase – Yellow Phase(in Mohm)
-                                                        <samp style="color: red">* </samp>
+                                                        <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRedYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div42" runat="server">
                                                         <label for="Name">
                                                             Blue Phase – Yellow Phase(in Mohm)
-                                                        <samp style="color: red">* </samp>
+                                                        <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtBlueYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div43" runat="server">
                                                         <label for="Name">
                                                             Red Phase – Blue Phase(in Mohm)
-                                                        <samp style="color: red">* </samp>
+                                                       <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtRedBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2444,21 +2444,21 @@
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <label>
-                                                            Phase wire - Neutral wire (in Mohm)<samp style="color: red"> * </samp>
+                                                            Phase wire - Neutral wire (in Mohm)<%--<samp style="color: red"> * </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div44" runat="server">
                                                         <label for="Name">
                                                             Phase wire - Earth (in Mohm)
-                            <samp style="color: red">* </samp>
+                            <%--<samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtPhaseWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" id="Div45" runat="server">
                                                         <label for="Name">
                                                             Neutral wire - Earth (in Mohm)
-                                                        <samp style="color: red">* </samp>
+                                                       <%-- <samp style="color: red">* </samp>--%>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -2748,7 +2748,7 @@
 
                                         <div class="col-4">
                                             <label for="Name">
-                                                TestReport No<samp style="color: red">* </samp>
+                                                TestReport No<%--<samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -2758,7 +2758,7 @@
                                             <label for="Name">
                                                 Prepared By
                                 
-                                                <samp style="color: red">* </samp>
+                                              <%--  <samp style="color: red">* </samp>--%>
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>

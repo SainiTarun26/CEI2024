@@ -500,7 +500,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         else
                         {
-                            throw new Exception("Please Upload Pdf Files Less Than 2 Mb Only");
+                            throw new Exception("Please Upload Pdf Files Less Than 1 Mb Only");
                         }
                     }
                     else
@@ -567,7 +567,7 @@ namespace CEIHaryana.SiteOwnerPages
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
                         return;
                     }
-                    else if (ex.Message == "Please Upload Pdf Files Less Than 2 Mb Only")
+                    else if (ex.Message == "Please Upload Pdf Files Less Than 1 Mb Only")
                     {
                         transaction.Rollback();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);

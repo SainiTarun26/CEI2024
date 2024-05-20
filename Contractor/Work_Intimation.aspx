@@ -349,7 +349,7 @@
 
                                         <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
                                             <label for="TanNumber">
-                                                Tan Number
+                                                TAN Number
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" AutoPostBack="true" OnTextChanged="txtTanNumber_TextChanged" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -414,10 +414,7 @@
                                             <label for="Name">
                                                 Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                             </label>
-                                            <div class="input-box">
-                                                <span class="prefix">M/s.</span>
-
-
+                                            <div class="input-box">                        
                                                 <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
                                             </div>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
@@ -788,7 +785,6 @@
                                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
                                                     <ItemStyle HorizontalAlign="center" />
                                                 </asp:BoundField>
-
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
                                                     <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
                                                     <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
@@ -801,8 +797,6 @@
                                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                                     <ItemStyle HorizontalAlign="center" />
                                                 </asp:BoundField>
-
-
                                             </Columns>
                                             <FooterStyle BackColor="White" ForeColor="#000066" />
                                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -823,8 +817,7 @@
                                         </div>
                                         <div class="row" id="statement" runat="server" visible="false">
                                             <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
-                                                Submit Button is disable due to supervisior attachment.Please attatch any Supervisior
-                                              
+                                                Submit Button is disable due to supervisior attachment.Please attatch any Supervisior                                              
                                             </label>
                                         </div>
                                     </ContentTemplate>
