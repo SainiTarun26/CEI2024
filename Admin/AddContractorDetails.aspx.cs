@@ -25,6 +25,13 @@ namespace CEI_PRoject.Admin
                 Response.Cache.SetNoStore();
                 if (!IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Admin / Contractor Details";
+                    }
+
                     if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
                     {
                         ddlLoadBindVoltage();

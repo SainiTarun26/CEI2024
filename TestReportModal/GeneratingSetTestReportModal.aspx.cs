@@ -512,7 +512,9 @@ namespace CEIHaryana.TestReportModal
                 string Counts = Session["Counts"].ToString();
                 // CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
                 CEI.UpdateGeneratingSetData(id, Counts);
-                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+                string script = "alert('Test Report Approved Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
+                //Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
         }
        
@@ -563,6 +565,7 @@ namespace CEIHaryana.TestReportModal
                     else
                     {
                         Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP Sent Successfully.Please Check You Email');", true);
                         btnVerify.Text = "Verify";
                     }
                 }

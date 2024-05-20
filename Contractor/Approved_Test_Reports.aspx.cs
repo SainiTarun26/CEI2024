@@ -18,6 +18,12 @@ namespace CEIHaryana.Contractor
             {
                 if (!IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Contractor / Approved Test Reports";
+                    }
                     GridViewBind();
                 }
                 else
@@ -75,7 +81,7 @@ namespace CEIHaryana.Contractor
                     if (lblTypeOf.Text.Trim() == "Line")
                     {
 
-                       // Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        // Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();
                         Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
 
                         Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
@@ -83,21 +89,21 @@ namespace CEIHaryana.Contractor
                     else if (lblTypeOf.Text.Trim() == "Substation Transformer")
                     {
 
-                       // Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        // Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
                         Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
                     }
                     else if (lblTypeOf.Text.Trim() == "Generating Set")
                     {
 
-                       // Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to solve testreportid
+                        // Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to solve testreportid
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
 
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             { }
         }
 

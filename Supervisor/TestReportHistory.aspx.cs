@@ -18,6 +18,12 @@ namespace CEIHaryana.Supervisor
             {
                 if (!IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Supervisor /  Test Report History";
+                    }
                     GridViewBind();
                 }
             }
@@ -69,10 +75,10 @@ namespace CEIHaryana.Supervisor
                     Label lblIHID = (Label)row.FindControl("lblIHID");
                     Session["IHIDs"] = lblIHID.Text;
                     Label lblIntimations = (Label)row.FindControl("lblIntimations");
-                    
+
                     if (e.CommandName == "Select")
                     {
-                       Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
+                        Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
                         Session["TypeOf"] = lblTypeOf.Text;
                         DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text);
                         //string id = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to resolve the testreportid
@@ -93,7 +99,7 @@ namespace CEIHaryana.Supervisor
                             }
                         }
                         else if (lblTypeOf.Text.Trim() == "Substation Transformer")
-                        {   
+                        {
 
                             if (lblApproval.Text.Trim() == "Reject")
                             {
@@ -124,7 +130,7 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 //
             }
@@ -160,6 +166,35 @@ namespace CEIHaryana.Supervisor
             catch (Exception ex)
             {
                 //
+            }
+        }
+
+        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        int reportTypeColumnIndex = 8;
+        //        TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+
+        //        if (reportTypeCell.Text == "Return")
+        //        {
+        //            reportTypeCell.CssClass = "blink";
+        //        }
+        //    }
+        //}
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int reportTypeColumnIndex = 8;
+                TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+
+                if (reportTypeCell.Text == "Return")
+                {
+                    e.Row.CssClass = "ReturnedRowColor";
+                }
+
             }
         }
     }

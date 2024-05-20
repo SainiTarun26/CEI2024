@@ -16,6 +16,14 @@ namespace CEIHaryana.Contractor
         {
             if (!IsPostBack)
             {
+                var master = (MasterPage)Master;
+                var loginTypeLabel = (Label)master.FindControl("LoginType");
+                if (loginTypeLabel != null)
+                {
+                    loginTypeLabel.Text = "Contractor / AttachedORDeattach";
+                }
+
+
                 if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
                 {
                     GetGridDataToDeattachStaff();

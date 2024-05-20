@@ -3467,11 +3467,15 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerDetails", LoginId);
         }
-        public DataTable GetDocumentlist(string ApplicantType, string InstallationType, string InspectionType, string DesignatedOfficer, string PlantLocation)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentCheckList", ApplicantType, InstallationType, InspectionType, DesignatedOfficer, PlantLocation);
-        }
+        //public DataTable GetDocumentlist(string ApplicantType, string InstallationType, string InspectionType, string DesignatedOfficer, string PlantLocation)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentCheckList", ApplicantType, InstallationType, InspectionType, DesignatedOfficer, PlantLocation);
+        //}
 
+        public DataTable GetDocumentlist(string ApplicantType, string InstallationType, string InspectionType, string DesignatedOfficer, string PlantLocation, int inspectionIdPrm)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentCheckList", ApplicantType, InstallationType, InspectionType, DesignatedOfficer, PlantLocation, inspectionIdPrm);
+        }
         #region printing test report code line substation generating set printing   
         public DataSet LineDataWithIdForPrintTestReport(string ID)
         {
@@ -3492,10 +3496,11 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments", InspectionId);
         }
         #region Insert Inspection Data NewCode
+
         public void InsertInspectionDataNewCode(string ContactNo, string TestRportId, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-       string VoltageLevel, string LineLength, string TestReportCount, string District, string Division, string PaymentMode, string DateOfSubmission, string CreatedBy,
-      int TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment, SqlTransaction transaction
-        )
+string VoltageLevel, string LineLength, string TestReportCount, string District, string Division, string PaymentMode, string DateOfSubmission, string CreatedBy,
+int TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, SqlTransaction transaction
+)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCode", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -3525,15 +3530,15 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
             cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
-            cmd.Parameters.AddWithValue("@TransctionDate ", TranscationDate);
-            cmd.Parameters.AddWithValue("@ChallanAttachment ", null);
+            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            cmd.Parameters.AddWithValue("@ChallanAttachment", null);
+            cmd.Parameters.AddWithValue("@InspectID", InspectID);
             //outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
             outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
         }
-
         #endregion
 
         public DataTable ShowPendingDivisionDaysData(string dated, string Division)

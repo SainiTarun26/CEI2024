@@ -146,6 +146,10 @@
             text-align: left;
             padding-left: 12px;
         }
+
+        .ReturnedRowColor {
+             background-color: indianred !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -170,7 +174,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 3%">
-                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
+                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound"
                             AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
@@ -199,7 +203,7 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
                                 </asp:BoundField>
-                              <asp:BoundField DataField="District" HeaderText="District">
+                                <asp:BoundField DataField="District" HeaderText="District">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="left" CssClass="GridViewRowItems itemstylecss" />
                                 </asp:BoundField>
@@ -216,6 +220,13 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
+
+                                <asp:BoundField DataField="ReportType" HeaderText="ReportType">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                </asp:BoundField>
+
+
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

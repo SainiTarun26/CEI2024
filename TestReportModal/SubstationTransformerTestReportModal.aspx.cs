@@ -553,7 +553,9 @@ namespace CEIHaryana.TestReportModal
                 string Counts = Session["Counts"].ToString();
                 //CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
                 CEI.UpdateSubstationData(id, Counts);
-                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+                // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+                string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
             }
         }
         protected void btnBack_Click(object sender, EventArgs e)

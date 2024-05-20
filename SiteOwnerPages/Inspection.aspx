@@ -253,7 +253,8 @@
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
-                        Reason For Rejection<samp style="color: red"> * </samp>
+                    <%--    Reason For Rejection<samp style="color: red"> * </samp>--%>
+                            Reason <samp style="color: red"> * </samp>
                     </label>
                     <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>

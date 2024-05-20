@@ -39,13 +39,38 @@ namespace CEIHaryana.Admin
 
                             if (category == "Contractor")
                             {
+                                var master = (MasterPage)Master;
+                                var loginTypeLabel = (Label)master.FindControl("LoginType");
+                                if (loginTypeLabel != null)
+                                {
+                                    loginTypeLabel.Text = "Admin / Contractor Details";
+                                }
+
                                 GridView1.Columns[5].Visible = true;
                                 GridView1.Columns[4].Visible = true;
                                 GridView1.Columns[6].Visible = true;
                                 getContractorData(loginType, ID);
                             }
-                            else if (category == "Supervisor" || category == "Wireman")
+                            else if (category == "Supervisor")
                             {
+                                var master = (MasterPage)Master;
+                                var loginTypeLabel = (Label)master.FindControl("LoginType");
+                                if (loginTypeLabel != null)
+                                {
+                                    loginTypeLabel.Text = "Admin / Supervisior Details";
+                                }
+
+                                getWiremanorSuperwiserData(category, loginType, ID);
+                            }
+                            else if (category == "Wireman")
+                            {
+                                var master = (MasterPage)Master;
+                                var loginTypeLabel = (Label)master.FindControl("LoginType");
+                                if (loginTypeLabel != null)
+                                {
+                                    loginTypeLabel.Text = "Admin / Wireman Details";
+                                }
+
                                 getWiremanorSuperwiserData(category, loginType, ID);
                             }
                         }

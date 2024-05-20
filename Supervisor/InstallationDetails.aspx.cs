@@ -23,6 +23,13 @@ namespace CEIHaryana.Supervisor
             {
                 if (!Page.IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Supervisor / Create New Test Report / Installation Details";
+                    }
+
                     if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
                     {
                         getWorkIntimationData();
@@ -125,29 +132,29 @@ namespace CEIHaryana.Supervisor
                         ds = CEI.GetData(lblTyps.Text.Trim(), lblIntimations.Text.Trim(), lblNoOfInstallations.Text.Trim());
                         if (lblTyps.Text.Trim() == "Line")
                         {
-                            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                            {
-                                Session["LineId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                                Session["ValueId"] = "True";
-                            }
+                            //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                            //{
+                            //    Session["LineId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            //    Session["ValueId"] = "True";
+                            //}
                             Response.Redirect("/Supervisor/LineTestReport.aspx", false);
                         }
                         else if (lblTyps.Text.Trim() == "Substation Transformer")
                         {
-                            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                            {
-                                Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                                Session["ValueId"] = "True";
-                            }
+                            //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                            //{
+                            //    Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            //    Session["ValueId"] = "True";
+                            //}
                             Response.Redirect("/Supervisor/SubstationTestReport.aspx", false);
                         }
                         else if (lblTyps.Text.Trim() == "Generating Set")
                         {
-                            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                            {
-                                Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                                Session["ValueId"] = "True";
-                            }
+                            //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                            //{
+                            //    Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            //    Session["ValueId"] = "True";
+                            //}
                             Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
                         }
                     }
@@ -161,6 +168,20 @@ namespace CEIHaryana.Supervisor
             }
             catch (Exception)
             { }
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int reportTypeColumnIndex = 9;
+                TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+
+                if (reportTypeCell.Text == "Returned")
+                {
+                    e.Row.CssClass = "ReturnedRowColor";
+                }
+
+            }
         }
     }
 }

@@ -2473,7 +2473,7 @@
                                                 <div class="col-4">
                                                     <label>
                                                         Number of Earthing:
-                                                    <samp style="color: red">* </samp>
+                                                   <%-- <samp style="color: red">* </samp>--%>
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtEarthing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>

@@ -294,7 +294,6 @@
                 }
                 tblData.rows[i].style.display = styleDisplay;
             }
-
         }
         function SearchOnEnter(event) {
             if (event.keyCode === 13) {

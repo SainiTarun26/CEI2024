@@ -28,6 +28,13 @@ namespace CEIHaryana.Supervisor
                 {
                     if (!IsPostBack)
                     {
+                        var master = (MasterPage)Master;
+                        var loginTypeLabel = (Label)master.FindControl("LoginType");
+                        if (loginTypeLabel != null)
+                        {
+                            loginTypeLabel.Text = "Supervisor / Create New Test Report / Installation Details / Test Report";
+                        }
+
                         ddlEarthing();
                         SessionValue();
                         PageWorking();

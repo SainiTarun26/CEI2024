@@ -27,6 +27,12 @@ namespace CEIHaryana.SiteOwnerPages
         string fileExtension3 = string.Empty;
         string fileExtension4 = string.Empty;
         string IntimationId = string.Empty;
+
+        int inspectionCountRes = 0;
+        int inspectionIdRes = 0;
+        
+
+
         // string Count = string.Empty;
         private static string PremisesType, ApplicantTypeCode, id, Category, InstallationTypeId, Count, PaymentMode,
             ApplicantType, InstallationType, AssigDesignation, InspectionType, PlantLocation;
@@ -45,6 +51,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         getWorkIntimationData();
                         Session["PreviousPage"] = Request.Url.ToString();
+                        Grd_Document.RowDataBound += Grd_Document_RowDataBound;
                     }
                 }
             }
@@ -135,7 +142,10 @@ namespace CEIHaryana.SiteOwnerPages
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
                     DropDownList ddlDocumentFor = Documents.FindControl("ddlDocumentFor") as DropDownList;
-                  
+
+                    inspectionCountRes = Convert.ToInt32(((HtmlInputHidden)row.FindControl("InspectionCount")).Value.Replace("\r\n", ""));
+                    inspectionIdRes = Convert.ToInt32( ((HtmlInputHidden)row.FindControl("InspectionId")).Value.Replace("\r\n", ""));
+
 
 
                     if (ddlDocumentFor != null)
@@ -204,7 +214,7 @@ namespace CEIHaryana.SiteOwnerPages
                         btnSubmit.Visible = true;
                         btnReset.Visible = true;
 
-                        GetDocumentUploadData(ApplicantTypeCode, Category, InspectionType, AssigDesignation, PlantLocation);
+                        GetDocumentUploadData(ApplicantTypeCode, Category, InspectionType, AssigDesignation, PlantLocation, inspectionIdRes);
                         PaymentGridViewBind();
                     }
                     else
@@ -326,6 +336,10 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+     
+            //string script = "<script type=\"text/javascript\">window.onload = function() { printDiv('printableDiv'); }</script>";
+            //ClientScript.RegisterStartupScript(this.GetType(), "print", script);
+           // Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "MyFunction()", true);
             try
             {
                 bool atLeastOneInspectionChecked = false;
@@ -427,9 +441,9 @@ namespace CEIHaryana.SiteOwnerPages
                         PaymentMode = RadioButtonList2.SelectedItem.ToString();
                     }
 
-                    InsertFilesIntoDatabase(CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                    LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment);
-
+                        InsertFilesIntoDatabase(CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                        LineLength, Count, District, To, PaymentMode, txtDate.Text, CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value));
+                   
                     //Session["PrintInspectionID"] = id.ToString();
                 }
                 else
@@ -453,25 +467,26 @@ namespace CEIHaryana.SiteOwnerPages
                 string DocSaveName = ((HtmlInputHidden)row.FindControl("DocumentShortName")).Value.Replace("\r\n", "");
                 string DocumentID = ((HtmlInputHidden)row.FindControl("DocumentID")).Value.Replace("\r\n", "");
                 string DocName = row.Cells[1].Text.Replace("\r\n", "");
-                if (Req == "1")
 
+                if (Convert.ToInt32(InspectionIdClientSideCheckedRow.Value) == 0)
                 {
-
-                    if (!fileUpload.HasFile && Req == "1")
+                    if (Req == "1")
                     {
-                        string message = DocName + " is mandatory to upload.";
-                        throw new Exception(message);
+
+                        if (!fileUpload.HasFile && Req == "1")
+                        {
+                            string message = DocName + " is mandatory to upload.";
+                            throw new Exception(message);
+
+                        }
 
                     }
-
                 }
-
 
                 if (fileUpload.HasFile)
                 {
                     string CreatedBy = CreatedByy;
                     if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
-
                     {
 
                         if (fileUpload.PostedFile.ContentLength <= 1048576)
@@ -514,7 +529,7 @@ namespace CEIHaryana.SiteOwnerPages
         }
 
         public void InsertFilesIntoDatabase(string para_CreatedBy, string para_txtContact, string para_id, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
-                  string para_LineLength, string para_Count, string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_CreatedByy, int para_TotalAmount, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment)
+                  string para_LineLength, string para_Count, string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_CreatedByy, int para_TotalAmount, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment,int para_InspectID)
         {
             // Insert the uploaded files into the database
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
@@ -525,7 +540,7 @@ namespace CEIHaryana.SiteOwnerPages
                 try
                 {
                     CEI.InsertInspectionDataNewCode(para_txtContact, para_id, para_ApplicantTypeCode, para_IntimationId, para_PremisesType, para_lblApplicant, para_lblCategory, para_lblVoltageLevel,
-                    para_LineLength, para_Count, para_District, para_To, para_PaymentMode, para_txtDate, para_CreatedByy, para_TotalAmount, para_transcationId, para_TranscationDate, para_ChallanAttachment, transaction);
+                    para_LineLength, para_Count, para_District, para_To, para_PaymentMode, para_txtDate, para_CreatedByy, para_TotalAmount, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, transaction);
 
                     string generatedIdCombinedDetails = CEI.InspectionId();
                     string[] SplitResultPartsArray = generatedIdCombinedDetails.Split('|');
@@ -537,10 +552,12 @@ namespace CEIHaryana.SiteOwnerPages
                     
                     foreach (var file in uploadedFiles)
                     {
-                        string query = "INSERT INTO tbl_InspectionAttachment (InspectionId,InstallationType,DocumentID,DocumentName,fileName, DocumentPath,CreatedDate,CreatedBy,Status) VALUES (@InspectionId,@InstallationType,@DocumentID,@DocSaveName,@FileName, @FilePath,getdate(),@CreatedBy,1)";
+                        //string query = "INSERT INTO tbl_InspectionAttachment (InspectionId,InstallationType,DocumentID,DocumentName,fileName, DocumentPath,CreatedDate,CreatedBy,Status) VALUES (@InspectionId,@InstallationType,@DocumentID,@DocSaveName,@FileName, @FilePath,getdate(),@CreatedBy,1)";
+                        string query = "sp_InsertInspectionAttachments";
 
                         using (SqlCommand command = new SqlCommand(query, connection, transaction))
                         {
+                            command.CommandType = CommandType.StoredProcedure;
                             command.Parameters.AddWithValue("@InspectionId", SplitResultPartsArray[0]);
                             command.Parameters.AddWithValue("@InstallationType", file.Installtypes); 
                             command.Parameters.AddWithValue("@DocumentID", file.DocumentID);
@@ -654,10 +671,10 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        private void GetDocumentUploadData(string ApplicantType, string Category, string InspectionType, string AssigDesignation, string PlantLocation)
+        private void GetDocumentUploadData(string ApplicantType, string Category, string InspectionType, string AssigDesignation, string PlantLocation,int inspectionIdPrm)
         {
             DataTable ds = new DataTable();
-            ds = CEI.GetDocumentlist(ApplicantType, Category, InspectionType, AssigDesignation, PlantLocation);
+            ds = CEI.GetDocumentlist(ApplicantType, Category, InspectionType, AssigDesignation, PlantLocation, inspectionIdPrm);
             if (ds.Rows.Count > 0)
             {
                 Grd_Document.DataSource = ds;
@@ -672,5 +689,114 @@ namespace CEIHaryana.SiteOwnerPages
             }
             ds.Dispose();
         }
+        protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string fileName = "";
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    //ID = Session["InspectionId"].ToString();
+
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://localhost:44393/" + e.CommandArgument.ToString();
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
+            }
+        }
+
+
+        protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //this code will work in case of New Upload documents  First Time Fresh Records
+                if (inspectionCountRes == 0)
+                {                 
+                    LinkButton lnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
+
+                   
+                    string commandArgument = lnkDocumemtPath.CommandArgument;
+
+              
+                    if (string.IsNullOrEmpty(commandArgument))
+                    {
+                        // Get the index of the column containing the LinkButton
+                        int columnIndex = GetColumnIndexByName(Grd_Document, "Uploaded Documents");
+
+                        // Hide the column containing the LinkButton
+                        e.Row.Cells[columnIndex].Visible = false;
+
+                        // Find and hide the header cell of the column
+                        GridViewRow headerRow = Grd_Document.HeaderRow;
+                        if (headerRow != null && headerRow.Cells.Count > columnIndex)
+                        {
+                            headerRow.Cells[columnIndex].Visible = false;
+                        }
+                    }
+                }
+
+                //this code will work in case of already uploaded documents
+                if (inspectionCountRes > 0)
+                {
+                    LinkButton lnkDocumemtPath1 = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
+
+                    string commandArgument1 = lnkDocumemtPath1.CommandArgument;
+
+                    if (string.IsNullOrEmpty(commandArgument1))
+                    {
+                        // Disable the LinkButton
+                        lnkDocumemtPath1.Enabled = false;
+                    }
+                }
+            }
+        }
+
+
+        //protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        // Find the LinkButton control in the row
+        //        LinkButton lnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
+
+        //        // Get the command argument
+        //        string commandArgument = lnkDocumemtPath.CommandArgument;
+
+        //        // Check if command argument is blank or null
+        //        if (string.IsNullOrEmpty(commandArgument))
+        //        {
+        //            // Get the index of the column containing the LinkButton
+        //            int columnIndex = GetColumnIndexByName(Grd_Document, "Uploaded Documents");
+
+        //            // Hide the column containing the LinkButton
+        //            e.Row.Cells[columnIndex].Visible = false;
+
+        //            // Hide the header of the column
+        //            Grd_Document.HeaderRow.Cells[columnIndex].Visible = false;
+        //        }
+        //    }
+        //}
+
+        // Function to get the index of a column by its header text
+        private int GetColumnIndexByName(GridView grid, string headerText)
+        {
+            for (int i = 0; i < grid.HeaderRow.Cells.Count; i++)
+            {
+                if (grid.HeaderRow.Cells[i].Text.ToLower() == headerText.ToLower())
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+
     }
 }

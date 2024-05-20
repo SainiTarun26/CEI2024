@@ -164,7 +164,7 @@ namespace CEIHaryana.TestReportModal
                 txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
                 txtLineVoltage.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
-                txtCreatedDate.Text = createdDate.ToString("MM/dd/yyyy");
+                txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 //TextStatus.Text = ds.Tables[0].Rows[0]["RejectOrApprovedFronContractor"].ToString();
                 //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 if (txtLineVoltage.Text == "Other")
@@ -623,8 +623,9 @@ namespace CEIHaryana.TestReportModal
                 string Counts = Session["Counts"].ToString();
                 //CEI.UpdateLineData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
                 CEI.UpdateLineData(id, Counts);
-
-                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+                string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
+               // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
         }
 
@@ -711,7 +712,9 @@ namespace CEIHaryana.TestReportModal
             }
             catch(Exception ex)
             {
+                Session["LineOtp"] = null;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
+
             }
         }
 

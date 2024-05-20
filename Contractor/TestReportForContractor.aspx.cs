@@ -17,6 +17,14 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                var master = (MasterPage)Master;
+                var loginTypeLabel = (Label)master.FindControl("LoginType");
+                if (loginTypeLabel != null)
+                {
+                    loginTypeLabel.Text = "Contractor / Approval Pending Test Reports";
+                }
+
+
                 if (!IsPostBack)
                 {
                     GridViewBind();

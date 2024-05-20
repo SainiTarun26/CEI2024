@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="GenerateInspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.GenerateInspection" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -16,34 +17,34 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript">
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            }
-            return true;
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
         }
+        return true;
+    }
 
-        //Allow Only Aplhabet, Delete and Backspace
+    //Allow Only Aplhabet, Delete and Backspace
 
-        function isAlpha(keyCode) {
+    function isAlpha(keyCode) {
 
-            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+        return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
 
-        }
+    }
 
-        function alphabetKey(e) {
-            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-            var k;
-            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-            return (allow.indexOf(String.fromCharCode(k)) != -1);
-        }
-        function disableFutureDates() {
-            // Get today's date in yyyy-mm-dd format
-            var today = new Date().toISOString().split('T')[0];
-            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
-            document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
-        }
+    function alphabetKey(e) {
+        var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+        var k;
+        k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+        return (allow.indexOf(String.fromCharCode(k)) != -1);
+    }
+    function disableFutureDates() {
+        // Get today's date in yyyy-mm-dd format
+        var today = new Date().toISOString().split('T')[0];
+        // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+        document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
+    }
     </script>
     <style>
         div#ContentPlaceHolder1_Declaration {
@@ -204,7 +205,8 @@
             text-align: justify !important;
             padding: 10px;
         }
-       .asterisk-1 {
+
+        .asterisk-1 {
             color: red;
             display: inline;
         }
@@ -331,8 +333,17 @@
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"
                                         CommandName="Select">View Test Report</asp:LinkButton>
+                                    <input type="hidden" id="InspectionCount" runat="server" value='<%# Eval("InspectionCount") %>' class="inspection-count" />
+                                    <input type="hidden" id="InspectionId" runat="server" value='<%# Eval("InspectionId") %>' class="inspection-id"/>
+                                   
+                     
                                 </ItemTemplate>
                             </asp:TemplateField>
+
+                      <%-- <asp:BoundField DataField="InspectionId" HeaderText="InspectionId" Visible="false">
+                      <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
+                      <ItemStyle HorizontalAlign="Left" Width="70%" />
+                  </asp:BoundField>--%>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -356,63 +367,77 @@
                     </div>
 
                 </div>
-                  <div id="UploadDocuments" runat="server" visible="false">
-                <h7 class="card-title fw-semibold mb-4">Document Checklist</h7>
+                <div id="UploadDocuments" runat="server" visible="false">
+                    <h7 class="card-title fw-semibold mb-4">Document Checklist</h7>
 
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                    <div class="row">
-                        <div class="col-12">
-                            <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" AutoGenerateColumns="false">
-                                <PagerStyle CssClass="pagination-ys" />
-                                <Columns>
-                                    <asp:BoundField DataField="SNo" HeaderText="SNo" />
-                                    <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
-                                    <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
-                                        <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
-                                        <ItemStyle HorizontalAlign="Left" Width="70%" />
-                                    </asp:BoundField>
-                                    <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
-                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
-                                        <ItemTemplate>
-                                            <input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />
-                                            <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
-                                            <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
-                                            <asp:FileUpload ID="FileUpload1" runat="server" />
-                                             <%--   <span id="asterisk" class='<%# "asterisk-" + Eval("Req") %>'>*</span>--%>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                                <FooterStyle BackColor="White" ForeColor="#000066" />
-                                <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                <RowStyle ForeColor="#000066" />
-                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                <SortedDescendingHeaderStyle BackColor="#00547E" />
-                            </asp:GridView>
+                        <div class="row">
+                            <div class="col-12">
+                                <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowDataBound="Grd_Document_RowDataBound" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
+                                    <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
+                                    <PagerStyle CssClass="pagination-ys" />
+                                    <Columns>
+                                        <asp:BoundField DataField="SNo" HeaderText="SNo" />
+                                        <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
+                                        <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
+                                            <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
+                                            <ItemStyle HorizontalAlign="Left" Width="70%" />
+                                        </asp:BoundField>
+
+                                        <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select"> View document </asp:LinkButton>
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                        </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
+                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+                                            <ItemTemplate>
+                                                <input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />
+                                                <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
+                                                <input type="hidden" id="ReqClient" data-req='<%# Eval("Req") %>' />
+                                                <input type="hidden" id="DocumentName" data-req='<%# Eval("DocumentName") %>' />
+
+                                                <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
+                                                <asp:FileUpload ID="FileUpload1" runat="server" />
+                                                <%--   <span id="asterisk" class='<%# "asterisk-" + Eval("Req") %>'>*</span>--%>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+                                    </Columns>
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                    <RowStyle ForeColor="#000066" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                </asp:GridView>
+                            </div>
                         </div>
                     </div>
-                    </div>
                 </div>
-                 <div id="FeesDetails" runat="server" visible="false">
-                <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
+                <div id="FeesDetails" runat="server" visible="false">
+                    <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
 
-                <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                    <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridViewPayment" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        AutoGenerateColumns="true">
+                        <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridViewPayment" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                            AutoGenerateColumns="true">
 
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" CssClass="headercolor leftalign" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                    </asp:GridView>
-                    <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-top: 30px;">
-                        <%-- <div class="col-6">
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" CssClass="headercolor leftalign" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        </asp:GridView>
+                        <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-top: 30px;">
+                            <%-- <div class="col-6">
                         <div class="form-group row">
                             <label for="search" class="col-sm-3 col-form-label">Total payment:</label>
                             <div class="col-sm-8" style="margin-left: -35px;">
@@ -422,9 +447,9 @@
                             </div>
                         </div>
                     </div>--%>
-                        <div class="row" style="margin-left: 0%; margin-top: 6px;">
-                        </div>
-                        <%--<div class="col-6" style="margin-bottom: auto;">
+                            <div class="row" style="margin-left: 0%; margin-top: 6px;">
+                            </div>
+                            <%--<div class="col-6" style="margin-bottom: auto;">
                                  Paymant Mode
                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                    <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
@@ -436,51 +461,51 @@
                 <asp:Button type="submit" ID="ChallanUpload"  Text="Offline" runat="server" class="btn btn-primary mr-2" onclick="ChallanUpload_Click" />
                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>     
                         </div>--%>
+                        </div>
                     </div>
                 </div>
-                      </div>
 
                 <div id="PaymentDetails" runat="server" visible="false">
-                <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
+                    <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
 
-                <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
+                    <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
 
-                    <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
-                        <div class="col-6">
-                            <label>
-                                Inspection Request details  
+                        <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
+                            <div class="col-6">
+                                <label>
+                                    Inspection Request details  
                                 <samp style="color: red">* </samp>
-                            </label>
-                            <asp:TextBox ID="txtInspectionDetails" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                </label>
+                                <asp:TextBox ID="txtInspectionDetails" runat="server" ReadOnly="true" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-6">
+                                <label>
+                                    Transaction Id<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+<%--                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <label>
-                                Transaction Id<samp style="color: red"> * </samp>
-                            </label>
-                                          <asp:TextBox ID="txttransactionId"  runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: -40px !important;">
-                        <div class="col-6">
-                            <label>
-                                Transaction Date<samp style="color: red"> * </samp>
-                            </label>
-                               <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' max='9999-01-01' Type="Date"  runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                        </div>
-                        <div class="col-6" style="margin-top: auto; margin-bottom: auto;">
-                            Payment Mode: &nbsp;&nbsp;
+                        <div class="row" style="margin-top: -40px !important;">
+                            <div class="col-6">
+                                <label>
+                                    Transaction Date<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' Type="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+                      <%--          <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
+                            </div>
+                            <div class="col-6" style="margin-top: auto; margin-bottom: auto;">
+                                Payment Mode: &nbsp;&nbsp;
                             <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                 <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
                                 <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
                             </asp:RadioButtonList>
-                            <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
+                                <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
+                            </div>
                         </div>
                     </div>
                 </div>
-                      </div>
                 <div>
                     <%-- <div class="row" style="margin-top: 50px;" id="Declaration" runat="server">
                         <div class="col-12" style="text-align: center;">
@@ -496,14 +521,17 @@
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
                             <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
-                                OnClick="btnSubmit_Click" />
-                            <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false"  class="btn btn-primary mr-2" />
+                                OnClick="btnSubmit_Click" OnClientClick="return validateFileUpload();" />
+                            <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                         </div>
                         <div class="col-4"></div>
                     </div>
                     <asp:HiddenField ID="hdnId" runat="server" />
                     <asp:HiddenField ID="hdnId2" runat="server" />
+
+                     <asp:HiddenField ID="InspectionIdClientSideCheckedRow" runat="server" />
+                      <asp:HiddenField ID="InspectionIdCountClientSideCheckedRow" runat="server" />
                     <div>
                     </div>
                 </div>
@@ -513,28 +541,129 @@
     <footer class="footer">
     </footer>
     <script type="text/javascript">
-        function alertWithRedirectdata() {
-            /*   if (confirm('Inspection Request Submit Successfully, and forword to concern officer')) {*/
-            alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
-            window.location.href = "/SiteOwnerPages/InspectionRequestPrint.aspx";
-            //} else {
-            //}
-        }
+  
+
+    function alertWithRedirectdata() {
+        /*   if (confirm('Inspection Request Submit Successfully, and forword to concern officer')) {*/
+        alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
+        window.location.href = "/SiteOwnerPages/InspectionRequestPrint.aspx";
+        //} else {
+        //}
+    }
     </script>
     <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('Select all PDF files only')) {
-            } else {
-            }
+    function alertWithRedirect() {
+        if (confirm('Select all PDF files only')) {
+        } else {
         }
+    }
     </script>
     <script type="text/javascript">
-        function SelectAllCheckboxes(headerCheckbox) {
-            var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
-            for (var i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].checked = headerCheckbox.checked;
+    function SelectAllCheckboxes(headerCheckbox) {
+        var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = headerCheckbox.checked;
+        }
+    }
+    </script>
+    <script type="text/javascript">
+    function validateFileUpload() {
+        debugger;
+
+        var transactionId = document.getElementById('<%= txttransactionId.ClientID %>').value.trim();
+        var transactionDate = document.getElementById('<%= txttransactionDate.ClientID %>').value.trim();
+
+        if (transactionId === '') {
+            alert('Please Enter Transaction ID.');
+            return false; 
+        }
+
+        if (transactionDate === '') {
+            alert('Please Enter Transaction Date.');
+            return false; 
+        }
+
+
+
+        //For First Inspection
+        if ($('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val() == '0') {
+            // Check if any file upload control is empty
+            var fileUploads = $("input[type='file']");
+            for (var i = 0; i < fileUploads.length; i++) {
+                var reqValue = $(fileUploads[i]).siblings("#ReqClient").attr("data-req");
+
+                // Check if the hidden field value indicates that file upload is required
+                if (reqValue === "1" && fileUploads[i].value === "") {
+                    var documentName = $(fileUploads[i]).siblings("#DocumentName").attr("data-req");
+                    alert("Please upload a file for the document " + documentName);
+                    return false;
+                }
+
+                // Check file type
+                var fileType = fileUploads[i].files[0].type;
+                if (fileType !== 'application/pdf') {
+                    alert("Please Upload Pdf Files Only");
+                    return false;
+                }
+
+                // Check file size (in bytes)
+                var fileSize = fileUploads[i].files[0].size;
+                if (fileSize > 1048576) { // 1 MB = 1048576 bytes
+                    alert("Please Upload Pdf Files Less Than 1 Mb Only");
+                    return false;
+                }
             }
         }
+
+        //For Second And Third Inspection
+        if ($('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val() != '0') {
+            // Check if any file upload control is empty
+            var fileUploads = $("input[type='file']");
+            for (var i = 0; i < fileUploads.length; i++) {
+
+                // Check if a file is selected
+                if (fileUploads[i].files.length > 0) {
+                    // Check file type
+                    var fileType = fileUploads[i].files[0].type;
+                    if (fileType !== 'application/pdf') {
+                        alert("Please Upload Pdf Files Only");
+                        return false;
+                    }
+
+                    // Check file size (in bytes)
+                    var fileSize = fileUploads[i].files[0].size;
+                    if (fileSize > 1048576) { // 1 MB = 1048576 bytes
+                        alert("Please Upload Pdf Files Less Than 1 Mb Only");
+                        return false;
+                    }
+                }
+            }
+        }
+        if ($('#<%= InspectionIdCountClientSideCheckedRow.ClientID %>').val() == '2') {
+            // Ask for confirmation
+            if (!confirm("Please Fill Details Carefully Otherwise This Time Request Will Automatically Be Rejected If The Officer Returns It")) {
+                return false; // 
+            }
+        }
+
+        return Page_ClientValidate();
+    }
+
+    $(document).ready(function () {
+       
+        $('input[id*=CheckBox1]').change(function () {
+            debugger;
+            if ($(this).prop('checked')) {
+                var row = $(this).closest('tr');
+                var idres = row.find('.inspection-id').val();
+                var idcountres = row.find('.inspection-count').val();
+                $('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val(idres);
+                $('#<%= InspectionIdCountClientSideCheckedRow.ClientID %>').val(idcountres);
+                console.log("InspectionId of the checked row:", idres);
+            }
+        });
+    });
     </script>
 </asp:Content>
+
 

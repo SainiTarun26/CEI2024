@@ -175,7 +175,7 @@
                 <div class="col-4">
                     <label>
                         Inspection ReportId
-                 <samp style="color: red">* </samp>
+                 <%--<samp style="color: red">* </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportId" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -183,19 +183,19 @@
                 <div class="col-4">
                     <label>
                         Type of Inspection
-                 <samp style="color: red">* </samp>
+                <%-- <samp style="color: red">* </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4">
                     <label>
-                        Type of Applicant<samp style="color: red"> * </samp>
+                        Type of Applicant<%--<samp style="color: red"> * </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4">
                     <label>
-                        Type of Installation<samp style="color: red"> * </samp>
+                        Type of Installation<%--<samp style="color: red"> * </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -272,7 +272,7 @@
             <div class="col-md-4">
                 <label>
                     Application Status
-                  <samp style="color: red">* </samp>
+                 <%-- <samp style="color: red">* </samp>--%>
                 </label>
                  <asp:TextBox class="form-control" ID="txtApplicationStatus" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -281,7 +281,7 @@
              <div class="col-md-4" id="inspectionDate" runat="server" visible="false">
                 <label>
                     Inspection Date
-                 <samp style="color: red">* </samp>
+               <%--  <samp style="color: red">* </samp>--%>
                 </label>
                 <asp:TextBox ID="txtInspectionDate" CssClass="form-control" runat="server"  ReadOnly="true" Rows="4" Columns="30"></asp:TextBox>
             </div>
@@ -290,7 +290,7 @@
             <div class="col-md-12">
                 <label>
                     Suggestions
-                 <samp style="color: red">* </samp>
+                 <%--<samp style="color: red">* </samp>--%>
                 </label>
                 <asp:TextBox ID="TxtSuggestions" CssClass="form-control" runat="server" TextMode="MultiLine" ReadOnly="true" Rows="4" Columns="30"></asp:TextBox>
             </div>
@@ -300,7 +300,7 @@
             <div class="col-md-12">
                 <label>
                     Rejection Reason
-                   <samp style="color: red">* </samp>
+                  <%-- <samp style="color: red">* </samp>--%>
                 </label> 
                 <asp:TextBox ID="txtRejection" CssClass="form-control" runat="server" TextMode="MultiLine" ReadOnly="true" Rows="4" Columns="30"></asp:TextBox>
             </div>

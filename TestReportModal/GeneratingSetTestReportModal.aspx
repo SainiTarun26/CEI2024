@@ -2254,7 +2254,16 @@
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtLowestInsulationAC" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-                                        <div class="col-4" id="Div189" runat="server">
+                                        
+                                    </div>
+                                </div>
+
+                              
+
+                            </div>
+                                                        <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px; padding-bottom: 45px;">
+  <div class="card-title" style="margin-bottom: 1px;">Earthing Details</div>
+<div class="col-4" id="Div189" runat="server">
                                             <label for="Name">
                                                 Number of Earthing:
                     <%--<samp style="color: red">* </samp>--%>
@@ -2265,10 +2274,7 @@
                                                 Minimum Limit is 4     
                                             </label>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="table-responsive pt-3" id="GeneratingEarthing" runat="server" visible="false">
+                              <div class="table-responsive pt-3" id="GeneratingEarthing" runat="server" visible="false">
                                     <table class="table table-bordered table-striped">
                                         <thead class="table-dark">
                                             <tr>
@@ -2646,9 +2652,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-
-                            </div>
-
+                                                            </div>
                             <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px; padding-bottom: 45px;">
                                 <div class="row">
                                     <div class="col-4" id="CreatedDate" visible="false" runat="server">
@@ -2678,14 +2682,14 @@
                                             <div class="row">
                                                 <div class="col-4">
                                                     <label for="Name">
-                                                        TestReport No<samp style="color: red">* </samp>
+                                                        TestReport No<%--<samp style="color: red">* </samp>--%>
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Rejection" runat="server">
                                                     <label for="Name">
                                                         Prepared By                           
-                                                        <samp style="color: red">* </samp>
+                                                       <%-- <samp style="color: red">* </samp>--%>
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>

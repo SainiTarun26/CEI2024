@@ -20,6 +20,12 @@ namespace CEIHaryana.Supervisor
             {
                 if (!Page.IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Supervisor / Create new test Report";
+                    }
                     if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
                     {
                         getWorkIntimationData();
@@ -30,7 +36,7 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch 
+            catch
             {
                 Response.Redirect("/Login.aspx");
             }
@@ -69,7 +75,7 @@ namespace CEIHaryana.Supervisor
         {
             if (e.CommandName == "Select")
             {
-               
+
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
@@ -78,7 +84,7 @@ namespace CEIHaryana.Supervisor
                 //    GetDetails();
                 Response.Redirect("/Supervisor/InstallationDetails.aspx");
 
-                
+
             }
             else
             {
@@ -155,6 +161,21 @@ namespace CEIHaryana.Supervisor
             {
                 string script = "alert(\"No Record Match\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
+            }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int reportTypeColumnIndex = 8;
+                TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+
+                if (reportTypeCell.Text == "Returned")
+                {
+                    e.Row.CssClass = "ReturnedRowColor";
+                }
+
             }
         }
     }

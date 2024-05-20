@@ -26,6 +26,13 @@ namespace CEIHaryana.Contractor
             {
                 if (!Page.IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Contractor / WorkIntimation";
+                    }
+
                     if (Session["ContractorID"] != null || Request.Cookies["ContractorID"] != null)
                     {
                         ScriptManager scriptManager = ScriptManager.GetCurrent(this);
@@ -50,8 +57,8 @@ namespace CEIHaryana.Contractor
                         {
                             //GetDetails();
                             GetGridData();
-                           // GetassigneddatatoContractor();
-                           // CheckedPriviousSupervisor();
+                            //GetassigneddatatoContractor();
+                            //CheckedPriviousSupervisor();
                             GridView1.Columns[0].Visible = true;
                             customFile.Visible = true;
                             //Session["UpdationId"] = Session["id"];

@@ -18,6 +18,13 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Admin / Dashboard / Approved / Rejected / Return Requests";
+                    }
+
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         GridBind();

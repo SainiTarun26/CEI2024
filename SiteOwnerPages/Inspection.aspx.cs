@@ -153,6 +153,36 @@ namespace CEIHaryana.SiteOwnerPages
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                     DateTime.TryParse(createdDate, out inspectionCreatedDate);
 
+                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    if (Status == "Rejected")
+                    {
+                        Rejection.Visible = true;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                        //ApprovedReject.Visible = true;
+                        //ApprovalRequired.Visible = false;
+                        ddlReview.Attributes.Add("disabled", "true");
+                        txtRejected.Attributes.Add("disabled", "true");
+                        btnBack.Visible = true;
+                        btnSubmit.Visible = false;
+                    }
+
+                    if (Status == "Return")
+                    {
+                        ApprovalRequired.Visible = false;
+                        btnSubmit.Visible = false;
+
+
+                        Rejection.Visible = true;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
+                        //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                        //ApprovedReject.Visible = true;
+                        //ApprovalRequired.Visible = false;
+                        ddlReview.Attributes.Add("disabled", "true");
+                        txtRejected.Attributes.Add("disabled", "true");
+
+
+                    }
 
                 }
             }

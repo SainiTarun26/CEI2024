@@ -24,6 +24,13 @@ namespace CEIHaryana.Contractor
             {
                 if (!IsPostBack)
                 {
+                    var master = (MasterPage)Master;
+                    var loginTypeLabel = (Label)master.FindControl("LoginType");
+                    if (loginTypeLabel != null)
+                    {
+                        loginTypeLabel.Text = "Contractor / WorkIntimation History / WorkIntimation Details";
+                    }
+
                     if (Session["ContractorID"] != null || Request.Cookies["ContractorID"] != null)
                     {
                       

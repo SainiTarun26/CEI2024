@@ -20,6 +20,13 @@ namespace CEIHaryana.Supervisor
         {
             if (!IsPostBack)
             {
+                var master = (MasterPage)Master;
+                var loginTypeLabel = (Label)master.FindControl("LoginType");
+                if (loginTypeLabel != null)
+                {
+                    loginTypeLabel.Text = "Supervisor / Renewal Application";
+                }
+
                 if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                 {
                     ddlLoadBindState();

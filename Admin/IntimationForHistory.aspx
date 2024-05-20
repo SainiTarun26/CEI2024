@@ -170,7 +170,7 @@
                 <div class="col-4">
                     <label>
                         Inspection ReportId
-                 <samp style="color: red">* </samp>
+                <%-- <samp style="color: red">* </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportId" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -178,19 +178,19 @@
                 <div class="col-4">
                     <label>
                         Type of Inspection
-                 <samp style="color: red">* </samp>
+                 <%--<samp style="color: red">* </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4">
                     <label>
-                        Type of Applicant<samp style="color: red"> * </samp>
+                        Type of Applicant<%--<samp style="color: red"> * </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="col-4">
                     <label>
-                        Type of Installation<samp style="color: red"> * </samp>
+                        Type of Installation<%--<samp style="color: red"> * </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
