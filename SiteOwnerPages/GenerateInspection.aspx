@@ -617,7 +617,6 @@
                 }
             }
         }
-
         //For Second And Third Inspection
         if ($('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val() != '0') {
             // Check if any file upload control is empty

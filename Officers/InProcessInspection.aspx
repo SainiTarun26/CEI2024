@@ -386,7 +386,7 @@
                         <div class="row">
                         <div class="col-12" id="Rejection" runat="server" visible="false">
                             <label>
-                                Reason of Rejection<samp style="color: red"> * </samp>
+                                Reason<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtRejected" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
