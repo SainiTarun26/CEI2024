@@ -599,18 +599,21 @@
                     return false;
                 }
 
-                // Check file type
-                var fileType = fileUploads[i].files[0].type;
-                if (fileType !== 'application/pdf') {
-                    alert("Please Upload Pdf Files Only");
-                    return false;
-                }
+                // Check if a file is selected
+                if (fileUploads[i].files.length > 0) {
+                    // Check file type
+                    var fileType = fileUploads[i].files[0].type;
+                    if (fileType !== 'application/pdf') {
+                        alert("Please Upload Pdf Files Only");
+                        return false;
+                    }
 
-                // Check file size (in bytes)
-                var fileSize = fileUploads[i].files[0].size;
-                if (fileSize > 1048576) { // 1 MB = 1048576 bytes
-                    alert("Please Upload Pdf Files Less Than 1 Mb Only");
-                    return false;
+                    // Check file size (in bytes)
+                    var fileSize = fileUploads[i].files[0].size;
+                    if (fileSize > 1048576) { // 1 MB = 1048576 bytes
+                        alert("Please Upload Pdf Files Less Than 1 Mb Only");
+                        return false;
+                    }
                 }
             }
         }

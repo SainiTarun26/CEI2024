@@ -303,6 +303,13 @@
               
                
                 <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                                    <label>
+                                ReasonType:        
+                            </label>
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server">
+                                <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
+                                <asp:ListItem Value="1" Text="Based On Documents"></asp:ListItem>
+                            </asp:DropDownList>
                     <label>
                         Reason<samp style="color: red"> * </samp>
                     </label>
@@ -325,13 +332,18 @@
     </div>
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            
-            alert('Inspection Request is successfully in process');
+
+            alert('Inspection Request is Successfully Accepted');
             window.location.href = "/Officers/NewApplications.aspx";
         }
         function alertWithRedirectdataReturn() {
-            alert('Inspection Request is successfully return to site Owner');           
+            alert('Inspection Request is Returned to Site Owner');
             window.location.href = "/Officers/NewApplications.aspx";
-        } 
+        }
+
+        function alertWithRedirectdataSupervisorReturn() {
+            alert('Inspection Request is Returned to Supervisor');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
     </script>
 </asp:Content>

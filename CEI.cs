@@ -1756,7 +1756,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #endregion
         #region Update Inspection Data
         public void updateInspection(string InspectionID, string StaffId, string IntimatiomnId, int count, string Installationtype,
-            string AcceptedOrReReturn, string Reason)
+                string AcceptedOrReReturn, string Reason, string ReasonType)
         {
             try
             {
@@ -1776,6 +1776,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
                 cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
                 cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
                 //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
                 cmd.ExecuteNonQuery();
                 con.Close();

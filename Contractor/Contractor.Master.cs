@@ -31,7 +31,6 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
-
                     Session["ContractorID"] = "";
                     Response.Redirect("/Login.aspx");
                 }

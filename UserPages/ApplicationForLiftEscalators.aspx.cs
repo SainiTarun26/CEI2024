@@ -26,16 +26,16 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LiftId"] != null && Session["LiftId"].ToString() != "")
-                    {
+                    //if (Session["LiftId"] != null && Session["LiftId"].ToString() != "")
+                    //{
                         ddlLoadBindApplicantState();
                         ddlLoadBindAgentState();
                         ddlLoadBindLiftState();
-                    }
-                    else
-                    {
-                        Response.Redirect("/Login.aspx");
-                    }
+                   // }
+                    //else
+                    //{
+                    //    Response.Redirect("/Login.aspx");
+                    //}
                 }
             }
             catch (Exception ex)

@@ -46,18 +46,18 @@ namespace CEIHaryana.Officers
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
-                if(txtWorkType.Text == "Line")
+                if (txtWorkType.Text == "Line")
                 {
                     Capacity.Visible = false;
                     LineVoltage.Visible = true;
-                    txtLineVoltage.Text= ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    txtLineVoltage.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                 }
                 else
                 {
                     LineVoltage.Visible = false;
                     Capacity.Visible = true;
                     txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-                }                
+                }
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
@@ -71,8 +71,8 @@ namespace CEIHaryana.Officers
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                
-                
+
+
                 count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 
@@ -93,7 +93,7 @@ namespace CEIHaryana.Officers
                     RadioButtonList2.Attributes.Add("disabled", "true");
                     RadioButtonList2.Enabled = false;
                     Rejection.Visible = true;
-                    txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                    txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
                     txtRejected.Attributes.Add("disabled", "true");
 
                     btnBack.Visible = true;
@@ -112,7 +112,7 @@ namespace CEIHaryana.Officers
                 Console.WriteLine(ex.Message);
             }
         }
-       
+
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             Session["InspectionTestReportId"] = txtTestReportId.Text;
@@ -159,10 +159,11 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                        //ID = Session["InspectionId"].ToString();                   
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        string script = $@"<script>window.open('{fileName}','_blank');</script>";
-                        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);                   
+                    //ID = Session["InspectionId"].ToString();                   
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
                 }
             }
             catch (Exception ex)
@@ -198,7 +199,7 @@ namespace CEIHaryana.Officers
                         AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
-                       CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason);
+                        CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
 
                         if (AcceptorReturn == "Accepted")
                         {
@@ -206,16 +207,15 @@ namespace CEIHaryana.Officers
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataReturn();", true);
+                            if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataSupervisorReturn();", true);
+                            }
+                            if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataReturn();", true);
+                            }
                         }
-                        //if (Session["Area"] != null)
-                        //{
-                        //  Response.Redirect("/Officers/OfficerDashboard.aspx", false);
-                        //}
-                        //else
-                        //{
-                        //  Response.Redirect("/Officers/InstallationIntimationDetails.aspx", false);
-                        //}
                     }
                     else
                     {
