@@ -40,6 +40,8 @@ namespace CEIHaryana.UserPages
                         GetDetailswithId();
 
                         IntimationData.Visible = true;
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
                         ////CreatedDate.Visible = true; //Added
                         ////SubmitDate.Visible = true;
                         ////SubmitBy.Visible = true;
@@ -48,6 +50,8 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["InspectionTestReportId"].ToString();
                         GetDetailswithId();
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
                         IntimationData.Visible = true;
                     }
                     else if (Session["IntimationForHistoryId"] != null)

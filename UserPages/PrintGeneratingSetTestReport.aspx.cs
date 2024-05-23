@@ -42,6 +42,8 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["GeneratingSetId"].ToString();
                         GetDetailswithId();
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
                         IntimationData.Visible = true;
                         ////CreatedDate.Visible = true; //Added
                         ////SubmitDate.Visible = true;
@@ -52,6 +54,8 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["InspectionTestReportId"].ToString();
                         GetDetailswithId();
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
                         IntimationData.Visible = true;
 
                     }

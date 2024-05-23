@@ -41,8 +41,8 @@ namespace CEIHaryana.TestReportModal
                     }
                     else if (Session["SiteOwnerId"] != null)
                     {
-                        ID = Session["InspectionTestReportId"].ToString();
-                        //ID = Session["SubStationID"].ToString();
+                        //ID = Session["InspectionTestReportId"].ToString();
+                        ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
 
                         SiteOwner.Visible = false;

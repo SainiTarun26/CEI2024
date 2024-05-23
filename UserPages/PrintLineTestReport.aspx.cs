@@ -47,15 +47,18 @@ namespace CEIHaryana.UserPages
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
                         IntimationData.Visible = true;
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
                         ////CreatedDate.Visible = true; //Added
                         //SubmitDate.Visible = true;
                         //SubmitBy.Visible = true;//Added
                     }
                     else if (Session["InspectionTestReportId"] != null)
-
                     {
                         ID = Session["InspectionTestReportId"].ToString();
                         GetDetailswithId();
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
                         //SiteOwner.Visible = true;
                         IntimationData.Visible = true;
                         //btnNext.Text = "Back";
