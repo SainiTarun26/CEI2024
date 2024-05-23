@@ -2750,7 +2750,8 @@
            </div>
        </div>
    </div>
-                                <div class="row" >
+                                <div class="row" style="margin-top:30px;" >
+                                    <div class="col-4"></div>
                                    <%-- id="Contractor3" runat="server" visible="false"--%>
                                    <div class="col-4" style="text-align: Center;" runat="server" id="ToOTPVerify" visible="false">
                                         <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnVerify_Click" />

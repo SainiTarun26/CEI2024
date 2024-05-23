@@ -40,11 +40,14 @@ namespace CEIHaryana.Officers
             }
         }
 
-        
+
 
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
-            Session["InspectionTestReportId"] = txtTestReportId.Text;
+
+            LinkButton lnkRedirect = (LinkButton)sender;
+            string testReportId = lnkRedirect.CommandArgument;
+            Session["InspectionTestReportId"] = testReportId;
             if (txtWorkType.Text.Trim() == "Line")
             {
                 Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
