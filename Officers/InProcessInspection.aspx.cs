@@ -137,7 +137,7 @@ namespace CEIHaryana.Officers
                     Rejection.Visible = true;
                     txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
                     ddlReview.Attributes.Add("disabled", "true");
-                    txtRejected.Attributes.Add("disabled", "true");
+                   //txtRejected.Attributes.Add("disabled", "true");
 
                 }
 
