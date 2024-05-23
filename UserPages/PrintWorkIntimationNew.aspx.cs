@@ -363,6 +363,15 @@ namespace CEIHaryana.UserPages
                  
                    //lnkFile.Visible = true;
                 }
+
+                string createdDateString = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                DateTime createdDate;
+                if (DateTime.TryParse(createdDateString, out createdDate))
+                {
+                    txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
+                }
+                txtCreatedBy.Text = ds.Tables[0].Rows[0]["Createdby"].ToString();
+
             }
             catch { }
         }

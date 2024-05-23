@@ -1212,22 +1212,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtOtherUsage15;
 
         /// <summary>
-        /// CreatedDate control.
+        /// lblIntimationId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CreatedDate;
-
-        /// <summary>
-        /// txtCreatedDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreatedDate;
+        protected global::System.Web.UI.WebControls.Label lblIntimationId;
 
         /// <summary>
         /// SubmitDate control.
@@ -1275,22 +1266,31 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.UpdatePanel updatePanel1;
 
         /// <summary>
-        /// Contractor control.
+        /// lblReportNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contractor;
+        protected global::System.Web.UI.WebControls.Label lblReportNo;
 
         /// <summary>
-        /// txtReportNo control.
+        /// CreatedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReportNo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CreatedDate;
+
+        /// <summary>
+        /// txtCreatedDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreatedDate;
 
         /// <summary>
         /// Rejection control.
@@ -1338,13 +1338,58 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// Contractor3 control.
+        /// ApprovalCard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contractor3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApprovalCard;
+
+        /// <summary>
+        /// Div9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
+
+        /// <summary>
+        /// txtApprovalDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApprovalDate;
+
+        /// <summary>
+        /// Div10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div10;
+
+        /// <summary>
+        /// txtApprovedBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApprovedBy;
+
+        /// <summary>
+        /// ToOTPVerify control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ToOTPVerify;
 
         /// <summary>
         /// btnVerify control.
@@ -1356,13 +1401,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.Button btnVerify;
 
         /// <summary>
-        /// Contractor2 control.
+        /// FinalSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contractor2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FinalSubmit;
 
         /// <summary>
         /// BtnSubmit control.

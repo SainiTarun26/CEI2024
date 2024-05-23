@@ -383,7 +383,7 @@
                                     <asp:TextBox class="form-control" ID="txtCompletitionDate" readOnly="true" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4">
-                                    <label>If any work issued by any Agency/ Dept. / Owner</label>
+                                    <label>If any work order issued by any Agency/ Dept. / Owner</label>
                                     <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" disabled Style="width: 100% !important;" runat="server" TabIndex="16" AutoPostBack="true">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
@@ -478,6 +478,20 @@
                                   </div>
                         </div>
                     </div>
+                     <h7 class="card-title fw-semibold mb-4">Work Intimation Created Details</h7>
+ <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+     <div class="row">
+         <div class="col-md-4">
+             <label>Created Date</label>
+             <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+         </div>
+         <div class="col-md-4">
+             <label>Created By</label>
+             <asp:TextBox class="form-control" ID="txtCreatedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+         </div>
+     </div>
+ </div>
+
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">

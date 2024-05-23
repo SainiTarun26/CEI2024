@@ -135,22 +135,19 @@
                                         </label>
                                         <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                            <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
-                                            <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
-                                           <%-- <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>--%>
-                                            <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
+                                           <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
+                                           <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                     <div class="col-4" runat="server" id="DivPancard_PanNo" visible="false">
                                         <label for="FatherName">Pan Card:</label>
-                                        <asp:TextBox class="form-control" ID="txtPAN" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
-                                            MaxLength="30" Style="margin-left: 18px">
+                                        <asp:TextBox class="form-control" ID="txtPAN" autocomplete="off" readonly="true" runat="server" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
 
                                     <div class="col-4" runat="server" id="TanNumber" visible="false">
                                         <label>Tan Number:</label>
-                                        <asp:TextBox class="form-control" ID="txtTanNumber" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                        <asp:TextBox class="form-control" ID="txtTanNumber" autocomplete="off" readonly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
@@ -158,7 +155,7 @@
 
                                     <div class="col-4" runat="server" id="DivPoweUtility" visible="false">
                                         <label>Name Of Power Utility</label>
-                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server">
+                                        <asp:DropDownList class="form-control  select-form select2" readonly="true" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                             <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
                                             <asp:ListItem Text="UHBVN" Value="1"></asp:ListItem>
@@ -170,7 +167,7 @@
 
                                     <div class="col-4" runat="server" id="DivPoweUtilityWing" visible="false">
                                         <label>Type of Wing</label>
-                                        <asp:DropDownList ID="ddlPowerUtilityWing" TabIndex="3" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important;">
+                                        <asp:DropDownList ID="ddlPowerUtilityWing" readonly="true" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important;">
                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                             <asp:ListItem Value="1" Text="Construction Wing"></asp:ListItem>
                                             <asp:ListItem Value="2" Text="Operation Wing"></asp:ListItem>
@@ -193,21 +190,21 @@
                                         <label>
                                             Name of Owner/ Consumer:
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        <asp:TextBox class="form-control" ID="txtName" runat="server" readonly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4" id="agency" runat="server">
                                         <label>Name of Firm/ Org./ Company/ Department</label>
 
-                                        <asp:TextBox class="form-control" ID="txtagency" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                        <asp:TextBox class="form-control" ID="txtagency" autocomplete="off" readonly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
 
                                     <div class="col-4">
                                         <label>Address of Site:</label>
-                                        <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                        <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" readonly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
@@ -216,33 +213,33 @@
                                 <div class="row" style="margin-top: 35px;" id="row3">
                                     <div class="col-4" runat="server">
                                         <label>State:</label>
-                                        <asp:TextBox class="form-control" ID="txtState" Text="Haryana" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                        <asp:TextBox class="form-control" ID="txtState" Text="Haryana" readonly="true" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
 
                                     <div class="col-4" runat="server">
                                         <label>District:</label>
-                                        <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
+                                        <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
                                         </asp:DropDownList>
                                     </div>
 
                                     <div class="col-4" id="pin" visible="false" runat="server">
                                         <label>PinCode</label>
-                                        <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtPin" readonly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="row" style="margin-top: 35px;">
                                     <div class="col-4">
                                         <label>Contact No.:</label>
-                                        <asp:TextBox class="form-control" ID="txtPhone" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                        <asp:TextBox class="form-control" ID="txtPhone" readonly="true" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label>Email:</label>
-                                        <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                        <asp:TextBox class="form-control" ID="txtEmail" readonly="true" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
@@ -260,7 +257,7 @@
 
                                     <div class="col-4" id="OtherPremises" runat="server">
                                         <label>Other Premises</label>
-                                        <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtOtherPremises" readonly="true"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
 
                                     <div class="col-4">
@@ -292,7 +289,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtinstallationNo1" TabIndex="13" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtinstallationNo1" ReadOnly="true"   autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>                                                           
                                                         </tr>
@@ -301,12 +298,12 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="col-12">
-                                                                    <asp:TextBox class="form-control" ID="txtinstallationNo2" TabIndex="14" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtinstallationNo2"  readonly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>                                                        
                                                         </tr>
@@ -320,7 +317,7 @@
                                                             </td>
                                                             <td>
                                                                 <div style="margin-left: 15px !important; margin-right: 15px !important;">
-                                                                    <asp:TextBox class="form-control" ID="txtinstallationNo3" TabIndex="15" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtinstallationNo3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="" MaxLength="1" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>                                                        
                                                         </tr>
@@ -352,7 +349,7 @@
                                         <label>
                                             Tentative Work Start Date:
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtStartDate" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        <asp:TextBox class="form-control" ID="txtStartDate" runat="server" autocomplete="off" readonly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
 
@@ -360,12 +357,12 @@
                                     <div class="col-4">
                                         <label>Tentative Work Completition Date:</label>
 
-                                        <asp:TextBox class="form-control" ID="txtCompletitionDate" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                        <asp:TextBox class="form-control" ID="txtCompletitionDate" autocomplete="off" readonly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
                                             MaxLength="30" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
-                                        <label>If any work issued by Agency/Dept./Owner:</label>
+                                        <label>If any work order issued by Agency/Dept./Owner:</label>
 
                                         <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" TabIndex="18" Style="width: 100% !important;" runat="server" AutoPostBack="true">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -387,7 +384,7 @@
                                         <label for="Name">
                                             Completion Date as per Work Order:
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        <asp:TextBox class="form-control" ID="txtCompletionDateAPWO" runat="server" readonly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
@@ -455,6 +452,26 @@
                                     </div>
                               
                             </div>
+
+
+
+                               <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Work Schedule</u></h6>
+   <div runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+       <div class="row">
+           <div class="col-4">
+               <label>Created Date:</label>
+               <asp:TextBox class="form-control" ID="txtCreatedDate" runat="server" autocomplete="off" readonly="true" Style="margin-left: 18px;">
+               </asp:TextBox>
+           </div>
+           <div class="col-4">
+               <label>Created By:</label>
+               <asp:TextBox class="form-control" ID="txtCreatedBy" autocomplete="off" runat="server" readonly="true" Style="margin-left: 18px">
+               </asp:TextBox>
+           </div>
+       </div>
+   </div>
+
+
 
                         </div>
                         <div class="row">

@@ -146,7 +146,6 @@ namespace CEIHaryana.Contractor
                     string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
                     string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
                     string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
-
                     if (dp_Id8 != "")
                     {
                         Installation.Visible = true;
@@ -220,7 +219,6 @@ namespace CEIHaryana.Contractor
                         txtinstallationType8.Text = dp_Id22;
                         txtinstallationNo8.Text = dp_Id23;
                     }
-
                     if (dp_Id7.Trim() == "Yes")
                     {
 
@@ -233,7 +231,6 @@ namespace CEIHaryana.Contractor
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
                     }
-
                     if (dp_Id3 == "upto 650 V")
                     {
                         installationType2.Visible = false;
@@ -242,7 +239,16 @@ namespace CEIHaryana.Contractor
                     {
                         installationType2.Visible = true;
                     }
-                   
+
+                    //txtCreatedDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                    string createdDateString = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                    DateTime createdDate;
+                    if (DateTime.TryParse(createdDateString, out createdDate))
+                    {
+                        txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
+                    }
+                    txtCreatedBy.Text = ds.Tables[0].Rows[0]["Createdby"].ToString();
+
                 }
             }
             catch { }

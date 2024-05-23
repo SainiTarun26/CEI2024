@@ -246,6 +246,15 @@ namespace CEIHaryana.Admin
                     }
                     //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                     //ddWorkDetail.Text = dp_Id8;
+
+                    //txtCreatedDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                    string createdDateString = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                    DateTime createdDate;
+                    if (DateTime.TryParse(createdDateString, out createdDate))
+                    {
+                        txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
+                    }
+                    txtCreatedBy.Text = ds.Tables[0].Rows[0]["Createdby"].ToString();
                 }
             }
             catch { }

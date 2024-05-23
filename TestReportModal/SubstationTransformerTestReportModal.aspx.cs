@@ -27,15 +27,16 @@ namespace CEIHaryana.TestReportModal
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
                         {
-                            Contractor.Visible = true;
-                            Contractor3.Visible = true;
-                            CreatedDate.Visible = true;
+                            //Contractor.Visible = true;
+                            //Contractor3.Visible = true;
+                            //CreatedDate.Visible = true;
+                            ToOTPVerify.Visible = true;
                         }
                         else
                         {
-                            Contractor.Visible = true;
-                            Contractor2.Visible = true;
-                            CreatedDate.Visible = true;
+                            //Contractor.Visible = true;
+                            FinalSubmit.Visible = true;
+                            //CreatedDate.Visible = true;
                         }
                     }
                     else if (Session["SiteOwnerId"] != null)
@@ -46,9 +47,10 @@ namespace CEIHaryana.TestReportModal
                         SiteOwner.Visible = false;
                         SiteOwner2.Visible = true;
                         IntimationData.Visible = true;
-                        CreatedDate.Visible = true; //Added
-                        SubmitDate.Visible = true;
-                        SubmitBy.Visible = true;
+                        ApprovalCard.Visible = true;
+                        //CreatedDate.Visible = true; //Added
+                        //SubmitDate.Visible = true;
+                        //SubmitBy.Visible = true;
                     }
                     else if (Session["InspectionTestReportId"] != null)
                     {
@@ -71,15 +73,16 @@ namespace CEIHaryana.TestReportModal
                     {
                         if (Session["SupervisorID"] != null)
                         {
-                            SubmitDate.Visible = true;
-                            SubmitBy.Visible = true;
+                            //SubmitDate.Visible = true;
+                            //SubmitBy.Visible = true;
+                            
                         }
                         if (Session["AdminID"] != null)
                         {
-                            Contractor.Visible = true;
-                            SubmitBy.Visible = true;
-                            SubmitDate.Visible = true;
-                            CreatedDate.Visible = true;
+                            //Contractor.Visible = true;
+                            //SubmitBy.Visible = true;
+                            //SubmitDate.Visible = true;
+                            //CreatedDate.Visible = true;
                         }
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
@@ -120,8 +123,9 @@ namespace CEIHaryana.TestReportModal
                     //txtRejection.Attributes.Add("Readonly", "true");
                     BtnSubmit.Text = "Back";
                 }
-                if (value1.Trim() == "Submitted")
+                if (value1.Trim() == "Submitted" || value1.Trim() == "Submit")
                 {
+                    ApprovalCard.Visible = true;
                     BtnSubmit.Text = "Back";
                 }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -517,9 +521,16 @@ namespace CEIHaryana.TestReportModal
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-                txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString(); 
+
+                lblIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
+                lblReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                //txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString(); 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
-            
+
+                txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
+                txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
+
+
             }
             catch
             {
@@ -609,8 +620,9 @@ namespace CEIHaryana.TestReportModal
                     {
                         if (Session["OTP"].ToString() == txtOtp.Text)
                         {
-                            Contractor2.Visible = true;
-                            Contractor3.Visible = false;
+                            FinalSubmit.Visible = true;
+                            ToOTPVerify.Visible = false;
+                            //Contractor3.Visible = false;
                         }
                         else
                         {

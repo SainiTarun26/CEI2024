@@ -31,15 +31,15 @@ namespace CEIHaryana.TestReportModal
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
                         {
-                            Contractor.Visible = true;
-                            Contractor3.Visible = true;
-                            CreatedDate.Visible = true;
+                            //Contractor.Visible = true;
+                            //CreatedDate.Visible = true;
+                            ToOTPVerify.Visible = true;
                         }
                         else
                         {
-                            Contractor.Visible = true;
-                            Contractor2.Visible = true;
-                            CreatedDate.Visible = true;
+                            //Contractor.Visible = true;
+                            //CreatedDate.Visible = true;
+                            FinalSubmit.Visible = true;
                         }
                     }
                     else if (Session["SiteOwnerId"] != null)
@@ -50,9 +50,10 @@ namespace CEIHaryana.TestReportModal
                         SiteOwner.Visible = false;
                         SiteOwner2.Visible = true;
                         IntimationData.Visible = true;
-                        CreatedDate.Visible = true; //Added
-                        SubmitDate.Visible = true;
-                        SubmitBy.Visible = true;//Added
+                        ApprovalCard.Visible = true;
+                        ////CreatedDate.Visible = true; //Added
+                        ////SubmitDate.Visible = true;
+                        ////SubmitBy.Visible = true;//Added
                     }
                     else if (Session["InspectionTestReportId"] != null)
                     {
@@ -67,21 +68,21 @@ namespace CEIHaryana.TestReportModal
                         ID = Session["IntimationForHistoryId"].ToString();
                         GetDetailswithId();
                         IntimationForHistory.Visible = true;
-                        Session["IntimationForHistoryId"] = null;   
+                        Session["IntimationForHistoryId"] = null;
                     }
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
                     {
                         if (Session["SupervisorID"] != null)
                         {
-                            SubmitDate.Visible = true;
-                            SubmitBy.Visible = true;
+                            ////SubmitDate.Visible = true;
+                            ////SubmitBy.Visible = true;
                         }
                         if (Session["AdminID"] != null)
                         {
-                            Contractor.Visible = true;
-                            SubmitBy.Visible = true;
-                            SubmitDate.Visible = true;
-                            CreatedDate.Visible = true;
+                            ////Contractor.Visible = true;
+                            ////SubmitBy.Visible = true;
+                            ////SubmitDate.Visible = true;
+                            ////CreatedDate.Visible = true;
                         }
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
@@ -123,8 +124,9 @@ namespace CEIHaryana.TestReportModal
                     // ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     // Rejection.Visible = true;
                 }
-                if (value1.Trim() == "Submitted")
+                if (value1.Trim() == "Submitted" || value1.Trim() == "Submit")
                 {
+                    ApprovalCard.Visible = true;
                     btnSubmit.Text = "Back";
                 }
                 DataSet ds = new DataSet();
@@ -337,7 +339,9 @@ namespace CEIHaryana.TestReportModal
                 txtCircuit.Text = ds.Tables[0].Rows[0]["NoOfCircuit"].ToString();
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-                txtReportNo.Text = ds.Tables[0].Rows[0]["LineIdOther"].ToString();
+                ////txtReportNo.Text = ds.Tables[0].Rows[0]["LineIdOther"].ToString();
+                lblIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                lblReportNo.Text = ds.Tables[0].Rows[0]["LineId"].ToString();
 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 if (txtConductorType.Text.Trim() == "Bare")
@@ -597,11 +601,15 @@ namespace CEIHaryana.TestReportModal
                 txtOtherCable.Text = ds.Tables[0].Rows[0]["OtherCable"].ToString();
                 txtCableSize.Text = ds.Tables[0].Rows[0]["SizeofCable"].ToString();
                 txtCableLaid.Text = ds.Tables[0].Rows[0]["Cablelaidin"].ToString();
+
+                txtApprovalDate.Text = ds.Tables[0].Rows[0]["Approvaldate"].ToString();
+                txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
+
                 //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -625,7 +633,7 @@ namespace CEIHaryana.TestReportModal
                 CEI.UpdateLineData(id, Counts);
                 string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
-               // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+                // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
         }
 
@@ -675,9 +683,9 @@ namespace CEIHaryana.TestReportModal
                 Session["LineOtp"] = Convert.ToString(Convert.ToInt32(Session["LineOtp"]) + 1);
                 //if (btnVerify.Text == "SendOTP" && HiddenField1.Value == "1")
                 //{
-                  if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() == "1")
-                  {
-                    
+                if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() == "1")
+                {
+
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();
                     if (Email.Trim() == "")
@@ -697,8 +705,8 @@ namespace CEIHaryana.TestReportModal
                     {
                         if (Session["OTP"].ToString() == txtOtp.Text)
                         {
-                            Contractor2.Visible = true;
-                            Contractor3.Visible = false;
+                            FinalSubmit.Visible = true;
+                            ToOTPVerify.Visible = false;
                             //Session["LineOtp"] = null;
                         }
                         else
@@ -708,9 +716,9 @@ namespace CEIHaryana.TestReportModal
                     }
                     Session["LineOtp"] = null;
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Session["LineOtp"] = null;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
