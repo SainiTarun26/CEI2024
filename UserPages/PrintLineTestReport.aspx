@@ -47,6 +47,28 @@
     </script>
 
     <style>
+        div#SubmitDate1 {
+            margin-top: 1px;
+        }
+
+        SubmitBy1 {
+            margin-top: 1px !important;
+        }
+div#Div13 {
+    margin-top: 1px !important;
+}
+div#Div12 {
+    margin-top: 1px !important;
+}
+div#CreatedDate {
+    margin-top: 1px !important;
+}
+div#Div10 {
+    margin-top: 1px !important;
+}
+div#SubmitBy1 {
+    margin-top: 1px !important;
+}
         .page1 {
             box-sizing: border-box;
             min-height: 100vh;
@@ -74,7 +96,7 @@
             font-weight: 700;
             text-align: initial;
             border-bottom: 0px solid !important;
-            text-align:center;
+            text-align: center;
         }
 
         .col-4 {
@@ -130,6 +152,10 @@
         input#txtInstallationType {
             border-bottom: 0px solid !important;
         }
+
+        div#SubmitDate {
+            margin-top: 0px;
+        }
     </style>
     <script>
 
@@ -151,7 +177,6 @@
             window.close();
         };
 
-
     </script>
 </head>
 <body>
@@ -171,7 +196,7 @@
                                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report Details</h6>
                                         <div class="row">
                                             <div class="col-3" style="margin-top: 0px;"></div>
-                                            <div class="col-6" style="margin-top: 0px; padding-left: 0px;text-align:center;">
+                                            <div class="col-6" style="margin-top: 0px; padding-left: 0px; text-align: center;">
                                                 <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                                     MaxLength="30" Style="margin-left: 18px;" Text="12341/tarun-2024">
                                                 </asp:TextBox>
@@ -272,14 +297,14 @@
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" AutoPostBack="true" ID="txtLineVoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
-                                                <div class="col-2" id="divOtherVoltages" runat="server" visible="false" style="margin-top:5%;">
+                                                <div class="col-2" id="divOtherVoltages" runat="server" visible="false" style="margin-top: 5%;">
                                                     <label for="Voltage">
                                                         Other Voltage 
                                                  
                                                     </label>
                                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtVotalgeType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
-                                                <div class="col-2" id="OtherVoltage" runat="server" visible="false" style="margin-top:5%;">
+                                                <div class="col-2" id="OtherVoltage" runat="server" visible="false" style="margin-top: 5%;">
                                                     <label for="Voltage">
                                                         Other Voltage 
                                                  
@@ -845,58 +870,86 @@
                                 <div class="card" style="background: #fcfcfc; margin-top: 5%;">
                                     <div class="row">
 
-                                        <div class="col-6" id="CreatedDate" visible="false" runat="server">
+                                        <%--   <div class="col-6" id="CreatedDate" visible="false" runat="server">
                                             <label>
-                                               TestReport Created Date
+                                                TestReport Created Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
+                                        </div>--%>
                                         <div class="col-6" id="Div8" runat="server">
                                             <label>
                                                 Installation Type
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtinstalltype" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-                                        <div class="col-4" id="SubmitDate" visible="false" runat="server">
+                                        <%--<div class="col-4" id="SubmitDate" visible="false" runat="server">
                                             <label>
-                                               Work Intimation Submitted Date
+                                                Work Intimation Submitted Date
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
-                                        <div class="col-4" id="SubmitBy" visible="false" runat="server">
+                                        </div>--%>
+                                        <%-- <div class="col-4" id="SubmitBy" visible="false" runat="server">
                                             <label>
-                                               Work Intimation Submitted By
+                                                Work Intimation Submitted By
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>--%>
+                                    </div>
+                                </div>
+                                <div class="card-title" style="margin-top: 3%;font-weight: 700; margin-bottom: 0px !important;">
+                                    Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
+                                </div>
+                                <div class="row">
+                                    <div class="col-4" id="SubmitDate1">
+                                        <label>
+                                            Work Intimation Submitted Date
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
+                                    <div class="col-4" id="SubmitBy1">
+                                        <label>
+                                            Work Intimation Submitted By
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="card-title" style="margin-top: 3%;font-weight: 700; margin-bottom: 0px !important;">
+                                    Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
+                                </div>
+                                <div id="Div9" runat="server">
+                                    <div class="row" style="padding-bottom: 20px;">
+                                        <div class="col-4" id="CreatedDate">
+                                            <label>
+                                                Test Report Created Date
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-4" id="Div10" runat="server">
+                                            <label for="Name">
+                                                Prepared By
+                                            </label>
+                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
+                                <br />
 
-
-                                <div class="card" style="background: #fcfcfc;">
-                                    <div id="Contractor" runat="server" visible="false" style="margin-top: 35px;">
-                                        <div class="row">
-
-                                            <div class="col-6" runat="server">
-                                                <label for="Name">
-                                                    TestReport No
-                                                </label>
-                                                <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-
-                                            <div class="col-6" id="Rejection" runat="server">
-                                                <label for="Name">
-                                                    Prepared By
-                                                
-                                                </label>
-                                                <asp:TextBox class="form-control" ReadOnly="true" ID="txtPreparedby" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-
-                                        </div>
+                                <div class="card-title" id="ApprovalTitle" visible="false" runat="server" style="margin-top: 3%;font-weight: 700; margin-bottom: 0px !important;">Test Report Approval Details</div>
+                                <div class="row" id="DivApproval" style="padding-bottom: 20px;" visible="false" runat="server">
+                                    <div class="col-4" id="Div12" runat="server">
+                                        <label>
+                                            Test Report Approval Date
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
+                                    <div class="col-4" id="Div13" runat="server">
+                                        <label for="Name">
+                                            Test Report Approved By
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtApprovedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-4"></div>

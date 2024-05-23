@@ -245,6 +245,13 @@
                         <label>Voltage Level</label>
                         <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                    </div>
+                </div>
+             <div class="card-title" style="margin-top: -15px; margin-bottom: 20px;margin-top:20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+                Site Owner Details
+            </div>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
                     <div class="col-md-4" runat="server">
                         <label>Owner Name</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -314,7 +321,7 @@
                 <div class="card-title" style="margin-bottom:5px;margin-top:15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                     Test Report Attached
                 </div>
-                <div class="row card" style="padding-top: 10px;">
+                <div class="row card" style="padding-top: 10px;margin-left:0px !important;">
                     <div class="col-12">
                        
                          <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">

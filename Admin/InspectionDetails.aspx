@@ -170,8 +170,11 @@
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;margin-bottom:15px;">
+               Inspection Details
+            </div>
+              <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
             <div class="row">
-
                 <div class="col-4">
                     <label>
                         Inspection ReportId
@@ -179,7 +182,6 @@
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportId" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-
                 <div class="col-4">
                     <label>
                         Type of Inspection
@@ -207,6 +209,13 @@
                     <label>District</label>
                     <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
+                </div>
+                  </div>
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;margin-bottom:15px;">
+               Site Owner Details
+            </div>
+              <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+            <div class="row">
                 <div class="col-4" runat="server">
                     <label>SiteOwner Name</label>
                     <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -239,6 +248,10 @@
                 </div>
 
             </div>
+                  </div>
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;margin-bottom:15px;">
+               Documents Attached
+            </div>
             <div class="row">
                 <div class="col-12">
                     <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
@@ -266,8 +279,9 @@
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
                 </div>
+            </div>        
             </div>
-        </div>
+         
         <div class="row">
             <div class="col-md-4">
                 <label>

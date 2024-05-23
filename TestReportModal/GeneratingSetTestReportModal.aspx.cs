@@ -61,6 +61,7 @@ namespace CEIHaryana.TestReportModal
                         GetDetailswithId();
                         SiteOwner.Visible = true;
                         IntimationData.Visible = true;
+                        ApprovalCard.Visible = true;
                         btnNext.Text = "Back";
 
                     }

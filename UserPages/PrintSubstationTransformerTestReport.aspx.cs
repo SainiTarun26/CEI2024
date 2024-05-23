@@ -23,16 +23,16 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
-                        if (Convert.ToString(Session["Approval"]) == "Pending")
-                        {
-                            Contractor.Visible = true;
-                            CreatedDate.Visible = true;
-                        }
-                        else
-                        {
-                            Contractor.Visible = true;
-                            CreatedDate.Visible = true;
-                        }
+                        //if (Convert.ToString(Session["Approval"]) == "Pending")
+                        //{
+                        //    ////Contractor.Visible = true;
+                        //    ////CreatedDate.Visible = true;
+                        //}
+                        //else
+                        //{
+                        //    ////Contractor.Visible = true;
+                        //    ////CreatedDate.Visible = true;
+                        //}
                     }
                     else if (Session["SiteOwnerId"] != null)
                     {
@@ -40,9 +40,9 @@ namespace CEIHaryana.UserPages
                         GetDetailswithId();
 
                         IntimationData.Visible = true;
-                        CreatedDate.Visible = true; //Added
-                        SubmitDate.Visible = true;
-                        SubmitBy.Visible = true;
+                        ////CreatedDate.Visible = true; //Added
+                        ////SubmitDate.Visible = true;
+                        ////SubmitBy.Visible = true;
                     }
                     else if (Session["InspectionTestReportId"] != null)
                     {
@@ -59,29 +59,27 @@ namespace CEIHaryana.UserPages
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                     {
-                        if (Session["SupervisorID"] != null)
-                        {
-                            SubmitDate.Visible = true;
-                            SubmitBy.Visible = true;
-                        }
-                        if (Session["AdminID"] != null)
-                        {
-                            Contractor.Visible = true;
-                            SubmitBy.Visible = true;
-                            SubmitDate.Visible = true;
-                            CreatedDate.Visible = true;
-                        }
+                        //if (Session["SupervisorID"] != null)
+                        //{
+                        //    ////SubmitDate.Visible = true;
+                        //    ////SubmitBy.Visible = true;
+                        //}
+                        //if (Session["AdminID"] != null)
+                        //{
+                        //    ////Contractor.Visible = true;
+                        //    ////SubmitBy.Visible = true;
+                        //    ////SubmitDate.Visible = true;
+                        //    ////CreatedDate.Visible = true;
+                        //}
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
                         IntimationData.Visible = true;
-
                     }
                 }
             }
             catch
             {
                 Response.Redirect("/Login.aspx", false);
-
             }
         }
 
@@ -92,28 +90,26 @@ namespace CEIHaryana.UserPages
                 DataSet ds = new DataSet();
                 ds = CEI.SubstationTestReportDataForPrintTestReport(ID);                
 
-
                 string value1 = Convert.ToString(Session["Approval"]);
-                if (value1.Trim() == "Accept")
+                //if (value1.Trim() == "Accept")
+                //{
+                //    // ddlType.Attributes["onfocus"] = "this.size=3";
+                //    //ddlType.Attributes.Add("disabled", "disabled");
+                //    //ddlType.Attributes.Add("Readonly", "true");                 
+                //    //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                //}
+                //else if (value1.Trim() == "Reject")
+                //{
+                //    //ddlType.Attributes.Add("Readonly", "true");                  
+                //    // ddlType.Attributes.Add("disabled", "disabled");
+                //    //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
+                //    //Rejection.Visible = true;
+                //    //txtRejection.Attributes.Add("Readonly", "true");
+                //}
+                if (value1.Trim() == "Submitted" || value1.Trim() == "Submit")
                 {
-                    // ddlType.Attributes["onfocus"] = "this.size=3";
-                    //ddlType.Attributes.Add("disabled", "disabled");
-                    //ddlType.Attributes.Add("Readonly", "true");                 
-                    //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-
-                }
-                else if (value1.Trim() == "Reject")
-                {
-                    //ddlType.Attributes.Add("Readonly", "true");                  
-                    // ddlType.Attributes.Add("disabled", "disabled");
-                    //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                    //Rejection.Visible = true;
-                    //txtRejection.Attributes.Add("Readonly", "true");
-
-                }
-                if (value1.Trim() == "Submit")
-                {
-
+                    ApprovalTitle.Visible = true;
+                    DivApproval.Visible = true;
                 }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
@@ -500,8 +496,14 @@ namespace CEIHaryana.UserPages
                 //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 //Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 //Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
-                txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString();
+                //txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString();
+
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
+                lblReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                lblIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
+
+                txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
+                txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
             }
             catch(Exception ex)
             {

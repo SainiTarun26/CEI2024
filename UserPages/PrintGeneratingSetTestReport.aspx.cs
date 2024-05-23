@@ -24,17 +24,17 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["GeneratingSetId"].ToString();
                         GetDetailswithId();
-                        if (Convert.ToString(Session["Approval"]) == "Pending")
-                        {
-                            Contractor.Visible = true;
+                        //if (Convert.ToString(Session["Approval"]) == "Pending")
+                        //{
+                        //    ////Contractor.Visible = true;
 
-                            CreatedDate.Visible = true;
-                        }
-                        else
-                        {
-                            Contractor.Visible = true;
-                            CreatedDate.Visible = true;
-                        }
+                        //    ////CreatedDate.Visible = true;
+                        //}
+                        //else
+                        //{
+                        //    ////Contractor.Visible = true;
+                        //    ////CreatedDate.Visible = true;
+                        //}
 
 
                     }
@@ -43,9 +43,9 @@ namespace CEIHaryana.UserPages
                         ID = Session["GeneratingSetId"].ToString();
                         GetDetailswithId();
                         IntimationData.Visible = true;
-                        CreatedDate.Visible = true; //Added
-                        SubmitDate.Visible = true;
-                        SubmitBy.Visible = true;
+                        ////CreatedDate.Visible = true; //Added
+                        ////SubmitDate.Visible = true;
+                        ////SubmitBy.Visible = true;
 
                     }
                     else if (Session["InspectionTestReportId"] != null)
@@ -63,18 +63,18 @@ namespace CEIHaryana.UserPages
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
 
                     {
-                        if (Session["SupervisorID"] != null)
-                        {
-                            SubmitDate.Visible = true;
-                            SubmitBy.Visible = true;
-                        }
-                        if (Session["AdminID"] != null)
-                        {
-                            Contractor.Visible = true;
-                            SubmitBy.Visible = true;
-                            SubmitDate.Visible = true;
-                            CreatedDate.Visible = true;
-                        }
+                        //if (Session["SupervisorID"] != null)
+                        //{
+                        //    ////SubmitDate.Visible = true;
+                        //    ////SubmitBy.Visible = true;
+                        //}
+                        //if (Session["AdminID"] != null)
+                        //{
+                        //    ////Contractor.Visible = true;
+                        //    ////SubmitBy.Visible = true;
+                        //    ////SubmitDate.Visible = true;
+                        //    ////CreatedDate.Visible = true;
+                        //}
                         ID = Session["GeneratingSetId"].ToString();
                         GetDetailswithId();
                         IntimationData.Visible = true;
@@ -98,17 +98,16 @@ namespace CEIHaryana.UserPages
                 //ds = CEI.GeneratingTestReportDataWithIdForPrintTestReport(ID);
                 ds = CEI.GeneratingTestReportDataWithIdForPrintTestReport(ID);
                 string value1 = Convert.ToString(Session["Approval"]);
-                if (value1.Trim() == "Accept")
+                //if (value1.Trim() == "Accept")
+                //{
+                //}
+                //else if (value1.Trim() == "Reject")
+                //{
+                //}
+                if (value1.Trim() == "Submitted" || value1.Trim() == "Submit")
                 {
-
-                }
-                else if (value1.Trim() == "Reject")
-                {
-
-                }
-                if (value1.Trim() == "Submit")
-                {
-
+                    ApprovalTitle.Visible = true;
+                    DivApproval.Visible = true;
                 }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
@@ -142,7 +141,7 @@ namespace CEIHaryana.UserPages
                 txtSerialNoOfGenerator.Text = ds.Tables[0].Rows[0]["SerialNumbrOfAcGenerator"].ToString();
                 txtGeneratingSetType.Text = ds.Tables[0].Rows[0]["GeneratingSetType"].ToString();
 
-                txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
+                ////txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
@@ -467,6 +466,15 @@ namespace CEIHaryana.UserPages
                     txtEarthingUsed15.Visible = false;
 
                 }
+
+
+                txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
+
+                lblIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
+                lblReportNo.Text = ds.Tables[0].Rows[0]["GSTestReportId"].ToString();
+
+                txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
+                txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
             }
             catch
             {

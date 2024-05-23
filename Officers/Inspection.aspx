@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -145,185 +145,204 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+
         input#ContentPlaceHolder1_RadioButtonList2_0 {
-    margin-left: 10px;
-    margin-right: 5px;
-}
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
         input#ContentPlaceHolder1_RadioButtonList2_1 {
-    margin-left: 10px;
-    margin-right: 5px;
-}
-          th.headercolor {
-    background: #9292cc;
-    color:white;
-}
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
+        th.headercolor {
+            background: #9292cc;
+            color: white;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-          <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                  
                 </asp:UpdatePanel>--%>
-            <div class="row">
-                
-                    
-                <div class="col-4" runat="server">
-                    <label>Inspection Report No</label>
-                    <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4">
-                    <label>
-                        Type of Inspection
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
+                Inspection Attached
+            </div>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-4" runat="server">
+                        <label>Inspection Report No</label>
+                        <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4">
+                        <label>
+                            Type of Inspection
                    <%-- <samp style="color: red">* </samp>--%>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4">
-                    <label>
-                        Type of Applicant
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4">
+                        <label>
+                            Type of Applicant
                         <%--<samp style="color: red"> * </samp>--%>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4">
-                    <label>
-                        Type of Installation
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4">
+                        <label>
+                            Type of Installation
                        <%-- <samp style="color: red"> * </samp>--%>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" id="Capacity" runat="server">
+                        <label for="Capacity">Capacity</label>
+                        <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
+                    </div>
+                    <div class="col-4" id="LineVoltage" runat="server">
+                        <label for="Capacity">Voltage</label>
+                        <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
+                    </div>
+
+                    <div class="col-4" runat="server">
+                        <label>Voltage Level</label>
+                        <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
-                <div class="col-4" id="Capacity" runat="server">
-                <label for="Capacity">Capacity</label>
-                <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox> 
             </div>
-                <div class="col-4"  id="LineVoltage" runat="server">
-                <label for="Capacity">Voltage</label>
-                <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox> 
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-top: 20px; font-weight: 600; margin-left: -10px;margin-bottom: 20px;">
+                Site Owner Details
             </div>
-                <div class="col-4" runat="server">
-                    <label>Voltage Level</label>
-                    <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-4" runat="server">
+                        <label>Owner Name</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-8" runat="server">
+                        <label>Address</label>
+                        <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contact Details</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contractor Name</label>
+                        <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contractor Phone No.</label>
+                        <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Contractor Email</label>
+                        <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Supervisor Name</label>
+                        <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Supervisor Email</label>
+                        <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>TransactionId</label>
+                        <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label>Transaction Date</label>
+                        <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
                 </div>
-                <div class="col-4" runat="server">
-                    <label>Owner Name</label>
-                    <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-8" runat="server">
-                    <label>Address</label>
-                    <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contact Details</label>
-                    <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contractor Name</label>
-                    <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contractor Phone No.</label>
-                    <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Contractor Email</label>
-                    <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Supervisor Name</label>
-                    <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                <div class="col-4" runat="server">
-                    <label>Supervisor Email</label>
-                    <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                 <div class="col-4" runat="server">
-                    <label>TransactionId</label>
-                    <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                 <div class="col-4" runat="server">
-                    <label>Transaction Date</label>
-                    <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                             
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
-                        <HeaderStyle BackColor="#B7E2F0" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
-                        </Columns>
-                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
+                Documents Attached
+            </div>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-12">
+                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                            <HeaderStyle BackColor="#B7E2F0" />
+                            <Columns>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                </asp:TemplateField>
+                            </Columns>
+                            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                        </asp:GridView>
+                    </div>
                 </div>
             </div>
             <asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>
 
-               
-            <div class="row">
-                <div class="col-4">
-                    <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                </div>
-                
-            </div>
-                    <div class="row" style="margin-bottom:30px;">
-                            <div class="col-12" style="text-align: center">
-                  <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
-            </div>
-                        </div>
+
                     <div class="row">
-             
-                   <p style="margin-top:auto;margin-bottom:auto;"> Documents are as per the requirements</p>
-               <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server"  RepeatDirection="Horizontal" TabIndex="25">
-                   <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
-                   <asp:ListItem Text="No(Return)" Value="1" style="margin-top:auto;margin-bottom:auto;"></asp:ListItem>
-               </asp:RadioButtonList>
-                    <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
-              
-               
-                <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
-                                    <label>
+                        <div class="col-4">
+                            <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
+
+                    </div>
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col-12" style="text-align: center">
+                            <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <p style="margin-top: auto; margin-bottom: auto;">Documents are as per the requirements</p>
+                        <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                        </asp:RadioButtonList>
+                        <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
+
+
+                        <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                            <label>
                                 ReasonType:        
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server">
                                 <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="Based On Documents"></asp:ListItem>
                             </asp:DropDownList>
-                    <label>
-                        Reason<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
-                        
-                </div>            
-            </div>
-        </ContentTemplate>
+                            <label>
+                                Reason<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        </div>
+
+                    </div>
+                    </div>
+                </ContentTemplate>
             </asp:UpdatePanel>
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col-4" style="text-align: center;"> 
+                <div class="col-4" style="text-align: center;">
                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>

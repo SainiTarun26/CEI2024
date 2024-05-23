@@ -366,7 +366,7 @@ namespace CEIHaryana.Officers
 
                 ds.Dispose();
             }
-            catch { }
+            catch(Exception ex) { }
         }
     }
 }
