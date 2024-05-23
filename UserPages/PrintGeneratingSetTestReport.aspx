@@ -832,6 +832,97 @@
                                         </div>
                                     </div>
                                 </div>
+                                                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">
+                                    Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
+                                </div>
+                                <div class="row">
+                                    <%-- <div class="col-4" id="CreatedDate" visible="false" runat="server">
+    <label>
+        TestReport Created Date
+    </label>
+    <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>--%>
+                                    <div class="col-4" id="SubmitDate1">
+                                        <label>
+                                            Work Intimation Submitted Date
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="TextBox1" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
+                                    <div class="col-4" id="SubmitBy1">
+                                        <label>
+                                            Work Intimation Submitted By
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="TextBox2" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
+                                </div>
+     <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">
+         Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
+     </div>
+     <div id="Div2" runat="server">
+         <div class="row" style="padding-bottom: 20px;">
+            <%-- <div class="col-4">
+                 <label for="Name">
+                     TestReport No
+                 </label>
+                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtReportNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+             </div>--%>
+             <div class="col-4" id="CreatedDate">
+                 <label>
+                     Test Report Created Date
+                 </label>
+                 <asp:TextBox class="form-control" ID="TextBox3" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+             </div>
+             <div class="col-4" id="Div3" runat="server">
+                 <label for="Name">
+                     Prepared By
+                 </label>
+                 <asp:TextBox class="form-control" ReadOnly="true" ID="TextBox4" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+             </div>
+             <%--  <div class="col-4">
+                 <label for="Name">
+                     Form Status<samp style="color: red">* </samp>
+                 </label>
+                 <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlType" Style="width: 100% !important" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
+                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                     <asp:ListItem Text="Accept" Value="1"></asp:ListItem>
+                     <asp:ListItem Text="Reject" Value="2"></asp:ListItem>
+                 </asp:DropDownList>
+                 <asp:RequiredFieldValidator ID="Req_state" Text="Please Select Your Response" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+             </div>
+             <div class="col-4" id="Rejection" runat="server" visible="False">
+                 <label for="Name">
+                     Reason For Rejection
+                     <samp style="color: red">* </samp>
+                 </label>
+                 <asp:TextBox class="form-control" ID="txtRejection" MaxLength="200" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRejection" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Reason For Rejection</asp:RequiredFieldValidator>
+             </div>--%>
+             <div class="col-4" id="OTP" runat="server" visible="false">
+                 <label for="Name">
+                     Enter OTP<samp style="color: red">* </samp>
+                 </label>
+                 <asp:TextBox class="form-control" ID="txtOtp" MaxLength="10" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtOtp" ValidationGroup="Submit" ForeColor="Red" SetFocusOnError="true">Please Enter OTP</asp:RequiredFieldValidator>
+             </div>
+         </div>
+     </div>
+     <asp:HiddenField ID="hdn" Value="0" runat="server" />
+     <br />
+     <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">Test Report Approval Details</div>
+     <div class="row" style="padding-bottom: 20px;">
+         <div class="col-4" id="Div4" runat="server">
+             <label>
+                 Test Report Approval Date
+             </label>
+             <asp:TextBox class="form-control" ID="txtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+         </div>
+         <div class="col-4" id="Div5" runat="server">
+             <label for="Name">
+                 Test Report Approved By
+             </label>
+             <asp:TextBox class="form-control" ID="txtApprovedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+         </div>
+     </div>
                                 <div class="card" style="background: #fcfcfc;">
                                     <div id="Contractor" runat="server" visible="false">
                                         <div class="row">

@@ -186,13 +186,40 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label LblDate;
 
         /// <summary>
-        /// txtSuggestion control.
+        /// suggestion1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSuggestion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl suggestion1;
+
+        /// <summary>
+        /// suggestion2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl suggestion2;
+
+        /// <summary>
+        /// suggestion3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl suggestion3;
+
+        /// <summary>
+        /// suggestion4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl suggestion4;
 
         /// <summary>
         /// LblMonth control.

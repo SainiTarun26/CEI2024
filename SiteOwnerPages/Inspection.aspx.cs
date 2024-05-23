@@ -42,11 +42,12 @@ namespace CEIHaryana.SiteOwnerPages
 
                     GetDetailsWithId();
                     GridBind();
+                    GetTestReportData();
 
                     Session["PreviousPage"] = "";
                     if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
                     {
-                        if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Station")
+                        if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Set")
                         {
                             string voltage = txtVoltage.Text;
                             string voltagePart = voltage.Substring(0, voltage.Length - 2);
@@ -120,7 +121,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
                         {
-                            txtWorkType.Text = "Generating Station";
+                            txtWorkType.Text = "Generating Set";
 
                         }
                     }
@@ -202,7 +203,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
             }
-            else if (txtWorkType.Text.Trim() == "Generating Station")
+            else if (txtWorkType.Text.Trim() == "Generating Set")
             {
                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
             }
@@ -812,6 +813,35 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
+        }
+
+        private void GetTestReportData()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReport(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                //Session["TestRportId"] = TestRportId;
+
+                ds.Dispose();
+            }
+            catch { }
         }
     }
 }

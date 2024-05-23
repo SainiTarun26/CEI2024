@@ -336,6 +336,7 @@ namespace CEIHaryana.Officers
                 //throw;
             }
         }
+       
         private void GetTestReportData()
         {
             try
@@ -343,8 +344,11 @@ namespace CEIHaryana.Officers
                 ID = Session["InProcessInspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetTestReport(ID);
+                string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
+                    //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
@@ -355,6 +359,8 @@ namespace CEIHaryana.Officers
                     string script = "alert(\"No Record Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
+                //Session["TestRportId"] = TestRportId;
+
                 ds.Dispose();
             }
             catch { }

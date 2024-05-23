@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
- <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -148,10 +148,11 @@
             font-weight: 400;
             font-size: 12px;
         }
-           th.headercolor {
-    background: #9292cc;
-    color:white;
-}
+
+        th.headercolor {
+            background: #9292cc;
+            color: white;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -188,53 +189,91 @@
 
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-12">
-                  <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false"  AllowPaging="true" OnRowCommand="GridView1_RowCommand"
-                        PageSize="20" >
-                            <PagerStyle CssClass="pagination-ys" />
-                           <Columns>
-                                <asp:TemplateField HeaderText=" Document Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                               <asp:TemplateField HeaderText=" Document Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblID1" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor"/>
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                               <asp:TemplateField>
-                                    <HeaderStyle Width="10%"  CssClass="headercolor"/>
-                                    <ItemStyle Width="10%" />
-                                    <HeaderTemplate>
-                                        View Documents
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                          <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
-                                         <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"  CommandArgument='<%#Eval("DocumentPath") %>' CommandName="Select">
+            <div class="row">
+                <div class="col-12">
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                        AutoGenerateColumns="false" AllowPaging="true" OnRowCommand="GridView1_RowCommand"
+                        PageSize="20">
+                        <PagerStyle CssClass="pagination-ys" />
+                        <Columns>
+                            <asp:TemplateField HeaderText=" Document Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText=" Document Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID1" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <HeaderStyle Width="10%" CssClass="headercolor" />
+                                <ItemStyle Width="10%" />
+                                <HeaderTemplate>
+                                    View Documents
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument='<%#Eval("DocumentPath") %>' CommandName="Select">
                                        Click here to view document
-                                   </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                               </Columns>
-                      </asp:GridView>
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
             </div>
-                    </div>
+            <div class="row card" style="padding-top: 10px;">
+                <div class="col-12">
+
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <HeaderStyle BackColor="#B7E2F0" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Status" HeaderText="Status">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
+                        </Columns>
+                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                    </asp:GridView>
+
+                </div>
+            </div>
             <div class="row">
                 <div class="col-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
-               <div class="col-12" style="text-align: center;margin-bottom:30px;">
+               <%-- <div class="col-12" style="text-align: center; margin-bottom: 30px;">
 
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
-                </div>
+                </div>--%>
             </div>
 
             <div class="row">
@@ -253,8 +292,9 @@
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
-                    <%--    Reason For Rejection<samp style="color: red"> * </samp>--%>
-                            Reason <samp style="color: red"> * </samp>
+                        <%--    Reason For Rejection<samp style="color: red"> * </samp>--%>
+                            Reason
+                        <samp style="color: red">* </samp>
                     </label>
                     <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -270,7 +310,6 @@
 
                     <br />
                     <%--<asp:Label ID="lblerror" runat="server" Text="Label"></asp:Label>--%>
-
                 </div>
             </div>
 

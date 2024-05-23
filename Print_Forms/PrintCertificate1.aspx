@@ -176,19 +176,19 @@
             textbox.value = lines.join('\n');
         }
     </script>
- <script>
-       // Detect when the print dialog is closed (whether by printing or canceling)
-       window.onafterprint = function () {
-           // Delay execution to ensure the print dialog is fully closed
-           setTimeout(function () {
-               // Check if the print dialog is still open
-               if (!document.hidden) {
-                   // User canceled printing, navigate back to the previous page
-                   window.history.back();
-               }
-           }, 100);
-       };
-</script>
+    <script>
+        // Detect when the print dialog is closed (whether by printing or canceling)
+        window.onafterprint = function () {
+            // Delay execution to ensure the print dialog is fully closed
+            setTimeout(function () {
+                // Check if the print dialog is still open
+                if (!document.hidden) {
+                    // User canceled printing, navigate back to the previous page
+                    window.history.back();
+                }
+            }, 100);
+        };
+    </script>
 
 </head>
 <body>
@@ -200,15 +200,15 @@
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
-                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" 
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;"  />
+                    <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
+                        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
-                   
+
 
                     <div class="card-body">
                         <div id="printableDiv">
-                            
+
                             <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-1" style="margin-top: auto; margin-bottom: auto;">
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
@@ -295,9 +295,15 @@
                                                 Item 3<br />
                                                 Item 3</li>
                                         </ul>--%>
-                                        <br/>
-                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="9" onkeyup="countLines(this)" Columns="89" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>
-
+                                        <br />
+                                        <%--                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="9" onkeyup="countLines(this)" Columns="89" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>--%>
+                                        <%-- <asp:BulletedList ID="BulletedList1" runat="server"></asp:BulletedList>--%>
+                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
+                                            <span id="suggestion1" runat="server"></span>
+                                            <span id="suggestion2" runat="server"></span>
+                                            <span id="suggestion3" runat="server"></span>
+                                            <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
+                                        </div>
                                         <p>
                                             Approval for energization of the subject cited installation is herby accorded subject to consistent
                                         compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
@@ -318,15 +324,15 @@
 
                             <div class="row">
                                 <div class="col-12" style="text-align: end;">
-                                   <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
-                                 <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="position: fixed; bottom: 140px; margin-left: -300px;" />
+                                    <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
+                                    <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="position: fixed; bottom: 140px; margin-left: -300px;" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-8">
                                 </div>
                                 <div class="col-4">
-                                    <p style="text-align: center; font-weight: bold; position: fixed; bottom: 10PX; margin-left:30px;">
+                                    <p style="text-align: center; font-weight: bold; position: fixed; bottom: 10PX; margin-left: 30px;">
                                         <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
                                         <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
                                         <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />

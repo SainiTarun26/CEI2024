@@ -383,7 +383,7 @@
                                     <asp:TextBox class="form-control" ID="txtCompletitionDate" readOnly="true" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4">
-                                    <label>If any work order issued by any Agency/ Dept. / Owner</label>
+                                    <label>If any work order issued by Department/Owner</label>
                                     <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" disabled Style="width: 100% !important;" runat="server" TabIndex="16" AutoPostBack="true">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>

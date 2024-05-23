@@ -310,7 +310,7 @@
                     </asp:GridView>
                 </div>
             </div>
-            <div class="row">
+           <div class="row">
                 <div class="card-title" style="margin-bottom:5px;margin-top:15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                     Test Report Attached
                 </div>
@@ -331,17 +331,30 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                             <%--<asp:BoundField DataField="" HeaderText="Status">
+                            <asp:BoundField DataField="Status" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>--%>
-                            <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            </asp:BoundField>
+                             <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            
+                           
+                            <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>                                
                                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
+                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+            <ItemTemplate>                                
+                <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
+            </ItemTemplate>
+            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+        </asp:TemplateField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>

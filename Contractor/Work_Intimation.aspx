@@ -722,7 +722,7 @@
                         </div>
                         <div class="col-md-4">
                             <label>
-                                If any work issued by Agency/Dept./Owner<samp style="color: red"> * </samp>
+                                If any work order issued by Department/Owner<samp style="color: red"> * </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" TabIndex="18" Style="width: 100% !important;" OnSelectedIndexChanged="ddlAnyWork_SelectedIndexChanged" runat="server" AutoPostBack="true">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>

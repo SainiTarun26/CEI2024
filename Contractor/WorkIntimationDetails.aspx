@@ -360,7 +360,7 @@
                             <asp:TextBox class="form-control" ID="txtCompletitionDate" ReadOnly="true" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                         <div class="col-md-4">
-                            <label>If any work order issued by any Agency/ Dept. / Owner</label>
+                            <label>If any work order issued by Department/Owner</label>
                             <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" disabled Style="width: 100% !important;" runat="server" TabIndex="16" AutoPostBack="true">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
