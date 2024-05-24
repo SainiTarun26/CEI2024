@@ -39,7 +39,7 @@ namespace CEIHaryana.TestReportModal
                             //CreatedDate.Visible = true;
                         }
                     }
-                    else if (Session["SiteOwnerId"] != null)
+                    else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"] != "")
                     {                       
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
@@ -52,7 +52,7 @@ namespace CEIHaryana.TestReportModal
                         //SubmitDate.Visible = true;
                         //SubmitBy.Visible = true;
                     }
-                    else if (Session["InspectionTestReportId"] != null)
+                    else if (Session["InspectionTestReportId"] != null && Session["InspectionTestReportId"] != "")
                     {
                         ID = Session["InspectionTestReportId"].ToString();
                         GetDetailswithId();

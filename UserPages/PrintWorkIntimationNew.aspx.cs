@@ -200,11 +200,11 @@ namespace CEIHaryana.UserPages
                 ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
                 //if (ddlApplicantType.Text.Trim() == "1")
                 //{}
-                if (ddlApplicantType.SelectedIndex == 2)
-                {
-                    DivPoweUtility.Visible = true;
-                    DivPoweUtilityWing.Visible = true;
-                }
+                //if (ddlApplicantType.SelectedIndex == 2)
+                //{
+                //    DivPoweUtility.Visible = true;
+                //    DivPoweUtilityWing.Visible = true;
+                //}
                 string dp_Id14 = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
                 ddlPoweUtility.SelectedIndex = ddlPoweUtility.Items.IndexOf(ddlPoweUtility.Items.FindByText(dp_Id14));
                 string dp_Id15 = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
@@ -333,6 +333,7 @@ namespace CEIHaryana.UserPages
                 if (TestReportGenerated.Trim() == "Yes")
                 {
                     txtPAN.Attributes.Add("readonly", "readonly");
+                    txtwIpID.Attributes.Add("readonly", "readonly");
                     ddlworktype.Attributes.Add("disabled", "disabled");
                     txtName.Attributes.Add("readonly", "readonly");
                     txtagency.Attributes.Add("readonly", "readonly");

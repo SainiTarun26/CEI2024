@@ -133,7 +133,7 @@
                                         <label for="Name">
                                             Applicant Type:
                                         </label>
-                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                        <asp:DropDownList class="form-control select-form select2" disabled AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                            <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
                                            <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
@@ -177,7 +177,7 @@
 
                                     <div class="col-4">
                                         <label>Electrical Installation For</label>
-                                        <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
+                                        <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" disabled  AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                             <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
                                             <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
@@ -220,7 +220,7 @@
 
                                     <div class="col-4" runat="server">
                                         <label>District:</label>
-                                        <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
+                                        <asp:DropDownList class="form-control  select-form select2" disabled runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
                                         </asp:DropDownList>
                                     </div>
 
@@ -251,7 +251,7 @@
                                     <div class="col-4">
                                         <label>Type of Premises</label>
 
-                                        <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlPremises" TabIndex="10" selectionmode="Multiple" Style="width: 100% !important">
+                                        <asp:DropDownList class="form-control  select-form select2" disabled runat="server" AutoPostBack="true" ID="ddlPremises" TabIndex="10" selectionmode="Multiple" Style="width: 100% !important">
                                         </asp:DropDownList>
                                     </div>
 
@@ -262,7 +262,7 @@
 
                                     <div class="col-4">
                                         <label>Highest Voltage Level of Work</label>
-                                        <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
+                                        <asp:DropDownList class="form-control  select-form select2" disabled Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -364,7 +364,7 @@
                                     <div class="col-4">
                                         <label>If any work order issued by Deptartment/Owner:</label>
 
-                                        <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" TabIndex="18" Style="width: 100% !important;" runat="server" AutoPostBack="true">
+                                        <asp:DropDownList class="form-control  select-form select2" disabled ID="ddlAnyWork" TabIndex="18" Style="width: 100% !important;" runat="server" AutoPostBack="true">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                             <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
                                             <asp:ListItem Text="No" Value="No"></asp:ListItem>
