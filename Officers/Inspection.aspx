@@ -161,6 +161,28 @@
             color: white;
         }
     </style>
+    
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+
+            alert('Inspection Request is Successfully Accepted');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
+        function alertWithRedirectdataReturn() {
+            alert('Inspection Request is Returned to Site Owner');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
+
+        function alertWithRedirectdataSupervisorReturn() {
+            alert('Inspection Request is Returned to Supervisor');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
+
+        function alertWithRedirectdataCommonReturn() {
+            alert('Inspection Request is Returned to Owner/Supervisor');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -349,25 +371,4 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        function alertWithRedirectdata() {
-
-            alert('Inspection Request is Successfully Accepted');
-            window.location.href = "/Officers/NewApplications.aspx";
-        }
-        function alertWithRedirectdataReturn() {
-            alert('Inspection Request is Returned to Site Owner');
-            window.location.href = "/Officers/NewApplications.aspx";
-        }
-
-        function alertWithRedirectdataSupervisorReturn() {
-            alert('Inspection Request is Returned to Supervisor');
-            window.location.href = "/Officers/NewApplications.aspx";
-        }
-
-        function alertWithRedirectdataCommonReturn() {
-            alert('Inspection Request is Returned to Owner/Supervisor');
-            window.location.href = "/Officers/NewApplications.aspx";
-        }
-    </script>
 </asp:Content>

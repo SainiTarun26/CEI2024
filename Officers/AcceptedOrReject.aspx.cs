@@ -83,7 +83,7 @@ namespace CEIHaryana.Officers
                     }
                     else if (e.CommandName == "Print")
                     {
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
+                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
                     }
                 }
             }
