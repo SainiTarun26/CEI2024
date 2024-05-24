@@ -23,7 +23,7 @@ namespace CEIHaryana.TestReportModal
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["ContractorID"] != null)
+                    if (Session["ContractorID"] != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
                         //HiddenField1.Value = "0";
                         Session["LineOtp"] = "0";
@@ -42,7 +42,7 @@ namespace CEIHaryana.TestReportModal
                             FinalSubmit.Visible = true;
                         }
                     }
-                    else if (Session["SiteOwnerId"] != null)
+                    else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
                     {
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
@@ -55,7 +55,7 @@ namespace CEIHaryana.TestReportModal
                         ////SubmitDate.Visible = true;
                         ////SubmitBy.Visible = true;//Added
                     }
-                    else if (Session["InspectionTestReportId"] != null)
+                    else if (Session["InspectionTestReportId"] != null && Session["InspectionTestReportId"].ToString() != "")
                     {
                         ID = Session["InspectionTestReportId"].ToString();
                         GetDetailswithId();
@@ -64,7 +64,7 @@ namespace CEIHaryana.TestReportModal
                         ApprovalCard.Visible = true;
                         btnNext.Text = "Back";
                     }
-                    else if (Session["IntimationForHistoryId"] != null)
+                    else if (Session["IntimationForHistoryId"] != null && Session["IntimationForHistoryId"].ToString() != "")
                     {
                         ID = Session["IntimationForHistoryId"].ToString();
                         GetDetailswithId();
@@ -73,7 +73,7 @@ namespace CEIHaryana.TestReportModal
                     }
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
                     {
-                        if (Session["SupervisorID"] != null)
+                        if (Session["SupervisorID"] != null && Session["SupervisorID"].ToString() != "")
                         {
                             ////SubmitDate.Visible = true;
                             ////SubmitBy.Visible = true;
