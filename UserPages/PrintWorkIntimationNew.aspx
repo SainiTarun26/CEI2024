@@ -362,7 +362,7 @@
                                         </asp:TextBox>
                                     </div>
                                     <div class="col-4">
-                                        <label>If any work order issued by Deptartment/Owner:</label>
+                                        <label>Work Order Issued by Dept./Owner:</label>
 
                                         <asp:DropDownList class="form-control  select-form select2" disabled ID="ddlAnyWork" TabIndex="18" Style="width: 100% !important;" runat="server" AutoPostBack="true">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>

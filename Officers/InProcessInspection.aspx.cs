@@ -65,7 +65,6 @@ namespace CEIHaryana.Officers
         {
             try
             {
-
                 ID = Session["InProcessInspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
