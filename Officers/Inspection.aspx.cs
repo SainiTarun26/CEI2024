@@ -209,11 +209,11 @@ namespace CEIHaryana.Officers
                         {
                             if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataSupervisorReturn();", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
                             }
                             if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataReturn();", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
                             }
                         }
                     }

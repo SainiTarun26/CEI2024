@@ -153,7 +153,7 @@
 
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name">
+                            <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name" Visible ="false">
                                 <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
 
                                 <ItemStyle HorizontalAlign="center" Width="32%" />

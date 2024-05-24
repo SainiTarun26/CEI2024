@@ -364,5 +364,10 @@
             alert('Inspection Request is Returned to Supervisor');
             window.location.href = "/Officers/NewApplications.aspx";
         }
+
+        function alertWithRedirectdataCommonReturn() {
+            alert('Inspection Request is Returned to Owner/Supervisor');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
     </script>
 </asp:Content>

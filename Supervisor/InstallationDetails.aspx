@@ -91,7 +91,7 @@
         }
 
         .ReturnedRowColor {
-            background-color: indianred !important;
+            background-color: #f9c7c7 !important;
         }
     </style>
 </asp:Content>
