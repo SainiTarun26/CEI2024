@@ -48,6 +48,21 @@
     </script>
 
     <style>
+        div#SubmitBy{
+            margin-top:1px;
+        }
+        div#SubmitDate{
+            margin-top:1px;
+        }
+        div#Div10{
+            margin-top:1px;
+        }
+        div#Div12{
+            margin-top:1px;
+        }
+        div#Div13{
+            margin-top:1px;
+        }
         .page1 {
             box-sizing: border-box;
             min-height: 100vh;
@@ -80,7 +95,7 @@
         .col-4 {
             top: 0px;
             left: 0px;
-            margin-top: 3%;
+            margin-top: 2%;
         }
 
         .col-3 {
@@ -350,7 +365,7 @@
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <label for="Voltage">
-                                                            Load breaking capacity of breaker (IN KA)  
+                                                            Load breaking capacity of breaker 
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerCapacity" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -819,7 +834,7 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;margin-top:3%;">
                                     Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
                                 </div>
                                 <div class="row">
@@ -836,12 +851,12 @@
                                         <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;margin-top:3%;">
                                     Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
                                 </div>
                                 <div id="Div9" runat="server">
                                     <div class="row" style="padding-bottom: 20px;">
-                                        <div class="col-4">
+                                        <div class="col-4" style="margin-top:1px;">
                                             <label>
                                                 Test Report Created Date
                                             </label>
@@ -855,7 +870,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-title fw-semibold mb-4" id="ApprovalTitle" visible="false" runat="server" style="font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title fw-semibold mb-4" id="ApprovalTitle" visible="false" runat="server" style="font-weight: 700; margin-bottom: 0px !important;margin-top:2%;">
                                     Test Report Approval Details
                                 </div>
                                 <div class="row" style="padding-bottom: 20px;" id="DivApproval" visible="false" runat="server">

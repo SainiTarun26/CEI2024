@@ -47,6 +47,24 @@
     </script>
 
     <style>
+        div#Div4{
+            margin-top:1px;
+        }
+        div#Div5{
+            margin-top:1px;
+        }
+        div#CreatedDate{
+            margin-top:1px;
+        }
+        div#Div3{
+            margin-top:1px;
+        }
+        div#SubmitDate1{
+            margin-top:1px;
+        }
+        div#SubmitBy1{
+            margin-top:1px;
+        }
         .page1 {
             box-sizing: border-box;
             min-height: 100vh;
@@ -830,7 +848,7 @@
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;margin-top:3%;">
                                     Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
                                 </div>
                                 <div class="row">
@@ -847,7 +865,7 @@
                                         <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;margin-top:3%;">
                                     Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
                                 </div>
                                 <div id="Div2" runat="server">
@@ -868,7 +886,7 @@
                                                                           </div>
                                 </div>
                                 
-                                <div class="card-title fw-semibold mb-4" id="ApprovalTitle" visible="false" runat="server"  style="font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title fw-semibold mb-4" id="ApprovalTitle" visible="false" runat="server"  style="font-weight: 700; margin-bottom: 0px !important;margin-top:2%;">
                                     Test Report Approval Details</div>
                                 <div class="row" style="padding-bottom: 20px;"  id="DivApproval" visible="false" runat="server">
                                     <div class="col-4" id="Div4" runat="server">

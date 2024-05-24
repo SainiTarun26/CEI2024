@@ -896,7 +896,7 @@ div#SubmitBy1 {
                                         </div>--%>
                                     </div>
                                 </div>
-                                <div class="card-title" style="margin-top: 3%;font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title" style="margin-top: 5%;font-weight: 700; margin-bottom: 0px !important;">
                                     Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
                                 </div>
                                 <div class="row">
@@ -913,7 +913,7 @@ div#SubmitBy1 {
                                         <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="card-title" style="margin-top: 3%;font-weight: 700; margin-bottom: 0px !important;">
+                                <div class="card-title" style="margin-top: 5%;font-weight: 700; margin-bottom: 0px !important;">
                                     Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
                                 </div>
                                 <div id="Div9" runat="server">
@@ -934,7 +934,7 @@ div#SubmitBy1 {
                                 </div>
                                 <br />
 
-                                <div class="card-title" id="ApprovalTitle" visible="false" runat="server" style="margin-top: 3%;font-weight: 700; margin-bottom: 0px !important;">Test Report Approval Details</div>
+                                <div class="card-title" id="ApprovalTitle" visible="false" runat="server" style="margin-top: 2%;font-weight: 700; margin-bottom: 0px !important;">Test Report Approval Details</div>
                                 <div class="row" id="DivApproval" style="padding-bottom: 20px;" visible="false" runat="server">
                                     <div class="col-4" id="Div12" runat="server">
                                         <label>
