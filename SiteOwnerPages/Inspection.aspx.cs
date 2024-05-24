@@ -196,17 +196,20 @@ namespace CEIHaryana.SiteOwnerPages
         {
             LinkButton lnkRedirect = (LinkButton)sender;
             string testReportId = lnkRedirect.CommandArgument;
-            Session["InspectionTestReportId"] = testReportId;
+            //Session["InspectionTestReportId"] = testReportId;
             if (txtWorkType.Text.Trim() == "Line")
             {
+                Session["LineID"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
+                Session["SubStationID"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
             }
             else if (txtWorkType.Text.Trim() == "Generating Set")
             {
+                Session["GeneratingSetId"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
 
