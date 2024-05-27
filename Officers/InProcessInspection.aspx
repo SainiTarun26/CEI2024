@@ -324,7 +324,7 @@
                 <div class="row card" style="padding-top: 10px;margin-left:0px !important;">
                     <div class="col-12">
                        
-                         <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                         <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" onRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">

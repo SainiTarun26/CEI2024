@@ -23,6 +23,11 @@ namespace CEIHaryana.TestReportModal
             {
                 if (!Page.IsPostBack)
                 {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
+
                     if (Session["ContractorID"] != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
                         //HiddenField1.Value = "0";
@@ -655,7 +660,16 @@ namespace CEIHaryana.TestReportModal
 
             if (btnNext.Text.Trim() == "Back")
             {
-                Response.Redirect("/Officers/Inspection.aspx", false);
+                if (Session["PreviousPage"] != null)
+                {
+                    string previousPageUrl = Session["PreviousPage"].ToString();
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousInspPage"] = null;
+                }
+                else
+                {
+                    Response.Redirect("/Officers/Inspection.aspx", false);                    
+                }
             }
             else
             {
@@ -666,7 +680,15 @@ namespace CEIHaryana.TestReportModal
         {
             if (Session["AdminID"] != null)
             {
-                Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
+                   // return;
+                }
+               // Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
             }
             else
             {

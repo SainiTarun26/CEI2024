@@ -230,7 +230,7 @@
             <div class="row card" style="padding-top: 10px;">
                 <div class="col-12">
 
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" onRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">

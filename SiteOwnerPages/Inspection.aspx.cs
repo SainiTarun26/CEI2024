@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -847,6 +848,26 @@ namespace CEIHaryana.SiteOwnerPages
                 ds.Dispose();
             }
             catch { }
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                if (status == "RETURN")
+                {
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                }
+            }
+
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+
+                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
+                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+            }
         }
     }
 }

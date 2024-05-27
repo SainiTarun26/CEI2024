@@ -20,6 +20,11 @@ namespace CEIHaryana.TestReportModal
             {
                 if (!Page.IsPostBack)
                 {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
+
                     if (Session["ContractorID"] != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
                         Session["SubstationOtp"] = "0";
@@ -74,16 +79,12 @@ namespace CEIHaryana.TestReportModal
                     {
                         if (Session["SupervisorID"] != null && Session["SupervisorID"].ToString() != "")
                         {
-                            //SubmitDate.Visible = true;
-                            //SubmitBy.Visible = true;
+                           
                             
                         }
                         if (Session["AdminID"] != null)
                         {
-                            //Contractor.Visible = true;
-                            //SubmitBy.Visible = true;
-                            //SubmitDate.Visible = true;
-                            //CreatedDate.Visible = true;
+                            
                         }
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
@@ -574,7 +575,15 @@ namespace CEIHaryana.TestReportModal
         {
             if (Session["AdminID"] != null)
             {
-                Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
+                    //return;
+                    //Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
+                }
             }
             else
             {
@@ -586,7 +595,16 @@ namespace CEIHaryana.TestReportModal
         {
             if (btnNext.Text.Trim() == "Back")
             {
-                Response.Redirect("/Officers/Inspection.aspx", false);
+                if (Session["PreviousPage"] != null)
+                {
+                    string previousPageUrl = Session["PreviousPage"].ToString();
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousInspPage"] = null;
+                }
+                else
+                {
+                    Response.Redirect("/Officers/Inspection.aspx", false);
+                }
             }
             else
             {

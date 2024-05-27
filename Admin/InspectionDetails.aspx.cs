@@ -3,6 +3,7 @@ using Pipelines.Sockets.Unofficial.Arenas;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -33,12 +34,12 @@ namespace CEIHaryana.Admin
                     }
                     else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["LineID"]) != "")
                     {
-                        txtWorkType.Text = "Generating Station";
+                        txtWorkType.Text = "Generating Set";
                         Id = Session["GeneratingSetId"].ToString();
                     }
 
                     GetDetailsWithId();
-
+                    GetTestReportData();
                 }
             }
             catch (Exception ex)
@@ -199,6 +200,48 @@ namespace CEIHaryana.Admin
             }
         }
 
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                if (status == "RETURN")
+                {
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                }
+            }
+
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+
+                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
+                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+            }
+        }
+
+        protected void lnkRedirect_Click(object sender, EventArgs e)
+        {
+            LinkButton lnkRedirect = (LinkButton)sender;
+            string AdminTestReportId = lnkRedirect.CommandArgument;
+            //Session["InspectionTestReportIdForAdmin"] = AdminTestReportId;
+            if (txtWorkType.Text.Trim() == "Line")
+            {
+                Session["LineID"] = AdminTestReportId;
+                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+            }
+            else if (txtWorkType.Text.Trim() == "Substation Transformer")
+            {
+                Session["SubStationID"] = AdminTestReportId;
+                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+            }
+            else if (txtWorkType.Text.Trim() == "Generating Set")
+            {
+                Session["GeneratingSetId"] = AdminTestReportId;
+                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+            }
+        }
+
         protected void GridBindDocument()
         {
             try
@@ -225,6 +268,34 @@ namespace CEIHaryana.Admin
 
                 //throw;
             }
+        }
+        private void GetTestReportData()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReport(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                //Session["TestRportId"] = TestRportId;
+
+                ds.Dispose();
+            }
+            catch { }
         }
     }
 }
