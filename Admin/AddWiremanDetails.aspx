@@ -43,7 +43,7 @@
             }
         }
 
-        .col-4 {
+        .col-md-4 {
             top: 0px;
             left: 0px;
         }
@@ -148,7 +148,7 @@
 
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Name">
                                 Full Name
                                 <samp style="color: red">* </samp>
@@ -158,7 +158,7 @@
 
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="FatherName">
                                 Father's Name<samp style="color: red"> * </samp>
                             </label>
@@ -166,7 +166,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFatherName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Father Name</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="age">
                                 Date Of Birth
                                 <samp style="color: red">* </samp>
@@ -179,7 +179,7 @@
                     </div>
                     <div class="row" style="margin-top: 15px;">
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Contect">Contact No.</label>
                             <asp:TextBox class="form-control" ID="txtContect" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" TabIndex="3" MaxLength="10" onkeypress="return isNumberKey(event)" onkeyup="isvalidphoneno();" Style="margin-left: 18px"></asp:TextBox>
                             <span id="lblErrorContect" style="color: red"></span>
@@ -187,7 +187,7 @@
                         </div>
 
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Address">
                                 Address<samp style="color: red"> * </samp>
                             </label>
@@ -195,7 +195,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                                 <ContentTemplate>
                                     <label>
@@ -210,7 +210,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
                                     <label>
@@ -223,12 +223,12 @@
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Pincode">Pincode</label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtPincode" runat="server" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="6"></asp:TextBox>
                             <span id="lblPinError" style="color: red"></span>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
 
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
@@ -247,7 +247,7 @@
                     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                         <ContentTemplate>
                             <div class="row" style="margin-top: 15px;">
-                                <div class="col-4" id="txtQualification" runat="server" visible="false">
+                                <div class="col-md-4" id="txtQualification" runat="server" visible="false">
 
                                     <label for="Qualification">
                                         Other Qualification<samp style="color: red"> * </samp>
@@ -256,7 +256,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtQualifications" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Qualification</asp:RequiredFieldValidator>
 
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <label for="Email">Email</label>
                                     <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtEmail" runat="server" Style="margin-left: 18px" TabIndex="8" onkeyup="ValidateEmail();"></asp:TextBox>
                                     <span id="lblError" style="color: red"></span>
@@ -271,20 +271,20 @@
 
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="CertificateOld">
                                 Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertifacateOld" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="CertificateNew">
                                 Ceritifcate No.(New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
                             <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofIntialissue">
                                 Date of Initial Issue<samp style="color: red"> * </samp>
                             </label>
@@ -295,7 +295,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofRenewal">
                                 Date of Renewal<samp style="color: red"> * </samp>
                             </label>
@@ -305,7 +305,7 @@
                           ErrorMessage="Renewal Date must be greater than Expiry Date"
                           Display    ="Dynamic" ForeColor="Red" />--%>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofRenewal">
                                 Date of Expiry<samp style="color: red"> * </samp>
                             </label>
@@ -316,7 +316,7 @@
                                 Display       ="Dynamic" ForeColor="Red" />--%>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                 <ContentTemplate>
                                     <label style="width: 100% !important;">
@@ -337,7 +337,7 @@
                     <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                         <ContentTemplate>
                             <div class="row" id="rowContractorDetails" runat="server">
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <label>
                                         Attached Contractor Detail's<samp style="color: red"> * </samp>
                                     </label>
@@ -346,7 +346,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Contractor Details" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlContractorDetails" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <asp:HiddenField ID="hdnId" runat="server" />
                                 </div>
                             </div>
@@ -354,8 +354,8 @@
                     </asp:UpdatePanel>
                 </div>
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" TabIndex="16"
                             ValidationGroup="Submit"  OnClick="btnSubmit_Click" /> <%--OnClientClick="validateForm()"--%>
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" TabIndex="17"
@@ -367,7 +367,7 @@
                 </div>
             </div>
 
-            <div class="col-4"></div>
+            <div class="col-md-4"></div>
         </div>
     </div>
     <!-- partial:../../partials/_footer.html -->

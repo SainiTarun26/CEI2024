@@ -247,7 +247,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="AcceptedOrRejected" HeaderText="Status Of Application">
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Status Of Application">
                                     <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="13%" />
                                 </asp:BoundField>

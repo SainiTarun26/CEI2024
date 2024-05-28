@@ -51,7 +51,7 @@
         }
     </script>
     <style>
-        .col-4 {
+        .col-md-4 {
             top: 0px;
             left: 0px;
         }
@@ -135,7 +135,7 @@
 
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+                    <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">SUPERVISOR DETAILS</h6>
                     </div>
                     <div class="col-md-4"></div>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-sm-4" style="text-align: center;">
+                    <div class="col-md-4" style="text-align: center;">
 
                         <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Data Updated Successfully !!!.
@@ -160,7 +160,7 @@
                        <ContentTemplate>
                     
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Name">
                                 Name<samp style="color: red"> * </samp>
                             </label>
@@ -169,7 +169,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="FatherName">
                                 Father's Name<samp style="color: red"> * </samp>
                             </label>
@@ -178,7 +178,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FatherName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Father Name</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="age">
                                 Date Of Birth<samp style="color: red"> * </samp>
                             </label>
@@ -190,7 +190,7 @@
                     </div>
                     <div class="row" style="margin-top: 15px;">
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Address">
                                 Address<samp style="color: red"> * </samp>
                             </label>
@@ -199,7 +199,7 @@
 
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
                                     <label>
@@ -213,7 +213,7 @@
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
                                     <label>
@@ -231,7 +231,7 @@
 
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="Pincode">
                                 Pincode
                             </label>
@@ -239,7 +239,7 @@
                             <span id="lblPinError" style="color: red"></span>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="ContactNo">Contact No.<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="ContactNo" autocomplete="off" runat="server" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" TabIndex="6"
@@ -248,7 +248,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ContactNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                 <ContentTemplate>
                                     <label for="Qualification">
@@ -269,7 +269,7 @@
                     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                         <ContentTemplate>
                             <div class="row" style="margin-top: 10px;">
-                                <div class="col-4" id="txtQualification" runat="server" visible="false">
+                                <div class="col-md-4" id="txtQualification" runat="server" visible="false">
 
 
                                     <label for="txtQualification">
@@ -280,7 +280,7 @@
 
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <label for="Email">Email</label>
                                     <asp:TextBox class="form-control" ID="Email" autocomplete="off" onkeydown="return preventEnterSubmit(event)" runat="server" Style="margin-left: 18px" TabIndex="8" onkeyup="return ValidateEmail();"></asp:TextBox>
                                     <span id="lblError" style="color: red"></span>
@@ -295,13 +295,13 @@
 
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="CertificateOld">
                                 Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateOld" runat="server" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="CertificateNew">
                                 Certificate No. (New)<samp style="color: red"> * </samp>
                             </label>
@@ -309,7 +309,7 @@
                             <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one certificate" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofIntialissue">
                                 Date of Initial issue<samp style="color: red"> * </samp>
                             </label>
@@ -321,7 +321,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofExpiry">
                                 Date of Expiry<samp style="color: red"> * </samp>
                             </label>
@@ -332,7 +332,7 @@
                                 ErrorMessage="Expiry Date must be greater than Issue Date"
                                 Display="Dynamic" ForeColor="Red" />--%>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofRenewal">
                                 Date of Renewal<samp style="color: red"> * </samp>
                             </label>
@@ -342,7 +342,7 @@
                                 ErrorMessage="Renewal Date should be smaller than Expire Date"
                                 Display="Dynamic" ForeColor="Red" />--%>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                 <ContentTemplate>
                                     <label>
@@ -356,7 +356,7 @@
                             </asp:UpdatePanel>
 
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:HiddenField ID="hdnId" runat="server" />
                         </div>
                     </div>
@@ -364,7 +364,7 @@
                     <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                         <ContentTemplate>
                             <div class="row" style="margin-top: 15px;">
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <label for="voltageWithEffect">
                                         Current Authorised Voltage Level(with effect from)<samp style="color: red"> * </samp>
                                     </label>
@@ -372,7 +372,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="voltageWithEffect" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select Voltage Level(with effect from)</asp:RequiredFieldValidator>
 
                                 </div>
-                                <div class="col-4">
+                                <div class="col-md-4">
                                     <label>
                                         Attached with any Contractor<samp style="color: red"> * </samp>
                                     </label>
@@ -385,7 +385,7 @@
 
                                 </div>
 
-                                <div class="col-4" id="rowContractorDetails" runat="server">
+                                <div class="col-md-4" id="rowContractorDetails" runat="server">
                                     <label>
                                         Current Attached Contractor Detail's<samp style="color: red"> * </samp>
                                     </label>
@@ -401,15 +401,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" TabIndex="18"
                             ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                         <asp:Button ID="BtnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" TabIndex="19"
                             Style="padding-left: 17px; padding-right: 17px;"
                             OnClick="BtnReset_Click" />
 
-                        <div class="col-4"></div>
+                        <div class="col-md-4"></div>
                     </div>
                 </div>
             </div>

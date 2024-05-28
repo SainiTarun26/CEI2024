@@ -96,7 +96,7 @@ namespace CEIHaryana.Officers
                 {
                     Session["SubStationID"] = TestRportId;
                 }
-                else if (installationType.Trim() == "Generating Station")
+                else if (installationType.Trim() == "Generating Set")
                 {
                     Session["GeneratingSetId"] = TestRportId;
                 }

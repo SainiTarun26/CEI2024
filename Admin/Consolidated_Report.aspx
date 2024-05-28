@@ -162,7 +162,7 @@
             scrollbar-width: none; /* Firefox */
         }
 
-        .col-4 {
+        .col-md-4 {
             top: 0px;
             left: 0px;
         }
@@ -290,7 +290,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4"></div>
-                    <div class="col-sm-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
+                    <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">CONSOLIDATED REPORT</h6>
                     </div>
                     <br />
@@ -299,7 +299,7 @@
                 <%-- <h7 class="card-title fw-semibold mb-4">Personal Details</h7>--%>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 35px;">
                     <div class="row" style="margin-top: 15px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>
                                 Type of Installation:        
                             </label>
@@ -310,14 +310,14 @@
                                 <asp:ListItem Value="3" Text="Generating Station"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>
                                 Division:
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="DdlDivision" TabIndex="8" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DdlDivision_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>
                                 District:
                             </label>
@@ -327,19 +327,19 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofRenewal">
                                 Application Submission Date From:
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtSubmitted" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="DateofRenewal">
                                 Application Submission Date To:
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtEndDate" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="LicenceNew">
                                 Owner Application No.:
                             </label>
@@ -347,13 +347,13 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="LicenceNew">
                                 GST No.:
                             </label>
                             <asp:TextBox class="form-control" MaxLength="50" onkeydown="return preventEnterSubmit(event)" ID="txtGST" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>
                                 Status:        
                             </label>
@@ -365,7 +365,7 @@
                                 <asp:ListItem Value="4" Text="Pending"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label>
                                 Pending With:
                             </label>
@@ -376,8 +376,8 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 15px;">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
                         <asp:Button ID="btnSubmit" Text="Show" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
                         <asp:Button ID="BtnExport" Text="Export" OnClientClick="printDiv('printableDiv');" runat="server" class="btn btn-primary mr-2"
                             Style="padding-left: 17px; padding-right: 17px;" />
@@ -386,7 +386,7 @@
                         <%--                              <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" 
                 Style="background: linear-gradient(135deg, hsla(318, 44%, 51%, 1) 0%, hsla(347, 94%, 48%, 1) 100%); border-color: #d42766;" OnClientClick="printDiv('printableDiv');"/>--%>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <asp:HiddenField ID="hdnId" runat="server" />
                     </div>
                 </div>
@@ -454,11 +454,11 @@
                             </Columns>
                         </asp:GridView>
                         <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-4" style="text-align: center;">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4" style="text-align: center;">
                                 <asp:LinkButton ID="LinkButton2" class="btn btn-primary" runat="server" OnClick="LinkButton2_Click" Style="margin-top: 10px; margin-bottom: 10px;">Download in Excel</asp:LinkButton>
                             </div>
-                            <div class="col-4"></div>
+                            <div class="col-md-4"></div>
                         </div>
                         <%-- <table class="table table-responsive table-striped table-hover table-bordered example">
                             <thead style="background: #604db8; color: white;">

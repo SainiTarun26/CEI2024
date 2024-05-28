@@ -73,7 +73,7 @@
             COLOR: WHITE;
         }
 
-        .col-lg-6 {
+        .col-md-6 {
             max-width: 47% !important;
         }
 
@@ -785,7 +785,7 @@ text-decoration: underline;
                         <div class="card" style="background: #f9f9f9; margin: 5px; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-top: 15px; margin: 18px;">
                             <div class="row" style="margin-left: 4px;">
 
-                                <div class="col-lg-6">
+                                <div class="col-md-6">
                                     <div class="au-card m-b-30">
                                         <div class="au-card-inner" style="text-align: -webkit-center !important;">
                                             <h3 class="title-2 m-b-40">Pending Status(division Wise)</h3>
@@ -793,7 +793,7 @@ text-decoration: underline;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6" style="margin-left: 53px !important;">
+                                <div class="col-md-6">
                                     <div class="au-card m-b-30">
                                         <div class="au-card-inner" style="text-align: -webkit-center !important;">
                                             <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
@@ -806,7 +806,7 @@ text-decoration: underline;
                             <div class="row" style="margin-top: -10px !important;">
                                 <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 35px; border-radius: 10px;">
 
-                                    <div class="col-lg-12">
+                                    <div class="col-md-12">
                                         <h2 class="title-1 m-b-25">Division Wise Report</h2>
 
                                         <div>

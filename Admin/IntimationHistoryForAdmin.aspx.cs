@@ -51,36 +51,64 @@ namespace CEIHaryana.Admin
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            Session["LineID"] = "";
-            Session["SubStationID"] = "";
-            Session["GeneratingSetId"] = "";
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    Session["LineID"] = "";
+                    Session["SubStationID"] = "";
+                    Session["GeneratingSetId"] = "";
 
-            Control ctrl = e.CommandSource as Control;
-            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-            Label lblID = (Label)row.FindControl("lblID");
-            Session["InspectionId"] = lblID.Text;
-            Label lblApproval = (Label)row.FindControl("lblApproval");
-            Session["Approval"] = lblApproval.Text.Trim();
-            Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
-            string installationType = lblInstallationType.Text.Trim();
-            Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
-            string TestRportId = lblTestRportId.Text.Trim();
-            if (installationType.Trim() == "Line")
-            {
-                Session["LineID"] = installationType;
-            }
-            else if (installationType.Trim() == "Substation Transformer")
-            {
-                Session["SubStationID"] = TestRportId;
-            }
-            else if (installationType.Trim() == "Generating Set")
-            {
-                Session["GeneratingSetId"] = TestRportId;
-            }
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Session["InspectionId"] = lblID.Text;
+                    Label lblApproval = (Label)row.FindControl("lblApproval");
+                    Session["Approval"] = lblApproval.Text.Trim();
+                    Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                    string installationType = lblInstallationType.Text.Trim();
+                    Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
+                    string TestRportId = lblTestRportId.Text.Trim();
+                    if (installationType.Trim() == "Line")
+                    {
+                        Session["LineID"] = installationType;
+                    }
+                    else if (installationType.Trim() == "Substation Transformer")
+                    {
+                        Session["SubStationID"] = TestRportId;
+                    }
+                    else if (installationType.Trim() == "Generating Set")
+                    {
+                        Session["GeneratingSetId"] = TestRportId;
+                    }
 
-            if (e.CommandName == "Select")
+                    if (e.CommandName == "Select")
+                    {
+                        Response.Redirect("/Admin/IntimationForHistory.aspx");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                Response.Redirect("/Admin/IntimationForHistory.aspx");
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView1.PageIndex = e.NewPageIndex;
+                BindGrid();
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }

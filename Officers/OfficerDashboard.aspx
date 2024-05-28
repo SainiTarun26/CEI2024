@@ -70,7 +70,7 @@
             COLOR: WHITE;
         }
 
-        .col-lg-6 {
+        .col-md-6 {
             max-width: 47% !important;
         }
 
@@ -607,7 +607,7 @@
                     <ContentTemplate>
                         <div class="card" style="background: #f9f9f9; margin: 15px; margin-top: 10px; margin-bottom: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 0px 24px 5px 25px; border-radius: 10px;">
                             <div class="row m-t-25">
-                                <div class="col-sm-6 col-lg-3">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="overview-item overview-item--c1">
                                         <div class="overview__inner">
                                             <a href="TotalRequest.aspx">
@@ -631,7 +631,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-lg-3">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="overview-item overview-item--c2">
                                         <div class="overview__inner">
                                             <a href="AcceptedOrReject.aspx">
@@ -653,7 +653,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-lg-3">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="overview-item overview-item--c3">
                                         <div class="overview__inner">
                                             <a href="InProcessRequest.aspx">
@@ -677,7 +677,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-lg-3">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="overview-item overview-item--c4">
                                         <div class="overview__inner">
                                             <a href="NewApplications.aspx">
@@ -704,7 +704,7 @@
                         </div>
                         <div class="card" style="background: #f9f9f9; margin: 5px; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-top: 15px; margin: 18px;">
                             <div class="row" style="margin-left: 4px;">
-                                <div class="col-lg-6">
+                                <div class="col-md-6">
                                     <div class="au-card m-b-30">
                                         <div class="au-card-inner" style="text-align: -webkit-center !important;">
                                             <h3 class="title-2 m-b-40">Pending Status(District Wise)</h3>
@@ -712,7 +712,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6" style="margin-left: 53px !important;">
+                                <div class="col-md-6" style="margin-left: 53px !important;">
                                     <div class="au-card m-b-30">
                                         <div class="au-card-inner" style="text-align: -webkit-center !important;">
                                             <h3 class="title-2 m-b-40">Overall Applications Representation</h3>
@@ -723,7 +723,7 @@
                             </div>
                             <div class="row" style="margin-top: -10px !important;">
                                 <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 35px; border-radius: 10px;">
-                                    <div class="col-lg-12">
+                                    <div class="col-md-12">
                                         <h2 class="title-1 m-b-25">Division Wise Report</h2>
                                         <div>
                                             <div id="printableDiv2">
@@ -863,7 +863,7 @@
                                     </div>
                                 </div>
                                 <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 24%; border-radius: 10px; margin-left: 10px;">
-                                    <div class="col-lg-10">
+                                    <div class="col-md-10">
                                         <h2 class="title-1 m-b-25" style="color: white;">Officers Pendency</h2>
                                         <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
                                             <div class="au-card-inner">

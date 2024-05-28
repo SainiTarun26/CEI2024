@@ -510,10 +510,10 @@
                                                     SetFocusOnError="True" ValidationGroup="Submit">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
-                                                <div class="col-5">
+                                                <div class="col-md-5">
                                                     <div class="pass-link" style="text-align: initial; font-size: 13px; margin-top: 6px;"><a href="#">Forgot password?</a></div>
                                                 </div>
-                                                <div class="col-7">
+                                                <div class="col-md-7">
                                                     <div>
                                                         <label class="form-check-label text-muted">
                                                             <asp:CheckBox ID="chkSignedin" runat="server" class="form-check-input" />
@@ -588,7 +588,7 @@
                 <!-- ======= About Section ======= -->
                 <section id="about" class="about section-bg" style="margin-top: -40px;">
                     <div class="row">
-                        <div class="col-lg-2" style="margin-left: 20px;" data-aos="fade-right">
+                        <div class="col-md-2" style="margin-left: 20px;" data-aos="fade-right">
                             <div class="card" style="width: 220px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                 <div class="card-header"
                                     style="background-color: #106eea; color: #f9f9f9; text-align: center; font-weight: 700;">
@@ -640,7 +640,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-9" style="margin-top: -15px;">
+                        <div class="col-md-9" style="margin-top: -15px;">
                             <div class="container" data-aos="fade-up">
                                 <div class="row" style="margin-top: 15px;">
                                     <div class="col-lg-6" data-aos-delay="100">

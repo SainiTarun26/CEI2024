@@ -40,7 +40,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else if (Session["GeneratingSetId"] != null)
                     {
-                        txtWorkType.Text = "Generating Station";
+                        txtWorkType.Text = "Generating Set";
                         id = Session["GeneratingSetId"].ToString();
                     }
                     Session["Data1"] = txtWorkType.Text;
@@ -150,7 +150,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (Session["GeneratingSetId"] != null)
                 {
-                    txtWorkType.Text = "Generating Station";
+                    txtWorkType.Text = "Generating Set";
                     id = Session["GeneratingSetId"].ToString();
                 }
                 if (txtWorkType.Text == "Line")

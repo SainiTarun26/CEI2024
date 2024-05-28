@@ -69,7 +69,7 @@
             background-color: #eeeeee;
             border-color: #dddddd;
         }
-        .col-4 {
+        .col-md-4 {
             margin-bottom: 8px;
         }
 
@@ -153,21 +153,21 @@
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
-                    <div class="col-sm-4 col-md-4">
+                    <div class="col-md-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
                             <asp:Label ID="lblData" runat="server"></asp:Label></h6>
                     </div>
-                    <div class="col-sm-6 col-md-6"></div>
-                    <div class="col-sm-2 col-md-2">
+                    <div class="col-md-6 col-md-6"></div>
+                    <div class="col-md-2 col-md-2">
                         <asp:Button ID="btnAddnew" runat="server" class="btn btn-primary" Style="margin-left: 10px;" Text="Add New" OnClick="btnAddnew_Click" />
                     </div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: -30px;">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <div class="form-group row">
-                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                                <div class="col-sm-9" style="margin-left: -35px;">
+                                <label for="search" class="col-md-3 col-form-label" style="margin-top: -6px;">Search:</label>
+                                <div class="col-md-9" style="margin-left: -35px;">
                                     <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control"  Font-Size="12px" onkeydown="return SearchOnEnter(event);"  onkeyup="Search_Gridview(this)" ></asp:TextBox><br />
                                     <%----%>
                                 </div>

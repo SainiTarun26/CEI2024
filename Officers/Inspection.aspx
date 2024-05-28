@@ -62,7 +62,7 @@
             background-color: #9292cc !important;
         }
 
-        .col-4 {
+        .col-md-4 {
             margin-bottom: 15px;
         }
 
@@ -197,41 +197,41 @@
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Inspection Report No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label>
                             Type of Inspection
                    <%-- <samp style="color: red">* </samp>--%>
                         </label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label>
                             Type of Applicant
                         <%--<samp style="color: red"> * </samp>--%>
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label>
                             Type of Installation
                        <%-- <samp style="color: red"> * </samp>--%>
                         </label>
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" id="Capacity" runat="server">
+                    <div class="col-md-4" id="Capacity" runat="server">
                         <label for="Capacity">Capacity</label>
                         <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
                     </div>
-                    <div class="col-4" id="LineVoltage" runat="server">
+                    <div class="col-md-4" id="LineVoltage" runat="server">
                         <label for="Capacity">Voltage</label>
                         <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
                     </div>
 
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Voltage Level</label>
                         <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -242,43 +242,43 @@
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Owner Name</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-8" runat="server">
+                    <div class="col-md-8" runat="server">
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contact Details</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contractor Name</label>
                         <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contractor Phone No.</label>
                         <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Supervisor Name</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>TransactionId</label>
                         <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Transaction Date</label>
                         <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -290,7 +290,7 @@
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-12">
                         <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
@@ -323,13 +323,13 @@
 
 
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
 
                     </div>
                     <div class="row" style="margin-bottom: 30px;">
-                        <div class="col-12" style="text-align: center">
+                        <div class="col-md-12" style="text-align: center">
                             <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                         </div>
                     </div>
@@ -343,7 +343,7 @@
                         <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
 
 
-                        <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                        <div class="col-md-4" style="text-align: center" id="Rejection" runat="server" visible="false">
                             <label>
                                 ReasonType:        
                             </label>
@@ -363,8 +363,8 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4" style="text-align: center;">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align: center;">
                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>

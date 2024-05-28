@@ -443,7 +443,6 @@ namespace CEIHaryana.Admin
         {
             try
             {
-
                // BindDivisions();
                 ApprovalRequired.Visible = true;
                 DivToAssign.Visible = true;
@@ -451,7 +450,6 @@ namespace CEIHaryana.Admin
                 btnAction.Visible = false;
 
             }
-
             catch (Exception ex)
             {
 

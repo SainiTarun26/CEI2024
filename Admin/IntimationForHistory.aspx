@@ -77,7 +77,7 @@
             background-color: #9292cc !important;
         }
 
-        .col-4 {
+        .col-md-4 {
             margin-bottom: 15px;
         }
 
@@ -170,37 +170,37 @@
             </div>
               <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label>
                         Inspection ReportId
                 <%-- <samp style="color: red">* </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportId" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <label>
                         Type of Inspection
                  <%--<samp style="color: red">* </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <label>
                         Type of Applicant<%--<samp style="color: red"> * </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <label>
                         Type of Installation<%--<samp style="color: red"> * </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4" runat="server">
+                <div class="col-md-4" runat="server">
                     <label for="Pin">Voltage Level</label>
                     <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4" runat="server">
+                <div class="col-md-4" runat="server">
                     <label>District</label>
                     <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -211,33 +211,33 @@
             </div>
               <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
             <div class="row">
-                <div class="col-4" runat="server">
+                <div class="col-md-4" runat="server">
                     <label>SiteOwner Name</label>
                     <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4" runat="server">
+                <div class="col-md-4" runat="server">
                     <label>Contractor Name</label>
                     <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4" runat="server">
+                <div class="col-md-4" runat="server">
                     <label>Supervisor Name</label>
                     <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
 
-                <div class="col-4" runat="server">
+                <div class="col-md-4" runat="server">
                     <label>TransctionId</label>
                     <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-4" runat="server">
+                <div class="col-md-4" runat="server">
                     <label>Transcation Date</label>
                     <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
 
-               <div class="col-4" id="Capacity" runat="server">
+               <div class="col-md-4" id="Capacity" runat="server">
                 <label for="Capacity">Capacity</label>
                 <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
             </div>
-                 <div class="col-4"  id="LineVoltage" runat="server">
+                 <div class="col-md-4"  id="LineVoltage" runat="server">
                 <label for="Capacity">Voltage</label>
                 <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox> 
             </div>
@@ -277,17 +277,17 @@
             </div>
         </div>
         <div class="row" style="margin-bottom: 25px;">
-            <div class="col-4">
+            <div class="col-md-4">
                 <asp:TextBox ID="txtTestReportId" class="form-control" Visible="false" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
-            <%--<div class="col-4" style="text-align: center">
+            <%--<div class="col-md-4" style="text-align: center">
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report"></asp:LinkButton>
                 </div>--%>
         </div>
         <asp:UpdatePanel ID="UpdatePanel" runat="server">
             <ContentTemplate>
                 <div class="row" style="margin-top: -30px;">
-                    <div class="col-3" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -45px;">
+                    <div class="col-md-3" id="ApprovalRequired" runat="server" visible="false" style="margin-top: -45px;">
                         <br />
                         <br />
 
@@ -306,7 +306,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlDivisions" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
 
-                    <%--<div class="col-3" style="text-align: center" id="Rejection" runat="server" visible="false">
+                    <%--<div class="col-md-3" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
                         Reason For Rejection<samp style="color: red"> * </samp>
                     </label>
@@ -314,7 +314,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>--%>
 
-                    <div class="col-3" id="DivToAssign" runat="server" visible="false" style="margin-top: -45px;">
+                    <div class="col-md-3" id="DivToAssign" runat="server" visible="false" style="margin-top: -45px;">
                         <br />
                         <br />
                         <label>To Assign Staff</label>
