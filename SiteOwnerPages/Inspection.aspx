@@ -37,6 +37,14 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
+
+     <script type="text/javascript">
+         function alertWithRedirectdata1() {
+             alert('Successfully submitted to contractor.');
+             window.location.href = 'InspectionHistory.aspx';
+         }
+
+     </script>
     <style>
         .submit {
             border: 1px solid #563d7c;
@@ -171,14 +179,14 @@
 
                 <div class="col-4">
                     <label>
-                        Type of Applicant<samp style="color: red"> * </samp>
+                        Type of Applicant
                     </label>
                     <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
                 <div class="col-4">
                     <label>
-                        Type of Installation<samp style="color: red"> * </samp>
+                        Type of Installation
                     </label>
                     <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -187,6 +195,10 @@
                     <label for="Pin">Voltage Level</label>
                     <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
+                </div>
+                <div class="col-4" runat="server">
+                    <label for="Pin">Application No.</label>
+                    <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
             </div>
             <div class="row">
@@ -248,10 +260,11 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                           <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
+
                             <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
@@ -259,6 +272,19 @@
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>
+                            <asp:BoundField  DataField="SubmittedDate" HeaderText="Submitted Date" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                              <asp:BoundField  DataField="ReturnDate" HeaderText="Return Date" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                             
+                            <asp:BoundField  DataField="ReasonForReturn" HeaderText="Return Reason" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
@@ -289,25 +315,34 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                 </div>
-                <div class="col-4"></div>
+                <%--<div class="col-4"></div>
                 <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
-                        <%--    Reason For Rejection<samp style="color: red"> * </samp>--%>
+                           Reason For Rejection<samp style="color: red"> * </samp>
                             Reason
                         <samp style="color: red">* </samp>
                     </label>
                     <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
-                </div>
+                </div>--%>
             </div>
+
+             <div class="row" id="Remarks" runat="server" visible="false">
+                <div class="col-12">
+                    <label>Remarks For Contractor<samp style="color: red">* </samp></label>
+                    <asp:TextBox class="form-control" ID="txtOwnerRemarks" autocomplete="off" TabIndex="7" runat="server" Style="width:100%;"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtOwnerRemarks" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                </div>
+                </div>
+
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
                     <asp:Button ID="btnSubmit" Text="Submit" Visible="false" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                         OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-
+                     <asp:Button ID="buttonSubmit" Text="Submit" Visible="false"  runat="server" ValidationGroup="Submit" OnClick="buttonSubmit_Click" class="btn btn-primary mr-2"/>
                     <br />
                     <%--<asp:Label ID="lblerror" runat="server" Text="Label"></asp:Label>--%>
                 </div>

@@ -682,7 +682,7 @@ namespace CEIHaryana.Supervisor
                         string CreatedBy = Session["SupervisorID"].ToString();
                         string installationNo = Session["IHID"].ToString();
                         string count = Session["NoOfInstallations"].ToString();
-                        CEI.InsertGeneratingSetData(Id_Update, count, GeneratingSetId, IntimationId,
+                        CEI.InsertGeneratingSetData(Id_Update, count, IntimationId,
                             ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
                    txtGeneratorVoltage.Text, txtCurrentCapacity.Text, txtBreakingCapacity.Text, ddlPlantType.SelectedItem.ToString(), ddlPlantCapacity.SelectedItem.ToString(),
                   txtPlantCapacity.Text, txtDCString.Text, txtLowestInsulation.Text, txtPCVOrSolar.Text, txtLTACCapacity.Text, txtLowestInsulationAC.Text,

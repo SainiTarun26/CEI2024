@@ -622,7 +622,7 @@ namespace CEI_PRoject
         }
         #endregion
         #region Insert Line Data
-        public void InsertLineData(string IdUpdate, string Count, string LineId, string IntimationId, string LineVoltage, string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
+        public void InsertLineData(string IdUpdate, string Count,  string IntimationId, string LineVoltage, string OtherVoltageType, string OtherVoltage, string LineLength, string LineType, string NoOfCircuit,
             string Conductortype, string NumberofPoleTower, string ConductorSize, string GroundWireSize, string NmbrofRailwayCrossing,
             string NmbrofRoadCrossing, string NmbrofRiverCanalCrossing, string NmbrofPowerLineCrossing, string NmbrofEarthing, string EarthingType1,
             string Valueinohms1, string EarthingType2, string Valueinohms2, string EarthingType3, string Valueinohms3, string EarthingType4, string Valueinohms4, string EarthingType5, string Valueinohms5, string
@@ -729,7 +729,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             #endregion
             cmd.Parameters.AddWithValue("@IdUpdate", String.IsNullOrEmpty(IdUpdate) ? null : IdUpdate);
             cmd.Parameters.AddWithValue("@Count", String.IsNullOrEmpty(Count) ? null : Count);
-            cmd.Parameters.AddWithValue("@Id", String.IsNullOrEmpty(LineId) ? null : LineId);
+            //cmd.Parameters.AddWithValue("@Id", String.IsNullOrEmpty(LineId) ? null : LineId);
             cmd.Parameters.AddWithValue("@IntimationId", String.IsNullOrEmpty(IntimationId) ? null : IntimationId);
             cmd.Parameters.AddWithValue("@LineVoltage", String.IsNullOrEmpty(LineVoltage) ? null : LineVoltage);
             cmd.Parameters.AddWithValue("@LineLength", String.IsNullOrEmpty(LineLength) ? null : LineLength);
@@ -811,7 +811,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         #endregion
 
         #region Insert Substation Data
-        public void InsertSubstationData(string IdUpdate, string Count, string Id, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string IdUpdate, string Count, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
             string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
             string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation, string OtherLALocation,
             string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
@@ -948,7 +948,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
             #endregion
             cmd.Parameters.AddWithValue("@IdUpdate", String.IsNullOrEmpty(IdUpdate) ? null : IdUpdate);
             cmd.Parameters.AddWithValue("@Count", String.IsNullOrEmpty(Count) ? null : Count);
-            cmd.Parameters.AddWithValue("@Id", String.IsNullOrEmpty(Id) ? null : Id);
+           // cmd.Parameters.AddWithValue("@Id", String.IsNullOrEmpty(Id) ? null : Id);
             cmd.Parameters.AddWithValue("@TestReportId", String.IsNullOrEmpty(TestReportId) ? null : TestReportId);
             cmd.Parameters.AddWithValue("@IntimationId", String.IsNullOrEmpty(IntimationId) ? null : IntimationId);
             cmd.Parameters.AddWithValue("@TransformerSerialNumber", String.IsNullOrEmpty(TransformerSerialNumber) ? null : TransformerSerialNumber);
@@ -1168,7 +1168,7 @@ EarthingType15, string Valueinohms15, string NoofPoleTowerForOverheadCable, stri
         }
         #endregion
         #region Insert GeneratingSet Data
-        public void InsertGeneratingSetData(string IdUpdate, string Count, string Id, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
+        public void InsertGeneratingSetData(string IdUpdate, string Count, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string CurrenntCapacityOfBreaker,
 string BreakingCapacityofBreaker, string TypeOfPlant, string CapacityOfPlantType, string CapacityOfPlant, string HighestVoltageLevelOfDCString, string LowestInsulationBetweenDCWireToEarth,
 string NoOfPowerPCV, string LTACBreakerCapacity, string ACCablesLowestInsulation, string NumberOfEarthing, string EarthingType1, string EarthingValue1, string UsedFor1, string OtherEarthing1, string EarthingType2,
 string EarthingValue2, string UsedFor2, string OtherEarthing2, string EarthingType3, string EarthingValue3, string UsedFor3, string OtherEarthing3, string EarthingType4, string EarthingValue4, string UsedFor4, string OtherEarthing4, string EarthingType5, string EarthingValue5,
@@ -1287,7 +1287,7 @@ string EarthingValue14, string UsedFor14, string OtherEarthing14, string Earthin
             #endregion
             cmd.Parameters.AddWithValue("@IdUpdate", IdUpdate);
             cmd.Parameters.AddWithValue("@Count", string.IsNullOrEmpty(Count) ? DBNull.Value : (object)Count);
-            cmd.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(Id) ? DBNull.Value : (object)Id);
+           // cmd.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(Id) ? DBNull.Value : (object)Id);
             cmd.Parameters.AddWithValue("@IntimationId", string.IsNullOrEmpty(IntimationId) ? DBNull.Value : (object)IntimationId);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacityType", string.IsNullOrEmpty(GeneratingSetCapacityType) ? DBNull.Value : (object)GeneratingSetCapacityType);
             cmd.Parameters.AddWithValue("@GeneratingSetCapacity", string.IsNullOrEmpty(GeneratingSetCapacity) ? DBNull.Value : (object)GeneratingSetCapacity);
@@ -3799,6 +3799,18 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet UploadSignature(string DivisionName, string Staff, byte[] Signature)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Upload_Signature", DivisionName, Staff, Signature);
+        }
+        public DataSet GetReturnInspectionForContractor(string ContractorLogin)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ReturnedInspection_PendingAssignment_AtContractor", ContractorLogin);
+        }
+        public DataSet GetAssignedGridDataForContractor(string ContractorLogin)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetAssigenedTestReportForContractor", ContractorLogin);
+        }
+        public DataSet ContractorRemarks(string ID, string TestRportId, string RemarkForContractor)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertRemarksForContractor", ID, TestRportId, RemarkForContractor);
         }
     }
 }

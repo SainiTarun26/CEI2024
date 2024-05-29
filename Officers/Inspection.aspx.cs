@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace CEIHaryana.Officers
 {
@@ -25,6 +26,7 @@ namespace CEIHaryana.Officers
                 if (!IsPostBack)
                 {
                     GetData();
+                    GetTestReportData();
                 }
             }
             catch
@@ -185,6 +187,26 @@ namespace CEIHaryana.Officers
             //}
         }
 
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                if (status == "RETURN")
+                {
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                }
+            }
+
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+
+                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
+                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+            }
+        }
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -265,6 +287,34 @@ namespace CEIHaryana.Officers
 
                 //throw;
             }
+        }
+        private void GetTestReportData()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReport(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                //Session["TestRportId"] = TestRportId;
+
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
         }
     }
 }

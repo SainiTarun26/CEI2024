@@ -1102,7 +1102,7 @@ namespace CEIHaryana.Supervisor
                         _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);                      
                         //
 
-                        CEI.InsertSubstationData(IdUpdate, count, SubstationId, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
+                        CEI.InsertSubstationData(IdUpdate, count, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
                           _PrimaryVoltage,_SecondaryVoltage, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                            txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(), txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
                            ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),

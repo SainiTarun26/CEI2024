@@ -150,7 +150,9 @@ namespace CEIHaryana.SiteOwnerPages
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                    txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
 
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                     DateTime.TryParse(createdDate, out inspectionCreatedDate);
@@ -158,13 +160,13 @@ namespace CEIHaryana.SiteOwnerPages
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status == "Rejected")
                     {
-                        Rejection.Visible = true;
-                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                       // Rejection.Visible = true;
+                        //txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         //ApprovedReject.Visible = true;
                         //ApprovalRequired.Visible = false;
                         ddlReview.Attributes.Add("disabled", "true");
-                        txtRejected.Attributes.Add("disabled", "true");
+                       // txtRejected.Attributes.Add("disabled", "true");
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
@@ -174,16 +176,25 @@ namespace CEIHaryana.SiteOwnerPages
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
 
+                        buttonSubmit.Visible = true;
+                        Remarks.Visible = true;
 
-                        Rejection.Visible = true;
-                        txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
+                        //Rejection.Visible = true;
+                        //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
                         //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         //ApprovedReject.Visible = true;
                         //ApprovalRequired.Visible = false;
                         ddlReview.Attributes.Add("disabled", "true");
-                        txtRejected.Attributes.Add("disabled", "true");
+                        //txtRejected.Attributes.Add("disabled", "true");
 
 
+                    }
+                    if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
+                    {
+                        // If not null or empty, disable the textbox
+                        txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+                        txtOwnerRemarks.Enabled = false;
+                        buttonSubmit.Enabled = false;
                     }
 
                 }
@@ -868,6 +879,16 @@ namespace CEIHaryana.SiteOwnerPages
                 //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
+        }
+
+        protected void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            string TestReportId = Session["TestReport"].ToString();
+            ID = Session["InspectionId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.ContractorRemarks(ID, TestReportId, txtOwnerRemarks.Text.Trim());
+            //txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
         }
     }
 }

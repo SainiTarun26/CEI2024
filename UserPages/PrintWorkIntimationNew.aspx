@@ -261,7 +261,7 @@
                                     </div>
 
                                     <div class="col-4">
-                                        <label>Highest Voltage Level of Work</label>
+                                        <label>Highest Voltage Level of Installation</label>
                                         <asp:DropDownList class="form-control  select-form select2" disabled Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
                                         </asp:DropDownList>
                                     </div>
@@ -342,7 +342,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Work Schedule</u></h6>
+                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Work/Testing Schedule</u></h6>
                             <div runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-4">
@@ -352,7 +352,6 @@
                                         <asp:TextBox class="form-control" ID="txtStartDate" runat="server" autocomplete="off" readonly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">
                                         </asp:TextBox>
-
                                     </div>
                                     <div class="col-4">
                                         <label>Tentative Work Completition Date:</label>

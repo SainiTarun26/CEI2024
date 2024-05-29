@@ -318,8 +318,82 @@
                     </div>
                 </div>
             </div>
-            <asp:UpdatePanel ID="Updatepanel1" runat="server">
-                <ContentTemplate>
+              <div class="row">
+                <div class="card-title" style="margin-bottom:20px;margin-top:15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                    Test Report Attached
+                </div>
+                   </div>
+             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                    <div class="col-12" style="padding:0px;">                       
+                         <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" onRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <HeaderStyle BackColor="#B7E2F0" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Status" HeaderText="Status">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                             <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                             <%--<asp:BoundField DataField="Status" HeaderText="Status">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>--%>
+                             <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                             
+                           
+                            <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>                                
+                                    <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>--%>
+                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+            <ItemTemplate>                                
+                <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
+            </ItemTemplate>
+            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+        </asp:TemplateField>
+                             <asp:BoundField  DataField="SubmittedDate" HeaderText="Submitted Date" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField  DataField="ReturnDate" HeaderText="Return Date" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                             <asp:BoundField  DataField="ReasonForReturn" HeaderText="Return Reason" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            
+                            
+                        </Columns>
+                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                    </asp:GridView>
+
+                    </div>
+               </div>
+
+            <%--<asp:UpdatePanel ID="Updatepanel1" runat="server">
+                <ContentTemplate>--%>
 
 
                     <div class="row">
@@ -328,11 +402,11 @@
                         </div>
 
                     </div>
-                    <div class="row" style="margin-bottom: 30px;">
+                   <%-- <div class="row" style="margin-bottom: 30px;">
                         <div class="col-md-12" style="text-align: center">
                             <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                         </div>
-                    </div>
+                    </div>--%>
                     <div class="row">
 
                         <p style="margin-top: auto; margin-bottom: auto;">Documents are as per the requirements</p>
@@ -360,8 +434,8 @@
 
                     </div>
                     </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+               <%-- </ContentTemplate>
+            </asp:UpdatePanel>--%>
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" style="text-align: center;">

@@ -204,13 +204,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.GridView grd_Documemnts;
 
         /// <summary>
-        /// Updatepanel1 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel Updatepanel1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
         /// txtTestReportId control.
@@ -220,15 +220,6 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
-
-        /// <summary>
-        /// lnkRedirect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkRedirect;
 
         /// <summary>
         /// RadioButtonList2 control.

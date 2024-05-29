@@ -403,7 +403,7 @@
 
                                                 <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
                                                 <asp:FileUpload ID="FileUpload1" runat="server" />
-                                                <%--   <span id="asterisk" class='<%# "asterisk-" + Eval("Req") %>'>*</span>--%>
+                                                <%--<span id="asterisk" class='<%# "asterisk-" + Eval("Req") %>'>*</span>--%>
                                             </ItemTemplate>
                                         </asp:TemplateField>
 

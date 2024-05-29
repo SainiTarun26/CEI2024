@@ -183,7 +183,7 @@
                                 ErrorMessage="Please Enter Premises" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4">
-                            <label>Highest Voltage Level of Work</label>
+                            <label>Highest Voltage Level of Installation    </label>
                             <asp:TextBox class="form-control" ID="ddVoltageLevel" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <%--  <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" ID="ddlVoltageLevel" runat="server" TabIndex="14">
                             </asp:DropDownList>--%>
