@@ -636,12 +636,10 @@ namespace CEIHaryana.TestReportModal
                 string previousPageUrl = Session["PreviousPage"] as string;
                 if (!string.IsNullOrEmpty(previousPageUrl))
                 {
-                    Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
 
-                }
-                else
-                {
-                    Response.Redirect("/SiteOwnerPages/Inspection.aspx", false);
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
+
                 }
             }
             catch { }

@@ -797,11 +797,8 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-
                 //throw;
             }
-
-
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

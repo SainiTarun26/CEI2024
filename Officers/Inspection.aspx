@@ -392,6 +392,17 @@
                     </div>
                </div>
 
+              <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                 <div class="row">
+                        <div class="col-md-12">
+                            <label for="Remarks">
+                                Inspection Remarks<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtInspectionRemark" runat="server" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="60" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemark" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
+                        </div>
+                        </div>
+                 </div> 
             <%--<asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>--%>
 
@@ -418,6 +429,7 @@
 
 
                         <div class="col-md-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                             <div class="col-md-6">
                             <label>
                                 ReasonType:        
                             </label>
@@ -425,13 +437,15 @@
                                 <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="Based On Documents"></asp:ListItem>
                             </asp:DropDownList>
+                                 </div>
+                                  <div class="col-md-6">
                             <label>
                                 Reason<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
-
+                              </div>
                     </div>
                     </div>
                <%-- </ContentTemplate>

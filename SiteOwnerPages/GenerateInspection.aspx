@@ -505,8 +505,20 @@
                             </div>
                         </div>
                     </div>
+                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="Remarks">
+                                Inspection Remarks<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="60" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>
+                        </div>
+                        </div>
+                         </div>
                 </div>
                 <div>
+                    
                     <%-- <div class="row" style="margin-top: 50px;" id="Declaration" runat="server">
                         <div class="col-12" style="text-align: center;">
                             <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true"

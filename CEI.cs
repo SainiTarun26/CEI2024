@@ -2297,7 +2297,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         public DataSet GetSuppervisorTestReportHistory(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportInstallationsHistory", LoginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryForSupervisor", LoginId);
         }
         public DataTable TestReportDataForAdmin()
         {
@@ -3499,7 +3499,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region Insert Inspection Data NewCode
 
         public void InsertInspectionDataNewCode(string ContactNo, string TestRportId, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-string VoltageLevel, string LineLength, string TestReportCount, string District, string Division, string PaymentMode, string DateOfSubmission, string CreatedBy,
+string VoltageLevel, string LineLength, string TestReportCount, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
 int TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, SqlTransaction transaction
 )
         {
@@ -3528,6 +3528,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             {
                 cmd.Parameters.AddWithValue("@DateOfSubmission", DBNull.Value);
             }
+            cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
             cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);

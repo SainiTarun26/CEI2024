@@ -151,8 +151,13 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+
         th {
-    width: 1%;
+            width: 1%;
+        }
+        input#ContentPlaceHolder1_txtRemarksForSupervisor {
+    height: 30px;
+    padding-left: 10px;
 }
     </style>
 </asp:Content>
@@ -167,81 +172,89 @@
                             <asp:Label ID="lblData" runat="server"></asp:Label></h6>
                     </div>
                 </div>
-                 <div class="row" style="margin-bottom: 8px;">
-                                    <div class="col-md-12">
-                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Returned Test Reports</h7>
-                                    </div>
-                                </div>
+                <div class="row" style="margin-bottom: 8px;">
+                    <div class="col-md-12">
+                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Returned Test Reports</h7>
+                    </div>
+                </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                  
+
                     <div style="margin-top: 3%">
-                       <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff">
-                    <Columns>
-                             <asp:TemplateField  ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
-                                                    <HeaderTemplate>
-                                                        <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
-                                                    </HeaderTemplate>
-                                                    <ItemTemplate>
-                                                        <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                  <asp:BoundField DataField="InspectionId" HeaderText="InspectionId" >
-                                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="TestReportId" HeaderText="TestReportId">
-                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
-                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="ApplicationStatus" HeaderText="ApplicationStatus">
-                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>
-                                              <asp:BoundField DataField="ReasonForReturn" HeaderText="ReasonForReturn">
-                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>                                              
-                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblIntimation" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                    <asp:Label ID="lblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
-                                    <%--<asp:Label ID="lblApplicant" runat="server" Text='<%#Eval("Applicant") %>'></asp:Label>--%>                                   
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                           </Columns>
-                           <FooterStyle BackColor="White" ForeColor="#000066" />
-                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                            <RowStyle ForeColor="#000066" />
-                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                        </asp:GridView>
-                           </div>     
+                        <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                            <Columns>
+                                <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
+                                    <HeaderTemplate>
+                                        <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="InspectionId" HeaderText="InspectionId">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>                               
+                                <asp:TemplateField HeaderText="TestReportId">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestReportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>'></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="ApplicationStatus">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ReasonForReturn" HeaderText="ReasonForReturn">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIntimation" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                        <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                        <asp:Label ID="lblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>      
+                                        <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                    </div>
                     <!-- Link to open the modal -->
                     <%--   <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>--%>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 
-                       
-               <div class="col-md-4" runat="server" id="AssignedSupervisor" style="margin-top:20px;">
-                                            <label>
-                                                Select Assigned Supervisor
+
+                            <div class="col-md-4" runat="server" id="AssignedSupervisor" style="margin-top: 20px;">
+                                <label>
+                                    Select Assigned Supervisor
                                                 <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList ID="ddlAssignSupervisor" TabIndex="3" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important;height:30px;">                                               
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAssignSupervisor" runat="server" InitialValue="-1" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" SetFocusOnError="true" />
-                                        </div>
-                             </ContentTemplate>
+                                </label>
+                                <asp:DropDownList ID="ddlAssignSupervisor" TabIndex="3" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important; height: 30px;">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAssignSupervisor" runat="server" InitialValue="-1" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" SetFocusOnError="true" />
+                            </div>
+                              <div class="col-12" id="Div1" runat="server"  Style="margin-top: 15px">
+                                        <label>
+                                             Remarks For Supervisor
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtRemarksForSupervisor"  autocomplete="off" MaxLength="500" runat="server"></asp:TextBox>
+                                    </div>
+                        </ContentTemplate>
                     </asp:UpdatePanel>
-                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
@@ -249,47 +262,54 @@
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 8px;">
-                                    <div class="col-md-12">
-                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Assigned Supervisor/Contractor</h7>
-                                    </div>
-                                </div>
+                    <div class="col-md-12">
+                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Assigned Supervisor/Contractor</h7>
+                    </div>
+                </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    
+
                     <div style="margin-top: 3%">
-                        <asp:GridView ID="GridView2" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff">
-                                            <Columns>
-                                                 <asp:BoundField DataField="InspectionId" HeaderText="InspectionId" >
-                                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="TestReportId" HeaderText="TestReportId">
-                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
-                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
-                                                </asp:BoundField>                                               
-                                              <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>          
-                                            </Columns>
-                                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                            <RowStyle ForeColor="#000066" />
-                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                        </asp:GridView>
-                        </div>
+                        <asp:GridView ID="GridView2" class="table-responsive table table-hover table-striped" runat="server" Width="100%" OnRowCommand="GridView2_RowCommand" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                            <Columns>
+                                <asp:BoundField DataField="InspectionId" HeaderText="InspectionId">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
+                                <asp:TemplateField HeaderText="TestReportId">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestReportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>'></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIntimation" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                        <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>                                                                           
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                    </div>
                     <!-- Link to open the modal -->
                     <%--   <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>--%>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -307,7 +327,7 @@
 
     </script>
 
-  
+
     <script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
@@ -335,5 +355,5 @@
             }
         }
     </script>
-   
+
 </asp:Content>

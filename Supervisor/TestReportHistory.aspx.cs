@@ -72,8 +72,8 @@ namespace CEIHaryana.Supervisor
                     Session["NoOfInstallations"] = lblInstallationLine.Text;
                     Label lblApplicationForTestReport = (Label)row.FindControl("lblApplicationForTestReport");
                     Session["ApplicationForTestReport"] = lblApplicationForTestReport.Text;
-                    Label lblIHID = (Label)row.FindControl("lblIHID");
-                    Session["IHIDs"] = lblIHID.Text;
+                    //Label lblIHID = (Label)row.FindControl("lblIHID");
+                    //Session["IHIDs"] = lblIHID.Text;
                     Label lblIntimations = (Label)row.FindControl("lblIntimations");
 
                     if (e.CommandName == "Select")
@@ -187,7 +187,7 @@ namespace CEIHaryana.Supervisor
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                int reportTypeColumnIndex = 8;
+                int reportTypeColumnIndex = 11;
                 TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
 
                 if (reportTypeCell.Text == "Return")

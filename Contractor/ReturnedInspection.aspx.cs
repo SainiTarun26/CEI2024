@@ -124,10 +124,11 @@ namespace CEIHaryana.Contractor
                         {
                             Label lblIntimation = (Label)row.FindControl("lblIntimation");
                             Label TestReportCount = (Label)row.FindControl("lblTestReportCount");
+                            Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                             int Count = Convert.ToInt32(TestReportCount.Text);
 
                             int inspectionId = Convert.ToInt32(row.Cells[1].Text);
-                            string TestReportId = row.Cells[2].Text;
+                            //string TestReportId = row.Cells[2].Text;                           
                             string InstallationType = row.Cells[3].Text;
 
                             SqlCommand cmd = new SqlCommand("sp_InsertReturnInspectionAssignByContractor", con);
@@ -136,16 +137,92 @@ namespace CEIHaryana.Contractor
                             cmd.Parameters.AddWithValue("@IntimationId", lblIntimation.Text);
                             cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
                             cmd.Parameters.AddWithValue("@Count", Count);
-                            cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
+                            cmd.Parameters.AddWithValue("@TestReportId", lblTestReportId.Text);
                             cmd.Parameters.AddWithValue("@AssignedSupervisore", AssignSupervisor);
+                            cmd.Parameters.AddWithValue("@RemarksForSupervisor", string.IsNullOrEmpty(txtRemarksForSupervisor.Text.Trim()) ? null : txtRemarksForSupervisor.Text.Trim());
                             cmd.Parameters.AddWithValue("@CreatedBy", ContractorId);
-                           // cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
                         }
                     }
                 }
                 GetinspectionGridData();
                 GetAssigenedGridData();
                 ddlAssignSupervisor.SelectedValue = "-1";
+                txtRemarksForSupervisor.Text = "";
+            }
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName== "ViewTestReport")
+            {              
+                GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                Label lblInstallationType = (Label)row.FindControl("LblInstallationType");
+                string installationtype = lblInstallationType.Text;               
+                string testReportId = e.CommandArgument.ToString();
+                RedirectToRestReport(testReportId, installationtype);
+                //if (installationtype == "Line")
+                //{
+                //    Session["LineID"] = testReportId;
+                //    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                //}
+                //else if (installationtype == "Substation Transformer")
+                //{
+                //    Session["SubStationID"] = testReportId;
+                //    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                //}
+                //else if (installationtype == "Generating Set")
+                //{
+                //    Session["GeneratingSetId"] = testReportId;
+                //    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                //}
+            }
+        }
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "ViewTestReport")
+            {
+                GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                Label lblInstallationType = (Label)row.FindControl("LblInstallationType");
+                string installationtype = lblInstallationType.Text;
+                string testReportId = e.CommandArgument.ToString();
+
+                RedirectToRestReport(testReportId, installationtype);
+                //if (installationtype == "Line")
+                //{
+                //    Session["LineID"] = testReportId;
+                //    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                //}
+                //else if (installationtype == "Substation Transformer")
+                //{
+                //    Session["SubStationID"] = testReportId;
+                //    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                //}
+                //else if (installationtype == "Generating Set")
+                //{
+                //    Session["GeneratingSetId"] = testReportId;
+                //    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                //}
+            }
+        }
+
+        private void RedirectToRestReport(string TestReportId,string Type)
+        {
+            if (Type == "Line")
+            {
+                Session["LineID"] = TestReportId;
+                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+            }
+            else if (Type == "Substation Transformer")
+            {
+                Session["SubStationID"] = TestReportId;
+                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+            }
+            else if (Type == "Generating Set")
+            {
+                Session["GeneratingSetId"] = TestReportId;
+                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
         }
     }
