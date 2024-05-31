@@ -376,6 +376,12 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+
+                            <asp:BoundField  DataField="InspectionRemarks" HeaderText="Inspection Remarks" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+
                             <asp:BoundField  DataField="ReturnDate" HeaderText="Return Date" >
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -393,7 +399,7 @@
                     </div>
                </div>
 
-              <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+              <%--<div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                  <div class="row">
                         <div class="col-md-12">
                             <label for="Remarks">
@@ -403,7 +409,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemark" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
                         </div>
                         </div>
-                 </div> 
+                 </div> --%>
             <%--<asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>--%>
 

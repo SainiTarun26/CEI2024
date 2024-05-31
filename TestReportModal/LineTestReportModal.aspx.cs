@@ -42,9 +42,15 @@ namespace CEIHaryana.TestReportModal
                         }
                         else
                         {
-                            //Contractor.Visible = true;
-                            //CreatedDate.Visible = true;
-                            FinalSubmit.Visible = true;
+                            if (!string.IsNullOrEmpty(Request.QueryString["Return"]))
+                            {                               
+                            }
+                            else
+                            {
+                                //Contractor.Visible = true;
+                                //CreatedDate.Visible = true;
+                                FinalSubmit.Visible = true;
+                            }
                         }
                     }
                     else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")

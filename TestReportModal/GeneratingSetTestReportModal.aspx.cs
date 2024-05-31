@@ -40,9 +40,21 @@ namespace CEIHaryana.TestReportModal
                         }
                         else
                         {
-                           // Contractor.Visible = true;
-                            Contractor2.Visible = true;
-                           // CreatedDate.Visible = true;
+                            if (!string.IsNullOrEmpty(Request.QueryString["Return"]))
+                            {
+                                string querystring = Request.QueryString["Return"].ToString();
+                                if (!string.IsNullOrEmpty(querystring))
+                                {
+                                    Contractor3.Visible = false;
+                                }
+                            }
+                            else
+                            {
+                                // Contractor.Visible = true;
+                                Contractor2.Visible = true;
+                                // CreatedDate.Visible = true;
+                            }
+
                         }
 
                     }

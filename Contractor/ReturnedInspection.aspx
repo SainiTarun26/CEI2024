@@ -154,12 +154,14 @@
 
         th {
             width: 1%;
-        }
+            background:#9292cc;
+}
         input#ContentPlaceHolder1_txtRemarksForSupervisor {
     height: 30px;
     padding-left: 10px;
 }
     </style>
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -180,7 +182,7 @@
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
                     <div style="margin-top: 3%">
-                        <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                        <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                             <Columns>
                                 <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
                                     <HeaderTemplate>
@@ -233,10 +235,9 @@
                     </div>
                     <!-- Link to open the modal -->
                     <%--   <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>--%>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-
-
+                  <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>--%>
+                            <div class="row" id="AssignSupervisor" runat="server">
                             <div class="col-md-4" runat="server" id="AssignedSupervisor" style="margin-top: 20px;">
                                 <label>
                                     Select Assigned Supervisor
@@ -252,15 +253,18 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtRemarksForSupervisor"  autocomplete="off" MaxLength="500" runat="server"></asp:TextBox>
                                     </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                </div>
-                <div class="row">
+                               
                     <div class="col-md-4"></div>
-                    <div class="col-md-4" style="text-align: center;">
+                    <div class="col-md-4" style="text-align: center; margin-top:15px;">
                         <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" OnClick="BtnSubmit_Click" class="btn btn-primary mr-2" />
-                    </div>
+                   
                 </div>
+                                </div>
+                            </div>
+                       <%-- </ContentTemplate>
+                    </asp:UpdatePanel>--%>
+                </div>
+                
                 <div class="row" style="margin-bottom: 8px;">
                     <div class="col-md-12">
                         <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Assigned Supervisor/Contractor</h7>
@@ -291,6 +295,14 @@
                                     <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
+                                 <asp:BoundField DataField="RemarksForSupervisor" HeaderText="RemarksForSupervisor">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
+                                 <asp:BoundField DataField="RemarkForContractor" HeaderText="SiteownerRemarks">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
@@ -355,5 +367,14 @@
             }
         }
     </script>
+
+     <script type="text/javascript">
+         function SelectAllCheckboxes(headerCheckbox) {
+             var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
+             for (var i = 0; i < checkboxes.length; i++) {
+                 checkboxes[i].checked = headerCheckbox.checked;
+             }
+         }
+</script>
 
 </asp:Content>

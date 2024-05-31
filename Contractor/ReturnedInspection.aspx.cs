@@ -69,6 +69,10 @@ namespace CEIHaryana.Contractor
                         GridView2.DataSource = ds;
                         GridView2.DataBind();                       
                     }
+                    else
+                    {
+                       
+                    }
                     ds.Clear();
                 }
             }
@@ -82,27 +86,17 @@ namespace CEIHaryana.Contractor
         {
             if (Session["ContractorID"].ToString() != null && Session["ContractorID"].ToString() != "")
             {
-                ContractorId = Convert.ToString(Session["ContractorID"]);
-                //string connectionstring = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-                //using (SqlConnection connection = new SqlConnection(connectionstring))
-                //{                   
-                //    SqlCommand command = new SqlCommand("Sp_ReturnedInspection_PendingAssignment_AtContractor", connection);
-                //    command.Parameters.AddWithValue("@ContractorLoginId", ContractorId);
-                //    SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                //    DataSet dataSet = new DataSet();
-                //    connection.Open();
-                //    adapter.Fill(dataSet);
-                //    GridView1.DataSource = dataSet.Tables[0];
-                //    GridView1.DataBind();
-                //
-                //}
+                ContractorId = Convert.ToString(Session["ContractorID"]);                
                 DataSet ds = new DataSet();
                 ds = CEI.GetReturnInspectionForContractor(ContractorId);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();                    
+                }
+                else
+                {
+                    AssignSupervisor.Visible = false;
                 }
 
             }
@@ -209,21 +203,35 @@ namespace CEIHaryana.Contractor
 
         private void RedirectToRestReport(string TestReportId,string Type)
         {
+            string Querystring = "?Return=returnd";
             if (Type == "Line")
             {
                 Session["LineID"] = TestReportId;
-                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx"+Querystring +"','_blank');</script>");
             }
             else if (Type == "Substation Transformer")
             {
                 Session["SubStationID"] = TestReportId;
-                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx" + Querystring + "','_blank');</script>");
             }
             else if (Type == "Generating Set")
             {
                 Session["GeneratingSetId"] = TestReportId;
-                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx" + Querystring + "','_blank');</script>");
             }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.Header)
+                {
+                    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
+                    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                }
+            }
+            catch { }
         }
     }
 }

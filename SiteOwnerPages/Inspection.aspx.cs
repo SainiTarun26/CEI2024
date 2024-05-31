@@ -160,13 +160,13 @@ namespace CEIHaryana.SiteOwnerPages
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status == "Rejected")
                     {
-                       // Rejection.Visible = true;
-                        //txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                        Rejection.Visible = true;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         //ApprovedReject.Visible = true;
                         //ApprovalRequired.Visible = false;
                         ddlReview.Attributes.Add("disabled", "true");
-                       // txtRejected.Attributes.Add("disabled", "true");
+                        txtRejected.Attributes.Add("disabled", "true");
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
@@ -186,7 +186,12 @@ namespace CEIHaryana.SiteOwnerPages
                         //ApprovalRequired.Visible = false;
                         ddlReview.Attributes.Add("disabled", "true");
                         //txtRejected.Attributes.Add("disabled", "true");
-
+                    }
+                    string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+                    if (Reason == "1")
+                    {
+                        buttonSubmit.Visible = false;
+                        Remarks.Visible = false;
 
                     }
                     if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))

@@ -276,6 +276,11 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="InspectionRemarks" HeaderText="Inspection Remarks">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                               <asp:BoundField  DataField="ReturnDate" HeaderText="Return Date" >
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -315,17 +320,15 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                 </div>
-                <%--<div class="col-4"></div>
-                <div class="col-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+               
+                <div class="col-12" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
-                           Reason For Rejection<samp style="color: red"> * </samp>
-                            Reason
-                        <samp style="color: red">* </samp>
+                           Reason For Rejection                          
                     </label>
-                    <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="txtRejected"  Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
-                </div>--%>
+              </div>
             </div>
 
              <div class="row" id="Remarks" runat="server" visible="false">
@@ -333,6 +336,14 @@
                     <label>Remarks For Contractor<samp style="color: red">* </samp></label>
                     <asp:TextBox class="form-control" ID="txtOwnerRemarks" autocomplete="off" TabIndex="7" runat="server" Style="width:100%;"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtOwnerRemarks" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                </div>
+                </div>
+
+             <div class="row" id="Reason" runat="server" visible="false">
+                <div class="col-12">
+                    <label>Reason</label>
+                    <asp:TextBox class="form-control" ID="txtReason" autocomplete="off" TabIndex="7" ReadOnly="true" runat="server" Style="width:100%;"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="txtReason" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
                 </div>
 
