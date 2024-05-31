@@ -63,6 +63,10 @@ namespace CEIHaryana.Supervisor
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblApproval = (Label)row.FindControl("lblApproval");
                     Session["Approval1"] = lblApproval.Text;
+
+                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                    string id = lblTestReportId.Text;
+
                     Session["Approval"] = lblApproval.Text;
                     Label lblVoltage = (Label)row.FindControl("lblVoltage");
                     Session["Voltagelevel"] = lblVoltage.Text;
@@ -76,13 +80,17 @@ namespace CEIHaryana.Supervisor
                     //Session["IHIDs"] = lblIHID.Text;
                     Label lblIntimations = (Label)row.FindControl("lblIntimations");
 
+
+
+
                     if (e.CommandName == "Select")
                     {
                         Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
                         Session["TypeOf"] = lblTypeOf.Text;
-                        DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text);
+                        DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text, lblTestReportId.Text);
                         //string id = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to resolve the testreportid
-                        string id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        //string id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
 
                         Session["ID"] = id.Trim();
                         if (lblTypeOf.Text.Trim() == "Line")

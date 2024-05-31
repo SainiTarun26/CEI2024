@@ -73,6 +73,10 @@ namespace CEIHaryana.Admin
                     Label lblApproval = (Label)row.FindControl("lblApproval");
                     Session["Approval1"] = lblApproval.Text;
                     Session["Approval"] = lblApproval.Text;
+
+                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                    string id = lblTestReportId.Text;
+
                     Label lblVoltage = (Label)row.FindControl("lblVoltage");
                     Session["Voltagelevel"] = lblVoltage.Text;
                     Session["TestReportHistory"] = "True";
@@ -80,18 +84,18 @@ namespace CEIHaryana.Admin
                     Session["NoOfInstallation"] = lblInstallationLine.Text;
                     Label lblApplicationForTestReport = (Label)row.FindControl("lblApplicationForTestReport");
                     Session["ApplicationForTestReport"] = lblApplicationForTestReport.Text;
-                    Label lblIHID = (Label)row.FindControl("lblIHID");
-                    Session["IHIDs"] = lblIHID.Text;
+                    //Label lblIHID = (Label)row.FindControl("lblIHID");
+                    //Session["IHIDs"] = lblIHID.Text;
                     Label lblIntimations = (Label)row.FindControl("lblIntimations");
 
                     Label lblTypeOf = (Label)row.FindControl("lblTypeOf");
                     Session["TypeOf"] = lblTypeOf.Text;
 
-                    DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text);
+                    DataSet ds = cei.GetReportsHistory(lblTypeOf.Text.Trim(), lblIntimations.Text.Trim(), lblInstallationLine.Text, lblTestReportId.Text);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         //string id = ds.Tables[0].Rows[0]["ID"].ToString();
-                        string id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        //string id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
 
                         // Session["ID"] = id.Trim();   20Aprail 2024 gurmeet to resolve issue in add staff details(Redirection login)
                         if (lblTypeOf.Text.Trim() == "Line")
@@ -144,6 +148,21 @@ namespace CEIHaryana.Admin
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int reportTypeColumnIndex = 11;
+                TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+
+                if (reportTypeCell.Text == "Return")
+                {
+                    e.Row.CssClass = "ReturnedRowColor";
+                }
+
             }
         }
     }
