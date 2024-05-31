@@ -75,7 +75,7 @@
         }
 
         .pagination-ys {
-            /*display: inline-block;*/
+            /display: inline-block;/
             padding-left: 0;
             margin: 20px 0;
             border-radius: 4px;
@@ -207,7 +207,7 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="ReasonForReturn" HeaderText="ReasonForReturn">
+                                <asp:BoundField DataField="RemarkForContractor" HeaderText="RemarksForContractor">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>

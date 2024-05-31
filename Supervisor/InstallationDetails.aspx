@@ -159,6 +159,7 @@
                                         <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
                                         <%-- <asp:Label ID="Label1" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>--%>
                                         <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
+                                        <asp:Label ID="lblAssignedSupervisor" runat="server" Text='<%#Eval("AssignedSupervisor") %>'></asp:Label>
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -188,10 +189,23 @@
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="ReportType" HeaderText="ReportType">
+                                <%--<asp:BoundField DataField="ReportType" HeaderText="ReportType">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
+                                <asp:TemplateField HeaderText="Report Type">
+                                    <HeaderStyle Width="25%" CssClass="headercolor" />
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Remarks">
+                                    <HeaderStyle Width="25%" CssClass="headercolor" />
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblRemarksForSupervisor" runat="server" Text='<%#Eval("RemarksForSupervisor") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

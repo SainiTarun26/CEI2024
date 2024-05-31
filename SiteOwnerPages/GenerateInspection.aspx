@@ -17,34 +17,34 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript">
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
 
-    //Allow Only Aplhabet, Delete and Backspace
+        //Allow Only Aplhabet, Delete and Backspace
 
-    function isAlpha(keyCode) {
+        function isAlpha(keyCode) {
 
-        return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
 
-    }
+        }
 
-    function alphabetKey(e) {
-        var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-        var k;
-        k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-        return (allow.indexOf(String.fromCharCode(k)) != -1);
-    }
-    function disableFutureDates() {
-        // Get today's date in yyyy-mm-dd format
-        var today = new Date().toISOString().split('T')[0];
-        // Set the max attribute of the txtDateofIntialissue TextBox to today's date
-        document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
-    }
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+        function disableFutureDates() {
+            // Get today's date in yyyy-mm-dd format
+            var today = new Date().toISOString().split('T')[0];
+            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+            document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
+        }
     </script>
     <style>
         div#ContentPlaceHolder1_Declaration {
@@ -214,6 +214,10 @@
         .asterisk-0 {
             display: none;
         }
+
+                        .ReturnedRowColor {
+     background-color: #f9c7c7 !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -340,6 +344,15 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
+                            <asp:BoundField DataField="ReportType" HeaderText="ReportType">
+                                <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                            </asp:BoundField>
+
+                            <asp:BoundField DataField="ReturnRemarks" HeaderText="ReturnRemarks">
+                                <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                            </asp:BoundField>
                       <%-- <asp:BoundField DataField="InspectionId" HeaderText="InspectionId" Visible="false">
                       <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
                       <ItemStyle HorizontalAlign="Left" Width="70%" />

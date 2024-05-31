@@ -1076,18 +1076,18 @@ namespace CEIHaryana.Supervisor
                 {
                     if (Check.Checked == true)
                     {
-                        string SubstationId = string.Empty;
-                        if (Convert.ToString(Session["SubstationId"]) == null || Convert.ToString(Session["SubstationId"]) == "")
-                        {
-                            SubstationId = CEI.GenerateUniqueSubstation();
-                            Session["SubstationId"] = SubstationId;
+                        //string SubstationId = string.Empty;
+                        //if (Convert.ToString(Session["SubstationId"]) == null || Convert.ToString(Session["SubstationId"]) == "")
+                        //{
+                        //    SubstationId = CEI.GenerateUniqueSubstation();
+                        //    Session["SubstationId"] = SubstationId;
 
-                        }
-                        else
-                        {
+                        //}
+                        //else
+                        //{
 
-                            SubstationId = Session["SubstationId"].ToString();
-                        }
+                        //    SubstationId = Session["SubstationId"].ToString();
+                        //}
                         string TestReportId = Session["id"].ToString();
                         string IntimationId = Session["id"].ToString();
                         string CreatedBy = Session["SupervisorID"].ToString();

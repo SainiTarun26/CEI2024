@@ -945,16 +945,16 @@ namespace CEIHaryana.Supervisor
                     if (Check.Checked == true)
                     {
 
-                        string GeneratedLineId = string.Empty;
-                        if (Convert.ToString(Session["GeneratedLineId"]) == null || Convert.ToString(Session["GeneratedLineId"]) == "")
-                        {
-                            GeneratedLineId = CEI.GenerateUniqueID();
-                            Session["GeneratedLineId"] = LineId;
-                        }
-                        else
-                        {
-                            GeneratedLineId = Session["GeneratedLineId"].ToString();
-                        }
+                        //string GeneratedLineId = string.Empty;
+                        //if (Convert.ToString(Session["GeneratedLineId"]) == null || Convert.ToString(Session["GeneratedLineId"]) == "")
+                        //{
+                        //    GeneratedLineId = CEI.GenerateUniqueID();
+                        //    Session["GeneratedLineId"] = LineId;
+                        //}
+                        //else
+                        //{
+                        //    GeneratedLineId = Session["GeneratedLineId"].ToString();
+                        //}
                         //string TestReportId = Session["TestReportId"].ToString();
                         string IntimationId = Session["id"].ToString();
                         string CreatedBy = Session["SupervisorID"].ToString();

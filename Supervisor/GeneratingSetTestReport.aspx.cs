@@ -667,16 +667,16 @@ namespace CEIHaryana.Supervisor
                     {
 
 
-                        string GeneratingSetId = string.Empty;
-                        if (Convert.ToString(Session["GeneratingSetId"]) == null || Convert.ToString(Session["GeneratingSetId"]) == "")
-                        {
-                            GeneratingSetId = CEI.GenerateUniqueGeneratingSetId();
-                            Session["GeneratingSetId"] = GeneratingSetId;
-                        }
-                        else
-                        {
-                            GeneratingSetId = Session["GeneratingSetId"].ToString();
-                        }
+                        //string GeneratingSetId = string.Empty;
+                        //if (Convert.ToString(Session["GeneratingSetId"]) == null || Convert.ToString(Session["GeneratingSetId"]) == "")
+                        //{
+                        //    GeneratingSetId = CEI.GenerateUniqueGeneratingSetId();
+                        //    Session["GeneratingSetId"] = GeneratingSetId;
+                        //}
+                        //else
+                        //{
+                        //    GeneratingSetId = Session["GeneratingSetId"].ToString();
+                        //}
                         //string TestReportId = Session["TestReportId"].ToString();
                         string IntimationId = Session["id"].ToString();
                         string CreatedBy = Session["SupervisorID"].ToString();

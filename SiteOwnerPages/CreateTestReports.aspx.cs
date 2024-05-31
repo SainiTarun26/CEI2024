@@ -33,11 +33,23 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                if (e.Row.RowType == DataControlRowType.Header)
-                {
+                //if (e.Row.RowType == DataControlRowType.Header)
+                //{
 
-                    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
-                    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                //    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
+                //    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+                //}
+
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    int reportTypeColumnIndex = 6;
+                    TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+
+                    if (reportTypeCell.Text == "Returned")
+                    {
+                        e.Row.CssClass = "ReturnedRowColor";
+                    }
+
                 }
             }
             catch { }
@@ -92,5 +104,7 @@ namespace CEIHaryana.SiteOwnerPages
             { 
             }
         }
+
+       
     }
 }
