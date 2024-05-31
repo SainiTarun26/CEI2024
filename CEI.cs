@@ -2298,6 +2298,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet GetSuppervisorTestReportHistory(string LoginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryForSupervisor", LoginId);
+            // return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportInstallationsHistory ", LoginId);
         }
         public DataTable TestReportDataForAdmin()
         {
