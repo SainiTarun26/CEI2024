@@ -425,7 +425,7 @@
                             <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                         </div>
                     </div>--%>
-                    <div class="row">
+                    <div class="row"> 
                         <p style="margin-top: auto; margin-bottom: auto;">Documents are as per the requirements</p>
                         <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                             <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
