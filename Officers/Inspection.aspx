@@ -426,16 +426,13 @@
                         </div>
                     </div>--%>
                     <div class="row">
-
                         <p style="margin-top: auto; margin-bottom: auto;">Documents are as per the requirements</p>
                         <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                             <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
                             <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
                         </asp:RadioButtonList>
-                        <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
-
-
-                        <div class="col-md-4" style="text-align: center" id="Rejection" runat="server" visible="false">
+                    </div>
+            <div class="row" id="Rejection" runat="server" visible="false">
                              <div class="col-md-6">
                             <label>
                                 ReasonType:        
@@ -454,7 +451,6 @@
                         </div>
                               </div>
                     </div>
-                    </div>
                <%-- </ContentTemplate>
             </asp:UpdatePanel>--%>
             <div class="row">
@@ -465,5 +461,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </asp:Content>
