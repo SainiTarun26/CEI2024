@@ -408,11 +408,11 @@
                     <div class="main-panel">
                         <div class="card" id="PageDetails" style="border-radius: 0.25rem !important;border: 1px solid #5f8fad;padding:5px !important;padding-left: 20px !important; padding-right: 20px !important;">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-9">
             <asp:Label ID="LoginType" runat="server" Text="Supervisor"></asp:Label><%--<span id="Slash">></span>--%>
             <%--<asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
         </div>
-        <div class="col-sm-6" style="text-align:end;">
+        <div class="col-sm-3" style="text-align:end;">
             <asp:Label ID="PersonDetails" runat="server" ></asp:Label>
         </div>
     </div>

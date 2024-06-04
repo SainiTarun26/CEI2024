@@ -235,34 +235,38 @@
                     </div>
                     <!-- Link to open the modal -->
                     <%--   <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>--%>
-                  <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>--%>
+                   
                             <div class="row" id="AssignSupervisor" runat="server">
+                                
                             <div class="col-md-4" runat="server" id="AssignedSupervisor" style="margin-top: 20px;">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
                                 <label>
                                     Select Assigned Supervisor
-                                                <samp style="color: red">* </samp>
+                                   <samp style="color: red">* </samp>
                                 </label>
                                 <asp:DropDownList ID="ddlAssignSupervisor" TabIndex="3" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important; height: 30px;">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAssignSupervisor" runat="server" InitialValue="-1" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" SetFocusOnError="true" />
+                           </ContentTemplate>
+                    </asp:UpdatePanel>
                             </div>
                               <div class="col-12" id="Div1" runat="server"  Style="margin-top: 15px">
                                         <label>
                                              Remarks For Supervisor
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtRemarksForSupervisor"  autocomplete="off" MaxLength="500" runat="server"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtRemarksForSupervisor" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" MaxLength="500" runat="server"></asp:TextBox>
                                     </div>
-                               
+                      
+                                
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center; margin-top:15px;">
-                        <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" OnClick="BtnSubmit_Click" class="btn btn-primary mr-2" />
+                        <asp:Button ID="BtnSubmit" Text="Submit" runat="server"  ValidationGroup="Submit" OnClick="BtnSubmit_Click" class="btn btn-primary mr-2" />
                    
                 </div>
                                 </div>
                             </div>
-                       <%-- </ContentTemplate>
-                    </asp:UpdatePanel>--%>
+                       
                 </div>
                 
                 <div class="row" style="margin-bottom: 8px;">
@@ -375,6 +379,15 @@
                  checkboxes[i].checked = headerCheckbox.checked;
              }
          }
+</script>
+      <script>
+          function preventEnterSubmit(event) {
+              if (event.keyCode === 13) {
+                  event.preventDefault(); // Prevent form submission
+                  return false;
+              }
+
+          }
 </script>
 
 </asp:Content>

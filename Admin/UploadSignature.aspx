@@ -288,8 +288,8 @@
                         </label>
                     </div>
                 </div>
-              <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
-                    <ContentTemplate>
+               <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>--%>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
                             <div>
@@ -299,7 +299,10 @@
                                     </div>
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
+                                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
                                     <div class="row">
+                                       
                                         <div class="col-sm-6">
                                             <label>
                                                 Division Name
@@ -309,7 +312,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select any division" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDivisionName" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                        <div class="col-sm-6">
+                         <div class="col-sm-6">
                                             <label>
                                                 Staff
                                                <samp style="color: red">* </samp>
@@ -318,10 +321,14 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select StaffName" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlstaffname" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
+                                        </div>
+                        </ContentTemplate>
+                </asp:UpdatePanel>
+                                       <div class="row">
                                         <div class="col-md-6" style="margin-top: 15px;">
-                                            <label for="formFile" class="form-label">Upload Signature<samp style="color: red">* </samp>
+                                            <label for="formFile" class="form-label">Upload Signature<samp style="color: red">* </samp>(.jpg ,jpeg,.png)
                                             </label>
-                                            <asp:FileUpload class="form-control"  ID="Signature" runat="server" Style="padding: 2px;"  accept=".jpg ,.png  " />
+                                            <asp:FileUpload class="form-control"  ID="Signature" runat="server" Style="padding: 2px;"  accept=".jpg, jpeg ,.png  " />
                                         </div>
 
                                     </div>
@@ -336,8 +343,8 @@
                                 </div>
                             </div>
                         </div>
-                    </ContentTemplate>
-                <%--</asp:UpdatePanel>--%>
+                    <%--</ContentTemplate>
+                </asp:UpdatePanel>--%>
 
                 <asp:HiddenField ID="hdnId" runat="server" />
                 <asp:HiddenField ID="hdnId2" runat="server" />

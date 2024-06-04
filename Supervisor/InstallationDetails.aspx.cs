@@ -15,7 +15,6 @@ namespace CEIHaryana.Supervisor
 {
     public partial class InstallationDetails : System.Web.UI.Page
     {
-
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -116,7 +115,7 @@ namespace CEIHaryana.Supervisor
                         else if (lblReportType.Text == "Returned")
                         {
 
-                            if (Session["SupervisorID"].ToString() == lblAssignedSupervisor.Text.ToString())
+                            if (Session["SupervisorID"].ToString().ToLower() == lblAssignedSupervisor.Text.ToString().ToLower())
                             {
                                 Label lblTyps = (Label)row.FindControl("lblTyps");
                                 Session["Typs"] = lblTyps.Text.Trim();

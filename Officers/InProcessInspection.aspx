@@ -427,7 +427,8 @@
                         </div>
                             </div>
                        <div class="col-12" id="ddlSuggestions" visible="false" runat="server" style="width:98% !important;">
-                                  <label>Select Suggestion</label>
+                                              
+                           <label>Select Suggestion</label>
                     <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
                         <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
                         <asp:ListItem Text="Danger Plate And Barbed wire to be provided on each pole of 11KV line." Value="1"></asp:ListItem>
@@ -437,6 +438,8 @@
                         <asp:ListItem Text="Proper Earthing fencing ,if metallic,of at least 1.8-meter height be provided in front of the transformer room with gate opening outwards." Value="5"></asp:ListItem>
                         <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
                     </asp:DropDownList>
+                                
+                                
                         </div>                       
                         <div class="row">
                            

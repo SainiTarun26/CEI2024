@@ -499,7 +499,6 @@
             }
 
         }
-
     </script>
     <!-- partial -->
     <script>

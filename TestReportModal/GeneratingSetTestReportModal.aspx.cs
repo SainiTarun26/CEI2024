@@ -45,6 +45,7 @@ namespace CEIHaryana.TestReportModal
                                 string querystring = Request.QueryString["Return"].ToString();
                                 if (!string.IsNullOrEmpty(querystring))
                                 {
+                                    //Session["Approval"] = null;
                                     Contractor3.Visible = false;
                                 }
                             }
@@ -544,8 +545,7 @@ namespace CEIHaryana.TestReportModal
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
                 //Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
-        }
-       
+        }       
         protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/IntimationForHistory.aspx", false);

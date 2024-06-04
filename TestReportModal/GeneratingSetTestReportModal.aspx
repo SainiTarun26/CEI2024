@@ -2016,6 +2016,15 @@
             console.log(newWindow);
         }
     </script>
+     <script>
+         function preventEnterSubmit(event) {
+             if (event.keyCode === 13) {
+                 event.preventDefault(); // Prevent form submission
+                 return false;
+             }
+
+         }
+     </script>
 </head>
 <body>
     <form id="form1" runat="server">

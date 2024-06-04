@@ -22,8 +22,9 @@ namespace CEIHaryana.Contractor
                 if (Session["ContractorID"].ToString() != null && Session["ContractorID"].ToString() != "")
                 {
 
-                    GetGridData();
+                   
                     GetinspectionGridData();
+                    GetGridData();
                     GetAssigenedGridData();
                 }
             }
@@ -44,7 +45,7 @@ namespace CEIHaryana.Contractor
                         ddlAssignSupervisor.DataTextField = "LicenseNoText";
                         ddlAssignSupervisor.DataBind();
                         ddlAssignSupervisor.Items.Insert(0, new ListItem("--Select--", "-1"));
-                        ds.Clear();
+                       // ds.Clear();
                     }
                 }
             }
@@ -73,7 +74,7 @@ namespace CEIHaryana.Contractor
                     {
                        
                     }
-                    ds.Clear();
+                   // ds.Clear();
                 }
             }
             catch (Exception ex)
@@ -96,9 +97,11 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
                     AssignSupervisor.Visible = false;
+                    BtnSubmit.Visible = false;
                 }
-
             }
         }
 
@@ -107,6 +110,7 @@ namespace CEIHaryana.Contractor
             if (Session["ContractorID"].ToString() != null && Session["ContractorID"].ToString() != "")
             {
                 string AssignSupervisor = ddlAssignSupervisor.SelectedValue;
+                bool AtLeastOneCheked = false;
                 ContractorId = Convert.ToString(Session["ContractorID"]);
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                 {
@@ -116,6 +120,7 @@ namespace CEIHaryana.Contractor
                         CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
                         if (chk != null && chk.Checked)
                         {
+                            AtLeastOneCheked = true;
                             Label lblIntimation = (Label)row.FindControl("lblIntimation");
                             Label TestReportCount = (Label)row.FindControl("lblTestReportCount");
                             Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
@@ -137,6 +142,10 @@ namespace CEIHaryana.Contractor
                             cmd.Parameters.AddWithValue("@CreatedBy", ContractorId);
                             cmd.ExecuteNonQuery();
                         }
+                    }
+                    if (!AtLeastOneCheked)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
                     }
                 }
                 GetinspectionGridData();
@@ -203,6 +212,7 @@ namespace CEIHaryana.Contractor
 
         private void RedirectToRestReport(string TestReportId,string Type)
         {
+            Session["Approval"] = null;
             string Querystring = "?Return=returnd";
             if (Type == "Line")
             {

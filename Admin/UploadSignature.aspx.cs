@@ -2,7 +2,9 @@
 using CEIHaryana.Contractor;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -62,47 +64,173 @@ namespace CEIHaryana.Admin
 
 
 
+        //protected void BtnSubmit_Click(object sender, EventArgs e)
+        //{
+
+
+        //    string DivisionName = ddlDivisionName.SelectedItem.ToString();
+        //    string StaffName = ddlstaffname.SelectedValue;
+        //    byte[] signatureBytes = null;
+        //    string filePathInfo1 = "";
+        //    //int maxFileSize = 1 * 1024 * 1024; ;
+
+        //    //if (Signature.HasFile) // Check if file is uploaded
+        //    //{
+        //    //    signatureBytes = Signature.FileBytes;
+        //    //    string fileName = Path.GetFileName(Signature.FileName);
+        //    //    string AdminID = Session["AdminID"].ToString();
+        //    //    string ext = Path.GetExtension(fileName);
+        //    //    string directoryPath = Server.MapPath("~/Attachment/" + AdminID + "/Signature/");
+
+        //    //    if (!Directory.Exists(directoryPath))
+        //    //    {
+        //    //        Directory.CreateDirectory(directoryPath);
+        //    //    }
+
+        //    //    string uniqueFileName = "Signature" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+        //    //    string filePath = Path.Combine(directoryPath, uniqueFileName);
+        //    //    Signature.SaveAs(filePath);
+
+        //    //    filePathInfo1 = "/Attachment/" + AdminID + "/Signature/" + uniqueFileName;
+        //    //}
+
+        //        if (Signature.HasFile) // Check if file is uploaded
+        //        {
+        //            // Allowed file extensions
+        //            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
+
+        //            // Maximum file size in bytes (1 MB)
+        //            int maxFileSize = 1 * 1024 * 1024;
+
+        //            // Get file details
+        //            string fileName = Path.GetFileName(Signature.FileName);
+        //            string fileExtension = Path.GetExtension(fileName).ToLower();
+        //            int fileSize = Signature.PostedFile.ContentLength;
+
+        //              if (allowedExtensions.Contains(fileExtension))
+        //              {
+
+        //                if (fileSize <= maxFileSize)
+        //                {
+
+        //                    string AdminID = Session["AdminID"].ToString();
+
+
+        //                    string directoryPath = Server.MapPath("~/Attachment/" + AdminID + "/Signature/");
+
+
+        //                    if (!Directory.Exists(directoryPath))
+        //                    {
+        //                        Directory.CreateDirectory(directoryPath);
+        //                    }
+
+
+        //                    string uniqueFileName = "Signature" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
+        //                    string filePath = Path.Combine(directoryPath, uniqueFileName);
+
+
+        //                    Signature.SaveAs(filePath);
+
+
+        //                signatureBytes = Signature.FileBytes;
+
+
+
+        //                    filePathInfo1 = "/Attachment/" + AdminID + "/Signature/" + uniqueFileName;
+
+
+
+        //                }
+
+        //              }
+        //            else
+        //            {
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Upload image that should be less than 1MB')", true);
+        //            }
+        //        }
+
+
+        //    CEI.UploadSignature(DivisionName, StaffName, signatureBytes);
+
+        //        ddlDivisionName.SelectedIndex = 0;
+        //        ddlstaffname.SelectedIndex = 0;
+
+        //        string script = $"alert('Signature for {StaffName} updated successfully.'); window.location='AdminMaster.aspx';";
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+
+
+
+
+
+        //}
+
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-
-
             string DivisionName = ddlDivisionName.SelectedItem.ToString();
             string StaffName = ddlstaffname.SelectedValue;
             byte[] signatureBytes = null;
             string filePathInfo1 = "";
 
-            if (Signature.HasFile) // Check if file is uploaded
+            if (Signature.HasFile) 
             {
-                signatureBytes = Signature.FileBytes;
+                string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
+
+                
+                int maxFileSize = 1 * 1024 * 1024;
+
+              
                 string fileName = Path.GetFileName(Signature.FileName);
-                string AdminID = Session["AdminID"].ToString();
-                string ext = Path.GetExtension(fileName);
-                string directoryPath = Server.MapPath("~/Attachment/" + AdminID + "/Signature/");
+                string fileExtension = Path.GetExtension(fileName).ToLower();
+                int fileSize = Signature.PostedFile.ContentLength;
 
-                if (!Directory.Exists(directoryPath))
+                if (allowedExtensions.Contains(fileExtension))
                 {
-                    Directory.CreateDirectory(directoryPath);
+                    if (fileSize <= maxFileSize)
+                    {
+                        string AdminID = Session["AdminID"].ToString();
+                        string directoryPath = Server.MapPath("~/Attachment/" + AdminID + "/Signature/");
+
+                        if (!Directory.Exists(directoryPath))
+                        {
+                            Directory.CreateDirectory(directoryPath);
+                        }
+
+                        string uniqueFileName = "Signature" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
+                        string filePath = Path.Combine(directoryPath, uniqueFileName);
+
+                        Signature.SaveAs(filePath);
+
+                        signatureBytes = Signature.FileBytes;
+                        filePathInfo1 = "/Attachment/" + AdminID + "/Signature/" + uniqueFileName;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('File size must be 1 MB .');", true);
+                        return;
+                    }
                 }
-
-                string uniqueFileName = "Signature" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                string filePath = Path.Combine(directoryPath, uniqueFileName);
-                Signature.SaveAs(filePath);
-
-                filePathInfo1 = "/Attachment/" + AdminID + "/Signature/" + uniqueFileName;
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please upload an image ');", true);
+                    return;
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please upload a file.');", true);
+                return;
             }
 
-
+          
             CEI.UploadSignature(DivisionName, StaffName, signatureBytes);
 
+            
             ddlDivisionName.SelectedIndex = 0;
             ddlstaffname.SelectedIndex = 0;
 
+           
             string script = $"alert('Signature for {StaffName} updated successfully.'); window.location='AdminMaster.aspx';";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-
-
-
-
         }
 
         protected void ddlDivisionName_SelectedIndexChanged(object sender, EventArgs e)
