@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="ReturnedInspection.aspx.cs" Inherits="CEIHaryana.Contractor.ReturnedInspection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" AutoEventWireup="true" CodeBehind="ReturnedInspection.aspx.cs" EnableEventValidation="false" Inherits="CEIHaryana.Contractor.ReturnedInspection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
@@ -13,17 +13,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <style type="text/css">
+        .jquery-modal.blocker.current {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        div#modal1 {
+            margin-left: 58%;
+            top: 50%;
+        }
+
         a.close-modal {
             width: 0px !important;
         }
 
-        .jquery-modal.blocker.current {
-            margin-top: 50px;
-            height: 95%;
-        }
-
         .modal {
-            max-width: 60%; /* Adjust the maximum width as needed */
+            max-width: 85%; /* Adjust the maximum width as needed */
             margin: -40px; /* Center the modal horizontally */
             background-color: white; /* Background color for the modal */
             padding: 20px; /* Add padding for content */
@@ -160,6 +165,51 @@
     height: 30px;
     padding-left: 10px;
 }
+          .card-body {
+            margin-bottom: 11px !important;
+            margin-top: 5px !important;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 100%; /* Could be more or less, depending on screen size */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 98%;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .card .card-title {
+            font-size: 1.4rem !important;
+            margin-bottom: 0px !important;
+        }
     </style>
    
 </asp:Content>
@@ -261,7 +311,7 @@
                                 
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center; margin-top:15px;">
-                        <asp:Button ID="BtnSubmit" Text="Submit" runat="server"  ValidationGroup="Submit" OnClick="BtnSubmit_Click" class="btn btn-primary mr-2" />
+                        <asp:Button ID="BtnSubmit" Text="Submit" runat="server"  ValidationGroup="Submit" OnClick="BtnSubmit_Click" OnClientClick="this.disabled=true;this.value='Processing...';" UseSubmitBehavior="false" class="btn btn-primary mr-2" />
                    
                 </div>
                                 </div>
@@ -278,50 +328,81 @@
 
                     <div style="margin-top: 3%">
                         <asp:GridView ID="GridView2" class="table-responsive table table-hover table-striped" runat="server" Width="100%" OnRowCommand="GridView2_RowCommand" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                            <Columns>
-                                <asp:BoundField DataField="InspectionId" HeaderText="InspectionId">
-                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
-                                    <ItemStyle HorizontalAlign="center" />
-                                </asp:BoundField>
-                                <asp:TemplateField HeaderText="TestReportId">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestReportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>'></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblIntimation" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                        <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>                                                                           
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
-                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
-                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                    <ItemStyle HorizontalAlign="center" />
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="RemarksForSupervisor" HeaderText="RemarksForSupervisor">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                    <ItemStyle HorizontalAlign="center" />
-                                </asp:BoundField>
-                                 <asp:BoundField DataField="RemarkForContractor" HeaderText="SiteownerRemarks">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                    <ItemStyle HorizontalAlign="center" />
-                                </asp:BoundField>
-                            </Columns>
-                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                            <RowStyle ForeColor="#000066" />
-                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
+                        <Columns>
+                            <asp:BoundField DataField="InspectionId" HeaderText="InspectionId">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="TestReportId">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestReportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>'></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblIntimation" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                    <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                    <asp:Label ID="lblOffRemarks" runat="server" Text='<%#Eval("OfficerRemarks") %>'></asp:Label>
+                                    <asp:Label ID="lblSORemarks" runat="server" Text='<%#Eval("SiteOwnerRemarks") %>'></asp:Label>
+                                    <asp:Label ID="lblContRemarks" runat="server" Text='<%#Eval("ContractorRemarks") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                                <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+                                <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+                            </asp:BoundField>
+                            <%--  <asp:BoundField DataField="ContractorRemarks" HeaderText="Contractor Remarks">
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="SiteOwnerRemarks" HeaderText="Siteowner Remarks">
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="OfficerRemarks" HeaderText="Officer Remarks">
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>--%>
+                            <asp:TemplateField HeaderText="Remarks">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkReadMore" runat="server" data-modal="modal1" OnClick="lnkReadMore_Click">Read more</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    </asp:GridView>
                     </div>
+                     <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <span class="close" data-modal="modal1">&times;</span>
+                        <div class="card-title">
+                            Officer Remarks
+                               </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
+                        </div>
+                        <div class="card-title">
+                            SiteOwner Remarks
+                               </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <asp:Label ID="lblModalSORemarks" runat="server"></asp:Label>
+                        </div>
+                        <div class="card-title">
+                            Contractor Remarks
+                               </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <asp:Label ID="lblModalContRemarks" runat="server"></asp:Label>
+                        </div>
+                    </div>
+                </div>
                     <!-- Link to open the modal -->
                     <%--   <p style="margin-top:30px !important;"><a href="#ex1" rel="modal:open">Open Modal</a></p>--%>
                 </div>
@@ -388,6 +469,20 @@
               }
 
           }
+</script>
+    <script>
+        // Get all close elements
+        const closeElements = document.querySelectorAll('.close');
+        // Add click event listener to each close element
+        closeElements.forEach(close => {
+            close.addEventListener('click', () => {
+                const modalId = close.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
 </script>
 
 </asp:Content>

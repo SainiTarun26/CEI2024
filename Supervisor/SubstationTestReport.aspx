@@ -1515,10 +1515,11 @@
  </script>
      <script type="text/javascript">
          function alertWithRedirectdata() {
-             if (confirm('Test Report Submitted Successfully')) {
+             /*if (confirm('Test Report Submitted Successfully')) {*/
+                 alert('Test Report Submitted Successfully');
                  window.location.href = "/Supervisor/InstallationDetails.aspx";
-             } else {
-             }
+             //} else {
+             //}
          }
      </script>
 </asp:Content>

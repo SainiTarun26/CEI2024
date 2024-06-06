@@ -1071,7 +1071,7 @@
                             <div class="col-md-4">
                             </div>
                             <div class="col-md-4" style="text-align: center;">
-                                <%--    <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
+                                <%--<asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                                 <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
                                 <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
                                 <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
@@ -1112,10 +1112,11 @@
     </script>
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            if (confirm('Test Report Submitted Successfully')) {
+            /*if (confirm('Test Report Submitted Successfully')) {*/
+            alert('Test Report Submitted Successfully');
                 window.location.href = "/Supervisor/InstallationDetails.aspx";
-            } else {
-            }
+            //} else {
+            //}
         }
      </script>
 </asp:Content>

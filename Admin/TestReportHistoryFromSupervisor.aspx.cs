@@ -96,7 +96,6 @@ namespace CEIHaryana.Admin
                     {
                         //string id = ds.Tables[0].Rows[0]["ID"].ToString();
                         //string id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-
                         // Session["ID"] = id.Trim();   20Aprail 2024 gurmeet to resolve issue in add staff details(Redirection login)
                         if (lblTypeOf.Text.Trim() == "Line")
                         {
@@ -152,7 +151,6 @@ namespace CEIHaryana.Admin
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 int reportTypeColumnIndex = 11;
@@ -162,7 +160,17 @@ namespace CEIHaryana.Admin
                 {
                     e.Row.CssClass = "ReturnedRowColor";
                 }
+                HyperLink linkReadMore = (HyperLink)e.Row.FindControl("linkReadMore"); // Finding the HyperLink control within the row
 
+                Label lblRemarks = (Label)e.Row.FindControl("lblRemarks");
+                if (linkReadMore == null || string.IsNullOrEmpty(lblRemarks.Text))
+                {
+                    linkReadMore.Visible = false;
+                }
+                else
+                {
+                    linkReadMore.Visible = true;
+                }
             }
         }
     }

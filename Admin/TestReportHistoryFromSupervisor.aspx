@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="TestReportHistoryFromSupervisor.aspx.cs" Inherits="CEIHaryana.Admin.TestReportHistoryFromSupervisor" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -15,6 +16,64 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+        .card-body {
+            margin-bottom: 11px !important;
+            margin-top: 5px !important;
+        }
+
+        .ellipsis {
+            cursor: pointer !important;
+            color: blue !important;
+            max-width: 100px !important;
+            font-size: 13px !important;
+        }
+
+            .ellipsis:hover {
+                cursor: pointer !important;
+                color: blue !important;
+                max-width: 100px !important;
+                font-size: 13px !important;
+                text-decoration: underline !important;
+            }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            margin-left: 18%;
+            margin-bottom: 1%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 98%;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
         .col-4 {
             margin-bottom: 8px;
         }
@@ -66,6 +125,7 @@
 
         .card .card-title {
             font-size: 1.4rem !important;
+            margin-bottom: 0px !important;
         }
 
         .btn-primary:hover {
@@ -152,9 +212,10 @@
         .headercolor {
             background-color: #9292cc;
         }
-         .ReturnedRowColor {
-     background-color: #f9c7c7 !important;
- }
+
+        .ReturnedRowColor {
+            background-color: #f9c7c7 !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -180,7 +241,7 @@
                             </div>
                         </div>
                     </div>
-                   <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" OnRowDataBound="GridView1_RowDataBound" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" OnRowDataBound="GridView1_RowDataBound" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
@@ -203,8 +264,11 @@
                                     <asp:Label ID="lblIntimations" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                     <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltagelevel") %>'></asp:Label>
                                     <asp:Label ID="lblInstallationLine" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
+                                    <asp:Label ID="LblRemarks" runat="server" Text='<%#Eval("Remarks") %>'></asp:Label>
+
                                     <%-- <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>--%>
                                     <asp:Label ID="lblApplicationForTestReport" runat="server" Text='<%#Eval("Apllication") %>'></asp:Label>
+
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
@@ -217,27 +281,6 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Intimations") %> ' CommandName="Select"><%#Eval("Intimations") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <%--  <asp:BoundField DataField="Name" HeaderText="Site Owner Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="State" HeaderText="State">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Number" HeaderText="Type Of Installation">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Approval" HeaderText="Test Report Status">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>--%>
-
                             <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -270,10 +313,18 @@
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                            <%-- <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
+
+                            <asp:TemplateField HeaderText="Remarks">
+                                <ItemTemplate>
+                                    <span><%# Eval("Remarks") %> </span>
+                                    <asp:HyperLink visible="false" ID="linkReadMore" CssClass="ellipsis" runat="server" data-modal="modal1"  
+                                        onclick='<%# "showFullText(\"" + Eval("Remarks") + "\"); return false;" %>'>Read more</asp:HyperLink>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -285,6 +336,17 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <span class="close" data-modal="modal1">&times;</span>
+                            <div class="card-title">
+                                Officer Remarks
+                            </div>
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <asp:Label ID="lblRemarks" runat="server"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -328,4 +390,53 @@
             }
         }
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Get all anchor tags with the class 'ellipsis'
+            const links = document.querySelectorAll('a.ellipsis');
+
+            // Add click event listener to each link
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    const modalId = link.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'block';
+                    }
+                });
+            });
+
+            // Get all close elements
+            const closeElements = document.querySelectorAll('.close');
+
+            // Add click event listener to each close element
+            closeElements.forEach(close => {
+                close.addEventListener('click', () => {
+                    const modalId = close.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+            // Add event listener to close the modal when clicking outside of it
+            window.addEventListener('click', (e) => {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+    function showFullText(fullText) {
+        // Display the modal
+        document.getElementById("modal1").style.display = "block";
+        // Set the full text in the label
+        document.getElementById('<%= lblRemarks.ClientID %>').innerText = fullText;
+    }
+</script>
 </asp:Content>

@@ -45,18 +45,18 @@
 
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            if (confirm('Intimation Created Successfully')) {
+
+                alert('Intimation Created Successfully');
                 window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
+            
         }
     </script>
     <script type="text/javascript">
         function alertWithRedirectUpdation() {
-            if (confirm('Intimation Updated Successfully')) {
+          
+                alert(''Intimation Updated Successfully'');
                 window.location.href = "/Contractor/PreviousProjects.aspx";
-            } else {
-            }
+            
         }
     </script>
     <script type="text/javascript">
@@ -722,7 +722,7 @@
                         </div>
                         <div class="col-md-4">
                             <label>
-                                 Work/Testing order issued by Department/Owner<samp style="color: red"> * </samp>
+                                 Work/Testing order issued by Dept./Owner<samp style="color: red"> * </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" TabIndex="18" Style="width: 100% !important;" OnSelectedIndexChanged="ddlAnyWork_SelectedIndexChanged" runat="server" AutoPostBack="true">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -829,7 +829,8 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />
+                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" OnClientClick="this.disabled=true;this.value='Processing...';" UseSubmitBehavior="false" class="btn btn-primary mr-2" OnClick="Submit_Click" />
+                      
                         <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                         <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" Style="padding-left: 18px; padding-right: 18px;" />
                         <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnBack_Click" />

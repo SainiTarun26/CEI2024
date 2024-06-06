@@ -352,6 +352,18 @@
                                     <span class="menu-title">Periodic Inspection</span>
                                 </a>
                             </li>--%>
+                            <li class="nav-item">
+      <a class="nav-link" href="/SiteOwnerPages/PeriodicRenewal.aspx">
+          <i class="icon-layout menu-icon"></i>
+          <span class="menu-title">Periodic Renewal</span>
+      </a>
+  </li>   
+                                                  <li class="nav-item">
+    <a class="nav-link" href="/SiteOwnerPages/InspectionRenewalCart.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Periodic Renewal Cart</span>
+    </a>
+</li>   
                           </ul>
                     </nav>
                     <div class="main-panel">

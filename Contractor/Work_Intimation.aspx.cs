@@ -684,6 +684,7 @@ namespace CEIHaryana.Contractor
                             if (btnSubmit.Text.Trim() == "Submit")
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                btnSubmit.Enabled = false;
                             }
                             else
                             {

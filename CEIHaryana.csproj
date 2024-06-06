@@ -1887,9 +1887,11 @@
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
+    <Content Include="SiteOwnerPages\InspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\InspectionRequestPrint.aspx" />
     <Content Include="SiteOwnerPages\PaymentPage.aspx" />
     <Content Include="SiteOwnerPages\PendingPayment.aspx" />
+    <Content Include="SiteOwnerPages\PeriodicRenewal.aspx" />
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
@@ -2452,6 +2454,13 @@
     <Compile Include="SiteOwnerPages\InspectionHistory.aspx.designer.cs">
       <DependentUpon>InspectionHistory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\InspectionRenewalCart.aspx.cs">
+      <DependentUpon>InspectionRenewalCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InspectionRenewalCart.aspx.designer.cs">
+      <DependentUpon>InspectionRenewalCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\InspectionRequestPrint.aspx.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2472,6 +2481,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\PendingPayment.aspx.designer.cs">
       <DependentUpon>PendingPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PeriodicRenewal.aspx.cs">
+      <DependentUpon>PeriodicRenewal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PeriodicRenewal.aspx.designer.cs">
+      <DependentUpon>PeriodicRenewal.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\PeroidicInspection.aspx.cs">
       <DependentUpon>PeroidicInspection.aspx</DependentUpon>

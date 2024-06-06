@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -96,10 +97,11 @@ namespace CEIHaryana.Officers
                 txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                 txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-               
+                string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                 GridBindDocument();
                
                 string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                
                 if (Status == "Approved")
                 {
                     InspectionDate.Visible = false;
@@ -111,15 +113,27 @@ namespace CEIHaryana.Officers
                     }
                     ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                     ddlReview.Attributes.Add("disabled", "true");
-                    txtSuggestion.Attributes.Add("disabled", "true");
-                    //txtInspectionDate.Attributes.Add("disabled", "true");
+                    txtSuggestion.Attributes.Add("disabled", "true");                    
+                    
+                    if(!string.IsNullOrEmpty(SiteInspectionDate))
+                    {
+                        InspectionDate.Visible = true;
+                        txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        txtInspectionDate.Attributes.Add("disabled", "true");
+                    }                    
                     btnBack.Visible = true;
                     btnSubmit.Visible = false;
                 }
                 if (Status == "Rejected")
                 {
-                  
                     InspectionDate.Visible = false;
+
+                    if (!string.IsNullOrEmpty(SiteInspectionDate))
+                    {
+                        InspectionDate.Visible = true;
+                        txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        txtInspectionDate.Attributes.Add("disabled", "true");
+                    }                    
                     Rejection.Visible = true;
                     txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                     ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
@@ -135,7 +149,6 @@ namespace CEIHaryana.Officers
                     InspectionDate.Visible = false;
                     ApprovalRequired.Visible = false;
                     btnSubmit.Visible = false;
-
 
                    // Rejection.Visible = true;
                    //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
@@ -356,7 +369,6 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex)
             {
-
                 //throw;
             }
         }
@@ -372,7 +384,6 @@ namespace CEIHaryana.Officers
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }

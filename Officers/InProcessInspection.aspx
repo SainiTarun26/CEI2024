@@ -411,11 +411,11 @@
                         </div>
                           <div class="col-md-4" id="InspectionDate" runat="server" >
                                 <label for="StartDate">
-                                    Inspection Date
-                           
+                                    Inspection Date                           
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" Type="Date"  runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            </div>
+                                <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                          <%--<asp:TextBox class="form-control" ID="txtStartDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" onfocus="disableFutureDates()" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
+                              </div>
                         
                         <div class="row">
                         <div class="col-12" id="Rejection" runat="server" visible="false">

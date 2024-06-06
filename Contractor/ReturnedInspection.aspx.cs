@@ -107,6 +107,7 @@ namespace CEIHaryana.Contractor
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
+            BtnSubmit.Enabled = false;
             if (Session["ContractorID"].ToString() != null && Session["ContractorID"].ToString() != "")
             {
                 string AssignSupervisor = ddlAssignSupervisor.SelectedValue;
@@ -152,6 +153,7 @@ namespace CEIHaryana.Contractor
                 GetAssigenedGridData();
                 ddlAssignSupervisor.SelectedValue = "-1";
                 txtRemarksForSupervisor.Text = "";
+                BtnSubmit.Enabled = true;
             }
         }
 
@@ -242,6 +244,30 @@ namespace CEIHaryana.Contractor
                 }
             }
             catch { }
+        }
+
+        protected void lnkReadMore_Click(object sender, EventArgs e)
+        {
+            GridViewRow row = (GridViewRow)((Control)sender).NamingContainer;
+            if (row != null)
+            {
+                Label lblOffRemarks = (Label)row.FindControl("lblOffRemarks");
+                if (lblOffRemarks != null)
+                {
+                    lblModalOffRemarks.Text = lblOffRemarks.Text;
+                }
+                Label lblSORemarks = (Label)row.FindControl("lblSORemarks");
+                if (lblSORemarks != null)
+                {
+                    lblModalSORemarks.Text = lblSORemarks.Text;
+                }
+                Label lblContRemarks = (Label)row.FindControl("lblContRemarks");
+                if (lblContRemarks != null)
+                {
+                    lblModalContRemarks.Text = lblContRemarks.Text;
+                }
+            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#modal1').modal('show');", true);
         }
     }
 }
