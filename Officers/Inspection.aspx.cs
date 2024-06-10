@@ -117,7 +117,9 @@ namespace CEIHaryana.Officers
 
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
-            Session["InspectionTestReportId"] = txtTestReportId.Text;
+            LinkButton btn = (LinkButton)(sender);
+            Session["InspectionTestReportId"] = btn.CommandArgument; //txtTestReportId.Text;
+
             if (txtWorkType.Text.Trim() == "Line")
             {
                 Response.Redirect("/TestReportModal/LineTestReportModal.aspx");

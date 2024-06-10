@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="PeriodicRenewal.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.PeriodicRenewal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="InspectionRenewal.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.InspectionRenewal" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -275,7 +275,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12" style="text-align: center;">
-                        <h7 class="card-title fw-semibold mb-4" id="maincard1" style="text-transform: uppercase;">Periodic Renewal</h7>
+                        <h7 class="card-title fw-semibold mb-4" id="maincard1" style="text-transform: uppercase;">Inspection Renewal</h7>
                     </div>
                 </div>
                 <div class="row">
@@ -292,66 +292,38 @@
                 <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
                 <contenttemplate>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                        <div class="row" style="margin-bottom: 20px;">
-                            <div class="col-md-4">
-                                <label>
-                                    Address Wise
-        <samp style="color: red">* </samp>
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAdress" TabIndex="2" runat="server">
-                                   
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                            </div>
-                           <%-- <div class="col-md-3">
-                                <label>
-                                    Intimation Wise
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlIntimation" TabIndex="2" runat="server">
-                                    
-                                </asp:DropDownList>
-                            </div>--%>
-                            <div class="col-md-4">
-                                <label> 
-                                    Installation Wise
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInstallationType" TabIndex="2" runat="server">
-                                    
-                                </asp:DropDownList>
-                            </div>
-                             <div class="col-1" style="margin-top: auto;padding-left:0px;">
-                                   
-                                    <asp:Button type="submit" ID="btnSearch" TabIndex="23" Text="Search" runat="server" class="btn btn-primary mr-2" OnClick="btnSearch_Click" Style="padding-left: 18px; padding-right: 18px;height: 34px; padding-top: 2px;" />
-                                </div>
-                        </div>
+                        
                         <div>
                             <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-      <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+      <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" OnRowDataBound="GridView1_RowDataBound" Width="100%" AllowPaging="true" PageSize="20"
                         AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                         
-                            <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id">
+                           
+                            <asp:BoundField DataField="Id" HeaderText="Inspection Id">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Address" HeaderText="Address">
+                            <asp:BoundField DataField="number" HeaderText="Number">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
                             </asp:BoundField>
-                            
-                            <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                              <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+                         <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center">
+                              <ItemTemplate>
+                                <asp:LinkButton ID="lnkRedirect" runat="server" CssClass="view-test-report" Text="View Test Report"  OnClick ="lnkRedirect_Click" />
+                               </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor leftalign"></ItemStyle>
+                             <HeaderStyle HorizontalAlign="Left" CssClass="leftalign" />
+                           </asp:TemplateField>--%>
+
+                             <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>                                
+                                    <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>--%>
+                              <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
@@ -374,14 +346,11 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-
-
-                               
                             </div>
                             <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                                 <div class="col-4" style="margin-top: auto;">
                                     <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                                    <asp:Button type="submit" ID="BtnProcess" TabIndex="23" Text="Process" runat="server" OnClick="BtnProcess_Click"  class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                                    <asp:Button type="submit" ID="BtnProcess" TabIndex="23" Text="Add To Cart" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
                                 </div>
                             </div>
                         </div>
