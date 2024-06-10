@@ -414,7 +414,7 @@
                                     Inspection Date                           
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
-                          <%--<asp:TextBox class="form-control" ID="txtStartDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" onfocus="disableFutureDates()" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
+                        
                               </div>
                         
                         <div class="row">

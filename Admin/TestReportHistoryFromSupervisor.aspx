@@ -24,7 +24,7 @@
         .ellipsis {
             cursor: pointer !important;
             color: blue !important;
-            max-width: 100px !important;
+            max-width: 10px !important;
             font-size: 13px !important;
         }
 

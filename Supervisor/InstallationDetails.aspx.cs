@@ -39,7 +39,7 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 Response.Redirect("/login.aspx");
             }
@@ -50,7 +50,7 @@ namespace CEIHaryana.Supervisor
             string Id = Session["id"].ToString();
 
             DataTable ds = new DataTable();
-            ds = CEI.GetInstllationsforSupervisor(Id);
+            ds = CEI.GetInstllationsforSupervisor(Id, Session["SupervisorID"].ToString());
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -86,7 +86,10 @@ namespace CEIHaryana.Supervisor
                         Label lblStatus = (Label)row.FindControl("lblStatus");
                         Label lblReportType = (Label)row.FindControl("lblReportType");
                         Label lblAssignedSupervisor = (Label)row.FindControl("lblAssignedSupervisor");
+                        Label lblInitialSupervisor = (Label)row.FindControl("lblInitialSupervisor");
+
                         
+
                         Session["Approval"] = lblStatus.Text.Trim();
 
                         if (Session["Approval"].ToString() != null)
@@ -170,6 +173,12 @@ namespace CEIHaryana.Supervisor
                                 string script = "alert(\"You are not Authorised to Edit.\");";
                                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                             }
+                        }
+                        //If The TestReport Is Assigned To New Supervisor Then That One Should Not Be Able to Work On Other TestReports In That Intimation
+                        else if (lblInitialSupervisor.Text.Trim().ToLower() == "no") 
+                        {
+                            string script = "alert(\"You are not Authorised to Edit This.\");";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                         }
                         else
                         {

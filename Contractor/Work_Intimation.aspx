@@ -54,7 +54,7 @@
     <script type="text/javascript">
         function alertWithRedirectUpdation() {
           
-                alert(''Intimation Updated Successfully'');
+                alert('Intimation Updated Successfully');
                 window.location.href = "/Contractor/PreviousProjects.aspx";
             
         }

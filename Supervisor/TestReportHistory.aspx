@@ -14,10 +14,93 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+
+     <!-- jQuery Modal -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .col-md-4 {
             margin-bottom: 8px;
+        }
+
+          a.close-modal {
+     width: 0px !important;
+ }
+        .jquery-modal.blocker.current {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        div#modal1 {
+            margin-left: 58%;
+            top: 50%;
+        }
+
+        .modal {
+            max-width: 85%; /* Adjust the maximum width as needed */
+            margin: -40px; /* Center the modal horizontally */
+            background-color: white; /* Background color for the modal */
+            padding: 20px; /* Add padding for content */
+            border-radius: 10px; /* Rounded corners for the modal */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+            position: fixed; /* Fixed positioning to make it a popup */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -40%); /* Center using transform */
+            z-index: 9999; /* Ensure it's on top of other content */
+        }
+
+
+        .row-modal {
+            margin-top: 15px;
+        }
+
+        .card-body {
+            margin-bottom: 11px !important;
+            margin-top: 5px !important;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 100%; /* Could be more or less, depending on screen size */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 98%;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .card .card-title {
+            font-size: 1.4rem !important;
+            margin-bottom: 0px !important;
         }
 
         .form-control {
@@ -156,6 +239,51 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+        .card-body {
+     margin-bottom: 11px !important;
+     margin-top: 5px !important;
+ }
+
+ .modal {
+     display: none; /* Hidden by default */
+     position: fixed; /* Stay in place */
+     z-index: 1; /* Sit on top */
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto; /* Enable scroll if needed */
+     background-color: rgb(0,0,0); /* Fallback color */
+     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ }
+
+ .modal-content {
+     background-color: #fefefe;
+     margin: 5% auto; /* 15% from the top and centered */
+     padding: 20px;
+     border: 1px solid #888;
+     width: 100%; /* Could be more or less, depending on screen size */
+ }
+
+ .close {
+     color: #aaa;
+     float: right;
+     font-size: 28px;
+     font-weight: bold;
+     margin-left: 98%;
+ }
+
+     .close:hover,
+     .close:focus {
+         color: black;
+         text-decoration: none;
+         cursor: pointer;
+     }
+
+        .card .card-title {
+            font-size: 1.4rem !important;
+            margin-bottom: 0px !important;
+        }
     </style>
 
 
@@ -215,6 +343,11 @@
                                     <asp:Label ID="lblInstallationLine" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                     <%--<asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>--%>
                                     <asp:Label ID="lblApplicationForTestReport" runat="server" Text='<%#Eval("Apllication") %>'></asp:Label>
+
+                                     <asp:Label ID="lblOffRemarks" runat="server" Text='<%#Eval("OfficerRemarks") %>'></asp:Label>
+                                    <asp:Label ID="lblSORemarks" runat="server" Text='<%#Eval("SiteOwnerRemarks") %>'></asp:Label>
+                                    <asp:Label ID="lblContRemarks" runat="server" Text='<%#Eval("ContractorRemarksForSuprvisor") %>'></asp:Label>
+
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
@@ -260,14 +393,19 @@
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ContractorRemarksForSuprvisor" HeaderText="Remarks">
+                          <%--  <asp:BoundField DataField="ContractorRemarksForSuprvisor" HeaderText="Remarks">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                             <%--<asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>--%>
+                              <asp:TemplateField HeaderText="Remarks">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkReadMore" runat="server" data-modal="modal1" OnClick="lnkReadMore_Click">Read more</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -280,6 +418,32 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
                 </div>
+                 <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <span class="close" data-modal="modal1">&times;</span>
+                        <div class="card-title">
+                            Officer Remarks
+                
+                        </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
+                        </div>
+                        <div class="card-title">
+                            SiteOwner Remarks
+                
+                        </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <asp:Label ID="lblModalSORemarks" runat="server"></asp:Label>
+                        </div>
+                        <div class="card-title">
+                            Contractor Remarks
+                
+                        </div>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <asp:Label ID="lblModalContRemarks" runat="server"></asp:Label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -289,6 +453,15 @@
     <script>
         new DataTable('#example');
     </script>
+     <script>
+         function showModal() {
+             $('#ex1').modal('show');
+         }
+         function CloseModalAndRedirect() {
+             $('#ex1').modal('hide');
+             window.location.href = "TestReportForm.aspx";
+         }
+     </script>
     <script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
@@ -326,5 +499,18 @@
                 }
             }
         </script>
-
+     <script>
+         // Get all close elements
+         const closeElements = document.querySelectorAll('.close');
+         // Add click event listener to each close element
+         closeElements.forEach(close => {
+             close.addEventListener('click', () => {
+                 const modalId = close.getAttribute('data-modal');
+                 const modal = document.getElementById(modalId);
+                 if (modal) {
+                     modal.style.display = 'none';
+                 }
+             });
+         });
+     </script>
 </asp:Content>

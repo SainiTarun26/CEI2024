@@ -82,7 +82,6 @@ namespace CEIHaryana.Contractor
                 Console.Write(ex.Message);
             }
         }
-
         public void GetinspectionGridData()
         {
             if (Session["ContractorID"].ToString() != null && Session["ContractorID"].ToString() != "")

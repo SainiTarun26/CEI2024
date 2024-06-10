@@ -2481,9 +2481,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         //    }
 
-        public DataTable GetInstllationsforSupervisor(string IntimationId)
+        //public DataTable GetInstllationsforSupervisor(string IntimationId)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallation", IntimationId);
+
+        //}
+        public DataTable GetInstllationsforSupervisor(string IntimationId, string SupervisorId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallation", IntimationId);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallation", IntimationId, SupervisorId);
 
         }
         public DataTable WorkIntimationHistoryforSupervisor(string Id)

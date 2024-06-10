@@ -351,11 +351,11 @@
                                 <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
                                 <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                             </asp:BoundField>
-                            <%--  <asp:BoundField DataField="ContractorRemarks" HeaderText="Contractor Remarks">
+                            <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
                                 <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                 <ItemStyle HorizontalAlign="center" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="SiteOwnerRemarks" HeaderText="Siteowner Remarks">
+                            <%--  <asp:BoundField DataField="SiteOwnerRemarks" HeaderText="Siteowner Remarks">
                                 <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                 <ItemStyle HorizontalAlign="center" />
                             </asp:BoundField>

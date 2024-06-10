@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="PeriodicRenewal.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.PeriodicRenewal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="PeriodicRenewal.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.PeriodicRenewal" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
