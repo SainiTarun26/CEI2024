@@ -20,7 +20,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
+                    if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
                         GridViewBind();
 
@@ -36,40 +36,86 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
+       
         public void GridViewBind()
         {
+            string selectedInspectionIdsString = Session["SelectedInspectionId"] as string;
 
-            string intimationId = Session["IntimationId"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.InspectionRenewal(intimationId);
-            if (ds.Tables[0].Rows.Count > 0 && ds != null)
+            if (!string.IsNullOrEmpty(selectedInspectionIdsString))
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                
+                string[] selectedInspectionIdsArray = new string[] { selectedInspectionIdsString };
+                DataSet ds = CEI.InspectionRenewal(selectedInspectionIdsArray);
+
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                }
             }
-            else
+            
+        }
+
+
+
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+            Label lblInstallationType = (Label)row.FindControl("LblInstallationType");
+            string installationtype = lblInstallationType.Text;
+            string testReportId = e.CommandArgument.ToString();
+            
+
+
+            if (installationtype == "Line")
             {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-
+                Session["LineID"] = testReportId;
+                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
             }
-
+            else if (installationtype == "Substation Transformer")
+            {
+                Session["SubStationID"] = testReportId;
+                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+            }
+            else if (installationtype == "Generating Set")
+            {
+                Session["GeneratingSetId"] = testReportId;
+                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+            }
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+               TableCell daysCell = e.Row.Cells[7];
 
-                string inspectionId = e.Row.Cells[0].Text;
-              
+                string daysText = daysCell.Text;
+                int days;
+                if (int.TryParse(daysText, out days))
+                {
+                    
+                    if (days > 15)
+                    {
+                        daysCell.ForeColor = System.Drawing.Color.OrangeRed;
+                    }
+                    else if(days < 15)
+                    {
+                        daysCell.ForeColor = System.Drawing.Color.YellowGreen;
+                    }
+                    else
+                    {
+                        daysCell.ForeColor = System.Drawing.Color.GreenYellow;
+                    }
+                }
             }
-        }
 
-        //protected void lnkRedirect_Click(object sender, EventArgs e)
-        //{
-           
-            
-        //}
+        }
     }
 }

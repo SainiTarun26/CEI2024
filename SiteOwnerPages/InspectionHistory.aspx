@@ -84,6 +84,10 @@
         .headercolor {
             background-color: #9292cc;
         }
+
+        .ReturnedRowColor {
+     background-color: #f9c7c7 !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

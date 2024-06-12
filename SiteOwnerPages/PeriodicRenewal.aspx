@@ -326,7 +326,7 @@
                         </div>
                         <div>
                             <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-      <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+      <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
@@ -361,6 +361,11 @@
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                         </Columns>

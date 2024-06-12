@@ -3836,6 +3836,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet InspectionRenewal(string id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspectionRenewal", id);
+        }        
+        public DataSet InspectionRenewal(string[] id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspectionRenewal", id);
         }
     }
 }

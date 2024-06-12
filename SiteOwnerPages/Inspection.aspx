@@ -290,6 +290,10 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+                            <asp:BoundField  DataField="ReturnBased" HeaderText="Return Based" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
@@ -358,7 +362,6 @@
                     <%--<asp:Label ID="lblerror" runat="server" Text="Label"></asp:Label>--%>
                 </div>
             </div>
-
 
         </div>
     </div>

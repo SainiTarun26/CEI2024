@@ -43,7 +43,7 @@ namespace CEIHaryana.SiteOwnerPages
                 dsAdress = CEI.GetSiteOwnerAdress(id);
                 ddlAdress.DataSource = dsAdress;
                 ddlAdress.DataTextField = "Address";
-                ddlAdress.DataValueField = "Id";
+                ddlAdress.DataValueField = "Address";
                 ddlAdress.DataBind();
                 ddlAdress.Items.Insert(0, new ListItem("Select", "0"));
                 dsAdress.Clear();
@@ -96,7 +96,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             string id = Session["SiteOwnerId"].ToString();
             string Adress= ddlAdress.SelectedItem.Text;
-            Session["IntimationId"] = ddlAdress.SelectedValue;
+            //Session["IntimationId"+ ] = ddlAdress.SelectedValue;
             DataSet ds = new DataSet();
             ds = CEI.GetPeriodicDetails(Adress , id);
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
@@ -111,25 +111,40 @@ namespace CEIHaryana.SiteOwnerPages
                 
             }
         }
-               
+
+        
         protected void BtnProcess_Click(object sender, EventArgs e)
         {
-            bool AtLeastOneCheked = false;
-            //Response.Redirect("InspectionRenewal.aspx", false);
+            List<string> selectedInspectionIdsList = new List<string>();
+
             foreach (GridViewRow row in GridView1.Rows)
             {
                 CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
                 if (chk != null && chk.Checked)
                 {
-                    AtLeastOneCheked = true;
-                    Response.Redirect("InspectionRenewal.aspx", true);
+                    int inspectionId = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Value);
+                    selectedInspectionIdsList.Add(inspectionId.ToString());
                 }
             }
-            if (!AtLeastOneCheked)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Declaration'); ", true);
-            }
 
+            if (selectedInspectionIdsList.Count > 0)
+            {
+                
+                string selectedInspectionIdsString = string.Join(",", selectedInspectionIdsList);
+
+                 Session["SelectedInspectionId"] = selectedInspectionIdsString;
+
+                Response.Redirect("InspectionRenewal.aspx", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Declaration');", true);
+            }
         }
+
+
+
+
+
     }
 }
