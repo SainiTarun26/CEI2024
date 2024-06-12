@@ -32,7 +32,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Response.Redirect("/login.aspx");
             }
-
         }
         private void BindAdress()
         {
@@ -53,8 +52,6 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
-       
-
         private void BindInstallationType()
         {
             try
@@ -70,10 +67,8 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch
             {
-
             }
         }
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             try
@@ -86,19 +81,17 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             GridViewBind();
         }
-
         public void GridViewBind()
         {
             string id = Session["SiteOwnerId"].ToString();
-            string Adress= ddlAdress.SelectedItem.Text;
+            string Adress = ddlAdress.SelectedItem.Text;
             //Session["IntimationId"+ ] = ddlAdress.SelectedValue;
             DataSet ds = new DataSet();
-            ds = CEI.GetPeriodicDetails(Adress , id);
+            ds = CEI.GetPeriodicDetails(Adress, id);
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 GridView1.DataSource = ds;
@@ -108,11 +101,8 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                
             }
         }
-
-        
         protected void BtnProcess_Click(object sender, EventArgs e)
         {
             List<string> selectedInspectionIdsList = new List<string>();
@@ -129,11 +119,9 @@ namespace CEIHaryana.SiteOwnerPages
 
             if (selectedInspectionIdsList.Count > 0)
             {
-                
                 string selectedInspectionIdsString = string.Join(",", selectedInspectionIdsList);
 
-                 Session["SelectedInspectionId"] = selectedInspectionIdsString;
-
+                Session["SelectedInspectionId"] = selectedInspectionIdsString;
                 Response.Redirect("InspectionRenewal.aspx", true);
             }
             else
@@ -141,10 +129,5 @@ namespace CEIHaryana.SiteOwnerPages
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Declaration');", true);
             }
         }
-
-
-
-
-
     }
 }
