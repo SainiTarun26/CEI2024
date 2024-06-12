@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="InspectionRenewalCart.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.InspectionRenewalCart" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="InspectionRenewalCart.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.InspectionRenewalCart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />

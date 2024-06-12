@@ -1887,6 +1887,7 @@
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
+    <Content Include="SiteOwnerPages\InspectionRenewal.aspx" />
     <Content Include="SiteOwnerPages\InspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\InspectionRequestPrint.aspx" />
     <Content Include="SiteOwnerPages\PaymentPage.aspx" />
@@ -2453,6 +2454,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\InspectionHistory.aspx.designer.cs">
       <DependentUpon>InspectionHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InspectionRenewal.aspx.cs">
+      <DependentUpon>InspectionRenewal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InspectionRenewal.aspx.designer.cs">
+      <DependentUpon>InspectionRenewal.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\InspectionRenewalCart.aspx.cs">
       <DependentUpon>InspectionRenewalCart.aspx</DependentUpon>
