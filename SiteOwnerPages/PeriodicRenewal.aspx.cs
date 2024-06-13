@@ -49,7 +49,7 @@ namespace CEIHaryana.SiteOwnerPages
                 ddlAdress.Items.Insert(0, new ListItem("Select", "0"));
                 dsAdress.Clear();
             }
-            catch
+            catch (Exception ex)
             {
 
             }
@@ -219,9 +219,11 @@ namespace CEIHaryana.SiteOwnerPages
                             string Voltage = LblVoltage.Text;
                             Label LblCapacity = (Label)row.FindControl("LblCapacity");
                             string Capacity = LblCapacity.Text;
+                            Label LblAddress = (Label)row.FindControl("LblAddress");
+                            string Address = LblAddress.Text;
 
                             CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, TestReportId, inspectionDate,
-                                inspectionDueDate, DelayedDays, Voltage, Capacity, id, "1");
+                                inspectionDueDate, DelayedDays, Voltage, Capacity, Address, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }

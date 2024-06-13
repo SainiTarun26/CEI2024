@@ -3842,7 +3842,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspectionRenewal", id);
         }
         public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType,
-    string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string CreatedBy, string Status)
+string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CreatedBy, string Status)
         {
             try
             {
@@ -3859,7 +3859,15 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                         cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
                         cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
                         cmd.Parameters.AddWithValue("@Voltage", Voltage);
-                        cmd.Parameters.AddWithValue("@Capacity", Capacity);
+                        if (string.IsNullOrWhiteSpace(Capacity))
+                        {
+                            cmd.Parameters.AddWithValue("@Capacity", DBNull.Value);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Capacity", Capacity);
+                        }
+                        cmd.Parameters.AddWithValue("@Address", Address);
                         cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                         cmd.Parameters.AddWithValue("@Status", Status);
                         con.Open();
