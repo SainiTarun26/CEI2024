@@ -1,0 +1,82 @@
+ALTER PROCEDURE [dbo].[sp_GetOwnerAdress]
+(@id varchar(20))
+             AS
+               BEGIN
+               SELECT Distinct
+			  
+			   --Id , 
+			   Address
+                FROM tbl_WorkIntimation
+				where PANNumber = @id
+END
+----------------------------
+
+
+ALTER PROCEDURE [dbo].[sp_GetDataForInspectionRenewal]
+(
+    @InspectionId NVARCHAR(500)
+)
+AS
+BEGIN
+    CREATE TABLE #Temp (InspectionId INT);
+
+    WHILE LEN(@InspectionId) > 0
+    BEGIN
+        DECLARE @TDay NVARCHAR(50);
+        IF CHARINDEX(',', @InspectionId) > 0
+            SET @TDay = SUBSTRING(@InspectionId, 0, CHARINDEX(',', @InspectionId));
+        ELSE
+        BEGIN
+            SET @TDay = @InspectionId;
+            SET @InspectionId = '';
+        END;
+        INSERT INTO #Temp VALUES (CAST(@TDay AS INT));
+        SET @InspectionId = REPLACE(@InspectionId, @TDay + ',', '');
+    END;
+
+       SELECT 
+        I.Id, 
+        I.TestRportId,
+		 I.TestReportCount as number,
+        CONVERT(VARCHAR(10), I.ApprovedDate, 105) AS InspectionDate,
+        I.InstallationType,
+        I.IntimationId,
+        DATEDIFF(DAY, I.ApprovedDate, GETDATE()) AS Numberofdays,
+        CONVERT(VARCHAR(10), DATEADD(YEAR, 1, I.ApprovedDate), 105) AS InspectionDueDate
+    FROM 
+        tbl_Inspection AS I 
+    WHERE 
+        I.Id IN (SELECT InspectionId FROM #Temp)
+        AND I.ApplicationStatus = 'Approved'
+        AND I.ApprovedDate < DATEADD(YEAR, -1, GETDATE());
+
+    
+END
+-----------------------------
+
+ALTER PROCEDURE [dbo].[sp_GetDetailsAdressWise]
+(@id varchar(200),
+@PanNumber nvarchar(50))
+AS
+BEGIN
+    --DECLARE @OneYearAgo DATE
+    --SET @OneYearAgo = DATEADD(year, -1, GETDATE())
+
+    SELECT I.Id,  I.IntimationId, 
+    WI.Address + ',' + WI.District AS Address,
+    I.InstallationType + '-' + CONVERT(varchar,I.TestReportCount) AS TypeOf,
+    WI.VoltageLevel
+    FROM tbl_Inspection AS I  
+    inner JOIN tbl_WorkIntimation AS WI ON I.IntimationId = WI.Id  
+    --left JOIN tbl_Inspection AS Ins ON Ins.IntimationId = WI.Id  
+    WHERE WI.Address = @id 
+	And WI.PANNumber = @PanNumber
+   AND  I.ApplicationStatus = 'Approved'
+            AND I.ApprovedDate < DATEADD(year, -1, GETDATE())
+        
+END
+
+
+
+
+
