@@ -3836,7 +3836,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet InspectionRenewal(string id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspectionRenewal", id);
-        }
+        } 
         public DataSet GetPeriodicDetails(string adress, string id, int NoOfDays, string InstallationType)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWise", adress, id, NoOfDays, InstallationType);
