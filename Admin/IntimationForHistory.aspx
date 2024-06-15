@@ -232,7 +232,10 @@
                     <label>Transcation Date</label>
                     <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-
+                 <div class="col-md-4" runat="server">
+                    <label>Fees Amount</label>
+                    <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
                <div class="col-md-4" id="Capacity" runat="server">
                 <label for="Capacity">Capacity</label>
                 <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>

@@ -259,6 +259,10 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
+                                <asp:BoundField DataField="ReasonType" HeaderText="Return Based">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
                                 <asp:BoundField DataField="RemarkForContractor" HeaderText="RemarksForContractor">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                     <ItemStyle HorizontalAlign="center" />

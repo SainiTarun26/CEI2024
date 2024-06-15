@@ -11,70 +11,70 @@ namespace CEIHaryana.SiteOwnerPages
 {
 
 
-    public partial class InspectionRenewal
+    public partial class SiteOwnerDashboard
     {
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// txtTotalinspection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.TextBox txtTotalinspection;
 
         /// <summary>
-        /// DataUpdated control.
+        /// txtRejected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataUpdated;
+        protected global::System.Web.UI.WebControls.TextBox txtRejected;
 
         /// <summary>
-        /// DataSaved control.
+        /// txtApproved control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
+        protected global::System.Web.UI.WebControls.TextBox txtApproved;
 
         /// <summary>
-        /// GridView1 control.
+        /// txtPending control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.TextBox txtPending;
 
         /// <summary>
-        /// BtnProcess control.
+        /// GridView2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnProcess;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
-        /// hdnId control.
+        /// Back control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Back;
 
         /// <summary>
-        /// hdnId2 control.
+        /// PrintDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnId2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PrintDistrict;
     }
 }

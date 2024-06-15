@@ -307,7 +307,7 @@
                                         <p>
                                             Approval for energization of the subject cited installation is herby accorded subject to consistent
                                         compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
-                                         2023 may be ensured in these installations at your end. Plese note that it shall be the responsiility of the owner 
+                                         2023 may be ensured in these installations at your end. Please note that it shall be the responsiility of the owner 
                                         of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
                                         by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
                                         <br />

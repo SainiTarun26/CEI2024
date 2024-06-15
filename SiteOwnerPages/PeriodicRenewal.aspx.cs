@@ -25,7 +25,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
                         BindAdress();
-                        BindInstallationType();
+                        //BindInstallationType();
                     }
                 }
             }
@@ -49,31 +49,31 @@ namespace CEIHaryana.SiteOwnerPages
                 ddlAdress.Items.Insert(0, new ListItem("Select", "0"));
                 dsAdress.Clear();
             }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-
-        private void BindInstallationType()
-        {
-            try
-            {
-                DataSet dsInstallation = new DataSet();
-                dsInstallation = CEI.GetInstallationType();
-                ddlInstallationType.DataSource = dsInstallation;
-                ddlInstallationType.DataTextField = "InstallationType";
-                ddlInstallationType.DataValueField = "ID";
-                ddlInstallationType.DataBind();
-                ddlInstallationType.Items.Insert(0, new ListItem("Select", "0"));
-                dsInstallation.Clear();
-            }
             catch
             {
 
             }
         }
+
+
+        //private void BindInstallationType()
+        //{
+        //    try
+        //    {
+        //        DataSet dsInstallation = new DataSet();
+        //        dsInstallation = CEI.GetInstallationType();
+        //        ddlInstallationType.DataSource = dsInstallation;
+        //        ddlInstallationType.DataTextField = "InstallationType";
+        //        ddlInstallationType.DataValueField = "ID";
+        //        ddlInstallationType.DataBind();
+        //        ddlInstallationType.Items.Insert(0, new ListItem("Select", "0"));
+        //        dsInstallation.Clear();
+        //    }
+        //    catch
+        //    {
+
+        //    }
+        //}
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -97,9 +97,11 @@ namespace CEIHaryana.SiteOwnerPages
         {
             string id = Session["SiteOwnerId"].ToString();
             string Adress = ddlAdress.SelectedItem.Text;
+            int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
+            string InstallationType = ddlInstallationType.SelectedValue;
             //Session["IntimationId"+ ] = ddlAdress.SelectedValue;
             DataSet ds = new DataSet();
-            ds = CEI.GetPeriodicDetails(Adress, id);
+            ds = CEI.GetPeriodicDetails(Adress, id, numberOfDays, InstallationType);
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 GridView1.DataSource = ds;
@@ -182,8 +184,33 @@ namespace CEIHaryana.SiteOwnerPages
                     CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                     chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
                 }
+                
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    int numberofdaysColumnIndex = 9; 
+                    TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
+
+                    int numberofdays;
+                    if (int.TryParse(numberofdaysCell.Text, out numberofdays))
+                    {
+                        if (numberofdays > 30)
+                        {
+                            e.Row.Cells[9].CssClass = "GreenBackground";
+                        }
+                        else if (numberofdays < 15)
+                        {
+                            e.Row.Cells[9].CssClass = "OrangeBackground";
+                        }
+                        else if (numberofdays < 30 && numberofdays > 15)
+                        {
+                            e.Row.Cells[9].CssClass = "YellowBackground";
+                        }
+                    }
+                }
             }
-            catch { }
+
+            catch (Exception ex)
+            { }
         }
 
         protected void BtnCart_Click(object sender, EventArgs e)
@@ -219,11 +246,9 @@ namespace CEIHaryana.SiteOwnerPages
                             string Voltage = LblVoltage.Text;
                             Label LblCapacity = (Label)row.FindControl("LblCapacity");
                             string Capacity = LblCapacity.Text;
-                            Label LblAddress = (Label)row.FindControl("LblAddress");
-                            string Address = LblAddress.Text;
 
                             CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, TestReportId, inspectionDate,
-                                inspectionDueDate, DelayedDays, Voltage, Capacity, Address, id, "1");
+                                inspectionDueDate, DelayedDays, Voltage, Capacity, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }
@@ -237,6 +262,17 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             { }
+        }
+
+        protected void ddlNoOfDays_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
+
+        }
+
+        protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string InstallationType = ddlInstallationType.SelectedValue;
         }
     }
 }

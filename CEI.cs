@@ -3836,13 +3836,13 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet InspectionRenewal(string id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspectionRenewal", id);
-        }        
-        public DataSet InspectionRenewal(string[] id)
+        }
+        public DataSet GetPeriodicDetails(string adress, string id, int NoOfDays, string InstallationType)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspectionRenewal", id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWise", adress, id, NoOfDays, InstallationType);
         }
         public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType,
-string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CreatedBy, string Status)
+     string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string CreatedBy, string Status)
         {
             try
             {
@@ -3859,15 +3859,7 @@ string TestReportId, string InspectionDate, string InspectionDueDate, string Del
                         cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
                         cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
                         cmd.Parameters.AddWithValue("@Voltage", Voltage);
-                        if (string.IsNullOrWhiteSpace(Capacity))
-                        {
-                            cmd.Parameters.AddWithValue("@Capacity", DBNull.Value);
-                        }
-                        else
-                        {
-                            cmd.Parameters.AddWithValue("@Capacity", Capacity);
-                        }
-                        cmd.Parameters.AddWithValue("@Address", Address);
+                        cmd.Parameters.AddWithValue("@Capacity", Capacity);
                         cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                         cmd.Parameters.AddWithValue("@Status", Status);
                         con.Open();
@@ -3880,6 +3872,22 @@ string TestReportId, string InspectionDate, string InspectionDueDate, string Del
 
             }
         }
+
+
+        #region siteownerDashboard
+        public DataSet GetdataforSiteownerdashboard(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDataforSiteownerDashbard", LoginId);
+        }
+        public DataSet GetdataforSiteownerdashboardGraph(string LoginId,string InstallationType)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDataforSiteownerDashbardGraph", LoginId,InstallationType);
+        }
+        public DataTable GetdataforSiteownerdashboardGridview(string LoginId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SiteOwnerDashboardGridview", LoginId);
+        }
+        #endregion
     }
 }
 

@@ -73,8 +73,8 @@ namespace CEIHaryana.Officers
                 txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-               // txtInspectionRemark.Text = ds.Tables[0].Rows[0]["InspectionRemarks"].ToString();
-
+                // txtInspectionRemark.Text = ds.Tables[0].Rows[0]["InspectionRemarks"].ToString();
+                txtAmount.Text= ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                 count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 

@@ -94,6 +94,7 @@ namespace CEIHaryana.Admin
 
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     txtApplicationStatus.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (txtApplicationStatus.Text == "Approved")
                     {

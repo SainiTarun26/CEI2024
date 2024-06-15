@@ -183,7 +183,6 @@ namespace CEIHaryana.Officers
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
-
                 // Assuming dt has "Total" and "Inprogressorpending" columns
                 var categories = dt.AsEnumerable().Select(row => row.Field<string>("DistrictofData")).ToArray();
                 var valuesRecordCount = dt.AsEnumerable().Select(row => row.Field<int>("RecordCount")).ToArray();

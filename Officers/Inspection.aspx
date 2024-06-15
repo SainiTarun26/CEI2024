@@ -179,7 +179,7 @@
         }
 
         function alertWithRedirectdataCommonReturn() {
-            alert('Inspection Request is Returned to Owner/Supervisor');
+            alert('Inspection Request is Returned to Owner');
             window.location.href = "/Officers/NewApplications.aspx";
         }
     </script>
@@ -198,12 +198,12 @@
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
                     <div class="col-md-4" runat="server">
-                        <label>Inspection Report No</label>
+                        <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4">
                         <label>
-                            Type of Inspection
+                             Type of Premises
                    <%-- <samp style="color: red">* </samp>--%>
                         </label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -282,7 +282,10 @@
                         <label>Transaction Date</label>
                         <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-
+                     <div class="col-md-4" runat="server">
+                        <label>Fees Amount</label>
+                        <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
             </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
@@ -430,7 +433,7 @@
                         </div>
                     </div>--%>
                     <div class="row"> 
-                        <p style="margin-top: auto; margin-bottom: auto;">Documents are as per the requirements</p>
+                        <p style="margin-top: auto; margin-bottom: auto;">Application in order</p>
                         <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                             <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
                             <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
