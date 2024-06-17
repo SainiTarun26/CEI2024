@@ -197,7 +197,7 @@ div#SubmitBy1 {
                                         <div class="row">
                                             <div class="col-3" style="margin-top: 0px;"></div>
                                             <div class="col-6" style="margin-top: 0px; padding-left: 0px; text-align: center;">
-                                                <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                                <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" TabIndex="1"
                                                     MaxLength="30" Style="margin-left: 18px;" Text="12341/tarun-2024">
                                                 </asp:TextBox>
                                             </div>

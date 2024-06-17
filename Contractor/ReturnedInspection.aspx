@@ -263,17 +263,24 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="RemarkForContractor" HeaderText="RemarksForContractor">
+                                <asp:TemplateField HeaderText="Remarks">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkReadMore" runat="server" data-modal="modal1" OnClick="lnkReadMore_Click1">Read more</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                                <%--<asp:BoundField DataField="RemarkForContractor" HeaderText="RemarksForContractor">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
                                     <ItemStyle HorizontalAlign="center" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblIntimation" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                         <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                         <asp:Label ID="lblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>      
                                         <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                    </ItemTemplate>
+                                        <asp:Label ID="LblRemarkForContractor" runat="server" Text='<%#Eval("RemarkForContractor") %>'></asp:Label>
+                                        <asp:Label ID="LblSiteOwnerInspectionRemark" runat="server" Text='<%#Eval("SiteOwnerInspectionRemark") %>'></asp:Label>
+                                        </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -387,10 +394,10 @@
                      <div id="modal1" class="modal">
                     <div class="modal-content">
                         <span class="close" data-modal="modal1">&times;</span>
-                        <div class="card-title">
+                       <div class="card-title" id="OfficerRemarks" runat="server" >
                             Officer Remarks
                                </div>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        <div class="card-body" id="OffRemarks" runat="server" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
                         </div>
                         <div class="card-title">

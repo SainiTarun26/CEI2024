@@ -268,5 +268,27 @@ namespace CEIHaryana.Contractor
             }
             ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#modal1').modal('show');", true);
         }
+
+        protected void lnkReadMore_Click1(object sender, EventArgs e)
+        {
+            GridViewRow row = (GridViewRow)((Control)sender).NamingContainer;
+            if (row != null)
+            {
+
+                OfficerRemarks.Visible = false;
+                OffRemarks.Visible = false;
+                Label lblSORemarks = (Label)row.FindControl("LblSiteOwnerInspectionRemark");
+                if (lblSORemarks != null)
+                {
+                    lblModalSORemarks.Text = lblSORemarks.Text;
+                }
+                Label lblContRemarks = (Label)row.FindControl("LblRemarkForContractor");
+                if (lblContRemarks != null)
+                {
+                    lblModalContRemarks.Text = lblContRemarks.Text;
+                }
+            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#modal1').modal('show');", true);
+        }
     }
 }

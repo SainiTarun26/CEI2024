@@ -324,7 +324,15 @@ namespace CEIHaryana.Contractor
                     {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                    }                   
+                    }
+                    if (DoesPanExist(PANNumber))
+                    {
+                        ViewState["PanExists"] = true;
+                    }
+                    else
+                    {
+                        ViewState["PanExists"] = false;
+                    }
                 }
                 else
                 {
@@ -676,7 +684,14 @@ namespace CEIHaryana.Contractor
                                     }
                                 }
 
-                                CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
+                                bool panExists = ViewState["PanExists"] != null && (bool)ViewState["PanExists"];
+
+                                if (!panExists)
+                                {
+                                    CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
+                                }
+
+                               // CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
                             }
                             transaction.Commit();
                             Reset();
@@ -1136,7 +1151,15 @@ namespace CEIHaryana.Contractor
                     {                        
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                    }                   
+                    }
+                    if (DoesPanExist(TANNumber))
+                    {
+                        ViewState["PanExists"] = true;
+                    }
+                    else
+                    {
+                        ViewState["PanExists"] = false;
+                    }
                 }
                 else
                 {
@@ -1155,6 +1178,30 @@ namespace CEIHaryana.Contractor
                 // Log the exception or provide a more detailed error message
                 Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
             }
+        }
+
+        private bool DoesPanExist(string pan)
+        {
+            bool exists = false;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    string query = "SELECT COUNT(1) FROM tbl_WorkIntimation WHERE PanNumber = @PanNumber";
+                    using (SqlCommand command = new SqlCommand(query, con))
+                    {
+                        command.Parameters.AddWithValue("@PanNumber", pan);
+                        command.CommandTimeout = 60;
+                        con.Open();
+                        exists = (int)command.ExecuteScalar() > 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                //throw new Exception("An error occurred while checking if the PAN number exists.", ex);
+            }
+            return exists;
         }
     }
 }

@@ -123,6 +123,24 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
+        /// OfficerRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OfficerRemarks;
+
+        /// <summary>
+        /// OffRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OffRemarks;
+
+        /// <summary>
         /// lblModalOffRemarks control.
         /// </summary>
         /// <remarks>

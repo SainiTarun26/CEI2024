@@ -22,7 +22,10 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     GridBind();
                 }
-               
+                else
+                {
+                    Response.Redirect("/Login.aspx", false);
+                }
             }
         }
         public void GridBind()
@@ -33,16 +36,14 @@ namespace CEIHaryana.SiteOwnerPages
                 if (ApplicationStatus=="Approved")
                 {
                     GridView1.Columns[8].Visible = true;
-                }
-                //string LoginID = string.Empty;
+                }               
                 LoginId = Session["SiteOwnerId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.SiteOwnerDashbordCapsule(LoginId, ApplicationStatus);
                 if (ds.Tables.Count > 0 && ds != null && ds.Tables[0].Rows.Count>0)
                 {
                     GridView1.DataSource = ds;
-                    GridView1.DataBind();
-                    //string Approved = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    GridView1.DataBind();                   
                 }
                 else
                 {
