@@ -184,10 +184,10 @@ namespace CEIHaryana.SiteOwnerPages
                     CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                     chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
                 }
-                
+
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    int numberofdaysColumnIndex = 9; 
+                    int numberofdaysColumnIndex = 9;
                     TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
 
                     int numberofdays;
@@ -247,8 +247,11 @@ namespace CEIHaryana.SiteOwnerPages
                             Label LblCapacity = (Label)row.FindControl("LblCapacity");
                             string Capacity = LblCapacity.Text;
 
+                            Label LblAddress = (Label)row.FindControl("LblAddress");
+                            string Address = LblAddress.Text;
+
                             CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, TestReportId, inspectionDate,
-                                inspectionDueDate, DelayedDays, Voltage, Capacity, id, "1");
+                            inspectionDueDate, DelayedDays, Voltage, Capacity, Address, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="InspectionRenewalCart.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.InspectionRenewalCart" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -16,54 +17,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            }
-            return true;
-        }
-
-        //Allow Only Aplhabet, Delete and Backspace
-
-        function isAlpha(keyCode) {
-
-            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-
-        }
-
-        function alphabetKey(e) {
-            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-            var k;
-            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-            return (allow.indexOf(String.fromCharCode(k)) != -1);
-        }
-    </script>
-
-    <script type="text/javascript">
-        function alertWithRedirectdata() {
-            if (confirm('Intimation Created Successfully')) {
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
-        }
-    </script>
-    <script type="text/javascript">
-        function alertWithRedirectUpdation() {
-            if (confirm('Intimation Updated Successfully')) {
-                window.location.href = "/Contractor/PreviousProjects.aspx";
-            } else {
-            }
-        }
-    </script>
-
     <style>
         input#ContentPlaceHolder1_AddressFilter {
-    margin-bottom: -15px;
-}
+            margin-bottom: -15px;
+        }
+
         .headercolor1 {
             text-align: initial !important;
         }
@@ -194,8 +154,6 @@
             font-weight: 700;
         }
 
-
-
         div#row3 {
             margin-top: -20px;
         }
@@ -214,8 +172,6 @@
             height: 35px;
             width: 67px;
         }
-
-
 
         svg#search1:hover {
             height: 22px;
@@ -269,6 +225,10 @@
             .input-box:focus-within {
                 border-color: #777;
             }
+
+        input, optgroup, select, textarea {
+            height: 20px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -281,67 +241,89 @@
                         <h7 class="card-title fw-semibold mb-4" id="maincard" style="text-transform: uppercase;">Inspection Renewal Cart</h7>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-sm-4" style="text-align: center;">
-                        <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                            Data Updated Successfully !!!.
-                        </label>
-                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                            Data Saved Successfully !!!.
-                        </label>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-md-4">
+                            <label>
+                                Address Wise<samp style="color: red">* </samp>
+                            </label>
+                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAddress" OnSelectedIndexChanged="ddlAddress_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Address" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAddress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-md-12">
+                            <asp:TextBox class="form-control" ID="txtAddressFilter" ReadOnly="true" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card" id="DivGrid" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;" runat="server">
+                            <%-- Add Gridview Here --%>
+                            <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" OnRowCommand="GridView1_RowCommand" runat="server" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true">
+                                <PagerStyle CssClass="pagination-ys" />
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Id" Visible="False">
+                                        <ItemTemplate>
+                                            <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("CapacityNumeric") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="SNo">
+                                        <HeaderStyle Width="5%" CssClass="headercolor" />
+                                        <ItemStyle Width="5%" />
+                                        <ItemTemplate>
+                                            <%#Container.DataItemIndex+1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Id">
+                                        <HeaderStyle Width="25%" CssClass="headercolor" />
+                                        <ItemStyle Width="25%" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                        <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="25%" />
+                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="Capacity">
+                                        <HeaderStyle Width="35%" CssClass="headercolor" />
+                                        <ItemStyle Width="35%" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblInstallationCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:Label ID="lblTotalCapacity" runat="server" Text="Total Capacity: " Font-Bold="true"></asp:Label>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Highest/Primary Voltage">
+                                        <HeaderStyle Width="35%" CssClass="headercolor" />
+                                        <ItemStyle Width="35%" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblInstallationVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <asp:Label ID="lblMaxVoltage" runat="server" Text="Max Voltage: " Font-Bold="true"></asp:Label>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="DeleteRow" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                        <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
+                            <div class="col-4" style="margin-top: auto;">
+                                <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" ValidationGroup="Submit" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
-                <contenttemplate>
-                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                        <div class="row" style="margin-bottom: 20px;">
-                            <div class="col-md-4">
-                                <label>
-                                    Address Wise
-        <samp style="color: red">* </samp>
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server">
-                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                    <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
-                                    <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom: 20px;">
-                            <div class="col-md-12">
-                                <asp:TextBox class="form-control" ID="AddressFilter" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
-
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="AddressFilter" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-
-
-
-                                <%-- Add Gridview Here --%>
-                            </div>
-                            <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
-                                <div class="col-4" style="margin-top: auto;">
-                                    <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                                    <asp:Button type="submit" ID="BtnSubmit" TabIndex="23" Text="Process" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </contenttemplate>
             </div>
-
-            <%--</asp:UpdatePanel>--%>
-
-            <asp:HiddenField ID="hdnId" runat="server" />
-            <asp:HiddenField ID="hdnId2" runat="server" />
             <div>
             </div>
         </div>
-    </div>
     </div>
     <footer class="footer">
     </footer>
@@ -357,25 +339,4 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-    <script type="text/javascript">
-        function FileName() {
-            var fileInput = document.getElementById('customFile');
-            var selectedFileName = document.getElementById('customFileLocation');
-
-            if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = fileInput.files[0].name;
-            }
-        }
-    </script>
-
-    <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
-        }
-    </script>
-
 </asp:Content>

@@ -27,24 +27,71 @@ namespace CEIHaryana.SiteOwnerPages
         }
         public void GridBind()
         {
-
-            string LoginID = string.Empty;
-            LoginID = Session["StaffID"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.NewRequestRecieved(LoginID);
-            if (ds.Tables.Count > 0 && ds != null)
+            if (Request.QueryString["parameter"].ToString() != null && Request.QueryString["parameter"].ToString() != "")
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                ApplicationStatus = Request.QueryString["parameter"].ToString();
+                if (ApplicationStatus=="Approved")
+                {
+                    GridView1.Columns[8].Visible = true;
+                }
+                //string LoginID = string.Empty;
+                LoginId = Session["SiteOwnerId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.SiteOwnerDashbordCapsule(LoginId, ApplicationStatus);
+                if (ds.Tables.Count > 0 && ds != null && ds.Tables[0].Rows.Count>0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                    //string Approved = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
             }
-            else
-            {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-            ds.Dispose();
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView1.PageIndex = e.NewPageIndex;
+                GridBind();
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+           
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select" || e.CommandName == "Print1")
+            {
+                Session["LineID"] = "";
+                Session["SubStationID"] = "";
+                Session["GeneratingSetId"] = "";
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                Session["InspectionId"] = lblID.Text;                
+                if (e.CommandName == "Select")
+                {
+                    Response.Redirect("/SiteOwnerPages/Inspection.aspx");
+                }               
+                else if (e.CommandName == "Print1")
+                {
+                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
+                }
+
+            }
+        }
+
     }
 }

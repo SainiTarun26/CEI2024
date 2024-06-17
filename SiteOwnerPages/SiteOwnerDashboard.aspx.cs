@@ -88,35 +88,35 @@ namespace CEIHaryana.SiteOwnerPages
 {{
                 label: 'Approved',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesApproved)},
-        backgroundColor: 'rgba(60,179,113,0.8)',
-                borderColor: 'rgba(60,179,113,0.8)',
-                borderWidth: 1,
-        barThickness: 20
+        backgroundColor: 'rgba(61,197,142,1)',
+                borderColor: 'rgba(61,197,142,1)',
+                borderWidth: 3,
+        barThickness: 25
             }},
 {{
                 label: 'Pending',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesPending)},
-        backgroundColor: 'rgba(255, 255, 153, 0.8)',
-                borderColor: 'rgba(255, 255, 153, 0.8)',
-                borderWidth: 1,
-        barThickness: 20
+        backgroundColor: 'rgba(245, 136, 91, 1)',
+                borderColor: 'rgba(241, 125, 92, 0.8)',
+                borderWidth: 3,
+        barThickness: 25
             }},
                         
 {{
                 label: 'Rejected',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesRejected)},
-        backgroundColor: 'rgba(220, 20, 60, 0.8)',
-                borderColor: 'rgba(220, 20, 60, 0.8)',
-                borderWidth: 1,
-        barThickness: 20
+        backgroundColor: 'rgba(248, 44, 44, 1)',
+                borderColor: 'rgba(248, 44, 44, 1)',
+                borderWidth: 3,
+        barThickness: 25
             }},
 {{
                 label: 'Return',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesReturn)},
-                backgroundColor: 'rgba(255, 153, 153, 0.8)',
-                borderColor: 'rgba(255, 153, 153, 0.8)',
-                borderWidth: 1,
-        barThickness: 20
+                backgroundColor: 'rgba(232, 7, 157, 0.8)',
+                borderColor: 'rgba(232, 7, 157, 0.8)',
+                borderWidth: 3,
+        barThickness: 25
             }},
             ]
             }},
@@ -178,38 +178,38 @@ namespace CEIHaryana.SiteOwnerPages
             {{    type: 'bar',    data: {{
         labels: {Newtonsoft.Json.JsonConvert.SerializeObject(ApplicationStatus)},
         datasets: [
-            {{
-                label: 'Return',
-                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesReturn)},
-                backgroundColor: 'rgba(255, 153, 153, 0.8)',
-                borderColor: 'rgba(255, 153, 153, 0.8)',
-                borderWidth: 1,
-        barThickness: 20
-            }},
-            {{
-                label: 'Pending',
-                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesPending)},
-        backgroundColor: 'rgba(255, 255, 153, 0.8)',
-                borderColor: 'rgba(255, 255, 153, 0.8)',
-                borderWidth: 1,
-        barThickness: 20
-            }},
 {{
                 label: 'Approved',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesApproved)},
-        backgroundColor: 'rgba(60,179,113,0.8)',
-                borderColor: 'rgba(60,179,113,0.8)',
-                borderWidth: 1,
-        barThickness: 20
+        backgroundColor: 'rgba(61,197,142,1)',
+                borderColor: 'rgba(61,197,142,1)',
+                borderWidth: 3,
+        barThickness: 25
+            }},
+{{
+                label: 'Pending',
+                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesPending)},
+        backgroundColor: 'rgba(245, 136, 91, 1)',
+                borderColor: 'rgba(245, 136, 91, 1)',
+                borderWidth: 3,
+        barThickness: 25
             }},
 {{
                 label: 'Rejected',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesRejected)},
-        backgroundColor: 'rgba(220, 20, 60, 0.8)',
-                borderColor: 'rgba(220, 20, 60, 0.8)',
-                borderWidth: 1,
-        barThickness: 20
-            }}
+        backgroundColor: 'rgba(248, 44, 44, 1)',
+                borderColor: 'rgba(248, 44, 44, 1)',
+                borderWidth: 3,
+        barThickness: 25
+            }},
+            {{
+                label: 'Return',
+                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesReturn)},
+                backgroundColor: 'rgba(241, 58, 148, 1)',
+                borderColor: 'rgba(241, 58, 148, 1)',
+                borderWidth: 3,
+        barThickness: 25
+            }}         
             ]
             }},
             options: {{
@@ -269,37 +269,39 @@ namespace CEIHaryana.SiteOwnerPages
             {{    type: 'bar',    data: {{
         labels: {Newtonsoft.Json.JsonConvert.SerializeObject(ApplicationStatus)},
         datasets: [
-            {{
-                label: 'Return',
-                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesReturn)},
-                backgroundColor: 'rgba(255, 153, 153, 0.8)',
-                borderColor: 'rgba(255, 153, 153, 0.8)',
+           {{
+                label: 'Approved',
+                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesApproved)},
+        backgroundColor: 'rgba(61,197,142,1)',
+                borderColor: 'rgba(61,197,142,1)',
                 borderWidth: 3,
-        barThickness: 30
+        barThickness: 25
             }},
+            
             {{
                 label: 'Pending',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesPending)},
-        backgroundColor: 'rgba(255, 255, 153, 0.8)',
-                borderColor: 'rgba(255, 255, 153, 0.8)',
+        backgroundColor: 'rgba(245, 136, 91, 1)',
+                borderColor: 'rgba(245, 136, 91, 1)',
                 borderWidth: 3,
-        barThickness: 30
+        barThickness: 25
             }},
-{{
-                label: 'Approved',
-                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesApproved)},
-        backgroundColor: 'rgba(60,179,113,0.8)',
-                borderColor: 'rgba(60,179,113,0.8)',
-                borderWidth: 3,
-        barThickness: 30
-            }},
-{{
+
+           {{
                 label: 'Rejected',
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesRejected)},
-        backgroundColor: 'rgba(220, 20, 60, 0.8)',
-                borderColor: 'rgba(220, 20, 60, 0.8)',
+        backgroundColor: 'rgba(248, 44, 44, 1)',
+                borderColor: 'rgba(248, 44, 44, 1)',
                 borderWidth: 3,
-        barThickness: 30
+        barThickness: 25
+            }},
+           {{
+                label: 'Return',
+                data: {Newtonsoft.Json.JsonConvert.SerializeObject(valuesReturn)},
+                backgroundColor: 'rgba(232, 7, 157, 0.8)',
+                borderColor: 'rgba(232, 7, 157, 0.8)',
+                borderWidth: 3,
+        barThickness: 25
             }}
             ]
             }},

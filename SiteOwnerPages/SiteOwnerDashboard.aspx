@@ -586,7 +586,7 @@
         }
 
         .overview-item.overview-item--c3 {
-            background: #f13a94;
+            background: #ed39b1;
         }
 
         .overview-item.overview-item--c4 {
@@ -646,7 +646,7 @@
                                 <div class="col-sm-6 col-md-3">
                                     <div class="overview-item overview-item--c1">
                                         <div class="overview__inner">
-                                           <%-- <a href="TotalRequest.aspx">--%>
+                                           <a href="InspectionsDetails.aspx?parameter=TotalInspection">
                                                 <div class="overview-box clearfix">
                                                     <div class="icon">
                                                         <i class="bi bi-file-earmark-plus"></i>
@@ -658,14 +658,14 @@
                                                         <span id="totalinspection">Total Inspections</span>
                                                     </div>
                                                 </div>
-                                       <%--     </a>     --%>                                      
+                                           </a>                                         
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="overview-item overview-item--c3">
                                         <div class="overview__inner">
-                                           <%-- <a href="AcceptedOrReject.aspx">--%>
+                                           <a href="InspectionsDetails.aspx?parameter=Return">
                                                 <div class="overview-box clearfix">
                                                     <div class="icon">
                                                         <i class="bi bi-file-earmark-check"></i>
@@ -676,7 +676,7 @@
                                                         <span id="Rejected">Rejected/Returned Inspections</span>
                                                     </div>
                                                 </div>
-                                            <%--</a>   --%>                                        
+                                            </a>                                         
                                         </div>
                                     </div>
                                 </div>
@@ -684,7 +684,7 @@
                                      <div class="overview-item overview-item--c2">
                                    
                                         <div class="overview__inner">
-                                            <%--<a href="InProcessRequest.aspx">--%>
+                                           <a href="InspectionsDetails.aspx?parameter=Approved">
                                                 <div class="overview-box clearfix">
                                                     <div class="icon">
                                                         <i class="bi bi-journal-medical"></i>
@@ -706,7 +706,7 @@
                                 <div class="col-sm-6 col-md-3">
                                     <div class="overview-item overview-item--c4">
                                         <div class="overview__inner">
-                                           <%-- <a href="NewApplications.aspx">--%>
+                                           <a href="InspectionsDetails.aspx?parameter=Pending">
                                                 <div class="overview-box clearfix">
                                                     <div class="icon">
                                                         <i class="bi bi-folder-symlink-fill"></i>
@@ -788,7 +788,7 @@
                         </asp:TemplateField>--%>
                         <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                             <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
-                            <ItemStyle HorizontalAlign="Center" Width="15%" />
+                            <ItemStyle HorizontalAlign="left" Width="15%" />
                         </asp:BoundField>
                         <asp:BoundField DataField="Pending" HeaderText="Pending">
                             <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />

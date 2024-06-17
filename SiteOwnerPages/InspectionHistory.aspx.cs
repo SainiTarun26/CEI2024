@@ -49,7 +49,6 @@ namespace CEIHaryana.SiteOwnerPages
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-
             if (e.CommandName == "Select" || e.CommandName == "Print" || e.CommandName == "Print1")
             {
                 Session["LineID"] = "";

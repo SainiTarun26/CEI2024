@@ -676,7 +676,7 @@ namespace CEIHaryana.Contractor
                                     }
                                 }
 
-                                CEI.SiteOwnerCredentials(txtEmail.Text, txtPAN.Text);
+                                CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
                             }
                             transaction.Commit();
                             Reset();
