@@ -432,15 +432,10 @@
                             <asp:BoundField DataField="Capacity" HeaderText="Capacity">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
-                            
+                            </asp:BoundField>                            
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                          <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                          <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
                                           <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
                                         <asp:Label ID="LblInspectionDate" runat="server" Text='<%#Eval("InspectionDate") %>'></asp:Label>
                                         <asp:Label ID="LblInspectionDueDate" runat="server" Text='<%#Eval("InspectionDueDate") %>'></asp:Label>
