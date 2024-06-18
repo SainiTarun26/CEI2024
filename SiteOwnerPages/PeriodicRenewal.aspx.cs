@@ -25,7 +25,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
                         BindAdress();
-                        grid.Visible = false;
+                       // grid.Visible = false;
                         //BindInstallationType();
                     }
                 }
@@ -91,6 +91,7 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            grid.Visible = true;
             GridViewBind();
         }
          
