@@ -93,9 +93,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             GridViewBind();
         }
-
+         
         public void GridViewBind()
-        {
+        { 
             string id = Session["SiteOwnerId"].ToString();
             string Adress = ddlAdress.SelectedItem.Text;
             int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
