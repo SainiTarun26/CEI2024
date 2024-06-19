@@ -59,7 +59,7 @@
         }
     </script>
     <script type="text/javascript">
-        function validatePAN() {
+     <%--   function validatePAN() {
             var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
             var panValidator = document.getElementById('<%= revPAN.ClientID %>');
 
@@ -68,7 +68,7 @@
                 return false;
             }
             return true;
-        }
+        }--%>
 
         function preventEnterSubmit(e) {
             // Prevent form submission on Enter key press
@@ -323,10 +323,10 @@
                                                 PAN Card
                                             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" MaxLength="10" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
+                                            <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" ReadOnly="true" MaxLength="10" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <%--<asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" />
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
                                         </div>
 
                                         <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
@@ -334,10 +334,10 @@
                                                 Tan Number
                                             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" AutoPostBack="true" OnTextChanged="txtTanNumber_TextChanged"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]"  ValidationGroup="Submit"
+                                            <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" AutoPostBack="true" OnTextChanged="txtTanNumber_TextChanged"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <%--<asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]"  ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" />
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
                                         </div>
 
                                         <div class="col-md-4" runat="server" id="DivPoweUtility" visible="false" >
@@ -460,7 +460,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                         <asp:Button type="Update" ID="BtnUpdate1" TabIndex="25" Text="Update" runat="server"  OnClick="BtnUpdate1_Click" class="btn btn-primary mr-2"  />
+                                         <asp:Button type="Update" ID="BtnUpdate1" Visible="false"  TabIndex="25" Text="Update" runat="server"  OnClick="BtnUpdate1_Click" class="btn btn-primary mr-2"  />
                                     </div>
                                 </div>
                             </div>
@@ -663,7 +663,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <asp:Button type="Update" ID="btnUpdate2" TabIndex="25" Text="Update" runat="server"  OnClick="btnUpdate2_Click"  class="btn btn-primary mr-2"  />
+                                        <asp:Button type="Update" ID="btnUpdate2" Visible="false"  TabIndex="25" Text="Update" runat="server"  OnClick="btnUpdate2_Click"  class="btn btn-primary mr-2"  />
                                     </div>
                                 </div>
                             </div>
@@ -688,14 +688,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <label for="StartDate">
-                               Tentative Work Start Date<samp style="color: red"> * </samp>
+                               Tentative Work Start Date<%--<samp style="color: red"> * </samp>--%>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtStartDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" onfocus="disableFutureDates()" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtStartDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Start Date</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" ID="txtStartDate" ReadOnly="true" TabIndex="16" onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" onfocus="disableFutureDates()" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtStartDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Start Date</asp:RequiredFieldValidator>--%>
                         </div>
                         <div class="col-md-4">
                             <label for="CompletitionDate">
-                                Tentative Work Completition Date<samp style="color: red"> * </samp>
+                                Tentative Work Completition Date<%--<samp style="color: red"> * </samp>--%>
                             </label>
                             <asp:TextBox class="form-control" ID="txtCompletitionDate" TabIndex="17" onChange="CompletionDates()"   onkeydown="return preventEnterSubmit(event)" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtCompletitionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Completition Date</asp:RequiredFieldValidator>
@@ -756,7 +756,7 @@
                         </div>
                     </div>
                     <div>
-                        <asp:Button type="Update" ID="btnUpdate3" TabIndex="25" Text="Update" ValidationGroup="Submit" runat="server"  OnClick="btnUpdate3_Click" class="btn btn-primary mr-2"  />
+                        <asp:Button type="Update" Visible="false" ID="btnUpdate3" TabIndex="25" Text="Update" ValidationGroup="Submit" runat="server"  OnClick="btnUpdate3_Click" class="btn btn-primary mr-2"  />
                     </div>
                                         
                 </div>
@@ -854,7 +854,7 @@
                                 </div>
                             <div>
 
-                                <asp:Button type="Update" ID="btnUpdate4" TabIndex="25"  Text="Update" runat="server" OnClick="btnUpdate4_Click"  class="btn btn-primary mr-2"  />
+                                <asp:Button type="Update" Visible="false"  ID="btnUpdate4" TabIndex="25"  Text="Update" runat="server" OnClick="btnUpdate4_Click"  class="btn btn-primary mr-2"  />
                             </div>
                         </div>
                     </div>

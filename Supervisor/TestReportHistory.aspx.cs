@@ -212,18 +212,36 @@ namespace CEIHaryana.Supervisor
             if (row != null)
             {
                 Label lblOffRemarks = (Label)row.FindControl("lblOffRemarks");
-                if (lblOffRemarks != null)
+                Label lblSORemarks = (Label)row.FindControl("lblSORemarks");
+                Label lblContRemarks = (Label)row.FindControl("lblContRemarks");
+
+                // Clear modal labels before updating
+                lblModalOffRemarks.Text = string.Empty;
+                lblModalSORemarks.Text = string.Empty;
+                lblModalContRemarks.Text = string.Empty;
+
+                OffRemarks.Visible = false;
+                SORemarks.Visible = false;
+                ContRemarks.Visible = false;
+
+
+                //Label lblOffRemarks = (Label)row.FindControl("lblOffRemarks");
+                if (lblOffRemarks != null && !string.IsNullOrEmpty(lblOffRemarks.Text))
                 {
+                    OffRemarks.Visible = true;
                     lblModalOffRemarks.Text = lblOffRemarks.Text;
                 }
-                Label lblSORemarks = (Label)row.FindControl("lblSORemarks");
-                if (lblSORemarks != null)
+                //Label lblSORemarks = (Label)row.FindControl("lblSORemarks");
+                if (lblSORemarks != null && !string.IsNullOrEmpty(lblSORemarks.Text))
                 {
+                    SORemarks.Visible = true;
                     lblModalSORemarks.Text = lblSORemarks.Text;
                 }
-                Label lblContRemarks = (Label)row.FindControl("lblContRemarks");
-                if (lblContRemarks != null)
+                //Label lblContRemarks = (Label)row.FindControl("lblContRemarks");
+                if (lblContRemarks != null && !string.IsNullOrEmpty(lblContRemarks.Text))
                 {
+                    ContRemarks.Visible = true;
+
                     lblModalContRemarks.Text = lblContRemarks.Text;
                 }
             }

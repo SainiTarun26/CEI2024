@@ -25,7 +25,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
                         BindAdress();
-                       // grid.Visible = false;
+                        //grid.Visible = false;
                         //BindInstallationType();
                     }
                 }

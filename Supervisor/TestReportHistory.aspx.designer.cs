@@ -51,6 +51,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// OffRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OffRemarks;
+
+        /// <summary>
         /// lblModalOffRemarks control.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.Label lblModalOffRemarks;
 
         /// <summary>
+        /// SORemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SORemarks;
+
+        /// <summary>
         /// lblModalSORemarks control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblModalSORemarks;
+
+        /// <summary>
+        /// ContRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContRemarks;
 
         /// <summary>
         /// lblModalContRemarks control.

@@ -443,7 +443,6 @@
                         <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
                     </asp:DropDownList>
                                 
-                                
                         </div>                       
                         <div class="row">
                            

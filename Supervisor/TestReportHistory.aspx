@@ -418,32 +418,36 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
                 </div>
-                 <div id="modal1" class="modal">
-                    <div class="modal-content">
-                        <span class="close" data-modal="modal1">&times;</span>
-                        <div class="card-title">
-                            Officer Remarks
-                
-                        </div>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
-                        </div>
-                        <div class="card-title">
-                            SiteOwner Remarks
-                
-                        </div>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <asp:Label ID="lblModalSORemarks" runat="server"></asp:Label>
-                        </div>
-                        <div class="card-title">
-                            Contractor Remarks
-                
-                        </div>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <asp:Label ID="lblModalContRemarks" runat="server"></asp:Label>
-                        </div>
-                    </div>
-                </div>
+                <div id="modal1" class="modal">
+      <div class="modal-content">
+          <span class="close" data-modal="modal1">&times;</span>
+          <div id="OffRemarks" visible="false" runat="server">
+              <div class="card-title">
+                  Officer Remarks
+              </div>
+              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                  <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
+              </div>
+          </div>
+          <div id="SORemarks" visible="false" runat="server">
+              <div class="card-title">
+                  SiteOwner Remarks
+              </div>
+              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                  <asp:Label ID="lblModalSORemarks" runat="server"></asp:Label>
+              </div>
+          </div>
+          <div id="ContRemarks" visible="false" runat="server">
+              <div class="card-title">
+                  Contractor Remarks
+              </div>
+              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                  <asp:Label ID="lblModalContRemarks" runat="server"></asp:Label>
+              </div>
+          </div>
+      </div>
+
+  </div>
             </div>
         </div>
 

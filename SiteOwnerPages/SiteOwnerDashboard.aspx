@@ -764,7 +764,7 @@
                                 </div>
                                 <div class="card col-md-6" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 15px; border-radius: 10px;">
     <div class="col-md-12">
-        <h2 class="title-1 m-b-25">Substation Transformer Chart</h2>
+        <h2 class="title-1 m-b-25">Brief Inspections Details</h2>
         <div>
             <div id="printableDiv2">
                 <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%" AllowPaging="true" PageSize="20"

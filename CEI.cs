@@ -3571,7 +3571,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         #region upgradation Intimation
         public void IntimationDataInsertionForSiteOwner(string Id, string ContractorID, string ContractorType, string ApplicantTypeCode, string ApplicantType, string PowerUtility, string PowerUtilityWing,
                     /*string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-        string PANNumber,string NewUserId, string Email, string CreatedBy)
+        /*string PANNumber,string NewUserId,*/ string Email, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -3599,10 +3599,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@District", District);
             cmd.Parameters.AddWithValue("@Pincode", Pincode);
-            cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
+           // cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
             cmd.Parameters.AddWithValue("@Email", Email);
             cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
-            cmd.Parameters.AddWithValue("@NewUserId", NewUserId);
+           // cmd.Parameters.AddWithValue("@NewUserId", NewUserId);
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -3644,7 +3644,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
         }
 
-        public void InsertionForWorkScheduleInWoIntimation(string Id, string ContractorId, string WorkStartDate, string CompletionDate,
+        public void InsertionForWorkScheduleInWoIntimation(string Id, string ContractorId, //string WorkStartDate, string CompletionDate,
          string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
@@ -3661,8 +3661,8 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Connection = con;
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
-            cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
-            cmd.Parameters.AddWithValue("@CompletionDate", CompletionDate);
+            //cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
+            //cmd.Parameters.AddWithValue("@CompletionDate", CompletionDate);
             cmd.Parameters.AddWithValue("@AnyWorkIssued", AnyWorkIssued);
             cmd.Parameters.AddWithValue("@CopyOfWorkOrder", String.IsNullOrEmpty(CopyOfWorkOrder) ? DBNull.Value : (object)CopyOfWorkOrder);
             //cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateasPerOrder);
@@ -3913,6 +3913,11 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SiteownerDashbordInspections", LoginId, ApplicationStatus);
         }
         #endregion
+
+        public DataSet checkPanNumber(string PanNumber)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckPanNumber", PanNumber);
+        }
     }
 }
 

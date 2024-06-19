@@ -227,6 +227,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                         GetDocumentUploadData(ApplicantTypeCode, Category, InspectionType, AssigDesignation, PlantLocation, inspectionIdRes);
                         PaymentGridViewBind();
+                        GetOtherDetails_ForReturnedInspection(inspectionIdRes);
                     }
                     else
                     {
@@ -808,6 +809,26 @@ namespace CEIHaryana.SiteOwnerPages
             return -1;
         }
 
+        private void GetOtherDetails_ForReturnedInspection(int inspectionIdPrm)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            string query = "Sp_GetOtherDetails_ForReturnedInspection";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@InspectionId", inspectionIdPrm);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        txttransactionId.Text = reader["TransactionId"].ToString();
+                    }
+                    reader.Close();
+                }
+            }
+        }
     }
 }

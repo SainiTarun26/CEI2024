@@ -181,7 +181,7 @@ namespace CEIHaryana.Contractor
                 //string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
                 //string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
                 //string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
-                string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
+                //string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
                 if (dp_Id2 != "")
                 {
                     OtherPremises.Visible = true;
@@ -259,7 +259,7 @@ namespace CEIHaryana.Contractor
                 ddlAnyWork.SelectedIndex = ddlAnyWork.Items.IndexOf(ddlAnyWork.Items.FindByText(dp_Id7));
                 if (dp_Id7 == "Yes")
                 {
-
+                    btnUpdate3.Visible = true;
                     hiddenfield.Visible = true;
                     hiddenfield1.Visible = true;
                     customFile.Visible = false;
@@ -270,6 +270,7 @@ namespace CEIHaryana.Contractor
                 }
                 if (dp_Id7 == "No")
                 {
+                    btnUpdate3.Visible = false;
                     ddlAnyWork.Enabled = false;
                 }
                 if (ddlVoltageLevel.SelectedValue == "650V")
@@ -280,7 +281,22 @@ namespace CEIHaryana.Contractor
                 {
                     installationType2.Visible = true;
                 }
-                
+                string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
+                if (TestReportGenerated == "Generated")
+                {
+                    BtnUpdate1.Visible = false;
+                    btnUpdate2.Visible = false;
+                    btnUpdate3.Visible = false;
+                    btnUpdate4.Visible = false;
+
+                }
+                else
+                {
+                    BtnUpdate1.Visible = true;
+                    btnUpdate2.Visible = true;
+                    btnUpdate3.Visible = true;
+                    btnUpdate4.Visible = true;
+                }
                 //WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 //if (TestReportGenerated.Trim() == "Yes")
@@ -328,61 +344,61 @@ namespace CEIHaryana.Contractor
             }
             catch { }
         }
-        protected void txtPAN_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
+        //protected void txtPAN_TextChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
 
-                string PANNumber = txtPAN.Text.Trim();
+        //        string PANNumber = txtPAN.Text.Trim();
 
-                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
-                if (!regex.IsMatch(PANNumber))
-                {
+        //        System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
+        //        if (!regex.IsMatch(PANNumber))
+        //        {
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
 
-                    return;
-                }
+        //            return;
+        //        }
 
-                DataSet ds = new DataSet();
-                ds = CEI.GetDetailsByPanNumberId(PANNumber);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
+        //        DataSet ds = new DataSet();
+        //        ds = CEI.GetDetailsByPanNumberId(PANNumber);
+        //        if (ds.Tables[0].Rows.Count > 0)
+        //        {
 
-                    string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
-                    string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
-                    ddlworktype.Enabled = false;
-                    if (contractorType == "Firm/Organization/Company/Department")
-                    {
-                        txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                        txtagency.ReadOnly = true;
-                    }
-                    else if (contractorType == "Individual Person")
-                    {
-                        txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                        txtName.ReadOnly = true;
-                    }
+        //            string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
+        //            string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+        //            ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
+        //            ddlworktype.Enabled = false;
+        //            if (contractorType == "Firm/Organization/Company/Department")
+        //            {
+        //                txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+        //                txtagency.ReadOnly = true;
+        //            }
+        //            else if (contractorType == "Individual Person")
+        //            {
+        //                txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+        //                txtName.ReadOnly = true;
+        //            }
 
-                }
-                else
-                {
-                    ddlworktype.SelectedValue = "0";
-                    ddlworktype.Enabled = true;
-                    txtagency.Text = "";
-                    txtName.Text = "";
-                    txtagency.ReadOnly = false;
-                    txtName.ReadOnly = false;
-                }
+        //        }
+        //        else
+        //        {
+        //            ddlworktype.SelectedValue = "0";
+        //            ddlworktype.Enabled = true;
+        //            txtagency.Text = "";
+        //            txtName.Text = "";
+        //            txtagency.ReadOnly = false;
+        //            txtName.ReadOnly = false;
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                // Log the exception or provide a more detailed error message
-                Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception or provide a more detailed error message
+        //        Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
+        //    }
         
-        }
+        //}
         protected void worktypevisiblity()
         {
             try
@@ -891,31 +907,31 @@ namespace CEIHaryana.Contractor
                 ContractorID = Session["ContractorID"].ToString();
                 //String CreatedBy = ContractorID;
                 string UpdationId = string.Empty;
-                string OldUserID = string.Empty;
-                string Pan_TanNumber = "";
-                if (DivPancard_TanNo.Visible == true && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
-                {
-                    Pan_TanNumber = txtPAN.Text.Trim();
-                }
-                else if (DivOtherDepartment.Visible == true && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
-                {
-                    Pan_TanNumber = txtTanNumber.Text.Trim();
-                }
-                if (Session["UpdationId"] != null)
-                {
-                    if (Convert.ToString(Page.Session["OldUserID"]) != null && Convert.ToString(Page.Session["OldUserID"]) !="")
-                    {
-                        OldUserID = Convert.ToString(Page.Session["OldUserID"]);
-                        if(OldUserID == Pan_TanNumber)
-                        {
-                            NewUserID = "";
-                        }
-                        else
-                        {
-                            NewUserID = Pan_TanNumber;
-                        }
+                //string OldUserID = string.Empty;
+                //string Pan_TanNumber = "";
+                //if (DivPancard_TanNo.Visible == true && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
+                //{
+                //    Pan_TanNumber = txtPAN.Text.Trim();
+                //}
+                //else if (DivOtherDepartment.Visible == true && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                //{
+                //    Pan_TanNumber = txtTanNumber.Text.Trim();
+                //}
+                //if (Session["UpdationId"] != null)
+                //{
+                //    if (Convert.ToString(Page.Session["OldUserID"]) != null && Convert.ToString(Page.Session["OldUserID"]) !="")
+                //    {
+                //        OldUserID = Convert.ToString(Page.Session["OldUserID"]);
+                //        if(OldUserID == Pan_TanNumber)
+                //        {
+                //            NewUserID = "";
+                //        }
+                //        else
+                //        {
+                //            NewUserID = Pan_TanNumber;
+                //        }
                        
-                    }
+                //    }
 
                     
 
@@ -927,10 +943,10 @@ namespace CEIHaryana.Contractor
                     ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),// txtTanNumber.Text.Trim(),
                     txtName.Text.Trim(), txtagency.Text.Trim(), txtPhone.Text.Trim(),
                     txtAddress.Text.Trim(), ddlDistrict.SelectedItem.ToString(), txtPin.Text.Trim(),
-                    OldUserID,NewUserID, txtEmail.Text.Trim(), ContractorID);
+                     txtEmail.Text.Trim(), ContractorID);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
-                }
+               // }
             }
             catch(Exception ex)
             {
@@ -1045,8 +1061,9 @@ namespace CEIHaryana.Contractor
 
                     }
                     hdnId.Value = ContractorID;
-                    CEI.InsertionForWorkScheduleInWoIntimation(UpdationId, ContractorID, txtStartDate.Text.Trim(),
-                        txtCompletitionDate.Text.Trim(), ddlAnyWork.SelectedItem.ToString(), filePathInfo1, txtCompletionDateAPWO.Text.Trim(),
+                    CEI.InsertionForWorkScheduleInWoIntimation(UpdationId, ContractorID, 
+                        //txtStartDate.Text.Trim(),txtCompletitionDate.Text.Trim(),
+                        ddlAnyWork.SelectedItem.ToString(), filePathInfo1, txtCompletionDateAPWO.Text.Trim(),
                      ContractorID);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
@@ -1138,58 +1155,58 @@ namespace CEIHaryana.Contractor
             }
         }
 
-        protected void txtTanNumber_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                string TANNumber = txtTanNumber.Text.Trim();
-                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
-                if (!regex.IsMatch(TANNumber))
-                {
-                    txtTanNumber.Focus();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
-                    return;
-                }
-                DataSet ds = new DataSet();
-                ds = CEI.GetDetailsByPanNumberId(TANNumber);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
-                    string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
-                    ddlworktype.Enabled = false;
-                    if (contractorType == "Firm/Organization/Company/Department")
-                    {
-                        agency.Visible = true;
-                        individual.Visible = false;
-                        txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                        txtagency.ReadOnly = true;
-                    }
-                    else if (contractorType == "Individual Person")
-                    {
-                        individual.Visible = true;
-                        agency.Visible = false;
-                        txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                        txtName.ReadOnly = true;
-                    }
+        //protected void txtTanNumber_TextChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        string TANNumber = txtTanNumber.Text.Trim();
+        //        System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+        //        if (!regex.IsMatch(TANNumber))
+        //        {
+        //            txtTanNumber.Focus();
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
+        //            return;
+        //        }
+        //        DataSet ds = new DataSet();
+        //        ds = CEI.GetDetailsByPanNumberId(TANNumber);
+        //        if (ds.Tables[0].Rows.Count > 0)
+        //        {
+        //            string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
+        //            string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+        //            ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
+        //            ddlworktype.Enabled = false;
+        //            if (contractorType == "Firm/Organization/Company/Department")
+        //            {
+        //                agency.Visible = true;
+        //                individual.Visible = false;
+        //                txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+        //                txtagency.ReadOnly = true;
+        //            }
+        //            else if (contractorType == "Individual Person")
+        //            {
+        //                individual.Visible = true;
+        //                agency.Visible = false;
+        //                txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+        //                txtName.ReadOnly = true;
+        //            }
                     
-                }
-                else
-                {
-                    ddlworktype.SelectedValue = "0";
-                    ddlworktype.Enabled = true;
-                    txtagency.ReadOnly = false;
-                    txtName.ReadOnly = false;
-                    txtagency.Text = "";
-                    txtName.Text = "";                  
-                }
+        //        }
+        //        else
+        //        {
+        //            ddlworktype.SelectedValue = "0";
+        //            ddlworktype.Enabled = true;
+        //            txtagency.ReadOnly = false;
+        //            txtName.ReadOnly = false;
+        //            txtagency.Text = "";
+        //            txtName.Text = "";                  
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                // Log the exception or provide a more detailed error message
-                Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception or provide a more detailed error message
+        //        Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
+        //    }
+        //}
     }
 }

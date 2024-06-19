@@ -92,6 +92,12 @@
         td {
             text-align: center;
         }
+        .link-bold {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 22px;
+}
     </style>
 
 </asp:Content>
@@ -188,7 +194,7 @@
                     </asp:GridView>
 
                 </div>
-            </div>
+            </div><a href="SiteOwnerDashboard.aspx" class="link-bold" > Back </a>
         </div>
 
     </div>

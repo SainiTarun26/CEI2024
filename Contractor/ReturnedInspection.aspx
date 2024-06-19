@@ -278,7 +278,7 @@
                                         <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                         <asp:Label ID="lblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>      
                                         <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                        <asp:Label ID="LblRemarkForContractor" runat="server" Text='<%#Eval("RemarkForContractor") %>'></asp:Label>
+                                        <asp:Label ID="LblRemarkForContractor" runat="server" Text='<%#Eval("InspectionRemarks") %>'></asp:Label>
                                         <asp:Label ID="LblSiteOwnerInspectionRemark" runat="server" Text='<%#Eval("SiteOwnerInspectionRemark") %>'></asp:Label>
                                         </ItemTemplate>
                                 </asp:TemplateField>
@@ -394,10 +394,10 @@
                      <div id="modal1" class="modal">
                     <div class="modal-content">
                         <span class="close" data-modal="modal1">&times;</span>
-                       <div class="card-title" id="OfficerRemarks" runat="server" >
+                       <div class="card-title"  >
                             Officer Remarks
                                </div>
-                        <div class="card-body" id="OffRemarks" runat="server" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        <div class="card-body"  style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
                         </div>
                         <div class="card-title">
@@ -406,10 +406,10 @@
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <asp:Label ID="lblModalSORemarks" runat="server"></asp:Label>
                         </div>
-                        <div class="card-title">
+                        <div class="card-title" id="ContractorRemarks" runat="server">
                             Contractor Remarks
                                </div>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        <div class="card-body" id="ContRemarks" runat="server" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <asp:Label ID="lblModalContRemarks" runat="server"></asp:Label>
                         </div>
                     </div>

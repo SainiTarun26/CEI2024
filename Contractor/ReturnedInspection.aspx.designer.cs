@@ -123,24 +123,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
-        /// OfficerRemarks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OfficerRemarks;
-
-        /// <summary>
-        /// OffRemarks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OffRemarks;
-
-        /// <summary>
         /// lblModalOffRemarks control.
         /// </summary>
         /// <remarks>
@@ -157,6 +139,24 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblModalSORemarks;
+
+        /// <summary>
+        /// ContractorRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContractorRemarks;
+
+        /// <summary>
+        /// ContRemarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContRemarks;
 
         /// <summary>
         /// lblModalContRemarks control.

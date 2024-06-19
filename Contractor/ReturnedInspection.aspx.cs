@@ -275,18 +275,19 @@ namespace CEIHaryana.Contractor
             if (row != null)
             {
 
-                OfficerRemarks.Visible = false;
-                OffRemarks.Visible = false;
+                ContractorRemarks.Visible = false;
+                ContRemarks.Visible = false;
+                Label lblOffRemarks = (Label)row.FindControl("LblRemarkForOfficer");
+                if (lblOffRemarks != null)
+                {
+                    lblModalOffRemarks.Text = lblOffRemarks.Text;
+                }
                 Label lblSORemarks = (Label)row.FindControl("LblSiteOwnerInspectionRemark");
                 if (lblSORemarks != null)
                 {
                     lblModalSORemarks.Text = lblSORemarks.Text;
                 }
-                Label lblContRemarks = (Label)row.FindControl("LblRemarkForContractor");
-                if (lblContRemarks != null)
-                {
-                    lblModalContRemarks.Text = lblContRemarks.Text;
-                }
+
             }
             ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#modal1').modal('show');", true);
         }
