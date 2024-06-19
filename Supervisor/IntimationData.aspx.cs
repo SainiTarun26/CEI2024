@@ -73,8 +73,7 @@ namespace CEIHaryana.Supervisor
                 Session["id"] = lblID.Text;
                 //ClientScript.RegisterStaxrtupScript(this.GetType(), "Pop", "showModal();", true);
                 //    GetDetails();
-                Label lblStartdateasinWI = (Label)row.FindControl("lblStartdateasinWI");
-                Response.Redirect("/Supervisor/InstallationDetails.aspx");
+                Label lblStartdateasinWI = (Label)row.FindControl("lblStartdateasinWI");               
                 if (DateTime.TryParse(lblStartdateasinWI.Text, out DateTime startDate))
                 {
                     if (startDate > DateTime.Today)
