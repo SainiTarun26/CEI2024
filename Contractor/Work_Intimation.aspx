@@ -1156,4 +1156,25 @@
             };
         }
     </script>
+    <script type="text/javascript">
+        function validateInput(event) {
+            var keyCode = event.keyCode || event.which;
+            if ((keyCode >= 65 && keyCode <= 90) ||
+                (keyCode >= 48 && keyCode <= 57) ||
+                keyCode === 8) {
+                return true;
+            } else {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        function preventEnterSubmit(e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </asp:Content>
