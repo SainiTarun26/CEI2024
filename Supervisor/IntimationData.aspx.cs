@@ -60,16 +60,7 @@ namespace CEIHaryana.Supervisor
             }
             ds.Dispose();
         }
-        protected void ShowPopup_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                ClientScript.RegisterStartupScript(this.GetType(), "Pop", "showModal();", true);
-            }
-            catch { }
-
-        }
+       
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -82,9 +73,19 @@ namespace CEIHaryana.Supervisor
                 Session["id"] = lblID.Text;
                 //ClientScript.RegisterStaxrtupScript(this.GetType(), "Pop", "showModal();", true);
                 //    GetDetails();
+                Label lblStartdateasinWI = (Label)row.FindControl("lblStartdateasinWI");
                 Response.Redirect("/Supervisor/InstallationDetails.aspx");
-
-
+                if (DateTime.TryParse(lblStartdateasinWI.Text, out DateTime startDate))
+                {
+                    if (startDate > DateTime.Today)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ValidationDate", "alert('You cannot create a test report for future installations.');", true);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Supervisor/InstallationDetails.aspx");
+                    }
+                }
             }
             else
             {

@@ -188,14 +188,15 @@
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                    </ItemTemplate>
+                                 <asp:Label ID="lblStartdateasinWI" runat="server" Text='<%#Eval("StartdateofWork") %>'></asp:Label>
+                                        </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="WorkIntimation">
                                     <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     <ItemTemplate>
                                         <%--  <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Select"><%#Eval("Id") %></asp:LinkButton> --%>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="ShowPopup_Click" CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"  CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
