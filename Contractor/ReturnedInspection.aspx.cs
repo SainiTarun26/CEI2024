@@ -165,21 +165,7 @@ namespace CEIHaryana.Contractor
                 string installationtype = lblInstallationType.Text;               
                 string testReportId = e.CommandArgument.ToString();
                 RedirectToRestReport(testReportId, installationtype);
-                //if (installationtype == "Line")
-                //{
-                //    Session["LineID"] = testReportId;
-                //    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
-                //}
-                //else if (installationtype == "Substation Transformer")
-                //{
-                //    Session["SubStationID"] = testReportId;
-                //    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
-                //}
-                //else if (installationtype == "Generating Set")
-                //{
-                //    Session["GeneratingSetId"] = testReportId;
-                //    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
-                //}
+               
             }
         }
 
@@ -193,21 +179,7 @@ namespace CEIHaryana.Contractor
                 string testReportId = e.CommandArgument.ToString();
 
                 RedirectToRestReport(testReportId, installationtype);
-                //if (installationtype == "Line")
-                //{
-                //    Session["LineID"] = testReportId;
-                //    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
-                //}
-                //else if (installationtype == "Substation Transformer")
-                //{
-                //    Session["SubStationID"] = testReportId;
-                //    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
-                //}
-                //else if (installationtype == "Generating Set")
-                //{
-                //    Session["GeneratingSetId"] = testReportId;
-                //    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
-                //}
+                
             }
         }
 
@@ -277,12 +249,12 @@ namespace CEIHaryana.Contractor
 
                 ContractorRemarks.Visible = false;
                 ContRemarks.Visible = false;
-                Label lblOffRemarks = (Label)row.FindControl("LblRemarkForOfficer");
+                Label lblOffRemarks = (Label)row.FindControl("LblOfficerRemark");
                 if (lblOffRemarks != null)
                 {
                     lblModalOffRemarks.Text = lblOffRemarks.Text;
                 }
-                Label lblSORemarks = (Label)row.FindControl("LblSiteOwnerInspectionRemark");
+                Label lblSORemarks = (Label)row.FindControl("LblRemarkForContractor");
                 if (lblSORemarks != null)
                 {
                     lblModalSORemarks.Text = lblSORemarks.Text;

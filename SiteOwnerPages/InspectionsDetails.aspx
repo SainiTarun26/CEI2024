@@ -168,13 +168,15 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>                            
-                            <asp:TemplateField  Visible="false">
+                         
+                            <asp:TemplateField>
+                                <HeaderStyle Width="35%" CssClass="headercolor" />
+                                <ItemStyle Width="35%" />
                                 <HeaderTemplate>
-                                    <asp:Label ID="lblHeader" runat="server" Text="Approval Certificate" CssClass="headercolor" />
+                                    Approval Certificate        
                                 </HeaderTemplate>
-                                <ItemStyle Width="10%" />
                                 <ItemTemplate>
-                                    <div style="text-align: center;">
+                                     <div style="text-align: center;">
                                         <asp:LinkButton ID="lnkPrint" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px; display: inline-block;" runat="server" 
                                             Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print1" CommandArgument="<%# Container.DataItemIndex %>">
                                         </asp:LinkButton>
@@ -194,8 +196,15 @@
                     </asp:GridView>
 
                 </div>
-            </div><a href="SiteOwnerDashboard.aspx" class="link-bold" > Back </a>
+                 <div class="row">
+               
+                <div class="col-md-12" style="text-align:center;">
+            <a href="SiteOwnerDashboard.aspx" class="btn btn-primary" > Back </a>
         </div>
+                </div>
+            </div>
+           
+            </div>
 
     </div>
     <footer class="footer">

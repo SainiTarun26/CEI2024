@@ -1142,14 +1142,18 @@ namespace CEIHaryana.Contractor
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
                     if (contractorType == "Firm/Organization/Company/Department")
-                    {                       
+                    {
+                        agency.Visible = true;
+                        individual.Visible = false;
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                         txtagency.ReadOnly = true;
+                        
                     }
                     else if (contractorType == "Individual Person")
                     {                        
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
+                       
                     }                   
                 }
                 else

@@ -124,13 +124,13 @@ namespace CEIHaryana.SiteOwnerPages
             scales: {{
               x: {{
                 grid: {{
-                    color: 'rgba(0, 0, 0, 0.8)' // Darker black for x-axis grid lines
+                    color: 'rgba(0, 0, 0, 0.3)' // Darker black for x-axis grid lines
                 }}
             }},
             y: {{
                 beginAtZero: true,
                 grid: {{
-                    color: 'rgba(0, 0, 0, 0.8)' // Darker black for y-axis grid lines
+                    color: 'rgba(0, 0, 0, 0.3)' // Darker black for y-axis grid lines
                 }}
             }}
             }}
@@ -216,13 +216,13 @@ namespace CEIHaryana.SiteOwnerPages
             scales: {{
             x: {{
                 grid: {{
-                    color: 'rgba(0, 0, 0, 0.2)' // Darker black for x-axis grid lines
+                    color: 'rgba(0, 0, 0, 0.3)' // Darker black for x-axis grid lines
                 }}
             }},
             y: {{
                 beginAtZero: true,
                 grid: {{
-                    color: 'rgba(0, 0, 0, 0.2)' // Darker black for y-axis grid lines
+                    color: 'rgba(0, 0, 0, 0.3)' // Darker black for y-axis grid lines
                 }}
             }}
             }}
@@ -309,13 +309,13 @@ namespace CEIHaryana.SiteOwnerPages
             scales: {{
               x: {{
                 grid: {{
-                    color: 'rgba(0, 0, 0, 0.2)' // Darker black for x-axis grid lines
+                    color: 'rgba(0, 0, 0, 0.3)' // Darker black for x-axis grid lines
                 }}
             }},
             y: {{
                 beginAtZero: true,
                 grid: {{
-                    color: 'rgba(0, 0, 0, 0.2)' // Darker black for y-axis grid lines
+                    color: 'rgba(0, 0, 0, 0.3)' // Darker black for y-axis grid lines
                 }}
             }}
             }}

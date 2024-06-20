@@ -278,8 +278,8 @@
                                         <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                         <asp:Label ID="lblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>      
                                         <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                        <asp:Label ID="LblRemarkForContractor" runat="server" Text='<%#Eval("InspectionRemarks") %>'></asp:Label>
-                                        <asp:Label ID="LblSiteOwnerInspectionRemark" runat="server" Text='<%#Eval("SiteOwnerInspectionRemark") %>'></asp:Label>
+                                        <asp:Label ID="LblRemarkForContractor" runat="server" Text='<%#Eval("RemarkForContractor") %>'></asp:Label>
+                                        <asp:Label ID="LblOfficerRemark" runat="server" Text='<%#Eval("ReasonForReturn") %>'></asp:Label>
                                         </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
