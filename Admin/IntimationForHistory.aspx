@@ -172,7 +172,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label>
-                        Inspection ReportId
+                        Inspection Application No
                 <%-- <samp style="color: red">* </samp>--%>
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportId" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>

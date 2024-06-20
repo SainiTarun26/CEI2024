@@ -169,7 +169,7 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>                            
                          
-                            <asp:TemplateField>
+                            <asp:TemplateField Visible="false">
                                 <HeaderStyle Width="35%" CssClass="headercolor" />
                                 <ItemStyle Width="35%" />
                                 <HeaderTemplate>

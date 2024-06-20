@@ -2217,7 +2217,7 @@
                                         </div>
                                         <div class="col-4" id="Div186" runat="server">
                                             <label for="Name">
-                                                No of PCV or Solar Inverter        
+                                                No of PCU or Solar Inverter        
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtPCVOrSolar" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>

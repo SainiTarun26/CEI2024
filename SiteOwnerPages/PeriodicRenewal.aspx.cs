@@ -260,13 +260,14 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     if (!atLeastOneChecked)
                     {
-                        Response.Write("<script>alert('Please select at least one Supervisor.');</script>");
+                        Response.Write("<script>alert('Please select at least one Inspection');</script>");
                         return;
                     }
                 }
             }
             catch (Exception ex)
-            { }
+            { 
+            }
         }
 
         protected void ddlNoOfDays_SelectedIndexChanged(object sender, EventArgs e)

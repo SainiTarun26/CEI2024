@@ -218,7 +218,7 @@
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
                     <div class="col-md-4" runat="server">
-                        <label>Inspection Report No</label>
+                        <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4">
