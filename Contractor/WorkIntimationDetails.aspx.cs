@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 using System.IO;
+using static iTextSharp.text.pdf.AcroFields;
 
 namespace CEIHaryana.Contractor
 {
@@ -31,8 +32,10 @@ namespace CEIHaryana.Contractor
                         loginTypeLabel.Text = "Contractor / WorkIntimation History / WorkIntimation Details";
                     }
 
-                    if (Session["ContractorID"] != null || Request.Cookies["ContractorID"] != null)
-                    {
+                    
+                   if (Session["ContractorID"] != null || Request.Cookies["ContractorID"] != null)
+
+                   {
                       
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
@@ -146,6 +149,9 @@ namespace CEIHaryana.Contractor
                     string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
                     string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
                     string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
+                    RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
+                    RadioButtonList2.Enabled = false;
+                    //String dp_ID24 = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
                     if (dp_Id8 != "")
                     {
                         Installation.Visible = true;

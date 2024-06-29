@@ -206,6 +206,18 @@
                             </label>
                             <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
+                        <div class="col-md-4">
+                                               <label>
+                                                Is there any Sanction Load Issue
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                          
+                            <asp:RadioButtonList ID="RadioButtonList2"   runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:ListItem Text="Yes" Value="0" ></asp:ListItem>
+                            <asp:ListItem Text="No" Value="1"  style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                        </asp:RadioButtonList>
+                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
+                                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">

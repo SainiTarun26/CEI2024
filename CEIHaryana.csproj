@@ -1894,6 +1894,7 @@
     <Content Include="SiteOwnerPages\PendingPayment.aspx" />
     <Content Include="SiteOwnerPages\PeriodicRenewal.aspx" />
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
+    <Content Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\SiteOwnerDashboard.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
@@ -2504,6 +2505,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\PeroidicInspection.aspx.designer.cs">
       <DependentUpon>PeroidicInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx.cs">
+      <DependentUpon>ProcessInspectionRenewalCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx.designer.cs">
+      <DependentUpon>ProcessInspectionRenewalCart.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\SiteOwner.Master.cs">
       <DependentUpon>SiteOwner.Master</DependentUpon>

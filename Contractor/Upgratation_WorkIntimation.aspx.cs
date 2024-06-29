@@ -115,6 +115,7 @@ namespace CEIHaryana.Contractor
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 string District = ds.Tables[0].Rows[0]["District"].ToString();
                 ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(District));
+                ddlDistrict.Enabled = false;
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
@@ -153,6 +154,7 @@ namespace CEIHaryana.Contractor
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
                 ddlVoltageLevel.SelectedIndex = ddlVoltageLevel.Items.IndexOf(ddlVoltageLevel.Items.FindByText(dp_Id3));
+                RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
                 //          string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 // ddlVoltageLevel.SelectedValue = dp_Id3;
                 //       ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
@@ -942,7 +944,7 @@ namespace CEIHaryana.Contractor
                     ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
                     ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),// txtTanNumber.Text.Trim(),
                     txtName.Text.Trim(), txtagency.Text.Trim(), txtPhone.Text.Trim(),
-                    txtAddress.Text.Trim(), ddlDistrict.SelectedItem.ToString(), txtPin.Text.Trim(),
+                    txtAddress.Text.Trim(), /*ddlDistrict.SelectedItem.ToString(),*/ txtPin.Text.Trim(),
                      txtEmail.Text.Trim(), ContractorID);
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
@@ -972,8 +974,8 @@ namespace CEIHaryana.Contractor
                             UpdationId = Session["UpdationId"].ToString();
                             hdnId.Value = ContractorID;
                             CEI.InsertionForApplicationDetails(UpdationId, ContractorID, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text.Trim(),
-                                    ddlVoltageLevel.SelectedItem.ToString(), txtinstallationType1.Text.Trim(), txtinstallationNo1.Text.Trim(), txtinstallationType2.Text.Trim(),
-                                    txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(), ContractorID, transaction);
+                                    ddlVoltageLevel.SelectedItem.ToString(), RadioButtonList2.SelectedValue.ToString(), txtinstallationType1.Text.Trim(), txtinstallationNo1.Text.Trim(), txtinstallationType2.Text.Trim(),
+                                    txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(), ContractorID, transaction) ;
                             string LoginID = string.Empty;
                             LoginID = Session["UpdationId"].ToString();
                             TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };

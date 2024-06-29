@@ -166,15 +166,15 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing,
-                 string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-    string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-    string TypeOfInstallation3, string NumberOfInstallation3,
-    //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-    //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-    string Email, string WorkStartDate, string CompletionDate,
-    string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy,
-       SqlTransaction transaction)
-        {               
+                  string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+     string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+     string TypeOfInstallation3, string NumberOfInstallation3,
+     //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+     //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+     string Email, string WorkStartDate, string CompletionDate,
+     string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad,
+        SqlTransaction transaction)
+        {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", Id);
@@ -227,6 +227,7 @@ namespace CEI_PRoject
             }
             cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
             outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
@@ -3570,8 +3571,8 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
         #region upgradation Intimation
         public void IntimationDataInsertionForSiteOwner(string Id, string ContractorID, string ContractorType, string ApplicantTypeCode, string ApplicantType, string PowerUtility, string PowerUtilityWing,
-                    /*string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-        /*string PANNumber,string NewUserId,*/ string Email, string CreatedBy)
+                   /* string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, /*/string District/*/ string Pincode,
+        /*/string PANNumber, string NewUserId,/*/ string Email, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -3597,18 +3598,18 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? null : NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
             cmd.Parameters.AddWithValue("@Address", Address);
-            cmd.Parameters.AddWithValue("@District", District);
+            //cmd.Parameters.AddWithValue("@District", District);
             cmd.Parameters.AddWithValue("@Pincode", Pincode);
-           // cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
+            // cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
             cmd.Parameters.AddWithValue("@Email", Email);
             cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
-           // cmd.Parameters.AddWithValue("@NewUserId", NewUserId);
+            // cmd.Parameters.AddWithValue("@NewUserId", NewUserId);
             cmd.ExecuteNonQuery();
             con.Close();
         }
 
         public void InsertionForApplicationDetails(string Id, string ContractorId, string PremisesType, string OtherPremises, string VoltageLevel,
-  string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+ string SanctionLoad, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
  string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy, SqlTransaction transaction)
         {
             //SqlConnection con = new SqlConnection();
@@ -3629,6 +3630,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
             cmd.Parameters.AddWithValue("@OtherPremises", String.IsNullOrEmpty(OtherPremises) ? DBNull.Value : (object)OtherPremises);
             cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+            cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
             cmd.Parameters.AddWithValue("@TypeOfInstallation1", TypeOfInstallation1);
             cmd.Parameters.AddWithValue("@NumberOfInstallation1", NumberOfInstallation1);
             cmd.Parameters.AddWithValue("@TypeOfInstallation2", String.IsNullOrEmpty(TypeOfInstallation2) ? DBNull.Value : (object)TypeOfInstallation2);
@@ -3643,7 +3645,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             //con.Close();
 
         }
-        
+
         public void InsertionForWorkScheduleInWoIntimation(string Id, string ContractorId, //string WorkStartDate, string CompletionDate,
          string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string CreatedBy)
         {

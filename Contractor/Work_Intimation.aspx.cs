@@ -304,6 +304,7 @@ namespace CEIHaryana.Contractor
                 {
                     txtPAN.Focus();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
+                    txtPAN.Text = "";
                     return;
                 }
                 DataSet ds = new DataSet();
@@ -645,7 +646,7 @@ namespace CEIHaryana.Contractor
                                 //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
                                 //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
                                 txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
-                              ddlApplicantType.SelectedItem.ToString(), ContractorID, transaction);
+                              ddlApplicantType.SelectedItem.ToString(), ContractorID, RadioButtonList2.SelectedValue.ToString(), transaction);
 
                             string projectId = CEI.projectId();
                             if (projectId != "" && projectId != null)
@@ -1131,6 +1132,7 @@ namespace CEIHaryana.Contractor
                 {
                     txtTanNumber.Focus();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
+                    txtTanNumber.Text = "";
                     return;
                 }
                 DataSet ds = new DataSet();

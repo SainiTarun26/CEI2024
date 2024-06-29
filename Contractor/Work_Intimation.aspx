@@ -59,27 +59,34 @@
             
         }
     </script>
-    <script type="text/javascript">
-        function validatePAN() {
-            var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
-            var panValidator = document.getElementById('<%= revPAN.ClientID %>');
+   <script type="text/javascript">
+       function validatePAN() {
+           var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
+        var panValidator = document.getElementById('<%= revPAN.ClientID %>');
 
-            if (panTextBox.value.length > 0 && !panValidator.isvalid) {
-                alert("Please enter a valid PAN number.");
-                return false;
-            }
-            return true;
-        }
+           var panValue = panTextBox.value.toUpperCase(); // Convert to uppercase here
 
-        function preventEnterSubmit(e) {
-            // Prevent form submission on Enter key press
-            if (e.keyCode === 13) {
-                e.preventDefault();
-                return false;
-            }
-            return true;
-        }
-    </script>
+           if (panValue.length > 0 && !panValidator.isvalid) {
+               alert("Please enter a valid PAN number.");
+               return false;
+           }
+           return true;
+       }
+
+       function convertToUpperCase(event) {
+           var textBox = event.target;
+           textBox.value = textBox.value.toUpperCase();
+       }
+
+       function preventEnterSubmit(e) {
+           // Prevent form submission on Enter key press
+           if (e.keyCode === 13) {
+               e.preventDefault();
+               return false;
+           }
+           return true;
+       }
+ </script>
     <style>
         .headercolor1 {
             text-align: initial !important;
@@ -309,6 +316,17 @@
                         </label>
                     </div>
                 </div>
+                 <div class="col-md-4">
+                                            <label>
+                                                Inspection Type
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DropDownList1" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                                <asp:ListItem Text="New" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="Existing" Value="1"></asp:ListItem>
+                                            </asp:DropDownList>
+                                         
+                                        </div>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -336,12 +354,12 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
 
-                                        <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
+                                     <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
                                                 PAN Card
                                             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" MaxLength="10" onkeypress="return validateInput(event)" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" MaxLength="10"  onkeyup="convertToUpperCase(event)"  AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -352,7 +370,7 @@
                                                 TAN Number
                                             <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" AutoPostBack="true" OnTextChanged="txtTanNumber_TextChanged" onkeypress="return validateInput(event)" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" OnTextChanged="txtTanNumber_TextChanged"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -492,7 +510,7 @@
                                     </div>
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                    <div class="row">
+                                    <div class="row">                                         
                                         <div class="col-md-4">
                                             <label>
                                                 Type of Premises
@@ -518,6 +536,18 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
+                                        <div class="col-md-4">
+                                               <label>
+                                                Is there any Sanction Load Issue
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            
+                            <asp:RadioButtonList ID="RadioButtonList2"  AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="No" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                        </asp:RadioButtonList>
+                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
+                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -1137,24 +1167,34 @@
             }
         }
     </script>
-    <script>
-        function validateTANNumber() {
-            var tanNumber = document.getElem entById('<%= txtTanNumber.ClientID %>').value;
-            var regex = /^[A-Z]{4}[0-9]{-Z]$/;
-            var isValid = regex.test(taner);
+   <script>
+       function validateTANNumber() {
+           var tanNumber = document.getElementById('<%= txtTanNumber.ClientID %>').value.toUpperCase();
+        var regex = /^[A-Z]{4}\d{5}[A-Z]$/; 
+        var isValid = regex.test(tanNumber);
 
-            if (!isValid) {
-                alert("Enter a valid TAN num);
-                return false;
-            } return true;        }
+        if (!isValid) {
+            alert("Enter a valid TAN number.");
+            return false;
+        }
+        return true;
+    }
 
-        // Hook into AST form susion
-        var form = document.getElemeId('<%= this.Page.Form.ClientID %>');
+    function convertToUpperCase(event) {
+        var textBox = event.target;
+        textBox.value = textBox.value.toUpperCase();
+    }
+
+   
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('<%= this.Page.Form.ClientID %>');
+
         if (form) {
-            form.on submit = function () {
+            form.onsubmit = function () {
                 return validateTANNumber();
             };
         }
+    });
     </script>
    <script type="text/javascript">
        function validateInput(event) {
