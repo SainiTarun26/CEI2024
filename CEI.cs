@@ -3507,9 +3507,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region Insert Inspection Data NewCode
 
         public void InsertInspectionDataNewCode(string ContactNo, string TestRportId, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-string VoltageLevel, string LineLength, string TestReportCount, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
-int TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, SqlTransaction transaction
-)
+ string VoltageLevel, string LineLength, string TestReportCount, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
+ int TotalAmount, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, SqlTransaction transaction
+ )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCode", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -3543,6 +3543,8 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
             cmd.Parameters.AddWithValue("@ChallanAttachment", null);
             cmd.Parameters.AddWithValue("@InspectID", InspectID);
+            cmd.Parameters.AddWithValue("@SactionVoltage", KVA);
+            cmd.Parameters.AddWithValue("@DemandDocument", DemandNotice);
             //outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
             outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
             outputParam.Direction = ParameterDirection.Output;
@@ -3843,9 +3845,9 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet GetPeriodicDetails(string adress, string id, int NoOfDays, string InstallationType)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWise", adress, id, NoOfDays, InstallationType);
-        }      
-        public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType,
-        string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CreatedBy, string Status)
+        }
+        public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
+  string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CreatedBy, string Status)
         {
             try
             {
@@ -3857,6 +3859,8 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                         cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
                         cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
                         cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
+
                         cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
                         cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
                         cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
@@ -3882,6 +3886,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             {
 
             }
+        }
+        public DataSet GetAddressToFilterCart(string CreatedBy)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAdressTofilterCart", CreatedBy);
         }
         public DataSet GetAddressToFilterCart()
         {

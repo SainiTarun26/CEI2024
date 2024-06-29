@@ -251,8 +251,11 @@ namespace CEIHaryana.SiteOwnerPages
 
                             Label LblAddress = (Label)row.FindControl("LblAddress");
                             string Address = LblAddress.Text;
+                            Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+                            string InstallationName = LblInstallationName.Text;
+                            
 
-                            CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, TestReportId, inspectionDate,
+                            CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, inspectionDate,
                             inspectionDueDate, DelayedDays, Voltage, Capacity, Address, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);

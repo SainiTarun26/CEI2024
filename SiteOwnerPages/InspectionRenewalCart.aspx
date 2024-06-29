@@ -259,12 +259,13 @@
                     <div>
                         <div class="card" id="DivGrid" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;" runat="server">
                             <%-- Add Gridview Here --%>
-                            <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" OnRowCommand="GridView1_RowCommand" runat="server" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true">
+                            <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" OnRowCommand="GridView1_RowCommand" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCreated="GridView1_RowCreated" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true">
                                 <PagerStyle CssClass="pagination-ys" />
                                 <Columns>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-                                            <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("CapacityNumeric") %>'></asp:Label>
+                                           <%-- <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("CapacityNumeric") %>'></asp:Label>--%>
+                                            <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -281,15 +282,19 @@
                                             <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:BoundField DataField="InstallationName" HeaderText="Installation Name" Visible="False">
+                                        <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="25%" />
+                                    </asp:BoundField>
                                     <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                         <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     </asp:BoundField>
-                                    <asp:TemplateField HeaderText="Capacity">
+                                    <asp:TemplateField HeaderText="Capacity(in KVA)">
                                         <HeaderStyle Width="35%" CssClass="headercolor" />
                                         <ItemStyle Width="35%" />
                                         <ItemTemplate>
-                                            <asp:Label ID="lblInstallationCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                            <asp:Label ID="lblInstallationCapacity" runat="server" Text='<%#Eval("CapacityNumeric") %>'></asp:Label>
                                         </ItemTemplate>
                                         <FooterTemplate>
                                             <asp:Label ID="lblTotalCapacity" runat="server" Text="Total Capacity: " Font-Bold="true"></asp:Label>
@@ -307,7 +312,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Remove">
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="DeleteRow" style="display: block; margin: 0 auto;" />
+                                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="DeleteRow" Style="display: block; margin: 0 auto;" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

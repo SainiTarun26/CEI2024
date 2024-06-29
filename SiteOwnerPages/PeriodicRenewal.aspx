@@ -444,6 +444,8 @@
                                          <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label> 
                                          <asp:Label ID="LblAddress" runat="server" Text='<%#Eval("Address") %>'></asp:Label> 
 
+                                        <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+
                                         <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>--%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
