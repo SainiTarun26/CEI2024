@@ -213,8 +213,8 @@
                                             </label>
                                           
                             <asp:RadioButtonList ID="RadioButtonList2"   runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                            <asp:ListItem Text="Yes" Value="0" ></asp:ListItem>
-                            <asp:ListItem Text="No" Value="1"  style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                            <asp:ListItem Text="Yes" Value="1" ></asp:ListItem>
+                            <asp:ListItem Text="No" Value="0"  style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
                         </asp:RadioButtonList>
                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
                                          </div>

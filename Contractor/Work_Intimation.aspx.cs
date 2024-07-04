@@ -646,7 +646,7 @@ namespace CEIHaryana.Contractor
                                 //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
                                 //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
                                 txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
-                              ddlApplicantType.SelectedItem.ToString(), ContractorID, RadioButtonList2.SelectedValue.ToString(), transaction);
+                              ddlApplicantType.SelectedItem.ToString(), ContractorID, RadioButtonList2.SelectedValue.ToString(), ddlInspectionType.SelectedValue.ToString(), transaction);
 
                             string projectId = CEI.projectId();
                             if (projectId != "" && projectId != null)

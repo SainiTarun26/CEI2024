@@ -1883,6 +1883,8 @@
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
+    <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
+    <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
@@ -2428,6 +2430,20 @@
     </Compile>
     <Compile Include="SiteOwnerPages\CreateTestReports.aspx.designer.cs">
       <DependentUpon>CreateTestReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ExistingInspectionData.aspx.cs">
+      <DependentUpon>ExistingInspectionData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ExistingInspectionData.aspx.designer.cs">
+      <DependentUpon>ExistingInspectionData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ExistingInspectionRequest.aspx.cs">
+      <DependentUpon>ExistingInspectionRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ExistingInspectionRequest.aspx.designer.cs">
+      <DependentUpon>ExistingInspectionRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GenerateInspection.aspx.cs">
       <DependentUpon>GenerateInspection.aspx</DependentUpon>

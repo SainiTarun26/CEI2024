@@ -269,6 +269,9 @@ namespace CEIHaryana.UserPages
                 string dp_Id13 = ds.Tables[0].Rows[0]["NumberOfInstallation3"].ToString();
                 txtwIpID.Text = ds.Tables[0].Rows[0]["id"].ToString();
 
+                RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
+                RadioButtonList2.Enabled = false;  
+
                 string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
                 if (dp_Id2 != "")
                 {

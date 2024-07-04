@@ -148,7 +148,8 @@ namespace CEIHaryana.Admin
                     string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
                     string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
                     string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
-
+                    RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
+                    RadioButtonList2.Enabled = false;
                     if (dp_Id8 != "")
                     {
                         Installation.Visible = true;

@@ -172,7 +172,7 @@ namespace CEI_PRoject
      //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
      //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
      string Email, string WorkStartDate, string CompletionDate,
-     string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad,
+     string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType,
         SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
@@ -228,6 +228,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
+            cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
             outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
@@ -3929,6 +3930,53 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckPanNumber", PanNumber);
         }
+
+        public DataSet SiteOwnerExistingInstallations(string IntimationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationforExistingInspection", IntimationId);
+        }
+        #region Existing Inspection
+        public void InsertExistingInspectionData(string TestReportId, string IntimationId, string TestReportCount, string ApplicantType, string InstallationType, string VoltageLevel,
+string District, string Division, string InspectionType, string CreatedBy,
+string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, string PreviousInspection)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "sp_InsertExistingInspection";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@TestRportId", TestReportId);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+            cmd.Parameters.AddWithValue("@TestReportCount", TestReportCount);
+            cmd.Parameters.AddWithValue("@ApplicantType", String.IsNullOrEmpty(ApplicantType) ? DBNull.Value : (object)ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+            cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Division", Division);
+            cmd.Parameters.AddWithValue("@Inspectiontype", InspectionType);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+            cmd.Parameters.AddWithValue("@ApprovedDate", String.IsNullOrEmpty(ApprovedDate) ? DBNull.Value : (object)ApprovedDate);
+            cmd.Parameters.AddWithValue("@ApproximateYears", ApproximateYears);
+            cmd.Parameters.AddWithValue("@InspectionNewOrExist", InspectionNewOrExist);
+            cmd.Parameters.AddWithValue("@PreviousInspection", PreviousInspection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public DataSet ExistingInspectionData(string PANNumber)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetExistingInspections", PANNumber);
+        }
+
+        #endregion
     }
 }
 

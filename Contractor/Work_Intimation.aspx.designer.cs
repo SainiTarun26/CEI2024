@@ -42,13 +42,13 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlInspectionType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlInspectionType;
 
         /// <summary>
         /// UpdatePanel1 control.

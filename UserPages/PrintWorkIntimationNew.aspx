@@ -388,6 +388,15 @@
                                         </asp:TextBox>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                               <label>
+                                                Is there any Sanction Load Issue                                              
+                                            </label>                                           
+                            <asp:RadioButtonList ID="RadioButtonList2"  AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                        </asp:RadioButtonList>
+                                         </div>
                             </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Assign Supervisor Details For Above Work</u></h6>
                             <div id="Div1" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">

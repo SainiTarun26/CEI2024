@@ -218,6 +218,17 @@
                                   
 
                                       </div>
+                         <div class="col-md-4">
+                                               <label>
+                                                Is there any Sanction Load Issue
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                          
+                            <asp:RadioButtonList ID="RadioButtonList2"   runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:ListItem Text="Yes" Value="1" ></asp:ListItem>
+                            <asp:ListItem Text="No" Value="0"  style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                        </asp:RadioButtonList>
+                                         </div>
 
                    </div>
                         <div class="row">

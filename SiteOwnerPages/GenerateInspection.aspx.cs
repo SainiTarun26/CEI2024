@@ -149,7 +149,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblDesignation = (Label)row.FindControl("lblDesignation");
                     Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");
                     Label LblSactionLoad = (Label)row.FindControl("LblSactionLoad");
-                    if (LblSactionLoad.Text == "0")
+                    if (LblSactionLoad.Text == "1")
                     {
                         SactionVoltage.Visible = true;
                     }
@@ -822,7 +822,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-
         //protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)
         //{
         //    if (e.Row.RowType == DataControlRowType.DataRow)
@@ -860,16 +859,15 @@ namespace CEIHaryana.SiteOwnerPages
             }
             return -1;
         }
-
         private void GetOtherDetails_ForReturnedInspection(int inspectionIdPrm)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             string query = "Sp_GetOtherDetails_ForReturnedInspection";
-
+                         
             using (SqlConnection connection = new SqlConnection(connectionString))
-            {
+            {   
                 using (SqlCommand command = new SqlCommand(query, connection))
-                {
+                {   
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@InspectionId", inspectionIdPrm);
                     connection.Open();

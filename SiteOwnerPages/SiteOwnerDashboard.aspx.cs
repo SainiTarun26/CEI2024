@@ -350,8 +350,8 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-                        string script = "alert(\"No Data Found\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
+                        //string script = "alert(\"No Data Found\");";
+                        //ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
                     }
                 }
             }
