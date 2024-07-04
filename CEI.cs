@@ -3848,7 +3848,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWise", adress, id, NoOfDays, InstallationType);
         }
         public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
-  string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CreatedBy, string Status)
+  string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string District, string Division, string CreatedBy, string Status)
         {
             try
             {
@@ -3876,6 +3876,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                             cmd.Parameters.AddWithValue("@Capacity", Capacity);
                         }
                         cmd.Parameters.AddWithValue("@Address", Address);
+                        cmd.Parameters.AddWithValue("@District", District);
+                        cmd.Parameters.AddWithValue("@Division", Division);
                         cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                         cmd.Parameters.AddWithValue("@Status", Status);
                         con.Open();
@@ -3977,6 +3979,10 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
         }
 
         #endregion
+        public DataSet ToGetDatafromCart(string address)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToGetDatafromCart", address);
+        }
     }
 }
 

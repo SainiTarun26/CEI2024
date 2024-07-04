@@ -264,9 +264,11 @@
                                 <Columns>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-                                           <%-- <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("CapacityNumeric") %>'></asp:Label>--%>
+                                          
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
-                                        </ItemTemplate>
+                                            <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label> 
+                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                            </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
                                         <HeaderStyle Width="5%" CssClass="headercolor" />
@@ -320,7 +322,7 @@
                         </div>
                         <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                             <div class="col-4" style="margin-top: auto;">
-                                <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" ValidationGroup="Submit" />
+                                <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" OnClick="BtnSubmit_Click" ValidationGroup="Submit" />
                             </div>
                         </div>
                     </div>

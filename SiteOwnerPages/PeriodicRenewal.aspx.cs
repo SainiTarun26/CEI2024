@@ -94,9 +94,9 @@ namespace CEIHaryana.SiteOwnerPages
             grid.Visible = true;
             GridViewBind();
         }
-         
+
         public void GridViewBind()
-        { 
+        {
             string id = Session["SiteOwnerId"].ToString();
             string Adress = ddlAdress.SelectedItem.Text;
             int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
@@ -253,10 +253,15 @@ namespace CEIHaryana.SiteOwnerPages
                             string Address = LblAddress.Text;
                             Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
                             string InstallationName = LblInstallationName.Text;
-                            
+
+                            Label LblDivision = (Label)row.FindControl("LblDivision");
+                            string Division = LblDivision.Text;
+                            Label LblDistrict = (Label)row.FindControl("LblDistrict");
+                            string District = LblDistrict.Text;
+
 
                             CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, inspectionDate,
-                            inspectionDueDate, DelayedDays, Voltage, Capacity, Address, id, "1");
+                                  inspectionDueDate, DelayedDays, Voltage, Capacity, Address, District, Division, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }
@@ -269,7 +274,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
 

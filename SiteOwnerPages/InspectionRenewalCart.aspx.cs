@@ -118,6 +118,9 @@ namespace CEIHaryana.SiteOwnerPages
 
                     lblTotalCapacity.Text = "Total Capacity: " + dblGrandTotalCapacity.ToString("N0") + "KVA";
                     lblMaxVoltage.Text = "Max Voltage: " + dblHighestVoltage.ToString("N0");
+
+                    Session["TotalCapacity"] = dblGrandTotalCapacity;
+                    Session["HighestVoltage"] = dblHighestVoltage;
                 }
             }
             catch (Exception ex) { }
@@ -143,8 +146,7 @@ namespace CEIHaryana.SiteOwnerPages
                     TableCell cell = new TableCell();
                     cell.Text = "Installation Name: " + DataBinder.Eval(e.Row.DataItem, "InstallationName").ToString();
                     cell.Font.Bold = true;
-                    cell.ColumnSpan = 6;
-                    cell.CssClass = "GroupHeaderStyle";
+                    cell.ColumnSpan = 6;                  
                     row.Cells.Add(cell);
                     grdViewOrders.Controls[0].Controls.AddAt(e.Row.RowIndex + intSubTotalIndex, row);
                     intSubTotalIndex++;
@@ -162,15 +164,14 @@ namespace CEIHaryana.SiteOwnerPages
                         TableCell cell = new TableCell();
                         cell.Text = "Installation Name: " + DataBinder.Eval(e.Row.DataItem, "InstallationName").ToString();
                         cell.Font.Bold = true;
-                        cell.ColumnSpan = 6;
-                        cell.CssClass = "GroupHeaderStyle";
+                        cell.ColumnSpan = 6;                       
                         row.Cells.Add(cell);
                         grdViewOrders.Controls[0].Controls.AddAt(e.Row.RowIndex + intSubTotalIndex, row);
                         intSubTotalIndex++;
                     }
 
-                    dblSubTotalCapacity = 0;
-                    dblSubHighestVoltage = 0;
+                    //dblSubTotalCapacity = 0;
+                    //dblSubHighestVoltage = 0;
                 }
             }
             catch (Exception ex) { }
@@ -225,6 +226,45 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
             catch (Exception ex) { }
+        }
+
+        protected void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["SiteOwnerId"] != null)
+                {
+                    string id = Session["SiteOwnerId"].ToString();
+                    string GrandTotalCapacity = Session["TotalCapacity"].ToString();
+                    string HighestVoltage = Session["HighestVoltage"].ToString();
+                    string address = txtAddressFilter.Text;
+                    DataSet ds = new DataSet();
+                    ds = CEI.ToGetDatafromCart(address);
+                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        foreach (DataRow row in ds.Tables[0].Rows)
+                        {
+                            string CartId = row["CartId"].ToString();
+                            string Division = row["Division"].ToString();
+                            string District = row["District"].ToString();
+                        }
+                    }
+                    //foreach (GridViewRow row in GridView1.Rows)
+                    //    if (row != null)
+                    //    {    
+                    //        Label LblDivision = (Label)row.FindControl("LblDivision");
+                    //        string Division = LblDivision.Text;
+                    //        Label LblDistrict = (Label)row.FindControl("LblDistrict");
+                    //        string District = LblDistrict.Text;
+                    //    }
+
+
+                    Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }
