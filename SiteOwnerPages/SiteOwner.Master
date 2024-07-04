@@ -337,6 +337,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/ExistingInspectionRequest.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Existing  Request For
+                                        <br />
+                                        Inspection</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Inspection History</span>
