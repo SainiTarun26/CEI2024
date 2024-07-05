@@ -22,6 +22,7 @@ namespace CEIHaryana.SiteOwnerPages
         int dblGrandTotalCapacity = 0;
         double dblHighestVoltage = 0;
         string InstallationTypeId = string.Empty;
+        private int TotalAmount = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -116,7 +117,8 @@ namespace CEIHaryana.SiteOwnerPages
                         ds = CEI.Payment(LblIntimationId.Text, LblCount.Text, InstallationTypeId, InspectionType);
                         if (ds.Rows.Count > 0 && ds != null)
                         {
-                            int TotalAmount = Convert.ToInt32(ds.Rows[0]["Amount"].ToString());
+                            int Amount = Convert.ToInt32(ds.Rows[0]["Amount"].ToString());
+                            TotalAmount += Amount;
                         }
                     }
                    

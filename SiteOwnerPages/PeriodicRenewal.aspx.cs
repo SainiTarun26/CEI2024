@@ -267,7 +267,7 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                             CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
-       inspectionDueDate, DelayedDays, Voltage, Capacity, Address, District, Division, id, "1");
+                                 inspectionDueDate, DelayedDays, Voltage, Capacity, Address, District, Division, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }
