@@ -95,25 +95,29 @@ namespace CEIHaryana.SiteOwnerPages
                     Label LblCount = e.Row.FindControl("LblCount") as Label;
                     Label LblInstallationName = e.Row.FindControl("LblInstallationName") as Label;                    
                     Label LblIntimationId = e.Row.FindControl("LblIntimationId") as Label;
-                    if (LblInstallationName.Text == "Line")
+                    if (LblCount.Text != null && LblInstallationName.Text != null && LblIntimationId != null)
                     {
-                        InstallationTypeId = "1";
+                        if (LblInstallationName.Text == "Line")
+                        {
+                            InstallationTypeId = "1";
+                        }
+                        else if (LblInstallationName.Text == "Substation Transformer")
+                        {
+                            InstallationTypeId = "2";
+                        }
+                        else if (LblInstallationName.Text == "Generating Set")
+                        {
+                            InstallationTypeId = "3";
+                        }
+                        string InspectionType = "Periodic";
+                        DataTable ds = new DataTable();
+                        ds = CEI.Payment(LblIntimationId.Text, LblCount.Text, InstallationTypeId, InspectionType);
+                        if (ds.Rows.Count > 0 && ds != null)
+                        {
+                            int TotalAmount = Convert.ToInt32(ds.Rows[0]["Amount"].ToString());
+                        }
                     }
-                    else if (LblInstallationName.Text == "Substation Transformer")
-                    {
-                        InstallationTypeId = "2";
-                    }
-                    else if (LblInstallationName.Text == "Generating Set")
-                    {
-                        InstallationTypeId = "3";
-                    }
-                    string InspectionType = "Periodic";
-                    DataTable ds = new DataTable();
-                    ds = CEI.Payment(LblIntimationId.Text, LblCount.Text, InstallationTypeId, InspectionType);
-                    if (ds.Rows.Count > 0 && ds != null)
-                    {                        
-                       int TotalAmount =Convert.ToInt32( ds.Rows[0]["Amount"].ToString());                      
-                    }
+                   
 
                     strPreviousRowID = DataBinder.Eval(e.Row.DataItem, "InstallationName").ToString();
 
