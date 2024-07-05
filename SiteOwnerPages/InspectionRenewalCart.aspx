@@ -319,11 +319,7 @@
                                         <ItemTemplate>
                                             <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="DeleteRow" Style="display: block; margin: 0 auto;" />
                                         </ItemTemplate>
-                                    </asp:TemplateField>
-                                     <asp:BoundField DataField="TotalAmount" HeaderText="Amount">
-                                        <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="Left" Width="25%" />
-                                    </asp:BoundField>
+                                    </asp:TemplateField>                                    
                                 </Columns>
                             </asp:GridView>
                         </div>
