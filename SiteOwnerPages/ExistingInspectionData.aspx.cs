@@ -113,7 +113,7 @@ namespace CEIHaryana.SiteOwnerPages
                 TextBox txtInspectionDate = row.FindControl("txtInspectionDate") as TextBox;
                
 
-                 Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                 string TestReportId = lblTestReportId.Text;
                 Label lblCategory = (Label)row.FindControl("lblCategory");
                 string Category = lblCategory.Text;

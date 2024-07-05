@@ -697,9 +697,9 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     InstallationTypeId = "3";
                 }
-
+                string InspectionType="New";
                 DataTable ds = new DataTable();
-                ds = CEI.Payment(id, Count, InstallationTypeId);
+                ds = CEI.Payment(id, Count, InstallationTypeId, InspectionType);
                 if (ds.Rows.Count > 0 && ds != null)
                 {
                     GridViewPayment.DataSource = ds;

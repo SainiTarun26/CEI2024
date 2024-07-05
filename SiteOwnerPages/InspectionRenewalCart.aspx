@@ -267,7 +267,10 @@
                                           
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
                                             <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label> 
-                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label> 
+                                            <asp:Label ID="LblCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>  
+                                            <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>  
+
                                             </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -317,6 +320,10 @@
                                             <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="DeleteRow" Style="display: block; margin: 0 auto;" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                     <asp:BoundField DataField="TotalAmount" HeaderText="Amount">
+                                        <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="25%" />
+                                    </asp:BoundField>
                                 </Columns>
                             </asp:GridView>
                         </div>

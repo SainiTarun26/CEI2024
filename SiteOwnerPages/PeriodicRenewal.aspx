@@ -448,7 +448,9 @@
 
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                             <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
-                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label> 
+                                            <asp:Label ID="LblCount" runat="server" Text='<%#Eval("number") %>'></asp:Label> 
+                                            <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label> 
                                             <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>

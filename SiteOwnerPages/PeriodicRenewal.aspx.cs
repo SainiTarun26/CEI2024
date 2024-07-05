@@ -189,6 +189,10 @@ namespace CEIHaryana.SiteOwnerPages
 
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    
+                    Label LblIntimationId= e.Row.FindControl("LblIntimationId") as Label;
+                    Label LblInstallationType = e.Row.FindControl("LblInstallationType") as Label;
+
                     int numberofdaysColumnIndex = 9;
                     TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
 
@@ -258,10 +262,12 @@ namespace CEIHaryana.SiteOwnerPages
                             string Division = LblDivision.Text;
                             Label LblDistrict = (Label)row.FindControl("LblDistrict");
                             string District = LblDistrict.Text;
+                            Label lblCount = (Label)row.FindControl("LblCount") as Label;
+                            string Count = lblCount.Text;
 
 
-                            CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, inspectionDate,
-                                  inspectionDueDate, DelayedDays, Voltage, Capacity, Address, District, Division, id, "1");
+                            CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
+       inspectionDueDate, DelayedDays, Voltage, Capacity, Address, District, Division, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }

@@ -3453,7 +3453,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetSupervisorName", UserId);
         }
 
-        public DataTable Payment(string intimationId, string count, string installationtypeId)
+        public DataTable Payment(string intimationId, string count, string installationtypeId,string InspectionType)
         {
             DataTable result = new DataTable();
 
@@ -3464,7 +3464,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@IntimationId", intimationId);
                 command.Parameters.AddWithValue("@Count", count);
-                command.Parameters.AddWithValue("@InspectionType", "New");
+                command.Parameters.AddWithValue("@InspectionType", InspectionType);
                 command.Parameters.AddWithValue("@InstallationTypeID", installationtypeId);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -3847,8 +3847,52 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWise", adress, id, NoOfDays, InstallationType);
         }
+        //      public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
+        //string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string District, string Division, string CreatedBy, string Status)
+        //      {
+        //          try
+        //          {
+        //              using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+        //              {
+        //                  using (SqlCommand cmd = new SqlCommand("sp_InsertInspectionRenewalData", con))
+        //                  {
+        //                      cmd.CommandType = CommandType.StoredProcedure;
+        //                      cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+        //                      cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
+        //                      cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+        //                      cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
+
+        //                      cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
+        //                      cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+        //                      cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
+        //                      cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
+        //                      cmd.Parameters.AddWithValue("@Voltage", Voltage);
+        //                      if (string.IsNullOrWhiteSpace(Capacity))
+        //                      {
+        //                          cmd.Parameters.AddWithValue("@Capacity", DBNull.Value);
+        //                      }
+        //                      else
+        //                      {
+        //                          cmd.Parameters.AddWithValue("@Capacity", Capacity);
+        //                      }
+        //                      cmd.Parameters.AddWithValue("@Address", Address);
+        //                      cmd.Parameters.AddWithValue("@District", District);
+        //                      cmd.Parameters.AddWithValue("@Division", Division);
+        //                      cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+        //                      cmd.Parameters.AddWithValue("@Status", Status);
+        //                      con.Open();
+        //                      cmd.ExecuteNonQuery();
+        //                  }
+        //              }
+        //          }
+        //          catch (Exception ex)
+        //          {
+
+        //          }
+        //      }
+
         public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
-  string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string District, string Division, string CreatedBy, string Status)
+string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string District, string Division, string CreatedBy, string Status)
         {
             try
             {
@@ -3863,6 +3907,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                         cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
 
                         cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
+                        cmd.Parameters.AddWithValue("@TestReportCount", TestReportCount);
                         cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
                         cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
                         cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
@@ -3966,8 +4011,8 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
 
             cmd.Parameters.AddWithValue("@ApprovedDate", String.IsNullOrEmpty(ApprovedDate) ? DBNull.Value : (object)ApprovedDate);
             cmd.Parameters.AddWithValue("@ApproximateYears", ApproximateYears);
-            cmd.Parameters.AddWithValue("@InspectionNewOrExist", InspectionNewOrExist);
-            cmd.Parameters.AddWithValue("@PreviousInspection", PreviousInspection);
+            cmd.Parameters.AddWithValue("@InspectionNewOrExist", InspectionNewOrExist);           
+            cmd.Parameters.AddWithValue("@PreviousInspectionDate", PreviousInspection);
             cmd.ExecuteNonQuery();
             con.Close();
 
