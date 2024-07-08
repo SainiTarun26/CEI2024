@@ -3572,8 +3572,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         #region upgradation Intimation
         public void IntimationDataInsertionForSiteOwner(string Id, string ContractorID, string ContractorType, string ApplicantTypeCode, string ApplicantType, string PowerUtility, string PowerUtilityWing,
-                   /* string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, /*/string District/*/ string Pincode,
-        /*/string PANNumber, string NewUserId,/*/ string Email, string CreatedBy)
+                     /*string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, /*string District*/ string Pincode,
+         /*string PANNumber, string NewUserId,*/ string Email, string InspectionType, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -3603,6 +3603,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@Pincode", Pincode);
             // cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
             cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
             cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
             // cmd.Parameters.AddWithValue("@NewUserId", NewUserId);
             cmd.ExecuteNonQuery();
@@ -4028,7 +4029,7 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
         }
 
         public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage, string InstallationType,
-            string District, string Division, string PaymentMode, int TotalAmount, string CreatedBy)
+            string District, string Division,string AssignTo, string PaymentMode, int TotalAmount, string CreatedBy)
         {
             try
             {
@@ -4044,7 +4045,7 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
                         cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
                         cmd.Parameters.AddWithValue("@District", District);
                         cmd.Parameters.AddWithValue("@Division", Division);
-                        //cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
+                        cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
                         //cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
                         cmd.Parameters.AddWithValue("@PaymentMode", PaymentMode);
                         cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);

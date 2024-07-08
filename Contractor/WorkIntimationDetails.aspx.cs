@@ -149,6 +149,8 @@ namespace CEIHaryana.Contractor
                     string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
                     string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
                     string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
+                    string InspectionType = ds.Tables[0].Rows[0]["InspectionType"].ToString();
+                    ddlInspectionType.SelectedIndex = ddlInspectionType.Items.IndexOf(ddlInspectionType.Items.FindByText(InspectionType));
                     RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
                     RadioButtonList2.Enabled = false;
                     //String dp_ID24 = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();

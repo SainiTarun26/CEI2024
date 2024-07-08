@@ -25,8 +25,9 @@ namespace CEIHaryana.SiteOwnerPages
         string InstallationTypeId = string.Empty;
         private static int TotalAmount = 0;
         private static int CheckCase = 0;
+        int highestOfficerDesignation = 0;
 
-        string highestOfficerDesignation = string.Empty;
+        private static string AssignToOfficer = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -96,6 +97,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+               
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
 
@@ -108,7 +110,40 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         DataTable dt = new DataTable();
                         dt = CEI.GetAssignInspection(InspectionId);
-                       
+
+                        if (dt != null && dt.Rows.Count >0)                     
+                        {
+                            string AssignTo = dt.Rows[0]["AssignTo"].ToString();                           
+                            if (AssignTo.StartsWith("JE"))
+                            {                              
+                                CheckCase = 1;
+                                if (CheckCase > highestOfficerDesignation) {
+                                    highestOfficerDesignation = CheckCase;
+                                    AssignToOfficer = AssignTo;                                   
+                                }
+
+                            }
+                            else if (AssignTo.StartsWith("AE"))
+                            {
+                                CheckCase = 2;
+                                if (CheckCase > highestOfficerDesignation)
+                                {
+                                    highestOfficerDesignation = CheckCase;
+                                    AssignToOfficer = AssignTo;                                    
+                                }
+                                                       
+                            }
+                            else if (AssignTo.StartsWith("XEN"))
+                            {
+                                CheckCase = 3;
+                                if (CheckCase > highestOfficerDesignation)
+                                {
+                                    highestOfficerDesignation = CheckCase;
+                                    AssignToOfficer = AssignTo;                                   
+                                }
+                                                         
+                            }                         
+                        }
                     }
                    
                         
@@ -289,6 +324,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string address = txtAddressFilter.Text;
 
                     int totalAmount = TotalAmount;
+                    string AssignTo = AssignToOfficer;
                     string CartId = string.Empty ;
                     string Division = string.Empty;
                     string District = string.Empty;
@@ -305,7 +341,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
 
-                    CEI.InsertInspectinData( CartId, GrandTotalCapacity, HighestVoltage, "Multiple",District, Division, "Offline", totalAmount, id);
+                    CEI.InsertInspectinData( CartId, GrandTotalCapacity, HighestVoltage, "Multiple",District, Division, AssignTo, "Offline", totalAmount, id);
                     //AssignTo, ServiceType,
 
                     Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
@@ -316,6 +352,24 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        
+        //private void DetermineHighestOfficer(string AssignTo)
+        //{
+        //   // int a = AssignTo.IndexOf('_');
+        //    //string Designation = AssignTo.Substring(0, a);
+        //    if (AssignTo.StartsWith("XEN"))
+        //    {
+        //        highestOfficerDesignation = AssignTo;
+        //    }
+        //    else if (AssignTo.StartsWith("AE") && (highestOfficerDesignation.StartsWith("AE") || highestOfficerDesignation.StartsWith("JE")))
+        //    {
+        //        highestOfficerDesignation = AssignTo;
+        //    }
+        //    else if (AssignTo.StartsWith("JE") && highestOfficerDesignation.StartsWith(""))
+        //    {
+        //        highestOfficerDesignation = AssignTo;
+        //    }
+        //}
+        //int a = AssignTo.IndexOf('_');
+        //DetermineHighestOfficer(AssignTo);
     }
 }

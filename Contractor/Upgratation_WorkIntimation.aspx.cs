@@ -173,6 +173,8 @@ namespace CEIHaryana.Contractor
                 string dp_Id11 = ds.Tables[0].Rows[0]["NumberOfInstallation2"].ToString();
                 string dp_Id12 = ds.Tables[0].Rows[0]["TypeOfInstallation3"].ToString();
                 string dp_Id13 = ds.Tables[0].Rows[0]["NumberOfInstallation3"].ToString();
+                string InspectionType = ds.Tables[0].Rows[0]["InspectionType"].ToString();
+                ddlInspectionType.SelectedIndex = ddlInspectionType.Items.IndexOf(ddlInspectionType.Items.FindByText(InspectionType));
                 //string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
                 //string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
                 //string dp_Id16 = ds.Tables[0].Rows[0]["TypeOfInstallation5"].ToString();
@@ -939,15 +941,15 @@ namespace CEIHaryana.Contractor
 
                     UpdationId = Session["UpdationId"].ToString();
                     hdnId.Value = ContractorID;
-                    CEI.IntimationDataInsertionForSiteOwner(UpdationId, ContractorID, ddlworktype.SelectedItem.ToString(),
-                    ddlApplicantType.SelectedValue, ddlApplicantType.SelectedItem.ToString(),
-                    ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
-                    ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),// txtTanNumber.Text.Trim(),
-                    txtName.Text.Trim(), txtagency.Text.Trim(), txtPhone.Text.Trim(),
-                    txtAddress.Text.Trim(), /*ddlDistrict.SelectedItem.ToString(),*/ txtPin.Text.Trim(),
-                     txtEmail.Text.Trim(), ContractorID);
+                CEI.IntimationDataInsertionForSiteOwner(UpdationId, ContractorID, ddlworktype.SelectedItem.ToString(),
+                ddlApplicantType.SelectedValue, ddlApplicantType.SelectedItem.ToString(),
+                ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
+                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),// txtTanNumber.Text.Trim(),
+                txtName.Text.Trim(), txtagency.Text.Trim(), txtPhone.Text.Trim(),
+                txtAddress.Text.Trim(), /* ddlDistrict.SelectedItem.ToString(),*/ txtPin.Text.Trim(),
+                 txtEmail.Text.Trim(), ddlInspectionType.SelectedValue, ContractorID);
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
                // }
             }
             catch(Exception ex)
@@ -1157,6 +1159,8 @@ namespace CEIHaryana.Contractor
             }
         }
 
+        
+
         //protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         //{
         //    try
@@ -1191,7 +1195,7 @@ namespace CEIHaryana.Contractor
         //                txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
         //                txtName.ReadOnly = true;
         //            }
-                    
+
         //        }
         //        else
         //        {

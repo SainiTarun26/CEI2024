@@ -300,7 +300,7 @@ namespace CEIHaryana.SiteOwnerPages
                             }
 
                         }
-                        if (installationtype == "Substration Transformer")
+                        if (installationtype == "Substation Transformer")
                         {
                             Year = inspectionDate.AddYears(1);
                             DateTime alertDate = Year.AddDays(-30);

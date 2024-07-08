@@ -302,7 +302,17 @@
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                     <div class="row">
-
+                                        <div class="col-md-4">
+                                            <label>
+                                                Inspection Type
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
+                                                <asp:ListItem Text="New" Value="0"></asp:ListItem>
+                                                <asp:ListItem Text="Existing" Value="1"></asp:ListItem>
+                                            </asp:DropDownList>
+                                         
+                                        </div>
                                            <div class="col-md-4">
                                             <label>
                                                 Applicant Type
