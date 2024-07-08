@@ -200,16 +200,13 @@
                                         <asp:ListItem Text="5 year" Value="5"></asp:ListItem>
                                     </asp:DropDownList>
                                     
-                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Approximate Year" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlInspectionType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="*Select" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlInspectionType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                    
                                     <asp:TextBox ID="txtInspectionDate" CssClass="form-control" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" ></asp:TextBox>
-                                    
-                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInspectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select Previous Inspection Date</asp:RequiredFieldValidator>
+                                    <br/>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInspectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*Please Select</asp:RequiredFieldValidator>
                                 </ItemTemplate>
-                            </asp:TemplateField>
-                             
-                             
-
+                            </asp:TemplateField>       
 
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />

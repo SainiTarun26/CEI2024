@@ -270,6 +270,8 @@
                                             <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label> 
                                             <asp:Label ID="LblCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>  
                                             <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>  
+                                            <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>  
+
 
                                             </ItemTemplate>
                                     </asp:TemplateField>

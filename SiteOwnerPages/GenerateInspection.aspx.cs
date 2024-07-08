@@ -705,7 +705,7 @@ namespace CEIHaryana.SiteOwnerPages
                     GridViewPayment.DataSource = ds;
                     GridViewPayment.DataBind();
                     TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
-                    //      txtPayment.Text = Convert.ToString(TotalAmount);
+                    //txtPayment.Text = Convert.ToString(TotalAmount);
                 }
                 else
                 {
@@ -774,7 +774,6 @@ namespace CEIHaryana.SiteOwnerPages
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
         }
-
 
         protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)
         {

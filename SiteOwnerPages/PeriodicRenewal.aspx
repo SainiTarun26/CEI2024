@@ -345,7 +345,7 @@
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlNoOfDays" OnSelectedIndexChanged="ddlNoOfDays_SelectedIndexChanged" TabIndex="2" runat="server">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="More than 30 days" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="less than 30 days" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="less than 30 days and greater than 15" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="less than 15 and Expiry" Value="3"></asp:ListItem>
                             </asp:DropDownList>

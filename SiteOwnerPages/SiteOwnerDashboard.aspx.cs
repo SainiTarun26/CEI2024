@@ -21,11 +21,11 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
-                        BindGridView();
+                        //BindGridView();
                         GetDataforSiteowner();
-                        GetDataforLineGraphBinding();
-                        GetDataforGeneratingSetGraphBinding();
-                        GetDataforSubstationGraphBinding();
+                        //GetDataforLineGraphBinding();
+                        //GetDataforGeneratingSetGraphBinding();
+                        //GetDataforSubstationGraphBinding();
                     }
                 }
             }

@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -22,7 +23,10 @@ namespace CEIHaryana.SiteOwnerPages
         int dblGrandTotalCapacity = 0;
         double dblHighestVoltage = 0;
         string InstallationTypeId = string.Empty;
-        private int TotalAmount = 0;
+        private static int TotalAmount = 0;
+        private static int CheckCase = 0;
+
+        string highestOfficerDesignation = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -98,6 +102,18 @@ namespace CEIHaryana.SiteOwnerPages
                     Label LblCount = e.Row.FindControl("LblCount") as Label;
                     Label LblInstallationName = e.Row.FindControl("LblInstallationName") as Label;                    
                     Label LblIntimationId = e.Row.FindControl("LblIntimationId") as Label;
+                    Label LblInspectionId = e.Row.FindControl("LblInspectionId") as Label;
+                    string InspectionId = LblInspectionId.Text;
+                    if (InspectionId != null)
+                    {
+                        DataTable dt = new DataTable();
+                        dt = CEI.GetAssignInspection(InspectionId);
+                       
+                    }
+                   
+                        
+                  
+
                     if (LblCount.Text != null && LblInstallationName.Text != null && LblIntimationId != null)
                     {
                         if (LblInstallationName.Text == "Line")
@@ -271,26 +287,26 @@ namespace CEIHaryana.SiteOwnerPages
                     string GrandTotalCapacity = Session["TotalCapacity"].ToString();
                     string HighestVoltage = Session["HighestVoltage"].ToString();
                     string address = txtAddressFilter.Text;
+
+                    int totalAmount = TotalAmount;
+                    string CartId = string.Empty ;
+                    string Division = string.Empty;
+                    string District = string.Empty;
+
                     DataSet ds = new DataSet();
                     ds = CEI.ToGetDatafromCart(address);
                     if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
                         foreach (DataRow row in ds.Tables[0].Rows)
                         {
-                            string CartId = row["CartId"].ToString();
-                            string Division = row["Division"].ToString();
-                            string District = row["District"].ToString();
+                             CartId = row["CartId"].ToString();
+                             Division = row["Division"].ToString();
+                             District = row["District"].ToString();
                         }
                     }
-                    //foreach (GridViewRow row in GridView1.Rows)
-                    //    if (row != null)
-                    //    {    
-                    //        Label LblDivision = (Label)row.FindControl("LblDivision");
-                    //        string Division = LblDivision.Text;
-                    //        Label LblDistrict = (Label)row.FindControl("LblDistrict");
-                    //        string District = LblDistrict.Text;
-                    //    }
 
+                    CEI.InsertInspectinData( CartId, GrandTotalCapacity, HighestVoltage, "Multiple",District, Division, "Offline", totalAmount, id);
+                    //AssignTo, ServiceType,
 
                     Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
                 }
@@ -299,5 +315,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
             }
         }
+
+        
     }
 }

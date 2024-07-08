@@ -2822,8 +2822,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
-
-
         public DataTable GetPartnersDirectorDate(string CreatedBy)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PartnersDirectorData", CreatedBy);
@@ -4027,6 +4025,45 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
         public DataSet ToGetDatafromCart(string address)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToGetDatafromCart", address);
+        }
+
+        public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage, string InstallationType,
+            string District, string Division, string PaymentMode, int TotalAmount, string CreatedBy)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_InsertintoTempTable", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        //cmd.Parameters.AddWithValue("@Id", Id);
+                        cmd.Parameters.AddWithValue("@CartId", CartId);
+                        cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
+                        cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+                        cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        cmd.Parameters.AddWithValue("@District", District);
+                        cmd.Parameters.AddWithValue("@Division", Division);
+                        //cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
+                        //cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
+                        cmd.Parameters.AddWithValue("@PaymentMode", PaymentMode);
+                        cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        //cmd.Parameters.AddWithValue("@Status", Status);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public DataTable GetAssignInspection(string inspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetAssignToViaInpectionId", inspectionId);
+
         }
     }
 }
