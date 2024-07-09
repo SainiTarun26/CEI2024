@@ -251,7 +251,7 @@ namespace CEIHaryana.Contractor
                 {
                     installationType2.Visible = true;
                 }
-                //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
+                //WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 if (TestReportGenerated.Trim() == "Yes")
                 {

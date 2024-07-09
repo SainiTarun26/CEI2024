@@ -125,7 +125,7 @@
                                                 Inspection Type
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
+                                            <asp:DropDownList class="form-control  select-form select2"  AutoPostBack="true" disabled="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
                                                 <asp:ListItem Text="New" Value="0"></asp:ListItem>
                                                 <asp:ListItem Text="Existing" Value="1"></asp:ListItem>
                                             </asp:DropDownList>
