@@ -12,6 +12,29 @@ namespace CEIHaryana.SiteOwnerPages
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            try
+            {
+                if (!Page.IsPostBack)
+                {
+                    if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
+                    {
+                        getInspectionData();
+                    }
+                }
+            }
+            catch
+            {
+                Response.Redirect("/login.aspx");
+            }
+        }
+
+        private void getInspectionData()
+        {
+            try
+            {
+
+            }
+            catch { }
         }
     }
 }

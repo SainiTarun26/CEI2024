@@ -204,26 +204,48 @@
                     <h6 class="card-title fw-semibold mb-4">
                         <asp:Label ID="Label2" runat="server"></asp:Label>Fees</h6>
                 </div>
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-12">
-                            <table class="table table-bordered table-striped table-responsive table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Payment Amount</th>
-                                        <td style="width: 1% !important;">
-                                            <asp:Label ID="Label5" runat="server"></asp:Label></td>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+            </div>
+            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-striped table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Payment Amount</th>
+                                    <td style="width: 1% !important;">
+                                        <asp:Label ID="Label5" runat="server"></asp:Label></td>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
+            </div>
+            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="btnSubmit" Text="Submit" Visible="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                    <div class="col-md-4">
+                        <label for="Phone">
+                            Transaction Id
+             <samp style="color: red">* </samp>
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <span id="lblErrorContect" style="color: red"></span>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                     </div>
+                    <div class="col-md-4" runat="server">
+                        <label for="Email">
+                            Transaction Date
+                 <samp style="color: red">* </samp>
+                        </label>
+                        <asp:TextBox type="date" class="form-control" ID="txtEmail" TabIndex="9" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <span id="lblError" style="color: red"></span>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4" style="text-align: center;">
+                    <asp:Button ID="btnSubmit" Text="Submit" Visible="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                 </div>
             </div>
         </div>
