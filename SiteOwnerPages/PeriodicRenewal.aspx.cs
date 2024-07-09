@@ -253,7 +253,7 @@ namespace CEIHaryana.SiteOwnerPages
                                     e.Row.Visible = false;
                                 }
                             }
-                            if (voltage >= 650)
+                            if (voltage > 650)
                             {
                                 Year = inspectionDate.AddYears(1);
                                 DateTime alertDate = Year.AddDays(-30);
@@ -270,6 +270,10 @@ namespace CEIHaryana.SiteOwnerPages
                                 if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
                                 {
                                     e.Row.Visible = true;
+                                }
+                                else
+                                {
+                                    e.Row.Visible = false;
                                 }
                             }
 
@@ -338,7 +342,7 @@ namespace CEIHaryana.SiteOwnerPages
                     int numberofdays;
                     if (int.TryParse(numberofdaysCell.Text, out numberofdays))
                     {
-                        if (numberofdays < 15 && numberofdays == 0)
+                        if (numberofdays == 0 || (numberofdays > 0 && numberofdays <= 15))
                         {
                             e.Row.Cells[9].CssClass = "GreenBackground";
                         }
