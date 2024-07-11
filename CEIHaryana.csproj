@@ -1781,6 +1781,10 @@
     <Content Include="Global.asax" />
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
     <Content Include="Image\Image\ImageToDelete.jpeg" />
+    <Content Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx" />
+    <Content Include="Industry\Industry.aspx" />
+    <Content Include="Industry\SendJson.aspx" />
+    <Content Include="Industry\SendJsonL.aspx" />
     <Content Include="js2\ace.js" />
     <Content Include="js2\alerts.js" />
     <Content Include="js2\avgrund.js" />
@@ -2269,6 +2273,34 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx.cs">
+      <DependentUpon>CeiTrackApiDetailsPost_DefaultMethodTesting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx.designer.cs">
+      <DependentUpon>CeiTrackApiDetailsPost_DefaultMethodTesting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry\Industry.aspx.cs">
+      <DependentUpon>Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\Industry.aspx.designer.cs">
+      <DependentUpon>Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry\SendJson.aspx.cs">
+      <DependentUpon>SendJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\SendJson.aspx.designer.cs">
+      <DependentUpon>SendJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry\SendJsonL.aspx.cs">
+      <DependentUpon>SendJsonL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\SendJsonL.aspx.designer.cs">
+      <DependentUpon>SendJsonL.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2276,6 +2308,9 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Model\HttpRequestExampleTesting.cs" />
+    <Compile Include="Model\Industry\Cei_IndustryServices_Redirection_IncomingJson_Model.cs" />
+    <Compile Include="Model\SaralTrackingModal.cs" />
     <Compile Include="Officers\AcceptedOrReject.aspx.cs">
       <DependentUpon>AcceptedOrReject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

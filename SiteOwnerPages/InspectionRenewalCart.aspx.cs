@@ -108,47 +108,10 @@ namespace CEIHaryana.SiteOwnerPages
                     //string InspectionId = LblInspectionId.Text;
                     Label Lbldesignation = e.Row.FindControl("Lbldesignation") as Label;
                     string Assignedoff = Lbldesignation.Text;
-                    if (Assignedoff != null)
+                    if (Assignedoff != null && Assignedoff !="")
                     {
-
                         getassignedofficer(Assignedoff);
-                        //    DataTable dt = new DataTable();
-                        //    dt = CEI.GetAssignInspection(InspectionId);
-                        //    if (dt != null && dt.Rows.Count >0)                     
-                        //    {
-                        //        string AssignTo = dt.Rows[0]["AssignTo"].ToString();                           
-                        //        if (AssignTo.StartsWith("JE"))
-                        //        {                              
-                        //            CheckCase = 1;
-                        //            if (CheckCase > highestOfficerDesignation) {
-                        //                highestOfficerDesignation = CheckCase;
-                        //                AssignToOfficer = AssignTo;                                   
-                        //            }
-                        //        }
-                        //        else if (AssignTo.StartsWith("AE"))
-                        //        {
-                        //            CheckCase = 2;
-                        //            if (CheckCase > highestOfficerDesignation)
-                        //            {
-                        //                highestOfficerDesignation = CheckCase;
-                        //                AssignToOfficer = AssignTo;                                    
-                        //            }
-                        //        }
-                        //        else if (AssignTo.StartsWith("XEN"))
-                        //        {
-                        //            CheckCase = 3;
-                        //            if (CheckCase > highestOfficerDesignation)
-                        //            {
-                        //                highestOfficerDesignation = CheckCase;
-                        //                AssignToOfficer = AssignTo;                                   
-                        //            }
-
-                        //        }                         
-                        //    }
                     }
-
-
-
 
                     if (LblCount.Text != null && LblInstallationName.Text != null && LblIntimationId != null)
                     {
@@ -215,11 +178,6 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                //DataTable dt = new DataTable();
-                //dt = CEI.GetAssignInspection(inspectionId);
-                //if (dt != null && dt.Rows.Count > 0)
-                //{
-                // string AssignTo = dt.Rows[0]["AssignTo"].ToString();
                 if (Assignedoff.StartsWith("JE"))
                 {
                     CheckCase = 1;
@@ -256,9 +214,15 @@ namespace CEIHaryana.SiteOwnerPages
                         AssignToOfficer = Assignedoff;
                     }
                 }
+
+                if (AssignToOfficer.StartsWith("CEI"))
+                {
+                    AssignToOfficer = "Admin@123";
+                }
             }
             catch { }
         }
+
         protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
         {
             try
@@ -272,7 +236,6 @@ namespace CEIHaryana.SiteOwnerPages
                     IsSubTotalRowNeedToAdd = true;
                     intSubTotalIndex = 0;
                 }
-
                 if ((strPreviousRowID == string.Empty) && (DataBinder.Eval(e.Row.DataItem, "InstallationName") != null))
                 {
                     GridView grdViewOrders = (GridView)sender;
@@ -285,7 +248,6 @@ namespace CEIHaryana.SiteOwnerPages
                     grdViewOrders.Controls[0].Controls.AddAt(e.Row.RowIndex + intSubTotalIndex, row);
                     intSubTotalIndex++;
                 }
-
                 if (IsSubTotalRowNeedToAdd)
                 {
                     AddSubTotalRow((GridView)sender, e.Row.RowIndex + intSubTotalIndex);
@@ -376,6 +338,8 @@ namespace CEIHaryana.SiteOwnerPages
                     string CartId = string.Empty;
                     string Division = string.Empty;
                     string District = string.Empty;
+                    string StaffAssigned = string.Empty;
+
 
                     DataSet ds = new DataSet();
                     ds = CEI.ToGetDatafromCart(address);
@@ -388,8 +352,33 @@ namespace CEIHaryana.SiteOwnerPages
                             District = row["District"].ToString();
                         }
                     }
-                    CEI.InsertInspectinData(CartId, GrandTotalCapacity, HighestVoltage, "Multiple", District, Division, AssignTo, "Offline", totalAmount, id);
-                    //AssignTo, ServiceType,
+                    if (AssignTo != "Admin@123")
+                    {
+                        DataSet dsp = new DataSet();
+                        dsp = CEI.ToGetStaffIdforPeriodic(Division, AssignTo);
+                        if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
+                        {
+                            StaffAssigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
+                        }
+                        else
+                        {
+                            StaffAssigned = "No staff assigned";
+                        }
+                    }
+                    else
+                    {
+                        StaffAssigned = "Admin@123";
+                    }
+
+
+
+
+                    //Session["CartId"]= CartId.ToArray();
+                    CEI.InsertInspectinData(CartId, GrandTotalCapacity, HighestVoltage, "Multiple", District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
+
+                    Session["CartID"] = CartId;
+                    Session["TotalCapacity"] = string.Empty;
+                    Session["HighestVoltage"] = string.Empty;
 
                     Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
                 }
@@ -398,24 +387,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
             }
         }
-        //private void DetermineHighestOfficer(string AssignTo)
-        //{
-        //   // int a = AssignTo.IndexOf('_');
-        //    //string Designation = AssignTo.Substring(0, a);
-        //    if (AssignTo.StartsWith("XEN"))
-        //    {
-        //        highestOfficerDesignation = AssignTo;
-        //    }
-        //    else if (AssignTo.StartsWith("AE") && (highestOfficerDesignation.StartsWith("AE") || highestOfficerDesignation.StartsWith("JE")))
-        //    {
-        //        highestOfficerDesignation = AssignTo;
-        //    }
-        //    else if (AssignTo.StartsWith("JE") && highestOfficerDesignation.StartsWith(""))
-        //    {
-        //        highestOfficerDesignation = AssignTo;
-        //    }
-        //}
-        //int a = AssignTo.IndexOf('_');
-        //DetermineHighestOfficer(AssignTo);
+       
     }
 }

@@ -169,15 +169,19 @@
                                 <tr>
                                     <th scope="col">Total Capacity</th>
                                     <th scope="col">Highest Voltage</th>
+                                    <th scope="col">Payment Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td scope="row">
-                                        <asp:Label ID="Label3" runat="server"></asp:Label>
+                                        <asp:Label ID="LblCapacity" runat="server"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:Label ID="Label4" runat="server"></asp:Label>
+                                        <asp:Label ID="LblVoltage" runat="server"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="LblAmount" runat="server"></asp:Label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -194,7 +198,52 @@
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                 <div class="row">
                     <div class="col-12">
-                        <asp:GridView ID="GridView2" runat="server" Width="100%">
+                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20"
+                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                            <PagerStyle CssClass="pagination-ys" />
+                            <Columns>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="Inspection Of Type">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:TemplateField HeaderText="Document Name">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Upload Document">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemTemplate>
+                                        <asp:FileUpload ID="FileUpload1" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                        <asp:Label ID="LblCategory" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                        <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
                     </div>
                 </div>
@@ -205,7 +254,7 @@
                         <asp:Label ID="Label2" runat="server"></asp:Label>Fees</h6>
                 </div>
             </div>
-            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
+            <%--   <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                 <div class="row">
                     <div class="col-12">
                         <table class="table table-bordered table-striped table-responsive table-hover">
@@ -213,39 +262,34 @@
                                 <tr>
                                     <th>Payment Amount</th>
                                     <td style="width: 1% !important;">
-                                        <asp:Label ID="Label5" runat="server"></asp:Label></td>
+                                        <asp:Label ID="LblAmount" runat="server"></asp:Label></td>
                                 </tr>
                             </thead>
                         </table>
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                 <div class="row">
                     <div class="col-md-4">
                         <label for="Phone">
-                            Transaction Id
-             <samp style="color: red">* </samp>
+                            Transaction Id<samp style="color: red">* </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <span id="lblErrorContect" style="color: red"></span>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                        <asp:TextBox class="form-control" ID="txtTransactionId" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTransactionId" ValidationGroup="Submit" ForeColor="Red">Please Enter TransactionId</asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-4" runat="server">
                         <label for="Email">
-                            Transaction Date
-                 <samp style="color: red">* </samp>
+                            Transaction Date<samp style="color: red">* </samp>
                         </label>
-                        <asp:TextBox type="date" class="form-control" ID="txtEmail" TabIndex="9" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <span id="lblError" style="color: red"></span>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
+                        <asp:TextBox type="date" class="form-control" ID="txtTransactiondate" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtTransactiondate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select Transactiondate</asp:RequiredFieldValidator>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
-                    <asp:Button ID="btnSubmit" Text="Submit" Visible="true" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
                 </div>
             </div>
         </div>

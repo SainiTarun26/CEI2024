@@ -612,7 +612,7 @@
     </script>
     <script type="text/javascript">
         function validateFileUpload() {
-            debugger;
+           // debugger;
 
             var transactionId = document.getElementById('<%= txttransactionId.ClientID %>').value.trim();
         var transactionDate = document.getElementById('<%= txttransactionDate.ClientID %>').value.trim();
