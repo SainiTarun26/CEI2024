@@ -26,6 +26,15 @@ namespace CEIHaryana.SiteOwnerPages
         private static int TotalAmount = 0;
         private static int CheckCase = 0;
         int highestOfficerDesignation = 0;
+        //private static string PrevInspectionId = string.Empty;
+        //private static string PrevInstallationType = string.Empty;
+        //private static string PrevTestReportId = string.Empty;
+        //private static string PrevIntimationId = string.Empty;
+        //private static string PrevVoltageLevel = string.Empty;
+        //private static string PrevApplicantType = string.Empty;
+        private static string PrevInspectionId = string.Empty, PrevInstallationType = string.Empty, PrevTestReportId = string.Empty,
+                              PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty, PrevApplicantType = string.Empty;
+
 
         private static string AssignToOfficer = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -104,8 +113,10 @@ namespace CEIHaryana.SiteOwnerPages
                     Label LblCount = e.Row.FindControl("LblCount") as Label;
                     Label LblInstallationName = e.Row.FindControl("LblInstallationName") as Label;
                     Label LblIntimationId = e.Row.FindControl("LblIntimationId") as Label;
-                    //Label LblInspectionId = e.Row.FindControl("LblInspectionId") as Label;
-                    //string InspectionId = LblInspectionId.Text;
+                    Label LblInspectionId = e.Row.FindControl("LblInspectionId") as Label;
+                    string InspectionId = LblInspectionId.Text;
+
+                    PrevInspectionId = InspectionId;
                     Label Lbldesignation = e.Row.FindControl("Lbldesignation") as Label;
                     string Assignedoff = Lbldesignation.Text;
                     if (Assignedoff != null && Assignedoff !="")
@@ -173,7 +184,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex) { }
         }
-
         private void getassignedofficer(string Assignedoff)
         {
             try
@@ -222,7 +232,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch { }
         }
-
         protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
         {
             try
@@ -340,6 +349,8 @@ namespace CEIHaryana.SiteOwnerPages
                     string District = string.Empty;
                     string StaffAssigned = string.Empty;
 
+                    //string InspectionId = PrevInspectionId;
+
 
                     DataSet ds = new DataSet();
                     ds = CEI.ToGetDatafromCart(address);
@@ -371,10 +382,38 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
 
+                    int affectedRows = GetAffectedRowsCount(CartId);
+
+                    if (affectedRows == 1)
+                    {
+                        string InspectionId = PrevInspectionId;
+                        DataSet SInsp = new DataSet();
+                        SInsp = CEI.GetDataForSingleInspection(InspectionId);
+
+                        string InstallationType = SInsp.Tables[0].Rows[0]["InstallationType"].ToString();
+                        string TestRportId = SInsp.Tables[0].Rows[0]["TestRportId"].ToString();
+                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
+                        string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        PrevInstallationType = InstallationType;
+                        PrevTestReportId = TestRportId;
+                        PrevIntimationId = IntimationId;
+                        PrevVoltageLevel = VoltageLevel;
+                        PrevApplicantType = ApplicantType;
+                    }
+                    else
+                    {
+                        PrevInstallationType = "Multiple";
+                        PrevTestReportId = "Multiple";
+                        PrevIntimationId = "MultipleIntimations";
+                        PrevVoltageLevel = "Multiple";
+                        PrevApplicantType = "Multiple";
+                    }
 
 
-                    //Session["CartId"]= CartId.ToArray();
-                    CEI.InsertInspectinData(CartId, GrandTotalCapacity, HighestVoltage, "Multiple", District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
+
+                    CEI.InsertInspectinData(CartId, GrandTotalCapacity, HighestVoltage, PrevInstallationType , PrevTestReportId,
+              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
 
                     Session["CartID"] = CartId;
                     Session["TotalCapacity"] = string.Empty;
@@ -387,6 +426,14 @@ namespace CEIHaryana.SiteOwnerPages
             {
             }
         }
-       
+
+        private int GetAffectedRowsCount(string cartId)
+        {
+            int count = 0;
+            count = CEI.GetAffectedRowsCountByCartId(cartId);
+
+            return count;
+        }
+
     }
 }

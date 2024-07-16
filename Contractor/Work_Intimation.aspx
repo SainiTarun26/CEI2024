@@ -46,46 +46,46 @@
     <script type="text/javascript">
         function alertWithRedirectdata() {
 
-                alert('Intimation Created Successfully');
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            
+            alert('Intimation Created Successfully');
+            window.location.href = "/Contractor/Work_Intimation.aspx";
+
         }
     </script>
     <script type="text/javascript">
         function alertWithRedirectUpdation() {
-          
-                alert('Intimation Updated Successfully');
-                window.location.href = "/Contractor/PreviousProjects.aspx";
-            
+
+            alert('Intimation Updated Successfully');
+            window.location.href = "/Contractor/PreviousProjects.aspx";
+
         }
     </script>
     <script type="text/javascript">
-       function validatePAN() {
-           var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
-        var panValidator = document.getElementById('<%= revPAN.ClientID %>');
+        function validatePAN() {
+            var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
+           var panValidator = document.getElementById('<%= revPAN.ClientID %>');
 
-           var panValue = panTextBox.value.toUpperCase(); // Convert to uppercase here
+            var panValue = panTextBox.value.toUpperCase(); // Convert to uppercase here
 
-           if (panValue.length > 0 && !panValidator.isvalid) {
-               alert("Please enter a valid PAN number.");
-               return false;
-           }
-           return true;
-       }
+            if (panValue.length > 0 && !panValidator.isvalid) {
+                alert("Please enter a valid PAN number.");
+                return false;
+            }
+            return true;
+        }
 
-       function convertToUpperCase(event) {
-           var textBox = event.target;
-           textBox.value = textBox.value.toUpperCase();
-       }
+        function convertToUpperCase(event) {
+            var textBox = event.target;
+            textBox.value = textBox.value.toUpperCase();
+        }
 
-       function preventEnterSubmit(e) {
-           // Prevent form submission on Enter key press
-           if (e.keyCode === 13) {
-               e.preventDefault();
-               return false;
-           }
-           return true;
-       }
+        function preventEnterSubmit(e) {
+            // Prevent form submission on Enter key press
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        }
     </script>
     <style>
         .headercolor1 {
@@ -1202,31 +1202,31 @@
     });
     </script>
     <script type="text/javascript">
-       function validateInput(event) {
-           var textBox = event.target;
-           var keyCode = event.keyCode || event.which;
+        function validateInput(event) {
+            var textBox = event.target;
+            var keyCode = event.keyCode || event.which;
 
 
-           if ((keyCode >= 65 && keyCode <= 90) ||
-               (keyCode >= 48 && keyCode <= 57) ||
-               keyCode === 8) {
-               return true;
-           } else if (keyCode >= 97 && keyCode <= 122) {
+            if ((keyCode >= 65 && keyCode <= 90) ||
+                (keyCode >= 48 && keyCode <= 57) ||
+                keyCode === 8) {
+                return true;
+            } else if (keyCode >= 97 && keyCode <= 122) {
 
-               textBox.value += String.fromCharCode(keyCode - 32);
-               return false;
-           } else {
-               return false;
-           }
-       }
+                textBox.value += String.fromCharCode(keyCode - 32);
+                return false;
+            } else {
+                return false;
+            }
+        }
 
-       function preventEnterSubmit(e) {
-           if (e.keyCode === 13) {
-               e.preventDefault();
-               return false;
-           }
-           return true;
-       }
+        function preventEnterSubmit(e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        }
     </script>
     </script>
 </asp:Content>

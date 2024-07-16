@@ -21,7 +21,7 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class GenerateInspection : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        //string id = string.Empty;
+        //string id = string.Empty;https://localhost:44393/Contractor/Work_Intimation.aspx.cs
         string fileExtension = string.Empty;
         string fileExtension2 = string.Empty;
         string fileExtension3 = string.Empty;

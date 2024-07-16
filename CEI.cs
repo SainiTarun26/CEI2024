@@ -3976,12 +3976,12 @@ string TestReportId, string TestReportCount, string InspectionDate, string Inspe
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckPanNumber", PanNumber);
         }
-
+        #region Existing Inspection
         public DataSet SiteOwnerExistingInstallations(string IntimationId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationforExistingInspection", IntimationId);
         }
-        #region Existing Inspection
+        
         public void InsertExistingInspectionData(string TestReportId, string IntimationId, string TestReportCount, string ApplicantType, string InstallationType, string VoltageLevel,
 string District, string Division, string InspectionType, string CreatedBy,
 string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, string PreviousInspection)
@@ -4028,8 +4028,8 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToGetDatafromCart", address);
         }
 
-        public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage, string InstallationType,
-       string District, string Division, string AssignTo, string PaymentMode, int TotalAmount, int status, string CreatedBy)
+        public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage, string InstallationType, string TestRportId,
+        string IntimationId, string VoltageLevel, string ApplicantType, string District, string Division, string AssignTo, string PaymentMode, int TotalAmount, int status, string CreatedBy)
         {
             try
             {
@@ -4043,6 +4043,10 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
                         cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
                         cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
                         cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        cmd.Parameters.AddWithValue("@TestRportId", TestRportId);
+                        cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+                        cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+                        cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
                         cmd.Parameters.AddWithValue("@District", District);
                         cmd.Parameters.AddWithValue("@Division", Division);
                         cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
@@ -4062,6 +4066,7 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
 
             }
         }
+
         public DataTable GetAssignInspection(string inspectionId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetAssignToViaInpectionId", inspectionId);
@@ -4077,9 +4082,10 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentforPeriodic", CartId);
         }
 
-        public string InsertPeriodicInspectionData(string TypeOfInspection, string CartId, string District, string Division,
-     string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
-     string CreatedBy, string TotalCapacity, string MaxVoltage)
+        public string InsertPeriodicInspectionData(string TypeOfInspection, string CartId, string IntimationId, string ApplicantType,
+       string InstallationType, string VoltageLevel, string District, string Division,
+string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
+string CreatedBy, string TotalCapacity, string MaxVoltage)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
@@ -4088,6 +4094,10 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@TypeOfInspection", TypeOfInspection);
                     cmd.Parameters.AddWithValue("@CartId", CartId);
+                    cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+                    cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                    cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                    cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
                     cmd.Parameters.AddWithValue("@District", District);
                     cmd.Parameters.AddWithValue("@Division", Division);
                     cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
@@ -4115,6 +4125,29 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffIdforPeriodic", Division, Staff);
         }
+
+        public DataSet GetDataForSingleInspection(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDataForSingleInspection", Id);
+        }
+        public static int GetAffectedRowsCountByCartId(string cartId)
+        {
+            int count = 0;
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("Sp_CheckRowAffected", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CartId", cartId);
+                    con.Open();
+                    count = (int)cmd.ExecuteScalar();
+                }
+            }
+
+            return count;
+        }
+
     }
 }
 

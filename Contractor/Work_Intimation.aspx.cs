@@ -325,14 +325,14 @@ namespace CEIHaryana.Contractor
                     {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                    }                    
+                    }
                 }
                 else
                 {
                     ddlworktype.SelectedValue = "0";
                     ddlworktype.Enabled = true;
                     txtagency.Text = "";
-                    txtName.Text = ""; 
+                    txtName.Text = "";
                     txtagency.ReadOnly = false;
                     txtName.ReadOnly = false;
                     //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
@@ -500,7 +500,7 @@ namespace CEIHaryana.Contractor
                 hiddenfield1.Visible = false;
                 txtEmail.Text = "";
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
             }
         }
@@ -528,7 +528,7 @@ namespace CEIHaryana.Contractor
                     {
                         panExists = true;
                     }
-                    
+
                     transaction = connection.BeginTransaction();
 
                     string UpdationId = string.Empty;
@@ -679,19 +679,20 @@ namespace CEIHaryana.Contractor
                                         // Save data according to the number of installations
                                         for (int j = 0; j < installationNo; j++)
                                         {
-                                            CEI.AddInstallations(projectId, installationType, installationNo,AssignBy,transaction);
+                                            CEI.AddInstallations(projectId, installationType, installationNo, AssignBy, transaction);
                                         }
                                     }
                                 }
 
-                               
-
-                                if (!panExists)
+                                if (ddlPremises.SelectedItem.Text != "Industry")
                                 {
-                                    CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
+                                    if (!panExists)
+                                    {
+                                        CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
+                                    }
                                 }
 
-                               // CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
+                                // CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
                             }
                             transaction.Commit();
                             Reset();
@@ -746,7 +747,7 @@ namespace CEIHaryana.Contractor
                 else
                 {
                     Helpline.Visible = true;
-                    btnSubmit.Enabled = false;  
+                    btnSubmit.Enabled = false;
                     statement.Visible = true;
 
                 }
@@ -1121,7 +1122,7 @@ namespace CEIHaryana.Contractor
             {
                 //
             }
-        }        
+        }
         protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1149,14 +1150,14 @@ namespace CEIHaryana.Contractor
                         individual.Visible = false;
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                         txtagency.ReadOnly = true;
-                        
+
                     }
                     else if (contractorType == "Individual Person")
-                    {                        
+                    {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                       
-                    }                   
+
+                    }
                 }
                 else
                 {
@@ -1176,6 +1177,6 @@ namespace CEIHaryana.Contractor
                 Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
             }
         }
-       
+
     }
 }

@@ -22,7 +22,8 @@ namespace CEIHaryana.SiteOwnerPages
         CEI CEI = new CEI();
 
         List<(string InspectionId, string CartId, string Installtypes, string DocumentId, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string, string, string)>();
-        private static string IdCart, Voltage, Capacity, District, Division, AssignTo, PaymentMode, TypeOfInspection, Amount;
+        private static string IdCart, Voltage, Capacity, TestRportId, IntimationId, InstallationType, VoltageLevel, ApplicantType, District, Division, AssignTo, PaymentMode,  Amount;
+        //TypeOfInspection,
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -59,11 +60,18 @@ namespace CEIHaryana.SiteOwnerPages
                     LblVoltage.Text = Voltage;
                     LblCapacity.Text = Capacity;
                     IdCart = ds.Tables[0].Rows[0]["CartId"].ToString();
+
+                    TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                    VoltageLevel = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                    ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    InstallationType = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+
                     District = ds.Tables[0].Rows[0]["District"].ToString();
                     Division = ds.Tables[0].Rows[0]["Division"].ToString();
                     AssignTo = ds.Tables[0].Rows[0]["AssignTo"].ToString();
                     PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
-                    TypeOfInspection = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    //TypeOfInspection = ds.Tables[0].Rows[0]["InstallationType"].ToString();
 
 
                     DataSet dsDetails = CEI.GetDocumentforPeriodic(IdCart);
@@ -89,7 +97,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
             }
         }
-
         private void AddFixedRows(DataSet dsDetails)
         {
             try
@@ -109,7 +116,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch { }
         }
-
         public void UploadCheckListDocInCollection(string CreatedByy)
         {
             try
@@ -186,7 +192,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex) { }
         }
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -198,9 +203,10 @@ namespace CEIHaryana.SiteOwnerPages
                     string TransactionId = txtTransactionId.Text;
                     string TransctionDate = txtTransactiondate.Text;
 
-                    string NewInspID = CEI.InsertPeriodicInspectionData(TypeOfInspection, IdCart, District, Division, AssignTo,
-                    PaymentMode, Amount, TransactionId, TransctionDate,
-                    para_CreatedByy, Capacity, Voltage);
+                    string NewInspID = CEI.InsertPeriodicInspectionData("Periodic", IdCart, IntimationId, ApplicantType,
+                                        InstallationType,  VoltageLevel, District, Division, AssignTo,
+                                           PaymentMode, Amount, TransactionId, TransctionDate,
+                                          para_CreatedByy, Capacity, Voltage);
 
                     UploadCheckListDocInCollection(para_CreatedByy);
                     string generatedIdCombinedDetails = CEI.InspectionId();

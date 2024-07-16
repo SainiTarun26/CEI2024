@@ -232,6 +232,7 @@
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
+    <Content Include="Admin\PeriodicInspectionHistoryForAdmin.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
@@ -2070,6 +2071,13 @@
     </Compile>
     <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.designer.cs">
       <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PeriodicInspectionHistoryForAdmin.aspx.cs">
+      <DependentUpon>PeriodicInspectionHistoryForAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PeriodicInspectionHistoryForAdmin.aspx.designer.cs">
+      <DependentUpon>PeriodicInspectionHistoryForAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Projects.aspx.cs">
       <DependentUpon>Projects.aspx</DependentUpon>
