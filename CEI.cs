@@ -165,14 +165,15 @@ namespace CEI_PRoject
         }
         #endregion
         #region Insert Intimtion Data
-        public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing,
-                  string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-     string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-     string TypeOfInstallation3, string NumberOfInstallation3,
-     //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-     //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-     string Email, string WorkStartDate, string CompletionDate,
-     string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType,
+        public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing, string ZoneName,
+        string CircleName, string DivisionName, string SubDivisionName,
+        string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+        string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+        string TypeOfInstallation3, string NumberOfInstallation3,
+        //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+        //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+        string Email, string WorkStartDate, string CompletionDate,
+        string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType,
         SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
@@ -183,7 +184,10 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
             cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility == "Select" ? DBNull.Value : (object)PowerUtility);        //*
             cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing == "Select" ? DBNull.Value : (object)PowerUtilityWing);//*
-            //cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? DBNull.Value : (object)TanNumber);          //*
+            cmd.Parameters.AddWithValue("@ZoneName", ZoneName == "Select" ? DBNull.Value : (object)ZoneName);
+            cmd.Parameters.AddWithValue("@CircleName", CircleName == "Select" ? DBNull.Value : (object)CircleName);
+            cmd.Parameters.AddWithValue("@DivisionName", DivisionName == "Select" ? DBNull.Value : (object)DivisionName);
+            cmd.Parameters.AddWithValue("@SubDivisionName", SubDivisionName == "Select" ? DBNull.Value : (object)SubDivisionName);
             cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? DBNull.Value : (object)NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? DBNull.Value : (object)NameOfAgency);
             cmd.Parameters.AddWithValue("@ContactNo", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
@@ -3572,7 +3576,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         #region upgradation Intimation
         public void IntimationDataInsertionForSiteOwner(string Id, string ContractorID, string ContractorType, string ApplicantTypeCode, string ApplicantType, string PowerUtility, string PowerUtilityWing,
-                     /*string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, /*string District*/ string Pincode,
+               string ZoneName, string CircleName, string DivisionName, string SubDivisionName,      /*string TanNumber,*/ string NameOfOwner, string NameOfAgency, string ContactNo, string Address, /*string District*/ string Pincode,
          /*string PANNumber, string NewUserId,*/ string Email, string InspectionType, string CreatedBy)
         {
             SqlConnection con = new SqlConnection();
@@ -3594,6 +3598,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
             cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility);
             cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing);
+            cmd.Parameters.AddWithValue("@ZoneName", ZoneName);
+            cmd.Parameters.AddWithValue("@CircleName", CircleName);
+            cmd.Parameters.AddWithValue("@DivisionName", DivisionName);
+            cmd.Parameters.AddWithValue("@SubDivisionName", SubDivisionName);
             //cmd.Parameters.AddWithValue("@TanNumber", String.IsNullOrEmpty(TanNumber) ? null : TanNumber);
             cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? null : NameOfOwner);
             cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? null : NameOfAgency);
@@ -4152,6 +4160,36 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicInspectionHistoryForAdmin");
         }
+        #region powerUtility
+        public DataSet GetUtilityName()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getUtilityName");
+        }
+        public DataSet GetWingName(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getWingName", id);
+        }
+        public DataSet GetZoneName(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getZoneName", id);
+        }
+        public DataSet GetCirclesName(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getCircles", id);
+        }
+        public DataSet GetDivisionName(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDivision", id);
+        }
+        public DataSet GetSubDivisionName(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSub_Divisions", id);
+        }
+        public DataSet GetSubDivisionEmail(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getEmailsForSubdivision", id);
+        }
+        #endregion
     }
 }
 

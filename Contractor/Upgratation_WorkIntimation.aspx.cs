@@ -43,6 +43,8 @@ namespace CEIHaryana.Contractor
                         ddlLoadBindVoltage();
                         BindDistrict();
                         BindListBoxInstallationType();
+                        //ddlPoweUtilityBind();
+                       
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
                         OtherPremises.Visible = false;
@@ -84,23 +86,14 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                ddlPoweUtilityBind();
                 REID = Session["id"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetWorkIntimationDataForAdmin(REID);
 
                 string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
-                //if (ddlApplicantType.Text.Trim() == "1")
-                //{}
-                //if (ddlApplicantType.SelectedIndex == 2)
-                //{
-                //    DivPoweUtility.Visible = true;
-                //    DivPoweUtilityWing.Visible = true;
-                //}
-                string dp_Id14 = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
-                ddlPoweUtility.SelectedIndex = ddlPoweUtility.Items.IndexOf(ddlPoweUtility.Items.FindByText(dp_Id14));
-                string dp_Id15 = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
-                ddlPowerUtilityWing.SelectedIndex = ddlPowerUtilityWing.Items.IndexOf(ddlPowerUtilityWing.Items.FindByText(dp_Id15));
+
 
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
@@ -126,38 +119,64 @@ namespace CEIHaryana.Contractor
                 {
                     DivPancard_TanNo.Visible = true;
                     txtPAN.Text = PanTanNumber;
+                    PowerUtility.Visible = false;
+                    InstallationFor.Visible = true;
+                    UserId.Visible = false;
                 }
                 else if (dp_Id24 == "Other Department/Organization")
                 {
                     DivOtherDepartment.Visible = true;
                     txtTanNumber.Text = PanTanNumber;
+                    PowerUtility.Visible = false;
+                    InstallationFor.Visible = true;
+                    UserId.Visible = false;
                 }
                 else if (dp_Id24 == "Power Utility")
                 {
+                    UserId.Visible = true;
+                    TxtUserId.Text = PanTanNumber;
+                    PowerUtility.Visible = true;
+                    InstallationFor.Visible= false;
+                    txtEmail.Enabled = false;
+
                 }
+              
+                string dp_PowerUtility = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
+                ddlPowerUtility.SelectedIndex = ddlPowerUtility.Items.IndexOf(ddlPowerUtility.Items.FindByText(dp_PowerUtility));
+                
+                
+                string dp_wing = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
+
+
+                DdlWing.SelectedIndex = DdlWing.Items.IndexOf(DdlWing.Items.FindByText(dp_wing));
+
+                string dp_Id16 = ds.Tables[0].Rows[0]["ZoneName"].ToString();
+                DdlZone.SelectedIndex = DdlZone.Items.IndexOf(DdlZone.Items.FindByText(dp_Id16));
+
+             
+                string dp_Id17 = ds.Tables[0].Rows[0]["CircleName"].ToString();
+                DdlCircle.SelectedIndex = DdlCircle.Items.IndexOf(DdlCircle.Items.FindByText(dp_Id17));
+
+                DdlDivisionBind();
+                string dp_Id18 = ds.Tables[0].Rows[0]["DivisionName"].ToString();
+
+                DdlDivision.SelectedIndex = DdlDivision.Items.IndexOf(DdlDivision.Items.FindByText(dp_Id18));
+
+                DdlSubDivisionBind();
+                string dp_Id19 = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
+                DdlSubDivision.SelectedIndex = DdlSubDivision.Items.IndexOf(DdlSubDivision.Items.FindByText(dp_Id19));
 
                 Page.Session["OldUserID"] = PanTanNumber;
 
-                //txtPAN.Text= ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                //if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")
-                //{
-                //    DivPancard_TanNo.Visible = true;
-                //}
-                //txtTanNumber.Text = ds.Tables[0].Rows[0]["TanNumber"].ToString();
-                //if (txtTanNumber.Text.Trim() != null && txtTanNumber.Text.Trim() != "")
-                //{
-                //    DivOtherDepartment.Visible = true;
-                //}
+              
 
                 string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                // ddlVoltageLevel.SelectedValue = dp_Id3;
+              
                 ddlVoltageLevel.SelectedIndex = ddlVoltageLevel.Items.IndexOf(ddlVoltageLevel.Items.FindByText(dp_Id3));
                 RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
-                //          string dp_Id24 = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                // ddlVoltageLevel.SelectedValue = dp_Id3;
-                //       ddlApplicantType.SelectedIndex = ddlApplicantType.Items.IndexOf(ddlApplicantType.Items.FindByText(dp_Id24));
+             
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("yyyy-MM-dd");
@@ -224,41 +243,7 @@ namespace CEIHaryana.Contractor
                 {
                     installationType3.Visible = false;
                 }
-                //if (dp_Id14 != "")
-                //{
-                //    Installation.Visible = true;
-                //    installationType4.Visible = true;
-                //    txtinstallationType4.Text = dp_Id14;
-                //    txtinstallationNo4.Text = dp_Id15;
-                //}
-                //if (dp_Id16 != "")
-                //{
-                //    Installation.Visible = true;
-                //    installationType5.Visible = true;
-                //    txtinstallationType5.Text = dp_Id16;
-                //    txtinstallationNo5.Text = dp_Id17;
-                //}
-                //if (dp_Id18 != "")
-                //{
-                //    Installation.Visible = true;
-                //    installationType6.Visible = true;
-                //    txtinstallationType6.Text = dp_Id18;
-                //    txtinstallationNo6.Text = dp_Id19;
-                //}
-                //if (dp_Id20 != "")
-                //{
-                //    Installation.Visible = true;
-                //    installationType7.Visible = true;
-                //    txtinstallationType7.Text = dp_Id20;
-                //    txtinstallationNo7.Text = dp_Id21;
-                //}
-                //if (dp_Id22 != "")
-                //{
-                //    Installation.Visible = true;
-                //    installationType8.Visible = true;
-                //    txtinstallationType8.Text = dp_Id22;
-                //    txtinstallationNo8.Text = dp_Id23;
-                //}
+
 
                 ddlAnyWork.SelectedIndex = ddlAnyWork.Items.IndexOf(ddlAnyWork.Items.FindByText(dp_Id7));
                 if (dp_Id7 == "Yes")
@@ -303,106 +288,67 @@ namespace CEIHaryana.Contractor
                 }
                 //WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
-                //if (TestReportGenerated.Trim() == "Yes")
-                //{
-                //    txtPAN.Attributes.Add("readonly", "readonly");
-                //    txtTanNumber.Attributes.Add("readonly", "readonly");
-                //    ddlworktype.Attributes.Add("disabled", "disabled");
-                //    txtName.Attributes.Add("readonly", "readonly");
-                //    txtagency.Attributes.Add("readonly", "readonly");
-                //    txtPhone.Attributes.Add("readonly", "readonly");
-                //    txtAddress.Attributes.Add("readonly", "readonly");
-                //    ddlDistrict.Attributes.Add("disabled", "disabled");
-                //    txtPin.Attributes.Add("readonly", "readonly");
-                //    txtOtherPremises.Attributes.Add("readonly", "readonly");
-                //    txtEmail.Attributes.Add("readonly", "readonly");
-                //    ddlPremises.Attributes.Add("disabled", "disabled");
-                //    ddlVoltageLevel.Attributes.Add("disabled", "disabled");
-                //    ddlApplicantType.Attributes.Add("disabled", "disabled");
-                //    txtinstallationNo1.Attributes.Add("disabled", "disabled");
-                //    txtinstallationNo2.Attributes.Add("disabled", "disabled");
-                //    txtinstallationNo3.Attributes.Add("disabled", "disabled");
-                //    txtStartDate.Attributes.Add("readonly", "readonly");
-                //    txtCompletitionDate.Attributes.Add("readonly", "readonly");
-                //    ddlAnyWork.Attributes.Add("disabled", "disabled");
-                //    txtCompletionDateAPWO.Attributes.Add("disabled", "disabled");
 
-                //    //btnReset.Visible = false;
-                //    //btnSubmit.Visible = false;
-                //    btnBack.Visible = true;
-                //    lnkFile.Visible = true;
-                //}
-                //else
-                //{
-                //    // btnReset.Visible = false;
-                //    //btnSubmit.Visible = false;
-                //    //btnSubmit.Text = "Update";
-                //    btnBack.Visible = true;
-                //    //InCaseUploadFile.Visible= true;
-                //    lnkFile.Visible = true;
-                //    //BtnUpdate1.Visible = true;
-                //    //btnUpdate2.Visible = true;
-                //    //btnUpdate3.Visible = true;
-                //    //FileUpdate.Visible = true;
-                //}
             }
             catch { }
         }
-        //protected void txtPAN_TextChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
+        protected void txtPAN_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
 
-        //        string PANNumber = txtPAN.Text.Trim();
+                string PANNumber = txtPAN.Text.Trim();
 
-        //        System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
-        //        if (!regex.IsMatch(PANNumber))
-        //        {
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
+                if (!regex.IsMatch(PANNumber))
+                {
 
-        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
 
-        //            return;
-        //        }
+                    return;
+                }
 
-        //        DataSet ds = new DataSet();
-        //        ds = CEI.GetDetailsByPanNumberId(PANNumber);
-        //        if (ds.Tables[0].Rows.Count > 0)
-        //        {
+                DataSet ds = new DataSet();
+                ds = CEI.GetDetailsByPanNumberId(PANNumber);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
 
-        //            string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
-        //            string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-        //            ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
-        //            ddlworktype.Enabled = false;
-        //            if (contractorType == "Firm/Organization/Company/Department")
-        //            {
-        //                txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-        //                txtagency.ReadOnly = true;
-        //            }
-        //            else if (contractorType == "Individual Person")
-        //            {
-        //                txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-        //                txtName.ReadOnly = true;
-        //            }
+                    string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
+                    string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
+                    ddlworktype.Enabled = false;
+                    if (contractorType == "Firm/Organization/Company/Department")
+                    {
+                        txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                        txtagency.ReadOnly = true;
+                    }
+                    else if (contractorType == "Individual Person")
+                    {
+                        txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                        txtName.ReadOnly = true;
+                    }
 
-        //        }
-        //        else
-        //        {
-        //            ddlworktype.SelectedValue = "0";
-        //            ddlworktype.Enabled = true;
-        //            txtagency.Text = "";
-        //            txtName.Text = "";
-        //            txtagency.ReadOnly = false;
-        //            txtName.ReadOnly = false;
-        //        }
+                }
+                else
+                {
+                    ddlworktype.SelectedValue = "0";
+                    ddlworktype.Enabled = true;
+                    txtagency.Text = "";
+                    txtName.Text = "";
+                    txtagency.ReadOnly = false;
+                    txtName.ReadOnly = false;
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception or provide a more detailed error message
-        //        Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
-        //    }
-        
-        //}
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or provide a more detailed error message
+                Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
+            }
+
+        }
+
+
         protected void worktypevisiblity()
         {
             try
@@ -763,8 +709,8 @@ namespace CEIHaryana.Contractor
         {
             DivOtherDepartment.Visible = false;
             DivPancard_TanNo.Visible = false;
-            DivPoweUtility.Visible = false;
-            DivPoweUtilityWing.Visible = false;
+            //PowerUtility.Visible = false;
+           
             string Value = ddlWorkDetail.SelectedItem.ToString();
             if (ddlWorkDetail.SelectedValue != "0")
             {
@@ -810,8 +756,9 @@ namespace CEIHaryana.Contractor
             }
             else if (ddlApplicantType.SelectedValue == "AT002")
             {
-                DivPoweUtility.Visible = true;
-                DivPoweUtilityWing.Visible = true;
+                PowerUtility.Visible = true;
+                ddlPoweUtilityBind();
+
             }
             else if (ddlApplicantType.SelectedValue == "AT003")
             {
@@ -943,8 +890,9 @@ namespace CEIHaryana.Contractor
                     hdnId.Value = ContractorID;
                 CEI.IntimationDataInsertionForSiteOwner(UpdationId, ContractorID, ddlworktype.SelectedItem.ToString(),
                 ddlApplicantType.SelectedValue, ddlApplicantType.SelectedItem.ToString(),
-                ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
-                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),// txtTanNumber.Text.Trim(),
+                ddlPowerUtility.SelectedValue == "0" ? null : ddlPowerUtility.SelectedItem.ToString(),
+                DdlWing.SelectedValue == "0" ? null : DdlWing.SelectedItem.ToString(), DdlZone.SelectedItem.ToString(), DdlCircle.SelectedItem.ToString(), DdlDivision.SelectedItem.ToString(),
+                DdlSubDivision.SelectedItem.ToString(),// txtTanNumber.Text.Trim(),
                 txtName.Text.Trim(), txtagency.Text.Trim(), txtPhone.Text.Trim(),
                 txtAddress.Text.Trim(), /* ddlDistrict.SelectedItem.ToString(),*/ txtPin.Text.Trim(),
                  txtEmail.Text.Trim(), ddlInspectionType.SelectedValue, ContractorID);
@@ -1159,7 +1107,7 @@ namespace CEIHaryana.Contractor
             }
         }
 
-        
+
 
         //protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         //{
@@ -1214,5 +1162,177 @@ namespace CEIHaryana.Contractor
         //        Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
         //    }
         //}
+        private void ddlPoweUtilityBind()
+        {
+            try
+            {
+
+                DataSet dsUtility = new DataSet();
+                dsUtility = CEI.GetUtilityName();
+                ddlPowerUtility.DataSource = dsUtility;
+                ddlPowerUtility.DataTextField = "UtilityName";
+                ddlPowerUtility.DataValueField = "Id";
+                ddlPowerUtility.DataBind();
+                ddlPowerUtility.Items.Insert(0, new ListItem("Select", "0"));
+                dsUtility.Clear();
+
+                if (ddlPowerUtility.Items.Count > 1)
+                {
+                    ddlPowerUtility.SelectedIndex = 1; 
+                    DdlWingBind(); 
+                }
+            }
+            catch
+            {
+            }
+
+        }
+        private void DdlWingBind()
+        {
+            try
+            {
+                string Id = ddlPowerUtility.SelectedValue.ToString();
+                DataSet dsWing = new DataSet();
+                dsWing = CEI.GetWingName(Id);
+                DdlWing.DataSource = dsWing;
+                DdlWing.DataTextField = "WingName";
+                DdlWing.DataValueField = "Id";
+                DdlWing.DataBind();
+                DdlWing.Items.Insert(0, new ListItem("Select", "0"));
+                dsWing.Clear();
+                if (DdlWing.Items.Count > 1)
+                {
+                    DdlWing.SelectedIndex = 1; 
+                    DdlZoneBind(); 
+                }
+            }
+            catch
+            {
+            }
+
+        }
+
+
+        private void DdlZoneBind()
+        {
+            try
+            {
+                string Id = DdlWing.SelectedValue.ToString();
+                DataSet dsZone = new DataSet();
+                dsZone = CEI.GetZoneName(Id);
+                DdlZone.DataSource = dsZone;
+                DdlZone.DataTextField = "ZoneName";
+                DdlZone.DataValueField = "Id";
+                DdlZone.DataBind();
+                DdlZone.Items.Insert(0, new ListItem("Select", "0"));
+                dsZone.Clear();
+                if (DdlZone.Items.Count > 1)
+                {
+                    DdlZone.SelectedIndex = 1; 
+                    DdlCircleBind(); 
+                }
+            }
+            catch
+            {
+            }
+
+        }
+        private void DdlCircleBind()
+        {
+            try
+            {
+                string Id = DdlZone.SelectedValue.ToString();
+                DataSet dsCircle = new DataSet();
+                dsCircle = CEI.GetCirclesName(Id);
+                DdlCircle.DataSource = dsCircle;
+                DdlCircle.DataTextField = "CircleName";
+                DdlCircle.DataValueField = "Id";
+                DdlCircle.DataBind();
+                DdlCircle.Items.Insert(0, new ListItem("Select", "0"));
+                dsCircle.Clear();
+                if (DdlCircle.Items.Count > 1)
+                {
+                    DdlCircle.SelectedIndex = 1;
+                    DdlDivisionBind();
+                }
+            }
+            catch
+            {
+            }
+
+        }
+        private void DdlDivisionBind()
+        {
+            try
+            {
+                string id = DdlCircle.SelectedValue.ToString();
+                DataSet dsDivision = new DataSet();
+                dsDivision = CEI.GetDivisionName(id);
+                DdlDivision.DataSource = dsDivision;
+                DdlDivision.DataTextField = "DivisionName";
+                DdlDivision.DataValueField = "Id";
+                DdlDivision.DataBind();
+                DdlDivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsDivision.Clear();
+                if (DdlDivision.Items.Count > 1)
+                {
+                    DdlDivision.SelectedIndex = 1;
+                    DdlSubDivisionBind();
+                }
+            }
+            catch
+            {
+            }
+
+        }
+
+        private void DdlSubDivisionBind()
+        {
+            try
+            {
+                string id = DdlDivision.SelectedValue.ToString();
+                DataSet dsSubDivision = new DataSet();
+                dsSubDivision = CEI.GetSubDivisionName(id);
+                DdlSubDivision.DataSource = dsSubDivision;
+                DdlSubDivision.DataTextField = "SubDivision";
+                DdlSubDivision.DataValueField = "Id";
+                DdlSubDivision.DataBind();
+                DdlSubDivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsSubDivision.Clear();
+                if (DdlSubDivision.Items.Count > 1)
+                {
+                    DdlSubDivision.SelectedIndex = 1;
+                }
+            }
+            catch
+            {
+            }
+
+        }
+
+        protected void ddlPowerUtility_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlWingBind();
+        }
+
+        protected void DdlWing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlZoneBind();
+        }
+
+        protected void DdlZone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlCircleBind();
+        }
+
+        protected void DdlCircle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlDivisionBind();
+        }
+
+        protected void DdlDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlSubDivisionBind();
+        }
     }
 }

@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Net.NetworkInformation;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static System.Net.WebRequestMethods;
+
 
 namespace CEIHaryana.Contractor
 {
@@ -41,10 +44,13 @@ namespace CEIHaryana.Contractor
                         worktypevisiblity();
                         ddlLoadBindVoltage();
                         BindDistrict();
+                        
+
                         BindListBoxInstallationType();
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
                         OtherPremises.Visible = false;
+                        //ElectricalInstallation.Visible = true;
 
                         if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
                         {
@@ -90,13 +96,13 @@ namespace CEIHaryana.Contractor
                 //{}
                 if (ddlApplicantType.SelectedIndex == 2)
                 {
-                    DivPoweUtility.Visible = true;
-                    DivPoweUtilityWing.Visible = true;
+                    //DivPoweUtility.Visible = true;
+                    //DivPoweUtilityWing.Visible = true;
                 }
                 string dp_Id14 = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
                 ddlPoweUtility.SelectedIndex = ddlPoweUtility.Items.IndexOf(ddlPoweUtility.Items.FindByText(dp_Id14));
                 string dp_Id15 = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
-                ddlPowerUtilityWing.SelectedIndex = ddlPowerUtilityWing.Items.IndexOf(ddlPowerUtilityWing.Items.FindByText(dp_Id15));
+                //ddlPowerUtilityWing.SelectedIndex = ddlPowerUtilityWing.Items.IndexOf(ddlPowerUtilityWing.Items.FindByText(dp_Id15));
 
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
@@ -251,7 +257,7 @@ namespace CEIHaryana.Contractor
                 {
                     installationType2.Visible = true;
                 }
-                //WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
+                //  WorkDetail.Text = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                 customFileLocation.Text = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
                 if (TestReportGenerated.Trim() == "Yes")
                 {
@@ -325,14 +331,14 @@ namespace CEIHaryana.Contractor
                     {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                    }
+                    }                    
                 }
                 else
                 {
                     ddlworktype.SelectedValue = "0";
                     ddlworktype.Enabled = true;
                     txtagency.Text = "";
-                    txtName.Text = "";
+                    txtName.Text = ""; 
                     txtagency.ReadOnly = false;
                     txtName.ReadOnly = false;
                     //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
@@ -500,10 +506,12 @@ namespace CEIHaryana.Contractor
                 hiddenfield1.Visible = false;
                 txtEmail.Text = "";
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
             }
         }
+       
+
         protected void Submit_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -514,40 +522,54 @@ namespace CEIHaryana.Contractor
                     connection.Open();
                     string Pan_TanNumber = "";
                     bool panExists = false;
-                    if (DivPancard_TanNo.Visible == true && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
+
+                    
+                    Debug.WriteLine("Before checking visibility and setting Pan_TanNumber");
+
+                    if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                     {
                         Pan_TanNumber = txtPAN.Text.Trim();
                     }
-                    else if (DivOtherDepartment.Visible == true && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                    else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
                     {
                         Pan_TanNumber = txtTanNumber.Text.Trim();
                     }
-                    DataSet ds1 = new DataSet();
-                    ds1 = CEI.checkPanNumber(Pan_TanNumber);
-                    if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                    else if (PowerUtility.Visible)
+                    {
+                        if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
+                        {
+                            string email = txtEmail.Text.Trim();
+                            if (email.Contains("@"))
+                            {
+                                Pan_TanNumber = email.Split('@')[0];
+                            }
+                        }
+                        else
+                        {
+                            Pan_TanNumber = txtUserId.Text.Trim();
+                        }
+                    }
+
+                    
+                    if (string.IsNullOrEmpty(Pan_TanNumber))
+                    {
+                        throw new Exception("Pan/Tan Number cannot be empty.");
+                    }
+
+                    DataSet ds1 = CEI.checkPanNumber(Pan_TanNumber);
+                    if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                     {
                         panExists = true;
                     }
 
                     transaction = connection.BeginTransaction();
 
-                    string UpdationId = string.Empty;
-                    if (Session["UpdationId"] != null)
-                    {
-                        //UpdationId = Session["UpdationId"].ToString();
-                    }
-                    else
-                    {
-                        UpdationId = null;
-                    }
-                    bool atLeastOneSupervisorChecked = false;
+                    string UpdationId = Session["UpdationId"] != null ? Session["UpdationId"].ToString() : null;
 
+                    bool atLeastOneSupervisorChecked = false;
                     foreach (GridViewRow row in GridView1.Rows)
                     {
-                        //Label lblCategory = (Label)row.FindControl("lblCategory");
-                        CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-                        //if (lblCategory != null && lblCategory.Text == "Supervisor" && chk != null && chk.Checked)
-                        //{
+                        CheckBox chk = row.FindControl("CheckBox1") as CheckBox;
                         if (chk != null && chk.Checked)
                         {
                             atLeastOneSupervisorChecked = true;
@@ -557,169 +579,158 @@ namespace CEIHaryana.Contractor
 
                     if (!atLeastOneSupervisorChecked && btnSubmit.Text != "Update")
                     {
-                        // No Supervisor checkbox is selected
-                        // Add your logic or show a message here
                         Response.Write("<script>alert('Please select at least one Supervisor.');</script>");
                         return;
                     }
-                    else
+
+                    if (Session["ContractorID"] == null)
                     {
-                        string mobilenumber = txtPhone.Text.Trim();
-                        int maxFileSize = 1048576;
-                        if (Session["ContractorID"] != null)
+                        Response.Redirect("/Login.aspx", false);
+                        return;
+                    }
+
+                    ContractorID = Session["ContractorID"].ToString();
+                    string filePathInfo = "";
+
+                    if (ddlAnyWork.SelectedValue == "Yes")
+                    {
+                        if (customFile.HasFile && customFile.PostedFile != null && customFile.PostedFile.ContentLength <= 1048576)
                         {
-                            ContractorID = Session["ContractorID"].ToString();
-
-                            string filePathInfo = "";
-                            //if (ddlAnyWork.SelectedValue == "Yes")
-                            //{
-                            //    try
-                            //    {
-                            //        string FilName = string.Empty;
-                            //        FilName = Path.GetFileName(customFile.PostedFile.FileName);
-                            //        if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
-                            //        {
-                            //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
-                            //        }
-                            //        string ext = customFile.PostedFile.FileName.Split('.')[1];
-                            //        string path = "";
-                            //        path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                            //        string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                            //        string filePathInfo2 = "";
-                            //        filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                            //        customFile.PostedFile.SaveAs(filePathInfo2);
-                            //        filePathInfo = path + fileName;
-                            //    }
-                            //    catch (Exception ex)
-                            //    {
-                            //        string errorMessage = "An error occurred: " + "Please Add Copy Of work Order";
-                            //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                            //        return;
-                            //    }
-                            //}
-
-                            if (ddlAnyWork.SelectedValue == "Yes")
+                            try
                             {
-                                if (customFile.HasFile && customFile.PostedFile != null && customFile.PostedFile.ContentLength <= maxFileSize)
+                                string FilName = Path.GetFileName(customFile.PostedFile.FileName);
+                                string directoryPath = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/");
+                                if (!Directory.Exists(directoryPath))
                                 {
-                                    try
-                                    {
-                                        string FilName = string.Empty;
-                                        FilName = Path.GetFileName(customFile.PostedFile.FileName);
-
-                                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/")))
-                                        {
-                                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/"));
-                                        }
-
-                                        string ext = Path.GetExtension(customFile.FileName);
-                                        string path = "/Attachment/" + ContractorID + "/Copy of Work Order/";
-                                        string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                                        string filePathInfo2 = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName);
-                                        customFile.SaveAs(filePathInfo2);
-                                        filePathInfo = path + fileName;
-                                        // Now, use filePathInfo as needed...
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        //throw new Exception("Please Upload Pdf Files 1 Mb Only");
-                                    }
+                                    Directory.CreateDirectory(directoryPath);
                                 }
-                                else
-                                {
-                                    throw new Exception("Please Upload Pdf Files 1 Mb Only");
-                                }
+
+                                string ext = Path.GetExtension(customFile.FileName);
+                                string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                                string filePathInfo2 = Path.Combine(directoryPath, fileName);
+                                customFile.SaveAs(filePathInfo2);
+                                filePathInfo = "~/Attachment/" + ContractorID + "/Copy of Work Order/" + fileName;
                             }
-                            if (ddlApplicantType.SelectedValue == "0" && ddlApplicantType.SelectedValue == "")
+                            catch (Exception ex)
                             {
-                                Response.Write("<script>alert('Please select Applicant Type');</script>");
-                                return;
-                            }
-
-                            hdnId.Value = ContractorID;
-                            CEI.IntimationDataInsertion(UpdationId, ContractorID, ddlApplicantType.SelectedValue, ddlPoweUtility.SelectedValue == "0" ? null : ddlPoweUtility.SelectedItem.ToString(),
-                                ddlPowerUtilityWing.SelectedValue == "0" ? null : ddlPowerUtilityWing.SelectedItem.ToString(),
-                                ddlworktype.SelectedItem.ToString(), txtName.Text, txtagency.Text, txtPhone.Text,
-                                txtAddress.Text, ddlDistrict.SelectedItem.ToString(), txtPin.Text, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text,
-                                ddlVoltageLevel.SelectedItem.ToString(), Pan_TanNumber, txtinstallationType1.Text, txtinstallationNo1.Text, txtinstallationType2.Text,
-                                txtinstallationNo2.Text, txtinstallationType3.Text, txtinstallationNo3.Text,
-                                //txtinstallationType4.Text, txtinstallationNo4.Text,txtinstallationType5.Text, txtinstallationNo5.Text, txtinstallationType6.Text,
-                                //txtinstallationNo6.Text, txtinstallationType7.Text,txtinstallationNo7.Text, txtinstallationType8.Text, txtinstallationNo8.Text,
-                                txtEmail.Text, txtStartDate.Text, txtCompletitionDate.Text, ddlAnyWork.SelectedItem.ToString(), filePathInfo, txtCompletionDateAPWO.Text,
-                              ddlApplicantType.SelectedItem.ToString(), ContractorID, RadioButtonList2.SelectedValue.ToString(), ddlInspectionType.SelectedValue.ToString(), transaction);
-
-                            string projectId = CEI.projectId();
-                            if (projectId != "" && projectId != null)
-                            {
-                                ContractorID = Session["ContractorID"].ToString();
-                                string AssignBy = ContractorID;
-                                foreach (GridViewRow row in GridView1.Rows)
-                                {
-                                    if ((row.FindControl("CheckBox1") as CheckBox).Checked)
-                                    {
-                                        Label lblREID = (Label)row.FindControl("lblREID");
-                                        string Reid = lblREID.Text;
-
-                                        CEI.SetDataInStaffAssined(Reid, projectId, AssignBy, transaction);
-                                    }
-                                }
-
-                                TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
-                                TextBox[] noTextBoxes = new TextBox[] { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
-
-                                for (int i = 0; i < typeTextBoxes.Length; i++)
-                                {
-                                    string installationType = typeTextBoxes[i].Text;
-                                    string installationNoText = noTextBoxes[i].Text;
-
-                                    int installationNo;
-
-                                    if (int.TryParse(installationNoText, out installationNo) && installationNo > 0)
-                                    {
-                                        // Save data according to the number of installations
-                                        for (int j = 0; j < installationNo; j++)
-                                        {
-                                            CEI.AddInstallations(projectId, installationType, installationNo, AssignBy, transaction);
-                                        }
-                                    }
-                                }
-
-                                if (ddlPremises.SelectedItem.Text != "Industry")
-                                {
-                                    if (!panExists)
-                                    {
-                                        CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
-                                    }
-                                }
-
-                                // CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
-                            }
-                            transaction.Commit();
-                            Reset();
-
-                            if (btnSubmit.Text.Trim() == "Submit")
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                btnSubmit.Enabled = false;
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectUpdation();", true);
+                                throw new Exception("Please Upload Pdf Files 1 Mb Only");
                             }
                         }
                         else
                         {
-                            Response.Redirect("/Login.aspx", false);
+                            throw new Exception("Please Upload Pdf Files 1 Mb Only");
                         }
-                        //Reset();
+                    }
+
+                    if (ddlApplicantType.SelectedValue == "0" || string.IsNullOrEmpty(ddlApplicantType.SelectedValue))
+                    {
+                        Response.Write("<script>alert('Please select Applicant Type');</script>");
+                        return;
+                    }
+
+                    hdnId.Value = ContractorID;
+
+                    // Check for null and empty values before calling IntimationDataInsertion
+                    //Debug.WriteLine("Before IntimationDataInsertion");
+                    //Debug.WriteLine($"ContractorID: {ContractorID}, ApplicantTypeCode: {ddlApplicantType.SelectedValue}, PowerUtility: {ddlPoweUtility.SelectedItem?.ToString()}");
+
+                    CEI.IntimationDataInsertion(
+                        UpdationId,
+                        ContractorID,
+                        ddlApplicantType.SelectedValue,
+                        ddlPoweUtility.SelectedItem?.ToString(),
+                        DdlWing.SelectedItem?.ToString(),
+                        DdlZone.SelectedItem?.ToString(),
+                        DdlCircle.SelectedItem?.ToString(),
+                        DdlDivision.SelectedItem?.ToString(),
+                        DdlSubDivision.SelectedItem?.ToString(),
+                        ddlworktype.SelectedItem?.ToString(),
+                        txtName.Text,
+                        txtagency.Text,
+                        txtPhone.Text,
+                        txtAddress.Text,
+                        ddlDistrict.SelectedItem?.ToString(),
+                        txtPin.Text,
+                        ddlPremises.SelectedItem?.ToString(),
+                        txtOtherPremises.Text,
+                        ddlVoltageLevel.SelectedItem?.ToString(),
+                        Pan_TanNumber,
+                        txtinstallationType1.Text,
+                        txtinstallationNo1.Text,
+                        txtinstallationType2.Text,
+                        txtinstallationNo2.Text,
+                        txtinstallationType3.Text,
+                        txtinstallationNo3.Text,
+                        txtEmail.Text,
+                        txtStartDate.Text,
+                        txtCompletitionDate.Text,
+                        ddlAnyWork.SelectedItem?.ToString(),
+                        filePathInfo,
+                        txtCompletionDateAPWO.Text,
+                        ddlApplicantType.SelectedItem?.ToString(),
+                        ContractorID,
+                        RadioButtonList2.SelectedValue.ToString(),
+                        ddlInspectionType.SelectedValue.ToString(),
+                        transaction);
+
+                    //Debug.WriteLine("After IntimationDataInsertion");
+
+                    string projectId = CEI.projectId();
+                    if (!string.IsNullOrEmpty(projectId))
+                    {
+                        foreach (GridViewRow row in GridView1.Rows)
+                        {
+                            if ((row.FindControl("CheckBox1") as CheckBox)?.Checked == true)
+                            {
+                                string Reid = (row.FindControl("lblREID") as Label)?.Text;
+                                CEI.SetDataInStaffAssined(Reid, projectId, ContractorID, transaction);
+                            }
+                        }
+
+                        TextBox[] typeTextBoxes = { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
+                        TextBox[] noTextBoxes = { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
+
+                        for (int i = 0; i < typeTextBoxes.Length; i++)
+                        {
+                            string installationType = typeTextBoxes[i].Text;
+                            string installationNoText = noTextBoxes[i].Text;
+
+                            if (int.TryParse(installationNoText, out int installationNo) && installationNo > 0)
+                            {
+                                for (int j = 0; j < installationNo; j++)
+                                {
+                                    CEI.AddInstallations(projectId, installationType, installationNo, ContractorID, transaction);
+                                }
+                            }
+                        }
+
+                        if (ddlPremises.SelectedItem.Text != "Industry")
+                        {
+                            if (!panExists)
+                            {
+                                CEI.SiteOwnerCredentials(txtEmail.Text, Pan_TanNumber);
+                            }
+                        }
+                    }
+
+                    transaction.Commit();
+                    Reset();
+
+                    if (btnSubmit.Text.Trim() == "Submit")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alertWithRedirectdata();", true);
+                        btnSubmit.Enabled = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alertWithRedirectUpdation();", true);
                     }
                 }
                 catch (Exception ex)
                 {
                     transaction?.Rollback();
-                    // string errorMessage = "An error occurred: " + "Please fill all the details Carefully Your Details are wrong";
-                    string errorMessage = ex.Message.ToString();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                    string errorMessage = ex.Message.Replace("'", "\\'");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
                 }
                 finally
                 {
@@ -728,6 +739,8 @@ namespace CEIHaryana.Contractor
                 }
             }
         }
+
+
         public void GetGridData()
         {
             try
@@ -747,7 +760,7 @@ namespace CEIHaryana.Contractor
                 else
                 {
                     Helpline.Visible = true;
-                    btnSubmit.Enabled = false;
+                    btnSubmit.Enabled = false;  
                     statement.Visible = true;
 
                 }
@@ -848,8 +861,9 @@ namespace CEIHaryana.Contractor
         {
             DivOtherDepartment.Visible = false;
             DivPancard_TanNo.Visible = false;
-            DivPoweUtility.Visible = false;
-            DivPoweUtilityWing.Visible = false;
+            //ElectricalInstallation.Visible = true;
+            //DivPoweUtility.Visible = false;
+            //DivPoweUtilityWing.Visible = false;
             string Value = ddlWorkDetail.SelectedItem.ToString();
             if (ddlWorkDetail.SelectedValue != "0")
             {
@@ -916,21 +930,151 @@ namespace CEIHaryana.Contractor
             }
             if (ddlApplicantType.SelectedValue == "AT001")
             {
+                //ElectricalInstallation.Visible = true;
                 DivPancard_TanNo.Visible = true;
                 txtTanNumber.Text = "";
+                PowerUtility.Visible = false;
+                NameUtility.Visible = false;
+                Wing.Visible = false;
             }
             else if (ddlApplicantType.SelectedValue == "AT002")
             {
-                DivPoweUtility.Visible = true;
-                DivPoweUtilityWing.Visible = true;
+                NameUtility.Visible= true;
+                Wing.Visible= true;
+                PowerUtility.Visible = true;
+                //ElectricalInstallation.Visible= false;
+                ddlPoweUtilityBind();
+                //DivPoweUtilityWing.Visible = true;
                 txtTanNumber.Text = "";
                 txtPAN.Text = "";
             }
             else if (ddlApplicantType.SelectedValue == "AT003")
             {
+                //ElectricalInstallation.Visible = true;
+                PowerUtility.Visible = false;
+                NameUtility.Visible = false;
+                Wing.Visible = false;
                 DivOtherDepartment.Visible = true;
                 txtPAN.Text = "";
             }
+        }
+        private void ddlPoweUtilityBind()
+        {
+            try
+            {
+
+                DataSet dsUtility = new DataSet();
+                dsUtility = CEI.GetUtilityName();
+                ddlPoweUtility.DataSource = dsUtility;
+                ddlPoweUtility.DataTextField = "UtilityName";
+                ddlPoweUtility.DataValueField = "Id";
+                ddlPoweUtility.DataBind();
+                ddlPoweUtility.Items.Insert(0, new ListItem("Select", "0"));
+                dsUtility.Clear();
+               
+            }
+            catch
+            {
+            }
+
+        }
+        private void DdlWingBind()
+        {
+            try
+            {
+                string Id = ddlPoweUtility.SelectedValue.ToString();
+                DataSet dsWing = new DataSet();
+                dsWing = CEI.GetWingName(Id);
+                DdlWing.DataSource = dsWing;
+                DdlWing.DataTextField = "WingName";
+                DdlWing.DataValueField = "Id";
+                DdlWing.DataBind();
+                DdlWing.Items.Insert(0, new ListItem("Select", "0"));
+                dsWing.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+
+       
+         private void DdlZoneBind()
+        {
+            try
+            {
+                string Id = DdlWing.SelectedValue.ToString();
+                DataSet dsZone = new DataSet();
+                dsZone = CEI.GetZoneName(Id);
+                DdlZone.DataSource = dsZone;
+                DdlZone.DataTextField = "ZoneName";
+                DdlZone.DataValueField = "Id";
+                DdlZone.DataBind();
+                DdlZone.Items.Insert(0, new ListItem("Select", "0"));
+                dsZone.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+        private void DdlCircleBind()
+        {
+            try
+            {
+                string Id = DdlZone.SelectedValue.ToString();
+                DataSet dsCircle = new DataSet();
+                dsCircle = CEI.GetCirclesName(Id);
+                DdlCircle.DataSource = dsCircle;
+                DdlCircle.DataTextField = "CircleName";
+                DdlCircle.DataValueField = "Id";
+                DdlCircle.DataBind();
+                DdlCircle.Items.Insert(0, new ListItem("Select", "0"));
+                dsCircle.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+        private void DdlDivisionBind()
+        {
+            try
+            {
+                string id = DdlCircle.SelectedValue.ToString();
+                DataSet dsDivision = new DataSet();
+                dsDivision = CEI.GetDivisionName(id);
+                DdlDivision.DataSource = dsDivision;
+                DdlDivision.DataTextField = "DivisionName";
+                DdlDivision.DataValueField = "Id";
+                DdlDivision.DataBind();
+                DdlDivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsDivision.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+
+        private void DdlSubDivisionBind()
+        {
+            try
+            {
+                string id = DdlDivision.SelectedValue.ToString();
+                DataSet dsSubDivision = new DataSet();
+                dsSubDivision = CEI.GetSubDivisionName(id);
+                DdlSubDivision.DataSource = dsSubDivision;
+                DdlSubDivision.DataTextField = "SubDivision";
+                DdlSubDivision.DataValueField = "Id";
+                DdlSubDivision.DataBind();
+                DdlSubDivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsSubDivision.Clear();
+            }
+            catch
+            {
+            }
+
         }
         protected void btnDelete1_Click(object sender, EventArgs e)
         {
@@ -1122,7 +1266,7 @@ namespace CEIHaryana.Contractor
             {
                 //
             }
-        }
+        }        
         protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1150,14 +1294,14 @@ namespace CEIHaryana.Contractor
                         individual.Visible = false;
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                         txtagency.ReadOnly = true;
-
+                        
                     }
                     else if (contractorType == "Individual Person")
-                    {
+                    {                        
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-
-                    }
+                       
+                    }                   
                 }
                 else
                 {
@@ -1178,5 +1322,43 @@ namespace CEIHaryana.Contractor
             }
         }
 
+        protected void ddlPoweUtility_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlWingBind();
+        }
+
+       
+
+        protected void DdlWing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlZoneBind();
+        }
+
+        protected void DdlZone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlCircleBind();
+
+        }
+
+        protected void DdlCircle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlDivisionBind();
+        }
+
+        protected void DdlDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlSubDivisionBind();
+        }
+
+        protected void DdlSubDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = DdlSubDivision.SelectedValue.ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetSubDivisionEmail(id);
+            txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
+            txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+            txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
+
+        }
     }
 }

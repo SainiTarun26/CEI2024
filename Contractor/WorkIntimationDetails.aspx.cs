@@ -115,17 +115,38 @@ namespace CEIHaryana.Contractor
                     //txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString().Trim();
                     string ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString().Trim();
                     txtApplicant.Text = ApplicantType;
+                    TxtPowerUtility.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
+                    TxtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
+                    TxtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString();
+                    TxtCircle.Text = ds.Tables[0].Rows[0]["CircleName"].ToString();
+                    TxtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
+                    TxtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
                     if (ApplicantType == "Private/Personal Installation")
                     {
                         string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
                         PanNo.Visible = true;
                         txtPAN.Text = PanTanNumber;
+                        InstallationFor.Visible= true;
+                        PowerUtility.Visible = false;
+                        UserId.Visible = false;
                     }
                     else if (ApplicantType == "Other Department/Organization")
                     {
                         string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
                         TanNo.Visible = true;
                         txtTanNo.Text = PanTanNumber;
+                        InstallationFor.Visible= true;
+                        PowerUtility.Visible = false;
+                        UserId.Visible = false;
+                    }
+                    else if (ApplicantType == "Power Utility")
+                    {
+                        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                        TxtUserId.Text = PanTanNumber;
+                        UserId.Visible = true;
+                        PowerUtility.Visible= true;
+                        InstallationFor.Visible = false;
+
                     }
                     string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
                     txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("yyyy-MM-dd");

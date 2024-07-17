@@ -33,6 +33,15 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.DropDownList ddlInspectionType;
 
         /// <summary>
+        /// InstallationFor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InstallationFor;
+
+        /// <summary>
         /// ddlworktype control.
         /// </summary>
         /// <remarks>
@@ -231,6 +240,24 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtTanNo;
 
         /// <summary>
+        /// UserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserId;
+
+        /// <summary>
+        /// TxtUserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtUserId;
+
+        /// <summary>
         /// txtApplicant control.
         /// </summary>
         /// <remarks>
@@ -238,6 +265,69 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApplicant;
+
+        /// <summary>
+        /// PowerUtility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PowerUtility;
+
+        /// <summary>
+        /// TxtPowerUtility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtPowerUtility;
+
+        /// <summary>
+        /// TxtWing control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtWing;
+
+        /// <summary>
+        /// TxtZone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtZone;
+
+        /// <summary>
+        /// TxtCircle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCircle;
+
+        /// <summary>
+        /// TxtDivision control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtDivision;
+
+        /// <summary>
+        /// TxtSubDivision control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtSubDivision;
 
         /// <summary>
         /// RadioButtonList2 control.

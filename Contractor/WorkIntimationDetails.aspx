@@ -125,12 +125,13 @@
                                                 Inspection Type
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2"  AutoPostBack="true" disabled="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" disabled="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
                                                 <asp:ListItem Text="New" Value="0"></asp:ListItem>
                                                 <asp:ListItem Text="Existing" Value="1"></asp:ListItem>
-                                            </asp:DropDownList>                                         
+                                            </asp:DropDownList>
+                                         
                                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" id="InstallationFor" runat="server" visible="false">
                             <label>Electrical Installation For</label>
                             <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" disabled class="form-control  select-form select2" Style="width: 100% !important;">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
@@ -210,12 +211,69 @@
                             </label>
                             <asp:TextBox class="form-control" ID="txtTanNo" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
+                        <div class="col-md-4" id="UserId" runat="server" visible="false">
+                            <label for="PanNumber">
+                                UserId of Site Owner                                        
+                            </label>
+                            <asp:TextBox class="form-control" ID="TxtUserId" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
                         <div class="col-md-4">
                             <label>
                                 Applicant Type        
                             </label>
                             <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
+                        <div class="row" runat="server" id="PowerUtility" visible="false">
+                                        <div class="col-md-4">
+                                            <label>
+                                                Name Of Power Utility
+                                               
+                                            </label>
+                                          
+                                            <asp:TextBox class="form-control" ID="TxtPowerUtility" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Wing
+                                               
+                                            </label>
+                                           
+                                             <asp:TextBox class="form-control" ID="TxtWing" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Zone
+                                               
+                                            </label>
+                                           
+                                             <asp:TextBox class="form-control" ID="TxtZone" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Circle
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                         
+                                            <asp:TextBox class="form-control" ID="TxtCircle" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Division
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                         
+                                             <asp:TextBox class="form-control" ID="TxtDivision" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Sub-Division
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                         
+                                             <asp:TextBox class="form-control" ID="TxtSubDivision" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                    </div>
                         <div class="col-md-4">
                                                <label>
                                                 Is there any Sanction Load Issue

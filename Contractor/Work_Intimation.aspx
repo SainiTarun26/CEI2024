@@ -324,7 +324,7 @@
                                 Inspection Type
                                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
+                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server">
                                 <asp:ListItem Text="New Inspection" Value="New"></asp:ListItem>
                                 <asp:ListItem Text="Existing Inspection" Value="Existing"></asp:ListItem>
                             </asp:DropDownList>
@@ -342,8 +342,8 @@
                                     </div>
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                   
                                     <div class="row">
-
                                         <div class="col-md-4">
                                             <label>
                                                 Applicant Type
@@ -351,14 +351,15 @@
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
                                                 <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
+                                                <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>
                                                 <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
-                                                <%-- <asp:ListItem Text="Power Utility" Value="AT003"></asp:ListItem>--%>
+
+
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-
+                                       
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
                                                 PAN Card
@@ -380,24 +381,104 @@
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
+                                         <div class="col-md-4">
+                                            <label>
+                                                Electrical Installation For<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" AutoPostBack="true" EnableViewState="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
+                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                              <div class="col-md-4" id="NameUtility" runat="server" visible="false">
+                                            <label>
+                                                Name Of Power Utility
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlPoweUtility_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" Text="Please Select Power Utility Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPoweUtility" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-md-4" id="Wing" runat="server" visible="false">
+                                            <label>
+                                                Wing
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlWing" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlWing_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWing" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                    </div>
+                                    <div class="row" runat="server" id="PowerUtility" visible="false">
+                                  
+                                        <div class="col-md-4">
+                                            <label>
+                                                Zone
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlZone" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlZone_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlZone" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Circle
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlCircle" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlCircle_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlCircle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Division
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlDivision" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlDivision_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Sub-Division
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlSubDivision" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlSubDivision_SelectedIndexChanged">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlSubDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                    </div>
+                                      
+                                    <div class="row">
+                                          <div class="col-md-4" runat="server" id="UserId" visible="false">
+                                            <label for="UserId">
+                                                UserId
+                                            <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtUserId" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            
+                                        </div>
 
-                                        <div class="col-md-4" runat="server" id="DivPoweUtility" visible="false">
+
+                                        <%-- <div class="col-md-4" runat="server" id="DivPoweUtility" visible="false">
                                             <label>
                                                 Name Of Power Utility
                                                 <samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
+                                             
                                                 <asp:ListItem Text="UHBVN" Value="1"></asp:ListItem>
                                                 <asp:ListItem Text="DHBVN" Value="2"></asp:ListItem>
                                                 <asp:ListItem Text="HVPNL" Value="3"></asp:ListItem>
                                                 <asp:ListItem Text="HPGST" Value="4"></asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" Text="Please Select Power Utility Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPoweUtility" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                        </div>--%>
 
-                                        <div class="col-md-4" runat="server" id="DivPoweUtilityWing" visible="false">
+                                        <%-- <div class="col-md-4" runat="server" id="DivPoweUtilityWing" visible="false">
                                             <label>
                                                 Type of Wing
                                                 <samp style="color: red">* </samp>
@@ -409,7 +490,7 @@
 
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator21" Text="Please Select Wing Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPowerUtilityWing" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                        </div>--%>
 
                                         <%-- <div class="col-1" style="padding: 0px; margin-top: 31px;">
                                             <span>
@@ -420,17 +501,7 @@
                                             </span>
                                         </div>--%>
 
-                                        <div class="col-md-4">
-                                            <label>
-                                                Electrical Installation For<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
-                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                        
                                     </div>
                                     <div class="row" id="row2">
                                         <div class="col-md-4" id="individual" runat="server">
@@ -734,7 +805,12 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </ContentTemplate>
+                     <Triggers>
+               <asp:AsyncPostBackTrigger ControlID="ddlworktype" EventName="SelectedIndexChanged" />
+        
+    </Triggers>
                 </asp:UpdatePanel>
                 <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Work/Testing Schedule</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -1173,26 +1249,26 @@
         }
     </script>
     <script>
-       function validateTANNumber() {
-           var tanNumber = document.getElementById('<%= txtTanNumber.ClientID %>').value.toUpperCase();
-        var regex = /^[A-Z]{4}\d{5}[A-Z]$/; 
-        var isValid = regex.test(tanNumber);
+        function validateTANNumber() {
+            var tanNumber = document.getElementById('<%= txtTanNumber.ClientID %>').value.toUpperCase();
+            var regex = /^[A-Z]{4}\d{5}[A-Z]$/;
+            var isValid = regex.test(tanNumber);
 
-        if (!isValid) {
-            alert("Enter a valid TAN number.");
-            return false;
+            if (!isValid) {
+                alert("Enter a valid TAN number.");
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
 
-    function convertToUpperCase(event) {
-        var textBox = event.target;
-        textBox.value = textBox.value.toUpperCase();
-    }
+        function convertToUpperCase(event) {
+            var textBox = event.target;
+            textBox.value = textBox.value.toUpperCase();
+        }
 
-   
-    document.addEventListener('DOMContentLoaded', function() {
-        var form = document.getElementById('<%= this.Page.Form.ClientID %>');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('<%= this.Page.Form.ClientID %>');
 
         if (form) {
             form.onsubmit = function () {
