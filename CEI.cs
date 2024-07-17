@@ -4148,6 +4148,10 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             return count;
         }
 
+        public DataTable PeriodicInspectionHistoryForAdmin()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicInspectionHistoryForAdmin");
+        }
     }
 }
 

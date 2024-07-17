@@ -231,6 +231,7 @@
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
+    <Content Include="Admin\MultiplePeriodicInspectionDetail.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\PeriodicInspectionHistoryForAdmin.aspx" />
     <Content Include="Admin\Projects.aspx" />
@@ -2066,6 +2067,13 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MultiplePeriodicInspectionDetail.aspx.cs">
+      <DependentUpon>MultiplePeriodicInspectionDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MultiplePeriodicInspectionDetail.aspx.designer.cs">
+      <DependentUpon>MultiplePeriodicInspectionDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.cs">
       <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
