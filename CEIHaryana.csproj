@@ -1875,6 +1875,7 @@
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
+    <Content Include="Officers\NewPeriodicInspection.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
@@ -1955,6 +1956,7 @@
     <Content Include="UserPages\PrintWorkIntimationNew.aspx" />
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
+    <Content Include="UserPages\SiteOwnerRegistration.aspx" />
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
@@ -2398,6 +2400,13 @@
     </Compile>
     <Compile Include="Officers\NewApplications.aspx.designer.cs">
       <DependentUpon>NewApplications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\NewPeriodicInspection.aspx.cs">
+      <DependentUpon>NewPeriodicInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\NewPeriodicInspection.aspx.designer.cs">
+      <DependentUpon>NewPeriodicInspection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\OfficerDashboard.aspx.cs">
       <DependentUpon>OfficerDashboard.aspx</DependentUpon>
@@ -2973,6 +2982,13 @@
     </Compile>
     <Compile Include="UserPages\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\SiteOwnerRegistration.aspx.cs">
+      <DependentUpon>SiteOwnerRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\SiteOwnerRegistration.aspx.designer.cs">
+      <DependentUpon>SiteOwnerRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\CertificateRenewal.aspx.cs">
       <DependentUpon>CertificateRenewal.aspx</DependentUpon>

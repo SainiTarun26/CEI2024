@@ -93,7 +93,7 @@
                 <div class="row ">
                     <div class="col-md-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label>INSPECTION HISTORY</h6>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>INSPECTION HISTORY (New INSPECTIONS)</h6>
                     </div>
                     <div class="col-md-6 col-md-6"></div>
                 </div>

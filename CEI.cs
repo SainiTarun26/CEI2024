@@ -3404,9 +3404,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInProcessRequest", Id);
         }
-        public DataSet NewRequestRecieved(string Id)
+        public DataSet NewRequestRecieved(string Id, string TypeOfInspection)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id, TypeOfInspection);
         }
         public DataSet AcceptOrReject(string Id)
         {
@@ -4190,6 +4190,14 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getEmailsForSubdivision", id);
         }
         #endregion
+        public DataSet PeriodicInspectionDataForAdmin(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicInspectionDataForAdmin", Id);
+        }
+        public DataSet NewRequestRecievedAsPeriodic(string Id, string TypeOfInspection)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedAsPeriodic", Id, TypeOfInspection);
+        }
     }
 }
 

@@ -93,6 +93,15 @@
         td {
             text-align: center;
         }
+
+        input#ContentPlaceHolder1_RadioButtonList2_1 {
+            margin-left: 15px;
+            margin-right: 5px !important;
+        }
+
+        input#ContentPlaceHolder1_RadioButtonList2_0 {
+            margin-right: 5px !important;
+        }
     </style>
 
 </asp:Content>
@@ -109,14 +118,22 @@
 
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-    <div class="col-4">
-     <div class="form-group row">
-         <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-         <div class="col-sm-9" style="margin-left: -35px;">
-             <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control"  Font-Size="12px" onkeydown="return SearchOnEnter(event);"  onkeyup="Search_Gridview(this)" ></asp:TextBox><br />
-          </div>
-     </div>
- </div>
+                    <div class="row" style="margin-bottom: -25px !important;">
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+                                <div class="col-sm-9" style="margin-left: -35px;">
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8" style="display: flex; place-content: end; place-items: baseline;">
+                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                                <asp:ListItem Text="New Inspection" Value="0" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="Periodic Inspection" Value="1"></asp:ListItem>
+                            </asp:RadioButtonList>
+                             </div>
+                    </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
@@ -126,10 +143,10 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -153,7 +170,7 @@
 
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name" Visible ="false">
+                            <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
 
                                 <ItemStyle HorizontalAlign="center" Width="32%" />
@@ -194,7 +211,83 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
+                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView2" runat="server" Width="100%"
+     AutoGenerateColumns="false" OnRowCommand="GridView2_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView2_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+     <Columns>
+         <asp:TemplateField HeaderText="Id" Visible="False">
+             <ItemTemplate>
+                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <asp:TemplateField HeaderText="Id" Visible="False">
+             <ItemTemplate>
+                 <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <asp:TemplateField HeaderText="SNo">
+             <HeaderStyle Width="5%" CssClass="headercolor" />
+             <ItemStyle Width="5%" />
+             <ItemTemplate>
+                 <%#Container.DataItemIndex+1 %>
+             </ItemTemplate>
+         </asp:TemplateField>
 
+         <asp:TemplateField>
+             <HeaderStyle Width="35%" CssClass="headercolor" />
+             <ItemStyle Width="35%" />
+             <HeaderTemplate>
+                 Inspection Id        
+             </HeaderTemplate>
+             <ItemTemplate>
+                 <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
+             <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+
+             <ItemStyle HorizontalAlign="center" Width="28%" />
+         </asp:BoundField>
+       <%--  <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name" Visible="false">
+             <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
+
+             <ItemStyle HorizontalAlign="center" Width="32%" />
+         </asp:BoundField>--%>
+         <asp:BoundField DataField="ApplicantFor" HeaderText="Applicant Type">
+             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
+             <ItemStyle HorizontalAlign="center" Width="15%" />
+         </asp:BoundField>
+         <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
+             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
+             <ItemStyle HorizontalAlign="center" Width="15%" />
+         </asp:BoundField>
+         <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
+             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
+             <ItemStyle HorizontalAlign="center" Width="15%" />
+         </asp:BoundField>
+         <asp:BoundField DataField="RequestStatus" HeaderText="Status">
+             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
+             <ItemStyle HorizontalAlign="center" Width="15%" />
+         </asp:BoundField>
+         <asp:BoundField DataField="InspectionRemarks" HeaderText="Inspection Remarks">
+             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+             <ItemStyle HorizontalAlign="center" Width="15%" />
+         </asp:BoundField>
+
+     </Columns>
+     <FooterStyle BackColor="White" ForeColor="#000066" />
+     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+     <RowStyle ForeColor="#000066" />
+     <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+     <SortedAscendingCellStyle BackColor="#F1F1F1" />
+     <SortedAscendingHeaderStyle BackColor="#007DBB" />
+     <SortedDescendingCellStyle BackColor="#CAC9C9" />
+     <SortedDescendingHeaderStyle BackColor="#00547E" />
+ </asp:GridView>
                 </div>
             </div>
         </div>
@@ -205,31 +298,31 @@
     <script>
         new DataTable('#example');
     </script>
-  <script type="text/javascript">
-      function Search_Gridview(strKey) {
-          var strData = strKey.value.toLowerCase().split(" ");
-          var tblData = document.getElementById("<%=GridView1.ClientID %>");
-          var rowData;
-          for (var i = 1; i < tblData.rows.length; i++) {
-              rowData = tblData.rows[i].innerHTML;
-              var styleDisplay = 'none';
-              for (var j = 0; j < strData.length; j++) {
-                  if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
-                      styleDisplay = '';
-                  else {
-                      styleDisplay = 'none';
-                      break;
-                  }
-              }
-              tblData.rows[i].style.display = styleDisplay;
-          }
+    <script type="text/javascript">
+        function Search_Gridview(strKey) {
+            var strData = strKey.value.toLowerCase().split(" ");
+            var tblData = document.getElementById("<%=GridView1.ClientID %>");
+            var rowData;
+            for (var i = 1; i < tblData.rows.length; i++) {
+                rowData = tblData.rows[i].innerHTML;
+                var styleDisplay = 'none';
+                for (var j = 0; j < strData.length; j++) {
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                        styleDisplay = '';
+                    else {
+                        styleDisplay = 'none';
+                        break;
+                    }
+                }
+                tblData.rows[i].style.display = styleDisplay;
+            }
 
-      }
-      function SearchOnEnter(event) {
-          if (event.keyCode === 13) {
-              event.preventDefault(); // Prevent default form submission
-              Search_Gridview(document.getElementById('txtSearch'));
-          }
-      }
-</script>
+        }
+        function SearchOnEnter(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission
+                Search_Gridview(document.getElementById('txtSearch'));
+            }
+        }
+    </script>
 </asp:Content>
