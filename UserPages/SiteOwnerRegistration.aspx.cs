@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -82,6 +83,47 @@ namespace CEIHaryana.UserPages
             else
             {
                 LblNameofOwner.Visible = true;
+            }
+        }
+
+        protected void txtPANTan_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Regex regex;
+                string TANNumber = txtPANTan.Text.Trim();
+                if (LblPanNumber.Visible=true)
+                {
+                     regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"); ;
+                }
+                else 
+                {                
+                     regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+                }
+
+                if (!regex.IsMatch(TANNumber))
+                {
+                    txtPANTan.Focus();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
+                    txtPANTan.Text = "";
+                    return;
+                }
+                DataSet ds = new DataSet();
+                ds = CEI.GetDetailsByPanNumberId(TANNumber);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number already exist');", true);
+                    txtPANTan.Text = "";
+                    return;
+
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or provide a more detailed error message
+                Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
             }
         }
     }
