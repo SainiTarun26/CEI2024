@@ -657,7 +657,8 @@
 
         </header>
         <!-- End Header -->
-        <main id="main">
+        <main id="main">  
+           <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
             <section id="about" class="about section-bg" style="padding-top: 20px;">
                 <div class="container" data-aos="fade-up">
                     <%-- <div class="row">
@@ -672,6 +673,8 @@
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
                             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important; padding-left: 30px;">
 
                                 <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
@@ -688,11 +691,10 @@
                      <samp style="color: red">* </samp>
                                         </label>
                                         <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" ID="ddlApplicantType" OnSelectedIndexChanged="ddlApplicantType_SelectedIndexChanged"  TabIndex="2" runat="server">
-                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                            <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
+                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>                                           
                                             <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
                                             <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
-                                            <%-- <asp:ListItem Text="Power Utility" Value="AT003"></asp:ListItem>--%>
+                                            <%-- <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>--%>
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" SetFocusOnError="true" ValidationGroup="Submit" ForeColor="Red" />
                                     </div>
@@ -707,8 +709,8 @@
                                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtPANTan" Visible="false" TabIndex="1" OnTextChanged="txtPANTan_TextChanged" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
-                                        <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPANTan" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
-                                            ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
+                                        <%--<asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPANTan" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
+                                            ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />--%>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPANTan" ErrorMessage="RequiredFieldValidator" SetFocusOnError="true" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
                                     </div>
@@ -833,7 +835,7 @@
                                 <div class="row" style="margin-bottom: 30px; margin-top: 20px;">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4" style="text-align: center;">
-                                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" OnClientClick="this.disabled=true;this.value='Processing...';" UseSubmitBehavior="false" class="btn btn-primary mr-2" />
+                                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" OnClick="btnSubmit_Click" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" />
 
                                         <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                                         <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
@@ -842,6 +844,8 @@
                                     <div class="col-md-4"></div>
                                 </div>
                             </div>
+                        </ContentTemplate>
+                                </asp:UpdatePanel>
                         </div>
                         <div class="col-md-1"></div>
                     </div>

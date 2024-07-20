@@ -1881,6 +1881,7 @@
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
+    <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PrintCertificate1.aspx" />
     <Content Include="Print_Forms\PrintCertificate2.aspx" />
     <Content Include="Print_Forms\PrintCertificate3.aspx" />
@@ -2449,6 +2450,12 @@
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.designer.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\PeriodicApprovalCertificate.aspx.cs">
+      <DependentUpon>PeriodicApprovalCertificate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\PeriodicApprovalCertificate.aspx.designer.cs">
+      <DependentUpon>PeriodicApprovalCertificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\PrintCertificate1.aspx.cs">
       <DependentUpon>PrintCertificate1.aspx</DependentUpon>

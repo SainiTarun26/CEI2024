@@ -13,6 +13,8 @@ namespace CEIHaryana.UserPages
     public partial class SiteOwnerRegistration : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency, Address,
+            District, PinCode, PhoneNumber, Email;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -48,6 +50,7 @@ namespace CEIHaryana.UserPages
             {
                 LblPanNumber.Visible = true;
                 txtPANTan.Visible = true;
+                txtPANTan.Text = "";
             }
             //else if (ddlApplicantType.SelectedValue == "AT002")
             //{
@@ -64,6 +67,7 @@ namespace CEIHaryana.UserPages
             {
                 LblTanNumber.Visible = true;
                 txtPANTan.Visible = true;
+                txtPANTan.Text = "";
             }
         }
 
@@ -92,39 +96,88 @@ namespace CEIHaryana.UserPages
             {
                 Regex regex;
                 string TANNumber = txtPANTan.Text.Trim();
-                if (LblPanNumber.Visible=true)
+                if (LblPanNumber.Visible == true)
                 {
-                     regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"); ;
+                    regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
                 }
-                else 
-                {                
-                     regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+                else
+                {
+                    regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
                 }
 
                 if (!regex.IsMatch(TANNumber))
                 {
+                    if (LblPanNumber.Visible == true)
+                    {
+                        LblPanNumber.Visible = true;
+                        LblTanNumber.Visible = false;
+                    }
+                    else
+                    {
+                        LblPanNumber.Visible = false;
+                        LblTanNumber.Visible = true;
+                    }
                     txtPANTan.Focus();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number format. Please enter a valid TAN number.');", true);
                     txtPANTan.Text = "";
                     return;
                 }
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(TANNumber);
-                if (ds.Tables[0].Rows.Count > 0)
+                if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number already exist');", true);
                     txtPANTan.Text = "";
                     return;
-
                 }
-                
-
             }
             catch (Exception ex)
             {
                 // Log the exception or provide a more detailed error message
                 Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
             }
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                PanTanNumber = txtPANTan.Text.Trim();
+                DataTable dt = CEI.CheckSiteownerPan(PanTanNumber);
+                if (dt.Rows.Count > 0 && dt != null)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number already exist');", true);
+                    txtPANTan.Text = "";
+                    txtPANTan.Focus();
+                    return;
+                }
+                ApplicantType = ddlApplicantType.SelectedItem.ToString();
+                ApplicantCode = ddlApplicantType.SelectedValue;
+                ElectricalInstallationFor = ddlworktype.SelectedItem.ToString();
+                if (LblNameofOwner.Visible == true)
+                {
+                    NameOfOwner = txtName.Text;
+                }
+                else if (LblAgency.Visible == true)
+                {
+                    NameofAgency = txtName.Text;
+                }
+                Address = txtAddress.Text.Trim();
+                District = ddlDistrict.SelectedItem.ToString();
+                PinCode = txtPin.Text;
+                PhoneNumber = txtPhone.Text;
+                Email = txtEmail.Text;
+                CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
+                    ,Address, District, PinCode, PhoneNumber, Email);
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                //throw;
+            }
+
         }
     }
 }

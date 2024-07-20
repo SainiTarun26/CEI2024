@@ -4198,6 +4198,42 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedAsPeriodic", Id, TypeOfInspection);
         }
+        #region siteownerNewRegistration
+        public DataTable CheckSiteownerPan(string PanNumber)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckSiteownerPan", PanNumber);
+        }
+
+        public void InsertSiteOwnerRegistration(string ApplicantType, string ApplicantCode, string PanTanNumber, string ElectricalInstallationFor, string NameOfOwner, string NameofAgency
+                    ,string Address, string District, string PinCode, string PhoneNumber, string Email)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("InsertRegistrationSiteOwner", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                    cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantCode);
+                    cmd.Parameters.AddWithValue("@PANNumber", PanTanNumber);
+                    //cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                    cmd.Parameters.AddWithValue("@ContractorType", ElectricalInstallationFor);
+                    cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
+                    cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@NameOfAgency", NameofAgency);
+                    cmd.Parameters.AddWithValue("@Address", Address);
+                    //cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@Pincode", PinCode);
+                    cmd.Parameters.AddWithValue("@ContactNo", PhoneNumber);
+                    cmd.Parameters.AddWithValue("@Email", Email);                    
+                    con.Open();
+                    cmd.ExecuteNonQuery();                   
+                }
+
+            }
+        }
+
+        #endregion
+
     }
 }
 
