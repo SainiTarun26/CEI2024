@@ -1904,6 +1904,7 @@
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
     <Content Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\SiteOwnerDashboard.aspx" />
+    <Content Include="SiteOwnerPages\SldHistory.aspx" />
     <Content Include="SiteOwnerPages\SldUpload.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
@@ -2595,6 +2596,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\SiteOwnerDashboard.aspx.designer.cs">
       <DependentUpon>SiteOwnerDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SldHistory.aspx.cs">
+      <DependentUpon>SldHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SldHistory.aspx.designer.cs">
+      <DependentUpon>SldHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\SldUpload.aspx.cs">
       <DependentUpon>SldUpload.aspx</DependentUpon>
