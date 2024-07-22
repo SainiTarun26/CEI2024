@@ -3404,9 +3404,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInProcessRequest", Id);
         }
-        public DataSet NewRequestRecieved(string Id, string TypeOfInspection)
+        public DataSet NewRequestRecieved(string Id)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id, TypeOfInspection);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id);
         }
         public DataSet AcceptOrReject(string Id)
         {
@@ -3899,7 +3899,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         //      }
 
         public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
-string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string District, string Division, string CreatedBy, string Status)
+ string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CompleteAdress,
+ string AdressDistrict, string OwnerName, string District, string Division, string CreatedBy, string Status)
         {
             try
             {
@@ -3928,6 +3929,9 @@ string TestReportId, string TestReportCount, string InspectionDate, string Inspe
                             cmd.Parameters.AddWithValue("@Capacity", Capacity);
                         }
                         cmd.Parameters.AddWithValue("@Address", Address);
+                        cmd.Parameters.AddWithValue("@CompleteAdress", CompleteAdress);
+                        cmd.Parameters.AddWithValue("@AdressDistrict", AdressDistrict);
+                        cmd.Parameters.AddWithValue("@OwnerName", OwnerName);
                         cmd.Parameters.AddWithValue("@District", District);
                         cmd.Parameters.AddWithValue("@Division", Division);
                         cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
@@ -4155,11 +4159,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
 
             return count;
         }
-
-        public DataTable PeriodicInspectionHistoryForAdmin()
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicInspectionHistoryForAdmin");
-        }
+        
         #region powerUtility
         public DataSet GetUtilityName()
         {
@@ -4189,11 +4189,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getEmailsForSubdivision", id);
         }
-        #endregion
-        public DataSet PeriodicInspectionDataForAdmin(string Id)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicInspectionDataForAdmin", Id);
-        }
+        #endregion       
         public DataSet NewRequestRecievedAsPeriodic(string Id, string TypeOfInspection)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedAsPeriodic", Id, TypeOfInspection);
@@ -4230,6 +4226,53 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
                 }
 
             }
+        }
+
+        #endregion
+        #region SLD 
+        public DataTable SldHistory(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId);
+        }
+        public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby);
+        }
+        public void SldApprovedByAdmin(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "Sp_ApproveSdlByAdmin";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@SLD_ID", SLD_ID);
+            cmd.Parameters.AddWithValue("@Status_type", Status_type);
+            cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
+            cmd.Parameters.AddWithValue("@SLDApproved", SLDApproved);
+            cmd.Parameters.AddWithValue("@Remarks", String.IsNullOrEmpty(Remarks) ? DBNull.Value : (object)Remarks);
+            cmd.Parameters.AddWithValue("@Rejection", String.IsNullOrEmpty(Rejection) ? DBNull.Value : (object)Rejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+        public DataSet ViewSldDocuments()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocument");
+        }
+        public DataSet PrintApprovalLetter(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApprovalCertificateForPreodic", Id);
+        }
+        public DataSet getInstallations(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getInstallationTypeForLetter", Id);
         }
 
         #endregion

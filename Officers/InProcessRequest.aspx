@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="InProcessRequest.aspx.cs" Inherits="CEIHaryana.Officers.InProcessRequest" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -109,13 +110,13 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="col-4">
-     <div class="form-group row">
-         <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-         <div class="col-sm-9" style="margin-left: -35px;">
-             <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control"  Font-Size="12px" onkeydown="return SearchOnEnter(event);"  onkeyup="Search_Gridview(this)" ></asp:TextBox><br />
-          </div>
-     </div>
- </div>
+                        <div class="form-group row">
+                            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+                            <div class="col-sm-9" style="margin-left: -35px;">
+                                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                            </div>
+                        </div>
+                    </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
@@ -132,7 +133,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                           <asp:TemplateField>
+                            <asp:TemplateField>
                                 <HeaderStyle Width="35%" CssClass="headercolor" />
                                 <ItemStyle Width="35%" />
                                 <HeaderTemplate>
@@ -143,6 +144,10 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="InspectionType" HeaderText="Inspection Type">
+                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="28%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
 
@@ -196,32 +201,32 @@
     <script>
         new DataTable('#example');
     </script>
-  <script type="text/javascript">
-      function Search_Gridview(strKey) {
-          var strData = strKey.value.toLowerCase().split(" ");
-          var tblData = document.getElementById("<%=GridView1.ClientID %>");
-          var rowData;
-          for (var i = 1; i < tblData.rows.length; i++) {
-              rowData = tblData.rows[i].innerHTML;
-              var styleDisplay = 'none';
-              for (var j = 0; j < strData.length; j++) {
-                  if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
-                      styleDisplay = '';
-                  else {
-                      styleDisplay = 'none';
-                      break;
-                  }
-              }
-              tblData.rows[i].style.display = styleDisplay;
-          }
+    <script type="text/javascript">
+        function Search_Gridview(strKey) {
+            var strData = strKey.value.toLowerCase().split(" ");
+            var tblData = document.getElementById("<%=GridView1.ClientID %>");
+            var rowData;
+            for (var i = 1; i < tblData.rows.length; i++) {
+                rowData = tblData.rows[i].innerHTML;
+                var styleDisplay = 'none';
+                for (var j = 0; j < strData.length; j++) {
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                        styleDisplay = '';
+                    else {
+                        styleDisplay = 'none';
+                        break;
+                    }
+                }
+                tblData.rows[i].style.display = styleDisplay;
+            }
 
-      }
-      function SearchOnEnter(event) {
-          if (event.keyCode === 13) {
-              event.preventDefault(); // Prevent default form submission
-              Search_Gridview(document.getElementById('txtSearch'));
-          }
-      }
+        }
+        function SearchOnEnter(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission
+                Search_Gridview(document.getElementById('txtSearch'));
+            }
+        }
 </script>
 </asp:Content>
 

@@ -957,6 +957,13 @@ namespace CEIHaryana.Contractor
                 DivOtherDepartment.Visible = true;
                 txtPAN.Text = "";
             }
+            ddlPoweUtility.SelectedValue = "0";
+            DdlWing.SelectedValue = "0";
+            DdlZone.SelectedValue = "0";
+            DdlCircle.SelectedValue = "0";
+            DdlDivision.SelectedValue = "0";
+            DdlSubDivision.SelectedValue = "0";
+
         }
         private void ddlPoweUtilityBind()
         {

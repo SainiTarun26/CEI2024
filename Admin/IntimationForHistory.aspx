@@ -177,7 +177,7 @@
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionReportId" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" id="TypeOfInspection" runat="server" visible="true">
                     <label>
                         Type of Inspection
                  <%--<samp style="color: red">* </samp>--%>
@@ -215,11 +215,11 @@
                     <label>SiteOwner Name</label>
                     <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-md-4" runat="server">
+                <div class="col-md-4"  id="ContractorName" runat="server" visible="true">
                     <label>Contractor Name</label>
                     <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-md-4" runat="server">
+                <div class="col-md-4" id="SupervisorName" runat="server" visible="true">
                     <label>Supervisor Name</label>
                     <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -240,7 +240,7 @@
                 <label for="Capacity">Capacity</label>
                 <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox>
             </div>
-                 <div class="col-md-4"  id="LineVoltage" runat="server">
+                 <div class="col-md-4"  id="LineVoltage" visible="true" runat="server">
                 <label for="Capacity">Voltage</label>
                 <asp:TextBox class="form-control" runat="server" ID="txtLineVoltage" ReadOnly="true"  Style="margin-left: 18px"> </asp:TextBox> 
             </div>
@@ -262,6 +262,10 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
+    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="Left" Width="15%" />
+</asp:BoundField>
                             <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />

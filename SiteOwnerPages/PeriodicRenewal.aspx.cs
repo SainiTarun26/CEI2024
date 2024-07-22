@@ -403,6 +403,14 @@ namespace CEIHaryana.SiteOwnerPages
 
                             Label LblAddress = (Label)row.FindControl("LblAddress");
                             string Address = LblAddress.Text;
+
+                            Label LblCompleteAdress = (Label)row.FindControl("LblCompleteAdress");
+                            string CompleteAddress = LblCompleteAdress.Text;
+                            Label LblADRESSDistrict = (Label)row.FindControl("LblADRESSDistrict");
+                            string AddressDistrict = LblADRESSDistrict.Text;
+                            Label LblOwnerName = (Label)row.FindControl("LblOwnerName");
+                            string OwnerName = LblOwnerName.Text;
+
                             Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
                             string InstallationName = LblInstallationName.Text;
 
@@ -413,8 +421,9 @@ namespace CEIHaryana.SiteOwnerPages
                             Label lblCount = (Label)row.FindControl("LblCount") as Label;
                             string Count = lblCount.Text;
 
+
                             CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
-                                 inspectionDueDate, DelayedDays, Voltage, Capacity, Address, District, Division, id, "1");
+                                 inspectionDueDate, DelayedDays, Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }

@@ -14,7 +14,8 @@ namespace CEIHaryana.Admin
     public partial class IntimationForHistory : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string Id ,StaffTo, AssignFrom;
+        string Id, StaffTo, AssignFrom;
+        string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -26,7 +27,7 @@ namespace CEIHaryana.Admin
                         txtWorkType.Text = "Line";
                         Id = Session["LineID"].ToString();
                     }
-                    else if (Session["SubStationID"] != null && Convert.ToString(Session["LineID"]) != "" )
+                    else if (Session["SubStationID"] != null && Convert.ToString(Session["LineID"]) != "")
                     {
                         txtWorkType.Text = "Substation Transformer";
                         Id = Session["SubStationID"].ToString();
@@ -36,9 +37,14 @@ namespace CEIHaryana.Admin
                         txtWorkType.Text = "Generating Station";
                         Id = Session["GeneratingSetId"].ToString();
                     }
+                    else if (Session["PeriodicMultiple"] != null && Convert.ToString(Session["PeriodicMultiple"]) != "")
+                    {
+                        txtWorkType.Text = "Multiple";
+                        Id = Session["PeriodicMultiple"].ToString();
+                    }
 
                     GetDetailsWithId();
-                                                     
+
                 }
             }
             catch (Exception ex)
@@ -47,7 +53,7 @@ namespace CEIHaryana.Admin
             }
         }
 
-      
+
         private void BindDivisions(string District)
         {
             DataSet ds = new DataSet();
@@ -56,9 +62,9 @@ namespace CEIHaryana.Admin
             ddlDivisions.DataTextField = "HeadOffice";
             ddlDivisions.DataValueField = "HeadOffice";
             ddlDivisions.DataBind();
-            ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));           
+            ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
             ds.Clear();
-        }       
+        }
         private void GetDetailsWithId()
         {
             try
@@ -68,41 +74,97 @@ namespace CEIHaryana.Admin
                 ds = CEI.InspectionData(ID);
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                    txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                    if (txtWorkType.Text == "Line")
+                    Type = ds.Tables[0].Rows[0]["IType"].ToString();
+
+                    if (Type == "New")
                     {
-                        Capacity.Visible = false;
-                        LineVoltage.Visible = true;
-                        txtLineVoltage.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                        txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                        txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                        if (txtWorkType.Text == "Line")
+                        {
+                            Capacity.Visible = false;
+                            LineVoltage.Visible = true;
+                            txtLineVoltage.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                        }
+                        else
+                        {
+                            LineVoltage.Visible = false;
+                            Capacity.Visible = true;
+                            txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                        }
+                        txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+
+                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+                        txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     }
-                    else
+                    else if (Type == "Periodic")
                     {
-                        LineVoltage.Visible = false;
-                        Capacity.Visible = true;
-                        txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                        if (txtWorkType.Text != "Multiple")
+                        {
+                            txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                            txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                            txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                            txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                            if (txtWorkType.Text == "Line")
+                            {
+                                Capacity.Visible = false;
+                            }
+                            else
+                            {
+                                Capacity.Visible = true;
+                                txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                            }
+                            txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                            txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+
+                            txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                            ContractorName.Visible = false;
+                            SupervisorName.Visible = false;
+                            LineVoltage.Visible = false;
+
+                            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                            txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                            TypeOfInspection.Visible = false;
+
+                        }
+                        else
+                        {
+                            txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                            txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                            txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                            txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                            txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                            txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                            txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                            ContractorName.Visible = false;
+                            SupervisorName.Visible = false;
+                            LineVoltage.Visible = false;
+
+                            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                            txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                            TypeOfInspection.Visible = false;
+                            grd_Documemnts.Columns[1].Visible = true;
+
+                        }
                     }
-                    txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                    txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-
-                    txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                    txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
-                    txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
-
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-
                     GridBindDocument();
                     BindDivisions(txtDistrict.Text.Trim());
 
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage","alert('Data Not found For this inspection');",true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('Data Not found For this inspection');", true);
                 }
             }
             catch (Exception ex)
@@ -437,16 +499,17 @@ namespace CEIHaryana.Admin
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx");
+            Session["InspectionId"] = "";
         }
-       
+
         protected void btnAction_Click(object sender, EventArgs e)
         {
             try
             {
-               // BindDivisions();
+                // BindDivisions();
                 ApprovalRequired.Visible = true;
                 DivToAssign.Visible = true;
-                btnUpdate.Visible = true;               
+                btnUpdate.Visible = true;
                 btnAction.Visible = false;
 
             }
@@ -455,22 +518,22 @@ namespace CEIHaryana.Admin
 
             }
         }
-        
+
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                if(Session["InspectionId"] != null && Convert.ToString(Session["InspectionId"]) != "" && Session["AdminID"] != null)
+                if (Session["InspectionId"] != null && Convert.ToString(Session["InspectionId"]) != "" && Session["AdminID"] != null)
                 {
                     ID = Session["InspectionId"].ToString();
-                    AssignFrom= Session["AdminID"].ToString();
-                    if(ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
+                    AssignFrom = Session["AdminID"].ToString();
+                    if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
                     {
                         StaffTo = ddlToAssign.SelectedValue;
                         CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
 
-                        ddlDivisions.SelectedIndex = 0;                        
-                        ddlToAssign.SelectedIndex = 0;                       
+                        ddlDivisions.SelectedIndex = 0;
+                        ddlToAssign.SelectedIndex = 0;
 
                         //string script =  $"alert('Inspection sent to {StaffTo} successfully.');";
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
@@ -483,8 +546,8 @@ namespace CEIHaryana.Admin
                     {
                         ddlToAssign.Focus();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
-                    }  
-                }                
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -500,16 +563,15 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     ID = Session["InspectionId"].ToString();
-                   
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        string script = $@"<script>window.open('{fileName}','_blank');</script>";
-                        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                    
+
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
                 }
             }
             catch (Exception ex)
             {
-                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
         }
         private void BindDropDownToAssign(string Division)
@@ -522,7 +584,7 @@ namespace CEIHaryana.Admin
                 ddlToAssign.DataTextField = "Staff";
                 ddlToAssign.DataValueField = "StaffUserId";
                 ddlToAssign.DataBind();
-                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));                
+                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
                 dsAssign.Clear();
             }
             catch (Exception ex)
@@ -533,7 +595,7 @@ namespace CEIHaryana.Admin
 
         protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
+            if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
             {
                 BindDropDownToAssign(ddlDivisions.SelectedValue);
             }
@@ -562,7 +624,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 //throw;
             }
         }

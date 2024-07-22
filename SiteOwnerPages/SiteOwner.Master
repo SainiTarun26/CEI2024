@@ -380,6 +380,18 @@
                                     <span class="menu-title">Periodic Renewal Cart</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/SldUpload.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">SLD Request</span>
+                                </a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/SldHistory.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">SLD History</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

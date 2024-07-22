@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEIHaryana.Admin
+namespace CEIHaryana.SiteOwnerPages
 {
 
 
-    public partial class PeriodicInspectionHistoryForAdmin
+    public partial class SldHistory
     {
 
         /// <summary>

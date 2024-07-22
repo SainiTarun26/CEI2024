@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         .headercolor {
             background-color: #9292cc;
@@ -94,16 +94,15 @@
             text-align: center;
         }
 
-        input#ContentPlaceHolder1_RadioButtonList2_1 {
+        /* input#ContentPlaceHolder1_RadioButtonList2_1 {
             margin-left: 15px;
             margin-right: 5px !important;
         }
 
         input#ContentPlaceHolder1_RadioButtonList2_0 {
             margin-right: 5px !important;
-        }
+        }*/
     </style>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -115,7 +114,6 @@
                             <asp:Label ID="lblData" runat="server"></asp:Label></h6>
                     </div>
                     <div class="col-sm-6 col-md-6"></div>
-
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: -25px !important;">
@@ -127,12 +125,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8" style="display: flex; place-content: end; place-items: baseline;">
+                        <%--   <div class="col-md-8" style="display: flex; place-content: end; place-items: baseline;">
                             <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                                 <asp:ListItem Text="New Inspection" Value="0" Selected="True"></asp:ListItem>
                                 <asp:ListItem Text="Periodic Inspection" Value="1"></asp:ListItem>
                             </asp:RadioButtonList>
-                             </div>
+                             </div>--%>
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
@@ -154,7 +152,6 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                             <asp:TemplateField>
                                 <HeaderStyle Width="35%" CssClass="headercolor" />
                                 <ItemStyle Width="35%" />
@@ -165,41 +162,38 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
+                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="28%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="32%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ApplicantFor" HeaderText="Applicant Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="RequestStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="InspectionRemarks" HeaderText="Inspection Remarks">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -211,7 +205,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView2" runat="server" Width="100%"
+                    <%--     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView2" runat="server" Width="100%"
      AutoGenerateColumns="false" OnRowCommand="GridView2_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView2_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
      <Columns>
          <asp:TemplateField HeaderText="Id" Visible="False">
@@ -247,11 +241,6 @@
 
              <ItemStyle HorizontalAlign="center" Width="28%" />
          </asp:BoundField>
-       <%--  <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name" Visible="false">
-             <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
-
-             <ItemStyle HorizontalAlign="center" Width="32%" />
-         </asp:BoundField>--%>
          <asp:BoundField DataField="ApplicantFor" HeaderText="Applicant Type">
              <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
@@ -287,11 +276,10 @@
      <SortedAscendingHeaderStyle BackColor="#007DBB" />
      <SortedDescendingCellStyle BackColor="#CAC9C9" />
      <SortedDescendingHeaderStyle BackColor="#00547E" />
- </asp:GridView>
+ </asp:GridView>--%>
                 </div>
             </div>
         </div>
-
     </div>
     <footer class="footer">
     </footer>
@@ -316,7 +304,6 @@
                 }
                 tblData.rows[i].style.display = styleDisplay;
             }
-
         }
         function SearchOnEnter(event) {
             if (event.keyCode === 13) {

@@ -202,7 +202,7 @@
                                     
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="*Select" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlInspectionType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                    
-                                    <asp:TextBox ID="txtInspectionDate" CssClass="form-control" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" ></asp:TextBox>
+                                    <asp:TextBox ID="txtInspectionDate" CssClass="form-control" Type="Date" min='0000-01-01' max='9999-01-01' runat="server"  onfocus="disableFutureDates()"></asp:TextBox>
                                     <br/>
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInspectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*Please Select</asp:RequiredFieldValidator>
                                 </ItemTemplate>
@@ -234,5 +234,15 @@
         </div>
 
     </div>
+     <script type="text/javascript">
+         function disableFutureDates() {
+             var today = new Date().toISOString().split('T')[0];
+             var dateInputs = document.querySelectorAll('input[type="date"]');
+             dateInputs.forEach(function (input) {
+                 input.setAttribute('max', today);
+             });
+         }
+     </script>
+
 
 </asp:Content>

@@ -69,6 +69,8 @@ namespace CEIHaryana.Admin
                     string installationType = lblInstallationType.Text.Trim();
                     Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
                     string TestRportId = lblTestRportId.Text.Trim();
+                    //if (installationType != "Multiple")
+                    //{
                     if (installationType.Trim() == "Line")
                     {
                         Session["LineID"] = installationType;
@@ -81,22 +83,47 @@ namespace CEIHaryana.Admin
                     {
                         Session["GeneratingSetId"] = TestRportId;
                     }
-
+                    else if (installationType == "Multiple")
+                    {
+                        Session["PeriodicMultiple"] = installationType;
+                    }
                     if (e.CommandName == "Select")
                     {
-                        Response.Redirect("/Admin/IntimationForHistory.aspx");
+                        Response.Redirect("/Admin/IntimationForHistory.aspx", false);
                     }
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
                     }
+                    //}
+                    //else
+                    //{
+                    //    Session["PeriodicMultiple"] = installationType;
+                    //    if (e.CommandName == "Select")
+                    //    {
+                    //        Response.Redirect("/Admin/MultiplePeriodicInspectionDetail.aspx", false);
+                    //    }
+                    //    else
+                    //    {
+                    //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
+                    //    }
+                    //}
+
+                    //if (e.CommandName == "Select")
+                    //{
+                    //    Response.Redirect("/Admin/IntimationForHistory.aspx",false);
+                    //}
+                    //else
+                    //{
+                    //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
+                    //}
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -106,7 +133,7 @@ namespace CEIHaryana.Admin
                 GridView1.PageIndex = e.NewPageIndex;
                 BindGrid();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
