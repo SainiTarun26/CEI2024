@@ -83,7 +83,7 @@ namespace CEIHaryana.Print_Forms
                     ID = Session["InspectionId"].ToString();
 
                 }
-               // ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.getInstallations(ID);
                 if (ds.Tables.Count > 0)
@@ -106,5 +106,6 @@ namespace CEIHaryana.Print_Forms
             }
         }
 
+        
     }
 }

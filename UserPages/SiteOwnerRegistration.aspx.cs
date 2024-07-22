@@ -175,10 +175,13 @@ namespace CEIHaryana.UserPages
                     ,Address, District, PinCode, PhoneNumber, Email);
                 if (Ad>0)
                 {
-                    CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Registration Succesffuly,Your userId And Password is sent to email ')", true);
+                    CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber); //alert(\"This UserName Already in use\");"
+                    string script = "alert(\"Registration Succesffuly,Your userId And Password is sent to email\");";
+                   // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
-                Response.Redirect("Login.aspx",false);
+                Response.Redirect("~/Login.aspx",false);
             }
             catch (Exception ex)
             {

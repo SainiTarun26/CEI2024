@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
@@ -117,38 +117,24 @@
             border-style: none;
         }
     </style>
-   
+
     <script type="text/javascript">
+
+        $(document).ready(function () {
+          
+            window.print();
+        });
+
+    </script>
+    <%--<script type="text/javascript">
         function printDiv(printableDiv) {
             var printContents = document.getElementById(printableDiv).innerHTML;
             var originalContents = document.body.innerHTML;
-
             document.body.innerHTML = printContents;
             window.print();
-          
         }
+    </script>--%>
 
-    </script>
-    <script type="text/javascript">
-        function countLines(textbox) {
-            // Split the text into lines
-            var lines = textbox.value.split('\n');
-
-            // Initialize counter
-            var counter = 1;
-
-            // Loop through each line and add the counter if the line is not empty
-            for (var i = 0; i < lines.length; i++) {
-                if (lines[i].trim() !== '') {
-                    lines[i] = counter + ". " + lines[i];
-                    counter += 2; // Increase counter by 2 for the next line
-                }
-            }
-
-            // Set the textbox value with the updated lines
-            textbox.value = lines.join('\n');
-        }
-    </script>
     <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
@@ -164,17 +150,17 @@
     </script>
 
 </head>
-<body>
+<body onload="printDiv('printableDiv')">
     <form id="form1" runat="server">
         <div>
             <div class="content-wrapper">
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                        <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" OnClientClick="printDiv('printableDiv');" Visible="false"
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
+                        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" Visible="false"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
 
@@ -192,8 +178,8 @@
                                     <asp:Label ID="lblAddress1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                     <asp:Label ID="lblAdress4" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                 
+                                    <asp:Label ID="lblAdress4" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+
                                 </div>
                             </div>
                             <hr />
@@ -241,21 +227,24 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <br />
                             <div class="row">
                                 <div class="col-1">
                                     <p>Sub:-</p>
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
-                                  
+
                                     <span style="font-weight: bold; font-size: 22px; border: none !important;">Annual Inspection of installation comprising of
-                                        <asp:Label ID="lblVoltage" runat="server"></asp:Label> under Rule Central Electricity Authority (Measures relating to
-                                        Safety and Electric supply) Regulations, 2023 for the year <asp:Label ID="Year" runat="server"></asp:Label> </span>
+                                        <asp:Label ID="lblVoltage" runat="server"></asp:Label>
+                                        under Rule Central Electricity Authority (Measures relating to
+                                        Safety and Electric supply) Regulations, 2023 for the year
+                                        <asp:Label ID="Year" runat="server"></asp:Label>
+                                    </span>
                                 </div>
                             </div>
                             <br />
-                            
+
                             <br />
                             <div class="row">
                                 <div class="col-12">
@@ -264,41 +253,41 @@
                                         Regulations, 2023. However the firm is required to keep all the pparameters i.e Oil Test Result. IR Values, Tan Delta, Earth Resistance of T/F or D.g sets with in the safe linits. An index of all test result as per schedule V of the CEa Regulations, shall be recorded by Authorised person and same be shown during the annual inspection.
                                         List of Installations are cited below:
                                       
-                                         <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server"  AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
-                        <HeaderStyle BackColor="#B7E2F0" />
-                        <Columns>
-                             <asp:BoundField DataField="InstallationName" HeaderText="Installation Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Capacity" HeaderText="CapacityOrVoltage">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            
-                        </Columns>
-                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>
+                                         <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                                             <HeaderStyle BackColor="#B7E2F0" />
+                                             <Columns>
+                                                 <asp:BoundField DataField="InstallationName" HeaderText="Installation Name">
+                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                 </asp:BoundField>
+                                                 <asp:BoundField DataField="Capacity" HeaderText="CapacityOrVoltage">
+                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                 </asp:BoundField>
+
+                                             </Columns>
+                                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                                         </asp:GridView>
                                         <p>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEa Regulations, 2010 be ensured in the installation at your end and the electrical installation be maintained and
                                             operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
                                         <br />
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You are further advised to install the smart meter to read the energy generated and send the monthly statement of the units generated from your DG Sets to this Department. 
-                                             <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
+                                             <%--<div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
                                                  <span id="Span1" runat="server"></span>
                                                  <span id="Span2" runat="server"></span>
                                                  <span id="Span3" runat="server"></span>
                                                  <span id="Span4" runat="server" style="margin-bottom: 15px !important;"></span>
-                                             </div>
+                                             </div>--%>
                                             <br />
-                                           <%-- <div style="display:flex;">
+                                            <%-- <div style="display:flex;">
                                             <span style="font-weight: bold; font-size: 22px; border: none !important;">Note:-</span>&nbsp;
                                             <p>Further the firm is not absolved of its responsibility to run the D.G sets as per
                                             running hour restricted in the general classification regarding use the D.g sets in NCR as per latest Directions N0.77 issued on dated
                                             <asp:Label ID="NoteDate" runat="server" Text="date"></asp:Label></p></div>--%>
-                                        
-                                          <%--  <p>For Next Inspection shall due in--%>
-                                          <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
+
+                                            <%--  <p>For Next Inspection shall due in--%>
+                                            <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
                                         </p>
                                     </p>
                                 </div>
@@ -322,7 +311,7 @@
                                     </p>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
