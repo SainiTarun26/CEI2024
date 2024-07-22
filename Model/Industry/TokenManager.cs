@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Text;
+using CEI_PRoject;
 
 namespace CEIHaryana.Model.Industry
 {
@@ -66,7 +67,8 @@ namespace CEIHaryana.Model.Industry
                 dynamic jsonResponse = JsonConvert.DeserializeObject(response);
                 result = jsonResponse.refresh_token;
 
-                //LogToIndustryDatabase("https://staging.investharyana.in/api/getrefresh-token", "POST", client.Headers.ToString(), "application/json", inputJson, "200", client.ResponseHeaders.ToString(), response);
+                CEI CEI = new CEI();
+                CEI.LogToIndustryApiErrorDatabase("https://staging.investharyana.in/api/getrefresh-token", "POST", client.Headers.ToString(), "application/json", inputJson, "200", client.ResponseHeaders.ToString(), response);
             }
             catch (WebException ex)
             {
@@ -112,7 +114,8 @@ namespace CEIHaryana.Model.Industry
                 dynamic jsonResponse = JsonConvert.DeserializeObject(response);
                 result = jsonResponse.access_token;
 
-                //LogToIndustryDatabase("https://staging.investharyana.in/api/getaccess-token", "POST", client.Headers.ToString(), "application/json", inputJson, "200", client.ResponseHeaders.ToString(), response);
+                CEI CEI = new CEI();
+                CEI.LogToIndustryApiErrorDatabase("https://staging.investharyana.in/api/getaccess-token", "POST", client.Headers.ToString(), "application/json", inputJson, "200", client.ResponseHeaders.ToString(), response);
             }
             catch (WebException ex)
             {
