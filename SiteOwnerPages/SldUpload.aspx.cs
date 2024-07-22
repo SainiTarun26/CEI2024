@@ -51,7 +51,7 @@ namespace CEIHaryana.SiteOwnerPages
                   
                         if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/")))
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Copy of Work Order/"));
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/"));
                         }
 
                         string ext = Path.GetExtension(customFile.FileName);

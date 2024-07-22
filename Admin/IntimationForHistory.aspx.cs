@@ -154,9 +154,10 @@ namespace CEIHaryana.Admin
                             txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                             txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                             TypeOfInspection.Visible = false;
-                            grd_Documemnts.Columns[1].Visible = true;
+                            
 
                         }
+                        grd_Documemnts.Columns[1].Visible = true;
                     }
                     GridBindDocument();
                     BindDivisions(txtDistrict.Text.Trim());
