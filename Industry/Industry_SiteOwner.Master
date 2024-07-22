@@ -1,0 +1,540 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Industry_SiteOwner.master.cs" Inherits="CEIHaryana.Industry.Industry_SiteOwner" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>CEI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/Assets/css/feather/feather.css">
+    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/css/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/Assets/css/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css">
+    <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css">
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <style type="text/css">
+        span#Slash {
+            margin-left: 7px;
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        span#LoginType {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        div#PageDetails {
+            margin: 15px 35px 15px 35px;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-bottom: -25px;
+            background: #639fc2;
+            color: white;
+            font-weight: 600;
+        }
+
+        .main-panel {
+            background: #f9f9f9;
+        }
+
+        img {
+            max-width: 100% !important;
+        }
+
+        span.menu-title {
+            COLOR: #F9F9F9 !IMPORTANT;
+        }
+
+        ::before {
+            color: #382c2c;
+        }
+
+        img {
+            height: 55px !important;
+            width: 186px;
+            margin-left: 40px !important;
+        }
+
+        .avatar {
+            width: 60px !important;
+        }
+
+        nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
+            box-shadow: 0px 5px 21px -5px #CDD1E1;
+        }
+
+        .notification-box {
+            border: 0px !important;
+            box-shadow: none !important;
+        }
+
+        .dropdown-menu.dropdown-menu-right.navbar-dropdown.preview-list.show {
+            width: max-content;
+        }
+
+        .scrollable-content {
+            max-height: 200px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+
+        svg {
+            margin-right: 10px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="container-scroller">
+                <!-- partial:partials/_navbar.html -->
+                <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+                    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                        <a class="navbar-brand brand-logo mr-5" href="#">
+                            <img src="../Assets/Add%20a%20heading%20(1).png" /></a>
+                    </div>
+                    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                            <span class="icon-menu header-icon" style="color: black !important;"></span>
+                        </button>
+                        <%--  <ul class="navbar-nav mr-lg-2">
+                            <li class="nav-item nav-search d-none d-lg-block">
+                                <div class="input-group">
+                                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                        <span class="input-group-text" id="search" style="margin-right: 5px;">
+                                            <i class="icon-search"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search" style="border-radius: 5px; padding: 0px 0px 3px 17px; width: 400px;">
+                                </div>
+                            </li>
+                        </ul>--%>
+                        <%-- <div class="col-3"></div>
+                        <span>
+                            <asp:TextBox class="form-control" ID="txtLoginType" TabIndex="7" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </span>
+
+                        <div class="row">
+                            <label id="nameandid" for="test">Name:</label>
+                            <span>
+                                <asp:TextBox class="form-control" ID="textName" TabIndex="7" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                            </span>
+                        </div>--%>
+
+                        <ul class="navbar-nav navbar-nav-right">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                                    <i class="icon-bell mx-0"></i>
+                                    <span class="count"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                                    <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                                    <a class="dropdown-item preview-item">
+                                        <div class="preview-thumbnail">
+                                            <div class="preview-icon bg-info">
+                                                <i class="ti-bell mx-0"></i>
+                                            </div>
+                                        </div>
+                                        <div class="preview-item-content">
+                                            <div class="scrollable-content">
+                                                <asp:PlaceHolder runat="server" ID="TextBoxPlaceholder"></asp:PlaceHolder>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-profile dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                                    <img class="avatar" src="/Assets/images.png" alt="profile" />
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                                    <a class="dropdown-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+                                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                                        </svg>
+                                        <asp:Label ID="lblName" runat="server" />
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                            <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" />
+                                        </svg>
+
+                                        <asp:Button ID="btnLogout" OnClick="btnLogout_Click" Visible="false" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                    </a>
+                                </div>
+                            </li>
+                            <%--<li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+              <i class="icon-ellipsis"></i>
+            </a>
+          </li>--%>
+                        </ul>
+                        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                            <span class="icon-menu"></span>
+                        </button>
+                    </div>
+                </nav>
+                <div class="page-body-wrapper">
+                    <div class="theme-setting-wrapper">
+                        <div id="theme-settings" class="settings-panel">
+                            <i class="settings-close ti-close"></i>
+                            <p class="settings-heading">SIDEBAR SKINS</p>
+                            <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                                <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                                Light
+                           
+                            </div>
+                            <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                                <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                                Dark
+                           
+                            </div>
+                            <p class="settings-heading mt-2">HEADER SKINS</p>
+                            <div class="color-tiles mx-0 px-4">
+                                <div class="tiles success"></div>
+                                <div class="tiles warning"></div>
+                                <div class="tiles danger"></div>
+                                <div class="tiles info"></div>
+                                <div class="tiles dark"></div>
+                                <div class="tiles default"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right-sidebar" class="settings-panel">
+                        <i class="settings-close ti-close"></i>
+                        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="setting-content">
+                            <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+                                <div class="add-items d-flex px-3 mb-0">
+                                    <form class="form w-100">
+                                        <div class="form-group d-flex">
+                                            <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                                            <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="list-wrapper px-3">
+                                    <ul class="d-flex flex-column-reverse todo-list">
+                                        <li>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="checkbox" type="checkbox">
+                                                    Team review meeting at 3.00 PM
+                                               
+                                                </label>
+                                            </div>
+                                            <i class="remove ti-close"></i>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="checkbox" type="checkbox">
+                                                    Prepare for presentation
+                                               
+                                                </label>
+                                            </div>
+                                            <i class="remove ti-close"></i>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="checkbox" type="checkbox">
+                                                    Resolve all the low priority tickets due today
+                                               
+                                                </label>
+                                            </div>
+                                            <i class="remove ti-close"></i>
+                                        </li>
+                                        <li class="completed">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="checkbox" type="checkbox" checked>
+                                                    Schedule meeting for next week
+                                               
+                                                </label>
+                                            </div>
+                                            <i class="remove ti-close"></i>
+                                        </li>
+                                        <li class="completed">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="checkbox" type="checkbox" checked>
+                                                    Project review
+                                               
+                                                </label>
+                                            </div>
+                                            <i class="remove ti-close"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
+                                <div class="events pt-4 px-3">
+                                    <div class="wrapper d-flex mb-2">
+                                        <i class="ti-control-record text-primary mr-2"></i>
+                                        <span>Feb 11 2018</span>
+                                    </div>
+                                    <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+                                    <p class="text-gray mb-0">The total number of sessions</p>
+                                </div>
+                                <div class="events pt-4 px-3">
+                                    <div class="wrapper d-flex mb-2">
+                                        <i class="ti-control-record text-primary mr-2"></i>
+                                        <span>Feb 7 2018</span>
+                                    </div>
+                                    <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+                                    <p class="text-gray mb-0 ">Call Sarah Graves</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+                                <div class="d-flex align-items-center justify-content-between border-bottom">
+                                    <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+                                    <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
+                                </div>
+                                <ul class="chat-list">
+                                    <li class="list active">
+                                        <div class="profile">
+                                            <img src="images/faces/face1.jpg" alt="image"><span class="online"></span>
+                                        </div>
+                                        <div class="info">
+                                            <p>Thomas Douglas</p>
+                                            <p>Available</p>
+                                        </div>
+                                        <small class="text-muted my-auto">19 min</small>
+                                    </li>
+                                    <li class="list">
+                                        <div class="profile">
+                                            <img src="images/faces/face2.jpg" alt="image"><span class="offline"></span>
+                                        </div>
+                                        <div class="info">
+                                            <div class="wrapper d-flex">
+                                                <p>Catherine</p>
+                                            </div>
+                                            <p>Away</p>
+                                        </div>
+                                        <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                                        <small class="text-muted my-auto">23 min</small>
+                                    </li>
+                                    <li class="list">
+                                        <div class="profile">
+                                            <img src="images/faces/face3.jpg" alt="image"><span class="online"></span>
+                                        </div>
+                                        <div class="info">
+                                            <p>Daniel Russell</p>
+                                            <p>Available</p>
+                                        </div>
+                                        <small class="text-muted my-auto">14 min</small>
+                                    </li>
+                                    <li class="list">
+                                        <div class="profile">
+                                            <img src="images/faces/face4.jpg" alt="image"><span class="offline"></span>
+                                        </div>
+                                        <div class="info">
+                                            <p>James Richardson</p>
+                                            <p>Away</p>
+                                        </div>
+                                        <small class="text-muted my-auto">2 min</small>
+                                    </li>
+                                    <li class="list">
+                                        <div class="profile">
+                                            <img src="images/faces/face5.jpg" alt="image"><span class="online"></span>
+                                        </div>
+                                        <div class="info">
+                                            <p>Madeline Kennedy</p>
+                                            <p>Available</p>
+                                        </div>
+                                        <small class="text-muted my-auto">5 min</small>
+                                    </li>
+                                    <li class="list">
+                                        <div class="profile">
+                                            <img src="images/faces/face6.jpg" alt="image"><span class="online"></span>
+                                        </div>
+                                        <div class="info">
+                                            <p>Sarah Graves</p>
+                                            <p>Available</p>
+                                        </div>
+                                        <small class="text-muted my-auto">47 min</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
+
+
+                        <ul class="nav">
+<%--commented to conditionally enable link --%>
+<%--                            <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/CreateTestReports_Industry.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Raise Request For 
+                                        <br />
+                                        Inspection</span>
+                                </a>
+                            </li>--%>
+
+                            <li class="nav-item">
+                                <% 
+                                    if (Session["InspectionLinkDisable"] != null)
+                                    {
+                                                int inspectionLinkDisable;
+                                                if (int.TryParse(Session["InspectionLinkDisable"].ToString(), out inspectionLinkDisable) &&
+                                                    (inspectionLinkDisable == 2 || inspectionLinkDisable == 3))
+                                                {
+                                                                    // Link is disabled
+                                                        %>
+                                                        <span class="nav-link ShowMessage" id="disabledLink">
+                                                            <i class="icon-layout menu-icon"></i>
+                                                            <span class="menu-title">Raise Request For
+                                                                <br />
+                                                                Inspection</span>
+                                                        </span>
+                                                        <% 
+                                                }
+
+                                    }
+                                    else
+                                    {
+                                                // Link is enabled when session value is null
+                                        %>
+                                        <a class="nav-link" href="/SiteOwnerPages/GenerateInspection_Industry.aspx">
+                                            <i class="icon-layout menu-icon"></i>
+                                            <span class="menu-title">Raise Request For
+                                                <br />
+                                                Inspection</span>
+                                        </a>
+                                        <% 
+                                    }
+                                %>
+                            </li>
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/InspectionHistory_Industry.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Inspection Status</span>
+                                </a>
+                            </li>
+
+                            <%--   <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/Work_Intimation.aspx">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="white"
+                                        viewBox="0 0 576 512">
+                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                        <path d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384v38.6C310.1 219.5 256 287.4 256 368c0 59.1 29.1 111.3 73.7 143.3c-3.2 .5-6.4 .7-9.7 .7H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM288 368a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm211.3-43.3c-6.2-6.2-16.4-6.2-22.6 0L416 385.4l-28.7-28.7c-6.2-6.2-16.4-6.2-22.6 0s-6.2 16.4 0 22.6l40 40c6.2 6.2 16.4 6.2 22.6 0l72-72c6.2-6.2 6.2-16.4 0-22.6z" />
+                                    </svg>
+                                    <span class="menu-title">Work Intimation</span>
+                                </a>
+                            </li>
+                         <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/PreviousProjects.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Work Intimations History</span>
+                                </a>
+                            </li>
+                
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/TestReportForContractor.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Approval Pending Test
+                                       
+                                        <br />
+                                        Reports</span>
+                                </a>
+                            </li>
+                       
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/Approved_Test_Reports.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Action Taken</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/Attach_DeAttach_Staff.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Add/Remove Staff</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/ReturnedInspection.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Returned Inspections</span>
+                                </a>
+                            </li>--%>
+                        </ul>
+                    </nav>
+                    <div class="main-panel">
+<%--                        <div class="card" id="PageDetails">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <asp:Label ID="LoginType" runat="server" Text="Contractor"></asp:Label>
+                                </div>
+                                <div class="col-sm-3" style="text-align: end;">
+                                    <asp:Label ID="PersonDetails" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                        </div>--%>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="/Assets/js/js/vendor.bundle.base.js"></script>
+    <script src="/Assets/js/chart.js/Chart.min.js"></script>
+    <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
+    <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="/Assets/js/dataTables.select.min.js"></script>
+    <script src="/Assets/js/off-canvas.js"></script>
+    <script src="/Assets/js/hoverable-collapse.js"></script>
+    <script src="/Assets/js/template.js"></script>
+    <script src="/Assets/js/settings.js"></script>
+    <script src="/Assets/js/todolist.js"></script>
+    <script src="/Assets/js/dashboard.js"></script>
+    <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var disabledLink = document.getElementById('disabledLink');
+             if (disabledLink && disabledLink.classList.contains('ShowMessage')) {
+                 disabledLink.addEventListener('click', function () {
+                     var inspectionLinkDisable = '<%= Session["InspectionLinkDisable"] %>';
+                     if (inspectionLinkDisable == '2') {
+                         alert('You Have Already Raised Inspection For This TestReportId.');
+                     }
+                     if (inspectionLinkDisable == '3') {
+                         alert('Your Recent TestReport Id Is Not Approved By Contractor.');
+                     }
+
+                    window.location.href = "/SiteOwnerPages/InspectionHistory_Industry.aspx";
+                });
+        }
+    });
+    </script>
+
+</body>
+</html>

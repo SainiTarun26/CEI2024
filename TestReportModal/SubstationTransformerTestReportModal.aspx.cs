@@ -50,8 +50,26 @@ namespace CEIHaryana.TestReportModal
                         }
                     }
                     else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
-                    {                       
+                    {
                         ID = Session["SubStationID"].ToString();
+                        GetDetailswithId();
+
+                        SiteOwner.Visible = false;
+                        SiteOwner2.Visible = true;
+                        IntimationData.Visible = true;
+                        ApprovalCard.Visible = true;
+                        //CreatedDate.Visible = true; //Added
+                        //SubmitDate.Visible = true;
+                        //SubmitBy.Visible = true;
+                    }
+                    else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
+                    {
+                        if (Request.UrlReferrer != null)
+                        {
+                            Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                        }
+
+                        ID = Session["SubStationID_Industry"].ToString();
                         GetDetailswithId();
 
                         SiteOwner.Visible = false;
@@ -72,7 +90,7 @@ namespace CEIHaryana.TestReportModal
                         btnNext.Text = "Back";
 
                     }
-                    else if (Session["IntimationForHistoryId"] != null && Session["IntimationForHistoryId"].ToString() != "" )
+                    else if (Session["IntimationForHistoryId"] != null && Session["IntimationForHistoryId"].ToString() != "")
                     {
                         ID = Session["IntimationForHistoryId"].ToString();
                         GetDetailswithId();
@@ -84,18 +102,18 @@ namespace CEIHaryana.TestReportModal
                     {
                         if (Session["SupervisorID"] != null && Session["SupervisorID"].ToString() != "")
                         {
-                           
-                            
+
+
                         }
                         if (Session["AdminID"] != null)
                         {
-                            
+
                         }
                         ID = Session["SubStationID"].ToString();
                         GetDetailswithId();
                         Supervisor.Visible = true;
                         IntimationData.Visible = true;
-                       
+
                     }
                 }
             }
@@ -203,7 +221,7 @@ namespace CEIHaryana.TestReportModal
                 txtHTType.Text = ds.Tables[0].Rows[0]["TypeofHTPrimarySideSwitch"].ToString();
                 if (txtHTType.Text == "Breaker")
                 {
-                    TypeOfHTBreaker.Visible = true;                  
+                    TypeOfHTBreaker.Visible = true;
                     Breaker.Visible = true;
                 }
                 txtTransformerCapacity.Text = ds.Tables[0].Rows[0]["TransformerCapacity"].ToString();
@@ -216,7 +234,7 @@ namespace CEIHaryana.TestReportModal
                 txtLTSideInsulation.Text = ds.Tables[0].Rows[0]["LtInsulationLVEarth"].ToString();
                 txtLowestValue.Text = ds.Tables[0].Rows[0]["LowestvaluebetweenHTLTSide"].ToString();
                 txtLightningArrestor.Text = ds.Tables[0].Rows[0]["LightningArrestorLocationOther"].ToString();
-                
+
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberOfEarthing"].ToString();
                 SubstationEarthingDiv.Visible = true;
                 if (txtEarthing.Text.Trim() == "4")
@@ -332,7 +350,7 @@ namespace CEIHaryana.TestReportModal
                     EathingSubstation13.Visible = true;
                     EathingSubstation14.Visible = true;
                     EathingSubstation15.Visible = true;
-                }                
+                }
                 else
                 {
                     EarthingSubstation4.Visible = false;
@@ -347,7 +365,7 @@ namespace CEIHaryana.TestReportModal
                     EathingSubstation13.Visible = false;
                     EathingSubstation14.Visible = false;
                     EathingSubstation15.Visible = false;
-                   
+
                 }
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 txtSubstationEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
@@ -682,4 +700,4 @@ namespace CEIHaryana.TestReportModal
         }
 
     }
-    }
+}

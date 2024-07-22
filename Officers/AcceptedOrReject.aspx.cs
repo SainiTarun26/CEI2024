@@ -74,6 +74,7 @@ namespace CEIHaryana.Officers
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
+                    Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
                     string id = lblID.Text;
                     Session["InProcessInspectionId"] = id;
 
@@ -83,7 +84,16 @@ namespace CEIHaryana.Officers
                     }
                     else if (e.CommandName == "Print")
                     {
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        if (LblInspectionType.Text == "New")
+                        {
+                            Session["InProcessInspectionId"] = id;
+                            Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        }
+                        else
+                        {
+                            Session["InProcessInspectionId"] = id;
+                            Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                        }
                     }
                 }
             }

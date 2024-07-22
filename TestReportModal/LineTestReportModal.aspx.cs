@@ -43,7 +43,7 @@ namespace CEIHaryana.TestReportModal
                         else
                         {
                             if (!string.IsNullOrEmpty(Request.QueryString["Return"]))
-                            {                               
+                            {
                             }
                             else
                             {
@@ -56,6 +56,24 @@ namespace CEIHaryana.TestReportModal
                     else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
                     {
                         ID = Session["LineID"].ToString();
+                        GetDetailswithId();
+
+                        SiteOwner.Visible = false;
+                        SiteOwner2.Visible = true;
+                        IntimationData.Visible = true;
+                        ApprovalCard.Visible = true;
+                        ////CreatedDate.Visible = true; //Added
+                        ////SubmitDate.Visible = true;
+                        ////SubmitBy.Visible = true;//Added
+                    }
+                    else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
+                    {
+                        if (Request.UrlReferrer != null)
+                        {
+                            Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                        }
+
+                        ID = Session["LineID_Industry"].ToString();
                         GetDetailswithId();
 
                         SiteOwner.Visible = false;
@@ -674,7 +692,7 @@ namespace CEIHaryana.TestReportModal
                 }
                 else
                 {
-                    Response.Redirect("/Officers/Inspection.aspx", false);                    
+                    Response.Redirect("/Officers/Inspection.aspx", false);
                 }
             }
             else
@@ -692,9 +710,9 @@ namespace CEIHaryana.TestReportModal
 
                     Response.Redirect(previousPageUrl, false);
                     Session["PreviousPage"] = null;
-                   // return;
+                    // return;
                 }
-               // Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
+                // Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
             }
             else
             {

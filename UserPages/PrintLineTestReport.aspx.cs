@@ -53,6 +53,17 @@ namespace CEIHaryana.UserPages
                         //SubmitDate.Visible = true;
                         //SubmitBy.Visible = true;//Added
                     }
+                    else if (Session["SiteOwnerId_Industry"] != null)
+                    {
+                        ID = Session["LineID_Industry"].ToString();
+                        GetDetailswithId();
+                        IntimationData.Visible = true;
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
+                        ////CreatedDate.Visible = true; //Added
+                        //SubmitDate.Visible = true;
+                        //SubmitBy.Visible = true;//Added
+                    }
                     else if (Session["InspectionTestReportId"] != null)
                     {
                         ID = Session["InspectionTestReportId"].ToString();
@@ -117,11 +128,11 @@ namespace CEIHaryana.UserPages
 
                 if (value1.Trim() == "Submitted" || value1.Trim() == "Submit")
                 {
-                    ApprovalTitle.Visible=true;
+                    ApprovalTitle.Visible = true;
                     DivApproval.Visible = true;
                 }
 
-                    DataSet ds = new DataSet();
+                DataSet ds = new DataSet();
                 //ds = CEI.LineDataWithIdForPrintTestReport(int.Parse(ID));
                 ds = CEI.LineDataWithIdForPrintTestReport(ID);
 
@@ -255,7 +266,7 @@ namespace CEIHaryana.UserPages
                         txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")
                     {
                         Insulation220vAbove.Visible = false;
-                        Insulation440vAbove.Visible = true ;
+                        Insulation440vAbove.Visible = true;
                     }
 
                 }
@@ -328,7 +339,7 @@ namespace CEIHaryana.UserPages
                 txtConductorType.Text = ds.Tables[0].Rows[0]["Conductortype"].ToString();
                 ////txtReportNo.Text = ds.Tables[0].Rows[0]["LineIdOther"].ToString();
                 ////txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
-                
+
                 lblIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                 lblReportNo.Text = ds.Tables[0].Rows[0]["LineId"].ToString();
 

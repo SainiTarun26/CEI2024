@@ -46,6 +46,18 @@ namespace CEIHaryana.UserPages
                         ////SubmitDate.Visible = true;
                         ////SubmitBy.Visible = true;
                     }
+                    else if (Session["SiteOwnerId_Industry"] != null)
+                    {
+                        ID = Session["SubStationID_Industry"].ToString();
+                        GetDetailswithId();
+
+                        IntimationData.Visible = true;
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
+                        ////CreatedDate.Visible = true; //Added
+                        ////SubmitDate.Visible = true;
+                        ////SubmitBy.Visible = true;
+                    }
                     else if (Session["InspectionTestReportId"] != null)
                     {
                         ID = Session["InspectionTestReportId"].ToString();
@@ -92,7 +104,7 @@ namespace CEIHaryana.UserPages
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.SubstationTestReportDataForPrintTestReport(ID);                
+                ds = CEI.SubstationTestReportDataForPrintTestReport(ID);
 
                 string value1 = Convert.ToString(Session["Approval"]);
                 //if (value1.Trim() == "Accept")
@@ -135,7 +147,7 @@ namespace CEIHaryana.UserPages
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
-                TxtPremises.Text = dp_Id1; 
+                TxtPremises.Text = dp_Id1;
                 //string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
@@ -317,7 +329,7 @@ namespace CEIHaryana.UserPages
                     EathingSubstation13.Visible = true;
                     EathingSubstation14.Visible = true;
                     EathingSubstation15.Visible = true;
-                }               
+                }
                 else
                 {
                     EarthingSubstation4.Visible = false;
@@ -332,7 +344,7 @@ namespace CEIHaryana.UserPages
                     EathingSubstation13.Visible = false;
                     EathingSubstation14.Visible = false;
                     EathingSubstation15.Visible = false;
-                   
+
                 }
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 txtSubstationEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
@@ -509,7 +521,7 @@ namespace CEIHaryana.UserPages
                 txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
                 txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }

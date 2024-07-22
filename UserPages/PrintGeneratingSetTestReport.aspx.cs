@@ -50,6 +50,18 @@ namespace CEIHaryana.UserPages
                         ////SubmitBy.Visible = true;
 
                     }
+                    else if (Session["SiteOwnerId_Industry"] != null)
+                    {
+                        ID = Session["GeneratingSetId_Industry"].ToString();
+                        GetDetailswithId();
+                        ApprovalTitle.Visible = true;
+                        DivApproval.Visible = true;
+                        IntimationData.Visible = true;
+                        ////CreatedDate.Visible = true; //Added
+                        ////SubmitDate.Visible = true;
+                        ////SubmitBy.Visible = true;
+
+                    }
                     else if (Session["InspectionTestReportId"] != null)
                     {
                         ID = Session["InspectionTestReportId"].ToString();

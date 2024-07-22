@@ -24,19 +24,19 @@ namespace CEIHaryana.TestReportModal
                     if (Request.UrlReferrer != null)
                     {
                         Session["PreviousPage"] = Request.UrlReferrer.ToString();
-                    } 
+                    }
 
                     if (Session["ContractorID"] != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
-                        
+
                         Session["GeneratorSetOtp"] = "0";
                         ID = Session["GeneratingSetId"].ToString();
                         GetDetailswithId();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
                         {
-                           // Contractor.Visible = true;
+                            // Contractor.Visible = true;
                             Contractor3.Visible = true;
-                           // CreatedDate.Visible = true;
+                            // CreatedDate.Visible = true;
                         }
                         else
                         {
@@ -45,7 +45,6 @@ namespace CEIHaryana.TestReportModal
                                 string querystring = Request.QueryString["Return"].ToString();
                                 if (!string.IsNullOrEmpty(querystring))
                                 {
-                                    //Session["Approval"] = null;
                                     Contractor3.Visible = false;
                                 }
                             }
@@ -62,6 +61,25 @@ namespace CEIHaryana.TestReportModal
                     else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
                     {
                         ID = Session["GeneratingSetId"].ToString();
+                        GetDetailswithId();
+
+                        SiteOwner.Visible = false;
+                        SiteOwner2.Visible = true;
+                        IntimationData.Visible = true;
+                        ApprovalCard.Visible = true;
+                        // CreatedDate.Visible = true; //Added
+                        // SubmitDate.Visible = true;
+                        // SubmitBy.Visible = true;
+
+                    }
+                    else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
+                    {
+                        if (Request.UrlReferrer != null)
+                        {
+                            Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                        }
+
+                        ID = Session["GeneratingSetId_Industry"].ToString();
                         GetDetailswithId();
 
                         SiteOwner.Visible = false;
@@ -99,7 +117,7 @@ namespace CEIHaryana.TestReportModal
                         }
                         if (Session["AdminID"] != null)
                         {
-                           // Contractor.Visible = true;
+                            // Contractor.Visible = true;
                             //SubmitBy.Visible = true;
                             //SubmitDate.Visible = true;
                             //CreatedDate.Visible = true;
@@ -153,7 +171,7 @@ namespace CEIHaryana.TestReportModal
                     ApprovalCard.Visible = true;
                     BtnSubmitGeneratingSet.Text = "Back";
                 }
-               
+
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
                 if (dp_Id == "Firm/Organization/Company/Department")
@@ -173,7 +191,7 @@ namespace CEIHaryana.TestReportModal
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["Permises"].ToString();
                 TxtPremises.Text = dp_Id1;
-               // string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                // string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
 
@@ -521,10 +539,10 @@ namespace CEIHaryana.TestReportModal
 
                 txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
                 txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
-                 
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -545,7 +563,8 @@ namespace CEIHaryana.TestReportModal
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
                 //Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
             }
-        }       
+        }
+
         protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/IntimationForHistory.aspx", false);
@@ -597,8 +616,8 @@ namespace CEIHaryana.TestReportModal
             try
             {
                 Session["GeneratorSetOtp"] = Convert.ToString(Convert.ToInt32(Session["GeneratorSetOtp"]) + 1);
-               // OTP.Visible = true;
-                if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() == "1")                    
+                // OTP.Visible = true;
+                if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() == "1")
                 {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();

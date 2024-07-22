@@ -30,6 +30,11 @@ namespace CEIHaryana.Model.Industry
         public string projectid { get; set; }
         public string serviceid { get; set; }
         public string projectserviceid { get; set; }
+
+        public string cafpin { get; set; }
+
+        public string projectlevel { get; set; }
+
         public string requestType { get; set; }
         public string cafType { get; set; }
 

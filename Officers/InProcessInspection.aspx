@@ -286,6 +286,10 @@
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                     <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
+                        <label>Inspection Type</label>
+                        <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>--%>
                 </div>
             </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;">

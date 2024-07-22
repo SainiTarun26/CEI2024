@@ -191,7 +191,7 @@
                                     <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report Details</h6>
                                         <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">
-                                            <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                            <asp:TextBox class="form-control" ID="txtTestReportId" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                                 MaxLength="30" Style="margin-left: 18px;">
                                             </asp:TextBox>
                                         </div>

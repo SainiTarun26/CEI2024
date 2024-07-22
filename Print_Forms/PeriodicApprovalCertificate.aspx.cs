@@ -55,7 +55,7 @@ namespace CEIHaryana.Print_Forms
                 TextLocation.Text = ds.Tables[0].Rows[0]["CompleteAdress"].ToString();
                 txtApplicationNo.Text = ds.Tables[1].Rows[0]["ReferenceNo"].ToString();
                 txtCreatedDate.Text = ds.Tables[1].Rows[0]["CreatedDate"].ToString();
-                TxtMemo.Text = ds.Tables[2].Rows[1]["MemoNo"].ToString();
+                TxtMemo.Text = ds.Tables[1].Rows[0]["MemoNo"].ToString();
                 TxtMemoDate.Text = ds.Tables[1].Rows[0]["ApprovedDate"].ToString();
                
                 lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
@@ -66,7 +66,8 @@ namespace CEIHaryana.Print_Forms
                 lblstamp3.Text = ds.Tables[1].Rows[0]["Stamp3"].ToString();
                 GridBind();
             }
-            catch { }
+            catch(Exception ex) 
+            { }
         }
 
         protected void GridBind()
@@ -75,7 +76,7 @@ namespace CEIHaryana.Print_Forms
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocuments(ID);
+                ds = CEI.getInstallations(ID);
                 if (ds.Tables.Count > 0)
                 {
                     Gridview1.DataSource = ds;

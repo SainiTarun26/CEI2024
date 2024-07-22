@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PeriodicApprovalCertificate.aspx.cs" Inherits="CEIHaryana.Print_Forms.PeriodicApprovalCertificate" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PrintCertificate1_Industry.aspx.cs" Inherits="CEIHaryana.Print_Forms.PrintCertificate1_Industry" %>
 
 <!DOCTYPE html>
 
@@ -117,7 +117,20 @@
             border-style: none;
         }
     </style>
-   
+    <%--<script>
+
+        function
+            printDiv(printableDiv) {
+            var printContents = document.getElementById(printableDiv).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>--%>
     <script type="text/javascript">
         function printDiv(printableDiv) {
             var printContents = document.getElementById(printableDiv).innerHTML;
@@ -125,7 +138,21 @@
 
             document.body.innerHTML = printContents;
             window.print();
-          
+           <%-- window.onafterprint = function () {
+                // Restore original content after printing
+                document.body.innerHTML = originalContents;
+                // Redirect based on session
+
+                var staffId = '<%= Session["StaffID"] %>';
+
+               var siteOwnerId = '<%= Session["SiteOwnerId"] %>';
+
+                if (staffId !== '') {
+                    window.location.href = '/Officers/AcceptedOrReject.aspx';
+                } else if (siteOwnerId !== '') {
+                    window.location.href = '/SiteOwnerPages/InspectionHistory.aspx';
+                }
+            };--%>
         }
 
     </script>
@@ -192,8 +219,7 @@
                                     <asp:Label ID="lblAddress1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                     <asp:Label ID="lblAdress4" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                 
+                                    <asp:Label ID="lblEmail" runat="server" Visible="false" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                 </div>
                             </div>
                             <hr />
@@ -204,7 +230,7 @@
                                 <div class="col-2">
                                     <br />
                                     <asp:TextBox ID="TxtName" runat="server" Columns="70"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" TextMode="MultiLine" Rows="2" runat="server" Columns="70"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70"></asp:TextBox>
                                     <asp:TextBox ID="TextLocation" runat="server" Columns="70"></asp:TextBox>
                                 </div>
                             </div>
@@ -214,101 +240,92 @@
                                 </div>
                                 <div class="col-7">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="ApplicationNo" runat="server" Text="Application No." Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="txtApplicationNo" runat="server"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
-                                    <div style="white-space: nowrap;">
-                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="txtCreatedDate" runat="server" Style="width: 100%;"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-1">
-                                </div>
-                                <div class="col-7">
-                                    <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I /" Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="label" runat="server" Text="Memo No." Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="TxtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
+                                        <asp:TextBox ID="TxtDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
-                          
                             <br />
                             <div class="row">
                                 <div class="col-1">
                                     <p>Sub:-</p>
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
-                                  
-                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Annual Inspection of installation comprising of
-                                        <asp:Label ID="lblVoltage" runat="server"></asp:Label> under Rule Central Electricity Authority (Measures relating to
-                                        Safety and Electric supply) Regulations, 2023 for the year <asp:Label ID="Year" runat="server"></asp:Label> </span>
+                                    <%--                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Rows="3" Columns="65" Text="Inspection of HT Installations comprising of 1x250 KVA Transformer under Central Electricity Authority (Measures Relating to safety & Electric Supply) Regulations, 2023.)"></asp:TextBox>--%>
+                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Inspection of
+                                        <asp:Label ID="lblCapacity" runat="server"></asp:Label><asp:Label ID="lblType" runat="server"></asp:Label>
+                                        under Central Electricity Authority (Measures Relating to safety & Electric Supply) Regulations, 2023.)
+                                    </span>
                                 </div>
                             </div>
                             <br />
-                            
+                            <div class="row">
+                                <div class="col-1">
+                                </div>
+                                <div class="col-2">
+                                    <div style="white-space: nowrap;">
+                                        <asp:Label ID="label1" runat="server" Text="Reference your application No. " Style="font-size: 20px;"></asp:Label>
+                                        <asp:TextBox ID="TxtReferenceNo" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
                             <br />
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     The Subject cited installation was inspected by this Department and the same was found generally compiling eith the relevant provisions pf CEa (Measures Relating to Safety and Electric Supply) 
-                                        Regulations, 2023. However the firm is required to keep all the pparameters i.e Oil Test Result. IR Values, Tan Delta, Earth Resistance of T/F or D.g sets with in the safe linits. An index of all test result as per schedule V of the CEa Regulations, shall be recorded by Authorised person and same be shown during the annual inspection.
-                                        List of Installations are cited below:
-                                      
-                                         <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server"  AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
-                        <HeaderStyle BackColor="#B7E2F0" />
-                        <Columns>
-                             <asp:BoundField DataField="InstallationName" HeaderText="Installation Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Capacity" HeaderText="CapacityOrVoltage">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            
-                        </Columns>
-                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>
-                                        <p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEa Regulations, 2010 be ensured in the installation at your end and the electrical installation be maintained and
-                                            operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
+                                        The subject cited installation was inspected by this department
+                                        <asp:Label ID="LblDate" runat="server" Text="Label" Visible="false"></asp:Label>
+                                        and the same was found generally
+                                        complying with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply)
+                                        Regulations, 2023 and amendments thereon. However, it is advised that: -
+                                       <%-- <ul class="list-group" style="margin-left: 20%;">
+                                            <li>Item 1<br />
+                                                Item 1<br />
+                                                Item 1</li>
+                                            <li>Item 2<br />
+                                                Item 2<br />
+                                                Item 2</li>
+                                            <li>Item 3<br />
+                                                Item 3<br />
+                                                Item 3</li>
+                                        </ul>--%>
                                         <br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You are further advised to install the smart meter to read the energy generated and send the monthly statement of the units generated from your DG Sets to this Department. 
-                                             <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
-                                                 <span id="Span1" runat="server"></span>
-                                                 <span id="Span2" runat="server"></span>
-                                                 <span id="Span3" runat="server"></span>
-                                                 <span id="Span4" runat="server" style="margin-bottom: 15px !important;"></span>
-                                             </div>
-                                            <br />
-                                           <%-- <div style="display:flex;">
-                                            <span style="font-weight: bold; font-size: 22px; border: none !important;">Note:-</span>&nbsp;
-                                            <p>Further the firm is not absolved of its responsibility to run the D.G sets as per
-                                            running hour restricted in the general classification regarding use the D.g sets in NCR as per latest Directions N0.77 issued on dated
-                                            <asp:Label ID="NoteDate" runat="server" Text="date"></asp:Label></p></div>--%>
-                                        
-                                          <%--  <p>For Next Inspection shall due in--%>
-                                          <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
+                                        <%--                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="9" onkeyup="countLines(this)" Columns="89" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>--%>
+                                        <%-- <asp:BulletedList ID="BulletedList1" runat="server"></asp:BulletedList>--%>
+                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
+                                            <span id="suggestion1" runat="server"></span>
+                                            <span id="suggestion2" runat="server"></span>
+                                            <span id="suggestion3" runat="server"></span>
+                                            <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
+                                        </div>
+                                        <p>
+                                            Approval for energization of the subject cited installation is herby accorded subject to consistent
+                                        compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
+                                        2023 may be ensured in these installations at your end. Please note that it shall be the responsiility of the owner 
+                                        of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
+                                        by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
+                                        <br />
+                                            Your next inspection shall fall due in the month of
+                                            <asp:Label ID="LblMonth" runat="server" Text="Label"></asp:Label>
+                                            every year. you are therefore requested
+                                        to deposit inspection fees as per schedule under the Head of A/c "0043--Taxes and Duties on Electricity Fess payable and apply online to this officeone month before the due date."
                                         </p>
                                     </p>
                                 </div>
                             </div>
                             <br />
+                            <br />
+
                             <div class="row">
                                 <div class="col-12" style="text-align: end;">
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
-
-                                    <asp:Image ID="myImage" runat="server" ImageUrl="../Assets/Add%20a%20heading%20(1).png" Width="300" Height="90" Style="position: fixed; bottom: 120px; margin-left: -300px;" />
+                                    <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="position: fixed; bottom: 140px; margin-left: -300px;" />
                                 </div>
                             </div>
                             <div class="row">
@@ -322,7 +339,43 @@
                                     </p>
                                 </div>
                             </div>
-                            
+                            <%--                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Payment Details</u></h6>--%>
+                            <%--<div id="Earthing" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="Name">
+                                            Transaction ID(UTRN):
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                            MaxLength="30" Style="margin-left: 18px;">
+                                        </asp:TextBox>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="FatherName">Transaction Date:</label>
+
+                                        <asp:TextBox class="form-control" ID="txtTransactionDate" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                            MaxLength="30" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="FatherName">Payment Mode</label>
+
+                                        <asp:TextBox class="form-control" ID="txtPaymentMode" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                            MaxLength="30" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 35px;">
+                                    <div class="col-4">
+                                        <label for="Name">
+                                            Challan Attached:
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtChallan" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                            MaxLength="30" Style="margin-left: 18px;">
+                                        </asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>--%>
                         </div>
                     </div>
                 </div>
@@ -335,3 +388,4 @@
     </form>
 </body>
 </html>
+

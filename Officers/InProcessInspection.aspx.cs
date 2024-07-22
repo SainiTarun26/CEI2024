@@ -105,6 +105,7 @@ namespace CEIHaryana.Officers
                     txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                    Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     GridBindDocument();
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
@@ -185,6 +186,7 @@ namespace CEIHaryana.Officers
                     }
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                    Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     divTestReportAttachment.Visible = false;
                     Address.Visible = false;
                     SiteOwnerContact.Visible = false;
@@ -361,16 +363,9 @@ namespace CEIHaryana.Officers
                     if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "")
                     {
                         ID = Session["InProcessInspectionId"].ToString();
+                        string InspectionType = Session["InspectionType"].ToString();
 
-                        //DataSet ds = new DataSet();
-                        //ds = CEI.checkPreviewInspection(Convert.ToInt32(ID));
-                        //if (ds.Tables[0].Rows.Count > 0)
-                        //{
-                        //    btnPreview.Visible = false;
-                        //    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-                        //}
-                        //else
-                        //{
+                        
                         SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
                         cmd.Connection = con;
@@ -383,6 +378,7 @@ namespace CEIHaryana.Officers
                         cmd.Parameters.AddWithValue("@inspectionId", ID);
                         cmd.Parameters.AddWithValue("@suggestion", txtSuggestion.Text.Trim());
                         cmd.Parameters.AddWithValue("@ReasionRejection", txtRejected.Text == null ? null : txtRejected.Text);
+                        cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
                         DateTime initialIssueDate;
                         if (DateTime.TryParse(txtInspectionDate.Text, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
                         {
@@ -396,14 +392,26 @@ namespace CEIHaryana.Officers
                         con.Close();
                         if (x > 0)
                         {
+                            btnPreview.Visible = false;
+
+                            if (InspectionType == "New")
+                            {
+                                Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                            }
 
 
                         }
-                        btnPreview.Visible = false;
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        //btnPreview.Visible = false;
+                       
                     }
+                    
                     // }
                 }
+               
             }
             catch (Exception ex)
             {

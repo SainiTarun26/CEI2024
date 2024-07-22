@@ -1784,8 +1784,10 @@
     <Content Include="Image\Image\ImageToDelete.jpeg" />
     <Content Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx" />
     <Content Include="Industry\Industry.aspx" />
+    <Content Include="Industry\IndustryServices.aspx" />
     <Content Include="Industry\SendJson.aspx" />
     <Content Include="Industry\SendJsonL.aspx" />
+    <Content Include="Industry\WebForm2.aspx" />
     <Content Include="js2\ace.js" />
     <Content Include="js2\alerts.js" />
     <Content Include="js2\avgrund.js" />
@@ -1889,15 +1891,20 @@
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
+    <Content Include="SiteOwnerPages\CreateTestReports_Industry.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
+    <Content Include="SiteOwnerPages\GenerateInspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
+    <Content Include="SiteOwnerPages\InspectionHistory_Industry.aspx" />
     <Content Include="SiteOwnerPages\InspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\InspectionRequestPrint.aspx" />
+    <Content Include="SiteOwnerPages\InspectionRequestPrint_Industry.aspx" />
     <Content Include="SiteOwnerPages\InspectionsDetails.aspx" />
+    <Content Include="SiteOwnerPages\Inspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\PaymentPage.aspx" />
     <Content Include="SiteOwnerPages\PendingPayment.aspx" />
     <Content Include="SiteOwnerPages\PeriodicRenewal.aspx" />
@@ -2299,6 +2306,20 @@
     <Compile Include="Industry\Industry.aspx.designer.cs">
       <DependentUpon>Industry.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry\IndustryServices.aspx.cs">
+      <DependentUpon>IndustryServices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\IndustryServices.aspx.designer.cs">
+      <DependentUpon>IndustryServices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry\Industry_SiteOwner.Master.cs">
+      <DependentUpon>Industry_SiteOwner.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\Industry_SiteOwner.Master.designer.cs">
+      <DependentUpon>Industry_SiteOwner.Master</DependentUpon>
+    </Compile>
     <Compile Include="Industry\SendJson.aspx.cs">
       <DependentUpon>SendJson.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2313,6 +2334,13 @@
     <Compile Include="Industry\SendJsonL.aspx.designer.cs">
       <DependentUpon>SendJsonL.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2322,6 +2350,14 @@
     </Compile>
     <Compile Include="Model\HttpRequestExampleTesting.cs" />
     <Compile Include="Model\Industry\Cei_IndustryServices_Redirection_IncomingJson_Model.cs" />
+    <Compile Include="Model\Industry\IndustryApiException.cs" />
+    <Compile Include="Model\Industry\IndustryApiLogDetails.cs" />
+    <Compile Include="Model\Industry\Industry_Api_Post_DataformatModel.cs" />
+    <Compile Include="Model\Industry\Industry_Inspection_StageWise_JsonDataFormat_Model.cs" />
+    <Compile Include="Model\Industry\Industry_Inspection_StageWise_ReturnedJsonDataFormat_ViewModel.cs" />
+    <Compile Include="Model\Industry\TokenInfo.cs" />
+    <Compile Include="Model\Industry\TokenManager.cs" />
+    <Compile Include="Model\Industry\TokenManagerException.cs" />
     <Compile Include="Model\SaralTrackingModal.cs" />
     <Compile Include="Officers\AcceptedOrReject.aspx.cs">
       <DependentUpon>AcceptedOrReject.aspx</DependentUpon>
@@ -2485,6 +2521,13 @@
     <Compile Include="SiteOwnerPages\CreateTestReports.aspx.designer.cs">
       <DependentUpon>CreateTestReports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\CreateTestReports_Industry.aspx.cs">
+      <DependentUpon>CreateTestReports_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\CreateTestReports_Industry.aspx.designer.cs">
+      <DependentUpon>CreateTestReports_Industry.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\ExistingInspectionData.aspx.cs">
       <DependentUpon>ExistingInspectionData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2505,6 +2548,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\GenerateInspection.aspx.designer.cs">
       <DependentUpon>GenerateInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.cs">
+      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.designer.cs">
+      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GeneratingSet.aspx.cs">
       <DependentUpon>GeneratingSet.aspx</DependentUpon>
@@ -2527,6 +2577,13 @@
     <Compile Include="SiteOwnerPages\InspectionHistory.aspx.designer.cs">
       <DependentUpon>InspectionHistory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\InspectionHistory_Industry.aspx.cs">
+      <DependentUpon>InspectionHistory_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InspectionHistory_Industry.aspx.designer.cs">
+      <DependentUpon>InspectionHistory_Industry.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\InspectionRenewalCart.aspx.cs">
       <DependentUpon>InspectionRenewalCart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2541,12 +2598,26 @@
     <Compile Include="SiteOwnerPages\InspectionRequestPrint.aspx.designer.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\InspectionRequestPrint_Industry.aspx.cs">
+      <DependentUpon>InspectionRequestPrint_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InspectionRequestPrint_Industry.aspx.designer.cs">
+      <DependentUpon>InspectionRequestPrint_Industry.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\InspectionsDetails.aspx.cs">
       <DependentUpon>InspectionsDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SiteOwnerPages\InspectionsDetails.aspx.designer.cs">
       <DependentUpon>InspectionsDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Inspection_Industry.aspx.cs">
+      <DependentUpon>Inspection_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Inspection_Industry.aspx.designer.cs">
+      <DependentUpon>Inspection_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\PaymentPage.aspx.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>
@@ -3203,6 +3274,7 @@
     <Content Include="Dashboard_Css\vendor\slick\slick-theme.scss" />
     <Content Include="Dashboard_Css\vendor\slick\slick.less" />
     <Content Include="Dashboard_Css\vendor\slick\slick.scss" />
+    <Content Include="Industry\Industry_SiteOwner.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
