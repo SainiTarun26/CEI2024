@@ -1334,7 +1334,6 @@ namespace CEIHaryana.Contractor
             DdlWingBind();
         }
 
-       
 
         protected void DdlWing_SelectedIndexChanged(object sender, EventArgs e)
         {

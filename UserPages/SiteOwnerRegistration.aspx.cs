@@ -15,6 +15,9 @@ namespace CEIHaryana.UserPages
         CEI CEI = new CEI();
         string ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency, Address,
             District, PinCode, PhoneNumber, Email;
+
+       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -168,9 +171,14 @@ namespace CEIHaryana.UserPages
                 PinCode = txtPin.Text;
                 PhoneNumber = txtPhone.Text;
                 Email = txtEmail.Text;
-                CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
+               int Ad= CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
                     ,Address, District, PinCode, PhoneNumber, Email);
-
+                if (Ad>0)
+                {
+                    CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Registration Succesffuly,Your userId And Password is sent to email ')", true);
+                }
+                Response.Redirect("Login.aspx",false);
             }
             catch (Exception ex)
             {
@@ -178,6 +186,19 @@ namespace CEIHaryana.UserPages
                 //throw;
             }
 
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            txtAddress.Text = "";
+            txtPhone.Text = "";
+
+            txtEmail.Text = "";
+            txtPANTan.Text = "";
+
+            ddlApplicantType.SelectedIndex = 0;
+            ddlworktype.SelectedIndex = 0;
+           
         }
     }
 }

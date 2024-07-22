@@ -533,6 +533,7 @@
                                                 </label>
                                             </div>
                                             <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>
+                                            <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
                                         </div>
                                     </div>
                                 </div>

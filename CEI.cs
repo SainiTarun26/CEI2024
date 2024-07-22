@@ -4200,7 +4200,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckSiteownerPan", PanNumber);
         }
 
-        public void InsertSiteOwnerRegistration(string ApplicantType, string ApplicantCode, string PanTanNumber, string ElectricalInstallationFor, string NameOfOwner, string NameofAgency
+        public int InsertSiteOwnerRegistration(string ApplicantType, string ApplicantCode, string PanTanNumber, string ElectricalInstallationFor, string NameOfOwner, string NameofAgency
                     ,string Address, string District, string PinCode, string PhoneNumber, string Email)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -4222,7 +4222,8 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
                     cmd.Parameters.AddWithValue("@ContactNo", PhoneNumber);
                     cmd.Parameters.AddWithValue("@Email", Email);                    
                     con.Open();
-                    cmd.ExecuteNonQuery();                   
+                    int Ad= cmd.ExecuteNonQuery();
+                    return Ad;
                 }
 
             }

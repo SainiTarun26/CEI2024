@@ -830,6 +830,14 @@
                                         <asp:TextBox class="form-control" ID="txtEmail" TabIndex="9" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server"></asp:TextBox>
                                         <span id="lblError" style="color: red"></span>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
+                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                             ControlToValidate="txtEmail" 
+                                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                             ErrorMessage="Enter a Valid Email"
+                                             CssClass="error-message"
+                                             ForeColor="Red"
+                                             Display="Dynamic">
+                                            </asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-bottom: 30px; margin-top: 20px;">
@@ -838,7 +846,7 @@
                                         <asp:Button type="submit" ID="btnSubmit" TabIndex="22" OnClick="btnSubmit_Click" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" />
 
                                         <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                                        <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                                        <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" OnClick="btnReset_Click" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
                                         <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                                     </div>
                                     <div class="col-md-4"></div>

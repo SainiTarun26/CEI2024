@@ -145,7 +145,10 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
+                            <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
+                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="28%" />
+                            </asp:BoundField>
                             <%--  <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
 
@@ -186,7 +189,7 @@
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
+                                    <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
                                         Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
                                 </asp:LinkButton>
                                 </ItemTemplate>
