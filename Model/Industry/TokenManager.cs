@@ -11,8 +11,8 @@ namespace CEIHaryana.Model.Industry
     public class TokenManager
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-        private static readonly string clientId = "sanju";
-        private static readonly string clientSecret = "sanju";
+        private static readonly string clientId = "login.cei";
+        private static readonly string clientSecret = "KarLGm7E";
 
         public static string GetAccessToken(SqlTransaction transaction)
         {
