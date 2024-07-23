@@ -628,7 +628,7 @@ namespace CEIHaryana.TestReportModal
                     else
                     {
                         Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP Sent Successfully.Please Check You Email');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP has been Sent to your registered email Id');", true);
                         btnVerify.Text = "Verify";
                     }
                 }

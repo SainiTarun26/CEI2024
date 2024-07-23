@@ -68,6 +68,7 @@
             font-weight: 600;
         }
 
+
         .card .card-title {
             color: #010101;
             margin-bottom: 1.2rem;

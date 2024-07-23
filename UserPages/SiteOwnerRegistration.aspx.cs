@@ -129,7 +129,7 @@ namespace CEIHaryana.UserPages
                 ds = CEI.GetDetailsByPanNumberId(TANNumber);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number already exist');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan/Tan Number already exist');", true);
                     txtPANTan.Text = "";
                     return;
                 }
@@ -150,7 +150,7 @@ namespace CEIHaryana.UserPages
                 DataTable dt = CEI.CheckSiteownerPan(PanTanNumber);
                 if (dt.Rows.Count > 0 && dt != null)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number already exist');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan/Tan Number already exist');", true);
                     txtPANTan.Text = "";
                     txtPANTan.Focus();
                     return;
@@ -175,13 +175,13 @@ namespace CEIHaryana.UserPages
                     ,Address, District, PinCode, PhoneNumber, Email);
                 if (Ad>0)
                 {
-                    CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber); //alert(\"This UserName Already in use\");"
-                    string script = "alert(\"Registration Succesffuly,Your userId And Password is sent to email\");";
-                   // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
+                    string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/Login.aspx';";
+                    //string script = "alert('Registration Succesffuly,Your userId And Password is sent to email');";                  
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
-                Response.Redirect("~/Login.aspx",false);
+               // Response.Redirect("~/Login.aspx",false);
             }
             catch (Exception ex)
             {
