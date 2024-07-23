@@ -153,8 +153,11 @@ namespace CEIHaryana.SiteOwnerPages
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
-            Label lblInstallationType = (Label)row.FindControl("LblInstallationType");
-            string installationtype = lblInstallationType.Text;
+            Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+            string installationtype = LblInstallationName.Text;
+
+            //Label lblInstallationType = (Label)row.FindControl("LblInstallationType");
+            //string installationtype = lblInstallationType.Text;
             string testReportId = e.CommandArgument.ToString();
 
 
