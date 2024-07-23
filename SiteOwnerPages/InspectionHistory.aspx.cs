@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -62,6 +63,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["Approval"] = lblApproval.Text.Trim();
                 Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
                 Label lblType = (Label)row.FindControl("lblType");
+                Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
+                Label LblAssignTo = (Label)row.FindControl("LblAssignTo");
                 if (lblType.Text.Trim() == "Line")
                 {
                     Session["LineID"] = lblTestRportId.Text.Trim();
@@ -84,7 +87,16 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (e.CommandName == "Print1")
                 {
-                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx");
+                    if (LblInspectionType.Text == "New")
+                    {
+                        
+                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                    }
+                    else
+                    {
+                        
+                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                    }
                 }
             }
         }
@@ -96,11 +108,21 @@ namespace CEIHaryana.SiteOwnerPages
 
                 LinkButton linkButton = (LinkButton)e.Row.FindControl("lnkPrint");
                 string applicationStatus = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus").ToString();
+                string AssignTo = DataBinder.Eval(e.Row.DataItem, "AssignTo").ToString();
                 if (applicationStatus == "Approved")
                 {
+                    if (string.IsNullOrEmpty(AssignTo))
+                    {
+                        linkButton.Visible = false;
+                    }
+                    else
+                    {
+                        linkButton.Visible = true;
+                    }
 
-                    linkButton.Visible = true;
                 }
+                
+
                 else
                 {
 
