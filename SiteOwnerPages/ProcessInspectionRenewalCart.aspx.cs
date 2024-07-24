@@ -198,46 +198,67 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (Session["SiteOwnerId"] != null)
                 {
-                    string para_CreatedByy = Session["SiteOwnerId"].ToString();
+                    bool isValid = true;
 
-                    string TransactionId = txtTransactionId.Text;
-                    string TransctionDate = txtTransactiondate.Text;
-
-                    string NewInspID = CEI.InsertPeriodicInspectionData("Periodic", IdCart, IntimationId, ApplicantType,
-                                        InstallationType,  VoltageLevel, District, Division, AssignTo,
-                                           PaymentMode, Amount, TransactionId, TransctionDate,
-                                          para_CreatedByy, Capacity, Voltage);
-
-                    UploadCheckListDocInCollection(para_CreatedByy);
-                    string generatedIdCombinedDetails = CEI.InspectionId();
-
-                    string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-
-                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    foreach (GridViewRow row in GridView1.Rows)
                     {
-                        connection.Open();
-                        //string generatedIdCombinedDetails = CEI.InspectionId();
-                        foreach (var file in uploadedFiles)
+                        FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                        if (fileUpload != null && !fileUpload.HasFile)
                         {
-                            string query = "sp_InsertInspectionAttachmentsForPeriodic";
-
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                command.CommandType = CommandType.StoredProcedure;
-                                command.Parameters.AddWithValue("@InspectionId", generatedIdCombinedDetails);
-                                command.Parameters.AddWithValue("@CartId", file.CartId);
-                                command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
-                                command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
-                                command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
-                                command.Parameters.AddWithValue("@FileName", file.FileName);
-                                command.Parameters.AddWithValue("@FilePath", file.FilePath);
-                                command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
-                                command.ExecuteNonQuery();
-                            }
+                            isValid = false;
+                            // Add any additional logic here (e.g., display error message)
+                            break;
                         }
                     }
-                    Session["CartID"] = string.Empty;
-                    Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+
+                    if (isValid)
+                    {
+                        string para_CreatedByy = Session["SiteOwnerId"].ToString();
+
+                        string TransactionId = txtTransactionId.Text;
+                        string TransctionDate = txtTransactiondate.Text;
+
+                        string NewInspID = CEI.InsertPeriodicInspectionData("Periodic", IdCart, IntimationId, ApplicantType,
+                                            InstallationType, VoltageLevel, District, Division, AssignTo,
+                                               PaymentMode, Amount, TransactionId, TransctionDate,
+                                              para_CreatedByy, Capacity, Voltage);
+
+                        UploadCheckListDocInCollection(para_CreatedByy);
+                        string generatedIdCombinedDetails = CEI.InspectionId();
+
+                        string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            //string generatedIdCombinedDetails = CEI.InspectionId();
+                            foreach (var file in uploadedFiles)
+                            {
+                                string query = "sp_InsertInspectionAttachmentsForPeriodic";
+
+                                using (SqlCommand command = new SqlCommand(query, connection))
+                                {
+                                    command.CommandType = CommandType.StoredProcedure;
+                                    command.Parameters.AddWithValue("@InspectionId", generatedIdCombinedDetails);
+                                    command.Parameters.AddWithValue("@CartId", file.CartId);
+                                    command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+                                    command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
+                                    command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
+                                    command.Parameters.AddWithValue("@FileName", file.FileName);
+                                    command.Parameters.AddWithValue("@FilePath", file.FilePath);
+                                    command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        Session["CartID"] = string.Empty;
+                        Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                    }
+                    else
+                    {
+                        // Display error message
+                        Response.Write("<script>alert('Please select a file to upload.');</script>");
+                    }
                 }
             }
             catch (Exception ex)

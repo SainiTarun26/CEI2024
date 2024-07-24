@@ -149,14 +149,26 @@ namespace CEIHaryana.SiteOwnerPages
                     txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                    txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                    //txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
 
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                     DateTime.TryParse(createdDate, out inspectionCreatedDate);
-
+                    string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
+                    if(InspectionType== "Periodic")
+                    {
+                        voltagelevel.Visible = false;
+                        Type.Visible = false;
+                    }
+                    else
+                    {
+                        voltagelevel.Visible = true;
+                        Type.Visible = true;
+                        txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    }
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status == "Rejected")
                     {

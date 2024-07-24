@@ -261,7 +261,11 @@
                                                      <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                      <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                  </asp:BoundField>
-                                                 <asp:BoundField DataField="Capacity" HeaderText="CapacityOrVoltage">
+                                                 <asp:BoundField DataField="Voltage" HeaderText="Voltage">
+                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                 </asp:BoundField>
+                                                   <asp:BoundField DataField="Capacity" HeaderText="Capacity">
                                                      <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                      <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                  </asp:BoundField>
