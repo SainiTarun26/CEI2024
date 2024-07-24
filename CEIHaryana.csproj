@@ -2357,7 +2357,7 @@
     <Compile Include="Model\Industry\Industry_Inspection_StageWise_JsonDataFormat_Model.cs" />
     <Compile Include="Model\Industry\Industry_Inspection_StageWise_ReturnedJsonDataFormat_ViewModel.cs" />
     <Compile Include="Model\Industry\TokenInfo.cs" />
-    <Compile Include="Model\Industry\TokenManager.cs" />
+    <Compile Include="Model\Industry\TokenManagerConst.cs" />
     <Compile Include="Model\Industry\TokenManagerException.cs" />
     <Compile Include="Model\SaralTrackingModal.cs" />
     <Compile Include="Officers\AcceptedOrReject.aspx.cs">

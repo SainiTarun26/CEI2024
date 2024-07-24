@@ -503,22 +503,21 @@ namespace CEIHaryana.Admin
             Session["InspectionId"] = "";
         }
 
-        protected void btnAction_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // BindDivisions();
-                ApprovalRequired.Visible = true;
-                DivToAssign.Visible = true;
-                btnUpdate.Visible = true;
-                btnAction.Visible = false;
+        //protected void btnAction_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //       //BindDivisions();
+        //        ApprovalRequired.Visible = true;
+        //        DivToAssign.Visible = true;
+        //        btnUpdate.Visible = true;
+        //        btnAction.Visible = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
+        //    }
+        //}
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -594,6 +593,27 @@ namespace CEIHaryana.Admin
             }
         }
 
+        //protected void RadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (RadioButtonList.SelectedValue=="1")
+        //        {
+        //            // BindDivisions();
+        //            ApprovalRequired.Visible = true;
+        //            DivToAssign.Visible = true;
+        //            btnUpdate.Visible = true;
+        //           //btnAction.Visible = false;
+        //        }
+                
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //}
+
         protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
@@ -602,6 +622,39 @@ namespace CEIHaryana.Admin
             }
         }
 
+        protected void RdbtnAccptReturn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnUpdate.Visible = true;
+            Return.Visible = false;
+            if (RdbtnAccptReturn.SelectedValue == "1")
+            {
+                Return.Visible = true;
+                btnUpdate.Visible = true;
+            }
+
+        }
+
+        protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonAction.SelectedValue == "1")
+            {
+                // BindDivisions();
+                TransferButton.Visible = true;               
+                btnUpdate.Visible = true;
+                Action.Visible = false;
+                Return.Visible = false;
+                //btnAction.Visible = false;
+            }
+            else
+            {
+                TransferButton.Visible = false;
+                Action.Visible = true;
+                Return.Visible = false;
+                btnUpdate.Visible = true;
+            }
+
+        }
+       
         protected void GridBindDocument()
         {
             try

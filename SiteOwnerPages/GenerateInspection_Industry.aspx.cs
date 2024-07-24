@@ -1,6 +1,8 @@
 ﻿using CEI_PRoject;
 using CEIHaryana.Model;
 using CEIHaryana.Model.Industry;
+using CEIHaryana.Officers;
+using iText.StyledXmlParser.Jsoup.Nodes;
 using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1.Ocsp;
@@ -26,7 +28,9 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class GenerateInspection_Industry : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        Industry_Api_Post_DataformatModel ApiPostformatresult = new Industry_Api_Post_DataformatModel();
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
+        //IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
         //string id = string.Empty;
         string fileExtension = string.Empty;
         string fileExtension2 = string.Empty;
@@ -635,16 +639,19 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
 
-                  
+
+                    transaction.Commit();
+                    Session["InspectionLinkDisable"] = true;
 
                     string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
 
-                    Industry_Api_Post_DataformatModel ApiPostformatresult = GetIndustry_OutgoingRequestFormat(Convert.ToInt32(SplitResultPartsArray[0]), actiontype,transaction);
+                    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(SplitResultPartsArray[0]), actiontype);
 
                     if (ApiPostformatresult.PremisesType == "Industry")
                     {
-                        // Get the access token using TokenManager
-                        string accessToken = TokenManager.GetAccessToken(transaction);
+
+                        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                        //  string accessToken = "dfsfdsfsfsdf";
 
                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
                                       "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
@@ -656,7 +663,7 @@ namespace CEIHaryana.SiteOwnerPages
                                           id = ApiPostformatresult.Id,
                                           projectid = ApiPostformatresult.ProjectId,
                                           serviceid = ApiPostformatresult.ServiceId
-                                      }, accessToken);
+                                      }, ApiPostformatresult, accessToken);
 
                         if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
                         {
@@ -673,6 +680,7 @@ namespace CEIHaryana.SiteOwnerPages
                         logDetails.ResponseStatusCode,
                         logDetails.ResponseHeaders,
                         logDetails.ResponseBody,
+
                         new Industry_Api_Post_DataformatModel
                         {
                             InspectionId = ApiPostformatresult.InspectionId,
@@ -686,15 +694,11 @@ namespace CEIHaryana.SiteOwnerPages
                             Id = ApiPostformatresult.Id,
                             ProjectId = ApiPostformatresult.ProjectId,
                             ServiceId = ApiPostformatresult.ServiceId,
-                        },
-                        transaction
+                        }
+
                     );
 
                     }
-                    transaction.Commit();
-                    Session["InspectionLinkDisable"] = true;
-
-
 
                     //SendJsonDataToIndustryApi(SplitResultPartsArray[0]);
 
@@ -707,7 +711,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 catch (TokenManagerException ex)
                 {
-                    transaction.Rollback();
+                   // transaction.Rollback();
                     CEI.LogToIndustryApiErrorDatabase(
                         ex.RequestUrl,
                         ex.RequestMethod,
@@ -716,13 +720,27 @@ namespace CEIHaryana.SiteOwnerPages
                         ex.RequestBody,
                         ex.ResponseStatusCode,
                         ex.ResponseHeaders,
-                        ex.ResponseBody
+                        ex.ResponseBody,
+                        new Industry_Api_Post_DataformatModel
+                        {
+                            InspectionId = ex.InspectionId,
+                            InspectionLogId = ex.InspectionLogId,
+                            IncomingJsonId = ex.IncomingJsonId,
+                            ActionTaken = ex.ActionTaken,
+                            CommentByUserLogin = ex.CommentByUserLogin,
+                            CommentDate = ex.CommentDate,
+                            Comments = ex.Comments,
+                            Id = ex.Id,
+                            ProjectId = ex.ProjectId,
+                            ServiceId = ex.ServiceId,
+                        }
                     );
+                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
                 }
                 catch (IndustryApiException ex)
                 {
-                    transaction.Rollback();
+                    //transaction.Rollback();
                     CEI.LogToIndustryApiErrorDatabase(
                         ex.RequestUrl,
                         ex.RequestMethod,
@@ -731,8 +749,23 @@ namespace CEIHaryana.SiteOwnerPages
                         ex.RequestBody,
                         ex.ResponseStatusCode,
                         ex.ResponseHeaders,
-                        ex.ResponseBody
+                        ex.ResponseBody,
+                        new Industry_Api_Post_DataformatModel
+                        {
+                            InspectionId = ex.InspectionId,
+                            InspectionLogId = ex.InspectionLogId,
+                            IncomingJsonId = ex.IncomingJsonId,
+                            ActionTaken = ex.ActionTaken,
+                            CommentByUserLogin = ex.CommentByUserLogin,
+                            CommentDate = ex.CommentDate,
+
+                            Comments = ex.Comments,
+                            Id = ex.Id,
+                            ProjectId = ex.ProjectId,
+                            ServiceId = ex.ServiceId,
+                        }
                     );
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
                 }
                 catch (Exception ex)
@@ -957,80 +990,44 @@ namespace CEIHaryana.SiteOwnerPages
             return -1;
         }
 
-        public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType, SqlTransaction transaction )
-        {
-            string query = "sp_Industry_Create_OutgoingRequest_Format";
-
-                using (SqlCommand command = new SqlCommand(query,transaction.Connection,transaction))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
-                    command.Parameters.AddWithValue("@ActionType", _actionType);
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            var model = new Industry_Api_Post_DataformatModel
-                            {
-                                PremisesType = reader["PremisesType"].ToString(),
-                                InspectionId = Convert.ToInt32(reader["InspectionId"]),
-                                InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
-                                IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
-                                ActionTaken = reader["ActionTaken"].ToString(),
-                                CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
-                                CommentDate = Convert.ToDateTime(reader["CommentDate"]),
-                                Comments = reader["Comments"].ToString(),
-                                Id = reader["Id"].ToString(),
-                                ProjectId = reader["ProjectId"].ToString(),
-                                ServiceId = reader["ServiceId"].ToString()
-                            };
-
-                            return model;
-                        }
-                    }
-                }
-           
-
-            return null;
-        }
-
-
-        //public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType)
+        //public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType, SqlTransaction transaction )
         //{
-        //    string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-        //    using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format", connectionString))
-        //    {
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
-        //        cmd.Parameters.AddWithValue("@ActionType", _actionType);
+        //    string query = "sp_Industry_Create_OutgoingRequest_Format";
 
-        //        using (SqlDataReader reader = cmd.ExecuteReader())
+        //        using (SqlCommand command = new SqlCommand(query,transaction.Connection,transaction))
         //        {
-        //            if (reader.Read())
-        //            {
-        //                var model = new Industry_Api_Post_DataformatModel
-        //                {
-        //                    PremisesType = reader["PremisesType"].ToString(),
-        //                    InspectionId = Convert.ToInt32(reader["InspectionId"]),
-        //                    InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
-        //                    IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
-        //                    ActionTaken = reader["ActionTaken"].ToString(),
-        //                    CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
-        //                    CommentDate = Convert.ToDateTime(reader["CommentDate"]),
-        //                    Comments = reader["Comments"].ToString(),
-        //                    Id = reader["Id"].ToString(),
-        //                    ProjectId = reader["ProjectId"].ToString(),
-        //                    ServiceId = reader["ServiceId"].ToString()
-        //                };
+        //            command.CommandType = CommandType.StoredProcedure;
+        //            command.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+        //            command.Parameters.AddWithValue("@ActionType", _actionType);
 
-        //                return model;
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    var model = new Industry_Api_Post_DataformatModel
+        //                    {
+        //                        PremisesType = reader["PremisesType"].ToString(),
+        //                        InspectionId = Convert.ToInt32(reader["InspectionId"]),
+        //                        InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+        //                        IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+        //                        ActionTaken = reader["ActionTaken"].ToString(),
+        //                        CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+        //                        CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+        //                        Comments = reader["Comments"].ToString(),
+        //                        Id = reader["Id"].ToString(),
+        //                        ProjectId = reader["ProjectId"].ToString(),
+        //                        ServiceId = reader["ServiceId"].ToString()
+        //                    };
+
+        //                    return model;
+        //                }
         //            }
         //        }
-        //    }
+
 
         //    return null;
         //}
+
 
         private void GetOtherDetails_ForReturnedInspection(int inspectionIdPrm)
         {
