@@ -1985,9 +1985,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
 
-        public DataTable InspectionHistoryForAdminData()
+        public DataTable InspectionHistoryForAdminData(string LoginId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionHistoryForAdmin");
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionHistoryForAdmin",LoginId);
         }
         #region Get WorkIntimationDataForAdmin Data
         public DataSet GetWorkIntimationDataForAdmin(string REID)
@@ -2378,7 +2378,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region Update Inspection Data For Action
         public void UpdateInspectionDataOnAction(string ID, string AssignTo, string AssignFrom)
         {
-            SqlCommand cmd = new SqlCommand("sp_UpdateAction");
+            //SqlCommand cmd = new SqlCommand("sp_UpdateAction");
+            SqlCommand cmd = new SqlCommand("sp_UpdateAction_Testing");
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
             cmd.Connection = con;
             if (con.State == ConnectionState.Closed)

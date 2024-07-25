@@ -15,14 +15,20 @@ namespace CEIHaryana.Admin
     public partial class Consolidated_Report : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        private static string LoginId = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!IsPostBack)
                 {
-                    AllDataGrid();
-                    DdlDivisionData();
+                    if (Session["AdminID"].ToString() != null && Session["AdminID"].ToString() != "")
+                    {
+
+                        string LoginId = Session["AdminID"].ToString();
+                        AllDataGrid();
+                        DdlDivisionData();
+                    }
                 }
             }
             catch
@@ -74,8 +80,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
+              
                 DataTable ds = new DataTable();
-                ds = CEI.InspectionHistoryForAdminData();
+                ds = CEI.InspectionHistoryForAdminData(LoginId);
                 if (ds.Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -89,6 +96,7 @@ namespace CEIHaryana.Admin
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
+                
             }
             catch { }
         }
@@ -220,7 +228,7 @@ namespace CEIHaryana.Admin
                 using (ExcelPackage package = new ExcelPackage())
                 {
                     ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
-                    DataTable ds = CEI.InspectionHistoryForAdminData();
+                    DataTable ds = CEI.InspectionHistoryForAdminData(LoginId);
 
                     //custom header names
                     Dictionary<string, string> columnHeadersMapping = new Dictionary<string, string>

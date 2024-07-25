@@ -18,7 +18,10 @@ namespace CEIHaryana.Admin
             {
                 if (!Page.IsPostBack)
                 {
-                    BindGrid();
+                    if (Session["AdminID"] != null && Session["AdminID"].ToString() != "")
+                    {
+                        BindGrid();
+                    }
                 }
             }
             catch
@@ -30,8 +33,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                string LoginId = Session["AdminID"].ToString();
                 DataTable ds = new DataTable();
-                ds = CEI.InspectionHistoryForAdminData();
+                ds = CEI.InspectionHistoryForAdminData(LoginId);
                 if (ds.Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;

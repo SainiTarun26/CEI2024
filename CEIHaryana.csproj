@@ -244,6 +244,8 @@
     <Content Include="Admin\UploadSignature.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
+    <Content Include="Admin\ActionInprocessInspection.aspx" />
+    <Content Include="Admin\ActionInspectioHistrory.aspx" />
     <Content Include="Application.aspx" />
     <Content Include="applicationtable.aspx" />
     <Content Include="assetsnew\css\style.css" />
@@ -2167,6 +2169,20 @@
     </Compile>
     <Compile Include="Admin\WorkIntimationDetail.aspx.designer.cs">
       <DependentUpon>WorkIntimationDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ActionInprocessInspection.aspx.cs">
+      <DependentUpon>ActionInprocessInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ActionInprocessInspection.aspx.designer.cs">
+      <DependentUpon>ActionInprocessInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ActionInspectioHistrory.aspx.cs">
+      <DependentUpon>ActionInspectioHistrory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ActionInspectioHistrory.aspx.designer.cs">
+      <DependentUpon>ActionInspectioHistrory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application.aspx.cs">
       <DependentUpon>Application.aspx</DependentUpon>

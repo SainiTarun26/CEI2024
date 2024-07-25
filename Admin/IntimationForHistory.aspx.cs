@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,9 @@ namespace CEIHaryana.Admin
         CEI CEI = new CEI();
         string Id, StaffTo, AssignFrom;
         string Type = string.Empty;
+
+        private static int count;
+        private static string IntimationId, AcceptorReturn, Reason, StaffId;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -43,6 +47,11 @@ namespace CEIHaryana.Admin
                         Id = Session["PeriodicMultiple"].ToString();
                     }
 
+                    if (Session["AdminID"].ToString() == "CEI")
+                    {
+                        CardId.Visible = false;
+                        btnUpdate.Visible = false;
+                    }
                     GetDetailsWithId();
 
                 }
@@ -105,6 +114,9 @@ namespace CEIHaryana.Admin
                         txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+
+                        count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
+                        IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                     }
                     else if (Type == "Periodic")
                     {
@@ -154,7 +166,7 @@ namespace CEIHaryana.Admin
                             txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                             txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                             TypeOfInspection.Visible = false;
-                            
+
 
                         }
                         grd_Documemnts.Columns[1].Visible = true;
@@ -503,22 +515,6 @@ namespace CEIHaryana.Admin
             Session["InspectionId"] = "";
         }
 
-        //protected void btnAction_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //       //BindDivisions();
-        //        ApprovalRequired.Visible = true;
-        //        DivToAssign.Visible = true;
-        //        btnUpdate.Visible = true;
-        //        btnAction.Visible = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
-
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -527,31 +523,68 @@ namespace CEIHaryana.Admin
                 {
                     ID = Session["InspectionId"].ToString();
                     AssignFrom = Session["AdminID"].ToString();
-                    if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
+                    if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
                     {
-                        StaffTo = ddlToAssign.SelectedValue;
-                        CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
+                        if (RadioButtonAction.SelectedValue == "0")
+                        {
+                            AcceptorReturn = RdbtnAccptReturn.SelectedValue == "0" ? "Accepted" : "Return";
+                            Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
-                        ddlDivisions.SelectedIndex = 0;
-                        ddlToAssign.SelectedIndex = 0;
+                            CEI.updateInspection(ID, AssignFrom, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
+                            if (AcceptorReturn == "Accepted")
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                return;
+                            }
+                            else
+                            {
+                                if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                    return;
+                                }
+                                if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
+                            {
+                                StaffTo = ddlToAssign.SelectedValue;
+                                CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
 
-                        //string script =  $"alert('Inspection sent to {StaffTo} successfully.');";
-                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-                        //Response.Redirect("IntimationHistoryForAdmin.aspx",true);
-
-                        string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                                ddlDivisions.SelectedIndex = 0;
+                                ddlToAssign.SelectedIndex = 0;
+                                //string script =  $"alert('Inspection sent to {StaffTo} successfully.');";
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                                //Response.Redirect("IntimationHistoryForAdmin.aspx",true);
+                                string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                            }
+                            else
+                            {
+                                ddlToAssign.Focus();
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
+                            }
+                        }
                     }
+
                     else
                     {
-                        ddlToAssign.Focus();
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
                     }
+
+
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.Replace("'", "\\'") + "');", true);
+                return;
             }
         }
 
@@ -593,27 +626,6 @@ namespace CEIHaryana.Admin
             }
         }
 
-        //protected void RadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (RadioButtonList.SelectedValue=="1")
-        //        {
-        //            // BindDivisions();
-        //            ApprovalRequired.Visible = true;
-        //            DivToAssign.Visible = true;
-        //            btnUpdate.Visible = true;
-        //           //btnAction.Visible = false;
-        //        }
-                
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
-
         protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
@@ -639,7 +651,7 @@ namespace CEIHaryana.Admin
             if (RadioButtonAction.SelectedValue == "1")
             {
                 // BindDivisions();
-                TransferButton.Visible = true;               
+                TransferButton.Visible = true;
                 btnUpdate.Visible = true;
                 Action.Visible = false;
                 Return.Visible = false;
@@ -654,7 +666,7 @@ namespace CEIHaryana.Admin
             }
 
         }
-       
+
         protected void GridBindDocument()
         {
             try
@@ -679,6 +691,70 @@ namespace CEIHaryana.Admin
             catch (Exception ex)
             {
                 //throw;
+            }
+        }
+
+        private void GetTestReportData()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReport(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+              
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
+        }
+        protected void lnkRedirect_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+            Session["InspectionTestReportId"] = btn.CommandArgument; //txtTestReportId.Text;
+
+            if (txtWorkType.Text.Trim() == "Line")
+            {
+                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+            }
+            else if (txtWorkType.Text.Trim() == "Substation Transformer")
+            {
+                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
+            }
+            else if (txtWorkType.Text.Trim() == "Generating Set")
+            {
+                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+            }
+
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                if (status == "RETURN")
+                {
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                }
+            }
+
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+
+                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
+                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
     }

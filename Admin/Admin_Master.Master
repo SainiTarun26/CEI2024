@@ -421,6 +421,12 @@
                                 </a>
                                
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Action Inspection</span>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
                                     <i class="icon-grid menu-icon"></i>
@@ -445,6 +451,7 @@
                                     <span class="menu-title">SLD Approval Request</span>
                                 </a>
                             </li>
+                             
                         </ul>
                     </nav>
                     <div class="main-panel">

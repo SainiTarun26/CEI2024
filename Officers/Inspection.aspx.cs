@@ -325,7 +325,6 @@ namespace CEIHaryana.Officers
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/NewApplications.aspx", false);
-
         }
 
         protected void GridBindDocument()
