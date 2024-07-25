@@ -2378,8 +2378,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region Update Inspection Data For Action
         public void UpdateInspectionDataOnAction(string ID, string AssignTo, string AssignFrom)
         {
-            //SqlCommand cmd = new SqlCommand("sp_UpdateAction");
-            SqlCommand cmd = new SqlCommand("sp_UpdateAction_Testing");
+            SqlCommand cmd = new SqlCommand("sp_UpdateAction");
+            //SqlCommand cmd = new SqlCommand("sp_UpdateAction_Testing");
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
             cmd.Connection = con;

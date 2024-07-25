@@ -227,6 +227,6 @@
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-</script>
+    </script>
 </asp:Content>
 

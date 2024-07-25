@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Model.Industry;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace CEIHaryana.Officers
     {
         CEI CEI = new CEI();
         private static int lineNumber = 0;
-
+        IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
         private static string ApprovedorReject, Reason, StaffId, Suggestions;
         string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -317,6 +318,64 @@ namespace CEIHaryana.Officers
                         }
 
                         CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
+
+                        string actiontype = ApprovedorReject == "Approved" ? "Approved" : "Rejected";
+
+                        Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
+
+                        if (ApiPostformatresult.PremisesType == "Industry")
+                        {
+
+                            string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                           // string accessToken = "dfsfdsfsfsdf";
+
+                            logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                          new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                          {
+                                              actionTaken = ApiPostformatresult.ActionTaken,
+                                              commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                              commentDate = ApiPostformatresult.CommentDate,
+                                              id = ApiPostformatresult.Id,
+                                              projectid = ApiPostformatresult.ProjectId,
+                                              serviceid = ApiPostformatresult.ServiceId
+                                          }, ApiPostformatresult, accessToken);
+
+                            if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                            {
+                                throw new Exception(logDetails.ErrorMessage);
+                            }
+
+
+                            CEI.LogToIndustryApiSuccessDatabase(
+                            logDetails.Url,
+                            logDetails.Method,
+                            logDetails.RequestHeaders,
+                            logDetails.ContentType,
+                            logDetails.RequestBody,
+                            logDetails.ResponseStatusCode,
+                            logDetails.ResponseHeaders,
+                            logDetails.ResponseBody,
+
+                            new Industry_Api_Post_DataformatModel
+                            {
+                                InspectionId = ApiPostformatresult.InspectionId,
+                                InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                ActionTaken = ApiPostformatresult.ActionTaken,
+                                CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                CommentDate = ApiPostformatresult.CommentDate,
+
+                                Comments = ApiPostformatresult.Comments,
+                                Id = ApiPostformatresult.Id,
+                                ProjectId = ApiPostformatresult.ProjectId,
+                                ServiceId = ApiPostformatresult.ServiceId,
+                            }
+
+                        );
+
+                        }
+
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                     }

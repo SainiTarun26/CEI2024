@@ -41,7 +41,7 @@
      <script type="text/javascript">
          function alertWithRedirectdata1() {
              alert('Successfully submitted to contractor.');
-             window.location.href = 'InspectionHistory.aspx';
+             window.location.href = 'InspectionHistory_Industry.aspx';
          }
 
      </script>
@@ -191,9 +191,13 @@
                     <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
-                <div class="col-4" runat="server">
+              <div class="col-4" id="voltagelevel" runat="server" visible="false">
                     <label for="Pin">Voltage Level</label>
                     <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
+                  <div class="col-4" id="Type" runat="server" visible="false">
+                    <label for="Pin">InspectionType</label>
+                    <asp:TextBox class="form-control" ID="txtInspectionType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
                 <div class="col-4" runat="server">

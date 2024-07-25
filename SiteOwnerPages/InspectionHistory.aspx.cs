@@ -89,12 +89,12 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (LblInspectionType.Text == "New")
                     {
-                        
+
                         Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
                     }
                     else
                     {
-                        
+
                         Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                     }
                 }
@@ -121,7 +121,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                 }
-                
+
 
                 else
                 {

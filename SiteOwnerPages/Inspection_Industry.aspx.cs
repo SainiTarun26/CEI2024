@@ -157,7 +157,19 @@ namespace CEIHaryana.SiteOwnerPages
 
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                     DateTime.TryParse(createdDate, out inspectionCreatedDate);
-
+                    string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
+                    if (InspectionType == "Periodic")
+                    {
+                        voltagelevel.Visible = false;
+                        Type.Visible = false;
+                    }
+                    else
+                    {
+                        voltagelevel.Visible = true;
+                        Type.Visible = true;
+                        txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    }
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status == "Rejected")
                     {
@@ -417,7 +429,7 @@ namespace CEIHaryana.SiteOwnerPages
             //}
             //else
             //{
-                Response.Redirect("/SiteOwnerPages/InspectionHistory_Industry.aspx", false);
+            Response.Redirect("/SiteOwnerPages/InspectionHistory_Industry.aspx", false);
             //}
         }
         protected void btnSubmit_Click(object sender, EventArgs e)

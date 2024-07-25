@@ -46,13 +46,9 @@ namespace CEIHaryana.Admin
                         txtWorkType.Text = "Multiple";
                         Id = Session["PeriodicMultiple"].ToString();
                     }
-
-                    if (Session["AdminID"].ToString() == "CEI")
-                    {
-                        CardId.Visible = false;
-                        btnUpdate.Visible = false;
-                    }
+                   
                     GetDetailsWithId();
+                    GetTestReportData();
 
                 }
             }

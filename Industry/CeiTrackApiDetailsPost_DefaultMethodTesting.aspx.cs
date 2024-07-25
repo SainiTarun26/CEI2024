@@ -26,11 +26,14 @@ namespace CEIHaryana.Industry
             var inputArray = inputObject.ToArray();
             var httpRequestExample = new HttpRequestExampleTesting();
 
-           // var httpRequestExample = new HttpRequestExampleTesting_LogEachRecord();
+            // var httpRequestExample = new HttpRequestExampleTesting_LogEachRecord();
 
-            string url = "http://ws.edisha.gov.in/api/Values/SaralBulkUpload";
-            string response = httpRequestExample.PostJsonData(url, inputObject);
-           // string response = httpRequestExample.PostJsonData(url, inputObject.Cast<SaralTrackingModal>().ToList());
+            if (inputArray.Length > 0)
+            {
+                string url = "http://ws.edisha.gov.in/api/Values/SaralBulkUpload";
+                string response = httpRequestExample.PostJsonData(url, inputObject);
+                // string response = httpRequestExample.PostJsonData(url, inputObject.Cast<SaralTrackingModal>().ToList());
+            }
         }
 
         private List<SaralTrackingModal> GetSaralTrackingDataFromDatabase()

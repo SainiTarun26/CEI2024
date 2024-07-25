@@ -99,6 +99,7 @@ namespace CEIHaryana.Admin
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
+                GridView1.Columns[8].Visible=false;
             }
             else
             {
@@ -334,6 +335,18 @@ namespace CEIHaryana.Admin
         //    }
 
         //}
+        protected string WrapText(string text, int wrapAfter)
+        {
+            if (string.IsNullOrEmpty(text) || wrapAfter <= 0)
+                return text;
+
+            for (int i = wrapAfter; i < text.Length; i += wrapAfter + 1)
+            {
+                text = text.Insert(i, " ");
+            }
+
+            return text;
+        }
 
     }
 }

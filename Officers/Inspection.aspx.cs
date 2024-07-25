@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;
 using System.Drawing;
+using CEIHaryana.Model.Industry;
 
 namespace CEIHaryana.Officers
 {
@@ -20,6 +21,7 @@ namespace CEIHaryana.Officers
         private static int count;
         private static string IntimationId, AcceptorReturn, Reason, StaffId;
         string Type = string.Empty;
+        IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -305,6 +307,64 @@ namespace CEIHaryana.Officers
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
                             }
                         }
+
+
+                        string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+
+                        Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
+
+                        if (ApiPostformatresult.PremisesType == "Industry")
+                        {
+
+                            string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                            //string accessToken = "dfsfdsfsfsdf";
+
+                            logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                          new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                          {
+                                              actionTaken = ApiPostformatresult.ActionTaken,
+                                              commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                              commentDate = ApiPostformatresult.CommentDate,
+                                              id = ApiPostformatresult.Id,
+                                              projectid = ApiPostformatresult.ProjectId,
+                                              serviceid = ApiPostformatresult.ServiceId
+                                          }, ApiPostformatresult, accessToken);
+
+                            if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                            {
+                                throw new Exception(logDetails.ErrorMessage);
+                            }
+
+
+                            CEI.LogToIndustryApiSuccessDatabase(
+                            logDetails.Url,
+                            logDetails.Method,
+                            logDetails.RequestHeaders,
+                            logDetails.ContentType,
+                            logDetails.RequestBody,
+                            logDetails.ResponseStatusCode,
+                            logDetails.ResponseHeaders,
+                            logDetails.ResponseBody,
+
+                            new Industry_Api_Post_DataformatModel
+                            {
+                                InspectionId = ApiPostformatresult.InspectionId,
+                                InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                ActionTaken = ApiPostformatresult.ActionTaken,
+                                CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                CommentDate = ApiPostformatresult.CommentDate,
+
+                                Comments = ApiPostformatresult.Comments,
+                                Id = ApiPostformatresult.Id,
+                                ProjectId = ApiPostformatresult.ProjectId,
+                                ServiceId = ApiPostformatresult.ServiceId,
+                            }
+
+                        );
+
+                        }
                     }
                     else
                     {
@@ -325,6 +385,7 @@ namespace CEIHaryana.Officers
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/NewApplications.aspx", false);
+
         }
 
         protected void GridBindDocument()

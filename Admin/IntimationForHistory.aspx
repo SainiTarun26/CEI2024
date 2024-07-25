@@ -50,7 +50,12 @@
             args.IsValid = selectedValueToAssign !== "0";
         }
     </script>
-    <script type="text/javascript">        
+    <script type="text/javascript">   
+        function alertWithRedirectdata() {
+
+            alert('Inspection Request is Successfully Accepted');
+            window.location.href = "/Admin/ActionInspectioHistrory.aspx";
+        }
         function alertWithRedirectdataCommonReturn() {
             alert('Inspection Request is Returned to Owner');
             window.location.href = "/Admin/ActionInspectioHistrory.aspx";
@@ -279,7 +284,7 @@
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                    <asp:LinkButton ID="LnkDocumemtPath"  runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
