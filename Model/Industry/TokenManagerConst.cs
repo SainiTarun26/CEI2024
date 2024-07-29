@@ -12,7 +12,7 @@ namespace CEIHaryana.Model.Industry
     public class TokenManagerConst
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-        private static readonly string clientId = "615pk0";
+        private static readonly string clientId = "KarLGm7E";
         private static readonly string clientSecret = "KarLGm7E";
 
         public static string GetAccessToken(Industry_Api_Post_DataformatModel ApiPostformatresult)
@@ -28,8 +28,8 @@ namespace CEIHaryana.Model.Industry
             if (tokens.AccessTokenExpiry <= DateTime.Now)
             {
                 tokens.AccessToken = FetchAccessToken(tokens.RefreshToken, ApiPostformatresult);
-                tokens.AccessTokenExpiry = DateTime.Now.AddSeconds(30); 
-                SaveTokensToDatabase(tokens, false); 
+                tokens.AccessTokenExpiry = DateTime.Now.AddSeconds(30);
+                SaveTokensToDatabase(tokens, false);
             }
 
             return tokens.AccessToken;
@@ -37,15 +37,15 @@ namespace CEIHaryana.Model.Industry
 
         private static TokenInfo RefreshTokens(Industry_Api_Post_DataformatModel ApiPostformatresult)
         {
-            var refreshToken = FetchRefreshToken(clientId, clientSecret , ApiPostformatresult);
+            var refreshToken = FetchRefreshToken(clientId, clientSecret, ApiPostformatresult);
             var accessToken = FetchAccessToken(refreshToken, ApiPostformatresult);
 
             return new TokenInfo
             {
                 RefreshToken = refreshToken,
-                RefreshTokenExpiry = DateTime.Now.AddDays(15), 
+                RefreshTokenExpiry = DateTime.Now.AddDays(15),
                 AccessToken = accessToken,
-                AccessTokenExpiry = DateTime.Now.AddSeconds(30) 
+                AccessTokenExpiry = DateTime.Now.AddSeconds(30)
             };
         }
 

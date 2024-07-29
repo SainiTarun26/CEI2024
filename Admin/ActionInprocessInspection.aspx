@@ -420,8 +420,8 @@
 
 
 
-            <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>--%>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
             <div class="row">
 
                 <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
@@ -476,12 +476,13 @@
                     </div>
                 </div>
             </div>
+                    </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 
 
-    <%--   </ContentTemplate>
-            </asp:UpdatePanel>--%>
+      
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4" style="text-align: center;">

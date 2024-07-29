@@ -163,8 +163,10 @@ namespace CEIHaryana.Admin
                             txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                             TypeOfInspection.Visible = false;
 
-
                         }
+                        TRAttached.Visible = false;
+                        TRAttachedGrid.Visible = false;
+                        IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();                        
                         grd_Documemnts.Columns[1].Visible = true;
                     }
                     GridBindDocument();

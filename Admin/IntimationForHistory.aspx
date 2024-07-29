@@ -191,7 +191,7 @@
                     </div>
                     <div class="col-md-4" id="TypeOfInspection" runat="server" visible="true">
                         <label>
-                            Type of Inspection
+                            Type of Premises
                  <%--<samp style="color: red">* </samp>--%>
                         </label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -372,8 +372,8 @@
                 </div>
             </div>
 
-       <%-- <asp:UpdatePanel ID="updatepanel1" runat="server">
-            <ContentTemplate>--%>
+        <asp:UpdatePanel ID="updatepanel1" runat="server">
+            <ContentTemplate>
 
            
         <div class="card-body" id="CardId" runat="server"  style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -434,8 +434,8 @@
                 </div>
             </div>
         </div>
-                <%-- </ContentTemplate>
-        </asp:UpdatePanel>--%>
+                </ContentTemplate>
+        </asp:UpdatePanel>
        <%-- <div class="card-body" style="display: flex !important; place-items: center !important; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="row">
                 <asp:RadioButtonList ID="RadioButtonList" OnSelectedIndexChanged="RadioButtonList_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">

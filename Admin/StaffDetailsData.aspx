@@ -253,7 +253,7 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="text-wrap" />
                                 <ItemTemplate>
-                                    <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' CssClass="text-wrap"></asp:Label>
+                                    <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("Name") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
