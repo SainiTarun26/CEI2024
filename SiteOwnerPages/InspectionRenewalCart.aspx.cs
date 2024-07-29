@@ -225,10 +225,10 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
 
-                if (AssignToOfficer.StartsWith("CEI"))
-                {
-                    AssignToOfficer = "Admin@123";
-                }
+                //if (AssignToOfficer.StartsWith("CEI"))
+                //{
+                //    AssignToOfficer = "Admin@123";
+                //}
             }
             catch { }
         }
