@@ -12,6 +12,7 @@ namespace CEIHaryana.Admin
     public partial class AcceptedOrRejectedRequest : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string LoginId = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -43,8 +44,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                LoginId = Convert.ToString(Session["AdminId"]);
                 DataSet ds = new DataSet();
-                ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin();
+                ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin(LoginId);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;

@@ -418,8 +418,7 @@
                         </div>
                         </div>
                  </div> --%>
-            <%--<asp:UpdatePanel ID="Updatepanel1" runat="server">
-                <ContentTemplate>--%>
+           
 
 
             <div class="row">
@@ -433,6 +432,8 @@
                             <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                         </div>
                     </div>--%>
+             <asp:UpdatePanel ID="Updatepanel1" runat="server">
+                <ContentTemplate>
             <div class="row">
                 <p style="margin-top: auto; margin-bottom: auto;">Application in order</p>
                 <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
@@ -458,9 +459,10 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
             </div>
+             </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
-        <%-- </ContentTemplate>
-            </asp:UpdatePanel>--%>
+       
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4" style="text-align: center;">

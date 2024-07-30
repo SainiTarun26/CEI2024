@@ -3425,21 +3425,21 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region forAdmin        
-        public DataSet TotalRequestInspectionForAdmin()
+        public DataSet TotalRequestInspectionForAdmin(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin",LoginId);
         }
-        public DataSet NeWRequestInspectionForAdmin()
+        public DataSet NeWRequestInspectionForAdmin(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin", LoginId);
         }
-        public DataSet InProcessRequestInspectionForAdmin()
+        public DataSet InProcessRequestInspectionForAdmin(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId);
         }
-        public DataSet AcceptedOrRejectedRequestInspectionForAdmin()
+        public DataSet AcceptedOrRejectedRequestInspectionForAdmin(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspectionForAdmin");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspectionForAdmin", LoginId);
         }
         #endregion
 

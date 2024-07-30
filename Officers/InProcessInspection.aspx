@@ -413,10 +413,10 @@
 
 
 
-            <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>--%>
+           
             <div class="row">
-
+                 <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>--%>
                 <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                     <label>
                         Approval<samp style="color: red"> * </samp>
@@ -468,13 +468,14 @@
                         <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
+                  <%--   </ContentTemplate>
+            </asp:UpdatePanel>--%>
             </div>
         </div>
     </div>
 
 
-    <%--   </ContentTemplate>
-            </asp:UpdatePanel>--%>
+  
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4" style="text-align: center;">

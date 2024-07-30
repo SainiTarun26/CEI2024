@@ -12,6 +12,7 @@ namespace CEIHaryana.Admin
     public partial class TotalRequestInspectionForAdmin : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string LoginId = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -44,9 +45,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
-
+                LoginId = Convert.ToString(Session["AdminId"]);
                 DataSet ds = new DataSet();
-                ds = CEI.TotalRequestInspectionForAdmin();
+                ds = CEI.TotalRequestInspectionForAdmin(LoginId);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;

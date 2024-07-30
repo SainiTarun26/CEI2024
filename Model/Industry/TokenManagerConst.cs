@@ -13,7 +13,7 @@ namespace CEIHaryana.Model.Industry
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
         private static readonly string clientId = "KarLGm7E";
-        private static readonly string clientSecret = "KarLGm7E";
+        private static readonly string clientSecret = "mON0xp";
 
         public static string GetAccessToken(Industry_Api_Post_DataformatModel ApiPostformatresult)
         {
