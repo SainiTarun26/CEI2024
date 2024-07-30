@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SldUpload.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SldUpload" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="SldApprovalRequest.aspx.cs" Inherits="CEIHaryana.Admin.SldApprovalRequest" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -27,7 +26,7 @@
             return true;
         }
 
-        //Allow Only Aplhabet, Delete and Backspace
+      
 
         function isAlpha(keyCode) {
 
@@ -59,7 +58,22 @@
 
         }
     </script>
-  
+    <script type="text/javascript">
+
+        function convertToUpperCase(event) {
+            var textBox = event.target;
+            textBox.value = textBox.value.toUpperCase();
+        }
+
+        function preventEnterSubmit(e) {
+            // Prevent form submission on Enter key press
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
     <style>
         .headercolor1 {
             text-align: initial !important;
@@ -91,7 +105,11 @@
             background-color: #9292cc !important;
         }
 
-                .form-control {
+        .col-md-4 {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
             height: 30px;
@@ -176,10 +194,6 @@
             background-color: #9292cc;
         }
 
-        th {
-            background: #9292cc;
-        }
-
         .card .card-title {
             font-size: 20px !important;
             color: #010101;
@@ -262,6 +276,15 @@
             .input-box:focus-within {
                 border-color: #777;
             }
+
+        table.table.table-bordered.table-striped.table-striped {
+            margin-bottom: 0px;
+        }
+
+        th.headercolor {
+            width: 1% !IMPORTANT;
+            color: white;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -285,38 +308,42 @@
                         </label>
                     </div>
                 </div>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <div>
-                                <div class="row" style="margin-bottom: 8px;">
-                                    <div class="col-md-12">
-                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
-                                    </div>
-                                </div>
-                                  <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand"> 
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                        
-                            <asp:TemplateField HeaderText="SNo">
+              
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div>
+                        <div class="row" style="margin-bottom: 8px;">
+                            <div class="col-md-12">
+                                <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">SLD Diagram Details</h7>
+                            </div>
+                        </div>
+                     
+                      
+                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoPostBack="true" AutoGenerateColumns="false"  OnRowCommand="grd_Documemnts_RowCommand"  OnRowDataBound="grd_Documemnts_RowDataBound" AllowPaging="True" PageSize="10"  EnableViewState="true">
+                            <HeaderStyle BackColor="#B7E2F0" />
+                            <Columns>
+                                <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Middle">
+                                    <ItemTemplate>
+                                      <asp:CheckBox ID="chkSelect"  runat="server" AutoPostBack="true" OnCheckedChanged="chkSelect_CheckedChanged"/>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblSldId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
+                                    <asp:Label ID="lblSiteOwnerId" runat="server" Text='<%#Eval("SiteOwnerID") %>'></asp:Label>
+                                  
+                                   
+                                    
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="SNo">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                           <%--  <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>--%>
-                             <asp:TemplateField HeaderText="Id">
-                                    <ItemTemplate>
-                                       <asp:LinkButton ID="LinkButton" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("SLD_ID") %> ' CommandName="Select"><%#Eval("SLD_ID") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-           
-                          <asp:TemplateField HeaderText="Document Name">
+                                <asp:TemplateField HeaderText="Document Name">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
                                     <ItemTemplate>
@@ -324,81 +351,90 @@
    
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                          
-                            <asp:BoundField DataField="Status_type" HeaderText="Application Status">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                               <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                              <asp:TemplateField HeaderText=" Approved Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+
+                                <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select">Click here to view document </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </asp:TemplateField>
-                           
-                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status_type") %>'></asp:Label>
-                                    <asp:Label ID="LblId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>   
-                                
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
-                           
-                                   <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" id="Documents" runat="server" visible="false">
-                                     <div class="row">
-                                           <div class="col-md-4" id="hiddenfield" runat="server">
-                            <label class="form-label" for="customFile">
-                               SDL Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
-                            </label>
-                            <br />
-                            <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control"
-                                Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
-                          
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                                ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </Columns>
+                            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                        </asp:GridView>
+     
+ 
+
+                        <div class="row">
                         </div>
-                                     </div>
-                                       </div>
-                            </div>
-
-                         
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-
-
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Upload" runat="server" onClick="btnSubmit_Click" class="btn btn-primary mr-2" />
-
-                         <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
-                <asp:HiddenField ID="hdnId" runat="server" />
-                <asp:HiddenField ID="hdnId2" runat="server" />
-                <div>
+                <div class="card-body" id="ApproveDocument" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                <div class="row" >
+                    <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
+                        <label>
+                            Approval<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
+                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="formFile" class="form-label">
+                            SDL Document (2MB PDF ONLY)<samp style="color: red">* </samp>
+                           
+                        </label>
+                        <asp:FileUpload class="form-control" ID="Signature" runat="server" Style="padding: 2px;" accept=".pdf" />
+                          <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                ControlToValidate="Signature" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="row" id="Rejection" runat="server" visible="false">
+                    <div class="col-md-12">
+                        <label for="Phone">
+                            Reason For Return
+        <samp style="color: red">* </samp>
+                        </label>
+                        <asp:TextBox class="form-control" ID="TxtRejectionReason" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <span id="RejectionReason" style="color: red"></span>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtRejectionReason" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="row" id="Remarks" runat="server" visible="false">
+                    <div class="col-md-12">
+                        <label for="Phone">
+                            Remarks
+        <samp style="color: red">* </samp>
+                        </label>
+                        <asp:TextBox class="form-control" ID="TxtRemarks" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <span id="Remark" style="color: red"></span>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                    </div>
                 </div>
             </div>
+            </div>
+  
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align: center;">
+                    <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" onClick="btnSubmit_Click" class="btn btn-primary mr-2" />
+
+                 
+                    <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                    <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <asp:HiddenField ID="hdnId" runat="server" />
+            <asp:HiddenField ID="hdnId2" runat="server" />
+            <div>
+            </div>
         </div>
+    </div>
     </div>
     <footer class="footer">
     </footer>
@@ -420,11 +456,32 @@
             var selectedFileName = document.getElementById('customFileLocation');
 
             if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
+               
                 selectedFileName.value = fileInput.files[0].name;
             }
         }
     </script>
+    <script type="text/javascript">
+        function SelectCheckbox(checkbox) {
+            var grid = document.getElementById('<%= grd_Documemnts.ClientID %>');
+            var checkboxes = grid.getElementsByTagName('input');
+            var checkedCount = 0;
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].type == 'checkbox' && checkboxes[i] != checkbox) {
+                    checkboxes[i].checked = false;
+                }
+                if (checkboxes[i].type == 'checkbox' && checkboxes[i].checked) {
+                    checkedCount++;
+                }
+            }
+
+            if (checkedCount > 1) {
+                alert('You can only select one checkbox.');
+                checkbox.checked = false;
+            }
+        }
+    </script>
 
 
 
@@ -432,16 +489,16 @@
 
 
 
-   
+
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
-                event.preventDefault(); // Prevent form submission
+                event.preventDefault(); 
                 return false;
             }
         }
     </script>
-   
+
     <script type="text/javascript">
         function SelectAllCheckboxes(headerCheckbox) {
             var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
@@ -450,14 +507,16 @@
             }
         }
     </script>
-    
+    <script>
+        $('.select2').select2();
+    </script>
     <script>
         $(".chosen-select").chosen({
             no_results_text: "Oops, nothing found!"
         })
     </script>
-   
-   
+
+
     <script type="text/javascript">
         function showHide() {
 
@@ -495,7 +554,7 @@
         function allowAlphabets(event) {
             var keyCode = event.which || event.keyCode;
 
-            // Allow only alphabetical keys
+          
             if ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122)) {
                 return true;
             } else {
@@ -506,7 +565,7 @@
     </script>
     <script type="text/javascript">
         function restrictInput(event) {
-            var allowedKeys = [49, 50, 51, 52, 53]; // ASCII codes for 1, 2, 3, 4, 5
+            var allowedKeys = [49, 50, 51, 52, 53]; 
             var keyCode = event.which || event.keyCode;
 
             if (allowedKeys.indexOf(keyCode) === -1) {
@@ -517,7 +576,7 @@
         }
 
     </script>
-    
+
     <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
@@ -526,7 +585,25 @@
             }
         }
     </script>
+    <script>
 
+
+        function convertToUpperCase(event) {
+            var textBox = event.target;
+            textBox.value = textBox.value.toUpperCase();
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('<%= this.Page.Form.ClientID %>');
+
+            if (form) {
+                form.onsubmit = function () {
+                    return validateTANNumber();
+                };
+            }
+        });
+    </script>
     <script type="text/javascript">
         function validateInput(event) {
             var textBox = event.target;

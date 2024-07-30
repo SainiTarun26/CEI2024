@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SldUpload.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SldUpload" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SLDReturn.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SLDReturn" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -294,74 +293,9 @@
                                         <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
                                     </div>
                                 </div>
-                                  <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand"> 
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                        
-                            <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
-                                    <ItemTemplate>
-                                        <%#Container.DataItemIndex+1 %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                           <%--  <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>--%>
-                             <asp:TemplateField HeaderText="Id">
-                                    <ItemTemplate>
-                                       <asp:LinkButton ID="LinkButton" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("SLD_ID") %> ' CommandName="Select"><%#Eval("SLD_ID") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-           
-                          <asp:TemplateField HeaderText="Document Name">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
-                                    <ItemTemplate>
-                                        Single Line Diagram
-   
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                          
-                            <asp:BoundField DataField="Status_type" HeaderText="Application Status">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                               <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                              <asp:TemplateField HeaderText=" Approved Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                                    <HeaderStyle HorizontalAlign="Left" />
-                                </asp:TemplateField>
+                       
                            
-                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status_type") %>'></asp:Label>
-                                    <asp:Label ID="LblId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>   
-                                
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
-                           
-                                   <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" id="Documents" runat="server" visible="false">
+                                   <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                      <div class="row">
                                            <div class="col-md-4" id="hiddenfield" runat="server">
                             <label class="form-label" for="customFile">
@@ -387,7 +321,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Upload" runat="server" onClick="btnSubmit_Click" class="btn btn-primary mr-2" />
+                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Upload" runat="server" onclick="btnSubmit_Click" class="btn btn-primary mr-2" />
 
                          <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                     </div>

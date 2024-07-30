@@ -4242,10 +4242,63 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId);
         }
+       
+       
+        public DataSet ViewSldDocuments()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocument");
+        }
+        public DataSet PrintApprovalLetter(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApprovalCertificateForPreodic", Id);
+        }
+        public DataSet getInstallations(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getInstallationTypeForLetter", Id);
+        }
+
+        public void SldRequestForAdmin(string SLD_ID, string Status_type, string ActionTaken, string Remarks, string Rejection)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "Sp_SdlRequest";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@SLD_ID", SLD_ID);
+            cmd.Parameters.AddWithValue("@Status_type", Status_type);
+            cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
+
+            cmd.Parameters.AddWithValue("@Remarks", String.IsNullOrEmpty(Remarks) ? DBNull.Value : (object)Remarks);
+            cmd.Parameters.AddWithValue("@Rejection", String.IsNullOrEmpty(Rejection) ? DBNull.Value : (object)Rejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+        public DataSet ViewSldDocumentsFoApproval()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocumentFoApproval");
+        }
+
+        public DataTable UpdateSLD(string Id, string path)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData", Id, path);
+        }
+        public DataTable SldReturnHistory(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlReturnHistory", SiteOwnerId);
+        }
         public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby);
         }
+
         public void SldApprovedByAdmin(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
         {
             SqlConnection con = new SqlConnection();
@@ -4270,19 +4323,6 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             con.Close();
 
         }
-        public DataSet ViewSldDocuments()
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocument");
-        }
-        public DataSet PrintApprovalLetter(string Id)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApprovalCertificateForPreodic", Id);
-        }
-        public DataSet getInstallations(string Id)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getInstallationTypeForLetter", Id);
-        }
-
         #endregion
 
         #region industry

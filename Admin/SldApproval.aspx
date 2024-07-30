@@ -379,12 +379,12 @@
                         </label>
                         <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Accepted" Value="InProcess"></asp:ListItem>
+                            <asp:ListItem Text="Returned" Value="Returned"></asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-4">
+                 <%--   <div class="col-md-4">
                         <label for="formFile" class="form-label">
                             SDL Document (2MB PDF ONLY)<samp style="color: red">* </samp>
                            
@@ -392,12 +392,12 @@
                         <asp:FileUpload class="form-control" ID="Signature" runat="server" Style="padding: 2px;" accept=".pdf" />
                           <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
                                 ControlToValidate="Signature" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="row" id="Rejection" runat="server" visible="false">
                     <div class="col-md-12">
                         <label for="Phone">
-                            Reason For Rejection
+                            Reason For Return
         <samp style="color: red">* </samp>
                         </label>
                         <asp:TextBox class="form-control" ID="TxtRejectionReason" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

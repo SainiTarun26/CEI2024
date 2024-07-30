@@ -10,12 +10,11 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Admin
 {
-    public partial class SingleLineDiagram : System.Web.UI.Page
+    public partial class SldApprovalRequest : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
 
@@ -25,15 +24,13 @@ namespace CEIHaryana.Admin
                 }
             }
 
-
         }
-
         private void GridBind()
         {
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.ViewSldDocuments();
+                ds = CEI.ViewSldDocumentsFoApproval();
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
@@ -56,12 +53,12 @@ namespace CEIHaryana.Admin
 
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlReview.SelectedValue == "Returned")
+            if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
                 Remarks.Visible = false;
             }
-            else if (ddlReview.SelectedValue == "InProcess")
+            else if (ddlReview.SelectedValue == "1")
             {
                 Remarks.Visible = true;
                 Rejection.Visible = false;
@@ -72,8 +69,6 @@ namespace CEIHaryana.Admin
                 Rejection.Visible = false;
                 Remarks.Visible = false;
             }
-          
-           
 
         }
 
@@ -87,13 +82,10 @@ namespace CEIHaryana.Admin
                 string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
-
         }
 
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
-
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
@@ -102,9 +94,7 @@ namespace CEIHaryana.Admin
                 chkSelect.CheckedChanged += chkSelect_CheckedChanged;
                 chkSelect.Attributes.Add("onclick", "SelectCheckbox(this);");
             }
-
         }
-
         protected void chkSelect_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox chkSelect = (CheckBox)sender;
@@ -153,18 +143,50 @@ namespace CEIHaryana.Admin
 
 
         }
-     
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            string SLDID = Session["lblSldId"].ToString().Trim();
-            //string SiteOwnerId = Session["lblSiteOwnerId"].ToString().Trim();
-            string AdminId = Session["AdminID"].ToString();
-            
-            CEI.SldRequestForAdmin(SLDID, ddlReview.SelectedValue.ToString(), AdminId,TxtRemarks.Text.Trim(), TxtRejectionReason.Text.Trim());
-            string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+            {
+                string SLDID = Session["lblSldId"].ToString().Trim();
+                //string SiteOwnerId = Session["lblSiteOwnerId"].ToString().Trim();
+                string AdminId = Session["AdminID"].ToString();
+                int maxFileSize = 2 * 1024 * 1024;
+                string filePathInfo = "";
+
+                if (Signature.HasFile && Signature.PostedFile != null && Signature.PostedFile.ContentLength <= maxFileSize)
+                {
+                    try
+                    {
+                        string FilName = string.Empty;
+                        FilName = Path.GetFileName(Signature.PostedFile.FileName);
+
+
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + AdminId + "/SLD/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + AdminId + "/SLD/"));
+                        }
+
+                        string ext = Path.GetExtension(Signature.FileName);
+                        string path = "/Attachment/" + AdminId + "/SLD/";
+                        string fileName = "SLD" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                        string filePathInfo2 = Server.MapPath("~/Attachment/" + AdminId + "/SLD/" + fileName);
+                        Signature.SaveAs(filePathInfo2);
+                        filePathInfo = path + fileName;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw new Exception("Please Upload Pdf Files 1 Mb Only");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Please Upload Pdf Files 2 Mb Only");
+                }
+                CEI.SldApprovedByAdmin(SLDID, ddlReview.SelectedItem.ToString(), AdminId, filePathInfo, TxtRemarks.Text.Trim(), TxtRejectionReason.Text.Trim());
+                string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+            }
         }
-    
     }
 }

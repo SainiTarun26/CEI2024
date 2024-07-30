@@ -24,7 +24,7 @@ namespace CEIHaryana.SiteOwnerPages
                
                 if (Session["SiteOwnerId"] != null)
                 {
-                   
+                    BindGrid();
                 }
                 else
                 {
@@ -32,6 +32,28 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
 
+        }
+        public void BindGrid()
+        {
+            string LoginID = string.Empty;
+            LoginID = Session["SiteOwnerId"].ToString();
+            DataTable ds = new DataTable();
+            ds = CEI.SldReturnHistory(LoginID);
+            if (ds.Rows.Count > 0)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                Documents.Visible = true;
+                //string script = "alert(\"No Record Found\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            ds.Dispose();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -76,7 +98,54 @@ namespace CEIHaryana.SiteOwnerPages
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }
 
-       
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                
+                string status = DataBinder.Eval(e.Row.DataItem, "Status_type").ToString();
 
+               
+                Label lblStatus = (Label)e.Row.FindControl("lblStatus");
+
+             
+                if (status == "Returned")
+                {
+                    Documents.Visible = false;
+                }
+                if (status == "Rejected")
+                {
+                    Documents.Visible = false;
+                }
+               
+
+            }
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label LblId = (Label)row.FindControl("LblId");
+                Label lblStatus = (Label)row.FindControl("lblStatus");
+                if (lblStatus.Text.Trim().Equals("Rejected", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Show an alert if StatusType is Rejected
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Cannot upload SLD document.');", true);
+                }
+                else
+                {
+                    Session["Sld_id"] = LblId.Text;
+                    Response.Redirect("/SiteOwnerPages/SLDReturn.aspx", false);
+                }
+            }
+            else
+            {
+
+            }
+        }
     }
 }
