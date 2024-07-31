@@ -448,7 +448,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/SldApproval.aspx">
                                     <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">SLD Approval Request</span>
+                                    <span class="menu-title">SLD Request Recevied</span>
                                 </a>
                             </li>
                             <li class="nav-item">
