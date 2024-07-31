@@ -59,18 +59,18 @@ namespace CEIHaryana.Admin
             if (ddlReview.SelectedValue == "Returned")
             {
                 Rejection.Visible = true;
-                Remarks.Visible = false;
+               // Remarks.Visible = false;
             }
             else if (ddlReview.SelectedValue == "InProcess")
             {
-                Remarks.Visible = true;
+                //Remarks.Visible = true;
                 Rejection.Visible = false;
 
             }
             if (ddlReview.SelectedValue == "0")
             {
                 Rejection.Visible = false;
-                Remarks.Visible = false;
+               // Remarks.Visible = false;
             }
           
            
@@ -145,7 +145,7 @@ namespace CEIHaryana.Admin
 
                 ApproveDocument.Visible = false;
                 TxtRejectionReason.Text = "";
-                TxtRemarks.Text = "";
+               // TxtRemarks.Text = "";
                 ddlReview.SelectedValue = "0";
 
             }
@@ -161,7 +161,7 @@ namespace CEIHaryana.Admin
             //string SiteOwnerId = Session["lblSiteOwnerId"].ToString().Trim();
             string AdminId = Session["AdminID"].ToString();
             
-            CEI.SldRequestForAdmin(SLDID, ddlReview.SelectedValue.ToString(), AdminId,TxtRemarks.Text.Trim(), TxtRejectionReason.Text.Trim());
+            CEI.SldRequestForAdmin(SLDID, ddlReview.SelectedValue.ToString(), AdminId,TxtRejectionReason.Text.Trim());
             string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }

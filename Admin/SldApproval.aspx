@@ -405,7 +405,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtRejectionReason" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="row" id="Remarks" runat="server" visible="false">
+               <%-- <div class="row" id="Remarks" runat="server" visible="false">
                     <div class="col-md-12">
                         <label for="Phone">
                             Remarks
@@ -415,7 +415,7 @@
                         <span id="Remark" style="color: red"></span>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                     </div>
-                </div>
+                </div>--%>
             </div>
             </div>
   

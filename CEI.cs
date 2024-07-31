@@ -4257,7 +4257,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getInstallationTypeForLetter", Id);
         }
 
-        public void SldRequestForAdmin(string SLD_ID, string Status_type, string ActionTaken, string Remarks, string Rejection)
+        public void SldRequestForAdmin(string SLD_ID, string Status_type, string ActionTaken, string Rejection)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -4274,8 +4274,6 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             cmd.Parameters.AddWithValue("@SLD_ID", SLD_ID);
             cmd.Parameters.AddWithValue("@Status_type", Status_type);
             cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
-
-            cmd.Parameters.AddWithValue("@Remarks", String.IsNullOrEmpty(Remarks) ? DBNull.Value : (object)Remarks);
             cmd.Parameters.AddWithValue("@Rejection", String.IsNullOrEmpty(Rejection) ? DBNull.Value : (object)Rejection);
             cmd.ExecuteNonQuery();
             con.Close();
