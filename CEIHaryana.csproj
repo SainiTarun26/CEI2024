@@ -237,6 +237,7 @@
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
     <Content Include="Admin\RequestPendingDays.aspx" />
     <Content Include="Admin\SldApproval.aspx" />
+    <Content Include="Admin\SldApprovalRequest.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
@@ -2121,6 +2122,13 @@
     </Compile>
     <Compile Include="Admin\SldApproval.aspx.designer.cs">
       <DependentUpon>SldApproval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SldApprovalRequest.aspx.cs">
+      <DependentUpon>SldApprovalRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SldApprovalRequest.aspx.designer.cs">
+      <DependentUpon>SldApprovalRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StaffDetailsData.aspx.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>
