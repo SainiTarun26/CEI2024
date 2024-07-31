@@ -24,106 +24,6 @@ namespace CEIHaryana.Industry
                 Session["logintype"] = null;
 
 
-                // Dummy JSON for testing purposes
-                //    string jsonData = @"{
-                //    'uname': 'testuser',
-                //    'investorname': 'John Doe',
-                //    'address': '1234 Elm Street',
-                //    'useremail': 'john.doe@example.com',
-                //    'country': 'India',
-                //    'state': 'Haryana',
-                //    'city': 'Gurgaon',
-                //    'niccode': '12345',
-                //    'pannumber': 'abcde1234t',
-                //    'gstnumber': '22AAAAA0000A1Z5',
-                //    'aadhar_number': '123456789012',
-                //    'proposedbuilt_up_area': '1000',
-                //    'mobile': '9876543210',
-                //    'totalproposedprojectarea': '5000',
-                //    'totalpurposedemployment': '100',
-                //    'total_project_cost': '10000000',
-                //    'project_site_district': 'Gurgaon',
-                //    'landzoneuse_type': 'Commercial',
-                //    'businessentity': 'Private',
-                //    'projecttype': 'New',
-                //    'projectid': 'P123456',
-                //    //'serviceid': 'S123456',
-                //    'serviceid': '3',
-                //    'projectserviceid': 'PS123456',
-                //    'requestType': 'New',
-                //    'cafType': 'Type1'
-                //}";
-
-
-                //string uname = Request.Params["uname"];
-                //string investorname = Request.Params["investorname"];
-                //string address = Request.Params["address"];
-                //string useremail = Request.Params["useremail"];
-                //string country = Request.Params["country"];
-                //string state = Request.Params["state"];
-                //string city = Request.Params["city"];
-                //string niccode = Request.Params["niccode"];
-                //string pannumber = Request.Params["pannumber"];
-                //string gstnumber = Request.Params["gstnumber"];
-                //string aadhar_number = Request.Params["aadhar_number"];
-                //string proposedbuilt_up_area = Request.Params["proposedbuilt_up_area"];
-                //string mobile = Request.Params["mobile"];
-                //string totalproposedprojectarea = Request.Params["totalproposedprojectarea"];
-                //string totalpurposedemployment = Request.Params["totalpurposedemployment"];
-                //string total_project_cost = Request.Params["total_project_cost"];
-                //string project_site_district = Request.Params["project_site_district"];
-                //string landzoneuse_type = Request.Params["landzoneuse_type"];
-                //string businessentity = Request.Params["businessentity"];
-                //string projecttype = Request.Params["projecttype"];
-                //string projectid = Request.Params["projectid"];
-                //string serviceid = Request.Params["serviceid"];
-                //string projectserviceid = Request.Params["projectserviceid"];
-                //string cafpin = Request.Params["cafpin"];
-                //string projectlevel = Request.Params["projectlevel"];
-                //string requestType = Request.Params["requestType"];
-                //string cafType = Request.Params["cafType"];
-
-                //// Build a JSON object or a custom response
-                //var responseObject = new
-                //{
-                //    uname,
-                //    investorname,
-                //    address,
-                //    useremail,
-                //    country,
-                //    state,
-                //    city,
-                //    niccode,
-                //    pannumber,
-                //    gstnumber,
-                //    aadhar_number,
-                //    proposedbuilt_up_area,
-                //    mobile,
-                //    totalproposedprojectarea,
-                //    totalpurposedemployment,
-                //    total_project_cost,
-                //    project_site_district,
-                //    landzoneuse_type,
-                //    businessentity,
-                //    projecttype,
-                //    projectid,
-                //    serviceid,
-                //    projectserviceid,
-                //    cafpin,
-                //    projectlevel,
-                //    requestType,
-                //    cafType
-                //};
-
-                // Serialize the response object to JSON
-                // string jsonResponse = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(responseObject);
-
-
-                // Deserialize the JSON data into the IncomingJsonModel
-                //Cei_IndustryServices_Redirection_IncomingJson_Model inputObject = JsonConvert.DeserializeObject<Cei_IndustryServices_Redirection_IncomingJson_Model>(jsonData);
-
-
-
                 var inputObject = new Cei_IndustryServices_Redirection_IncomingJson_Model
                 {
                     uname = Request.Params["uname"],
@@ -134,8 +34,9 @@ namespace CEIHaryana.Industry
                     state = Request.Params["state"],
                     city = Request.Params["city"],
                     niccode = Request.Params["niccode"],
-                    //pannumber = Request.Params["pannumber"],
-                    pannumber = "abcde1234t",
+                    pannumber = Request.Params["pannumber"],
+                    //pannumber = "abcde1234t",
+                    //pannumber = "ABCDE1234G",
                     gstnumber = Request.Params["gstnumber"],
                     aadhar_number = Request.Params["aadhar_number"],
                     proposedbuilt_up_area = Request.Params["proposedbuilt_up_area"],
@@ -157,7 +58,8 @@ namespace CEIHaryana.Industry
                 };
                 try
                 {
-                    if (!string.IsNullOrEmpty(inputObject.pannumber) || !string.IsNullOrEmpty(inputObject.serviceid))
+                    if (!string.IsNullOrEmpty(inputObject.pannumber) && !string.IsNullOrWhiteSpace(inputObject.pannumber) &&
+                        !string.IsNullOrEmpty(inputObject.serviceid) && !string.IsNullOrWhiteSpace(inputObject.serviceid))
                     {
 
                         // Store the data in the database
@@ -168,12 +70,14 @@ namespace CEIHaryana.Industry
 
                         Session["SiteOwnerId_Temp"] = inputObject.pannumber;
                         Session["Serviceid_Temp"] = inputObject.serviceid;
-                        //txtPAN.Text = inputObject.pannumber;
-                        txtPAN.Text = "abcde1234t";
+                        txtPAN.Text = inputObject.pannumber;
+                        //txtPAN.Text = "abcde1234t";
+                        //txtPAN.Text = "ABCDE1234G";
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Login To Industry Portal Again.')", true);
+                       // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan Card Or Service Id Not Found.Please Login To Industry Portal Again.')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
                     }
                 }
                 catch (Exception ex)
@@ -286,7 +190,8 @@ namespace CEIHaryana.Industry
                         switch (resultCode)
                         {
                             case "0":
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('TestReportId Not Found')", true);
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('TestReportId Not Found')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2();", true);
                                 break;
                             case "1":
                                 Session["SiteOwnerId_Industry"] = returnedPanno;

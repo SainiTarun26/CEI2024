@@ -1766,19 +1766,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region Update Inspection Data
+
         public void updateInspection(string InspectionID, string StaffId, string IntimatiomnId, int count, string Installationtype,
-                string AcceptedOrReReturn, string Reason, string ReasonType)
+                string AcceptedOrReReturn, string Reason, string ReasonType, SqlTransaction transaction)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("sp_InspectionReview");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
+                SqlCommand cmd = new SqlCommand("sp_InspectionReview", transaction.Connection, transaction);
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", InspectionID);
                 cmd.Parameters.AddWithValue("@StaffId", StaffId);
@@ -1790,44 +1785,72 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
                 //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
                 cmd.ExecuteNonQuery();
-                con.Close();
+
             }
             catch (Exception ex)
             {
-
                 //throw;
             }
 
         }
 
-        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions)
+        public void updateInspectionCEI(string InspectionID, string StaffId, string IntimatiomnId, int count, string Installationtype,
+               string AcceptedOrReReturn, string Reason, string ReasonType)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
+                SqlCommand cmd = new SqlCommand("sp_InspectionReview");
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
+                cmd.Parameters.AddWithValue("@count", count);
+                cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
+                cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
+                //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+
+        }
+
+        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject", transaction.Connection, transaction);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", InspectionID);
                 cmd.Parameters.AddWithValue("@StaffId", StaffId);
                 cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
                 cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
                 cmd.Parameters.AddWithValue("@Suggestion", suggestions);
+                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                DateTime InsDate;
+                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                }
                 cmd.ExecuteNonQuery();
-                con.Close();
             }
             catch (Exception ex)
             {
 
                 //throw;
             }
-
         }
+
 
 
 
@@ -4434,44 +4457,40 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertRemarksForContractor_Industry", ID, TestRportId, RemarkForContractor);
         }
 
-        public void LogToIndustryApiSuccessDatabase(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
+        public void LogToIndustryApiSuccessDatabase(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData, SqlTransaction transaction)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+
+                using (SqlCommand command = new SqlCommand("sp_Industry_Api_DataSent_SuccessLog", transaction.Connection, transaction))
                 {
-                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
 
-                    using (SqlCommand command = new SqlCommand("sp_Industry_Api_DataSent_SuccessLog", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
+                    // Add parameters for the stored procedure
+                    command.Parameters.AddWithValue("@InspectionId", apiData.InspectionId);
+                    command.Parameters.AddWithValue("@InspectionLogId", apiData.InspectionLogId);
+                    command.Parameters.AddWithValue("@HepcDataId", apiData.IncomingJsonId);
+                    command.Parameters.AddWithValue("@ActionTaken", string.IsNullOrEmpty(apiData.ActionTaken) ? (object)DBNull.Value : apiData.ActionTaken);
+                    command.Parameters.AddWithValue("@CommentByUserLogin", string.IsNullOrEmpty(apiData.CommentByUserLogin) ? (object)DBNull.Value : apiData.CommentByUserLogin);
+                    command.Parameters.AddWithValue("@CommentDate", apiData.CommentDate);
+                    command.Parameters.AddWithValue("@Comments", string.IsNullOrEmpty(apiData.Comments) ? (object)DBNull.Value : apiData.Comments);
+                    command.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(apiData.Id) ? (object)DBNull.Value : apiData.Id);
+                    command.Parameters.AddWithValue("@ProjectId", string.IsNullOrEmpty(apiData.ProjectId) ? (object)DBNull.Value : apiData.ProjectId);
+                    command.Parameters.AddWithValue("@ServiceId", string.IsNullOrEmpty(apiData.ServiceId) ? (object)DBNull.Value : apiData.ServiceId);
 
-                        // Add parameters for the stored procedure
-                        command.Parameters.AddWithValue("@InspectionId", apiData.InspectionId);
-                        command.Parameters.AddWithValue("@InspectionLogId", apiData.InspectionLogId);
-                        command.Parameters.AddWithValue("@HepcDataId", apiData.IncomingJsonId);
-                        command.Parameters.AddWithValue("@ActionTaken", string.IsNullOrEmpty(apiData.ActionTaken) ? (object)DBNull.Value : apiData.ActionTaken);
-                        command.Parameters.AddWithValue("@CommentByUserLogin", string.IsNullOrEmpty(apiData.CommentByUserLogin) ? (object)DBNull.Value : apiData.CommentByUserLogin);
-                        command.Parameters.AddWithValue("@CommentDate", apiData.CommentDate);
-                        command.Parameters.AddWithValue("@Comments", string.IsNullOrEmpty(apiData.Comments) ? (object)DBNull.Value : apiData.Comments);
-                        command.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(apiData.Id) ? (object)DBNull.Value : apiData.Id);
-                        command.Parameters.AddWithValue("@ProjectId", string.IsNullOrEmpty(apiData.ProjectId) ? (object)DBNull.Value : apiData.ProjectId);
-                        command.Parameters.AddWithValue("@ServiceId", string.IsNullOrEmpty(apiData.ServiceId) ? (object)DBNull.Value : apiData.ServiceId);
+                    command.Parameters.AddWithValue("@RequestUrl", requestUrl);
+                    command.Parameters.AddWithValue("@RequestMethod", requestMethod);
+                    command.Parameters.AddWithValue("@RequestHeaders", string.IsNullOrEmpty(requestHeaders) ? (object)DBNull.Value : requestHeaders);
+                    command.Parameters.AddWithValue("@RequestContentType", string.IsNullOrEmpty(requestContentType) ? (object)DBNull.Value : requestContentType);
+                    command.Parameters.AddWithValue("@RequestBody", string.IsNullOrEmpty(requestBody) ? (object)DBNull.Value : requestBody);
+                    command.Parameters.AddWithValue("@ResponseStatusCode", string.IsNullOrEmpty(responseStatusCode) ? (object)DBNull.Value : responseStatusCode);
+                    command.Parameters.AddWithValue("@ResponseHeaders", string.IsNullOrEmpty(responseHeaders) ? (object)DBNull.Value : responseHeaders);
+                    command.Parameters.AddWithValue("@ResponseBody", string.IsNullOrEmpty(responseBody) ? (object)DBNull.Value : responseBody);
 
-                        command.Parameters.AddWithValue("@RequestUrl", requestUrl);
-                        command.Parameters.AddWithValue("@RequestMethod", requestMethod);
-                        command.Parameters.AddWithValue("@RequestHeaders", string.IsNullOrEmpty(requestHeaders) ? (object)DBNull.Value : requestHeaders);
-                        command.Parameters.AddWithValue("@RequestContentType", string.IsNullOrEmpty(requestContentType) ? (object)DBNull.Value : requestContentType);
-                        command.Parameters.AddWithValue("@RequestBody", string.IsNullOrEmpty(requestBody) ? (object)DBNull.Value : requestBody);
-                        command.Parameters.AddWithValue("@ResponseStatusCode", string.IsNullOrEmpty(responseStatusCode) ? (object)DBNull.Value : responseStatusCode);
-                        command.Parameters.AddWithValue("@ResponseHeaders", string.IsNullOrEmpty(responseHeaders) ? (object)DBNull.Value : responseHeaders);
-                        command.Parameters.AddWithValue("@ResponseBody", string.IsNullOrEmpty(responseBody) ? (object)DBNull.Value : responseBody);
-
-                        command.ExecuteNonQuery();
-                    }
+                    command.ExecuteNonQuery();
                 }
+                //}
             }
             catch (Exception ex)
             {
@@ -4500,49 +4519,46 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         }
 
 
-        public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType)
+        public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType, SqlTransaction transaction)
         {
             Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel();
-            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+           
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+
+
+            using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format", transaction.Connection, transaction))
             {
-                connection.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+                cmd.Parameters.AddWithValue("@ActionType", _actionType);
 
-                using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format", connection))
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
-                    cmd.Parameters.AddWithValue("@ActionType", _actionType);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    if (reader.Read())
                     {
-                        if (reader.Read())
+                        model = new Industry_Api_Post_DataformatModel
                         {
-                            model = new Industry_Api_Post_DataformatModel
-                            {
-                                PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
-                                InspectionId = Convert.ToInt32(reader["InspectionId"]),
-                                InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
-                                IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
-                                ActionTaken = reader["ActionTaken"].ToString(),
-                                CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
-                                CommentDate = Convert.ToDateTime(reader["CommentDate"]),
-                                Comments = reader["Comments"].ToString(),
-                                Id = reader["Id"].ToString(),
-                                ProjectId = reader["ProjectId"].ToString(),
-                                ServiceId = reader["ServiceId"].ToString()
-                            };
+                            PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
+                            InspectionId = Convert.ToInt32(reader["InspectionId"]),
+                            InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+                            IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+                            ActionTaken = reader["ActionTaken"].ToString(),
+                            CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+                            CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+                            Comments = reader["Comments"].ToString(),
+                            Id = reader["Id"].ToString(),
+                            ProjectId = reader["ProjectId"].ToString(),
+                            ServiceId = reader["ServiceId"].ToString()
+                        };
 
-                            return model;
-                        }
+                        return model;
                     }
                 }
             }
-            return model;
-            //return null;
-        }
 
+            return model;
+
+        }
 
         public void LogToIndustryApiErrorDatabase(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
         {
@@ -4701,6 +4717,42 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return logDetails;
         }
 
+        public string IndustryTokenApiReturnedErrorMessage(TokenManagerException ex)
+        {
+            string errorMessage = "An error occurred";
+            try
+            {
+                var responseObject = JsonConvert.DeserializeObject<Dictionary<string, string>>(ex.ResponseBody);
+                if (responseObject != null && responseObject.ContainsKey("errorMessage"))
+                {
+                    errorMessage = responseObject["errorMessage"];
+                }
+            }
+            catch (Exception parseException)
+            {
+                // Log or handle parse exception if necessary
+            }
+
+            return errorMessage;
+        }
+        public string IndustryApiReturnedErrorMessage(IndustryApiException ex)
+        {
+            string errorMessage = "An error occurred";
+            try
+            {
+                var responseObject = JsonConvert.DeserializeObject<Dictionary<string, string>>(ex.ResponseBody);
+                if (responseObject != null && responseObject.ContainsKey("errorMessage"))
+                {
+                    errorMessage = responseObject["errorMessage"];
+                }
+            }
+            catch (Exception parseException)
+            {
+                // Log or handle parse exception if necessary
+            }
+
+            return errorMessage;
+        }
         #endregion
 
     }

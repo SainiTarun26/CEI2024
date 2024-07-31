@@ -528,7 +528,7 @@ namespace CEIHaryana.Admin
                             AcceptorReturn = RdbtnAccptReturn.SelectedValue == "0" ? "Accepted" : "Return";
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
-                            CEI.updateInspection(ID, AssignFrom, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
+                            CEI.updateInspectionCEI(ID, AssignFrom, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
                             if (AcceptorReturn == "Accepted")
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);

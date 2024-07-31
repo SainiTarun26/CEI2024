@@ -121,6 +121,7 @@ namespace CEIHaryana.Contractor
                 txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
+                txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
                 //ddlPremises.SelectedValue = dp_Id1;
                 txtPAN.Text = ds.Tables[0].Rows[0]["PanNumber"].ToString();
                 if (txtPAN.Text.Trim() != null && txtPAN.Text.Trim() != "")

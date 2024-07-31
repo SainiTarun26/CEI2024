@@ -11,6 +11,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Drawing;
 using CEIHaryana.Model.Industry;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace CEIHaryana.Officers
 {
@@ -290,80 +292,165 @@ namespace CEIHaryana.Officers
                         AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
-                        CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
-
-                        if (AcceptorReturn == "Accepted")
+                        string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+                        using (SqlConnection connection = new SqlConnection(connectionString))
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        }
-                        else
-                        {
-                            if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
+                            connection.Open();
+                            SqlTransaction transaction = connection.BeginTransaction();
+                            try
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+
+                                CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value,transaction);
+
+                                string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+
+                                Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype,transaction);
+
+                                if (ApiPostformatresult.PremisesType == "Industry")
+                                {
+                                    string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult, transaction);
+
+                                    logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                                  "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                  new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                                  {
+                                                      actionTaken = ApiPostformatresult.ActionTaken,
+                                                      commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                      commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                      comments = ApiPostformatresult.Comments,
+                                                      id = ApiPostformatresult.Id,
+                                                      projectid = ApiPostformatresult.ProjectId,
+                                                      serviceid = ApiPostformatresult.ServiceId
+                                                  }, ApiPostformatresult, accessToken);
+
+                                    if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                    {
+                                        throw new Exception(logDetails.ErrorMessage);
+                                    }
+
+
+                                    CEI.LogToIndustryApiSuccessDatabase(
+                                    logDetails.Url,
+                                    logDetails.Method,
+                                    logDetails.RequestHeaders,
+                                    logDetails.ContentType,
+                                    logDetails.RequestBody,
+                                    logDetails.ResponseStatusCode,
+                                    logDetails.ResponseHeaders,
+                                    logDetails.ResponseBody,
+
+                                    new Industry_Api_Post_DataformatModel
+                                    {
+                                        InspectionId = ApiPostformatresult.InspectionId,
+                                        InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                        IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                        ActionTaken = ApiPostformatresult.ActionTaken,
+                                        CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                        CommentDate = ApiPostformatresult.CommentDate,
+
+                                        Comments = ApiPostformatresult.Comments,
+                                        Id = ApiPostformatresult.Id,
+                                        ProjectId = ApiPostformatresult.ProjectId,
+                                        ServiceId = ApiPostformatresult.ServiceId,
+                                    },
+                                    transaction
+
+                                );
+
+                                }
+
+                                transaction.Commit();
+
+                                if (AcceptorReturn == "Accepted")
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                }
+                                else
+                                {
+                                    if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                    }
+                                    if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                    }
+                                }
                             }
-                            if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                            catch (TokenManagerException ex)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                transaction.Rollback();
+                                CEI.LogToIndustryApiErrorDatabase(
+                                    ex.RequestUrl,
+                                    ex.RequestMethod,
+                                    ex.RequestHeaders,
+                                    ex.RequestContentType,
+                                    ex.RequestBody,
+                                    ex.ResponseStatusCode,
+                                    ex.ResponseHeaders,
+                                    ex.ResponseBody,
+                                    new Industry_Api_Post_DataformatModel
+                                    {
+                                        InspectionId = ex.InspectionId,
+                                        InspectionLogId = ex.InspectionLogId,
+                                        IncomingJsonId = ex.IncomingJsonId,
+                                        ActionTaken = ex.ActionTaken,
+                                        CommentByUserLogin = ex.CommentByUserLogin,
+                                        CommentDate = ex.CommentDate,
+                                        Comments = ex.Comments,
+                                        Id = ex.Id,
+                                        ProjectId = ex.ProjectId,
+                                        ServiceId = ex.ServiceId,
+                                    }
+                                );
+                                string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                                // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                             }
-                        }
-
-
-                        string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
-
-                        Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
-
-                        if (ApiPostformatresult.PremisesType == "Industry")
-                        {
-
-                            string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                            //string accessToken = "dfsfdsfsfsdf";
-
-                            logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
-                                          new Industry_Inspection_StageWise_JsonDataFormat_Model
-                                          {
-                                              actionTaken = ApiPostformatresult.ActionTaken,
-                                              commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                              commentDate = ApiPostformatresult.CommentDate,
-                                              id = ApiPostformatresult.Id,
-                                              projectid = ApiPostformatresult.ProjectId,
-                                              serviceid = ApiPostformatresult.ServiceId
-                                          }, ApiPostformatresult, accessToken);
-
-                            if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                            catch (IndustryApiException ex)
                             {
-                                throw new Exception(logDetails.ErrorMessage);
+                                transaction.Rollback();
+                                CEI.LogToIndustryApiErrorDatabase(
+                                    ex.RequestUrl,
+                                    ex.RequestMethod,
+                                    ex.RequestHeaders,
+                                    ex.RequestContentType,
+                                    ex.RequestBody,
+                                    ex.ResponseStatusCode,
+                                    ex.ResponseHeaders,
+                                    ex.ResponseBody,
+                                    new Industry_Api_Post_DataformatModel
+                                    {
+                                        InspectionId = ex.InspectionId,
+                                        InspectionLogId = ex.InspectionLogId,
+                                        IncomingJsonId = ex.IncomingJsonId,
+                                        ActionTaken = ex.ActionTaken,
+                                        CommentByUserLogin = ex.CommentByUserLogin,
+                                        CommentDate = ex.CommentDate,
+
+                                        Comments = ex.Comments,
+                                        Id = ex.Id,
+                                        ProjectId = ex.ProjectId,
+                                        ServiceId = ex.ServiceId,
+                                    }
+                                );
+
+                                string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                             }
 
-
-                            CEI.LogToIndustryApiSuccessDatabase(
-                            logDetails.Url,
-                            logDetails.Method,
-                            logDetails.RequestHeaders,
-                            logDetails.ContentType,
-                            logDetails.RequestBody,
-                            logDetails.ResponseStatusCode,
-                            logDetails.ResponseHeaders,
-                            logDetails.ResponseBody,
-
-                            new Industry_Api_Post_DataformatModel
+                            catch (Exception ex)
                             {
-                                InspectionId = ApiPostformatresult.InspectionId,
-                                InspectionLogId = ApiPostformatresult.InspectionLogId,
-                                IncomingJsonId = ApiPostformatresult.IncomingJsonId,
-                                ActionTaken = ApiPostformatresult.ActionTaken,
-                                CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                CommentDate = ApiPostformatresult.CommentDate,
-
-                                Comments = ApiPostformatresult.Comments,
-                                Id = ApiPostformatresult.Id,
-                                ProjectId = ApiPostformatresult.ProjectId,
-                                ServiceId = ApiPostformatresult.ServiceId,
+                                // Rollback the transaction if an error occurs
+                                transaction.Rollback();
+                                // Handle the exception, log it, etc.
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
                             }
-
-                        );
-
                         }
                     }
                     else

@@ -23,11 +23,11 @@ namespace CEIHaryana.Industry
                     if (Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
 
-                        lblName.Text = Request.Cookies["SiteOwnerId_Industry"].Value;
+                        //lblName.Text = Request.Cookies["SiteOwnerId_Industry"].Value;
                     }
                     else
                     {
-                        lblName.Text = Convert.ToString(Session["SiteOwnerId_Industry"]);
+                        //lblName.Text = Convert.ToString(Session["SiteOwnerId_Industry"]);
                     }
                 }
                 else if (Session["SiteOwnerId_Industry"] == null)

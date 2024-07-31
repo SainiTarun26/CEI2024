@@ -190,7 +190,7 @@
                                                 <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" ReadOnly="true" TabIndex="1" MaxLength="10"  placeholder="Your PanCard No." autocomplete="off" runat="server"></asp:TextBox>
-                                           <%-- <asp:RequiredFieldValidator ID="Req_txtPAN" Text="Required" ErrorMessage="Required" ControlToValidate="txtPAN" runat="server"  Display="None" ValidationGroup="Submit" ForeColor="Red" />--%>
+                                            <asp:RequiredFieldValidator ID="Req_txtPAN" Text="Required" ErrorMessage="Required" ControlToValidate="txtPAN" runat="server"  Display="None" ValidationGroup="Submit" ForeColor="Red" />
                                             <div class="row" style="margin-top: 25px;">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-4" style="display: grid; place-items: center;">
@@ -260,6 +260,18 @@
         <script src="/js2/file-upload.js"></script>
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
+                 <script type="text/javascript">
+                     function alertWithRedirectdata1() {
+                         alert('Pan Card Or Service Id Not Found.');
+                         window.location.href = 'https://staging.investharyana.in/#/';
+                     }
+
+                     function alertWithRedirectdata2() {
+                         alert('TestReportId Not Found.');
+                         window.location.href = 'https://staging.investharyana.in/#/';
+                     }
+
+                 </script>
     </form>
 </body>
 </html>

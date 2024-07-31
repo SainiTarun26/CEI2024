@@ -572,11 +572,11 @@
    }
 
         span#PROCESS {
-            margin-left: 63%;
+            margin-left: 60%;
         }
 
         span#INITIATED {
-            margin-left: 40%;
+            margin-left: 35%;
         }
 
         table#ContentPlaceHolder1_GridView2 {
