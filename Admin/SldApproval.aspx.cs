@@ -32,8 +32,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                string LoginId = Session["AdminID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewSldDocuments();
+                ds = CEI.ViewSldDocuments(LoginId);
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
@@ -158,10 +159,10 @@ namespace CEIHaryana.Admin
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             string SLDID = Session["lblSldId"].ToString().Trim();
-            //string SiteOwnerId = Session["lblSiteOwnerId"].ToString().Trim();
+            string SiteOwnerId = Session["lblSiteOwnerId"].ToString().Trim();
             string AdminId = Session["AdminID"].ToString();
             
-            CEI.SldRequestForAdmin(SLDID, ddlReview.SelectedValue.ToString(), AdminId,TxtRejectionReason.Text.Trim());
+            CEI.SldRequestForAdmin(SLDID, ddlReview.SelectedValue.ToString(), AdminId,TxtRejectionReason.Text.Trim(), SiteOwnerId);
             string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }

@@ -1,6 +1,7 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -27,6 +28,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
         }
+        
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -62,7 +64,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     throw new Exception("Please Upload Pdf Files 2 Mb Only");
                 }
-                CEI.UpdateSLD(SldId, filePathInfo);
+                CEI.UpdateSLD(SldId, filePathInfo, SiteOwnerId);
                 string script = $"alert('SLD Document submitted successfully.'); window.location='SiteOwnerDashboard.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
             }

@@ -286,6 +286,16 @@
                         </asp:RadioButtonList>
                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
                                          </div>
+                         <div class="col-md-4">
+                                            <label>
+                                                Total Capacity to be installed
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                         
+                                             <asp:TextBox class="form-control" ID="txtCapacity" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">

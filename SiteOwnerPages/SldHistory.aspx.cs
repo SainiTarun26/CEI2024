@@ -62,6 +62,38 @@ namespace CEIHaryana.SiteOwnerPages
                 string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
+            if (e.CommandName == "Select1")
+            {
+                string fileName = e.CommandArgument.ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+               
+                string status = DataBinder.Eval(e.Row.DataItem, "Status_type").ToString();
+  
+                LinkButton lnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
+                LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
+
+                if (status == "Approved" || status == "Rejected")
+                {
+                    linkButton1.Visible = false;
+                    lnkDocumemtPath.Visible = true;
+                }
+                else
+                {
+                 
+                    linkButton1.Visible = true;
+                    lnkDocumemtPath.Visible = false;
+                }
+            }
         }
     }
 }

@@ -194,6 +194,7 @@ namespace CEIHaryana.Contractor
                 string dp_Id13 = ds.Tables[0].Rows[0]["NumberOfInstallation3"].ToString();
                 string InspectionType = ds.Tables[0].Rows[0]["InspectionType"].ToString();
                 ddlInspectionType.SelectedIndex = ddlInspectionType.Items.IndexOf(ddlInspectionType.Items.FindByText(InspectionType));
+                txtCapacity.Text = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
                 //string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
                 //string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
                 //string dp_Id16 = ds.Tables[0].Rows[0]["TypeOfInstallation5"].ToString();
@@ -925,7 +926,7 @@ namespace CEIHaryana.Contractor
                             hdnId.Value = ContractorID;
                             CEI.InsertionForApplicationDetails(UpdationId, ContractorID, ddlPremises.SelectedItem.ToString(), txtOtherPremises.Text.Trim(),
                                     ddlVoltageLevel.SelectedItem.ToString(), RadioButtonList2.SelectedValue.ToString(), txtinstallationType1.Text.Trim(), txtinstallationNo1.Text.Trim(), txtinstallationType2.Text.Trim(),
-                                    txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(), ContractorID, transaction) ;
+                                    txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(), ContractorID, txtCapacity.Text.Trim(), transaction) ;
                             string LoginID = string.Empty;
                             LoginID = Session["UpdationId"].ToString();
                             TextBox[] typeTextBoxes = new TextBox[] { txtinstallationType1, txtinstallationType2, txtinstallationType3 };

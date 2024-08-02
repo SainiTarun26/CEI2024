@@ -171,15 +171,15 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing, string ZoneName,
-        string CircleName, string DivisionName, string SubDivisionName,
-        string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-        string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-        string TypeOfInstallation3, string NumberOfInstallation3,
-        //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-        //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-        string Email, string WorkStartDate, string CompletionDate,
-        string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType,
-        SqlTransaction transaction)
+         string CircleName, string DivisionName, string SubDivisionName,
+         string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+         string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+         string TypeOfInstallation3, string NumberOfInstallation3,
+         //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+         //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+         string Email, string WorkStartDate, string CompletionDate,
+         string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity,
+         SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -238,6 +238,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
             cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
+            cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
             outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
@@ -1800,7 +1801,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             try
             {
                 SqlCommand cmd = new SqlCommand("sp_InspectionReview");
-
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", InspectionID);
                 cmd.Parameters.AddWithValue("@StaffId", StaffId);
@@ -2078,23 +2085,18 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetQualificatiohn");
         }
-
         public DataSet GetddlVoltageLevel()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetVoltageLevel");
         }
-
         public DataSet GetContractorData()
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetContractorDetails");
         }
-
-
         public DataTable GetContractorDataforgrid(string loginType, string ID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorData", loginType, ID);
         }
-
         public DataTable GetWiremanorSuperwiserData(string category, string loginType, string ID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWiremanorSuperwiserData", category, loginType, ID);
@@ -3649,8 +3651,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public void InsertionForApplicationDetails(string Id, string ContractorId, string PremisesType, string OtherPremises, string VoltageLevel,
- string SanctionLoad, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
- string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy, SqlTransaction transaction)
+  string SanctionLoad, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+  string TypeOfInstallation3, string NumberOfInstallation3, string CreatedBy, string TotalCapacity, SqlTransaction transaction)
         {
             //SqlConnection con = new SqlConnection();
             //SqlCommand cmd = new SqlCommand();
@@ -3678,6 +3680,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
             cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
             //outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
             //outputParam.Direction = ParameterDirection.Output;
             //cmd.Parameters.Add(outputParam);
@@ -4265,11 +4268,11 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId);
         }
-       
-       
-        public DataSet ViewSldDocuments()
+
+
+        public DataSet ViewSldDocuments(string loginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocument");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocument", loginId);
         }
         public DataSet PrintApprovalLetter(string Id)
         {
@@ -4280,7 +4283,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getInstallationTypeForLetter", Id);
         }
 
-        public void SldRequestForAdmin(string SLD_ID, string Status_type, string ActionTaken, string Rejection)
+        public void SldRequestForAdmin(string SLD_ID, string Status_type, string ActionTaken, string Rejection, string SiteOwnerId)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -4298,26 +4301,27 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             cmd.Parameters.AddWithValue("@Status_type", Status_type);
             cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
             cmd.Parameters.AddWithValue("@Rejection", String.IsNullOrEmpty(Rejection) ? DBNull.Value : (object)Rejection);
+            cmd.Parameters.AddWithValue("@SiteOwnerId", SiteOwnerId);
             cmd.ExecuteNonQuery();
             con.Close();
 
         }
-        public DataSet ViewSldDocumentsFoApproval()
+        public DataSet ViewSldDocumentsFoApproval(string LoginId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocumentFoApproval");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocumentFoApproval", LoginId);
         }
-
-        public DataTable UpdateSLD(string Id, string path)
+        public DataTable UpdateSLD(string Id, string path, string SiteOwnerId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData", Id, path);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData", Id, path, SiteOwnerId);
         }
         public DataTable SldReturnHistory(string SiteOwnerId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlReturnHistory", SiteOwnerId);
         }
-        public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby)
+
+        public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName);
         }
 
         public void SldApprovedByAdmin(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
@@ -4755,6 +4759,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         }
         #endregion
 
+        public DataSet GetOwnerAdress(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSiteAddress", id);
+        }
     }
 }
 

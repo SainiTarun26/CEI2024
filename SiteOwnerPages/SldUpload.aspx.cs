@@ -25,6 +25,7 @@ namespace CEIHaryana.SiteOwnerPages
                 if (Session["SiteOwnerId"] != null)
                 {
                     BindGrid();
+                    BindAdress();
                 }
                 else
                 {
@@ -33,6 +34,26 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
+        private void BindAdress()
+        {
+            try
+            {
+                string id = Session["SiteOwnerId"].ToString();
+                DataSet dsAdress = new DataSet();
+                dsAdress = CEI.GetOwnerAdress(id);
+                ddlSiteOwnerAdress.DataSource = dsAdress;
+                ddlSiteOwnerAdress.DataTextField = "FullAddress";
+                ddlSiteOwnerAdress.DataValueField = "OwnerName";
+                ddlSiteOwnerAdress.DataBind();
+                ddlSiteOwnerAdress.Items.Insert(0, new ListItem("Select", "0"));
+                dsAdress.Clear();
+            }
+            catch
+            {
+
+            }
+        }
+
         public void BindGrid()
         {
             string LoginID = string.Empty;
@@ -93,7 +114,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 throw new Exception("Please Upload Pdf Files 2 Mb Only");
             }
-            CEI.UploadSldDocument(SiteOwnerId, filePathInfo, SiteOwnerId);
+            CEI.UploadSldDocument(SiteOwnerId, filePathInfo, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(),ddlSiteOwnerAdress.SelectedValue);
             string script = $"alert('SLD Document submitted successfully.'); window.location='SiteOwnerDashboard.aspx';";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }

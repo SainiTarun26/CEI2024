@@ -2761,6 +2761,7 @@
                                 </div>
                             </div>
                             <div class="row">
+
                                 <div class="col-12" style="margin-top: 40px; text-align: Center;" runat="server" id="ToOTPVerify" visible="false">
                                     <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                                         OnClick="btnVerify_Click" />
@@ -2783,6 +2784,7 @@
                                 <div class="col-6" id="IntimationForHistory" runat="server" visible="false">
                                     <asp:Button ID="btnIntimationForHistoryBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnIntimationForHistoryBack_Click" />
                                 </div>
+
                             </div>
                             <asp:HiddenField ID="HiddenField1" runat="server" />
                             <%-- <div class="col-6" id="Div81" runat="server" visible="true">

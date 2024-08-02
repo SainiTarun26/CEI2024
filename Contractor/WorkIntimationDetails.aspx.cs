@@ -174,6 +174,7 @@ namespace CEIHaryana.Contractor
                     ddlInspectionType.SelectedIndex = ddlInspectionType.Items.IndexOf(ddlInspectionType.Items.FindByText(InspectionType));
                     RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
                     RadioButtonList2.Enabled = false;
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
                     //String dp_ID24 = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
                     if (dp_Id8 != "")
                     {

@@ -570,6 +570,15 @@
                         </asp:RadioButtonList>
                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
                                          </div>
+                                        <div class="col-md-4">
+                                            <label for="Phone">
+                                                Total Capacity to be installed in KVA(Capacity of Substration transformer & Generating Set)
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtCapacity" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <span id="lblCap" style="color: red"></span>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtCapacity" ValidationGroup="Submit" ForeColor="Red">Please enter Total Capacity</asp:RequiredFieldValidator>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">

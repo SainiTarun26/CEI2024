@@ -29,8 +29,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                string LoginId = Session["AdminID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewSldDocumentsFoApproval();
+                ds = CEI.ViewSldDocumentsFoApproval(LoginId);
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;

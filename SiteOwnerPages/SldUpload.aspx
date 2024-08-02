@@ -363,6 +363,15 @@
                            
                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" id="Documents" runat="server" visible="false">
                                      <div class="row">
+                                          <div class="col-md-4">
+                                            <label>
+                                                SiteAddress
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;"  ID="ddlSiteOwnerAdress" TabIndex="12" runat="server">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select SiteOwnerAddress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlSiteOwnerAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
                                            <div class="col-md-4" id="hiddenfield" runat="server">
                             <label class="form-label" for="customFile">
                                SDL Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
