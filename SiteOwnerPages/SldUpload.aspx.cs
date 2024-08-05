@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using CEI_PRoject;
 using CEIHaryana.Contractor;
 using System.IO;
+using System.Windows.Media;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -41,9 +42,11 @@ namespace CEIHaryana.SiteOwnerPages
                 string id = Session["SiteOwnerId"].ToString();
                 DataSet dsAdress = new DataSet();
                 dsAdress = CEI.GetOwnerAdress(id);
+                string OwnerName = dsAdress.Tables[0].Rows[0]["OwnerName"].ToString();
+                Session["OwnerName"] = OwnerName;
                 ddlSiteOwnerAdress.DataSource = dsAdress;
                 ddlSiteOwnerAdress.DataTextField = "FullAddress";
-                ddlSiteOwnerAdress.DataValueField = "OwnerName";
+                ddlSiteOwnerAdress.DataValueField = "FullAddress";
                 ddlSiteOwnerAdress.DataBind();
                 ddlSiteOwnerAdress.Items.Insert(0, new ListItem("Select", "0"));
                 dsAdress.Clear();
@@ -53,6 +56,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+
 
         public void BindGrid()
         {
@@ -80,6 +84,7 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
            string SiteOwnerId = Session["SiteOwnerId"].ToString();
+            string SiteOwnerName = Session["OwnerName"].ToString();
             string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
             int maxFileSize = 2 * 1024 * 1024;
             string filePathInfo = "";
@@ -114,7 +119,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 throw new Exception("Please Upload Pdf Files 2 Mb Only");
             }
-            CEI.UploadSldDocument(SiteOwnerId, filePathInfo, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(),ddlSiteOwnerAdress.SelectedValue);
+            CEI.UploadSldDocument(SiteOwnerId, filePathInfo, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(), SiteOwnerName);
             string script = $"alert('SLD Document submitted successfully.'); window.location='SiteOwnerDashboard.aspx';";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }
@@ -168,5 +173,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+
+        
     }
 }
