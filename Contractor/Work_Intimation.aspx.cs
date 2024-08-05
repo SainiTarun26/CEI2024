@@ -22,6 +22,7 @@ namespace CEIHaryana.Contractor
         CEI CEI = new CEI();
         string ContractorID = string.Empty;
         string REID = string.Empty;
+        string TypeOfInspection = string.Empty;
         //List<string> SelectedSupervisor = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -675,6 +676,7 @@ namespace CEIHaryana.Contractor
                         txtCapacity.Text.Trim(),
                         transaction);
 
+                    TypeOfInspection = ddlInspectionType.SelectedValue.ToString();
                     //Debug.WriteLine("After IntimationDataInsertion");
 
                     string projectId = CEI.projectId();
@@ -701,7 +703,7 @@ namespace CEIHaryana.Contractor
                             {
                                 for (int j = 0; j < installationNo; j++)
                                 {
-                                    CEI.AddInstallations(projectId, installationType, installationNo, ContractorID, transaction);
+                                    CEI.AddInstallations(projectId, installationType, installationNo, ContractorID, TypeOfInspection, transaction);
                                 }
                             }
                         }

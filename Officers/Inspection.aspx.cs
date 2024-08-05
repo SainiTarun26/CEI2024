@@ -140,8 +140,20 @@ namespace CEIHaryana.Officers
                     SiteOwnerContact.Visible = false;
                     OwnerAddress.Visible = false;
 
-                    TRAttached.Visible = false;
-                    TRAttachedGrid.Visible = false;
+                    if (txtApplicantType.Text != "Multiple")
+                    {
+                        TRAttached.Visible = true;
+                        TRAttachedGrid.Visible = true;
+                        GridView1.Columns[7].Visible = false;
+                    }
+                    else
+                    {
+                        TRAttached.Visible = false;
+                        TRAttachedGrid.Visible = false;
+                    }
+
+                    //TRAttached.Visible = false;
+                    //TRAttachedGrid.Visible = false;
                     IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
 
