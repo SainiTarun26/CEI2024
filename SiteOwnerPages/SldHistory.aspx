@@ -116,13 +116,13 @@
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                         
-                            <asp:TemplateField HeaderText="SNo">
+                           <%-- <asp:TemplateField HeaderText="SNo">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                              <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -133,14 +133,14 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                            
-                            <asp:TemplateField HeaderText="Document Name">
+                          <%--  <asp:TemplateField HeaderText="Document Name">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
                                     <ItemTemplate>
                                         Single Line Diagram
    
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                           
                             <asp:BoundField DataField="Status_type" HeaderText="Application Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
@@ -148,7 +148,7 @@
                             </asp:BoundField>
                               
                              
-                              <asp:TemplateField HeaderText=" Approved Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                              <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">Click here to view document </asp:LinkButton>
@@ -157,11 +157,23 @@
                                     <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </asp:TemplateField>
+                             <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Accepted/Returned Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                             <asp:BoundField DataField="Rejection" HeaderText="ReturnOrRejection Reason">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                              <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>

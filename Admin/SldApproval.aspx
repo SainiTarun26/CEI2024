@@ -352,7 +352,11 @@
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
-                                 <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Owner Address">
+                                 <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Site Address">
+                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="28%" />
+                            </asp:BoundField>
+                                  <asp:BoundField DataField="SubmittedDate" HeaderText="Received Date">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
@@ -589,6 +593,17 @@
         }
 
     </script>
+      <script type="text/javascript">
+          function alertWithRedirectdata() {
+
+              alert('SDL Request is Successfully Accepted');
+              window.location.href = "/Admin/SldApprovalRequest.aspx";
+          }
+          function alertWithRedirectdataReturn() {
+              alert('SLD Request is Returned to Site Owner');
+              window.location.href = "/Admin/AdminMaster.aspx";
+          }
+      </script>
 
     <script type="text/javascript">
         function alertWithRedirect() {
@@ -597,7 +612,7 @@
             } else {
             }
         }
-    </script>
+      </script>
     <script>
 
 

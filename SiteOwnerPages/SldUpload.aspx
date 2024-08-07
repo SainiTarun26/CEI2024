@@ -299,20 +299,20 @@
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                         
-                            <asp:TemplateField HeaderText="SNo">
+                          <%--  <asp:TemplateField HeaderText="SNo">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                            <%--  <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>--%>
                              <asp:TemplateField HeaderText="Id">
                                     <ItemTemplate>
-                                       <asp:LinkButton ID="LinkButton" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("SLD_ID") %> ' CommandName="Select"><%#Eval("SLD_ID") %></asp:LinkButton>
+                                       <asp:LinkButton ID="LinkButton" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("SLD_ID") %> ' CommandName="Select" Style="font-weight: bold;"><%#Eval("SLD_ID") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
            
@@ -329,18 +329,27 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                               <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
+                               <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                              <asp:TemplateField HeaderText=" Approved Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                               <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Returned Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                          
+                             <asp:BoundField DataField="Rejection" HeaderText="Returned Reason">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <%--  <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="View">Click here to view document </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" />
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                            
                         <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
@@ -374,7 +383,7 @@
                                         </div>
                                            <div class="col-md-4" id="hiddenfield" runat="server">
                             <label class="form-label" for="customFile">
-                               SDL Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
+                               SLD Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
                             </label>
                             <br />
                             <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control"
@@ -396,7 +405,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Upload" runat="server" onClick="btnSubmit_Click" class="btn btn-primary mr-2" />
+                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Upload" runat="server" Visible="false" onClick="btnSubmit_Click" class="btn btn-primary mr-2" />
 
                          <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                     </div>

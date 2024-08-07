@@ -10,7 +10,6 @@ using System.Web.UI.WebControls;
 using CEI_PRoject;
 using CEIHaryana.Contractor;
 using System.IO;
-using System.Windows.Media;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -57,7 +56,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-
         public void BindGrid()
         {
             string LoginID = string.Empty;
@@ -75,6 +73,7 @@ namespace CEIHaryana.SiteOwnerPages
                 GridView1.DataSource = null;
                 GridView1.DataBind();
                 Documents.Visible = true;
+                btnSubmit.Visible = true;
                 //string script = "alert(\"No Record Found\");";
                 //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -134,15 +133,19 @@ namespace CEIHaryana.SiteOwnerPages
                
                 Label lblStatus = (Label)e.Row.FindControl("lblStatus");
 
-             
+                btnSubmit.Visible = true;
                 if (status == "Returned")
                 {
                     Documents.Visible = false;
+                    btnSubmit.Visible = false;
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
                 if (status == "Rejected")
                 {
                     Documents.Visible = false;
+                    btnSubmit.Visible = false;
                 }
+                
                
 
             }
@@ -168,12 +171,17 @@ namespace CEIHaryana.SiteOwnerPages
                     Response.Redirect("/SiteOwnerPages/SLDReturn.aspx", false);
                 }
             }
-            else
-            {
+            //if(e.CommandName == "View")
+            //{
 
-            }
+            //    string fileName = e.CommandArgument.ToString();
+            //    string folderPath = Server.MapPath(fileName);
+            //    string filePath = Path.Combine(folderPath);
+            //    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+            //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            //}
+            
         }
-
-        
     }
 }

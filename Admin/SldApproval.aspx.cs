@@ -163,8 +163,16 @@ namespace CEIHaryana.Admin
             string AdminId = Session["AdminID"].ToString();
             
             CEI.SldRequestForAdmin(SLDID, ddlReview.SelectedValue.ToString(), AdminId,TxtRejectionReason.Text.Trim(), SiteOwnerId);
-            string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+            if (ddlReview.SelectedItem.Value == "InProcess") 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+            }
+            if (ddlReview.SelectedItem.Value == "Returned")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataReturn();", true);
+            }
+            //string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }
     
     }

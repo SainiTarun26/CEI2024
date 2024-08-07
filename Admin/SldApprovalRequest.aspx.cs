@@ -58,10 +58,12 @@ namespace CEIHaryana.Admin
             {
                 Rejection.Visible = true;
                 Remarks.Visible = false;
+                Document.Visible = false;
             }
             else if (ddlReview.SelectedValue == "1")
             {
                 Remarks.Visible = true;
+                Document.Visible = true;
                 Rejection.Visible = false;
 
             }
@@ -69,6 +71,7 @@ namespace CEIHaryana.Admin
             {
                 Rejection.Visible = false;
                 Remarks.Visible = false;
+                Document.Visible = false;
             }
 
         }
@@ -153,36 +156,38 @@ namespace CEIHaryana.Admin
                 string AdminId = Session["AdminID"].ToString();
                 int maxFileSize = 2 * 1024 * 1024;
                 string filePathInfo = "";
-
-                if (Signature.HasFile && Signature.PostedFile != null && Signature.PostedFile.ContentLength <= maxFileSize)
+                if (Document.Visible == true)
                 {
-                    try
+                    if (Signature.HasFile && Signature.PostedFile != null && Signature.PostedFile.ContentLength <= maxFileSize)
                     {
-                        string FilName = string.Empty;
-                        FilName = Path.GetFileName(Signature.PostedFile.FileName);
-
-
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + AdminId + "/SLD/")))
+                        try
                         {
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + AdminId + "/SLD/"));
+                            string FilName = string.Empty;
+                            FilName = Path.GetFileName(Signature.PostedFile.FileName);
+
+
+                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + AdminId + "/SLD/")))
+                            {
+                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + AdminId + "/SLD/"));
+                            }
+
+                            string ext = Path.GetExtension(Signature.FileName);
+                            string path = "/Attachment/" + AdminId + "/SLD/";
+                            string fileName = "SLD" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                            string filePathInfo2 = Server.MapPath("~/Attachment/" + AdminId + "/SLD/" + fileName);
+                            Signature.SaveAs(filePathInfo2);
+                            filePathInfo = path + fileName;
+
                         }
-
-                        string ext = Path.GetExtension(Signature.FileName);
-                        string path = "/Attachment/" + AdminId + "/SLD/";
-                        string fileName = "SLD" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                        string filePathInfo2 = Server.MapPath("~/Attachment/" + AdminId + "/SLD/" + fileName);
-                        Signature.SaveAs(filePathInfo2);
-                        filePathInfo = path + fileName;
-
+                        catch (Exception ex)
+                        {
+                            //throw new Exception("Please Upload Pdf Files 1 Mb Only");
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        //throw new Exception("Please Upload Pdf Files 1 Mb Only");
+                        throw new Exception("Please Upload Pdf Files 2 Mb Only");
                     }
-                }
-                else
-                {
-                    throw new Exception("Please Upload Pdf Files 2 Mb Only");
                 }
                 CEI.SldApprovedByAdmin(SLDID, ddlReview.SelectedItem.ToString(), AdminId, filePathInfo, TxtRemarks.Text.Trim(), TxtRejectionReason.Text.Trim());
                 string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";

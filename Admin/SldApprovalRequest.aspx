@@ -355,6 +355,10 @@
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
+                                 <asp:BoundField DataField="SubmittedDate" HeaderText="Received Date">
+                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="28%" />
+                            </asp:BoundField>
                                 <asp:TemplateField HeaderText="Document Name">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
@@ -395,9 +399,9 @@
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="Document" runat="server" visible="false">
                         <label for="formFile" class="form-label">
-                            SDL Document (2MB PDF ONLY)<samp style="color: red">* </samp>
+                            SLD Document (2MB PDF ONLY)<samp style="color: red">* </samp>
                            
                         </label>
                         <asp:FileUpload class="form-control" ID="Signature" runat="server" Style="padding: 2px;" accept=".pdf" />

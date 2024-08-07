@@ -86,6 +86,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     linkButton1.Visible = false;
                     lnkDocumemtPath.Visible = true;
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
@@ -105,5 +106,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch { }
         }
+
+      
     }
 }

@@ -301,7 +301,7 @@
                                       
                                            <div class="col-md-4" id="hiddenfield" runat="server">
                             <label class="form-label" for="customFile">
-                               SDL Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
+                               SLD Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
                             </label>
                             <br />
                             <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control"
@@ -323,7 +323,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Upload" runat="server" onclick="btnSubmit_Click" class="btn btn-primary mr-2" />
+                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Re-Submit" runat="server" onclick="btnSubmit_Click" class="btn btn-primary mr-2" />
 
                          <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                     </div>
