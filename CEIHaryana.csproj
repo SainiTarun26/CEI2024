@@ -1971,6 +1971,7 @@
     <Content Include="UserPages\Registration.aspx" />
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
     <Content Include="Web.config" />
+    <Content Include="RenewalPerodic.aspx" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
     <Content Include="Wiremen\WiremenCompetencyCertificate.aspx" />
@@ -3108,6 +3109,13 @@
     </Compile>
     <Compile Include="UserPages\SiteOwnerRegistration.aspx.designer.cs">
       <DependentUpon>SiteOwnerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RenewalPerodic.aspx.cs">
+      <DependentUpon>RenewalPerodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RenewalPerodic.aspx.designer.cs">
+      <DependentUpon>RenewalPerodic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\CertificateRenewal.aspx.cs">
       <DependentUpon>CertificateRenewal.aspx</DependentUpon>
