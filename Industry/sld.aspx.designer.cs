@@ -11,7 +11,7 @@ namespace CEIHaryana.Industry
 {
 
 
-    public partial class IndustryServices
+    public partial class WebForm1
     {
 
         /// <summary>
@@ -33,40 +33,67 @@ namespace CEIHaryana.Industry
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
-        /// txtTestReportId control.
+        /// DivPancard_TanNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPancard_TanNo;
 
         /// <summary>
-        /// Req_TestReportId control.
+        /// ddlSiteOwnerAdress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator Req_TestReportId;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSiteOwnerAdress;
 
         /// <summary>
-        /// txtPAN control.
+        /// RequiredFieldValidator15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPAN;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
 
         /// <summary>
-        /// Req_txtPAN control.
+        /// hiddenfield control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator Req_txtPAN;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiddenfield;
+
+        /// <summary>
+        /// customFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload customFile;
+
+        /// <summary>
+        /// customFileLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox customFileLocation;
+
+        /// <summary>
+        /// RequiredFieldValidator5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
         /// btnVerify control.
@@ -78,12 +105,12 @@ namespace CEIHaryana.Industry
         protected global::System.Web.UI.WebControls.Button btnVerify;
 
         /// <summary>
-        /// btnViewexist control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewexist;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

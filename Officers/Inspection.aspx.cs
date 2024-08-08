@@ -139,7 +139,6 @@ namespace CEIHaryana.Officers
                     SupervisorEmail.Visible = false;
                     SiteOwnerContact.Visible = false;
                     OwnerAddress.Visible = false;
-
                     if (txtApplicantType.Text != "Multiple")
                     {
                         TRAttached.Visible = true;
@@ -292,6 +291,7 @@ namespace CEIHaryana.Officers
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            int checksuccessmessage = 0;
             try
             {
                 if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
@@ -312,15 +312,21 @@ namespace CEIHaryana.Officers
                             try
                             {
 
-                                CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value,transaction);
+                                CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value, transaction);
+
+                                transaction.Commit();
+
+                                checksuccessmessage = 1;
 
                                 string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
 
-                                Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype,transaction);
+                                Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
 
                                 if (ApiPostformatresult.PremisesType == "Industry")
                                 {
-                                    string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult, transaction);
+                                    // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                   // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                     string accessToken = "dfsfdsfsfsdf";
 
                                     logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
                                                   "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
@@ -364,34 +370,15 @@ namespace CEIHaryana.Officers
                                         Id = ApiPostformatresult.Id,
                                         ProjectId = ApiPostformatresult.ProjectId,
                                         ServiceId = ApiPostformatresult.ServiceId,
-                                    },
-                                    transaction
+                                    }
 
                                 );
 
                                 }
 
-                                transaction.Commit();
-
-                                if (AcceptorReturn == "Accepted")
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                }
-                                else
-                                {
-                                    if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
-                                    {
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
-                                    }
-                                    if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
-                                    {
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
-                                    }
-                                }
                             }
                             catch (TokenManagerException ex)
                             {
-                                transaction.Rollback();
                                 CEI.LogToIndustryApiErrorDatabase(
                                     ex.RequestUrl,
                                     ex.RequestMethod,
@@ -418,11 +405,10 @@ namespace CEIHaryana.Officers
                                 string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
                                 // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                              //  ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                             }
                             catch (IndustryApiException ex)
                             {
-                                transaction.Rollback();
                                 CEI.LogToIndustryApiErrorDatabase(
                                     ex.RequestUrl,
                                     ex.RequestMethod,
@@ -453,7 +439,7 @@ namespace CEIHaryana.Officers
                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
 
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                               // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                             }
 
                             catch (Exception ex)
@@ -462,6 +448,27 @@ namespace CEIHaryana.Officers
                                 transaction.Rollback();
                                 // Handle the exception, log it, etc.
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                            }
+                            finally
+                            {
+                                if (checksuccessmessage == 1)
+                                {
+                                    if (AcceptorReturn == "Accepted")
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                    }
+                                    else
+                                    {
+                                        if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
+                                        {
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                        }
+                                        if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                                        {
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

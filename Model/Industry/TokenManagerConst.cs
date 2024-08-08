@@ -13,28 +13,29 @@ namespace CEIHaryana.Model.Industry
     {
         private static readonly string clientId = "KarLGm7E";
         private static readonly string clientSecret = "mON0xp";
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
 
-        public static string GetAccessToken(Industry_Api_Post_DataformatModel ApiPostformatresult, SqlTransaction transaction)
+        public static string GetAccessToken(Industry_Api_Post_DataformatModel ApiPostformatresult)
         {
-            var tokens = GetTokensFromDatabase(transaction);
+            var tokens = GetTokensFromDatabase();
 
             if (tokens == null || tokens.RefreshTokenExpiry <= DateTime.Now)
             {
-                tokens = RefreshTokens(ApiPostformatresult, transaction);
-                SaveTokensToDatabase(tokens, true, transaction);
+                tokens = RefreshTokens(ApiPostformatresult);
+                SaveTokensToDatabase(tokens, true);
             }
 
             if (tokens.AccessTokenExpiry <= DateTime.Now)
             {
                 tokens.AccessToken = FetchAccessToken(tokens.RefreshToken, ApiPostformatresult);
                 tokens.AccessTokenExpiry = DateTime.Now.AddSeconds(30);
-                SaveTokensToDatabase(tokens, false, transaction);
+                SaveTokensToDatabase(tokens, false);
             }
 
             return tokens.AccessToken;
         }
 
-        private static TokenInfo RefreshTokens(Industry_Api_Post_DataformatModel ApiPostformatresult, SqlTransaction transaction)
+        private static TokenInfo RefreshTokens(Industry_Api_Post_DataformatModel ApiPostformatresult)
         {
             var refreshToken = FetchRefreshToken(clientId, clientSecret, ApiPostformatresult);
             var accessToken = FetchAccessToken(refreshToken, ApiPostformatresult);
@@ -83,7 +84,7 @@ namespace CEIHaryana.Model.Industry
                 }
 
                 throw new TokenManagerException(
-                    //ex.Message + " | SSL/TLS Error: " + ex.Status.ToString(),
+                    //ex.Message + " | SSL/TLS Error: " + ex.Status.ToString()
                     ex.Message + " | " + ex.Status.ToString(),
                     "https://staging.investharyana.in/api/getrefresh-token",
                     "POST",
@@ -162,28 +163,32 @@ namespace CEIHaryana.Model.Industry
             return result;
         }
 
-        private static TokenInfo GetTokensFromDatabase(SqlTransaction transaction)
+        private static TokenInfo GetTokensFromDatabase()
         {
-            using (var command = new SqlCommand("SELECT TOP 1 * FROM Tokens ORDER BY Id DESC", transaction.Connection, transaction))
+            using (var connection = new SqlConnection(connectionString))
             {
-                using (var reader = command.ExecuteReader())
+                connection.Open();
+                using (var command = new SqlCommand("SELECT TOP 1 * FROM Tokens ORDER BY Id DESC", connection))
                 {
-                    if (reader.Read())
+                    using (var reader = command.ExecuteReader())
                     {
-                        return new TokenInfo
+                        if (reader.Read())
                         {
-                            RefreshToken = reader["RefreshToken"].ToString(),
-                            RefreshTokenExpiry = Convert.ToDateTime(reader["RefreshTokenExpiry"]),
-                            AccessToken = reader["AccessToken"].ToString(),
-                            AccessTokenExpiry = Convert.ToDateTime(reader["AccessTokenExpiry"])
-                        };
+                            return new TokenInfo
+                            {
+                                RefreshToken = reader["RefreshToken"].ToString(),
+                                RefreshTokenExpiry = Convert.ToDateTime(reader["RefreshTokenExpiry"]),
+                                AccessToken = reader["AccessToken"].ToString(),
+                                AccessTokenExpiry = Convert.ToDateTime(reader["AccessTokenExpiry"])
+                            };
+                        }
                     }
                 }
             }
             return null;
         }
 
-        private static void SaveTokensToDatabase(TokenInfo tokens, bool isNewRefreshToken, SqlTransaction transaction)
+        private static void SaveTokensToDatabase(TokenInfo tokens, bool isNewRefreshToken)
         {
             string query;
             if (isNewRefreshToken)
@@ -195,13 +200,17 @@ namespace CEIHaryana.Model.Industry
                 query = "UPDATE Tokens SET AccessToken = @AccessToken, AccessTokenExpiry = @AccessTokenExpiry WHERE RefreshToken = @RefreshToken";
             }
 
-            using (var command = new SqlCommand(query, transaction.Connection, transaction))
+            using (var connection = new SqlConnection(connectionString))
             {
-                command.Parameters.AddWithValue("@RefreshToken", tokens.RefreshToken);
-                command.Parameters.AddWithValue("@RefreshTokenExpiry", tokens.RefreshTokenExpiry);
-                command.Parameters.AddWithValue("@AccessToken", tokens.AccessToken);
-                command.Parameters.AddWithValue("@AccessTokenExpiry", tokens.AccessTokenExpiry);
-                command.ExecuteNonQuery();
+                connection.Open();
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RefreshToken", tokens.RefreshToken);
+                    command.Parameters.AddWithValue("@RefreshTokenExpiry", tokens.RefreshTokenExpiry);
+                    command.Parameters.AddWithValue("@AccessToken", tokens.AccessToken);
+                    command.Parameters.AddWithValue("@AccessTokenExpiry", tokens.AccessTokenExpiry);
+                    command.ExecuteNonQuery();
+                }
             }
         }
     }

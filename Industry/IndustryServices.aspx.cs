@@ -22,6 +22,107 @@ namespace CEIHaryana.Industry
             {
                 Session["SiteOwnerId"] = null;
                 Session["logintype"] = null;
+                btnViewexist.Visible = false;
+
+
+                // Dummy JSON for testing purposes
+                //    string jsonData = @"{
+                //    'uname': 'testuser',
+                //    'investorname': 'John Doe',
+                //    'address': '1234 Elm Street',
+                //    'useremail': 'john.doe@example.com',
+                //    'country': 'India',
+                //    'state': 'Haryana',
+                //    'city': 'Gurgaon',
+                //    'niccode': '12345',
+                //    'pannumber': 'abcde1234t',
+                //    'gstnumber': '22AAAAA0000A1Z5',
+                //    'aadhar_number': '123456789012',
+                //    'proposedbuilt_up_area': '1000',
+                //    'mobile': '9876543210',
+                //    'totalproposedprojectarea': '5000',
+                //    'totalpurposedemployment': '100',
+                //    'total_project_cost': '10000000',
+                //    'project_site_district': 'Gurgaon',
+                //    'landzoneuse_type': 'Commercial',
+                //    'businessentity': 'Private',
+                //    'projecttype': 'New',
+                //    'projectid': 'P123456',
+                //    //'serviceid': 'S123456',
+                //    'serviceid': '3',
+                //    'projectserviceid': 'PS123456',
+                //    'requestType': 'New',
+                //    'cafType': 'Type1'
+                //}";
+
+
+                //string uname = Request.Params["uname"];
+                //string investorname = Request.Params["investorname"];
+                //string address = Request.Params["address"];
+                //string useremail = Request.Params["useremail"];
+                //string country = Request.Params["country"];
+                //string state = Request.Params["state"];
+                //string city = Request.Params["city"];
+                //string niccode = Request.Params["niccode"];
+                //string pannumber = Request.Params["pannumber"];
+                //string gstnumber = Request.Params["gstnumber"];
+                //string aadhar_number = Request.Params["aadhar_number"];
+                //string proposedbuilt_up_area = Request.Params["proposedbuilt_up_area"];
+                //string mobile = Request.Params["mobile"];
+                //string totalproposedprojectarea = Request.Params["totalproposedprojectarea"];
+                //string totalpurposedemployment = Request.Params["totalpurposedemployment"];
+                //string total_project_cost = Request.Params["total_project_cost"];
+                //string project_site_district = Request.Params["project_site_district"];
+                //string landzoneuse_type = Request.Params["landzoneuse_type"];
+                //string businessentity = Request.Params["businessentity"];
+                //string projecttype = Request.Params["projecttype"];
+                //string projectid = Request.Params["projectid"];
+                //string serviceid = Request.Params["serviceid"];
+                //string projectserviceid = Request.Params["projectserviceid"];
+                //string cafpin = Request.Params["cafpin"];
+                //string projectlevel = Request.Params["projectlevel"];
+                //string requestType = Request.Params["requestType"];
+                //string cafType = Request.Params["cafType"];
+
+                //// Build a JSON object or a custom response
+                //var responseObject = new
+                //{
+                //    uname,
+                //    investorname,
+                //    address,
+                //    useremail,
+                //    country,
+                //    state,
+                //    city,
+                //    niccode,
+                //    pannumber,
+                //    gstnumber,
+                //    aadhar_number,
+                //    proposedbuilt_up_area,
+                //    mobile,
+                //    totalproposedprojectarea,
+                //    totalpurposedemployment,
+                //    total_project_cost,
+                //    project_site_district,
+                //    landzoneuse_type,
+                //    businessentity,
+                //    projecttype,
+                //    projectid,
+                //    serviceid,
+                //    projectserviceid,
+                //    cafpin,
+                //    projectlevel,
+                //    requestType,
+                //    cafType
+                //};
+
+                // Serialize the response object to JSON
+                // string jsonResponse = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(responseObject);
+
+
+                // Deserialize the JSON data into the IncomingJsonModel
+                //Cei_IndustryServices_Redirection_IncomingJson_Model inputObject = JsonConvert.DeserializeObject<Cei_IndustryServices_Redirection_IncomingJson_Model>(jsonData);
+
 
 
                 var inputObject = new Cei_IndustryServices_Redirection_IncomingJson_Model
@@ -68,11 +169,24 @@ namespace CEIHaryana.Industry
                         Session["SiteOwnerId_Temp"] = null;
                         Session["Serviceid_Temp"] = null;
 
+                        Session["projectid_Temp"] = null;
+
                         Session["SiteOwnerId_Temp"] = inputObject.pannumber;
                         Session["Serviceid_Temp"] = inputObject.serviceid;
                         txtPAN.Text = inputObject.pannumber;
                         //txtPAN.Text = "abcde1234t";
                         //txtPAN.Text = "ABCDE1234G";
+
+
+                        Session["projectid_Temp"] = inputObject.projectid;
+
+                        //temp code for neeraj 
+                        if (Session["Serviceid_Temp"].ToString() == "7dbf955f-8b49-4464-a85d-fd6d633bbd5f")
+                        {
+                            Session["SiteOwnerId"] = inputObject.pannumber;
+                            Response.Redirect("/Industry/Sld.aspx", false);
+                        }
+
                     }
                     else
                     {
@@ -155,6 +269,7 @@ namespace CEIHaryana.Industry
 
         private void VerifyTestReport(string testReportId, string panNumber, string serviceid)
         {
+            btnViewexist.Visible = false;
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -245,6 +360,25 @@ namespace CEIHaryana.Industry
                                 //break;
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Your TestReport Id Is Not Approved By Contractor.')", true);
                                 break;
+
+                            case "4":
+                                Session["SiteOwnerId_Industry"] = returnedPanno;
+                                Session["logintype"] = "SiteOwner_Industry";
+                                Session["ReturnedTestReportId_Industry"] = returnedTestReportId;
+                                Session["id_Industry"] = returnedIntimationid;
+
+                                Session["InspectionLinkDisable"] = 2;
+
+                                Response.Cookies["SiteOwnerId_Industry"].Value = returnedPanno;
+                                Response.Cookies["logintype"].Value = "SiteOwner_Industry";
+                                Response.Cookies["ReturnedTestReportId_Industry"].Value = returnedTestReportId;
+
+                                Response.Cookies["SiteOwnerId_Industry"].Expires = DateTime.Now.AddDays(15);
+                                Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
+                                Response.Cookies["ReturnedTestReportId_Industry"].Expires = DateTime.Now.AddDays(15);
+                                btnViewexist.Visible = true;
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There Is Already Unauthorized Service Running For You. Click On View to See Its Status.')", true);
+                                break;
                             default:
                                 break;
                         }
@@ -255,6 +389,14 @@ namespace CEIHaryana.Industry
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
+        }
+
+        protected void btnViewexist_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/InspectionHistory_Industry.aspx", false);
+
+
+
         }
     }
 }

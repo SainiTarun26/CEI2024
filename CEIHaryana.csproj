@@ -1788,8 +1788,10 @@
     <Content Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx" />
     <Content Include="Industry\Industry.aspx" />
     <Content Include="Industry\IndustryServices.aspx" />
+    <Content Include="Industry\Industry_Scheduler_Pending_ErrorLogs.aspx" />
     <Content Include="Industry\SendJson.aspx" />
     <Content Include="Industry\SendJsonL.aspx" />
+    <Content Include="Industry\sld.aspx" />
     <Content Include="Industry\WebForm2.aspx" />
     <Content Include="js2\ace.js" />
     <Content Include="js2\alerts.js" />
@@ -2339,6 +2341,13 @@
     <Compile Include="Industry\IndustryServices.aspx.designer.cs">
       <DependentUpon>IndustryServices.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry\Industry_Scheduler_Pending_ErrorLogs.aspx.cs">
+      <DependentUpon>Industry_Scheduler_Pending_ErrorLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\Industry_Scheduler_Pending_ErrorLogs.aspx.designer.cs">
+      <DependentUpon>Industry_Scheduler_Pending_ErrorLogs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry\Industry_SiteOwner.Master.cs">
       <DependentUpon>Industry_SiteOwner.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2359,6 +2368,13 @@
     </Compile>
     <Compile Include="Industry\SendJsonL.aspx.designer.cs">
       <DependentUpon>SendJsonL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry\sld.aspx.cs">
+      <DependentUpon>sld.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\sld.aspx.designer.cs">
+      <DependentUpon>sld.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry\WebForm2.aspx.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>

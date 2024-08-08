@@ -522,7 +522,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
                 return;
             }
         }
@@ -601,6 +601,7 @@ namespace CEIHaryana.SiteOwnerPages
                   string para_LineLength, string para_Count, string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_txtInspectionRemarks, string para_CreatedByy, int para_TotalAmount, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment, int para_InspectID, string para_kVA
             , string para_DemandNotice)
         {
+            int checksuccessmessage = 0;
             // Insert the uploaded files into the database
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -639,14 +640,23 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
 
+                    transaction.Commit();
+                    Session["InspectionLinkDisable"] = 2;
 
-                    string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
+                    checksuccessmessage = 1;
 
-                    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(SplitResultPartsArray[0]), actiontype,transaction);
+
+
+                    //string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
+                    string actiontype =  "Submit" ;
+
+                    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(SplitResultPartsArray[0]), actiontype, Session["projectid_Temp"].ToString(), Session["Serviceid_Temp"].ToString(), Session["SiteOwnerId_Industry"].ToString());
 
                     if (ApiPostformatresult.PremisesType == "Industry")
                     {
-                        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult, transaction);
+                       // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                       // string accessToken = "dfsfdsfsfsdf";
 
                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
                                       "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
@@ -654,11 +664,14 @@ namespace CEIHaryana.SiteOwnerPages
                                       {
                                           actionTaken = ApiPostformatresult.ActionTaken,
                                           commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                          //commentDate = ApiPostformatresult.CommentDate,
                                           commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                           comments = ApiPostformatresult.Comments,
                                           id = ApiPostformatresult.Id,
                                           projectid = ApiPostformatresult.ProjectId,
                                           serviceid = ApiPostformatresult.ServiceId
+                                          //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
+                                          //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
                                       }, ApiPostformatresult, accessToken);
 
                         if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
@@ -690,20 +703,16 @@ namespace CEIHaryana.SiteOwnerPages
                             Id = ApiPostformatresult.Id,
                             ProjectId = ApiPostformatresult.ProjectId,
                             ServiceId = ApiPostformatresult.ServiceId,
-                        },
-                        transaction
-
+                        }
+                        
                     );
 
                     }
 
-
-                    transaction.Commit();
-                    Session["InspectionLinkDisable"] = true;
                     //SendJsonDataToIndustryApi(SplitResultPartsArray[0]);
 
                     // Session["PrintInspectionID_Industry"] = id.ToString();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
 
                     //Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx", false);
@@ -711,7 +720,6 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 catch (TokenManagerException ex)
                 {
-                    transaction.Rollback();
                     CEI.LogToIndustryApiErrorDatabase(
                         ex.RequestUrl,
                         ex.RequestMethod,
@@ -738,11 +746,10 @@ namespace CEIHaryana.SiteOwnerPages
                     string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
                     // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                 //   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                 }
                 catch (IndustryApiException ex)
                 {
-                    transaction.Rollback();
                     CEI.LogToIndustryApiErrorDatabase(
                         ex.RequestUrl,
                         ex.RequestMethod,
@@ -772,7 +779,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.ResponseBody.ToString() + "')", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                 }
                 catch (Exception ex)
                 {
@@ -804,6 +811,11 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 finally
                 {
+                    if(checksuccessmessage == 1)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    }
+
                     connection.Close();
                 }
 
@@ -998,6 +1010,45 @@ namespace CEIHaryana.SiteOwnerPages
             return -1;
         }
 
+        //public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType, SqlTransaction transaction )
+        //{
+        //    string query = "sp_Industry_Create_OutgoingRequest_Format";
+
+        //        using (SqlCommand command = new SqlCommand(query,transaction.Connection,transaction))
+        //        {
+        //            command.CommandType = CommandType.StoredProcedure;
+        //            command.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+        //            command.Parameters.AddWithValue("@ActionType", _actionType);
+
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    var model = new Industry_Api_Post_DataformatModel
+        //                    {
+        //                        PremisesType = reader["PremisesType"].ToString(),
+        //                        InspectionId = Convert.ToInt32(reader["InspectionId"]),
+        //                        InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+        //                        IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+        //                        ActionTaken = reader["ActionTaken"].ToString(),
+        //                        CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+        //                        CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+        //                        Comments = reader["Comments"].ToString(),
+        //                        Id = reader["Id"].ToString(),
+        //                        ProjectId = reader["ProjectId"].ToString(),
+        //                        ServiceId = reader["ServiceId"].ToString()
+        //                    };
+
+        //                    return model;
+        //                }
+        //            }
+        //        }
+
+
+        //    return null;
+        //}
+
+
         private void GetOtherDetails_ForReturnedInspection(int inspectionIdPrm)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -1019,6 +1070,51 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
         }
+
+
+        //protected void SendJsonDataToIndustryApi(string inspectionidforjson)
+        //{
+        //    var inputObject = new Industry_Inspection_StageWise_JsonDataFormat_Model
+        //    {
+        //        actionTaken = "ServiceFormEdited",
+        //        commentByUserLogin = Session["SiteOwnerId_Industry"].ToString(),
+        //        commentDate = DateTime.Now,
+        //        id = inspectionidforjson,
+        //        projectid = "projectid",
+        //        serviceid = "serviceid"
+        //    };
+        //    string url = "https://staging.investharyana.in/api/project-service-logs-external_UHBVN";
+        //    CEI.Post_Industry_Inspection_StageWise_JsonData(url, inputObject);
+
+        //}
+
+        //protected void SendJsonDataToIndustryApi(string inspectionidforjson)
+        //{
+        //    var inputObject = new Industry_Inspection_StageWise_JsonDataFormat_Model
+        //    {
+        //        actionTaken = "ServiceFormEdited",
+        //        commentByUserLogin = Session["SiteOwnerId_Industry"].ToString(),
+        //        commentDate = DateTime.Now,
+        //        id = inspectionidforjson,
+        //        projectid = "projectid",
+        //        serviceid = "serviceid"
+        //    };
+        //    string url = "https://staging.investharyana.in/api/project-service-logs-external_UHBVN";
+        //    Industry_Inspection_StageWise_ReturnedJsonDataFormat_ViewModel response = CEI.Post_Industry_Inspection_StageWise_JsonData(url, inputObject);
+
+        //    if (response.StatusCode == HttpStatusCode.OK)
+        //    {
+        //        var inputsendingobj = new
+        //        {
+        //            inspectionidparam = Convert.ToInt32(id),
+        //            SiteOwnerIdIndustryparam = Session["SiteOwnerId_Industry"].ToString()
+        //        };
+        //        var inputparams = JsonConvert.SerializeObject(inputsendingobj);
+        //        CEI.AfterSubmitInspection_SaveApiResponse_InDatabase(inputparams);
+
+        //        //  CEI.AfterSubmitInspection_SaveApiResponse_InDatabase(Convert.ToInt32(id), Session["SiteOwnerId_Industry"].ToString());
+        //    }
+        //}
 
     }
 }

@@ -194,8 +194,9 @@
                                             <div class="row" style="margin-top: 25px;">
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-4" style="display: grid; place-items: center;">
-                                                   <%-- <button class="btn btn-primary btn-block" type="submit">Verify</button>--%>
+                                                  
                                                     <asp:Button ID="btnVerify" ValidationGroup="Submit" OnClick="btnVerify_Click" Text="Verify" style ="PADDING-TOP: 10PX;padding-bottom: 10px;width: 80%;font-size: 21px;" runat="server"  class="btn btn-primary btn-block" />
+                                                    <asp:Button ID="btnViewexist" ValidationGroup="Submit"  Text="View" style ="PADDING-TOP: 10PX;padding-bottom: 10px;width: 80%;font-size: 21px;" runat="server"  class="btn btn-primary btn-block" OnClick="btnViewexist_Click" Visible="False" />
                                                 </div>
                                             </div>
                                         </form>
