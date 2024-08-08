@@ -24,6 +24,7 @@ namespace CEIHaryana.Officers
         private static string IntimationId, AcceptorReturn, Reason, StaffId;
         string Type = string.Empty;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
+        string InstallType = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -311,8 +312,19 @@ namespace CEIHaryana.Officers
                             SqlTransaction transaction = connection.BeginTransaction();
                             try
                             {
+                                DataSet ds = new DataSet();
+                                ds = CEI.GetTypeOfInspection(ID);
+                                InstallType = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
 
-                                CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value, transaction);
+                                if (InstallType == "New")
+                                {
+                                    CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value, transaction);
+                                }
+                                else if (InstallType == "Periodic")
+                                {
+                                    CEI.updateInspectionPeriodic(ID, StaffId, AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value, transaction);
+                                }
+                                //CEI.updateInspection(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value, transaction);
 
                                 transaction.Commit();
 

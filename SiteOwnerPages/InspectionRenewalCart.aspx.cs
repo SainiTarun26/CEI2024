@@ -62,8 +62,8 @@ namespace CEIHaryana.SiteOwnerPages
                 DataSet FilterAddress = new DataSet();
                 FilterAddress = CEI.GetAddressToFilterCart(CreatedBy);
                 ddlAddress.DataSource = FilterAddress;
-                ddlAddress.DataTextField = "Address";
-                ddlAddress.DataValueField = "Address";
+                ddlAddress.DataTextField = "AddressText";
+                ddlAddress.DataValueField = "AddressText";
                 ddlAddress.DataBind();
                 ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
                 FilterAddress.Clear();
@@ -76,11 +76,12 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                txtAddressFilter.Visible = true;
-                txtAddressFilter.Text = ddlAddress.SelectedItem.Text;
+                
+                    txtAddressFilter.Visible = true;
+                    txtAddressFilter.Text = ddlAddress.SelectedItem.ToString();
 
-                DivGrid.Visible = true;
-                BindGrid();
+                    DivGrid.Visible = true;
+                    BindGrid();
             }
             catch (Exception ex)
             {
@@ -88,9 +89,11 @@ namespace CEIHaryana.SiteOwnerPages
         }
         private void BindGrid()
         {
-            string address = txtAddressFilter.Text;
+            string[] str = txtAddressFilter.Text.Split('-');
+            string address = str[0].Trim();
+            string CartID = str[1].Trim();
             DataSet ds = new DataSet();
-            ds = CEI.ShowDataToCart(address);
+            ds = CEI.ShowDataToCart(address, CartID);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -340,25 +343,27 @@ namespace CEIHaryana.SiteOwnerPages
                     string id = Session["SiteOwnerId"].ToString();
                     string GrandTotalCapacity = Session["TotalCapacity"].ToString();
                     string HighestVoltage = Session["HighestVoltage"].ToString();
-                    string address = txtAddressFilter.Text;
+                    //string address = txtAddressFilter.Text;
 
                     int totalAmount = TotalAmount;
                     string AssignTo = AssignToOfficer;
-                    string CartId = string.Empty;
+                    //string CartId = string.Empty;
                     string Division = string.Empty;
                     string District = string.Empty;
                     string StaffAssigned = string.Empty;
 
                     //string InspectionId = PrevInspectionId;
-
+                    string[] str = txtAddressFilter.Text.Split('-');
+                    string address = str[0].Trim();
+                    string CartID = str[1].Trim();
 
                     DataSet ds = new DataSet();
-                    ds = CEI.ToGetDatafromCart(address);
+                    ds = CEI.ToGetDatafromCart(address, CartID);
                     if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
                         foreach (DataRow row in ds.Tables[0].Rows)
                         {
-                            CartId = row["CartId"].ToString();
+                            //CartId = row["CartId"].ToString();
                             Division = row["Division"].ToString();
                             District = row["District"].ToString();
                         }
@@ -382,7 +387,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
 
-                    int affectedRows = GetAffectedRowsCount(CartId);
+                    int affectedRows = GetAffectedRowsCount(CartID);
 
                     if (affectedRows == 1)
                     {
@@ -390,7 +395,7 @@ namespace CEIHaryana.SiteOwnerPages
                         DataSet SInsp = new DataSet();
                         SInsp = CEI.GetDataForSingleInspection(InspectionId);
 
-                        string InstallationType = SInsp.Tables[0].Rows[0]["InstallationType"].ToString();
+                        string InstallationType = SInsp.Tables[0].Rows[0]["InstallationT"].ToString();
                         string TestRportId = SInsp.Tables[0].Rows[0]["TestRportId"].ToString();
                         string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
                         string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
@@ -412,10 +417,10 @@ namespace CEIHaryana.SiteOwnerPages
 
 
 
-                    CEI.InsertInspectinData(CartId, GrandTotalCapacity, HighestVoltage, PrevInstallationType , PrevTestReportId,
+                    CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType , PrevTestReportId,
               PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
 
-                    Session["CartID"] = CartId;
+                    Session["CartID"] = CartID;
                     Session["TotalCapacity"] = string.Empty;
                     Session["HighestVoltage"] = string.Empty;
 

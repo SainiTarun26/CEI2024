@@ -111,7 +111,7 @@ namespace CEIHaryana.Industry
             {
                 throw new Exception("Please Upload Pdf Files 2 Mb Only");
             }
-            CEI.UploadSldDocument(SiteOwnerId, filePathInfo, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(), SiteOwnerName);
+            CEI.UploadSldDocument(SiteOwnerId, filePathInfo, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(), SiteOwnerName, "Industry");
             BindGrid();
             string script = $"alert('SLD Document submitted successfully.');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);

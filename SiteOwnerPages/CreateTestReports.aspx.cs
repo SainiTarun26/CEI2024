@@ -35,7 +35,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 //if (e.Row.RowType == DataControlRowType.Header)
                 //{
-
                 //    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                 //    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
                 //}
@@ -88,7 +87,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (e.CommandName == "Select")
                 {
-
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
@@ -97,14 +95,11 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-
                 }
             }
             catch (Exception)
             { 
             }
         }
-
-       
     }
 }

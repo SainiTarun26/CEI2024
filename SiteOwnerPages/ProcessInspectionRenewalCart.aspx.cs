@@ -22,7 +22,10 @@ namespace CEIHaryana.SiteOwnerPages
         CEI CEI = new CEI();
 
         List<(string InspectionId, string CartId, string Installtypes, string DocumentId, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string, string, string)>();
-        private static string IdCart, Voltage, Capacity, TestRportId, IntimationId, InstallationType, VoltageLevel, ApplicantType, District, Division, AssignTo, PaymentMode,  Amount;
+        private static string IdCart, Voltage, Capacity, TestRportId, IntimationId, InstallationType, VoltageLevel, ApplicantType, District, Division, AssignTo, PaymentMode, Amount, NewInspectionId;
+
+
+
         //TypeOfInspection,
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,7 +50,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                string IdLogin = Session["SiteOwnerId"].ToString();               
+                string IdLogin = Session["SiteOwnerId"].ToString();
                 string CartID = Session["CartID"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetPeriodicdataAfterCart(CartID);
@@ -75,6 +78,14 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                     DataSet dsDetails = CEI.GetDocumentforPeriodic(IdCart);
+
+                    NewInspectionId = dsDetails.Tables[0].Rows[0]["NewInspectionId"].ToString();
+                    //if (NewInspectionId != null)
+                    //{
+
+                    //}
+                    //else
+                    //{
                     if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
                     {
                         AddFixedRows(dsDetails);
@@ -87,6 +98,7 @@ namespace CEIHaryana.SiteOwnerPages
                         GridView1.DataBind();
                     }
                 }
+                //}
                 else
                 {
                     GridView1.DataSource = null;
@@ -114,7 +126,7 @@ namespace CEIHaryana.SiteOwnerPages
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
             }
-            catch { }
+            catch (Exception Ex) { }
         }
         public void UploadCheckListDocInCollection(string CreatedByy)
         {
@@ -191,6 +203,81 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
             catch (Exception ex) { }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string newInspectionId = DataBinder.Eval(e.Row.DataItem, "NewInspectionId").ToString();
+
+                // Find the column index of "Uploaded Documents"
+                int columnIndex = GetColumnIndexByHeaderText("Uploaded Documents");
+                if (columnIndex >= 0)
+                {
+                    if (string.IsNullOrEmpty(newInspectionId))
+                    {
+                        // Hide the 'Uploaded Documents' column and its header
+                        e.Row.Cells[columnIndex].Visible = false;
+
+                        // Ensure the header cell is also hidden
+                        GridViewRow headerRow = GridView1.HeaderRow;
+                        if (headerRow != null && headerRow.Cells.Count > columnIndex)
+                        {
+                            headerRow.Cells[columnIndex].Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        // Show the 'Uploaded Documents' column and its header
+                        e.Row.Cells[columnIndex].Visible = true;
+
+                        // Ensure the header cell is also visible
+                        GridViewRow headerRow = GridView1.HeaderRow;
+                        if (headerRow != null && headerRow.Cells.Count > columnIndex)
+                        {
+                            headerRow.Cells[columnIndex].Visible = true;
+                        }
+
+                        // Disable the LinkButton if there's no command argument
+                        LinkButton lnkDocumentPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
+                        if (lnkDocumentPath != null && string.IsNullOrEmpty(lnkDocumentPath.CommandArgument))
+                        {
+                            lnkDocumentPath.Enabled = false;
+                        }
+                    }
+                }
+                //string newInspectionId = DataBinder.Eval(e.Row.DataItem, "NewInspectionId").ToString();
+                //int columnIndex = GetColumnIndexByHeaderText("Uploaded Documents");
+
+                //if (columnIndex >= 0)
+                //{
+                //    if (string.IsNullOrEmpty(newInspectionId))
+                //    {
+                //        // Hide the 'Uploaded Documents' column and its header
+                //        e.Row.Cells[columnIndex].Visible = false;
+                //        GridView1.HeaderRow.Cells[columnIndex].Visible = false;
+                //    }
+                //    else
+                //    {
+                //        // Show the 'Uploaded Documents' column and its header
+                //        e.Row.Cells[columnIndex].Visible = true;
+                //        GridView1.HeaderRow.Cells[columnIndex].Visible = true;
+                //    }
+                //}
+            }
+        }
+
+        private int GetColumnIndexByHeaderText(string headerText)
+        {
+            for (int i = 0; i < GridView1.HeaderRow.Cells.Count; i++)
+            {
+                if (GridView1.HeaderRow.Cells[i].Text == headerText)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {

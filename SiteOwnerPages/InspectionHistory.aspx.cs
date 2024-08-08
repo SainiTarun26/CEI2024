@@ -121,6 +121,13 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                 }
+                int reportTypeColumnIndex = 9;
+                TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+
+                if (reportTypeCell.Text == "Returned")
+                {
+                    e.Row.CssClass = "ReturnedRowColor";
+                }
 
 
                 else

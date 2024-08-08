@@ -3985,9 +3985,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAdressTofilterCart");
         }
-        public DataSet ShowDataToCart(string address)
+        public DataSet ShowDataToCart(string address, string CartID)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetCartData", address);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetCartData", address, CartID);
         }
         public DataSet ToRemoveDataCart(int InspectionId)
         {
@@ -4066,9 +4066,9 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
         }
 
         #endregion
-        public DataSet ToGetDatafromCart(string address)
+        public DataSet ToGetDatafromCart(string address, string CartId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToGetDatafromCart", address);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToGetDatafromCart", address, CartId);
         }
 
         public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage, string InstallationType, string TestRportId,
@@ -4317,9 +4317,9 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlReturnHistory", SiteOwnerId);
         }
 
-        public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName)
+        public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName, UserType);
         }
 
         public void SldApprovedByAdmin(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
@@ -4817,6 +4817,34 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet GetOwnerAdress(string id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSiteAddress", id);
+        }
+
+        public void updateInspectionPeriodic(string InspectionID, string StaffId,
+         string AcceptedOrReReturn, string Reason, string ReasonType, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_InspectionReviewForPeriodic", transaction.Connection, transaction);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);               
+                cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);             
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+
+        }
+
+        public DataSet GetTypeOfInspection(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetTypeOfInspection", Id);
         }
     }
 }
