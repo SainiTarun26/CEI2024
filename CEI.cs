@@ -4351,6 +4351,149 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlHistory", SiteOwnerId);
         }
 
+        public int UploadSldDocument_Industry(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, string serviceid)
+        {
+            // Prepare the output parameter
+            SqlParameter outputParam = new SqlParameter("@InsertedSLD_ID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            // Execute the stored procedure and pass the output parameter
+            DBTask.ExecuteNonQuery(
+                ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                CommandType.StoredProcedure,
+                "Sp_InsertSdlData_Industry",
+                new SqlParameter("@SiteOwnerID", SiteOwnerID),
+                new SqlParameter("@Path", Path),
+                new SqlParameter("@Createdby", Createdby),
+                new SqlParameter("@SiteOwnerAddress", SiteOwnerAddress),
+                new SqlParameter("@OwnerName", OwnerName),
+                new SqlParameter("@UserType", UserType),
+                new SqlParameter("@ServiceId", serviceid),
+                outputParam  // Include the output parameter
+            );
+
+            // Retrieve the output parameter value
+            int insertedSLD_ID = (int)outputParam.Value;
+
+            // Return the inserted SLD_ID
+            return insertedSLD_ID;
+        }
+
+        public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat_Sld(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
+        {
+            Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel();
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format_Sld", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+                    cmd.Parameters.AddWithValue("@ActionType", _actionType);
+                    cmd.Parameters.AddWithValue("@ProjectId", (object)_projectId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ServiceId", (object)_serviceId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PanNo", (object)_PanNo ?? DBNull.Value);
+
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            model = new Industry_Api_Post_DataformatModel
+                            {
+                                PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
+                                InspectionId = Convert.ToInt32(reader["InspectionId"]),
+                                InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+                                IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+                                ActionTaken = reader["ActionTaken"].ToString(),
+                                CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+                                CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+                                Comments = reader["Comments"].ToString(),
+                                Id = reader["Id"].ToString(),
+                                ProjectId = reader["ProjectId"].ToString(),
+                                ServiceId = reader["ServiceId"].ToString()
+                            };
+
+                            return model;
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return model;
+            //return null;
+        }
+
+
+        public void LogToIndustryApiSuccessDatabase_Sld(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("sp_Industry_Api_DataSent_SuccessLog", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters for the stored procedure
+                    command.Parameters.AddWithValue("@InspectionId", apiData.InspectionId);
+                    command.Parameters.AddWithValue("@InspectionLogId", apiData.InspectionLogId);
+                    command.Parameters.AddWithValue("@HepcDataId", apiData.IncomingJsonId);
+                    command.Parameters.AddWithValue("@ActionTaken", string.IsNullOrEmpty(apiData.ActionTaken) ? (object)DBNull.Value : apiData.ActionTaken);
+                    command.Parameters.AddWithValue("@CommentByUserLogin", string.IsNullOrEmpty(apiData.CommentByUserLogin) ? (object)DBNull.Value : apiData.CommentByUserLogin);
+                    command.Parameters.AddWithValue("@CommentDate", apiData.CommentDate);
+                    command.Parameters.AddWithValue("@Comments", string.IsNullOrEmpty(apiData.Comments) ? (object)DBNull.Value : apiData.Comments);
+                    command.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(apiData.Id) ? (object)DBNull.Value : apiData.Id);
+                    command.Parameters.AddWithValue("@ProjectId", string.IsNullOrEmpty(apiData.ProjectId) ? (object)DBNull.Value : apiData.ProjectId);
+                    command.Parameters.AddWithValue("@ServiceId", string.IsNullOrEmpty(apiData.ServiceId) ? (object)DBNull.Value : apiData.ServiceId);
+
+                    command.Parameters.AddWithValue("@RequestUrl", requestUrl);
+                    command.Parameters.AddWithValue("@RequestMethod", requestMethod);
+                    command.Parameters.AddWithValue("@RequestHeaders", string.IsNullOrEmpty(requestHeaders) ? (object)DBNull.Value : requestHeaders);
+                    command.Parameters.AddWithValue("@RequestContentType", string.IsNullOrEmpty(requestContentType) ? (object)DBNull.Value : requestContentType);
+                    command.Parameters.AddWithValue("@RequestBody", string.IsNullOrEmpty(requestBody) ? (object)DBNull.Value : requestBody);
+                    command.Parameters.AddWithValue("@ResponseStatusCode", string.IsNullOrEmpty(responseStatusCode) ? (object)DBNull.Value : responseStatusCode);
+                    command.Parameters.AddWithValue("@ResponseHeaders", string.IsNullOrEmpty(responseHeaders) ? (object)DBNull.Value : responseHeaders);
+                    command.Parameters.AddWithValue("@ResponseBody", string.IsNullOrEmpty(responseBody) ? (object)DBNull.Value : responseBody);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new TokenManagerException(
+                        "An error occurred while logging to the database",
+                        requestUrl,
+                        requestMethod,
+                        requestHeaders,
+                        requestContentType,
+                        requestBody,
+                        responseStatusCode,
+                        responseHeaders,
+                        ex.Message.ToString(),
+                        apiData.PremisesType,
+                        apiData.InspectionId,
+                        apiData.InspectionLogId,
+                        apiData.IncomingJsonId,
+                        apiData.ActionTaken,
+                        apiData.CommentByUserLogin,
+                        apiData.CommentDate,
+                        apiData.Comments,
+                        apiData.Id,
+                        apiData.ProjectId,
+                        apiData.ServiceId);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
         #endregion
 
         #region industry
