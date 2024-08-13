@@ -203,13 +203,83 @@
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
+                            
+  <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <div>
+                                <div class="row" style="margin-bottom: 8px;">
+                                    <div class="col-md-12">
+                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
+                                    </div>
+                                </div>
+                              
+                                  <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
+                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView2_RowDataBound" OnRowCommand="GridView2_RowCommand"> 
+                        <PagerStyle CssClass="pagination-ys" />
+                        <Columns>
+                        
+                        
+                             <asp:TemplateField HeaderText="Id">
+                                    <ItemTemplate>
+                                       <asp:LinkButton ID="LinkButton" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("SLD_ID") %> ' CommandName="Select" Style="font-weight: bold;"><%#Eval("SLD_ID") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+           
+                          <asp:TemplateField HeaderText="Document Name">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        Single Line Diagram
+   
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                          
+                            <asp:BoundField DataField="Status_type" HeaderText="Application Status">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                               <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                               <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Returned Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                          
+                             <asp:BoundField DataField="Rejection" HeaderText="Returned Reason">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                                                    
+                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status_type") %>'></asp:Label>
+                                    <asp:Label ID="LblId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>   
+                                
+                        </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    </asp:GridView>
+                       
+
+
                             <div class="card"
                                 style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
-                                <div class="card-body" style="padding-bottom:0px;">
+                                <div class="card-body" style="padding-bottom:0px;" id="SiteAddress" runat="server" visible="false">
                                     <div class="wrapper">
                                         <form class="form-signin">
                                             <h2 class="form-signin-heading" style="text-align: center;">VERIFY SLD</h2>
                                             <div class="row">
+                                               
                                                 <div class="col-md-6" runat="server" id="DivPancard_TanNo" visible="true">
                                                     <label for="PanNumber">
                                                         SiteOwner Address
@@ -219,8 +289,10 @@
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select SiteOwnerAddress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlSiteOwnerAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                 </div>
+         
 
                                                 <div class="col-md-6" id="hiddenfield" runat="server">
+                                                    <label class="form-label" for="customFile">
                                                     <label class="form-label" for="customFile">
                                                         SLD Upload<samp style="color: red"> * </samp>
                                                     </label>
@@ -237,12 +309,41 @@
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-4" style="display: grid; place-items: center;">
                                                     <%-- <button class="btn btn-primary btn-block" type="submit">Verify</button>--%>
-                                                    <asp:Button ID="btnVerify" ValidationGroup="Submit" Text="Submit" Style="padding-top: 6PX; padding-bottom: 5px; width: 33%; font-size: 21px; PADDING-LEFT: 12PX ! IMPORTANT; BORDER-RADIUS: 8PX;" runat="server" class="btn btn-primary btn-block" OnClick="btnVerify_Click" />
+                                                    <asp:Button ID="btnVerify" ValidationGroup="Submit" Text="Submit" Style="padding-top: 6PX; padding-bottom: 5px; width: 33%; font-size: 21px; PADDING-LEFT: 12PX ! IMPORTANT; BORDER-RADIUS: 8PX;" runat="server" class="btn btn-primary btn-block" OnClick="btnVerify_Click" visible="false"/>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
+
+
+                               
+                       
+                           
+                                   <div class="card-body" id="ReSubmit" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                     <div class="row">
+                                       
+                                      
+                                           <div class="col-md-4" id="Div1" runat="server">
+                            <label class="form-label" for="customFile">
+                               SLD Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
+                            </label>
+                            <br />
+                            <asp:FileUpload ID="FileUpload1" TabIndex="19" runat="server" CssClass="form-control"
+                                Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
+                          
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                                     </div>
+                                       </div>
+                          
+
+                         
+                        
+
+                                 <asp:Button type="submit" ID="btnReSubmit" TabIndex="22" ValidationGroup="Submit" Text="Re-Submit" runat="server" Visible="false" onclick="btnReSubmit_Click" class="btn btn-primary mr-2" />
+                                
                                 <div class="card-body">
                                     <asp:GridView class="table-responsive table-bordered table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
                                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" >
@@ -332,11 +433,16 @@
                                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                                     </asp:GridView>
                                 </div>
+
+                                 
                             </div>
                         </div>
                         <div class="col-md-1"></div>
                     </div>
+                             
                 </div>
+                                </div>
+                    </div>
             </section>
             <!-- End About Section -->
         </main>

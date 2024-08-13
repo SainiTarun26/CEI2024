@@ -164,8 +164,7 @@ namespace CEIHaryana.Contractor
                 Label lblInstallationType = (Label)row.FindControl("LblInstallationType");
                 string installationtype = lblInstallationType.Text;               
                 string testReportId = e.CommandArgument.ToString();
-                RedirectToRestReport(testReportId, installationtype);
-               
+                RedirectToRestReport(testReportId, installationtype);               
             }
         }
 

@@ -1767,32 +1767,41 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region Update Inspection Data
 
         public void updateInspection(string InspectionID, string StaffId, string IntimatiomnId, int count, string Installationtype,
-                string AcceptedOrReReturn, string Reason, string ReasonType, SqlTransaction transaction)
+                string AcceptedOrReReturn, string Reason, string ReasonType)
         {
-            try
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("sp_InspectionReview", transaction.Connection, transaction);
+                try
+                {
+                    connection.Open();
 
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);
-                cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
-                cmd.Parameters.AddWithValue("@count", count);
-                cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
-                cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
-                cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
-                cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
-                //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
-                cmd.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                //throw;
+                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReview", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", InspectionID);
+                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
+                        cmd.Parameters.AddWithValue("@count", count);
+                        cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
+                        cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
+                        cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                        cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
+                        //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditonalNotes);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
 
         }
-
         public void updateInspectionCEI(string InspectionID, string StaffId, string IntimatiomnId, int count, string Installationtype,
                string AcceptedOrReReturn, string Reason, string ReasonType)
         {
@@ -4126,9 +4135,9 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
         }
 
         public string InsertPeriodicInspectionData(string TypeOfInspection, string CartId, string IntimationId, string ApplicantType,
-       string InstallationType, string VoltageLevel, string District, string Division,
-string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
-string CreatedBy, string TotalCapacity, string MaxVoltage)
+        string InstallationType, string VoltageLevel, string District, string Division,
+ string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
+ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
@@ -4151,6 +4160,8 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
                     cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
                     cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
                     cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+
+                    cmd.Parameters.AddWithValue("@InspectID", InspectID);
                     outputParam = new SqlParameter("@Ret_InspectionID", SqlDbType.NVarChar, 500);
                     outputParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(outputParam);
@@ -4438,7 +4449,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
             {
                 try
                 {
-                    SqlCommand command = new SqlCommand("sp_Industry_Api_DataSent_SuccessLog", connection);
+                    SqlCommand command = new SqlCommand("sp_Industry_Api_DataSent__Sld_SuccessLog", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
                     // Add parameters for the stored procedure
@@ -4494,6 +4505,13 @@ string CreatedBy, string TotalCapacity, string MaxVoltage)
                 }
             }
         }
+
+        public DataTable UpdateSLD_Industry(string Id, string path, string SiteOwnerId, string serviceid)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData_Industry", Id, path, SiteOwnerId, serviceid);
+        }
+
+
         #endregion
 
         #region industry
@@ -4963,24 +4981,36 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         }
 
         public void updateInspectionPeriodic(string InspectionID, string StaffId,
-         string AcceptedOrReReturn, string Reason, string ReasonType, SqlTransaction transaction)
+        string AcceptedOrReReturn, string Reason, string ReasonType)
         {
-            try
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("sp_InspectionReviewForPeriodic", transaction.Connection, transaction);
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReviewForPeriodic", connection))
+                    {
 
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);               
-                cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
-                cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
-                cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);             
-                cmd.ExecuteNonQuery();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", InspectionID);
+                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
+                        cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                        cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
+                        cmd.ExecuteNonQuery();
+                    }
 
-            }
-            catch (Exception ex)
-            {
-                //throw;
+                }
+                catch (Exception ex)
+                {
+                    //throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
             }
 
         }
@@ -4988,6 +5018,182 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet GetTypeOfInspection(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetTypeOfInspection", Id);
+        }
+        public DataSet GetPeriodicType(string CartId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicType", CartId);
+        }
+        public DataSet GetDocumentsforPeriodicIfExist(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentsforPeriodicIfExist", InspectionId);
+        }
+        public DataSet GetTestReportDataIfPeriodic(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForPerodic", Id);
+        }
+
+
+        public string CheckServerStatus(string url)
+        {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+                    // Making a simple GET request to the server
+                    string response = client.DownloadString(url);
+
+                    // If the request is successful, return a success message
+                    return "Server is reachable.";
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.ConnectFailure || ex.Status == WebExceptionStatus.Timeout)
+                {
+                    // Server is down or unreachable
+                    return "Server is down or unreachable.";
+                }
+                else
+                {
+                    // Some other WebException occurred
+                    return $"Server might be down. Error: {ex.Message}";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle other types of exceptions if necessary
+                return $"An error occurred: {ex.Message}";
+            }
+        }
+
+        public string GetIndustry_RequestType_Sld(int _inspectionIdparams)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            string result = "No data found";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("sp_GetIndustry_RequestType_Sld", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                result = reader["UserType"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result = $"An error occurred: {ex.Message}";
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return result;
+        }
+
+
+        public string GetIndustry_RequestType_New(int _inspectionIdparams)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            string result = "No data found";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("sp_GetIndustry_RequestType_New", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                result = reader["Inspectiontype"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result = $"An error occurred: {ex.Message}";
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public void LogToIndustryApiErrorDatabase_Sld(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("sp_LogIndustryApiError_Sld", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+
+
+                    command.Parameters.AddWithValue("@InspectionId", apiData.InspectionId);
+                    command.Parameters.AddWithValue("@InspectionLogId", apiData.InspectionLogId);
+                    command.Parameters.AddWithValue("@HepcDataId", apiData.IncomingJsonId);
+                    command.Parameters.AddWithValue("@ActionTaken", string.IsNullOrEmpty(apiData.ActionTaken) ? (object)DBNull.Value : apiData.ActionTaken);
+                    command.Parameters.AddWithValue("@CommentByUserLogin", string.IsNullOrEmpty(apiData.CommentByUserLogin) ? (object)DBNull.Value : apiData.CommentByUserLogin);
+                    command.Parameters.AddWithValue("@CommentDate", apiData.CommentDate);
+                    command.Parameters.AddWithValue("@Comments", string.IsNullOrEmpty(apiData.Comments) ? (object)DBNull.Value : apiData.Comments);
+                    command.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(apiData.Id) ? (object)DBNull.Value : apiData.Id);
+                    command.Parameters.AddWithValue("@ProjectId", string.IsNullOrEmpty(apiData.ProjectId) ? (object)DBNull.Value : apiData.ProjectId);
+                    command.Parameters.AddWithValue("@ServiceId", string.IsNullOrEmpty(apiData.ServiceId) ? (object)DBNull.Value : apiData.ServiceId);
+
+                    // Add parameters required by the stored procedure
+                    command.Parameters.AddWithValue("@RequestUrl", requestUrl ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestMethod", requestMethod ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestHeaders", requestHeaders ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestContentType", requestContentType ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestBody", requestBody ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseStatusCode", responseStatusCode ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseHeaders", responseHeaders ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseBody", responseBody ?? (object)DBNull.Value);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    // Handle the exception as needed
+                    // You might want to log this exception to a file or another table for debugging
+                    Console.WriteLine("An error occurred while logging to the database: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

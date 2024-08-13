@@ -1,4 +1,5 @@
-﻿using CEI_PRoject;
+﻿using AjaxControlToolkit;
+using CEI_PRoject;
 using CEIHaryana.Model;
 using CEIHaryana.Model.Industry;
 using CEIHaryana.Officers;
@@ -363,6 +364,15 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+
+            string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+            // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+            if (serverStatus != "Server is reachable.")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
+                return;
+            }
+
 
             //string script = "<script type=\"text/javascript\">window.onload = function() { printDiv('printableDiv'); }</script>";
             //ClientScript.RegisterStartupScript(this.GetType(), "print", script);
@@ -775,7 +785,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     );
 
-                    string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+                  //   string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
 
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.ResponseBody.ToString() + "')", true);

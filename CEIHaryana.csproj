@@ -1884,6 +1884,8 @@
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
+    <Content Include="Periodic_Industry\RenewalPerodic.aspx" />
+    <Content Include="Periodic_Industry\RenewalCartIndustry.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PrintCertificate1.aspx" />
@@ -1971,7 +1973,6 @@
     <Content Include="UserPages\Registration.aspx" />
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
     <Content Include="Web.config" />
-    <Content Include="RenewalPerodic.aspx" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
     <Content Include="Wiremen\WiremenCompetencyCertificate.aspx" />
@@ -2499,6 +2500,20 @@
     </Compile>
     <Compile Include="PaymentPage.aspx.designer.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Periodic_Industry\RenewalPerodic.aspx.cs">
+      <DependentUpon>RenewalPerodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Periodic_Industry\RenewalPerodic.aspx.designer.cs">
+      <DependentUpon>RenewalPerodic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Periodic_Industry\RenewalCartIndustry.aspx.cs">
+      <DependentUpon>RenewalCartIndustry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Periodic_Industry\RenewalCartIndustry.aspx.designer.cs">
+      <DependentUpon>RenewalCartIndustry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
@@ -3109,13 +3124,6 @@
     </Compile>
     <Compile Include="UserPages\SiteOwnerRegistration.aspx.designer.cs">
       <DependentUpon>SiteOwnerRegistration.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RenewalPerodic.aspx.cs">
-      <DependentUpon>RenewalPerodic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="RenewalPerodic.aspx.designer.cs">
-      <DependentUpon>RenewalPerodic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\CertificateRenewal.aspx.cs">
       <DependentUpon>CertificateRenewal.aspx</DependentUpon>

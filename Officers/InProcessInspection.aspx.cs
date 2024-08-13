@@ -1,4 +1,5 @@
-﻿using CEI_PRoject;
+﻿using AjaxControlToolkit;
+using CEI_PRoject;
 using CEIHaryana.Model.Industry;
 using StackExchange.Redis;
 using System;
@@ -282,7 +283,6 @@ namespace CEIHaryana.Officers
             int checksuccessmessage = 0;
             try
             {
-               
                 if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
                 {
                     StaffId = Session["StaffID"].ToString();
@@ -319,19 +319,25 @@ namespace CEIHaryana.Officers
                             Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                         }
 
-                        string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-                        using (SqlConnection connection = new SqlConnection(connectionString))
-                        {
-                            connection.Open();
-                            SqlTransaction transaction = connection.BeginTransaction();
-
                             try
                             {
-                                CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text, transaction);
-                                transaction.Commit();
+                                string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
+                                if (reqType == "Industry")
+                                {
+                                string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                                if (serverStatus != "Server is reachable.")
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
+                                        return;
+                                    }
+                                }
 
 
+                                CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
+                         
                                 checksuccessmessage = 1;
+
                                 string actiontype = ApprovedorReject == "Approved" ? "Approved" : "Rejected";
                                 Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
 
@@ -454,7 +460,7 @@ namespace CEIHaryana.Officers
                             }
                             catch (Exception ex)
                             {
-                                transaction.Rollback();
+                             
                                 // Handle the exception, log it, etc.
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
                             }
@@ -466,7 +472,6 @@ namespace CEIHaryana.Officers
                                 }
                             }
 
-                        }
                     }
                     else
                     {

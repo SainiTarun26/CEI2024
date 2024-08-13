@@ -17,6 +17,7 @@ namespace CEIHaryana.Model.Industry
 
         public static string GetAccessToken(Industry_Api_Post_DataformatModel ApiPostformatresult)
         {
+
             var tokens = GetTokensFromDatabase();
 
             if (tokens == null || tokens.RefreshTokenExpiry <= DateTime.Now)
@@ -81,31 +82,57 @@ namespace CEIHaryana.Model.Industry
                     {
                         response = reader.ReadToEnd();
                     }
-                }
 
-                throw new TokenManagerException(
-                    //ex.Message + " | SSL/TLS Error: " + ex.Status.ToString()
-                    ex.Message + " | " + ex.Status.ToString(),
-                    "https://staging.investharyana.in/api/getrefresh-token",
-                    "POST",
-                    client.Headers.ToString(),
-                    "application/json",
-                    inputJson,
-                    ex.Status.ToString(),
-                    ex.Response?.Headers.ToString(),
-                    response,
-                    ApiPostformatresult.PremisesType.ToString(),
-                    ApiPostformatresult.InspectionId,
-                    ApiPostformatresult.InspectionLogId,
-                    ApiPostformatresult.IncomingJsonId,
-                    ApiPostformatresult.ActionTaken,
-                    ApiPostformatresult.CommentByUserLogin,
-                    ApiPostformatresult.CommentDate,
-                    ApiPostformatresult.Comments,
-                    ApiPostformatresult.Id,
-                    ApiPostformatresult.ProjectId,
-                    ApiPostformatresult.ServiceId
-                );
+                    throw new TokenManagerException(
+                        //ex.Message + " | SSL/TLS Error: " + ex.Status.ToString()
+                        ex.Message + " | " + ex.Status.ToString(),
+                        "https://staging.investharyana.in/api/getrefresh-token",
+                        "POST",
+                        client.Headers.ToString(),
+                        "application/json",
+                        inputJson,
+                        ex.Status.ToString(),
+                        ex.Response?.Headers.ToString(),
+                        response,
+                        ApiPostformatresult.PremisesType.ToString(),
+                        ApiPostformatresult.InspectionId,
+                        ApiPostformatresult.InspectionLogId,
+                        ApiPostformatresult.IncomingJsonId,
+                        ApiPostformatresult.ActionTaken,
+                        ApiPostformatresult.CommentByUserLogin,
+                        ApiPostformatresult.CommentDate,
+                        ApiPostformatresult.Comments,
+                        ApiPostformatresult.Id,
+                        ApiPostformatresult.ProjectId,
+                        ApiPostformatresult.ServiceId
+                    );
+                }
+                else
+                {
+                    // Handle cases where there's no response, such as server down, DNS failure, etc.
+                    throw new TokenManagerException(
+                        $"Failed to connect to server: {ex.Message}",
+                        "https://staging.investharyana.in/api/getaccess-token",
+                        "POST",
+                        client.Headers.ToString(),
+                        "application/json",
+                        inputJson,
+                        ex.Status.ToString(),
+                        null, // No response headers
+                        null, // No response body
+                        ApiPostformatresult.PremisesType.ToString(),
+                        ApiPostformatresult.InspectionId,
+                        ApiPostformatresult.InspectionLogId,
+                        ApiPostformatresult.IncomingJsonId,
+                        ApiPostformatresult.ActionTaken,
+                        ApiPostformatresult.CommentByUserLogin,
+                        ApiPostformatresult.CommentDate,
+                        ApiPostformatresult.Comments,
+                        ApiPostformatresult.Id,
+                        ApiPostformatresult.ProjectId,
+                        ApiPostformatresult.ServiceId
+                    );
+                }
             }
 
             return result;
@@ -135,33 +162,130 @@ namespace CEIHaryana.Model.Industry
             }
             catch (WebException ex)
             {
-                string response = new StreamReader(ex.Response.GetResponseStream()).ReadToEnd();
-                throw new TokenManagerException(
-                    ex.Message,
-                    "https://staging.investharyana.in/api/getaccess-token",
-                    "POST",
-                    client.Headers.ToString(),
-                    "application/json",
-                    inputJson,
-                    ex.Status.ToString(),
-                    ex.Response.Headers.ToString(),
-                    response,
-                    ApiPostformatresult.PremisesType.ToString(),
-                    ApiPostformatresult.InspectionId,
-                    ApiPostformatresult.InspectionLogId,
-                    ApiPostformatresult.IncomingJsonId,
-                    ApiPostformatresult.ActionTaken,
-                    ApiPostformatresult.CommentByUserLogin,
-                    ApiPostformatresult.CommentDate,
-                    ApiPostformatresult.Comments,
-                    ApiPostformatresult.Id,
-                    ApiPostformatresult.ProjectId,
-                    ApiPostformatresult.ServiceId
-                );
+                string response = null;
+                if (ex.Response != null)
+                {
+                    using (var reader = new StreamReader(ex.Response.GetResponseStream()))
+                    {
+                        response = reader.ReadToEnd();
+                    }
+
+                    // If there's a response, handle it as before
+                    throw new TokenManagerException(
+                        ex.Message,
+                        "https://staging.investharyana.in/api/getaccess-token",
+                        "POST",
+                        client.Headers.ToString(),
+                        "application/json",
+                        inputJson,
+                        ex.Status.ToString(),
+                        ex.Response.Headers.ToString(),
+                        response,
+                        ApiPostformatresult.PremisesType.ToString(),
+                        ApiPostformatresult.InspectionId,
+                        ApiPostformatresult.InspectionLogId,
+                        ApiPostformatresult.IncomingJsonId,
+                        ApiPostformatresult.ActionTaken,
+                        ApiPostformatresult.CommentByUserLogin,
+                        ApiPostformatresult.CommentDate,
+                        ApiPostformatresult.Comments,
+                        ApiPostformatresult.Id,
+                        ApiPostformatresult.ProjectId,
+                        ApiPostformatresult.ServiceId
+                    );
+                }
+                else
+                {
+                    // Handle cases where there's no response, such as server down, DNS failure, etc.
+                    throw new TokenManagerException(
+                        $"Failed to connect to server: {ex.Message}",
+                        "https://staging.investharyana.in/api/getaccess-token",
+                        "POST",
+                        client.Headers.ToString(),
+                        "application/json",
+                        inputJson,
+                        ex.Status.ToString(),
+                        null, // No response headers
+                        null, // No response body
+                        ApiPostformatresult.PremisesType.ToString(),
+                        ApiPostformatresult.InspectionId,
+                        ApiPostformatresult.InspectionLogId,
+                        ApiPostformatresult.IncomingJsonId,
+                        ApiPostformatresult.ActionTaken,
+                        ApiPostformatresult.CommentByUserLogin,
+                        ApiPostformatresult.CommentDate,
+                        ApiPostformatresult.Comments,
+                        ApiPostformatresult.Id,
+                        ApiPostformatresult.ProjectId,
+                        ApiPostformatresult.ServiceId
+                    );
+                }
             }
+
 
             return result;
         }
+        //server down
+        //private static string FetchAccessToken(string refreshToken, Industry_Api_Post_DataformatModel ApiPostformatresult)
+        //{
+        //    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+        //    var client = new WebClient();
+        //    client.Headers[HttpRequestHeader.ContentType] = "application/json";
+        //    var requestBody = new
+        //    {
+        //        refresh_token = refreshToken
+        //    };
+        //    var inputJson = JsonConvert.SerializeObject(requestBody);
+        //    string result = null;
+
+        //    try
+        //    {
+        //        string response = client.UploadString("https://staging.investharyana.in/api/getaccess-token", inputJson);
+        //        dynamic jsonResponse = JsonConvert.DeserializeObject(response);
+        //        result = jsonResponse.token;
+
+        //        CEI CEI = new CEI();
+        //        //CEI.LogToIndustryApiErrorDatabase("https://staging.investharyana.in/api/getaccess-token", "POST", client.Headers.ToString(), "application/json", inputJson, "200", client.ResponseHeaders.ToString(), response, ApiPostformatresult);
+        //    }
+        //    catch (WebException ex)
+        //    {
+        //        //string response = new StreamReader(ex.Response.GetResponseStream()).ReadToEnd();
+        //        string response = null;
+        //        if (ex.Response != null)
+        //        {
+        //            using (var reader = new StreamReader(ex.Response.GetResponseStream()))
+        //            {
+        //                response = reader.ReadToEnd();
+        //            }
+        //        }
+
+        //        throw new TokenManagerException(
+        //            ex.Message,
+        //            "https://staging.investharyana.in/api/getaccess-token",
+        //            "POST",
+        //            client.Headers.ToString(),
+        //            "application/json",
+        //            inputJson,
+        //            ex.Status.ToString(),
+        //            ex.Response.Headers.ToString(),
+        //            response,
+        //            ApiPostformatresult.PremisesType.ToString(),
+        //            ApiPostformatresult.InspectionId,
+        //            ApiPostformatresult.InspectionLogId,
+        //            ApiPostformatresult.IncomingJsonId,
+        //            ApiPostformatresult.ActionTaken,
+        //            ApiPostformatresult.CommentByUserLogin,
+        //            ApiPostformatresult.CommentDate,
+        //            ApiPostformatresult.Comments,
+        //            ApiPostformatresult.Id,
+        //            ApiPostformatresult.ProjectId,
+        //            ApiPostformatresult.ServiceId
+        //        );
+        //    }
+
+        //    return result;
+        //}
 
         private static TokenInfo GetTokensFromDatabase()
         {
@@ -213,5 +337,8 @@ namespace CEIHaryana.Model.Industry
                 }
             }
         }
+
+
+
     }
 }

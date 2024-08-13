@@ -199,7 +199,9 @@
                 <div class="row">
                     <div class="col-12">
                         <asp:GridView class="table-responsive table table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20"
-                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView1_RowDataBound">
+                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                            <%-- OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand"--%>
+
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
@@ -220,17 +222,6 @@
                                         <asp:Label ID="lblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
-
-                                <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" >
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandName="Select"> View document </asp:LinkButton>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                </asp:TemplateField>
-
-
                                 <asp:TemplateField HeaderText="Upload Document">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -258,6 +249,68 @@
                         </asp:GridView>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <asp:GridView class="table-responsive table table-striped" ID="GridView2" runat="server" Width="100%" AllowPaging="true" PageSize="20"
+                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView2_RowCommand">
+                            <PagerStyle CssClass="pagination-ys" />
+                            <Columns>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="Inspection Of Type">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:TemplateField HeaderText="Document Name">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblDocumentName2" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LnkDocumemtPath2" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select"> View document </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Upload Document">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <ItemTemplate>
+
+
+                                        <asp:FileUpload ID="FileUpload2" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="LblInstallationType2" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                        <asp:Label ID="LblCategory2" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                        <asp:Label ID="LblInspectionId2" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                    </div>
+                </div>
+
             </div>
             <div class="row ">
                 <div class="col-sm-4 col-md-4">
@@ -301,6 +354,11 @@
             <div class="row">
                 <div class="col-4" style="text-align: center;">
                     <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                </div>
+            </div>
+            <div class="row1">
+                <div class="col-4" style="text-align: center;">
+                    <asp:HiddenField ID="HF_para_InspectID" runat="server" />
                 </div>
             </div>
         </div>
