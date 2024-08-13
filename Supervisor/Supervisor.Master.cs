@@ -62,5 +62,11 @@ namespace CEIHaryana.Supervisor
             ds = CEI.GetsupervisorName(SupervisorId);            
             PersonDetails.Text = ds.Tables[0].Rows[0]["SupervisorProfile"].ToString();
         }
+
+        protected void BtnChangePassword_Click(object sender, EventArgs e)
+        {
+            string SupervisorId = Session["SupervisorID"].ToString();
+            Response.Redirect("/ChangePassword.aspx");
+        }
     }
 }

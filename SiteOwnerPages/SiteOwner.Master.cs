@@ -119,5 +119,11 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
+
+        protected void BtnChangePassword_Click(object sender, EventArgs e)
+        {
+            string UserId = Session["SiteOwnerId"].ToString();
+            Response.Redirect("/ChangePassword.aspx");
+        }
     }
 }

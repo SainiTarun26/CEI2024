@@ -43,5 +43,11 @@ namespace CEIHaryana.Officers
             Session.Abandon();
             Response.Redirect("/Login.aspx");
         }
+
+        protected void BtnChangePassword_Click(object sender, EventArgs e)
+        {
+            string StaffId = Session["StaffID"].ToString();
+            Response.Redirect("/ChangePassword.aspx");
+        }
     }
 }

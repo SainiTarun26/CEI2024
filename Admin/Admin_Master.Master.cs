@@ -49,5 +49,11 @@ namespace CEI_PRoject.ADMIN
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
         }
+
+        protected void BtnChangePassword_Click(object sender, EventArgs e)
+        {
+            string AdminId = Session["AdminID"].ToString();
+            Response.Redirect("/ChangePassword.aspx");
+        }
     }
 }

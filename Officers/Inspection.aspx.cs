@@ -32,14 +32,14 @@ namespace CEIHaryana.Officers
                 if (!IsPostBack)
                 {
                     GetData();
-                    if (Type == "New")
-                    {
+                    //if (Type == "New")
+                    //{
                         GetTestReportData();
-                    }
-                    else if (Type == "Periodic")
-                    {
-                        GetTestReportDataIfPeriodic();
-                    }
+                    //}
+                    //else if (Type == "Periodic")
+                    //{
+                       // GetTestReportDataIfPeriodic();
+                 //   }
                 }
             }
             catch

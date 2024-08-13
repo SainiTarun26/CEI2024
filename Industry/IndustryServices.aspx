@@ -272,6 +272,11 @@
                          window.location.href = 'https://staging.investharyana.in/#/';
                      }
 
+                     function alertWithRedirectdata_InvalidServiceId() {
+                         alert('Invalid Serviceid selected..');
+                         window.location.href = 'https://staging.investharyana.in/#/';
+                     }
+
                  </script>
     </form>
 </body>

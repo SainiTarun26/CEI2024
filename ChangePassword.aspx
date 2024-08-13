@@ -188,6 +188,20 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function validateAlphanumeric(event) {
+            var charCode = (event.which) ? event.which : event.keyCode;
+            if (charCode >= 48 && charCode <= 57 || // Numeric (0-9)
+                charCode >= 65 && charCode <= 90 || // Uppercase (A-Z)
+                charCode >= 97 && charCode <= 122 || // Lowercase (a-z)
+                charCode == 8 || charCode == 37 || charCode == 39 || charCode == 46) { // Backspace, Arrow keys, Delete
+                return true;
+            } else {
+                event.preventDefault();
+                return false;
+            }
+        }
+</script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -205,29 +219,32 @@
                 <div id="VerifyOPTdiv" class="otp" runat="server">
                     <p class="sub-title">
                         Current Password
-                   <%--<input id="PhoneNumber" style="border:none" runat="server" />--%>
+                 
                     </p>
                     <div class="wrapper">
-                        <asp:TextBox class="field 1" ID="TextBox1" runat="server" MaxLength="20" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:TextBox class="field 1" ID="txtCurrentPassword" runat="server"  MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCurrentPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Current Password</asp:RequiredFieldValidator>
                     </div>
                     <p class="sub-title">
                         New Password
-                        <%--<input id="PhoneNumber" style="border:none" runat="server" />--%>
+                      
                     </p>
                     <div class="wrapper">
-                        <asp:TextBox class="field 1" ID="TextBox2" runat="server" MaxLength="20" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:TextBox class="field 1" ID="txtNewPassword" runat="server" MinLength="8" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter New Password</asp:RequiredFieldValidator>
                     </div>
                     <p class="sub-title">
                         Verify Password
-                        <%--<input id="PhoneNumber" style="border:none" runat="server" />--%>
+                       
                     </p>
                     <div class="wrapper">
-                        <asp:TextBox class="field 1" ID="TextBox3" runat="server" MaxLength="20" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:TextBox class="field 1" ID="txtVerifyPassword" runat="server" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtVerifyPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter valid  Password</asp:RequiredFieldValidator>
                     </div>
                     <div class="row">
                         <div class="col-12" style="text-align: center; margin-top: 10px; margin-bottom: -20px;">
-                            <asp:Button class="button-79" ID="Button1" runat="server" Text="Verify" />
-                            <asp:Button class="button-79" ID="Button2" runat="server" Text="Reset" />
+                            <asp:Button class="button-79" ID="BtnVerify" runat="server" Text="Verify" ValidationGroup="Submit" OnClick="BtnVerify_Click" />
+                            <asp:Button class="button-79" ID="BtnReset" runat="server" Text="Reset" OnClick="BtnReset_Click"/>
                         </div>
                     </div>
                 </div>

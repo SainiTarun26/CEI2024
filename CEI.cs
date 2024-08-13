@@ -5195,6 +5195,15 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                 }
             }
         }
+
+        public DataSet checkPassword(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckPassword", UserId);
+        }
+        public DataSet changePassword(string UserId, string Password)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_updatePassword", UserId, Password);
+        }
     }
 }
 

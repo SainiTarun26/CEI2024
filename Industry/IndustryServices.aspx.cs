@@ -178,19 +178,42 @@ namespace CEIHaryana.Industry
                         //txtPAN.Text = "ABCDE1234G";
 
 
+                        Session["SiteOwnerId_Sld_Indus"] = null;
+                        Session["Serviceid_Sld_Indus"] = null;
+                        Session["projectid_Sld_Indus"] = null;
+
+
+
                         Session["projectid_Temp"] = inputObject.projectid;
 
-                        //temp code for neeraj 
-                        if (Session["Serviceid_Temp"].ToString() == "7dbf955f-8b49-4464-a85d-fd6d633bbd5f")
+
+                        //new
+                        if (Session["Serviceid_Temp"].ToString() == "e31ee2a6-3b99-4f42-b61d-38cd80be45b6")
                         {
-                            Session["SiteOwnerId"] = inputObject.pannumber;
+                            
+                        }
+                        //Periodic
+                        else if (Session["Serviceid_Temp"].ToString() == "c49c95df-98ef-4669-8d7c-6b8c9d7ec39f")
+                        {
+                            Response.Redirect("/Periodic_Industry/RenewalPerodic.aspx", false);
+                        }
+                        //sld 
+                        else if (Session["Serviceid_Temp"].ToString() == "ace29b43-bc15-49c4-87a5-3498a9858b8a")
+                        {
+                            Session["SiteOwnerId_Sld_Indus"] = inputObject.pannumber;
+                            Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
+                            Session["projectid_Sld_Indus"] = inputObject.projectid;
                             Response.Redirect("/Industry/Sld.aspx", false);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidServiceId();", true);
                         }
 
                     }
                     else
                     {
-                       // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan Card Or Service Id Not Found.Please Login To Industry Portal Again.')", true);
+                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan Card Or Service Id Not Found.Please Login To Industry Portal Again.')", true);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
                     }
                 }
@@ -280,7 +303,7 @@ namespace CEIHaryana.Industry
                 command.Parameters.AddWithValue("@TestReportId", testReportId);
                 command.Parameters.AddWithValue("@PanNumber", panNumber);
                 // command.Parameters.AddWithValue("@Serviceid", Convert.ToInt32(serviceid));
-                command.Parameters.AddWithValue("@Serviceid", 3);
+                command.Parameters.AddWithValue("@Serviceid", 1);
                 SqlParameter outputParam = new SqlParameter("@OutputParam", SqlDbType.NVarChar, 100)
                 {
                     Direction = ParameterDirection.Output

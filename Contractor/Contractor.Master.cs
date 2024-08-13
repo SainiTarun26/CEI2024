@@ -123,5 +123,10 @@ namespace CEIHaryana.Contractor
             PersonDetails.Text= ds.Tables[0].Rows[0]["ContractorName"].ToString();
         }
 
+        protected void BtnChangePassword_Click(object sender, EventArgs e)
+        {
+            string REID = Session["ContractorID"].ToString();
+            Response.Redirect("/ChangePassword.aspx");
+        }
     }
 }

@@ -121,10 +121,16 @@
                                         <asp:Label ID="lblName" runat="server" />
                                     </a>
                                     <a class="dropdown-item">
+                                        <asp:Button ID="BtnChangePassword" Text="Change Password" OnClick="BtnChangePassword_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+
+
+                                    </a>
+                                    <a class="dropdown-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#252525" viewBox="0 0 512 512">
                                             <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                             <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" />
                                         </svg>
+
                                         <asp:Button ID="btnLogout" Text="Logout" runat="server" OnClick="btnLogout_Click" />
                                     </a>
                                 </div>
@@ -411,17 +417,17 @@
                                     <span class="menu-title">Test Report History</span>
                                 </a>
                             </li>
-                            <li class="nav-item">                              
-                                    <a class="nav-link"  href="/Admin/IntimationHistoryForAdmin.aspx" >
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#fff" viewBox="0 0 576 512">
                                         <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path d="M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z" />
                                     </svg>
                                     <span class="menu-title">Inspections</span>
                                 </a>
-                               
+
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Action Inspection</span>
@@ -457,7 +463,7 @@
                                     <span class="menu-title">SLD Approval Request</span>
                                 </a>
                             </li>
-                             
+
                         </ul>
                     </nav>
                     <div class="main-panel">

@@ -42,7 +42,6 @@ namespace CEIHaryana
                         Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
                         Response.Redirect("Admin/AdminMaster.aspx", false);
                     }
-
                 }
                 else if (check == 2)
                 {
