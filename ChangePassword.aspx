@@ -189,6 +189,7 @@
         }
     </script>
     <script type="text/javascript">
+
         function validateAlphanumeric(event) {
             var charCode = (event.which) ? event.which : event.keyCode;
             if (charCode >= 48 && charCode <= 57 || // Numeric (0-9)
@@ -201,7 +202,20 @@
                 return false;
             }
         }
-</script>
+
+
+        function validateForm() {
+            var input = document.getElementById('<%= txtNewPassword.ClientID %>').value;
+            var hasLetter = /[a-zA-Z]/.test(input);
+
+            if (!hasLetter) {
+                alert('Password must contain at least one alphabet letter.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -243,7 +257,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12" style="text-align: center; margin-top: 10px; margin-bottom: -20px;">
-                            <asp:Button class="button-79" ID="BtnVerify" runat="server" Text="Verify" ValidationGroup="Submit" OnClick="BtnVerify_Click" />
+                            <asp:Button class="button-79" ID="BtnVerify" runat="server" Text="Verify" ValidationGroup="Submit" OnClick="BtnVerify_Click" OnClientClick="return validateForm()" />
                             <asp:Button class="button-79" ID="BtnReset" runat="server" Text="Reset" OnClick="BtnReset_Click"/>
                         </div>
                     </div>
