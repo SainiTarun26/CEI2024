@@ -20,6 +20,11 @@ namespace CEIHaryana
                 // int check = Convert.ToInt32(cei.checkLogin(txtUserID.Text, txtPassword.Text));
                 int check = Convert.ToInt32(cei.checkUserLogin(txtUserID.Text, txtPassword.Text));
                 string Status = cei.Status();
+                if (txtPassword.Text == "123456")
+                {
+                    Session["UserId"] = txtUserID.Text;
+                    Response.Redirect("/ChangePassword.aspx");
+                }
                 if (check == 1)
                 {
                     if (chkSignedin.Checked == true)
