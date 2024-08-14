@@ -188,17 +188,17 @@ namespace CEIHaryana.Industry
 
 
                         //new
-                        if (Session["Serviceid_Temp"].ToString() == "e31ee2a6-3b99-4f42-b61d-38cd80be45b6")
+                        if (Session["Serviceid_Temp"].ToString() == "c1406da9-263f-4399-b20f-387a71caa5de")
                         {
                             
                         }
                         //Periodic
-                        else if (Session["Serviceid_Temp"].ToString() == "c49c95df-98ef-4669-8d7c-6b8c9d7ec39f")
+                        else if (Session["Serviceid_Temp"].ToString() == "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a")
                         {
                             Response.Redirect("/Periodic_Industry/RenewalPerodic.aspx", false);
                         }
                         //sld 
-                        else if (Session["Serviceid_Temp"].ToString() == "ace29b43-bc15-49c4-87a5-3498a9858b8a")
+                        else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
                         {
                             Session["SiteOwnerId_Sld_Indus"] = inputObject.pannumber;
                             Session["Serviceid_Sld_Indus"] = inputObject.serviceid;

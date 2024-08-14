@@ -611,14 +611,17 @@
         }
     </script>
     <script type="text/javascript">
+                var sactionElement;
+        var fileInputElement;
+        window.onload = function () {
+             sactionElement = document.getElementById('<%= txtSaction.ClientID %>');
+             fileInputElement = document.getElementById('<%= customFile.ClientID %>');
+        };
         function validateFileUpload() {
            // debugger;
 
             var transactionId = document.getElementById('<%= txttransactionId.ClientID %>').value.trim();
         var transactionDate = document.getElementById('<%= txttransactionDate.ClientID %>').value.trim();
-            var Saction = document.getElementById('<%= txtSaction.ClientID %>').value.trim();
-            var fileInput = document.getElementById('<%= customFile.ClientID %>');
-            var fileName = fileInput.value.trim();
         if (transactionId === '') {
             alert('Please Enter Transaction ID.');
             return false;
@@ -628,15 +631,22 @@
             alert('Please Enter Transaction Date.');
             return false;
             }
-        if (Saction === '')
-        {
-            alert('Please Enter  Saction Voltage.');
-            return false;
+                if (sactionElement) {
+            var Saction = sactionElement.value.trim();
+            if (fileInputElement) {
+                var fileName = fileInputElement.value.trim();
+
+                if (Saction === '') {
+                    alert('Please Enter Saction Voltage.');
+                    return false;
+                }
+
+                if (fileName === '') {
+                    alert('Please Upload demand notice document.');
+                    return false;
+                }
             }
-        if (fileName === '') {
-                alert('Please Upload demand notice document.');
-                return false; 
-            } 
+        }
 
 
 
@@ -716,10 +726,10 @@
                     var idcountres = row.find('.inspection-count').val();
                     $('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val(idres);
                 $('#<%= InspectionIdCountClientSideCheckedRow.ClientID %>').val(idcountres);
-                console.log("InspectionId of the checked row:", idres);
-            }
+                    console.log("InspectionId of the checked row:", idres);
+                }
+            });
         });
-    });
     </script>
 </asp:Content>
 

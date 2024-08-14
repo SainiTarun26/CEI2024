@@ -52,7 +52,7 @@ namespace CEIHaryana.Print_Forms
                 }
 
                 DataSet ds = new DataSet();
-                ds = CEI.PrintSubstrationTransformer(ID);
+                ds = CEI.PrintIndustryCirtificate_New(ID);
                 lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
                 lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
                 lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();

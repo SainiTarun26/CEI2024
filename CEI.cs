@@ -5244,6 +5244,11 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, string UserType, int 
 
             }
         }
+
+        public DataSet PrintIndustryCirtificate_New(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApproveCertificate_Industry_New", LoginId);
+        }
     }
 }
 
