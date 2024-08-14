@@ -326,6 +326,8 @@ namespace CEIHaryana.Contractor
                     ddlworktype.Enabled = false;
                     if (contractorType == "Firm/Organization/Company/Department")
                     {
+                        agency.Visible = true;
+                        individual.Visible = false;
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                         txtagency.ReadOnly = true;
                     }

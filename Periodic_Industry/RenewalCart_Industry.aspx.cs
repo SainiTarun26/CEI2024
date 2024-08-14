@@ -1,18 +1,15 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Officers;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
-namespace CEIHaryana.SiteOwnerPages
+namespace CEIHaryana.Periodic_Industry
 {
-    public partial class InspectionRenewalCart : System.Web.UI.Page
+    public partial class RenewalCart_Industry : System.Web.UI.Page
     {
         CEI CEI = new CEI();
 
@@ -34,9 +31,6 @@ namespace CEIHaryana.SiteOwnerPages
         //private static string PrevApplicantType = string.Empty;
         private static string PrevInspectionId = string.Empty, PrevInstallationType = string.Empty, PrevTestReportId = string.Empty,
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty, PrevApplicantType = string.Empty;
-
-
-        private static string AssignToOfficer = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -45,6 +39,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
+                        Session["SiteOwnerId"] = "JVCBN5647K";
                         BindAdress();
                     }
                 }
@@ -53,6 +48,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Response.Redirect("/login.aspx");
             }
+
         }
         private void BindAdress()
         {
@@ -72,39 +68,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
             }
         }
-        protected void ddlAddress_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                
-                    txtAddressFilter.Visible = true;
-                    txtAddressFilter.Text = ddlAddress.SelectedItem.ToString();
-
-                    DivGrid.Visible = true;
-                    BindGrid();
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-        private void BindGrid()
-        {
-            string[] str = txtAddressFilter.Text.Split('-');
-            string address = str[0].Trim();
-            string CartID = str[1].Trim();
-            DataSet ds = new DataSet();
-            ds = CEI.ShowDataToCart(address, CartID);
-            if (ds.Tables.Count > 0)
-            {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-            }
-            else
-            {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-            }
-        }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -122,7 +85,7 @@ namespace CEIHaryana.SiteOwnerPages
                     PrevInspectionId = InspectionId;
                     Label Lbldesignation = e.Row.FindControl("Lbldesignation") as Label;
                     string Assignedoff = Lbldesignation.Text;
-                    if (Assignedoff != null && Assignedoff !="")
+                    if (Assignedoff != null && Assignedoff != "")
                     {
                         getassignedofficer(Assignedoff);
                     }
@@ -187,54 +150,23 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex) { }
         }
-        private void getassignedofficer(string Assignedoff)
+
+        protected void ddlAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                if (Assignedoff.StartsWith("JE"))
-                {
-                    CheckCase = 1;
-                    if (CheckCase > highestOfficerDesignation)
-                    {
-                        highestOfficerDesignation = CheckCase;
-                        AssignToOfficer = Assignedoff;
-                    }
-                }
-                else if (Assignedoff.StartsWith("AE"))
-                {
-                    CheckCase = 2;
-                    if (CheckCase > highestOfficerDesignation)
-                    {
-                        highestOfficerDesignation = CheckCase;
-                        AssignToOfficer = Assignedoff;
-                    }
-                }
-                else if (Assignedoff.StartsWith("XEN"))
-                {
-                    CheckCase = 3;
-                    if (CheckCase > highestOfficerDesignation)
-                    {
-                        highestOfficerDesignation = CheckCase;
-                        AssignToOfficer = Assignedoff;
-                    }
-                }
-                else if (Assignedoff.StartsWith("CEI"))
-                {
-                    CheckCase = 4;
-                    if (CheckCase > highestOfficerDesignation)
-                    {
-                        highestOfficerDesignation = CheckCase;
-                        AssignToOfficer = Assignedoff;
-                    }
-                }
 
-                //if (AssignToOfficer.StartsWith("CEI"))
-                //{
-                //    AssignToOfficer = "Admin@123";
-                //}
+                txtAddressFilter.Visible = true;
+                txtAddressFilter.Text = ddlAddress.SelectedItem.ToString();
+
+                DivGrid.Visible = true;
+                BindGrid();
             }
-            catch { }
+            catch (Exception ex)
+            {
+            }
         }
+
         protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
         {
             try
@@ -284,41 +216,9 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex) { }
         }
-        private void AddSubTotalRow(GridView gridView, int rowIndex)
-        {
-            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Insert);
 
-            // Create a cell for the subtotal label
-            TableCell cell = new TableCell();
-            cell.Text = "Sub Total";
-            cell.Font.Bold = true;
-            cell.HorizontalAlign = HorizontalAlign.Left;
-            cell.ColumnSpan = 3;
-            cell.CssClass = "SubTotalRowStyle";
-            row.Cells.Add(cell);
+        private static string AssignToOfficer = string.Empty;
 
-            // Create a cell for the subtotal capacity
-            cell = new TableCell();
-            cell.Text = string.Format("{0:0}", dblSubTotalCapacity);
-            cell.Font.Bold = true;
-            cell.HorizontalAlign = HorizontalAlign.Left;
-            cell.CssClass = "SubTotalRowStyle";
-            row.Cells.Add(cell);
-
-            // Create a cell for the highest voltage in the group
-            cell = new TableCell();
-            cell.Text = string.Format("{0:0}", dblSubHighestVoltage);
-            cell.Font.Bold = true;
-            cell.HorizontalAlign = HorizontalAlign.Left;
-            cell.CssClass = "SubTotalRowStyle";
-            row.Cells.Add(cell);
-
-            // Add the subtotal row to the grid
-            gridView.Controls[0].Controls.AddAt(rowIndex, row);
-
-            dblSubTotalCapacity = 0;
-            dblSubHighestVoltage = 0;
-        }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -334,6 +234,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex) { }
         }
+
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -378,7 +279,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         else
                         {
-                            StaffAssigned = "CEI";
+                            StaffAssigned = "No staff assigned";
                         }
                     }
                     else
@@ -417,14 +318,14 @@ namespace CEIHaryana.SiteOwnerPages
 
 
 
-                    CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType , PrevTestReportId,
+                    CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
               PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
 
                     Session["CartID"] = CartID;
                     Session["TotalCapacity"] = string.Empty;
                     Session["HighestVoltage"] = string.Empty;
 
-                    Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
+                    Response.Redirect("/Periodic_Industry/InProcessRenewal_Industry.aspx", false);
                 }
             }
             catch (Exception ex)
@@ -432,6 +333,108 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
+       
+        private void BindGrid()
+        {
+            string[] str = txtAddressFilter.Text.Split('-');
+            string address = str[0].Trim();
+            string CartID = str[1].Trim();
+            DataSet ds = new DataSet();
+            ds = CEI.ShowDataToCart(address, CartID);
+            if (ds.Tables.Count > 0)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+            }
+        }
+        private void getassignedofficer(string Assignedoff)
+        {
+            try
+            {
+                if (Assignedoff.StartsWith("JE"))
+                {
+                    CheckCase = 1;
+                    if (CheckCase > highestOfficerDesignation)
+                    {
+                        highestOfficerDesignation = CheckCase;
+                        AssignToOfficer = Assignedoff;
+                    }
+                }
+                else if (Assignedoff.StartsWith("AE"))
+                {
+                    CheckCase = 2;
+                    if (CheckCase > highestOfficerDesignation)
+                    {
+                        highestOfficerDesignation = CheckCase;
+                        AssignToOfficer = Assignedoff;
+                    }
+                }
+                else if (Assignedoff.StartsWith("XEN"))
+                {
+                    CheckCase = 3;
+                    if (CheckCase > highestOfficerDesignation)
+                    {
+                        highestOfficerDesignation = CheckCase;
+                        AssignToOfficer = Assignedoff;
+                    }
+                }
+                else if (Assignedoff.StartsWith("CEI"))
+                {
+                    CheckCase = 4;
+                    if (CheckCase > highestOfficerDesignation)
+                    {
+                        highestOfficerDesignation = CheckCase;
+                        AssignToOfficer = Assignedoff;
+                    }
+                }
+
+                //if (AssignToOfficer.StartsWith("CEI"))
+                //{
+                //    AssignToOfficer = "Admin@123";
+                //}
+            }
+            catch { }
+        }
+        private void AddSubTotalRow(GridView gridView, int rowIndex)
+        {
+            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Insert);
+
+            // Create a cell for the subtotal label
+            TableCell cell = new TableCell();
+            cell.Text = "Sub Total";
+            cell.Font.Bold = true;
+            cell.HorizontalAlign = HorizontalAlign.Left;
+            cell.ColumnSpan = 3;
+            cell.CssClass = "SubTotalRowStyle";
+            row.Cells.Add(cell);
+
+            // Create a cell for the subtotal capacity
+            cell = new TableCell();
+            cell.Text = string.Format("{0:0}", dblSubTotalCapacity);
+            cell.Font.Bold = true;
+            cell.HorizontalAlign = HorizontalAlign.Left;
+            cell.CssClass = "SubTotalRowStyle";
+            row.Cells.Add(cell);
+
+            // Create a cell for the highest voltage in the group
+            cell = new TableCell();
+            cell.Text = string.Format("{0:0}", dblSubHighestVoltage);
+            cell.Font.Bold = true;
+            cell.HorizontalAlign = HorizontalAlign.Left;
+            cell.CssClass = "SubTotalRowStyle";
+            row.Cells.Add(cell);
+
+            // Add the subtotal row to the grid
+            gridView.Controls[0].Controls.AddAt(rowIndex, row);
+
+            dblSubTotalCapacity = 0;
+            dblSubHighestVoltage = 0;
+        }
         private int GetAffectedRowsCount(string cartId)
         {
             int count = 0;
@@ -439,6 +442,5 @@ namespace CEIHaryana.SiteOwnerPages
 
             return count;
         }
-
     }
 }

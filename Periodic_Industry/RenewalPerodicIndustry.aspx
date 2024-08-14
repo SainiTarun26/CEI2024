@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RenewalPerodic.aspx.cs" Inherits="CEIHaryana.Periodic_Industry.RenewalPerodic" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RenewalPerodicIndustry.aspx.cs" Inherits="CEIHaryana.Periodic_Industry.RenewalPerodicIndustry" %>
 
 <!DOCTYPE html>
 
@@ -1063,7 +1063,7 @@
         function alertWithRedirectdata() {
 
             alert('Data added to cart Successfully');
-         
+            window.location.href = "/Periodic_Industry/RenewalCart_Industry.aspx";
 
         }
     </script>

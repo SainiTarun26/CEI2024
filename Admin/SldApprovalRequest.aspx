@@ -323,7 +323,7 @@
                             <Columns>
                                 <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Middle">
                                     <ItemTemplate>
-                                      <asp:CheckBox ID="chkSelect"  runat="server" AutoPostBack="true" OnCheckedChanged="chkSelect_CheckedChanged"/>
+                                      <asp:CheckBox ID="chkSelect"  runat="server" AutoPostBack="true" OnCheckedChanged="chkSelect_CheckedChanged1"/>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">

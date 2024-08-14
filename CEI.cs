@@ -5204,6 +5204,46 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_updatePassword", UserId, Password);
         }
+        public string InsertPeriodicInspectionData_Industry(string TypeOfInspection, string CartId, string IntimationId, string ApplicantType,
+       string InstallationType, string VoltageLevel, string District, string Division,
+string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
+string CreatedBy, string TotalCapacity, string MaxVoltage, string UserType, int InspectID)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertPeriodicInspectionData", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TypeOfInspection", TypeOfInspection);
+                    cmd.Parameters.AddWithValue("@CartId", CartId);
+                    cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+                    cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                    cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                    cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+                    cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@Division", Division);
+                    cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
+                    cmd.Parameters.AddWithValue("@PaymentMode", PaymentMode);
+                    cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                    cmd.Parameters.AddWithValue("@TransactionId ", TransactionId);
+                    cmd.Parameters.AddWithValue("@TransctionDate", TransctionDate);
+                    cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+                    cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
+                    cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+                    cmd.Parameters.AddWithValue("@UserType", UserType);
+                    cmd.Parameters.AddWithValue("@InspectID", InspectID);
+                    outputParam = new SqlParameter("@Ret_InspectionID", SqlDbType.NVarChar, 500);
+                    outputParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(outputParam);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    string RetVal = cmd.Parameters["@Ret_InspectionID"].Value.ToString();
+                    cmd.Parameters.Clear();
+                    return RetVal;
+                }
+
+            }
+        }
     }
 }
 

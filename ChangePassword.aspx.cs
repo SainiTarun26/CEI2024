@@ -22,9 +22,9 @@ namespace CEIHaryana
         protected void BtnVerify_Click(object sender, EventArgs e)
         {
             
-            if (Session["UserId"] != null)
+            if (Session["NewUserId"] != null)
             {
-                UserId = Session["UserId"].ToString();
+                UserId = Session["NewUserId"].ToString();
             }
             else if (Session["ContractorID"] != null)
             {
@@ -63,7 +63,13 @@ namespace CEIHaryana
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                 return;
             }
+            if (currentPassword == newPassword)
+            {
 
+                string alertScript = "alert('New passwords do not equal to current password');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                return;
+            }
 
             DataSet ds1 = CEI.checkPassword(UserId);
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)

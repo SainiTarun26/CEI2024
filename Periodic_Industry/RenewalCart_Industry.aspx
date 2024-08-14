@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RenewalCartIndustry.aspx.cs" Inherits="CEIHaryana.Periodic.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RenewalCart_Industry.aspx.cs" Inherits="CEIHaryana.Periodic_Industry.RenewalCart_Industry" %>
 
 <!DOCTYPE html>
 
@@ -37,6 +37,9 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        input#GridView1_btnDelete_0 {
+    max-width: 30px;
+}
         select {
     width: 90% !important;
 }
@@ -691,7 +694,7 @@
                      <label>
                          Address Wise<samp style="color: red">* </samp>
                      </label>
-                     <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAddress" runat="server"></asp:DropDownList>
+                     <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAddress" runat="server" OnSelectedIndexChanged="ddlAddress_SelectedIndexChanged"></asp:DropDownList>
                      <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Address" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAddress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                  </div>
              </div>
@@ -703,7 +706,7 @@
              <div>
                  <div class="card" id="DivGrid" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;" runat="server">
                      <%-- Add Gridview Here --%>
-                     <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" runat="server" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true">
+                     <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover table-bordered" runat="server" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true" OnRowDataBound="GridView1_RowDataBound" OnRowCreated="GridView1_RowCreated" OnRowCommand="GridView1_RowCommand">
                          <PagerStyle CssClass="pagination-ys" />
                          <Columns>
                              <asp:TemplateField HeaderText="Id" Visible="False">
@@ -771,7 +774,7 @@
                  </div>
                  <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                      <div class="col-4" style="margin-top: auto;">
-                         <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" ValidationGroup="Submit" />
+                         <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" ValidationGroup="Submit" OnClick="BtnSubmit_Click" />
                      </div>
                  </div>
              </div>

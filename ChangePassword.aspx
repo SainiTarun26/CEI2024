@@ -188,34 +188,33 @@
             }
         }
     </script>
-    <script type="text/javascript">
+     <script type="text/javascript">
+        
+         function validateAlphanumeric(event) {
+             var charCode = (event.which) ? event.which : event.keyCode;
+             if (charCode >= 48 && charCode <= 57 || // Numeric (0-9)
+                 charCode >= 65 && charCode <= 90 || // Uppercase (A-Z)
+                 charCode >= 97 && charCode <= 122 || // Lowercase (a-z)
+                 charCode == 8 || charCode == 37 || charCode == 39 || charCode == 46) { // Backspace, Arrow keys, Delete
+                 return true;
+             } else {
+                 event.preventDefault();
+                 return false;
+             }
+         }
 
-        function validateAlphanumeric(event) {
-            var charCode = (event.which) ? event.which : event.keyCode;
-            if (charCode >= 48 && charCode <= 57 || // Numeric (0-9)
-                charCode >= 65 && charCode <= 90 || // Uppercase (A-Z)
-                charCode >= 97 && charCode <= 122 || // Lowercase (a-z)
-                charCode == 8 || charCode == 37 || charCode == 39 || charCode == 46) { // Backspace, Arrow keys, Delete
-                return true;
-            } else {
-                event.preventDefault();
-                return false;
-            }
-        }
+         
+         function validateForm() {
+             var input = document.getElementById('<%= txtNewPassword.ClientID %>').value;
+             var hasLetter = /[a-zA-Z]/.test(input); 
 
-
-        function validateForm() {
-            var input = document.getElementById('<%= txtNewPassword.ClientID %>').value;
-            var hasLetter = /[a-zA-Z]/.test(input);
-
-            if (!hasLetter) {
-                alert('Password must contain at least one alphabet letter.');
-                return false;
-            }
-            return true;
-        }
+             if (!hasLetter) {
+                 alert('Password must contain at least one alphabet letter.');
+                 return false; 
+             }
+             return true;
+         }
     </script>
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -236,7 +235,7 @@
                  
                     </p>
                     <div class="wrapper">
-                        <asp:TextBox class="field 1" ID="txtCurrentPassword" runat="server"  MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:TextBox class="field 1" ID="txtCurrentPassword" runat="server" TextMode="Password" MaxLength="14"  onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCurrentPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Current Password</asp:RequiredFieldValidator>
                     </div>
                     <p class="sub-title">
@@ -244,7 +243,7 @@
                       
                     </p>
                     <div class="wrapper">
-                        <asp:TextBox class="field 1" ID="txtNewPassword" runat="server" MinLength="8" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:TextBox class="field 1" ID="txtNewPassword" runat="server" TextMode="Password" MinLength="8" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter New Password</asp:RequiredFieldValidator>
                     </div>
                     <p class="sub-title">
@@ -252,7 +251,7 @@
                        
                     </p>
                     <div class="wrapper">
-                        <asp:TextBox class="field 1" ID="txtVerifyPassword" runat="server" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
+                        <asp:TextBox class="field 1" ID="txtVerifyPassword" runat="server" TextMode="Password" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtVerifyPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter valid  Password</asp:RequiredFieldValidator>
                     </div>
                     <div class="row">

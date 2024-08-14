@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Periodic_Industry
 {
-    public partial class RenewalPerodic : System.Web.UI.Page
+    public partial class RenewalPerodicIndustry : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -165,6 +165,7 @@ namespace CEIHaryana.Periodic_Industry
             Renewal.Visible = false;
         }
 
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
@@ -222,7 +223,7 @@ namespace CEIHaryana.Periodic_Industry
 
 
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Inspection Created Successfully.');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Inspection Created Successfully.'); window.location='RenewalPerodicIndustry.aspx';", true);
         }
 
         protected void RadioButtonListInspection_SelectedIndexChanged(object sender, EventArgs e)

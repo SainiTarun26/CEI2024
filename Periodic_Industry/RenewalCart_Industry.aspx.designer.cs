@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEIHaryana.Periodic
+namespace CEIHaryana.Periodic_Industry
 {
 
 
-    public partial class WebForm2
+    public partial class RenewalCart_Industry
     {
 
         /// <summary>
