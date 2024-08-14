@@ -195,7 +195,7 @@ namespace CEIHaryana.Industry
                         //Periodic
                         else if (Session["Serviceid_Temp"].ToString() == "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a")
                         {
-                            Response.Redirect("/Periodic_Industry/RenewalPerodic.aspx", false);
+                            Response.Redirect("/Periodic_Industry/RenewalPerodicIndustry.aspx", false);
                         }
                         //sld 
                         else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
