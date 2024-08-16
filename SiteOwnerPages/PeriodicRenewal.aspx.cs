@@ -93,6 +93,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             grid.Visible = true;
             GridViewBind();
+            BtnCart.Visible = true;
         }
 
         public void GridViewBind()

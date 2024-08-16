@@ -326,7 +326,7 @@
                         </div>
                         <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                             <div class="col-4" style="margin-top: auto;">
-                                <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" OnClick="BtnSubmit_Click" ValidationGroup="Submit" />
+                                <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" Visible="false" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" OnClick="BtnSubmit_Click" ValidationGroup="Submit" />
                             </div>
                         </div>
                     </div>

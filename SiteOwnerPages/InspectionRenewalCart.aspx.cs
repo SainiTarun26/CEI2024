@@ -82,6 +82,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     DivGrid.Visible = true;
                     BindGrid();
+                BtnSubmit.Visible = true;
             }
             catch (Exception ex)
             {

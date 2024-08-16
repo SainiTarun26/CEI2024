@@ -476,7 +476,7 @@
                             <div class="col-4" style="margin-top: auto;">
                                 <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                                 <%--<asp:Button type="submit" ID="BtnProcess" TabIndex="23" Text="Process" runat="server" OnClick="BtnProcess_Click"  class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />--%>
-                                <asp:Button type="submit" ID="BtnCart" TabIndex="23" Text="Add To Cart" runat="server" OnClick="BtnCart_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                                <asp:Button type="submit" ID="BtnCart" visible="false" Text="Add To Cart" runat="server" OnClick="BtnCart_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
                             </div>
                         </div>
                     </div>
