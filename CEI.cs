@@ -5249,6 +5249,10 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, string UserType, int 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApproveCertificate_Industry_New", LoginId);
         }
+        public DataSet ViewCartData(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAdressforViewCart", SiteOwnerId);
+        }
     }
 }
 

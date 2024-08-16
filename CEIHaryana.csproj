@@ -1887,6 +1887,7 @@
     <Content Include="Periodic_Industry\InProcessRenewal_Industry.aspx" />
     <Content Include="Periodic_Industry\RenewalCart_Industry.aspx" />
     <Content Include="Periodic_Industry\RenewalPerodicIndustry.aspx" />
+    <Content Include="Periodic_Industry\ViewCart_Industry.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PrintCertificate1.aspx" />
@@ -2522,6 +2523,13 @@
     </Compile>
     <Compile Include="Periodic_Industry\RenewalPerodicIndustry.aspx.designer.cs">
       <DependentUpon>RenewalPerodicIndustry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Periodic_Industry\ViewCart_Industry.aspx.cs">
+      <DependentUpon>ViewCart_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Periodic_Industry\ViewCart_Industry.aspx.designer.cs">
+      <DependentUpon>ViewCart_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>

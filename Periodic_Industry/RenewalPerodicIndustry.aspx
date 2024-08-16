@@ -504,6 +504,12 @@
         select.form-control, select.asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row select, .select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, select.typeahead, select.tt-query, select.tt-hint {
             color: #212529 !important;
         }
+
+        .flex-container {
+    display: flex;
+    justify-content: flex-end;
+    height :30px;
+}
     </style>
 
 
@@ -675,19 +681,74 @@
                             <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                         </div>
                     </div>--%>
+                     <div class="flex-container">
+    <asp:Button type="submit" ID="BtnViewCart" Text="View Cart" runat="server"  OnClick="BtnViewCart_Click"
+                class="btn btn-primary mr-2" />
+</div>
+                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView4" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" 
+                                                    BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView4_RowCommand" >
+                                                    <PagerStyle CssClass="pagination-ys" />
+                                                    <Columns>
+                                                        <asp:TemplateField HeaderText="SNo">
+                                                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                            <ItemStyle Width="5%" />
+                                                            <ItemTemplate>
+                                                                <%#Container.DataItemIndex+1 %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                      <asp:TemplateField HeaderText="Application">
+                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
+                                                            <ItemStyle Width="25%" />
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("AddressText") %> ' CommandName="Select"><%#Eval("AddressText") %></asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
+                                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="CreatedBy" HeaderText="Owner Id">
+                                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                                        </asp:BoundField>
+                                                         <asp:TemplateField HeaderText="Address" Visible="false">
+                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
+                                                            <ItemStyle Width="25%" />
+                                                            <ItemTemplate>
+                                                               <asp:Label ID="lblAddressText" runat="server" Text='<%#Eval("Address") %>'></asp:Label>  
+                                                                <asp:Label ID="lblCartId" runat="server" Text='<%#Eval("CartId") %>'></asp:Label>   
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                       
+                                                    </Columns>
+                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                    <RowStyle ForeColor="#000066" />
+                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                </asp:GridView>
+
+
+
+
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
-                                    <div class="card"  style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important; padding-left: 30px; padding-right: 30px;">
+                                    <%--<div class="card"  style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important; padding-left: 30px; padding-right: 30px;">
 
                                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
-                                            <div class="col-md-12">
-                                                <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Periodic Renewal</h7>
+                                            <div class="col-md-12">--%>
+                                              <%--  <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Periodic Renewal</h7>
                                             </div>
                                         </div>
-                                        <hr style="margin-top: 0px !important;" />
+                                        <hr style="margin-top: 0px !important;" />--%>
                                             <div class="card-body" runat="server" id="PeriodicData"  visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                             <div class="row" style="margin-top: 20px;">
                                                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging"
@@ -843,8 +904,8 @@
                                                     </div>
 
                                             </div>
-                                        </div>
-                                    </div>
+                                      <%--  </div>
+                                    </div>--%>
                                     <div class="card-body" id="Periodic" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                         <div class="row" style="margin-bottom: 20px;">
                                             <div class="col-md-3">

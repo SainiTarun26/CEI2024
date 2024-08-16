@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RenewalCart_Industry.aspx.cs" Inherits="CEIHaryana.Periodic_Industry.RenewalCart_Industry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewCart_Industry.aspx.cs" Inherits="CEIHaryana.Periodic_Industry.ViewCart_Industry" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <meta content="" name="keywords" />
+     <meta content="" name="keywords" />
     <!-- Favicons -->
     <link href="assetsnew/img/favicon.png" rel="icon" />
     <link href="assetsnew/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -512,8 +512,9 @@
 
 
 </head>
+
 <body>
-    <form id="form1" runat="server">
+     <form id="form2" runat="server">
         <!-- ======= Top Bar ======= -->
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
         <section id="topbar" class="d-flex align-items-center">
@@ -550,53 +551,21 @@
                 <a href="index.html" class="logo">
                     <img src="../Assets/Add a heading (1).png" />
                 </a>
-                <%--<h1 class="logo">
-            <a href="index.html">
-                <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
-            </a>
-        </h1>--%>
-                <!-- Uncomment below if you prefer to use an image logo -->
+              
                 <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
                     <ul>
                         <li class="dropdown">
                             <a href="#">
                                 <span>Home</span>
                                 <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">About CEI</a>
-                    </li>
-                    <li>
-                        <a href="#">State Licensing Board, Haryana</a>
-                    </li>
-                    <li>
-                        <a href="#">Functions</a>
-                    </li>
-                </ul>--%>
+                    
                         </li>
                         <li class="dropdown">
                             <a href="#">
                                 <span>Lift & Esclator</span>
                                 <i class="bi bi-chevron-down"></i>
                             </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">Procedure For Registration/
-                        <br>
-                            Inspection Lifts and Esclators
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Checklist for Registration/
-                        <br>
-                            Inspection of Lifts and Esclators
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Forms</a>
-                    </li>
-                </ul>--%>
+                        
 
                         </li>
                         <li class="dropdown">
@@ -604,45 +573,14 @@
                                 <span>Licensing</span>
                                 <i class="bi bi-chevron-down"></i>
                             </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">Procedure/ Condition
-                        <br>
-                            for Various Licences/ Certificates
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Electrical Supervisor Competency
-                        <br />
-                            Certificate(Excemption)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Forms(Licence)</a>
-                    </li>
-                </ul>--%>
+                      
                         </li>
                         <li class="dropdown">
                             <a href="#">
                                 <span>Inspection</span>
                                 <i class="bi bi-chevron-down"></i>
                             </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">Checklist for Online Service(Inspection)</a>
-                    </li>
-                    <li>
-                        <a href="#">Procedure for Electrical Installation</a>
-                    </li>
-                    <li>
-                        <a href="#">Procedure for Grant of
-                        <br>
-                            approval for Energisation of
-                        <br>
-                            New Electrical Installation
-                        </a>
-                    </li>
-                </ul>--%>
+                         
                         </li>
                         <li class="dropdown">
                             <a href="#">
@@ -663,22 +601,12 @@
                 </nav>
                 <!-- .navbar -->
             </div>
-
-        </header>
-        <!-- End Header -->
-        <main id="main">  
+  </header>
+  <main id="main">  
            <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
             <section id="about" class="about section-bg" style="padding-top: 20px;">
                 <div class="container" data-aos="fade-up">
-                    <%-- <div class="row">
-                        <div class="col-md-12" style="margin-bottom: 15px; font-weight: 700;">
-                            <p style="text-align: center;">
-                                (Please read the instructions carefully as given in Instruction
-                    Page before filling the form)                           
-                            </p>
-                            <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
-                        </div>
-                    </div>--%>
+                  
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">
@@ -695,7 +623,7 @@
                                  <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
           
          <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-             <div class="row" style="margin-bottom: 20px;">
+            <%-- <div class="row" style="margin-bottom: 20px;">
                  <div class="col-md-4">
                      <label>
                          Address Wise<samp style="color: red">* </samp>
@@ -708,9 +636,9 @@
                  <div class="col-md-12">
                      <asp:TextBox class="form-control" ID="txtAddressFilter" ReadOnly="true" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
                  </div>
-             </div>
+             </div>--%>
              <div>
-                 <div class="card" id="DivGrid" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;" runat="server">
+                 <div class="card" id="DivGrid"  style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;" runat="server">
                      <%-- Add Gridview Here --%>
                      <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover table-bordered" runat="server" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true" OnRowDataBound="GridView1_RowDataBound" OnRowCreated="GridView1_RowCreated" OnRowCommand="GridView1_RowCommand">
                          <PagerStyle CssClass="pagination-ys" />
@@ -854,63 +782,6 @@
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
     </form>
-    <%--<script>
-        var checkBox = document.getElementById("<%= CheckBox1.ClientID %>");
-        var commAddress = document.getElementById("<%= txtCommunicationAddress.ClientID %>");
-        var permAddress = document.getElementById("<%= txtPermanentAddress.ClientID %>");
-
-        checkBox.addEventListener("change", function () {
-            if (checkBox.checked) {
-                permAddress.value = commAddress.value;
-                permAddress.readOnly = true;
-            } else {
-                permAddress.readOnly = true;
-            }
-        });
-    </script> --%>
-
-
-
-
-
-
-
-    <%--<script>
-       // Function to check if all fields (textboxes and dropdowns) have values
-       function validateForm() {
-           var inputs = document.querySelectorAll('.form-control, .select-form');
-           var isValid = true;
-
-           inputs.forEach(function (input) {
-               if (input.value.trim() === '' || (input.tagName === 'SELECT' && input.value === '0')) {
-                   isValid = true;
-                   input.style.border = '1px solid red';
-               } else {
-                   input.style.border = '1px solid #ced4da'; // Reset border to default
-               }
-           });
-
-           if (!isValid) {
-               alert('Please fill in all the required fields.');
-           }
-
-           return isValid;
-       }
-   </script>--%>
-    <%-- <script>
-          function validateAadhaar() {
-              var aadhaarNumber = document.getElementById('txtAadhaar').value;
-
-              // Define the regular expression pattern for Aadhaar card number
-              var aadhaarPattern = /^\d{12}$/;
-
-              // Check if the entered Aadhaar number matches the pattern
-              if (aadhaarPattern.test(aadhaarNumber)) {
-                  alert('Aadhaar number is valid!');
-              } else {
-                  alert('Invalid Aadhaar number! Please enter a valid 12-digit Aadhaar number.');
-              }
-          }
-      </script>--%>
+  
 </body>
 </html>

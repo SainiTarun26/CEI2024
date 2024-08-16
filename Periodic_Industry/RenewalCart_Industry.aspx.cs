@@ -144,8 +144,8 @@ namespace CEIHaryana.Periodic_Industry
                     lblTotalCapacity.Text = "Total Capacity: " + dblGrandTotalCapacity.ToString("N0") + "KVA";
                     lblMaxVoltage.Text = "Max Voltage: " + dblHighestVoltage.ToString("N0");
 
-                    Session["TotalCapacity"] = dblGrandTotalCapacity;
-                    Session["HighestVoltage"] = dblHighestVoltage;
+                    Session["TotalCapacity1"] = dblGrandTotalCapacity;
+                    Session["HighestVoltage1"] = dblHighestVoltage;
                 }
             }
             catch (Exception ex) { }
@@ -242,8 +242,8 @@ namespace CEIHaryana.Periodic_Industry
                 if (Session["SiteOwnerId"] != null)
                 {
                     string id = Session["SiteOwnerId"].ToString();
-                    string GrandTotalCapacity = Session["TotalCapacity"].ToString();
-                    string HighestVoltage = Session["HighestVoltage"].ToString();
+                    string GrandTotalCapacity = Session["TotalCapacity1"].ToString();
+                    string HighestVoltage = Session["HighestVoltage1"].ToString();
                     //string address = txtAddressFilter.Text;
 
                     int totalAmount = TotalAmount;
@@ -279,7 +279,7 @@ namespace CEIHaryana.Periodic_Industry
                         }
                         else
                         {
-                            StaffAssigned = "No staff assigned";
+                            StaffAssigned = "CEI";
                         }
                     }
                     else
@@ -322,8 +322,8 @@ namespace CEIHaryana.Periodic_Industry
               PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
 
                     Session["CartID"] = CartID;
-                    Session["TotalCapacity"] = string.Empty;
-                    Session["HighestVoltage"] = string.Empty;
+                    Session["TotalCapacity1"] = string.Empty;
+                    Session["HighestVoltage1"] = string.Empty;
 
                     Response.Redirect("/Periodic_Industry/InProcessRenewal_Industry.aspx", false);
                 }

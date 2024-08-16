@@ -121,7 +121,6 @@ namespace CEIHaryana.SiteOwnerPages
 
         //protected void BtnProcess_Click(object sender, EventArgs e)
         //{
-
         //    List<string> selectedInspectionIdsList = new List<string>();
 
         //    foreach (GridViewRow row in GridView1.Rows)

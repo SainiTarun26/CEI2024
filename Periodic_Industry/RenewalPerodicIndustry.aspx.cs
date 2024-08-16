@@ -40,7 +40,8 @@ namespace CEIHaryana.Periodic_Industry
             ds = CEI.ExistingInspectionData(Id);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                //Periodic.Visible = true;
+                Periodic.Visible = true;
+                BindAdress();
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
                 PeriodicData.Visible = true;
@@ -597,6 +598,52 @@ namespace CEIHaryana.Periodic_Industry
             string InstallationType = ddlInstallationType.SelectedValue;
 
         }
+
+        protected void BtnViewCart_Click(object sender, EventArgs e)
+        {
+            ViewCart();
+        }
+        private void ViewCart()
+        {
+            string id = Session["SiteOwnerId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.ViewCartData(id);
+            if (ds.Tables[0].Rows.Count > 0 && ds != null)
+            {
+                GridView4.DataSource = ds;
+                GridView4.DataBind();
+                PeriodicData.Visible = false;
+                Periodic.Visible = false;
+            }
+            else
+            {
+                GridView4.DataSource = null;
+                GridView4.DataBind();
+                string script = "alert(\"No any item in card\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            ds.Dispose();
+        }
+
+        protected void GridView4_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblAddressText = (Label)row.FindControl("lblAddressText");
+                Label lblCartId = (Label)row.FindControl("lblCartId");
+                Session["Address"] = lblAddressText.Text;
+                Session["Cart"] = lblCartId.Text;
+                Response.Redirect("/Periodic_Industry/ViewCart_Industry.aspx", false);
+            }
+            else
+            {
+
+            }
+        }
+
 
         //protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         //{
