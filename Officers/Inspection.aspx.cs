@@ -172,17 +172,17 @@ namespace CEIHaryana.Officers
                     SupervisorEmail.Visible = false;
                     SiteOwnerContact.Visible = false;
                     OwnerAddress.Visible = false;
-                    if (txtApplicantType.Text != "Multiple")
-                    {
+                    //if (txtApplicantType.Text != "Multiple")
+                    //{
                         TRAttached.Visible = true;
                         TRAttachedGrid.Visible = true;
                         GridView1.Columns[7].Visible = false;
-                    }
-                    else
-                    {
-                        TRAttached.Visible = false;
-                        TRAttachedGrid.Visible = false;
-                    }
+                    //}
+                    //else
+                    //{
+                    //    TRAttached.Visible = false;
+                    //    TRAttachedGrid.Visible = false;
+                    //}
 
                     //TRAttached.Visible = false;
                     //TRAttachedGrid.Visible = false;
