@@ -32,14 +32,14 @@ namespace CEIHaryana.Officers
                 if (!IsPostBack)
                 {
                     GetData();
-                    //if (Type == "New")
-                    //{
+                    if (Type == "New")
+                    {
                         GetTestReportData();
-                    //}
-                    //else if (Type == "Periodic")
-                    //{
-                       // GetTestReportDataIfPeriodic();
-                 //   }
+                    }
+                    else if (Type == "Periodic")
+                    {
+                        GetTestReportDataIfPeriodic();
+                    }
                 }
             }
             catch
@@ -364,7 +364,7 @@ namespace CEIHaryana.Officers
 
                             else if (InstallType == "Periodic")
                             {
-                                CEI.updateInspectionPeriodic(ID, StaffId, AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
+                                CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
                             }
                             checksuccessmessage = 1;
 

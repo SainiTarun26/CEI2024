@@ -4980,8 +4980,8 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSiteAddress", id);
         }
 
-        public void updateInspectionPeriodic(string InspectionID, string StaffId,
-        string AcceptedOrReReturn, string Reason, string ReasonType)
+        public void updateInspectionPeriodic(string InspectionID, string StaffId, string IntimatiomnId, string Installationtype,
+    string AcceptedOrReReturn, string Reason, string ReasonType)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -4995,6 +4995,9 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", InspectionID);
                         cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
+                        //cmd.Parameters.AddWithValue("@count", count);
+                        cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
                         cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
                         cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
                         cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
@@ -5014,7 +5017,6 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             }
 
         }
-
         public DataSet GetTypeOfInspection(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetTypeOfInspection", Id);
