@@ -3894,6 +3894,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWise", adress, id, NoOfDays, InstallationType);
         }
+        public DataSet GetPeriodicDetailsIndustry(string adress, string id, int NoOfDays, string InstallationType)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWiseIndustry", adress, id, NoOfDays, InstallationType);
+        }
         //      public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
         //string TestReportId, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string District, string Division, string CreatedBy, string Status)
         //      {
@@ -5208,12 +5212,12 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         }
         public string InsertPeriodicInspectionData_Industry(string TypeOfInspection, string CartId, string IntimationId, string ApplicantType,
        string InstallationType, string VoltageLevel, string District, string Division,
-string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
-string CreatedBy, string TotalCapacity, string MaxVoltage, string UserType, int InspectID)
+ string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
+ string CreatedBy, string TotalCapacity, string MaxVoltage, string UserType, int InspectID)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_InsertPeriodicInspectionData", con))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertPeriodicInspectionData_Industry", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@TypeOfInspection", TypeOfInspection);
@@ -5254,6 +5258,10 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, string UserType, int 
         public DataSet ViewCartData(string SiteOwnerId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAdressforViewCart", SiteOwnerId);
+        }
+        public DataSet ViewInspection(string CartId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewPeriodicInspection", CartId);
         }
     }
 }

@@ -165,8 +165,9 @@ namespace CEIHaryana.Periodic_Industry
                             }
                         }
 
-                        Session["CartID"] = string.Empty;
-                        Response.Redirect("/Periodic_Industry/RenewalPerodicIndustry.aspx", false);
+                        //Session["CartID"] = string.Empty;
+                        string CartID = Session["CartID"].ToString();
+                        Response.Redirect("/Periodic_Industry/ViewPerodicRequest.aspx", false);
                     }
                     else
                     {

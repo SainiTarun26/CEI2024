@@ -21,7 +21,7 @@ namespace CEIHaryana.Periodic_Industry
 
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
-                        Session["SiteOwnerId"] = "JVCBN5647K";
+                       // Session["SiteOwnerId"] = "JVCBN5647K";
                         getWorkIntimationData();
                     }
                 }
@@ -229,7 +229,7 @@ namespace CEIHaryana.Periodic_Industry
 
         protected void RadioButtonListInspection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RadioButtonList rbl = (RadioButtonList)sender;
+            RadioButtonList rbl = (RadioButtonList)sender; 
             GridViewRow row = (GridViewRow)rbl.NamingContainer;
 
             TextBox txtInspectionDate = (TextBox)row.FindControl("txtInspectionDate");
@@ -280,7 +280,7 @@ namespace CEIHaryana.Periodic_Industry
             string InstallationType = ddlInstallationType.SelectedValue;
             //Session["IntimationId"+ ] = ddlAdress.SelectedValue;
             DataSet ds = new DataSet();
-            ds = CEI.GetPeriodicDetails(Adress, id, numberOfDays, InstallationType);
+            ds = CEI.GetPeriodicDetailsIndustry(Adress, id, numberOfDays, InstallationType);
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 GridView3.DataSource = ds;

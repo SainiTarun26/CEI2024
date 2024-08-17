@@ -40,7 +40,7 @@ namespace CEIHaryana.Periodic_Industry
                 {
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
-                        Session["SiteOwnerId"] = "JVCBN5647K";
+                        //Session["SiteOwnerId"] = "JVCBN5647K";
                         BindGrid();
                     }
                 }
