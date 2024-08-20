@@ -13,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <!-- Vendor CSS Files -->
     <link href="/assetsnew/vendor/aos/aos.css" rel="stylesheet" />
@@ -142,7 +142,25 @@
             border-radius: .25rem;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
-
+        div#CartBtn{
+            padding-top: 12px !important;
+    height: 38px;
+            display: inline-block;
+font-weight: 400;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+border: 1px solid transparent;
+padding: .375rem .75rem;
+font-size: 1rem;
+line-height: 1.5;
+border-radius: .25rem;
+transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
         input#btnBack {
             display: inline-block;
             font-weight: 400;
@@ -778,13 +796,29 @@
                             <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                         </div>
                     </div>--%>
-                    <div class="flex-container">
-                      <%--  <asp:Button type="submit" ID="BtnViewCart" Text="View Cart" runat="server" OnClick="BtnViewCart_Click"
-                            class="btn btn-primary mr-2" />--%>
-                        <asp:LinkButton ID="BtnViewCart" runat="server" OnClick="BtnViewCart_Click" CssClass="btn btn-primary mr-2">
-    <i class="fas fa-shopping-cart"></i> VIew Cart
-</asp:LinkButton>
+                    <div class="flex-container" style="margin-bottom:25px;">
+                        <div style="position: relative; display: inline-block;padding-bottom:35px;" class="btn btn-primary" id="CartBtn">
+                            <!-- Shopping Cart Icon -->
+                            <i class="fa fa-shopping-cart" style="font-size: 24px;"></i>
+                            <!-- Label for the Number -->
+                            <asp:Label ID="lblCartItemCount" runat="server" Text="3"
+                                Style="position: absolute;
+    top: 5px;
+    right: 90px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0px 5px;
+    font-size: 12px;"></asp:Label> &nbsp;&nbsp; <span>View Cart</span>
+                        </div>
 
+
+
+                        <%--  <asp:Button type="submit" ID="BtnViewCart" Text="View Cart" runat="server" OnClick="BtnViewCart_Click"
+                            class="btn btn-primary mr-2" />--%>
+                        <%-- <asp:LinkButton ID="BtnViewCart" runat="server" OnClick="BtnViewCart_Click" CssClass="btn btn-primary mr-2">
+    <i class="fa badge" style="font-size:24px" value=5>&#xf07a;</i> View Cart
+</asp:LinkButton>--%>
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView4" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
                         BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView4_RowCommand">
@@ -968,8 +1002,9 @@
                                                             <asp:RadioButtonList ID="RadioButtonListInspection" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonListInspection_SelectedIndexChanged">
                                                                 <asp:ListItem Text="Yes" Value="Yes" Selected="True"></asp:ListItem>
                                                                 <asp:ListItem Text="No" Value="No" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                                                            </asp:RadioButtonList> &nbsp;&nbsp;&nbsp;
-                                                            <asp:DropDownList style="margin-top:12px;" class="form-control" AutoPostBack="true" Visible="false" ID="ddlInspectionType" runat="server">
+                                                            </asp:RadioButtonList>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            <asp:DropDownList Style="margin-top: 12px;" class="form-control" AutoPostBack="true" Visible="false" ID="ddlInspectionType" runat="server">
                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                 <asp:ListItem Text="1 Year" Value="1"></asp:ListItem>
                                                                 <asp:ListItem Text="2 year" Value="2"></asp:ListItem>
@@ -979,7 +1014,7 @@
                                                             </asp:DropDownList>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="*Select" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlInspectionType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
-                                                            <asp:TextBox style="margin-top:12px;" ID="txtInspectionDate" CssClass="form-control" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" onfocus="disableFutureDates()"></asp:TextBox>
+                                                            <asp:TextBox Style="margin-top: 12px;" ID="txtInspectionDate" CssClass="form-control" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" onfocus="disableFutureDates()"></asp:TextBox>
                                                             <br />
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInspectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*Please Select</asp:RequiredFieldValidator>
                                                         </ItemTemplate>

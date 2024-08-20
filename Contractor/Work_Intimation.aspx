@@ -628,10 +628,10 @@
                                         </div>
                                          <div class="col-md-4" runat="server">
                                             <label for="Email">
-                                                Total Capacity to be installed in KVA (Capacity of Substration Transformer & Generating Set)
+                                                Total Capacity to be installed in KVA (Capacity of Substation Transformer & Generating Set)
                                                     <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtCapacity" TabIndex="9" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtCapacity" TabIndex="9" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onkeyup="return ValidateEmail();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <span id="lblCap" style="color: red"></span>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
                                         </div>
