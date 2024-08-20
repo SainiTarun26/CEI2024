@@ -272,7 +272,7 @@
                             <a href="mailto:contact@example.com">contact@example.com</a>
                         </i>--%>
                         <i class="bi bi-phone d-flex align-items-center ms-4">
-                            <span>+1 5589 55488 55</span>
+                            <span>0172 270 4090</span>
                         </i>
                     </div>
                     <div class="social-links d-none d-md-flex align-items-center">

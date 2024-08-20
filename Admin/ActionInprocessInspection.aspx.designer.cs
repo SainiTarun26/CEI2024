@@ -11,7 +11,7 @@ namespace CEIHaryana.Admin
 {
 
 
-    public partial class XenInprocessInspection
+    public partial class ActionInprocessInspection
     {
 
         /// <summary>
