@@ -70,7 +70,7 @@
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
 
-        input#BtnViewCart {
+        a#BtnViewCart {
             display: inline-block;
             font-weight: 400;
             text-align: center;
@@ -781,8 +781,8 @@
                     <div class="flex-container">
                       <%--  <asp:Button type="submit" ID="BtnViewCart" Text="View Cart" runat="server" OnClick="BtnViewCart_Click"
                             class="btn btn-primary mr-2" />--%>
-                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="BtnViewCart_Click" CssClass="btn btn-primary mr-2">
-    <i class="fas fa-shopping-cart"></i> View Cart
+                        <asp:LinkButton ID="BtnViewCart" runat="server" OnClick="BtnViewCart_Click" CssClass="btn btn-primary mr-2">
+    <i class="fas fa-shopping-cart"></i> VIew Cart
 </asp:LinkButton>
 
                     </div>
@@ -1016,7 +1016,7 @@
                                                     </label>
                                                     <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAdress" TabIndex="2" runat="server">
                                                     </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select any adress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select any adress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAdress" runat="server" InitialValue="0" ValidationGroup="Cart" Display="Dynamic" ForeColor="Red" />
                                                 </div>
 
                                                 <div class="col-md-3">
@@ -1047,7 +1047,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <div class="card" id="grid" runat="server" visible="true" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
+                                                <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
                                                     <asp:GridView class="table-responsive table table-striped" ID="GridView3" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnRowCommand="GridView3_RowCommand" OnRowDataBound="GridView3_RowDataBound"
                                                         AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                                         <PagerStyle CssClass="pagination-ys" />
@@ -1152,7 +1152,7 @@
                                                 <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                                                     <div class="col-4" style="margin-top: auto;">
 
-                                                        <asp:Button type="submit" ID="BtnCart" TabIndex="23" Text="Add To Cart" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnCart_Click" />
+                                                        <asp:Button type="submit" ID="BtnCart" TabIndex="23" Visible="false" ValidationGroup="Cart" Text="Add To Cart" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnCart_Click" />
                                                     </div>
                                                 </div>
                                             </div>

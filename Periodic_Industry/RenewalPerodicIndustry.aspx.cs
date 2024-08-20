@@ -18,7 +18,7 @@ namespace CEIHaryana.Periodic_Industry
             {
                 if (!Page.IsPostBack)
                 {
-                    Session["SiteOwnerId"] = "ASASF1234I";
+                    //Session["SiteOwnerId"] = "ASASF1234I";
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
                        // Session["SiteOwnerId"] = "JVCBN5647K";
@@ -285,6 +285,7 @@ namespace CEIHaryana.Periodic_Industry
             {
                 GridView3.DataSource = ds;
                 GridView3.DataBind();
+                BtnCart.Visible = true;
             }
             else
             {

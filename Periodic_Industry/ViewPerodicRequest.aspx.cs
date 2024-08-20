@@ -21,10 +21,10 @@ namespace CEIHaryana.Periodic_Industry
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
                        
-                        if (Session["SiteOwnerId"].ToString() != "JVCBN5647K")
-                        {
-                            //Session["SiteOwnerId"] = "JVCBN5647K";
-                        }
+                        //if (Session["SiteOwnerId"].ToString() != "JVCBN5647K")
+                        //{
+                        //    //Session["SiteOwnerId"] = "JVCBN5647K";
+                        //}
 
                       
                         if (Session["CartID"] != null)

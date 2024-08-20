@@ -33,13 +33,13 @@ namespace CEIHaryana.Periodic_Industry
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
-        /// LinkButton1 control.
+        /// BtnViewCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton BtnViewCart;
 
         /// <summary>
         /// GridView4 control.
